@@ -5,7 +5,7 @@ description: Extract a strict audit-summary.json from every Markdown audit repor
 
 # Audit Summary Extraction
 
-Create `<project>/reports/audit-summary.json`. Its purpose is to identify exactly which repository file versions an audit covers so those sources can later be compared with production. The unit of coverage is `(repository, path, revision)`, not a protocol component described only in prose. Keep reports separate and keep successive versions of the same path in chronological order.
+Create `<project>/audit-summary.json` from the Markdown audit reports in `<project>/reports`. Its purpose is to identify exactly which repository file versions an audit covers so those sources can later be compared with production. The unit of coverage is `(repository, path, revision)`, not a protocol component described only in prose. Keep reports separate and keep successive versions of the same path in chronological order.
 
 ## Fixed schema
 

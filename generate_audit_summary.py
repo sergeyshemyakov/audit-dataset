@@ -7,8 +7,11 @@ import argparse
 import heapq
 import html
 import json
+import subprocess
 import sys
+import tempfile
 from collections import defaultdict
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -18,11 +21,30 @@ class SummaryError(RuntimeError):
 
 
 RevisionKey = tuple[str, ...]
+CommitDateKey = tuple[str, str]
+
+MONTHS = (
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate audit-summary.md from audit-summary.json."
+        description=(
+            "Generate audit-summary.md from audit-summary.json, resolving commit "
+            "dates from the source repositories."
+        )
     )
     parser.add_argument("summary", type=Path, help="path to audit-summary.json")
     parser.add_argument(
@@ -41,6 +63,109 @@ def read_summary(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict) or not isinstance(value.get("reports"), list):
         raise SummaryError("summary must be an object containing a reports array")
     return value
+
+
+def run_git(repository: Path, *args: str) -> str:
+    command = ["git", "-C", str(repository), *args]
+    try:
+        completed = subprocess.run(
+            command,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+    except FileNotFoundError as error:
+        raise SummaryError("git executable was not found") from error
+    except subprocess.CalledProcessError as error:
+        raise SummaryError(
+            f"{' '.join(command)} failed: {error.stderr.strip()}"
+        ) from error
+    return completed.stdout.strip()
+
+
+def revision_commits(revision: dict[str, Any]) -> list[str]:
+    commit = revision.get("commit")
+    if isinstance(commit, str) and commit:
+        return [commit]
+    if revision.get("kind") == "commit_range":
+        return [
+            value
+            for key in ("start_commit", "end_commit")
+            if isinstance((value := revision.get(key)), str) and value
+        ]
+    return []
+
+
+def resolve_commit_dates(summary: dict[str, Any]) -> dict[CommitDateKey, date]:
+    repositories: dict[str, tuple[str, set[str]]] = {}
+    for report in summary["reports"]:
+        report_repositories = {
+            repository["id"]: repository["url"]
+            for repository in report.get("repositories", [])
+        }
+        for scope in report.get("scopes", []):
+            repository_id = scope["repository"]
+            url = report_repositories[repository_id]
+            stored_url, commits = repositories.setdefault(repository_id, (url, set()))
+            if stored_url != url:
+                raise SummaryError(
+                    f"repository {repository_id!r} has conflicting URLs"
+                )
+            for path_data in scope.get("paths", {}).values():
+                for version in path_data.get("versions", []):
+                    commits.update(revision_commits(version["revision"]))
+
+    result: dict[CommitDateKey, date] = {}
+    with tempfile.TemporaryDirectory(prefix="audit-summary-dates-") as temporary:
+        temporary_root = Path(temporary)
+        for index, (repository_id, (url, commits)) in enumerate(repositories.items()):
+            if not commits:
+                continue
+            object_id_lengths = {len(commit) for commit in commits}
+            if len(object_id_lengths) != 1:
+                raise SummaryError(
+                    f"repository {repository_id!r} mixes Git object formats"
+                )
+            repository = temporary_root / f"repository-{index}.git"
+            init_args = ["git", "init", "--bare", "--quiet"]
+            if object_id_lengths == {64}:
+                init_args.append("--object-format=sha256")
+            init_args.append(str(repository))
+            try:
+                subprocess.run(
+                    init_args,
+                    check=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                )
+            except (FileNotFoundError, subprocess.CalledProcessError) as error:
+                raise SummaryError(f"could not initialize Git repository: {error}") from error
+            run_git(repository, "remote", "add", "origin", url)
+            for commit in sorted(commits):
+                run_git(
+                    repository,
+                    "fetch",
+                    "--quiet",
+                    "--no-tags",
+                    "--depth=1",
+                    "origin",
+                    commit,
+                )
+                committed_at = run_git(
+                    repository, "show", "--no-patch", "--format=%cI", commit
+                )
+                try:
+                    result[(repository_id, commit)] = date.fromisoformat(
+                        committed_at[:10]
+                    )
+                except ValueError as error:
+                    raise SummaryError(
+                        f"invalid commit date for {repository_id}@{commit}: "
+                        f"{committed_at!r}"
+                    ) from error
+    return result
 
 
 def revision_key(revision: dict[str, Any]) -> RevisionKey:
@@ -98,6 +223,24 @@ def revision_label(revision: dict[str, Any]) -> str:
     return code(json.dumps(revision, sort_keys=True))
 
 
+def human_date(value: date) -> str:
+    return f"{MONTHS[value.month - 1]} {value.day}, {value.year}"
+
+
+def revision_date(
+    repository_id: str,
+    revision: dict[str, Any],
+    commit_dates: dict[CommitDateKey, date],
+) -> str:
+    commits = revision_commits(revision)
+    if not commits:
+        return "—"
+    dates = [commit_dates[(repository_id, commit)] for commit in commits]
+    if len(dates) == 1 or dates[0] == dates[-1]:
+        return human_date(dates[0])
+    return f"{human_date(dates[0])} – {human_date(dates[-1])}"
+
+
 def ordered_revisions(
     paths: list[tuple[str, dict[str, Any]]],
 ) -> tuple[list[RevisionKey], dict[RevisionKey, dict[str, Any]]]:
@@ -144,7 +287,9 @@ def ordered_revisions(
 
 
 def render_repository(
-    repository: dict[str, Any], scopes: list[dict[str, Any]]
+    repository: dict[str, Any],
+    scopes: list[dict[str, Any]],
+    commit_dates: dict[CommitDateKey, date],
 ) -> list[str]:
     repository_id = repository.get("id")
     if not isinstance(repository_id, str) or not repository_id:
@@ -177,24 +322,31 @@ def render_repository(
     lines = [
         f"### Repository: {link(repository_id, repository.get('url'))}",
         "",
-        "| Revision | Audited files or directories |",
-        "| --- | --- |",
+        "| Revision | Commit date | Audited files or directories |",
+        "| --- | --- | --- |",
     ]
     if not order:
-        lines.append("| _None recorded_ | _None recorded_ |")
+        lines.append("| _None recorded_ | — | _None recorded_ |")
     for key in order:
-        lines.append(f"| {revision_label(revisions[key])} | {'<br>'.join(sources[key])} |")
+        revision = revisions[key]
+        lines.append(
+            f"| {revision_label(revision)} | "
+            f"{revision_date(repository_id, revision, commit_dates)} | "
+            f"{'<br>'.join(sources[key])} |"
+        )
     lines.append("")
     return lines
 
 
 def render_summary(summary: dict[str, Any]) -> str:
+    commit_dates = resolve_commit_dates(summary)
     project = summary.get("project")
     title = f"Audit source summary: {project}" if project else "Audit source summary"
     lines = [
         f"# {html.escape(str(title))}",
         "",
         "Generated from [audit-summary.json](audit-summary.json). Do not edit manually.",
+        "Commit dates use Git committer timestamps.",
         "",
     ]
 
@@ -206,8 +358,10 @@ def render_summary(summary: dict[str, Any]) -> str:
         details = []
         report_file = report.get("report_file")
         if isinstance(report_file, str) and report_file:
+            report_path = f"reports/{report_file}"
             escaped_file = html.escape(report_file)
-            details.append(f"Report: [{escaped_file}](<{escaped_file}>)")
+            escaped_path = html.escape(report_path)
+            details.append(f"Report: [{escaped_file}](<{escaped_path}>)")
         if report.get("auditor"):
             details.append(f"Auditor: {html.escape(str(report['auditor']))}")
         if report.get("report_date"):
@@ -240,7 +394,9 @@ def render_summary(summary: dict[str, Any]) -> str:
                 raise SummaryError("each repository must be an object")
             lines.extend(
                 render_repository(
-                    repository, scopes_by_repository.get(repository.get("id"), [])
+                    repository,
+                    scopes_by_repository.get(repository.get("id"), []),
+                    commit_dates,
                 )
             )
 

@@ -68,7 +68,7 @@ def parse_args() -> argparse.Namespace:
         "--output",
         type=Path,
         help=(
-            "destination directory (default: audited-sources beside the reports "
+            "destination directory (default: audited-sources in the project "
             "directory)"
         ),
     )
@@ -549,9 +549,7 @@ def export_source(
 
 
 def default_output(summary_path: Path) -> Path:
-    parent = summary_path.resolve().parent
-    project_root = parent.parent if parent.name == "reports" else parent
-    return project_root / "audited-sources"
+    return summary_path.resolve().parent / "audited-sources"
 
 
 def fetch_sources(summary_path: Path, output: Path | None = None) -> tuple[int, int, Path]:
