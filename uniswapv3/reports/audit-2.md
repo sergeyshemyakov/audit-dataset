@@ -1,3 +1,9 @@
+# ABDK CONSULTING
+### SMART CONTRACT AUDIT Uniswap V3
+
+#### abdk.consulting
+
+
 ##### **SMART CONTRACT AUDIT CONCLUSION**
 
 by Mikhail Vladimirov and Dmitry Khovratovich
@@ -11,7 +17,11 @@ Most of them were eventually downgraded to minor ones after the discussion with 
 about the protocol usecases and starting parameters.
 
 
+2 Minor
 Moderate
+
+
+159
 
 
 ##### **Findings**

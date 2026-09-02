@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0.0",
+  "project": "umbra",
+  "reports": [
+    {
+      "id": "least-authority-umbra-js-2021-05-25",
+      "report_file": "LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.md",
+      "title": "Umbra-js Security Audit Report",
+      "auditor": "Least Authority TFA GmbH",
+      "report_date": "2021-05-25",
+      "repositories": [
+        {
+          "id": "ScopeLift/umbra-protocol",
+          "url": "https://github.com/ScopeLift/umbra-protocol"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ScopeLift/umbra-protocol",
+          "paths": {
+            "umbra-js": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d",
+                    "url": "https://github.com/ScopeLift/umbra-protocol/tree/48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d/umbra-js"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full directory",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "not explicitly classified"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7",
+                    "url": "https://github.com/ScopeLift/umbra-protocol/tree/f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7/umbra-js"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "report-linked remediation",
+                  "coverage": "specific remediation changes for reported issues and suggestions",
+                  "follows": "48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "not explicitly classified"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3796fa747cc568cb7e48f552675734a9cd564ee9",
+                    "url": "https://github.com/ScopeLift/umbra-protocol/tree/3796fa747cc568cb7e48f552675734a9cd564ee9/umbra-js"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "verification",
+                  "coverage": "verification of reported issues and remediations",
+                  "follows": "f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-diligence-umbra-smart-contracts-2021-03",
+      "report_file": "umbra-audit-2021-03.md",
+      "title": "Umbra Smart Contracts",
+      "auditor": "Nicholas Ward (Consensys Diligence)",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "ScopeLift/umbra-protocol",
+          "url": "https://github.com/ScopeLift/umbra-protocol"
+        },
+        {
+          "id": "ScopeLift/ens-resolvers",
+          "url": "https://github.com/ScopeLift/ens-resolvers"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ScopeLift/umbra-protocol",
+          "paths": {
+            "contracts/contracts/Umbra.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa2e17367d66a85f20c77299ded5942d9ab64fe0",
+                    "url": "https://github.com/ScopeLift/umbra-protocol/blob/fa2e17367d66a85f20c77299ded5942d9ab64fe0/contracts/contracts/Umbra.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "smart contract review",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "minor"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cfdc81be65bb81e14ad152a0b344d598a3dd512",
+                    "url": "https://github.com/ScopeLift/umbra-protocol/blob/7cfdc81be65bb81e14ad152a0b344d598a3dd512/contracts/contracts/Umbra.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "review of the fix for the reported Minor finding",
+                  "follows": "fa2e17367d66a85f20c77299ded5942d9ab64fe0",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6e4235fc143c0ac53c054aec7de4c4cdc01846c",
+                    "url": "https://github.com/ScopeLift/umbra-protocol/blob/d6e4235fc143c0ac53c054aec7de4c4cdc01846c/contracts/contracts/Umbra.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "review of the fix for the withdrawal-signature recommendation",
+                  "follows": "7cfdc81be65bb81e14ad152a0b344d598a3dd512",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/IUmbraHookReceiver.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa2e17367d66a85f20c77299ded5942d9ab64fe0",
+                    "url": "https://github.com/ScopeLift/umbra-protocol/blob/fa2e17367d66a85f20c77299ded5942d9ab64fe0/contracts/contracts/IUmbraHookReceiver.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "smart contract review",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "ScopeLift/ens-resolvers",
+          "paths": {
+            "contracts/profiles/StealthKeyResolver.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d7795082308d303eb23c66490579a5b21a1bac9",
+                    "url": "https://github.com/ScopeLift/ens-resolvers/blob/2d7795082308d303eb23c66490579a5b21a1bac9/contracts/profiles/StealthKeyResolver.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "cursory smart contract review",
+                  "coverage": "cursory review of the full file",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

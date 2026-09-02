@@ -33,7 +33,12 @@ def batch_convert_pdfs():
         try:
             # Convert PDF to Markdown. 
             # write_images=False skips images, keeping the text clean for AI.
-            md_text = pymupdf4llm.to_markdown(pdf, write_images=False)
+            md_text = pymupdf4llm.to_markdown(
+                pdf,
+                write_images=False,
+                ignore_graphics=True,
+                ignore_images=True,
+            )
 
             # Save to Markdown
             with open(output_file, "w", encoding="utf-8") as f:

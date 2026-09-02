@@ -1,3 +1,9 @@
+# ABDK CONSULTING
+### SMART CONTRACT AUDIT **Uniswap V3** Peripheral. Part 1
+
+#### abdk.consulting
+
+
 ##### **SMART CONTRACT AUDIT CONCLUSION**
 
 by Mikhail Vladimirov and Dmitry Khovratovich
@@ -10,12 +16,15 @@ Uniswap GitHub repo. We found two critical bugs, which were fixed later, and one
 major but non-critical flaw.
 
 
+2 Critical
+1
 Major
 
 
 Minor
 
 
+26
 
 
 ##### **Findings**

@@ -87,3 +87,8 @@ Derive status mechanically: full coverage plus zero/nonzero `major_findings` giv
 - Deployment addresses, production bytecode, or guesses about which audited version is deployed.
 
 Validate JSON syntax, allowed fields/statuses, integer `major_findings`, one entry per Markdown report, full-length commit hashes where known, and chronological version ancestry.
+
+# After writing the final audit-summary.json
+
+1. Generate user-readable overview of the audited files using `generate_audit_summary.py` script: `python3 generate_audit_summary.py <project>/audit-summary.json`. It is intended to be used by a researcher to verify that all sources mentioned in the audit report were extracted correctly.
+2. Fetch audited sources: `python3 fetch_audited_sources.py <project>/audit-summary.json`. Do not pass on any `--circuit-path` or `--program-path`, leave it to the reesarchers.

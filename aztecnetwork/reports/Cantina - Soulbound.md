@@ -1,3 +1,9 @@
+# **Aztec Soulbound**
+## **Security Review**
+
+### Cantina Managed review by: Desmond Ho, Lead Security Researcher Arno, Associate Security Researcher December 15, 2025
+
+
 #### **Contents**
 
 **1** **Introduction** **2**
@@ -19,6 +25,7 @@ Checks in ZKPassport Provider . . . . . . . . . . . . . . . . . . . . . . . . . 
 3.2.1 Test Coverage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
 3.2.2 Redundancies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
 3.2.3 Minor Recommendations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.2.4 Misordered Minting in _internalMint . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
 
 
 1
@@ -46,13 +53,14 @@ to the code require a new security review to ensure that the code remains secure
 that the Cantina Managed security review is not a replacement for continuous security measures such as
 penetration testing, vulnerability scanning, and regular code reviews.
 
-|assessment|Col2|Col3|Col4|
-|---|---|---|---|
-|**Severity level**|**Impact: High**|**Impact: Medium**|**Impact: Low**|
-|**Likelihood: high**|Critical|High|Medium|
-|**Likelihood: medium**|High|Medium|Low|
-|**Likelihood: low**|Medium|Low|Low|
 
+**1.3** **Risk assessment**
+
+
+**<u>Severity level</u>** **<u>Impact:</u>** **<u>High</u>** **<u>Impact:</u>** **<u>Medium</u>** **<u>Impact:</u>** **<u>Low</u>**
+**<u>Likelihood:</u>** **<u>high</u>** <u>Critical</u> <u>High</u> <u>Medium</u>
+**<u>Likelihood:</u>** **<u>medium</u>** <u>High</u> <u>Medium</u> <u>Low</u>
+**<u>Likelihood:</u>** **<u>low</u>** <u>Medium</u> <u>Low</u> <u>Low</u>
 
 
 **1.3.1** **Severity Classification**
@@ -89,16 +97,15 @@ Ethereum) and NOIR (the universal ZK language).
 
 **Issues Found**
 
-|Severity|Count|Fixed|Acknowledged|
-|---|---|---|---|
-|Critical Risk|0|0|0|
-|High Risk|1|1|0|
-|Medium Risk|0|0|0|
-|Low Risk|0|0|0|
-|Gas Optimizations|0|0|0|
-|Informational|4|4|0|
-|**Total**|**5**|**5**|**0**|
 
+**<u>Severity</u>** **<u>Count</u>** **<u>Fixed</u>** **<u>Acknowledged</u>**
+<u>Critical Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>High Risk</u> <u>1</u> <u>1</u> <u>0</u>
+<u>Medium Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Low Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Gas Optimizations</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Informational</u> <u>4</u> <u>4</u> <u>0</u>
+**<u>Total</u>** **<u>5</u>** **<u>5</u>** **<u>0</u>**
 
 
 **2.1** **Scope**
@@ -148,9 +155,25 @@ number) within the smart contract.Leaving enforcement reliant on frontend or ext
 which violates the requirement for on-chain validation to prevent bypassing.
 
 
+     - Users can privately prove that they are not on a sanctions list by performing a zk-passport
+sanctions check which ensures they:
+
+**–** Have a valid passport.
+
+**–** The passport has not expired.
+
+**–** The name / passport number do not appear on a sanctions list.
 
 
+In the review these checks are implemented as providers . We are assuming that their dependencies will work as intended, such that invalid proofs of zkpassport can not be produced, and
+that its onchain verifier is implemented correctly. We can also assume that predicate will not issue
+fraudulent attestations.
 
+
+The frontend that purchasers will use to purchase tokens in the sale need to IP geo-block sanctions
+countries, and the participants need to comply with sanctions check requirements. It is not enough
+for these checks to be performed solely on the frontend, they must also be enforced within the
+sale smart contracts too. This is a key requirement.
 
 
 [As we can see, these checks are not implemented by the provider itself (pseudo code) reference:](https://github.com/zkpassport/circuits/blob/4828f73a3daf24bd4382cf51af87873bcce2d093/src/solidity/src/SampleContract.sol#L116-L149)
@@ -1030,7 +1053,9 @@ Note: test_RevertWhen_TheTokenIdIsOutOfRange() doesn't bypass this check, the te
 even in the absence of the require statement.
 
 
-  - [IGenesisSequencerSale.sol#L27,](https://github.com/AztecProtocol/ignition-monorepo/blob/abfbcc191503463ad22dc08a329907c21fd8736e/contracts/src/sale/IGenesisSequencerSale.sol#L27) [IGenesisSequencerSale.sol#L31):](https://github.com/AztecProtocol/ignition-monorepo/blob/abfbcc191503463ad22dc08a329907c21fd8736e/contracts/src/sale/IGenesisSequencerSale.sol#L31) Un
+  - [IGenesisSequencerSale.sol#L27,](https://github.com/AztecProtocol/ignition-monorepo/blob/abfbcc191503463ad22dc08a329907c21fd8736e/contracts/src/sale/IGenesisSequencerSale.sol#L27) [IGenesisSequencerSale.sol#L31):](https://github.com/AztecProtocol/ignition-monorepo/blob/abfbcc191503463ad22dc08a329907c21fd8736e/contracts/src/sale/IGenesisSequencerSale.sol#L31) Unused errors GenesisSequencerSale__InsufficientTokensRemaining &
+GenesisSequencerSale__TokenTransferFailed .
+
 
 **Recommendation:** Remove the referenced lines.
 

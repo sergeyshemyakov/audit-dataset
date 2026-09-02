@@ -996,9 +996,8 @@
                   "status": "partially_audited_without_major_findings",
                   "review_phase": "remediation review",
                   "coverage": "review of the reported fixes reflected in report version 1.1",
-              "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+                  "major_findings": 0
                 }
               ]
             }

@@ -1,4 +1,13 @@
+# Umbra Smart Contracts
+
+Consensys Diligence
+
+
+Date March 2021
 ## 1 Executive Summary
+
+Auditors Nicholas Ward
+
 
 This report presents the results of our engagement with ScopeLift to review the Umbra Protocol smart contracts.
 
@@ -6,11 +15,6 @@ This report presents the results of our engagement with ScopeLift to review the 
 The review was conducted by Nicholas Ward between March 22nd and March 26th, 2021.
 
 ## 2 Scope
-
-|Date|March 2021|
-|---|---|
-|Auditors|Nicholas Ward|
-
 
 
 The review focused on the commit hash [fa2e17367d66a85f20c77299ded5942d9ab64fe0](https://github.com/ScopeLift/umbra-protocol/tree/fa2e17367d66a85f20c77299ded5942d9ab64fe0) . A cursory review of the ENS Resolver contract for stealth keys was also performed at
@@ -60,6 +64,11 @@ Critical issues are directly exploitable security vulnerabilities that need to b
 
 ✓ Fixed
 ### 4.1 Reuse of CHAINID from contract deployment Minor
+
+#### Resolution
+
+
+[This is addressed in ScopeLift/umbra-protocol@](https://github.com/ScopeLift/umbra-protocol/pull/158/commits/7cfdc81be65bb81e14ad152a0b344d598a3dd512) 7cfdc81 .
 
 #### Description
 
@@ -231,6 +240,11 @@ funds may be lost as a result.
 
 ### 5.4 Add an address parameter to withdrawal signatures ✓ Fixed
 
+#### Resolution
+
+
+[This is addressed in ScopeLift/umbra-protocol@](https://github.com/ScopeLift/umbra-protocol/pull/158/commits/d6e4235fc143c0ac53c054aec7de4c4cdc01846c) d6e4235, which replaces the version parameter with address(this) in the signature encoding.
+
 #### Description
 
 
@@ -253,12 +267,17 @@ only ever contain a single version of the Umbra contract.
 
 This audit covered the following �iles:
 
-|File|SHA-1 hash|
-|---|---|
-|Umbra.sol|bb9fc1f58c7c1246aa85331611535333920420b8|
-|IUmbraHookReceiver.sol|f8c1835a62a82c9129318aa05f77cee6e4176d93|
-|StealthKeyResolver.sol|f27bf5e6c29bfd3b516352ca15d0704c3899b65c|
 
+File SHA-1 hash
+
+
+Umbra.sol bb9fc1f58c7c1246aa85331611535333920420b8
+
+
+IUmbraHookReceiver.sol f8c1835a62a82c9129318aa05f77cee6e4176d93
+
+
+StealthKeyResolver.sol f27bf5e6c29bfd3b516352ca15d0704c3899b65c
 
 ## Appendix 2 - Disclosure
 

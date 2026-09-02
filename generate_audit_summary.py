@@ -241,6 +241,22 @@ def revision_date(
     return f"{human_date(dates[0])} – {human_date(dates[-1])}"
 
 
+def revision_sort_key(
+    repository_id: str,
+    revision: dict[str, Any],
+    commit_dates: dict[CommitDateKey, date],
+) -> tuple[int, date, date]:
+    """Chronological sort key; undated revisions sort after every dated one."""
+    dates = sorted(
+        commit_dates[(repository_id, commit)]
+        for commit in revision_commits(revision)
+        if (repository_id, commit) in commit_dates
+    )
+    if not dates:
+        return (1, date.min, date.min)
+    return (0, dates[0], dates[-1])
+
+
 def ordered_revisions(
     paths: list[tuple[str, dict[str, Any]]],
 ) -> tuple[list[RevisionKey], dict[RevisionKey, dict[str, Any]]]:
@@ -306,6 +322,15 @@ def render_repository(
             paths.append((path, path_data))
 
     order, revisions = ordered_revisions(paths)
+    # The topological order above only reflects how versions are listed in the
+    # JSON; re-sort so rows are always chronological by committer date. The sort
+    # is stable, so revisions without a commit date keep their relative order at
+    # the end of the table.
+    order.sort(
+        key=lambda key: revision_sort_key(
+            repository_id, revisions[key], commit_dates
+        )
+    )
     sources: dict[RevisionKey, list[str]] = defaultdict(list)
     for path, path_data in paths:
         path_kind = path_data.get("path_kind")

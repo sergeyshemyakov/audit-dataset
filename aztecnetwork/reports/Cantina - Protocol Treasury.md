@@ -53,13 +53,14 @@ a new security review to ensure that the code remains secure. Please be advised 
 not a replacement for continuous security measures such as penetration testing, vulnerability scanning,
 and regular code reviews.
 
-|assessment|Col2|Col3|Col4|
-|---|---|---|---|
-|**Severity level**|**Impact: High**|**Impact: Medium**|**Impact: Low**|
-|**Likelihood: high**|Critical|High|Medium|
-|**Likelihood: medium**|High|Medium|Low|
-|**Likelihood: low**|Medium|Low|Low|
 
+**1.3** **Risk assessment**
+
+
+**<u>Severity level</u>** **<u>Impact:</u>** **<u>High</u>** **<u>Impact:</u>** **<u>Medium</u>** **<u>Impact:</u>** **<u>Low</u>**
+**<u>Likelihood:</u>** **<u>high</u>** <u>Critical</u> <u>High</u> <u>Medium</u>
+**<u>Likelihood:</u>** **<u>medium</u>** <u>High</u> <u>Medium</u> <u>Low</u>
+**<u>Likelihood:</u>** **<u>low</u>** <u>Medium</u> <u>Low</u> <u>Low</u>
 
 
 **1.3.1** **Severity Classification**
@@ -96,16 +97,15 @@ Ethereum) and NOIR (the universal ZK language).
 
 **Issues Found**
 
-|Severity|Count|Fixed|Acknowledged|
-|---|---|---|---|
-|Critical Risk|0|0|0|
-|High Risk|0|0|0|
-|Medium Risk|0|0|0|
-|Low Risk|1|0|1|
-|Gas Optimizations|1|1|0|
-|Informational|2|0|2|
-|**Total**|**4**|**1**|**3**|
 
+**<u>Severity</u>** **<u>Count</u>** **<u>Fixed</u>** **<u>Acknowledged</u>**
+<u>Critical Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>High Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Medium Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Low Risk</u> <u>1</u> <u>0</u> <u>1</u>
+<u>Gas Optimizations</u> <u>1</u> <u>1</u> <u>0</u>
+<u>Informational</u> <u>2</u> <u>0</u> <u>2</u>
+**<u>Total</u>** **<u>4</u>** **<u>1</u>** **<u>3</u>**
 
 
 **2.1** **Scope**
@@ -139,6 +139,8 @@ _[(Files changed on PR 599)](https://github.com/AztecProtocol/ignition-monorepo/
 **Context:** [ProtocolTreasury.sol#L118-L121](https://cantina.xyz/code/81a35b72-f361-475f-86e2-b69094aec390/contracts/src/ProtocolTreasury.sol#L118-L121)
 
 
+**Description:** relay() recomputes insiderCanActTimestamp() every call by reading
+ATP_REGISTRY.getExecuteAllowedAt() and adding seven days. The ATP registry owner, however, can decrease executeAllowedAt arbitrarily via Registry.setExecuteAllowedAt . If that owner
 cooperates with governance (or is compromised by it), they can:
 
 
@@ -249,7 +251,7 @@ storage and the contract provides no batching primitive. For a live system that 
 thousands of proposals, this means thousands of keeper calls (e.g., 10000 proposals _→_ 10000 distinct
 
 markNext transactions) must be executed before the relayer can even consider forwarding a call. Until
-
+the backlog is cleared, relay always sees an unmarked, pre-insider proposal and reverts on the insidercheck. Impact: onboarding ProtocolTreasury to a mature governance can entail a prohibitive amount of
 operational work and may be infeasible in practice if keepers cannot reliably submit that many transactions.
 
 

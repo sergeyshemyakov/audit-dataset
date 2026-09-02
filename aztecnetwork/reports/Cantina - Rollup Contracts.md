@@ -1,3 +1,9 @@
+# **Aztec Rollup Contracts**
+## **Security Review**
+
+### Cantina Managed review by: Xmxanuel, Lead Security Researcher Chinmay Farkya, Associate Security Researcher November 12, 2025
+
+
 #### **Contents**
 
 **1** **Introduction** **2**
@@ -71,13 +77,14 @@ to the code require a new security review to ensure that the code remains secure
 that the Cantina Managed security review is not a replacement for continuous security measures such as
 penetration testing, vulnerability scanning, and regular code reviews.
 
-|assessment|Col2|Col3|Col4|
-|---|---|---|---|
-|**Severity level**|**Impact: High**|**Impact: Medium**|**Impact: Low**|
-|**Likelihood: high**|Critical|High|Medium|
-|**Likelihood: medium**|High|Medium|Low|
-|**Likelihood: low**|Medium|Low|Low|
 
+**1.3** **Risk assessment**
+
+
+**<u>Severity level</u>** **<u>Impact:</u>** **<u>High</u>** **<u>Impact:</u>** **<u>Medium</u>** **<u>Impact:</u>** **<u>Low</u>**
+**<u>Likelihood:</u>** **<u>high</u>** <u>Critical</u> <u>High</u> <u>Medium</u>
+**<u>Likelihood:</u>** **<u>medium</u>** <u>High</u> <u>Medium</u> <u>Low</u>
+**<u>Likelihood:</u>** **<u>low</u>** <u>Medium</u> <u>Low</u> <u>Low</u>
 
 
 **1.3.1** **Severity Classification**
@@ -122,16 +129,15 @@ The team identified a total of **23** issues:
 
 **Issues Found**
 
-|Severity|Count|Fixed|Acknowledged|
-|---|---|---|---|
-|Critical Risk|1|1|0|
-|High Risk|2|1|1|
-|Medium Risk|6|3|3|
-|Low Risk|6|3|3|
-|Gas Optimizations|1|1|0|
-|Informational|7|6|1|
-|**Total**|**23**|**15**|**8**|
 
+**<u>Severity</u>** **<u>Count</u>** **<u>Fixed</u>** **<u>Acknowledged</u>**
+<u>Critical Risk</u> <u>1</u> <u>1</u> <u>0</u>
+<u>High Risk</u> <u>2</u> <u>1</u> <u>1</u>
+<u>Medium Risk</u> <u>6</u> <u>3</u> <u>3</u>
+<u>Low Risk</u> <u>6</u> <u>3</u> <u>3</u>
+<u>Gas Optimizations</u> <u>1</u> <u>1</u> <u>0</u>
+<u>Informational</u> <u>7</u> <u>6</u> <u>1</u>
+**<u>Total</u>** **<u>23</u>** **<u>15</u>** **<u>8</u>**
 
 
 3

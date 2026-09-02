@@ -35,6 +35,12 @@ spend gas but not get any fee in exchange. Such attack will have zero cost for a
 Consider sending refund to relayer in case an attempt to send it to the recipient failed. Another
 option is to deny at relayer withdrawal requests with non-zero refund in case recipient is a
 contract, because refunding contracts does not make much sense. Interestingly, it is not
+possible ​ in general to tell for sure, whether transaction will be successful, or not. One may
+develop special smart contract that accepts ether when transaction is executed off-chain
+(during estimateGas), but rejects ether when executing on-chain. There is number of block and
+transaction attributes, such as hash of current block, that are not properly emulated during
+“estimateGas” execution, and could be used to detect, whether contract is invoked on-chain or
+off-chain.
 
 **Resolved as** : in the case of failure the relayer ​ <u>[now](https://github.com/peppersec/tornado-mixer/pull/20)</u> ​ <u>gets all the refund.</u>
 
@@ -64,27 +70,29 @@ assembly inlines.
   - Token should be probably of type ​ <u>[IERC20](https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ERC20Mixer.sol#L17)</u> ​ fo readability.
 
 
+**Comment:** ​ _we don’t work with IERC20 interface anyhow so it's not_
+_necessary. Moreover it's more convenient to work with address type in case_
+_of `.call`_
 
 
-
-
-- It is bad practice to use ​ `msg.*` ​ predefined variables in ​ <u>[functions](https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ERC20Mixer.sol#L35)</u> ​ <u>that are</u>
+  - It is bad practice to use ​ `msg.*` ​ predefined variables in ​ <u>[functions](https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ERC20Mixer.sol#L35)</u> ​ <u>that are</u>
 neither “public” nor ”external”, because such usage introduces implicit
 parameter and makes code harder to read.
 
 
+**Comment** : ​ _We think our approach is cheaper and more reliable - we ensure_
+_that we never pass incorrect msg.value as _processWithdraw arg._
 
 
-
-
-- <u>[This](https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ERC20Mixer.sol#L46)</u> ​ and similar utility function should probably be moved to a library. ​Moving
+  - <u>[This](https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ERC20Mixer.sol#L46)</u> ​ and similar utility function should probably be moved to a library. ​Moving
 to a library would clearly separate low-level utility code from high-level business
 logic code. And this function is not too small nor too simple. It is actually quite
 sophisticated, and uses advanced features such as ABI encoder and inline
 assembly.
 
 
-
+**Comment** : ​ _those functions are used only in one place and this functionality_
+_it too small._
 
 ## 3. ETHMixer.sol
 
@@ -135,7 +143,8 @@ function defined in base contract, which “public” public functions would cal
 applies to “deposit” function as well.
 
 
-
+**Comment** : ​ _That was our first implementation and results to more less_
+_readable code._
 
 ### 4.2 Fixed Major Flaws
 

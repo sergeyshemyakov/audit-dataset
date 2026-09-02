@@ -1,0 +1,148 @@
+{
+  "project": "uniswapv3",
+  "discoveryTimestamp": 1786913047,
+  "contracts": [
+    {
+      "name": "Permit2",
+      "address": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x000000000022D473030F116dDEE9F6B43aC78BA3",
+      "sourceFiles": [
+        "deployed-contracts/Permit2.sol"
+      ],
+      "template": "uniswapv3/Permit2"
+    },
+    {
+      "name": "Firepit",
+      "address": "0x0D5Cd355e2aBEB8fb1552F56c965B867346d6721",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x0D5Cd355e2aBEB8fb1552F56c965B867346d6721",
+      "sourceFiles": [
+        "deployed-contracts/Firepit.sol"
+      ],
+      "template": "uniswapv3/Firepit"
+    },
+    {
+      "name": "Timelock",
+      "address": "0x1a9C8182C09F50C8318d769245beA52c32BE35BC",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x1a9C8182C09F50C8318d769245beA52c32BE35BC",
+      "sourceFiles": [
+        "deployed-contracts/Timelock.sol"
+      ],
+      "template": "uniswapv3/Timelock"
+    },
+    {
+      "name": "UNIToken",
+      "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      "sourceFiles": [
+        "deployed-contracts/UNIToken.sol"
+      ],
+      "template": "uniswapv3/Uni"
+    },
+    {
+      "name": "UniswapV3Factory",
+      "address": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "sourceFiles": [
+        "deployed-contracts/UniswapV3Factory.sol"
+      ],
+      "template": "uniswapv3/UniswapV3Factory"
+    },
+    {
+      "name": "GovernorBravo",
+      "address": "0x408ED6354d4973f66138C91495F2f2FCbd8724C3",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x408ED6354d4973f66138C91495F2f2FCbd8724C3",
+      "sourceFiles": [
+        "deployed-contracts/GovernorBravo/GovernorBravoDelegate.sol",
+        "deployed-contracts/GovernorBravo/GovernorBravoDelegator.p.sol"
+      ],
+      "template": "uniswapv3/GovernorBravoDelegate"
+    },
+    {
+      "name": "UniversalRouter",
+      "address": "0x66a9893cC07D91D95644AEDD05D03f95e1dBA8Af",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x66a9893cC07D91D95644AEDD05D03f95e1dBA8Af",
+      "sourceFiles": [
+        "deployed-contracts/UniversalRouter.sol"
+      ],
+      "template": "uniswapv3/UniversalRouter"
+    },
+    {
+      "name": "SwapRouter02",
+      "address": "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
+      "sourceFiles": [
+        "deployed-contracts/SwapRouter02.sol"
+      ],
+      "template": "uniswapv3/SwapRouter02"
+    },
+    {
+      "name": "UniswapV3Pool_USDC_WETH_005",
+      "address": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+      "sourceFiles": [
+        "deployed-contracts/UniswapV3Pool_USDC_WETH_005.sol"
+      ],
+      "template": "uniswapv3/UniswapV3Pool"
+    },
+    {
+      "name": "NonfungiblePositionManager",
+      "address": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+      "sourceFiles": [
+        "deployed-contracts/NonfungiblePositionManager.sol"
+      ],
+      "template": "uniswapv3/NonfungiblePositionManager"
+    },
+    {
+      "name": "UniswapV3Pool_WBTC_WETH_03",
+      "address": "0xCBCdF9626bC03E24f779434178A73a0B4bad62eD",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xCBCdF9626bC03E24f779434178A73a0B4bad62eD",
+      "sourceFiles": [
+        "deployed-contracts/UniswapV3Pool_WBTC_WETH_03.sol"
+      ],
+      "template": "uniswapv3/UniswapV3Pool"
+    },
+    {
+      "name": "SwapRouter",
+      "address": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xE592427A0AEce92De3Edee1F18E0157C05861564",
+      "sourceFiles": [
+        "deployed-contracts/SwapRouter.sol"
+      ],
+      "template": "uniswapv3/SwapRouter"
+    },
+    {
+      "name": "V3OpenFeeAdapter",
+      "address": "0xf2371551Fe3937Db7c750f4DfABe5c2fFFdcBf5A",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xf2371551Fe3937Db7c750f4DfABe5c2fFFdcBf5A",
+      "sourceFiles": [
+        "deployed-contracts/V3OpenFeeAdapter.sol"
+      ],
+      "template": "uniswapv3/V3OpenFeeAdapter"
+    },
+    {
+      "name": "TokenJar",
+      "address": "0xf38521f130fcCF29dB1961597bc5d2B60F995f85",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xf38521f130fcCF29dB1961597bc5d2B60F995f85",
+      "sourceFiles": [
+        "deployed-contracts/TokenJar.sol"
+      ],
+      "template": "uniswapv3/TokenJar"
+    }
+  ],
+  "programSources": []
+}

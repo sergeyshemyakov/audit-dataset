@@ -166,9 +166,16 @@ _This audit makes no statements or warranties and is for discussion purposes onl
   - Umbra Protocol `README.md` :
 <u>[https://github.com/ScopeLift/umbra-protocol/blob/master/README.md](https://github.com/ScopeLift/umbra-protocol/blob/master/README.md)</u>
 
+  - [Umbra FAQ: https://app.umbra.cash/faq](https://app.umbra.cash/faq)
+
+  - Umbra-js code comments: <mark>umbra-js-docs.zip</mark> shared with Least Authority via Slack on 3 May 2021
+
 
 In addition, this audit report references the following documents:
 
+  - A. Antipa, D. Brown, A. Menezes, R. Struik, S. Vanstone, 2003, <mark>“Validation of Elliptic Curve Public</mark>
+<mark>Keys.” In: Desmedt Y.G. (eds) Public Key Cryptography — PKC 2003. PKC 2003. Lecture Notes in</mark>
+<mark>Computer Science, vol 2567. Springer, Berlin, Heidelberg.</mark> <mark>[</mark> <u>[ABM+03](https://link.springer.com/content/pdf/10.1007/3-540-36288-6_16.pdf)</u> ]
 
   - [D. Brown, 2009, “Standards for Efficient Cryptography 1 (SEC 1).” 2009, Certicom Corp. [B09]](https://www.secg.org/sec1-v2.pdf)
 
@@ -348,14 +355,23 @@ We list the issues and suggestions found during the review, in the order we repo
 remediation of an issue is preferable, but mitigation is suggested as another option for cases where a
 trade-off could be required.
 
-|ISSUE / SUGGESTION|STATUS|
-|---|---|
-|Issue A: Stealth Addresses Provide Only 64-Bit of Security by Default…|Resolved|
-|Issue B: Group Membership of Public Keys Not Checked|Resolved|
-|Issue C: noble-secp256k1 Contains Bias in Private Key Generation|Resolved|
-|Suggestion 1: Test Domain Updating Code|Resolved|
-|Suggestion 2: Provide a Clear Protocol Specifcation Document|Unresolved|
 
+**ISSUE / SUGGESTION** **STATUS**
+
+
+<u>Issue A: Stealth Addresses Provide Only 64-Bit of Security by Default…</u> Resolved
+
+
+<u>Issue B: Group Membership of Public Keys Not Checked</u> Resolved
+
+
+<u>Issue C: noble-secp256k1 Contains Bias in Private Key Generation</u> Resolved
+
+
+<u>Suggestion 1: Test Domain Updating Code</u> Resolved
+
+
+<u>Suggestion 2: Provide a Clear Protocol Specifcation Documenti</u> Unresolved
 
 
 Security Audit Report | Umbra-js | ScopeLift 5

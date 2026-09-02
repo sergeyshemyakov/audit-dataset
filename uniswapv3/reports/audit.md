@@ -207,43 +207,55 @@ interactions with the core match the core’s assumptions.
 
 ### Project Dashboard
 
-|Application Summary|Col2|
-|---|---|
-|Name<br>|Uniswap V3 Core<br>|
-|Version<br>|`99223f3` <br>|
-|Type<br>|Solidity<br>|
-|<br><br>Platforms<br>|Ethereum|
+**<u>Application Summary</u>**
+
+Name Uniswap V3 Core
+
+Version `99223f3`
 
 
-|Engagement Summary|Col2|
-|---|---|
-|Dates<br>|Week of January 4, 2021 and February 15 –<br>March 12, 2021<br>|
-|Method<br>|Whitebox<br>|
-|Consultants Engaged<br>|3<br>|
-|<br><br>Level of Eﬀort<br>|10 person-weeks<br>|
+Type Solidity
 
+Platforms Ethereum
+
+
+**<u>Engagement Summary</u>**
+
+Dates Week of January 4, 2021 and February 15 –
+March 12, 2021
+
+Method Whitebox
+
+Consultants Engaged 3
+
+Level of Effort 10 person-weeks
 
 
 **<u>Vulnerability Summary</u>**
 
-|Total High-Severity Issues|2|◼◼|
-|---|---|---|
-|Total Medium-Severity Issues<br>|4<br>|◼◼◼◼ <br>|
-|Total Low-Severity Issues<br>|1<br>|◼ <br>|
-|Total Informational-Severity Issues<br>|3<br>|◼◼◼ <br>|
-|<br><br>Total|10<br>|<br>|
+Total High-Severity Issues 2 ◼◼
 
+Total Medium-Severity Issues 4 ◼◼◼◼
+
+Total Low-Severity Issues 1 
+Total Informational-Severity Issues 3 ◼◼◼
+
+
+Total 10
 
 
 **<u>Category Breakdown</u>**
 
-|Data Validation|6|◼◼◼◼◼◼|
-|---|---|---|
-|Undeﬁned Behavior<br>|2<br>|◼◼ <br>|
-|Timing<br>|1<br>|◼ <br>|
-|Auditing and Logging<br>|1<br>|◼ <br>|
-|Total|10<br>|<br>|
+Data Validation 6 ◼◼◼◼◼◼
 
+Undefined Behavior 2 ◼◼
+
+
+Timing 1 
+
+Auditing and Logging 1 
+
+Total 10
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 5
@@ -251,30 +263,93 @@ interactions with the core match the core’s assumptions.
 
 ### Code Maturity Evaluation
 
+**Category Name** **Description**
+
+
+Access Controls **Satisfactory** . The number of public-facing functions is limited, and
+the access controls are satisfactory. However, one issue related to
+access controls (TOB-UNI-001) was found, and the system would
+benefit from clear documentation on the owner’s privileges.
+
+
+Arithmetic **Moderate** . Overall, Uniswap has devoted significant effort to
+making arithmetic operations (including custom ones) safe.
+However, we identified several such issues (TOB-UNI-005 and
+<u>TOB-UNI-010), and Uniswap identified additional issues during the</u>
+review. The arithmetic would also benefit from more robust edge
+cases and more thorough testing on the end-to-end operations.
+
+
+Assembly Use **Satisfactory** . Assembly is used extensively in two complex, critical
+functions, `mulDiv` and `getTickAtSqrtRatio` . Writing these functions
+in Solidity would decrease risks to the system.
+
+
+Centralization **Satisfactory.** The system is parameterized by the factory owner.
+The owner can add new available ( `fee`, `tickSpacing` ) pairs in the
+factory, depending on data validation. In the pool, the owner can
+collect protocol fees and include them among a set of available
+options. In general, the owner does not have unreasonable power.
+However, the system would benefit from more restrictions on the
+system parameters’ values (see TOB-UNI-006).
+
+
+Upgradeability **Not applicable.** The system cannot be upgraded.
 
 
 
+Function
+Composition
 
 
 
-|Category Name|Description|
-|---|---|
-|Access Controls <br>|**Satisfactory**. The number of public-facing functions is limited, and<br>the access controls are satisfactory. However, one issue related to<br>access controls ( TOB-UNI-001 ) was found, and the system would<br>beneﬁt from clear documentation on the owner’s privileges. <br>|
-|Arithmetic <br>|**Moderate**. Overall, Uniswap has devoted signiﬁcant eﬀort to<br>making arithmetic operations (including custom ones) safe.<br>However, we identiﬁed several such issues ( TOB-UNI-005 and<br>TOB-UNI-010 ), and Uniswap identiﬁed additional issues during the<br>review. The arithmetic would also beneﬁt from more robust edge<br>cases and more thorough testing on the end-to-end operations. <br>|
-|Assembly Use <br>|**Satisfactory**. Assembly is used extensively in two complex, critical<br>functions,`mulDiv` and`getTickAtSqrtRatio`. Writing these functions<br>in Solidity would decrease risks to the system. <br>|
-|Centralization <br>|**Satisfactory.**The system is parameterized by the factory owner.<br>The owner can add new available (`fee`,`tickSpacing`) pairs in the<br>factory, depending on data validation. In the pool, the owner can<br>collect protocol fees and include them among a set of available<br>options. In general, the owner does not have unreasonable power.<br>However, the system would beneﬁt from more restrictions on the<br>system parameters’ values (see TOB-UNI-006 ). <br>|
-|Upgradeability <br>|**Not applicable.** The system cannot be upgraded.<br>|
-|Function<br>Composition <br>|Satisfactory. Overall, the code is well structured. Most logic is<br>located in one of the numerous libraries, and logic is extracted into<br>pure functions whenever possible. The splitting of the code into<br>logical libraries is a good practice and makes unit testing and fuzzing<br>the system much easier. However, the system would beneﬁt from<br>schema describing the diﬀerent components and their interactions<br>and behaviors.<br>|
-|Front-Running<br>|**Satisfactory**. We did not ﬁnd many issues regarding front-running.<br>In the mint and burn functionality, we did not see a way for a<br>front-runner to proﬁt. A front-runner may generate proﬁts from the<br>swap functionality, as in V1 and V2, but the loss incurred by the user<br>is mitigated by the limit price. Finally, the initialization of pools can<br>be front-run ( TOB-UNI-007 ). Due to its nature, the system allows for<br>arbitrage opportunities; documentation regarding those<br>opportunities would be beneﬁcial to users.<br>|
+Satisfactory. Overall, the code is well structured. Most logic is
+located in one of the numerous libraries, and logic is extracted into
+pure functions whenever possible. The splitting of the code into
+logical libraries is a good practice and makes unit testing and fuzzing
+the system much easier. However, the system would benefit from
+schema describing the different components and their interactions
+and behaviors.
+
+
+
+Front-Running **Satisfactory** . We did not find many issues regarding front-running.
+In the mint and burn functionality, we did not see a way for a
+front-runner to profit. A front-runner may generate profits from the
+swap functionality, as in V1 and V2, but the loss incurred by the user
+is mitigated by the limit price. Finally, the initialization of pools can
+be front-run (TOB-UNI-007). Due to its nature, the system allows for
+arbitrage opportunities; documentation regarding those
+opportunities would be beneficial to users.
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 6
 
 
-|Monitoring|Satisfactory. In general, functions emit events where appropriate.<br>However, in at least one case, validation is not performed, which can<br>cause such an emission to be misleading (T OB-UNI-002) .|
-|---|---|
-|Speciﬁcation <br>|**Moderate.**At  the  beginning  of  the  assessment,  the  whitepaper<br>provided  by  Uniswap  was  not  up  to  date  with  the  codebase.  Many<br>sections  were  missing,  and  it  underwent  signiﬁcant  changes  during<br>the  review. Appendix  D  contains  our  initial  recommendations.  While<br>the  speciﬁcation  has  improved,  it  is  still  a  work  in  progress,  making<br>the  code  review  more  diﬃcult.<br>|
-|<br><br>Testing  &<br>Veriﬁcation <br>|**Moderate.** The  project  has  extensive  but  incomplete  unit  tests  and<br>Echidna  tests.  Uniswap  devoted  signiﬁcant  eﬀort  to  testing  the<br>individual  components,  but  the  tests  lack  end-to-end  coverage.<br>More  thorough  end-to-end  coverage  would  have  discovered  issue<br>TOB-UNI-005,  which  allows  anyone  to  drain  a  pool. <br>|
+Monitoring **Satisfactory.** In general, functions emit events where appropriate.
+However, in at least one case, validation is not performed, which can
+cause such an emission to be misleading (TOB-UNI-002).
+
+
+Specification **Moderate.** At the beginning of the assessment, the whitepaper
+provided by Uniswap was not up to date with the codebase. Many
+sections were missing, and it underwent significant changes during
+the review. Appendix D contains our initial recommendations. While
+the specification has improved, it is still a work in progress, making
+the code review more difficult.
+
+
+
+Testing &
+Verification
+
+
+
+**Moderate.** The project has extensive but incomplete unit tests and
+Echidna tests. Uniswap devoted significant effort to testing the
+individual components, but the tests lack end-to-end coverage.
+More thorough end-to-end coverage would have discovered issue
+<u>TOB-UNI-005, which allows anyone to drain a pool.</u>
 
 
 
@@ -497,71 +572,230 @@ properties:
 ###### End-to-End Properties
 
 
+**ID** **Property** **Result**
+
+
+1 Calling `mint` never leads to a decrease in `liquidity` . PASSED
 
 
 
+2 Calling `mint` always leads to an increase in
+`ticks(tickLower).liquidityGross` .
 
 
-|ID|Property|Result|
-|---|---|---|
-|1<br>|Calling`mint` never leads to a decrease in`liquidity`. <br>|PASSED<br>|
-|2<br>|Calling`mint` always leads to an increase in<br>`ticks(tickLower).liquidityGross`. <br>|PASSED<br>|
-|3<br>|Calling`mint` always leads to an increase in<br>`ticks(tickUpper).liquidityGross`. <br>|PASSED<br>|
-|4<br>|Calling`mint` always leads to an increase in<br>`ticks(tickLower).liquidityNet`. <br>|PASSED<br>|
-|5<br>|Calling`mint` always leads to a decrease in<br>`ticks(tickUpper).liquidityNet`. <br>|PASSED<br>|
-|6<br>|Calling`mint` always reverts if neither`tickLower` nor`tickUpper` is a<br>multiple of the conﬁgured`tickSpacing`. <br>|PASSED<br>|
-|7<br>|Calling`burn` never leads to an increase in`liquidity`. <br>|PASSED<br>|
+3 Calling `mint` always leads to an increase in
+`ticks(tickUpper).liquidityGross` .
+
+
+4 Calling `mint` always leads to an increase in
+`ticks(tickLower).liquidityNet` .
+
+
+5 Calling `mint` always leads to a decrease in
+`ticks(tickUpper).liquidityNet` .
+
+
+6 Calling `mint` always reverts if neither `tickLower` nor `tickUpper` is a
+multiple of the configured `tickSpacing` .
+
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+
+7 Calling `burn` never leads to an increase in `liquidity` . PASSED
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 12
 
 
-|8|Calling does not lead to an increase in<br>burn<br>.<br>ticks(tickLower).liquidityGross|PASSED|
-|---|---|---|
-|9<br>|Calling`burn` does  not  lead  to  an  increase  in<br>`ticks(tickUpper).liquidityGross`.  <br>|PASSED<br>|
-|10<br>|Calling`burn` does  not  lead  to  an  increase  in<br>`ticks(tickLower).liquidityNet`.  <br>|PASSED<br>|
-|11<br>|Calling`burn` does  not  lead  to  a  decrease  in<br>`ticks(tickUpper).liquidityNet`.  <br>|PASSED<br>|
-|12<br>|Calling`burn` always  reverts  if  neither`tickLower` nor`tickUpper` is  a<br>multiple  of  the  conﬁgured`tickSpacing`.  <br>|PASSED<br>|
-|13<br>|Calling`swap` with`zeroForOne` does  not  lead  to  a  decrease  in<br>`feeGrowthGobal0X128`.  <br>|PASSED<br>|
-|14<br>|Calling`swap` with`zeroForOne` does  not  lead  to  a  change  in<br>`feeGrowthGobal1X128`.  <br>|PASSED<br>|
-|15<br>|Calling`swap` with`!zeroForOne` does  not  lead  to  a  decrease  in<br>`feeGrowthGobal1X128`.  <br>|PASSED<br>|
-|16<br>|Calling`swap` with`!zeroForOne` does  not  lead  to  a  change  in<br>`feeGrowthGobal0X128`.  <br>|PASSED<br>|
-|17<br>|If  calling`swap` does  not  change  the`sqrtPriceX96`,`liquidity`will<br>not  change. <br>|PASSED<br>|
-|18<br>|If  calling`swap` with`zeroForOne` does  not  lead  to  the  payment  of<br>token0,  it  will  not  lead  to  the  receipt  of`token1`.  <br>|PASSED<br>|
-|19<br>|If  calling`swap` with`!zeroForOne` does  not  lead  to  the  payment  of<br>`token1`,  it  will  not  lead  to  the  receipt  of`token0`.<br>|PASSED<br>|
-|20<br>|`liquidityNet` over  all  ticks  should  sum  to  zero.<br>|PASSED<br>|
-|21<br>|`liquidity` is  equal  to  the  summation  of`liquidityNet` for  all  ticks<br>below  and  including  the  current`tick.`|PASSED<br>|
-|22<br>|For  the  ticks  immediately  below  (`t_b`)  and  above  (`t_a`)  the  current<br>tick,`ticks[t_b].feeGrowthOutside0X128  +`<br>`ticks[t_a].feeGrowthOutside0X128  <=  feeGrowthGlobal0X128`.<br>|<br>PASSED<br>|
-|23<br>|For  the  ticks  immediately  below  (`t_b`)  and  above  (`t_a`)  the  current<br>tick,`ticks[t_b].feeGrowthOutside1X128  +`<br>`ticks[t_a].feeGrowthOutside1X128  <=  feeGrowthGlobal1X128`.<br>|<br>PASSED<br>|
+8 Calling `burn` does not lead to an increase in
+`ticks(tickLower).liquidityGross` .
+
+
+9 Calling `burn` does not lead to an increase in
+`ticks(tickUpper).liquidityGross` .
+
+
+10 Calling `burn` does not lead to an increase in
+`ticks(tickLower).liquidityNet` .
+
+
+11 Calling `burn` does not lead to a decrease in
+`ticks(tickUpper).liquidityNet` .
+
+
+12 Calling `burn` always reverts if neither `tickLower` nor `tickUpper` is a
+multiple of the configured `tickSpacing` .
+
+
+13 Calling `swap` with `zeroForOne` does not lead to a decrease in
+`feeGrowthGobal0X128` .
+
+
+14 Calling `swap` with `zeroForOne` does not lead to a change in
+`feeGrowthGobal1X128` .
+
+
+15 Calling `swap` with `!zeroForOne` does not lead to a decrease in
+`feeGrowthGobal1X128` .
+
+
+16 Calling `swap` with `!zeroForOne` does not lead to a change in
+`feeGrowthGobal0X128` .
+
+
+17 If calling `swap` does not change the `sqrtPriceX96`, `liquidity` will
+not change.
+
+
+18 If calling `swap` with `zeroForOne` does not lead to the payment of
+token0, it will not lead to the receipt of `token1` .
+
+
+19 If calling `swap` with `!zeroForOne` does not lead to the payment of
+`token1`, it will not lead to the receipt of `token0` .
+
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
+
+
+
+20 `liquidityNet` over all ticks should sum to zero. PASSED
+
+
+
+21 `liquidity` is equal to the summation of `liquidityNet` for all ticks
+below and including the current `tick.`
+
+
+22 For the ticks immediately below ( `t_b` ) and above ( `t_a` ) the current
+tick, `ticks[t_b].feeGrowthOutside0X128 +`
+`ticks[t_a].feeGrowthOutside0X128 <= feeGrowthGlobal0X128` .
+
+
+23 For the ticks immediately below ( `t_b` ) and above ( `t_a` ) the current
+tick, `ticks[t_b].feeGrowthOutside1X128 +`
+`ticks[t_a].feeGrowthOutside1X128 <= feeGrowthGlobal1X128` .
+
+
+
+PASSED
+
+
+PASSED
+
+
+PASSED
 
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 13
 
 
-|24|and are<br>feeGrowthGlobal0X128 feeGrowthGlobal1X128<br>non-strictly increasing in calls to swap.|PASSED|
-|---|---|---|
-|25<br>|After a`mint`, calling the inverse`burn` always succeeds.<br>|PASSED<br>|
-|26<br>|Calling`burn` on an existing position with amount zero never fails.<br>|PASSED<br>|
-|27<br>|Burning x amount of a position always decreases<br>`position.liquidity` by x amount.<br>|PASSED<br>|
-|28<br>|Burning less than the total position amount never fails.<br>|PASSED<br>|
-|29<br>|Calling`burn` with amount zero does not change the`liquidity` of<br>the pool.<br>|PASSED<br>|
+24 `feeGrowthGlobal0X128` and `feeGrowthGlobal1X128` are
+non-strictly increasing in calls to swap.
+
+
+
+PASSED
+
+
+
+25 After a `mint`, calling the inverse `burn` always succeeds. PASSED
+
+
+26 Calling `burn` on an existing position with amount zero never fails. PASSED
+
+
+
+27 Burning x amount of a position always decreases
+`position.liquidity` by x amount.
+
+
+
+PASSED
+
+
+
+28 Burning less than the total position amount never fails. PASSED
+
+
+
+29 Calling `burn` with amount zero does not change the `liquidity` of
+the pool.
 
 ###### Arithmetic Properties
 
 
 
+PASSED
 
 
 
+**ID** **Property** **Result**
 
-|ID|Property|Result|
-|---|---|---|
-|30<br>|`getNextSqrtPriceFromInput/getNextSqrtPriceFromOutput` <br>always returns a price between MIN_SQRT_RATIO and<br>MAX_SQRT_RATIO (inclusive). <br>|**FAILED**<br> <br>**( TOB-UNI-01**<br>**0 ) **<br>|
+
+
+30 `getNextSqrtPriceFromInput/getNextSqrtPriceFromOutput`
+always returns a price between MIN_SQRT_RATIO and
+MAX_SQRT_RATIO (inclusive).
 
 #### Verification with Manticore
 
 
+
+**FAILED**
+**(TOB-UNI-01**
+
+**<u>0 )</u>**
 
 
 
@@ -571,15 +805,30 @@ following properties hold once the branch has stabilized and been included in a 
 release:
 
 
+**ID** **Property** **Result**
 
 
 
+1 `BitMath.mostSignificantBit` returns a value in `x >= 2**msb &&`
+`(msb == 255 || x < 2**(msb+1))` .
 
-|ID|Property|Result|
-|---|---|---|
-|1<br>|`BitMath.mostSignificantBit` returns  a  value  in`x  >=  2**msb  &&`<br>`(msb  ==  255  ||  x  <  2**(msb+1))`.  <br>|VERIFIED<br>|
-|2<br>|`BitMath.leastSignificantBit` returns  a  value  in`((x  &  2**  lsb)`<br>`!=  0)  &&  ((x  &  (2**(lsb  -1)))  ==  0)`.  <br>|VERIFIED<br>|
-|3<br>|If`LiquidityMath.addDelta` returns,  the  value  will  be  equal  to`x  +`<br>`uint128(y)`.  <br>|<br>VERIFIED<br>|
+
+2 `BitMath.leastSignificantBit` returns a value in `((x & 2** lsb)`
+`!= 0) && ((x & (2**(lsb -1))) == 0)` .
+
+
+3 If `LiquidityMath.addDelta` returns, the value will be equal to `x +`
+`uint128(y)` .
+
+
+
+VERIFIED
+
+
+VERIFIED
+
+
+VERIFIED
 
 
 
@@ -588,23 +837,28 @@ release:
 
 #### Manual Verification
 
-|ID|Property|Result|
-|---|---|---|
-|1<br>|`amountIn + feeAmount` cannot overﬂow <br>|VERIFIED<br>( **Appendix H**)|
+**ID** **Property** **Result**
 
+
+1 `amountIn + feeAmount` cannot overflow VERIFIED
+<u>(</u> **<u>Appendix H</u>** <u>)</u>
 
 #### Automated Testing with Slither
 
 We implemented the following Slither property:
 
 
+**Property** **Result**
 
 
 
+Every publicly accessible function uses the `lock` modifier, is
+whitelisted, or is a `view` function.
 
-|Property|Result|
-|---|---|
-|<br><br>Every  publicly  accessible  function  uses  the`lock` modiﬁer,  is<br>whitelisted,  or  is  a`view` function.<br>|PASSED<br> <br>( **APPENDIX  F**) <br>|
+
+
+PASSED
+( **<u>APPENDIX F</u>** <u>)</u>
 
 
 
@@ -752,43 +1006,95 @@ immediately clear, and testing will ensure that functions do not return out-of-b
 
 ### Findings Summary
 
+**# Title** **Type** **Severity**
 
 
 
+1 <u>Missing validation of</u> <u>`_owner`</u> <u>argument</u>
+<u>could indefnitely lock owner rolei</u>
+
+
+2 <u>Missing validation of</u> <u>`_owner`</u> <u>argument</u>
+<u>could lead to incorrect event emission</u>
+
+
+3 <u>Anyone could steal pool tokens’ earned</u>
+<u>interest</u>
 
 
 
+Data Validation Medium
 
 
 
+Auditing and
+Logging
 
 
 
+Informational
 
 
 
+Timing Low
 
 
 
+4 <u>Whitepaper contains incorrect equation</u> Undefined
+Behavior
 
 
 
+5 <u>Incorrect comparison enables swapping</u>
+<u>and token draining at no cost</u>
 
 
 
+Undefined
+Behavior
 
-|#|Title|Type|Severity|
-|---|---|---|---|
-|1<br>|Missing  validation  of`_owner` argument <br>could  indeﬁnitely  lock  owner  role  <br>|Data  Validation<br>|<br>Medium<br>|
-|2<br>|Missing  validation  of`_owner` argument <br>could  lead  to  incorrect  event  emission <br>|Auditing  and<br>Logging<br>|Informational<br>|
-|3<br>|Anyone  could  steal  pool  tokens’  earned  <br>interest  <br>|Timing<br>|Low<br>|
-|4<br>|Whitepaper  contains  incorrect  equation  <br>|Undeﬁned<br>Behavior<br>|Informational<br>|
-|5<br>|Incorrect  comparison  enables  swapping <br>and  token  draining  at  no  cost  <br>|Undeﬁned<br>Behavior<br>|High<br>|
-|6<br>|Unbound  loop  enables  denial  of  service  <br>|Data  Validation<br>|<br>Medium<br>|
-|7<br>|Front-running  pool’s  initialization  can  lead  <br>to  draining  of  liquidity  provider’s  initial  <br>deposits <br>|Data  Validation<br>|<br>Medium<br>|
-|8<br>|Swapping  on  zero  liquidity  allows  for <br>control  of  the  pool’s  price <br>|Data  Validation<br>|<br>Medium<br>|
-|9<br>|Failed  transfer  may  be  overlooked  due  to <br>lack  of  contract  existence  check  <br>|Data  Validation<br>|<br>High<br>|
-|<br><br>10|`getNextSqrtPriceFromInput|Output` can  <br>return  a  value  outside  of  <br>`MIN_SQRT_RATIO`,`MAX_SQRT_RATIO  `|Data  Validation<br>|<br>Informational<br>|
+
+
+Informational
+
+
+High
+
+
+
+6 <u>Unbound loop enables denial of service</u> Data Validation Medium
+
+
+
+7 <u>Front-running pool’s initialization can lead</u>
+<u>to draining of liquidity provider’s initial</u>
+<u>deposits</u>
+
+
+8 <u>Swapping on zero liquidity allows for</u>
+<u>control of the pool’s price</u>
+
+
+9 <u>Failed transfer may be overlooked due to</u>
+<u>lack of contract existence check</u>
+
+
+10 <u>`getNextSqrtPriceFromInput|Output`</u> <u>can</u>
+<u>return a value outside of</u>
+<u>`MIN_SQRT_RATIO`</u> <u>,</u> <u>`MAX_SQRT_RATIO`</u>
+
+
+
+Data Validation Medium
+
+
+Data Validation Medium
+
+
+Data Validation High
+
+
+Data Validation Informational
 
 
 
@@ -806,6 +1112,28 @@ Target: `UniswapV3Factory.sol`
 A lack of input validation of the `_owner` argument in both the `constructor` and `setOwner`
 functions could permanently lock the owner role, requiring a costly redeploy.
 
+```
+ constructor(address _owner) {
+ owner = _owner;
+ emit OwnerChanged(address( 0 ), _owner);
+
+ _enableFeeAmount( 600, 12 );
+ _enableFeeAmount( 3000, 60 );
+ _enableFeeAmount( 9000, 180 );
+ }
+```
+
+_<u>Figure 1.1:</u>_ `constructor` _<u>in</u>_ `UniswapV3Factory.sol` <u>.</u>
+
+```
+   function setOwner(address _owner) external override {
+ require(msg.sender == owner, 'OO' );
+ emit OwnerChanged(owner, _owner);
+ owner = _owner;
+ }
+```
+
+_<u>Figure 1.2:</u>_ `setOwner` _<u>in</u>_ `UniswapV3Factory.sol` <u>.</u>
 
 The `constructor` calls `_enableFeeAmount` to add three available initial fees and tick
 spacings. This means that, as far as a regular user is concerned, the contract will work,
@@ -891,6 +1219,15 @@ Because the `setOwner` lacks input validation, the owner can be updated to the e
 owner. Although such an update wouldn’t change the contract state, it would emit an event
 falsely indicating the owner had been changed.
 
+```
+   function setOwner(address _owner) external override {
+ require(msg.sender == owner, 'OO' );
+ emit OwnerChanged(owner, _owner);
+ owner = _owner;
+ }
+```
+
+_<u>Figure 2.1:</u>_ `setOwner` _<u>in</u>_ `UniswapV3Factory.sol` <u>.</u>
 
 **Exploit Scenario**
 Alice has set up monitoring of the `OwnerChanged` event to track transfers of the owner role.
@@ -929,6 +1266,17 @@ The mint function allows an account to increase its liquidity in a position. To 
 pool has received at least the minimum amount of tokens necessary, the following code is
 used:
 
+```
+   uint256 balance0Before ;
+   uint256 balance1Before ;
+   if (amount0 > 0 ) balance0Before = balance0();
+   if (amount1 > 0 ) balance1Before = balance1();
+   IUniswapV3MintCallback( msg.sender ).uniswapV3MintCallback(amount0, amount1, data);
+   if (amount0 > 0 ) require (balance0Before.add(amount0) <= balance0(), 'M0' );
+   if (amount1 > 0 ) require (balance1Before.add(amount1) <= balance1(), 'M1' );
+```
+
+_<u>Figure 3.1:</u>_ _`UniswapV3Pool.sol#L384-L390`_
 
 Assume that both `amount0` and `amount1` are positive. First, the current balances of the
 tokens are fetched. This step is followed by a call to the `uniswapV3MintCallback` function
@@ -992,6 +1340,16 @@ Target: Whitepaper
 **Description**
 The whitepaper contains the following statement:
 
+```
+ For example, at any given time, 25% of the assets in a liquidity pool will only be touched
+```
+
+`if the relative price moves by a factor of 16. (In general, 1 /` √ `N of the pool’s liquidity`
+```
+ is only touched if the price moves by a factor of N in one direction.)
+```
+
+_<u>Figure 4.1: Whitepaper, page 1.</u>_
 
 This formula does not make sense, even for a trivial case. When the price is constant (i.e., _N_
 _= 1_ ), the function indicates that 1/1 (i.e., 100%) of the pool’s liquidity is touched.
@@ -1008,6 +1366,16 @@ and misunderstands the system, causing her users to lose money.
 **Recommendation**
 Short term, correct the following sentence:
 
+```
+ For example, at any given time, 75% of the assets in a liquidity pool will only be touched
+```
+
+`if the relative price moves by a factor of 16. (In general, 1 - 1 /` √ `N of the pool’s`
+```
+ liquidity is only touched if the price moves by a factor of N in one direction.)
+```
+
+_<u>Figure 4.2: Corrected version.</u>_
 
 Long term, finalize the whitepaper, ensuring that it is clear.
 
@@ -1026,6 +1394,19 @@ Target: UniswapV3Pool.sol
 An incorrect comparison in the `swap` function allows the swap to succeed even if no tokens
 are paid. This issue could be used to drain any pool of all of its tokens at no cost.
 
+```
+  // transfer the output
+  if (amountOut != 0 ) TransferHelper.safeTransfer(tokenOut, recipient, uint256 (-amountOut));
+
+  // callback for the input
+  uint256 balanceBefore = balanceOfToken(tokenIn);
+  zeroForOne
+    ? IUniswapV3SwapCallback( msg.sender ).uniswapV3SwapCallback(amountIn, amountOut, data)
+    : IUniswapV3SwapCallback( msg.sender ).uniswapV3SwapCallback(amountOut, amountIn, data);
+  require (balanceBefore.add( uint256 (amountIn)) >= balanceOfToken(tokenIn), 'IIA' );
+```
+
+_<u>Figure 5.1:</u>_ _`UniswapV3Pool.sol#L649-L657`_
 
 The `swap` function calculates how many tokens the initiator ( `msg.sender` ) needs to pay
 ( `amountIn` ) to receive the requested amount of tokens ( `amountOut` ). It then calls the
@@ -1080,6 +1461,22 @@ to a lack of gas.
 
 `UniswapV3Pool.swap` iterates over the tick:
 
+```
+   while (state.amountSpecifiedRemaining != 0 && state.sqrtPriceX96 != sqrtPriceLimitX96) {
+     StepComputations memory step;
+
+     step.sqrtPriceStartX96 = state.sqrtPriceX96;
+     [..]
+       state.tick = zeroForOne ? step.tickNext - 1 : step.tickNext;
+     } else if (state.sqrtPriceX96 != step.sqrtPriceStartX96) {
+       // recompute unless we're on a lower tick boundary (i.e. already transitioned
+ ticks), and haven't moved
+       state.tick = TickMath.getTickAtSqrtRatio(state.sqrtPriceX96);
+     }
+   }
+```
+
+_<u>Figure 6.1:</u>_ _`UniswapV3Pool.sol#L544-L619`_
 
 On every loop iteration, there is a swap on the current tick’s price, increasing it to the next
 price limit. The next price limit depends on the next tick:
@@ -1166,6 +1563,30 @@ drain assets from the first deposits.
 
 `UniswapV3Pool.initialize` initiates the pool’s price:
 
+```
+   function initialize ( uint160 sqrtPriceX96 ) external override {
+     require (slot0.sqrtPriceX96 == 0, 'AI' );
+
+     int24 tick = TickMath.getTickAtSqrtRatio(sqrtPriceX96);
+
+     ( uint16 cardinality, uint16 cardinalityNext ) =
+ observations.initialize(_blockTimestamp());
+
+     slot0 = Slot0({
+       sqrtPriceX96: sqrtPriceX96,
+       tick: tick,
+       observationIndex: 0,
+       observationCardinality: cardinality,
+       observationCardinalityNext: cardinalityNext,
+       feeProtocol: 0,
+       unlocked: true
+     });
+
+     emit Initialize(sqrtPriceX96, tick);
+   }
+```
+
+_<u>Figure 7.1:</u>_ _`UniswapV3Pool.sol#L194-L212`_
 
 There are no access controls on the function, so anyone could call it on a deployed pool.
 
@@ -1511,49 +1932,102 @@ Echidna and Manticore.
 
 ### A. Vulnerability Classifcations i
 
-|Vulnerability Classes|Col2|
-|---|---|
-|**Class**<br>|**Description**<br>|
-|Access Controls<br>|Related to authorization of users and assessment of rights.<br>|
-|Auditing and Logging<br>|Related to auditing of actions or logging of problems.<br>|
-|Authentication<br>|Related to the identiﬁcation of users.<br>|
-|Conﬁguration<br>|Related to security conﬁgurations of servers, devices, or<br>software.<br>|
-|Cryptography<br>|Related to protecting the privacy or integrity of data.<br>|
-|Data Exposure<br>|Related to unintended exposure of sensitive information.<br>|
-|Data Validation<br>|Related to improper reliance on the structure or values of data.<br>|
-|Denial of Service<br>|Related to causing a system failure.<br>|
-|Error Reporting<br>|Related to the reporting of error conditions in a secure fashion.<br>|
-|Patching<br>|Related to keeping software up to date.<br>|
-|Session Management<br>|Related to the identiﬁcation of authenticated users.<br>|
-|Timing<br>|Related to race conditions, locking, or the order of operations.<br>|
-|<br><br>Undeﬁned Behavior<br>|Related to undeﬁned behavior triggered by the program.<br>|
+**Vulnerability Classes**
 
 
-|Severity Categories|Col2|
-|---|---|
-|**Severity**<br>|**Description**<br>|
-|Informational<br>|The issue does not pose an immediate risk but is relevant to security<br>best practices or Defense in Depth.<br>|
-|Undetermined<br>|The extent of the risk was not determined during this engagement.|
-|Low<br>|The risk is relatively small or is not a risk the customer has indicated is<br>important.<br>|
-|Medium<br>|Individual users’ information is at risk; exploitation could pose|
+**Class** **Description**
 
+
+Access Controls Related to authorization of users and assessment of rights.
+
+
+Auditing and Logging Related to auditing of actions or logging of problems.
+
+
+Authentication Related to the identification of users.
+
+
+Configuration Related to security configurations of servers, devices, or
+software.
+
+
+Cryptography Related to protecting the privacy or integrity of data.
+
+
+Data Exposure Related to unintended exposure of sensitive information.
+
+
+Data Validation Related to improper reliance on the structure or values of data.
+
+
+Denial of Service Related to causing a system failure.
+
+
+Error Reporting Related to the reporting of error conditions in a secure fashion.
+
+
+Patching Related to keeping software up to date.
+
+
+Session Management Related to the identification of authenticated users.
+
+
+Timing Related to race conditions, locking, or the order of operations.
+
+
+Undefined Behavior Related to undefined behavior triggered by the program.
+
+
+**Severity Categories**
+
+
+**Severity** **Description**
+
+
+Informational The issue does not pose an immediate risk but is relevant to security
+best practices or Defense in Depth.
+
+
+Undetermined The extent of the risk was not determined during this engagement.
+
+
+Low The risk is relatively small or is not a risk the customer has indicated is
+important.
+
+
+Medium Individual users’ information is at risk; exploitation could pose
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 40
 
 
-|Col1|reputational, legal, or moderate financial risks to the client.|
-|---|---|
-|<br><br>High<br>|The issue could aﬀect numerous users and have serious reputational,<br>legal, or ﬁnancial implications for the client.<br>|
+reputational, legal, or moderate financial risks to the client.
 
 
-|Difficulty Levels|Col2|
-|---|---|
-|**Diﬃculty**<br>|**Description**<br>|
-|Undetermined<br>|The diﬃculty of exploitation was not determined during this<br>engagement.<br>|
-|Low<br>|Commonly exploited public tools exist, or such tools can be scripted.<br>|
-|Medium<br>|An attacker must write an exploit or will need in-depth knowledge of<br>a complex system.<br>|
-|<br><br><br>High<br>|An attacker must have privileged insider access to the system, may<br>need to know extremely complex technical details, or must discover<br>other weaknesses to exploit this issue.<br> <br> <br>|
+High The issue could affect numerous users and have serious reputational,
+legal, or financial implications for the client.
+
+
+**Difficulty Levels**
+
+
+**Difficulty** **Description**
+
+
+Undetermined The difficulty of exploitation was not determined during this
+engagement.
+
+
+Low Commonly exploited public tools exist, or such tools can be scripted.
+
+
+Medium An attacker must write an exploit or will need in-depth knowledge of
+a complex system.
+
+
+High An attacker must have privileged insider access to the system, may
+need to know extremely complex technical details, or must discover
+other weaknesses to exploit this issue.
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 41
@@ -1561,51 +2035,101 @@ Echidna and Manticore.
 
 ### B. Code Maturity Classifications
 
+**Code Maturity Classes**
+
+
+**Category Name** **Description**
+
+
+Access Controls Related to the authentication and authorization of components.
+
+
+Arithmetic Related to the proper use of mathematical operations and
+semantics.
+
+
+Assembly Use Related to the use of inline assembly.
+
+
+Centralization Related to the existence of a single point of failure.
+
+
+Upgradeability Related to contract upgradeability.
 
 
 
+Function
+Composition
 
 
 
+Related to separation of the logic into functions with clear purposes.
 
 
 
+Front-Running Related to resilience against front-running.
 
 
-|Code Maturity Classes|Col2|
-|---|---|
-|**Category  Name**<br>|**Description**<br>|
-|Access  Controls <br>|Related  to  the  authentication  and  authorization  of  components. <br>|
-|Arithmetic <br>|Related  to  the  proper  use  of  mathematical  operations  and<br>semantics. <br>|
-|Assembly  Use <br>|Related  to  the  use  of  inline  assembly. <br>|
-|Centralization <br>|Related  to  the  existence  of  a  single  point  of  failure.|
-|Upgradeability <br>|Related  to  contract  upgradeability. <br>|
-|Function<br>Composition <br>|Related  to  separation  of  the  logic  into  functions  with  clear  purposes. <br>|
-|Front-Running<br>|Related  to  resilience  against  front-running.<br>|
-|Key  Management <br>|Related  to  the  existence  of  proper  procedures  for  key  generation,<br>distribution,  and  access. <br>|
-|Monitoring <br>|Related  to  the  use  of  events  and  monitoring  procedures. <br>|
-|Speciﬁcation <br>|Related  to  the  expected  codebase  documentation. <br>|
-|<br><br>Testing  &<br>Veriﬁcation <br>|Related  to  the  use  of  testing  techniques  (unit  tests,  fuzzing,  symbolic<br>execution,  etc.). <br>|
+Key Management Related to the existence of proper procedures for key generation,
+
+distribution, and access.
+
+
+Monitoring Related to the use of events and monitoring procedures.
+
+
+Specification Related to the expected codebase documentation.
 
 
 
-|Rating Criteria|Col2|
-|---|---|
-|**Rating**<br>|**Description**<br>|
-|Strong<br>|The component was reviewed, and no concerns were found.<br>|
-|Satisfactory<br>|The component had only minor issues.<br>|
-|Moderate<br>|The component had some issues.<br>|
-|Weak<br>|The component led to multiple issues; more issues might be present.<br>|
-|Missing<br>|The component was missing.<br>|
+Testing &
+Verification
+
+
+**Rating Criteria**
+
+
+
+Related to the use of testing techniques (unit tests, fuzzing, symbolic
+execution, etc.).
+
+
+
+**Rating** **Description**
+
+
+Strong The component was reviewed, and no concerns were found.
+
+
+Satisfactory The component had only minor issues.
+
+
+Moderate The component had some issues.
+
+
+Weak The component led to multiple issues; more issues might be present.
+
+
+Missing The component was missing.
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 42
 
 
-|Not Applicable|The component is not applicable.|
-|---|---|
-|Not  Considered<br>|The  component  was  not  reviewed.<br>|
-|<br><br>Further<br>Investigation<br>Required<br>|The  component  requires  further  investigation.<br>|
+Not Applicable The component is not applicable.
+
+
+Not Considered The component was not reviewed.
+
+
+
+Further
+Investigation
+Required
+
+
+
+The component requires further investigation.
 
 
 
@@ -1617,6 +2141,61 @@ Echidna and Manticore.
 The following recommendations are not associated with specific vulnerabilities. However,
 they enhance code readability and may prevent the introduction of vulnerabilities in the
 future.
+
+```
+UniswapV3Pair.sol:
+```
+
+**●** **Prefix emission of an event with the** **`emit`** **keyword.** On line 621, the `Swap` event is
+emitted without using the `emit` keyword. This could confuse readers of the source
+code. Such an emission would generally cause a solc warning, but no solc warning
+appears to be raised using solc 0.7.6.
+
+```
+SqrtPriceMath.sol:
+```
+
+**●** **Pass in arguments in the correct order.** The first two arguments of the
+`getAmount0Delta` and `getAmount1Delta` functions are the current and target prices.
+However, in several places in `SwapMath` and `UniswapV3Pair`, the arguments are
+passed in reverse (i.e., the input arguments are Q and P, instead of P and Q). This
+might confuse readers and is not recommended. If this order of arguments is
+necessary, consider adding a comment above those lines explaining the reasoning.
+
+```
+   function getAmount0Delta(
+ uint160 sqrtPX96, // square root of current price
+ uint160 sqrtQX96, // square root of target price
+```
+
+_<u>Figure C.1:</u>_ `getAmount0Delta` _<u>in</u>_ `SqrtPriceMath.sol` <u>.</u>
+
+```
+ amountOut = SqrtPriceMath.getAmount1Delta(sqrtQX96, sqrtPX96, liquidity, false );
+```
+
+_<u>Figure C.2:</u>_ `computeSwapStep` _<u>in</u>_ `SwapMath.sol#L46` <u>.</u>
+
+```
+ amountOut = SqrtPriceMath.getAmount0Delta(sqrtQX96, sqrtPX96, liquidity, false );
+```
+
+_<u>Figure C.3:</u>_ `computeSwapStep` _<u>in</u>_ `SwapMath.sol#L52` <u>.</u>
+
+```
+   amount0 = SqrtPriceMath.getamount0Delta(
+ SqrtTickMath.getSqrtRatioAtTick(params.tickUpper).
+ slot0.sqrtPriceCurrentX96,
+ params.liquidityDelta
+ );
+ amount1 = SqrtPriceMath.getamount0Delta(
+ SqrtTickMath.getSqrtRatioAtTick(params.tickLower).
+ slot0.sqrtPriceCurrentX96,
+ params.liquidityDelta
+ );
+```
+
+_<u>Figure C.4:</u>_ `_setPosition` _<u>in</u>_ `UniswapV3Pair.sol#L430-439` <u>.</u>
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 44
@@ -1656,6 +2235,13 @@ them to better reflect their actual behavior and facilitate code comprehension.
      2**(mostSignificantBit(x)+1))
 
 ```
+
+**Documentation**
+
+**●** **Update the whitepaper.** The whitepaper does not reflect the current state of the
+codebase. Since the codebase makes extensive use of custom math, it is important
+to have a clear specification with which the implementation can be compared.
+
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 45
 
@@ -1745,7 +2331,15 @@ slither-check-erc 0xdac17f958d2ee523a2206206994597c13d831ec7 TetherToken
 
 To follow this checklist, use the below output from Slither for the token:
 
+```
+ - slither-check-erc [target] [contractName] [optional: --erc ERC_NUMBER]
+ - slither [target] --print human-summary
+ - slither [target] --print contract-summary
+ - slither-prop . --contract ContractName # requires configuration, and use of
+ Echidna and Manticore
+
 #### General Security Considerations
+```
 
 ❏ **The contract has a security review.** Avoid interacting with contracts that lack a
 security review. Check the length of the assessment (i.e., the level of effort), the
@@ -1805,6 +2399,11 @@ Slither’s <u>`[human-summary](https://github.com/crytic/slither/wiki/Printer-d
 standard of review. Inspect the contract by hand for `SafeMath` usage.
 ❏ **The contract has only a few non–token-related functions.** Non–token-related
 functions increase the likelihood of an issue in the contract. Use Slither’s
+<u>`[contract-summary](https://github.com/crytic/slither/wiki/Printer-documentation#contract-summary)`</u> printer to broadly review the code used in the contract.
+❏ **The token has only one address.** Tokens with multiple entry points for balance
+updates can break internal bookkeeping based on the address (e.g.,
+
+`balances[token_address][msg.sender]` may not reflect the actual balance).
 
 #### Owner privileges
 
@@ -1844,6 +2443,9 @@ the token.
 ❏ **Users understand the risks associated with a large amount of funds or flash**
 **loans.** Contracts relying on the token balance must account for attackers with a
 large amount of funds or attacks executed through flash loans.
+❏ **The token does not allow flash minting.** Flash minting can lead to substantial
+swings in the balance and the total supply, which necessitate strict and
+comprehensive overflow checks in the operation of the token.
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 50
@@ -1873,8 +2475,50 @@ follows a whitelist approach, where every reachable function must
 
 No issue was found with the script.
 
+```
+ from slither import Slither
+ from slither.core.declarations import Contract
+ from typing import List
+
+ # Init slither
+ contracts = Slither(
+   ".", ignore_compile= True
+ )  # Remove ignore_compile if the system was not already compiled
+
+ def _check_lock (
+ contract: Contract, modifiers_access_controls: List[ str ], whitelist: List[ str ]
+ ):
+   print ( f "### Check { contract } lock access controls" )
+ no_bug_found = True
+   for function in contract.functions_entry_points:
+     if function.is_constructor:
+       continue
+
+     if function.view:
+       continue
+
+     if not function.modifiers or (
+       not any (( str (x) in modifiers_access_controls) for x in function.modifiers)
+ ):
+
+```
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 51
+
+
+```
+       if not function.name in whitelist:
+         print ( f "\t- { function.canonical_name } should have a lock modifier" )
+no_bug_found = False
+  if no_bug_found:
+    print ( "\t- No bug found" )
+
+_check_lock(
+contracts.get_contract_from_name( "UniswapV3Pool" ), [ "lock" ], [ "initialize", "swap" ]
+)
+```
+
+_<u>Figure F.1:</u>_ `check-lock.py`
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 52
@@ -1886,14 +2530,182 @@ Below are two tests that show the results of setting a correct vs. incorrect ini
 `initialize` function. These tests demonstrate that an attacker could abuse TOB-UNI-007
 <u>to swap tokens at an unfair price.</u>
 
+```
+ it.only( 'test DAI-USDT -- price 1.0001', async () => {
+    // default created pool will use fee 3000, tickSpacing 60
+
+    const init_price = '79228162514264337593543950336' ; // sqrtRatio at tick = 0, which is
+ price 1.00
+    const mint_amount = 10000 ;
+    const mint_tickLower = '-887220' ; // min for tickSpacing = 60
+    const mint_tickUpper = '887220' ; // max for tickSpacing = 60
+
+    const swap_amount = 1000
+    const swap_priceLimit = '4295128740' ;
+
+    await pool.initialize(init_price);
+
+ {
+     const slot0_after_init = await pool.slot0();
+ console.log( 'pool current tick =', slot0_after_init.tick);
+ console.log( 'pool current price =', slot0_after_init.sqrtPriceX96.toString());
+ }
+
+ {
+     const t0_bal_before = await token0.balanceOf(pool.address);
+     const t1_bal_before = await token1.balanceOf(pool.address);
+
+ console.log( ` \ nminting ${ mint_amount }, with ticks min= ${ mint_tickLower },
+ max= ${ mint_tickUpper } ` )
+     await mint(wallet.address, mint_tickLower, mint_tickUpper,
+ expandTo18Decimals(mint_amount))
+
+     const t0_bal_after = await token0.balanceOf(pool.address);
+     const t1_bal_after = await token1.balanceOf(pool.address);
+
+ console.log( 'minter added DAI to pool =',
+ ethers.utils.formatEther(t0_bal_after.sub(t0_bal_before).toString()))
+ console.log( 'minter added USDT to pool =',
+ ethers.utils.formatEther(t1_bal_after.sub(t1_bal_before).toString()))
+ }
+
+ {
+     const swapContractFactory = await ethers.getContractFactory( 'TestUniswapV3SwapPay' )
+     const swapContract = ( await swapContractFactory.deploy()) as TestUniswapV3SwapPay
+     // approve the swap contract to transfer tokens belonging to "wallet"
+
+```
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 53
 
 
+```
+    // this is used to pay the required tokens in the uniswapV3SwapCallback
+    await token0.approve(swapContract.address, constants.MaxUint256)
+    await token1.approve(swapContract.address, constants.MaxUint256)
+
+    const t0_bal_before = await token0.balanceOf(wallet.address);
+    const t1_bal_before = await token1.balanceOf(wallet.address);
+
+console.log( ` \ nswapping ${ swap_amount } DAI for USDT, priceLimit
+${ swap_priceLimit } ` );
+
+swapContract.swap(pool.address, wallet.address, true, swap_priceLimit,
+expandTo18Decimals(swap_amount), expandTo18Decimals(swap_amount), 0 )
+
+    const t0_bal_after = await token0.balanceOf(wallet.address);
+    const t1_bal_after = await token1.balanceOf(wallet.address);
+
+    const token0_swapper_swap_diff = t0_bal_after.sub(t0_bal_before)
+    const token1_swapper_swap_diff = t1_bal_after.sub(t1_bal_before)
+
+console.log( 'DAI balance of swapper changed by', token0_swapper_swap_diff.gt( '0' )
+? `+ ${ ethers.utils.formatEther(token0_swapper_swap_diff) } `
+: ethers.utils.formatEther(token0_swapper_swap_diff))
+console.log( 'USDT balance of swapper changed by', token1_swapper_swap_diff.gt( '0' )
+? `+ ${ ethers.utils.formatEther(token1_swapper_swap_diff) } `
+: ethers.utils.formatEther(token1_swapper_swap_diff))
+}
+
+{
+    const slot0_after_init = await pool.slot0();
+console.log( '\npool current tick =', slot0_after_init.tick);
+console.log( 'pool current price =', slot0_after_init.sqrtPriceX96.toString());
+}
+})
+
+it.only( 'test DAI-USDT -- price 10,000', async () => {
+   // default created pool will use fee 3000, tickSpacing 60
+
+   const init_price = '130621891405341611593710811006' ; // sqrtRatio at tick = 10000,
+which is price 2.71
+   const mint_amount = 10000 ;
+   const mint_tickLower = '-887220' ; // min for tickSpacing = 60
+   const mint_tickUpper = '887220' ; // max for tickSpacing = 60
+
+   const swap_amount = 1000
+   const swap_priceLimit = '4295128740' ;
+
+   await pool.initialize(init_price);
+
+{
+
+```
+
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 54
 
 
+```
+    const slot0_after_init = await pool.slot0();
+console.log( 'pool current tick =', slot0_after_init.tick);
+console.log( 'pool current price =', slot0_after_init.sqrtPriceX96.toString());
+}
+
+{
+    const t0_bal_before = await token0.balanceOf(pool.address);
+    const t1_bal_before = await token1.balanceOf(pool.address);
+
+console.log( ` \ nminting ${ mint_amount }, with ticks min= ${ mint_tickLower },
+max= ${ mint_tickUpper } ` )
+    await mint(wallet.address, mint_tickLower, mint_tickUpper,
+expandTo18Decimals(mint_amount))
+
+    const t0_bal_after = await token0.balanceOf(pool.address);
+    const t1_bal_after = await token1.balanceOf(pool.address);
+
+console.log( 'minter added DAI to pool =',
+ethers.utils.formatEther(t0_bal_after.sub(t0_bal_before).toString()))
+console.log( 'minter added USDT to pool =',
+ethers.utils.formatEther(t1_bal_after.sub(t1_bal_before).toString()))
+}
+
+{
+    const swapContractFactory = await ethers.getContractFactory( 'TestUniswapV3SwapPay' )
+    const swapContract = ( await swapContractFactory.deploy()) as TestUniswapV3SwapPay
+    // approve the swap contract to transfer tokens belonging to "wallet"
+    // this is used to pay the required tokens in the uniswapV3SwapCallback
+    await token0.approve(swapContract.address, constants.MaxUint256)
+    await token1.approve(swapContract.address, constants.MaxUint256)
+
+    const t0_bal_before = await token0.balanceOf(wallet.address);
+    const t1_bal_before = await token1.balanceOf(wallet.address);
+
+console.log( ` \ nswapping ${ swap_amount } DAI for USDT, priceLimit
+${ swap_priceLimit } ` );
+
+swapContract.swap(pool.address, wallet.address, true, swap_priceLimit,
+expandTo18Decimals(swap_amount), expandTo18Decimals(swap_amount), 0 )
+
+    const t0_bal_after = await token0.balanceOf(wallet.address);
+    const t1_bal_after = await token1.balanceOf(wallet.address);
+
+    const token0_swapper_swap_diff = t0_bal_after.sub(t0_bal_before)
+    const token1_swapper_swap_diff = t1_bal_after.sub(t1_bal_before)
+
+console.log( 'DAI balance of swapper changed by', token0_swapper_swap_diff.gt( '0' )
+? `+ ${ ethers.utils.formatEther(token0_swapper_swap_diff) } `
+: ethers.utils.formatEther(token0_swapper_swap_diff))
+
+```
+
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 55
+
+
+```
+console.log( 'USDT balance of swapper changed by', token1_swapper_swap_diff.gt( '0' )
+? `+ ${ ethers.utils.formatEther(token1_swapper_swap_diff) } `
+: ethers.utils.formatEther(token1_swapper_swap_diff))
+}
+
+{
+    const slot0_after_init = await pool.slot0();
+console.log( '\npool current tick =', slot0_after_init.tick);
+console.log( 'pool current price =', slot0_after_init.sqrtPriceX96.toString());
+}
+})
+```
+
+_<u>Figure H.1: Initialize front-run tests.</u>_
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 56
@@ -2005,6 +2817,10 @@ _<u>Figure I.5: SqrtPriceMath</u>_ _`.sol#L164-L169`_
 `getAmount0Delta` returns (rounding up in the division):
 
 
+<u>(</u> _<u>liquidity</u>_ <u>2</u> <u>*</u> 96) ( <u>*</u> _<u>sqrtRatioB</u>_ <u>­</u> _<u>sqrtRatioA</u>_ <u>)</u>
+_sqrtRatioB_                         - _sqrtRatioA_
+
+
 Call this expression `E` . We assume that
 
   - `sqrtRatioA` and `sqrtRatioB >= 1` (otherwise, the operation would revert).
@@ -2052,10 +2868,25 @@ _<u>Figure I.6: SqrtPriceMath</u>_ _`.sol#L188-L190`_
 `getAmount1Delta` returns the following (rounding up in the division):
 
 
+<u>(</u> _<u>liquidity</u>_ <u>) (</u> <u>*</u> _<u>sqrtRatioB</u>_ <u>­</u> _<u>sqrtRatioA</u>_ <u>)</u>
+2 <sup>96</sup>
+
+
+Call this expression `F` . The ratios are both uint160s; hence their maximum difference is
+2^160 - 1. (Note that due to the first line of the function, negative numbers are not
+possible.)
 
 
 
+It follows that
 
+
+
+96 < _liquidity_ - 2 <sup>(160</sup> <sup>­</sup> <sup>96)</sup> <sup>=</sup> _liquidity_ - 2 <sup>64</sup> <sup><</sup> 2 <sup>128</sup> - 2 <sup>64</sup> <sup>=</sup> 2 <sup>192</sup>
+
+
+
+_F_ ≤ _liquidity_ - (2160 ­ 1) 2 / 96 < _liquidity_ - 2 <sup>(160</sup> <sup>­</sup> <sup>96)</sup> <sup>=</sup> _liquidity_ - 2 <sup>64</sup> <sup><</sup> 2 <sup>128</sup> - 2 <sup>64</sup> <sup>=</sup> 2 <sup>192</sup>,
 
 
 
@@ -2067,6 +2898,10 @@ _F_ < 2 <sup>192</sup> .
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 59
 
 
+Since this value is even smaller than that in the first case, we can be certain that overflow is
+not possible in this case either.
+
+
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 60
 
 
@@ -2075,8 +2910,70 @@ _F_ < 2 <sup>192</sup> .
 The following contains a unit test for TOB-UNI-008, meant to be run in
 `UniswapV3Pool.spec.ts` .
 
+```
+ it.only( 'test swap 1 wei on empty pool', async () => {
+    // default created pool will use fee 3000, tickSpacing 60
+
+    //
+    // initialize pool at price 1.0001
+    //
+    const init_price = '79228162514264337593543950336' ; // sqrtRatio at tick = 0, which is
+ price 1.0001
+    await pool.initialize(init_price);
+
+ {
+     const slot0_after_init = await pool.slot0();
+ console.log( 'pool current tick =', slot0_after_init.tick);
+ console.log( 'pool current price =', slot0_after_init.sqrtPriceX96.toString());
+ }
+
+ {
+     const swap_amount = 1 ; // wei
+
+     // minPrice < priceLimit < currentPrice
+     const swap_priceLimit = '4295128740' ;
+
+     // set up the swap contract
+     const swapContractFactory = await ethers.getContractFactory( 'TestUniswapV3SwapPay' )
+     const swapContract = ( await swapContractFactory.deploy()) as TestUniswapV3SwapPay
+     // approve the swap contract to transfer tokens belonging to "wallet"
+     // this is used to pay the required tokens in the uniswapV3SwapCallback
+     await token0.approve(swapContract.address, constants.MaxUint256)
+     await token1.approve(swapContract.address, constants.MaxUint256)
+
+     const t0_bal_before = await token0.balanceOf(wallet.address);
+     const t1_bal_before = await token1.balanceOf(wallet.address);
+ swapContract.swap(pool.address, wallet.address, true, swap_priceLimit, swap_amount,
+ swap_amount, 0 )
+     const t0_bal_after = await token0.balanceOf(wallet.address);
+     const t1_bal_after = await token1.balanceOf(wallet.address);
+     const t0_diff = t0_bal_after.sub(t0_bal_before)
+     const t1_diff = t1_bal_after.sub(t1_bal_before)
+
+ console.log( ` \ nswapping ${ swap_amount } wei token0 for token1, priceLimit
+ ${ swap_priceLimit } ` );
+
+```
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 61
+
+
+```
+console.log( 'token0 balance of swapper changed by', t0_diff.gt( '0' ) ?
+`+ ${ ethers.utils.formatEther(t0_diff) } ` : ethers.utils.formatEther(t0_diff))
+console.log( 'token1 balance of swapper changed by', t1_diff.gt( '0' ) ?
+`+ ${ ethers.utils.formatEther(t1_diff) } ` : ethers.utils.formatEther(t1_diff))
+}
+
+{
+    const slot0_after_init = await pool.slot0();
+console.log( '\npool current tick =', slot0_after_init.tick);
+console.log( 'pool current price =', slot0_after_init.sqrtPriceX96.toString());
+}
+})
+```
+
+_<u>Figure J.1: Unit test.</u>_
 
 
 © 2021 Trail of Bits Uniswap V3 Core Assessment | 62

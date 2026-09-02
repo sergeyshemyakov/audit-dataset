@@ -1,3 +1,9 @@
+# **Aztec: Hatch**
+## **Security Review**
+
+### Cantina Managed review by: Slowfi, Security Researcher Arno, Associate Security Researcher February 24, 2026
+
+
 #### **Contents**
 
 **1** **Introduction** **2**
@@ -15,23 +21,29 @@
 3.1 High Risk . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
 3.1.1 Escape hatch updates can retroactively change historical epoch classification . . . . . 4
 3.2 Medium Risk . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
-
+3.2.1 BOND_TOKEN s from taxes and punishments are permanently locked in EscapeHatch 4
+3.2.2 Updating EscapeHatch can invalidate an already selected proposer . . . . . . . . . . 4
 3.2.3 Inactive escape hatch contracts can still select and punish candidates . . . . . . . . . . 5
 3.2.4 Slashing round execution can revert when a targeted epoch committee is empty . . . 5
 3.2.5 Fee header compression can revert if congestion or prover costs exceed field size . . 6
 3.2.6 Unbounded excess mana can overflow congestion multiplier computation and block
 proposals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
 3.3 Low Risk . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
-
+3.3.1 NatSpec claims _slashAmounts ”must be > 0” but constructor doesn't enforce it . . 7
 3.3.2 Zero bond size allows free participation in escape hatch . . . . . . . . . . . . . . . . . . 7
 3.3.3 Escape hatch proposals can skip epoch setup and leave RANDAO checkpoints stale . 7
-
+3.3.4 EscapeHatch address can be updated to an incompatible contract . . . . . . . . . . 8
+3.3.5 Missing explicit bounds/sanity checks for updateProvingCostPerMana . . . . . . . 8
 3.4 Gas Optimization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
-
+3.4.1 CandidateJoined event redundantly emits immutable bond size . . . . . . . . . . . 8
 3.4.2 Candidate bond amount is redundantly stored despite being immutable . . . . . . . . 9
 3.4.3 Proposer index is computed but unused during validator selection . . . . . . . . . . . 9
 3.5 Informational . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
-
+3.5.1 Incorrect NatSpec EIP-712 Vote struct field order in VOTE_TYPEHASH comment . . . 9
+3.5.2 Dead stale-round check in getRound . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.5.3 getVotes can return stale votes for overwritten rounds . . . . . . . . . . . . . . . . . 10
+3.5.4 Incorrect bit-width comment for CompressedFeeConfig.manaTarget . . . . . . . . 10
+3.5.5 Dead storage field: unused feeHeaders mapping in FeeLib.FeeStore . . . . . . . 11
 3.5.6 Zero or minimal RANDAO lag can allow proposer influence over committee and
 proposer selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
 3.5.7 Reward accounting can revert if burn exceeds collected fee . . . . . . . . . . . . . . . . 11
@@ -40,7 +52,7 @@ proposer selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 early epoch setup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
 3.5.10 Use of magic numbers reduces readability and maintainability . . . . . . . . . . . . . . 13
 3.5.11 Misconfigured committee size can block normal proposal flow . . . . . . . . . . . . . . 13
-
+3.5.12 initiateExit() can self-revert when it selects the caller as proposer . . . . . . . . 13
 3.5.13 Slashing payloads are not epoch-attributable . . . . . . . . . . . . . . . . . . . . . . . . 14
 3.5.14 Initial ETH per fee asset can be discarded if ignition checkpoints overwrite fee header
 with zero . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
@@ -73,13 +85,14 @@ to the code require a new security review to ensure that the code remains secure
 that the Cantina Managed security review is not a replacement for continuous security measures such as
 penetration testing, vulnerability scanning, and regular code reviews.
 
-|assessment|Col2|Col3|Col4|
-|---|---|---|---|
-|**Severity level**|**Impact: High**|**Impact: Medium**|**Impact: Low**|
-|**Likelihood: high**|Critical|High|Medium|
-|**Likelihood: medium**|High|Medium|Low|
-|**Likelihood: low**|Medium|Low|Low|
 
+**1.3** **Risk assessment**
+
+
+**<u>Severity level</u>** **<u>Impact:</u>** **<u>High</u>** **<u>Impact:</u>** **<u>Medium</u>** **<u>Impact:</u>** **<u>Low</u>**
+**<u>Likelihood:</u>** **<u>high</u>** <u>Critical</u> <u>High</u> <u>Medium</u>
+**<u>Likelihood:</u>** **<u>medium</u>** <u>High</u> <u>Medium</u> <u>Low</u>
+**<u>Likelihood:</u>** **<u>low</u>** <u>Medium</u> <u>Low</u> <u>Low</u>
 
 
 **1.3.1** **Severity Classification**
@@ -116,16 +129,15 @@ From Jan 25th to Jan 27th the Cantina team conducted a review of [aztec-packages
 
 **Issues Found**
 
-|Severity|Count|Fixed|Acknowledged|
-|---|---|---|---|
-|Critical Risk|0|0|0|
-|High Risk|1|1|0|
-|Medium Risk|6|5|1|
-|Low Risk|5|2|3|
-|Gas Optimizations|3|2|1|
-|Informational|16|6|10|
-|**Total**|**31**|**16**|**15**|
 
+**<u>Severity</u>** **<u>Count</u>** **<u>Fixed</u>** **<u>Acknowledged</u>**
+<u>Critical Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>High Risk</u> <u>1</u> <u>1</u> <u>0</u>
+<u>Medium Risk</u> <u>6</u> <u>5</u> <u>1</u>
+<u>Low Risk</u> <u>5</u> <u>2</u> <u>3</u>
+<u>Gas Optimizations</u> <u>3</u> <u>2</u> <u>1</u>
+<u>Informational</u> <u>16</u> <u>6</u> <u>10</u>
+**<u>Total</u>** **<u>31</u>** **<u>16</u>** **<u>15</u>**
 
 
 **2.1** **Scope**
@@ -232,6 +244,8 @@ that epoch.
 **Context:** [EscapeHatch.sol#L214](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/EscapeHatch.sol#L214)
 
 
+**Description:** In EscapeHatch.sol, WITHDRAWAL_TAX is deducted from a candidate's bond refund when
+they leave the set, and FAILED_HATCH_PUNISHMENT is deducted if a proposer fails to fulfill their duties.
 While these amounts are subtracted from the user's payout, the corresponding BOND_TOKEN s remain held
 by the EscapeHatch contract. There is no mechanism to withdraw, burn, or sweep these accumulated
 funds, causing them to be permanently locked in the contract.
@@ -257,6 +271,10 @@ accumulated tokens.
 
 
 4
+
+
+**Description:** The function updateEscapeHatch from contract RollupCore updates the configured escape hatch address via updateEscapeHatch function and emits EscapeHatchUpdated without enforcing
+any timing constraints relative to an in progress hatching cycle at RollupCore contract.
 
 
 If the escape hatch address is changed after a proposer has already been selected in the previous escape
@@ -324,13 +342,17 @@ activity and prevent unintended punishment in deactivated escape hatch instances
 **Context:** [TallySlashingProposer.sol#L919-L928](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/slashing/TallySlashingProposer.sol#L919-L928)
 
 
+**Description:** The function executeRound from contract TallySlashingProposer builds slashing actions by indexing into _committees[epochIndex][validatorIndex] and recording the action.
+
+
 Slashing votes target past epochs and are encoded as a fixed-size byte array covering COMMITTEE_SIZE
 validator slots per epoch across ROUND_SIZE_IN_EPOCHS . The vote encoding does not depend on whether
 a committee exists for a given targeted epoch, and a quorum can be reached for a slot even if the
 corresponding epoch has no valid committee.
 
 
-When calldata is constructed for executeRound, an epoch with no committee can only be repre
+When calldata is constructed for executeRound, an epoch with no committee can only be represented as an empty array for that epoch. If _committees[epochIndex] is empty, indexing into
+_committees[epochIndex][...] reverts, causing executeRound to fail. This means a single round
 can become blocked if quorum is reached for any slot in an epoch that does not have a valid committee
 array.
 
@@ -339,7 +361,8 @@ array.
 
 
 **Recommendation:** Consider to defensively skip epochs that do not provide a valid committee array before
-
+indexing into _committees . This can be done by checking that the committee for the computed epoch
+index exists and has length COMMITTEE_SIZE, and skipping processing for that epoch when it does not.
 Ex:
 
 
@@ -365,9 +388,14 @@ Ex:
 **Context:** [FeeLib.sol#L149-L168](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/libraries/rollup/FeeLib.sol#L149-L168)
 
 
+**Description:** The function computeFeeHeader from library FeeLib returns a FeeHeader that includes
+
+_congestionCost and _proverCost . These values are later compressed into the on chain fee header
 representation, where the corresponding fields have fixed bit sizes.
 
 
+_congestionCost and _proverCost are computed in fee asset units using a conversion of the form
+feeAssetCost equals ethCost times 1e12 divided by ethPerFeeAsset . When the fee asset price is
 low, when L1 fees are high, or when parameters such as the mana target are small, these computed values
 can grow large enough to exceed the representable range. In that case, fee header compression reverts,
 which causes checkpoint proposal to revert.
@@ -399,6 +427,11 @@ make the encoding constraint explicit and avoid unexpected reverts during compre
 **Context:** [FeeLib.sol#L225, FeeLib.sol#L365-L375](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/libraries/rollup/FeeLib.sol#L225)
 
 
+**Description:** The function congestionMultiplier from library FeeLib computes the congestion multiplier by calling fakeExponential with excessMana as the numerator.
+
+
+  - fakeExponential uses checked arithmetic while iteratively updating the Taylor series terms. As
+excessMana grows, intermediate multiplications in the series can overflow and revert. Since fee
 computation is part of the checkpoint proposal flow, a revert in the congestion multiplier computation
 can block checkpoint proposals.
 
@@ -436,6 +469,10 @@ fakeExponential not overflowing under prolonged congestion.
 **Context:** [TallySlashingProposer.sol#L290](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/slashing/TallySlashingProposer.sol#L290)
 
 
+**Description:** The constructor docs say _slashAmounts entries ”must be > 0”, but the constructor only
+checks ordering ( _slashAmounts[0] <= _slashAmounts[1] <= _slashAmounts[2] ) and does not
+
+require(_slashAmounts[i] - 0) . As written, zero slash amounts are allowed.If any amount is 0,
 slashing can reach quorum but slash nothing. On the other hand, if any amount exceeds uint96,
 
 executeRound will revert when building the payload, permanently disabling slashing.
@@ -471,6 +508,8 @@ _�→_ Errors.TallySlashingProposer__InvalidSlashAmounts(_slashAmounts));
 **Context:** [EscapeHatch.sol#L124](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/EscapeHatch.sol#L124)
 
 
+**Description:** The function constructor from contract EscapeHatch assigns BOND_SIZE = _bondSize
+without explicitly validating that _bondSize - 0 . If the contract is deployed with _bondSize == 0, any
 address can join the escape hatch set at zero cost while remaining eligible for selection. This removes
 the intended economic gating described in the documentation and weakens the assumptions around the
 escape hatch mechanism.
@@ -493,6 +532,11 @@ a misconfigured deployment cannot silently disable the bond requirement.
 
 
 **Context:** [ProposeLib.sol#L202-L205](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/libraries/rollup/ProposeLib.sol#L202-L205)
+
+
+**Description:** The function propose from library ProposeLib sets up the epoch by calling
+ValidatorSelectionLib.setupEpoch(v.currentEpoch) after deriving the current epoch from
+block.timestamp .
 
 
 In the updated logic, escape hatch proposals do not call setupEpoch . This means that for escape hatch
@@ -532,6 +576,12 @@ desired.
 **Context:** [RollupCore.sol#L402-L405](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/RollupCore.sol#L402-L405)
 
 
+**Description:** The function updateEscapeHatch from contract RollupCore updates the escape hatch
+address by calling ValidatorOperationsExtLib.updateEscapeHatch(_escapeHatch) and emits
+
+EscapeHatchUpdated .
+
+
 The update does not validate that the new escape hatch contract is correctly configured to work with this
 rollup instance. If governance sets an address that is not wired to this rollup, escape hatch proposals can
 fail or cause rollup interactions with the escape hatch to revert, including calls that assume a compatible
@@ -563,10 +613,16 @@ linkage, then reverting if the check fails.
 **Context:** [FeeLib.sol#L111-L129](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/libraries/rollup/FeeLib.sol#L111-L129)
 
 
+**Description:** FeeLib.updateProvingCostPerMana updates FeeConfig.provingCostPerMana with
+no explicit domain validation (unlike manaTarget, which is validated via computeManaLimit ). The only
+effective constraint is **implicit** : when recompressing the config, provingCostPerMana is downcast to
+
 **uint64** ( toUint64() ), so values above type(uint64).max revert, but no ”sane range” bound is enforced.
 
 
 **Recommendation:** Add an explicit upper bound (and optionally a lower bound) for
+_provingCostPerMana consistent with intended economics, similar in spirit to computeManaLimit for
+manaTarget .
 
 
 **Aztec Labs:** Acknowledged.
@@ -618,6 +674,8 @@ size directly from the contract configuration, making this event field redundant
 **Context:** [EscapeHatch.sol#L152](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/EscapeHatch.sol#L152)
 
 
+**Description:** The function join from contract EscapeHatch assigns data.amount = BOND_SIZE when
+a candidate joins the set. Since BOND_SIZE is an immutable value shared by all candidates, storing the
 same bond amount per candidate is redundant and increases storage usage without adding expressiveness.
 The value never diverges per user unless modified by later punishment logic, which is not currently reflected
 in the stored structure.
@@ -683,6 +741,9 @@ improve readability and reduce the risk of incorrect assumptions in future chang
 **Context:** [TallySlashingProposer.sol#L154-L156](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/slashing/TallySlashingProposer.sol#L154-L156)
 
 
+**Description:** In TallySlashingProposer.sol, the NatSpec for VOTE_TYPEHASH states the EIP712 struct as Vote(uint256 slot,bytes votes), but the actual type hash is computed from
+
+
 9
 
 
@@ -709,9 +770,15 @@ Vote(bytes votes,uint256 slot) .
 **Context:** [TallySlashingProposer.sol#L571](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/slashing/TallySlashingProposer.sol#L571)
 
 
-lar buffer contains data for a different (overwritten) round (it returns a zeroed struct but still sets
+**Description:** In getRound, the guard if (roundData.roundNumber != _round) is **unreachable** .
+
+_getRoundData always returns a RoundData with roundNumber: _round, even when the circular buffer contains data for a different (overwritten) round (it returns a zeroed struct but still sets
 
 roundNumber = _round ).
+
+
+**Recommendation:** Remove the roundData.roundNumber != _round branch and rely on
+_getRoundData 's default (executed=false, voteCount=0) behavior.
 
 
 **Aztec Labs:** [Fixed in PR 20423.](https://github.com/AztecProtocol/aztec-packages/pull/20423/changes/5f4e35de036ab89a34b968e38fb2735c6b6f6994)
@@ -730,11 +797,16 @@ roundNumber = _round ).
 
 
 **Description:** roundVotes is stored in a circular buffer ( ROUNDABOUT_SIZE ), indexed by
+round % ROUNDABOUT_SIZE . When the buffer wraps, older rounds' vote slots are overwritten/reused.
+Staleness detection exists in _getRoundData via roundDatas[...] (compressed roundNumber ), but
 
-
+getVotes does not call it and instead reads vote slots directly, so callers can receive vote data that
 actually belongs to a different (newer) round.
 
 
+**Recommendation:** In getVotes, validate round freshness before reading
+votes (e.g., call _getRoundData(_round, getCurrentRound()) and/or check
+roundDatas[idx].roundNumber.decompress() == _round ). If stale, revert or return empty
 bytes.
 
 
@@ -751,6 +823,12 @@ bytes.
 
 
 **Context:** [FeeConfig.sol#L25](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol#L25)
+
+
+**Description:** In FeeConfig.sol, the comment says manaTarget is **64** **bits**, but the compression
+uses toUint32() and extraction masks with MASK_32_BITS, meaning manaTarget is 32 bits in
+
+CompressedFeeConfig .
 
 
 **Recommendation:** Update the comment to reflect the actual layout, e.g. ”32 bit manaTarget, 128 bit
@@ -801,9 +879,13 @@ dead code/storage.
 
 
 **Description:** The function initialize from library ValidatorSelectionLib stores
+_lagInEpochsForRandao without enforcing a minimum value beyond the requirement that
+_lagInEpochsForValidatorSet is greater than or equal to _lagInEpochsForRandao .
 
 
-portunity to influence the randomness input and bias committee selection and escape hatch proposer
+If _lagInEpochsForRandao is configured as zero, the randomness used for selection can depend on
+
+block.prevrandao from the current epoch context. This gives the current epoch proposer more opportunity to influence the randomness input and bias committee selection and escape hatch proposer
 selection.
 
 
@@ -816,6 +898,7 @@ While this is primarily a deployment configuration risk, the impact is security-
 the integrity of validator committee and proposer selection.
 
 
+**Recommendation:** Consider to enforce a minimum value for _lagInEpochsForRandao, such as requiring it to be at least one epoch, and consider to require that _lagInEpochsForValidatorSet is strictly
 greater than _lagInEpochsForRandao if the protocol relies on separation between the validator set
 snapshot and the randomness snapshot. This would prevent misconfiguration that makes selection more
 biasable.
@@ -871,6 +954,9 @@ assumption explicit and improve robustness against unexpected inputs.
 **Context:** [Outbox.sol#L47-L56](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/messagebridge/Outbox.sol#L47-L56)
 
 
+**Description:** The function insert from contract Outbox writes roots[_checkpointNumber].root = _root
+at l1-contracts/src/core/messagebridge/Outbox.sol:47 and emits RootAdded . The function
+only checks that the caller is the rollup and that _checkpointNumber is greater than the rollup proven
 checkpoint number.
 
 
@@ -910,8 +996,17 @@ hatch 2 sections (indiretly at least) because of the outhash changes.
 **Context:** [ValidatorSelectionLib.sol#L674-L692](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol#L674-L692)
 
 
+**Description:** The functions stableEpochToRandaoSampleTime and
+stableEpochToValidatorSetSampleTime from library ValidatorSelectionLib compute a
+sample timestamp by subtracting lagInEpochs multiplied by epochDuration from the epoch start
+timestamp, using uint32 arithmetic.
+
+
 If lagInEpochsForRandao or lagInEpochsForValidatorSet is configured too large relative to the
 genesis time and the early epoch start timestamps, the subtraction underflows and reverts. This can
+prevent setupEpoch and other functions that depend on these sample time computations, such as
+
+getSampleSeed, from working during early epochs after deployment.
 
 
 This is primarily a configuration risk, but the failure mode is a hard revert that can block epoch setup.
@@ -943,10 +1038,12 @@ of ~50 years from entry to usage.
 **Context:** [EscapeHatch.sol#L184, TallySlashingProposer.sol#L957](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/EscapeHatch.sol#L184)
 
 
+**Description:** The contract EscapeHatch computes the next target hatch using the literal value 1 in
+arithmetic with LAG_IN_HATCHES at l1-contracts/src/core/EscapeHatch.sol:184, and a similar
 literal is used again shortly after. The meaning of this increment is implicit and not documented in code.
 
 
-cance of this length is not encoded in a named constant, making it less clear what structure or expectation
+Similarly, the contract TallySlashingProposer allocates a fixed-size bytes array using the literal expression 4 - 32 at l1-contracts/src/core/slashing/TallySlashingProposer.sol:957 . The significance of this length is not encoded in a named constant, making it less clear what structure or expectation
 the value represents.
 
 
@@ -1012,6 +1109,12 @@ particularly likely. It relies on no-one validating and if done maliciously wors
 **Context:** [EscapeHatch.sol#L169](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/EscapeHatch.sol#L169)
 
 
+**Description:** initiateExit() calls selectCandidates() first ( EscapeHatch.sol:169 ). If that internal call selects msg.sender as the designated proposer, it updates the caller's state to PROPOSING and
+removes them from $activeCandidates . Control then returns to initiateExit(), which immediately
+requires the caller is still in $activeCandidates and has Status.ACTIVE, so the transaction reverts
+(typically with a misleading NotInCandidateSet / InvalidStatus ).
+
+
 13
 
 
@@ -1049,12 +1152,17 @@ to avoid confusing revert reasons.
 **Context:** [TallySlashingProposer.sol#L920-L922](https://cantina.xyz/code/0e1e86a1-ecca-40d8-b24a-a7986afd521c/l1-contracts/src/core/slashing/TallySlashingProposer.sol#L920-L922)
 
 
+**Description:** TallySlashingProposer tallies votes over a flattened set of committee positions
+across all epochs in the round ( COMMITTEE_SIZE - ROUND_SIZE_IN_EPOCHS ) and converts any position that reaches quorum into a SlashAction by mapping the position index i to an address via
+
 _committees[i / COMMITTEE_SIZE][i % COMMITTEE_SIZE] .
 
 
 Because actions are created per position and there is no de-duplication by validator address, the
 same validator address can appear multiple times in the resulting actions[] if it appears in
 multiple epoch committees within the same slashing round. Each action becomes a separate
+IStakingCore.slash(validator, amount) call via SlashPayloadCloneable, which encodes only
+(validator, amount) and carries no epoch/offense identifier.
 
 
 As a result, the onchain execution path cannot distinguish whether a validator is being slashed for epoch
@@ -1093,8 +1201,10 @@ nonzero genesis value.
 
 
 When transactions are later enabled and the first checkpoint with transactions is proposed, the
+function computeFeeHeader from contract FeeLib reads the parent fee header and applies
 
-
+Math.max(parentEthPerFeeAsset, MIN_ETH_PER_FEE_ASSET) to handle ignition checkpoints where
+ethPerFeeAsset may be zero. In this situation, the fee update seeds from MIN_ETH_PER_FEE_ASSET
 rather than the configured _initialEthPerFeeAsset . Since the per checkpoint adjustment is capped to
 
 
@@ -1136,11 +1246,13 @@ allowing it to support easily having 2 separate.
 **Context:** [FeeLib.sol#L184-L205](https://cantina.xyz/code/7612da2b-7486-494a-b351-413057c6bdf8/l1-contracts/src/core/libraries/rollup/FeeLib.sol#L184-L205)
 
 
-eter name indicates the value is expected in basis points. However, the corresponding field naming and
+**Description:** The function computeFeeHeader from contract FeeLib now enforces that
+_feeAssetPriceModifierBps is within MAX_FEE_ASSET_PRICE_MODIFIER_BPS, and the parameter name indicates the value is expected in basis points. However, the corresponding field naming and
 type in surrounding interfaces and offchain payloads can remain unchanged from the previous scale.
 
 
-If an offchain component continues sending the modifier using the previous scale, the ab
+If an offchain component continues sending the modifier using the previous scale, the absolute value can exceed MAX_FEE_ASSET_PRICE_MODIFIER_BPS and the call will revert with
+FeeLib__InvalidFeeAssetPriceModifier . Since fee header computation is part of the propose flow,
 this can prevent proposals from being accepted and halt checkpoint progression until all offchain producers
 are migrated to the new basis points convention.
 
@@ -1167,6 +1279,8 @@ includes the received value and the expected maximum to simplify operational deb
 **Context:** [FeeLib.sol#L115-L128](https://cantina.xyz/code/7612da2b-7486-494a-b351-413057c6bdf8/l1-contracts/src/core/libraries/rollup/FeeLib.sol#L115-L128)
 
 
+**Description:** The function initialize from contract FeeLib validates that _initialEthPerFeeAsset
+is within MIN_ETH_PER_FEE_ASSET and MAX_ETH_PER_FEE_ASSET, but it assumes the
 value is provided in the correct fixed point scale. If the deployment configuration sets
 AZTEC_INITIAL_ETH_PER_FEE_ASSET with an incorrect order of magnitude, the value can still
 pass bounds checks while representing a materially incorrect starting price.

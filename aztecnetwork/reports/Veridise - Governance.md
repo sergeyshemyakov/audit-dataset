@@ -264,29 +264,39 @@ arising from, out of or in connection with the results reported here.
 **Table 2.1:** Application Summary.
 
 
+**<u><mark>Name</mark></u>** **<u><mark>Version</mark></u>** **<u><mark>Type</mark></u>** **<u><mark>Platform</mark></u>**
+<mark>Aztec Governance</mark> `a6eebac` <mark>Solidity</mark> <mark>Ethereum</mark>
+
+
 **Table 2.2:** Engagement Summary.
+
+
+**<u><mark>Dates</mark></u>** **<u><mark>Method</mark></u>** **<u><mark>Consultants Engaged</mark></u>** **<u><mark>Level of Efort</mark></u>** **f**
+<mark>Aug. 25–Sep. 04, 2025</mark> <mark>Manual & Tools</mark> <mark>3</mark> <mark>27 person-days</mark>
 
 
 **Table 2.3:** Vulnerability Summary.
 
-|Name|Number|Acknowledged|Fixed|
-|---|---|---|---|
-|Critical-Severity Issues|0|0|0|
-|High-Severity Issues|0|0|0|
-|Medium-Severity Issues|1|1|1|
-|Low-Severity Issues|2|2|1|
-|Warning-Severity Issues|7|7|7|
-|Informational-Severity Issues|0|0|0|
-|TOTAL|10|10|9|
 
+**<u><mark>Name</mark></u>** **<u><mark>Number</mark></u>** **<u><mark>Acknowledged</mark></u>** **<u><mark>Fixed</mark></u>**
+<u><mark>Critical-Severity Issues</mark></u> <u><mark>0</mark></u> <u><mark>0</mark></u> <u><mark>0</mark></u>
+<u><mark>High-Severity Issues</mark></u> <u><mark>0</mark></u> <u><mark>0</mark></u> <u><mark>0</mark></u>
+<u><mark>Medium-Severity Issues</mark></u> <u><mark>1</mark></u> <u><mark>1</mark></u> <u><mark>1</mark></u>
+<u><mark>Low-Severity Issues</mark></u> <u><mark>2</mark></u> <u><mark>2</mark></u> <u><mark>1</mark></u>
+<u><mark>Warning-Severity Issues</mark></u> <u><mark>7</mark></u> <u><mark>7</mark></u> <u><mark>7</mark></u>
+<u><mark>Informational-Severity Issues</mark></u> <u><mark>0</mark></u> <u><mark>0</mark></u> <u><mark>0</mark></u>
+<mark>TOTAL</mark> <mark>10</mark> <mark>10</mark> <mark>9</mark>
 
 
 **Table 2.4:** Category Breakdown.
 
-|Name|Number|
-|---|---|
-|Data Validation<br>Logic Error<br>Usability Issue<br>Cryptographic Vulnerability<br>Maintainability|3<br>2<br>2<br>2<br>1|
 
+**<u><mark>Name</mark></u>** **<u><mark>Number</mark></u>**
+<mark>Data Validation</mark> <mark>3</mark>
+<mark>Logic Error</mark> <mark>2</mark>
+<mark>Usability Issue</mark> <mark>2</mark>
+<mark>Cryptographic Vulnerability</mark> <mark>2</mark>
+<u><mark>Maintainability</mark></u> <u><mark>1</mark></u>
 
 
 Veridise Audit Report: Aztec Governance © 2025 Veridise Inc.
@@ -486,12 +496,11 @@ The severity of a vulnerability is evaluated according to the Table 3.1.
 
 **Table 3.1:** Severity Breakdown.
 
-|Col1|Somewhat Bad|Bad|Very Bad|Protocol Breaking|
-|---|---|---|---|---|
-|Not Likely|Info|Warning|Low|Medium|
-|Likely|Warning|Low|Medium|High|
-|Very Likely|Low|Medium|High|Critical|
 
+<u>Somewhat Bad</u> <u>Bad</u> <u>Very Bad</u> <u>Protocol Breaking</u>
+<u>Not Likely</u> <u><mark>Info</mark></u> <u><mark>Warning</mark></u> <u><mark>Low</mark></u> <u><mark>Medium</mark></u>
+<u>Likely</u> <u><mark>Warning</mark></u> <u><mark>Low</mark></u> <u><mark>Medium</mark></u> <u><mark>High</mark></u>
+<u>Very Likely</u> <u><mark>Low</mark></u> <u><mark>Medium</mark></u> <u><mark>High</mark></u> <u><mark>Critical</mark></u>
 
 
 The likelihood of a vulnerability is evaluated according to the Table 3.2.
@@ -626,6 +635,17 @@ acknowledged, fixed, etc.) is specified. Table 5.1 summarizes the issues discove
 
 
 **<u>Table 5.1:</u>** <u>Summary of Discovered Vulnerabilities.</u>
+**<u><mark>ID</mark></u>** **<u><mark>Description</mark></u>** **<u><mark>Severity</mark></u>** **<u><mark>Status</mark></u>**
+<mark>V-AZGV-VUL-001</mark> <mark>Public key check in deposit function breaks . . .</mark> <mark>Medium</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-002</mark> <mark>Governance deposit from self can inf</mark> l <mark>ate . . .</mark> <mark>Low</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-003</mark> <mark>Payload may change actions after passing . . .</mark> <mark>Low</mark> <mark>Acknowledged</mark>
+<mark>V-AZGV-VUL-004</mark> <mark>Maintainability issues</mark> <mark>Warning</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-005</mark> <mark>Multiple addRollup calls silently overwrite . . .</mark> <mark>Warning</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-006</mark> <mark>Missing curve order checks may lead to . . .</mark> <mark>Warning</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-007</mark> <mark>Non-deterministric algorithm of . . .</mark> <mark>Warning</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-008</mark> <mark>Missing enforcement of withdrawer . . .</mark> <mark>Warning</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-009</mark> <mark>Non-standard hash-to-curve implementation</mark> <mark>Warning</mark> <mark>Fixed</mark>
+<mark>V-AZGV-VUL-010</mark> <mark>Misleading function nomenclature / . . .</mark> <mark>Warning</mark> <mark>Fixed</mark>
 
 
 Veridise Audit Report: Aztec Governance © 2025 Veridise Inc.
@@ -640,12 +660,13 @@ _11_ _Contents_
 **reusability**
 
 
-|Severity|Medium|Commit|a6eebac|
-|---|---|---|---|
-|**Type**|Logic Error|**Status**|Fixed|
+**<u><mark>Severity</mark></u>** <u><mark>Medium</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Logic Error</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/governance/GSE.sol:336`</mark></u>
+**Confirmed Fix At** `https:`
+`[//github.com/AztecProtocol/aztec-packages/pull/17247/](https://github.com/AztecProtocol/aztec-packages/pull/17247/)`,
 
-
-
+cab5a54
 
 
 **Description** The documentation surrounding the `deposit()` function in the `GSE` specifies that
@@ -654,18 +675,18 @@ will have to register a new public key if they were to fully withdraw from the c
 documented by the following comment:
 
 ```
-1 /* @dev The same attester may deposit on multiple *instances*, so long as
-2 /* the latest-rollup-instance-attesters-form-set invariant described above
-    BONUS _ INSTANCE _ ADDRESS holds. */
-3 ...
+       1 /* @dev The same attester may deposit on multiple *instances*, so long as
+       2 /* the latest-rollup-instance-attesters-form-set invariant described above
+          BONUS _ INSTANCE _ ADDRESS holds. */
+       3 ...
 
-4
+       4
 
-5 // This is the ONLY place where we set the configuration for an attester.
+       5 // This is the ONLY place where we set the configuration for an attester.
 
-6 // This means that their withdrawer and public keys are set once, globally.
+       6 // This means that their withdrawer and public keys are set once, globally.
 
-7 // If they exit, they must re-deposit with a new key.
+       7 // If they exit, they must re-deposit with a new key.
 
 ```
 
@@ -701,7 +722,12 @@ _12_ _Contents_
 **5.1.2** **V-AZGV-VUL-002: Governance deposit from self can inflate power**
 
 
+**<u><mark>Severity</mark></u>** <u><mark>Low</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Data Validation</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/governance/Governance.sol:323-328`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/16917](https://github.com/AztecProtocol/aztec-packages/pull/16917)`,
 
+95c296f
 
 
 **Description** The `deposit()` function in `Governance` will transfer `ASSET` tokens from the
@@ -710,16 +736,16 @@ _12_ _Contents_
 power in the contract.
 
 ```
-1 function deposit( address _ beneficiary, uint256 _ amount) external override(IGovernance
-    ) isDepositAllowed( _ beneficiary) {
-2 ASSET.safeTransferFrom( msg . sender, address ( this ), _ amount);
-3 users[ _ beneficiary].add( _ amount);
-4 total.add( _ amount);
+       1 function deposit( address _ beneficiary, uint256 _ amount) external override(IGovernance
+          ) isDepositAllowed( _ beneficiary) {
+       2 ASSET.safeTransferFrom( msg . sender, address ( this ), _ amount);
+       3 users[ _ beneficiary].add( _ amount);
+       4 total.add( _ amount);
 
-5
-6 emit Deposit( msg . sender, _ beneficiary, _ amount);
+       5
+       6 emit Deposit( msg . sender, _ beneficiary, _ amount);
 
-7 }
+       7 }
 
 ```
 
@@ -753,6 +779,12 @@ _13_ _Contents_
 
 
 **5.1.3** **V-AZGV-VUL-003: Payload may change actions after passing Governance**
+
+
+**<u><mark>Severity</mark></u>** <u><mark>Low</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Logic Error</mark></u> **<u><mark>Status</mark></u>** <u><mark>Acknowledged</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/governance/GSEPayload.sol:62`</mark></u>
+**<mark>Conf</mark>** **i** **<mark>rmed Fix At</mark>** <mark>N/A</mark>
 
 
 **Description** The `GSEPayload` constructor accepts a contract that implements the `IPayload`
@@ -820,12 +852,12 @@ _14_ _Contents_
 **5.1.4** **V-AZGV-VUL-004: Maintainability issues**
 
 
-|Severity|Warning|Commit|a6eebac|
-|---|---|---|---|
-|**Type**|Maintainability|**Status**|Fixed|
+**<u><mark>Severity</mark></u>** <u><mark>Warning</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Maintainability</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/governance/RewardDistributor.sol`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/17248](https://github.com/AztecProtocol/aztec-packages/pull/17248)`,
 
-
-
+a310dd9
 
 
 **Description** The maintainability of the code may be improved by changes in the following
@@ -835,19 +867,19 @@ locations:
 1. `governance/RewardDistributor.sol` :
 
 
-   - The `claim()` and `recover()` functions should sanity check the destination address
+       - The `claim()` and `recover()` functions should sanity check the destination address
 
 
 2. `governance/GSE.sol` :
 
 
-   - The `IGSECore` and `IGSE` interfaces should be in a separate file.
+       - The `IGSECore` and `IGSE` interfaces should be in a separate file.
 
 
 3. `governance/interfaces/IGovernance.sol` :
 
 
-   - Rename the `ProposeConfiguration` to `ProposeWithLockConfiguration` to more
+       - Rename the `ProposeConfiguration` to `ProposeWithLockConfiguration` to more
 
 accurately describe its usage.
 
@@ -855,13 +887,13 @@ accurately describe its usage.
 4. `governance/Governance.sol` :
 
 
-   - The `vote()` function only ever returns true, and callers do not check the result.
+       - The `vote()` function only ever returns true, and callers do not check the result.
 
 
 5. `governance/libraries/AddressSnapshotLib.sol` :
 
 
-   - The documentation of the `remove(address)` function states that it is only used in
+       - The documentation of the `remove(address)` function states that it is only used in
 
 tests, but it is used in `GSE.withdraw()` .
 
@@ -869,13 +901,13 @@ tests, but it is used in `GSE.withdraw()` .
 6. `shared/libraries/BN254.sol` :
 
 
-   - `sqrt()` : Use the `BASE` <sup>`_`</sup> `FIELD` <sup>`_`</sup> `ORDER` named variable instead of a literal constant.
+       - `sqrt()` : Use the `BASE` <sup>`_`</sup> `FIELD` <sup>`_`</sup> `ORDER` named variable instead of a literal constant.
 
 
 7. `governance/libraries/ConfigurationLib.sol` :
 
 
-   - `assertValid()` : The function only ever returns true, and callers do not check the
+       - `assertValid()` : The function only ever returns true, and callers do not check the
 
 result.
 
@@ -886,22 +918,22 @@ The security analysts identified the following code that is unused outside of it
 1. `governance/libraries/AddressSnapshotLib.sol` :
 
 
-   - `AddressSnapshotLib` <sup>`__`</sup> `AddressNotInSet`
+       - `AddressSnapshotLib` <sup>`__`</sup> `AddressNotInSet`
 
 
 2. `governance/GSE.sol` :
 
 
-   - <sup>`_`</sup> `getInstanceStoreWithAttester()`
+       - <sup>`_`</sup> `getInstanceStoreWithAttester()`
 
 
 3. `governance/libraries/ProposalLib.sol` :
 
 
-   - `VoteTabulationInfo.`
+       - `VoteTabulationInfo.`
 
 ```
-      MinimumEqZero
+             MinimumEqZero
 
 ```
 
@@ -956,7 +988,12 @@ _16_ _Contents_
 **rollups in GSE**
 
 
+**<u><mark>Severity</mark></u>** <u><mark>Warning</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Data Validation</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/governance/GSE.sol:260`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/17246](https://github.com/AztecProtocol/aztec-packages/pull/17246)`,
 
+7a12a96, 46e3dd7
 
 
 **Description** The `addRollup()` function in `GSE` is used to add a new rollup to the stored
@@ -993,7 +1030,12 @@ _17_ _Contents_
 **5.1.6** **V-AZGV-VUL-006: Missing curve order checks may lead to malleability issues**
 
 
+**<u><mark>Severity</mark></u>** <u><mark>Warning</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Data Validation</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/shared/libraries/BN254Lib.sol:264-339`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/17249](https://github.com/AztecProtocol/aztec-packages/pull/17249)`,
 
+5cd8f41
 
 
 **Description** The `isOnCurveG1()` and `isOnCurveG2()` functions check whether a given point lies
@@ -1026,47 +1068,52 @@ _18_ _Contents_
 **gas-exhaustion attacks**
 
 
+**<u><mark>Severity</mark></u>** <u><mark>Warning</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Usability Issue</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/shared/libraries/BN254Lib.sol:209-227`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/17249](https://github.com/AztecProtocol/aztec-packages/pull/17249)`,
 
+5cd8f41
 
 
 The `hashToPoint()` function maps the hash of a `domain` and `message` to a point on the BN254 G1
 group.
 
 ```
- 1 function hashToPoint(bytes32 domain, bytes memory message) internal view returns (
+       1 function hashToPoint(bytes32 domain, bytes memory message) internal view returns (
 
-    G1Point memory output) {
+          G1Point memory output) {
 
- 2 bytes32 hashed = keccak256(abi.encode(domain, message));
- 3 uint256 x = uint256(hashed) % BASE _ FIELD _ ORDER;
+       2 bytes32 hashed = keccak256(abi.encode(domain, message));
+       3 uint256 x = uint256(hashed) % BASE _ FIELD _ ORDER;
 
- 4 uint256 y;
+       4 uint256 y;
 
- 5 bool found = false ;
+       5 bool found = false ;
 
- 6 while ( true ) {
- 7 y = mulmod(x, x, BASE _ FIELD _ ORDER);
- 8 y = mulmod(y, x, BASE _ FIELD _ ORDER);
- 9 y = addmod(y, 3, BASE _ FIELD _ ORDER);
+       6 while ( true ) {
+       7 y = mulmod(x, x, BASE _ FIELD _ ORDER);
+       8 y = mulmod(y, x, BASE _ FIELD _ ORDER);
+       9 y = addmod(y, 3, BASE _ FIELD _ ORDER);
 
-10 (y, found) = sqrt(y);
+       10 (y, found) = sqrt(y);
 
-11 if (found) {
+       11 if (found) {
 
-12 output = G1Point({x: x, y: y});
+       12 output = G1Point({x: x, y: y});
 
-13 break ;
+       13 break ;
 
-14 }
-15 x = addmod(x, 1, BASE _ FIELD _ ORDER);
+       14 }
+       15 x = addmod(x, 1, BASE _ FIELD _ ORDER);
 
-16 }
+       16 }
 
-17 require(found, NoPointFound());
+       17 require(found, NoPointFound());
 
-18 return output;
+       18 return output;
 
-19 }
+       19 }
 
 ```
 
@@ -1114,7 +1161,12 @@ _20_ _Contents_
 **GSE Contract**
 
 
+**<u><mark>Severity</mark></u>** <u><mark>Warning</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Usability Issue</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/governance/GSE.sol:350`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/17247](https://github.com/AztecProtocol/aztec-packages/pull/17247)`,
 
+cab5a54
 
 
 **Description** The `deposit()` function in the GSE contract accepts a <sup>`_`</sup> `withdrawer` argument,
@@ -1147,7 +1199,12 @@ _21_ _Contents_
 **5.1.9** **V-AZGV-VUL-009: Non-standard hash-to-curve implementation**
 
 
+**<u><mark>Severity</mark></u>** <u><mark>Warning</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Cryptographic Vulnerability</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/shared/libraries/BN254Lib.sol`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/17262](https://github.com/AztecProtocol/aztec-packages/pull/17262)`,
 
+1856c61
 
 
 **Description** The used signature scheme requires a hash function (modeled as a random
@@ -1200,7 +1257,12 @@ _22_ _Contents_
 **check**
 
 
+**<u><mark>Severity</mark></u>** <u><mark>Warning</mark></u> **<u><mark>Commit</mark></u>** <u><mark>a6eebac</mark></u>
+**<u><mark>Type</mark></u>** <u><mark>Cryptographic Vulnerability</mark></u> **<u><mark>Status</mark></u>** <u><mark>Fixed</mark></u>
+**<u><mark>Location(s)</mark></u>** <u><mark>`src/shared/libraries/BN254Lib.sol`</mark></u>
+**Confirmed Fix At** `[https://github.com/AztecProtocol/aztec-packages/pull/17249](https://github.com/AztecProtocol/aztec-packages/pull/17249)`,
 
+5cd8f41
 
 
 **Description** The subgroup G2 of the group of Fp²-rational points on the twist E’ of the BN254

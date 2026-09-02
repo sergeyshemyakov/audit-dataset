@@ -35,15 +35,18 @@ informational security point of view for OVM implementation.
 
 Unoptimized circuit. We propose rewriting it as the following:
 
+```
+ out[1] <== in[0] + in[1] - out[0];
 
-
-
+```
 
 **wont fix**
 
 
 **2.** **<u>[transaction.circom#L23](https://github.com/tornadocash/tornado-pool/blob/a976b9b383d5b7110a1d513a21953d3c317377a2/circuits/transaction.circom#L23)</u>**
 
+
+From the zkSNARK side `extAmount` and `fee` means the same thing: difference between
 
 transaction input and output amount. We propose replacing it with one in-SNARK variable and
 
@@ -67,14 +70,18 @@ It's enough to publish the subtree hash only. Leaves could be stored at `extData
 
 The expression could be optimized as
 
+```
+ return int256(_extAmount-FIELD_SIZE);
 
-
-
+```
 
 **<u>[Refactored in another fix](https://github.com/tornadocash/tornado-pool/commit/042be187d10d331024ab9fa371b8284c449fa77e)</u>**
 
 
 **5.** **<u>[TornadoPool.sol#L102-L103](https://github.com/tornadocash/tornado-pool/blob/a976b9b383d5b7110a1d513a21953d3c317377a2/contracts/TornadoPool.sol#L102-L103)</u>**
+
+
+We propose caching `currentCommitmentIndex` for gas optimizations.
 
 
 **<u>[Fix](https://github.com/tornadocash/tornado-pool/commit/476668d250c8c421d6be14663b2f1126a01f1933)</u>**
@@ -85,20 +92,26 @@ The expression could be optimized as
 
 Event data is available from calldata. We propose replacing these events with
 
+```
+    emit NewTransaction(_currentCommitmentIndex);
 
-
-
+```
 
 **wont fix**
 
 
 **7.** **<u>[transaction.circom#L122](https://github.com/tornadocash/tornado-pool/blob/b085ab398eaeefff98771f5dad893cb804d98e70/circuits/transaction.circom#L122)</u>**
 
+
+We recommend to implement integer log2 function here or add `assert(nOuts==2)` .
+
 ### **Comments**
 
 
 **1.** **<u>[treeUpdater.circom#L6](https://github.com/tornadocash/tornado-pool/blob/a976b9b383d5b7110a1d513a21953d3c317377a2/circuits/treeUpdater.circom#L6)</u>**
 
+
+We propose adding `nLeaves` template parameter here with `assert(nLeaves==2)` ; for improving
 
 the readability of the circuit.
 
@@ -111,9 +124,10 @@ the readability of the circuit.
 
 Wrong sign in the description. We propose fixing it
 
+```
+ // publicAmount = -fee + extAmount
 
-
-
+```
 
 **<u>[Fix](https://github.com/tornadocash/tornado-pool/commit/dd5623629a77e9b0101e8310fc2b10568c129302)</u>**
 ## **Severity Terms**

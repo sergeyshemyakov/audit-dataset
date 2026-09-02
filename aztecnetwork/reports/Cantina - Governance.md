@@ -1,3 +1,9 @@
+# **Aztec: Governance Contracts**
+## **Security Review**
+
+### Cantina Managed review by: Xmxanuel, Lead Security Researcher Cryptara, Security Researcher November 12, 2025
+
+
 #### **Contents**
 
 **1** **Introduction** **2**
@@ -69,10 +75,28 @@ penetration testing, vulnerability scanning, and regular code reviews.
 
 **1.3** **Risk assessment**
 
-|Severity|Description|
-|---|---|
-|**Critical**<br>**High**<br>**Medium**<br>**Low**<br>**Gas Optimization**<br>**Informational**|_Must_ fx as soon as possible (if already deployed).<br>Leads to a loss of a signifcant portion (>10%) of assets in the protocol, or<br>signifcant harm to a majority of users.<br>Global losses <10% or losses to only a subset of users, but still unacceptable.<br>Losses will be annoying but bearable. Applies to things like griefng attacks that<br>can be easily repaired or even gas inefciencies.<br>Suggestions around gas saving practices.<br>Suggestions around best practices or readability.|
 
+**Severity** **Description**
+
+
+**Critical** _Must_ fix as soon as possible (if already deployed).
+
+
+**High** Leads to a loss of a significant portion (>10%) of assets in the protocol, or
+significant harm to a majority of users.
+
+
+**Medium** Global losses <10% or losses to only a subset of users, but still unacceptable.
+
+
+**Low** Losses will be annoying but bearable. Applies to things like griefing attacks that
+can be easily repaired or even gas inefficiencies.
+
+
+**Gas Optimization** Suggestions around gas saving practices.
+
+
+**Informational** Suggestions around best practices or readability.
 
 
 **1.3.1** **Severity Classification**
@@ -109,16 +133,15 @@ From Aug 5th to Aug 12th the Cantina team conducted a review of [aztec-packages]
 
 **Issues Found**
 
-|Severity|Count|Fixed|Acknowledged|
-|---|---|---|---|
-|Critical Risk|0|0|0|
-|High Risk|0|0|0|
-|Medium Risk|4|4|0|
-|Low Risk|6|3|2|
-|Gas Optimizations|1|1|0|
-|Informational|9|7|2|
-|**Total**|**20**|**15**|**4**|
 
+**<u>Severity</u>** **<u>Count</u>** **<u>Fixed</u>** **<u>Acknowledged</u>**
+<u>Critical Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>High Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Medium Risk</u> <u>4</u> <u>4</u> <u>0</u>
+<u>Low Risk</u> <u>6</u> <u>3</u> <u>2</u>
+<u>Gas Optimizations</u> <u>1</u> <u>1</u> <u>0</u>
+<u>Informational</u> <u>9</u> <u>7</u> <u>2</u>
+**<u>Total</u>** **<u>20</u>** **<u>15</u>** **<u>4</u>**
 
 
 3

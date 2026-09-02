@@ -55,13 +55,14 @@ a new security review to ensure that the code remains secure. Please be advised 
 not a replacement for continuous security measures such as penetration testing, vulnerability scanning,
 and regular code reviews.
 
-|assessment|Col2|Col3|Col4|
-|---|---|---|---|
-|**Severity level**|**Impact: High**|**Impact: Medium**|**Impact: Low**|
-|**Likelihood: high**|Critical|High|Medium|
-|**Likelihood: medium**|High|Medium|Low|
-|**Likelihood: low**|Medium|Low|Low|
 
+**1.3** **Risk assessment**
+
+
+**<u>Severity level</u>** **<u>Impact:</u>** **<u>High</u>** **<u>Impact:</u>** **<u>Medium</u>** **<u>Impact:</u>** **<u>Low</u>**
+**<u>Likelihood:</u>** **<u>high</u>** <u>Critical</u> <u>High</u> <u>Medium</u>
+**<u>Likelihood:</u>** **<u>medium</u>** <u>High</u> <u>Medium</u> <u>Low</u>
+**<u>Likelihood:</u>** **<u>low</u>** <u>Medium</u> <u>Low</u> <u>Low</u>
 
 
 **1.3.1** **Severity Classification**
@@ -98,16 +99,15 @@ Ethereum) and NOIR (the universal ZK language).
 
 **Issues Found**
 
-|Severity|Count|Fixed|Acknowledged|
-|---|---|---|---|
-|Critical Risk|0|0|0|
-|High Risk|1|1|0|
-|Medium Risk|0|0|0|
-|Low Risk|0|0|0|
-|Gas Optimizations|0|0|0|
-|Informational|4|0|4|
-|**Total**|**5**|**1**|**4**|
 
+**<u>Severity</u>** **<u>Count</u>** **<u>Fixed</u>** **<u>Acknowledged</u>**
+<u>Critical Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>High Risk</u> <u>1</u> <u>1</u> <u>0</u>
+<u>Medium Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Low Risk</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Gas Optimizations</u> <u>0</u> <u>0</u> <u>0</u>
+<u>Informational</u> <u>4</u> <u>0</u> <u>4</u>
+**<u>Total</u>** **<u>5</u>** **<u>1</u>** **<u>4</u>**
 
 
 **2.1** **Scope**
@@ -195,7 +195,10 @@ committee data in bootstrap windows should not brick executeRound .
 
 
 The problem is that the same logic also accepts attacker-supplied malformed committees in normal
-
+slashable windows. executeRound is permissionless and accepts caller-provided _committees as long as
+the outer array length matches ROUND_SIZE_IN_EPOCHS . During tally, _determineSlashActions skips
+an epoch whenever <mark>_ committees[ epochIndex]. length</mark> <mark>!= COMMITTEE_ SIZE</mark> <mark>.</mark> This skip happens
+before any slashing action is created for that epoch, so committeesWithSlashes[epochIndex] remains
 false even if vote data for validators in that epoch is nonzero and quorum would otherwise be met.
 
 
