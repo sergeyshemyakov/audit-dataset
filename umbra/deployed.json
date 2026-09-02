@@ -1,0 +1,25 @@
+{
+  "project": "umbra",
+  "discoveryTimestamp": 1786959877,
+  "contracts": [
+    {
+      "name": "StealthKeyRegistry",
+      "address": "0x31fe56609C65Cd0C510E7125f051D440424D38f3",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x31fe56609C65Cd0C510E7125f051D440424D38f3",
+      "sourceFiles": [
+        "deployed-contracts/StealthKeyRegistry.sol"
+      ]
+    },
+    {
+      "name": "Umbra",
+      "address": "0xFb2dc580Eed955B528407b4d36FfaFe3da685401",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xFb2dc580Eed955B528407b4d36FfaFe3da685401",
+      "sourceFiles": [
+        "deployed-contracts/Umbra.sol"
+      ]
+    }
+  ],
+  "programSources": []
+}
