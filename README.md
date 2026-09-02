@@ -1,0 +1,6 @@
+- `python3 -m venv .venv` and `.venv/bin/pip3 install pymupdf4llm==1.28.2`: sets up local .venv and installs script dependency.
+- `.venv/bin/python3 pdf_to_md.py`: runs pdf -> md extraction on all subdirs recursively.
+- `python3 fetch_critical.py <project-name>`: write `critical.json` for a project based on the L2BEAT repo and copy over the sources of all critical deployed contracts.
+- Run an agent on `AUDIT_EXTRACT_SKILL.md` on a project to extract `audit-summary.json` file from all .md reports.
+- `python3 generate_audit_summary.py <project>/reports/audit-summary.json`: deterministically generate the human-readable `audit-summary.md` beside the JSON summary.
+- `python3 fetch_audited_sources.py <project>/reports/audit-summary.json`: fetch every source path pinned to a full Git commit into `<project>/audited-sources`. Mutable revisions such as branches and abbreviated commits are recorded as skipped in `manifest.json`. Relative symlinks that stay within the repository are resolved from that same pinned commit and copied as regular files. Dangling repository-internal links are omitted and recorded; unsafe links are rejected.

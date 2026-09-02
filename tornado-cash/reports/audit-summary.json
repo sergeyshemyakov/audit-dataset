@@ -1,0 +1,565 @@
+{
+  "schema_version": "1.0.0",
+  "project": "tornado-cash",
+  "reports": [
+    {
+      "id": "abdk-tornado-circuit-audit-2019-11-25",
+      "report_file": "TornadoCash_circuit_audit_ABDK.md",
+      "title": "Tornado Circuit Audit. Final version",
+      "auditor": "ABDK Consulting",
+      "report_date": "2019-11-25",
+      "repositories": [
+        {
+          "id": "peppersec/tornado-mixer",
+          "url": "https://github.com/peppersec/tornado-mixer"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "peppersec/tornado-mixer",
+          "paths": {
+            "circuits/merkleTree.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/circuits/merkleTree.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7193655e4940476269426b80da40bc9a099598e4",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/7193655e"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "07168f9816a6a78767f53aab25624bd1d739a66d",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/07168f98"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "7193655e4940476269426b80da40bc9a099598e4",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/f8cd3fea"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "07168f9816a6a78767f53aab25624bd1d739a66d",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuits/withdraw.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/circuits/withdraw.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9efab84e65d923410ce4418794a5ca2ddcd74f37",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/9efab84e"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7193655e4940476269426b80da40bc9a099598e4",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/7193655e"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "9efab84e65d923410ce4418794a5ca2ddcd74f37",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/f8cd3fea"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "7193655e4940476269426b80da40bc9a099598e4",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "abdk-tornado-smart-contract-audit-2019-11-19",
+      "report_file": "TornadoCash_contract_audit_ABDK.md",
+      "title": "Tornado Cash Smart Contracts Audit. Final Version",
+      "auditor": "ABDK Consulting",
+      "report_date": "2019-11-19",
+      "repositories": [
+        {
+          "id": "peppersec/tornado-mixer",
+          "url": "https://github.com/peppersec/tornado-mixer"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "peppersec/tornado-mixer",
+          "paths": {
+            "contracts/ERC20Mixer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ERC20Mixer.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "highest_reported_finding_severity": "not explicitly classified",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c00e5532994f03f8bc61f147259bc5d353a0d2c9",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/c00e5532"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "83c9ba72969ff3dfd6b66acec5134666f8fdf283",
+                    "url": "https://github.com/peppersec/tornado-mixer/commit/83c9ba72969ff3dfd6b66acec5134666f8fdf283"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "c00e5532994f03f8bc61f147259bc5d353a0d2c9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/ERC20Mixer.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final audit snapshot after remediation",
+                  "coverage": "full file",
+                  "follows": "83c9ba72969ff3dfd6b66acec5134666f8fdf283",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ETHMixer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ETHMixer.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "highest_reported_finding_severity": "not explicitly classified",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/ETHMixer.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final audit snapshot after remediation",
+                  "coverage": "full file",
+                  "follows": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Mixer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/Mixer.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "highest_reported_finding_severity": "major",
+                  "major_findings": 1
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/Mixer.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final audit snapshot after remediation",
+                  "coverage": "full file",
+                  "follows": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/MerkleTreeWithHistory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/MerkleTreeWithHistory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "highest_reported_finding_severity": "moderate",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/MerkleTreeWithHistory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final audit snapshot after remediation",
+                  "coverage": "full file",
+                  "follows": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "abdk-tornado-cryptographic-review-2019-11-29",
+      "report_file": "TornadoCash_cryptographic_review_ABDK.md",
+      "title": "Tornado Privacy Solution Cryptographic Review Version 1.1",
+      "auditor": "ABDK Consulting",
+      "report_date": "2019-11-29",
+      "repositories": [
+        {
+          "id": "peppersec/tornado-mixer",
+          "url": "https://github.com/peppersec/tornado-mixer"
+        },
+        {
+          "id": "iden3/circomlib",
+          "url": "https://github.com/iden3/circomlib"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "peppersec/tornado-mixer",
+          "paths": {
+            "contracts/": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "branch",
+                    "ref": "master",
+                    "commit": null,
+                    "immutable": false,
+                    "url": "https://github.com/peppersec/tornado-mixer/tree/master/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "cryptographic review",
+                  "coverage": "Cryptographic behavior and composition of the Solidity Merkle-tree, deposit, withdrawal, MiMC, and generated verifier implementation; not a general full-code audit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "cli.js": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "branch",
+                    "ref": "master",
+                    "commit": null,
+                    "immutable": false,
+                    "url": "https://github.com/peppersec/tornado-mixer/blob/master/cli.js"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "cryptographic review",
+                  "coverage": "Secret-generation RNG and protocol-transaction/proof-construction behavior only.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "iden3/circomlib",
+          "paths": {
+            "circuits/": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "branch",
+                    "ref": "master",
+                    "commit": null,
+                    "immutable": false,
+                    "url": "https://github.com/iden3/circomlib/tree/master/circuits"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "cryptographic review",
+                  "coverage": "Cryptographic properties and Tornado's use of circomlib hash primitives, especially Pedersen and MiMC; not a general audit of every circuit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/mimcsponge_gencontract.js": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "branch",
+                    "ref": "master",
+                    "commit": null,
+                    "immutable": false,
+                    "url": "https://github.com/iden3/circomlib/blob/master/src/mimcsponge_gencontract.js"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "cryptographic review",
+                  "coverage": "MiMC construction, security assumptions, and its use by Tornado; not a general JavaScript implementation audit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zeropool-tornado-pool-audit-2021-08-01",
+      "report_file": "Zeropool-Tornado.pool-audit.md",
+      "title": "Tornado pool audit",
+      "auditor": "Igor Gulamov (Zeropool)",
+      "report_date": "2021-08-01",
+      "repositories": [
+        {
+          "id": "tornadocash/tornado-pool",
+          "url": "https://github.com/tornadocash/tornado-pool"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "tornadocash/tornado-pool",
+          "paths": {
+            "circuits/": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a976b9b383d5b7110a1d513a21953d3c317377a2",
+                    "url": "https://github.com/tornadocash/tornado-pool/tree/a976b9b383d5b7110a1d513a21953d3c317377a2/circuits"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full zkSNARK circuits directory.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "75419e5cff407f3cf12541f1c9eb1caf8842ce10",
+                    "url": "https://github.com/tornadocash/tornado-pool/commit/75419e5cff407f3cf12541f1c9eb1caf8842ce10"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "Reported treeUpdater.circom readability fix only.",
+                  "follows": "a976b9b383d5b7110a1d513a21953d3c317377a2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9",
+                    "url": "https://github.com/tornadocash/tornado-pool/commit/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "First reported transaction.circom public-amount fix only.",
+                  "follows": "75419e5cff407f3cf12541f1c9eb1caf8842ce10",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "042be187d10d331024ab9fa371b8284c449fa77e",
+                    "url": "https://github.com/tornadocash/tornado-pool/commit/042be187d10d331024ab9fa371b8284c449fa77e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "Second reported transaction.circom public-amount fix only.",
+                  "follows": "f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dd5623629a77e9b0101e8310fc2b10568c129302",
+                    "url": "https://github.com/tornadocash/tornado-pool/commit/dd5623629a77e9b0101e8310fc2b10568c129302"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "Reported transaction.circom description-sign fix only.",
+                  "follows": "042be187d10d331024ab9fa371b8284c449fa77e",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
+                    "url": "https://github.com/tornadocash/tornado-pool/tree/9931fdebefa6de3a0e4f8884406f593b354d3ddf/circuits"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final reviewed OVM snapshot",
+                  "coverage": "Full zkSNARK circuits directory for the OVM implementation.",
+                  "follows": "dd5623629a77e9b0101e8310fc2b10568c129302",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b085ab398eaeefff98771f5dad893cb804d98e70",
+                    "url": "https://github.com/tornadocash/tornado-pool/tree/b085ab398eaeefff98771f5dad893cb804d98e70/circuits"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final reviewed standard snapshot",
+                  "coverage": "Full zkSNARK circuits directory for the standard implementation; this is a later sibling of the OVM snapshot, not its descendant.",
+                  "follows": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a976b9b383d5b7110a1d513a21953d3c317377a2",
+                    "url": "https://github.com/tornadocash/tornado-pool/tree/a976b9b383d5b7110a1d513a21953d3c317377a2/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full Solidity contracts directory.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "476668d250c8c421d6be14663b2f1126a01f1933",
+                    "url": "https://github.com/tornadocash/tornado-pool/commit/476668d250c8c421d6be14663b2f1126a01f1933"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "Reported TornadoPool.sol current-commitment-index fix only.",
+                  "follows": "a976b9b383d5b7110a1d513a21953d3c317377a2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "042be187d10d331024ab9fa371b8284c449fa77e",
+                    "url": "https://github.com/tornadocash/tornado-pool/commit/042be187d10d331024ab9fa371b8284c449fa77e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "Reported TornadoPool.sol refactor associated with the public-amount fix only.",
+                  "follows": "476668d250c8c421d6be14663b2f1126a01f1933",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
+                    "url": "https://github.com/tornadocash/tornado-pool/tree/9931fdebefa6de3a0e4f8884406f593b354d3ddf/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final reviewed OVM snapshot",
+                  "coverage": "Full Solidity contracts directory for the OVM implementation.",
+                  "follows": "042be187d10d331024ab9fa371b8284c449fa77e",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b085ab398eaeefff98771f5dad893cb804d98e70",
+                    "url": "https://github.com/tornadocash/tornado-pool/tree/b085ab398eaeefff98771f5dad893cb804d98e70/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final reviewed standard snapshot",
+                  "coverage": "Full Solidity contracts directory for the standard implementation; this is a later sibling of the OVM snapshot, not its descendant.",
+                  "follows": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

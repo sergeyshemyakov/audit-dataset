@@ -1,0 +1,863 @@
+{
+  "schema_version": "1.0.0",
+  "project": "uniswapv3",
+  "audit_summary": "../reports/audit-summary.json",
+  "sources": [
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/NoDelegateCall.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/NoDelegateCall.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/NoDelegateCall.sol",
+          "git_object": "daac1671a4c72a826ae7acda2acb0e879eb27be1",
+          "git_mode": "100644",
+          "sha256": "92f35609cfe9b07b5bbb3d90f084fcd419d2b790182959eeb078ef3f01c1f166"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/UniswapV3Factory.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/UniswapV3Factory.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UniswapV3Factory.sol",
+          "git_object": "23180b7552881a096ba2a79f2df23474d7ce0a58",
+          "git_mode": "100644",
+          "sha256": "389c22c89d40a0785fc09092e3773ce2ab7037a0dc478a4277fe5ce27c068c31"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/UniswapV3Pool.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/UniswapV3Pool.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UniswapV3Pool.sol",
+          "git_object": "8b73b231ad62e0454438d8dfee751054effc7311",
+          "git_mode": "100644",
+          "sha256": "55a5f9772c0b1649cdc7c7a72873021b6ce17f1d7eefc1ce370b154efee49f94"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/UniswapV3PoolDeployer.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/UniswapV3PoolDeployer.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UniswapV3PoolDeployer.sol",
+          "git_object": "b1fb3381997d085ef88fd04ba77bf01f151f2a6d",
+          "git_mode": "100644",
+          "sha256": "bdc901e54549aaab6170543b3a0908294b76763c776fd2b3f4f122113e779cd8"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/BitMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/BitMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/BitMath.sol",
+          "git_object": "31f2b156951301af87b461187aea132e757bd149",
+          "git_mode": "100644",
+          "sha256": "907ea6f73a051d44836a49d34ae1c3e55e431d434f5df252816c2c6620d76f15"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/FullMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/FullMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/FullMath.sol",
+          "git_object": "f907e250e8aa5504a99e625bb5aff9ca61530b72",
+          "git_mode": "100644",
+          "sha256": "9b0a3cea10c6c027616e011104de76d3d7b518168788577c5ba056ed14f6b958"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/LiquidityMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/LiquidityMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/LiquidityMath.sol",
+          "git_object": "fdd052a0cb471d30bfdbcb8973d98570029cfd34",
+          "git_mode": "100644",
+          "sha256": "780c92e7688abf4ffa41b53dc62b3d773cf5af5d972904a48e8e0f3113808123"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/LowGasSafeMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/LowGasSafeMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/LowGasSafeMath.sol",
+          "git_object": "092a067f397a8e1cbe86333fa0e68644ac4d4875",
+          "git_mode": "100644",
+          "sha256": "74d5db120ce62a2c25d113de0d12b2e442719bdac6034ecd040250a36c2df145"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/Oracle.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/Oracle.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/Oracle.sol",
+          "git_object": "6c8c152ab39fbf294833316d360680b56688462f",
+          "git_mode": "100644",
+          "sha256": "85ffd522cbbb7b6a8131b3d84e6e699d1314894994c5deef9c57232d8f1bbe29"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/Position.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/Position.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/Position.sol",
+          "git_object": "99cec4ae7239ed22c7b4496707094cdf193e5e61",
+          "git_mode": "100644",
+          "sha256": "ae5559dcbfdd3b48312840a36d303dfc38cba84e205ea319e97f189667c95e75"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SafeCast.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SafeCast.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SafeCast.sol",
+          "git_object": "24d640afd8331952a551f49034bc6c49889218f6",
+          "git_mode": "100644",
+          "sha256": "08f500458bc1b3c8beb348baa066490cf5c5d5c19719bfeb97d57ad696fb55eb"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SecondsOutside.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SecondsOutside.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SecondsOutside.sol",
+          "git_object": "69a037def232491c901858471221604f2ba74e92",
+          "git_mode": "100644",
+          "sha256": "879b6df888ba0b288fb7f49cd4e2cbef1fff1f26a894cee920afdbeed0732c1f"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SqrtPriceMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SqrtPriceMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SqrtPriceMath.sol",
+          "git_object": "dff037bede246a9a2a24c77ba5301dfc0fb5dac3",
+          "git_mode": "100644",
+          "sha256": "2b31166e2d1451343c2b74c87f94c888d9fe987aa34e5960e9140dd0fcf9ee0b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SwapMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SwapMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SwapMath.sol",
+          "git_object": "4ae6dca6a61af50629e5a535d30f497351804052",
+          "git_mode": "100644",
+          "sha256": "80deea5be22939c403131861d1d694d5583ba23b8363ec479aa20f1887395962"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/Tick.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/Tick.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/Tick.sol",
+          "git_object": "98de0e6b04689e623f27ee43493dc79199bd9adf",
+          "git_mode": "100644",
+          "sha256": "f1f1ffc008ec05c970f14f6b8b79cd1d8e2431f7cf857f7d3744c3456b650803"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/TickBitmap.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/TickBitmap.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/TickBitmap.sol",
+          "git_object": "e9dc67358ebae55a4fe439e7b0c894b565dd056a",
+          "git_mode": "100644",
+          "sha256": "1b80efbe568ba83bee69675dd881a9629ba2ccb62d0946ab2a122faa406cc9da"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/TickMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/TickMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/TickMath.sol",
+          "git_object": "b1c3ae9b4af71b031b35bc9169ea02b92b1247fb",
+          "git_mode": "100644",
+          "sha256": "597d28cef2101f7e3de3969a3a4abd8d9c4e04caf544d81d59271b51fae6e754"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/TransferHelper.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/TransferHelper.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/TransferHelper.sol",
+          "git_object": "25c2c7bac4cf88fa530efc6dd76be05fcfa83482",
+          "git_mode": "100644",
+          "sha256": "cea0f791a0fe23d7e6db1f2da1328fa62976e75bfa726ad4dc6f018c3fedca34"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/UnsafeMath.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/UnsafeMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UnsafeMath.sol",
+          "git_object": "34d6e4c7e2692d2edc02fa89862192e681bfb424",
+          "git_mode": "100644",
+          "sha256": "cbedc38bb8f45021221b9b9bca15aac1c94d7b9acdc437f5f7d89f1e17ee24bd"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/NoDelegateCall.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/NoDelegateCall.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/NoDelegateCall.sol",
+          "git_object": "daac1671a4c72a826ae7acda2acb0e879eb27be1",
+          "git_mode": "100644",
+          "sha256": "92f35609cfe9b07b5bbb3d90f084fcd419d2b790182959eeb078ef3f01c1f166"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/UniswapV3Factory.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/UniswapV3Factory.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UniswapV3Factory.sol",
+          "git_object": "23180b7552881a096ba2a79f2df23474d7ce0a58",
+          "git_mode": "100644",
+          "sha256": "389c22c89d40a0785fc09092e3773ce2ab7037a0dc478a4277fe5ce27c068c31"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/UniswapV3Pool.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/UniswapV3Pool.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UniswapV3Pool.sol",
+          "git_object": "afc842f19b4190c7b672c4e702ccdf18725d4b82",
+          "git_mode": "100644",
+          "sha256": "40fb32aec2f13e73aaae9ed53c6b6b8a258560fd6d02361b4019e7134fcc96f4"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/UniswapV3PoolDeployer.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/UniswapV3PoolDeployer.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UniswapV3PoolDeployer.sol",
+          "git_object": "b1fb3381997d085ef88fd04ba77bf01f151f2a6d",
+          "git_mode": "100644",
+          "sha256": "bdc901e54549aaab6170543b3a0908294b76763c776fd2b3f4f122113e779cd8"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/IERC20Minimal.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/IERC20Minimal.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IERC20Minimal.sol",
+          "git_object": "1780b40cf7775b7204759629211776d70fb62aa4",
+          "git_mode": "100644",
+          "sha256": "b2f9b9c8266b5331197c11e83d7ac490ebcc3deb7f362341082b73b0c62293be"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/IUniswapV3Factory.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/IUniswapV3Factory.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3Factory.sol",
+          "git_object": "ec7a698ab9144c1f2a978207903027d397460ba5",
+          "git_mode": "100644",
+          "sha256": "37118d671299bc51fc551c151ac0f51f1a558142bfa08c5a062bc4846d5558a3"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/IUniswapV3Pool.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/IUniswapV3Pool.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3Pool.sol",
+          "git_object": "38ee067ab63c3933fa25e5aca0136b01c9db0545",
+          "git_mode": "100644",
+          "sha256": "751bb4a45b243625f2935d9ed372c8f28bc8879df7dc2f67d076ee3aa9de28e0"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/IUniswapV3PoolDeployer.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/IUniswapV3PoolDeployer.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolDeployer.sol",
+          "git_object": "5b279d81c59afe6bcbeff00cf9cd8d0e2b288df3",
+          "git_mode": "100644",
+          "sha256": "304bc4a1ecda4986e7d2780b62442a0e3553a217e8e7dca9f19109b42fa988a6"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3FlashCallback.sol",
+          "git_object": "1656b3672c6b964ca005bca6cc9c31f4dc1415d7",
+          "git_mode": "100644",
+          "sha256": "4373034125ca792066a943056a09e3e1d3658bb1f27821da295a1ec6b6a527f1"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/callback/IUniswapV3MintCallback.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/callback/IUniswapV3MintCallback.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3MintCallback.sol",
+          "git_object": "45361c52c14eea2b3ac2fddc34176c4ed46aca2f",
+          "git_mode": "100644",
+          "sha256": "b8d84e05f9b6017e0c57d34a5ad1e412c5f33fcf8efc8940d46762d23e8adaa2"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3SwapCallback.sol",
+          "git_object": "5464243e6fd6626dcf9bda669e2a66da226d58b6",
+          "git_mode": "100644",
+          "sha256": "b74b4fbfc36bdd850ea75e619458824f8553cdc9d25168c76fb8e48560c1026b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolActions.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/pool/IUniswapV3PoolActions.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolActions.sol",
+          "git_object": "e1895988286d1e85dea503430c27b8a56437c7e2",
+          "git_mode": "100644",
+          "sha256": "baca5c6fab12f8a619c19271f342d398dfa5d913d1d82204d6befbc8d237a828"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolDerivedState.sol",
+          "git_object": "1a59de42c5d0983d397019c658cfc6bc55c538ad",
+          "git_mode": "100644",
+          "sha256": "3dee97b0e184db441ec05ffc3cc45c3296a1460cf8a73f483140cda5e0f2f18b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolEvents.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/pool/IUniswapV3PoolEvents.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolEvents.sol",
+          "git_object": "9c438f65115662ba493bb64799fea89a10f0efde",
+          "git_mode": "100644",
+          "sha256": "b3441aaec6efbb6230d3c94117ef5794aedf0a29101c66ded6804d93cad94106"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/pool/IUniswapV3PoolImmutables.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolImmutables.sol",
+          "git_object": "f7c87028768ab9490b4bc281ef0179d83a1e1252",
+          "git_mode": "100644",
+          "sha256": "a4cc134ec1c0e4e70867b269aeced1f859b08587f05c8f26aee96a4111ebb5b3"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolOwnerActions.sol",
+          "git_object": "f316ba46b5f646a84297390dedcfd4e4369afb9c",
+          "git_mode": "100644",
+          "sha256": "f85af32b6b7764f630e9bb944b698ebab1e3cb8c916b4615ce6bb008adb0af5c"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolState.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/interfaces/pool/IUniswapV3PoolState.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolState.sol",
+          "git_object": "17f7c073b8723ae77cefae864cfa88cc25376000",
+          "git_mode": "100644",
+          "sha256": "caf1fa96bba041217e1c4aba075b6684cd38dd843426c1ec033057adce045a05"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/BitMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/BitMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/BitMath.sol",
+          "git_object": "31f2b156951301af87b461187aea132e757bd149",
+          "git_mode": "100644",
+          "sha256": "907ea6f73a051d44836a49d34ae1c3e55e431d434f5df252816c2c6620d76f15"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/FixedPoint128.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/FixedPoint128.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/FixedPoint128.sol",
+          "git_object": "8aa1e5b61ce8db63b3205555cbba846c5fa5c2b0",
+          "git_mode": "100644",
+          "sha256": "3bab10561cf14f6ff55ea36d1260bef62fc9d25b2f31a7031782b49b7d680bc6"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/FixedPoint96.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/FixedPoint96.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/FixedPoint96.sol",
+          "git_object": "1138570bc167aaf339de5de829f134b49c5497f9",
+          "git_mode": "100644",
+          "sha256": "e9ef347af6c7e0f0a58f6fc81de3b83d23aa33785c3e1bf36d9d0642d81652e7"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/FullMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/FullMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/FullMath.sol",
+          "git_object": "f907e250e8aa5504a99e625bb5aff9ca61530b72",
+          "git_mode": "100644",
+          "sha256": "9b0a3cea10c6c027616e011104de76d3d7b518168788577c5ba056ed14f6b958"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/LiquidityMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/LiquidityMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/LiquidityMath.sol",
+          "git_object": "fdd052a0cb471d30bfdbcb8973d98570029cfd34",
+          "git_mode": "100644",
+          "sha256": "780c92e7688abf4ffa41b53dc62b3d773cf5af5d972904a48e8e0f3113808123"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/LowGasSafeMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/LowGasSafeMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/LowGasSafeMath.sol",
+          "git_object": "092a067f397a8e1cbe86333fa0e68644ac4d4875",
+          "git_mode": "100644",
+          "sha256": "74d5db120ce62a2c25d113de0d12b2e442719bdac6034ecd040250a36c2df145"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/Oracle.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/Oracle.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/Oracle.sol",
+          "git_object": "6c8c152ab39fbf294833316d360680b56688462f",
+          "git_mode": "100644",
+          "sha256": "85ffd522cbbb7b6a8131b3d84e6e699d1314894994c5deef9c57232d8f1bbe29"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/Position.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/Position.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/Position.sol",
+          "git_object": "31e0b82a55ba9666a44d59abc2be2938b883f01a",
+          "git_mode": "100644",
+          "sha256": "bc03dc23187e392dbcc5f05adcd304b9d18ec6405b7f1933fb2e2e8f9cb40e51"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SafeCast.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SafeCast.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SafeCast.sol",
+          "git_object": "24d640afd8331952a551f49034bc6c49889218f6",
+          "git_mode": "100644",
+          "sha256": "08f500458bc1b3c8beb348baa066490cf5c5d5c19719bfeb97d57ad696fb55eb"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SecondsOutside.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SecondsOutside.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SecondsOutside.sol",
+          "git_object": "69a037def232491c901858471221604f2ba74e92",
+          "git_mode": "100644",
+          "sha256": "879b6df888ba0b288fb7f49cd4e2cbef1fff1f26a894cee920afdbeed0732c1f"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SqrtPriceMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SqrtPriceMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SqrtPriceMath.sol",
+          "git_object": "dff037bede246a9a2a24c77ba5301dfc0fb5dac3",
+          "git_mode": "100644",
+          "sha256": "2b31166e2d1451343c2b74c87f94c888d9fe987aa34e5960e9140dd0fcf9ee0b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/SwapMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/SwapMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SwapMath.sol",
+          "git_object": "4ae6dca6a61af50629e5a535d30f497351804052",
+          "git_mode": "100644",
+          "sha256": "80deea5be22939c403131861d1d694d5583ba23b8363ec479aa20f1887395962"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/Tick.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/Tick.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/Tick.sol",
+          "git_object": "98de0e6b04689e623f27ee43493dc79199bd9adf",
+          "git_mode": "100644",
+          "sha256": "f1f1ffc008ec05c970f14f6b8b79cd1d8e2431f7cf857f7d3744c3456b650803"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/TickBitmap.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/TickBitmap.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/TickBitmap.sol",
+          "git_object": "e9dc67358ebae55a4fe439e7b0c894b565dd056a",
+          "git_mode": "100644",
+          "sha256": "1b80efbe568ba83bee69675dd881a9629ba2ccb62d0946ab2a122faa406cc9da"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/TickMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/TickMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/TickMath.sol",
+          "git_object": "b1c3ae9b4af71b031b35bc9169ea02b92b1247fb",
+          "git_mode": "100644",
+          "sha256": "597d28cef2101f7e3de3969a3a4abd8d9c4e04caf544d81d59271b51fae6e754"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/TransferHelper.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/TransferHelper.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/TransferHelper.sol",
+          "git_object": "25c2c7bac4cf88fa530efc6dd76be05fcfa83482",
+          "git_mode": "100644",
+          "sha256": "cea0f791a0fe23d7e6db1f2da1328fa62976e75bfa726ad4dc6f018c3fedca34"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-core",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-core",
+      "source_path": "contracts/libraries/UnsafeMath.sol",
+      "path_kind": "file",
+      "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-core/contracts/libraries/UnsafeMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UnsafeMath.sol",
+          "git_object": "34d6e4c7e2692d2edc02fa89862192e681bfb424",
+          "git_mode": "100644",
+          "sha256": "cbedc38bb8f45021221b9b9bca15aac1c94d7b9acdc437f5f7d89f1e17ee24bd"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-periphery",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-periphery",
+      "source_path": "contracts/SwapRouter.sol",
+      "path_kind": "file",
+      "commit": "2353765fe799b987ac5236971398fcb0be2bc5c0",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-periphery/contracts/SwapRouter.sol/2353765fe799b987ac5236971398fcb0be2bc5c0/SwapRouter.sol",
+          "git_object": "f61b6577cbf85eb1c90701feba4a192cfc86afd6",
+          "git_mode": "100644",
+          "sha256": "35e8971a2d43f6195813473f7bbe40ef8bf8a4f003b09d0451553d2b81f44315"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-periphery",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-periphery",
+      "source_path": "contracts/NonfungiblePositionManager.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-periphery/contracts/NonfungiblePositionManager.sol/8ad273f45cd42e04b5f8f15b6f4da57827122273/NonfungiblePositionManager.sol",
+          "git_object": "9d1e2a51022efad52dcc33f7724930cd91d2dfcd",
+          "git_mode": "100644",
+          "sha256": "4fef13b7ae1eb9d1e9f166ebbad345d1f5be99bc72fd632106c328f3b0e87e30"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-periphery",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-periphery",
+      "source_path": "contracts/SwapRouter.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-periphery/contracts/SwapRouter.sol/8ad273f45cd42e04b5f8f15b6f4da57827122273/SwapRouter.sol",
+          "git_object": "d60adeef48c5bcf1500a6c7496e485a6c44d77ec",
+          "git_mode": "100644",
+          "sha256": "2f893302043ca27aa3ea9031aa4e31ea8ab0cf8c79fd012ceff07edc6b0ba103"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/uniswap-v3-periphery",
+      "repository_url": "https://github.com/Uniswap/uniswap-v3-periphery",
+      "source_path": "contracts/NonfungiblePositionManager.sol",
+      "path_kind": "file",
+      "commit": "987842552ede76d428e60116672fb0ff67fe551e",
+      "files": [
+        {
+          "file": "Uniswap/uniswap-v3-periphery/contracts/NonfungiblePositionManager.sol/987842552ede76d428e60116672fb0ff67fe551e/NonfungiblePositionManager.sol",
+          "git_object": "907688ac9cde0cb04fc0277cd722a4b1ab518c97",
+          "git_mode": "100644",
+          "sha256": "074316933cf662d393f7dde750c70abfbdb3656725e9f6d5fbd9130d4bdab241"
+        }
+      ]
+    }
+  ],
+  "skipped": []
+}

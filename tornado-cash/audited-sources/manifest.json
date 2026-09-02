@@ -1,0 +1,785 @@
+{
+  "schema_version": "1.0.0",
+  "project": "tornado-cash",
+  "audit_summary": "../reports/audit-summary.json",
+  "sources": [
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "path_kind": "file",
+      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/0484408e82e8f1eebd081186cb11189aa0e9b57f/merkleTree.circom",
+          "git_object": "f7ffbb6758e3f607f7f580a1c7033c7dc2b7be7a",
+          "git_mode": "100644",
+          "sha256": "8b1222c24aa6bf8b0f59e9e1de38775b3b4d4afbccfcc3c3d073a898719da739"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "path_kind": "file",
+      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/withdraw.circom/0484408e82e8f1eebd081186cb11189aa0e9b57f/withdraw.circom",
+          "git_object": "cc1448de8493ef111a6d81842fde79e67641d27a",
+          "git_mode": "100644",
+          "sha256": "23af8497024f168941bc5d7a076d2bfbc7d5f2d4959e906f41dc01e07c8ef283"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/ERC20Mixer.sol",
+      "path_kind": "file",
+      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/ERC20Mixer.sol",
+          "git_object": "5941f0e96361a6f42968250b71236a952affef9c",
+          "git_mode": "100644",
+          "sha256": "d6a46b9bed6489c2e9c887d2cdfaa9d567de28724a322da5c2c526a375429de6"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/ETHMixer.sol",
+      "path_kind": "file",
+      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/ETHMixer.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/ETHMixer.sol",
+          "git_object": "44ebc603e5f8f6528ea1b7c5044f1d3afc86b78b",
+          "git_mode": "100644",
+          "sha256": "c8ec7a7a7b7563e0e0a41dd0b4d4c227c495caf3807410115987752b31a35679"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/MerkleTreeWithHistory.sol",
+      "path_kind": "file",
+      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/MerkleTreeWithHistory.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/MerkleTreeWithHistory.sol",
+          "git_object": "9d2f18939932f368c022af1c1fc5a66925b19a73",
+          "git_mode": "100644",
+          "sha256": "295959a544447e3fbe82d404c3ca6f59b830bcf88a1190ab8a60b936fb50224f"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/Mixer.sol",
+      "path_kind": "file",
+      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/Mixer.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/Mixer.sol",
+          "git_object": "4a5b9efbb78ccea4028d6860fc56855ca0e12823",
+          "git_mode": "100644",
+          "sha256": "a01bcaa659feff00606c37495b048a97f5a13fde951c37a1a081f554683b7706"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "path_kind": "file",
+      "commit": "07168f9816a6a78767f53aab25624bd1d739a66d",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/07168f9816a6a78767f53aab25624bd1d739a66d/merkleTree.circom",
+          "git_object": "a8b232832f638564caf310491131046b3d757405",
+          "git_mode": "100644",
+          "sha256": "ee7d927bc391e108dd2fbb035d485408670f3d929d1feddbd04771b3eae66111"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "path_kind": "file",
+      "commit": "7193655e4940476269426b80da40bc9a099598e4",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/7193655e4940476269426b80da40bc9a099598e4/merkleTree.circom",
+          "git_object": "0d8560583040f2d3fd960cd820b88fc4693146f5",
+          "git_mode": "100644",
+          "sha256": "f446e879242f399dc1c4c124f79926a07a7fc76d81e56d1209040f7103951179"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "path_kind": "file",
+      "commit": "7193655e4940476269426b80da40bc9a099598e4",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/withdraw.circom/7193655e4940476269426b80da40bc9a099598e4/withdraw.circom",
+          "git_object": "e060f4f250e11c75bde14bea888ea9631bf865ea",
+          "git_mode": "100644",
+          "sha256": "8613960c963a65f624474c3715608558c6b82381df2b12594159d97349650de9"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/ERC20Mixer.sol",
+      "path_kind": "file",
+      "commit": "83c9ba72969ff3dfd6b66acec5134666f8fdf283",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/83c9ba72969ff3dfd6b66acec5134666f8fdf283/ERC20Mixer.sol",
+          "git_object": "3dd1cd5672df66681c8f0c16c9f4141a3b37cb8b",
+          "git_mode": "100644",
+          "sha256": "3fa8522225c8a148ec0a68c295f8f043b20bc77fb0a05d30087d9994794b39b9"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "path_kind": "file",
+      "commit": "9efab84e65d923410ce4418794a5ca2ddcd74f37",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/withdraw.circom/9efab84e65d923410ce4418794a5ca2ddcd74f37/withdraw.circom",
+          "git_object": "36a467418a3ad744b76803034b7365e3d1eaccd5",
+          "git_mode": "100644",
+          "sha256": "65174751f3f397a5adc16e34f5f72c3911909046e94741ab4f1e7c7922e48672"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/ERC20Mixer.sol",
+      "path_kind": "file",
+      "commit": "c00e5532994f03f8bc61f147259bc5d353a0d2c9",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/c00e5532994f03f8bc61f147259bc5d353a0d2c9/ERC20Mixer.sol",
+          "git_object": "2e99231565e4e9ccb86c97ae00b0bb683c727287",
+          "git_mode": "100644",
+          "sha256": "432c07bbbd61a234e5ad87280edf8c7331db837d993dff5b06d5c0bea102687a"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/ERC20Mixer.sol",
+      "path_kind": "file",
+      "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/ERC20Mixer.sol",
+          "git_object": "795d1c901e2bee2b6da5bd77a59eb5ec35b2fa2e",
+          "git_mode": "100644",
+          "sha256": "d892a7e95e4d905c3ff7b0ded5a81698dd19c57a3f9b156a1416b8a8dc976eb9"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/ETHMixer.sol",
+      "path_kind": "file",
+      "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/ETHMixer.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/ETHMixer.sol",
+          "git_object": "2996b5e4e3f93958dae26a9c2a4dfb44adfca790",
+          "git_mode": "100644",
+          "sha256": "3d7dad083e377c9cde2ad2b67926a320bb6492468dca3d27d01234f9d373fb02"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/MerkleTreeWithHistory.sol",
+      "path_kind": "file",
+      "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/MerkleTreeWithHistory.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/MerkleTreeWithHistory.sol",
+          "git_object": "f264cd023384be95cd273cc5ab62b99036734656",
+          "git_mode": "100644",
+          "sha256": "d6030aa205bc68ce77d11301d8fa8a5e3b41f62251c8d7054db0225537b33e5d"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "contracts/Mixer.sol",
+      "path_kind": "file",
+      "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/contracts/Mixer.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/Mixer.sol",
+          "git_object": "a17f827946148bb3254f1ebe97bd26d79aa2e3ed",
+          "git_mode": "100644",
+          "sha256": "3f19961422b0af0c1df63e85b04fad0cbefee4aee9f8c5e1b7fb7059ccad9b25"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "path_kind": "file",
+      "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371/merkleTree.circom",
+          "git_object": "bfd6016e36a4c4394e0898c023aae6cd8667598d",
+          "git_mode": "100644",
+          "sha256": "53d6eeefe414d11f7322f5345b6e36e700d6e588124f200760df253bd6b8011e"
+        }
+      ]
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "repository_url": "https://github.com/peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "path_kind": "file",
+      "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+      "files": [
+        {
+          "file": "peppersec/tornado-mixer/circuits/withdraw.circom/f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371/withdraw.circom",
+          "git_object": "a4c4848df7fc525f61fe294c8fb78e53f81f13dc",
+          "git_mode": "100644",
+          "sha256": "9bb04a018bc2ee96580b15a6e7ff3da40f46884de8b1b2b41e2ee38bb33c2047"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "circuits",
+      "path_kind": "directory_recursive",
+      "commit": "042be187d10d331024ab9fa371b8284c449fa77e",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/merkleTree.circom",
+          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "git_mode": "100644",
+          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/transaction.circom",
+          "git_object": "20095900fae174fbb8459cfd26bcf08915303dee",
+          "git_mode": "100644",
+          "sha256": "2f20b0ce526d54d9d60ecb1ce85d9699444f09d8a826fa39590b9360ff0ed816"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/transaction16.circom",
+          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "git_mode": "100644",
+          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/transaction2.circom",
+          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "git_mode": "100644",
+          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/treeUpdater.circom",
+          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
+          "git_mode": "100644",
+          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/utils.circom",
+          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "git_mode": "100644",
+          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "contracts",
+      "path_kind": "directory_recursive",
+      "commit": "042be187d10d331024ab9fa371b8284c449fa77e",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/042be187d10d331024ab9fa371b8284c449fa77e/TornadoPool.sol",
+          "git_object": "9f7bf8ca361429b600d358ab78dd6a477a8fad9a",
+          "git_mode": "100644",
+          "sha256": "51be09a9bbae1752adacd23e1362a1ad5a527e9994979e7ee35301c4d473d832"
+        }
+      ],
+      "omitted_files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/042be187d10d331024ab9fa371b8284c449fa77e/Verifier16.sol",
+          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit 042be187d10d331024ab9fa371b8284c449fa77e"
+        },
+        {
+          "file": "tornadocash/tornado-pool/contracts/042be187d10d331024ab9fa371b8284c449fa77e/Verifier2.sol",
+          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit 042be187d10d331024ab9fa371b8284c449fa77e"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "contracts",
+      "path_kind": "directory_recursive",
+      "commit": "476668d250c8c421d6be14663b2f1126a01f1933",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/476668d250c8c421d6be14663b2f1126a01f1933/TornadoPool.sol",
+          "git_object": "1f9f16405c783cec5430de9c2f4ce26337c7d003",
+          "git_mode": "100644",
+          "sha256": "0105819ce90c35dfcb5f4d03c8ec76348b98008e687c80ba8929d15dd754fd25"
+        }
+      ],
+      "omitted_files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/476668d250c8c421d6be14663b2f1126a01f1933/Verifier16.sol",
+          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit 476668d250c8c421d6be14663b2f1126a01f1933"
+        },
+        {
+          "file": "tornadocash/tornado-pool/contracts/476668d250c8c421d6be14663b2f1126a01f1933/Verifier2.sol",
+          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit 476668d250c8c421d6be14663b2f1126a01f1933"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "circuits",
+      "path_kind": "directory_recursive",
+      "commit": "75419e5cff407f3cf12541f1c9eb1caf8842ce10",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/merkleTree.circom",
+          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "git_mode": "100644",
+          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/transaction.circom",
+          "git_object": "45b59c6c4406375894d20ed4f81e34ab827df807",
+          "git_mode": "100644",
+          "sha256": "7ae19abaf3fc32929b141d67d4d1e9dfe0969d610a792154282c5e0898d74494"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/transaction16.circom",
+          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "git_mode": "100644",
+          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/transaction2.circom",
+          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "git_mode": "100644",
+          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/treeUpdater.circom",
+          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
+          "git_mode": "100644",
+          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/utils.circom",
+          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "git_mode": "100644",
+          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "circuits",
+      "path_kind": "directory_recursive",
+      "commit": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/merkleTree.circom",
+          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "git_mode": "100644",
+          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/transaction.circom",
+          "git_object": "db4499c176aed4d0c89b0e1c36e035a06d31f5b1",
+          "git_mode": "100644",
+          "sha256": "ad46fcc5d41695ce9ac7a474b8b5d1049092cb45d807c92bd3438b6225a200d4"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/transaction16.circom",
+          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "git_mode": "100644",
+          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/transaction2.circom",
+          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "git_mode": "100644",
+          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/treeUpdater.circom",
+          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
+          "git_mode": "100644",
+          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/utils.circom",
+          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "git_mode": "100644",
+          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "contracts",
+      "path_kind": "directory_recursive",
+      "commit": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/CrossChainUpgradeableProxy.sol",
+          "git_object": "07c8cc2f66b7031f6f8c680f5a678667128c66f6",
+          "git_mode": "100644",
+          "sha256": "3e58371718986da7a516a161bf2f117beb3fac50b3e6b969d40cb00d5f7c3da2"
+        },
+        {
+          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/Mocks/MockOVM_CrossDomainMessenger.sol",
+          "git_object": "f8ec03cf06a4b0a2f7916bc764d22d026f907d2c",
+          "git_mode": "100644",
+          "sha256": "ae8e17c70169c1790d0eba9a0bf9fc57796352b232033b13af059abe4c96bfe1"
+        },
+        {
+          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/TornadoPool.sol",
+          "git_object": "98946f4d889c6c5ac90a171a0a082c52182ed12e",
+          "git_mode": "100644",
+          "sha256": "9875211ae7646942997316c31bf103197870e4e2e45abc7758bfbec94cdae990"
+        }
+      ],
+      "omitted_files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/Verifier16.sol",
+          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit 9931fdebefa6de3a0e4f8884406f593b354d3ddf"
+        },
+        {
+          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/Verifier2.sol",
+          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit 9931fdebefa6de3a0e4f8884406f593b354d3ddf"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "circuits",
+      "path_kind": "directory_recursive",
+      "commit": "a976b9b383d5b7110a1d513a21953d3c317377a2",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/merkleTree.circom",
+          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "git_mode": "100644",
+          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/transaction.circom",
+          "git_object": "29b9486c8b5b90792879cd56989638d32fbd732c",
+          "git_mode": "100644",
+          "sha256": "bb71a970b818abd678a394507af2eaa3a3ad12ab4857c982bc1fa56512541206"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/transaction16.circom",
+          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "git_mode": "100644",
+          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/transaction2.circom",
+          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "git_mode": "100644",
+          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/treeUpdater.circom",
+          "git_object": "e09a0b28f5c6cb36a15fb89be92b4bb3e995cc59",
+          "git_mode": "100644",
+          "sha256": "c719af43f8be1c64dbfdf36a0c74edeca865a7d262388ac9a7fb4fb989f9c889"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/utils.circom",
+          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "git_mode": "100644",
+          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "contracts",
+      "path_kind": "directory_recursive",
+      "commit": "a976b9b383d5b7110a1d513a21953d3c317377a2",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/a976b9b383d5b7110a1d513a21953d3c317377a2/TornadoPool.sol",
+          "git_object": "09681030ab917cd3d2fb0ffc9444ce55a156ef65",
+          "git_mode": "100644",
+          "sha256": "6d6d55209bb3a91514dcea745678f0ede16422760cd5d030d214ec7916d9b129"
+        }
+      ],
+      "omitted_files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/a976b9b383d5b7110a1d513a21953d3c317377a2/Verifier16.sol",
+          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit a976b9b383d5b7110a1d513a21953d3c317377a2"
+        },
+        {
+          "file": "tornadocash/tornado-pool/contracts/a976b9b383d5b7110a1d513a21953d3c317377a2/Verifier2.sol",
+          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit a976b9b383d5b7110a1d513a21953d3c317377a2"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "circuits",
+      "path_kind": "directory_recursive",
+      "commit": "b085ab398eaeefff98771f5dad893cb804d98e70",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/merkleProof.circom",
+          "git_object": "5c31b83e97e038f13dcd71e4e10cf5230efcb310",
+          "git_mode": "100644",
+          "sha256": "24ce881ab2276ada2afb4bc4f5cee61c2cce6a38f3affeaf61d78f09b8dfb87f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/merkleTree.circom",
+          "git_object": "fafb746dfbced15b53ba928cf9e4b4f7efa5004d",
+          "git_mode": "100644",
+          "sha256": "681b0891e6d04242607f7643b998d8041ebcabf0b17d465b2c237cde18d576f3"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/transaction.circom",
+          "git_object": "24f7c80d1d0b60a940c8ff2850b31620ea7dccd5",
+          "git_mode": "100644",
+          "sha256": "f4f3a4020709dbb5ed67bc56c758af2a95236bebb8f0cf6b770025a9d56f3f59"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/transaction16.circom",
+          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "git_mode": "100644",
+          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/transaction2.circom",
+          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "git_mode": "100644",
+          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/treeUpdater.circom",
+          "git_object": "63de03190cdc425bd76d6eccfee6a60a907038e7",
+          "git_mode": "100644",
+          "sha256": "3d44984a2c5cc9c6b2300dbd26397b92caf91d3eacb6bd69dd134259a41f9fa9"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/utils.circom",
+          "git_object": "a32ccfb611dc68e2720f8f638c118a98fcbe5866",
+          "git_mode": "100644",
+          "sha256": "24bfe439758e864037cd28ecde1c4280873b0d9e560b1f5bbc06070e954f2486"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "contracts",
+      "path_kind": "directory_recursive",
+      "commit": "b085ab398eaeefff98771f5dad893cb804d98e70",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/b085ab398eaeefff98771f5dad893cb804d98e70/TornadoPool.sol",
+          "git_object": "7377ccfac7c13071d11acdbd7728d0f702dcce4c",
+          "git_mode": "100644",
+          "sha256": "a77e2253021c7cf0e2eb26b960a7f05ce852e5c72c80c3a8ea9579b87d95fa35"
+        }
+      ],
+      "omitted_files": [
+        {
+          "file": "tornadocash/tornado-pool/contracts/b085ab398eaeefff98771f5dad893cb804d98e70/Verifier16.sol",
+          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit b085ab398eaeefff98771f5dad893cb804d98e70"
+        },
+        {
+          "file": "tornadocash/tornado-pool/contracts/b085ab398eaeefff98771f5dad893cb804d98e70/Verifier2.sol",
+          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit b085ab398eaeefff98771f5dad893cb804d98e70"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "circuits",
+      "path_kind": "directory_recursive",
+      "commit": "dd5623629a77e9b0101e8310fc2b10568c129302",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/merkleTree.circom",
+          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "git_mode": "100644",
+          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/transaction.circom",
+          "git_object": "2b16caacb73dd8608563ceb8d49ddb74d40f658f",
+          "git_mode": "100644",
+          "sha256": "612bdc5b850968ccb39a11edc1fc3592da09561c6ea00563690e81b8d64c3af9"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/transaction16.circom",
+          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "git_mode": "100644",
+          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/transaction2.circom",
+          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "git_mode": "100644",
+          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/treeUpdater.circom",
+          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
+          "git_mode": "100644",
+          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/utils.circom",
+          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "git_mode": "100644",
+          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-pool",
+      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "source_path": "circuits",
+      "path_kind": "directory_recursive",
+      "commit": "f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9",
+      "files": [
+        {
+          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/merkleTree.circom",
+          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "git_mode": "100644",
+          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/transaction.circom",
+          "git_object": "bbd47d0b65299c5fafaa263318605d2ebe7b262d",
+          "git_mode": "100644",
+          "sha256": "77a9fd669ffaeaee7e8a04c8e4d6f343ce8f5d972f2863849d124dafc9f86618"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/transaction16.circom",
+          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "git_mode": "100644",
+          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/transaction2.circom",
+          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "git_mode": "100644",
+          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/treeUpdater.circom",
+          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
+          "git_mode": "100644",
+          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
+        },
+        {
+          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/utils.circom",
+          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "git_mode": "100644",
+          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "repository": "iden3/circomlib",
+      "source_path": "circuits",
+      "revision_kind": "branch",
+      "revision": "master",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "iden3/circomlib",
+      "source_path": "src/mimcsponge_gencontract.js",
+      "revision_kind": "branch",
+      "revision": "master",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "cli.js",
+      "revision_kind": "branch",
+      "revision": "master",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "contracts",
+      "revision_kind": "branch",
+      "revision": "master",
+      "reason": "revision is not a commit"
+    }
+  ]
+}
