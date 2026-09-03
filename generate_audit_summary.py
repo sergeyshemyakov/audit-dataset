@@ -7,6 +7,7 @@ import argparse
 import heapq
 import html
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -65,8 +66,18 @@ def read_summary(path: Path) -> dict[str, Any]:
     return value
 
 
-def run_git(repository: Path, *args: str) -> str:
-    command = ["git", "-C", str(repository), *args]
+GIT_ENVIRONMENT = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
+
+
+class GitCommandError(SummaryError):
+    """A Git command exited unsuccessfully."""
+
+
+def run_git(repository: Path | None, *args: str) -> str:
+    command = ["git"]
+    if repository is not None:
+        command.extend(["-C", str(repository)])
+    command.extend(args)
     try:
         completed = subprocess.run(
             command,
@@ -74,14 +85,72 @@ def run_git(repository: Path, *args: str) -> str:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            env=GIT_ENVIRONMENT,
         )
     except FileNotFoundError as error:
         raise SummaryError("git executable was not found") from error
     except subprocess.CalledProcessError as error:
-        raise SummaryError(
+        raise GitCommandError(
             f"{' '.join(command)} failed: {error.stderr.strip()}"
         ) from error
     return completed.stdout.strip()
+
+
+def warn(message: str) -> None:
+    print(f"warning: {message}", file=sys.stderr)
+
+
+def repository_reachable(url: str) -> bool:
+    try:
+        run_git(None, "ls-remote", "--exit-code", url, "HEAD")
+    except GitCommandError:
+        return False
+    return True
+
+
+def fetch_commits(repository: Path, commits: list[str]) -> list[str]:
+    """Fetch commit objects only, returning the commits that could not be fetched.
+
+    ``--filter=tree:0`` restricts the download to the commit objects themselves,
+    which is all that is needed to read committer dates. Every commit of a
+    repository is requested in a single fetch; only if that fails are commits
+    fetched one at a time so the missing ones can be identified.
+    """
+    fetch_args = ["fetch", "--quiet", "--no-tags", "--depth=1", "--filter=tree:0"]
+    try:
+        run_git(repository, *fetch_args, "origin", *commits)
+    except GitCommandError:
+        pass
+    else:
+        return []
+    missing: list[str] = []
+    for commit in commits:
+        try:
+            run_git(repository, *fetch_args, "origin", commit)
+        except GitCommandError as error:
+            warn(str(error))
+            missing.append(commit)
+    return missing
+
+
+def committer_dates(repository: Path, commits: list[str]) -> dict[str, date]:
+    output = run_git(
+        repository,
+        "log",
+        "--no-walk=unsorted",
+        "--format=%H %cI",
+        *commits,
+    )
+    result: dict[str, date] = {}
+    for line in output.splitlines():
+        commit, _, committed_at = line.partition(" ")
+        try:
+            result[commit] = date.fromisoformat(committed_at[:10])
+        except ValueError as error:
+            raise SummaryError(
+                f"invalid commit date for {commit}: {committed_at!r}"
+            ) from error
+    return result
 
 
 def revision_commits(revision: dict[str, Any]) -> list[str]:
@@ -97,7 +166,15 @@ def revision_commits(revision: dict[str, Any]) -> list[str]:
     return []
 
 
-def resolve_commit_dates(summary: dict[str, Any]) -> dict[CommitDateKey, date]:
+def resolve_commit_dates(
+    summary: dict[str, Any],
+) -> tuple[dict[CommitDateKey, date], dict[str, str]]:
+    """Resolve committer dates for every referenced commit.
+
+    Returns the dates and, for repositories whose dates could not be resolved,
+    a mapping from repository id to the reason. Unreachable repositories (for
+    example private ones) are skipped with a warning instead of aborting.
+    """
     repositories: dict[str, tuple[str, set[str]]] = {}
     for report in summary["reports"]:
         report_repositories = {
@@ -117,6 +194,7 @@ def resolve_commit_dates(summary: dict[str, Any]) -> dict[CommitDateKey, date]:
                     commits.update(revision_commits(version["revision"]))
 
     result: dict[CommitDateKey, date] = {}
+    unresolved: dict[str, str] = {}
     with tempfile.TemporaryDirectory(prefix="audit-summary-dates-") as temporary:
         temporary_root = Path(temporary)
         for index, (repository_id, (url, commits)) in enumerate(repositories.items()):
@@ -127,45 +205,38 @@ def resolve_commit_dates(summary: dict[str, Any]) -> dict[CommitDateKey, date]:
                 raise SummaryError(
                     f"repository {repository_id!r} mixes Git object formats"
                 )
+            if not repository_reachable(url):
+                reason = f"repository {url} is not reachable"
+                warn(f"{reason}; commit dates for {repository_id!r} will be omitted")
+                unresolved[repository_id] = reason
+                continue
             repository = temporary_root / f"repository-{index}.git"
-            init_args = ["git", "init", "--bare", "--quiet"]
+            init_args = ["init", "--bare", "--quiet"]
             if object_id_lengths == {64}:
                 init_args.append("--object-format=sha256")
             init_args.append(str(repository))
             try:
-                subprocess.run(
-                    init_args,
-                    check=True,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    text=True,
-                )
-            except (FileNotFoundError, subprocess.CalledProcessError) as error:
+                run_git(None, *init_args)
+            except SummaryError as error:
                 raise SummaryError(f"could not initialize Git repository: {error}") from error
             run_git(repository, "remote", "add", "origin", url)
-            for commit in sorted(commits):
-                run_git(
-                    repository,
-                    "fetch",
-                    "--quiet",
-                    "--no-tags",
-                    "--depth=1",
-                    "origin",
-                    commit,
+            ordered = sorted(commits)
+            missing = set(fetch_commits(repository, ordered))
+            fetched = [commit for commit in ordered if commit not in missing]
+            if missing:
+                unresolved[repository_id] = (
+                    f"{len(missing)} commit(s) could not be fetched from {url}"
                 )
-                committed_at = run_git(
-                    repository, "show", "--no-patch", "--format=%cI", commit
-                )
-                try:
-                    result[(repository_id, commit)] = date.fromisoformat(
-                        committed_at[:10]
-                    )
-                except ValueError as error:
+            if not fetched:
+                continue
+            dates = committer_dates(repository, fetched)
+            for commit in fetched:
+                if commit not in dates:
                     raise SummaryError(
-                        f"invalid commit date for {repository_id}@{commit}: "
-                        f"{committed_at!r}"
-                    ) from error
-    return result
+                        f"no commit date returned for {repository_id}@{commit}"
+                    )
+                result[(repository_id, commit)] = dates[commit]
+    return result, unresolved
 
 
 def revision_key(revision: dict[str, Any]) -> RevisionKey:
@@ -233,9 +304,13 @@ def revision_date(
     commit_dates: dict[CommitDateKey, date],
 ) -> str:
     commits = revision_commits(revision)
-    if not commits:
+    dates = [
+        commit_dates[(repository_id, commit)]
+        for commit in commits
+        if (repository_id, commit) in commit_dates
+    ]
+    if not dates:
         return "—"
-    dates = [commit_dates[(repository_id, commit)] for commit in commits]
     if len(dates) == 1 or dates[0] == dates[-1]:
         return human_date(dates[0])
     return f"{human_date(dates[0])} – {human_date(dates[-1])}"
@@ -306,6 +381,7 @@ def render_repository(
     repository: dict[str, Any],
     scopes: list[dict[str, Any]],
     commit_dates: dict[CommitDateKey, date],
+    unresolved: dict[str, str],
 ) -> list[str]:
     repository_id = repository.get("id")
     if not isinstance(repository_id, str) or not repository_id:
@@ -347,6 +423,15 @@ def render_repository(
     lines = [
         f"### Repository: {link(repository_id, repository.get('url'))}",
         "",
+    ]
+    if repository_id in unresolved:
+        lines.extend(
+            [
+                f"_Commit dates unavailable: {html.escape(unresolved[repository_id])}._",
+                "",
+            ]
+        )
+    lines += [
         "| Revision | Commit date | Audited files or directories |",
         "| --- | --- | --- |",
     ]
@@ -364,7 +449,7 @@ def render_repository(
 
 
 def render_summary(summary: dict[str, Any]) -> str:
-    commit_dates = resolve_commit_dates(summary)
+    commit_dates, unresolved = resolve_commit_dates(summary)
     project = summary.get("project")
     title = f"Audit source summary: {project}" if project else "Audit source summary"
     lines = [
@@ -422,6 +507,7 @@ def render_summary(summary: dict[str, Any]) -> str:
                     repository,
                     scopes_by_repository.get(repository.get("id"), []),
                     commit_dates,
+                    unresolved,
                 )
             )
 

@@ -1,0 +1,32 @@
+import type { InitialAccountData } from '@aztec/accounts/testing';
+import { Fr } from '@aztec/aztec.js/fields';
+import { getSponsoredFPCAddress } from '@aztec/cli/cli-utils';
+import { getVKTreeRoot } from '@aztec/noir-protocol-circuits-types/vk-tree';
+import { protocolContractsHash } from '@aztec/protocol-contracts';
+import { getGenesisValues } from '@aztec/world-state/testing';
+
+/**
+ * This test suit makes sure that the code in the monorepo is still compatible with the latest version of testnet
+ * Only update these values after a governance update that changes the protocol is enacted
+ */
+describe('Testnet compatibility', () => {
+  it('has expected VK tree root', () => {
+    const expectedRoots = [Fr.fromHexString('0x1dd2644a17d1ddd8831287a78c5a1033b7ae35cdf2a3db833608856c062fc2ba')];
+    expect(expectedRoots).toContainEqual(getVKTreeRoot());
+  });
+  it('has expected Protocol Contracts hash', () => {
+    expect(protocolContractsHash).toEqual(
+      Fr.fromHexString('0x2672340d9a0107a7b81e6d10d25b854debe613f3272e8738e8df0ca2ff297141'),
+    );
+  });
+  it('has expected Genesis tree roots', async () => {
+    const initialAccounts: InitialAccountData[] = [];
+    const sponsoredFPCAddress = await getSponsoredFPCAddress();
+    const initialFundedAccounts = initialAccounts.map(a => a.address).concat(sponsoredFPCAddress);
+    const { genesisArchiveRoot } = await getGenesisValues(initialFundedAccounts);
+
+    expect(genesisArchiveRoot).toEqual(
+      Fr.fromHexString('0x2727683df35594b1f073a681532520056ca8a775398c8b5a94574c67ef1ce6de'),
+    );
+  });
+});

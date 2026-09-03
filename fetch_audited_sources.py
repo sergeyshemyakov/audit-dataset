@@ -214,8 +214,18 @@ def collect_sources(
     return sorted(sources), sorted(skipped)
 
 
-def run_git(repository: Path, *args: str, text: bool = True) -> str | bytes:
-    command = ["git", "-C", os.fspath(repository), *args]
+GIT_ENVIRONMENT = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
+
+
+class GitCommandError(FetchError):
+    """A Git command exited unsuccessfully."""
+
+
+def run_git(repository: Path | None, *args: str, text: bool = True) -> str | bytes:
+    command = ["git"]
+    if repository is not None:
+        command.extend(["-C", os.fspath(repository)])
+    command.extend(args)
     try:
         completed = subprocess.run(
             command,
@@ -223,6 +233,7 @@ def run_git(repository: Path, *args: str, text: bool = True) -> str | bytes:
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=text,
+            env=GIT_ENVIRONMENT,
         )
     except FileNotFoundError as error:
         raise FetchError("git executable was not found") from error
@@ -232,32 +243,75 @@ def run_git(repository: Path, *args: str, text: bool = True) -> str | bytes:
             if isinstance(error.stderr, str)
             else error.stderr.decode(errors="replace").strip()
         )
-        raise FetchError(f"{' '.join(command)} failed: {stderr}") from error
+        raise GitCommandError(f"{' '.join(command)} failed: {stderr}") from error
     return completed.stdout
 
 
+def warn(message: str) -> None:
+    print(f"warning: {message}", file=sys.stderr)
+
+
+def repository_reachable(url: str) -> bool:
+    try:
+        run_git(None, "ls-remote", "--exit-code", url, "HEAD")
+    except GitCommandError:
+        return False
+    return True
+
+
 def initialize_repository(directory: Path, url: str, object_format: str) -> None:
-    init_args = ["git", "init", "--bare", "--quiet"]
+    init_args = ["init", "--bare", "--quiet"]
     if object_format == "sha256":
         init_args.append("--object-format=sha256")
     init_args.append(os.fspath(directory))
-    subprocess.run(
-        init_args,
-        check=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
+    run_git(None, *init_args)
     run_git(directory, "remote", "add", "origin", url)
 
 
-def fetch_exact_commit(repository: Path, commit: str) -> None:
-    run_git(repository, "fetch", "--quiet", "--no-tags", "--depth=1", "origin", commit)
-    resolved = run_git(repository, "rev-parse", "--verify", "FETCH_HEAD^{commit}")
+def verify_exact_commit(repository: Path, commit: str) -> None:
+    resolved = run_git(repository, "rev-parse", "--verify", "--quiet", f"{commit}^{{commit}}")
     assert isinstance(resolved, str)
     if resolved.strip().lower() != commit:
         raise FetchError(
             f"fetched object resolved to {resolved.strip()}, expected exact commit {commit}"
         )
+
+
+def fetch_commits(
+    repository: Path, commits: list[str], full_commits: set[str]
+) -> list[str]:
+    """Fetch the given commits and return those that could not be fetched.
+
+    All commits are first requested in one ``--filter=blob:none`` fetch, which
+    downloads commit and tree objects but no file contents; the blobs of
+    individual files are then fetched lazily when they are read. Commits in
+    ``full_commits`` (those with recursive directory sources, where per-file
+    lazy fetches would be slow) are additionally fetched with all their blobs.
+    """
+    partial_args = ["fetch", "--quiet", "--no-tags", "--depth=1", "--filter=blob:none"]
+    full_args = ["fetch", "--quiet", "--no-tags", "--depth=1"]
+    missing: list[str] = []
+    try:
+        run_git(repository, *partial_args, "origin", *commits)
+    except GitCommandError:
+        for commit in commits:
+            try:
+                run_git(repository, *partial_args, "origin", commit)
+            except GitCommandError as error:
+                warn(str(error))
+                missing.append(commit)
+    fetched = [commit for commit in commits if commit not in missing]
+    if full_commits:
+        wanted = [commit for commit in fetched if commit in full_commits]
+        if wanted:
+            try:
+                run_git(repository, *full_args, "origin", *wanted)
+            except GitCommandError:
+                for commit in wanted:
+                    run_git(repository, *full_args, "origin", commit)
+    for commit in fetched:
+        verify_exact_commit(repository, commit)
+    return missing
 
 
 def ls_tree(
@@ -458,6 +512,16 @@ def omitted_file_record(
     }
 
 
+def unavailable_record(source: Source, reason: str) -> dict[str, str]:
+    return {
+        "repository": source.repository,
+        "source_path": source.path,
+        "path_kind": source.path_kind,
+        "commit": source.commit,
+        "reason": reason,
+    }
+
+
 def export_source(
     repository: Path, source: Source, output: Path
 ) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
@@ -552,7 +616,9 @@ def default_output(summary_path: Path) -> Path:
     return summary_path.resolve().parent / "audited-sources"
 
 
-def fetch_sources(summary_path: Path, output: Path | None = None) -> tuple[int, int, Path]:
+def fetch_sources(
+    summary_path: Path, output: Path | None = None
+) -> tuple[int, int, int, Path]:
     summary_path = summary_path.resolve()
     summary = read_summary(summary_path)
     urls = repository_urls(summary)
@@ -568,27 +634,50 @@ def fetch_sources(summary_path: Path, output: Path | None = None) -> tuple[int, 
         by_repository[source.repository].append(source)
 
     exported: list[dict[str, Any]] = []
+    unavailable: list[dict[str, str]] = []
     try:
         with tempfile.TemporaryDirectory(prefix="audit-source-fetch-") as temporary:
             temporary_root = Path(temporary)
             for index, (repository_id, repository_sources) in enumerate(
                 sorted(by_repository.items())
             ):
-                git_directory = temporary_root / f"repository-{index}.git"
+                url = urls[repository_id]
                 object_id_lengths = {len(source.commit) for source in repository_sources}
                 if len(object_id_lengths) != 1:
                     raise FetchError(
                         f"repository {repository_id!r} mixes Git object formats"
                     )
+                if not repository_reachable(url):
+                    warn(
+                        f"repository {url} is not reachable; skipping "
+                        f"{len(repository_sources)} source(s) of {repository_id!r}"
+                    )
+                    unavailable.extend(
+                        unavailable_record(source, "repository is not reachable")
+                        for source in repository_sources
+                    )
+                    continue
+                git_directory = temporary_root / f"repository-{index}.git"
                 object_format = "sha256" if object_id_lengths == {64} else "sha1"
-                initialize_repository(
-                    git_directory, urls[repository_id], object_format
-                )
+                initialize_repository(git_directory, url, object_format)
                 by_commit: dict[str, list[Source]] = defaultdict(list)
                 for source in repository_sources:
                     by_commit[source.commit].append(source)
+                full_commits = {
+                    source.commit
+                    for source in repository_sources
+                    if source.path_kind == "directory_recursive"
+                }
+                missing = set(
+                    fetch_commits(git_directory, sorted(by_commit), full_commits)
+                )
                 for commit, commit_sources in sorted(by_commit.items()):
-                    fetch_exact_commit(git_directory, commit)
+                    if commit in missing:
+                        unavailable.extend(
+                            unavailable_record(source, "commit could not be fetched")
+                            for source in commit_sources
+                        )
+                        continue
                     for source in sorted(commit_sources):
                         files, omitted_files = export_source(
                             git_directory, source, staging
@@ -620,6 +709,7 @@ def fetch_sources(summary_path: Path, output: Path | None = None) -> tuple[int, 
                 }
                 for item in skipped
             ],
+            "unavailable": unavailable,
         }
         (staging / "manifest.json").write_text(
             json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
@@ -630,13 +720,15 @@ def fetch_sources(summary_path: Path, output: Path | None = None) -> tuple[int, 
     except BaseException:
         shutil.rmtree(staging, ignore_errors=True)
         raise
-    return len(exported), len(skipped), destination / "manifest.json"
+    return len(exported), len(skipped), len(unavailable), destination / "manifest.json"
 
 
 def main() -> int:
     args = parse_args()
     try:
-        exported, skipped, manifest = fetch_sources(args.summary, args.output)
+        exported, skipped, unavailable, manifest = fetch_sources(
+            args.summary, args.output
+        )
     except (FetchError, OSError, subprocess.SubprocessError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
@@ -644,6 +736,11 @@ def main() -> int:
         f"exported {exported} source revisions; "
         f"skipped {skipped} mutable or ambiguous revisions"
     )
+    if unavailable:
+        print(
+            f"could not fetch {unavailable} source revisions from unreachable "
+            "repositories or commits (see manifest.json 'unavailable')"
+        )
     manifest_data = read_summary(manifest)
     omitted = sum(
         len(source.get("omitted_files", []))

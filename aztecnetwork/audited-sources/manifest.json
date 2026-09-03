@@ -1,0 +1,2816 @@
+{
+  "schema_version": "1.0.0",
+  "project": "aztecnetwork",
+  "audit_summary": "../audit-summary.json",
+  "sources": [
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/EscapeHatch.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/EscapeHatch.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/EscapeHatch.sol",
+          "git_object": "907c103e6bf8f0e739dcafab301ecbdab3545612",
+          "git_mode": "100644",
+          "sha256": "695bf2b134512fd375546335a4c6af8a32abf801df2676c9ab179890f36d992a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/Rollup.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/Rollup.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/Rollup.sol",
+          "git_object": "aff0f7227cea757b6db64a8e483938c22311eb88",
+          "git_mode": "100644",
+          "sha256": "1b8e5dca164a7439182273e596a082331b074bc8f0acc3652a966a602e04b447"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/RollupCore.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/RollupCore.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/RollupCore.sol",
+          "git_object": "47e6f71c32a12e356b104867db965eb60fb96ad8",
+          "git_mode": "100644",
+          "sha256": "a7a24e26496947a3320945fc75e5d7a32fab4be679e429029c71bc6043985e79"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/interfaces/IEscapeHatch.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/interfaces/IEscapeHatch.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/IEscapeHatch.sol",
+          "git_object": "56309f4b47912de5429c0faa1a82af7de001c93b",
+          "git_mode": "100644",
+          "sha256": "96d6d2c325f88c0c3bd3ec06afb58b3dd26c79e6d3fac416a76459651ff1cd9f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/interfaces/IRollup.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/interfaces/IRollup.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/IRollup.sol",
+          "git_object": "cda1b570a69fbfe45342c2072f1b06338d89ed35",
+          "git_mode": "100644",
+          "sha256": "91806b1f47e3d31f50e4d95b7c8bd9ed8e96bba6e1fe47f90113d3140367e060"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/interfaces/IValidatorSelection.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/interfaces/IValidatorSelection.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/IValidatorSelection.sol",
+          "git_object": "60c74dd6e97140dd545d9479b55389e273ae9b3f",
+          "git_mode": "100644",
+          "sha256": "c65d7bf51b97ddd4e1b846f1499154c8238c6d58e75eb63c45e532c7a7b3c9d6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/Errors.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/Errors.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/Errors.sol",
+          "git_object": "fcaade354deebb859e3c6809e9f1837a3a78c045",
+          "git_mode": "100644",
+          "sha256": "0bec01fce7fc033582b4f519176deaa00e05c3cf980543a1feb1ed9d4ee941aa"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/HatchMath.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/HatchMath.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/HatchMath.sol",
+          "git_object": "eadb391b9e921b5bd533b8e21265a3741cc2676a",
+          "git_mode": "100644",
+          "sha256": "0526c5bf900803daec47322acfd737bdc27d9217303dcb13bd28bb50f92d0649"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/FeeConfig.sol",
+          "git_object": "f8b4888f8196380b681ab0078258933324119700",
+          "git_mode": "100644",
+          "sha256": "b9e8ea240dcb74017309fb5e5257c9fa5d638f2765ab0a38e374cbae97d9d02c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/EpochProofLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/EpochProofLib.sol",
+          "git_object": "0f614a92002e65a76dc4a056cba02dfe077d426b",
+          "git_mode": "100644",
+          "sha256": "83a92c2cf4191f6cd57cbab53633d10af642e8486b10090343606ce4c6fd03df"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/FeeLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/FeeLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/FeeLib.sol",
+          "git_object": "d470d5a1f21d3a9a2c2aad715440ae1d9e2ceed8",
+          "git_mode": "100644",
+          "sha256": "a3d28a0c2e82d66a3f75e8764846d34bfe96690b02b0cb87ad30b2b8467296de"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/InvalidateLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/InvalidateLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/InvalidateLib.sol",
+          "git_object": "c24ec2421d74cf4fd16da571560de63e9dacc523",
+          "git_mode": "100644",
+          "sha256": "3f1529a02aed5cec8f9e8658ae1a380a50ae5b19ea43b0060cfdcb76748fbbbe"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ProposeLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ProposeLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/ProposeLib.sol",
+          "git_object": "b46e671b3b8639e4c32bd8f40952a7ecfbf0e75a",
+          "git_mode": "100644",
+          "sha256": "07c85e57bf380ba68b29a35342f6cc2803133ddd1dc77625c7429d9c244dfed0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ProposedHeaderLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ProposedHeaderLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/ProposedHeaderLib.sol",
+          "git_object": "7ac40c3d5854d65ce2bf58cf92d404ffa990dfed",
+          "git_mode": "100644",
+          "sha256": "672d5770c45b2a3d0999c3af0f4ed7c75c09f2b5b1a9c686af102fd4029ddfae"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/RewardLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/RewardLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/RewardLib.sol",
+          "git_object": "f213b3b2a7080dd0d367e38fbaf73541d143ffc5",
+          "git_mode": "100644",
+          "sha256": "fe9d955ff5523d4e48f5c4d15a03d847b9ad6fdbb52a2754abbb186ab7327b1a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/STFLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/STFLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/STFLib.sol",
+          "git_object": "89576e83b1c5d922513872c443512ba45c9ce89a",
+          "git_mode": "100644",
+          "sha256": "ff722b48b2b45848719a06919087bc7d5620790d0fbed0e9742285fea4004be9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ValidatorOperationsExtLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ValidatorOperationsExtLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/ValidatorOperationsExtLib.sol",
+          "git_object": "949b55435dd467338dc365cfeb04cc2dd7fe7db9",
+          "git_mode": "100644",
+          "sha256": "ea9b65af1075d7850eb00b7b268a8819d4f7b12a5f7a64f3bc8fd4c69489dd44"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/ValidatorSelectionLib.sol",
+          "git_object": "95336836d246e1149460c7bba7cd12b1c7aaee34",
+          "git_mode": "100644",
+          "sha256": "5cc7431f8444842b92b432c8cb14b9171638b0a850d2efd85ac2400f3b374f19"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/Inbox.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/Inbox.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/Inbox.sol",
+          "git_object": "2955be52fc6d20d550264fa147d97ccddc17af5c",
+          "git_mode": "100644",
+          "sha256": "85526c9fb001909a0896066bae63f5978eee2d7d91402804dae6e1fc0a33f811"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/Outbox.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/Outbox.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/Outbox.sol",
+          "git_object": "5736f54518ea4e72efbac0e052b7a261a7e41975",
+          "git_mode": "100644",
+          "sha256": "d4c1db26695bc1b6df7f3817dbd98d8024a00e5312d48c08be1396e8e521264a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/0092f9f01ed88cc3626270e62716d7b722ea1944/TallySlashingProposer.sol",
+          "git_object": "0b5656e1345f15c7066b33e835d041d2c3368a07",
+          "git_mode": "100644",
+          "sha256": "9067edb22dbe56f19c44fa58750b36d988bea5ed702df8a1e9a8b65d45b494a8"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol",
+      "path_kind": "file",
+      "commit": "07650da19b2aa843cfab8d88f48e13fd5600a3ab",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/AddressSnapshotLib.sol/07650da19b2aa843cfab8d88f48e13fd5600a3ab/AddressSnapshotLib.sol",
+          "git_object": "72158855401dfac9d0a48691266f47c85de987ba",
+          "git_mode": "100644",
+          "sha256": "645c1aee9001335bdd5067771edbfc2495c5eefadd48901fbd64021ea0d1291e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSEPayload.sol",
+      "path_kind": "file",
+      "commit": "07b9496c954c6e690cd145df17c3e2c67b00305a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSEPayload.sol/07b9496c954c6e690cd145df17c3e2c67b00305a/GSEPayload.sol",
+          "git_object": "642db44451e22ebdbe618033e1a7b4c7ba341684",
+          "git_mode": "100644",
+          "sha256": "8db76106ba43668525b39ed13e5bb20713d4571dc21035d7fbd97173a98f6fed"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/GovernanceProposer.sol",
+      "path_kind": "file",
+      "commit": "07b9496c954c6e690cd145df17c3e2c67b00305a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/GovernanceProposer.sol/07b9496c954c6e690cd145df17c3e2c67b00305a/GovernanceProposer.sol",
+          "git_object": "9759443f8acc002957b342201785395b8a33975f",
+          "git_mode": "100644",
+          "sha256": "dcf038c2787b66dd89e04e6b36a658d6146d3ea88a40ecf8846c3a0ed7780fc0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
+      "path_kind": "file",
+      "commit": "1856c6133d4f5f5d8e465722be5d752dff3864bb",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/BN254Lib.sol/1856c6133d4f5f5d8e465722be5d752dff3864bb/BN254Lib.sol",
+          "git_object": "b15389900e5e45734500dc1d84d92a92b34d3b80",
+          "git_mode": "100644",
+          "sha256": "57015a8574176780dbb085fd6c85d21c359a9eea05a4cba0ebce9bc4b7f4c4bb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "1929135b11cefff7384005d021041a058fa5c44f",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/1929135b11cefff7384005d021041a058fa5c44f/TallySlashingProposer.sol",
+          "git_object": "aa8df6934d0a305dc7dae3d8a18e97f0e57c55a4",
+          "git_mode": "100644",
+          "sha256": "6ec7f5b63bbe27c1c76641d04e61ced44b3835e814a3571afbae4273f3e1db9c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol",
+      "path_kind": "file",
+      "commit": "1cec310430f7281676b8067d5e33ed984e9726b7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/AddressSnapshotLib.sol/1cec310430f7281676b8067d5e33ed984e9726b7/AddressSnapshotLib.sol",
+          "git_object": "1023ee66491312411fc53ae1cb9542a98b485129",
+          "git_mode": "100644",
+          "sha256": "2010b70d7fa81bd51147aa3f90b9ea883e90856ccf74db6aa0bf617cbc6f6bd9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "217996f9428e222c94d7567b1c81a8d190b79327",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/217996f9428e222c94d7567b1c81a8d190b79327/TallySlashingProposer.sol",
+          "git_object": "51e63e87611f0d52901bcfd6d798f8416954dde3",
+          "git_mode": "100644",
+          "sha256": "39a8bd51e01f1317a338d59f176b4b3320390fdf78cc6af7a6a89e4fc7392c8f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "262591f9044cd3ed868a2b3a13d15a0bc0f9f73b",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/262591f9044cd3ed868a2b3a13d15a0bc0f9f73b/GSE.sol",
+          "git_object": "eb8fd2b0cb57c7ce03ece20f340814684f8360e8",
+          "git_mode": "100644",
+          "sha256": "a15eaffd2926604b1bade303a009d89cd88fa49dd0673b4132053799731771d5"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/RollupCore.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/RollupCore.sol/270e2a58ae2a378472f9be791900bbd4342c7881/RollupCore.sol",
+          "git_object": "c38cbd14dd8028cfe0b1a501fc0e70f1755f3ce9",
+          "git_mode": "100644",
+          "sha256": "2bbd2e200fb951aaa5bc40ecd0e66787a0cfb6a3b05e67f314071cc7045036c7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/StakingQueue.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/StakingQueue.sol/270e2a58ae2a378472f9be791900bbd4342c7881/StakingQueue.sol",
+          "git_object": "ac547eb90bf9f821debd764b3e00b254d40e560d",
+          "git_mode": "100644",
+          "sha256": "e0fdd283e4052bf72319ad02de6af8ddd77b6377174da528727b46b6012b8ad9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/Tips.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/Tips.sol/270e2a58ae2a378472f9be791900bbd4342c7881/Tips.sol",
+          "git_object": "44075ca3c494a1d328e10db70025eef5d874a0b4",
+          "git_mode": "100644",
+          "sha256": "d2427e8359291484001d875959cfa93499b5496ae43889ea9d55555a9f829d37"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol/270e2a58ae2a378472f9be791900bbd4342c7881/FeeConfig.sol",
+          "git_object": "d597f987067ed05cb9dd1a79660ee10d5fbf90ed",
+          "git_mode": "100644",
+          "sha256": "877ebc33317a364412f1280905df697ba0097fd28deb56fb911be7eebfeb616f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeStructs.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/fees/FeeStructs.sol/270e2a58ae2a378472f9be791900bbd4342c7881/FeeStructs.sol",
+          "git_object": "4f516929a9784e95b77ee59b86ca736a785c0cfa",
+          "git_mode": "100644",
+          "sha256": "cfdff9d2abf560f6809237e9cb36c556b1015f9e6d23dfe594718fe3612866b1"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/crypto/MerkleLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/crypto/MerkleLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/MerkleLib.sol",
+          "git_object": "7b9e6fcfe718cb09ece00471d0feea595d6087c3",
+          "git_mode": "100644",
+          "sha256": "b5d5ad4cddcea857b6b337410533ab6e8889bc1e4f86b4fc13a7d3405fd1d7c7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/crypto/SampleLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/crypto/SampleLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/SampleLib.sol",
+          "git_object": "f0121267cabd03df89040799ea5e90972a286c48",
+          "git_mode": "100644",
+          "sha256": "bdff4711b4588b67550fb81707d9cc8640bdbdb9fb86020bdd68d2333524ec83"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/BlobLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/BlobLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/BlobLib.sol",
+          "git_object": "33382d7de22fe89fc7b5ec67e2499bca751f79f1",
+          "git_mode": "100644",
+          "sha256": "019e2f3f5c4a36b98e98d4cd1a8358cccc8856d110104e4bd7e2da6425c080f2"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/EpochProofLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/EpochProofLib.sol",
+          "git_object": "3e75bcd6c14c81c83450b158d1b71542fbb182db",
+          "git_mode": "100644",
+          "sha256": "c77419d9bd005ba4978e9f15525ded994cea8b91a1ceb80387bd3817ee440c67"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/InvalidateLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/InvalidateLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/InvalidateLib.sol",
+          "git_object": "e42d56e315506964c38224dba1842c1fbaf6b252",
+          "git_mode": "100644",
+          "sha256": "97ac7787dd6b39843f9d19ce6270370e9cc1422c3788c3194541a33de5230a8b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ProposeLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ProposeLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/ProposeLib.sol",
+          "git_object": "6f2637a81d435b2c2fea585de1351fc1e0b445c5",
+          "git_mode": "100644",
+          "sha256": "54630f9996577261b4d670299788aa1003712804ea0e1da73f388a241ed8692e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/RewardLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/RewardLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/RewardLib.sol",
+          "git_object": "865fcbc76e19a94b1516e6787cf7c822f01246ae",
+          "git_mode": "100644",
+          "sha256": "62e22c271107c7503ba47e8a159f9b2bdcdd0cff6e7557eb8962af44dfd5cebb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/STFLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/STFLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/STFLib.sol",
+          "git_object": "ea8d71c4601fbb215c9e1a9363001c7281cbb298",
+          "git_mode": "100644",
+          "sha256": "6244b9c8653cf89abba15e88012c4a345e770bc44d2bd407ef0ebb76699b9596"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/StakingLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/StakingLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/StakingLib.sol",
+          "git_object": "cac956254180c3a98ee3c09322593759f5b455d5",
+          "git_mode": "100644",
+          "sha256": "0793613eb3dffc50c208c3a736859191ec93d73ccb1b4eb6d9c174eb836acb47"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol/270e2a58ae2a378472f9be791900bbd4342c7881/ValidatorSelectionLib.sol",
+          "git_object": "75285b12570cac1ff27831ff49538f22fc2dc808",
+          "git_mode": "100644",
+          "sha256": "1a52bd65c12a0670a437a6281f107f526deb5a7875ce22e56b3f55591e1caebb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/FeeJuicePortal.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/FeeJuicePortal.sol/270e2a58ae2a378472f9be791900bbd4342c7881/FeeJuicePortal.sol",
+          "git_object": "0bab84d305348398e263694b4dfc6ceccc31a838",
+          "git_mode": "100644",
+          "sha256": "44150701815935bf8f60af5bbb3d4d9bf52561c207b05bcc16f0a0fa41b4c284"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/Inbox.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/Inbox.sol/270e2a58ae2a378472f9be791900bbd4342c7881/Inbox.sol",
+          "git_object": "922f1864d5202fa782b75d65fbc097c96561ba01",
+          "git_mode": "100644",
+          "sha256": "e0321df66c1cc0c2c9728591dec981d037bae7267def4243b21eb3b69cb34645"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/Outbox.sol",
+      "path_kind": "file",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/Outbox.sol/270e2a58ae2a378472f9be791900bbd4342c7881/Outbox.sol",
+          "git_object": "8deeedcf7a8fdb7b9604afbe914b83a294fa1071",
+          "git_mode": "100644",
+          "sha256": "ed70773bf907c95e61e6ba7b76c706bcac12891801bb77cca39f9192c310395b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+      "path_kind": "file",
+      "commit": "2e192712333ec2b8c38e45c13923f465e8c18a6f",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/EmpireBase.sol/2e192712333ec2b8c38e45c13923f465e8c18a6f/EmpireBase.sol",
+          "git_object": "4bb21fc8e4e09f7719823bacd434f00d4a99239a",
+          "git_mode": "100644",
+          "sha256": "d18600d60a3b1a775d075707f4ea4f7a78c29166277900f94da18d7f505c8a83"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ProposeLib.sol",
+      "path_kind": "file",
+      "commit": "2f71e44c573b9a7b1b4698247b71ffb549c8ac74",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ProposeLib.sol/2f71e44c573b9a7b1b4698247b71ffb549c8ac74/ProposeLib.sol",
+          "git_object": "aa31bb4455643ac1898f209950d04531a12b5afb",
+          "git_mode": "100644",
+          "sha256": "e0d97bb21923050c79fcc09627cea6ab7be3debe2b4fd995b003f643131348e8"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/StakingLib.sol",
+      "path_kind": "file",
+      "commit": "3887ea20a027890a3c807c41895d74fd756f6447",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/StakingLib.sol/3887ea20a027890a3c807c41895d74fd756f6447/StakingLib.sol",
+          "git_object": "d409ca5b3d73d7259d50d5aafeea775642c9b124",
+          "git_mode": "100644",
+          "sha256": "9ca74d06ca8c2e56d4c8f330e002af692ecca74da521adcb7ca293b326f37f4f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/EscapeHatch.sol",
+      "path_kind": "file",
+      "commit": "4230665af7c983edc3b44cc25ef4a2f1e8cf660e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/EscapeHatch.sol/4230665af7c983edc3b44cc25ef4a2f1e8cf660e/EscapeHatch.sol",
+          "git_object": "aceaf82003e067069b4ff61d2ba6c0f01e0b3f4c",
+          "git_mode": "100644",
+          "sha256": "e17e905ce2ce69420d1b73df61bd73f413d66121594960b307b3c3863b4f095e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/StakingQueue.sol",
+      "path_kind": "file",
+      "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/StakingQueue.sol/44e3f64839b6f60aa4f3443f60fb45fcf744e586/StakingQueue.sol",
+          "git_object": "9c805986614f3f92a1b66bae031251d7c90a80d3",
+          "git_mode": "100644",
+          "sha256": "0238d6c2c74750b5c8581cd433df5a1cb435a10fc87f93d94509393bb1a936e0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol",
+      "path_kind": "file",
+      "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol/44e3f64839b6f60aa4f3443f60fb45fcf744e586/FeeConfig.sol",
+          "git_object": "be3d8041e3862e4831ca047f21dbd0ce256f2555",
+          "git_mode": "100644",
+          "sha256": "1c8a07ee0ab964338b6d6c7b5c9c4e90f6bfd0bfaaef8ebbe01115b208500854"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeStructs.sol",
+      "path_kind": "file",
+      "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/fees/FeeStructs.sol/44e3f64839b6f60aa4f3443f60fb45fcf744e586/FeeStructs.sol",
+          "git_object": "910de7c7e514fd24dd0182b337663949cc812a38",
+          "git_mode": "100644",
+          "sha256": "398a73be693c6195703f817afe05962065d99d73e929ed9b88000ca3b3d25cd7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol",
+      "path_kind": "file",
+      "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/EpochProofLib.sol/44e3f64839b6f60aa4f3443f60fb45fcf744e586/EpochProofLib.sol",
+          "git_object": "6a82f7da952437a448bc5bd632c11e1964a7ae05",
+          "git_mode": "100644",
+          "sha256": "036d819fb5ced3bf6f8cb4010431b5a37a8a4580e7ee2ac2c1fd065dbebbc0f2"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/RewardLib.sol",
+      "path_kind": "file",
+      "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/RewardLib.sol/44e3f64839b6f60aa4f3443f60fb45fcf744e586/RewardLib.sol",
+          "git_object": "bf3e88655dca64ee9d2fcb1c75c9ccdc2e6c6f02",
+          "git_mode": "100644",
+          "sha256": "45b92ba171a028d250829282320a822513fe85a282d342f94f49a39aff0a24bf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol",
+      "path_kind": "file",
+      "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol/44e3f64839b6f60aa4f3443f60fb45fcf744e586/ValidatorSelectionLib.sol",
+          "git_object": "5ebecef110f7c668346901f277066367388f7aa6",
+          "git_mode": "100644",
+          "sha256": "1197b0d8802bca75043a4afae1b62a1714b83f9972c406380c9b043c49a4086b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "46e3dd7517ddfcff60b172a3bf2cbd09d62bfef2",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/46e3dd7517ddfcff60b172a3bf2cbd09d62bfef2/GSE.sol",
+          "git_object": "c67141f82197c8003cb5d00bdc7d5b7b70bcfe30",
+          "git_mode": "100644",
+          "sha256": "28addeb2c3b87ac9551848ed8d80d52fa9ee470bcec06dab9ae2e040a06eb230"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/EmpireSlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/EmpireSlashingProposer.sol/474754f58e7ce6a6e0350306f4c144d0a9ee8d14/EmpireSlashingProposer.sol",
+          "git_object": "aa3fbd2af8d7821243105f8a5c38c4c6677b35fe",
+          "git_mode": "100644",
+          "sha256": "f89b79698848941a3dcf6eaad4482a45524166ba4c87b0413fe9ed6f85ba5247"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/EscapeHatch.sol",
+      "path_kind": "file",
+      "commit": "495fc284073d909b54946fbd3f473723f80e5548",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/EscapeHatch.sol/495fc284073d909b54946fbd3f473723f80e5548/EscapeHatch.sol",
+          "git_object": "796a772a44cd4d71ef13b326f5cd22009e3db896",
+          "git_mode": "100644",
+          "sha256": "966925e43faf064afe3ce88bd95e7cf56762d8917819ea4f62fff0dc6a7d6116"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
+      "path_kind": "file",
+      "commit": "5cd8f416a6b4e0f0084bdfaed672b4cb42230e2f",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/BN254Lib.sol/5cd8f416a6b4e0f0084bdfaed672b4cb42230e2f/BN254Lib.sol",
+          "git_object": "0d32e4bd83bd2c4b163f2da65e638e2fbbeb7a04",
+          "git_mode": "100644",
+          "sha256": "d256c8faaef2b44280b877fc9d776d717ed999ed9ff7d32822d8c4026fbc71de"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "5f4e35de036ab89a34b968e38fb2735c6b6f6994",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/5f4e35de036ab89a34b968e38fb2735c6b6f6994/TallySlashingProposer.sol",
+          "git_object": "ec9b7e91e5e273b16f1672684939eaf551286802",
+          "git_mode": "100644",
+          "sha256": "9c2813c95b9bdf005629c7c882ad6a8f82d5c7cfdf08c24b3eb1af498378bb2d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/StakingLib.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/StakingLib.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/StakingLib.sol",
+          "git_object": "07998ce72f5621e453065f6bc1f886a51e649e8e",
+          "git_mode": "100644",
+          "sha256": "b20a8e01a84ab9e237810ab70f20ea093463bd9a61f2b7c1efb7f7176db4909a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/CoinIssuer.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/CoinIssuer.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/CoinIssuer.sol",
+          "git_object": "b4767dcb07ea22e31c61d2cc80174eac8f16bfc2",
+          "git_mode": "100644",
+          "sha256": "364ab9399fc73a3ffe817650a9e87d9e43d68a4d43dda579fe0a798b79f87fcf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/GSE.sol",
+          "git_object": "bb3e31d90769dc633c37e0643d2536ccfe0e3bb1",
+          "git_mode": "100644",
+          "sha256": "4c97e538f3927758338e546c79440bf5bb7acf86fcb7b840539e8fdbee3404e4"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSEPayload.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSEPayload.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/GSEPayload.sol",
+          "git_object": "742ec6a8b3785ba9b700358c21f84556bb0118b8",
+          "git_mode": "100644",
+          "sha256": "5ca521274c4c40538253e5f6829273bd7b7c818f4ebca2037186bbcafe189267"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/Governance.sol",
+          "git_object": "8e71800d5df017c7c44c7b11b5cc668cb67c74a6",
+          "git_mode": "100644",
+          "sha256": "f7cacaea32b4bf7071739e826ab641331a1781ee0143e69a28e1b0e122a228eb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Registry.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Registry.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/Registry.sol",
+          "git_object": "044e4ca5be5a02e7867d805b3c06dafa613735d2",
+          "git_mode": "100644",
+          "sha256": "0e9265523ac2dd1625ceb4594ad5c616d5fcbc1346d51dd38c43b937631c8193"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/RewardDistributor.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/RewardDistributor.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/RewardDistributor.sol",
+          "git_object": "fc5c37bb313dbca83b85d43e636904546bc7a1ac",
+          "git_mode": "100644",
+          "sha256": "2a97381b68d864fa9985701f0d9ea5cb171c6d76c2ec3e044d51a0eec05c195f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IRewardDistributor.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IRewardDistributor.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/IRewardDistributor.sol",
+          "git_object": "c1ccea0ccd09758dbe0b06cc6af30b7d6c57f117",
+          "git_mode": "100644",
+          "sha256": "bf7b0bc24fecf9c99f106bf1b2b379f7f997782dd370485376666f32f8f968a8"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/AddressSnapshotLib.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/AddressSnapshotLib.sol",
+          "git_object": "9e65139372e542652dbcc21e09eb5b17ffa68709",
+          "git_mode": "100644",
+          "sha256": "0e182af7d668636f2aa2044f22b1a08f5f61ce3c6f7529a3632c1aa5b51c38ed"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ProposalLib.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/ProposalLib.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/ProposalLib.sol",
+          "git_object": "3d33475a515b24c9f7768585ce6025ef2d09be46",
+          "git_mode": "100644",
+          "sha256": "0ca1ae4ac02cc4871a18860813b4ff82f6383e6ea8879f93afd3f3fb0aa55059"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/EmpireBase.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/EmpireBase.sol",
+          "git_object": "6f5bd8f75fe9225dcda587bd53059736792934d4",
+          "git_mode": "100644",
+          "sha256": "7d887d635538c8cadfdfb3877b3560cb87e962329d29fcf51278d15a60ef6258"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/GovernanceProposer.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/GovernanceProposer.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/GovernanceProposer.sol",
+          "git_object": "29205ee17d7a301a5eb57dc5c620f8af61652d8a",
+          "git_mode": "100644",
+          "sha256": "1cc20ab7cf01b762080ce203764c54985f18b7528c880d112c18f4fafa3bc1c9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/SignatureLib.sol",
+      "path_kind": "file",
+      "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/SignatureLib.sol/6496e59db3406cfb1ffbeab3e68be53872ec4735/SignatureLib.sol",
+          "git_object": "2fa5bda601718fcdcaadf0d78bc8ff6a2d144fb0",
+          "git_mode": "100644",
+          "sha256": "2b7c7905cf19a9e21611492f2a56e3f0a45c9f111f712b974540191169a269a0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/crypto/MerkleLib.sol",
+      "path_kind": "file",
+      "commit": "6eb1316b86eca5aa7b6c0b5b2a308a4a2282cbd9",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/crypto/MerkleLib.sol/6eb1316b86eca5aa7b6c0b5b2a308a4a2282cbd9/MerkleLib.sol",
+          "git_object": "36dbd28f581662621ffb049a09b21cfe33430b51",
+          "git_mode": "100644",
+          "sha256": "b89ebc7ee55eb7606f7463fc367c4d57a9b5a43b8193f9060af420f23a2c745a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/Tips.sol",
+      "path_kind": "file",
+      "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/Tips.sol/70f004dc2ad19d1c0b80f8a481424dd23542f191/Tips.sol",
+          "git_object": "2e47f3efc72930491397f78b9b1baf1e8663943a",
+          "git_mode": "100644",
+          "sha256": "21091ce60dfa76c471c7c67f659b600406eed935d8654e9a3997b7ca9eccdc68"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/crypto/SampleLib.sol",
+      "path_kind": "file",
+      "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/crypto/SampleLib.sol/70f004dc2ad19d1c0b80f8a481424dd23542f191/SampleLib.sol",
+          "git_object": "108ea653b45ff4402393f99a17452f6f636d7d70",
+          "git_mode": "100644",
+          "sha256": "11a155f87b1f35c266e73e070768c13f3aa510750701e9c60003ac2cd1d67a07"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/InvalidateLib.sol",
+      "path_kind": "file",
+      "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/InvalidateLib.sol/70f004dc2ad19d1c0b80f8a481424dd23542f191/InvalidateLib.sol",
+          "git_object": "0d2bac7516332b490b8cc140b8597a1c584f79f8",
+          "git_mode": "100644",
+          "sha256": "ddb235b48b9d7b679663e135e9718ba375927f13157747d2495bfbbfa7996de3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/RewardLib.sol",
+      "path_kind": "file",
+      "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/RewardLib.sol/70f004dc2ad19d1c0b80f8a481424dd23542f191/RewardLib.sol",
+          "git_object": "946ccce24ad4670d2d2e41c3d284c2409e209553",
+          "git_mode": "100644",
+          "sha256": "8bdf714e48c22d9aa9222c895d513971558d4388f4e29e3d1dba80470af85801"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/STFLib.sol",
+      "path_kind": "file",
+      "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/STFLib.sol/70f004dc2ad19d1c0b80f8a481424dd23542f191/STFLib.sol",
+          "git_object": "20704c5f40b9bb7eef93771b31738892bc9e9c55",
+          "git_mode": "100644",
+          "sha256": "91ab14f4c6bf9d0118bf00141f9b05a75db407fc362c6c97f638f81c66fac862"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/Outbox.sol",
+      "path_kind": "file",
+      "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/Outbox.sol/70f004dc2ad19d1c0b80f8a481424dd23542f191/Outbox.sol",
+          "git_object": "ac3c5a4c4b5594dfb9b248c0e87ce3e216f617b3",
+          "git_mode": "100644",
+          "sha256": "0baf02165ae093565f17b20998b549f58110e9122c4d8aac78924dcdba7cf027"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ProposalLib.sol",
+      "path_kind": "file",
+      "commit": "744fcf65b0a55c2534d68fe70d1a1f4f69f2c710",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/ProposalLib.sol/744fcf65b0a55c2534d68fe70d1a1f4f69f2c710/ProposalLib.sol",
+          "git_object": "84be3d8de7284d8ce4a87bae589d94b77cdbb85f",
+          "git_mode": "100644",
+          "sha256": "cbd6d884ddcd48779cc7cd159d989d7f14d3dbc3829c1f54f6adf3d9a06e8b95"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/RewardDistributor.sol",
+      "path_kind": "file",
+      "commit": "77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/RewardDistributor.sol/77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d/RewardDistributor.sol",
+          "git_object": "632b49b53581d07a800cebeafff1118c99e0f10e",
+          "git_mode": "100644",
+          "sha256": "417c177bae59d1771ec02b59f07da648dc0f5ddc18e4649ff8086a0d118b4c28"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IRewardDistributor.sol",
+      "path_kind": "file",
+      "commit": "77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IRewardDistributor.sol/77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d/IRewardDistributor.sol",
+          "git_object": "60616169d0a2690ed38a99dd5518fb2f4a426c7c",
+          "git_mode": "100644",
+          "sha256": "1c017973ea60a6d0600184848c3193160c77763fdf921e53f14aec06c42491a1"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "7a12a9650196d3c1292674052009913d3b9cd695",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/7a12a9650196d3c1292674052009913d3b9cd695/GSE.sol",
+          "git_object": "84b6380af0f8d7c29260a5ea8ae5baeb28252cde",
+          "git_mode": "100644",
+          "sha256": "b0d9745c186cd99dd964d1cd541e59897fe8981fa34342246cf9cb4b108ffa2c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/AttestationLib.sol",
+      "path_kind": "file",
+      "commit": "7d1ec0d01f58430f6c19ebc89f4db236a9e759ef",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/AttestationLib.sol/7d1ec0d01f58430f6c19ebc89f4db236a9e759ef/AttestationLib.sol",
+          "git_object": "d6fadc8ffb7b3f05364400e84c01c7245f487c76",
+          "git_mode": "100644",
+          "sha256": "069724ee3180b2d74eafb65a09818642e8ee90dca9860fc25f2371b1db5654bc"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/AttestationLib.sol",
+      "path_kind": "file",
+      "commit": "83353d39aa402ccf23a14030329150096dddf763",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/AttestationLib.sol/83353d39aa402ccf23a14030329150096dddf763/AttestationLib.sol",
+          "git_object": "a3488f2014e7089dcd00119389b9caac99ec4af6",
+          "git_mode": "100644",
+          "sha256": "780cf0878673abe17460e3b758cd8aaed327d07ff6c0d64d723459aa516b2833"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "83c6572a395b7f7b71ba1683cda303869005f9dd",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/83c6572a395b7f7b71ba1683cda303869005f9dd/Governance.sol",
+          "git_object": "81be302bea95187bfccd52701a5c20212e26c985",
+          "git_mode": "100644",
+          "sha256": "dc8af9653a9a3a554005207513bd2deeeca237a13e29938a182d7fc9e36c67fb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "884cd9b0b2841eef1ec50b1c3e0d5a56f3cdd2ca",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/884cd9b0b2841eef1ec50b1c3e0d5a56f3cdd2ca/Governance.sol",
+          "git_object": "e53bf4652f84ae1b7346b0915a269b791f432554",
+          "git_mode": "100644",
+          "sha256": "e689647848947b999ac3a83892a979f8363fa4e7490eb77a2fa688b18e0100a4"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/Outbox.sol",
+      "path_kind": "file",
+      "commit": "9193dfb37055add64013ed3fe1b901351eb08003",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/Outbox.sol/9193dfb37055add64013ed3fe1b901351eb08003/Outbox.sol",
+          "git_object": "6ebe853fc36653ab6d49c18ad39f98ec6f204c61",
+          "git_mode": "100644",
+          "sha256": "6e5567e3fa3ebe8087be5e9aa3e2d026cca1e67301bfbd4b9ca56849670bc673"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+      "path_kind": "file",
+      "commit": "93976d6357c3a2446387225e92fb2e6546386f0a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/EmpireBase.sol/93976d6357c3a2446387225e92fb2e6546386f0a/EmpireBase.sol",
+          "git_object": "01231241e2de2c81df1b5ef6db4bd1054adb34e8",
+          "git_mode": "100644",
+          "sha256": "9999be831c3087d55abef6684756674de651e7c0c400b25ac80bf534441a0dd4"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/FeeLib.sol",
+      "path_kind": "file",
+      "commit": "93be4fe8cc65c3e2dc938e1bae45ccc37926eb1a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/FeeLib.sol/93be4fe8cc65c3e2dc938e1bae45ccc37926eb1a/FeeLib.sol",
+          "git_object": "ced17e41216f5a660a9beb78917d6510275f135f",
+          "git_mode": "100644",
+          "sha256": "7595e8f292e740b9df26af2e09d9f39d536bd4fd70ecee016f3487c8e2128ef7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "95c296fb05387e2845065cb46ebffc8ce651f69b",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/95c296fb05387e2845065cb46ebffc8ce651f69b/Governance.sol",
+          "git_object": "17a3aa9e52db568b25f31ed3c7c0b7280f1f342b",
+          "git_mode": "100644",
+          "sha256": "2b3735ce5fd5afffa1e4f5d9f3ff618ede11f6c6519e493095bd732afde1c585"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/script/deploy/DeployAlpha.s.sol",
+      "path_kind": "file",
+      "commit": "96eca77fe31dd030545b16012ffd587f6decda7c",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/script/deploy/DeployAlpha.s.sol/96eca77fe31dd030545b16012ffd587f6decda7c/DeployAlpha.s.sol",
+          "git_object": "b6789ebc4e7a4e3ae90d5bf3dac4a9ce56008f61",
+          "git_mode": "100644",
+          "sha256": "fd00565e0be913d1fd280e9f4e509b019025dfa09254dcbd9d624d921fce293f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "yarn-project/aztec/src/mainnet_compatibility.test.ts",
+      "path_kind": "file",
+      "commit": "96eca77fe31dd030545b16012ffd587f6decda7c",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/yarn-project/aztec/src/mainnet_compatibility.test.ts/96eca77fe31dd030545b16012ffd587f6decda7c/mainnet_compatibility.test.ts",
+          "git_object": "959fe87324b978026d8717a528c6ad99c05b2cf3",
+          "git_mode": "100644",
+          "sha256": "40910ef702d255004330abec8f92a09d66800ca8de99dd8de5967304bb4cf9a4"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "yarn-project/aztec/src/testnet_compatibility.test.ts",
+      "path_kind": "file",
+      "commit": "96eca77fe31dd030545b16012ffd587f6decda7c",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/yarn-project/aztec/src/testnet_compatibility.test.ts/96eca77fe31dd030545b16012ffd587f6decda7c/testnet_compatibility.test.ts",
+          "git_object": "8cc416f39ccf249b729966a93256e0c9268f2037",
+          "git_mode": "100644",
+          "sha256": "86ae2842deb90820d07424dd7ebeb572c1f602ec7a5ad4a8ebc6308202c2c59f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "9a9266660dd05114e6b921fbef6ad0df9ac765c7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/9a9266660dd05114e6b921fbef6ad0df9ac765c7/GSE.sol",
+          "git_object": "f5fb15622ca47316ac43989da798df0036a81364",
+          "git_mode": "100644",
+          "sha256": "ea4a6277645e2c9169ec4b1b0d85095e72a6cb80819e4c8d84d21a80fbd9ba27"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/FeeLib.sol",
+      "path_kind": "file",
+      "commit": "9f8ff7e337e12bd798fff868524a14788099ed21",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/FeeLib.sol/9f8ff7e337e12bd798fff868524a14788099ed21/FeeLib.sol",
+          "git_object": "8fd5b0c645fc316de5bb8937c0627316486b9ca0",
+          "git_mode": "100644",
+          "sha256": "e325faca8f923940856a13c9b1f2cab2dd738ac301c51d7db31c0b3e49bdcad2"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/a310dd929fc136669fd84baa5024d437ac1c9603/GSE.sol",
+          "git_object": "818f555d0430f1d830cd1c62f8a03e4f2312855e",
+          "git_mode": "100644",
+          "sha256": "473ad87b091f9368f70b13581d7b5e482931ed01004502397cf8e0a9766147f3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/a310dd929fc136669fd84baa5024d437ac1c9603/Governance.sol",
+          "git_object": "7ac9696269f3ffb1ad0d23f3d4e30ea86cbbf2a4",
+          "git_mode": "100644",
+          "sha256": "c97a92413ceed9bc1a9a2fe92d81405ca57d60233acef8b540ec5b79f1f854a9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IGovernance.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IGovernance.sol/a310dd929fc136669fd84baa5024d437ac1c9603/IGovernance.sol",
+          "git_object": "a51624b590155991baa6da37fe296e222b6b0ac9",
+          "git_mode": "100644",
+          "sha256": "0905d47b1b74a6b8e1a68f39c3fb2277bf14682d98435f8223e8ae362d91d03b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/AddressSnapshotLib.sol/a310dd929fc136669fd84baa5024d437ac1c9603/AddressSnapshotLib.sol",
+          "git_object": "274a2c0c5e7f53700cea2682c8321919c3fd01f7",
+          "git_mode": "100644",
+          "sha256": "785360d924115bd191f56e46b7301f8401f800e6f84e08391deb71b148a7a040"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ConfigurationLib.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/ConfigurationLib.sol/a310dd929fc136669fd84baa5024d437ac1c9603/ConfigurationLib.sol",
+          "git_object": "6bb5e692181040e8bf6ec21b727407d63dd82a97",
+          "git_mode": "100644",
+          "sha256": "950b2cf6c2cab06bfa03c3c64aa8ee564650bd9485c8afc43c141c6c0da9868a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/Errors.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/Errors.sol/a310dd929fc136669fd84baa5024d437ac1c9603/Errors.sol",
+          "git_object": "0894ca32fff60d8994f66c63b76c62b6fdfd7115",
+          "git_mode": "100644",
+          "sha256": "81bedd8cb53cddf9381128f1ccba10ac9eb88099ead8d4e31ae9e8708bf481a5"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ProposalLib.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/ProposalLib.sol/a310dd929fc136669fd84baa5024d437ac1c9603/ProposalLib.sol",
+          "git_object": "9cd39a011ed95c5d5959354b4e92fd8792895edc",
+          "git_mode": "100644",
+          "sha256": "5df0915b21e237e6afbc18e9459fb163c947c922e2253f3b075d4e6df5ec2c06"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
+      "path_kind": "file",
+      "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/BN254Lib.sol/a310dd929fc136669fd84baa5024d437ac1c9603/BN254Lib.sol",
+          "git_object": "d1ce051657307042b0532de487de9d0cd4bed109",
+          "git_mode": "100644",
+          "sha256": "f85cbad80de8b9b67c5784f58eff0ba8f5d7e7eb3a3163edb5e77ff1d6fc00cf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/AttestationLib.sol",
+      "path_kind": "file",
+      "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/AttestationLib.sol/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5/AttestationLib.sol",
+          "git_object": "70521e35c27d030cf378f32dfb52f24052fdb8d4",
+          "git_mode": "100644",
+          "sha256": "cbb27b18111b37222eb4ded61e40b77b96704db5660e8ce05f7c0a87beabe7a9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/StakingLib.sol",
+      "path_kind": "file",
+      "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/StakingLib.sol/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5/StakingLib.sol",
+          "git_object": "c86e82c3571f5ce007af49606104b15d015997af",
+          "git_mode": "100644",
+          "sha256": "8098520f18c8b46a670c40e4404e03f9ad7c33a2bc7e7a4ebe257d5c085560e9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSEPayload.sol",
+      "path_kind": "file",
+      "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSEPayload.sol/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5/GSEPayload.sol",
+          "git_object": "ab36054ec95c08f21da81e43ae945638ca60ec9f",
+          "git_mode": "100644",
+          "sha256": "b1e0377c8e2905c7b03687a77d9fb4f554263f02d0958736bfe321021f313ac9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5/Governance.sol",
+          "git_object": "3773e46c757af5471b38d6c0aedd46c9ec15e76c",
+          "git_mode": "100644",
+          "sha256": "43e72ffead0611e7e085f9a9cba3af891a466d276e902ad663fbd48685071344"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/GovernanceProposer.sol",
+      "path_kind": "file",
+      "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/GovernanceProposer.sol/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5/GovernanceProposer.sol",
+          "git_object": "c3cce528686630eba13013ae8bdf6843d3d19222",
+          "git_mode": "100644",
+          "sha256": "7e85f5b0daa1f8826942ab5bc34d786fcf3c1179643976dfe0a76ea6dd96e61d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/CoinIssuer.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/CoinIssuer.sol/a6eebac31276e7a08525a872d8d364da6d535f86/CoinIssuer.sol",
+          "git_object": "b4767dcb07ea22e31c61d2cc80174eac8f16bfc2",
+          "git_mode": "100644",
+          "sha256": "364ab9399fc73a3ffe817650a9e87d9e43d68a4d43dda579fe0a798b79f87fcf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/a6eebac31276e7a08525a872d8d364da6d535f86/GSE.sol",
+          "git_object": "4f85258f4d06ffc3f5cb841e77ee09543e766767",
+          "git_mode": "100644",
+          "sha256": "fab19e022941627f217c3706dccbc1cc1db5b989d415755644c4f914a15e3ebe"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSEPayload.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSEPayload.sol/a6eebac31276e7a08525a872d8d364da6d535f86/GSEPayload.sol",
+          "git_object": "ab36054ec95c08f21da81e43ae945638ca60ec9f",
+          "git_mode": "100644",
+          "sha256": "b1e0377c8e2905c7b03687a77d9fb4f554263f02d0958736bfe321021f313ac9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/a6eebac31276e7a08525a872d8d364da6d535f86/Governance.sol",
+          "git_object": "e53bf4652f84ae1b7346b0915a269b791f432554",
+          "git_mode": "100644",
+          "sha256": "e689647848947b999ac3a83892a979f8363fa4e7490eb77a2fa688b18e0100a4"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Registry.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Registry.sol/a6eebac31276e7a08525a872d8d364da6d535f86/Registry.sol",
+          "git_object": "044e4ca5be5a02e7867d805b3c06dafa613735d2",
+          "git_mode": "100644",
+          "sha256": "0e9265523ac2dd1625ceb4594ad5c616d5fcbc1346d51dd38c43b937631c8193"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/RewardDistributor.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/RewardDistributor.sol/a6eebac31276e7a08525a872d8d364da6d535f86/RewardDistributor.sol",
+          "git_object": "632b49b53581d07a800cebeafff1118c99e0f10e",
+          "git_mode": "100644",
+          "sha256": "417c177bae59d1771ec02b59f07da648dc0f5ddc18e4649ff8086a0d118b4c28"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/ICoinIssuer.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/ICoinIssuer.sol/a6eebac31276e7a08525a872d8d364da6d535f86/ICoinIssuer.sol",
+          "git_object": "b770c11352d6c4b1c45cd635df64c6b1ff50341c",
+          "git_mode": "100644",
+          "sha256": "d10b375d4155846db15dbbf4245e2e5ff1e02cc864ace0da532b936c6a25b23c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IEmpire.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IEmpire.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IEmpire.sol",
+          "git_object": "71bb4b6c3dfb519968c209e007f0c5a834a72644",
+          "git_mode": "100644",
+          "sha256": "b66ac5e16f1b8620cf8dc25487ceddc76c3342bd86f7cf756ae5da4da5d9e716"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IGovernance.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IGovernance.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IGovernance.sol",
+          "git_object": "14868aa94defb5a7afe24cfe735431d78734687b",
+          "git_mode": "100644",
+          "sha256": "589498e53b113e475818c72ef93c4965211847a314c5c3530cc66dba14d918df"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IGovernanceProposer.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IGovernanceProposer.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IGovernanceProposer.sol",
+          "git_object": "a5474948d4a8ea80c2a41bc6d379831993173634",
+          "git_mode": "100644",
+          "sha256": "3cb01a63bd6dd4f0545e03312e1b96c5b8f8884bf7d32483b52574ef20d5df0d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IPayload.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IPayload.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IPayload.sol",
+          "git_object": "064eaf6ac296cdd761dbd16045fc3e92b6114dcd",
+          "git_mode": "100644",
+          "sha256": "5b27814e079d6c18c1d3f37eece5b729b5ec27b384aba4c908c019a1083fc698"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IProposerPayload.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IProposerPayload.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IProposerPayload.sol",
+          "git_object": "8994bd71b3abaed5b2a855396aeeff73bc2ce113",
+          "git_mode": "100644",
+          "sha256": "f4ccad258b295ccffce59c500a39d43814bf2c193444d06d9f3ae75cdec5e917"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IRegistry.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IRegistry.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IRegistry.sol",
+          "git_object": "0ba84122dd51569208192aee79fb66f302755b90",
+          "git_mode": "100644",
+          "sha256": "311196089517b4869f165e21efd60d963605121918c3f026e33b76e0846c846b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IRewardDistributor.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/interfaces/IRewardDistributor.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IRewardDistributor.sol",
+          "git_object": "60616169d0a2690ed38a99dd5518fb2f4a426c7c",
+          "git_mode": "100644",
+          "sha256": "1c017973ea60a6d0600184848c3193160c77763fdf921e53f14aec06c42491a1"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/AddressSnapshotLib.sol/a6eebac31276e7a08525a872d8d364da6d535f86/AddressSnapshotLib.sol",
+          "git_object": "1023ee66491312411fc53ae1cb9542a98b485129",
+          "git_mode": "100644",
+          "sha256": "2010b70d7fa81bd51147aa3f90b9ea883e90856ccf74db6aa0bf617cbc6f6bd9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/CheckpointedUintLib.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/CheckpointedUintLib.sol/a6eebac31276e7a08525a872d8d364da6d535f86/CheckpointedUintLib.sol",
+          "git_object": "2a06f4db9530c93932150ce77b222db1568e4494",
+          "git_mode": "100644",
+          "sha256": "1d9bba28015928dba9bbbe1d564e254a91020aa50f022d8ab1f180a478de6ebf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ConfigurationLib.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/ConfigurationLib.sol/a6eebac31276e7a08525a872d8d364da6d535f86/ConfigurationLib.sol",
+          "git_object": "e5683fbc3ce1371929738bb0aca5353c4c6eb671",
+          "git_mode": "100644",
+          "sha256": "6f2bc8dd133c2d0891a9bc325c7aed2ea58bd170396f492fc6ddcd5aeaf872b6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/DepositDelegationLib.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/DepositDelegationLib.sol/a6eebac31276e7a08525a872d8d364da6d535f86/DepositDelegationLib.sol",
+          "git_object": "74dfe5e48c119afaa7f8baf55858e6d2ee46feae",
+          "git_mode": "100644",
+          "sha256": "fcf27ab2daa704279d899941a30bf38ee2c5b928813d0349ff1b488daa8f1d51"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/Errors.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/Errors.sol/a6eebac31276e7a08525a872d8d364da6d535f86/Errors.sol",
+          "git_object": "ca57e9068c9b043be435eb4547086576a27cd373",
+          "git_mode": "100644",
+          "sha256": "47a5683ec2532f8ba538329c51f09d65de5f17a02b465a8e2a0cf86a69fef1d9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ProposalLib.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/libraries/ProposalLib.sol/a6eebac31276e7a08525a872d8d364da6d535f86/ProposalLib.sol",
+          "git_object": "84be3d8de7284d8ce4a87bae589d94b77cdbb85f",
+          "git_mode": "100644",
+          "sha256": "cbd6d884ddcd48779cc7cd159d989d7f14d3dbc3829c1f54f6adf3d9a06e8b95"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/EmpireBase.sol/a6eebac31276e7a08525a872d8d364da6d535f86/EmpireBase.sol",
+          "git_object": "15f6f659497f0fe61ff694f73385a9ec3ef46f39",
+          "git_mode": "100644",
+          "sha256": "444ba5c16581002b5e0ff9b7bef60391982802a94f7a58819419f996b84198b1"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/GovernanceProposer.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/proposer/GovernanceProposer.sol/a6eebac31276e7a08525a872d8d364da6d535f86/GovernanceProposer.sol",
+          "git_object": "c3cce528686630eba13013ae8bdf6843d3d19222",
+          "git_mode": "100644",
+          "sha256": "7e85f5b0daa1f8826942ab5bc34d786fcf3c1179643976dfe0a76ea6dd96e61d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/interfaces/IMintableERC20.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/interfaces/IMintableERC20.sol/a6eebac31276e7a08525a872d8d364da6d535f86/IMintableERC20.sol",
+          "git_object": "5a4214087be1be28105e776830ae84ce333603e8",
+          "git_mode": "100644",
+          "sha256": "31a33ccb5b9638262ec8a8ab2c63b0cda88a65a49bf9f7493c41341daa823ee3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/BN254Lib.sol/a6eebac31276e7a08525a872d8d364da6d535f86/BN254Lib.sol",
+          "git_object": "3bf47a702b909631b5575307bb9bfea23d7ebd8b",
+          "git_mode": "100644",
+          "sha256": "7117937f05614b7ac403f34cd8debac6edb97395fae841969ca161ab32d6e7dd"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/CompressedTimeMath.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/CompressedTimeMath.sol/a6eebac31276e7a08525a872d8d364da6d535f86/CompressedTimeMath.sol",
+          "git_object": "6ce6290804ce7fbd939d3d3faef8e5a86f646e4f",
+          "git_mode": "100644",
+          "sha256": "50cdddd2fcd567671cfd53da38a093e4d327332205945e90e0c16bb580873510"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/SignatureLib.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/SignatureLib.sol/a6eebac31276e7a08525a872d8d364da6d535f86/SignatureLib.sol",
+          "git_object": "a0ca660ff9208f0ac84ac89a3b2174420dcdee2f",
+          "git_mode": "100644",
+          "sha256": "438b8c0cf4e760c12b90e8d485d1675104ed77d39d507097b8b92ac7bfef1cad"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/TimeMath.sol",
+      "path_kind": "file",
+      "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/shared/libraries/TimeMath.sol/a6eebac31276e7a08525a872d8d364da6d535f86/TimeMath.sol",
+          "git_object": "aab7c27cdad5df5e9179674926ea58aa85a98ae9",
+          "git_mode": "100644",
+          "sha256": "eefd1773f655d8bfae082e7bb2fae011a647437d78643e002f8a541c06bdbb02"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "b2742ee480de17eb6683413811251123c54c1d43",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/b2742ee480de17eb6683413811251123c54c1d43/TallySlashingProposer.sol",
+          "git_object": "7bd31a611f5a6eb6a4914a7fa1b4a03ceeb69f6c",
+          "git_mode": "100644",
+          "sha256": "5772ed2595f5f3492a815d531329460ebcbd0d02182fd50d1b77e91626df0b20"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "b7605403131acbe86dbbc97be1e741f733c61f5e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/b7605403131acbe86dbbc97be1e741f733c61f5e/TallySlashingProposer.sol",
+          "git_object": "14c2a8c14127d2b739fbfe52134c986f712434fe",
+          "git_mode": "100644",
+          "sha256": "4de1dfa1d5635975199cdfd3e6f8d2059ce52fc6dafee339a00d330c323a6e8e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/CoinIssuer.sol",
+      "path_kind": "file",
+      "commit": "bcc710cc4f8733e6808413b8daf82c8f3d72310f",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/CoinIssuer.sol/bcc710cc4f8733e6808413b8daf82c8f3d72310f/CoinIssuer.sol",
+          "git_object": "15738ad96ee616452790325e8bb45284e2d913a2",
+          "git_mode": "100644",
+          "sha256": "8a63560cdeebdadcc399f56147add1d02b92514bf497c0504ca85c7a569cea6d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/CoinIssuer.sol",
+      "path_kind": "file",
+      "commit": "bd31f776c3ed5ed9fd5c16d1fd86ad1b9fadb116",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/CoinIssuer.sol/bd31f776c3ed5ed9fd5c16d1fd86ad1b9fadb116/CoinIssuer.sol",
+          "git_object": "a31edfbfb2c2c6d8589a1be340798cc30a32fc79",
+          "git_mode": "100644",
+          "sha256": "7e20666f90f434f94e181b8d47e56a4d8b48677eb44aa571cb7e83e16a3c8c05"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol",
+      "path_kind": "file",
+      "commit": "c9cd1b9deb54ca43d3b4762eb73fd0dcf983e473",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol/c9cd1b9deb54ca43d3b4762eb73fd0dcf983e473/FeeConfig.sol",
+          "git_object": "be7591e5d07392def565c8fca2b79e54140bd7de",
+          "git_mode": "100644",
+          "sha256": "5adac11d84113983afe6a5c0f6857dfb34d7816bfbef54921e3979e569391545"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/messagebridge/Inbox.sol",
+      "path_kind": "file",
+      "commit": "ca8c97c2d87444e81c640557a8bb1f9e26da600d",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/messagebridge/Inbox.sol/ca8c97c2d87444e81c640557a8bb1f9e26da600d/Inbox.sol",
+          "git_object": "34b77688bb0f728e459459d5c83404459058a2ab",
+          "git_mode": "100644",
+          "sha256": "d620261a23d7ece3b255d98fd177d56d3477b3caa04771efa24f79abb6f9ce1e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "cab5a54630639751fa471385508cc4a5a8a85d10",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/cab5a54630639751fa471385508cc4a5a8a85d10/GSE.sol",
+          "git_object": "c67141f82197c8003cb5d00bdc7d5b7b70bcfe30",
+          "git_mode": "100644",
+          "sha256": "28addeb2c3b87ac9551848ed8d80d52fa9ee470bcec06dab9ae2e040a06eb230"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/EscapeHatch.sol",
+      "path_kind": "file",
+      "commit": "e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/EscapeHatch.sol/e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9/EscapeHatch.sol",
+          "git_object": "147f733e1bf1e857d7e2082e70774bf89972d209",
+          "git_mode": "100644",
+          "sha256": "ba3b203e84936ddfb1b51c47ad51612246ec9334ceff4abb4443270a179fb4c4"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol",
+      "path_kind": "file",
+      "commit": "e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/EpochProofLib.sol/e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9/EpochProofLib.sol",
+          "git_object": "cdd0cfb58d0158956ebb5db97aed6977d55781fa",
+          "git_mode": "100644",
+          "sha256": "77f96182dbb4e28732562bbd84f33fc1b678a7109d31b669228d0b5667d46665"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/crypto/MerkleLib.sol",
+      "path_kind": "file",
+      "commit": "e87438b3d3f29beef92ac3bb148597236944d032",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/crypto/MerkleLib.sol/e87438b3d3f29beef92ac3bb148597236944d032/MerkleLib.sol",
+          "git_object": "035f1c3470ef08db429f7d08df8fa2671e9ca859",
+          "git_mode": "100644",
+          "sha256": "9a5bcafcbdf99ba3ece3d69efca37c73a9ecebc71c73b57490bba02520aabf49"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/BlobLib.sol",
+      "path_kind": "file",
+      "commit": "e87438b3d3f29beef92ac3bb148597236944d032",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/BlobLib.sol/e87438b3d3f29beef92ac3bb148597236944d032/BlobLib.sol",
+          "git_object": "9f2e882f50e0bf0cb8f401b33d106163a85555ff",
+          "git_mode": "100644",
+          "sha256": "0cdeabcfc59b02465b3b24172d635e1d63ec5f3da31e67ca37d8eaccccff8746"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "path_kind": "file",
+      "commit": "eb8ca7ab0fa319ed6071370c74d50c5815526f0e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/Governance.sol/eb8ca7ab0fa319ed6071370c74d50c5815526f0e/Governance.sol",
+          "git_object": "77e0b79dde317a0eaeaf0e6ed9d2b5d632639212",
+          "git_mode": "100644",
+          "sha256": "6acfbc5524729ee6a7f5fcd12eac98601b3b6883479092704b6d7d8ce7573b9b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/script/deploy/DeployAlpha.s.sol",
+      "path_kind": "file",
+      "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/script/deploy/DeployAlpha.s.sol/ed3f61d61745bcd895056ee49e4c6a849928d19e/DeployAlpha.s.sol",
+          "git_object": "39ac7b4dd50288a44a3d30b0bdff282ee11810f4",
+          "git_mode": "100644",
+          "sha256": "34151c637760a53d6a7993ef7749bd4eda25937bb6da05612560675df95ec118"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/scripts/run_alpha_upgrade.sh",
+      "path_kind": "file",
+      "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/scripts/run_alpha_upgrade.sh/ed3f61d61745bcd895056ee49e4c6a849928d19e/run_alpha_upgrade.sh",
+          "git_object": "2a6f4947db285aa0a9fb9a980cfd4cfa27c9321d",
+          "git_mode": "100755",
+          "sha256": "e4070e23c975178d7e79b05b8b987f4d9875796fc8e8c8e0f8100dfa05aa6a14"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/alpha/AlphaPayload.sol",
+      "path_kind": "file",
+      "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/alpha/AlphaPayload.sol/ed3f61d61745bcd895056ee49e4c6a849928d19e/AlphaPayload.sol",
+          "git_object": "edb1c4651f05db9fa40b1c4bcfa3b54ac38697a7",
+          "git_mode": "100644",
+          "sha256": "921b588acd3edfb27871cb1c56c515c6a71f3aa2cab5d175d01e64c8da1fa0f7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/alpha/AlphaVerifier.sol",
+      "path_kind": "file",
+      "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/alpha/AlphaVerifier.sol/ed3f61d61745bcd895056ee49e4c6a849928d19e/AlphaVerifier.sol",
+          "git_object": "77ba49548c821c4685bf3a37875830516d7efc36",
+          "git_mode": "100644",
+          "sha256": "94ec564d4727661fa0445fab26f0043ee00196bdf135e6e05951dea092960402"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/ed3f61d61745bcd895056ee49e4c6a849928d19e/TallySlashingProposer.sol",
+          "git_object": "2b944d0ed78c02ac11dbe3ea808bcd4d6bf07709",
+          "git_mode": "100644",
+          "sha256": "4ef554c30ab0e08e6760a7e9af40531804eb30d423c88b7947ccc6c731fd7a5d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "path_kind": "file",
+      "commit": "efd6a3ecd43f42a3bc90c94ea1ef272d18f6ef91",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/governance/GSE.sol/efd6a3ecd43f42a3bc90c94ea1ef272d18f6ef91/GSE.sol",
+          "git_object": "86c4756e74f4068751bb3ce34bf6b88942838cae",
+          "git_mode": "100644",
+          "sha256": "146ff59474fd8236f7f4205220c95209d50930599c2c1c0e09e6df718ee9bd50"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "f68b1a9183ce407f89bec0175615de0e478bbd48",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/slashing/TallySlashingProposer.sol/f68b1a9183ce407f89bec0175615de0e478bbd48/TallySlashingProposer.sol",
+          "git_object": "2b944d0ed78c02ac11dbe3ea808bcd4d6bf07709",
+          "git_mode": "100644",
+          "sha256": "4ef554c30ab0e08e6760a7e9af40531804eb30d423c88b7947ccc6c731fd7a5d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol",
+      "path_kind": "file",
+      "commit": "fd98ab2827138ace06840a2375f2783e9f459674",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol/fd98ab2827138ace06840a2375f2783e9f459674/ValidatorSelectionLib.sol",
+          "git_object": "41834351de54ba52bc18d7c45cf7167a18434d44",
+          "git_mode": "100644",
+          "sha256": "9cf18e2f8b2a072bcb31d4043803bd7b57060c5b133d9e9621b68df996f1964b"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/Slasher.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/SlashingProposer.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/CoinIssuer.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSE.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/GSEPayload.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Governance.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/Registry.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/RewardDistributor.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/ICoinIssuer.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IEmpire.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IGovernance.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IGovernanceProposer.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IPayload.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IProposerPayload.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IRegistry.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/interfaces/IRewardDistributor.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/CheckpointedUintLib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ConfigurationLib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/DepositDelegationLib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/Errors.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/libraries/ProposalLib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/GovernanceProposer.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/interfaces/IMintableERC20.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/CompressedTimeMath.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/SignatureLib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/TimeMath.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/ProtocolTreasury.sol",
+      "revision_kind": "pull_request",
+      "revision": "https://github.com/AztecProtocol/ignition-monorepo/pull/690",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
+      "revision_kind": "pull_request",
+      "revision": "https://github.com/AztecProtocol/ignition-monorepo/pull/71",
+      "reason": "revision is not a commit"
+    }
+  ],
+  "unavailable": [
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/ProtocolTreasury.sol",
+      "path_kind": "file",
+      "commit": "2a2c790968ce2d6a7c3d257c9ebbb1807f7a6abf",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/constants.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/sale/GenesisSequencerSale.sol",
+      "path_kind": "file",
+      "commit": "833c1b3a2150fd6bee5197db5127f6e883bd17bd",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/sale/GenesisSequencerSale.sol",
+      "path_kind": "file",
+      "commit": "971a777c6b1ed257a47ccc66e91434f7c2435c36",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/sale/GenesisSequencerSale.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/sale/IGenesisSequencerSale.sol",
+      "path_kind": "file",
+      "commit": "833c1b3a2150fd6bee5197db5127f6e883bd17bd",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/sale/IGenesisSequencerSale.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/IIgnitionParticipantSoulbound.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
+      "path_kind": "file",
+      "commit": "833c1b3a2150fd6bee5197db5127f6e883bd17bd",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
+      "path_kind": "file",
+      "commit": "971a777c6b1ed257a47ccc66e91434f7c2435c36",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/providers/AttestationProvider.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/providers/IWhitelistProvider.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/providers/PredicateProvider.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/providers/ZKPassportProvider.sol",
+      "path_kind": "file",
+      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/soulbound/providers/ZKPassportProvider.sol",
+      "path_kind": "file",
+      "commit": "f61d54b6a630dc81dc19284f90f7a229a30d47bb",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
+      "path_kind": "file",
+      "commit": "195a455f99a10490c8619cfa5f4e4a30c0cfff10",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
+      "path_kind": "file",
+      "commit": "20acd71f5bea98e1a07898639c55e72850222627",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
+      "path_kind": "file",
+      "commit": "23913401b2a3634a55b5e652c2127c50b9897862",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
+      "path_kind": "file",
+      "commit": "931a1b7311e165251b38bbeab3e63c18e07b441c",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
+      "path_kind": "file",
+      "commit": "c95aacd744235faf653ea72f1a6aa4e685cffe7a",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
+      "path_kind": "file",
+      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
+      "path_kind": "file",
+      "commit": "de6313885088b9b2729084e95106e5a4705e03eb",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/libs/BN254.sol",
+      "path_kind": "file",
+      "commit": "20acd71f5bea98e1a07898639c55e72850222627",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/libs/BN254.sol",
+      "path_kind": "file",
+      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking-registry/libs/QueueLib.sol",
+      "path_kind": "file",
+      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking/ATPWithdrawableStaker.sol",
+      "path_kind": "file",
+      "commit": "0ec876d59721e3574ae069ac5fdfc9721a3a2759",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking/ATPWithdrawableStaker.sol",
+      "path_kind": "file",
+      "commit": "20acd71f5bea98e1a07898639c55e72850222627",
+      "reason": "repository is not reachable"
+    },
+    {
+      "repository": "AztecProtocol/ignition-monorepo",
+      "source_path": "contracts/src/staking/ATPWithdrawableStaker.sol",
+      "path_kind": "file",
+      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
+      "reason": "repository is not reachable"
+    }
+  ]
+}
