@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a human-readable audit-summary.md from audit-summary.json."""
+"""Render relevant audit sources and descriptions of all audit reports."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ import sys
 import tempfile
 from collections import defaultdict
 from datetime import date
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 
@@ -100,6 +100,14 @@ def warn(message: str) -> None:
     print(f"warning: {message}", file=sys.stderr)
 
 
+def report_is_relevant(report: dict[str, Any]) -> bool:
+    """Return report relevance, treating pre-1.1 summaries as relevant."""
+    value = report.get("isRelevant", True)
+    if not isinstance(value, bool):
+        raise SummaryError("report isRelevant must be a boolean")
+    return value
+
+
 def repository_reachable(url: str) -> bool:
     try:
         run_git(None, "ls-remote", "--exit-code", url, "HEAD")
@@ -177,6 +185,10 @@ def resolve_commit_dates(
     """
     repositories: dict[str, tuple[str, set[str]]] = {}
     for report in summary["reports"]:
+        if not isinstance(report, dict):
+            raise SummaryError("each report must be an object")
+        if not report_is_relevant(report):
+            continue
         report_repositories = {
             repository["id"]: repository["url"]
             for repository in report.get("repositories", [])
@@ -448,7 +460,89 @@ def render_repository(
     return lines
 
 
+def report_link_path(report_file: str) -> str:
+    if "\\" in report_file:
+        raise SummaryError("report_file must use '/' separators")
+    path = PurePosixPath(report_file)
+    if path.is_absolute() or any(part in {"", ".", ".."} for part in path.parts):
+        raise SummaryError(f"unsafe report_file: {report_file!r}")
+    return (PurePosixPath("reports") / path).as_posix()
+
+
+def render_report(
+    report: dict[str, Any],
+    heading_level: int,
+    include_source_tables: bool,
+    commit_dates: dict[CommitDateKey, date],
+    unresolved: dict[str, str],
+) -> list[str]:
+    report_title = report.get("title") or report.get("id") or "Untitled report"
+    lines = [f"{'#' * heading_level} {html.escape(str(report_title))}", ""]
+    details = []
+    report_file = report.get("report_file")
+    if isinstance(report_file, str) and report_file:
+        report_path = report_link_path(report_file)
+        escaped_file = html.escape(report_file)
+        escaped_path = html.escape(report_path)
+        details.append(f"Report: [{escaped_file}](<{escaped_path}>)")
+    if report.get("auditor"):
+        details.append(f"Auditor: {html.escape(str(report['auditor']))}")
+    if report.get("report_date"):
+        details.append(f"Date: {html.escape(str(report['report_date']))}")
+    description = report.get("description")
+    if description is not None:
+        if not isinstance(description, str) or not description.strip():
+            raise SummaryError("report description must be a non-empty string")
+        details.append(f"Description: {html.escape(description.strip())}")
+    lines.extend([f"- {detail}" for detail in details])
+    if details:
+        lines.append("")
+
+    repositories = report.get("repositories")
+    scopes = report.get("scopes")
+    if not isinstance(repositories, list) or not isinstance(scopes, list):
+        raise SummaryError("each report must contain repositories and scopes arrays")
+    if not include_source_tables:
+        return lines
+
+    scopes_by_repository: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for scope in scopes:
+        if not isinstance(scope, dict) or not isinstance(scope.get("repository"), str):
+            raise SummaryError("each scope must identify a repository")
+        scopes_by_repository[scope["repository"]].append(scope)
+    known_repositories = {
+        repository.get("id")
+        for repository in repositories
+        if isinstance(repository, dict)
+    }
+    unknown = set(scopes_by_repository) - known_repositories
+    if unknown:
+        raise SummaryError(f"scopes reference unknown repositories: {sorted(unknown)}")
+    for repository in repositories:
+        if not isinstance(repository, dict):
+            raise SummaryError("each repository must be an object")
+        lines.extend(
+            render_repository(
+                repository,
+                scopes_by_repository.get(repository.get("id"), []),
+                commit_dates,
+                unresolved,
+            )
+        )
+    return lines
+
+
 def render_summary(summary: dict[str, Any]) -> str:
+    relevant_reports: list[dict[str, Any]] = []
+    irrelevant_reports: list[dict[str, Any]] = []
+    for report in summary["reports"]:
+        if not isinstance(report, dict):
+            raise SummaryError("each report must be an object")
+        target = (
+            relevant_reports if report_is_relevant(report) else irrelevant_reports
+        )
+        target.append(report)
+
     commit_dates, unresolved = resolve_commit_dates(summary)
     project = summary.get("project")
     title = f"Audit source summary: {project}" if project else "Audit source summary"
@@ -460,56 +554,13 @@ def render_summary(summary: dict[str, Any]) -> str:
         "",
     ]
 
-    for report in summary["reports"]:
-        if not isinstance(report, dict):
-            raise SummaryError("each report must be an object")
-        report_title = report.get("title") or report.get("id") or "Untitled report"
-        lines.extend([f"## {html.escape(str(report_title))}", ""])
-        details = []
-        report_file = report.get("report_file")
-        if isinstance(report_file, str) and report_file:
-            report_path = f"reports/{report_file}"
-            escaped_file = html.escape(report_file)
-            escaped_path = html.escape(report_path)
-            details.append(f"Report: [{escaped_file}](<{escaped_path}>)")
-        if report.get("auditor"):
-            details.append(f"Auditor: {html.escape(str(report['auditor']))}")
-        if report.get("report_date"):
-            details.append(f"Date: {html.escape(str(report['report_date']))}")
-        lines.extend([f"- {detail}" for detail in details])
-        if details:
-            lines.append("")
+    for report in relevant_reports:
+        lines.extend(render_report(report, 2, True, commit_dates, unresolved))
 
-        repositories = report.get("repositories")
-        scopes = report.get("scopes")
-        if not isinstance(repositories, list) or not isinstance(scopes, list):
-            raise SummaryError("each report must contain repositories and scopes arrays")
-        scopes_by_repository: dict[str, list[dict[str, Any]]] = defaultdict(list)
-        for scope in scopes:
-            if not isinstance(scope, dict) or not isinstance(
-                scope.get("repository"), str
-            ):
-                raise SummaryError("each scope must identify a repository")
-            scopes_by_repository[scope["repository"]].append(scope)
-        known_repositories = {
-            repository.get("id")
-            for repository in repositories
-            if isinstance(repository, dict)
-        }
-        unknown = set(scopes_by_repository) - known_repositories
-        if unknown:
-            raise SummaryError(f"scopes reference unknown repositories: {sorted(unknown)}")
-        for repository in repositories:
-            if not isinstance(repository, dict):
-                raise SummaryError("each repository must be an object")
-            lines.extend(
-                render_repository(
-                    repository,
-                    scopes_by_repository.get(repository.get("id"), []),
-                    commit_dates,
-                    unresolved,
-                )
-            )
+    if irrelevant_reports:
+        lines.extend(["## Irrelevant reports", ""])
+        for report in irrelevant_reports:
+            lines.extend(render_report(report, 3, False, commit_dates, unresolved))
 
     return "\n".join(lines).rstrip() + "\n"
 

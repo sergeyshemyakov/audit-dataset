@@ -1,0 +1,33 @@
+ [package]
+name = "sbv-utils"
+description = "Utilities for Stateless Block Verifier"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+alloy-provider.workspace = true
+alloy-rpc-client.workspace = true
+alloy-transport.workspace = true
+
+async-trait.workspace = true
+futures.workspace = true
+thiserror.workspace = true
+serde = { workspace = true, features = ["derive"] }
+
+sbv-primitives = { workspace = true, features = ["network-types"] }
+sbv-core.workspace = true
+
+[features]
+scroll = [
+  "sbv-primitives/scroll-network-types",
+  "sbv-primitives/scroll-compress-info",
+  "sbv-core/scroll",
+]

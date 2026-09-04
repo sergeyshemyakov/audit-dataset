@@ -1,0 +1,699 @@
+{
+  "schema_version": "1.0.0",
+  "project": "privacy-pools",
+  "audit_summary": "../audit-summary.json",
+  "sources": [
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
+      "path_kind": "file",
+      "commit": "016a949f53f0493388a6877529f28774ef054a8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/Entrypoint.sol/016a949f53f0493388a6877529f28774ef054a8e/Entrypoint.sol",
+          "git_object": "a1eeba110698c7537ceabe9e845d6b5295d802e0",
+          "git_mode": "100644",
+          "sha256": "c9322602bc7568b4e92fcf61ab37dcf25c73e1fbde5e5d858b4de271aa0c7c4b"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
+      "path_kind": "file",
+      "commit": "238e3594053becde68aa40e1e4cef6c0c46e68da",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/Entrypoint.sol/238e3594053becde68aa40e1e4cef6c0c46e68da/Entrypoint.sol",
+          "git_object": "9da293de0e4b41b45df9aff3b4122cc5cc741795",
+          "git_mode": "100644",
+          "sha256": "8245c32d50ae65825172ab5a74154417315fa7cb0d1c31c66a7c5ce00c38196e"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/interfaces/IEntrypoint.sol",
+      "path_kind": "file",
+      "commit": "238e3594053becde68aa40e1e4cef6c0c46e68da",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/interfaces/IEntrypoint.sol/238e3594053becde68aa40e1e4cef6c0c46e68da/IEntrypoint.sol",
+          "git_object": "1d91ce10f62e8bf775b05acd33b12ee22ae07f97",
+          "git_mode": "100644",
+          "sha256": "6271203eecdf223d45cfcfdb35275a393cc2ed842e2f96af99efd95e60e25a89"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
+      "path_kind": "file",
+      "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/Entrypoint.sol/2d4627ba55743d17ff62a2856d93ef7cc926fc64/Entrypoint.sol",
+          "git_object": "45e357977ab4c628de291aa7370220e029ec75a8",
+          "git_mode": "100644",
+          "sha256": "dc977a9ef73f0de1f4c1ebbfac51bee73530314bc2cba8c59a6f071a2a495e32"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/PrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/PrivacyPool.sol/2d4627ba55743d17ff62a2856d93ef7cc926fc64/PrivacyPool.sol",
+          "git_object": "4c15b4aebb166ab27e37d815ba4af5608f838784",
+          "git_mode": "100644",
+          "sha256": "8fcea8b58adbb1fe20a91cead410c96dc93c90a074448ffa865696e3636edb36"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/State.sol",
+      "path_kind": "file",
+      "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/State.sol/2d4627ba55743d17ff62a2856d93ef7cc926fc64/State.sol",
+          "git_object": "fb492fbf89a5065da2a70e583d94ca0c4f236bba",
+          "git_mode": "100644",
+          "sha256": "1d2a5e46fdcd3bc520eedc57164086ab366a46f4a6c491df69fc275d75be83e0"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol",
+      "path_kind": "file",
+      "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol/2d4627ba55743d17ff62a2856d93ef7cc926fc64/PrivacyPoolComplex.sol",
+          "git_object": "eff2255e8ea0cf92d005d1a5df076cadf3dedbb0",
+          "git_mode": "100644",
+          "sha256": "7e3640cb1b55dc656be09db9bb7332d661647b47870ad4692986c3ce3e8ef003"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol",
+      "path_kind": "file",
+      "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol/2d4627ba55743d17ff62a2856d93ef7cc926fc64/PrivacyPoolSimple.sol",
+          "git_object": "753a8d9b654b6c0e661ec0d2410b4f9c2c284144",
+          "git_mode": "100644",
+          "sha256": "1d8661987dbb9b4a33c65c33285b6fc2f64ddc2b4e642af56f4846901edb1bb7"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/lib/Constants.sol",
+      "path_kind": "file",
+      "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/lib/Constants.sol/2d4627ba55743d17ff62a2856d93ef7cc926fc64/Constants.sol",
+          "git_object": "4f8fd07613eabbb471795f1212548fdd68f44dc5",
+          "git_mode": "100644",
+          "sha256": "e11a04d58600e4e4484c9cf95fe2875e25594ce9b57b8523574a32b15fef8180"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/lib/ProofLib.sol",
+      "path_kind": "file",
+      "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/lib/ProofLib.sol/2d4627ba55743d17ff62a2856d93ef7cc926fc64/ProofLib.sol",
+          "git_object": "288e91eddf6546bc2f364a733d737b573b54e64e",
+          "git_mode": "100644",
+          "sha256": "2041a535cdfbec83e1df4d54f5addc305629a41af22ac8a17393d63fda63b1cb"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/script/BatchRelayer.s.sol",
+      "path_kind": "file",
+      "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/script/BatchRelayer.s.sol/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/BatchRelayer.s.sol",
+          "git_object": "7a289de8372411c8e58c21c9b7614f03da001893",
+          "git_mode": "100644",
+          "sha256": "b1105618fa6256e5cee3d3b4afff7a4bb889f1a6f339d8c539c7e663764463a0"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/BatchRelayer.sol",
+      "path_kind": "file",
+      "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/BatchRelayer.sol/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/BatchRelayer.sol",
+          "git_object": "9c656858ef9dea101df9d803e3322b90a1537fcb",
+          "git_mode": "100644",
+          "sha256": "7c3387c47582091c458020688abe63e8dc425fc028b33bf34c90dbc112614855"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/interfaces/IBatchRelayer.sol",
+      "path_kind": "file",
+      "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/interfaces/IBatchRelayer.sol/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/IBatchRelayer.sol",
+          "git_object": "a69e929a1f1a0c868645f4ef485ea130827ade48",
+          "git_mode": "100644",
+          "sha256": "f11ae95379de79fadd740bb91b351b20815ac377518c0eacd2f6bfe88b443af5"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
+      "path_kind": "file",
+      "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/Entrypoint.sol/532eaa8ed151f06697249d400926d17adf442d8e/Entrypoint.sol",
+          "git_object": "d643801f5be69699fe5dd5f05c2bdf48138c7e57",
+          "git_mode": "100644",
+          "sha256": "c670e059cbfa1f4f8b68750a7948bdb51702574cc5657fe3af7b1536a21f6ccf"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/PrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/PrivacyPool.sol/532eaa8ed151f06697249d400926d17adf442d8e/PrivacyPool.sol",
+          "git_object": "21285abe887318e1f548bf1b92f54db9438d137c",
+          "git_mode": "100644",
+          "sha256": "063dafd1f8f8ea107ec6c7811a01d41855f63bfde297bf51c0ff99bac2f4ad85"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/State.sol",
+      "path_kind": "file",
+      "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/State.sol/532eaa8ed151f06697249d400926d17adf442d8e/State.sol",
+          "git_object": "6394c9799eed50b2c714b613c457b0edfe41f5e7",
+          "git_mode": "100644",
+          "sha256": "189880f20c474746b7ea73e4d751a95d2fb37eb474f30301d998d80bba11e0ac"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol",
+      "path_kind": "file",
+      "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol/532eaa8ed151f06697249d400926d17adf442d8e/PrivacyPoolComplex.sol",
+          "git_object": "004d8f89c9b5b4133d3f7eaa93cbfc87ee04ecc8",
+          "git_mode": "100644",
+          "sha256": "0f9c34f0bfd03a35117c3885e5d0bb9d4214513f201e122f4b8bae52b96b31a5"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol",
+      "path_kind": "file",
+      "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol/532eaa8ed151f06697249d400926d17adf442d8e/PrivacyPoolSimple.sol",
+          "git_object": "5bd70f836f049ca17836351184451f3b36cd30df",
+          "git_mode": "100644",
+          "sha256": "f0d97040fd5bd00d609c506bb46c0443e7aeb6eca2c5e374249c89b7ae257712"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/lib/Constants.sol",
+      "path_kind": "file",
+      "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/lib/Constants.sol/532eaa8ed151f06697249d400926d17adf442d8e/Constants.sol",
+          "git_object": "4f8fd07613eabbb471795f1212548fdd68f44dc5",
+          "git_mode": "100644",
+          "sha256": "e11a04d58600e4e4484c9cf95fe2875e25594ce9b57b8523574a32b15fef8180"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/lib/ProofLib.sol",
+      "path_kind": "file",
+      "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/lib/ProofLib.sol/532eaa8ed151f06697249d400926d17adf442d8e/ProofLib.sol",
+          "git_object": "288e91eddf6546bc2f364a733d737b573b54e64e",
+          "git_mode": "100644",
+          "sha256": "2041a535cdfbec83e1df4d54f5addc305629a41af22ac8a17393d63fda63b1cb"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/commitment.circom",
+      "path_kind": "file",
+      "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/circuits/circuits/commitment.circom/56d5d48c21e9493954e2660d0cc252ce537edc25/commitment.circom",
+          "git_object": "164c7b1cdce663ee54749e2e53422d6b8abc86eb",
+          "git_mode": "100644",
+          "sha256": "595f69f90dc1dccb016fdac2d6d93c11057cba071463e80a6cb394b6196d6a19"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/merkleTree.circom",
+      "path_kind": "file",
+      "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/circuits/circuits/merkleTree.circom/56d5d48c21e9493954e2660d0cc252ce537edc25/merkleTree.circom",
+          "git_object": "d911cfec4da6d6b30f10c8b5b203e2ba8c952181",
+          "git_mode": "100644",
+          "sha256": "622e8bd6c94a60b6f6c9f4555a1ed11ab33e8f8b679c7140f4a800596b74fcb6"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/withdraw.circom",
+      "path_kind": "file",
+      "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/circuits/circuits/withdraw.circom/56d5d48c21e9493954e2660d0cc252ce537edc25/withdraw.circom",
+          "git_object": "62eb2759b051ac5826a4e6f6dc872580c894fa91",
+          "git_mode": "100644",
+          "sha256": "edd704f2e349823dd5b049e00835e1ba045fbcb36f3cf5715c98b43b7c273695"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
+      "path_kind": "file",
+      "commit": "6cdeeaf0e44b98d5563c9d2f340f5825bec117f2",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/Entrypoint.sol/6cdeeaf0e44b98d5563c9d2f340f5825bec117f2/Entrypoint.sol",
+          "git_object": "a1eeba110698c7537ceabe9e845d6b5295d802e0",
+          "git_mode": "100644",
+          "sha256": "c9322602bc7568b4e92fcf61ab37dcf25c73e1fbde5e5d858b4de271aa0c7c4b"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/commitment.circom",
+      "path_kind": "file",
+      "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/circuits/circuits/commitment.circom/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/commitment.circom",
+          "git_object": "4ce578154298633e112248a0193a417b0a505788",
+          "git_mode": "100644",
+          "sha256": "9c5ccc11cd162a9e584e882e62c852da60fa2ef90e52476d9ac0d4a7cdff1eb8"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/merkleTree.circom",
+      "path_kind": "file",
+      "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/circuits/circuits/merkleTree.circom/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/merkleTree.circom",
+          "git_object": "f1bf4c341a85d3e6d1082cd9b6c9e050b95ec7a2",
+          "git_mode": "100644",
+          "sha256": "5754b7b09afa124e4821dff70a7caf533635366d9dcbb56d04128603494d0882"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/withdraw.circom",
+      "path_kind": "file",
+      "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/circuits/circuits/withdraw.circom/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/withdraw.circom",
+          "git_object": "5b596cb85c08dc9b7f04a7d43dc4abe611236f16",
+          "git_mode": "100644",
+          "sha256": "03e00168149bd00cd71d43d86f475e4ff919fef524dca0dd5689d7bc99dc4731"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
+      "path_kind": "file",
+      "commit": "ac36feba8ba26f3485acd0d87a9d5c373ab3967d",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/Entrypoint.sol/ac36feba8ba26f3485acd0d87a9d5c373ab3967d/Entrypoint.sol",
+          "git_object": "e75950c67dea8decfd66b53ba23ed6fa2a3ab98a",
+          "git_mode": "100644",
+          "sha256": "4b12d6bcaf9fa65b55b6d8812e978ae710a08227abd6dc5fefaba5977aad2723"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/State.sol",
+      "path_kind": "file",
+      "commit": "ac36feba8ba26f3485acd0d87a9d5c373ab3967d",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/State.sol/ac36feba8ba26f3485acd0d87a9d5c373ab3967d/State.sol",
+          "git_object": "6394c9799eed50b2c714b613c457b0edfe41f5e7",
+          "git_mode": "100644",
+          "sha256": "189880f20c474746b7ea73e4d751a95d2fb37eb474f30301d998d80bba11e0ac"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/Entrypoint.sol/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/Entrypoint.sol",
+          "git_object": "c99acee7f890e8268dd0cca6b3fd01aabd812713",
+          "git_mode": "100644",
+          "sha256": "c249da2e6b7dd110ad0c95c986aefca6906941d7e8f4ca45e0e789a15a0de015"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/PrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/PrivacyPool.sol/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/PrivacyPool.sol",
+          "git_object": "00b82ca09ea33a86f00d54ce76e24b8142dff950",
+          "git_mode": "100644",
+          "sha256": "840af69bc6e523fe8863b59c4869e4ef166c567075fb3596a669ce4ce5cb7a01"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/State.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/State.sol/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/State.sol",
+          "git_object": "7a1345063f338a104fc1591aa51394c02705d336",
+          "git_mode": "100644",
+          "sha256": "2add1b76c9ac6893f4cc0f1906f2fd9246c81b3964c7ca12d491177de5c046a1"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/PrivacyPoolComplex.sol",
+          "git_object": "4a9230a2da0b1e0e6a4482e166d1e78e2c05ab96",
+          "git_mode": "100644",
+          "sha256": "5fd100678a854ebe4f785003c3f34a26a10f84bbc4f2d992c9a0b512b3303f09"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/PrivacyPoolSimple.sol",
+          "git_object": "ac0933998dba619a5228882a007b23dc16986b5c",
+          "git_mode": "100644",
+          "sha256": "532337b12cca5496f8aade4ef95b5088b0912ace3b40ed47bd1a0e5dcbf91ce8"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/lib/Constants.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/lib/Constants.sol/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/Constants.sol",
+          "git_object": "c8ee460b9d2b798ed55b51b3fbbf4e9c114a4132",
+          "git_mode": "100644",
+          "sha256": "8ff4febdb9fec427567045c745ecd609d12438a4ecb54dd804f320f08a2f86dd"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/contracts/lib/ProofLib.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "file": "0xbow-io/privacy-pools-core/packages/contracts/src/contracts/lib/ProofLib.sol/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/ProofLib.sol",
+          "git_object": "30af4904925f9603b8b2d4ee941f20b7626b18af",
+          "git_mode": "100644",
+          "sha256": "e6782703ac33366800beeadedb753f87706a733571e0b18168a34877f78cc36f"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/ERC20PrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/ERC20PrivacyPool.sol/8ab7132877325e27b22053e974b3310d70b860b5/ERC20PrivacyPool.sol",
+          "git_object": "c20f8d579e28f95d8ebdc185dd45a57e80209016",
+          "git_mode": "100644",
+          "sha256": "f3baeee2f5a2917e5c8c44444ce5bc8d1c2731455215004f90eda28af28a6213"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/ETHPrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/ETHPrivacyPool.sol/8ab7132877325e27b22053e974b3310d70b860b5/ETHPrivacyPool.sol",
+          "git_object": "3ac9a6edcc9cd659ba32a40a43b1a8b05144fb59",
+          "git_mode": "100644",
+          "sha256": "19b34de52bd242dea9454f268c655b647722d8c2d151fc6ba95167bfb3540a8d"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/MerkleTreeWithHistory.sol",
+      "path_kind": "file",
+      "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/MerkleTreeWithHistory.sol/8ab7132877325e27b22053e974b3310d70b860b5/MerkleTreeWithHistory.sol",
+          "git_object": "f4fc719d8871afd8e7878c9015359f24a5b9d36d",
+          "git_mode": "100644",
+          "sha256": "decc0b3c8734cc61109f97756b0efbe06753aeca4691e9794bed85f1ae90a4d9"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/PrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/PrivacyPool.sol/8ab7132877325e27b22053e974b3310d70b860b5/PrivacyPool.sol",
+          "git_object": "7ca6a5d3e6d1e86808a48923a321a693b041d7ef",
+          "git_mode": "100644",
+          "sha256": "e46145548dc72abf0216825e11959f0125c75f0795abc3d30581bbee42f19ceb"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "membership-proof/circuits/proofOfInnocence.circom",
+      "path_kind": "file",
+      "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/membership-proof/circuits/proofOfInnocence.circom/8ab7132877325e27b22053e974b3310d70b860b5/proofOfInnocence.circom",
+          "git_object": "b5c677500a3f8835b6a06ef4b968784363484440",
+          "git_mode": "100644",
+          "sha256": "63bf1673fb688425fcd0ca55424dbc5f143e910864e1f89d7b2a1942f065bf7b"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/ERC20PrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/ERC20PrivacyPool.sol/e221f0b88e52fb5c214726e765997ef4067793a9/ERC20PrivacyPool.sol",
+          "git_object": "c20f8d579e28f95d8ebdc185dd45a57e80209016",
+          "git_mode": "100644",
+          "sha256": "f3baeee2f5a2917e5c8c44444ce5bc8d1c2731455215004f90eda28af28a6213"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/ETHPrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/ETHPrivacyPool.sol/e221f0b88e52fb5c214726e765997ef4067793a9/ETHPrivacyPool.sol",
+          "git_object": "3ac9a6edcc9cd659ba32a40a43b1a8b05144fb59",
+          "git_mode": "100644",
+          "sha256": "19b34de52bd242dea9454f268c655b647722d8c2d151fc6ba95167bfb3540a8d"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/MerkleTreeWithHistory.sol",
+      "path_kind": "file",
+      "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/MerkleTreeWithHistory.sol/e221f0b88e52fb5c214726e765997ef4067793a9/MerkleTreeWithHistory.sol",
+          "git_object": "f4fc719d8871afd8e7878c9015359f24a5b9d36d",
+          "git_mode": "100644",
+          "sha256": "decc0b3c8734cc61109f97756b0efbe06753aeca4691e9794bed85f1ae90a4d9"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "contracts/PrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/contracts/PrivacyPool.sol/e221f0b88e52fb5c214726e765997ef4067793a9/PrivacyPool.sol",
+          "git_object": "7ca6a5d3e6d1e86808a48923a321a693b041d7ef",
+          "git_mode": "100644",
+          "sha256": "e46145548dc72abf0216825e11959f0125c75f0795abc3d30581bbee42f19ceb"
+        }
+      ]
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
+      "source_path": "membership-proof/circuits/proofOfInnocence.circom",
+      "path_kind": "file",
+      "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+      "files": [
+        {
+          "file": "ProofOfInnocence/privacy-pools-v1/membership-proof/circuits/proofOfInnocence.circom/e221f0b88e52fb5c214726e765997ef4067793a9/proofOfInnocence.circom",
+          "git_object": "1360c52c167fc64c9ace22409d13d91e1aca1258",
+          "git_mode": "100644",
+          "sha256": "16b82c06c936a73bfc9840569cf1c5d9a6f5f331e82c2d8dad20a4ec748b3124"
+        }
+      ]
+    }
+  ],
+  "skipped": [],
+  "unavailable": []
+}

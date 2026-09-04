@@ -1,0 +1,354 @@
+{
+  "schema_version": "1.1.0",
+  "project": "unichain",
+  "reports": [
+    {
+      "id": "cantina-unichain-contracts-2024-10",
+      "report_file": "Cantina - Unichain contracts Security Review 2024-10-16.md",
+      "title": "Unichain contracts Security Review (Cantina Managed, Oct 3-7 2024)",
+      "description": "Cantina Managed security review of the Unichain onchain fee-splitting and staking contracts (FeeSplitter, NetFeeSplitter, L1Splitter, L2StakeManager, RewardDistributor). Initial review of the unichain-contracts repository.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2024-10-16",
+      "repositories": [
+        {
+          "id": "Uniswap/unichain-contracts",
+          "url": "https://github.com/Uniswap/unichain-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Uniswap/unichain-contracts",
+          "paths": {
+            "src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b7d5bbb0ea0ea2a90d21ce3368b773b8015d1607",
+                    "url": "https://github.com/Uniswap/unichain-contracts/tree/b7d5bbb0ea0ea2a90d21ce3368b773b8015d1607/src"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Report scopes the whole unichain-contracts repository at the commit (cantina-forks mirror); all findings reference src/FeeSplitter/FeeSplitter.sol, NetFeeSplitter.sol and L1Splitter.sol. One High finding (NetFeeSplitter).",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-unichain-contracts-2024-11",
+      "report_file": "Cantina - Unichain contracts Security Review 2024-11-05.md",
+      "title": "Unichain contracts Security Review (Cantina Managed, Oct 31-Nov 2 2024)",
+      "description": "Follow-up Cantina Managed security review of the same Unichain fee-splitting and staking contracts at a later revision of the unichain-contracts repository. Re-checks the code after the changes that followed the October 2024 review.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2024-11-05",
+      "repositories": [
+        {
+          "id": "Uniswap/unichain-contracts",
+          "url": "https://github.com/Uniswap/unichain-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Uniswap/unichain-contracts",
+          "paths": {
+            "src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "935f521c0710d5e6055bb046355cd99fab301f26",
+                    "url": "https://github.com/Uniswap/unichain-contracts/tree/935f521c0710d5e6055bb046355cd99fab301f26/src"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "follow-up review",
+                  "coverage": "Report scopes the whole unichain-contracts repository at the commit (cantina-forks mirror), a later revision than the October review; findings reference src/FeeSplitter/L1Splitter.sol and NetFeeSplitter.sol. Only Low/Gas/Informational findings.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "nethermind-rollup-boost-2025-06",
+      "report_file": "irrelevant/Nethermind - NM-0411-0491 Security Review Rollup Boost.md",
+      "title": "Security Review Report NM-0411-0491 Rollup Boost",
+      "description": "Security review of Rollup Boost, the Rust sidecar service that lets external block builders construct blocks for OP Stack sequencers. The entire scope is the offchain rollup-boost node software; no onchain contracts or circuits are covered.",
+      "isRelevant": false,
+      "auditor": "Nethermind Security",
+      "report_date": "2025-06-09",
+      "repositories": [
+        {
+          "id": "flashbots/rollup-boost",
+          "url": "https://github.com/flashbots/rollup-boost"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-flashtestations-2025-08",
+      "report_file": "OpenZeppelin - Uniswap Flashtestations Audit.md",
+      "title": "Uniswap Flashtestations Audit",
+      "description": "Two-phase OpenZeppelin audit of the onchain Flashtestations TEE attestation contracts (FlashtestationRegistry, BlockBuilderPolicy, QuoteParser and interfaces) together with their deployment and interaction scripts. These contracts verify Intel TDX attestations used for Unichain block building.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2026-06-26",
+      "repositories": [
+        {
+          "id": "flashbots/flashtestations",
+          "url": "https://github.com/flashbots/flashtestations"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "flashbots/flashtestations",
+          "paths": {
+            "src/BlockBuilderPolicy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/BlockBuilderPolicy.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/BlockBuilderPolicy.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/FlashtestationRegistry.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/FlashtestationRegistry.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/FlashtestationRegistry.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/QuoteParser.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/utils/QuoteParser.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/utils/QuoteParser.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/interfaces/IAttestation.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/interfaces/IAttestation.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/interfaces/IAttestation.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/interfaces/IFlashtestationRegistry.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/interfaces/IFlashtestationRegistry.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/interfaces/IFlashtestationRegistry.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "script/BlockBuilderPolicy.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/script/BlockBuilderPolicy.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/script/BlockBuilderPolicy.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "script/FlashtestationRegistry.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/script/FlashtestationRegistry.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/script/FlashtestationRegistry.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "script/Interactions.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/script/Interactions.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (phase 1)",
+                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/script/Interactions.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
+                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

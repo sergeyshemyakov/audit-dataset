@@ -1,11 +1,13 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project": "uniswapv3",
   "reports": [
     {
       "id": "trail-of-bits-uniswap-v3-core-2021-03-12",
       "report_file": "audit.md",
       "title": "Uniswap V3 Core Security Assessment",
+      "description": "Security assessment of the Uniswap V3 core contracts and whitepaper at commit 99223f3, covering the arithmetic libraries, the factory, and the pool's initialization, mint, burn, flash, and swap logic. Manual review was combined with Echidna, Manticore, and Slither testing.",
+      "isRelevant": true,
       "auditor": "Trail of Bits",
       "report_date": "2021-03-12",
       "repositories": [
@@ -332,6 +334,8 @@
       "id": "abdk-uniswap-v3-core-2021-03-23",
       "report_file": "audit-2.md",
       "title": "Uniswap Review",
+      "description": "Line-by-line review of the Uniswap V3 core contracts, interfaces, and math libraries at commit e8de69a5. The audit focused on arithmetic and protocol-logic correctness and reported no critical bugs.",
+      "isRelevant": true,
       "auditor": "ABDK Consulting",
       "report_date": "2021-03-23",
       "repositories": [
@@ -930,6 +934,8 @@
       "id": "abdk-uniswap-v3-periphery-part-1-2021-04-26",
       "report_file": "audit-3.md",
       "title": "Uniswap V3 Peripheral Part 1 Review",
+      "description": "Line-by-line review of the Uniswap V3 periphery contracts NonfungiblePositionManager and SwapRouter, together with a follow-up review of the fixes. Two critical bugs and one major flaw were reported and later fixed.",
+      "isRelevant": true,
       "auditor": "ABDK Consulting",
       "report_date": "2021-04-26",
       "repositories": [

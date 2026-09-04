@@ -1,11 +1,16 @@
+Some demo dashboards:
+
+- https://claude.ai/code/artifact/10a4a235-29f8-4660-8e96-88c341a7319d
+- https://claude.ai/code/artifact/f930bd58-7c59-4f4d-ae6c-2104ca698ee1
+
 # Audit dataset tools
 
 - `python3 -m venv .venv` and `.venv/bin/pip3 install pymupdf4llm==1.28.2`: set up the local virtual environment and install the PDF extraction dependency.
 - `.venv/bin/python3 pdf_to_md.py`: extract every PDF under the project directories to Markdown.
 - `python3 fetch_deployed.py <project-name>`: write `<project-name>/deployed.json` and replace `<project-name>/deployed-contracts` with flattened sources for every contract in the project's L2BEAT discovery output. The L2BEAT checkout defaults to `~/Documents/l2beat`; override it with `--l2beat-root PATH`. The dataset root defaults to the directory containing the script; override it with `--dataset-root PATH`.
-- Run an agent on `AUDIT_EXTRACT_SKILL.md` for a project to extract `<project>/audit-summary.json` from all Markdown reports in `<project>/reports`.
-- `python3 generate_audit_summary.py <project>/audit-summary.json`: deterministically generate the human-readable `<project>/audit-summary.md`, resolving commit dates from the source Git repositories. Human review of `audit-summary.md` is recommended to confirm that all report sources were parsed correctly.
-- `python3 fetch_audited_sources.py <project>/audit-summary.json`: fetch every source path pinned to a full Git commit into `<project>/audited-sources`. Mutable revisions such as branches and abbreviated commits are recorded as skipped in `manifest.json`. Relative symlinks that stay within the repository are resolved from that same pinned commit and copied as regular files. Dangling repository-internal links are omitted and recorded; unsafe links are rejected.
+- Run an agent on `AUDIT_EXTRACT_SKILL.md` for a project to classify all Markdown reports found recursively under `<project>/reports` and extract `<project>/audit-summary.json`. Irrelevant reports are moved to `<project>/reports/irrelevant`, retained in the summary with a short description, and excluded from detailed source extraction.
+- `python3 generate_audit_summary.py <project>/audit-summary.json`: deterministically generate the human-readable `<project>/audit-summary.md`, resolving commit dates from the source Git repositories. It renders source tables only for relevant reports and lists irrelevant reports with descriptions at the bottom. Human review of `audit-summary.md` is recommended to confirm that all relevant report sources were parsed correctly.
+- `python3 fetch_audited_sources.py <project>/audit-summary.json`: fetch every source path from relevant reports that is pinned to a full Git commit into `<project>/audited-sources`. Mutable revisions such as branches and abbreviated commits are recorded as skipped in `manifest.json`. Relative symlinks that stay within the repository are resolved from that same pinned commit and copied as regular files. Dangling repository-internal links are omitted and recorded; unsafe links are rejected.
 
 ## Deployed program and circuit sources
 

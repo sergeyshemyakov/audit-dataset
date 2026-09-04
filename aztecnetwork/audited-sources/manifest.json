@@ -4,6 +4,759 @@
   "audit_summary": "../audit-summary.json",
   "sources": [
     {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ACE/ACE.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ACE/ACE.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ACE.sol",
+          "git_object": "85a5815181c9135263e67cc00fa7e0e7a24d50b8",
+          "git_mode": "100644",
+          "sha256": "956ec3fab18a4a8fa9bee6c22b959903b349bc34a7e2c2cc5632c2d621513d02"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ACE/NoteRegistry.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ACE/NoteRegistry.sol/7a020f4ced9680f6e4a452fe570671aac0802471/NoteRegistry.sol",
+          "git_object": "3bed07a008787cd89afcee53bc39b424b8a709de",
+          "git_mode": "100644",
+          "sha256": "552799a5c0f53dfd255458f4a2956af1878ab95e186ee0b96ac44a57bf099d3d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ACE/validators/joinSplit/JoinSplit.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ACE/validators/joinSplit/JoinSplit.sol/7a020f4ced9680f6e4a452fe570671aac0802471/JoinSplit.sol",
+          "git_object": "2a606b97fdab9b9462652fb6cd148189d9abb471",
+          "git_mode": "100644",
+          "sha256": "b226b1ae49d639221dc09ddef33e984132667ab7d6bfa20b8dd1653834ca1640"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ERC20/ERC20Mintable.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ERC20/ERC20Mintable.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ERC20Mintable.sol",
+          "git_object": "ddca64fa7c5c4eba597ada386b06e6db97c09e49",
+          "git_mode": "100644",
+          "sha256": "072296903ada192cd5e088e4b2ffc60a0d30c943aedb29f095eb6d351adfc081"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ZkAsset/ZkAsset.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ZkAsset/ZkAsset.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ZkAsset.sol",
+          "git_object": "c417bf9554f4c2d8efa49ef07f9cbe4bf5855e8e",
+          "git_mode": "100644",
+          "sha256": "5fc2bf1deba41e526f6cc92258d48ce56c8bab643dcaf8ec245b5a664cb80009"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ZkAsset/ZkAssetBurnable.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ZkAsset/ZkAssetBurnable.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ZkAssetBurnable.sol",
+          "git_object": "5239fbbedcd31d5ed3174b613e5ea439e15f8787",
+          "git_mode": "100644",
+          "sha256": "efceaafdfee99982704392efa1a4d4b4e70c9e6893b1a01bb119316170b47767"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ZkAsset/ZkAssetDetailed.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ZkAsset/ZkAssetDetailed.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ZkAssetDetailed.sol",
+          "git_object": "097766f80f126123051eeecc3059a812445252c2",
+          "git_mode": "100644",
+          "sha256": "3f0604a07484d8bd327ff2b51b6991bfa9afa1b4935cb7f57ae47b05d1a7283b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ZkAsset/ZkAssetMintable.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ZkAsset/ZkAssetMintable.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ZkAssetMintable.sol",
+          "git_object": "1fad073a8699439758eec275cead8eb483120f72",
+          "git_mode": "100644",
+          "sha256": "afed464f7ef75e40ad794d92c3db109cc7981473d6adecb536d33f7daa60f8d6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ZkAsset/ZkAssetOwnable.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ZkAsset/ZkAssetOwnable.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ZkAssetOwnable.sol",
+          "git_object": "0905c6e831f3d79b6adc27625ff0e6334e4d7636",
+          "git_mode": "100644",
+          "sha256": "7fe5e2252cbdada7633a9a211fd13665303a96528cc748ecd5dade95a4dd088c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ZkAsset/ZkAssetOwnableTest.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/ZkAsset/ZkAssetOwnableTest.sol/7a020f4ced9680f6e4a452fe570671aac0802471/ZkAssetOwnableTest.sol",
+          "git_object": "67899433703466570218d75607843fd65936b5b0",
+          "git_mode": "100644",
+          "sha256": "5dbeb710114d1a96b2915bbc83bf43ddb78eadb79dc55a987619c72f3213570c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "repository_url": "https://github.com/AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/libs/LibEIP712.sol",
+      "path_kind": "file",
+      "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+      "files": [
+        {
+          "file": "AztecProtocol/AZTEC/packages/protocol/contracts/libs/LibEIP712.sol/7a020f4ced9680f6e4a452fe570671aac0802471/LibEIP712.sol",
+          "git_object": "366b67026a50caab757b3a43cbdd19540fca140d",
+          "git_mode": "100644",
+          "sha256": "bb7ddab3f72d63bfce64920847c49f04a634a22504ac4b3a8c3cd3a811effd1a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/dca/UniswapDCABridge.sol",
+      "path_kind": "file",
+      "commit": "2df45ffd5cd09dc37fd183bf093ad32771660243",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/dca/UniswapDCABridge.sol/2df45ffd5cd09dc37fd183bf093ad32771660243/UniswapDCABridge.sol",
+          "git_object": "832d74dc540af395f974c7d1d8ee9e9d19c1cafd",
+          "git_mode": "100644",
+          "sha256": "0de13908ebd54c0faf370e9bbad98d40eafa39a045f24818b41e7b36dd2a8096"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/curve/CurveStEthBridge.sol",
+      "path_kind": "file",
+      "commit": "3b5edf619ef4d316d4430988b99f6cb0aac6a2b2",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/curve/CurveStEthBridge.sol/3b5edf619ef4d316d4430988b99f6cb0aac6a2b2/CurveStEthBridge.sol",
+          "git_object": "03a3f4b5d42f42bd943c1db3d12fa2eb464cb3cb",
+          "git_mode": "100644",
+          "sha256": "81313aea056b628f39f05292d5c61ab7ba6e19ce5ba1fa41389ab5dfc0788a89"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/liquity/TroveBridge.sol",
+      "path_kind": "file",
+      "commit": "46af4186f21cd1925d41fd0275883be18755d212",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/TroveBridge.sol/46af4186f21cd1925d41fd0275883be18755d212/TroveBridge.sol",
+          "git_object": "d95f047d249a213937139b7404a573c181e557fe",
+          "git_mode": "100644",
+          "sha256": "ab0fe71a71453ab0941190d58c187b38757503636efeeb0551934267b084bb57"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/aave/AccountingToken.sol",
+      "path_kind": "file",
+      "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/AccountingToken.sol/4a377651457e9ecf8c811e28b6a2570ef202f146/AccountingToken.sol",
+          "git_object": "14fcc723d1b7f4a10532d307533e0f3f08e26af7",
+          "git_mode": "100644",
+          "sha256": "c8f5ffc5fd6bf74b4f9e446b78c8f7462ba440974a6062b8065fe7f02388f1a3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/aave/imports",
+      "path_kind": "directory_recursive",
+      "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IAToken.sol",
+          "git_object": "559b2cf86f33361ca5ef7400939c69970265e0de",
+          "git_mode": "100644",
+          "sha256": "bc7ebde2de40a6ffef18d7b00d116efeff7bb393ae3c3708c97c02995c0268a9"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IAaveIncentivesController.sol",
+          "git_object": "b409e61336d53cac03ce7b0030f290a5820ab963",
+          "git_mode": "100644",
+          "sha256": "61a14627a55dd1d174869066904e9a4969205c2c770d37b75068597d02f4e03c"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IAccountingToken.sol",
+          "git_object": "1f34966a702c06056f3e3e23bfc4db9dbbf739a3",
+          "git_mode": "100644",
+          "sha256": "86ae2d5b8dad4d3684dd8a389d98ec623d33d5f97164e11f6ab00e75034d4f7c"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/ILendingPool.sol",
+          "git_object": "e3804fe4f413104f2aa75b4b07accb9c977ac556",
+          "git_mode": "100644",
+          "sha256": "0573e9eed2c8437cb17c324fa31640f4cd2f61f2c91d0608b15ea90c147d5349"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/ILendingPoolAddressesProvider.sol",
+          "git_object": "17d331d3b434312bc6d4d9bafbf47077deda0b13",
+          "git_mode": "100644",
+          "sha256": "1cd1c9d6ea3c92e9e40362b8226b063586a3ea188be935f9ef04dc59300219df"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IPool.sol",
+          "git_object": "4ec0d2c7da13c8caccff405cf64f9b0b98fda966",
+          "git_mode": "100644",
+          "sha256": "14b6e57ce626d43939894aa2ef9ac27cc6e71ee8adc523c6c44de2d6481dfa36"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IScaledBalanceToken.sol",
+          "git_object": "4b683185a41c9a3f2cbea833593b88f6c7406803",
+          "git_mode": "100644",
+          "sha256": "1cb50ddcc35dfcab5d3e1b822a7c3053152535e87e60bf2558e7a06cd6d21897"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IWETH9.sol",
+          "git_object": "97841ff6da4e4af1c4fc024cd303adf651340735",
+          "git_mode": "100644",
+          "sha256": "e815d25279cef72656ae68350ececd6bb84b9f1b875a9ceaa81c763b0cd7b0c8"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/libraries/DataTypes.sol",
+          "git_object": "b1edcdb744717d3b3414087fc3d9e6f97343940b",
+          "git_mode": "100644",
+          "sha256": "e033b1b144bf53d0f4f3ab14ed63f3bb9e0493353d37d908f21d871cf299b1c3"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/imports/4a377651457e9ecf8c811e28b6a2570ef202f146/libraries/WadRayMath.sol",
+          "git_object": "636dc649bfee0968c21ff88d279eca8b123b6285",
+          "git_mode": "100644",
+          "sha256": "fdccf5a5d2c8bc276d3be45d690c403b8ae213afd9bc4bab8fb1b82be6002d4f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/aave/interfaces",
+      "path_kind": "directory_recursive",
+      "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/interfaces/4a377651457e9ecf8c811e28b6a2570ef202f146/IAccountingToken.sol",
+          "git_object": "8cf86d6373f73de0c7313f7b8f6b1bdcbe458569",
+          "git_mode": "100644",
+          "sha256": "d23c75db1f1c400fb876eed496768590ba655498bc23534a68a65f668a07baab"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/aave/lending",
+      "path_kind": "directory_recursive",
+      "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/lending/4a377651457e9ecf8c811e28b6a2570ef202f146/AaveLendingBridge.sol",
+          "git_object": "379a7ab4d883d92be8a81a1ffd7116717ef6fd11",
+          "git_mode": "100644",
+          "sha256": "2916f3a224705557176af08636352580144373a8cbadbf4da49108003fc9b2f4"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/lending/4a377651457e9ecf8c811e28b6a2570ef202f146/AaveLendingBridgeConfigurator.sol",
+          "git_object": "e376d25fe6fd3437801fbfbdfeda5ae219764f51",
+          "git_mode": "100644",
+          "sha256": "f6b587e1a14a540d8aab471b53f114249e9f32f073fbafe31ca07b8d12998110"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/lending/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IAaveLendingBridge.sol",
+          "git_object": "9ab3201221e4e66bae3e75118b870b893664545a",
+          "git_mode": "100644",
+          "sha256": "6d57dd187eb68a3f05d8d3308ed7cb9094623cb8403ce1df920352130d27bf89"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/lending/4a377651457e9ecf8c811e28b6a2570ef202f146/interfaces/IAaveLendingBridgeConfigurator.sol",
+          "git_object": "d0b7bf8fc09de1910dadd96b2f461a2eba4a1a7e",
+          "git_mode": "100644",
+          "sha256": "72f14d25cde3d49fdf9aa11ece2d94db2d2bcd99e9fc49ca2e8e9f97b9e4d27c"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/aave/lending/4a377651457e9ecf8c811e28b6a2570ef202f146/libraries/Errors.sol",
+          "git_object": "c85ac7f2d6d11b9470f7b27f4e608d8bd1810874",
+          "git_mode": "100644",
+          "sha256": "eec2445b643d374fb36988bea74f106a3ec0d32c689e1455d1372688b030b921"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/liquity/StabilityPoolBridge.sol",
+      "path_kind": "file",
+      "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/StabilityPoolBridge.sol/5a3766115b55dd3471ca981a26c8b8381f12fae7/StabilityPoolBridge.sol",
+          "git_object": "a323a2f0190eda7381d998fae1113152aa27b537",
+          "git_mode": "100644",
+          "sha256": "439041f18d70e12d35220c1411782a6d0bd098357a9dd097cce3fc72c32bcffc"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/liquity/StakingBridge.sol",
+      "path_kind": "file",
+      "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/StakingBridge.sol/5a3766115b55dd3471ca981a26c8b8381f12fae7/StakingBridge.sol",
+          "git_object": "14d5d0c03acd4e57055ff1ed1fbb914e87804f18",
+          "git_mode": "100644",
+          "sha256": "97a405416b5c078db102d52e3791f3dcc5fd9bd5c01ae62524157a47db1a3c3d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/liquity/TroveBridge.sol",
+      "path_kind": "file",
+      "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/TroveBridge.sol/5a3766115b55dd3471ca981a26c8b8381f12fae7/TroveBridge.sol",
+          "git_object": "c6a60c81d7bee90fdd79fc6a250ab1247496c7bb",
+          "git_mode": "100644",
+          "sha256": "27dd6cbb0c643d221237b90f898889a373ae63eecb843cf750a4a0f138458b5e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/liquity/interfaces",
+      "path_kind": "directory_recursive",
+      "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/IBorrowerOperations.sol",
+          "git_object": "9aba3bd390a534e9a4c4f23d4d6ca78a435c6874",
+          "git_mode": "100644",
+          "sha256": "f18ee0b29f93383ddb18ab9a3eb61ca876929e60254d6daecced0451f7eb28ef"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/ILQTYStaking.sol",
+          "git_object": "779df04fc5d123bb0c70b9783317f363e305fea2",
+          "git_mode": "100644",
+          "sha256": "4e421c9e47583f975ecbbf7c40a848d5418bdf844d768970f77e5695fe4a3b94"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/ILiquityBase.sol",
+          "git_object": "5709b5601a127e66730f8febe8fa5d5eacad0f96",
+          "git_mode": "100644",
+          "sha256": "694a17e281173417542089c30c4f3e40d44cc05922bdd2b98b82ca5b341e5940"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/IPriceFeed.sol",
+          "git_object": "7099b06c0749b56c6a305265488be0fa2aad6b4e",
+          "git_mode": "100644",
+          "sha256": "de988ac4b629f73a97b7b184e304e62dfd0a88128db2f98e92d0de099b0a41a8"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/ISortedTroves.sol",
+          "git_object": "a67f1f6f315ab8e25c13672b55e038444b60f86c",
+          "git_mode": "100644",
+          "sha256": "73709e7142f5a38e5a40ea359eb939d59b53fa13fc52b81f7259a80e7e51c15b"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/IStabilityPool.sol",
+          "git_object": "4856a2d3545c283b24af658b211bcc1187a926d2",
+          "git_mode": "100644",
+          "sha256": "5ffda397c7b3cb7a66c81122fb927411914e5a3f76fae60eb433d956f42e7590"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/ISwapRouter.sol",
+          "git_object": "002c382d5cd81788084d6c990125be869e725511",
+          "git_mode": "100644",
+          "sha256": "e5150ac2cdbc6937d0f2c03517dfa8c74c6d91a7f1945b40514d348c2c03b3c4"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/interfaces/5a3766115b55dd3471ca981a26c8b8381f12fae7/ITroveManager.sol",
+          "git_object": "44728c3cf3b0dfc7a078ae5d0989b606f348a86c",
+          "git_mode": "100644",
+          "sha256": "033c89d2b0e1a3b19cfcfb29c18bcc3a798f016fc485b22969e6ec75b675d6a7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/set/IssuanceBridge.sol",
+      "path_kind": "file",
+      "commit": "6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/set/IssuanceBridge.sol/6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7/IssuanceBridge.sol",
+          "git_object": "178d178019f5275bac6d57cf2bb10b182c4490d5",
+          "git_mode": "100644",
+          "sha256": "3c2944fd13c451263d70748e5c675d6e23942a1df5e60cca417f4d4d4a384156"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/set/interfaces",
+      "path_kind": "directory_recursive",
+      "commit": "6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/set/interfaces/6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7/IController.sol",
+          "git_object": "1e72726c43852b07b7e73ee0113fae167bff7600",
+          "git_mode": "100644",
+          "sha256": "fa580c18f3e4d8794bb603fcd09b0e5ce8a5a1decc92ec9d4644c331ea185a7a"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/set/interfaces/6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7/IExchangeIssuance.sol",
+          "git_object": "fe8dee9fda07670c99f4c969e4264399ee4dc269",
+          "git_mode": "100644",
+          "sha256": "559edac55489ab8cb30682cb851d74625f6e079403f92195db3321d8ececf59a"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/set/interfaces/6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7/ISetToken.sol",
+          "git_object": "d30cf7dfdcc37fa9d3f475ee52d7608fd6ef71c3",
+          "git_mode": "100644",
+          "sha256": "59c38b862500755489c0aad1d560046ca3b91ef40075589cae08b114ec367118"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/aztec/Subsidy.sol",
+      "path_kind": "file",
+      "commit": "80a8b3dbf1b2c5e302fc2613ec7588108269da34",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/aztec/Subsidy.sol/80a8b3dbf1b2c5e302fc2613ec7588108269da34/Subsidy.sol",
+          "git_object": "7a2749cc0a343659d81abb1083c1cec23ed6a482",
+          "git_mode": "100644",
+          "sha256": "e7ca7ed9f6351f0abedf6216c7df06c8746cf07624e8f631242a42988a62f719"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/liquity/TroveBridge.sol",
+      "path_kind": "file",
+      "commit": "89129e99529b0095310d52396a68edf251043a9b",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/liquity/TroveBridge.sol/89129e99529b0095310d52396a68edf251043a9b/TroveBridge.sol",
+          "git_object": "db4179b658f0edf992b22bf5254f7fb9751f37bb",
+          "git_mode": "100644",
+          "sha256": "b57a64d936a909b74031cb4c535994c51cdcac3ae99399fcc60c6436b5490097"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/element/ElementBridge.sol",
+      "path_kind": "file",
+      "commit": "9aee254f8232c0d4010352871b7819dca3c4dbca",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/ElementBridge.sol/9aee254f8232c0d4010352871b7819dca3c4dbca/ElementBridge.sol",
+          "git_object": "4552447c4a8e3998eeda59882541120241d404ce",
+          "git_mode": "100644",
+          "sha256": "ce5e1d54625c76fbc776e14144650c3ec9cb82b6fd56b6c847f14089b74b0f44"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/element/ElementBridge.sol",
+      "path_kind": "file",
+      "commit": "ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/ElementBridge.sol/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/ElementBridge.sol",
+          "git_object": "37d7f6158ce2dcecd447d78e7fd56c461626f7a4",
+          "git_mode": "100644",
+          "sha256": "27531b454966547dfd915302f1679d6689201832e0509841950e92cb87d54268"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/element/MinHeap.sol",
+      "path_kind": "file",
+      "commit": "ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/MinHeap.sol/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/MinHeap.sol",
+          "git_object": "282d832c206a2dea12203cb3ea149c246e85d284",
+          "git_mode": "100644",
+          "sha256": "028c2e926df758ef4029ad4a2906e95b4a8a4cda70505bd2fde7ac4e05dcf73e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/element/interfaces",
+      "path_kind": "directory_recursive",
+      "commit": "ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/interfaces/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/IDeploymentValidator.sol",
+          "git_object": "ee567dd2ba25b57a06b2a864c44b90fdbecb95b4",
+          "git_mode": "100644",
+          "sha256": "6b1687c17289794ba54bec8372c7e8bd1089924c19803ea855072eee1b6ff0fd"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/interfaces/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/IERC20Permit.sol",
+          "git_object": "8d146d7b74d3d72cefce7903a0190ea770fdf9ca",
+          "git_mode": "100644",
+          "sha256": "c9ec2436c5742058a235a13508313a2c3b1da71d739254e5461f1d1b8a2cae99"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/interfaces/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/IPool.sol",
+          "git_object": "1848909edcea17223a680c4d1996e16b99e8afe1",
+          "git_mode": "100644",
+          "sha256": "9baae1d6bf11050213804e594558374c0d9fbc3e95524df3d74446253438fb1f"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/interfaces/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/ITranche.sol",
+          "git_object": "e4f00d6c7b3d1e9e4e387b1ee9ffc1e4099e839d",
+          "git_mode": "100644",
+          "sha256": "cab1bbd5fd73d4caacf018d39fee8f9077ed605819069a1ff95f50087b99f0f8"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/interfaces/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/IVault.sol",
+          "git_object": "1e439f26f548d07e298b4fd3325437c74303d6fe",
+          "git_mode": "100644",
+          "sha256": "a01cb884642e906592ba9a2e7e75bdb970b90314080e6d69f0b4a56ddd47813d"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/element/interfaces/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/IWrappedPosition.sol",
+          "git_object": "fd67d52ad9691a24433a61991f4ff47c96ef7eb0",
+          "git_mode": "100644",
+          "sha256": "94c350935820d559b8aec285d03fd07d2fb69bd68542f21169aec19f0c2fff6b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/compound/CompoundBridge.sol",
+      "path_kind": "file",
+      "commit": "ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/compound/CompoundBridge.sol/ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1/CompoundBridge.sol",
+          "git_object": "f0ae884c72f2e114816ab93e6e725249f71d9869",
+          "git_mode": "100644",
+          "sha256": "48297e4fdaa30812dc4793f2b21db8e140a4de63a84260b32c132e23459bbee6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/compound/interfaces",
+      "path_kind": "directory_recursive",
+      "commit": "ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/compound/interfaces/ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1/ICERC20.sol",
+          "git_object": "98b870df1fbb3030dba30bf827539987b7255cfb",
+          "git_mode": "100644",
+          "sha256": "c744ae33d8edc3077da70eb5fe4d04dd22ec795c0b0623f7e4fd06a900d48430"
+        },
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/compound/interfaces/ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1/ICETH.sol",
+          "git_object": "380f731393980ccbd8f6cd3f001409a1d8db2412",
+          "git_mode": "100644",
+          "sha256": "e9d46e49e79690b91c0c22d551bb540508429c31653c45ba458c1c67a5e2e2e7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/dca/BiDCABridge.sol",
+      "path_kind": "file",
+      "commit": "b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/dca/BiDCABridge.sol/b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde/BiDCABridge.sol",
+          "git_object": "004d490d808b20ab3386896d39f5d15971c7b112",
+          "git_mode": "100644",
+          "sha256": "f6b9b43cd66307dd6744bf33f51b06142d31d6eecb51d488f327799e7af1d77e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/dca/UniswapDCABridge.sol",
+      "path_kind": "file",
+      "commit": "b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/dca/UniswapDCABridge.sol/b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde/UniswapDCABridge.sol",
+          "git_object": "5613bb8697f0363ffa9d2ba21ce1e0c1b18137b4",
+          "git_mode": "100644",
+          "sha256": "16c226cbd1fe9f0eac350e505a3b4fffc6efbc0368dbbd6b5e7b2ace8175fe64"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/lido/LidoBridge.sol",
+      "path_kind": "file",
+      "commit": "d5aca13d4d0a17b21eeddf77f49f4c6613461fb0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/lido/LidoBridge.sol/d5aca13d4d0a17b21eeddf77f49f4c6613461fb0/LidoBridge.sol",
+          "git_object": "eb83fd72b2f0b84e26d3e1709c2d28905ceaba43",
+          "git_mode": "100644",
+          "sha256": "5cf00a5ea20096984f3b172ef6f61bdce856e01bd00252f2a2a01a85793aed35"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/test/lido/Lido.t.sol",
+      "path_kind": "file",
+      "commit": "d5aca13d4d0a17b21eeddf77f49f4c6613461fb0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/test/lido/Lido.t.sol/d5aca13d4d0a17b21eeddf77f49f4c6613461fb0/Lido.t.sol",
+          "git_object": "be5b5af7494d82da6a58679ef59884b47270ea2e",
+          "git_mode": "100644",
+          "sha256": "863b0ef14ca05d891a4dc5f9ab0669371456c46414f0f369073feff4613298e6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/dca/BiDCABridge.sol",
+      "path_kind": "file",
+      "commit": "f9f2554d63519c1b3288325f5edc50acaac2bbc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/dca/BiDCABridge.sol/f9f2554d63519c1b3288325f5edc50acaac2bbc5/BiDCABridge.sol",
+          "git_object": "b5ab882b107ea2037811dd727199e96a7c387611",
+          "git_mode": "100644",
+          "sha256": "753015af1cef0b4beca988bacf184d963573643f5b015aab30fcbefaa5263d45"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/dca/SafeCastLib.sol",
+      "path_kind": "file",
+      "commit": "f9f2554d63519c1b3288325f5edc50acaac2bbc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/dca/SafeCastLib.sol/f9f2554d63519c1b3288325f5edc50acaac2bbc5/SafeCastLib.sol",
+          "git_object": "aeeada40220e24bfe3569a631c36c16ec811cb34",
+          "git_mode": "100644",
+          "sha256": "c1746a7fd508649aa9a67602d729055fbbb40c996c2baa0e77e624f98bbf7471"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-connect-bridges",
+      "repository_url": "https://github.com/AztecProtocol/aztec-connect-bridges",
+      "source_path": "src/bridges/dca/UniswapDCABridge.sol",
+      "path_kind": "file",
+      "commit": "f9f2554d63519c1b3288325f5edc50acaac2bbc5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-connect-bridges/src/bridges/dca/UniswapDCABridge.sol/f9f2554d63519c1b3288325f5edc50acaac2bbc5/UniswapDCABridge.sol",
+          "git_object": "0133bc22f1023e18c9cdf5276758ef8aeac10b67",
+          "git_mode": "100644",
+          "sha256": "23f2e2c1a270fc1ea97fdcd90dd330d3d1429ab7e27f52cbdb149cc2e4933a22"
+        }
+      ]
+    },
+    {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/EscapeHatch.sol",
@@ -366,6 +1119,51 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "0b17711ab060d9bc7060c17416741427af1615f2",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/0b17711ab060d9bc7060c17416741427af1615f2/bigfield_impl.hpp",
+          "git_object": "83360e592ddf248b53eb00d424cfd2d983638568",
+          "git_mode": "100644",
+          "sha256": "26a82e0e0669cbf89506a36150000d4d854243d6e9f0f63312df877d19e3b3ff"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp",
+      "path_kind": "file",
+      "commit": "0f3ca1c6a84ef6ed14d4b29564ffcf4d37645619",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp/0f3ca1c6a84ef6ed14d4b29564ffcf4d37645619/logic.cpp",
+          "git_object": "bf0018b89ba9d35951116c758a23bc7dc27a12a8",
+          "git_mode": "100644",
+          "sha256": "ee63f3bb1147a3aea24ed2233baf506f49be6cfcecdf253c2a58cf231b28fbb3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "0fb812d4fa341b5ec7696da15d208ca60a4c50f1",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/0fb812d4fa341b5ec7696da15d208ca60a4c50f1/bigfield.hpp",
+          "git_object": "49bb529811661f004f1084cc6f73d785ca1d875f",
+          "git_mode": "100644",
+          "sha256": "9bd396f2070b52718c850cbaff5ba713ed4f18b3af55e781946614f3137a6b11"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
       "path_kind": "file",
       "commit": "1856c6133d4f5f5d8e465722be5d752dff3864bb",
@@ -420,6 +1218,21 @@
           "git_object": "51e63e87611f0d52901bcfd6d798f8416954dde3",
           "git_mode": "100644",
           "sha256": "39a8bd51e01f1317a338d59f176b4b3320390fdf78cc6af7a6a89e4fc7392c8f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp",
+      "path_kind": "file",
+      "commit": "249bfdc76053f41455e048f182605a871f970cce",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp/249bfdc76053f41455e048f182605a871f970cce/logic.cpp",
+          "git_object": "e286ff11265796f26d8ac4b6e3024856a076a3c6",
+          "git_mode": "100644",
+          "sha256": "34b5b6010ec1b8566a22a8d2165dd9d877e4c37c31774d1e7c9246f24a733c39"
         }
       ]
     },
@@ -711,6 +1524,96 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "2953d499808807b8bdf9ab1a60adeb476f5a575a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/2953d499808807b8bdf9ab1a60adeb476f5a575a/bigfield_impl.hpp",
+          "git_object": "90e2a70b9acf0d23b3086c1ea890858e27b5567e",
+          "git_mode": "100644",
+          "sha256": "4c0e5b36e9e9efb21e90327efc71563994886325dc197a771a58c782b45f00c0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/README.md",
+      "path_kind": "file",
+      "commit": "2a8524538ae01cff1e5c8b0e1d318b90f8a132c9",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/README.md/2a8524538ae01cff1e5c8b0e1d318b90f8a132c9/README.md",
+          "git_object": "5e190284738bfdb952df28bdebb4e699586e909e",
+          "git_mode": "100644",
+          "sha256": "40673bc04cc42da84838e49ff0e9572b2c7e9aff9e3add9712a07b9c3e70005d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "2a8524538ae01cff1e5c8b0e1d318b90f8a132c9",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/2a8524538ae01cff1e5c8b0e1d318b90f8a132c9/bigfield.hpp",
+          "git_object": "41795cb6ba556dca40a53748e06fb8c36595d74e",
+          "git_mode": "100644",
+          "sha256": "ff97d31ae54db645b319536b96d75063428f7618ead7642b13a1b48e3fd91c18"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "2a8524538ae01cff1e5c8b0e1d318b90f8a132c9",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/2a8524538ae01cff1e5c8b0e1d318b90f8a132c9/bigfield_impl.hpp",
+          "git_object": "6ca7371ef4d9b431aeab98f43de35381dbe14070",
+          "git_mode": "100644",
+          "sha256": "8ede2a64b28132eb5af496db0bfa3b4a1364f78188f2a19d8c231b01594ddbc3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/README.md",
+      "path_kind": "file",
+      "commit": "2d5ea7ee12188d066ca5f24d473cabf96359d4a8",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/README.md/2d5ea7ee12188d066ca5f24d473cabf96359d4a8/README.md",
+          "git_object": "5e190284738bfdb952df28bdebb4e699586e909e",
+          "git_mode": "100644",
+          "sha256": "40673bc04cc42da84838e49ff0e9572b2c7e9aff9e3add9712a07b9c3e70005d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "2d5ea7ee12188d066ca5f24d473cabf96359d4a8",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/2d5ea7ee12188d066ca5f24d473cabf96359d4a8/bigfield.hpp",
+          "git_object": "41795cb6ba556dca40a53748e06fb8c36595d74e",
+          "git_mode": "100644",
+          "sha256": "ff97d31ae54db645b319536b96d75063428f7618ead7642b13a1b48e3fd91c18"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
       "path_kind": "file",
       "commit": "2e192712333ec2b8c38e45c13923f465e8c18a6f",
@@ -765,6 +1668,51 @@
           "git_object": "aceaf82003e067069b4ff61d2ba6c0f01e0b3f4c",
           "git_mode": "100644",
           "sha256": "e17e905ce2ce69420d1b73df61bd73f413d66121594960b307b3c3863b4f095e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp",
+      "path_kind": "file",
+      "commit": "4433c06ae693451c6f69a2f63b7da6628078d872",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp/4433c06ae693451c6f69a2f63b7da6628078d872/field.cpp",
+          "git_object": "654e42196953f2d3c3fc42ba1f137eaa35d71bde",
+          "git_mode": "100644",
+          "sha256": "9c2d54ffdd8134adc0cf0f79cafa224dfe77f5785cd499462c80498af441cd7d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.hpp",
+      "path_kind": "file",
+      "commit": "4433c06ae693451c6f69a2f63b7da6628078d872",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.hpp/4433c06ae693451c6f69a2f63b7da6628078d872/field.hpp",
+          "git_object": "1432864718ae8bea0e671e5abb536ddaf9cb98a4",
+          "git_mode": "100644",
+          "sha256": "c860021917b0072f704bf32d751d09d5043907fed11166131fdfebcf59f3f50b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.test.cpp",
+      "path_kind": "file",
+      "commit": "4433c06ae693451c6f69a2f63b7da6628078d872",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.test.cpp/4433c06ae693451c6f69a2f63b7da6628078d872/field.test.cpp",
+          "git_object": "722fbe2663a5a8c797be133ca1f35303b020532a",
+          "git_mode": "100644",
+          "sha256": "82ac7603e9753066120f9a675fe4cf5d62ac62f05249102ffbfe8bfaeceeb721"
         }
       ]
     },
@@ -861,6 +1809,51 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp",
+      "path_kind": "file",
+      "commit": "458fb330efa8c470567ab4b84a8a92a58b00586a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp/458fb330efa8c470567ab4b84a8a92a58b00586a/field.cpp",
+          "git_object": "342ed4dd18a2b6b3d1cc7d27fc5362d86ed0b851",
+          "git_mode": "100644",
+          "sha256": "bbe7e6a884e8b0991631ee6f9477285d75d55fdb3b53e7b6b7f38c13438335bd"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.hpp",
+      "path_kind": "file",
+      "commit": "458fb330efa8c470567ab4b84a8a92a58b00586a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.hpp/458fb330efa8c470567ab4b84a8a92a58b00586a/field.hpp",
+          "git_object": "0e0cdfcf1cbf1c887908454ae50d8022f71c89d1",
+          "git_mode": "100644",
+          "sha256": "20d9a9a7e472cb731f72231687264eef61adaf1ce8172e950bbbcf0d6204de60"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.test.cpp",
+      "path_kind": "file",
+      "commit": "458fb330efa8c470567ab4b84a8a92a58b00586a",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.test.cpp/458fb330efa8c470567ab4b84a8a92a58b00586a/field.test.cpp",
+          "git_object": "e6caa122a39e39ebb022b624e9dbdd3ca4bad7dc",
+          "git_mode": "100644",
+          "sha256": "2d07c890b99fd5ce1c537017f78a0da060ffa9a8fb8ff764374aeed1a30351f6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/governance/GSE.sol",
       "path_kind": "file",
       "commit": "46e3dd7517ddfcff60b172a3bf2cbd09d62bfef2",
@@ -891,6 +1884,66 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/README.md",
+      "path_kind": "file",
+      "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/README.md/480f49dad314ea4e753ff1e5180992a16926d2b3/README.md",
+          "git_object": "28a151db7b5ed17a723c3c2b34a06cb879d510f3",
+          "git_mode": "100644",
+          "sha256": "48c1d3ca01defb6478b5d20a4190c52e4c3453836f4efea317e26c2af6184499"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/480f49dad314ea4e753ff1e5180992a16926d2b3/bigfield.hpp",
+          "git_object": "ed2f6d0b8ef44c0161d04c56d8fc42186ad5df8a",
+          "git_mode": "100644",
+          "sha256": "cbe70f9c6b12ef85b38e932c7c1b4b8a0a9134630997744ab89626e992a10296"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.test.cpp",
+      "path_kind": "file",
+      "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.test.cpp/480f49dad314ea4e753ff1e5180992a16926d2b3/bigfield.test.cpp",
+          "git_object": "4457667712e724f8c0e691ccb4b57e3099c2e76e",
+          "git_mode": "100644",
+          "sha256": "bc098244b130ba7488559fb031f7c31edb90d4f845c59ffaf56deab13a8be6c5"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/480f49dad314ea4e753ff1e5180992a16926d2b3/bigfield_impl.hpp",
+          "git_object": "4d853ee46ca28a19f215cc48f63df29ac6ef4370",
+          "git_mode": "100644",
+          "sha256": "0dbe2c88a20ed182f4250d756f3ef2684be496a2b328ad7c485273f2a3d3b73d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/EscapeHatch.sol",
       "path_kind": "file",
       "commit": "495fc284073d909b54946fbd3f473723f80e5548",
@@ -900,6 +1953,207 @@
           "git_object": "796a772a44cd4d71ef13b326f5cd22009e3db896",
           "git_mode": "100644",
           "sha256": "966925e43faf064afe3ce88bd95e7cf56762d8917819ea4f62fff0dc6a7d6116"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield",
+      "path_kind": "directory_recursive",
+      "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield.fuzzer.hpp",
+          "git_object": "30c4078fa6cd3c30d2ec5a9a036f00aa672e828a",
+          "git_mode": "100644",
+          "sha256": "c2b4f0a13d6738b035bc6e430b9b8ac3335ed35f2ad424fe92db6d62a9244a4a"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield.hpp",
+          "git_object": "4ec56921c22b6982754575eb3137f92222124b55",
+          "git_mode": "100644",
+          "sha256": "b2164ae065f4a64c98af5909366a166fe0341ccfd4c3f7b447e9965923da1ec8"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield.test.cpp",
+          "git_object": "d3c6011bdaeceea1694caf55a3f96c847e941f51",
+          "git_mode": "100644",
+          "sha256": "a481159507decbc782009f626db3e7a2d4fda9f053ab75bd4e82012077bdbd74"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield_all.fuzzer.cpp",
+          "git_object": "a20a1ee5f961c1ce2b704c14509373280e21c453",
+          "git_mode": "100644",
+          "sha256": "9ed13eb1fc4ec7906bec7225546683dbec30209ada53009eced9ca11f162b318"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield_impl.hpp",
+          "git_object": "b77a4358518b6129a1f9b6be67098a358e35cfe7",
+          "git_mode": "100644",
+          "sha256": "dff18bc39299a27741ae92bcdebf0af868041e430a7b258a0ce4ef7be4b1f0ec"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield_standard.fuzzer.cpp",
+          "git_object": "a20a1ee5f961c1ce2b704c14509373280e21c453",
+          "git_mode": "100644",
+          "sha256": "9ed13eb1fc4ec7906bec7225546683dbec30209ada53009eced9ca11f162b318"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/4ba553ba3170838de3b6c4cf47b609b0198443d0/constants.hpp",
+          "git_object": "ef09927c05eae5fefb31e381c66c3cedf8c5f20a",
+          "git_mode": "100644",
+          "sha256": "780ca4ba9deeb211d00d715329a28d8f0b14985b54e48ae149b82cef0cd0b771"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield.hpp",
+          "git_object": "4ec56921c22b6982754575eb3137f92222124b55",
+          "git_mode": "100644",
+          "sha256": "b2164ae065f4a64c98af5909366a166fe0341ccfd4c3f7b447e9965923da1ec8"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/4ba553ba3170838de3b6c4cf47b609b0198443d0/bigfield_impl.hpp",
+          "git_object": "b77a4358518b6129a1f9b6be67098a358e35cfe7",
+          "git_mode": "100644",
+          "sha256": "dff18bc39299a27741ae92bcdebf0af868041e430a7b258a0ce4ef7be4b1f0ec"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/constants.hpp",
+      "path_kind": "file",
+      "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/constants.hpp/4ba553ba3170838de3b6c4cf47b609b0198443d0/constants.hpp",
+          "git_object": "ef09927c05eae5fefb31e381c66c3cedf8c5f20a",
+          "git_mode": "100644",
+          "sha256": "780ca4ba9deeb211d00d715329a28d8f0b14985b54e48ae149b82cef0cd0b771"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field",
+      "path_kind": "directory_recursive",
+      "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/array.hpp",
+          "git_object": "99d043ad830d35e15a0565a45eeda2a34addda69",
+          "git_mode": "100644",
+          "sha256": "c616259ea23c46204ff2f694881fbd9a78643b800f86929a6b3496b1e845d2d1"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/array.test.cpp",
+          "git_object": "50d034c2590d56a2d51c020690ed246e0b8f55ca",
+          "git_mode": "100644",
+          "sha256": "4c0b2c81a1df24d42cc2ebb061f70c5e5aa70c0b4afe9212853f466d7f60883b"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field.cpp",
+          "git_object": "44da799f729dc063f6f2d985b3c33c8599cff0e1",
+          "git_mode": "100644",
+          "sha256": "cbb84c39fdc75e1e4c2eb1626e06a7e88e274f1c6e92e85ba61b3db5e766a618"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field.fuzzer.hpp",
+          "git_object": "9c2ba3f4e7bb4a907ee44ed075190b95ddd3ca9a",
+          "git_mode": "100644",
+          "sha256": "da672c27cbb21310d8eac1e65353aae55b32691472711089140b4a61e43e105e"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field.hpp",
+          "git_object": "c3c4a19c14041f0da46f09368f151c7e548dc910",
+          "git_mode": "100644",
+          "sha256": "5732e9c7bb6902f62d8a6275eca94fa99bbaf607a51845a003ea2dfe3f9ec9a6"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field.test.cpp",
+          "git_object": "76ecb764289ee1a1a492157c239b91afa8020bd9",
+          "git_mode": "100644",
+          "sha256": "858b57da308a12c88291d1abe864d69149c95bbd43fbf03bbbeb7ac1782fda31"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field_all.fuzzer.cpp",
+          "git_object": "950dc6fa15e500730645374f5b2b2cd5e6e89673",
+          "git_mode": "100644",
+          "sha256": "cdfbaaf7585fff5c18efb598b7a29c3e270e0453614e0b484144b6f0d6e97b63"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field_conversion.cpp",
+          "git_object": "1df0535aeb062e43648b532f7a256b2a2a2c23b0",
+          "git_mode": "100644",
+          "sha256": "23633e0f93544a5124cd29282682e6eb097b7ca4b0637b09bc91bca2db7325d5"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field_conversion.hpp",
+          "git_object": "0cc9f98ba581af15e9110badcb826344e457e992",
+          "git_mode": "100644",
+          "sha256": "0234d9804ab70b26e8c9e02ff1147bafc36daba096d09b445038cdba39a8f54f"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field_conversion.test.cpp",
+          "git_object": "ca448a8ece37ff3b9c953232ce24037ada04a755",
+          "git_mode": "100644",
+          "sha256": "38edfd9605a7d9f27e882ab05cd75af7c65fdb42a36fbd5a23acd3d8f60382b7"
+        },
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/4ba553ba3170838de3b6c4cf47b609b0198443d0/field_standard.fuzzer.cpp",
+          "git_object": "950dc6fa15e500730645374f5b2b2cd5e6e89673",
+          "git_mode": "100644",
+          "sha256": "cdfbaaf7585fff5c18efb598b7a29c3e270e0453614e0b484144b6f0d6e97b63"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp",
+      "path_kind": "file",
+      "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp/4ba553ba3170838de3b6c4cf47b609b0198443d0/field.cpp",
+          "git_object": "44da799f729dc063f6f2d985b3c33c8599cff0e1",
+          "git_mode": "100644",
+          "sha256": "cbb84c39fdc75e1e4c2eb1626e06a7e88e274f1c6e92e85ba61b3db5e766a618"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp",
+      "path_kind": "file",
+      "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp/4ba553ba3170838de3b6c4cf47b609b0198443d0/ultra_circuit_builder.cpp",
+          "git_object": "e96c234c5ab34fa19a30668bb478ab0cd8e03783",
+          "git_mode": "100644",
+          "sha256": "cd89a43f8b63f8babb6b93814bbb6bdcc5ee383009cdaff21742ca7cb1f37d4b"
         }
       ]
     },
@@ -1131,6 +2385,666 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_elliptic.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_elliptic.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/ultra_circuit_builder_elliptic.test.cpp",
+          "git_object": "bafd10ef98bb518d5a2066134ce071aa352dbb8c",
+          "git_mode": "100644",
+          "sha256": "de68597aad5249bec01bd8d6bd1b81a4ca09291a47ae8ce149f2889584381979"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_memory.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_memory.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/ultra_circuit_builder_memory.test.cpp",
+          "git_object": "563b2ac7ddfb2787b9b174e9e324c6a659c01f57",
+          "git_mode": "100644",
+          "sha256": "44766aa6f79703acaa4af810bcea17fa4a4c8943f486715be9db86e329062971"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/block_constraint.cpp",
+          "git_object": "b492baa9c1c633685c62160bbb702251d29bc419",
+          "git_mode": "100644",
+          "sha256": "103564f605aefd8524dcbcaa358169e6e081947719b626211b1039e94d817b64"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/block_constraint.hpp",
+          "git_object": "4123c1e485f3cec290b78066e0f9d7949cc4fd73",
+          "git_mode": "100644",
+          "sha256": "9cf0ef9415a7cc3f8b0ac1ed4d918d3634cfd352e4e6c98c489551940bcf7ca9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/block_constraint.test.cpp",
+          "git_object": "0507713f4e77f57f12e1a9b8679b4fe449abbbf9",
+          "git_mode": "100644",
+          "sha256": "29577348e6798c04081e202d6e0081573c5b5be76543a3c08ce65ef850aca38a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/ec_operations.cpp",
+          "git_object": "b31da19ffab683be33f23548ca5aae9738d2f361",
+          "git_mode": "100644",
+          "sha256": "2bfb607e407bb4884a5ecf809a372008a2e2b9d448786b9ef9116e6289d8309d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/ec_operations.hpp",
+          "git_object": "b1c9bee4dfffd95cdd4154e331dc7d68bcd5b982",
+          "git_mode": "100644",
+          "sha256": "3f9e0af4917c7cf61aa95956d626b68d860e75711c1eefc04a4ac990f71b69a3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/ec_operations.test.cpp",
+          "git_object": "f405c7c7bd39321558d221b5bb08f46906e247a4",
+          "git_mode": "100644",
+          "sha256": "4bff9afe39e106441fd5e7c459fc2df6023bcaa25c2cc77db98bbb62277c835e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/multi_scalar_mul.cpp",
+          "git_object": "a6bd580fbecbd07dd75e7ed9a5fefa6155b593d1",
+          "git_mode": "100644",
+          "sha256": "ad578839deab5b966a88f6576e2bfd36d09e387936b120fe9c876e02b0855e94"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/multi_scalar_mul.hpp",
+          "git_object": "8c9d051e4dd97d1e298c27ec402a490370a7105a",
+          "git_mode": "100644",
+          "sha256": "cbfbc4586776e5da13a8802f50ca3cee781b3446d8268726d5fc6f95e4b66621"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/multi_scalar_mul.test.cpp",
+          "git_object": "2849e3f4310b7f28b248f9a3589e3fb8670bd77f",
+          "git_mode": "100644",
+          "sha256": "4c17d9e23ce3d30fc2b966486622fa7c32c515477f7a19966b0274f89f93ca79"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/relations/elliptic_relation.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/relations/elliptic_relation.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/elliptic_relation.hpp",
+          "git_object": "91e4e6f50785652adaf8414a3c8daba195b14416",
+          "git_mode": "100644",
+          "sha256": "54349ecbeb98347911a154bb68832ef3eb16b57a4b5c0fc36ecd3a6acf571ac8"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/relations/memory_relation.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/relations/memory_relation.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/memory_relation.hpp",
+          "git_object": "c08ff37bd26175ac0c3ff89947ea524d5f8c6a2c",
+          "git_mode": "100644",
+          "sha256": "478fddf11040a907f7dc98775567c11ff8f8736a615200b435413634596301e5"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/cycle_group.cpp",
+          "git_object": "620282bcb8b6153b62a2b078269f92f5e9fc373e",
+          "git_mode": "100644",
+          "sha256": "0ab0389da6d67d1a0f6272ed701ebadc31c5b7e34a918857d304949c8e547303"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/cycle_group.hpp",
+          "git_object": "71637a6c07752c85f156f9675797883a6c2913fc",
+          "git_mode": "100644",
+          "sha256": "eece5d60d29e3517fae1f0f2cdaeb97f2e4321a80491c3b38790bb144bb2a3e3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/cycle_group.test.cpp",
+          "git_object": "4f33348662410651a699431f02f721338843230c",
+          "git_mode": "100644",
+          "sha256": "51c0151a65286b90548ed4ccb5b228914ed605e6a73bd2799dcc58536b9a28e6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/cycle_scalar.cpp",
+          "git_object": "3b24c3262234d07f710541b7f3837599fa1fb89e",
+          "git_mode": "100644",
+          "sha256": "768ff8c0455dc85f416bf2e4907a071120e1d4e283f17c3c46a33b23b3f49a5a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/cycle_scalar.hpp",
+          "git_object": "9b844993974fb84c7621434a4745fa1c09fcefb9",
+          "git_mode": "100644",
+          "sha256": "eaeddadf6d6d26abc6a75f5838e495828b9ea125d2b2b664b61ac2cc907fdcf0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/cycle_scalar.test.cpp",
+          "git_object": "a9545e6eacd33113c48326f23dc685ea59299aac",
+          "git_mode": "100644",
+          "sha256": "66106d9f0290ac4899c8b3a104484263861813dce4abc37f40cbb3946a6f0b0e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/straus_lookup_table.cpp",
+          "git_object": "3e744ab6ee962896769c283cda7f4414a37a4e8e",
+          "git_mode": "100644",
+          "sha256": "11c74f12168e042bf149f1d9ce8389ab45168620d20ebf1a7e8635b3966de3fc"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/straus_lookup_table.hpp",
+          "git_object": "4d56a5b09545ed533418b7867ebf3f0de95d80ea",
+          "git_mode": "100644",
+          "sha256": "328cc1e80b3dd78651af1d39dbe592fa03889fe8311f45b297ca1ec060a9e24a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/straus_lookup_table.test.cpp",
+          "git_object": "7ffc0cf36c1247d4be79b5f638b937b1ec676c66",
+          "git_mode": "100644",
+          "sha256": "2af81c70544265adbdaa7ec0b6b85bd27bcdac6b32f6de9fad7902b4c7135b40"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/straus_scalar_slice.cpp",
+          "git_object": "0045817e90d8b9550ed1e5b3a5710328a846d5d4",
+          "git_mode": "100644",
+          "sha256": "163a0b2564b511f94c527c7daa3fa1ce84ad96209091c80dbd9ae4501b416086"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/straus_scalar_slice.hpp",
+          "git_object": "979c4d1ffa7c7fd5591b0852aba5380584476746",
+          "git_mode": "100644",
+          "sha256": "36b348e7a4ed80e51d47cb749a8121afc40ad59bd85ee3f48e4cc693329e4c69"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/straus_scalar_slice.test.cpp",
+          "git_object": "72c0c950f29323aed6d471c6ac067a1e81235859",
+          "git_mode": "100644",
+          "sha256": "a97a52d06862e5c8eec2a9a25dd59f9d22c9392090a3b69a45c84932573af38e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/test_utils.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/test_utils.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/test_utils.hpp",
+          "git_object": "54bce39da26ecb0ce3c791ba4b69ff5a54a93ded",
+          "git_mode": "100644",
+          "sha256": "536fb6f8cc314fd302d788a38255213cee849128fd8faa64c3e8791f2868d10f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/ram_table.cpp",
+          "git_object": "b03b3008a1893549e4ee484f833039150746517c",
+          "git_mode": "100644",
+          "sha256": "487144f4d38d74f532f136da3e31035bc28aac146812ce25b613beb4ec306887"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/ram_table.hpp",
+          "git_object": "3af532bc04d00525842f502bad32b83931f7a752",
+          "git_mode": "100644",
+          "sha256": "07a679ac4762fa3d9b265e22b7eec0d48104e52311ea9ac0051f5f8871c2a041"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/ram_table.test.cpp",
+          "git_object": "d6d4a0d0129ead1027a1528591a9137e38092f5a",
+          "git_mode": "100644",
+          "sha256": "fe304e7f42ff7b53750f682075c6c436d9497d22463130b810f7e38f9be49bcf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/rom_table.cpp",
+          "git_object": "7f09a1b68d6c001edb7aae021afffe3af898c827",
+          "git_mode": "100644",
+          "sha256": "1b52c9231d5eb7e92a98dc9791c567dcb11b9977d8fe22b6cfb26f9f4fa451f8"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/rom_table.hpp",
+          "git_object": "c66c97042c40e10d5239a068a278f32988b785b6",
+          "git_mode": "100644",
+          "sha256": "1ebb4ce32b6406ff96e1a2eb3a169f23272842d9d9b88acbf9ab012892bb1838"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/rom_table.test.cpp",
+          "git_object": "02cfe03c4601c8efde7aaafc617fbc274456f350",
+          "git_mode": "100644",
+          "sha256": "d990ea71f09b537d982ba02f4b8f87c7cc70d9c36e797bd1d22b0d93e5d60e8a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/twin_rom_table.cpp",
+          "git_object": "d986c783874b1622253079f31b92c69a5c6818b0",
+          "git_mode": "100644",
+          "sha256": "027a6bfd39e0abda113a7acce096fc707daf014f647f445667cb2ca67a23d873"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/twin_rom_table.hpp",
+          "git_object": "3cb7622ec6108fa0c2da9f8cf83ca47fc349d0ca",
+          "git_mode": "100644",
+          "sha256": "6bd2c88b4f55f4307c0756c00ca081eb229318f0bec658a0dfa096a9925c25e9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/twin_rom_table.test.cpp",
+          "git_object": "de62485e100ab941410b0a0192255d76b24a8538",
+          "git_mode": "100644",
+          "sha256": "28c24343861122894f077340c8ea0bc63684209865db804a0da0fd412d24a000"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/fixed_base.cpp",
+          "git_object": "8157af157ffb53dfdaa9517c1e204d8a0513b840",
+          "git_mode": "100644",
+          "sha256": "61bdd65456521e97e2477fbb5008bc35ef492179becc0cd18be5cde4344d8a0e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/fixed_base.hpp",
+          "git_object": "3407098d25e19136d182290e4a6a117eaa6eba56",
+          "git_mode": "100644",
+          "sha256": "caafb7bb2242e941c2135ba9d16c957502186616fe7ec56d7d61ecaf02337482"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/fixed_base.test.cpp",
+          "git_object": "34cbe35545df508c73041ba24de8a38268a73f54",
+          "git_mode": "100644",
+          "sha256": "9bb5f4f62d5b9a657d2ce3ccc8e53e8fa37b8dc050311dc0da5bc6db2bc85667"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base_params.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base_params.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/fixed_base_params.hpp",
+          "git_object": "9e03386a18cb51e62adb75d04824c16954ca191c",
+          "git_mode": "100644",
+          "sha256": "babd1aeca3dddac9e8a3eeba4b67c2559685147b91595def91812b1ef666a348"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/rom_ram_logic.cpp",
+          "git_object": "63a974a7e3aad174a61758464527da3fc5bcd6b2",
+          "git_mode": "100644",
+          "sha256": "53c797f082c8e4278fb74524224ed4db3d0656aa8bbd525a87e8f660a6501886"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/rom_ram_logic.hpp",
+          "git_object": "d32f07df47d15041a1c640976bcdc39c4689a7b8",
+          "git_mode": "100644",
+          "sha256": "dbda789e0f672417770e417b6b78c4567cbb6d4a8b11a8a77bf3bca84a868b96"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/ultra_circuit_builder.cpp",
+          "git_object": "042bc2554dcab45fe3fc81a0ab06b0c5010dd59e",
+          "git_mode": "100644",
+          "sha256": "cc91e4636178225375ce031fcac7610b702452c2f4dfa4e6cbc223c52fd30669"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.hpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.hpp/6b858739756e0f56803e5d6a995f1308303a7f16/ultra_circuit_builder.hpp",
+          "git_object": "a3083cbd77582c01bc04466cf2cf7864e6445b46",
+          "git_mode": "100644",
+          "sha256": "feab334ba5177e42daa391cfb0da9b7dccce2100e204aa68dc1336959907eea9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/ultra_honk/rom_ram.test.cpp",
+      "path_kind": "file",
+      "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/ultra_honk/rom_ram.test.cpp/6b858739756e0f56803e5d6a995f1308303a7f16/rom_ram.test.cpp",
+          "git_object": "cb7b9962044741247f0ed7fc6240fee94eddaac9",
+          "git_mode": "100644",
+          "sha256": "64b5460cd265acf8c63297a6c81688cd452a9074a97c27dde41cdf4f71f35fce"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/libraries/crypto/MerkleLib.sol",
       "path_kind": "file",
       "commit": "6eb1316b86eca5aa7b6c0b5b2a308a4a2282cbd9",
@@ -1230,6 +3144,96 @@
           "git_object": "ac3c5a4c4b5594dfb9b248c0e87ce3e216f617b3",
           "git_mode": "100644",
           "sha256": "0baf02165ae093565f17b20998b549f58110e9122c4d8aac78924dcdba7cf027"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.cpp",
+      "path_kind": "file",
+      "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.cpp/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/bool.cpp",
+          "git_object": "6dd1ef9baa4d3cae7f486ed7b4bc49ad7e3c5e3e",
+          "git_mode": "100644",
+          "sha256": "21e0d4f6fe1f9d70fa9219a5ce350ee2157b06475ede43b713e8dabaf434449c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.hpp",
+      "path_kind": "file",
+      "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.hpp/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/bool.hpp",
+          "git_object": "95d1d40fed53a8ab97e91b456f783b1f6b630854",
+          "git_mode": "100644",
+          "sha256": "8d4db372829ffb79ea2beeb724671189f949eafe3bb21c83799171c70ed8fe46"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.test.cpp",
+      "path_kind": "file",
+      "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.test.cpp/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/bool.test.cpp",
+          "git_object": "e8d063fec5fc6570addef50f1494f90fd39f8ece",
+          "git_mode": "100644",
+          "sha256": "65c5d6a5d01c9569517962c4ff19bdaaf099771aeed0b51839a7827405906674"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.cpp",
+      "path_kind": "file",
+      "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.cpp/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/byte_array.cpp",
+          "git_object": "703cc75533f0c637765cddb0343a01348462e21c",
+          "git_mode": "100644",
+          "sha256": "0828e189047f6d65235abe548e2ff870cc8ec312e6e304083a10eb3fd28bb1e0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.hpp",
+      "path_kind": "file",
+      "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.hpp/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/byte_array.hpp",
+          "git_object": "cf36ae76ef980e446c38289bac420224c57b938a",
+          "git_mode": "100644",
+          "sha256": "ce0c153bdbdeeb0eab1e5b15c117fb78f203bac0ff9910f8bd34ff59ddffc73f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.test.cpp",
+      "path_kind": "file",
+      "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.test.cpp/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/byte_array.test.cpp",
+          "git_object": "146f9910276d412ce1be47e71b7696bf265649d1",
+          "git_mode": "100644",
+          "sha256": "ad52b0072eff34f8208ff08797583073e28ddee33c4437683ac14034289fb35e"
         }
       ]
     },
@@ -1350,6 +3354,66 @@
           "git_object": "e53bf4652f84ae1b7346b0915a269b791f432554",
           "git_mode": "100644",
           "sha256": "e689647848947b999ac3a83892a979f8363fa4e7490eb77a2fa688b18e0100a4"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.cpp",
+      "path_kind": "file",
+      "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.cpp/8c1f77d5d7afc37419d8942e8dbd871710887c1e/bool.cpp",
+          "git_object": "13a38d320fe28eaf8da20b97949f10fcad3e5577",
+          "git_mode": "100644",
+          "sha256": "5812e27af8be762c08f8114a3a0e66ad85ec7d54dc1eeb4ad000f08a4a08d25a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.cpp",
+      "path_kind": "file",
+      "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.cpp/8c1f77d5d7afc37419d8942e8dbd871710887c1e/byte_array.cpp",
+          "git_object": "f342d1189fa5f0980a0c69dd5af063571511b662",
+          "git_mode": "100644",
+          "sha256": "ef706db881ae151443ce8fc04e367ab26878122c30c4b34dbc8608b6b24116d3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.hpp",
+      "path_kind": "file",
+      "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.hpp/8c1f77d5d7afc37419d8942e8dbd871710887c1e/byte_array.hpp",
+          "git_object": "417069ac477a61c8bb197710e40c273dfa6b26d7",
+          "git_mode": "100644",
+          "sha256": "2a088641fed01f3e770bca891850d63ca8f3e460f7275389ecb3c2bfc20f0ce2"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.test.cpp",
+      "path_kind": "file",
+      "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.test.cpp/8c1f77d5d7afc37419d8942e8dbd871710887c1e/byte_array.test.cpp",
+          "git_object": "617e51b39be8fdd913c57dbcd631f1d658877d44",
+          "git_mode": "100644",
+          "sha256": "f68ca71aaf1c31496888f7c4165db17097b8128eb465c52ed6274d14b3330641"
         }
       ]
     },
@@ -1680,6 +3744,36 @@
           "git_object": "c3cce528686630eba13013ae8bdf6843d3d19222",
           "git_mode": "100644",
           "sha256": "7e85f5b0daa1f8826942ab5bc34d786fcf3c1179643976dfe0a76ea6dd96e61d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.cpp",
+      "path_kind": "file",
+      "commit": "a4837fef0294826c391125686cce671199d055f6",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.cpp/a4837fef0294826c391125686cce671199d055f6/logic_constraint.cpp",
+          "git_object": "b8522cd0685293f36d87b88064ef8ef743750d36",
+          "git_mode": "100644",
+          "sha256": "df96f81f05ad543ec9cb993b5eeffeeb6a6b90fc7b76873c7696eda16d36fb19"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "a51b732b09ac4d03df6da1af8eee4d11ffbe6aab",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/a51b732b09ac4d03df6da1af8eee4d11ffbe6aab/bigfield_impl.hpp",
+          "git_object": "f18e5233e8ff84cdcfcb18911e1f987556c70aea",
+          "git_mode": "100644",
+          "sha256": "ec1494fb583f48e3d14ff510c48cba788cb4920fab3b3290f0b15afe6012e7f0"
         }
       ]
     },
@@ -2121,6 +4215,21 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "bb3a089116ae74a7a7682626a41463501400d0a5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/bb3a089116ae74a7a7682626a41463501400d0a5/bigfield_impl.hpp",
+          "git_object": "048f384a660afebe674890122cdc2714a3a4f587",
+          "git_mode": "100644",
+          "sha256": "70a0bf218e970831e757e52fbdc3768e310c60aec05256fd2c1d119d8e03285c"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/governance/CoinIssuer.sol",
       "path_kind": "file",
       "commit": "bcc710cc4f8733e6808413b8daf82c8f3d72310f",
@@ -2145,6 +4254,666 @@
           "git_object": "a31edfbfb2c2c6d8589a1be340798cc30a32fc79",
           "git_mode": "100644",
           "sha256": "7e20666f90f434f94e181b8d47e56a4d8b48677eb44aa571cb7e83e16a3c8c05"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_elliptic.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_elliptic.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ultra_circuit_builder_elliptic.test.cpp",
+          "git_object": "f875e75b55fca11b7583ac6ecef027306edae8fa",
+          "git_mode": "100644",
+          "sha256": "7648842d16cd01bfbf20afb87ff4cb973c970b4ffa357a5f62462944fa93f5b9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_memory.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_memory.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ultra_circuit_builder_memory.test.cpp",
+          "git_object": "563b2ac7ddfb2787b9b174e9e324c6a659c01f57",
+          "git_mode": "100644",
+          "sha256": "44766aa6f79703acaa4af810bcea17fa4a4c8943f486715be9db86e329062971"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/block_constraint.cpp",
+          "git_object": "b492baa9c1c633685c62160bbb702251d29bc419",
+          "git_mode": "100644",
+          "sha256": "103564f605aefd8524dcbcaa358169e6e081947719b626211b1039e94d817b64"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/block_constraint.hpp",
+          "git_object": "4123c1e485f3cec290b78066e0f9d7949cc4fd73",
+          "git_mode": "100644",
+          "sha256": "9cf0ef9415a7cc3f8b0ac1ed4d918d3634cfd352e4e6c98c489551940bcf7ca9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/block_constraint.test.cpp",
+          "git_object": "0507713f4e77f57f12e1a9b8679b4fe449abbbf9",
+          "git_mode": "100644",
+          "sha256": "29577348e6798c04081e202d6e0081573c5b5be76543a3c08ce65ef850aca38a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ec_operations.cpp",
+          "git_object": "f729a0f5a70baf808ebd71c48fa159a45edc4c56",
+          "git_mode": "100644",
+          "sha256": "97b069a3e3b41a630465e282a83cc65834136a90934cb06b186812d5af06bd0f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ec_operations.hpp",
+          "git_object": "b1c9bee4dfffd95cdd4154e331dc7d68bcd5b982",
+          "git_mode": "100644",
+          "sha256": "3f9e0af4917c7cf61aa95956d626b68d860e75711c1eefc04a4ac990f71b69a3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ec_operations.test.cpp",
+          "git_object": "f405c7c7bd39321558d221b5bb08f46906e247a4",
+          "git_mode": "100644",
+          "sha256": "4bff9afe39e106441fd5e7c459fc2df6023bcaa25c2cc77db98bbb62277c835e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/multi_scalar_mul.cpp",
+          "git_object": "7d5da5e400db898ff5be2ec8978bac199c5a7a2f",
+          "git_mode": "100644",
+          "sha256": "937d3d8e333caf93d293a524eb0da08497ff04fa559c833e3d021a6892c0b092"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/multi_scalar_mul.hpp",
+          "git_object": "8c9d051e4dd97d1e298c27ec402a490370a7105a",
+          "git_mode": "100644",
+          "sha256": "cbfbc4586776e5da13a8802f50ca3cee781b3446d8268726d5fc6f95e4b66621"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/multi_scalar_mul.test.cpp",
+          "git_object": "2849e3f4310b7f28b248f9a3589e3fb8670bd77f",
+          "git_mode": "100644",
+          "sha256": "4c17d9e23ce3d30fc2b966486622fa7c32c515477f7a19966b0274f89f93ca79"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/relations/elliptic_relation.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/relations/elliptic_relation.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/elliptic_relation.hpp",
+          "git_object": "77d30a46974bcd02173c79d5601301fcfa806b4b",
+          "git_mode": "100644",
+          "sha256": "afa392dd1fb16ba16d53341fbca32160fee1585ebdcb189ec295b032fa9bf93d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/relations/memory_relation.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/relations/memory_relation.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/memory_relation.hpp",
+          "git_object": "8fa0064618d1160af1becd0838d706425a04ba31",
+          "git_mode": "100644",
+          "sha256": "5fe7e5592c4a833bff0c99126597bd7f02b193865e7bcf0aa17ec7245708f7d8"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/cycle_group.cpp",
+          "git_object": "f841bb20cdfe55a7bb4de7393c6bc46fd6bc662a",
+          "git_mode": "100644",
+          "sha256": "df08fb3be1cfab754c41779f79601809f1fe6e41505d017b8cfc12c5c1ccc9bb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/cycle_group.hpp",
+          "git_object": "371170cf0f4a102b4586563f263d272553a993d3",
+          "git_mode": "100644",
+          "sha256": "d61c17a7b59874af2e573835392fe0a42b1bb8527560372a60d6510c0ffc18d9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/cycle_group.test.cpp",
+          "git_object": "0c2414ac3d041f277db74d33a629c85cae552340",
+          "git_mode": "100644",
+          "sha256": "a8a2a06df34d5baca22597c70d59971595878a1b073ea3389e309deef1427f8b"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/cycle_scalar.cpp",
+          "git_object": "dc2f025d2d782eb5997de2dd2b5e3854df351fd4",
+          "git_mode": "100644",
+          "sha256": "0cd629db9165cb5210cdb6e8e9146cd29f6b700f4f2b4e51e2f5409d6b229c20"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/cycle_scalar.hpp",
+          "git_object": "9b844993974fb84c7621434a4745fa1c09fcefb9",
+          "git_mode": "100644",
+          "sha256": "eaeddadf6d6d26abc6a75f5838e495828b9ea125d2b2b664b61ac2cc907fdcf0"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/cycle_scalar.test.cpp",
+          "git_object": "d90365b3dda3ba8b662e4299def890ff058fdc4b",
+          "git_mode": "100644",
+          "sha256": "aa1b2e164a32003761e0f695a314dd6f15e8a6a63ed87dc5350865797926ee0a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/straus_lookup_table.cpp",
+          "git_object": "d385ec5716416853713a14ba551a219cc6eb6bf5",
+          "git_mode": "100644",
+          "sha256": "3a31729783b23e581c3b99e37dfc88d124f2997604860e18d7e0c920611b2621"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/straus_lookup_table.hpp",
+          "git_object": "1c133158db6a43473f3c995bdd9620c26b24900d",
+          "git_mode": "100644",
+          "sha256": "2922c71f0c866de1cf934048ee6eb46e95f73b543699d8160f45d753dbac01bc"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/straus_lookup_table.test.cpp",
+          "git_object": "6ad704d57e51cd459bfdefda705cb1a1bd8226f0",
+          "git_mode": "100644",
+          "sha256": "a919281a442ee19ccde832b66230fd43632c4ef338ac349e2a83cbedbe5ea5ee"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/straus_scalar_slice.cpp",
+          "git_object": "0045817e90d8b9550ed1e5b3a5710328a846d5d4",
+          "git_mode": "100644",
+          "sha256": "163a0b2564b511f94c527c7daa3fa1ce84ad96209091c80dbd9ae4501b416086"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/straus_scalar_slice.hpp",
+          "git_object": "979c4d1ffa7c7fd5591b0852aba5380584476746",
+          "git_mode": "100644",
+          "sha256": "36b348e7a4ed80e51d47cb749a8121afc40ad59bd85ee3f48e4cc693329e4c69"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/straus_scalar_slice.test.cpp",
+          "git_object": "72c0c950f29323aed6d471c6ac067a1e81235859",
+          "git_mode": "100644",
+          "sha256": "a97a52d06862e5c8eec2a9a25dd59f9d22c9392090a3b69a45c84932573af38e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/test_utils.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/test_utils.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/test_utils.hpp",
+          "git_object": "54bce39da26ecb0ce3c791ba4b69ff5a54a93ded",
+          "git_mode": "100644",
+          "sha256": "536fb6f8cc314fd302d788a38255213cee849128fd8faa64c3e8791f2868d10f"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ram_table.cpp",
+          "git_object": "f73b7ba280cdd210919007f383f56fe7d2991e00",
+          "git_mode": "100644",
+          "sha256": "89ac7750b269973fdf97b3e9b6078a7e38da782a5e2dc7f1fbfcd2d5c5c1ed51"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ram_table.hpp",
+          "git_object": "d8fdf91767a7c81c5332b1ed790ccd30c907a672",
+          "git_mode": "100644",
+          "sha256": "889fad86aedaa4abc3637e49b4c3f81dd43e4a847c4dcd1cc1c9c96a399374b9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ram_table.test.cpp",
+          "git_object": "d6d4a0d0129ead1027a1528591a9137e38092f5a",
+          "git_mode": "100644",
+          "sha256": "fe304e7f42ff7b53750f682075c6c436d9497d22463130b810f7e38f9be49bcf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/rom_table.cpp",
+          "git_object": "17299c5d7bb7d231d53115b9002d1b1866cf0aba",
+          "git_mode": "100644",
+          "sha256": "407ec15c5f832e9bc6a92ef8b6e83cfa6c46cc96c4589b3cb0d7c337ea2e3b78"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/rom_table.hpp",
+          "git_object": "75520088ec2c751eaa34f0ba17a2c456125041d5",
+          "git_mode": "100644",
+          "sha256": "2732fcc3cb3257dd3d0a28f6452ea964c180deac856fded5d1cd82ed33075310"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/rom_table.test.cpp",
+          "git_object": "02cfe03c4601c8efde7aaafc617fbc274456f350",
+          "git_mode": "100644",
+          "sha256": "d990ea71f09b537d982ba02f4b8f87c7cc70d9c36e797bd1d22b0d93e5d60e8a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/twin_rom_table.cpp",
+          "git_object": "06db07caf49ba6837998f7b0675b7cc42d1b825f",
+          "git_mode": "100644",
+          "sha256": "0c1eaa8b52119b1a0979eac3cfb1a6ce1fd6096799e6d002d1017b6313c30d2a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/twin_rom_table.hpp",
+          "git_object": "dae8f500da19d9a5cc3f3c2b571c55f017b36dce",
+          "git_mode": "100644",
+          "sha256": "228c6c4a91f36ada528dcfa3a00aae5ec4ae6a25352de5a90bbd34e4ed5ff6fa"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/twin_rom_table.test.cpp",
+          "git_object": "de62485e100ab941410b0a0192255d76b24a8538",
+          "git_mode": "100644",
+          "sha256": "28c24343861122894f077340c8ea0bc63684209865db804a0da0fd412d24a000"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/fixed_base.cpp",
+          "git_object": "8157af157ffb53dfdaa9517c1e204d8a0513b840",
+          "git_mode": "100644",
+          "sha256": "61bdd65456521e97e2477fbb5008bc35ef492179becc0cd18be5cde4344d8a0e"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/fixed_base.hpp",
+          "git_object": "3407098d25e19136d182290e4a6a117eaa6eba56",
+          "git_mode": "100644",
+          "sha256": "caafb7bb2242e941c2135ba9d16c957502186616fe7ec56d7d61ecaf02337482"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/fixed_base.test.cpp",
+          "git_object": "34cbe35545df508c73041ba24de8a38268a73f54",
+          "git_mode": "100644",
+          "sha256": "9bb5f4f62d5b9a657d2ce3ccc8e53e8fa37b8dc050311dc0da5bc6db2bc85667"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base_params.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base_params.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/fixed_base_params.hpp",
+          "git_object": "9e03386a18cb51e62adb75d04824c16954ca191c",
+          "git_mode": "100644",
+          "sha256": "babd1aeca3dddac9e8a3eeba4b67c2559685147b91595def91812b1ef666a348"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/rom_ram_logic.cpp",
+          "git_object": "63a974a7e3aad174a61758464527da3fc5bcd6b2",
+          "git_mode": "100644",
+          "sha256": "53c797f082c8e4278fb74524224ed4db3d0656aa8bbd525a87e8f660a6501886"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/rom_ram_logic.hpp",
+          "git_object": "f5f6a89889f70b4d62764ae71e332115d6702a4d",
+          "git_mode": "100644",
+          "sha256": "a892f7b46cd2e68f2e7ae92e21943745db557d6173e0429afb8041823acce263"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ultra_circuit_builder.cpp",
+          "git_object": "4ac3e02e332aa6c1a6b61750450dd34cc26c5ebf",
+          "git_mode": "100644",
+          "sha256": "0f640ecac7d479ba34332072cd999f07830180fb762913b24c68fa3ce1cce2cf"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.hpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.hpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/ultra_circuit_builder.hpp",
+          "git_object": "783f61a6d493754dc898768c716c5ee13a461c1c",
+          "git_mode": "100644",
+          "sha256": "af73f5950706816ab14befff97ca1ce30a7d1df64b5f2b4530bb86f12cdafef5"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/ultra_honk/rom_ram.test.cpp",
+      "path_kind": "file",
+      "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/ultra_honk/rom_ram.test.cpp/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/rom_ram.test.cpp",
+          "git_object": "735f61d28987cfcfc02b97ebf29ef923e520fc3a",
+          "git_mode": "100644",
+          "sha256": "1c127df61a2e740d3aae3fd1d96779d62773395fa7830900d285f54a3b884d78"
         }
       ]
     },
@@ -2196,6 +4965,96 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "ce539cb8498b954598d32a9325b0c636d9357075",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/ce539cb8498b954598d32a9325b0c636d9357075/bigfield.hpp",
+          "git_object": "c0792e297a33eeb29eac43186b99773c5959a276",
+          "git_mode": "100644",
+          "sha256": "c69a68ad63a0af24f13bc161fe8aff685eaaffe8046ed9d0ff2783ffbf8d3fae"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "ce539cb8498b954598d32a9325b0c636d9357075",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/ce539cb8498b954598d32a9325b0c636d9357075/bigfield_impl.hpp",
+          "git_object": "68e065c85e3f7d78aef3a0f8768438ec4e5c62fa",
+          "git_mode": "100644",
+          "sha256": "25d1cb4e42ea4b3b26be69c4d90f209d096572b103719b69b82b39d8d6ff26a9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "d67c99bafd7d80678bdb3bb64aeb3711d835d7fb",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/d67c99bafd7d80678bdb3bb64aeb3711d835d7fb/bigfield.hpp",
+          "git_object": "572acc62d24e9c573b7333147b8cbcf280139814",
+          "git_mode": "100644",
+          "sha256": "ff2673b62236621d9077ac1494f3e69180ffb3d910dd88f217107dc37c764efa"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.test.cpp",
+      "path_kind": "file",
+      "commit": "d67c99bafd7d80678bdb3bb64aeb3711d835d7fb",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.test.cpp/d67c99bafd7d80678bdb3bb64aeb3711d835d7fb/bigfield.test.cpp",
+          "git_object": "0d9ba338f8f7be92dc42e859e797e85e78309b15",
+          "git_mode": "100644",
+          "sha256": "8124fd7469772a80230570837ed32e4aa7e7dd3312e2895eb3e3ef487e238ac9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "d67c99bafd7d80678bdb3bb64aeb3711d835d7fb",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/d67c99bafd7d80678bdb3bb64aeb3711d835d7fb/bigfield_impl.hpp",
+          "git_object": "fe6255f23681d01403f33ac4c4b2d8fea00ae7f7",
+          "git_mode": "100644",
+          "sha256": "f7cbf22a28d4a31c242a2ce40fe4634dc2d3b28d569bc04e26e9fa1bdfc691e3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp",
+      "path_kind": "file",
+      "commit": "d8f4dd0079ac1d34d3d6fc1c7986a4ca12a29b85",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp/d8f4dd0079ac1d34d3d6fc1c7986a4ca12a29b85/bigfield_impl.hpp",
+          "git_object": "f298673c31baa151d9cb33ef287827e59cd26fb5",
+          "git_mode": "100644",
+          "sha256": "9dae7e26386b1e20fc6ff61194d57b27b73424ae4038197dc730680d564580eb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/EscapeHatch.sol",
       "path_kind": "file",
       "commit": "e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9",
@@ -2220,6 +5079,81 @@
           "git_object": "cdd0cfb58d0158956ebb5db97aed6977d55781fa",
           "git_mode": "100644",
           "sha256": "77f96182dbb4e28732562bbd84f33fc1b678a7109d31b669228d0b5667d46665"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.cpp",
+      "path_kind": "file",
+      "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.cpp/e4712cda8def49d75fbba2d361625fc5e21945f5/logic_constraint.cpp",
+          "git_object": "f25f1b0f1eeacb4f6bcc01f734fb4741ffe696fe",
+          "git_mode": "100644",
+          "sha256": "1b2e0f4e179b0ebfa857d06c8b28705d6f9dc9c41e3d8461d3ee5f8f443acad5"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.hpp",
+      "path_kind": "file",
+      "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.hpp/e4712cda8def49d75fbba2d361625fc5e21945f5/logic_constraint.hpp",
+          "git_object": "0a6775ed53fac4019a999306ad6a2b1fb9929583",
+          "git_mode": "100644",
+          "sha256": "4ad2e45d392c91a101c77b6fea0a0ed41af4558b103815842da926cb28b0da4a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp",
+      "path_kind": "file",
+      "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp/e4712cda8def49d75fbba2d361625fc5e21945f5/logic.cpp",
+          "git_object": "a8a89fc34e9c2981001195d9656cdd8025a785dc",
+          "git_mode": "100644",
+          "sha256": "529100dc321e4dc82a9aaf8e021dbc430d86357fd6182797dd610bcc5edf8b32"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.hpp",
+      "path_kind": "file",
+      "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.hpp/e4712cda8def49d75fbba2d361625fc5e21945f5/logic.hpp",
+          "git_object": "f45aaa9e8a04d9228654bf9506316b3a1b1d5c49",
+          "git_mode": "100644",
+          "sha256": "f19f867efe21cfe7c8361dd1fe0ad655f6faf1b92106a3f54be02a6d48557f81"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/uint.hpp",
+      "path_kind": "file",
+      "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/uint.hpp/e4712cda8def49d75fbba2d361625fc5e21945f5/uint.hpp",
+          "git_object": "f56c30a86b61faee3a7bcd0288a32d54828c6d32",
+          "git_mode": "100644",
+          "sha256": "acb21ede0b079d64f1cacc86b210c749a0bb6d0049d36adecb7612ea42a6a511"
         }
       ]
     },
@@ -2376,6 +5310,21 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp",
+      "path_kind": "file",
+      "commit": "fc80c59a0c9cccfe91fc6c742d23277108d87843",
+      "files": [
+        {
+          "file": "AztecProtocol/aztec-packages/barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp/fc80c59a0c9cccfe91fc6c742d23277108d87843/bigfield.hpp",
+          "git_object": "2c163c34734f940e643e497c08c5ff8a3f751713",
+          "git_mode": "100644",
+          "sha256": "17f592af8aacd64ff2983c83f9c2a7d2da5f42cd594f1fbc40c835bf98d85e2a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol",
       "path_kind": "file",
       "commit": "fd98ab2827138ace06840a2375f2783e9f459674",
@@ -2390,6 +5339,20 @@
     }
   ],
   "skipped": [
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ERC1724/base/ZkAssetMintableBase.sol",
+      "revision_kind": "branch",
+      "revision": "develop",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "AztecProtocol/AZTEC",
+      "source_path": "packages/protocol/contracts/ERC1724/base/ZkAssetOwnableBase.sol",
+      "revision_kind": "branch",
+      "revision": "develop",
+      "reason": "revision is not a commit"
+    },
     {
       "repository": "AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/slashing/Slasher.sol",
@@ -2592,225 +5555,15 @@
       "revision_kind": "commit_range",
       "revision": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts",
       "reason": "revision is not a commit"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/ProtocolTreasury.sol",
-      "revision_kind": "pull_request",
-      "revision": "https://github.com/AztecProtocol/ignition-monorepo/pull/690",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
-      "revision_kind": "pull_request",
-      "revision": "https://github.com/AztecProtocol/ignition-monorepo/pull/71",
-      "reason": "revision is not a commit"
     }
   ],
   "unavailable": [
     {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/ProtocolTreasury.sol",
-      "path_kind": "file",
-      "commit": "2a2c790968ce2d6a7c3d257c9ebbb1807f7a6abf",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/constants.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/sale/GenesisSequencerSale.sol",
-      "path_kind": "file",
-      "commit": "833c1b3a2150fd6bee5197db5127f6e883bd17bd",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/sale/GenesisSequencerSale.sol",
-      "path_kind": "file",
-      "commit": "971a777c6b1ed257a47ccc66e91434f7c2435c36",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/sale/GenesisSequencerSale.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/sale/IGenesisSequencerSale.sol",
-      "path_kind": "file",
-      "commit": "833c1b3a2150fd6bee5197db5127f6e883bd17bd",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/sale/IGenesisSequencerSale.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/IIgnitionParticipantSoulbound.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
-      "path_kind": "file",
-      "commit": "833c1b3a2150fd6bee5197db5127f6e883bd17bd",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
-      "path_kind": "file",
-      "commit": "971a777c6b1ed257a47ccc66e91434f7c2435c36",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/IgnitionParticipantSoulbound.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/providers/AttestationProvider.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/providers/IWhitelistProvider.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/providers/PredicateProvider.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/providers/ZKPassportProvider.sol",
-      "path_kind": "file",
-      "commit": "abfbcc191503463ad22dc08a329907c21fd8736e",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/soulbound/providers/ZKPassportProvider.sol",
-      "path_kind": "file",
-      "commit": "f61d54b6a630dc81dc19284f90f7a229a30d47bb",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
-      "path_kind": "file",
-      "commit": "195a455f99a10490c8619cfa5f4e4a30c0cfff10",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
-      "path_kind": "file",
-      "commit": "20acd71f5bea98e1a07898639c55e72850222627",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
-      "path_kind": "file",
-      "commit": "23913401b2a3634a55b5e652c2127c50b9897862",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
-      "path_kind": "file",
-      "commit": "931a1b7311e165251b38bbeab3e63c18e07b441c",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
-      "path_kind": "file",
-      "commit": "c95aacd744235faf653ea72f1a6aa4e685cffe7a",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
-      "path_kind": "file",
-      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/StakingRegistry.sol",
-      "path_kind": "file",
-      "commit": "de6313885088b9b2729084e95106e5a4705e03eb",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/libs/BN254.sol",
-      "path_kind": "file",
-      "commit": "20acd71f5bea98e1a07898639c55e72850222627",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/libs/BN254.sol",
-      "path_kind": "file",
-      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking-registry/libs/QueueLib.sol",
-      "path_kind": "file",
-      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking/ATPWithdrawableStaker.sol",
-      "path_kind": "file",
-      "commit": "0ec876d59721e3574ae069ac5fdfc9721a3a2759",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking/ATPWithdrawableStaker.sol",
-      "path_kind": "file",
-      "commit": "20acd71f5bea98e1a07898639c55e72850222627",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "AztecProtocol/ignition-monorepo",
-      "source_path": "contracts/src/staking/ATPWithdrawableStaker.sol",
-      "path_kind": "file",
-      "commit": "c9efabacc389045196b52d3d454c1e86cc0104ad",
-      "reason": "repository is not reachable"
+      "repository": "AztecProtocol/barretenberg",
+      "source_path": "barretenberg/src/aztec",
+      "path_kind": "directory_recursive",
+      "commit": "38c8b72e633f58f4e394990da1936ed5fa2ab1ee",
+      "reason": "commit could not be fetched"
     }
   ]
 }

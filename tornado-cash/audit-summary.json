@@ -1,11 +1,13 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project": "tornado-cash",
   "reports": [
     {
       "id": "abdk-tornado-circuit-audit-2019-11-25",
       "report_file": "TornadoCash_circuit_audit_ABDK.md",
       "title": "Tornado Circuit Audit. Final version",
+      "description": "Review of the Tornado Cash circom circuit set (Withdraw, MerkleTree/MerkleTreeChecker, Selector and supporting templates) against the circom documentation and the Tornado spec. No major issues were found, only mostly non-optimal template patterns.",
+      "isRelevant": true,
       "auditor": "ABDK Consulting",
       "report_date": "2019-11-25",
       "repositories": [
@@ -130,6 +132,8 @@
       "id": "abdk-tornado-smart-contract-audit-2019-11-19",
       "report_file": "TornadoCash_contract_audit_ABDK.md",
       "title": "Tornado Cash Smart Contracts Audit. Final Version",
+      "description": "Audit of the Tornado Cash on-chain Solidity contract set in the peppersec/tornado-mixer repository, including ERC20Mixer, the mixer core, Merkle tree and hasher contracts. No critical issues were found and all other significant issues were fixed.",
+      "isRelevant": true,
       "auditor": "ABDK Consulting",
       "report_date": "2019-11-19",
       "repositories": [
@@ -290,6 +294,8 @@
       "id": "abdk-tornado-cryptographic-review-2019-11-29",
       "report_file": "TornadoCash_cryptographic_review_ABDK.md",
       "title": "Tornado Privacy Solution Cryptographic Review Version 1.1",
+      "description": "Cryptographic review of the Tornado Cash zero-knowledge mixer protocol and its implementation: the deposit/withdraw scheme, Pedersen and MiMC hashing, the Merkle tree construction, and the zkSNARK statement, together with the circomlib primitives they rely on.",
+      "isRelevant": true,
       "auditor": "ABDK Consulting",
       "report_date": "2019-11-29",
       "repositories": [
@@ -388,9 +394,622 @@
       ]
     },
     {
+      "id": "abdk-tornado-anonymity-mining-first-audit-2020-09-01",
+      "report_file": "ABDK - Tornado Cash Anonymity Mining First Audit.md",
+      "title": "Tornado Farm Smart Contracts and Circuits. Audit",
+      "description": "First ABDK audit of the Tornado Cash anonymity mining (Farm) smart contract and its Reward circuit, delivered as private files with Farm.sol published as a gist. A critical circuit issue permitting a reward-value underflow was found, together with moderate and minor contract issues.",
+      "isRelevant": true,
+      "auditor": "ABDK Consulting",
+      "report_date": "2020-09-01",
+      "repositories": [
+        {
+          "id": "AleksandraZv/farm-sol-gist",
+          "url": "https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"
+        },
+        {
+          "id": "tornadocash/tornado-anonymity-mining",
+          "url": "https://github.com/tornadocash/tornado-anonymity-mining"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "AleksandraZv/farm-sol-gist",
+          "paths": {
+            "Farm.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "051df72c9b1203e7ab7308a4452105036ad46bfb",
+                    "url": "https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6/051df72c9b1203e7ab7308a4452105036ad46bfb"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "tornadocash/tornado-anonymity-mining",
+          "paths": {
+            "circuits/Reward.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "audit",
+                    "commit": null,
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "abdk-tornado-anonymity-mining-final-audit-2020-09-15",
+      "report_file": "ABDK - Tornado Cash Anonymity Mining Final Audit.md",
+      "title": "Tornado Farm Smart Contracts and Circuits. Final Audit",
+      "description": "Final ABDK audit of the Tornado Cash anonymity mining Farm contract and Reward circuit, comparing the audited release tag with the fixed version. The major circuit underflow issue was resolved by explicit range checks, and the remaining issues were judged to have no security impact.",
+      "isRelevant": true,
+      "auditor": "ABDK Consulting",
+      "report_date": "2020-09-15",
+      "repositories": [
+        {
+          "id": "tornadocash/tornado-anonymity-mining",
+          "url": "https://github.com/tornadocash/tornado-anonymity-mining"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "tornadocash/tornado-anonymity-mining",
+          "paths": {
+            "contracts/Farm.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "audit",
+                    "commit": null,
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "branch",
+                    "ref": "audit-fixed",
+                    "commit": null,
+                    "immutable": false,
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/audit-fixed"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "audit",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "circuits/Reward.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "audit",
+                    "commit": null,
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "branch",
+                    "ref": "audit-fixed",
+                    "commit": null,
+                    "immutable": false,
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/audit-fixed"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "full file",
+                  "follows": "audit",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zeropool-tornado-anonymity-mining-2020-10-15",
+      "report_file": "Zeropool - Tornado Cash Anonymity Mining.md",
+      "title": "Tornado Cash Anonymity Mining Audit",
+      "description": "Independent ZeroPool audit of the Tornado Cash anonymity mining smart contracts and zkSNARK circuits at commit 820bd83, excluding the generated verifiers and MerkleTree.circom. No critical issues were found; two major issues were reported, one fixed and one accepted as governance-controlled.",
+      "isRelevant": true,
+      "auditor": "Igor Gulamov (ZeroPool)",
+      "report_date": "2020-10-15",
+      "repositories": [
+        {
+          "id": "tornadocash/tornado-anonymity-mining",
+          "url": "https://github.com/tornadocash/tornado-anonymity-mining"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "tornadocash/tornado-anonymity-mining",
+          "paths": {
+            "circuits/": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/circuits"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "all circuits except MerkleTree.circom",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "circuits/MerkleTree.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/circuits/MerkleTree.circom"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "explicitly excluded from scope",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuits/MerkleTreeUpdater.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/circuits/MerkleTreeUpdater.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7487ac8b09dcfc78ecc166cff5208435010cec8e",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/7487ac8b09dcfc78ecc166cff5208435010cec8e/circuits/MerkleTreeUpdater.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "fix for the reported issue only",
+                  "follows": "820bd83254f3264cebaf255869641ebc33288dc3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuits/Withdraw.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/circuits/Withdraw.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "459fa79321b1b48eefc3cb85f82733528d5e56d3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/459fa79321b1b48eefc3cb85f82733528d5e56d3/circuits/Withdraw.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "fix for the reported issue only",
+                  "follows": "820bd83254f3264cebaf255869641ebc33288dc3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/contracts"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "all contracts except IVerifier.sol and the generated verifier contracts",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/IVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/IVerifier.sol"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "explicitly excluded from scope",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/RewardVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/RewardVerifier.sol"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "explicitly excluded from scope",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/TreeUpdateVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/TreeUpdateVerifier.sol"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "explicitly excluded from scope",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/WithdrawVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/WithdrawVerifier.sol"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "explicitly excluded from scope",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Miner.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/Miner.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c8865315c50f3a0cabdd4110a6c45ceba4d4b809",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/c8865315c50f3a0cabdd4110a6c45ceba4d4b809/contracts/Miner.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "fix for the reported minor issue only",
+                  "follows": "820bd83254f3264cebaf255869641ebc33288dc3",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e0008b3ed46dbf127b452d1d086235f0fe2dfcb8",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/e0008b3ed46dbf127b452d1d086235f0fe2dfcb8/contracts/Miner.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "fix for the reported major issue only",
+                  "follows": "c8865315c50f3a0cabdd4110a6c45ceba4d4b809",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "49ce4e9375509c3bc866d32fbf6345361a85b9a0",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/49ce4e9375509c3bc866d32fbf6345361a85b9a0/contracts/Miner.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "remediation review",
+                  "coverage": "fix for the reported minor issue only",
+                  "follows": "e0008b3ed46dbf127b452d1d086235f0fe2dfcb8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/RewardSwap.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/RewardSwap.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "abdk-tornado-anonymity-mining-recheck-2020-12-22",
+      "report_file": "ABDK - Tornado Cash Anonymity Mining Recheck.md",
+      "title": "Tornado Smart Contract Audit Conclusion",
+      "description": "ABDK re-review of the changed Tornado Cash anonymity mining Solidity contracts at commit 9ec05a6, covering the miner, tornado trees, reward swap, proxy, Merkle tree utilities and interfaces. Three major issues were reported, in IHasher.sol and TornadoTrees.sol.",
+      "isRelevant": true,
+      "auditor": "ABDK Consulting",
+      "report_date": "2020-12-22",
+      "repositories": [
+        {
+          "id": "tornadocash/tornado-anonymity-mining",
+          "url": "https://github.com/tornadocash/tornado-anonymity-mining"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "tornadocash/tornado-anonymity-mining",
+          "paths": {
+            "contracts/interfaces/IHasher.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/IHasher.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/interfaces/IRewardSwap.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/IRewardSwap.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/interfaces/IVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/IVerifier.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/interfaces/ITornado.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/ITornado.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/Miner.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/Miner.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/TornadoTrees.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/TornadoTrees.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/utils/MerkleTreeWithHistory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/utils/MerkleTreeWithHistory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/TornadoProxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/TornadoProxy.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/RewardSwap.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/RewardSwap.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/utils/OwnableMerkleTree.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/utils/OwnableMerkleTree.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "recheck of changed contracts",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "zeropool-tornado-pool-audit-2021-08-01",
       "report_file": "Zeropool-Tornado.pool-audit.md",
       "title": "Tornado pool audit",
+      "description": "Independent audit of the tornado-pool zkSNARK circuits (merkleTree.circom, transaction.circom) and Solidity contracts, including the pull request adding OVM support. No critical or major issues were found.",
+      "isRelevant": true,
       "auditor": "Igor Gulamov (Zeropool)",
       "report_date": "2021-08-01",
       "repositories": [
@@ -560,6 +1179,22 @@
           }
         }
       ]
+    },
+    {
+      "id": "decurity-tornado-cash-classic-ui-2022",
+      "report_file": "irrelevant/Decurity - Tornado Cash Classic dApp.md",
+      "title": "Frontend Security Audit Report: Tornado Cash",
+      "description": "Frontend security audit of the Tornado Cash Classic UI dApp hosted on IPFS, covering client-side hijacking, CSP and header configuration, and related web weaknesses. No onchain contract or circuit code was in scope.",
+      "isRelevant": false,
+      "auditor": "Decurity",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "tornadocash/tornado-classic-ui",
+          "url": "https://github.com/tornadocash/tornado-classic-ui"
+        }
+      ],
+      "scopes": []
     }
   ]
 }

@@ -3,24 +3,11 @@
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
 Commit dates use Git committer timestamps.
 
-## Umbra-js Security Audit Report
-
-- Report: [LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.md](<reports/LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.md>)
-- Auditor: Least Authority TFA GmbH
-- Date: 2021-05-25
-
-### Repository: <a href="https://github.com/ScopeLift/umbra-protocol"><code>ScopeLift/umbra-protocol</code></a>
-
-| Revision | Commit date | Audited files or directories |
-| --- | --- | --- |
-| <a href="https://github.com/ScopeLift/umbra-protocol/tree/48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d/umbra-js"><code>48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d</code></a> | May 3, 2021 | <code>umbra-js</code> (recursive directory) |
-| <a href="https://github.com/ScopeLift/umbra-protocol/tree/f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7/umbra-js"><code>f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7</code></a> | May 17, 2021 | <code>umbra-js</code> (recursive directory) |
-| <a href="https://github.com/ScopeLift/umbra-protocol/tree/3796fa747cc568cb7e48f552675734a9cd564ee9/umbra-js"><code>3796fa747cc568cb7e48f552675734a9cd564ee9</code></a> | May 20, 2021 | <code>umbra-js</code> (recursive directory) |
-
 ## Umbra Smart Contracts
 
 - Report: [umbra-audit-2021-03.md](<reports/umbra-audit-2021-03.md>)
 - Auditor: Nicholas Ward (Consensys Diligence)
+- Description: Review of the Umbra Protocol on-chain smart contracts (Umbra.sol and IUmbraHookReceiver.sol), plus a cursory review of the ENS StealthKeyResolver contract. Off-chain libraries, cryptography, and Gas Station Network integrations were explicitly excluded.
 
 ### Repository: <a href="https://github.com/ScopeLift/umbra-protocol"><code>ScopeLift/umbra-protocol</code></a>
 
@@ -35,3 +22,12 @@ Commit dates use Git committer timestamps.
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ScopeLift/ens-resolvers/blob/2d7795082308d303eb23c66490579a5b21a1bac9/contracts/profiles/StealthKeyResolver.sol"><code>2d7795082308d303eb23c66490579a5b21a1bac9</code></a> | March 19, 2021 | <code>contracts/profiles/StealthKeyResolver.sol</code> |
+
+## Irrelevant reports
+
+### Umbra-js Security Audit Report
+
+- Report: [irrelevant/LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.md](<reports/irrelevant/LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.md>)
+- Auditor: Least Authority TFA GmbH
+- Date: 2021-05-25
+- Description: Cryptographic review of umbra-js, the off-chain JavaScript/TypeScript client library implementing the Umbra stealth-address scheme for Node.js and browser Web3 applications. No on-chain smart contracts or zk circuits were in scope.

@@ -1,0 +1,25 @@
+[package]
+name = "scroll-zkvm-chunk-circuit"
+edition.workspace = true
+readme.workspace = true
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+scroll-zkvm-circuit-input-types.workspace = true
+
+rkyv.workspace = true
+sbv = { workspace = true, features = ["openvm"] }
+
+openvm = { workspace = true, features = ["std"] }
+openvm-algebra-complex-macros = { workspace = true } 
+openvm-algebra-guest = { workspace = true }
+openvm-bigint-guest = { workspace = true }
+openvm-ecc-guest = { workspace = true, features = ["k256"] }
+openvm-keccak256-guest= { workspace = true }
+openvm-pairing-guest = { workspace = true, features = ["bn254"] }
+openvm-rv32im-guest= {  workspace = true }
+
+[features]
+default = ["scroll"]
+scroll = ["sbv/scroll"]

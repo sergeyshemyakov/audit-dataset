@@ -1,11 +1,13 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project": "umbra",
   "reports": [
     {
       "id": "least-authority-umbra-js-2021-05-25",
-      "report_file": "LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.md",
+      "report_file": "irrelevant/LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.md",
       "title": "Umbra-js Security Audit Report",
+      "description": "Cryptographic review of umbra-js, the off-chain JavaScript/TypeScript client library implementing the Umbra stealth-address scheme for Node.js and browser Web3 applications. No on-chain smart contracts or zk circuits were in scope.",
+      "isRelevant": false,
       "auditor": "Least Authority TFA GmbH",
       "report_date": "2021-05-25",
       "repositories": [
@@ -14,60 +16,14 @@
           "url": "https://github.com/ScopeLift/umbra-protocol"
         }
       ],
-      "scopes": [
-        {
-          "repository": "ScopeLift/umbra-protocol",
-          "paths": {
-            "umbra-js": {
-              "path_kind": "directory_recursive",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d",
-                    "url": "https://github.com/ScopeLift/umbra-protocol/tree/48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d/umbra-js"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full directory",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "not explicitly classified"
-                },
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7",
-                    "url": "https://github.com/ScopeLift/umbra-protocol/tree/f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7/umbra-js"
-                  },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "report-linked remediation",
-                  "coverage": "specific remediation changes for reported issues and suggestions",
-                  "follows": "48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "not explicitly classified"
-                },
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "3796fa747cc568cb7e48f552675734a9cd564ee9",
-                    "url": "https://github.com/ScopeLift/umbra-protocol/tree/3796fa747cc568cb7e48f552675734a9cd564ee9/umbra-js"
-                  },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "verification",
-                  "coverage": "verification of reported issues and remediations",
-                  "follows": "f82ecc55c5c2d6e4d2dca7ac706a754e718e95a7",
-                  "major_findings": 0
-                }
-              ]
-            }
-          }
-        }
-      ]
+      "scopes": []
     },
     {
       "id": "consensys-diligence-umbra-smart-contracts-2021-03",
       "report_file": "umbra-audit-2021-03.md",
       "title": "Umbra Smart Contracts",
+      "description": "Review of the Umbra Protocol on-chain smart contracts (Umbra.sol and IUmbraHookReceiver.sol), plus a cursory review of the ENS StealthKeyResolver contract. Off-chain libraries, cryptography, and Gas Station Network integrations were explicitly excluded.",
+      "isRelevant": true,
       "auditor": "Nicholas Ward (Consensys Diligence)",
       "report_date": null,
       "repositories": [

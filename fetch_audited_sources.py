@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch source paths pinned to exact commits in an audit-summary.json file."""
+"""Fetch relevant source paths pinned to exact commits in audit-summary.json."""
 
 from __future__ import annotations
 
@@ -101,6 +101,14 @@ def require_safe_posix_path(value: Any, label: str) -> str:
     return path.as_posix()
 
 
+def report_is_relevant(report: dict[str, Any]) -> bool:
+    """Return report relevance, treating pre-1.1 summaries as relevant."""
+    value = report.get("isRelevant", True)
+    if not isinstance(value, bool):
+        raise FetchError("report isRelevant must be a boolean")
+    return value
+
+
 def repository_urls(summary: dict[str, Any]) -> dict[str, str]:
     result: dict[str, str] = {}
     reports = summary.get("reports")
@@ -109,6 +117,8 @@ def repository_urls(summary: dict[str, Any]) -> dict[str, str]:
     for report in reports:
         if not isinstance(report, dict):
             raise FetchError("each report must be an object")
+        if not report_is_relevant(report):
+            continue
         repositories = report.get("repositories", [])
         if not isinstance(repositories, list):
             raise FetchError("report repositories must be an array")
@@ -146,6 +156,10 @@ def collect_sources(
     path_kinds: dict[tuple[str, str, str], str] = {}
 
     for report in summary["reports"]:
+        if not isinstance(report, dict):
+            raise FetchError("each report must be an object")
+        if not report_is_relevant(report):
+            continue
         scopes = report.get("scopes", [])
         if not isinstance(scopes, list):
             raise FetchError("report scopes must be an array")

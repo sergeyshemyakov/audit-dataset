@@ -8,6 +8,7 @@ Commit dates use Git committer timestamps.
 - Report: [audit.md](<reports/audit.md>)
 - Auditor: Trail of Bits
 - Date: 2021-03-12
+- Description: Security assessment of the Uniswap V3 core contracts and whitepaper at commit 99223f3, covering the arithmetic libraries, the factory, and the pool&#x27;s initialization, mint, burn, flash, and swap logic. Manual review was combined with Echidna, Manticore, and Slither testing.
 
 ### Repository: <a href="https://github.com/Uniswap/uniswap-v3-core"><code>Uniswap/uniswap-v3-core</code></a>
 
@@ -20,6 +21,7 @@ Commit dates use Git committer timestamps.
 - Report: [audit-2.md](<reports/audit-2.md>)
 - Auditor: ABDK Consulting
 - Date: 2021-03-23
+- Description: Line-by-line review of the Uniswap V3 core contracts, interfaces, and math libraries at commit e8de69a5. The audit focused on arithmetic and protocol-logic correctness and reported no critical bugs.
 
 ### Repository: <a href="https://github.com/Uniswap/uniswap-v3-core"><code>Uniswap/uniswap-v3-core</code></a>
 
@@ -32,6 +34,7 @@ Commit dates use Git committer timestamps.
 - Report: [audit-3.md](<reports/audit-3.md>)
 - Auditor: ABDK Consulting
 - Date: 2021-04-26
+- Description: Line-by-line review of the Uniswap V3 periphery contracts NonfungiblePositionManager and SwapRouter, together with a follow-up review of the fixes. Two critical bugs and one major flaw were reported and later fixed.
 
 ### Repository: <a href="https://github.com/Uniswap/uniswap-v3-periphery"><code>Uniswap/uniswap-v3-periphery</code></a>
 

@@ -1,0 +1,836 @@
+{
+  "schema_version": "1.1.0",
+  "project": "privacy-pools",
+  "reports": [
+    {
+      "id": "oxorio-privacy-pools-v1-2024-05",
+      "report_file": "oxorio-privacy-pools-v1-audit-2024-05.md",
+      "title": "Privacy Pools Smart Contracts Security Audit Report (Privacy Pools v1)",
+      "description": "Security audit by Oxorio of the Privacy Pools v1 onchain contracts and the proof-of-innocence membership circuit. Covers the ETH and ERC20 pools, the Merkle tree with history, and the circuit's constraint soundness.",
+      "isRelevant": true,
+      "auditor": "Oxorio",
+      "report_date": "2024-05-24",
+      "repositories": [
+        {
+          "id": "ProofOfInnocence/privacy-pools-v1",
+          "url": "https://github.com/ProofOfInnocence/privacy-pools-v1"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ProofOfInnocence/privacy-pools-v1",
+          "paths": {
+            "contracts/PrivacyPool.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/PrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 4,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/PrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit; C-03, C-10 and M-02 remain acknowledged and unfixed.",
+                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                  "major_findings": 3,
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "contracts/ERC20PrivacyPool.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/ERC20PrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 3,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/ERC20PrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit; C-10, M-03 and M-04 remain acknowledged and unfixed.",
+                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                  "major_findings": 3,
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "contracts/ETHPrivacyPool.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/ETHPrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/ETHPrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit; C-10 remains acknowledged (fix deferred to a new major version).",
+                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "contracts/MerkleTreeWithHistory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/MerkleTreeWithHistory.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/MerkleTreeWithHistory.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit; C-03 remains acknowledged and unfixed.",
+                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "membership-proof/circuits/proofOfInnocence.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/membership-proof/circuits/proofOfInnocence.circom"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full circuit review (initial commit).",
+                  "major_findings": 9,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/membership-proof/circuits/proofOfInnocence.circom"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit; C-01 and M-01 fixed, C-05 remains acknowledged, other criticals classified as no issue.",
+                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "oxorio-privacy-pools-circuits-2025-02",
+      "report_file": "oxorio-privacy-pools-circuits-audit-2025-02.md",
+      "title": "Privacy Pools circuits audit report",
+      "description": "Express security audit by Oxorio of the three Privacy Pools Circom circuits: commitment, merkleTree and withdraw. Assesses constraint soundness and correctness of the withdrawal proof system.",
+      "isRelevant": true,
+      "auditor": "Oxorio",
+      "report_date": "2025-02-21",
+      "repositories": [
+        {
+          "id": "0xbow-io/privacy-pools-core",
+          "url": "https://github.com/0xbow-io/privacy-pools-core"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "0xbow-io/privacy-pools-core",
+          "paths": {
+            "packages/circuits/circuits/commitment.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/commitment.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full circuit review (initial commit).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Info"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/commitment.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit with fixes verified.",
+                  "follows": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/circuits/circuits/merkleTree.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/merkleTree.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full circuit review (initial commit).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/merkleTree.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit with fixes verified.",
+                  "follows": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/circuits/circuits/withdraw.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/withdraw.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full circuit review (initial commit).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/withdraw.circom"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit / fix review",
+                  "coverage": "Final audited commit with fixes verified.",
+                  "follows": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "auditware-privacy-pools-core-2025",
+      "report_file": "auditware-privacy-pools-core-audit.md",
+      "title": "Privacy Pools Core Audit Report",
+      "description": "Security review by Auditware of the Privacy Pools core contracts that provide public deposits and private partial withdrawals gated by ASP membership proofs. Covers Entrypoint, PrivacyPool, State, the simple and complex pool implementations, and the shared libraries.",
+      "isRelevant": true,
+      "auditor": "Auditware",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "0xbow-io/privacy-pools-core",
+          "url": "https://github.com/0xbow-io/privacy-pools-core"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "0xbow-io/privacy-pools-core",
+          "paths": {
+            "packages/contracts/src/contracts/Entrypoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/Entrypoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit (report links the commit under the former defi-wonderland/privacy-pool-core repository, which now resolves only under 0xbow-io/privacy-pools-core).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6cdeeaf0e44b98d5563c9d2f340f5825bec117f2",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/6cdeeaf0e44b98d5563c9d2f340f5825bec117f2/packages/contracts/src/contracts/Entrypoint.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation of AW-L-03 (relayer fee bound) only.",
+                  "follows": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ac36feba8ba26f3485acd0d87a9d5c373ab3967d",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/ac36feba8ba26f3485acd0d87a9d5c373ab3967d/packages/contracts/src/contracts/Entrypoint.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigations of AW-M-01 (forceApprove) and AW-L-02 (updateRoot index) only.",
+                  "follows": "6cdeeaf0e44b98d5563c9d2f340f5825bec117f2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/PrivacyPool.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/PrivacyPool.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/State.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/State.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ac36feba8ba26f3485acd0d87a9d5c373ab3967d",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/ac36feba8ba26f3485acd0d87a9d5c373ab3967d/packages/contracts/src/contracts/State.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Partial mitigation of AW-M-02 (root history size) only.",
+                  "follows": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/lib/Constants.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/lib/Constants.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/lib/ProofLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/lib/ProofLib.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "oxorio-privacy-pools-core-contracts-2025-03",
+      "report_file": "oxorio-privacy-pools-core-contracts-audit-2025-03.md",
+      "title": "Privacy Pools Smart Contracts Audit Report",
+      "description": "Smart contract security audit by Oxorio of the seven Privacy Pools core contracts. Covers the Entrypoint, PrivacyPool and State logic plus the pool implementations and libraries, including a fix review of the final commit.",
+      "isRelevant": true,
+      "auditor": "Oxorio",
+      "report_date": "2025-03-18",
+      "repositories": [
+        {
+          "id": "0xbow-io/privacy-pools-core",
+          "url": "https://github.com/0xbow-io/privacy-pools-core"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "0xbow-io/privacy-pools-core",
+          "paths": {
+            "packages/contracts/src/contracts/Entrypoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/Entrypoint.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "016a949f53f0493388a6877529f28774ef054a8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/016a949f53f0493388a6877529f28774ef054a8e/packages/contracts/src/contracts/Entrypoint.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fixes for M-01, W-02, W-11, I-02 and I-03 verified at this commit.",
+                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/Entrypoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final audited commit.",
+                  "follows": "016a949f53f0493388a6877529f28774ef054a8e",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/PrivacyPool.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/PrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/PrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final audited commit; M-02 remains acknowledged.",
+                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/State.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/State.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/State.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final audited commit.",
+                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final audited commit.",
+                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final audited commit.",
+                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/lib/Constants.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/lib/Constants.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/lib/Constants.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final audited commit.",
+                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/src/contracts/lib/ProofLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/lib/ProofLib.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (initial commit).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "532eaa8ed151f06697249d400926d17adf442d8e",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/lib/ProofLib.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final audited commit.",
+                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "oxorio-privacy-pools-precommitment-pr-2025-05",
+      "report_file": "oxorio-privacy-pools-precommitment-pr-audit-2025-05.md",
+      "title": "Privacy Pools Smart Contracts Audit Report (Entrypoint precommitment upgrade)",
+      "description": "Oxorio audit of the precommitment pull request changes to the Privacy Pools Entrypoint contract and its interface. Scoped to the two modified contracts rather than the whole protocol.",
+      "isRelevant": true,
+      "auditor": "Oxorio",
+      "report_date": "2025-05-20",
+      "repositories": [
+        {
+          "id": "0xbow-io/privacy-pools-core",
+          "url": "https://github.com/0xbow-io/privacy-pools-core"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "0xbow-io/privacy-pools-core",
+          "paths": {
+            "packages/contracts/src/contracts/Entrypoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "238e3594053becde68aa40e1e4cef6c0c46e68da",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/238e3594053becde68aa40e1e4cef6c0c46e68da/packages/contracts/src/contracts/Entrypoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "upgrade audit",
+                  "coverage": "Review of the Entrypoint upgrade adding usedPrecommitments tracking; initial and final commit are identical.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                }
+              ]
+            },
+            "packages/contracts/src/interfaces/IEntrypoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "238e3594053becde68aa40e1e4cef6c0c46e68da",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/238e3594053becde68aa40e1e4cef6c0c46e68da/packages/contracts/src/interfaces/IEntrypoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "upgrade audit",
+                  "coverage": "Full file review as part of the Entrypoint upgrade audit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "auditware-privacy-pools-batch-relayer-2025",
+      "report_file": "auditware-privacy-pools-batch-relayer-audit.md",
+      "title": "Privacy Pools Batch Relayer Audit Report",
+      "description": "Auditware security review of the Privacy Pools BatchRelayer contract, which enables atomic batch withdrawals from privacy pools. Covers the implementation, its interface and the deployment script.",
+      "isRelevant": true,
+      "auditor": "Auditware",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "0xbow-io/privacy-pools-core",
+          "url": "https://github.com/0xbow-io/privacy-pools-core"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "0xbow-io/privacy-pools-core",
+          "paths": {
+            "packages/contracts/src/contracts/BatchRelayer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/src/contracts/BatchRelayer.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit; AW-H-01 (High) reported as unmitigated.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "packages/contracts/src/interfaces/IBatchRelayer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/src/interfaces/IBatchRelayer.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts/script/BatchRelayer.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/script/BatchRelayer.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Deployment script reviewed at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "auditware-privacy-pools-seed-phrase-generation-2025",
+      "report_file": "irrelevant/auditware-privacy-pools-seed-phrase-generation-audit.md",
+      "title": "Privacy Pools Seed Phrase Generation Audit Report",
+      "description": "Auditware review of the Privacy Pools website's deterministic BIP39 seed-phrase derivation from Ethereum wallet signatures. Scope is limited to offchain frontend wallet key-derivation code in the privacy-pools-website repository.",
+      "isRelevant": false,
+      "auditor": "Auditware",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "0xbow-io/privacy-pools-website",
+          "url": "https://github.com/0xbow-io/privacy-pools-website"
+        }
+      ],
+      "scopes": []
+    }
+  ]
+}
