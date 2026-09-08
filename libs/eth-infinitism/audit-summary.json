@@ -1,0 +1,2586 @@
+{
+  "schema_version": "1.2.0",
+  "project": "eth-infinitism",
+  "reports": [
+    {
+      "id": "openzeppelin-eip4337-account-abstraction-2022-04",
+      "report_file": "openzeppelin-2022-04-19-account-abstraction.md",
+      "title": "EIP-4337 – Ethereum Account Abstraction Audit",
+      "description": "OpenZeppelin's first audit, commissioned by the Ethereum Foundation, of the EIP-4337 reference implementation: the EntryPoint/StakeManager core singleton and the sample wallets and paymasters in the account-abstraction repository. The EIP and architectural design were also reviewed, and the fixes were verified in a final commit.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2022-04-19",
+      "repositories": [
+        {
+          "id": "eth-infinitism/account-abstraction",
+          "url": "https://github.com/eth-infinitism/account-abstraction"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "eth-infinitism/account-abstraction",
+          "paths": {
+            "contracts/BasePaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/BasePaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/BasePaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/EntryPoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/EntryPoint.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/EntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/IPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/IPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/IPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/IWallet.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/IWallet.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/IWallet.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/StakeManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/StakeManager.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/StakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/UserOperation.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/UserOperation.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/UserOperation.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/DepositPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/samples/DepositPaymaster.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/samples/DepositPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/ECDSA.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/samples/ECDSA.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope. The custom ECDSA library was removed from the repository during the fix review (N21).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/IOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/samples/IOracle.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/samples/IOracle.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/SimpleWallet.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/samples/SimpleWallet.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/samples/SimpleWallet.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/TokenPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/samples/TokenPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/samples/TokenPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/VerifyingPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/samples/VerifyingPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/samples/VerifyingPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final repository after applying the fixes noted in the report; every Critical/High finding is marked fixed.",
+                  "follows": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/BaseWallet.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
+                    "timestamp": "2022-04-12T10:16:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/a2f4b7be4d9996095e08d7102bacc9f13ea99ff6/contracts/BaseWallet.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "New abstract wallet contract added by fix pull request #82 (N11) and included in the final fixed repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/SimpleWalletForTokens.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/samples/SimpleWalletForTokens.sol"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from the audit scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/test": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8832d6e04b9f4f706f612261c6e46b3f1745d61a",
+                    "timestamp": "2022-01-25T01:23:18Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/tree/8832d6e04b9f4f706f612261c6e46b3f1745d61a/contracts/test"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "The contracts/test directory was explicitly excluded from the audit scope.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-eip4337-incremental-audit-2023-02",
+      "report_file": "account-abstraction__audits__EIP_4337_–_Ethereum_Account_Abstraction_Incremental_Audit_Feb_2023.md",
+      "title": "EIP-4337 – Ethereum Account Abstraction Incremental Audit",
+      "description": "OpenZeppelin's incremental audit for the Ethereum Foundation of the revised EIP-4337 reference implementation (v0.4 era), covering the EntryPoint core, interfaces, BLS aggregation, Gnosis Safe integration, and sample accounts and paymasters. Fix pull requests were reviewed up to a final commit.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2023-02-23",
+      "repositories": [
+        {
+          "id": "eth-infinitism/account-abstraction",
+          "url": "https://github.com/eth-infinitism/account-abstraction"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "eth-infinitism/account-abstraction",
+          "paths": {
+            "contracts/bls/BLSAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/bls/BLSAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/bls/BLSAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/bls/BLSAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/bls/BLSAccount.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/bls/BLSAccountFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/bls/BLSAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/bls/BLSAccountFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/bls/BLSAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/bls/BLSAccountFactory.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/bls/BLSSignatureAggregator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/bls/BLSSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1cc1c97a00131a7922d1ccebd823e81e823b5d9f",
+                    "timestamp": "2023-02-08T19:56:38Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/1cc1c97a00131a7922d1ccebd823e81e823b5d9f/contracts/bls/BLSSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Merge commit of pull request #195 fixing H-01 (invalid aggregate signature).",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/bls/BLSSignatureAggregator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1f505c5889b04a115b1bf09386c0b84cecdad5c4",
+                    "timestamp": "2023-02-13T10:52:46Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/1f505c5889b04a115b1bf09386c0b84cecdad5c4/contracts/samples/bls/BLSSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Merge commit of pull request #216 (second part of the H-01 fix); the file moved from contracts/bls/ to contracts/samples/bls/.",
+                  "follows": "1cc1c97a00131a7922d1ccebd823e81e823b5d9f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/bls/BLSSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "1f505c5889b04a115b1bf09386c0b84cecdad5c4",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/bls/IBLSAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/bls/IBLSAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/bls/IBLSAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/bls/IBLSAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/bls/IBLSAccount.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/BaseAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/core/BaseAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/core/BaseAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/BasePaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/core/BasePaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/core/BasePaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/EntryPoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/core/EntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/core/EntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/SenderCreator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/core/SenderCreator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/core/SenderCreator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/StakeManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/core/StakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/core/StakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/gnosis/EIP4337Fallback.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/gnosis/EIP4337Fallback.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/gnosis/EIP4337Fallback.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/gnosis/EIP4337Fallback.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/gnosis/EIP4337Fallback.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/gnosis/EIP4337Manager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/gnosis/EIP4337Manager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/gnosis/EIP4337Manager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/gnosis/EIP4337Manager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/gnosis/EIP4337Manager.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/gnosis/GnosisAccountFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/gnosis/GnosisAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/gnosis/GnosisAccountFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/gnosis/GnosisAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/gnosis/GnosisAccountFactory.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/IAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/interfaces/IAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IAggregatedAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/IAggregatedAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract. The file was removed from the repository before the final fix-review commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IAggregator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/IAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/interfaces/IAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/ICreate2Deployer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/ICreate2Deployer.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract. The file was removed from the repository before the final fix-review commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IEntryPoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/IEntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/interfaces/IEntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/IPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/interfaces/IPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IStakeManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/IStakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/interfaces/IStakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/UserOperation.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/interfaces/UserOperation.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/interfaces/UserOperation.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/DepositPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/DepositPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/DepositPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/IOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/IOracle.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/IOracle.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/SimpleAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/SimpleAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/SimpleAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/SimpleAccountFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/SimpleAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/SimpleAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/TestAggregatedAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/TestAggregatedAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/test/TestAggregatedAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/test/TestAggregatedAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/samples/TestAggregatedAccount.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/TestAggregatedAccountFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/TestAggregatedAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/test/TestAggregatedAccountFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/test/TestAggregatedAccountFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/samples/TestAggregatedAccountFactory.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/TestSignatureAggregator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/TestSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/test/TestSignatureAggregator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/test/TestSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit. File moved from contracts/samples/TestSignatureAggregator.sol during the fix review.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/TokenPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/TokenPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/TokenPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/VerifyingPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/samples/VerifyingPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/samples/VerifyingPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/utils/Exec.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/utils/Exec.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review of the explicitly scoped contract.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3b5f795515ad8a7a7bf447575d6554854b820da",
+                    "timestamp": "2023-02-16T22:32:02Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/f3b5f795515ad8a7a7bf447575d6554854b820da/contracts/utils/Exec.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit.",
+                  "follows": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/bls/BLSHelper.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dea6d8752f64914dd95d932f673ba0f9ff8e144",
+                    "timestamp": "2023-01-02T21:56:25Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/6dea6d8752f64914dd95d932f673ba0f9ff8e144/contracts/bls/BLSHelper.sol"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Originally in scope, but a complete review was deprioritized by agreement during the audit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-erc4337-account-abstraction-audit-2024-02",
+      "report_file": "account-abstraction__audits__ERC-4337 Account Abstraction Incremental Audit Report Feb 20 2024.md",
+      "title": "Account Abstraction Audit (ERC-4337 Incremental Audit, February 2024)",
+      "description": "OpenZeppelin's third review for the Ethereum Foundation of the account-abstraction repository, covering every non-test Solidity file changed since the previous review (the v0.7 EntryPoint, gas accounting, simulation and TokenPaymaster changes), the ERC specifications, and two pull requests. Fix pull requests were reviewed up to a final commit.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2024-02-20",
+      "repositories": [
+        {
+          "id": "eth-infinitism/account-abstraction",
+          "url": "https://github.com/eth-infinitism/account-abstraction"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "eth-infinitism/account-abstraction",
+          "paths": {
+            "contracts/core/BaseAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/BaseAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/BaseAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/BasePaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/BasePaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/BasePaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/EntryPoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                    "timestamp": "2024-01-12T21:53:26Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/c3dbc2ddf7ca769a1111a277ef908898e45bfbfa/contracts/core/EntryPoint.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "pull request review",
+                  "coverage": "Head commit of pull request #396 (mark assembly as memory-safe); only the pull request diff was reviewed.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/EntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "follows": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4126ec572d72820984e875250ae57e413dc6b66f",
+                    "timestamp": "2024-02-11T15:10:08Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/4126ec572d72820984e875250ae57e413dc6b66f/contracts/core/EntryPoint.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "pull request review",
+                  "coverage": "Head commit of pull request #447 (remove AA40 global verification gas check); only the pull request diff was reviewed.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/EntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "4126ec572d72820984e875250ae57e413dc6b66f",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/EntryPointSimulations.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                    "timestamp": "2024-01-12T21:53:26Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/c3dbc2ddf7ca769a1111a277ef908898e45bfbfa/contracts/core/EntryPointSimulations.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "pull request review",
+                  "coverage": "Head commit of pull request #396 (mark assembly as memory-safe); only the pull request diff was reviewed.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/EntryPointSimulations.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "follows": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/EntryPointSimulations.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/Helpers.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                    "timestamp": "2024-01-12T21:53:26Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/c3dbc2ddf7ca769a1111a277ef908898e45bfbfa/contracts/core/Helpers.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "pull request review",
+                  "coverage": "Head commit of pull request #396 (mark assembly as memory-safe); only the pull request diff was reviewed.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/Helpers.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "follows": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/Helpers.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/NonceManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/NonceManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/NonceManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/SenderCreator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                    "timestamp": "2024-01-12T21:53:26Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/c3dbc2ddf7ca769a1111a277ef908898e45bfbfa/contracts/core/SenderCreator.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "pull request review",
+                  "coverage": "Head commit of pull request #396 (mark assembly as memory-safe); only the pull request diff was reviewed.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/SenderCreator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "follows": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/SenderCreator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/StakeManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/StakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/StakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/core/UserOperationLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/core/UserOperationLib.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/core/UserOperationLib.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/IAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/IAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IAccountExecute.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/IAccountExecute.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/IAccountExecute.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IAggregator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/IAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/IAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IEntryPoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/IEntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/IEntryPoint.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IEntryPointSimulations.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/IEntryPointSimulations.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/IEntryPointSimulations.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/INonceManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/INonceManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/INonceManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/IPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/IPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IStakeManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/IStakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/IStakeManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/PackedUserOperation.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/interfaces/PackedUserOperation.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/interfaces/PackedUserOperation.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/SimpleAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/SimpleAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/SimpleAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/TokenPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/TokenPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/TokenPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/VerifyingPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/VerifyingPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/VerifyingPaymaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/bls/BLSAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/bls/BLSAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/bls/BLSAccount.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/bls/BLSSignatureAggregator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/bls/BLSSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/bls/BLSSignatureAggregator.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/callback/TokenCallbackHandler.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/callback/TokenCallbackHandler.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/callback/TokenCallbackHandler.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/utils/IOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/utils/IOracle.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/utils/IOracle.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/utils/OracleHelper.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/utils/OracleHelper.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/utils/OracleHelper.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/utils/UniswapHelper.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/utils/UniswapHelper.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of a non-test Solidity file changed since the previous OpenZeppelin review commit f3b5f795515ad8a7a7bf447575d6554854b820da.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/contracts/samples/utils/UniswapHelper.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review: pull requests affecting in-scope contracts were reviewed up to this commit; all findings are marked resolved.",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/utils/Exec.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c3dbc2ddf7ca769a1111a277ef908898e45bfbfa",
+                    "timestamp": "2024-01-12T21:53:26Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/c3dbc2ddf7ca769a1111a277ef908898e45bfbfa/contracts/utils/Exec.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "pull request review",
+                  "coverage": "Head commit of pull request #396 (mark assembly as memory-safe); only the pull request diff was reviewed. The file itself was unchanged since the previous review and not otherwise in scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/samples/LegacyTokenPaymaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/blob/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/contracts/samples/LegacyTokenPaymaster.sol"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from the audit scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "erc/ERCS": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                    "timestamp": "2024-01-14T18:32:55Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/tree/9879c931ce92f0bee1bca1d1b1352eeb98b9a120/erc/ERCS"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "ERC-4337 and ERC-7562 specification documents included in the review alongside the contracts.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+                    "timestamp": "2024-02-19T12:00:56Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/tree/8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6/erc/ERCS"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of specification changes up to this commit (M-05 ERC recommendations resolved).",
+                  "follows": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spearbit-account-abstraction-security-review-2025-03",
+      "report_file": "account-abstraction__audits__SpearBit Account Abstraction Security Review - Mar 2025.md",
+      "title": "Account Abstraction Security Review",
+      "description": "Spearbit (Cantina Managed) security review for the Ethereum Foundation of the account-abstraction repository (ERC-4337 v0.8 EntryPoint, EIP-7702 support, accounts and paymasters) together with the ERC-4337 and ERC-7562 specifications. Fixes were verified at later commits of both repositories.",
+      "isRelevant": true,
+      "auditor": "Spearbit (Cantina Managed)",
+      "report_date": "2025-03-25",
+      "repositories": [
+        {
+          "id": "eth-infinitism/account-abstraction",
+          "url": "https://github.com/eth-infinitism/account-abstraction"
+        },
+        {
+          "id": "ethereum/ERCs",
+          "url": "https://github.com/ethereum/ERCs"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "eth-infinitism/account-abstraction",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ed8a5c79b50361b2f1742ee9efecd45f494df597",
+                    "timestamp": "2025-02-17T16:27:33Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/tree/ed8a5c79b50361b2f1742ee9efecd45f494df597/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Holistic review of the account-abstraction repository at this commit; the report names no individual files, and findings reference the contracts/core, contracts/accounts and contracts/interfaces sources.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f9a8d7b352d9e18d217513ad4592d36ee9ce11",
+                    "timestamp": "2025-03-25T11:05:09Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/tree/57f9a8d7b352d9e18d217513ad4592d36ee9ce11/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review commit at which all issues were confirmed addressed and no new vulnerabilities were identified.",
+                  "follows": "ed8a5c79b50361b2f1742ee9efecd45f494df597",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "ethereum/ERCs",
+          "paths": {
+            "ERCS/erc-4337.md": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b01810450dbc171c909e74a0fa5fc2bc60a1a8a",
+                    "timestamp": "2025-02-19T16:08:21Z",
+                    "url": "https://github.com/ethereum/ERCs/blob/0b01810450dbc171c909e74a0fa5fc2bc60a1a8a/ERCS/erc-4337.md"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the ERC-4337 specification document.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "25f2b66769fe17cf002da2c0413144acf03c2308",
+                    "timestamp": "2025-03-12T17:24:59Z",
+                    "url": "https://github.com/ethereum/ERCs/blob/25f2b66769fe17cf002da2c0413144acf03c2308/ERCS/erc-4337.md"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review commit at which all specification issues were confirmed addressed.",
+                  "follows": "0b01810450dbc171c909e74a0fa5fc2bc60a1a8a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "ERCS/erc-7562.md": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62a7f8b36843c803d935fc04f0c74f61dcbbbd71",
+                    "timestamp": "2025-01-13T23:32:57Z",
+                    "url": "https://github.com/ethereum/ERCs/blob/62a7f8b36843c803d935fc04f0c74f61dcbbbd71/ERCS/erc-7562.md"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the ERC-7562 validation-rules specification; the single Medium finding (BLOBHASH/BLOBBASEFEE opcodes) is in this document.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "609c02dc1d8cfb22ff4b4ab5fe731b620d64055c",
+                    "timestamp": "2025-03-12T15:53:01Z",
+                    "url": "https://github.com/ethereum/ERCs/blob/609c02dc1d8cfb22ff4b4ab5fe731b620d64055c/ERCS/erc-7562.md"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review commit at which all specification issues were confirmed addressed.",
+                  "follows": "62a7f8b36843c803d935fc04f0c74f61dcbbbd71",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-erc4337-v0.9-security-review-2025-11",
+      "report_file": "account-abstraction__audits__ERC-4337 Account Abstraction v0.9 Security Review - Cantina.md",
+      "title": "Ethereum Foundation: Account Abstraction Infrastructure Security Review (ERC-4337 v0.9)",
+      "description": "Cantina Managed security review for the Ethereum Foundation of the account-abstraction repository at the ERC-4337 v0.9 release candidate, covering the EntryPoint, paymaster base, EIP-7702 support and sample accounts. All findings were re-verified at a later commit.",
+      "isRelevant": true,
+      "auditor": "Cantina Managed",
+      "report_date": "2025-11-16",
+      "repositories": [
+        {
+          "id": "eth-infinitism/account-abstraction",
+          "url": "https://github.com/eth-infinitism/account-abstraction"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "eth-infinitism/account-abstraction",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86fcd84cf7263fe384d61d078ee747b16e69a496",
+                    "timestamp": "2025-10-30T14:18:30Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/tree/86fcd84cf7263fe384d61d078ee747b16e69a496/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Holistic review of the account-abstraction repository at this commit; the report names no individual files, and findings reference the contracts/core, contracts/accounts and contracts/interfaces sources.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f54584edd4c627e084d04c315dcabda48a6b9ea9",
+                    "timestamp": "2025-11-12T09:25:23Z",
+                    "url": "https://github.com/eth-infinitism/account-abstraction/tree/f54584edd4c627e084d04c315dcabda48a6b9ea9/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review commit (v0.9 release) at which all findings were confirmed addressed and no new vulnerabilities were identified.",
+                  "follows": "86fcd84cf7263fe384d61d078ee747b16e69a496",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

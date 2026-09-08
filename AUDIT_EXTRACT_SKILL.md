@@ -32,12 +32,21 @@ type Status =
   | "partially_audited_without_major_findings"
   | "partially_audited_with_major_findings";
 
+type Timestamp = string; // committer date of the commit, ISO 8601 UTC, e.g. "2023-05-12T14:03:22Z"
+
 type Revision =
-  | { kind: "commit"; commit: string; url: string }
-  | { kind: "tag"; tag: string; commit: string | null; url: string }
-  | { kind: "commit_range"; start_commit: string; end_commit: string; url?: string }
-  | { kind: "pull_request"; value: string; commit: string | null; url: string }
-  | { kind: "branch"; ref: string; commit: null; immutable: false; url: string };
+  | { kind: "commit"; commit: string; timestamp: Timestamp | null; url: string }
+  | { kind: "tag"; tag: string; commit: string | null; timestamp: Timestamp | null; url: string }
+  | {
+      kind: "commit_range";
+      start_commit: string;
+      start_timestamp: Timestamp | null;
+      end_commit: string;
+      end_timestamp: Timestamp | null;
+      url?: string;
+    }
+  | { kind: "pull_request"; value: string; commit: string | null; timestamp: Timestamp | null; url: string }
+  | { kind: "branch"; ref: string; commit: null; timestamp: null; immutable: false; url: string };
 
 type Version = {
   revision: Revision;
@@ -70,7 +79,7 @@ type Report = {
 };
 
 type AuditSummary = {
-  schema_version: "1.1.0";
+  schema_version: "1.2.0";
   project: string;
   reports: Report[];
 };
@@ -88,12 +97,13 @@ Derive status mechanically: full coverage plus zero/nonzero `major_findings` giv
 2. For each irrelevant report, create one `reports[]` entry with its identifying metadata, `description`, `isRelevant: false`, and `scopes: []`. Do not perform the detailed extraction rules below for it.
 3. For each relevant report, set `isRelevant: true` and extract each explicitly scoped repository and file path. Use `directory_recursive` only when the report scopes the directory or all files beneath it; never expand generic protocol prose into inferred files.
 4. Record the most precise revision stated by the report. Expand abbreviated commit hashes when unambiguous. Never infer a historical commit from a report date or today's value of `master`. Preserve unresolved branches or tags with `commit: null`.
-5. Add every report-mentioned initial version, modification, fix review, and re-audit to the affected path's `versions[]`. Later array entries must be descendants or otherwise clearly later, and `follows` must point to the preceding listed version. Do not add unrelated intermediate repository commits.
-6. Use a full-audit status only when the whole file/directory was reviewed. Use a partial status for selected functions, properties, diffs, formal models, cryptographic aspects, or other limited coverage. Describe that boundary concisely in `coverage`.
-7. Put a file explicitly excluded or explicitly left unaudited in `paths` with status `not_audited`; do not create a separate exclusion array. Always make sure to mention explicitly unaudited files. Do not mark unmentioned repository files as unaudited.
-8. Resolve every pull-request reference through the repository host or Git refs. Unless the report identifies a specific PR commit, use the PR's final head/tip commit after all PR changes—not the merge commit—and store its full hash as a normal `kind: "commit"` version for each path to which the report associates the PR. Confirm that the PR changes that path. Use the merge commit only when the report explicitly covers the merged snapshot. Insert the resolved commit at the correct point in each version chain. Retain `kind: "pull_request"` with `commit: null` only when the PR cannot be resolved; never create a separate PR/change collection.
-9. Create `<project>/reports/irrelevant` if necessary. Move each newly classified irrelevant Markdown report and its corresponding raw report file, such as a same-stem PDF or HTML file, into that directory. Do not move an already nested report again, overwrite an existing file, or move a file whose association with the report is uncertain.
-10. After all moves, store `report_file` relative to `<project>/reports` using `/` separators: for example, `Relevant.md` or `irrelevant/Wallet Audit.md`. Create exactly one `reports[]` entry for every recursively discovered Markdown report, whether it was already irrelevant or was moved during this run.
+5. Give every revision the committer timestamp of its commit, fetched from GitHub (never from the report text, the report date, or a guess). Use the authenticated GitHub CLI: `gh api repos/<owner>/<repo>/commits/<commit> --jq .commit.committer.date` for a repository commit, or `gh api gists/<gist_id>/commits --jq '.[] | select(.version == "<commit>") | .committed_at'` for a gist revision. Store the returned value verbatim as `timestamp` (or `start_timestamp`/`end_timestamp` for a `commit_range`). Set the timestamp to `null` whenever `commit` is `null` or GitHub no longer serves the commit; do not substitute another commit's date. If possible, write a script that fetches all timestamps for `audit-summary.json` instead of fetching it for each individual revision.
+6. Add every report-mentioned initial version, modification, fix review, and re-audit to the affected path's `versions[]`. Later array entries must be descendants or otherwise clearly later, and `follows` must point to the preceding listed version. Do not add unrelated intermediate repository commits.
+7. Use a full-audit status only when the whole file/directory was reviewed. Use a partial status for selected functions, properties, diffs, formal models, cryptographic aspects, or other limited coverage. Describe that boundary concisely in `coverage`.
+8. Put a file explicitly excluded or explicitly left unaudited in `paths` with status `not_audited`; do not create a separate exclusion array. Always make sure to mention explicitly unaudited files. Do not mark unmentioned repository files as unaudited.
+9. Resolve every pull-request reference through the repository host or Git refs. Unless the report identifies a specific PR commit, use the PR's final head/tip commit after all PR changes—not the merge commit—and store its full hash as a normal `kind: "commit"` version for each path to which the report associates the PR. Confirm that the PR changes that path. Use the merge commit only when the report explicitly covers the merged snapshot. Insert the resolved commit at the correct point in each version chain. Retain `kind: "pull_request"` with `commit: null` only when the PR cannot be resolved; never create a separate PR/change collection.
+10. Create `<project>/reports/irrelevant` if necessary. Move each newly classified irrelevant Markdown report and its corresponding raw report file, such as a same-stem PDF or HTML file, into that directory. Do not move an already nested report again, overwrite an existing file, or move a file whose association with the report is uncertain.
+11. After all moves, store `report_file` relative to `<project>/reports` using `/` separators: for example, `Relevant.md` or `irrelevant/Wallet Audit.md`. Create exactly one `reports[]` entry for every recursively discovered Markdown report, whether it was already irrelevant or was moved during this run.
 
 ## Do not extract
 
@@ -104,10 +114,10 @@ Derive status mechanically: full coverage plus zero/nonzero `major_findings` giv
 - Files merely referenced as dependencies, examples, or context unless the report explicitly audits them.
 - Deployment addresses, production bytecode, or guesses about which audited version is deployed.
 
-Validate JSON syntax, allowed fields/statuses, non-empty descriptions of at most two sentences, boolean `isRelevant`, empty scopes for every irrelevant report, integer `major_findings`, one entry per recursively discovered Markdown report, report paths that match their final locations, full-length commit hashes where known, and chronological version ancestry.
+Validate JSON syntax, allowed fields/statuses, non-empty descriptions of at most two sentences, boolean `isRelevant`, empty scopes for every irrelevant report, integer `major_findings`, one entry per recursively discovered Markdown report, report paths that match their final locations, full-length commit hashes where known, an ISO 8601 UTC `timestamp` (or `start_timestamp`/`end_timestamp`) on every revision that is `null` only when the commit is `null` or unavailable on GitHub, and chronological version ancestry.
 
 # After writing the final audit-summary.json
 
-1. Generate a user-readable overview using `python3 generate_audit_summary.py <project>/audit-summary.json`. Confirm that every report has a description, only relevant reports have source tables, irrelevant reports appear at the bottom, and all report links resolve after the moves.
+1. Generate a user-readable overview using `python3 generate_audit_summary.py <project>/audit-summary.json`. The script renders commit dates from the stored revision timestamps and warns about commits without one. Confirm that every report has a description, only relevant reports have source tables, irrelevant reports appear at the bottom, the commit dates are populated, and all report links resolve after the moves.
 2. Fetch audited sources with `python3 fetch_audited_sources.py <project>/audit-summary.json`. The script ignores irrelevant reports. Do not pass `--circuit-path` or `--program-path`; leave those options to the researchers.
 3. Format all fetched .sol sources with `python3 format_sources.py <project>`.

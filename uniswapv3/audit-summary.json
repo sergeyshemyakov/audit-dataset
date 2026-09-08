@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "project": "uniswapv3",
   "reports": [
     {
@@ -27,6 +27,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/BitMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -43,6 +44,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/FullMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -59,6 +61,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/UnsafeMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -75,6 +78,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SafeCast.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -91,6 +95,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LowGasSafeMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -107,6 +112,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LiquidityMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -123,6 +129,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Tick.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -139,6 +146,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Position.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -155,6 +163,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/NoDelegateCall.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -171,6 +180,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Factory.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -187,6 +197,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3PoolDeployer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -203,6 +214,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TransferHelper.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -220,6 +232,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickMath.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -236,6 +249,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickBitmap.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -252,6 +266,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SqrtPriceMath.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -268,6 +283,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SwapMath.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -284,6 +300,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Oracle.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -300,6 +317,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SecondsOutside.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -316,6 +334,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Pool.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -356,6 +375,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -373,6 +393,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -390,6 +411,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -407,6 +429,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -424,6 +447,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -441,6 +465,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -458,6 +483,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -475,6 +501,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -492,6 +519,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -509,6 +537,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -526,6 +555,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -543,6 +573,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -560,6 +591,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -577,6 +609,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -594,6 +627,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -611,6 +645,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -628,6 +663,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -645,6 +681,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -662,6 +699,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -679,6 +717,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -696,6 +735,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -713,6 +753,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -730,6 +771,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -747,6 +789,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -764,6 +807,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -781,6 +825,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -798,6 +843,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -815,6 +861,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -832,6 +879,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -849,6 +897,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -866,6 +915,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -883,6 +933,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -900,6 +951,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -917,6 +969,7 @@
                     "kind": "tag",
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -953,9 +1006,10 @@
               "versions": [
                 {
                   "revision": {
-                "kind": "commit",
-                "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
-                "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/8ad273f45cd42e04b5f8f15b6f4da57827122273"
+                    "kind": "commit",
+                    "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+                    "timestamp": "2021-04-12T14:15:39Z",
+                    "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/8ad273f45cd42e04b5f8f15b6f4da57827122273"
                   },
                   "status": "audited_with_major_findings",
                   "review_phase": "initial audit",
@@ -967,12 +1021,13 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "987842552ede76d428e60116672fb0ff67fe551e",
+                    "timestamp": "2021-04-14T20:55:55Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/987842552ede76d428e60116672fb0ff67fe551e"
                   },
                   "status": "partially_audited_with_major_findings",
                   "review_phase": "remediation review",
                   "coverage": "review of the reported fixes reflected in report version 1.1",
-              "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+                  "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
                   "major_findings": 1,
                   "highest_reported_finding_severity": "Major"
                 }
@@ -983,9 +1038,10 @@
               "versions": [
                 {
                   "revision": {
-                "kind": "commit",
-                "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
-                "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/8ad273f45cd42e04b5f8f15b6f4da57827122273"
+                    "kind": "commit",
+                    "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+                    "timestamp": "2021-04-12T14:15:39Z",
+                    "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/8ad273f45cd42e04b5f8f15b6f4da57827122273"
                   },
                   "status": "audited_with_major_findings",
                   "review_phase": "initial audit",
@@ -997,6 +1053,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2353765fe799b987ac5236971398fcb0be2bc5c0",
+                    "timestamp": "2021-04-14T16:40:17Z",
                     "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/2353765fe799b987ac5236971398fcb0be2bc5c0"
                   },
                   "status": "partially_audited_without_major_findings",

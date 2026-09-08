@@ -1,6 +1,7 @@
 {
   "project": "tornado-cash",
   "discoveryTimestamp": 1787307944,
+  "contractSelection": "critical",
   "contracts": [
     {
       "name": "Pool_50K_cDAI",
@@ -31,16 +32,6 @@
         "deployed-contracts/Pool_1000_USDT.sol"
       ],
       "template": "tornado-cash/TornadoCash_erc20_v1"
-    },
-    {
-      "name": "WithdrawVerifier",
-      "address": "0x09193888b3f38C82dEdfda55259A82C0E7De875E",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x09193888b3f38C82dEdfda55259A82C0E7De875E",
-      "sourceFiles": [
-        "deployed-contracts/WithdrawVerifier.sol"
-      ],
-      "template": "tornado-cash/WithdrawVerifier"
     },
     {
       "name": "Pool_0.1_ETH",
@@ -103,26 +94,6 @@
       "template": "tornado-cash/cTornado"
     },
     {
-      "name": "TornadoVault",
-      "address": "0x2F50508a8a3D323B91336FA3eA6ae50E55f32185",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x2F50508a8a3D323B91336FA3eA6ae50E55f32185",
-      "sourceFiles": [
-        "deployed-contracts/TornadoVault.sol"
-      ],
-      "template": "tornado-cash/TornadoVault"
-    },
-    {
-      "name": "TornadoTreesV1",
-      "address": "0x43a3bE4Ae954d9869836702AFd10393D3a7Ea417",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x43a3bE4Ae954d9869836702AFd10393D3a7Ea417",
-      "sourceFiles": [
-        "deployed-contracts/TornadoTreesV1.sol"
-      ],
-      "template": "tornado-cash/TornadoTreesV1"
-    },
-    {
       "name": "Pool_1000_USDC",
       "address": "0x4736dCf1b7A3d580672CcE6E7c65cd5cc9cFBa9D",
       "chain": "eth",
@@ -143,81 +114,6 @@
       "template": "tornado-cash/TornadoCash_eth"
     },
     {
-      "name": "Proposal",
-      "address": "0x4B6C07B8940a7602fE4332AFa915b366e56eAce5",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x4B6C07B8940a7602fE4332AFa915b366e56eAce5",
-      "sourceFiles": [
-        "deployed-contracts/Proposal.sol"
-      ],
-      "template": "tornado-cash/Proposal"
-    },
-    {
-      "name": "TornadoTreesV2",
-      "address": "0x527653eA119F3E6a1F5BD18fbF4714081D7B31ce",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x527653eA119F3E6a1F5BD18fbF4714081D7B31ce",
-      "sourceFiles": [
-        "deployed-contracts/TornadoTreesV2/AdminUpgradeableProxy.p.sol",
-        "deployed-contracts/TornadoTreesV2/TornadoTrees.sol"
-      ],
-      "template": "tornado-cash/TornadoTreesV2"
-    },
-    {
-      "name": "RelayerRegistry",
-      "address": "0x58E8dCC13BE9780fC42E8723D8EaD4CF46943dF2",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x58E8dCC13BE9780fC42E8723D8EaD4CF46943dF2",
-      "sourceFiles": [
-        "deployed-contracts/RelayerRegistry/AdminUpgradeableProxy.p.sol",
-        "deployed-contracts/RelayerRegistry/RelayerRegistry.sol"
-      ],
-      "template": "tornado-cash/RelayerRegistry"
-    },
-    {
-      "name": "TornadoStakingRewards",
-      "address": "0x5B3f656C80E8ddb9ec01Dd9018815576E9238c29",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x5B3f656C80E8ddb9ec01Dd9018815576E9238c29",
-      "sourceFiles": [
-        "deployed-contracts/TornadoStakingRewards/AdminUpgradeableProxy.p.sol",
-        "deployed-contracts/TornadoStakingRewards/TornadoStakingRewards.sol"
-      ],
-      "template": "tornado-cash/TornadoStakingRewards"
-    },
-    {
-      "name": "RewardSwap",
-      "address": "0x5cab7692D4E94096462119ab7bF57319726Eed2A",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x5cab7692D4E94096462119ab7bF57319726Eed2A",
-      "sourceFiles": [
-        "deployed-contracts/RewardSwap.sol"
-      ],
-      "template": "tornado-cash/RewardSwap"
-    },
-    {
-      "name": "GovernanceProposalStateUpgrade",
-      "address": "0x5efda50f22d34F262c29268506C5Fa42cB56A1Ce",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x5efda50f22d34F262c29268506C5Fa42cB56A1Ce",
-      "sourceFiles": [
-        "deployed-contracts/GovernanceProposalStateUpgrade/GovernanceProposalStateUpgrade.sol",
-        "deployed-contracts/GovernanceProposalStateUpgrade/LoopbackProxy.p.sol"
-      ],
-      "template": "tornado-cash/GovernanceProposalStateUpgrade"
-    },
-    {
-      "name": "FeeManager",
-      "address": "0x5f6c97C6AD7bdd0AE7E0Dd4ca33A4ED3fDabD4D7",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x5f6c97C6AD7bdd0AE7E0Dd4ca33A4ED3fDabD4D7",
-      "sourceFiles": [
-        "deployed-contracts/FeeManager/AdminUpgradeableProxy.p.sol",
-        "deployed-contracts/FeeManager/FeeManager.sol"
-      ],
-      "template": "tornado-cash/FeeManager"
-    },
-    {
       "name": "Pool_1_WBTC",
       "address": "0x610B717796ad172B316836AC95a2ffad065CeaB4",
       "chain": "eth",
@@ -228,78 +124,11 @@
       "template": "tornado-cash/ERC20Tornado"
     },
     {
-      "name": "DepositTree",
-      "address": "0x6234c4C2734D2B246AE074492F402D8f58ff3226",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x6234c4C2734D2B246AE074492F402D8f58ff3226",
-      "sourceFiles": []
-    },
-    {
-      "name": "TreeUpdateVerifier",
-      "address": "0x653477c392c16b0765603074f157314Cc4f40c32",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x653477c392c16b0765603074f157314Cc4f40c32",
-      "sourceFiles": [
-        "deployed-contracts/TreeUpdateVerifier.sol"
-      ],
-      "template": "tornado-cash/TreeUpdateVerifier"
-    },
-    {
-      "name": "TornadoProxyV2",
-      "address": "0x722122dF12D4e14e13Ac3b6895a86e84145b6967",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x722122dF12D4e14e13Ac3b6895a86e84145b6967",
-      "sourceFiles": [
-        "deployed-contracts/TornadoProxyV2.sol"
-      ],
-      "template": "tornado-cash/TornadoProxyV2"
-    },
-    {
-      "name": "Miner",
-      "address": "0x746Aebc06D2aE31B71ac51429A19D54E797878E9",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x746Aebc06D2aE31B71ac51429A19D54E797878E9",
-      "sourceFiles": [
-        "deployed-contracts/Miner.sol"
-      ],
-      "template": "tornado-cash/Miner"
-    },
-    {
-      "name": "TORN",
-      "address": "0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
-      "sourceFiles": [
-        "deployed-contracts/TORN.sol"
-      ],
-      "template": "tornado-cash/TORN"
-    },
-    {
       "name": "MiMCHasher",
       "address": "0x83584f83f26aF4eDDA9CBe8C730bc87C364b28fe",
       "chain": "eth",
       "chainSpecificAddress": "eth:0x83584f83f26aF4eDDA9CBe8C730bc87C364b28fe",
       "sourceFiles": []
-    },
-    {
-      "name": "RewardVerifier",
-      "address": "0x88fd245fEdeC4A936e700f9173454D1931B4C307",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x88fd245fEdeC4A936e700f9173454D1931B4C307",
-      "sourceFiles": [
-        "deployed-contracts/RewardVerifier.sol"
-      ],
-      "template": "tornado-cash/RewardVerifier"
-    },
-    {
-      "name": "TornadoProxyV1",
-      "address": "0x905b63Fff465B9fFBF41DeA908CEb12478ec7601",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0x905b63Fff465B9fFBF41DeA908CEb12478ec7601",
-      "sourceFiles": [
-        "deployed-contracts/TornadoProxyV1.sol"
-      ],
-      "template": "tornado-cash/TornadoProxyV1"
     },
     {
       "name": "Pool_10_ETH",
@@ -322,28 +151,6 @@
       "template": "tornado-cash/TornadoCash_eth"
     },
     {
-      "name": "GnosisSafe",
-      "address": "0xb04E030140b30C27bcdfaafFFA98C57d80eDa7B4",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xb04E030140b30C27bcdfaafFFA98C57d80eDa7B4",
-      "sourceFiles": [
-        "deployed-contracts/GnosisSafe/GnosisSafe.sol",
-        "deployed-contracts/GnosisSafe/Proxy.p.sol"
-      ],
-      "template": "GnosisSafe"
-    },
-    {
-      "name": "InstanceRegistry",
-      "address": "0xB20c66C4DE72433F3cE747b58B86830c459CA911",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xB20c66C4DE72433F3cE747b58B86830c459CA911",
-      "sourceFiles": [
-        "deployed-contracts/InstanceRegistry/AdminUpgradeableProxy.p.sol",
-        "deployed-contracts/InstanceRegistry/InstanceRegistry.sol"
-      ],
-      "template": "tornado-cash/InstanceRegistry"
-    },
-    {
       "name": "Pool_10_WBTC",
       "address": "0xbB93e510BbCD0B7beb5A853875f9eC60275CF498",
       "chain": "eth",
@@ -352,13 +159,6 @@
         "deployed-contracts/Pool_10_WBTC.sol"
       ],
       "template": "tornado-cash/ERC20Tornado"
-    },
-    {
-      "name": "WithdrawalTree",
-      "address": "0xbFA347D89Ac54F7C2De2433458cb98A85fc03CEd",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xbFA347D89Ac54F7C2De2433458cb98A85fc03CEd",
-      "sourceFiles": []
     },
     {
       "name": "Verifier",
@@ -391,23 +191,6 @@
       "template": "tornado-cash/TornadoCash_erc20_v1"
     },
     {
-      "name": "PoseidonHasher",
-      "address": "0xD82ed8786D7c69DC7e052F7A542AB047971E73d2",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xD82ed8786D7c69DC7e052F7A542AB047971E73d2",
-      "sourceFiles": []
-    },
-    {
-      "name": "TornadoRouter",
-      "address": "0xd90e2f925DA726b50C4Ed8D0Fb90Ad053324F31b",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xd90e2f925DA726b50C4Ed8D0Fb90Ad053324F31b",
-      "sourceFiles": [
-        "deployed-contracts/TornadoRouter.sol"
-      ],
-      "template": "tornado-cash/TornadoRouter"
-    },
-    {
       "name": "Pool_100_USDC",
       "address": "0xd96f2B1c14Db8458374d9Aca76E26c3D18364307",
       "chain": "eth",
@@ -416,26 +199,6 @@
         "deployed-contracts/Pool_100_USDC.sol"
       ],
       "template": "tornado-cash/TornadoCash_erc20_v1"
-    },
-    {
-      "name": "BatchTreeUpdateVerifier",
-      "address": "0xEd3B00B651c4c7AF77c2fDdce4a388de84b507C6",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xEd3B00B651c4c7AF77c2fDdce4a388de84b507C6",
-      "sourceFiles": [
-        "deployed-contracts/BatchTreeUpdateVerifier.sol"
-      ],
-      "template": "tornado-cash/BatchTreeUpdateVerifier"
-    },
-    {
-      "name": "GasCompensationVault",
-      "address": "0xFA4C1f3f7D5dd7c12a9Adb82Cd7dDA542E3d59ef",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xFA4C1f3f7D5dd7c12a9Adb82Cd7dDA542E3d59ef",
-      "sourceFiles": [
-        "deployed-contracts/GasCompensationVault.sol"
-      ],
-      "template": "tornado-cash/GasCompensationVault"
     },
     {
       "name": "Pool_1000_DAI",
@@ -448,18 +211,5 @@
       "template": "tornado-cash/TornadoCash_erc20_v1"
     }
   ],
-  "programSources": [
-    {
-      "url": "https://github.com/tornadocash/tornado-core/tree/v2.1/circuits",
-      "repository": "tornadocash/tornado-core",
-      "revision": "v2.1",
-      "resolvedCommit": "a533ad9ffb62163a42d4fa9a09984c5dd4e5c41d",
-      "path": "circuits",
-      "pathKind": "directory",
-      "sourceFiles": [
-        "deployed-contracts/github/tornadocash/tornado-core/v2.1/circuits/merkleTree.circom",
-        "deployed-contracts/github/tornadocash/tornado-core/v2.1/circuits/withdraw.circom"
-      ]
-    }
-  ]
+  "programSources": []
 }

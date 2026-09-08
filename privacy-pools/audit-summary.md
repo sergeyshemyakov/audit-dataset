@@ -1,7 +1,7 @@
 # Audit source summary: privacy-pools
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps.
+Commit dates use Git committer timestamps (UTC).
 
 ## Privacy Pools Smart Contracts Security Audit Report (Privacy Pools v1)
 

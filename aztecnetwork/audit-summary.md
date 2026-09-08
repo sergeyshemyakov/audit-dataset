@@ -1,7 +1,7 @@
 # Audit source summary: aztecnetwork
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps.
+Commit dates use Git committer timestamps (UTC).
 
 ## AZTEC Protocol Audit
 
@@ -26,7 +26,7 @@ Commit dates use Git committer timestamps.
 
 ### Repository: <a href="https://github.com/AztecProtocol/barretenberg"><code>AztecProtocol/barretenberg</code></a>
 
-_Commit dates unavailable: 1 commit(s) could not be fetched from https://github.com/AztecProtocol/barretenberg._
+_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

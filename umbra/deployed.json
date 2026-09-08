@@ -1,6 +1,7 @@
 {
   "project": "umbra",
   "discoveryTimestamp": 1786959877,
+  "contractSelection": "critical",
   "contracts": [
     {
       "name": "StealthKeyRegistry",

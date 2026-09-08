@@ -1,0 +1,325 @@
+{
+  "schema_version": "1.2.0",
+  "project": "Solmate",
+  "reports": [
+    {
+      "id": "solmate-v6__audits__v6-Fixed-Point-Solutions",
+      "report_file": "solmate-v6__audits__v6-Fixed-Point-Solutions.md",
+      "title": "solmate Smart Contract Library Assessment",
+      "description": "Security assessment of Solmate's authentication, token, and utility Solidity libraries, including standalone reviews of later commits and selected files. The assessment also reviewed commits addressing its findings.",
+      "isRelevant": true,
+      "auditor": "Fixed Point Solutions, LLC",
+      "report_date": "2021-12-31",
+      "repositories": [
+        {
+          "id": "Rari-Capital/solmate",
+          "url": "https://github.com/Rari-Capital/solmate.git"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Rari-Capital/solmate",
+          "paths": {
+            "src/auth": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "938b2d6925e24de7542bce4b08f3f03988a82245",
+                    "timestamp": "2021-11-19T17:44:34Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/938b2d6925e24de7542bce4b08f3f03988a82245"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the contents of src/auth/.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "src/tokens": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "938b2d6925e24de7542bce4b08f3f03988a82245",
+                    "timestamp": "2021-11-19T17:44:34Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/938b2d6925e24de7542bce4b08f3f03988a82245"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the contents of src/tokens/.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "src/utils": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "938b2d6925e24de7542bce4b08f3f03988a82245",
+                    "timestamp": "2021-11-19T17:44:34Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/938b2d6925e24de7542bce4b08f3f03988a82245"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the contents of src/utils/.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "src/utils/SSTORE2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "17ab906bb9a4275eb2b05440d179b423668dc003",
+                    "timestamp": "2021-12-01T20:43:04Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/17ab906bb9a4275eb2b05440d179b423668dc003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the compiler-pragma remediation for finding SC.1.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5546cd3cf78f43366068ce6cb1b7f58c8d9fca65",
+                    "timestamp": "2021-12-04T04:56:32Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/5546cd3cf78f43366068ce6cb1b7f58c8d9fca65"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the remediations for findings G.2 and CQ.1.",
+                  "follows": "17ab906bb9a4275eb2b05440d179b423668dc003",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a0253999252f9a253fefa960be6ad77d2ed1eaa7",
+                    "timestamp": "2021-12-14T05:37:21Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/a0253999252f9a253fefa960be6ad77d2ed1eaa7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Standalone commit review",
+                  "coverage": "Review limited to the changes in the standalone commit.",
+                  "follows": "5546cd3cf78f43366068ce6cb1b7f58c8d9fca65",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fc0d77b124c200993c441d3f7612e8731837fd1c",
+                    "timestamp": "2021-12-18T22:54:22Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/fc0d77b124c200993c441d3f7612e8731837fd1c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the comment remediation for finding CQ.2.",
+                  "follows": "a0253999252f9a253fefa960be6ad77d2ed1eaa7",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "src/utils/SafeTransferLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "134f10afd9c996cee217aec6274839f56c742eac",
+                    "timestamp": "2021-11-24T03:52:42Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/134f10afd9c996cee217aec6274839f56c742eac"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the remediation for finding G.1.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "src/utils/FixedPointMathLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0265de1f3d7b65a9961b0499e69d9471c199d1ac",
+                    "timestamp": "2021-12-04T05:00:13Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/0265de1f3d7b65a9961b0499e69d9471c199d1ac"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the assembly-optimization remediation for finding G.3.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "src/utils/CREATE3.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5db685309d4ad25f4c90e87c8d5189f8e1a7955b",
+                    "timestamp": "2021-12-18T22:54:48Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/5db685309d4ad25f4c90e87c8d5189f8e1a7955b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the remediation for finding U.1.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "src/tokens/ERC20.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1595c321d93e6ac7d76d3a92b4f15bb50560ef6c",
+                    "timestamp": "2021-12-18T22:54:11Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/1595c321d93e6ac7d76d3a92b4f15bb50560ef6c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the documentation remediation for finding U.2.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "src/auth/authorities/RolesAuthority.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a3d179efcb3a7d954cf0b51a7b6bf0ee90c84dea",
+                    "timestamp": "2021-12-18T23:42:11Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/a3d179efcb3a7d954cf0b51a7b6bf0ee90c84dea"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the naming remediation for finding CQ.4.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7c5cafff2f9e04a46c71719710aee68d34eee8c5",
+                    "timestamp": "2021-12-18T23:43:53Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/7c5cafff2f9e04a46c71719710aee68d34eee8c5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the casting remediation for finding CQ.3.",
+                  "follows": "a3d179efcb3a7d954cf0b51a7b6bf0ee90c84dea",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "src/tokens/ERC721.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0216f06c9f208ced1fdb3187d4a7a17aedec84a3",
+                    "timestamp": "2021-12-29T04:37:01Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/0216f06c9f208ced1fdb3187d4a7a17aedec84a3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Standalone file review",
+                  "coverage": "Full standalone review of src/tokens/ERC721.sol at the linked commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "824bd883069651d1751b6606d093e783cb6e4905",
+                    "timestamp": "2021-12-31T06:45:39Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/824bd883069651d1751b6606d093e783cb6e4905"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Assessment note follow-up",
+                  "coverage": "Review limited to the warning added in response to note 4.3.",
+                  "follows": "0216f06c9f208ced1fdb3187d4a7a17aedec84a3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/auth/authorities/MultiRolesAuthority.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32",
+                    "timestamp": "2021-12-29T04:55:30Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Standalone file review",
+                  "coverage": "Full standalone review of src/auth/authorities/MultiRolesAuthority.sol at the linked commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC1155.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5d1533cbe94adf848bf322e1c9a4a43bb159bb5b",
+                    "timestamp": "2021-12-31T06:42:04Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/5d1533cbe94adf848bf322e1c9a4a43bb159bb5b"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Standalone file review",
+                  "coverage": "Full standalone review of src/tokens/ERC1155.sol at the linked commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3f9dcf84e68f2552ff193291cfd7bd9bc0976e07",
+                    "timestamp": "2021-12-31T20:53:10Z",
+                    "url": "https://github.com/Rari-Capital/solmate/commit/3f9dcf84e68f2552ff193291cfd7bd9bc0976e07"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Finding remediation review",
+                  "coverage": "Review limited to the ERC165 interface-ID remediation for finding SC.3.",
+                  "follows": "5d1533cbe94adf848bf322e1c9a4a43bb159bb5b",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

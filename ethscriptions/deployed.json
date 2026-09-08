@@ -1,6 +1,7 @@
 {
   "project": "ethscriptions",
-  "discoveryTimestamp": 1769601454,
+  "discoveryTimestamp": 1788860322,
+  "contractSelection": "critical",
   "contracts": [
     {
       "name": "SP1Verifier",
@@ -31,17 +32,6 @@
         "deployed-contracts/Rollup.sol"
       ],
       "template": "facet/Rollup"
-    },
-    {
-      "name": "Facet Multisig",
-      "address": "0xb2B01DeCb6cd36E7396b78D3744482627F22C525",
-      "chain": "eth",
-      "chainSpecificAddress": "eth:0xb2B01DeCb6cd36E7396b78D3744482627F22C525",
-      "sourceFiles": [
-        "deployed-contracts/Facet Multisig/GnosisSafe.sol",
-        "deployed-contracts/Facet Multisig/GnosisSafeProxy.p.sol"
-      ],
-      "template": "GnosisSafe"
     },
     {
       "name": "Ethscriptions",

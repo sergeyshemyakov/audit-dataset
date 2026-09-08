@@ -73,6 +73,15 @@ def parse_args() -> argparse.Namespace:
             "may be repeated and may receive multiple URLs"
         ),
     )
+    parser.add_argument(
+        "--all-contracts",
+        action="store_true",
+        help=(
+            "export every contract even when the project marks some as critical "
+            "(the default exports only contracts with \"critical\": true in "
+            "discovered.json, or every contract when none is marked critical)"
+        ),
+    )
     return parser.parse_args()
 
 
@@ -432,12 +441,22 @@ def fetch_program_sources(
     return records, sum(len(record["sourceFiles"]) for record in records)
 
 
+@dataclass(frozen=True)
+class ExportSummary:
+    selection: str
+    contract_count: int
+    total_contract_count: int
+    contract_file_count: int
+    program_file_count: int
+
+
 def export_project(
     project: str,
     l2beat_root: Path,
     dataset_root: Path,
     program_paths: list[str] | None = None,
-) -> tuple[int, int, int]:
+    all_contracts: bool = False,
+) -> ExportSummary:
     projects_dir = l2beat_root.resolve() / "packages" / "config" / "src" / "projects"
     project_dir = projects_dir / project
     destination = dataset_root.resolve() / project
@@ -462,6 +481,21 @@ def export_project(
     if not isinstance(entries, list):
         raise RuntimeError(f"Expected an entries array in {discovered_path}")
 
+    contract_entries = [
+        entry
+        for entry in entries
+        if isinstance(entry, dict) and entry.get("type") == "Contract"
+    ]
+    critical_entries = [
+        entry for entry in contract_entries if entry.get("critical") is True
+    ]
+    if all_contracts or not critical_entries:
+        selected_entries = contract_entries
+        selection = "all"
+    else:
+        selected_entries = critical_entries
+        selection = "critical"
+
     contracts: list[dict[str, Any]] = []
     missing_sources: list[str] = []
     deployed_dir = destination / "deployed-contracts"
@@ -470,10 +504,7 @@ def export_project(
     )
 
     try:
-        for entry in entries:
-            if not isinstance(entry, dict) or entry.get("type") != "Contract":
-                continue
-
+        for entry in selected_entries:
             name = entry.get("name")
             chain_address = entry.get("address")
             if not isinstance(name, str) or not isinstance(chain_address, str):
@@ -512,6 +543,7 @@ def export_project(
         output = {
             "project": project,
             "discoveryTimestamp": discovered.get("timestamp"),
+            "contractSelection": selection,
             "contracts": contracts,
             "programSources": program_sources,
         }
@@ -531,26 +563,47 @@ def export_project(
             file=sys.stderr,
         )
     contract_file_count = sum(len(contract["sourceFiles"]) for contract in contracts)
-    return len(contracts), contract_file_count, program_file_count
+    return ExportSummary(
+        selection=selection,
+        contract_count=len(contracts),
+        total_contract_count=len(contract_entries),
+        contract_file_count=contract_file_count,
+        program_file_count=program_file_count,
+    )
 
 
 def main() -> int:
     args = parse_args()
     try:
-        contract_count, contract_source_count, program_source_count = export_project(
+        summary = export_project(
             args.project,
             args.l2beat_root,
             args.dataset_root,
             args.program_paths,
+            args.all_contracts,
         )
     except (RuntimeError, OSError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
 
+    if summary.selection == "critical":
+        contracts_description = (
+            f"{summary.contract_count} critical deployed contracts "
+            f"(of {summary.total_contract_count})"
+        )
+    else:
+        if not args.all_contracts:
+            print(
+                "note: no contract is marked critical in discovered.json; "
+                "exported all contracts",
+                file=sys.stderr,
+            )
+        contracts_description = f"{summary.contract_count} deployed contracts"
+
     print(
-        f"Exported {contract_count} deployed contracts, {contract_source_count} "
-        f"contract source files, and {program_source_count} program source files "
-        f"to {args.dataset_root.resolve() / args.project}"
+        f"Exported {contracts_description}, {summary.contract_file_count} "
+        f"contract source files, and {summary.program_file_count} program source "
+        f"files to {args.dataset_root.resolve() / args.project}"
     )
     return 0
 

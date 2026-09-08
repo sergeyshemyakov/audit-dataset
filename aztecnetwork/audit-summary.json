@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "project": "aztecnetwork",
   "reports": [
     {
@@ -27,6 +27,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ZkAsset/ZkAsset.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -43,6 +44,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ZkAsset/ZkAssetBurnable.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -59,6 +61,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ZkAsset/ZkAssetDetailed.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -75,6 +78,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ZkAsset/ZkAssetMintable.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -92,6 +96,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ZkAsset/ZkAssetOwnable.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -109,6 +114,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ZkAsset/ZkAssetOwnableTest.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -125,6 +131,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ACE/validators/joinSplit/JoinSplit.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -142,6 +149,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ACE/NoteRegistry.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -158,6 +166,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ACE/ACE.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -175,6 +184,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/ERC20/ERC20Mintable.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -191,6 +201,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a020f4ced9680f6e4a452fe570671aac0802471",
+                    "timestamp": "2019-04-08T12:58:49Z",
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/7a020f4ced9680f6e4a452fe570671aac0802471/packages/protocol/contracts/libs/LibEIP712.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -208,6 +219,7 @@
                     "kind": "branch",
                     "ref": "develop",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/develop/packages/protocol/contracts/ERC1724/base/ZkAssetMintableBase.sol"
                   },
@@ -226,6 +238,7 @@
                     "kind": "branch",
                     "ref": "develop",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/AztecProtocol/AZTEC/blob/develop/packages/protocol/contracts/ERC1724/base/ZkAssetOwnableBase.sol"
                   },
@@ -269,6 +282,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "38c8b72e633f58f4e394990da1936ed5fa2ab1ee",
+                    "timestamp": null,
                     "url": "https://github.com/AztecProtocol/barretenberg/tree/38c8b72e633f58f4e394990da1936ed5fa2ab1ee/barretenberg/src/aztec"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -307,6 +321,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d5aca13d4d0a17b21eeddf77f49f4c6613461fb0",
+                    "timestamp": "2022-04-07T14:43:08Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/d5aca13d4d0a17b21eeddf77f49f4c6613461fb0/src/bridges/lido/LidoBridge.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -324,6 +339,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d5aca13d4d0a17b21eeddf77f49f4c6613461fb0",
+                    "timestamp": "2022-04-07T14:43:08Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/d5aca13d4d0a17b21eeddf77f49f4c6613461fb0/src/test/lido/Lido.t.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -363,6 +379,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0",
+                    "timestamp": "2022-04-07T11:03:58Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/src/bridges/element/ElementBridge.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -375,6 +392,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9aee254f8232c0d4010352871b7819dca3c4dbca",
+                    "timestamp": "2022-05-05T15:07:35Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/commit/9aee254f8232c0d4010352871b7819dca3c4dbca"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -392,6 +410,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0",
+                    "timestamp": "2022-04-07T11:03:58Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/src/bridges/element/MinHeap.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -409,6 +428,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0",
+                    "timestamp": "2022-04-07T11:03:58Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/ac2e7194b5887ea11a607b4cf8de0547b3d7fdd0/src/bridges/element/interfaces"
                   },
                   "status": "audited_with_no_major_findings",
@@ -448,6 +468,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7",
+                    "timestamp": "2022-04-14T07:21:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7/src/bridges/set/IssuanceBridge.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -465,6 +486,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7",
+                    "timestamp": "2022-04-14T07:21:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/6c295e8e8eb4f1647de4ed8d3fdef7142fb555b7/src/bridges/set/interfaces"
                   },
                   "status": "audited_with_no_major_findings",
@@ -504,6 +526,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+                    "timestamp": "2022-05-17T11:53:37Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/4a377651457e9ecf8c811e28b6a2570ef202f146/src/bridges/aave/AccountingToken.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -521,6 +544,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+                    "timestamp": "2022-05-17T11:53:37Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/4a377651457e9ecf8c811e28b6a2570ef202f146/src/bridges/aave/imports"
                   },
                   "status": "audited_with_no_major_findings",
@@ -538,6 +562,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+                    "timestamp": "2022-05-17T11:53:37Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/4a377651457e9ecf8c811e28b6a2570ef202f146/src/bridges/aave/interfaces"
                   },
                   "status": "audited_with_no_major_findings",
@@ -555,6 +580,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4a377651457e9ecf8c811e28b6a2570ef202f146",
+                    "timestamp": "2022-05-17T11:53:37Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/4a377651457e9ecf8c811e28b6a2570ef202f146/src/bridges/aave/lending"
                   },
                   "status": "audited_with_no_major_findings",
@@ -594,6 +620,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+                    "timestamp": "2022-05-31T09:01:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/5a3766115b55dd3471ca981a26c8b8381f12fae7/src/bridges/liquity/interfaces"
                   },
                   "status": "audited_with_major_findings",
@@ -611,6 +638,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+                    "timestamp": "2022-05-31T09:01:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/5a3766115b55dd3471ca981a26c8b8381f12fae7/src/bridges/liquity/StakingBridge.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -628,6 +656,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+                    "timestamp": "2022-05-31T09:01:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/5a3766115b55dd3471ca981a26c8b8381f12fae7/src/bridges/liquity/TroveBridge.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -645,6 +674,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "5a3766115b55dd3471ca981a26c8b8381f12fae7",
+                    "timestamp": "2022-05-31T09:01:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/5a3766115b55dd3471ca981a26c8b8381f12fae7/src/bridges/liquity/StabilityPoolBridge.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -684,6 +714,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1",
+                    "timestamp": "2022-06-15T07:16:50Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1/src/bridges/compound/CompoundBridge.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -701,6 +732,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1",
+                    "timestamp": "2022-06-15T07:16:50Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/ad5d8d5fa83ae0e1c519e1bdb79adb4caa5aa8c1/src/bridges/compound/interfaces"
                   },
                   "status": "audited_with_no_major_findings",
@@ -740,6 +772,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "3b5edf619ef4d316d4430988b99f6cb0aac6a2b2",
+                    "timestamp": "2022-07-01T17:02:36Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/3b5edf619ef4d316d4430988b99f6cb0aac6a2b2/src/bridges/curve/CurveStEthBridge.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -779,6 +812,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "80a8b3dbf1b2c5e302fc2613ec7588108269da34",
+                    "timestamp": "2022-08-08T13:37:33Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/80a8b3dbf1b2c5e302fc2613ec7588108269da34/src/aztec/Subsidy.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -818,6 +852,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "f9f2554d63519c1b3288325f5edc50acaac2bbc5",
+                    "timestamp": "2022-09-15T16:30:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/f9f2554d63519c1b3288325f5edc50acaac2bbc5/src/bridges/dca/BiDCABridge.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -830,6 +865,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde",
+                    "timestamp": "2022-09-15T16:30:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/commit/b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -847,6 +883,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "f9f2554d63519c1b3288325f5edc50acaac2bbc5",
+                    "timestamp": "2022-09-15T16:30:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/f9f2554d63519c1b3288325f5edc50acaac2bbc5/src/bridges/dca/SafeCastLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -864,6 +901,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "f9f2554d63519c1b3288325f5edc50acaac2bbc5",
+                    "timestamp": "2022-09-15T16:30:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/f9f2554d63519c1b3288325f5edc50acaac2bbc5/src/bridges/dca/UniswapDCABridge.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -876,6 +914,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2df45ffd5cd09dc37fd183bf093ad32771660243",
+                    "timestamp": "2022-09-15T16:30:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/commit/2df45ffd5cd09dc37fd183bf093ad32771660243"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -888,6 +927,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde",
+                    "timestamp": "2022-09-15T16:30:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/commit/b0b4a19437569bb7b3e1b5fab5fb3cbb86f88bde"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -927,6 +967,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "46af4186f21cd1925d41fd0275883be18755d212",
+                    "timestamp": "2022-11-12T15:16:19Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/46af4186f21cd1925d41fd0275883be18755d212/src/bridges/liquity/TroveBridge.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -939,6 +980,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "89129e99529b0095310d52396a68edf251043a9b",
+                    "timestamp": "2022-11-18T19:28:35Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/commit/89129e99529b0095310d52396a68edf251043a9b"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -978,6 +1020,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "audited_with_major_findings",
@@ -995,6 +1038,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "audited_with_no_major_findings",
@@ -1012,6 +1056,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -1051,6 +1096,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -1068,6 +1114,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "audited_with_major_findings",
@@ -1085,6 +1132,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1101,6 +1149,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -1118,6 +1167,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1157,6 +1207,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "audited_with_major_findings",
@@ -1174,6 +1225,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4ba553ba3170838de3b6c4cf47b609b0198443d0",
+                    "timestamp": "2024-06-09T19:06:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"
                   },
                   "status": "audited_with_no_major_findings",
@@ -1213,7 +1265,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1230,7 +1284,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1248,7 +1304,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1266,7 +1324,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1279,6 +1339,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "eb8ca7ab0fa319ed6071370c74d50c5815526f0e",
+                    "timestamp": "2025-08-20T11:39:16Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/eb8ca7ab0fa319ed6071370c74d50c5815526f0e"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1291,6 +1352,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "95c296fb05387e2845065cb46ebffc8ce651f69b",
+                    "timestamp": "2025-09-12T09:31:18Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/95c296fb05387e2845065cb46ebffc8ce651f69b"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1308,7 +1370,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1325,7 +1389,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1342,7 +1408,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1354,6 +1422,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "93976d6357c3a2446387225e92fb2e6546386f0a",
+                    "timestamp": "2025-09-12T09:31:28Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/93976d6357c3a2446387225e92fb2e6546386f0a"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1371,7 +1440,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1388,7 +1459,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1405,7 +1478,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1422,7 +1497,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1439,7 +1516,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1456,7 +1535,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1473,7 +1554,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1490,7 +1573,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1507,7 +1592,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1524,7 +1611,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1541,7 +1630,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1558,7 +1649,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1575,7 +1668,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1592,7 +1687,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1609,7 +1706,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1626,7 +1725,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1643,7 +1744,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1661,7 +1764,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1678,7 +1783,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1695,7 +1802,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1712,7 +1821,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1729,7 +1840,9 @@
                   "revision": {
                     "kind": "commit_range",
                     "start_commit": "ffc8af0c47dad3be6fb4bfb9f3f5af6cd3a05a67",
+                    "start_timestamp": "2025-06-23T15:56:25Z",
                     "end_commit": "8b10b2b220de38c9e2e2e2b7d05d7383701ba070",
+                    "end_timestamp": "2025-08-18T09:31:05Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/tree/8b10b2b220de38c9e2e2e2b7d05d7383701ba070/l1-contracts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1768,6 +1881,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+                    "timestamp": "2025-07-14T11:25:39Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/480f49dad314ea4e753ff1e5180992a16926d2b3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -1780,6 +1894,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d67c99bafd7d80678bdb3bb64aeb3711d835d7fb",
+                    "timestamp": "2025-09-08T10:49:35Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/d67c99bafd7d80678bdb3bb64aeb3711d835d7fb"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1792,6 +1907,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a51b732b09ac4d03df6da1af8eee4d11ffbe6aab",
+                    "timestamp": "2025-09-08T11:01:11Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a51b732b09ac4d03df6da1af8eee4d11ffbe6aab"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1804,6 +1920,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2953d499808807b8bdf9ab1a60adeb476f5a575a",
+                    "timestamp": "2025-09-08T11:01:11Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2953d499808807b8bdf9ab1a60adeb476f5a575a"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1816,6 +1933,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ce539cb8498b954598d32a9325b0c636d9357075",
+                    "timestamp": "2025-09-08T11:01:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/ce539cb8498b954598d32a9325b0c636d9357075"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1828,6 +1946,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "bb3a089116ae74a7a7682626a41463501400d0a5",
+                    "timestamp": "2025-09-12T14:33:04Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/bb3a089116ae74a7a7682626a41463501400d0a5"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1840,6 +1959,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0b17711ab060d9bc7060c17416741427af1615f2",
+                    "timestamp": "2025-09-12T16:26:18Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/0b17711ab060d9bc7060c17416741427af1615f2"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1852,6 +1972,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d8f4dd0079ac1d34d3d6fc1c7986a4ca12a29b85",
+                    "timestamp": "2025-09-17T11:03:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/d8f4dd0079ac1d34d3d6fc1c7986a4ca12a29b85"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1864,6 +1985,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2a8524538ae01cff1e5c8b0e1d318b90f8a132c9",
+                    "timestamp": "2025-09-22T10:08:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2a8524538ae01cff1e5c8b0e1d318b90f8a132c9"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1881,6 +2003,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+                    "timestamp": "2025-07-14T11:25:39Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/480f49dad314ea4e753ff1e5180992a16926d2b3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -1893,6 +2016,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d67c99bafd7d80678bdb3bb64aeb3711d835d7fb",
+                    "timestamp": "2025-09-08T10:49:35Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/d67c99bafd7d80678bdb3bb64aeb3711d835d7fb"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1905,6 +2029,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "fc80c59a0c9cccfe91fc6c742d23277108d87843",
+                    "timestamp": "2025-09-08T11:01:11Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/fc80c59a0c9cccfe91fc6c742d23277108d87843"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1917,6 +2042,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0fb812d4fa341b5ec7696da15d208ca60a4c50f1",
+                    "timestamp": "2025-09-08T11:01:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/0fb812d4fa341b5ec7696da15d208ca60a4c50f1"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1929,6 +2055,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ce539cb8498b954598d32a9325b0c636d9357075",
+                    "timestamp": "2025-09-08T11:01:56Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/ce539cb8498b954598d32a9325b0c636d9357075"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1941,6 +2068,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2d5ea7ee12188d066ca5f24d473cabf96359d4a8",
+                    "timestamp": "2025-09-08T11:02:00Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2d5ea7ee12188d066ca5f24d473cabf96359d4a8"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1953,6 +2081,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2a8524538ae01cff1e5c8b0e1d318b90f8a132c9",
+                    "timestamp": "2025-09-22T10:08:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2a8524538ae01cff1e5c8b0e1d318b90f8a132c9"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1970,6 +2099,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+                    "timestamp": "2025-07-14T11:25:39Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/480f49dad314ea4e753ff1e5180992a16926d2b3"
                   },
                   "status": "audited_with_no_major_findings",
@@ -1982,6 +2112,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d67c99bafd7d80678bdb3bb64aeb3711d835d7fb",
+                    "timestamp": "2025-09-08T10:49:35Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/d67c99bafd7d80678bdb3bb64aeb3711d835d7fb"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -1999,6 +2130,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "480f49dad314ea4e753ff1e5180992a16926d2b3",
+                    "timestamp": "2025-07-14T11:25:39Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/480f49dad314ea4e753ff1e5180992a16926d2b3"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2011,6 +2143,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2d5ea7ee12188d066ca5f24d473cabf96359d4a8",
+                    "timestamp": "2025-09-08T11:02:00Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2d5ea7ee12188d066ca5f24d473cabf96359d4a8"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2023,6 +2156,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2a8524538ae01cff1e5c8b0e1d318b90f8a132c9",
+                    "timestamp": "2025-09-22T10:08:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2a8524538ae01cff1e5c8b0e1d318b90f8a132c9"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2062,6 +2196,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/CoinIssuer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2078,6 +2213,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/Governance.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2090,6 +2226,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "95c296fb05387e2845065cb46ebffc8ce651f69b",
+                    "timestamp": "2025-09-12T09:31:18Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/95c296fb05387e2845065cb46ebffc8ce651f69b"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2102,6 +2239,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2119,6 +2257,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/GSEPayload.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2136,6 +2275,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/GSE.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2148,6 +2288,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "cab5a54630639751fa471385508cc4a5a8a85d10",
+                    "timestamp": "2025-09-23T20:51:11Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/cab5a54630639751fa471385508cc4a5a8a85d10"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2160,6 +2301,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7a12a9650196d3c1292674052009913d3b9cd695",
+                    "timestamp": "2025-09-23T20:51:11Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/7a12a9650196d3c1292674052009913d3b9cd695"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2172,6 +2314,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "46e3dd7517ddfcff60b172a3bf2cbd09d62bfef2",
+                    "timestamp": "2025-09-25T08:05:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/46e3dd7517ddfcff60b172a3bf2cbd09d62bfef2"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2184,6 +2327,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2201,6 +2345,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/ICoinIssuer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2217,6 +2362,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/IEmpire.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2233,6 +2379,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/IGovernanceProposer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2249,6 +2396,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/IGovernance.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2260,6 +2408,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2277,6 +2426,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/IPayload.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2293,6 +2443,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/IProposerPayload.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2309,6 +2460,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/IRegistry.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2325,6 +2477,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/interfaces/IRewardDistributor.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2341,6 +2494,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/libraries/AddressSnapshotLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2352,6 +2506,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2369,6 +2524,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/libraries/CheckpointedUintLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2385,6 +2541,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/libraries/ConfigurationLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2396,6 +2553,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2413,6 +2571,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/libraries/DepositDelegationLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2429,6 +2588,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/libraries/Errors.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2440,6 +2600,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2457,6 +2618,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/libraries/ProposalLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2468,6 +2630,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2485,6 +2648,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/proposer/EmpireBase.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2501,6 +2665,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/proposer/GovernanceProposer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2517,6 +2682,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/Registry.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2533,6 +2699,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/governance/RewardDistributor.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2549,6 +2716,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/shared/interfaces/IMintableERC20.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2565,6 +2733,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/shared/libraries/BN254Lib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2577,6 +2746,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a310dd929fc136669fd84baa5024d437ac1c9603",
+                    "timestamp": "2025-09-25T12:37:48Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a310dd929fc136669fd84baa5024d437ac1c9603"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2589,6 +2759,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "5cd8f416a6b4e0f0084bdfaed672b4cb42230e2f",
+                    "timestamp": "2025-09-25T12:50:02Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/5cd8f416a6b4e0f0084bdfaed672b4cb42230e2f"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2601,6 +2772,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "1856c6133d4f5f5d8e465722be5d752dff3864bb",
+                    "timestamp": "2025-09-30T11:47:50Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/1856c6133d4f5f5d8e465722be5d752dff3864bb"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2618,6 +2790,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/shared/libraries/CompressedTimeMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2634,6 +2807,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/shared/libraries/SignatureLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2650,6 +2824,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a6eebac31276e7a08525a872d8d364da6d535f86",
+                    "timestamp": "2025-08-23T13:12:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a6eebac31276e7a08525a872d8d364da6d535f86/l1-contracts/src/shared/libraries/TimeMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2688,6 +2863,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+                    "timestamp": "2025-09-24T04:16:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2700,6 +2876,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+                    "timestamp": "2025-11-07T17:06:57Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/8c1f77d5d7afc37419d8942e8dbd871710887c1e/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2717,6 +2894,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+                    "timestamp": "2025-09-24T04:16:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2733,6 +2911,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+                    "timestamp": "2025-09-24T04:16:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2749,6 +2928,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+                    "timestamp": "2025-09-24T04:16:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.cpp"
                   },
                   "status": "audited_with_major_findings",
@@ -2761,6 +2941,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+                    "timestamp": "2025-11-07T17:06:57Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/8c1f77d5d7afc37419d8942e8dbd871710887c1e/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2778,6 +2959,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+                    "timestamp": "2025-09-24T04:16:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2790,6 +2972,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+                    "timestamp": "2025-11-07T17:06:57Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/8c1f77d5d7afc37419d8942e8dbd871710887c1e/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2807,6 +2990,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec",
+                    "timestamp": "2025-09-24T04:16:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/72f52e7bad0fc1e36da575fbc2e6bfa1b1104aec/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2818,6 +3002,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "8c1f77d5d7afc37419d8942e8dbd871710887c1e",
+                    "timestamp": "2025-11-07T17:06:57Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/8c1f77d5d7afc37419d8942e8dbd871710887c1e/barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2857,6 +3042,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "bd31f776c3ed5ed9fd5c16d1fd86ad1b9fadb116",
+                    "timestamp": "2025-11-03T13:25:09Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/bd31f776c3ed5ed9fd5c16d1fd86ad1b9fadb116/l1-contracts/src/governance/CoinIssuer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -2869,6 +3055,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "bcc710cc4f8733e6808413b8daf82c8f3d72310f",
+                    "timestamp": "2025-11-04T18:21:17Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/bcc710cc4f8733e6808413b8daf82c8f3d72310f"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2908,6 +3095,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/proposer/EmpireBase.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2920,6 +3108,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2e192712333ec2b8c38e45c13923f465e8c18a6f",
+                    "timestamp": "2025-08-20T08:41:29Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2e192712333ec2b8c38e45c13923f465e8c18a6f"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2937,6 +3126,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/GSEPayload.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2949,6 +3139,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "07b9496c954c6e690cd145df17c3e2c67b00305a",
+                    "timestamp": "2025-08-21T13:35:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/07b9496c954c6e690cd145df17c3e2c67b00305a"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2961,6 +3152,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+                    "timestamp": "2025-08-23T08:00:09Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2978,6 +3170,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/proposer/GovernanceProposer.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -2990,6 +3183,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "07b9496c954c6e690cd145df17c3e2c67b00305a",
+                    "timestamp": "2025-08-21T13:35:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/07b9496c954c6e690cd145df17c3e2c67b00305a"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3002,6 +3196,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+                    "timestamp": "2025-08-23T08:00:09Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3019,6 +3214,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/RewardDistributor.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3031,6 +3227,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d",
+                    "timestamp": "2025-08-22T15:11:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3048,6 +3245,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/interfaces/IRewardDistributor.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3059,6 +3257,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d",
+                    "timestamp": "2025-08-22T15:11:12Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/77fedd0c031cfae32ab6fdb4e6683df6aeb7ff3d"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3076,6 +3275,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/shared/libraries/SignatureLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3093,6 +3293,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7d1ec0d01f58430f6c19ebc89f4db236a9e759ef",
+                    "timestamp": "2025-08-20T11:39:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/7d1ec0d01f58430f6c19ebc89f4db236a9e759ef"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3104,6 +3305,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "83353d39aa402ccf23a14030329150096dddf763",
+                    "timestamp": "2025-08-22T15:11:13Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/83353d39aa402ccf23a14030329150096dddf763"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3116,6 +3318,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+                    "timestamp": "2025-08-23T08:00:09Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3133,6 +3336,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/libraries/AddressSnapshotLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3145,6 +3349,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "07650da19b2aa843cfab8d88f48e13fd5600a3ab",
+                    "timestamp": "2025-08-20T11:39:16Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/07650da19b2aa843cfab8d88f48e13fd5600a3ab"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3157,6 +3362,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "1cec310430f7281676b8067d5e33ed984e9726b7",
+                    "timestamp": "2025-08-20T11:39:16Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/1cec310430f7281676b8067d5e33ed984e9726b7"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3174,6 +3380,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/GSE.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3186,6 +3393,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "efd6a3ecd43f42a3bc90c94ea1ef272d18f6ef91",
+                    "timestamp": "2025-08-20T11:39:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/efd6a3ecd43f42a3bc90c94ea1ef272d18f6ef91"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3198,6 +3406,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "262591f9044cd3ed868a2b3a13d15a0bc0f9f73b",
+                    "timestamp": "2025-08-20T11:39:16Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/262591f9044cd3ed868a2b3a13d15a0bc0f9f73b"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3210,6 +3419,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9a9266660dd05114e6b921fbef6ad0df9ac765c7",
+                    "timestamp": "2025-08-22T15:11:13Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/9a9266660dd05114e6b921fbef6ad0df9ac765c7"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3227,6 +3437,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/Governance.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3239,6 +3450,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+                    "timestamp": "2025-08-23T08:00:09Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3251,6 +3463,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "884cd9b0b2841eef1ec50b1c3e0d5a56f3cdd2ca",
+                    "timestamp": "2025-08-23T08:00:20Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/884cd9b0b2841eef1ec50b1c3e0d5a56f3cdd2ca"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3263,6 +3476,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "83c6572a395b7f7b71ba1683cda303869005f9dd",
+                    "timestamp": "2025-08-27T12:25:42Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/83c6572a395b7f7b71ba1683cda303869005f9dd"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3280,6 +3494,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/libraries/ProposalLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3292,6 +3507,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "744fcf65b0a55c2534d68fe70d1a1f4f69f2c710",
+                    "timestamp": "2025-08-22T15:11:13Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/744fcf65b0a55c2534d68fe70d1a1f4f69f2c710"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3309,6 +3525,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/core/libraries/rollup/StakingLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3321,6 +3538,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a3da5c9acb07cd3c4359e024fc9e0e678f25abc5",
+                    "timestamp": "2025-08-23T08:00:09Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/a3da5c9acb07cd3c4359e024fc9e0e678f25abc5"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3338,6 +3556,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/CoinIssuer.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3355,6 +3574,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6496e59db3406cfb1ffbeab3e68be53872ec4735",
+                    "timestamp": "2025-08-05T12:29:41Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6496e59db3406cfb1ffbeab3e68be53872ec4735/l1-contracts/src/governance/Registry.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3394,6 +3614,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/messagebridge/Outbox.sol"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -3406,6 +3627,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9193dfb37055add64013ed3fe1b901351eb08003",
+                    "timestamp": "2025-09-09T22:16:07Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/9193dfb37055add64013ed3fe1b901351eb08003"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3418,6 +3640,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/70f004dc2ad19d1c0b80f8a481424dd23542f191"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3435,6 +3658,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/crypto/MerkleLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3447,6 +3671,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6eb1316b86eca5aa7b6c0b5b2a308a4a2282cbd9",
+                    "timestamp": "2025-08-26T16:47:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/6eb1316b86eca5aa7b6c0b5b2a308a4a2282cbd9"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3459,6 +3684,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e87438b3d3f29beef92ac3bb148597236944d032",
+                    "timestamp": "2025-09-12T07:07:47Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/e87438b3d3f29beef92ac3bb148597236944d032"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3476,6 +3702,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/StakingLib.sol"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -3488,6 +3715,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "3887ea20a027890a3c807c41895d74fd756f6447",
+                    "timestamp": "2025-09-19T09:05:26Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/3887ea20a027890a3c807c41895d74fd756f6447"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3505,6 +3733,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/ProposeLib.sol"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -3517,6 +3746,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "2f71e44c573b9a7b1b4698247b71ffb549c8ac74",
+                    "timestamp": "2025-09-08T12:18:35Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/2f71e44c573b9a7b1b4698247b71ffb549c8ac74"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3534,6 +3764,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/messagebridge/Inbox.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3546,6 +3777,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ca8c97c2d87444e81c640557a8bb1f9e26da600d",
+                    "timestamp": "2025-08-28T19:45:26Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/ca8c97c2d87444e81c640557a8bb1f9e26da600d"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3563,6 +3795,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/RollupCore.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3580,6 +3813,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3592,6 +3826,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/44e3f64839b6f60aa4f3443f60fb45fcf744e586"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3609,6 +3844,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/messagebridge/FeeJuicePortal.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3626,6 +3862,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/STFLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3638,6 +3875,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/70f004dc2ad19d1c0b80f8a481424dd23542f191"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3655,6 +3893,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/RewardLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3667,6 +3906,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/70f004dc2ad19d1c0b80f8a481424dd23542f191"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3679,6 +3919,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/44e3f64839b6f60aa4f3443f60fb45fcf744e586"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3696,6 +3937,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/crypto/SampleLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3708,6 +3950,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/70f004dc2ad19d1c0b80f8a481424dd23542f191"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3725,6 +3968,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/BlobLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3737,6 +3981,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e87438b3d3f29beef92ac3bb148597236944d032",
+                    "timestamp": "2025-09-12T07:07:47Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/e87438b3d3f29beef92ac3bb148597236944d032"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3754,6 +3999,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/compressed-data/Tips.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3766,6 +4012,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/70f004dc2ad19d1c0b80f8a481424dd23542f191"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3783,6 +4030,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/InvalidateLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3795,6 +4043,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "70f004dc2ad19d1c0b80f8a481424dd23542f191",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/70f004dc2ad19d1c0b80f8a481424dd23542f191"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3812,6 +4061,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/StakingQueue.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3824,6 +4074,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/44e3f64839b6f60aa4f3443f60fb45fcf744e586"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3841,6 +4092,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/rollup/EpochProofLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3853,6 +4105,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/44e3f64839b6f60aa4f3443f60fb45fcf744e586"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3870,6 +4123,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/compressed-data/fees/FeeStructs.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3882,6 +4136,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/44e3f64839b6f60aa4f3443f60fb45fcf744e586"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3899,6 +4154,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+                    "timestamp": "2025-08-15T14:49:10Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/270e2a58ae2a378472f9be791900bbd4342c7881/l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3911,6 +4167,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "44e3f64839b6f60aa4f3443f60fb45fcf744e586",
+                    "timestamp": "2025-09-26T07:33:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/44e3f64839b6f60aa4f3443f60fb45fcf744e586"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3928,6 +4185,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+                    "timestamp": "2025-08-22T11:52:08Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/474754f58e7ce6a6e0350306f4c144d0a9ee8d14"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3966,6 +4224,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "458fb330efa8c470567ab4b84a8a92a58b00586a",
+                    "timestamp": "2025-07-09T13:39:02Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/458fb330efa8c470567ab4b84a8a92a58b00586a/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -3978,6 +4237,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4433c06ae693451c6f69a2f63b7da6628078d872",
+                    "timestamp": "2025-08-13T15:21:22Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/4433c06ae693451c6f69a2f63b7da6628078d872/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -3995,6 +4255,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "458fb330efa8c470567ab4b84a8a92a58b00586a",
+                    "timestamp": "2025-07-09T13:39:02Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/458fb330efa8c470567ab4b84a8a92a58b00586a/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4007,6 +4268,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4433c06ae693451c6f69a2f63b7da6628078d872",
+                    "timestamp": "2025-08-13T15:21:22Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/4433c06ae693451c6f69a2f63b7da6628078d872/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4024,6 +4286,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "458fb330efa8c470567ab4b84a8a92a58b00586a",
+                    "timestamp": "2025-07-09T13:39:02Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/458fb330efa8c470567ab4b84a8a92a58b00586a/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4036,6 +4299,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4433c06ae693451c6f69a2f63b7da6628078d872",
+                    "timestamp": "2025-08-13T15:21:22Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/4433c06ae693451c6f69a2f63b7da6628078d872/barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4079,6 +4343,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_elliptic.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4090,6 +4355,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_elliptic.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4107,6 +4373,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_memory.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4118,6 +4385,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_memory.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4135,6 +4403,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4146,6 +4415,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4163,6 +4433,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4174,6 +4445,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4191,6 +4463,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4202,6 +4475,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4219,6 +4493,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4230,6 +4505,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4247,6 +4523,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4258,6 +4535,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4275,6 +4553,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4286,6 +4565,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4303,6 +4583,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4314,6 +4595,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4331,6 +4613,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4342,6 +4625,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4359,6 +4643,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4370,6 +4655,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4387,6 +4673,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/relations/elliptic_relation.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4399,6 +4686,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/relations/elliptic_relation.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4416,6 +4704,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/relations/memory_relation.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4427,6 +4716,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/relations/memory_relation.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4444,6 +4734,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4455,6 +4746,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4472,6 +4764,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4483,6 +4776,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4500,6 +4794,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base_params.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4511,6 +4806,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base_params.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4528,6 +4824,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4539,6 +4836,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4556,6 +4854,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4568,6 +4867,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4585,6 +4885,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4597,6 +4898,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4614,6 +4916,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4626,6 +4929,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4643,6 +4947,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4654,6 +4959,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4671,6 +4977,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.cpp"
                   },
                   "status": "audited_with_major_findings",
@@ -4683,6 +4990,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4700,6 +5008,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4711,6 +5020,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4728,6 +5038,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4739,6 +5050,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4756,6 +5068,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4767,6 +5080,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4784,6 +5098,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4795,6 +5110,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4812,6 +5128,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4823,6 +5140,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4840,6 +5158,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4851,6 +5170,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4868,6 +5188,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4879,6 +5200,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4896,6 +5218,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4907,6 +5230,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4924,6 +5248,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4935,6 +5260,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4952,6 +5278,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4963,6 +5290,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -4980,6 +5308,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -4991,6 +5320,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5008,6 +5338,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/test_utils.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5019,6 +5350,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/group/test_utils.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5036,6 +5368,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5048,6 +5381,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5065,6 +5399,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5076,6 +5411,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5093,6 +5429,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5104,6 +5441,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5121,6 +5459,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5133,6 +5472,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5150,6 +5490,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5161,6 +5502,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5178,6 +5520,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5189,6 +5532,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5206,6 +5550,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5218,6 +5563,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5235,6 +5581,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5246,6 +5593,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.hpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5263,6 +5611,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5274,6 +5623,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5291,6 +5641,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c58cd76497e68c2236d875e7eac424f4b2d7bbd5",
+                    "timestamp": "2026-01-13T10:41:44Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/c58cd76497e68c2236d875e7eac424f4b2d7bbd5/barretenberg/cpp/src/barretenberg/ultra_honk/rom_ram.test.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5302,6 +5653,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "6b858739756e0f56803e5d6a995f1308303a7f16",
+                    "timestamp": "2026-02-13T21:36:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/6b858739756e0f56803e5d6a995f1308303a7f16/barretenberg/cpp/src/barretenberg/ultra_honk/rom_ram.test.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5341,6 +5693,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/EscapeHatch.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5353,6 +5706,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9",
+                    "timestamp": "2026-02-16T15:32:23Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5365,6 +5719,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "4230665af7c983edc3b44cc25ef4a2f1e8cf660e",
+                    "timestamp": "2026-02-16T12:42:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/4230665af7c983edc3b44cc25ef4a2f1e8cf660e"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5377,6 +5732,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "495fc284073d909b54946fbd3f473723f80e5548",
+                    "timestamp": "2026-02-16T12:42:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/495fc284073d909b54946fbd3f473723f80e5548"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5394,6 +5750,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/Rollup.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5410,6 +5767,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/RollupCore.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5427,6 +5785,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/interfaces/IEscapeHatch.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5443,6 +5802,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/interfaces/IRollup.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5459,6 +5819,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/interfaces/IValidatorSelection.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5475,6 +5836,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/Errors.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5491,6 +5853,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/HatchMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5507,6 +5870,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5519,6 +5883,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c9cd1b9deb54ca43d3b4762eb73fd0dcf983e473",
+                    "timestamp": "2026-02-16T12:42:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/c9cd1b9deb54ca43d3b4762eb73fd0dcf983e473"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5536,6 +5901,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/EpochProofLib.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -5548,6 +5914,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9",
+                    "timestamp": "2026-02-16T15:32:23Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/e3b9467385bbb1eaa4eb096e6e1a18b06d45bba9"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5565,6 +5932,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/FeeLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5577,6 +5945,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "93be4fe8cc65c3e2dc938e1bae45ccc37926eb1a",
+                    "timestamp": "2026-02-13T15:32:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/93be4fe8cc65c3e2dc938e1bae45ccc37926eb1a"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5589,6 +5958,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9f8ff7e337e12bd798fff868524a14788099ed21",
+                    "timestamp": "2026-02-16T12:42:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/9f8ff7e337e12bd798fff868524a14788099ed21"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5606,6 +5976,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/InvalidateLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5622,6 +5993,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/ProposedHeaderLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5638,6 +6010,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/ProposeLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5655,6 +6028,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/RewardLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5672,6 +6046,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/ValidatorOperationsExtLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5688,6 +6063,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5700,6 +6076,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "fd98ab2827138ace06840a2375f2783e9f459674",
+                    "timestamp": "2026-02-16T12:42:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/fd98ab2827138ace06840a2375f2783e9f459674"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5717,6 +6094,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/messagebridge/Inbox.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5733,6 +6111,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/slashing/TallySlashingProposer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5745,6 +6124,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "b7605403131acbe86dbbc97be1e741f733c61f5e",
+                    "timestamp": "2026-02-13T15:32:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/b7605403131acbe86dbbc97be1e741f733c61f5e"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5757,6 +6137,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "217996f9428e222c94d7567b1c81a8d190b79327",
+                    "timestamp": "2026-02-16T12:42:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/217996f9428e222c94d7567b1c81a8d190b79327"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5769,6 +6150,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "1929135b11cefff7384005d021041a058fa5c44f",
+                    "timestamp": "2026-02-16T12:42:46Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/1929135b11cefff7384005d021041a058fa5c44f"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5781,6 +6163,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "5f4e35de036ab89a34b968e38fb2735c6b6f6994",
+                    "timestamp": "2026-02-16T12:42:47Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/5f4e35de036ab89a34b968e38fb2735c6b6f6994"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5793,6 +6176,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "f68b1a9183ce407f89bec0175615de0e478bbd48",
+                    "timestamp": "2026-02-23T10:08:19Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/f68b1a9183ce407f89bec0175615de0e478bbd48"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5810,6 +6194,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/messagebridge/Outbox.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5827,6 +6212,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0092f9f01ed88cc3626270e62716d7b722ea1944",
+                    "timestamp": "2026-01-06T20:15:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0092f9f01ed88cc3626270e62716d7b722ea1944/l1-contracts/src/core/libraries/rollup/STFLib.sol"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5866,6 +6252,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+                    "timestamp": "2026-02-27T09:20:07Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/ed3f61d61745bcd895056ee49e4c6a849928d19e/l1-contracts/script/deploy/DeployAlpha.s.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5877,6 +6264,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "96eca77fe31dd030545b16012ffd587f6decda7c",
+                    "timestamp": "2026-03-03T19:46:40Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/96eca77fe31dd030545b16012ffd587f6decda7c"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5894,6 +6282,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+                    "timestamp": "2026-02-27T09:20:07Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/ed3f61d61745bcd895056ee49e4c6a849928d19e/l1-contracts/scripts/run_alpha_upgrade.sh"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5910,6 +6299,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+                    "timestamp": "2026-02-27T09:20:07Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/ed3f61d61745bcd895056ee49e4c6a849928d19e/l1-contracts/src/alpha/AlphaPayload.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5926,6 +6316,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+                    "timestamp": "2026-02-27T09:20:07Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/ed3f61d61745bcd895056ee49e4c6a849928d19e/l1-contracts/src/alpha/AlphaVerifier.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -5942,6 +6333,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "96eca77fe31dd030545b16012ffd587f6decda7c",
+                    "timestamp": "2026-03-03T19:46:40Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/96eca77fe31dd030545b16012ffd587f6decda7c/yarn-project/aztec/src/mainnet_compatibility.test.ts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5958,6 +6350,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "96eca77fe31dd030545b16012ffd587f6decda7c",
+                    "timestamp": "2026-03-03T19:46:40Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/96eca77fe31dd030545b16012ffd587f6decda7c/yarn-project/aztec/src/testnet_compatibility.test.ts"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -5974,6 +6367,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "b7605403131acbe86dbbc97be1e741f733c61f5e",
+                    "timestamp": "2026-02-13T15:32:14Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/b7605403131acbe86dbbc97be1e741f733c61f5e"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -5986,6 +6380,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "ed3f61d61745bcd895056ee49e4c6a849928d19e",
+                    "timestamp": "2026-02-27T09:20:07Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/ed3f61d61745bcd895056ee49e4c6a849928d19e/l1-contracts/src/core/slashing/TallySlashingProposer.sol"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -5999,6 +6394,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "b2742ee480de17eb6683413811251123c54c1d43",
+                    "timestamp": "2026-03-01T11:42:45Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/commit/b2742ee480de17eb6683413811251123c54c1d43"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -6038,6 +6434,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+                    "timestamp": "2026-02-16T15:32:51Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/e4712cda8def49d75fbba2d361625fc5e21945f5/barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/uint.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -6054,6 +6451,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+                    "timestamp": "2026-02-16T15:32:51Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/e4712cda8def49d75fbba2d361625fc5e21945f5/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -6066,6 +6464,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0f3ca1c6a84ef6ed14d4b29564ffcf4d37645619",
+                    "timestamp": "2026-04-03T12:53:28Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/0f3ca1c6a84ef6ed14d4b29564ffcf4d37645619/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -6078,6 +6477,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "249bfdc76053f41455e048f182605a871f970cce",
+                    "timestamp": "2026-04-03T13:10:15Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/249bfdc76053f41455e048f182605a871f970cce/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -6095,6 +6495,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+                    "timestamp": "2026-02-16T15:32:51Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/e4712cda8def49d75fbba2d361625fc5e21945f5/barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.cpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -6107,6 +6508,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "a4837fef0294826c391125686cce671199d055f6",
+                    "timestamp": "2026-04-06T09:51:28Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/a4837fef0294826c391125686cce671199d055f6/barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.cpp"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -6124,6 +6526,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+                    "timestamp": "2026-02-16T15:32:51Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/e4712cda8def49d75fbba2d361625fc5e21945f5/barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.hpp"
                   },
                   "status": "audited_with_no_major_findings",
@@ -6140,6 +6543,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e4712cda8def49d75fbba2d361625fc5e21945f5",
+                    "timestamp": "2026-02-16T15:32:51Z",
                     "url": "https://github.com/AztecProtocol/aztec-packages/blob/e4712cda8def49d75fbba2d361625fc5e21945f5/barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.hpp"
                   },
                   "status": "audited_with_no_major_findings",

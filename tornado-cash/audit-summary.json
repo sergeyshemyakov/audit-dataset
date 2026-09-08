@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "project": "tornado-cash",
   "reports": [
     {
@@ -27,6 +27,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "timestamp": "2019-10-17T16:19:35Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/circuits/merkleTree.circom"
                   },
                   "status": "audited_with_no_major_findings",
@@ -38,6 +39,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7193655e4940476269426b80da40bc9a099598e4",
+                    "timestamp": "2019-11-02T01:33:19Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/7193655e"
                   },
                   "status": "audited_with_no_major_findings",
@@ -50,6 +52,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "07168f9816a6a78767f53aab25624bd1d739a66d",
+                    "timestamp": "2019-11-02T01:55:25Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/07168f98"
                   },
                   "status": "audited_with_no_major_findings",
@@ -62,6 +65,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+                    "timestamp": "2019-11-03T08:41:05Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/f8cd3fea"
                   },
                   "status": "audited_with_no_major_findings",
@@ -79,6 +83,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "timestamp": "2019-10-17T16:19:35Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/circuits/withdraw.circom"
                   },
                   "status": "audited_with_no_major_findings",
@@ -90,6 +95,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9efab84e65d923410ce4418794a5ca2ddcd74f37",
+                    "timestamp": "2019-11-02T01:32:28Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/9efab84e"
                   },
                   "status": "audited_with_no_major_findings",
@@ -102,6 +108,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7193655e4940476269426b80da40bc9a099598e4",
+                    "timestamp": "2019-11-02T01:33:19Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/7193655e"
                   },
                   "status": "audited_with_no_major_findings",
@@ -114,6 +121,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+                    "timestamp": "2019-11-03T08:41:05Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/f8cd3fea"
                   },
                   "status": "audited_with_no_major_findings",
@@ -153,6 +161,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "timestamp": "2019-10-17T16:19:35Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ERC20Mixer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -165,6 +174,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c00e5532994f03f8bc61f147259bc5d353a0d2c9",
+                    "timestamp": "2019-11-03T08:25:58Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/c00e5532"
                   },
                   "status": "audited_with_no_major_findings",
@@ -177,6 +187,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "83c9ba72969ff3dfd6b66acec5134666f8fdf283",
+                    "timestamp": "2019-11-11T16:12:17Z",
                     "url": "https://github.com/peppersec/tornado-mixer/commit/83c9ba72969ff3dfd6b66acec5134666f8fdf283"
                   },
                   "status": "audited_with_no_major_findings",
@@ -189,6 +200,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "timestamp": "2019-11-18T20:03:44Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/ERC20Mixer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -206,6 +218,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "timestamp": "2019-10-17T16:19:35Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/ETHMixer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -218,6 +231,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "timestamp": "2019-11-18T20:03:44Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/ETHMixer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -235,6 +249,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "timestamp": "2019-10-17T16:19:35Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/Mixer.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -247,6 +262,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "timestamp": "2019-11-18T20:03:44Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/Mixer.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -264,6 +280,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+                    "timestamp": "2019-10-17T16:19:35Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/contracts/MerkleTreeWithHistory.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -276,6 +293,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "d0e312eb808797a4f20a81fda2224185a3f914b4",
+                    "timestamp": "2019-11-18T20:03:44Z",
                     "url": "https://github.com/peppersec/tornado-mixer/blob/d0e312eb808797a4f20a81fda2224185a3f914b4/contracts/MerkleTreeWithHistory.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -320,6 +338,7 @@
                     "kind": "branch",
                     "ref": "master",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/peppersec/tornado-mixer/tree/master/contracts"
                   },
@@ -338,6 +357,7 @@
                     "kind": "branch",
                     "ref": "master",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/peppersec/tornado-mixer/blob/master/cli.js"
                   },
@@ -361,6 +381,7 @@
                     "kind": "branch",
                     "ref": "master",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/iden3/circomlib/tree/master/circuits"
                   },
@@ -379,6 +400,7 @@
                     "kind": "branch",
                     "ref": "master",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/iden3/circomlib/blob/master/src/mimcsponge_gencontract.js"
                   },
@@ -422,6 +444,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "051df72c9b1203e7ab7308a4452105036ad46bfb",
+                    "timestamp": "2020-08-29T12:46:28Z",
                     "url": "https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6/051df72c9b1203e7ab7308a4452105036ad46bfb"
                   },
                   "status": "audited_with_no_major_findings",
@@ -445,6 +468,7 @@
                     "kind": "tag",
                     "tag": "audit",
                     "commit": null,
+                    "timestamp": null,
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"
                   },
                   "status": "audited_with_major_findings",
@@ -485,6 +509,7 @@
                     "kind": "tag",
                     "tag": "audit",
                     "commit": null,
+                    "timestamp": null,
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"
                   },
                   "status": "audited_with_no_major_findings",
@@ -498,6 +523,7 @@
                     "kind": "branch",
                     "ref": "audit-fixed",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/audit-fixed"
                   },
@@ -518,6 +544,7 @@
                     "kind": "tag",
                     "tag": "audit",
                     "commit": null,
+                    "timestamp": null,
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"
                   },
                   "status": "audited_with_major_findings",
@@ -531,6 +558,7 @@
                     "kind": "branch",
                     "ref": "audit-fixed",
                     "commit": null,
+                    "timestamp": null,
                     "immutable": false,
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/audit-fixed"
                   },
@@ -572,6 +600,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/circuits"
                   },
                   "status": "partially_audited_without_major_findings",
@@ -589,6 +618,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/circuits/MerkleTree.circom"
                   },
                   "status": "not_audited",
@@ -605,6 +635,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/circuits/MerkleTreeUpdater.circom"
                   },
                   "status": "audited_with_no_major_findings",
@@ -617,6 +648,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "7487ac8b09dcfc78ecc166cff5208435010cec8e",
+                    "timestamp": "2020-10-12T16:15:43Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/7487ac8b09dcfc78ecc166cff5208435010cec8e/circuits/MerkleTreeUpdater.circom"
                   },
                   "status": "audited_with_no_major_findings",
@@ -634,6 +666,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/circuits/Withdraw.circom"
                   },
                   "status": "audited_with_no_major_findings",
@@ -646,6 +679,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "459fa79321b1b48eefc3cb85f82733528d5e56d3",
+                    "timestamp": "2020-10-14T14:31:54Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/459fa79321b1b48eefc3cb85f82733528d5e56d3/circuits/Withdraw.circom"
                   },
                   "status": "audited_with_no_major_findings",
@@ -663,6 +697,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/contracts"
                   },
                   "status": "partially_audited_with_major_findings",
@@ -680,6 +715,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/IVerifier.sol"
                   },
                   "status": "not_audited",
@@ -696,6 +732,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/RewardVerifier.sol"
                   },
                   "status": "not_audited",
@@ -712,6 +749,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/TreeUpdateVerifier.sol"
                   },
                   "status": "not_audited",
@@ -728,6 +766,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/WithdrawVerifier.sol"
                   },
                   "status": "not_audited",
@@ -744,6 +783,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/Miner.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -756,6 +796,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "c8865315c50f3a0cabdd4110a6c45ceba4d4b809",
+                    "timestamp": "2020-10-12T16:15:43Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/c8865315c50f3a0cabdd4110a6c45ceba4d4b809/contracts/Miner.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -769,6 +810,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "e0008b3ed46dbf127b452d1d086235f0fe2dfcb8",
+                    "timestamp": "2020-10-12T16:15:43Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/e0008b3ed46dbf127b452d1d086235f0fe2dfcb8/contracts/Miner.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -781,6 +823,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "49ce4e9375509c3bc866d32fbf6345361a85b9a0",
+                    "timestamp": "2020-10-13T14:21:24Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/49ce4e9375509c3bc866d32fbf6345361a85b9a0/contracts/Miner.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -798,6 +841,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+                    "timestamp": "2020-09-21T20:17:03Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/820bd83254f3264cebaf255869641ebc33288dc3/contracts/RewardSwap.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -837,6 +881,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/IHasher.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -854,6 +899,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/IRewardSwap.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -871,6 +917,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/IVerifier.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -888,6 +935,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/ITornado.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -905,6 +953,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/Miner.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -922,6 +971,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/TornadoTrees.sol"
                   },
                   "status": "audited_with_major_findings",
@@ -939,6 +989,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/utils/MerkleTreeWithHistory.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -956,6 +1007,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/TornadoProxy.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -973,6 +1025,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/RewardSwap.sol"
                   },
                   "status": "audited_with_no_major_findings",
@@ -990,6 +1043,7 @@
                   "revision": {
                     "kind": "commit",
                     "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+                    "timestamp": "2020-11-02T20:07:53Z",
                     "url": "https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/utils/OwnableMerkleTree.sol"
                   },
                   "status": "audited_with_no_major_findings",

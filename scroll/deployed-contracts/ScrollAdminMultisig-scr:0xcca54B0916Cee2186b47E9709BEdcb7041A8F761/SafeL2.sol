@@ -89,7 +89,7 @@ abstract contract Executor {
 /**
  * @title Module Manager - A contract managing Safe modules
  * @notice Modules are extensions with unlimited access to a Safe that can be added to a Safe by its owners.
- *            ⚠️ WARNING: Modules are a security risk since they can execute arbitrary transactions, 
+ *            ⚠️ WARNING: Modules are a security risk since they can execute arbitrary transactions,
  *            so only trusted and audited modules should be added to a Safe. A malicious module can
  *            completely takeover a Safe.
  * @author Stefan George - @Georgi87
@@ -244,10 +244,10 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
 
         /**
          * Because of the argument validation, we can assume that the loop will always iterate over the valid module list values
-         *       and the `next` variable will either be an enabled module or a sentinel address (signalling the end). 
+         *       and the `next` variable will either be an enabled module or a sentinel address (signalling the end).
          *
          *       If we haven't reached the end inside the loop, we need to set the next pointer to the last element of the modules array
-         *       because the `next` variable (which is a module by itself) acting as a pointer to the start of the next page is neither 
+         *       because the `next` variable (which is a module by itself) acting as a pointer to the start of the next page is neither
          *       included to the current page, nor will it be included in the next one if you pass it as a start.
          */
         if (next != SENTINEL_MODULES) {

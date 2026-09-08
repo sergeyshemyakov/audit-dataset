@@ -158,7 +158,7 @@ library ZkTrieVerifier {
                     ptr := add(ptr, 0x20) // skip KeyPreimage
                 }
                 case 5 { ptr := add(ptr, 0x01) }
-                    // skip NodeType
+                // skip NodeType
                 default { revertWith("InvalidAccountLeafNodeType") }
 
                 // compare ProofMagicBytes

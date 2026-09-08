@@ -1,0 +1,1717 @@
+{
+  "schema_version": "1.2.0",
+  "project": "Solady",
+  "reports": [
+    {
+      "id": "ackee-blockchain-solady-report",
+      "report_file": "solady__audits__ackee-blockchain-solady-report.md",
+      "title": "Solady: Tokens & Utils Selection",
+      "description": "Security review by Ackee Blockchain, funded by RockawayX, of a selection of Solady token contracts (ERC20, ERC721, ERC1155) and utility libraries (SafeTransferLib, ERC1967Factory, SignatureCheckerLib, MerkleProofLib, EIP712) using manual review and differential fuzzing. Revision 1.1 is a fix review of the reported findings.",
+      "isRelevant": true,
+      "auditor": "Ackee Blockchain",
+      "report_date": "2023-06-02",
+      "repositories": [
+        {
+          "id": "solady",
+          "url": "https://github.com/Vectorized/solady"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "solady",
+          "paths": {
+            "src/tokens/ERC20.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
+                    "timestamp": "2023-05-30T21:01:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/37a79cebb0f12472cc339a726d6f385ec534d056"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Revision 1.1 (fix review)",
+                  "coverage": "Fix review of the findings reported against this file in Revision 1.0; not a full re-audit.",
+                  "follows": "e158762ba98db40a06411db7f80a54b93e951818",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC721.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Info"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
+                    "timestamp": "2023-05-30T21:01:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/37a79cebb0f12472cc339a726d6f385ec534d056"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Revision 1.1 (fix review)",
+                  "coverage": "Fix review of the findings reported against this file in Revision 1.0; not a full re-audit.",
+                  "follows": "e158762ba98db40a06411db7f80a54b93e951818",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC1155.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
+                    "timestamp": "2023-05-30T21:01:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/37a79cebb0f12472cc339a726d6f385ec534d056"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Revision 1.1 (fix review)",
+                  "coverage": "Fix review of the findings reported against this file in Revision 1.0; not a full re-audit.",
+                  "follows": "e158762ba98db40a06411db7f80a54b93e951818",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/SafeTransferLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
+                    "timestamp": "2023-05-30T21:01:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/37a79cebb0f12472cc339a726d6f385ec534d056"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Revision 1.1 (fix review)",
+                  "coverage": "Fix review of the findings reported against this file in Revision 1.0; not a full re-audit.",
+                  "follows": "e158762ba98db40a06411db7f80a54b93e951818",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/ERC1967Factory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/SignatureCheckerLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
+                    "timestamp": "2023-05-30T21:01:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/37a79cebb0f12472cc339a726d6f385ec534d056"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Revision 1.1 (fix review)",
+                  "coverage": "Fix review of the findings reported against this file in Revision 1.0; not a full re-audit.",
+                  "follows": "e158762ba98db40a06411db7f80a54b93e951818",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/MerkleProofLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Info"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
+                    "timestamp": "2023-05-30T21:01:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/37a79cebb0f12472cc339a726d6f385ec534d056"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Revision 1.1 (fix review)",
+                  "coverage": "Fix review of the findings reported against this file in Revision 1.0; not a full re-audit.",
+                  "follows": "e158762ba98db40a06411db7f80a54b93e951818",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/EIP712.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e158762ba98db40a06411db7f80a54b93e951818",
+                    "timestamp": "2023-05-19T02:59:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e158762ba98db40a06411db7f80a54b93e951818"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Revision 1.0 (initial audit)",
+                  "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
+                    "timestamp": "2023-05-30T21:01:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/37a79cebb0f12472cc339a726d6f385ec534d056"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Revision 1.1 (fix review)",
+                  "coverage": "Fix review of the findings reported against this file in Revision 1.0; not a full re-audit.",
+                  "follows": "e158762ba98db40a06411db7f80a54b93e951818",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "shung-solady-erc721-audit",
+      "report_file": "solady__audits__shung-solady-erc721-audit.md",
+      "title": "Solady ERC721 Security Review",
+      "description": "Independent security review of the Solady ERC721 token contract by shung as part of the OpenSense Operation Solwaifu community audit initiative, covering the custom storage layout, manual memory operations, and inline assembly. No significant issues were found; the reported Low and Informational items were addressed with documentation.",
+      "isRelevant": true,
+      "auditor": "shung (OpenSense Solwaifu initiative)",
+      "report_date": "2023-07-08",
+      "repositories": [
+        {
+          "id": "solady",
+          "url": "https://github.com/Vectorized/solady"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "solady",
+          "paths": {
+            "src/tokens/ERC721.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7175c21f95255dc7711ce84cc32080a41864abd6",
+                    "timestamp": "2023-06-22T04:04:48Z",
+                    "url": "https://github.com/Vectorized/solady/commit/7175c21f95255dc7711ce84cc32080a41864abd6"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file (tag v0.0.107), including its custom storage layout and manual memory operations.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e8d36d039bbf2c8742bc7d463131ed381c2e867b",
+                    "timestamp": "2023-07-08T17:35:47Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e8d36d039bbf2c8742bc7d463131ed381c2e867b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Documentation and comment fixes for the reported findings (PR 496), stated in the report conclusion as addressing them; no full re-review.",
+                  "follows": "7175c21f95255dc7711ce84cc32080a41864abd6",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-solady-report",
+      "report_file": "solady__audits__cantina-solady-report.md",
+      "title": "Solady Security Review (Cantina Public Goods)",
+      "description": "Crowdfunded Cantina public goods security review of Solady targeting ERC1967Factory, ERC20, ERC721, ERC1155, LibClone, MerkleProofLib, SignatureCheckerLib and ECDSA. Fixes were applied in follow-up pull requests and confirmed by the reviewers.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2023-09-14",
+      "repositories": [
+        {
+          "id": "solady",
+          "url": "https://github.com/Vectorized/solady"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "solady",
+          "paths": {
+            "src/utils/ERC1967Factory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c97ba5887c4eeab6c23db803a6f15a5125a27f2d",
+                    "timestamp": "2023-09-10T20:29:23Z",
+                    "url": "https://github.com/Vectorized/solady/commit/c97ba5887c4eeab6c23db803a6f15a5125a27f2d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 4.2.1, 4.4.12, 4.5.9 (PR 547); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC20.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "83e4650283a477bb9b5fd04e982e7f9d1bf76fdc",
+                    "timestamp": "2023-09-10T20:26:09Z",
+                    "url": "https://github.com/Vectorized/solady/commit/83e4650283a477bb9b5fd04e982e7f9d1bf76fdc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 4.2.2, 4.3.1, 4.4.4, 4.5.5 (PR 538); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC721.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7b5e4316240fdbe0c45df8e66a3c2f4639c22a8a",
+                    "timestamp": "2023-09-10T20:26:53Z",
+                    "url": "https://github.com/Vectorized/solady/commit/7b5e4316240fdbe0c45df8e66a3c2f4639c22a8a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 4.4.5, 4.4.6, 4.5.2, 4.5.3, 4.5.5 (PR 549); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC1155.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9ac02f7c4d39036419281b639154ee7908edf136",
+                    "timestamp": "2023-09-10T20:27:41Z",
+                    "url": "https://github.com/Vectorized/solady/commit/9ac02f7c4d39036419281b639154ee7908edf136"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 4.4.5, 4.4.7, 4.4.8, 4.4.9, 4.4.10, 4.5.5, 4.5.6 (PR 551); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/LibClone.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1f023f7a8d61d82c002d19feeb530a87ec84c97c",
+                    "timestamp": "2023-09-10T20:23:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/1f023f7a8d61d82c002d19feeb530a87ec84c97c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 4.1.1, 4.4.2, 4.5.10 (PR 548); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/MerkleProofLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3598aa3e280c36f607e35d5b2ccd601ae7bafc55",
+                    "timestamp": "2023-09-10T20:25:21Z",
+                    "url": "https://github.com/Vectorized/solady/commit/3598aa3e280c36f607e35d5b2ccd601ae7bafc55"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 4.3.4, 4.4.14, 4.4.15, 4.5.11, 4.5.12 (PR 550); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/SignatureCheckerLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "22385ac7b31c27f95b25ee73b3618251386d8fd2",
+                    "timestamp": "2023-08-09T09:20:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/22385ac7b31c27f95b25ee73b3618251386d8fd2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 4.4.16 (PR 537); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fb7ede6ab5667929e48d08ca20d4551cce49a556",
+                    "timestamp": "2023-09-10T20:22:47Z",
+                    "url": "https://github.com/Vectorized/solady/commit/fb7ede6ab5667929e48d08ca20d4551cce49a556"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 4.4.3, 4.5.5, 4.5.13 (PR 554); not a full re-audit.",
+                  "follows": "22385ac7b31c27f95b25ee73b3618251386d8fd2",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/ECDSA.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                    "timestamp": "2023-08-05T13:23:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/89101d53b7c8784cca935c1f2f6403639cee48b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "Full review of the explicitly scoped file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7a0613faa362c4bd072779fe9725a7e4f8c45a83",
+                    "timestamp": "2023-08-09T07:46:39Z",
+                    "url": "https://github.com/Vectorized/solady/commit/7a0613faa362c4bd072779fe9725a7e4f8c45a83"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 4.2.3 (PR 536); not a full re-audit.",
+                  "follows": "89101d53b7c8784cca935c1f2f6403639cee48b2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "96af34cd3dca7ac3b9d337939dcfe61c88f7c24c",
+                    "timestamp": "2023-09-10T20:21:42Z",
+                    "url": "https://github.com/Vectorized/solady/commit/96af34cd3dca7ac3b9d337939dcfe61c88f7c24c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 4.5.5 (PR 573); not a full re-audit.",
+                  "follows": "7a0613faa362c4bd072779fe9725a7e4f8c45a83",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "xuwinnie-solady-cbrt-proof",
+      "report_file": "cbrt-proof__audits__xuwinnie-solady-cbrt-proof.md",
+      "title": "Solady cbrt & cbrtWad Audit Report",
+      "description": "Mathematical correctness proof by xuwinnie of the cbrt and cbrtWad functions in FixedPointMathLib, showing that the initial guess and iterative refinement return the exact integer cube root. No findings are reported.",
+      "isRelevant": true,
+      "auditor": "xuwinnie",
+      "report_date": "2024-07-31",
+      "repositories": [
+        {
+          "id": "solady",
+          "url": "https://github.com/Vectorized/solady"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "solady",
+          "paths": {
+            "src/utils/FixedPointMathLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43f9d49815c8126d92771b26bd9bdbe2dbea87a5",
+                    "timestamp": "2024-08-01T09:32:50Z",
+                    "url": "https://github.com/Vectorized/solady/commit/43f9d49815c8126d92771b26bd9bdbe2dbea87a5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Formal proof",
+                  "coverage": "Mathematical correctness proof of the cbrt and cbrtWad functions only; the rest of the file was not reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-spearbit-coinbase-solady-report",
+      "report_file": "solady__audits__cantina-spearbit-coinbase-solady-report.md",
+      "title": "Coinbase Solady Security Review",
+      "description": "Spearbit security review of the Solady library commissioned by Coinbase, conducted over 40 days on a single repository commit and reporting 55 issues across the accounts, tokens and utils modules. Fixes were applied in follow-up pull requests and verified by Spearbit.",
+      "isRelevant": true,
+      "auditor": "Spearbit (via Cantina)",
+      "report_date": "2025-01-22",
+      "repositories": [
+        {
+          "id": "solady",
+          "url": "https://github.com/Vectorized/solady"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "solady",
+          "paths": {
+            "src/accounts/ERC4337.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2781e800f8f7f723618c2a6ce279292eef23a827",
+                    "timestamp": "2024-12-17T02:19:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/2781e800f8f7f723618c2a6ce279292eef23a827"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.24 (PR 1233), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b8380d6b1e3ba4af190f50545bdf7c0d14008188",
+                    "timestamp": "2025-01-14T15:36:45Z",
+                    "url": "https://github.com/Vectorized/solady/commit/b8380d6b1e3ba4af190f50545bdf7c0d14008188"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.17 (PR 1300), verified by Spearbit; not a full re-audit.",
+                  "follows": "2781e800f8f7f723618c2a6ce279292eef23a827",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/accounts/ERC4337Factory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "90bc5366025c12497dd02a02a067a2fdee515e20",
+                    "timestamp": "2025-01-13T04:33:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/90bc5366025c12497dd02a02a067a2fdee515e20"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.3.4 (PR 1280); Spearbit reviewed the fix and noted a residual usability concern that Solady chose not to address. Not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/accounts/ERC7821.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e3ebb452c4d5854c51bc0e44be416cba9ff6c6ed",
+                    "timestamp": "2025-01-13T05:52:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e3ebb452c4d5854c51bc0e44be416cba9ff6c6ed"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.22 (PR 1283), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "159696cbc2341b20c9d1063f942bd450b1f82b2a",
+                    "timestamp": "2025-01-13T06:22:57Z",
+                    "url": "https://github.com/Vectorized/solady/commit/159696cbc2341b20c9d1063f942bd450b1f82b2a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.20 (PR 1285), verified by Spearbit; not a full re-audit.",
+                  "follows": "e3ebb452c4d5854c51bc0e44be416cba9ff6c6ed",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/accounts/LibERC7579.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "21b9371d592e61ca8d5af3cd1a0186eaf4de1989",
+                    "timestamp": "2024-12-18T00:53:24Z",
+                    "url": "https://github.com/Vectorized/solady/commit/21b9371d592e61ca8d5af3cd1a0186eaf4de1989"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.2.2 (PR 1239), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "580419f2b8513323f79a44e62cf85092f581ecca",
+                    "timestamp": "2024-12-18T20:03:50Z",
+                    "url": "https://github.com/Vectorized/solady/commit/580419f2b8513323f79a44e62cf85092f581ecca"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.3.7 (PR 1244), verified by Spearbit; not a full re-audit.",
+                  "follows": "21b9371d592e61ca8d5af3cd1a0186eaf4de1989",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "23df112333dc707fab92557a12c2e377d3e53ae4",
+                    "timestamp": "2025-01-13T08:39:36Z",
+                    "url": "https://github.com/Vectorized/solady/commit/23df112333dc707fab92557a12c2e377d3e53ae4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.14 (PR 1293), verified by Spearbit; not a full re-audit.",
+                  "follows": "580419f2b8513323f79a44e62cf85092f581ecca",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/accounts/Receiver.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "175e4e71a7622836a127377dec0b28c92fb4789a",
+                    "timestamp": "2025-01-13T08:46:40Z",
+                    "url": "https://github.com/Vectorized/solady/commit/175e4e71a7622836a127377dec0b28c92fb4789a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.15 (PR 1294), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/accounts/Timelock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "55e4501c920ce9068513e573429e1f8e3ab3849e",
+                    "timestamp": "2024-12-17T10:20:25Z",
+                    "url": "https://github.com/Vectorized/solady/commit/55e4501c920ce9068513e573429e1f8e3ab3849e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 5.1.2, 5.3.6, 5.6.3 (PR 1231), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "12f35e0e06352c3ef2f4be2e4e73513673151b6f",
+                    "timestamp": "2025-01-13T09:20:34Z",
+                    "url": "https://github.com/Vectorized/solady/commit/12f35e0e06352c3ef2f4be2e4e73513673151b6f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.2 (PR 1290), verified by Spearbit; not a full re-audit.",
+                  "follows": "55e4501c920ce9068513e573429e1f8e3ab3849e",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "96a374d388ee17aa007867e196d547d19c2e8bb7",
+                    "timestamp": "2025-01-15T14:30:41Z",
+                    "url": "https://github.com/Vectorized/solady/commit/96a374d388ee17aa007867e196d547d19c2e8bb7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 5.4.8, 5.6.23 (PR 1302), verified by Spearbit; not a full re-audit.",
+                  "follows": "12f35e0e06352c3ef2f4be2e4e73513673151b6f",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/auth/EnumerableRoles.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                }
+              ]
+            },
+            "src/tokens/ERC1155.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e11b6f31fe853dc56d43557fd167cfba5b51d3fb",
+                    "timestamp": "2024-12-17T11:34:45Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e11b6f31fe853dc56d43557fd167cfba5b51d3fb"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.2.1 (PR 1237), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC20.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                }
+              ]
+            },
+            "src/tokens/ERC20Votes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "120a9cdcaf3d944d4f396502ef8ab370ba3eba4c",
+                    "timestamp": "2025-01-13T07:06:43Z",
+                    "url": "https://github.com/Vectorized/solady/commit/120a9cdcaf3d944d4f396502ef8ab370ba3eba4c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.1 (PR 1289), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d3488dcd0826479d7872b518286ae09bd8cefae6",
+                    "timestamp": "2025-01-17T22:47:34Z",
+                    "url": "https://github.com/Vectorized/solady/commit/d3488dcd0826479d7872b518286ae09bd8cefae6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.1 (PR 1314), verified by Spearbit; not a full re-audit.",
+                  "follows": "120a9cdcaf3d944d4f396502ef8ab370ba3eba4c",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/tokens/ERC721.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c1f772792fff569a0e69a6ceedfc48abf49b04ea",
+                    "timestamp": "2024-12-19T13:55:22Z",
+                    "url": "https://github.com/Vectorized/solady/commit/c1f772792fff569a0e69a6ceedfc48abf49b04ea"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.3.1 (PR 1245), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/DynamicArrayLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3dedb8fc8c4e9b96ff11caba9ae72c2d2aea488c",
+                    "timestamp": "2024-12-17T02:17:41Z",
+                    "url": "https://github.com/Vectorized/solady/commit/3dedb8fc8c4e9b96ff11caba9ae72c2d2aea488c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.5.1 (PR 1232), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/EIP712.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                }
+              ]
+            },
+            "src/utils/EnumerableSetLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ae1332ebdec5870b25451c5ce91c05a35c58af4d",
+                    "timestamp": "2025-01-13T06:47:24Z",
+                    "url": "https://github.com/Vectorized/solady/commit/ae1332ebdec5870b25451c5ce91c05a35c58af4d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.5.2 (PR 1287), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb36cf4817e8dd81349895f1ed5c922299343ffc",
+                    "timestamp": "2025-01-13T08:31:54Z",
+                    "url": "https://github.com/Vectorized/solady/commit/eb36cf4817e8dd81349895f1ed5c922299343ffc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.7 (PR 1292), verified by Spearbit; not a full re-audit.",
+                  "follows": "ae1332ebdec5870b25451c5ce91c05a35c58af4d",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/Initializable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "22bcb1df823b329eb15eef7871d63042dd246489",
+                    "timestamp": "2024-12-30T10:37:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/22bcb1df823b329eb15eef7871d63042dd246489"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 5.2.3, 5.5.11 (PR 1258), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8a08a70b2e116fae44e09e1d650b2f27b009cfd3",
+                    "timestamp": "2025-01-13T05:43:06Z",
+                    "url": "https://github.com/Vectorized/solady/commit/8a08a70b2e116fae44e09e1d650b2f27b009cfd3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.4.6 (PR 1281), verified by Spearbit; not a full re-audit.",
+                  "follows": "22bcb1df823b329eb15eef7871d63042dd246489",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/LibClone.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "75727e9fa861fe7313c1fb0e5fba76c87d501b3e",
+                    "timestamp": "2025-01-13T06:42:39Z",
+                    "url": "https://github.com/Vectorized/solady/commit/75727e9fa861fe7313c1fb0e5fba76c87d501b3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.5.9 (PR 1286), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d4f6dbcefe3ddce628c7404c2ac8145609071a75",
+                    "timestamp": "2025-01-15T14:43:33Z",
+                    "url": "https://github.com/Vectorized/solady/commit/d4f6dbcefe3ddce628c7404c2ac8145609071a75"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.21 (PR 1304), verified by Spearbit; not a full re-audit.",
+                  "follows": "75727e9fa861fe7313c1fb0e5fba76c87d501b3e",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/LibTransient.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e11b6f31fe853dc56d43557fd167cfba5b51d3fb",
+                    "timestamp": "2024-12-17T11:34:45Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e11b6f31fe853dc56d43557fd167cfba5b51d3fb"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.2.1 (PR 1237), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d323836cf9029659619122010c74f242ffca4b7b",
+                    "timestamp": "2025-01-10T11:05:48Z",
+                    "url": "https://github.com/Vectorized/solady/commit/d323836cf9029659619122010c74f242ffca4b7b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.12 (PR 1270), verified by Spearbit; not a full re-audit.",
+                  "follows": "e11b6f31fe853dc56d43557fd167cfba5b51d3fb",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/Lifebuoy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "66bf970c10aa529402620d3e6a2de12138e84558",
+                    "timestamp": "2024-12-11T18:45:15Z",
+                    "url": "https://github.com/Vectorized/solady/commit/66bf970c10aa529402620d3e6a2de12138e84558"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 5.4.3, 5.5.6 (PR 1225), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 1
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e11b6f31fe853dc56d43557fd167cfba5b51d3fb",
+                    "timestamp": "2024-12-17T11:34:45Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e11b6f31fe853dc56d43557fd167cfba5b51d3fb"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.2.1 (PR 1237), verified by Spearbit; not a full re-audit.",
+                  "follows": "66bf970c10aa529402620d3e6a2de12138e84558",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/MinHeapLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b14e130bd5210a9273f7d49a872fe683c69d6a80",
+                    "timestamp": "2025-01-13T08:51:15Z",
+                    "url": "https://github.com/Vectorized/solady/commit/b14e130bd5210a9273f7d49a872fe683c69d6a80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 5.6.4, 5.6.16 (PR 1291), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/Multicallable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a00a06951f5f7c9765fb018663b3414c33909a25",
+                    "timestamp": "2025-01-13T05:49:58Z",
+                    "url": "https://github.com/Vectorized/solady/commit/a00a06951f5f7c9765fb018663b3414c33909a25"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.4.2 (PR 1282), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/P256.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4ba18e26bca7390a1bb709db15be4cee4143eaf",
+                    "timestamp": "2025-01-10T23:14:28Z",
+                    "url": "https://github.com/Vectorized/solady/commit/e4ba18e26bca7390a1bb709db15be4cee4143eaf"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 5.4.1, 5.6.6 (PR 1275), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "494a6cbe4eb077b1332bcc2c17b7a8ad5b3e082f",
+                    "timestamp": "2025-01-14T14:57:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/494a6cbe4eb077b1332bcc2c17b7a8ad5b3e082f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.8 (PR 1297), verified by Spearbit; not a full re-audit.",
+                  "follows": "e4ba18e26bca7390a1bb709db15be4cee4143eaf",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/RedBlackTreeLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "582e0cc30970720f5cd8c8e7669e4ffa82c9ec43",
+                    "timestamp": "2025-01-13T09:13:52Z",
+                    "url": "https://github.com/Vectorized/solady/commit/582e0cc30970720f5cd8c8e7669e4ffa82c9ec43"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for findings 5.5.5, 5.6.10, 5.6.13, 5.6.19 (PR 1288), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/SafeTransferLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5da5bd872349f97ac9b197fd9402da2e8f2c98b2",
+                    "timestamp": "2025-01-14T15:17:50Z",
+                    "url": "https://github.com/Vectorized/solady/commit/5da5bd872349f97ac9b197fd9402da2e8f2c98b2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.4.7 (PR 1298), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/SignatureCheckerLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cca555c569588b7244bfffcb99b3e4d093fd80aa",
+                    "timestamp": "2024-12-09T12:11:23Z",
+                    "url": "https://github.com/Vectorized/solady/commit/cca555c569588b7244bfffcb99b3e4d093fd80aa"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.1.1 (PR 1221), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f9ae9781a6b19c918c1acb190b0516684af0d6c7",
+                    "timestamp": "2025-01-04T06:22:44Z",
+                    "url": "https://github.com/Vectorized/solady/commit/f9ae9781a6b19c918c1acb190b0516684af0d6c7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.11 (PR 1261), verified by Spearbit; not a full re-audit.",
+                  "follows": "cca555c569588b7244bfffcb99b3e4d093fd80aa",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "835b0a27bec99d889cee6dec97b395d3df0e1d11",
+                    "timestamp": "2025-01-09T12:38:18Z",
+                    "url": "https://github.com/Vectorized/solady/commit/835b0a27bec99d889cee6dec97b395d3df0e1d11"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.11 (PR 1264), verified by Spearbit; not a full re-audit.",
+                  "follows": "f9ae9781a6b19c918c1acb190b0516684af0d6c7",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "17cba0487dd4e8781153bbbaf7a48cc3bcdc67a2",
+                    "timestamp": "2025-01-10T06:12:11Z",
+                    "url": "https://github.com/Vectorized/solady/commit/17cba0487dd4e8781153bbbaf7a48cc3bcdc67a2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.11 (PR 1267), verified by Spearbit; not a full re-audit.",
+                  "follows": "835b0a27bec99d889cee6dec97b395d3df0e1d11",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c48bd20f26e57efdbaf8925389d3e392555e2020",
+                    "timestamp": "2025-01-10T11:30:29Z",
+                    "url": "https://github.com/Vectorized/solady/commit/c48bd20f26e57efdbaf8925389d3e392555e2020"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.4.5 (PR 1271), verified by Spearbit; not a full re-audit.",
+                  "follows": "17cba0487dd4e8781153bbbaf7a48cc3bcdc67a2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c77954196f602ebd68161e01b6ba376874b019c6",
+                    "timestamp": "2025-01-13T06:14:56Z",
+                    "url": "https://github.com/Vectorized/solady/commit/c77954196f602ebd68161e01b6ba376874b019c6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.4.5 (PR 1284), verified by Spearbit; not a full re-audit.",
+                  "follows": "c48bd20f26e57efdbaf8925389d3e392555e2020",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/UUPSUpgradeable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2442629add9689ddef2076e96cf190dcabb94d87",
+                    "timestamp": "2025-01-13T03:58:27Z",
+                    "url": "https://github.com/Vectorized/solady/commit/2442629add9689ddef2076e96cf190dcabb94d87"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.4.4 (PR 1279), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "131f6118068ab638dacebea9ec44d59b7e0f2c42",
+                    "timestamp": "2025-01-13T14:56:32Z",
+                    "url": "https://github.com/Vectorized/solady/commit/131f6118068ab638dacebea9ec44d59b7e0f2c42"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.4.4 (PR 1296), verified by Spearbit; not a full re-audit.",
+                  "follows": "2442629add9689ddef2076e96cf190dcabb94d87",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/WebAuthn.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8451becd826a92a63cd702ea68d04b0ef19ea624",
+                    "timestamp": "2024-12-09T20:05:40Z",
+                    "url": "https://github.com/Vectorized/solady/commit/8451becd826a92a63cd702ea68d04b0ef19ea624"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.3.2 (PR 1224), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/utils/ext/delegatexyz/DelegateCheckerLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                    "timestamp": "2024-12-02T19:21:46Z",
+                    "url": "https://github.com/Vectorized/solady/commit/4c895b961d45c53a49ed500cfc76868b7ee1328b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Initial audit",
+                  "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "19009cfa459b9cde0665c6fb017de8fd702ed2c8",
+                    "timestamp": "2025-01-14T15:24:42Z",
+                    "url": "https://github.com/Vectorized/solady/commit/19009cfa459b9cde0665c6fb017de8fd702ed2c8"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "Remediation review",
+                  "coverage": "Review of the fix for finding 5.6.9 (PR 1299), verified by Spearbit; not a full re-audit.",
+                  "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

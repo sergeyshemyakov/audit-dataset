@@ -1,7 +1,7 @@
 # Audit source summary: tornado-cash
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps.
+Commit dates use Git committer timestamps (UTC).
 
 ## Tornado Circuit Audit. Final version
 

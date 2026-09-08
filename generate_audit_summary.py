@@ -7,12 +7,9 @@ import argparse
 import heapq
 import html
 import json
-import os
-import subprocess
 import sys
-import tempfile
 from collections import defaultdict
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -43,8 +40,8 @@ MONTHS = (
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate audit-summary.md from audit-summary.json, resolving commit "
-            "dates from the source repositories."
+            "Generate audit-summary.md from audit-summary.json, using the commit "
+            "timestamps stored in the summary."
         )
     )
     parser.add_argument("summary", type=Path, help="path to audit-summary.json")
@@ -66,36 +63,6 @@ def read_summary(path: Path) -> dict[str, Any]:
     return value
 
 
-GIT_ENVIRONMENT = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
-
-
-class GitCommandError(SummaryError):
-    """A Git command exited unsuccessfully."""
-
-
-def run_git(repository: Path | None, *args: str) -> str:
-    command = ["git"]
-    if repository is not None:
-        command.extend(["-C", str(repository)])
-    command.extend(args)
-    try:
-        completed = subprocess.run(
-            command,
-            check=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            env=GIT_ENVIRONMENT,
-        )
-    except FileNotFoundError as error:
-        raise SummaryError("git executable was not found") from error
-    except subprocess.CalledProcessError as error:
-        raise GitCommandError(
-            f"{' '.join(command)} failed: {error.stderr.strip()}"
-        ) from error
-    return completed.stdout.strip()
-
-
 def warn(message: str) -> None:
     print(f"warning: {message}", file=sys.stderr)
 
@@ -108,146 +75,73 @@ def report_is_relevant(report: dict[str, Any]) -> bool:
     return value
 
 
-def repository_reachable(url: str) -> bool:
-    try:
-        run_git(None, "ls-remote", "--exit-code", url, "HEAD")
-    except GitCommandError:
-        return False
-    return True
-
-
-def fetch_commits(repository: Path, commits: list[str]) -> list[str]:
-    """Fetch commit objects only, returning the commits that could not be fetched.
-
-    ``--filter=tree:0`` restricts the download to the commit objects themselves,
-    which is all that is needed to read committer dates. Every commit of a
-    repository is requested in a single fetch; only if that fails are commits
-    fetched one at a time so the missing ones can be identified.
-    """
-    fetch_args = ["fetch", "--quiet", "--no-tags", "--depth=1", "--filter=tree:0"]
-    try:
-        run_git(repository, *fetch_args, "origin", *commits)
-    except GitCommandError:
-        pass
-    else:
-        return []
-    missing: list[str] = []
-    for commit in commits:
-        try:
-            run_git(repository, *fetch_args, "origin", commit)
-        except GitCommandError as error:
-            warn(str(error))
-            missing.append(commit)
-    return missing
-
-
-def committer_dates(repository: Path, commits: list[str]) -> dict[str, date]:
-    output = run_git(
-        repository,
-        "log",
-        "--no-walk=unsorted",
-        "--format=%H %cI",
-        *commits,
-    )
-    result: dict[str, date] = {}
-    for line in output.splitlines():
-        commit, _, committed_at = line.partition(" ")
-        try:
-            result[commit] = date.fromisoformat(committed_at[:10])
-        except ValueError as error:
-            raise SummaryError(
-                f"invalid commit date for {commit}: {committed_at!r}"
-            ) from error
-    return result
-
-
 def revision_commits(revision: dict[str, Any]) -> list[str]:
-    commit = revision.get("commit")
-    if isinstance(commit, str) and commit:
-        return [commit]
+    return [commit for commit, _ in revision_timestamps(revision)]
+
+
+def revision_timestamps(revision: dict[str, Any]) -> list[tuple[str, Any]]:
+    """Return ``(commit, timestamp)`` pairs stored in a revision.
+
+    Since schema 1.2.0 every revision carries the committer timestamp of its
+    commit(s): ``timestamp`` beside ``commit``, or ``start_timestamp`` and
+    ``end_timestamp`` beside the commits of a ``commit_range``.
+    """
     if revision.get("kind") == "commit_range":
-        return [
-            value
-            for key in ("start_commit", "end_commit")
-            if isinstance((value := revision.get(key)), str) and value
-        ]
-    return []
+        pairs = (("start_commit", "start_timestamp"), ("end_commit", "end_timestamp"))
+    else:
+        pairs = (("commit", "timestamp"),)
+    return [
+        (value, revision.get(timestamp_key))
+        for commit_key, timestamp_key in pairs
+        if isinstance((value := revision.get(commit_key)), str) and value
+    ]
+
+
+def parse_timestamp(commit: str, timestamp: Any) -> date:
+    if not isinstance(timestamp, str):
+        raise SummaryError(f"timestamp for {commit} must be a string")
+    try:
+        return datetime.fromisoformat(timestamp.replace("Z", "+00:00")).date()
+    except ValueError as error:
+        raise SummaryError(f"invalid timestamp for {commit}: {timestamp!r}") from error
 
 
 def resolve_commit_dates(
     summary: dict[str, Any],
 ) -> tuple[dict[CommitDateKey, date], dict[str, str]]:
-    """Resolve committer dates for every referenced commit.
+    """Collect committer dates from the timestamps stored in the summary.
 
-    Returns the dates and, for repositories whose dates could not be resolved,
-    a mapping from repository id to the reason. Unreachable repositories (for
-    example private ones) are skipped with a warning instead of aborting.
+    Returns the dates and, for repositories with commits that have no
+    timestamp, a mapping from repository id to the reason. Missing timestamps
+    are reported with a warning instead of aborting.
     """
-    repositories: dict[str, tuple[str, set[str]]] = {}
+    result: dict[CommitDateKey, date] = {}
+    missing: dict[str, set[str]] = defaultdict(set)
     for report in summary["reports"]:
         if not isinstance(report, dict):
             raise SummaryError("each report must be an object")
         if not report_is_relevant(report):
             continue
-        report_repositories = {
-            repository["id"]: repository["url"]
-            for repository in report.get("repositories", [])
-        }
         for scope in report.get("scopes", []):
             repository_id = scope["repository"]
-            url = report_repositories[repository_id]
-            stored_url, commits = repositories.setdefault(repository_id, (url, set()))
-            if stored_url != url:
-                raise SummaryError(
-                    f"repository {repository_id!r} has conflicting URLs"
-                )
             for path_data in scope.get("paths", {}).values():
                 for version in path_data.get("versions", []):
-                    commits.update(revision_commits(version["revision"]))
-
-    result: dict[CommitDateKey, date] = {}
-    unresolved: dict[str, str] = {}
-    with tempfile.TemporaryDirectory(prefix="audit-summary-dates-") as temporary:
-        temporary_root = Path(temporary)
-        for index, (repository_id, (url, commits)) in enumerate(repositories.items()):
-            if not commits:
-                continue
-            object_id_lengths = {len(commit) for commit in commits}
-            if len(object_id_lengths) != 1:
-                raise SummaryError(
-                    f"repository {repository_id!r} mixes Git object formats"
-                )
-            if not repository_reachable(url):
-                reason = f"repository {url} is not reachable"
-                warn(f"{reason}; commit dates for {repository_id!r} will be omitted")
-                unresolved[repository_id] = reason
-                continue
-            repository = temporary_root / f"repository-{index}.git"
-            init_args = ["init", "--bare", "--quiet"]
-            if object_id_lengths == {64}:
-                init_args.append("--object-format=sha256")
-            init_args.append(str(repository))
-            try:
-                run_git(None, *init_args)
-            except SummaryError as error:
-                raise SummaryError(f"could not initialize Git repository: {error}") from error
-            run_git(repository, "remote", "add", "origin", url)
-            ordered = sorted(commits)
-            missing = set(fetch_commits(repository, ordered))
-            fetched = [commit for commit in ordered if commit not in missing]
-            if missing:
-                unresolved[repository_id] = (
-                    f"{len(missing)} commit(s) could not be fetched from {url}"
-                )
-            if not fetched:
-                continue
-            dates = committer_dates(repository, fetched)
-            for commit in fetched:
-                if commit not in dates:
-                    raise SummaryError(
-                        f"no commit date returned for {repository_id}@{commit}"
-                    )
-                result[(repository_id, commit)] = dates[commit]
+                    for commit, timestamp in revision_timestamps(version["revision"]):
+                        if timestamp is None:
+                            missing[repository_id].add(commit)
+                            continue
+                        parsed = parse_timestamp(commit, timestamp)
+                        key = (repository_id, commit)
+                        if result.setdefault(key, parsed) != parsed:
+                            raise SummaryError(
+                                f"conflicting timestamps for {repository_id}@{commit}"
+                            )
+    unresolved = {
+        repository_id: f"{len(commits)} commit(s) have no timestamp"
+        for repository_id, commits in missing.items()
+    }
+    for repository_id, reason in unresolved.items():
+        warn(f"{reason} in {repository_id!r}; their commit dates will be omitted")
     return result, unresolved
 
 
@@ -550,7 +444,7 @@ def render_summary(summary: dict[str, Any]) -> str:
         f"# {html.escape(str(title))}",
         "",
         "Generated from [audit-summary.json](audit-summary.json). Do not edit manually.",
-        "Commit dates use Git committer timestamps.",
+        "Commit dates use Git committer timestamps (UTC).",
         "",
     ]
 

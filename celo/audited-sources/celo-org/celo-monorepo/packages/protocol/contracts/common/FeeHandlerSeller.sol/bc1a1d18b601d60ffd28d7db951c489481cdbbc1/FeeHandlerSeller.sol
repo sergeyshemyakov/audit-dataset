@@ -48,7 +48,7 @@ contract FeeHandlerSeller is Ownable, Initializable, UsingRegistry {
     }
 
     /**
-     * @dev Calculates the minimum amount of tokens that should be received for the specified 
+     * @dev Calculates the minimum amount of tokens that should be received for the specified
      * amount with the given mid-price and maximum slippage.
      * @param midPriceNumerator The numerator of the mid-price for the token pair.
      * @param midPriceDenominator The denominator of the mid-price for the token pair.

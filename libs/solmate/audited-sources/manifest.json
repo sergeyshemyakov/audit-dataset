@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.0.0",
+  "project": "Solmate",
+  "audit_summary": "../audit-summary.json",
+  "sources": [
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/tokens/ERC721.sol",
+      "path_kind": "file",
+      "commit": "0216f06c9f208ced1fdb3187d4a7a17aedec84a3",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/tokens/ERC721.sol/0216f06c9f208ced1fdb3187d4a7a17aedec84a3/ERC721.sol",
+          "git_object": "ba90830713fa8e56deac884f08596c649fc1c253",
+          "git_mode": "100644",
+          "sha256": "ccd8c27ca00c3b34dc1bdfbc20875e44c414e9d8c84d65770df46dd5a09bf320"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils/FixedPointMathLib.sol",
+      "path_kind": "file",
+      "commit": "0265de1f3d7b65a9961b0499e69d9471c199d1ac",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/FixedPointMathLib.sol/0265de1f3d7b65a9961b0499e69d9471c199d1ac/FixedPointMathLib.sol",
+          "git_object": "8e77d575df132224738ab56fdfcee691ea3e8ed1",
+          "git_mode": "100644",
+          "sha256": "c444cf315c594f4cfdac76be5e972adaaccbe17dd9032ffca17b1d3e4a5bb917"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils/SafeTransferLib.sol",
+      "path_kind": "file",
+      "commit": "134f10afd9c996cee217aec6274839f56c742eac",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/SafeTransferLib.sol/134f10afd9c996cee217aec6274839f56c742eac/SafeTransferLib.sol",
+          "git_object": "31c9ff3fd516aa8cc0088186d93a35114512a363",
+          "git_mode": "100644",
+          "sha256": "b6b1fc936cb49fdc4234328fe3333a178a70e610dcbaf8f38313067db1eeb15c"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/tokens/ERC20.sol",
+      "path_kind": "file",
+      "commit": "1595c321d93e6ac7d76d3a92b4f15bb50560ef6c",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/tokens/ERC20.sol/1595c321d93e6ac7d76d3a92b4f15bb50560ef6c/ERC20.sol",
+          "git_object": "357367169164f0efb9abec50adeea9061d244492",
+          "git_mode": "100644",
+          "sha256": "0c2841d2cf24a1583f7b7daebb4a12fd0e34b5260e44a88ba30d5861baf0db67"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils/SSTORE2.sol",
+      "path_kind": "file",
+      "commit": "17ab906bb9a4275eb2b05440d179b423668dc003",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/SSTORE2.sol/17ab906bb9a4275eb2b05440d179b423668dc003/SSTORE2.sol",
+          "git_object": "b042b8ad9008a9036f8102b5247387b73041bdc4",
+          "git_mode": "100644",
+          "sha256": "4a689ee2767dcdab45787ea66a98023d28b407040520b6c7bbbb6511310bb3ed"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/tokens/ERC1155.sol",
+      "path_kind": "file",
+      "commit": "3f9dcf84e68f2552ff193291cfd7bd9bc0976e07",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/tokens/ERC1155.sol/3f9dcf84e68f2552ff193291cfd7bd9bc0976e07/ERC1155.sol",
+          "git_object": "0b018b515753d2ff8ad458858c0345454d6be024",
+          "git_mode": "100644",
+          "sha256": "99c9f733c7d139a1e5b4ed06615d1715d6433344e4efd90a1fbfdab31a14c527"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils/SSTORE2.sol",
+      "path_kind": "file",
+      "commit": "5546cd3cf78f43366068ce6cb1b7f58c8d9fca65",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/SSTORE2.sol/5546cd3cf78f43366068ce6cb1b7f58c8d9fca65/SSTORE2.sol",
+          "git_object": "74c60619cfa204b138e56e7c673410c812eda8f7",
+          "git_mode": "100644",
+          "sha256": "238acb191fcea12d5a43843819f8695d8acc274f45b24c10c2c6e9f3cd84fa9d"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/tokens/ERC1155.sol",
+      "path_kind": "file",
+      "commit": "5d1533cbe94adf848bf322e1c9a4a43bb159bb5b",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/tokens/ERC1155.sol/5d1533cbe94adf848bf322e1c9a4a43bb159bb5b/ERC1155.sol",
+          "git_object": "f86f2ac2891994e1a6d04b3f7d332fbcbdb2c5ac",
+          "git_mode": "100644",
+          "sha256": "430b216d38c98e0f5e3e6c4d3ade488e6786ddf20d618f34e50fd1502324f298"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils/CREATE3.sol",
+      "path_kind": "file",
+      "commit": "5db685309d4ad25f4c90e87c8d5189f8e1a7955b",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/CREATE3.sol/5db685309d4ad25f4c90e87c8d5189f8e1a7955b/CREATE3.sol",
+          "git_object": "1174a555773f466fe0ee1a941b6db63be7de9cc7",
+          "git_mode": "100644",
+          "sha256": "1848b9b2ea282820fcab17b6d875ac7b75732ae0fb1cfb8ce70b458d26d75137"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/auth/authorities/RolesAuthority.sol",
+      "path_kind": "file",
+      "commit": "7c5cafff2f9e04a46c71719710aee68d34eee8c5",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/auth/authorities/RolesAuthority.sol/7c5cafff2f9e04a46c71719710aee68d34eee8c5/RolesAuthority.sol",
+          "git_object": "a22442fde1db9773704656f6758997fa49727817",
+          "git_mode": "100644",
+          "sha256": "9dcb6698cb13f9d8b1b5cdd5dfed66677bdbd7e4ca150ce98074c4bc367f10df"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/tokens/ERC721.sol",
+      "path_kind": "file",
+      "commit": "824bd883069651d1751b6606d093e783cb6e4905",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/tokens/ERC721.sol/824bd883069651d1751b6606d093e783cb6e4905/ERC721.sol",
+          "git_object": "c6d3b14381e36341021234fec10e874585d5c11f",
+          "git_mode": "100644",
+          "sha256": "336b8ffa31f87251f927829ff1d2110ccc6047ceea203a1305b4ec33ab5d7788"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/auth/authorities/MultiRolesAuthority.sol",
+      "path_kind": "file",
+      "commit": "83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/auth/authorities/MultiRolesAuthority.sol/83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32/MultiRolesAuthority.sol",
+          "git_object": "3329714c9add05a7f3a43e21e40dac131991f60b",
+          "git_mode": "100644",
+          "sha256": "17be9fae40a6948129355fbbc631f142963bcad0c9455dfa594be047ba66b1cc"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/auth",
+      "path_kind": "directory_recursive",
+      "commit": "938b2d6925e24de7542bce4b08f3f03988a82245",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/auth/938b2d6925e24de7542bce4b08f3f03988a82245/Auth.sol",
+          "git_object": "fe5c707871aa3e53afd7179eebf364631c8cf7b9",
+          "git_mode": "100644",
+          "sha256": "fd82bb2c0947a711ee0c27e9a83e4a494d4e15370782385f74d07c45cf22ccc9"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/auth/938b2d6925e24de7542bce4b08f3f03988a82245/Trust.sol",
+          "git_object": "76b072cde6aa3faa0a83e78fe7bb38f70fc6dc7c",
+          "git_mode": "100644",
+          "sha256": "7960e12b76eb6da392405358fff9de6876745cb61049bf11d752dcac00a63d43"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/auth/938b2d6925e24de7542bce4b08f3f03988a82245/authorities/RolesAuthority.sol",
+          "git_object": "162f99c1e2d17f2f1dfa53ac350627be27bba71f",
+          "git_mode": "100644",
+          "sha256": "740c270863dfc4f99dad46f146439a2ea3e2a929637583f5c9a692a0cf0b593f"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/auth/938b2d6925e24de7542bce4b08f3f03988a82245/authorities/TrustAuthority.sol",
+          "git_object": "ad203b2094849eddafdf8987eb0fa4730d3eab3e",
+          "git_mode": "100644",
+          "sha256": "555d3d385621ffc1c1dc9f4b6d0496b12e4a7c3df28f3095be80cb427fe753d6"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/tokens",
+      "path_kind": "directory_recursive",
+      "commit": "938b2d6925e24de7542bce4b08f3f03988a82245",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/tokens/938b2d6925e24de7542bce4b08f3f03988a82245/ERC20.sol",
+          "git_object": "e4eca2c9ca68d196bc726f9c482fec45ef7daea8",
+          "git_mode": "100644",
+          "sha256": "d45d301d54533f930bec5873a05fea8899a0974e9377b11396363af3c61541a0"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/tokens/938b2d6925e24de7542bce4b08f3f03988a82245/WETH.sol",
+          "git_object": "39513c62b7787a58fc858012d054fb2b7e69f300",
+          "git_mode": "100644",
+          "sha256": "83f753eede00c0fcdecb9d51c6e7823c604fc1467d933141d306550026958a92"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils",
+      "path_kind": "directory_recursive",
+      "commit": "938b2d6925e24de7542bce4b08f3f03988a82245",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/938b2d6925e24de7542bce4b08f3f03988a82245/Bytes32AddressLib.sol",
+          "git_object": "13d9857a74c23ea111c49b0e43814ad7ab1f80cf",
+          "git_mode": "100644",
+          "sha256": "2b91482a316151f4d03263b8a9823a1ccbdfdbf42c526d94623683252ae1d055"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/utils/938b2d6925e24de7542bce4b08f3f03988a82245/CREATE3.sol",
+          "git_object": "0c43d5940d621dbd2c94222f24eb029f3c1e85a0",
+          "git_mode": "100644",
+          "sha256": "01b518d9de28f1215a74c455f5075a8c3680f13f97745c8aaf2eb8ceeafe965d"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/utils/938b2d6925e24de7542bce4b08f3f03988a82245/FixedPointMathLib.sol",
+          "git_object": "505368958aa225eae50f18aa5e44950d50954830",
+          "git_mode": "100644",
+          "sha256": "54d42192c8fd7d2791b1ed0aa89299a8d49ef61f68bdb3563df67b7f89df0c62"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/utils/938b2d6925e24de7542bce4b08f3f03988a82245/ReentrancyGuard.sol",
+          "git_object": "a462fe831dac591a111ea3290a38bd3a64d0d629",
+          "git_mode": "100644",
+          "sha256": "5d255096b1fdff195650df0f7bbf00633331aec7f18e70a706f9aaad594f857b"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/utils/938b2d6925e24de7542bce4b08f3f03988a82245/SSTORE2.sol",
+          "git_object": "6e388b60f81947abdccc1ee8a30a88e1de343eb6",
+          "git_mode": "100644",
+          "sha256": "5dc57da7ed0e1bdadf7fc025a85f8cea8730e4161953e29840d2ba6b86c45d54"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/utils/938b2d6925e24de7542bce4b08f3f03988a82245/SafeCastLib.sol",
+          "git_object": "93bdc3eb01ce022253f48327e08e46331f3feb90",
+          "git_mode": "100644",
+          "sha256": "e9e3576a6bc292de9a74566c9a638eae06aa4ed192108427175d14a7324777e8"
+        },
+        {
+          "file": "Rari-Capital/solmate/src/utils/938b2d6925e24de7542bce4b08f3f03988a82245/SafeTransferLib.sol",
+          "git_object": "e0bb44e5f4676b177d38766af942cee52d85d179",
+          "git_mode": "100644",
+          "sha256": "33ce27e98407110a038af0c9150311c02715a24acd4b9b8b630758cf7cfcc48a"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils/SSTORE2.sol",
+      "path_kind": "file",
+      "commit": "a0253999252f9a253fefa960be6ad77d2ed1eaa7",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/SSTORE2.sol/a0253999252f9a253fefa960be6ad77d2ed1eaa7/SSTORE2.sol",
+          "git_object": "03d39b0d1ffaac68b299c770a9e7f80599bcb577",
+          "git_mode": "100644",
+          "sha256": "5e59638e8bbd87d1b86f382d151e349c301604e1fa7963bd3eff293a8edd6c5c"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/auth/authorities/RolesAuthority.sol",
+      "path_kind": "file",
+      "commit": "a3d179efcb3a7d954cf0b51a7b6bf0ee90c84dea",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/auth/authorities/RolesAuthority.sol/a3d179efcb3a7d954cf0b51a7b6bf0ee90c84dea/RolesAuthority.sol",
+          "git_object": "eadc63107e0fd56cef2d2b381d99812cfbd8b29e",
+          "git_mode": "100644",
+          "sha256": "e1aa53bbe776658eed28a557fe32ef1f07c8b1920b12702acc08c01bb76453f6"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/utils/SSTORE2.sol",
+      "path_kind": "file",
+      "commit": "fc0d77b124c200993c441d3f7612e8731837fd1c",
+      "files": [
+        {
+          "file": "Rari-Capital/solmate/src/utils/SSTORE2.sol/fc0d77b124c200993c441d3f7612e8731837fd1c/SSTORE2.sol",
+          "git_object": "ca3a4bf935229ea62ffdff6d35f2adb90d2880d2",
+          "git_mode": "100644",
+          "sha256": "240be910c5d3ef28505966bedafc92256d2ba6a0465f69723f7b0af4ec15809b"
+        }
+      ]
+    }
+  ],
+  "skipped": [],
+  "unavailable": []
+}

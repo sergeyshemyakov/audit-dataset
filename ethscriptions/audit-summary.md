@@ -1,7 +1,7 @@
 # Audit source summary: ethscriptions
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps.
+Commit dates use Git committer timestamps (UTC).
 
 ## Facet ZK Fault Proof Rollup Security Review
 

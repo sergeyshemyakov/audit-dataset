@@ -1,7 +1,7 @@
 # Audit source summary: unichain
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps.
+Commit dates use Git committer timestamps (UTC).
 
 ## Unichain contracts Security Review (Cantina Managed, Oct 3-7 2024)
 
@@ -27,7 +27,7 @@ Commit dates use Git committer timestamps.
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/Uniswap/unichain-contracts/tree/935f521c0710d5e6055bb046355cd99fab301f26/src"><code>935f521c0710d5e6055bb046355cd99fab301f26</code></a> | October 30, 2024 | <code>src</code> (recursive directory) |
+| <a href="https://github.com/Uniswap/unichain-contracts/tree/935f521c0710d5e6055bb046355cd99fab301f26/src"><code>935f521c0710d5e6055bb046355cd99fab301f26</code></a> | October 29, 2024 | <code>src</code> (recursive directory) |
 
 ## Uniswap Flashtestations Audit
 
