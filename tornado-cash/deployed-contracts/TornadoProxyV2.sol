@@ -187,7 +187,9 @@ library Address {
 
         uint256 size;
         // solhint-disable-next-line no-inline-assembly
-        assembly { size := extcodesize(account) }
+        assembly {
+            size := extcodesize(account)
+        }
         return size > 0;
     }
 
@@ -211,7 +213,7 @@ library Address {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{ value: amount }("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -234,7 +236,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-      return functionCall(target, data, "Address: low-level call failed");
+        return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -243,7 +245,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -268,12 +273,15 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.call{ value: value }(data);
+        (bool success, bytes memory returndata) = target.call{value: value}(data);
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
@@ -293,7 +301,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(address target, bytes memory data, string memory errorMessage) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
@@ -301,7 +313,11 @@ library Address {
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
-    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage) private pure returns(bytes memory) {
+    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        private
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -428,7 +444,8 @@ library SafeERC20 {
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
         // solhint-disable-next-line max-line-length
-        require((value == 0) || (token.allowance(address(this), spender) == 0),
+        require(
+            (value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
@@ -440,7 +457,8 @@ library SafeERC20 {
     }
 
     function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
+        uint256 newAllowance =
+            token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
@@ -456,7 +474,8 @@ library SafeERC20 {
         // the target address contains contract code and also asserts for success in the low-level call.
 
         bytes memory returndata = address(token).functionCall(data, "SafeERC20: low-level call failed");
-        if (returndata.length > 0) { // Return data is optional
+        if (returndata.length > 0) {
+            // Return data is optional
             // solhint-disable-next-line max-line-length
             require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
         }
@@ -464,27 +483,27 @@ library SafeERC20 {
 }
 
 interface ITornadoInstance {
-  function token() external view returns (address);
+    function token() external view returns (address);
 
-  function denomination() external view returns (uint256);
+    function denomination() external view returns (uint256);
 
-  function deposit(bytes32 commitment) external payable;
+    function deposit(bytes32 commitment) external payable;
 
-  function withdraw(
-    bytes calldata proof,
-    bytes32 root,
-    bytes32 nullifierHash,
-    address payable recipient,
-    address payable relayer,
-    uint256 fee,
-    uint256 refund
-  ) external payable;
+    function withdraw(
+        bytes calldata proof,
+        bytes32 root,
+        bytes32 nullifierHash,
+        address payable recipient,
+        address payable relayer,
+        uint256 fee,
+        uint256 refund
+    ) external payable;
 }
 
 interface ITornadoTrees {
-  function registerDeposit(address instance, bytes32 commitment) external;
+    function registerDeposit(address instance, bytes32 commitment) external;
 
-  function registerWithdrawal(address instance, bytes32 nullifier) external;
+    function registerWithdrawal(address instance, bytes32 nullifier) external;
 }
 
 /**
@@ -516,135 +535,127 @@ library Math {
 }
 
 contract TornadoProxy {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  event EncryptedNote(address indexed sender, bytes encryptedNote);
-  event InstanceStateUpdated(ITornadoInstance indexed instance, InstanceState state);
-  event TornadoTreesUpdated(ITornadoTrees addr);
+    event EncryptedNote(address indexed sender, bytes encryptedNote);
+    event InstanceStateUpdated(ITornadoInstance indexed instance, InstanceState state);
+    event TornadoTreesUpdated(ITornadoTrees addr);
 
-  enum InstanceState { DISABLED, ENABLED, MINEABLE }
-
-  struct Instance {
-    bool isERC20;
-    IERC20 token;
-    InstanceState state;
-  }
-
-  struct Tornado {
-    ITornadoInstance addr;
-    Instance instance;
-  }
-
-  ITornadoTrees public tornadoTrees;
-  address public immutable governance;
-  mapping(ITornadoInstance => Instance) public instances;
-
-  modifier onlyGovernance() {
-    require(msg.sender == governance, "Not authorized");
-    _;
-  }
-
-  constructor(
-    address _tornadoTrees,
-    address _governance,
-    Tornado[] memory _instances
-  ) public {
-    tornadoTrees = ITornadoTrees(_tornadoTrees);
-    governance = _governance;
-
-    for (uint256 i = 0; i < _instances.length; i++) {
-      _updateInstance(_instances[i]);
+    enum InstanceState {
+        DISABLED,
+        ENABLED,
+        MINEABLE
     }
-  }
 
-  function deposit(
-    ITornadoInstance _tornado,
-    bytes32 _commitment,
-    bytes calldata _encryptedNote
-  ) external payable {
-    Instance memory instance = instances[_tornado];
-    require(instance.state != InstanceState.DISABLED, "The instance is not supported");
-
-    if (instance.isERC20) {
-      instance.token.safeTransferFrom(msg.sender, address(this), _tornado.denomination());
+    struct Instance {
+        bool isERC20;
+        IERC20 token;
+        InstanceState state;
     }
-    _tornado.deposit{ value: msg.value }(_commitment);
 
-    if (instance.state == InstanceState.MINEABLE) {
-      tornadoTrees.registerDeposit(address(_tornado), _commitment);
+    struct Tornado {
+        ITornadoInstance addr;
+        Instance instance;
     }
-    emit EncryptedNote(msg.sender, _encryptedNote);
-  }
 
-  function withdraw(
-    ITornadoInstance _tornado,
-    bytes calldata _proof,
-    bytes32 _root,
-    bytes32 _nullifierHash,
-    address payable _recipient,
-    address payable _relayer,
-    uint256 _fee,
-    uint256 _refund
-  ) external payable {
-    Instance memory instance = instances[_tornado];
-    require(instance.state != InstanceState.DISABLED, "The instance is not supported");
+    ITornadoTrees public tornadoTrees;
+    address public immutable governance;
+    mapping(ITornadoInstance => Instance) public instances;
 
-    _tornado.withdraw{ value: msg.value }(_proof, _root, _nullifierHash, _recipient, _relayer, _fee, _refund);
-    if (instance.state == InstanceState.MINEABLE) {
-      tornadoTrees.registerWithdrawal(address(_tornado), _nullifierHash);
+    modifier onlyGovernance() {
+        require(msg.sender == governance, "Not authorized");
+        _;
     }
-  }
 
-  function backupNotes(bytes[] calldata _encryptedNotes) external {
-    for (uint256 i = 0; i < _encryptedNotes.length; i++) {
-      emit EncryptedNote(msg.sender, _encryptedNotes[i]);
+    constructor(address _tornadoTrees, address _governance, Tornado[] memory _instances) public {
+        tornadoTrees = ITornadoTrees(_tornadoTrees);
+        governance = _governance;
+
+        for (uint256 i = 0; i < _instances.length; i++) {
+            _updateInstance(_instances[i]);
+        }
     }
-  }
 
-  function updateInstance(Tornado calldata _tornado) external onlyGovernance {
-    _updateInstance(_tornado);
-  }
+    function deposit(ITornadoInstance _tornado, bytes32 _commitment, bytes calldata _encryptedNote) external payable {
+        Instance memory instance = instances[_tornado];
+        require(instance.state != InstanceState.DISABLED, "The instance is not supported");
 
-  function setTornadoTreesContract(ITornadoTrees _tornadoTrees) external onlyGovernance {
-    tornadoTrees = _tornadoTrees;
-    emit TornadoTreesUpdated(_tornadoTrees);
-  }
+        if (instance.isERC20) {
+            instance.token.safeTransferFrom(msg.sender, address(this), _tornado.denomination());
+        }
+        _tornado.deposit{value: msg.value}(_commitment);
 
-  /// @dev Method to claim junk and accidentally sent tokens
-  function rescueTokens(
-    IERC20 _token,
-    address payable _to,
-    uint256 _amount
-  ) external onlyGovernance {
-    require(_to != address(0), "TORN: can not send to zero address");
-
-    if (_token == IERC20(0)) {
-      // for Ether
-      uint256 totalBalance = address(this).balance;
-      uint256 balance = Math.min(totalBalance, _amount);
-      _to.transfer(balance);
-    } else {
-      // any other erc20
-      uint256 totalBalance = _token.balanceOf(address(this));
-      uint256 balance = Math.min(totalBalance, _amount);
-      require(balance > 0, "TORN: trying to send 0 balance");
-      _token.safeTransfer(_to, balance);
+        if (instance.state == InstanceState.MINEABLE) {
+            tornadoTrees.registerDeposit(address(_tornado), _commitment);
+        }
+        emit EncryptedNote(msg.sender, _encryptedNote);
     }
-  }
 
-  function _updateInstance(Tornado memory _tornado) internal {
-    instances[_tornado.addr] = _tornado.instance;
-    if (_tornado.instance.isERC20) {
-      IERC20 token = IERC20(_tornado.addr.token());
-      require(token == _tornado.instance.token, "Incorrect token");
-      uint256 allowance = token.allowance(address(this), address(_tornado.addr));
+    function withdraw(
+        ITornadoInstance _tornado,
+        bytes calldata _proof,
+        bytes32 _root,
+        bytes32 _nullifierHash,
+        address payable _recipient,
+        address payable _relayer,
+        uint256 _fee,
+        uint256 _refund
+    ) external payable {
+        Instance memory instance = instances[_tornado];
+        require(instance.state != InstanceState.DISABLED, "The instance is not supported");
 
-      if (_tornado.instance.state != InstanceState.DISABLED && allowance == 0) {
-        token.safeApprove(address(_tornado.addr), uint256(-1));
-      } else if (_tornado.instance.state == InstanceState.DISABLED && allowance != 0) {
-        token.safeApprove(address(_tornado.addr), 0);
-      }
+        _tornado.withdraw{value: msg.value}(_proof, _root, _nullifierHash, _recipient, _relayer, _fee, _refund);
+        if (instance.state == InstanceState.MINEABLE) {
+            tornadoTrees.registerWithdrawal(address(_tornado), _nullifierHash);
+        }
     }
-    emit InstanceStateUpdated(_tornado.addr, _tornado.instance.state);
-  }
+
+    function backupNotes(bytes[] calldata _encryptedNotes) external {
+        for (uint256 i = 0; i < _encryptedNotes.length; i++) {
+            emit EncryptedNote(msg.sender, _encryptedNotes[i]);
+        }
+    }
+
+    function updateInstance(Tornado calldata _tornado) external onlyGovernance {
+        _updateInstance(_tornado);
+    }
+
+    function setTornadoTreesContract(ITornadoTrees _tornadoTrees) external onlyGovernance {
+        tornadoTrees = _tornadoTrees;
+        emit TornadoTreesUpdated(_tornadoTrees);
+    }
+
+    /// @dev Method to claim junk and accidentally sent tokens
+    function rescueTokens(IERC20 _token, address payable _to, uint256 _amount) external onlyGovernance {
+        require(_to != address(0), "TORN: can not send to zero address");
+
+        if (_token == IERC20(0)) {
+            // for Ether
+            uint256 totalBalance = address(this).balance;
+            uint256 balance = Math.min(totalBalance, _amount);
+            _to.transfer(balance);
+        } else {
+            // any other erc20
+            uint256 totalBalance = _token.balanceOf(address(this));
+            uint256 balance = Math.min(totalBalance, _amount);
+            require(balance > 0, "TORN: trying to send 0 balance");
+            _token.safeTransfer(_to, balance);
+        }
+    }
+
+    function _updateInstance(Tornado memory _tornado) internal {
+        instances[_tornado.addr] = _tornado.instance;
+        if (_tornado.instance.isERC20) {
+            IERC20 token = IERC20(_tornado.addr.token());
+            require(token == _tornado.instance.token, "Incorrect token");
+            uint256 allowance = token.allowance(address(this), address(_tornado.addr));
+
+            if (_tornado.instance.state != InstanceState.DISABLED && allowance == 0) {
+                token.safeApprove(address(_tornado.addr), uint256(-1));
+            } else if (_tornado.instance.state == InstanceState.DISABLED && allowance != 0) {
+                token.safeApprove(address(_tornado.addr), 0);
+            }
+        }
+        emit InstanceStateUpdated(_tornado.addr, _tornado.instance.state);
+    }
 }

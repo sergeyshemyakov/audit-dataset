@@ -58,7 +58,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -90,11 +90,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -109,11 +108,7 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -123,12 +118,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +143,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -189,11 +182,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -386,11 +379,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -443,14 +435,13 @@ interface IERC165Upgradeable {
  * Alternatively, {ERC165Storage} provides an easier to use but more expensive implementation.
  */
 abstract contract ERC165Upgradeable is Initializable, IERC165Upgradeable {
-    function __ERC165_init() internal onlyInitializing {
-    }
+    function __ERC165_init() internal onlyInitializing {}
 
-    function __ERC165_init_unchained() internal onlyInitializing {
-    }
+    function __ERC165_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
+
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return interfaceId == type(IERC165Upgradeable).interfaceId;
     }
@@ -471,6 +462,7 @@ library MathUpgradeable {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -512,11 +504,7 @@ library MathUpgradeable {
      * @dev Original credit to Remco Bloemen under MIT license (https://xn--2-umb.com/21/muldiv)
      * with further edits by Uniswap Labs also under MIT license.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 result) {
         unchecked {
             // 512-bit multiply [prod1 prod0] = x * y. Compute the product mod 2^256 and mod 2^256 - 1, then use
             // use the Chinese Remainder Theorem to reconstruct the 512 bit result. The result is stored in two 256
@@ -597,12 +585,7 @@ library MathUpgradeable {
     /**
      * @notice Calculates x * y / denominator with full precision, following the selected rounding direction.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator,
-        Rounding rounding
-    ) internal pure returns (uint256) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator, Rounding rounding) internal pure returns (uint256) {
         uint256 result = mulDiv(x, y, denominator);
         if (rounding == Rounding.Up && mulmod(x, y, denominator) > 0) {
             result += 1;
@@ -718,31 +701,31 @@ library MathUpgradeable {
     function log10(uint256 value) internal pure returns (uint256) {
         uint256 result = 0;
         unchecked {
-            if (value >= 10**64) {
-                value /= 10**64;
+            if (value >= 10 ** 64) {
+                value /= 10 ** 64;
                 result += 64;
             }
-            if (value >= 10**32) {
-                value /= 10**32;
+            if (value >= 10 ** 32) {
+                value /= 10 ** 32;
                 result += 32;
             }
-            if (value >= 10**16) {
-                value /= 10**16;
+            if (value >= 10 ** 16) {
+                value /= 10 ** 16;
                 result += 16;
             }
-            if (value >= 10**8) {
-                value /= 10**8;
+            if (value >= 10 ** 8) {
+                value /= 10 ** 8;
                 result += 8;
             }
-            if (value >= 10**4) {
-                value /= 10**4;
+            if (value >= 10 ** 4) {
+                value /= 10 ** 4;
                 result += 4;
             }
-            if (value >= 10**2) {
-                value /= 10**2;
+            if (value >= 10 ** 2) {
+                value /= 10 ** 2;
                 result += 2;
             }
-            if (value >= 10**1) {
+            if (value >= 10 ** 1) {
                 result += 1;
             }
         }
@@ -756,7 +739,7 @@ library MathUpgradeable {
     function log10(uint256 value, Rounding rounding) internal pure returns (uint256) {
         unchecked {
             uint256 result = log10(value);
-            return result + (rounding == Rounding.Up && 10**result < value ? 1 : 0);
+            return result + (rounding == Rounding.Up && 10 ** result < value ? 1 : 0);
         }
     }
 
@@ -830,7 +813,9 @@ library StringsUpgradeable {
                     mstore8(ptr, byte(mod(value, 10), _SYMBOLS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -881,6 +866,7 @@ library ECDSAUpgradeable {
         InvalidSignatureLength,
         InvalidSignatureS,
         InvalidSignatureV // Deprecated in v4.8
+
     }
 
     function _throwError(RecoverError error) private pure {
@@ -961,11 +947,7 @@ library ECDSAUpgradeable {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address, RecoverError) {
         bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
         uint8 v = uint8((uint256(vs) >> 255) + 27);
         return tryRecover(hash, v, r, s);
@@ -976,11 +958,7 @@ library ECDSAUpgradeable {
      *
      * _Available since v4.2._
      */
-    function recover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
         _throwError(error);
         return recovered;
@@ -992,12 +970,7 @@ library ECDSAUpgradeable {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address, RecoverError) {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -1024,12 +997,7 @@ library ECDSAUpgradeable {
      * @dev Overload of {ECDSA-recover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function recover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
         _throwError(error);
         return recovered;
@@ -1100,7 +1068,8 @@ abstract contract EIP712Upgradeable is Initializable {
     /* solhint-disable var-name-mixedcase */
     bytes32 private _HASHED_NAME;
     bytes32 private _HASHED_VERSION;
-    bytes32 private constant _TYPE_HASH = keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
+    bytes32 private constant _TYPE_HASH =
+        keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
 
     /* solhint-enable var-name-mixedcase */
 
@@ -1134,11 +1103,11 @@ abstract contract EIP712Upgradeable is Initializable {
         return _buildDomainSeparator(_TYPE_HASH, _EIP712NameHash(), _EIP712VersionHash());
     }
 
-    function _buildDomainSeparator(
-        bytes32 typeHash,
-        bytes32 nameHash,
-        bytes32 versionHash
-    ) private view returns (bytes32) {
+    function _buildDomainSeparator(bytes32 typeHash, bytes32 nameHash, bytes32 versionHash)
+        private
+        view
+        returns (bytes32)
+    {
         return keccak256(abi.encode(typeHash, nameHash, versionHash, block.chainid, address(this)));
     }
 
@@ -1167,7 +1136,7 @@ abstract contract EIP712Upgradeable is Initializable {
      * NOTE: This function reads from storage by default, but can be redefined to return a constant value if gas costs
      * are a concern.
      */
-    function _EIP712NameHash() internal virtual view returns (bytes32) {
+    function _EIP712NameHash() internal view virtual returns (bytes32) {
         return _HASHED_NAME;
     }
 
@@ -1177,7 +1146,7 @@ abstract contract EIP712Upgradeable is Initializable {
      * NOTE: This function reads from storage by default, but can be redefined to return a constant value if gas costs
      * are a concern.
      */
-    function _EIP712VersionHash() internal virtual view returns (bytes32) {
+    function _EIP712VersionHash() internal view virtual returns (bytes32) {
         return _HASHED_VERSION;
     }
 
@@ -1195,11 +1164,10 @@ abstract contract EIP712Upgradeable is Initializable {
  * _Available since v4.3._
  */
 abstract contract IGovernorUpgradeable is Initializable, IERC165Upgradeable {
-    function __IGovernor_init() internal onlyInitializing {
-    }
+    function __IGovernor_init() internal onlyInitializing {}
 
-    function __IGovernor_init_unchained() internal onlyInitializing {
-    }
+    function __IGovernor_init_unchained() internal onlyInitializing {}
+
     enum ProposalState {
         Pending,
         Active,
@@ -1250,12 +1218,7 @@ abstract contract IGovernorUpgradeable is Initializable, IERC165Upgradeable {
      * `params` are additional encoded parameters. Their intepepretation also depends on the voting module used.
      */
     event VoteCastWithParams(
-        address indexed voter,
-        uint256 proposalId,
-        uint8 support,
-        uint256 weight,
-        string reason,
-        bytes params
+        address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason, bytes params
     );
 
     /**
@@ -1365,11 +1328,11 @@ abstract contract IGovernorUpgradeable is Initializable, IERC165Upgradeable {
      * @notice module:reputation
      * @dev Voting power of an `account` at a specific `blockNumber` given additional encoded parameters.
      */
-    function getVotesWithParams(
-        address account,
-        uint256 blockNumber,
-        bytes memory params
-    ) public view virtual returns (uint256);
+    function getVotesWithParams(address account, uint256 blockNumber, bytes memory params)
+        public
+        view
+        virtual
+        returns (uint256);
 
     /**
      * @notice module:voting
@@ -1417,36 +1380,30 @@ abstract contract IGovernorUpgradeable is Initializable, IERC165Upgradeable {
      *
      * Emits a {VoteCast} event.
      */
-    function castVoteWithReason(
-        uint256 proposalId,
-        uint8 support,
-        string calldata reason
-    ) public virtual returns (uint256 balance);
+    function castVoteWithReason(uint256 proposalId, uint8 support, string calldata reason)
+        public
+        virtual
+        returns (uint256 balance);
 
     /**
      * @dev Cast a vote with a reason and additional encoded parameters
      *
      * Emits a {VoteCast} or {VoteCastWithParams} event depending on the length of params.
      */
-    function castVoteWithReasonAndParams(
-        uint256 proposalId,
-        uint8 support,
-        string calldata reason,
-        bytes memory params
-    ) public virtual returns (uint256 balance);
+    function castVoteWithReasonAndParams(uint256 proposalId, uint8 support, string calldata reason, bytes memory params)
+        public
+        virtual
+        returns (uint256 balance);
 
     /**
      * @dev Cast a vote using the user's cryptographic signature.
      *
      * Emits a {VoteCast} event.
      */
-    function castVoteBySig(
-        uint256 proposalId,
-        uint8 support,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public virtual returns (uint256 balance);
+    function castVoteBySig(uint256 proposalId, uint8 support, uint8 v, bytes32 r, bytes32 s)
+        public
+        virtual
+        returns (uint256 balance);
 
     /**
      * @dev Cast a vote with a reason and additional encoded parameters using the user's cryptographic signature.
@@ -1486,12 +1443,9 @@ interface IERC721ReceiverUpgradeable {
      *
      * The selector can be obtained in Solidity with `IERC721Receiver.onERC721Received.selector`.
      */
-    function onERC721Received(
-        address operator,
-        address from,
-        uint256 tokenId,
-        bytes calldata data
-    ) external returns (bytes4);
+    function onERC721Received(address operator, address from, uint256 tokenId, bytes calldata data)
+        external
+        returns (bytes4);
 }
 
 /**
@@ -1513,13 +1467,9 @@ interface IERC1155ReceiverUpgradeable is IERC165Upgradeable {
      * @param data Additional data with no specified format
      * @return `bytes4(keccak256("onERC1155Received(address,address,uint256,uint256,bytes)"))` if transfer is allowed
      */
-    function onERC1155Received(
-        address operator,
-        address from,
-        uint256 id,
-        uint256 value,
-        bytes calldata data
-    ) external returns (bytes4);
+    function onERC1155Received(address operator, address from, uint256 id, uint256 value, bytes calldata data)
+        external
+        returns (bytes4);
 
     /**
      * @dev Handles the receipt of a multiple ERC1155 token types. This function
@@ -2737,7 +2687,9 @@ library DoubleEndedQueueUpgradeable {
      * Reverts with `Empty` if the queue is empty.
      */
     function popBack(Bytes32Deque storage deque) internal returns (bytes32 value) {
-        if (empty(deque)) revert Empty();
+        if (empty(deque)) {
+            revert Empty();
+        }
         int128 backIndex;
         unchecked {
             backIndex = deque._end - 1;
@@ -2765,7 +2717,9 @@ library DoubleEndedQueueUpgradeable {
      * Reverts with `Empty` if the queue is empty.
      */
     function popFront(Bytes32Deque storage deque) internal returns (bytes32 value) {
-        if (empty(deque)) revert Empty();
+        if (empty(deque)) {
+            revert Empty();
+        }
         int128 frontIndex = deque._begin;
         value = deque._data[frontIndex];
         delete deque._data[frontIndex];
@@ -2780,7 +2734,9 @@ library DoubleEndedQueueUpgradeable {
      * Reverts with `Empty` if the queue is empty.
      */
     function front(Bytes32Deque storage deque) internal view returns (bytes32 value) {
-        if (empty(deque)) revert Empty();
+        if (empty(deque)) {
+            revert Empty();
+        }
         int128 frontIndex = deque._begin;
         return deque._data[frontIndex];
     }
@@ -2791,7 +2747,9 @@ library DoubleEndedQueueUpgradeable {
      * Reverts with `Empty` if the queue is empty.
      */
     function back(Bytes32Deque storage deque) internal view returns (bytes32 value) {
-        if (empty(deque)) revert Empty();
+        if (empty(deque)) {
+            revert Empty();
+        }
         int128 backIndex;
         unchecked {
             backIndex = deque._end - 1;
@@ -2808,7 +2766,9 @@ library DoubleEndedQueueUpgradeable {
     function at(Bytes32Deque storage deque, uint256 index) internal view returns (bytes32 value) {
         // int256(deque._begin) is a safe upcast
         int128 idx = SafeCastUpgradeable.toInt128(int256(deque._begin) + SafeCastUpgradeable.toInt256(index));
-        if (idx >= deque._end) revert OutOfBounds();
+        if (idx >= deque._end) {
+            revert OutOfBounds();
+        }
         return deque._data[idx];
     }
 
@@ -3643,14 +3603,7 @@ interface IVotesUpgradeable {
     /**
      * @dev Delegates votes from signer to `delegatee`.
      */
-    function delegateBySig(
-        address delegatee,
-        uint256 nonce,
-        uint256 expiry,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
+    function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external;
 }
 
 /**
@@ -3818,23 +3771,20 @@ abstract contract GovernorSettingsUpgradeableV2 is Initializable, GovernorUpgrad
  * _Available since v4.3._
  */
 abstract contract IGovernorTimelockUpgradeable is Initializable, IGovernorUpgradeable {
-    function __IGovernorTimelock_init() internal onlyInitializing {
-    }
+    function __IGovernorTimelock_init() internal onlyInitializing {}
 
-    function __IGovernorTimelock_init_unchained() internal onlyInitializing {
-    }
+    function __IGovernorTimelock_init_unchained() internal onlyInitializing {}
+
     event ProposalQueued(uint256 proposalId, uint256 eta);
 
     function timelock() public view virtual returns (address);
 
     function proposalEta(uint256 proposalId) public view virtual returns (uint256);
 
-    function queue(
-        address[] memory targets,
-        uint256[] memory values,
-        bytes[] memory calldatas,
-        bytes32 descriptionHash
-    ) public virtual returns (uint256 proposalId);
+    function queue(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash)
+        public
+        virtual
+        returns (uint256 proposalId);
 
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
@@ -3966,12 +3916,16 @@ interface IAccessControlUpgradeable {
  * grant and revoke this role. Extra precautions should be taken to secure
  * accounts that have been granted it.
  */
-abstract contract AccessControlUpgradeable is Initializable, ContextUpgradeable, IAccessControlUpgradeable, ERC165Upgradeable {
-    function __AccessControl_init() internal onlyInitializing {
-    }
+abstract contract AccessControlUpgradeable is
+    Initializable,
+    ContextUpgradeable,
+    IAccessControlUpgradeable,
+    ERC165Upgradeable
+{
+    function __AccessControl_init() internal onlyInitializing {}
 
-    function __AccessControl_init_unchained() internal onlyInitializing {
-    }
+    function __AccessControl_init_unchained() internal onlyInitializing {}
+
     struct RoleData {
         mapping(address => bool) members;
         bytes32 adminRole;
@@ -4193,7 +4147,12 @@ abstract contract AccessControlUpgradeable is Initializable, ContextUpgradeable,
  *
  * _Available since v3.3._
  */
-contract TimelockControllerUpgradeable is Initializable, AccessControlUpgradeable, IERC721ReceiverUpgradeable, IERC1155ReceiverUpgradeable {
+contract TimelockControllerUpgradeable is
+    Initializable,
+    AccessControlUpgradeable,
+    IERC721ReceiverUpgradeable,
+    IERC1155ReceiverUpgradeable
+{
     bytes32 public constant TIMELOCK_ADMIN_ROLE = keccak256("TIMELOCK_ADMIN_ROLE");
     bytes32 public constant PROPOSER_ROLE = keccak256("PROPOSER_ROLE");
     bytes32 public constant EXECUTOR_ROLE = keccak256("EXECUTOR_ROLE");
@@ -4308,7 +4267,13 @@ contract TimelockControllerUpgradeable is Initializable, AccessControlUpgradeabl
     /**
      * @dev See {IERC165-supportsInterface}.
      */
-    function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165Upgradeable, AccessControlUpgradeable) returns (bool) {
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(IERC165Upgradeable, AccessControlUpgradeable)
+        returns (bool)
+    {
         return interfaceId == type(IERC1155ReceiverUpgradeable).interfaceId || super.supportsInterface(interfaceId);
     }
 
@@ -4363,13 +4328,12 @@ contract TimelockControllerUpgradeable is Initializable, AccessControlUpgradeabl
      * @dev Returns the identifier of an operation containing a single
      * transaction.
      */
-    function hashOperation(
-        address target,
-        uint256 value,
-        bytes calldata data,
-        bytes32 predecessor,
-        bytes32 salt
-    ) public pure virtual returns (bytes32 hash) {
+    function hashOperation(address target, uint256 value, bytes calldata data, bytes32 predecessor, bytes32 salt)
+        public
+        pure
+        virtual
+        returns (bytes32 hash)
+    {
         return keccak256(abi.encode(target, value, data, predecessor, salt));
     }
 
@@ -4471,13 +4435,12 @@ contract TimelockControllerUpgradeable is Initializable, AccessControlUpgradeabl
     // This function can reenter, but it doesn't pose a risk because _afterCall checks that the proposal is pending,
     // thus any modifications to the operation during reentrancy should be caught.
     // slither-disable-next-line reentrancy-eth
-    function execute(
-        address target,
-        uint256 value,
-        bytes calldata payload,
-        bytes32 predecessor,
-        bytes32 salt
-    ) public payable virtual onlyRoleOrOpenRole(EXECUTOR_ROLE) {
+    function execute(address target, uint256 value, bytes calldata payload, bytes32 predecessor, bytes32 salt)
+        public
+        payable
+        virtual
+        onlyRoleOrOpenRole(EXECUTOR_ROLE)
+    {
         bytes32 id = hashOperation(target, value, payload, predecessor, salt);
 
         _beforeCall(id, predecessor);
@@ -4524,12 +4487,8 @@ contract TimelockControllerUpgradeable is Initializable, AccessControlUpgradeabl
     /**
      * @dev Execute an operation's call.
      */
-    function _execute(
-        address target,
-        uint256 value,
-        bytes calldata data
-    ) internal virtual {
-        (bool success, ) = target.call{value: value}(data);
+    function _execute(address target, uint256 value, bytes calldata data) internal virtual {
+        (bool success,) = target.call{value: value}(data);
         require(success, "TimelockController: underlying transaction reverted");
     }
 
@@ -4568,38 +4527,31 @@ contract TimelockControllerUpgradeable is Initializable, AccessControlUpgradeabl
     /**
      * @dev See {IERC721Receiver-onERC721Received}.
      */
-    function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes memory
-    ) public virtual override returns (bytes4) {
+    function onERC721Received(address, address, uint256, bytes memory) public virtual override returns (bytes4) {
         return this.onERC721Received.selector;
     }
 
     /**
      * @dev See {IERC1155Receiver-onERC1155Received}.
      */
-    function onERC1155Received(
-        address,
-        address,
-        uint256,
-        uint256,
-        bytes memory
-    ) public virtual override returns (bytes4) {
+    function onERC1155Received(address, address, uint256, uint256, bytes memory)
+        public
+        virtual
+        override
+        returns (bytes4)
+    {
         return this.onERC1155Received.selector;
     }
 
     /**
      * @dev See {IERC1155Receiver-onERC1155BatchReceived}.
      */
-    function onERC1155BatchReceived(
-        address,
-        address,
-        uint256[] memory,
-        uint256[] memory,
-        bytes memory
-    ) public virtual override returns (bytes4) {
+    function onERC1155BatchReceived(address, address, uint256[] memory, uint256[] memory, bytes memory)
+        public
+        virtual
+        override
+        returns (bytes4)
+    {
         return this.onERC1155BatchReceived.selector;
     }
 
@@ -4850,8 +4802,11 @@ interface IProposalTypesConfigurator {
 // NOTE(l2beat): This is an interface, generated from the contract source code.
 interface VotingModule {
     function propose(uint256 proposalId, bytes calldata proposalData, bytes32 descriptionHash) external;
-    function _countVote(uint256 proposalId, address account, uint8 support, uint256 weight, bytes calldata params) external;
-    function _formatExecuteParams(uint256 proposalId, bytes calldata proposalData) external returns (address[] memory targets, uint256[] memory values, bytes[] memory calldatas);
+    function _countVote(uint256 proposalId, address account, uint8 support, uint256 weight, bytes calldata params)
+        external;
+    function _formatExecuteParams(uint256 proposalId, bytes calldata proposalData)
+        external
+        returns (address[] memory targets, uint256[] memory values, bytes[] memory calldatas);
     function _voteSucceeded(uint256) external view returns (bool);
 }
 
@@ -5039,7 +4994,9 @@ contract AgoraGovernor is
 
         uint256 approvalThreshold = PROPOSAL_TYPES_CONFIGURATOR.proposalTypes(proposal.proposalType).approvalThreshold;
 
-        if (approvalThreshold == 0) return true;
+        if (approvalThreshold == 0) {
+            return true;
+        }
 
         ProposalVote storage proposalVote = _proposalVotes[proposalId];
         uint256 forVotes = proposalVote.forVotes;
@@ -5258,7 +5215,9 @@ contract AgoraGovernor is
         override(GovernorUpgradeableV2)
         onlyGovernance
     {
-        if (approvedModules[target]) revert InvalidRelayTarget(target);
+        if (approvedModules[target]) {
+            revert InvalidRelayTarget(target);
+        }
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         AddressUpgradeable.verifyCallResult(success, returndata, "Governor: relay reverted without message");
     }
@@ -5395,7 +5354,9 @@ contract AgoraGovernor is
      * @param proposalType The new proposal type.
      */
     function editProposalType(uint256 proposalId, uint8 proposalType) external onlyAdminOrTimelock {
-        if (proposalSnapshot(proposalId) == 0) revert InvalidProposalId();
+        if (proposalSnapshot(proposalId) == 0) {
+            revert InvalidProposalId();
+        }
 
         // Revert if `proposalType` is unset
         if (bytes(PROPOSAL_TYPES_CONFIGURATOR.proposalTypes(proposalType).name).length == 0) {

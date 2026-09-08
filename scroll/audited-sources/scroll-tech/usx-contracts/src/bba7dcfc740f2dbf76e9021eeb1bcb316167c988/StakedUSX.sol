@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-import {ERC4626Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC4626Upgradeable.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import {ITreasury} from "./interfaces/ITreasury.sol";
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import {ERC4626Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC4626Upgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
+import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
 import {IStakedUSX} from "./interfaces/IStakedUSX.sol";
 
@@ -60,17 +60,23 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /*=========================== Modifiers =========================*/
 
     modifier onlyGovernance() {
-        if (msg.sender != _getStorage().governance) revert NotGovernance();
+        if (msg.sender != _getStorage().governance) {
+            revert NotGovernance();
+        }
         _;
     }
 
     modifier onlyAdmin() {
-        if (msg.sender != _getStorage().admin) revert NotAdmin();
+        if (msg.sender != _getStorage().admin) {
+            revert NotAdmin();
+        }
         _;
     }
 
     modifier onlyTreasury() {
-        if (msg.sender != address(_getStorage().treasury)) revert NotTreasury();
+        if (msg.sender != address(_getStorage().treasury)) {
+            revert NotTreasury();
+        }
         _;
     }
 
@@ -135,7 +141,9 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @param _treasury Address of the Treasury contract
     /// @param _governance Address of the governance
     function initialize(address _usx, address _treasury, address _admin, address _governance) public initializer {
-        if (_usx == address(0) || _governance == address(0)) revert ZeroAddress();
+        if (_usx == address(0) || _governance == address(0)) {
+            revert ZeroAddress();
+        }
 
         // Initialize ERC4626, ERC20, and ReentrancyGuard
         __ERC4626_init(IERC20(_usx));
@@ -157,9 +165,13 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @notice Set the initial Treasury address - can only be called once when treasury is address(0)
     /// @param _treasury Address of the Treasury contract
     function initializeTreasury(address _treasury) external onlyAdmin {
-        if (_treasury == address(0)) revert ZeroAddress();
+        if (_treasury == address(0)) {
+            revert ZeroAddress();
+        }
         SUSXStorage storage $ = _getStorage();
-        if ($.treasury != ITreasury(address(0))) revert TreasuryAlreadySet();
+        if ($.treasury != ITreasury(address(0))) {
+            revert TreasuryAlreadySet();
+        }
 
         $.treasury = ITreasury(_treasury);
         emit TreasurySet(_treasury);
@@ -182,7 +194,9 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
         SUSXStorage storage $ = _getStorage();
 
         // Check if the withdrawal request is unclaimed
-        if ($.withdrawalRequests[withdrawalId].claimed) revert WithdrawalAlreadyClaimed();
+        if ($.withdrawalRequests[withdrawalId].claimed) {
+            revert WithdrawalAlreadyClaimed();
+        }
 
         // Check if the withdrawal period has passed
         if ($.withdrawalRequests[withdrawalId].withdrawalTimestamp + $.withdrawalPeriod > block.timestamp) {
@@ -228,7 +242,9 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @notice Sets withdrawal fee with precision to 0.001 percent
     /// @param _withdrawalFeeFraction The new withdrawal fee fraction
     function setWithdrawalFeeFraction(uint256 _withdrawalFeeFraction) public onlyGovernance {
-        if (_withdrawalFeeFraction > 20000) revert InvalidWithdrawalFeeFraction();
+        if (_withdrawalFeeFraction > 20000) {
+            revert InvalidWithdrawalFeeFraction();
+        }
         SUSXStorage storage $ = _getStorage();
         uint256 oldFraction = $.withdrawalFeeFraction;
         $.withdrawalFeeFraction = _withdrawalFeeFraction;
@@ -238,7 +254,9 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @notice Set new governance address
     /// @param newGovernance Address of new governance
     function setGovernance(address newGovernance) external onlyGovernance {
-        if (newGovernance == address(0)) revert ZeroAddress();
+        if (newGovernance == address(0)) {
+            revert ZeroAddress();
+        }
 
         SUSXStorage storage $ = _getStorage();
         address oldGovernance = $.governance;
@@ -252,7 +270,9 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @notice Set new admin address
     /// @param newAdmin Address of new admin
     function setAdmin(address newAdmin) external onlyAdmin {
-        if (newAdmin == address(0)) revert ZeroAddress();
+        if (newAdmin == address(0)) {
+            revert ZeroAddress();
+        }
         SUSXStorage storage $ = _getStorage();
         address oldAdmin = $.admin;
         $.admin = newAdmin;
@@ -271,7 +291,9 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @notice Sets duration of epoch in seconds
     /// @param _epochDurationSeconds The new epoch duration in seconds
     function setEpochDuration(uint256 _epochDurationSeconds) public onlyAdmin {
-        if (_epochDurationSeconds < MIN_EPOCH_DURATION) revert InvalidEpochDuration();
+        if (_epochDurationSeconds < MIN_EPOCH_DURATION) {
+            revert InvalidEpochDuration();
+        }
         SUSXStorage storage $ = _getStorage();
         uint256 oldDuration = $.epochDuration;
         $.epochDuration = _epochDurationSeconds;
@@ -298,7 +320,9 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @dev Caller should make sure the rewards are transferred to this contract before calling this function
     /// @param amount The amount of rewards to transfer.
     function notifyRewards(uint256 amount) external nonReentrant onlyTreasury {
-        if (amount == 0) return; // do nothing when no rewards are transferred
+        if (amount == 0) {
+            return;
+        } // do nothing when no rewards are transferred
         SUSXStorage storage $ = _getStorage();
 
         // update rewards
@@ -312,13 +336,21 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /*=========================== Internal Functions =========================*/
 
     /// @dev Override default ERC4626 to check if deposits are frozen
-    function _deposit(address caller, address receiver, uint256 assets, uint256 shares) internal nonReentrant override {
-        if (assets == 0 || shares == 0) revert ZeroAmount();
+    function _deposit(address caller, address receiver, uint256 assets, uint256 shares)
+        internal
+        override
+        nonReentrant
+    {
+        if (assets == 0 || shares == 0) {
+            revert ZeroAmount();
+        }
 
         SUSXStorage storage $ = _getStorage();
 
         // Check if deposits are frozen
-        if ($.depositPaused) revert DepositsPaused();
+        if ($.depositPaused) {
+            revert DepositsPaused();
+        }
 
         // Call parent implementation
         super._deposit(caller, receiver, assets, shares);
@@ -329,11 +361,7 @@ contract StakedUSX is ERC4626Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgrad
     /// @param _data The struct of reward data, will be modified inplace.
     /// @param _periodLength The length of a period, caller should make sure it is at least `86400`.
     /// @param _amount The amount of new rewards to distribute.
-    function _increaseRewards(
-        RewardData memory _data,
-        uint256 _periodLength,
-        uint256 _amount
-    ) internal view {
+    function _increaseRewards(RewardData memory _data, uint256 _periodLength, uint256 _amount) internal view {
         _amount = _amount + _data.queued;
         _data.queued = 0;
 

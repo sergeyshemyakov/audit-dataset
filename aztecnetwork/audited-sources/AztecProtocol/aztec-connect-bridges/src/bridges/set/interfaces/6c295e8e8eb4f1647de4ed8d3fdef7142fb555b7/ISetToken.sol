@@ -74,23 +74,11 @@ interface ISetToken is IERC20 {
 
     function removeExternalPositionModule(address _component, address _positionModule) external;
 
-    function editExternalPositionUnit(
-        address _component,
-        address _positionModule,
-        int256 _realUnit
-    ) external;
+    function editExternalPositionUnit(address _component, address _positionModule, int256 _realUnit) external;
 
-    function editExternalPositionData(
-        address _component,
-        address _positionModule,
-        bytes calldata _data
-    ) external;
+    function editExternalPositionData(address _component, address _positionModule, bytes calldata _data) external;
 
-    function invoke(
-        address _target,
-        uint256 _value,
-        bytes calldata _data
-    ) external returns (bytes memory);
+    function invoke(address _target, uint256 _value, bytes calldata _data) external returns (bytes memory);
 
     function editPositionMultiplier(int256 _newMultiplier) external;
 
@@ -124,7 +112,10 @@ interface ISetToken is IERC20 {
 
     function getExternalPositionModules(address _component) external view returns (address[] memory);
 
-    function getExternalPositionData(address _component, address _positionModule) external view returns (bytes memory);
+    function getExternalPositionData(address _component, address _positionModule)
+        external
+        view
+        returns (bytes memory);
 
     function isExternalPositionModule(address _component, address _module) external view returns (bool);
 

@@ -2,19 +2,22 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { ProxyAdminOwnedBase } from "src/L1/ProxyAdminOwnedBase.sol";
-import { ReinitializableBase } from "src/universal/ReinitializableBase.sol";
-import { CrossDomainMessenger } from "src/universal/CrossDomainMessenger.sol";
+import {ProxyAdminOwnedBase} from "src/L1/ProxyAdminOwnedBase.sol";
+
+import {CrossDomainMessenger} from "src/universal/CrossDomainMessenger.sol";
+import {ReinitializableBase} from "src/universal/ReinitializableBase.sol";
 
 // Libraries
-import { Predeploys } from "src/libraries/Predeploys.sol";
-import { Constants } from "src/libraries/Constants.sol";
+
+import {Constants} from "src/libraries/Constants.sol";
+import {Predeploys} from "src/libraries/Predeploys.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
-import { ISystemConfig } from "interfaces/L1/ISystemConfig.sol";
-import { IOptimismPortal2 as IOptimismPortal } from "interfaces/L1/IOptimismPortal2.sol";
+
+import {IOptimismPortal2 as IOptimismPortal} from "interfaces/L1/IOptimismPortal2.sol";
+import {ISuperchainConfig} from "interfaces/L1/ISuperchainConfig.sol";
+import {ISystemConfig} from "interfaces/L1/ISystemConfig.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @title L1CrossDomainMessenger
@@ -58,7 +61,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ProxyAdminOwnedBase, Re
         // Now perform initialization logic.
         systemConfig = _systemConfig;
         portal = _portal;
-        __CrossDomainMessenger_init({ _otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER) });
+        __CrossDomainMessenger_init({_otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER)});
     }
 
     /// @notice Upgrades the contract to have a reference to the SystemConfig.
@@ -81,7 +84,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ProxyAdminOwnedBase, Re
     function superchainConfig() public view returns (ISuperchainConfig) {
         return systemConfig.superchainConfig();
     }
-    
+
     /// @inheritdoc CrossDomainMessenger
     /// @dev This is added to maintain compatibility with the CrossDomainMessenger abstract contract and should always
     /// return the ether address and 18 decimals.
@@ -99,7 +102,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ProxyAdminOwnedBase, Re
 
     /// @inheritdoc CrossDomainMessenger
     function _sendMessage(address _to, uint64 _gasLimit, uint256 _value, bytes memory _data) internal override {
-        portal.depositTransaction{ value: _value }({
+        portal.depositTransaction{value: _value}({
             _to: _to,
             _value: _value,
             _gasLimit: _gasLimit,

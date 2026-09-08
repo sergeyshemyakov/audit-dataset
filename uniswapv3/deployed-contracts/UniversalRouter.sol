@@ -434,7 +434,8 @@ interface ERC20 {
     function balanceOf(address) external view returns (uint256);
     function transfer(address to, uint256 amount) external returns (bool);
     function transferFrom(address from, address to, uint256 amount) external returns (bool);
-    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 }
 
 /// @notice Safe ETH and ERC20 transfer library that gracefully handles missing return values.
@@ -462,12 +463,7 @@ library SafeTransferLib {
                             ERC20 OPERATIONS
     //////////////////////////////////////////////////////////////*/
 
-    function safeTransferFrom(
-        ERC20 token,
-        address from,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransferFrom(ERC20 token, address from, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -481,26 +477,23 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 36), to) // Append the "to" argument.
             mstore(add(freeMemoryPointer, 68), amount) // Append the "amount" argument.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
+                )
         }
 
         require(success, "TRANSFER_FROM_FAILED");
     }
 
-    function safeTransfer(
-        ERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransfer(ERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -513,26 +506,23 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), to) // Append the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+                )
         }
 
         require(success, "TRANSFER_FAILED");
     }
 
-    function safeApprove(
-        ERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeApprove(ERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -545,16 +535,17 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), to) // Append the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+                )
         }
 
         require(success, "APPROVE_FAILED");
@@ -571,7 +562,9 @@ library BipsLibrary {
     /// @param amount The total amount to calculate a percentage of
     /// @param bips The percentage to calculate, in bips
     function calculatePortion(uint256 amount, uint256 bips) internal pure returns (uint256) {
-        if (bips > BPS_DENOMINATOR) revert InvalidBips();
+        if (bips > BPS_DENOMINATOR) {
+            revert InvalidBips();
+        }
         return (amount * bips) / BPS_DENOMINATOR;
     }
 }
@@ -670,12 +663,20 @@ abstract contract Payments is PaymentsImmutables {
         uint256 balance;
         if (token == Constants.ETH) {
             balance = address(this).balance;
-            if (balance < amountMinimum) revert InsufficientETH();
-            if (balance > 0) recipient.safeTransferETH(balance);
+            if (balance < amountMinimum) {
+                revert InsufficientETH();
+            }
+            if (balance > 0) {
+                recipient.safeTransferETH(balance);
+            }
         } else {
             balance = ERC20(token).balanceOf(address(this));
-            if (balance < amountMinimum) revert InsufficientToken();
-            if (balance > 0) ERC20(token).safeTransfer(recipient, balance);
+            if (balance < amountMinimum) {
+                revert InsufficientToken();
+            }
+            if (balance > 0) {
+                ERC20(token).safeTransfer(recipient, balance);
+            }
         }
     }
 
@@ -748,7 +749,9 @@ library SafeCast160 {
     /// @notice Safely casts uint256 to uint160
     /// @param value The uint256 to be cast
     function toUint160(uint256 value) internal pure returns (uint160) {
-        if (value > type(uint160).max) revert UnsafeCast();
+        if (value > type(uint160).max) {
+            revert UnsafeCast();
+        }
         return uint160(value);
     }
 }
@@ -777,7 +780,9 @@ abstract contract Permit2Payments is Payments {
     {
         uint256 batchLength = batchDetails.length;
         for (uint256 i = 0; i < batchLength; ++i) {
-            if (batchDetails[i].from != owner) revert FromAddressIsNotOwner();
+            if (batchDetails[i].from != owner) {
+                revert FromAddressIsNotOwner();
+            }
         }
         PERMIT2.transferFrom(batchDetails);
     }
@@ -788,56 +793,60 @@ abstract contract Permit2Payments is Payments {
     /// @param recipient The recipient of the transfer
     /// @param amount The amount to transfer
     function payOrPermit2Transfer(address token, address payer, address recipient, uint256 amount) internal {
-        if (payer == address(this)) pay(token, recipient, amount);
-        else permit2TransferFrom(token, payer, recipient, amount.toUint160());
+        if (payer == address(this)) {
+            pay(token, recipient, amount);
+        } else {
+            permit2TransferFrom(token, payer, recipient, amount.toUint160());
+        }
     }
 }
 
 interface IUniswapV2Pair {
-    event Approval(address indexed owner, address indexed spender, uint value);
-    event Transfer(address indexed from, address indexed to, uint value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
     function name() external pure returns (string memory);
     function symbol() external pure returns (string memory);
     function decimals() external pure returns (uint8);
-    function totalSupply() external view returns (uint);
-    function balanceOf(address owner) external view returns (uint);
-    function allowance(address owner, address spender) external view returns (uint);
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address owner) external view returns (uint256);
+    function allowance(address owner, address spender) external view returns (uint256);
 
-    function approve(address spender, uint value) external returns (bool);
-    function transfer(address to, uint value) external returns (bool);
-    function transferFrom(address from, address to, uint value) external returns (bool);
+    function approve(address spender, uint256 value) external returns (bool);
+    function transfer(address to, uint256 value) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 
     function DOMAIN_SEPARATOR() external view returns (bytes32);
     function PERMIT_TYPEHASH() external pure returns (bytes32);
-    function nonces(address owner) external view returns (uint);
+    function nonces(address owner) external view returns (uint256);
 
-    function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 
-    event Mint(address indexed sender, uint amount0, uint amount1);
-    event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+    event Mint(address indexed sender, uint256 amount0, uint256 amount1);
+    event Burn(address indexed sender, uint256 amount0, uint256 amount1, address indexed to);
     event Swap(
         address indexed sender,
-        uint amount0In,
-        uint amount1In,
-        uint amount0Out,
-        uint amount1Out,
+        uint256 amount0In,
+        uint256 amount1In,
+        uint256 amount0Out,
+        uint256 amount1Out,
         address indexed to
     );
     event Sync(uint112 reserve0, uint112 reserve1);
 
-    function MINIMUM_LIQUIDITY() external pure returns (uint);
+    function MINIMUM_LIQUIDITY() external pure returns (uint256);
     function factory() external view returns (address);
     function token0() external view returns (address);
     function token1() external view returns (address);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
-    function price0CumulativeLast() external view returns (uint);
-    function price1CumulativeLast() external view returns (uint);
-    function kLast() external view returns (uint);
+    function price0CumulativeLast() external view returns (uint256);
+    function price1CumulativeLast() external view returns (uint256);
+    function kLast() external view returns (uint256);
 
-    function mint(address to) external returns (uint liquidity);
-    function burn(address to) external returns (uint amount0, uint amount1);
-    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+    function mint(address to) external returns (uint256 liquidity);
+    function burn(address to) external returns (uint256 amount0, uint256 amount1);
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
     function skim(address to) external;
     function sync() external;
 
@@ -897,7 +906,7 @@ library UniswapV2Library {
             uint160(
                 uint256(
                     keccak256(
-                        abi.encodePacked(hex'ff', factory, keccak256(abi.encodePacked(token0, token1)), initCodeHash)
+                        abi.encodePacked(hex"ff", factory, keccak256(abi.encodePacked(token0, token1)), initCodeHash)
                     )
                 )
             )
@@ -933,7 +942,9 @@ library UniswapV2Library {
         pure
         returns (uint256 amountOut)
     {
-        if (reserveIn == 0 || reserveOut == 0) revert InvalidReserves();
+        if (reserveIn == 0 || reserveOut == 0) {
+            revert InvalidReserves();
+        }
         uint256 amountInWithFee = amountIn * 997;
         uint256 numerator = amountInWithFee * reserveOut;
         uint256 denominator = reserveIn * 1000 + amountInWithFee;
@@ -950,7 +961,9 @@ library UniswapV2Library {
         pure
         returns (uint256 amountIn)
     {
-        if (reserveIn == 0 || reserveOut == 0) revert InvalidReserves();
+        if (reserveIn == 0 || reserveOut == 0) {
+            revert InvalidReserves();
+        }
         uint256 numerator = reserveIn * amountOut * 1000;
         uint256 denominator = (reserveOut - amountOut) * 997;
         amountIn = (numerator / denominator) + 1;
@@ -968,7 +981,9 @@ library UniswapV2Library {
         view
         returns (uint256 amount, address pair)
     {
-        if (path.length < 2) revert InvalidPath();
+        if (path.length < 2) {
+            revert InvalidPath();
+        }
         amount = amountOut;
         for (uint256 i = path.length - 1; i > 0; i--) {
             uint256 reserveIn;
@@ -997,7 +1012,9 @@ abstract contract V2SwapRouter is UniswapImmutables, Permit2Payments {
 
     function _v2Swap(address[] calldata path, address recipient, address pair) private {
         unchecked {
-            if (path.length < 2) revert V2InvalidPath();
+            if (path.length < 2) {
+                revert V2InvalidPath();
+            }
 
             // cached to save on duplicate operations
             (address token0,) = UniswapV2Library.sortTokens(path[0], path[1]);
@@ -1051,7 +1068,9 @@ abstract contract V2SwapRouter is UniswapImmutables, Permit2Payments {
         _v2Swap(path, recipient, firstPair);
 
         uint256 amountOut = tokenOut.balanceOf(recipient) - balanceBefore;
-        if (amountOut < amountOutMinimum) revert V2TooLittleReceived();
+        if (amountOut < amountOutMinimum) {
+            revert V2TooLittleReceived();
+        }
     }
 
     /// @notice Performs a Uniswap v2 exact output swap
@@ -1069,7 +1088,9 @@ abstract contract V2SwapRouter is UniswapImmutables, Permit2Payments {
     ) internal {
         (uint256 amountIn, address firstPair) =
             UniswapV2Library.getAmountInMultihop(UNISWAP_V2_FACTORY, UNISWAP_V2_PAIR_INIT_CODE_HASH, amountOut, path);
-        if (amountIn > amountInMaximum) revert V2TooMuchRequested();
+        if (amountIn > amountInMaximum) {
+            revert V2TooMuchRequested();
+        }
 
         payOrPermit2Transfer(path[0], payer, firstPair, amountIn);
         _v2Swap(path, recipient, firstPair);
@@ -1088,11 +1109,7 @@ interface IUniswapV3SwapCallback {
     /// @param amount1Delta The amount of token1 that was sent (negative) or must be received (positive) by the pool by
     /// the end of the swap. If positive, the callback must send that amount of token1 to the pool.
     /// @param data Any data passed through by the caller via the IUniswapV3PoolActions#swap call
-    function uniswapV3SwapCallback(
-        int256 amount0Delta,
-        int256 amount1Delta,
-        bytes calldata data
-    ) external;
+    function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external;
 }
 
 type PoolId is bytes32;
@@ -1543,7 +1560,9 @@ library SafeCast {
     /// @return y The downcasted integer, now type uint160
     function toUint160(uint256 x) internal pure returns (uint160 y) {
         y = uint160(x);
-        if (y != x) SafeCastOverflow.selector.revertWith();
+        if (y != x) {
+            SafeCastOverflow.selector.revertWith();
+        }
     }
 
     /// @notice Cast a uint256 to a uint128, revert on overflow
@@ -1551,14 +1570,18 @@ library SafeCast {
     /// @return y The downcasted integer, now type uint128
     function toUint128(uint256 x) internal pure returns (uint128 y) {
         y = uint128(x);
-        if (x != y) SafeCastOverflow.selector.revertWith();
+        if (x != y) {
+            SafeCastOverflow.selector.revertWith();
+        }
     }
 
     /// @notice Cast a int128 to a uint128, revert on overflow or underflow
     /// @param x The int128 to be casted
     /// @return y The casted integer, now type uint128
     function toUint128(int128 x) internal pure returns (uint128 y) {
-        if (x < 0) SafeCastOverflow.selector.revertWith();
+        if (x < 0) {
+            SafeCastOverflow.selector.revertWith();
+        }
         y = uint128(x);
     }
 
@@ -1567,7 +1590,9 @@ library SafeCast {
     /// @return y The downcasted integer, now type int128
     function toInt128(int256 x) internal pure returns (int128 y) {
         y = int128(x);
-        if (y != x) SafeCastOverflow.selector.revertWith();
+        if (y != x) {
+            SafeCastOverflow.selector.revertWith();
+        }
     }
 
     /// @notice Cast a uint256 to a int256, revert on overflow
@@ -1575,14 +1600,18 @@ library SafeCast {
     /// @return y The casted integer, now type int256
     function toInt256(uint256 x) internal pure returns (int256 y) {
         y = int256(x);
-        if (y < 0) SafeCastOverflow.selector.revertWith();
+        if (y < 0) {
+            SafeCastOverflow.selector.revertWith();
+        }
     }
 
     /// @notice Cast a uint256 to a int128, revert on overflow
     /// @param x The uint256 to be downcasted
     /// @return The downcasted integer, now type int128
     function toInt128(uint256 x) internal pure returns (int128) {
-        if (x >= 1 << 127) SafeCastOverflow.selector.revertWith();
+        if (x >= 1 << 127) {
+            SafeCastOverflow.selector.revertWith();
+        }
         return int128(int256(x));
     }
 }
@@ -2523,7 +2552,9 @@ library BytesLib {
     /// @param _bytes The input bytes string to slice
     /// @return _address The address starting at byte 0
     function toAddress(bytes calldata _bytes) internal pure returns (address _address) {
-        if (_bytes.length < Constants.ADDR_SIZE) revert SliceOutOfBounds();
+        if (_bytes.length < Constants.ADDR_SIZE) {
+            revert SliceOutOfBounds();
+        }
         assembly {
             _address := shr(96, calldataload(_bytes.offset))
         }
@@ -2536,7 +2567,9 @@ library BytesLib {
     /// @return fee The uint24 starting at byte 20
     /// @return token1 The address at byte 23
     function toPool(bytes calldata _bytes) internal pure returns (address token0, uint24 fee, address token1) {
-        if (_bytes.length < Constants.V3_POP_OFFSET) revert SliceOutOfBounds();
+        if (_bytes.length < Constants.V3_POP_OFFSET) {
+            revert SliceOutOfBounds();
+        }
         assembly {
             let firstWord := calldataload(_bytes.offset)
             token0 := shr(96, firstWord)
@@ -2566,7 +2599,9 @@ library BytesLib {
             offset := add(lengthPtr, 0x20)
             relativeOffset := sub(offset, _bytes.offset)
         }
-        if (_bytes.length < length + relativeOffset) revert SliceOutOfBounds();
+        if (_bytes.length < length + relativeOffset) {
+            revert SliceOutOfBounds();
+        }
     }
 
     /// @notice Decode the `_arg`-th element in `_bytes` as `address[]`
@@ -2646,7 +2681,7 @@ library SafeCast_1 {
     /// @param y The uint256 to be casted
     /// @return z The casted integer, now type int256
     function toInt256(uint256 y) internal pure returns (int256 z) {
-        require(y < 2**255);
+        require(y < 2 ** 255);
         z = int256(y);
     }
 }
@@ -2847,11 +2882,7 @@ interface IUniswapV3PoolDerivedState {
     function snapshotCumulativesInside(int24 tickLower, int24 tickUpper)
         external
         view
-        returns (
-            int56 tickCumulativeInside,
-            uint160 secondsPerLiquidityInsideX128,
-            uint32 secondsInside
-        );
+        returns (int56 tickCumulativeInside, uint160 secondsPerLiquidityInsideX128, uint32 secondsInside);
 }
 
 /// @title Permissionless pool actions
@@ -2873,13 +2904,9 @@ interface IUniswapV3PoolActions {
     /// @param data Any data that should be passed through to the callback
     /// @return amount0 The amount of token0 that was paid to mint the given amount of liquidity. Matches the value in the callback
     /// @return amount1 The amount of token1 that was paid to mint the given amount of liquidity. Matches the value in the callback
-    function mint(
-        address recipient,
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount,
-        bytes calldata data
-    ) external returns (uint256 amount0, uint256 amount1);
+    function mint(address recipient, int24 tickLower, int24 tickUpper, uint128 amount, bytes calldata data)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Collects tokens owed to a position
     /// @dev Does not recompute fees earned, which must be done either via mint or burn of any amount of liquidity.
@@ -2909,11 +2936,9 @@ interface IUniswapV3PoolActions {
     /// @param amount How much liquidity to burn
     /// @return amount0 The amount of token0 sent to the recipient
     /// @return amount1 The amount of token1 sent to the recipient
-    function burn(
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount
-    ) external returns (uint256 amount0, uint256 amount1);
+    function burn(int24 tickLower, int24 tickUpper, uint128 amount)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
@@ -2941,12 +2966,7 @@ interface IUniswapV3PoolActions {
     /// @param amount0 The amount of token0 to send
     /// @param amount1 The amount of token1 to send
     /// @param data Any data to be passed through to the callback
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 
     /// @notice Increase the maximum number of price and liquidity observations that this pool will store
     /// @dev This method is no-op if the pool already has an observationCardinalityNext greater than or equal to
@@ -2969,11 +2989,9 @@ interface IUniswapV3PoolOwnerActions {
     /// @param amount1Requested The maximum amount of token1 to send, can be 0 to collect fees in only token0
     /// @return amount0 The protocol fee collected in token0
     /// @return amount1 The protocol fee collected in token1
-    function collectProtocol(
-        address recipient,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) external returns (uint128 amount0, uint128 amount1);
+    function collectProtocol(address recipient, uint128 amount0Requested, uint128 amount1Requested)
+        external
+        returns (uint128 amount0, uint128 amount1);
 }
 
 /// @title Events emitted by a pool
@@ -3076,8 +3094,7 @@ interface IUniswapV3PoolEvents {
     /// @param observationCardinalityNextOld The previous value of the next observation cardinality
     /// @param observationCardinalityNextNew The updated value of the next observation cardinality
     event IncreaseObservationCardinalityNext(
-        uint16 observationCardinalityNextOld,
-        uint16 observationCardinalityNextNew
+        uint16 observationCardinalityNextOld, uint16 observationCardinalityNextNew
     );
 
     /// @notice Emitted when the protocol fee is changed by the pool
@@ -3106,9 +3123,7 @@ interface IUniswapV3Pool is
     IUniswapV3PoolActions,
     IUniswapV3PoolOwnerActions,
     IUniswapV3PoolEvents
-{
-
-}
+{}
 
 /// @title Router for Uniswap v3 Trades
 abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3SwapCallback {
@@ -3130,14 +3145,18 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
     uint160 internal constant MAX_SQRT_RATIO = 1461446703485210103287273052203988822378723970342;
 
     function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
-        if (amount0Delta <= 0 && amount1Delta <= 0) revert V3InvalidSwap(); // swaps entirely within 0-liquidity regions are not supported
+        if (amount0Delta <= 0 && amount1Delta <= 0) {
+            revert V3InvalidSwap();
+        } // swaps entirely within 0-liquidity regions are not supported
         (, address payer) = abi.decode(data, (bytes, address));
         bytes calldata path = data.toBytes(0);
 
         // because exact output swaps are executed in reverse order, in this case tokenOut is actually tokenIn
         (address tokenIn, uint24 fee, address tokenOut) = path.decodeFirstPool();
 
-        if (computePoolAddress(tokenIn, tokenOut, fee) != msg.sender) revert V3InvalidCaller();
+        if (computePoolAddress(tokenIn, tokenOut, fee) != msg.sender) {
+            revert V3InvalidCaller();
+        }
 
         (bool isExactInput, uint256 amountToPay) =
             amount0Delta > 0 ? (tokenIn < tokenOut, uint256(amount0Delta)) : (tokenOut < tokenIn, uint256(amount1Delta));
@@ -3152,7 +3171,9 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
                 path = path.skipToken();
                 _swap(-amountToPay.toInt256(), msg.sender, path, payer, false);
             } else {
-                if (amountToPay > MaxInputAmount.get()) revert V3TooMuchRequested();
+                if (amountToPay > MaxInputAmount.get()) {
+                    revert V3TooMuchRequested();
+                }
                 // note that because exact output swaps are executed in reverse order, tokenOut is actually tokenIn
                 payOrPermit2Transfer(tokenOut, payer, msg.sender, amountToPay);
             }
@@ -3203,7 +3224,9 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
             }
         }
 
-        if (amountOut < amountOutMinimum) revert V3TooLittleReceived();
+        if (amountOut < amountOutMinimum) {
+            revert V3TooLittleReceived();
+        }
     }
 
     /// @notice Performs a Uniswap v3 exact output swap
@@ -3225,7 +3248,9 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
 
         uint256 amountOutReceived = zeroForOne ? uint256(-amount1Delta) : uint256(-amount0Delta);
 
-        if (amountOutReceived != amountOut) revert V3InvalidAmountOut();
+        if (amountOutReceived != amountOut) {
+            revert V3InvalidAmountOut();
+        }
 
         MaxInputAmount.set(0);
     }
@@ -3250,13 +3275,15 @@ abstract contract V3SwapRouter is UniswapImmutables, Permit2Payments, IUniswapV3
     }
 
     function computePoolAddress(address tokenA, address tokenB, uint24 fee) private view returns (address pool) {
-        if (tokenA > tokenB) (tokenA, tokenB) = (tokenB, tokenA);
+        if (tokenA > tokenB) {
+            (tokenA, tokenB) = (tokenB, tokenA);
+        }
         pool = address(
             uint160(
                 uint256(
                     keccak256(
                         abi.encodePacked(
-                            hex'ff',
+                            hex"ff",
                             UNISWAP_V3_FACTORY,
                             keccak256(abi.encode(tokenA, tokenB, fee)),
                             UNISWAP_V3_POOL_INIT_CODE_HASH
@@ -3297,7 +3324,9 @@ abstract contract SafeCallback is ImmutableState, IUnlockCallback {
 
     /// @notice Only allow calls from the PoolManager contract
     modifier onlyPoolManager() {
-        if (msg.sender != address(poolManager)) revert NotPoolManager();
+        if (msg.sender != address(poolManager)) {
+            revert NotPoolManager();
+        }
         _;
     }
 
@@ -3342,7 +3371,9 @@ abstract contract BaseActionsRouter is SafeCallback {
 
     function _executeActionsWithoutUnlock(bytes calldata actions, bytes[] calldata params) internal {
         uint256 numActions = actions.length;
-        if (numActions != params.length) revert InputLengthMismatch();
+        if (numActions != params.length) {
+            revert InputLengthMismatch();
+        }
 
         for (uint256 actionIndex = 0; actionIndex < numActions; actionIndex++) {
             uint256 action = uint8(actions[actionIndex]);
@@ -3480,7 +3511,9 @@ library TransientStateLibrary {
     /// @dev returns 0 if the reserves are not synced or value is 0.
     /// Checks the synced currency to only return valid reserve values (after a sync and before a settle).
     function getSyncedReserves(IPoolManager manager) internal view returns (uint256) {
-        if (getSyncedCurrency(manager).isAddressZero()) return 0;
+        if (getSyncedCurrency(manager).isAddressZero()) {
+            return 0;
+        }
         return uint256(manager.exttload(CurrencyReserves.RESERVES_OF_SLOT));
     }
 
@@ -3530,7 +3563,9 @@ abstract contract DeltaResolver is ImmutableState {
     /// @param amount Amount to take
     /// @dev Returns early if the amount is 0
     function _take(Currency currency, address recipient, uint256 amount) internal {
-        if (amount == 0) return;
+        if (amount == 0) {
+            return;
+        }
         poolManager.take(currency, recipient, amount);
     }
 
@@ -3541,7 +3576,9 @@ abstract contract DeltaResolver is ImmutableState {
     /// @param amount Amount to send
     /// @dev Returns early if the amount is 0
     function _settle(Currency currency, address payer, uint256 amount) internal {
-        if (amount == 0) return;
+        if (amount == 0) {
+            return;
+        }
 
         poolManager.sync(currency);
         if (currency.isAddressZero()) {
@@ -3565,7 +3602,9 @@ abstract contract DeltaResolver is ImmutableState {
     function _getFullDebt(Currency currency) internal view returns (uint256 amount) {
         int256 _amount = poolManager.currencyDelta(address(this), currency);
         // If the amount is positive, it should be taken not settled.
-        if (_amount > 0) revert DeltaNotNegative(currency);
+        if (_amount > 0) {
+            revert DeltaNotNegative(currency);
+        }
         // Casting is safe due to limits on the total supply of a pool
         amount = uint256(-_amount);
     }
@@ -3576,7 +3615,9 @@ abstract contract DeltaResolver is ImmutableState {
     function _getFullCredit(Currency currency) internal view returns (uint256 amount) {
         int256 _amount = poolManager.currencyDelta(address(this), currency);
         // If the amount is negative, it should be settled not taken.
-        if (_amount < 0) revert DeltaNotPositive(currency);
+        if (_amount < 0) {
+            revert DeltaNotPositive(currency);
+        }
         amount = uint256(_amount);
     }
 
@@ -3622,7 +3663,9 @@ abstract contract DeltaResolver is ImmutableState {
             // note that we use the DEBT amount. Positive deltas can be taken and then wrapped.
             amount = _getFullDebt(outputCurrency);
         }
-        if (amount > balance) revert InsufficientBalance();
+        if (amount > balance) {
+            revert InsufficientBalance();
+        }
         return amount;
     }
 }
@@ -3784,7 +3827,9 @@ library TickMath {
                 absTick := xor(mask, add(mask, tick))
             }
 
-            if (absTick > uint256(int256(MAX_TICK))) InvalidTick.selector.revertWith(tick);
+            if (absTick > uint256(int256(MAX_TICK))) {
+                InvalidTick.selector.revertWith(tick);
+            }
 
             // The tick is decomposed into bits, and for each bit with index i that is set, the product of 1/sqrt(1.0001^(2^i))
             // is calculated (using Q128.128). The constants used for this calculation are rounded to the nearest integer
@@ -3796,25 +3841,63 @@ library TickMath {
             assembly ("memory-safe") {
                 price := xor(shl(128, 1), mul(xor(shl(128, 1), 0xfffcb933bd6fad37aa2d162d1a594001), and(absTick, 0x1)))
             }
-            if (absTick & 0x2 != 0) price = (price * 0xfff97272373d413259a46990580e213a) >> 128;
-            if (absTick & 0x4 != 0) price = (price * 0xfff2e50f5f656932ef12357cf3c7fdcc) >> 128;
-            if (absTick & 0x8 != 0) price = (price * 0xffe5caca7e10e4e61c3624eaa0941cd0) >> 128;
-            if (absTick & 0x10 != 0) price = (price * 0xffcb9843d60f6159c9db58835c926644) >> 128;
-            if (absTick & 0x20 != 0) price = (price * 0xff973b41fa98c081472e6896dfb254c0) >> 128;
-            if (absTick & 0x40 != 0) price = (price * 0xff2ea16466c96a3843ec78b326b52861) >> 128;
-            if (absTick & 0x80 != 0) price = (price * 0xfe5dee046a99a2a811c461f1969c3053) >> 128;
-            if (absTick & 0x100 != 0) price = (price * 0xfcbe86c7900a88aedcffc83b479aa3a4) >> 128;
-            if (absTick & 0x200 != 0) price = (price * 0xf987a7253ac413176f2b074cf7815e54) >> 128;
-            if (absTick & 0x400 != 0) price = (price * 0xf3392b0822b70005940c7a398e4b70f3) >> 128;
-            if (absTick & 0x800 != 0) price = (price * 0xe7159475a2c29b7443b29c7fa6e889d9) >> 128;
-            if (absTick & 0x1000 != 0) price = (price * 0xd097f3bdfd2022b8845ad8f792aa5825) >> 128;
-            if (absTick & 0x2000 != 0) price = (price * 0xa9f746462d870fdf8a65dc1f90e061e5) >> 128;
-            if (absTick & 0x4000 != 0) price = (price * 0x70d869a156d2a1b890bb3df62baf32f7) >> 128;
-            if (absTick & 0x8000 != 0) price = (price * 0x31be135f97d08fd981231505542fcfa6) >> 128;
-            if (absTick & 0x10000 != 0) price = (price * 0x9aa508b5b7a84e1c677de54f3e99bc9) >> 128;
-            if (absTick & 0x20000 != 0) price = (price * 0x5d6af8dedb81196699c329225ee604) >> 128;
-            if (absTick & 0x40000 != 0) price = (price * 0x2216e584f5fa1ea926041bedfe98) >> 128;
-            if (absTick & 0x80000 != 0) price = (price * 0x48a170391f7dc42444e8fa2) >> 128;
+            if (absTick & 0x2 != 0) {
+                price = (price * 0xfff97272373d413259a46990580e213a) >> 128;
+            }
+            if (absTick & 0x4 != 0) {
+                price = (price * 0xfff2e50f5f656932ef12357cf3c7fdcc) >> 128;
+            }
+            if (absTick & 0x8 != 0) {
+                price = (price * 0xffe5caca7e10e4e61c3624eaa0941cd0) >> 128;
+            }
+            if (absTick & 0x10 != 0) {
+                price = (price * 0xffcb9843d60f6159c9db58835c926644) >> 128;
+            }
+            if (absTick & 0x20 != 0) {
+                price = (price * 0xff973b41fa98c081472e6896dfb254c0) >> 128;
+            }
+            if (absTick & 0x40 != 0) {
+                price = (price * 0xff2ea16466c96a3843ec78b326b52861) >> 128;
+            }
+            if (absTick & 0x80 != 0) {
+                price = (price * 0xfe5dee046a99a2a811c461f1969c3053) >> 128;
+            }
+            if (absTick & 0x100 != 0) {
+                price = (price * 0xfcbe86c7900a88aedcffc83b479aa3a4) >> 128;
+            }
+            if (absTick & 0x200 != 0) {
+                price = (price * 0xf987a7253ac413176f2b074cf7815e54) >> 128;
+            }
+            if (absTick & 0x400 != 0) {
+                price = (price * 0xf3392b0822b70005940c7a398e4b70f3) >> 128;
+            }
+            if (absTick & 0x800 != 0) {
+                price = (price * 0xe7159475a2c29b7443b29c7fa6e889d9) >> 128;
+            }
+            if (absTick & 0x1000 != 0) {
+                price = (price * 0xd097f3bdfd2022b8845ad8f792aa5825) >> 128;
+            }
+            if (absTick & 0x2000 != 0) {
+                price = (price * 0xa9f746462d870fdf8a65dc1f90e061e5) >> 128;
+            }
+            if (absTick & 0x4000 != 0) {
+                price = (price * 0x70d869a156d2a1b890bb3df62baf32f7) >> 128;
+            }
+            if (absTick & 0x8000 != 0) {
+                price = (price * 0x31be135f97d08fd981231505542fcfa6) >> 128;
+            }
+            if (absTick & 0x10000 != 0) {
+                price = (price * 0x9aa508b5b7a84e1c677de54f3e99bc9) >> 128;
+            }
+            if (absTick & 0x20000 != 0) {
+                price = (price * 0x5d6af8dedb81196699c329225ee604) >> 128;
+            }
+            if (absTick & 0x40000 != 0) {
+                price = (price * 0x2216e584f5fa1ea926041bedfe98) >> 128;
+            }
+            if (absTick & 0x80000 != 0) {
+                price = (price * 0x48a170391f7dc42444e8fa2) >> 128;
+            }
 
             assembly ("memory-safe") {
                 // if (tick > 0) price = type(uint256).max / price;
@@ -3850,8 +3933,11 @@ library TickMath {
             uint256 r = price;
             uint256 msb = BitMath.mostSignificantBit(r);
 
-            if (msb >= 128) r = price >> (msb - 127);
-            else r = price << (127 - msb);
+            if (msb >= 128) {
+                r = price >> (msb - 127);
+            } else {
+                r = price << (127 - msb);
+            }
 
             int256 log_2 = (int256(msb) - 128) << 64;
 
@@ -3989,13 +4075,17 @@ abstract contract V4Router is IV4Router, BaseActionsRouter, DeltaResolver {
             if (action == Actions.SETTLE_ALL) {
                 (Currency currency, uint256 maxAmount) = params.decodeCurrencyAndUint256();
                 uint256 amount = _getFullDebt(currency);
-                if (amount > maxAmount) revert V4TooMuchRequested(maxAmount, amount);
+                if (amount > maxAmount) {
+                    revert V4TooMuchRequested(maxAmount, amount);
+                }
                 _settle(currency, msgSender(), amount);
                 return;
             } else if (action == Actions.TAKE_ALL) {
                 (Currency currency, uint256 minAmount) = params.decodeCurrencyAndUint256();
                 uint256 amount = _getFullCredit(currency);
-                if (amount < minAmount) revert V4TooLittleReceived(minAmount, amount);
+                if (amount < minAmount) {
+                    revert V4TooLittleReceived(minAmount, amount);
+                }
                 _take(currency, msgSender(), amount);
                 return;
             } else if (action == Actions.SETTLE) {
@@ -4023,7 +4113,9 @@ abstract contract V4Router is IV4Router, BaseActionsRouter, DeltaResolver {
         }
         uint128 amountOut =
             _swap(params.poolKey, params.zeroForOne, -int256(uint256(amountIn)), params.hookData).toUint128();
-        if (amountOut < params.amountOutMinimum) revert V4TooLittleReceived(params.amountOutMinimum, amountOut);
+        if (amountOut < params.amountOutMinimum) {
+            revert V4TooLittleReceived(params.amountOutMinimum, amountOut);
+        }
     }
 
     function _swapExactInput(IV4Router.ExactInputParams calldata params) private {
@@ -4033,7 +4125,9 @@ abstract contract V4Router is IV4Router, BaseActionsRouter, DeltaResolver {
             uint128 amountOut;
             Currency currencyIn = params.currencyIn;
             uint128 amountIn = params.amountIn;
-            if (amountIn == ActionConstants.OPEN_DELTA) amountIn = _getFullCredit(currencyIn).toUint128();
+            if (amountIn == ActionConstants.OPEN_DELTA) {
+                amountIn = _getFullCredit(currencyIn).toUint128();
+            }
             PathKey calldata pathKey;
 
             for (uint256 i = 0; i < pathLength; i++) {
@@ -4046,7 +4140,9 @@ abstract contract V4Router is IV4Router, BaseActionsRouter, DeltaResolver {
                 currencyIn = pathKey.intermediateCurrency;
             }
 
-            if (amountOut < params.amountOutMinimum) revert V4TooLittleReceived(params.amountOutMinimum, amountOut);
+            if (amountOut < params.amountOutMinimum) {
+                revert V4TooLittleReceived(params.amountOutMinimum, amountOut);
+            }
         }
     }
 
@@ -4059,7 +4155,9 @@ abstract contract V4Router is IV4Router, BaseActionsRouter, DeltaResolver {
         uint128 amountIn = (
             uint256(-int256(_swap(params.poolKey, params.zeroForOne, int256(uint256(amountOut)), params.hookData)))
         ).toUint128();
-        if (amountIn > params.amountInMaximum) revert V4TooMuchRequested(params.amountInMaximum, amountIn);
+        if (amountIn > params.amountInMaximum) {
+            revert V4TooMuchRequested(params.amountInMaximum, amountIn);
+        }
     }
 
     function _swapExactOutput(IV4Router.ExactOutputParams calldata params) private {
@@ -4085,7 +4183,9 @@ abstract contract V4Router is IV4Router, BaseActionsRouter, DeltaResolver {
                 amountOut = amountIn;
                 currencyOut = pathKey.intermediateCurrency;
             }
-            if (amountIn > params.amountInMaximum) revert V4TooMuchRequested(params.amountInMaximum, amountIn);
+            if (amountIn > params.amountInMaximum) {
+                revert V4TooMuchRequested(params.amountInMaximum, amountIn);
+            }
         }
     }
 
@@ -4128,12 +4228,10 @@ interface IPoolInitializer {
     /// @param fee The fee amount of the v3 pool for the specified token pair
     /// @param sqrtPriceX96 The initial square root price of the pool as a Q64.96 value
     /// @return pool Returns the pool address based on the pair of tokens and fee, will return the newly created pool address if necessary
-    function createAndInitializePoolIfNecessary(
-        address token0,
-        address token1,
-        uint24 fee,
-        uint160 sqrtPriceX96
-    ) external payable returns (address pool);
+    function createAndInitializePoolIfNecessary(address token0, address token1, uint24 fee, uint160 sqrtPriceX96)
+        external
+        payable
+        returns (address pool);
 }
 
 /// @title Periphery Payments
@@ -4155,11 +4253,7 @@ interface IPeripheryPayments {
     /// @param token The contract address of the token which will be transferred to `recipient`
     /// @param amountMinimum The minimum amount of token required for a transfer
     /// @param recipient The destination address of the token
-    function sweepToken(
-        address token,
-        uint256 amountMinimum,
-        address recipient
-    ) external payable;
+    function sweepToken(address token, uint256 amountMinimum, address recipient) external payable;
 }
 
 /// @title Immutable state
@@ -4239,12 +4333,7 @@ interface IERC721 is IERC165 {
      *
      * Emits a {Transfer} event.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId,
-        bytes calldata data
-    ) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 
     /**
      * @dev Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
@@ -4260,11 +4349,7 @@ interface IERC721 is IERC165 {
      *
      * Emits a {Transfer} event.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
 
     /**
      * @dev Transfers `tokenId` token from `from` to `to`.
@@ -4280,11 +4365,7 @@ interface IERC721 is IERC165 {
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
+    function transferFrom(address from, address to, uint256 tokenId) external;
 
     /**
      * @dev Gives permission to `to` to transfer `tokenId` token to another account.
@@ -4392,14 +4473,9 @@ interface IERC721Permit is IERC721 {
     /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`
     /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`
     /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`
-    function permit(
-        address spender,
-        uint256 tokenId,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable;
+    function permit(address spender, uint256 tokenId, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable;
 }
 
 /// @title Non-fungible token for positions
@@ -4492,12 +4568,7 @@ interface INonfungiblePositionManager is
     function mint(MintParams calldata params)
         external
         payable
-        returns (
-            uint256 tokenId,
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+        returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct IncreaseLiquidityParams {
         uint256 tokenId;
@@ -4521,11 +4592,7 @@ interface INonfungiblePositionManager is
     function increaseLiquidity(IncreaseLiquidityParams calldata params)
         external
         payable
-        returns (
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+        returns (uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct DecreaseLiquidityParams {
         uint256 tokenId;
@@ -5064,7 +5131,9 @@ contract Lock_1 {
     modifier isNotLocked() {
         // Apply a reentrancy lock for all external callers
         if (msg.sender != address(this)) {
-            if (Locker.isLocked()) revert ContractLocked();
+            if (Locker.isLocked()) {
+                revert ContractLocked();
+            }
             Locker.set(msg.sender);
             _;
             Locker.set(address(0));
@@ -5214,7 +5283,7 @@ abstract contract Dispatcher is Payments, V2SwapRouter, V3SwapRouter, V4SwapRout
                         bytes calldata data = inputs.toBytes(1);
                         (success, output) = address(PERMIT2).call(
                             abi.encodeWithSignature(
-                                'permit(address,((address,uint160,uint48,uint48)[],address,uint256),bytes)',
+                                "permit(address,((address,uint160,uint48,uint48)[],address,uint256),bytes)",
                                 msgSender(),
                                 permitBatch,
                                 data
@@ -5300,7 +5369,7 @@ abstract contract Dispatcher is Payments, V2SwapRouter, V3SwapRouter, V4SwapRout
                         bytes calldata data = inputs.toBytes(6); // PermitSingle takes first 6 slots (0..5)
                         (success, output) = address(PERMIT2).call(
                             abi.encodeWithSignature(
-                                'permit(address,((address,uint160,uint48,uint48),address,uint256),bytes)',
+                                "permit(address,((address,uint160,uint48,uint48),address,uint256),bytes)",
                                 msgSender(),
                                 permitSingle,
                                 data
@@ -5343,7 +5412,9 @@ abstract contract Dispatcher is Payments, V2SwapRouter, V3SwapRouter, V4SwapRout
                             minBalance := calldataload(add(inputs.offset, 0x40))
                         }
                         success = (ERC20(token).balanceOf(owner) >= minBalance);
-                        if (!success) output = abi.encodePacked(BalanceTooLow.selector);
+                        if (!success) {
+                            output = abi.encodePacked(BalanceTooLow.selector);
+                        }
                     } else {
                         // placeholder area for command 0x0f
                         revert InvalidCommandType(command);
@@ -5431,13 +5502,17 @@ contract UniversalRouter is IUniversalRouter, Dispatcher {
     {}
 
     modifier checkDeadline(uint256 deadline) {
-        if (block.timestamp > deadline) revert TransactionDeadlinePassed();
+        if (block.timestamp > deadline) {
+            revert TransactionDeadlinePassed();
+        }
         _;
     }
 
     /// @notice To receive ETH from WETH
     receive() external payable {
-        if (msg.sender != address(WETH9) && msg.sender != address(poolManager)) revert InvalidEthSender();
+        if (msg.sender != address(WETH9) && msg.sender != address(poolManager)) {
+            revert InvalidEthSender();
+        }
     }
 
     /// @inheritdoc IUniversalRouter
@@ -5454,7 +5529,9 @@ contract UniversalRouter is IUniversalRouter, Dispatcher {
         bool success;
         bytes memory output;
         uint256 numCommands = commands.length;
-        if (inputs.length != numCommands) revert LengthMismatch();
+        if (inputs.length != numCommands) {
+            revert LengthMismatch();
+        }
 
         // loop through all given commands, execute them and pass along outputs as defined
         for (uint256 commandIndex = 0; commandIndex < numCommands; commandIndex++) {

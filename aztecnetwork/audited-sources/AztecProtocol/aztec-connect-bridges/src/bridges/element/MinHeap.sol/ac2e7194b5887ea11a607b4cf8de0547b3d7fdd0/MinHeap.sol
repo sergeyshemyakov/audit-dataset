@@ -9,8 +9,8 @@ library MinHeap {
 
     error HEAP_EMPTY();
 
-    // maximum value of uint64. used as initial value in pre-allocated array 
-    uint64 internal constant MAX_INT = 2**64 - 1;
+    // maximum value of uint64. used as initial value in pre-allocated array
+    uint64 internal constant MAX_INT = 2 ** 64 - 1;
 
     /**
      * @dev Encapsulates the underlyding data structure used to manage the heap
@@ -113,7 +113,7 @@ library MinHeap {
         // there is a high probability that the expiry being added will remain where it is
         // so this operation will end up being O(1)
         if (self.heapSize == self.heap.length) {
-            self.heap.push(value);       
+            self.heap.push(value);
         } else {
             self.heap[self.heapSize] = value;
         }
@@ -132,7 +132,7 @@ library MinHeap {
         }
         // read the value in the last position and shrink the array by 1
         uint64 last = self.heap[--self.heapSize];
-        // now sift down 
+        // now sift down
         // write the smallest child value into the parent each time
         // then once we no longer have any smaller children, we write the 'last' value into place
         // requires a total of O(logN) updates

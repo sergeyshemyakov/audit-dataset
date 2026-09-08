@@ -14,10 +14,7 @@ library SafeSigners {
     /// @return v Recovery ID or Safe signature type.
     /// @return r Output value r of the signature.
     /// @return s Output value s of the signature.
-    function signatureSplit(
-        bytes memory signatures,
-        uint256 pos
-    )
+    function signatureSplit(bytes memory signatures, uint256 pos)
         internal
         pure
         returns (uint8 v, bytes32 r, bytes32 s)
@@ -42,11 +39,7 @@ library SafeSigners {
     ///         It has been modified by removing all signature _validation_ code. We trust the Safe to properly validate
     ///         the signatures.
     ///         This method therefore simply extracts the addresses from the signatures.
-    function getNSigners(
-        bytes32 dataHash,
-        bytes memory signatures,
-        uint256 requiredSignatures
-    )
+    function getNSigners(bytes32 dataHash, bytes memory signatures, uint256 requiredSignatures)
         internal
         pure
         returns (address[] memory _owners)
@@ -501,9 +494,7 @@ contract LivenessGuard is ISemver, BaseGuard {
         address payable refundReceiver,
         bytes memory signatures,
         address msgSender
-    )
-        external
-    {
+    ) external {
         msgSender; // silence unused variable warning
         _requireOnlySafe();
 
@@ -531,7 +522,7 @@ contract LivenessGuard is ISemver, BaseGuard {
 
         uint256 threshold = SAFE.getThreshold();
         address[] memory signers =
-            SafeSigners.getNSigners({ dataHash: txHash, signatures: signatures, requiredSignatures: threshold });
+            SafeSigners.getNSigners({dataHash: txHash, signatures: signatures, requiredSignatures: threshold});
 
         for (uint256 i = 0; i < signers.length; i++) {
             lastLive[signers[i]] = block.timestamp;

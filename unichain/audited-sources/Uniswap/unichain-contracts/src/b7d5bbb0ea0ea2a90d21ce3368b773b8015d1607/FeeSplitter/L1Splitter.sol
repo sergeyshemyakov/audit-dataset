@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
-import {Predeploys} from '@eth-optimism-bedrock/src/libraries/Predeploys.sol';
+import {Predeploys} from "@eth-optimism-bedrock/src/libraries/Predeploys.sol";
 
-import {IL1Splitter} from '../interfaces/FeeSplitter/IL1Splitter.sol';
-import {IL2StandardBridge} from '../interfaces/optimism/IL2StandardBridge.sol';
+import {IL1Splitter} from "../interfaces/FeeSplitter/IL1Splitter.sol";
+import {IL2StandardBridge} from "../interfaces/optimism/IL2StandardBridge.sol";
 
 /// @title L1Splitter
 /// @notice Withdraws the L1 fees to the L1 wallet via the L2 Standard Bridge.
@@ -27,7 +27,9 @@ contract L1Splitter is IL1Splitter {
     /// @inheritdoc IL1Splitter
     function withdraw() external {
         uint256 balance = address(this).balance;
-        if (balance < WITHDRAWAL_MIN_AMOUNT) revert InsufficientWithdrawalAmount();
+        if (balance < WITHDRAWAL_MIN_AMOUNT) {
+            revert InsufficientWithdrawalAmount();
+        }
         if (block.timestamp < lastDisbursementTime + FEE_DISBURSEMENT_INTERVAL) {
             revert DisbursementIntervalNotReached();
         }
@@ -35,7 +37,7 @@ contract L1Splitter is IL1Splitter {
         lastDisbursementTime = block.timestamp;
 
         IL2StandardBridge(Predeploys.L2_STANDARD_BRIDGE).bridgeETHTo{value: balance}(
-            L1_WALLET, WITHDRAWAL_MIN_GAS, bytes('')
+            L1_WALLET, WITHDRAWAL_MIN_GAS, bytes("")
         );
 
         emit Withdrawal(balance);

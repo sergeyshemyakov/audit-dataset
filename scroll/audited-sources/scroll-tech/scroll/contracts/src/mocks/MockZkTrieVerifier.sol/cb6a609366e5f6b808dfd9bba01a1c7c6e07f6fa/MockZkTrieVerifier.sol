@@ -11,18 +11,10 @@ contract MockZkTrieVerifier {
         poseidon = _poseidon;
     }
 
-    function verifyZkTrieProof(
-        address account,
-        bytes32 storageKey,
-        bytes calldata proof
-    )
+    function verifyZkTrieProof(address account, bytes32 storageKey, bytes calldata proof)
         external
         view
-        returns (
-            bytes32 stateRoot,
-            bytes32 storageValue,
-            uint256 gasUsed
-        )
+        returns (bytes32 stateRoot, bytes32 storageValue, uint256 gasUsed)
     {
         uint256 start = gasleft();
         (stateRoot, storageValue) = ZkTrieVerifier.verifyZkTrieProof(poseidon, account, storageKey, proof);

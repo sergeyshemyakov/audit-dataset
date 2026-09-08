@@ -3,20 +3,21 @@ pragma solidity ^0.8.10;
 
 import {Script} from "forge-std/Script.sol";
 
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {AccessControlEnumerable} from "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {ProxyAdmin} from "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol";
 
-import {L2USDCGateway} from "../../src/L2/gateways/usdc/L2USDCGateway.sol";
 import {L2CustomERC20Gateway} from "../../src/L2/gateways/L2CustomERC20Gateway.sol";
 import {L2CustomERC20Gateway} from "../../src/L2/gateways/L2CustomERC20Gateway.sol";
 import {L2ERC1155Gateway} from "../../src/L2/gateways/L2ERC1155Gateway.sol";
 import {L2ERC721Gateway} from "../../src/L2/gateways/L2ERC721Gateway.sol";
 import {L2GatewayRouter} from "../../src/L2/gateways/L2GatewayRouter.sol";
-import {ScrollMessengerBase} from "../../src/libraries/ScrollMessengerBase.sol";
+import {L2USDCGateway} from "../../src/L2/gateways/usdc/L2USDCGateway.sol";
+
 import {L1GasPriceOracle} from "../../src/L2/predeploys/L1GasPriceOracle.sol";
 import {L2TxFeeVault} from "../../src/L2/predeploys/L2TxFeeVault.sol";
 import {Whitelist} from "../../src/L2/predeploys/Whitelist.sol";
+import {ScrollMessengerBase} from "../../src/libraries/ScrollMessengerBase.sol";
 import {ScrollOwner} from "../../src/misc/ScrollOwner.sol";
 import {ETHRateLimiter} from "../../src/rate-limiter/ETHRateLimiter.sol";
 import {TokenRateLimiter} from "../../src/rate-limiter/TokenRateLimiter.sol";

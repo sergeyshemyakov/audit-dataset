@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity 0.8.11;
 
-import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-import "./common/UsingRegistryUpgradeable.sol";
 import "./common/UUPSOwnableUpgradeable.sol";
+import "./common/UsingRegistryUpgradeable.sol";
 import "./interfaces/IAccount.sol";
 import "./interfaces/IStakedCelo.sol";
 import "./interfaces/IVote.sol";
@@ -186,11 +186,7 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
      * @param _account The address of the Account contract.
      * @param _vote The address of the Vote contract.
      */
-    function setDependencies(
-        address _stakedCelo,
-        address _account,
-        address _vote
-    ) external onlyOwner {
+    function setDependencies(address _stakedCelo, address _account, address _vote) external onlyOwner {
         if (_stakedCelo == address(0) || _account == address(0) || _vote == address(0)) {
             revert AddressZeroNotAllowed();
         }
@@ -225,9 +221,8 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
         }
 
         if (
-            activeGroups.length() + deprecatedGroups.length() >=
-            getElection().maxNumGroupsVotedFor() &&
-            !getElection().allowedToVoteOverMaxNumberOfGroups(address(account))
+            activeGroups.length() + deprecatedGroups.length() >= getElection().maxNumGroupsVotedFor()
+                && !getElection().allowedToVoteOverMaxNumberOfGroups(address(account))
         ) {
             revert MaxGroupsVotedForReached();
         }
@@ -270,15 +265,14 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
             return false;
         }
 
-        (address[] memory members, , , , , uint256 slashMultiplier, ) = validators
-            .getValidatorGroup(group);
+        (address[] memory members,,,,, uint256 slashMultiplier,) = validators.getValidatorGroup(group);
 
         // check if group has no members
         if (members.length == 0) {
             return false;
         }
         // check for recent slash
-        if (slashMultiplier < 10**24) {
+        if (slashMultiplier < 10 ** 24) {
             return false;
         }
         // check that at least one member is elected.
@@ -482,24 +476,16 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
         uint256[] memory deprecatedWithdrawalsPerGroup;
         uint256 numberDeprecatedGroupsWithdrawn;
 
-        (
-            deprecatedGroupsWithdrawn,
-            deprecatedWithdrawalsPerGroup,
-            numberDeprecatedGroupsWithdrawn,
-            withdrawal
-        ) = getDeprecatedGroupsWithdrawalDistribution(withdrawal);
+        (deprecatedGroupsWithdrawn, deprecatedWithdrawalsPerGroup, numberDeprecatedGroupsWithdrawn, withdrawal) =
+            getDeprecatedGroupsWithdrawalDistribution(withdrawal);
 
         address[] memory groupsWithdrawn;
         uint256[] memory withdrawalsPerGroup;
 
         (groupsWithdrawn, withdrawalsPerGroup) = getActiveGroupWithdrawalDistribution(withdrawal);
 
-        address[] memory finalGroups = new address[](
-            groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn
-        );
-        uint256[] memory finalVotes = new uint256[](
-            groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn
-        );
+        address[] memory finalGroups = new address[](groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn);
+        uint256[] memory finalVotes = new uint256[](groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn);
 
         for (uint256 i = 0; i < numberDeprecatedGroupsWithdrawn; i++) {
             finalGroups[i] = deprecatedGroupsWithdrawn[i];
@@ -689,10 +675,7 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
         for (uint256 i = 1; i < groupsWithVotes.length; i++) {
             uint256 j = i;
             while (j > 0 && groupsWithVotes[j].votes < groupsWithVotes[j - 1].votes) {
-                (groupsWithVotes[j], groupsWithVotes[j - 1]) = (
-                    groupsWithVotes[j - 1],
-                    groupsWithVotes[j]
-                );
+                (groupsWithVotes[j], groupsWithVotes[j - 1]) = (groupsWithVotes[j - 1], groupsWithVotes[j]);
                 j--;
             }
         }
@@ -706,21 +689,13 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
      * @param noVotes The no votes weight.
      * @param abstainVotes The abstain votes weight.
      */
-    function voteProposal(
-        uint256 proposalId,
-        uint256 index,
-        uint256 yesVotes,
-        uint256 noVotes,
-        uint256 abstainVotes
-    ) public {
+    function voteProposal(uint256 proposalId, uint256 index, uint256 yesVotes, uint256 noVotes, uint256 abstainVotes)
+        public
+    {
         IVote vote = IVote(voteContract);
 
-        (
-            uint256 stCeloUsedForVoting,
-            uint256 totalYesVotes,
-            uint256 totalNoVotes,
-            uint256 totalAbstainVotes
-        ) = vote.voteProposal(msg.sender, proposalId, yesVotes, noVotes, abstainVotes);
+        (uint256 stCeloUsedForVoting, uint256 totalYesVotes, uint256 totalNoVotes, uint256 totalAbstainVotes) =
+            vote.voteProposal(msg.sender, proposalId, yesVotes, noVotes, abstainVotes);
 
         stakedCelo.lockVoteBalance(msg.sender, stCeloUsedForVoting);
         account.votePartially(proposalId, index, totalYesVotes, totalNoVotes, totalAbstainVotes);
@@ -734,10 +709,8 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
     function revokeVotes(uint256 proposalId, uint256 index) external {
         IVote vote = IVote(voteContract);
 
-        (uint256 totalYesVotes, uint256 totalNoVotes, uint256 totalAbstainVotes) = vote.revokeVotes(
-            msg.sender,
-            proposalId
-        );
+        (uint256 totalYesVotes, uint256 totalNoVotes, uint256 totalAbstainVotes) =
+            vote.revokeVotes(msg.sender, proposalId);
 
         account.votePartially(proposalId, index, totalYesVotes, totalNoVotes, totalAbstainVotes);
     }
@@ -746,10 +719,7 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
      * @notice Unlock balance of vote stCelo and update beneficiary vote history.
      * @param beneficiary The account to be unlocked.
      */
-    function updateHistoryAndReturnLockedStCeloInVoting(address beneficiary)
-        external
-        returns (uint256)
-    {
+    function updateHistoryAndReturnLockedStCeloInVoting(address beneficiary) external returns (uint256) {
         IVote vote = IVote(voteContract);
         return vote.updateHistoryAndReturnLockedStCeloInVoting(beneficiary);
     }
@@ -808,16 +778,7 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 2, 0, 1);
     }
 }

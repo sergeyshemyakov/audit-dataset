@@ -11,16 +11,20 @@ interface IZkEvmVerifierV2 {
 // solhint-disable no-inline-assembly
 
 contract ZkEvmVerifierPostEuclid is IZkEvmVerifierV2 {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when bundle recursion zk proof verification is failed.
     error VerificationFailed();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of highly optimized plonk verifier contract.
     address public immutable plonkVerifier;
@@ -31,23 +35,22 @@ contract ZkEvmVerifierPostEuclid is IZkEvmVerifierV2 {
     /// @notice A predetermined digest for the `plonkVerifier`.
     bytes32 public immutable verifierDigest2;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        address _verifier,
-        bytes32 _verifierDigest1,
-        bytes32 _verifierDigest2
-    ) {
+     *
+     */
+    constructor(address _verifier, bytes32 _verifierDigest1, bytes32 _verifierDigest2) {
         plonkVerifier = _verifier;
         verifierDigest1 = _verifierDigest1;
         verifierDigest2 = _verifierDigest2;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IZkEvmVerifierV2
     ///
@@ -84,11 +87,7 @@ contract ZkEvmVerifierPostEuclid is IZkEvmVerifierV2 {
             // 2. insert the public input's 0x440 bytes
             mstore(add(p, 0x180), _verifierDigest1) // verifierDigest1
             mstore(add(p, 0x1a0), _verifierDigest2) // verifierDigest2
-            for {
-                let i := 0
-            } lt(i, 0x400) {
-                i := add(i, 0x20)
-            } {
+            for { let i := 0 } lt(i, 0x400) { i := add(i, 0x20) } {
                 mstore(add(p, sub(0x5a0, i)), and(publicInputHash, 0xff))
                 publicInputHash := shr(8, publicInputHash)
             }

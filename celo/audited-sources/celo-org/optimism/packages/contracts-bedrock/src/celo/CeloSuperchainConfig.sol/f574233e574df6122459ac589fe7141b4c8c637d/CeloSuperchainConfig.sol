@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import { Initializable } from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
-import { Storage } from "src/libraries/Storage.sol";
+import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+
+import {ISuperchainConfig} from "interfaces/L1/ISuperchainConfig.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
+import {Storage} from "src/libraries/Storage.sol";
 
 /// @custom:proxied true
 /// @custom:audit none This contracts is not yet audited.
@@ -52,7 +53,7 @@ contract CeloSuperchainConfig is Initializable, ISemver {
 
     /// @notice Constructs the CeloSuperchainConfig contract.
     constructor() {
-        initialize({ _guardian: address(0), _paused: false, _superchainConfig: address(0) });
+        initialize({_guardian: address(0), _paused: false, _superchainConfig: address(0)});
     }
 
     /// @notice Initializer.

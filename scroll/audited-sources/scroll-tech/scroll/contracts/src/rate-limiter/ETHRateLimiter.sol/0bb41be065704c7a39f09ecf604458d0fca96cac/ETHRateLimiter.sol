@@ -11,10 +11,11 @@ import {IETHRateLimiter} from "./IETHRateLimiter.sol";
 // solhint-disable not-rely-on-time
 
 contract ETHRateLimiter is Ownable, IETHRateLimiter {
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct TokenAmount {
         // The timestamp when the amount is updated.
         uint48 lastUpdateTs;
@@ -24,9 +25,11 @@ contract ETHRateLimiter is Ownable, IETHRateLimiter {
         uint104 amount;
     }
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The period length in seconds.
     /// @dev The time frame for the `k`-th period is `[periodDuration * k, periodDuration * (k + 1))`.
@@ -35,22 +38,21 @@ contract ETHRateLimiter is Ownable, IETHRateLimiter {
     /// @notice The address of ETH spender.
     address public immutable spender;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The token amount used in current period.
     TokenAmount public currentPeriod;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        uint256 _periodDuration,
-        address _spender,
-        uint104 _totalLimit
-    ) {
+     *
+     */
+    constructor(uint256 _periodDuration, address _spender, uint104 _totalLimit) {
         if (_periodDuration == 0) {
             revert PeriodIsZero();
         }
@@ -61,16 +63,20 @@ contract ETHRateLimiter is Ownable, IETHRateLimiter {
         _updateTotalLimit(_totalLimit);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IETHRateLimiter
     function addUsedAmount(uint256 _amount) external override {
         if (msg.sender != spender) {
             revert CallerNotSpender();
         }
-        if (_amount == 0) return;
+        if (_amount == 0) {
+            return;
+        }
 
         uint256 _currentPeriodStart = (block.timestamp / periodDuration) * periodDuration;
 
@@ -93,9 +99,11 @@ contract ETHRateLimiter is Ownable, IETHRateLimiter {
         currentPeriod = _currentPeriod;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the total token amount limit.
     /// @param _newTotalLimit The new total limit.
@@ -103,9 +111,11 @@ contract ETHRateLimiter is Ownable, IETHRateLimiter {
         _updateTotalLimit(_newTotalLimit);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to update the total token amount limit.
     /// @param _newTotalLimit The new total limit.

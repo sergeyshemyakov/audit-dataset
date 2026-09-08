@@ -48,100 +48,100 @@ import {Ownable2Step} from "@oz/access/Ownable2Step.sol";
  *      might have unexpected implications.
  */
 contract CoinIssuer is ICoinIssuer, Ownable {
-  IMintableERC20 public immutable ASSET;
-  uint256 public immutable NOMINAL_ANNUAL_PERCENTAGE_CAP;
-  uint256 public immutable DEPLOYMENT_TIME;
+    IMintableERC20 public immutable ASSET;
+    uint256 public immutable NOMINAL_ANNUAL_PERCENTAGE_CAP;
+    uint256 public immutable DEPLOYMENT_TIME;
 
-  // Note that the state variables below are "cached":
-  // they are only updated when minting after a year boundary.
-  uint256 public cachedBudgetYear;
-  uint256 public cachedBudget;
+    // Note that the state variables below are "cached":
+    // they are only updated when minting after a year boundary.
+    uint256 public cachedBudgetYear;
+    uint256 public cachedBudget;
 
-  constructor(IMintableERC20 _asset, uint256 _annualPercentage, address _owner) Ownable(_owner) {
-    ASSET = _asset;
-    NOMINAL_ANNUAL_PERCENTAGE_CAP = _annualPercentage;
-    DEPLOYMENT_TIME = block.timestamp;
+    constructor(IMintableERC20 _asset, uint256 _annualPercentage, address _owner) Ownable(_owner) {
+        ASSET = _asset;
+        NOMINAL_ANNUAL_PERCENTAGE_CAP = _annualPercentage;
+        DEPLOYMENT_TIME = block.timestamp;
 
-    cachedBudgetYear = 0;
-    cachedBudget = _getNewBudget();
+        cachedBudgetYear = 0;
+        cachedBudget = _getNewBudget();
 
-    // If the budget is 0, it is likely a misconfiguration with tiny _annualPercentage or lack of initial supply
-    require(cachedBudget > 0, Errors.CoinIssuer__InvalidConfiguration());
+        // If the budget is 0, it is likely a misconfiguration with tiny _annualPercentage or lack of initial supply
+        require(cachedBudget > 0, Errors.CoinIssuer__InvalidConfiguration());
 
-    emit BudgetReset(0, cachedBudget);
-  }
-
-  function acceptTokenOwnership() external override(ICoinIssuer) onlyOwner {
-    Ownable2Step(address(ASSET)).acceptOwnership();
-  }
-
-  /**
-   * @notice  Mint `_amount` tokens to `_to`
-   *
-   * @dev     The `_amount` must be within the `cachedBudget`
-   *
-   * @param _to - The address to receive the funds
-   * @param _amount - The amount to mint
-   */
-  function mint(address _to, uint256 _amount) external override(ICoinIssuer) onlyOwner {
-    // Update state if we've crossed into a new year (will reset budget and forfeit unused amount)
-    _updateBudgetIfNeeded();
-
-    uint256 budget = cachedBudget;
-
-    require(_amount <= budget, Errors.CoinIssuer__InsufficientMintAvailable(budget, _amount));
-    cachedBudget = budget - _amount;
-
-    ASSET.mint(_to, _amount);
-  }
-
-  /**
-   * @notice  The amount of funds that is available for "minting" in the current year
-   *          If we've crossed into a new year since the last mint, returns the fresh budget
-   *          for the new year based on current supply.
-   *
-   * @return The amount mintable
-   */
-  function mintAvailable() public view override(ICoinIssuer) returns (uint256) {
-    uint256 currentYear = _yearSinceGenesis();
-
-    // Until the budget is stale, return the cached budget
-    if (cachedBudgetYear >= currentYear) {
-      return cachedBudget;
+        emit BudgetReset(0, cachedBudget);
     }
 
-    // Crossed into new year(s): compute fresh budget
-    return _getNewBudget();
-  }
-
-  /**
-   * @notice  Internal function to update year and budget when crossing year boundaries
-   *
-   * @dev     If multiple years have passed without minting, jumps directly to current year
-   *          and all intermediate years' budgets are lost
-   */
-  function _updateBudgetIfNeeded() private {
-    uint256 currentYear = _yearSinceGenesis();
-    // If the budget is for the past, update the budget.
-    if (cachedBudgetYear < currentYear) {
-      cachedBudgetYear = currentYear;
-      cachedBudget = _getNewBudget();
-
-      emit BudgetReset(currentYear, cachedBudget);
+    function acceptTokenOwnership() external override(ICoinIssuer) onlyOwner {
+        Ownable2Step(address(ASSET)).acceptOwnership();
     }
-  }
 
-  /**
-   * @notice  Internal function to compute the current year since genesis
-   */
-  function _yearSinceGenesis() private view returns (uint256) {
-    return (block.timestamp - DEPLOYMENT_TIME) / 365 days;
-  }
+    /**
+     * @notice  Mint `_amount` tokens to `_to`
+     *
+     * @dev     The `_amount` must be within the `cachedBudget`
+     *
+     * @param _to - The address to receive the funds
+     * @param _amount - The amount to mint
+     */
+    function mint(address _to, uint256 _amount) external override(ICoinIssuer) onlyOwner {
+        // Update state if we've crossed into a new year (will reset budget and forfeit unused amount)
+        _updateBudgetIfNeeded();
 
-  /**
-   * @notice  Internal function to compute a fresh budget
-   */
-  function _getNewBudget() private view returns (uint256) {
-    return ASSET.totalSupply() * NOMINAL_ANNUAL_PERCENTAGE_CAP / 1e18;
-  }
+        uint256 budget = cachedBudget;
+
+        require(_amount <= budget, Errors.CoinIssuer__InsufficientMintAvailable(budget, _amount));
+        cachedBudget = budget - _amount;
+
+        ASSET.mint(_to, _amount);
+    }
+
+    /**
+     * @notice  The amount of funds that is available for "minting" in the current year
+     *          If we've crossed into a new year since the last mint, returns the fresh budget
+     *          for the new year based on current supply.
+     *
+     * @return The amount mintable
+     */
+    function mintAvailable() public view override(ICoinIssuer) returns (uint256) {
+        uint256 currentYear = _yearSinceGenesis();
+
+        // Until the budget is stale, return the cached budget
+        if (cachedBudgetYear >= currentYear) {
+            return cachedBudget;
+        }
+
+        // Crossed into new year(s): compute fresh budget
+        return _getNewBudget();
+    }
+
+    /**
+     * @notice  Internal function to update year and budget when crossing year boundaries
+     *
+     * @dev     If multiple years have passed without minting, jumps directly to current year
+     *          and all intermediate years' budgets are lost
+     */
+    function _updateBudgetIfNeeded() private {
+        uint256 currentYear = _yearSinceGenesis();
+        // If the budget is for the past, update the budget.
+        if (cachedBudgetYear < currentYear) {
+            cachedBudgetYear = currentYear;
+            cachedBudget = _getNewBudget();
+
+            emit BudgetReset(currentYear, cachedBudget);
+        }
+    }
+
+    /**
+     * @notice  Internal function to compute the current year since genesis
+     */
+    function _yearSinceGenesis() private view returns (uint256) {
+        return (block.timestamp - DEPLOYMENT_TIME) / 365 days;
+    }
+
+    /**
+     * @notice  Internal function to compute a fresh budget
+     */
+    function _getNewBudget() private view returns (uint256) {
+        return ASSET.totalSupply() * NOMINAL_ANNUAL_PERCENTAGE_CAP / 1e18;
+    }
 }

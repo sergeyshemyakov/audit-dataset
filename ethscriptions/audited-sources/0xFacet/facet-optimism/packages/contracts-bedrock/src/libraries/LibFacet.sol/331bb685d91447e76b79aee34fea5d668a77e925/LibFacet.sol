@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import { LibString } from "@solady/utils/LibString.sol";
-import { LibRLP } from "./LibRLP.sol";
+import {LibRLP} from "./LibRLP.sol";
+import {LibString} from "@solady/utils/LibString.sol";
 import "forge-std/console2.sol";
 
 library LibFacet {
@@ -12,31 +12,12 @@ library LibFacet {
     bytes32 constant facetEventSignature = 0x00000000000000000000000000000000000000000000000000000000000face7;
     uint8 constant facetTxType = 0x46;
 
-    function sendFacetTransaction(
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: bytes(''),
-            value: 0,
-            maxFeePerGas: 0,
-            gasLimit: gasLimit,
-            data: data
-        });
+    function sendFacetTransaction(uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: bytes(""), value: 0, maxFeePerGas: 0, gasLimit: gasLimit, data: data});
     }
 
-    function sendFacetTransaction(
-        address to,
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: abi.encodePacked(to),
-            value: 0,
-            maxFeePerGas: 0,
-            gasLimit: gasLimit,
-            data: data
-        });
+    function sendFacetTransaction(address to, uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: abi.encodePacked(to), value: 0, maxFeePerGas: 0, gasLimit: gasLimit, data: data});
     }
 
     function prepareFacetTransaction(

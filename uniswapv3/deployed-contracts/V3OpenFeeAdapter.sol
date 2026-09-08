@@ -16,11 +16,7 @@ interface IUniswapV3Factory {
     /// @param tickSpacing The minimum number of ticks between initialized ticks
     /// @param pool The address of the created pool
     event PoolCreated(
-        address indexed token0,
-        address indexed token1,
-        uint24 indexed fee,
-        int24 tickSpacing,
-        address pool
+        address indexed token0, address indexed token1, uint24 indexed fee, int24 tickSpacing, address pool
     );
 
     /// @notice Emitted when a new fee amount is enabled for pool creation via the factory
@@ -45,11 +41,7 @@ interface IUniswapV3Factory {
     /// @param tokenB The contract address of the other token
     /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
     /// @return pool The pool address
-    function getPool(
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) external view returns (address pool);
+    function getPool(address tokenA, address tokenB, uint24 fee) external view returns (address pool);
 
     /// @notice Creates a pool for the given two tokens and fee
     /// @param tokenA One of the two tokens in the desired pool
@@ -59,11 +51,7 @@ interface IUniswapV3Factory {
     /// from the fee. The call will revert if the pool already exists, the fee is invalid, or the token arguments
     /// are invalid.
     /// @return pool The address of the newly created pool
-    function createPool(
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) external returns (address pool);
+    function createPool(address tokenA, address tokenB, uint24 fee) external returns (address pool);
 
     /// @notice Updates the owner of the factory
     /// @dev Must be called by the current owner
@@ -84,202 +72,200 @@ interface IUniswapV3Factory {
 /// default.
 ///      Storage encoding: 0 = "not set" (continue waterfall), ZERO_FEE_SENTINEL = "explicitly zero"
 interface IV3OpenFeeAdapter {
-  /// @notice Thrown when trying to set a default fee for a non-enabled fee tier.
-  error InvalidFeeTier();
+    /// @notice Thrown when trying to set a default fee for a non-enabled fee tier.
+    error InvalidFeeTier();
 
-  /// @notice Thrown when an unauthorized address attempts to call a restricted function
-  error Unauthorized();
+    /// @notice Thrown when an unauthorized address attempts to call a restricted function
+    error Unauthorized();
 
-  /// @notice Thrown when trying to store a fee tier that is already stored.
-  error TierAlreadyStored();
+    /// @notice Thrown when trying to store a fee tier that is already stored.
+    error TierAlreadyStored();
 
-  /// @notice Thrown when trying to set an invalid fee value that doesn't meet protocol
-  /// requirements.
-  error InvalidFeeValue();
+    /// @notice Thrown when trying to set an invalid fee value that doesn't meet protocol
+    /// requirements.
+    error InvalidFeeValue();
 
-  /// @notice Emitted when a fee update is triggered for a pool
-  /// @param caller The address that triggered the update
-  /// @param pool The pool that was updated
-  /// @param feeValue The new fee value applied
-  event FeeUpdateTriggered(address indexed caller, address indexed pool, uint8 feeValue);
+    /// @notice Emitted when a fee update is triggered for a pool
+    /// @param caller The address that triggered the update
+    /// @param pool The pool that was updated
+    /// @param feeValue The new fee value applied
+    event FeeUpdateTriggered(address indexed caller, address indexed pool, uint8 feeValue);
 
-  /// @notice Emitted when the global default fee is updated
-  /// @param feeValue The new global default fee value
-  event DefaultFeeUpdated(uint8 feeValue);
+    /// @notice Emitted when the global default fee is updated
+    /// @param feeValue The new global default fee value
+    event DefaultFeeUpdated(uint8 feeValue);
 
-  /// @notice Emitted when a fee tier default is updated
-  /// @param feeTier The fee tier that was updated
-  /// @param feeValue The new fee value for the tier
-  event FeeTierDefaultUpdated(uint24 indexed feeTier, uint8 feeValue);
+    /// @notice Emitted when a fee tier default is updated
+    /// @param feeTier The fee tier that was updated
+    /// @param feeValue The new fee value for the tier
+    event FeeTierDefaultUpdated(uint24 indexed feeTier, uint8 feeValue);
 
-  /// @notice Emitted when a pool override is updated
-  /// @param pool The pool that was updated
-  /// @param feeValue The new fee value for the pool
-  event PoolOverrideUpdated(address indexed pool, uint8 feeValue);
+    /// @notice Emitted when a pool override is updated
+    /// @param pool The pool that was updated
+    /// @param feeValue The new fee value for the pool
+    event PoolOverrideUpdated(address indexed pool, uint8 feeValue);
 
-  /// @notice Emitted when a fee tier default is cleared (deleted from storage)
-  /// @param feeTier The fee tier that was cleared
-  event FeeTierDefaultCleared(uint24 indexed feeTier);
+    /// @notice Emitted when a fee tier default is cleared (deleted from storage)
+    /// @param feeTier The fee tier that was cleared
+    event FeeTierDefaultCleared(uint24 indexed feeTier);
 
-  /// @notice Emitted when a pool override is cleared (deleted from storage)
-  /// @param pool The pool that was cleared
-  event PoolOverrideCleared(address indexed pool);
+    /// @notice Emitted when a pool override is cleared (deleted from storage)
+    /// @param pool The pool that was cleared
+    event PoolOverrideCleared(address indexed pool);
 
-  /// @notice Emitted when the fee setter is updated
-  /// @param oldFeeSetter The previous fee setter address
-  /// @param newFeeSetter The new fee setter address
-  event FeeSetterUpdated(address indexed oldFeeSetter, address indexed newFeeSetter);
+    /// @notice Emitted when the fee setter is updated
+    /// @param oldFeeSetter The previous fee setter address
+    /// @param newFeeSetter The new fee setter address
+    event FeeSetterUpdated(address indexed oldFeeSetter, address indexed newFeeSetter);
 
-  /// @notice The input parameters for the collection.
-  struct CollectParams {
-    /// @param pool The pool to collect fees from.
-    address pool;
-    /// @param amount0Requested The amount of token0 to collect. If this is higher than the total
-    /// collectable amount, it will collect all but 1 wei of the total token0 allotment.
-    uint128 amount0Requested;
-    /// @param amount1Requested The amount of token1 to collect. If this is higher than the total
-    /// collectable amount, it will collect all but 1 wei of the total token1 allotment.
-    uint128 amount1Requested;
-  }
+    /// @notice The input parameters for the collection.
+    struct CollectParams {
+        /// @param pool The pool to collect fees from.
+        address pool;
+        /// @param amount0Requested The amount of token0 to collect. If this is higher than the total
+        /// collectable amount, it will collect all but 1 wei of the total token0 allotment.
+        uint128 amount0Requested;
+        /// @param amount1Requested The amount of token1 to collect. If this is higher than the total
+        /// collectable amount, it will collect all but 1 wei of the total token1 allotment.
+        uint128 amount1Requested;
+    }
 
-  /// @notice The returned amounts of token0 and token1 that are collected.
-  struct Collected {
-    /// @param amount0Collected The amount of token0 that is collected.
-    uint128 amount0Collected;
-    /// @param amount1Collected The amount of token1 that is collected.
-    uint128 amount1Collected;
-  }
+    /// @notice The returned amounts of token0 and token1 that are collected.
+    struct Collected {
+        /// @param amount0Collected The amount of token0 that is collected.
+        uint128 amount0Collected;
+        /// @param amount1Collected The amount of token1 that is collected.
+        uint128 amount1Collected;
+    }
 
-  /// @notice The pair of tokens to trigger fees for.
-  struct Pair {
+    /// @notice The pair of tokens to trigger fees for.
+    struct Pair {
+        /// @param token0 The first token of the pair.
+        address token0;
+        /// @param token1 The second token of the pair.
+        address token1;
+    }
+
+    /// @return The address where collected fees are sent.
+    function TOKEN_JAR() external view returns (address);
+
+    /// @return The Uniswap V3 Factory contract.
+    function FACTORY() external view returns (IUniswapV3Factory);
+
+    /// @return The authorized address to set fees-by-fee-tier
+    function feeSetter() external view returns (address);
+
+    /// @return The fee tiers enabled on the factory
+    function feeTiers(uint256 i) external view returns (uint24);
+
+    /// @notice Sentinel value stored to represent an explicit zero fee (disabled)
+    /// @dev type(uint8).max because 0 in storage means "not set"
+    function ZERO_FEE_SENTINEL() external view returns (uint8);
+
+    /// @notice The global default fee applied when no tier or pool override is set
+    /// @return The encoded global default fee value
+    function defaultFee() external view returns (uint8);
+
+    /// @notice Returns the fee tier default for a given fee tier
+    /// @param feeTier The fee tier to query
+    /// @return feeValue The encoded fee value for the tier (0 if not set)
+    function feeTierDefaults(uint24 feeTier) external view returns (uint8 feeValue);
+
+    /// @notice Returns the pool-specific override for a given pool
+    /// @param pool The pool address to query
+    /// @return feeValue The encoded fee value for the pool (0 if not set)
+    function poolOverrides(address pool) external view returns (uint8 feeValue);
+
+    /// @notice Legacy getter for backwards compatibility - returns effective fee for a tier
+    /// @dev Applies waterfall resolution: fee tier default → global default.
+    ///      Returns 0 only when neither level is configured.
+    /// @param feeTier The fee tier to query
+    /// @return defaultFeeValue The resolved fee value
+    function defaultFees(uint24 feeTier) external view returns (uint8 defaultFeeValue);
+
+    /// @notice Stores a fee tier.
+    /// @param feeTier The fee tier to store.
+    /// @dev Must be a fee tier that exists on the Uniswap V3 Factory.
+    function storeFeeTier(uint24 feeTier) external;
+
+    /// @notice Enables a new fee tier on the Uniswap V3 Factory.
+    /// @dev Only callable by `owner`. Also updates the `feeTiers` array.
+    /// @param newFeeTier The fee amount to enable, denominated in hundredths of a bip (i.e. 1e-6).
+    /// @param tickSpacing The corresponding tick spacing for the new fee tier.
+    function enableFeeAmount(uint24 newFeeTier, int24 tickSpacing) external;
+
+    /// @notice Sets the owner of the Uniswap V3 Factory.
+    /// @dev Only callable by `owner`
+    /// @param newOwner The new owner of the Uniswap V3 Factory.
+    function setFactoryOwner(address newOwner) external;
+
+    /// @notice Collects protocol fees from the specified pools to the designated `TOKEN_JAR`
+    /// @param collectParams Array of collection parameters for each pool.
+    /// @return amountsCollected Array of collected amounts for each pool.
+    function collect(CollectParams[] calldata collectParams) external returns (Collected[] memory amountsCollected);
+
+    /// @notice Sets the global default fee value
+    /// @dev Only callable by `feeSetter`. Used as fallback when no tier/pool override exists.
+    /// @param feeValue The fee value (0 or in range [4,10] for each 4-bit component)
+    function setDefaultFee(uint8 feeValue) external;
+
+    /// @notice Sets the default fee for a specific fee tier
+    /// @dev Only callable by `feeSetter`
+    /// @param feeTier The fee tier to set the default for
+    /// @param feeValue The fee value (0 or in range [4,10] for each 4-bit component)
+    function setFeeTierDefault(uint24 feeTier, uint8 feeValue) external;
+
+    /// @notice Sets a pool-specific fee override
+    /// @dev Only callable by `feeSetter`. Takes precedence over tier and global defaults.
+    /// @param pool The pool address to override
+    /// @param feeValue The fee value (0 or in range [4,10] for each 4-bit component)
+    function setPoolOverride(address pool, uint8 feeValue) external;
+
+    /// @notice Clears the fee tier default, falling back to global default
+    /// @dev Only callable by `feeSetter`
+    /// @param feeTier The fee tier to clear
+    function clearFeeTierDefault(uint24 feeTier) external;
+
+    /// @notice Clears the pool override, falling back to tier/global defaults
+    /// @dev Only callable by `feeSetter`
+    /// @param pool The pool address to clear
+    function clearPoolOverride(address pool) external;
+
+    /// @notice Legacy function - sets fee tier default
+    /// @dev Only callable by `feeSetter`. Kept for backwards compatibility.
+    /// @param feeTier The fee tier, expressed in pips, to set the default fee for.
+    /// @param defaultFeeValue The default fee value to set, expressed as the denominator on the
+    /// inclusive interval [4, 10]. The fee value is packed (token1Fee << 4 | token0Fee)
+    function setDefaultFeeByFeeTier(uint24 feeTier, uint8 defaultFeeValue) external;
+
+    /// @notice Sets a new fee setter address.
+    /// @dev Only callable by `owner`
+    /// @param newFeeSetter The new address authorized to set fees.
+    function setFeeSetter(address newFeeSetter) external;
+
+    /// @notice Resolves the fee for a pool using waterfall: pool override → tier default → global
+    /// @param pool The pool address to resolve fee for
+    /// @return fee The resolved fee value (decoded)
+    function getFee(address pool) external view returns (uint8 fee);
+
+    /// @notice Triggers a fee update for a single pool. Permissionless.
+    /// @param pool The pool address to update the fee for.
+    function triggerFeeUpdate(address pool) external;
+
+    /// @notice Triggers a fee update for one pair of tokens. Permissionless.
+    /// @dev There may be multiple pools initialized from the given pair.
     /// @param token0 The first token of the pair.
-    address token0;
     /// @param token1 The second token of the pair.
-    address token1;
-  }
+    function triggerFeeUpdate(address token0, address token1) external;
 
-  /// @return The address where collected fees are sent.
-  function TOKEN_JAR() external view returns (address);
+    /// @notice Triggers fee updates for multiple pairs of tokens. Permissionless.
+    /// @param pairs The pairs of two tokens. There may be multiple pools initialized from the same
+    /// pair.
+    function batchTriggerFeeUpdate(Pair[] calldata pairs) external;
 
-  /// @return The Uniswap V3 Factory contract.
-  function FACTORY() external view returns (IUniswapV3Factory);
-
-  /// @return The authorized address to set fees-by-fee-tier
-  function feeSetter() external view returns (address);
-
-  /// @return The fee tiers enabled on the factory
-  function feeTiers(uint256 i) external view returns (uint24);
-
-  /// @notice Sentinel value stored to represent an explicit zero fee (disabled)
-  /// @dev type(uint8).max because 0 in storage means "not set"
-  function ZERO_FEE_SENTINEL() external view returns (uint8);
-
-  /// @notice The global default fee applied when no tier or pool override is set
-  /// @return The encoded global default fee value
-  function defaultFee() external view returns (uint8);
-
-  /// @notice Returns the fee tier default for a given fee tier
-  /// @param feeTier The fee tier to query
-  /// @return feeValue The encoded fee value for the tier (0 if not set)
-  function feeTierDefaults(uint24 feeTier) external view returns (uint8 feeValue);
-
-  /// @notice Returns the pool-specific override for a given pool
-  /// @param pool The pool address to query
-  /// @return feeValue The encoded fee value for the pool (0 if not set)
-  function poolOverrides(address pool) external view returns (uint8 feeValue);
-
-  /// @notice Legacy getter for backwards compatibility - returns effective fee for a tier
-  /// @dev Applies waterfall resolution: fee tier default → global default.
-  ///      Returns 0 only when neither level is configured.
-  /// @param feeTier The fee tier to query
-  /// @return defaultFeeValue The resolved fee value
-  function defaultFees(uint24 feeTier) external view returns (uint8 defaultFeeValue);
-
-  /// @notice Stores a fee tier.
-  /// @param feeTier The fee tier to store.
-  /// @dev Must be a fee tier that exists on the Uniswap V3 Factory.
-  function storeFeeTier(uint24 feeTier) external;
-
-  /// @notice Enables a new fee tier on the Uniswap V3 Factory.
-  /// @dev Only callable by `owner`. Also updates the `feeTiers` array.
-  /// @param newFeeTier The fee amount to enable, denominated in hundredths of a bip (i.e. 1e-6).
-  /// @param tickSpacing The corresponding tick spacing for the new fee tier.
-  function enableFeeAmount(uint24 newFeeTier, int24 tickSpacing) external;
-
-  /// @notice Sets the owner of the Uniswap V3 Factory.
-  /// @dev Only callable by `owner`
-  /// @param newOwner The new owner of the Uniswap V3 Factory.
-  function setFactoryOwner(address newOwner) external;
-
-  /// @notice Collects protocol fees from the specified pools to the designated `TOKEN_JAR`
-  /// @param collectParams Array of collection parameters for each pool.
-  /// @return amountsCollected Array of collected amounts for each pool.
-  function collect(CollectParams[] calldata collectParams)
-    external
-    returns (Collected[] memory amountsCollected);
-
-  /// @notice Sets the global default fee value
-  /// @dev Only callable by `feeSetter`. Used as fallback when no tier/pool override exists.
-  /// @param feeValue The fee value (0 or in range [4,10] for each 4-bit component)
-  function setDefaultFee(uint8 feeValue) external;
-
-  /// @notice Sets the default fee for a specific fee tier
-  /// @dev Only callable by `feeSetter`
-  /// @param feeTier The fee tier to set the default for
-  /// @param feeValue The fee value (0 or in range [4,10] for each 4-bit component)
-  function setFeeTierDefault(uint24 feeTier, uint8 feeValue) external;
-
-  /// @notice Sets a pool-specific fee override
-  /// @dev Only callable by `feeSetter`. Takes precedence over tier and global defaults.
-  /// @param pool The pool address to override
-  /// @param feeValue The fee value (0 or in range [4,10] for each 4-bit component)
-  function setPoolOverride(address pool, uint8 feeValue) external;
-
-  /// @notice Clears the fee tier default, falling back to global default
-  /// @dev Only callable by `feeSetter`
-  /// @param feeTier The fee tier to clear
-  function clearFeeTierDefault(uint24 feeTier) external;
-
-  /// @notice Clears the pool override, falling back to tier/global defaults
-  /// @dev Only callable by `feeSetter`
-  /// @param pool The pool address to clear
-  function clearPoolOverride(address pool) external;
-
-  /// @notice Legacy function - sets fee tier default
-  /// @dev Only callable by `feeSetter`. Kept for backwards compatibility.
-  /// @param feeTier The fee tier, expressed in pips, to set the default fee for.
-  /// @param defaultFeeValue The default fee value to set, expressed as the denominator on the
-  /// inclusive interval [4, 10]. The fee value is packed (token1Fee << 4 | token0Fee)
-  function setDefaultFeeByFeeTier(uint24 feeTier, uint8 defaultFeeValue) external;
-
-  /// @notice Sets a new fee setter address.
-  /// @dev Only callable by `owner`
-  /// @param newFeeSetter The new address authorized to set fees.
-  function setFeeSetter(address newFeeSetter) external;
-
-  /// @notice Resolves the fee for a pool using waterfall: pool override → tier default → global
-  /// @param pool The pool address to resolve fee for
-  /// @return fee The resolved fee value (decoded)
-  function getFee(address pool) external view returns (uint8 fee);
-
-  /// @notice Triggers a fee update for a single pool. Permissionless.
-  /// @param pool The pool address to update the fee for.
-  function triggerFeeUpdate(address pool) external;
-
-  /// @notice Triggers a fee update for one pair of tokens. Permissionless.
-  /// @dev There may be multiple pools initialized from the given pair.
-  /// @param token0 The first token of the pair.
-  /// @param token1 The second token of the pair.
-  function triggerFeeUpdate(address token0, address token1) external;
-
-  /// @notice Triggers fee updates for multiple pairs of tokens. Permissionless.
-  /// @param pairs The pairs of two tokens. There may be multiple pools initialized from the same
-  /// pair.
-  function batchTriggerFeeUpdate(Pair[] calldata pairs) external;
-
-  /// @notice Triggers fee updates for multiple pools directly. Permissionless.
-  /// @param pools The pool addresses to update the fees for.
-  function batchTriggerFeeUpdateByPool(address[] calldata pools) external;
+    /// @notice Triggers fee updates for multiple pools directly. Permissionless.
+    /// @param pools The pool addresses to update the fees for.
+    function batchTriggerFeeUpdateByPool(address[] calldata pools) external;
 }
 
 /// @notice Simple single owner authorization mixin.
@@ -328,18 +314,20 @@ abstract contract Owned {
 /// @notice A utility library for working with uint24 arrays
 /// @dev Provides helper functions for common array operations on uint24[] storage arrays
 library ArrayLib {
-  /// @notice Checks if a value exists in a uint24 array
-  /// @dev Performs a linear search through the array to find the value
-  /// @param array The storage array to search through
-  /// @param value The uint24 value to search for
-  /// @return True if the value exists in the array, false otherwise
-  function includes(uint24[] storage array, uint24 value) internal view returns (bool) {
-    uint256 length = array.length;
-    for (uint256 i; i < length; i++) {
-      if (array[i] == value) return true;
+    /// @notice Checks if a value exists in a uint24 array
+    /// @dev Performs a linear search through the array to find the value
+    /// @param array The storage array to search through
+    /// @param value The uint24 value to search for
+    /// @return True if the value exists in the array, false otherwise
+    function includes(uint24[] storage array, uint24 value) internal view returns (bool) {
+        uint256 length = array.length;
+        for (uint256 i; i < length; i++) {
+            if (array[i] == value) {
+                return true;
+            }
+        }
+        return false;
     }
-    return false;
-  }
 }
 
 /// @title Permissioned pool actions
@@ -356,11 +344,9 @@ interface IUniswapV3PoolOwnerActions {
     /// @param amount1Requested The maximum amount of token1 to send, can be 0 to collect fees in only token0
     /// @return amount0 The protocol fee collected in token0
     /// @return amount1 The protocol fee collected in token1
-    function collectProtocol(
-        address recipient,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) external returns (uint128 amount0, uint128 amount1);
+    function collectProtocol(address recipient, uint128 amount0Requested, uint128 amount1Requested)
+        external
+        returns (uint128 amount0, uint128 amount1);
 }
 
 /// @title Pool state that never changes
@@ -541,11 +527,7 @@ interface IUniswapV3PoolDerivedState {
     function snapshotCumulativesInside(int24 tickLower, int24 tickUpper)
         external
         view
-        returns (
-            int56 tickCumulativeInside,
-            uint160 secondsPerLiquidityInsideX128,
-            uint32 secondsInside
-        );
+        returns (int56 tickCumulativeInside, uint160 secondsPerLiquidityInsideX128, uint32 secondsInside);
 }
 
 /// @title Permissionless pool actions
@@ -567,13 +549,9 @@ interface IUniswapV3PoolActions {
     /// @param data Any data that should be passed through to the callback
     /// @return amount0 The amount of token0 that was paid to mint the given amount of liquidity. Matches the value in the callback
     /// @return amount1 The amount of token1 that was paid to mint the given amount of liquidity. Matches the value in the callback
-    function mint(
-        address recipient,
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount,
-        bytes calldata data
-    ) external returns (uint256 amount0, uint256 amount1);
+    function mint(address recipient, int24 tickLower, int24 tickUpper, uint128 amount, bytes calldata data)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Collects tokens owed to a position
     /// @dev Does not recompute fees earned, which must be done either via mint or burn of any amount of liquidity.
@@ -603,11 +581,9 @@ interface IUniswapV3PoolActions {
     /// @param amount How much liquidity to burn
     /// @return amount0 The amount of token0 sent to the recipient
     /// @return amount1 The amount of token1 sent to the recipient
-    function burn(
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount
-    ) external returns (uint256 amount0, uint256 amount1);
+    function burn(int24 tickLower, int24 tickUpper, uint128 amount)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
@@ -635,12 +611,7 @@ interface IUniswapV3PoolActions {
     /// @param amount0 The amount of token0 to send
     /// @param amount1 The amount of token1 to send
     /// @param data Any data to be passed through to the callback
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 
     /// @notice Increase the maximum number of price and liquidity observations that this pool will store
     /// @dev This method is no-op if the pool already has an observationCardinalityNext greater than or equal to
@@ -749,8 +720,7 @@ interface IUniswapV3PoolEvents {
     /// @param observationCardinalityNextOld The previous value of the next observation cardinality
     /// @param observationCardinalityNextNew The updated value of the next observation cardinality
     event IncreaseObservationCardinalityNext(
-        uint16 observationCardinalityNextOld,
-        uint16 observationCardinalityNextNew
+        uint16 observationCardinalityNextOld, uint16 observationCardinalityNextNew
     );
 
     /// @notice Emitted when the protocol fee is changed by the pool
@@ -779,9 +749,7 @@ interface IUniswapV3Pool is
     IUniswapV3PoolActions,
     IUniswapV3PoolOwnerActions,
     IUniswapV3PoolEvents
-{
-
-}
+{}
 
 /// @title V3OpenFeeAdapter
 /// @notice A permissionless contract that allows anyone to trigger protocol fee updates for pools.
@@ -798,283 +766,297 @@ interface IUniswapV3Pool is
 ///
 /// @custom:security-contact security@uniswap.org
 contract V3OpenFeeAdapter is IV3OpenFeeAdapter, Owned {
-  using ArrayLib for uint24[];
+    using ArrayLib for uint24[];
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  /// @dev Safe to use max uint8 (255) as sentinel because V3 protocol fees pack two 4-bit values
-  /// where each must be 0 or in range [4,10]. Max valid packed fee is (10 << 4) | 10 = 170 (0xAA).
-  uint8 public constant ZERO_FEE_SENTINEL = type(uint8).max;
+    /// @inheritdoc IV3OpenFeeAdapter
+    /// @dev Safe to use max uint8 (255) as sentinel because V3 protocol fees pack two 4-bit values
+    /// where each must be 0 or in range [4,10]. Max valid packed fee is (10 << 4) | 10 = 170 (0xAA).
+    uint8 public constant ZERO_FEE_SENTINEL = type(uint8).max;
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  IUniswapV3Factory public immutable FACTORY;
-  /// @inheritdoc IV3OpenFeeAdapter
-  address public immutable TOKEN_JAR;
+    /// @inheritdoc IV3OpenFeeAdapter
+    IUniswapV3Factory public immutable FACTORY;
+    /// @inheritdoc IV3OpenFeeAdapter
+    address public immutable TOKEN_JAR;
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  address public feeSetter;
+    /// @inheritdoc IV3OpenFeeAdapter
+    address public feeSetter;
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  uint8 public defaultFee;
+    /// @inheritdoc IV3OpenFeeAdapter
+    uint8 public defaultFee;
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  mapping(uint24 feeTier => uint8 feeValue) public feeTierDefaults;
+    /// @inheritdoc IV3OpenFeeAdapter
+    mapping(uint24 feeTier => uint8 feeValue) public feeTierDefaults;
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  mapping(address pool => uint8 feeValue) public poolOverrides;
+    /// @inheritdoc IV3OpenFeeAdapter
+    mapping(address pool => uint8 feeValue) public poolOverrides;
 
-  /// @return The fee tiers that are enabled on the factory. Iterable so that the protocol fee for
-  /// pools of the same pair can be activated with the same call.
-  /// @dev Returns four enabled fee tiers: 100, 500, 3000, 10000. May return more if more are
-  /// enabled.
-  uint24[] public feeTiers;
+    /// @return The fee tiers that are enabled on the factory. Iterable so that the protocol fee for
+    /// pools of the same pair can be activated with the same call.
+    /// @dev Returns four enabled fee tiers: 100, 500, 3000, 10000. May return more if more are
+    /// enabled.
+    uint24[] public feeTiers;
 
-  /// @notice Ensures only the fee setter can call the setDefaultFeeByFeeTier function
-  modifier onlyFeeSetter() {
-    require(msg.sender == feeSetter, Unauthorized());
-    _;
-  }
-
-  /// @dev At construction, the fee setter defaults to 0 and its on the owner to set.
-  constructor(address _factory, address _tokenJar) Owned(msg.sender) {
-    FACTORY = IUniswapV3Factory(_factory);
-    TOKEN_JAR = _tokenJar;
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function storeFeeTier(uint24 feeTier) public {
-    require(_feeTierExists(feeTier), InvalidFeeTier());
-    require(!feeTiers.includes(feeTier), TierAlreadyStored());
-    feeTiers.push(feeTier);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function enableFeeAmount(uint24 fee, int24 tickSpacing) external onlyOwner {
-    FACTORY.enableFeeAmount(fee, tickSpacing);
-
-    storeFeeTier(fee);
-  }
-
-  /// @notice Transfer ownership of the Uniswap V3 Factory to a new address
-  /// @dev Only callable by the owner of this contract. This is a critical operation
-  ///      as it transfers control of the V3 Factory
-  /// @param newOwner The address that will become the new owner of the V3 Factory
-  function setFactoryOwner(address newOwner) external onlyOwner {
-    FACTORY.setOwner(newOwner);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function collect(CollectParams[] calldata collectParams)
-    external
-    returns (Collected[] memory amountsCollected)
-  {
-    amountsCollected = new Collected[](collectParams.length);
-    for (uint256 i = 0; i < collectParams.length; i++) {
-      CollectParams calldata params = collectParams[i];
-      (uint128 amount0Collected, uint128 amount1Collected) = IUniswapV3PoolOwnerActions(params.pool)
-        .collectProtocol(TOKEN_JAR, params.amount0Requested, params.amount1Requested);
-
-      amountsCollected[i] =
-        Collected({amount0Collected: amount0Collected, amount1Collected: amount1Collected});
+    /// @notice Ensures only the fee setter can call the setDefaultFeeByFeeTier function
+    modifier onlyFeeSetter() {
+        require(msg.sender == feeSetter, Unauthorized());
+        _;
     }
-  }
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  function setDefaultFee(uint8 feeValue) external onlyFeeSetter {
-    _validateFeeValue(feeValue);
-    defaultFee = _encodeFee(feeValue);
-    emit DefaultFeeUpdated(feeValue);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function setFeeTierDefault(uint24 feeTier, uint8 feeValue) external onlyFeeSetter {
-    require(_feeTierExists(feeTier), InvalidFeeTier());
-    _validateFeeValue(feeValue);
-    feeTierDefaults[feeTier] = _encodeFee(feeValue);
-    emit FeeTierDefaultUpdated(feeTier, feeValue);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function setPoolOverride(address pool, uint8 feeValue) external onlyFeeSetter {
-    _validateFeeValue(feeValue);
-    poolOverrides[pool] = _encodeFee(feeValue);
-    emit PoolOverrideUpdated(pool, feeValue);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function clearFeeTierDefault(uint24 feeTier) external onlyFeeSetter {
-    delete feeTierDefaults[feeTier];
-    emit FeeTierDefaultCleared(feeTier);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function clearPoolOverride(address pool) external onlyFeeSetter {
-    delete poolOverrides[pool];
-    emit PoolOverrideCleared(pool);
-  }
-
-  /// @notice Legacy function for backwards compatibility
-  /// @dev Renamed to setFeeTierDefault; this function is kept for existing integrations
-  function setDefaultFeeByFeeTier(uint24 feeTier, uint8 defaultFeeValue) external onlyFeeSetter {
-    require(_feeTierExists(feeTier), InvalidFeeTier());
-    _validateFeeValue(defaultFeeValue);
-    feeTierDefaults[feeTier] = _encodeFee(defaultFeeValue);
-    emit FeeTierDefaultUpdated(feeTier, defaultFeeValue);
-  }
-
-  /// @notice Legacy getter for backwards compatibility
-  /// @dev Applies waterfall resolution: fee tier default → global default.
-  ///      Returns 0 only when neither a tier default nor a global default is configured.
-  function defaultFees(uint24 feeTier) external view returns (uint8) {
-    uint8 stored = feeTierDefaults[feeTier];
-    if (stored != 0) return _decodeFee(stored);
-
-    stored = defaultFee;
-    if (stored != 0) return _decodeFee(stored);
-
-    return 0;
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function setFeeSetter(address newFeeSetter) external onlyOwner {
-    address oldFeeSetter = feeSetter;
-    feeSetter = newFeeSetter;
-    emit FeeSetterUpdated(oldFeeSetter, newFeeSetter);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function triggerFeeUpdate(address pool) external {
-    _setProtocolFee(pool);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function triggerFeeUpdate(address token0, address token1) external {
-    _setProtocolFeesForPair(token0, token1);
-  }
-
-  /// @inheritdoc IV3OpenFeeAdapter
-  function batchTriggerFeeUpdate(Pair[] calldata pairs) external {
-    uint256 length = pairs.length;
-    for (uint256 i; i < length;) {
-      _setProtocolFeesForPair(pairs[i].token0, pairs[i].token1);
-      unchecked {
-        ++i;
-      }
+    /// @dev At construction, the fee setter defaults to 0 and its on the owner to set.
+    constructor(address _factory, address _tokenJar) Owned(msg.sender) {
+        FACTORY = IUniswapV3Factory(_factory);
+        TOKEN_JAR = _tokenJar;
     }
-  }
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  function batchTriggerFeeUpdateByPool(address[] calldata pools) external {
-    uint256 length = pools.length;
-    uint256 size;
-    for (uint256 i; i < length;) {
-      address pool = pools[i];
-      assembly {
-        size := extcodesize(pool)
-      }
-      if (size > 0) _setProtocolFee(pool);
-      unchecked {
-        ++i;
-      }
+    /// @inheritdoc IV3OpenFeeAdapter
+    function storeFeeTier(uint24 feeTier) public {
+        require(_feeTierExists(feeTier), InvalidFeeTier());
+        require(!feeTiers.includes(feeTier), TierAlreadyStored());
+        feeTiers.push(feeTier);
     }
-  }
 
-  /// @notice Sets protocol fees for all existing pools of a token pair across all fee tiers
-  /// @dev Iterates through all stored fee tiers and sets the protocol fee for each pool that exists
-  /// @param token0 The first token of the pair
-  /// @param token1 The second token of the pair
-  function _setProtocolFeesForPair(address token0, address token1) internal {
-    uint24 feeTier;
-    address pool;
-    uint256 length = feeTiers.length;
-    for (uint256 i; i < length;) {
-      feeTier = feeTiers[i];
-      pool = FACTORY.getPool(token0, token1, feeTier);
-      if (pool != address(0)) _setProtocolFee(pool);
-      unchecked {
-        ++i;
-      }
+    /// @inheritdoc IV3OpenFeeAdapter
+    function enableFeeAmount(uint24 fee, int24 tickSpacing) external onlyOwner {
+        FACTORY.enableFeeAmount(fee, tickSpacing);
+
+        storeFeeTier(fee);
     }
-  }
 
-  /// @inheritdoc IV3OpenFeeAdapter
-  function getFee(address pool) public view returns (uint8 fee) {
-    uint8 stored;
-
-    // 1. Pool override (most specific)
-    stored = poolOverrides[pool];
-    if (stored != 0) return _decodeFee(stored);
-
-    // 2. Fee tier default
-    uint24 feeTier = IUniswapV3Pool(pool).fee();
-    stored = feeTierDefaults[feeTier];
-    if (stored != 0) return _decodeFee(stored);
-
-    // 3. Global default
-    stored = defaultFee;
-    if (stored != 0) return _decodeFee(stored);
-
-    // Nothing set → no protocol fee (fee defaults to 0)
-  }
-
-  /// @notice Sets the protocol fee for a specific pool using waterfall resolution
-  /// @dev Only sets the fee for initialized pools (sqrtPriceX96 != 0).
-  ///      Resolution order: pool override → fee tier default → global default
-  /// @param pool The address of the Uniswap V3 pool
-  function _setProtocolFee(address pool) internal {
-    // Gas optimization: Check pool exists before expensive slot0 read
-    uint256 size;
-    assembly {
-      size := extcodesize(pool)
+    /// @notice Transfer ownership of the Uniswap V3 Factory to a new address
+    /// @dev Only callable by the owner of this contract. This is a critical operation
+    ///      as it transfers control of the V3 Factory
+    /// @param newOwner The address that will become the new owner of the V3 Factory
+    function setFactoryOwner(address newOwner) external onlyOwner {
+        FACTORY.setOwner(newOwner);
     }
-    if (size == 0) return;
 
-    // Check if pool is initialized
-    (uint160 sqrtPriceX96,,,,,,) = IUniswapV3Pool(pool).slot0();
-    if (sqrtPriceX96 == 0) return; // Pool exists but not initialized, skip
+    /// @inheritdoc IV3OpenFeeAdapter
+    function collect(CollectParams[] calldata collectParams) external returns (Collected[] memory amountsCollected) {
+        amountsCollected = new Collected[](collectParams.length);
+        for (uint256 i = 0; i < collectParams.length; i++) {
+            CollectParams calldata params = collectParams[i];
+            (uint128 amount0Collected, uint128 amount1Collected) = IUniswapV3PoolOwnerActions(params.pool)
+                .collectProtocol(TOKEN_JAR, params.amount0Requested, params.amount1Requested);
 
-    uint8 feeValue = getFee(pool);
+            amountsCollected[i] = Collected({amount0Collected: amount0Collected, amount1Collected: amount1Collected});
+        }
+    }
 
-    IUniswapV3PoolOwnerActions(pool).setFeeProtocol(feeValue % 16, feeValue >> 4);
+    /// @inheritdoc IV3OpenFeeAdapter
+    function setDefaultFee(uint8 feeValue) external onlyFeeSetter {
+        _validateFeeValue(feeValue);
+        defaultFee = _encodeFee(feeValue);
+        emit DefaultFeeUpdated(feeValue);
+    }
 
-    emit FeeUpdateTriggered(msg.sender, pool, feeValue);
-  }
+    /// @inheritdoc IV3OpenFeeAdapter
+    function setFeeTierDefault(uint24 feeTier, uint8 feeValue) external onlyFeeSetter {
+        require(_feeTierExists(feeTier), InvalidFeeTier());
+        _validateFeeValue(feeValue);
+        feeTierDefaults[feeTier] = _encodeFee(feeValue);
+        emit FeeTierDefaultUpdated(feeTier, feeValue);
+    }
 
-  /// @notice Checks if a fee tier exists in the Uniswap V3 Factory
-  /// @dev Verifies existence by checking if the tick spacing for the fee tier is non-zero
-  /// @param feeTier The fee tier to check
-  /// @return True if the fee tier exists, false otherwise
-  function _feeTierExists(uint24 feeTier) internal view returns (bool) {
-    return FACTORY.feeAmountTickSpacing(feeTier) != 0;
-  }
+    /// @inheritdoc IV3OpenFeeAdapter
+    function setPoolOverride(address pool, uint8 feeValue) external onlyFeeSetter {
+        _validateFeeValue(feeValue);
+        poolOverrides[pool] = _encodeFee(feeValue);
+        emit PoolOverrideUpdated(pool, feeValue);
+    }
 
-  /// @notice Validates that a fee value meets V3 protocol requirements
-  /// @dev V3 fees are packed uint8 with two 4-bit values, each must be 0 or in range [4, 10]
-  /// @param feeValue The fee value to validate
-  function _validateFeeValue(uint8 feeValue) internal pure {
-    // Extract the two 4-bit values
-    uint8 feeProtocol0 = feeValue % 16;
-    uint8 feeProtocol1 = feeValue >> 4;
-    // Validate both values match pool requirements: must be 0 or in range [4, 10]
-    require(
-      (feeProtocol0 == 0 || (feeProtocol0 >= 4 && feeProtocol0 <= 10))
-        && (feeProtocol1 == 0 || (feeProtocol1 >= 4 && feeProtocol1 <= 10)),
-      InvalidFeeValue()
-    );
-  }
+    /// @inheritdoc IV3OpenFeeAdapter
+    function clearFeeTierDefault(uint24 feeTier) external onlyFeeSetter {
+        delete feeTierDefaults[feeTier];
+        emit FeeTierDefaultCleared(feeTier);
+    }
 
-  /// @notice Encodes a fee for storage
-  /// @dev Converts 0 to ZERO_FEE_SENTINEL so we can distinguish from "not set"
-  /// @param feeValue The actual fee value
-  /// @return The encoded value to store
-  function _encodeFee(uint8 feeValue) internal pure returns (uint8) {
-    return feeValue == 0 ? ZERO_FEE_SENTINEL : feeValue;
-  }
+    /// @inheritdoc IV3OpenFeeAdapter
+    function clearPoolOverride(address pool) external onlyFeeSetter {
+        delete poolOverrides[pool];
+        emit PoolOverrideCleared(pool);
+    }
 
-  /// @notice Decodes a fee from storage
-  /// @dev Converts ZERO_FEE_SENTINEL back to 0
-  /// @param stored The value from storage
-  /// @return The actual fee value
-  function _decodeFee(uint8 stored) internal pure returns (uint8) {
-    return stored == ZERO_FEE_SENTINEL ? 0 : stored;
-  }
+    /// @notice Legacy function for backwards compatibility
+    /// @dev Renamed to setFeeTierDefault; this function is kept for existing integrations
+    function setDefaultFeeByFeeTier(uint24 feeTier, uint8 defaultFeeValue) external onlyFeeSetter {
+        require(_feeTierExists(feeTier), InvalidFeeTier());
+        _validateFeeValue(defaultFeeValue);
+        feeTierDefaults[feeTier] = _encodeFee(defaultFeeValue);
+        emit FeeTierDefaultUpdated(feeTier, defaultFeeValue);
+    }
+
+    /// @notice Legacy getter for backwards compatibility
+    /// @dev Applies waterfall resolution: fee tier default → global default.
+    ///      Returns 0 only when neither a tier default nor a global default is configured.
+    function defaultFees(uint24 feeTier) external view returns (uint8) {
+        uint8 stored = feeTierDefaults[feeTier];
+        if (stored != 0) {
+            return _decodeFee(stored);
+        }
+
+        stored = defaultFee;
+        if (stored != 0) {
+            return _decodeFee(stored);
+        }
+
+        return 0;
+    }
+
+    /// @inheritdoc IV3OpenFeeAdapter
+    function setFeeSetter(address newFeeSetter) external onlyOwner {
+        address oldFeeSetter = feeSetter;
+        feeSetter = newFeeSetter;
+        emit FeeSetterUpdated(oldFeeSetter, newFeeSetter);
+    }
+
+    /// @inheritdoc IV3OpenFeeAdapter
+    function triggerFeeUpdate(address pool) external {
+        _setProtocolFee(pool);
+    }
+
+    /// @inheritdoc IV3OpenFeeAdapter
+    function triggerFeeUpdate(address token0, address token1) external {
+        _setProtocolFeesForPair(token0, token1);
+    }
+
+    /// @inheritdoc IV3OpenFeeAdapter
+    function batchTriggerFeeUpdate(Pair[] calldata pairs) external {
+        uint256 length = pairs.length;
+        for (uint256 i; i < length;) {
+            _setProtocolFeesForPair(pairs[i].token0, pairs[i].token1);
+            unchecked {
+                ++i;
+            }
+        }
+    }
+
+    /// @inheritdoc IV3OpenFeeAdapter
+    function batchTriggerFeeUpdateByPool(address[] calldata pools) external {
+        uint256 length = pools.length;
+        uint256 size;
+        for (uint256 i; i < length;) {
+            address pool = pools[i];
+            assembly {
+                size := extcodesize(pool)
+            }
+            if (size > 0) {
+                _setProtocolFee(pool);
+            }
+            unchecked {
+                ++i;
+            }
+        }
+    }
+
+    /// @notice Sets protocol fees for all existing pools of a token pair across all fee tiers
+    /// @dev Iterates through all stored fee tiers and sets the protocol fee for each pool that exists
+    /// @param token0 The first token of the pair
+    /// @param token1 The second token of the pair
+    function _setProtocolFeesForPair(address token0, address token1) internal {
+        uint24 feeTier;
+        address pool;
+        uint256 length = feeTiers.length;
+        for (uint256 i; i < length;) {
+            feeTier = feeTiers[i];
+            pool = FACTORY.getPool(token0, token1, feeTier);
+            if (pool != address(0)) {
+                _setProtocolFee(pool);
+            }
+            unchecked {
+                ++i;
+            }
+        }
+    }
+
+    /// @inheritdoc IV3OpenFeeAdapter
+    function getFee(address pool) public view returns (uint8 fee) {
+        uint8 stored;
+
+        // 1. Pool override (most specific)
+        stored = poolOverrides[pool];
+        if (stored != 0) {
+            return _decodeFee(stored);
+        }
+
+        // 2. Fee tier default
+        uint24 feeTier = IUniswapV3Pool(pool).fee();
+        stored = feeTierDefaults[feeTier];
+        if (stored != 0) {
+            return _decodeFee(stored);
+        }
+
+        // 3. Global default
+        stored = defaultFee;
+        if (stored != 0) {
+            return _decodeFee(stored);
+        }
+
+        // Nothing set → no protocol fee (fee defaults to 0)
+    }
+
+    /// @notice Sets the protocol fee for a specific pool using waterfall resolution
+    /// @dev Only sets the fee for initialized pools (sqrtPriceX96 != 0).
+    ///      Resolution order: pool override → fee tier default → global default
+    /// @param pool The address of the Uniswap V3 pool
+    function _setProtocolFee(address pool) internal {
+        // Gas optimization: Check pool exists before expensive slot0 read
+        uint256 size;
+        assembly {
+            size := extcodesize(pool)
+        }
+        if (size == 0) {
+            return;
+        }
+
+        // Check if pool is initialized
+        (uint160 sqrtPriceX96,,,,,,) = IUniswapV3Pool(pool).slot0();
+        if (sqrtPriceX96 == 0) {
+            return;
+        } // Pool exists but not initialized, skip
+
+        uint8 feeValue = getFee(pool);
+
+        IUniswapV3PoolOwnerActions(pool).setFeeProtocol(feeValue % 16, feeValue >> 4);
+
+        emit FeeUpdateTriggered(msg.sender, pool, feeValue);
+    }
+
+    /// @notice Checks if a fee tier exists in the Uniswap V3 Factory
+    /// @dev Verifies existence by checking if the tick spacing for the fee tier is non-zero
+    /// @param feeTier The fee tier to check
+    /// @return True if the fee tier exists, false otherwise
+    function _feeTierExists(uint24 feeTier) internal view returns (bool) {
+        return FACTORY.feeAmountTickSpacing(feeTier) != 0;
+    }
+
+    /// @notice Validates that a fee value meets V3 protocol requirements
+    /// @dev V3 fees are packed uint8 with two 4-bit values, each must be 0 or in range [4, 10]
+    /// @param feeValue The fee value to validate
+    function _validateFeeValue(uint8 feeValue) internal pure {
+        // Extract the two 4-bit values
+        uint8 feeProtocol0 = feeValue % 16;
+        uint8 feeProtocol1 = feeValue >> 4;
+        // Validate both values match pool requirements: must be 0 or in range [4, 10]
+        require(
+            (feeProtocol0 == 0 || (feeProtocol0 >= 4 && feeProtocol0 <= 10))
+                && (feeProtocol1 == 0 || (feeProtocol1 >= 4 && feeProtocol1 <= 10)),
+            InvalidFeeValue()
+        );
+    }
+
+    /// @notice Encodes a fee for storage
+    /// @dev Converts 0 to ZERO_FEE_SENTINEL so we can distinguish from "not set"
+    /// @param feeValue The actual fee value
+    /// @return The encoded value to store
+    function _encodeFee(uint8 feeValue) internal pure returns (uint8) {
+        return feeValue == 0 ? ZERO_FEE_SENTINEL : feeValue;
+    }
+
+    /// @notice Decodes a fee from storage
+    /// @dev Converts ZERO_FEE_SENTINEL back to 0
+    /// @param stored The value from storage
+    /// @return The actual fee value
+    function _decodeFee(uint8 stored) internal pure returns (uint8) {
+        return stored == ZERO_FEE_SENTINEL ? 0 : stored;
+    }
 }

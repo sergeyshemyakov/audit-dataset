@@ -14,21 +14,23 @@ import {ScrollGatewayBase} from "../../libraries/gateway/ScrollGatewayBase.sol";
 /// @dev The ETH are not held in the gateway. The ETH will be sent to the `L2ScrollMessenger` contract.
 /// On finalizing deposit, the Ether will be transfered from `L2ScrollMessenger`, then transfer to recipient.
 contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L2ETHGateway` implementation contract.
     ///
     /// @param _counterpart The address of `L1ETHGateway` contract in L1.
     /// @param _router The address of `L1GatewayRouter` contract.
     /// @param _messenger The address of `L1ScrollMessenger` contract.
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) ScrollGatewayBase(_counterpart, _router, _messenger) {
-        if (_router == address(0)) revert ErrorZeroAddress();
+    constructor(address _counterpart, address _router, address _messenger)
+        ScrollGatewayBase(_counterpart, _router, _messenger)
+    {
+        if (_router == address(0)) {
+            revert ErrorZeroAddress();
+        }
 
         _disableInitializers();
     }
@@ -40,17 +42,15 @@ contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
     /// @param _counterpart The address of L1ETHGateway in L1.
     /// @param _router The address of L2GatewayRouter in L2.
     /// @param _messenger The address of L2ScrollMessenger in L2.
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) external initializer {
+    function initialize(address _counterpart, address _router, address _messenger) external initializer {
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ETHGateway
     function withdrawETH(uint256 _amount, uint256 _gasLimit) external payable override {
@@ -58,35 +58,31 @@ contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETH(
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETH(address _to, uint256 _amount, uint256 _gasLimit) public payable override {
         _withdraw(_to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETHAndCall(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETHAndCall(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         _withdraw(_to, _amount, _data, _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function finalizeDepositETH(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _data
-    ) external payable override onlyCallByCounterpart nonReentrant {
+    function finalizeDepositETH(address _from, address _to, uint256 _amount, bytes calldata _data)
+        external
+        payable
+        override
+        onlyCallByCounterpart
+        nonReentrant
+    {
         require(msg.value == _amount, "msg.value mismatch");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool _success, ) = _to.call{value: _amount}("");
+        (bool _success,) = _to.call{value: _amount}("");
         require(_success, "ETH transfer failed");
 
         _doCallback(_to, _data);
@@ -94,21 +90,22 @@ contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
         emit FinalizeDepositETH(_from, _to, _amount, _data);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev The internal ETH withdraw implementation.
     /// @param _to The address of recipient's account on L1.
     /// @param _amount The amount of ETH to be withdrawn.
     /// @param _data Optional data to forward to recipient's account.
     /// @param _gasLimit Optional gas limit to complete the deposit on L1.
-    function _withdraw(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual nonReentrant {
+    function _withdraw(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        nonReentrant
+    {
         require(msg.value > 0, "withdraw zero eth");
 
         // 1. Extract real sender if this call is from L1GatewayRouter.

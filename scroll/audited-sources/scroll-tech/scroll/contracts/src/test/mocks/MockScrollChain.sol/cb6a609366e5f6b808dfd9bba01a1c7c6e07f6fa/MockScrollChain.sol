@@ -10,12 +10,7 @@ contract MockScrollChain is ScrollChain {
     function computePublicInputHash(uint64 accTotalL1Messages, Batch memory batch)
         external
         view
-        returns (
-            bytes32,
-            uint64,
-            uint64,
-            uint64
-        )
+        returns (bytes32, uint64, uint64, uint64)
     {
         return _computePublicInputHash(accTotalL1Messages, batch);
     }

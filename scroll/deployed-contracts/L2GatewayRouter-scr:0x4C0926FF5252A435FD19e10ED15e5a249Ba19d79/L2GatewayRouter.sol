@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -412,11 +408,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -522,9 +517,11 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
 }
 
 interface IL2ETHGateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when someone withdraw ETH from L2 to L1.
     /// @param from The address of sender in L2.
@@ -540,9 +537,11 @@ interface IL2ETHGateway {
     /// @param data The optional calldata passed to recipient in L2.
     event FinalizeDepositETH(address indexed from, address indexed to, uint256 amount, bytes data);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Withdraw ETH to caller's account in L1.
     /// @param amount The amount of ETH to be withdrawn.
@@ -553,23 +552,14 @@ interface IL2ETHGateway {
     /// @param to The address of recipient's account on L1.
     /// @param amount The amount of ETH to be withdrawn.
     /// @param gasLimit Optional, gas limit used to complete the withdraw on L1.
-    function withdrawETH(
-        address to,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawETH(address to, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Withdraw ETH to caller's account in L1.
     /// @param to The address of recipient's account on L1.
     /// @param amount The amount of ETH to be withdrawn.
     /// @param data Optional data to forward to recipient's account.
     /// @param gasLimit Optional, gas limit used to complete the withdraw on L1.
-    function withdrawETHAndCall(
-        address to,
-        uint256 amount,
-        bytes calldata data,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawETHAndCall(address to, uint256 amount, bytes calldata data, uint256 gasLimit) external payable;
 
     /// @notice Complete ETH deposit from L1 to L2 and send fund to recipient's account in L2.
     /// @dev This function should only be called by L2ScrollMessenger.
@@ -578,18 +568,15 @@ interface IL2ETHGateway {
     /// @param _to The address of recipient in L2 to receive ETH.
     /// @param _amount The amount of ETH to deposit.
     /// @param _data Optional data to forward to recipient's account.
-    function finalizeDepositETH(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _data
-    ) external payable;
+    function finalizeDepositETH(address _from, address _to, uint256 _amount, bytes calldata _data) external payable;
 }
 
 interface IL2ERC20Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when ERC20 token is deposited from L1 to L2 and transfer to recipient.
     /// @param l1Token The address of the token in L1.
@@ -599,12 +586,7 @@ interface IL2ERC20Gateway {
     /// @param amount The amount of token withdrawn from L1 to L2.
     /// @param data The optional calldata passed to recipient in L2.
     event FinalizeDepositERC20(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 amount,
-        bytes data
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes data
     );
 
     /// @notice Emitted when someone withdraw ERC20 token from L2 to L1.
@@ -615,17 +597,14 @@ interface IL2ERC20Gateway {
     /// @param amount The amount of token will be deposited from L2 to L1.
     /// @param data The optional calldata passed to recipient in L1.
     event WithdrawERC20(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 amount,
-        bytes data
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes data
     );
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the corresponding l1 token address given l2 token address.
     /// @param l2Token The address of l2 token.
@@ -635,20 +614,18 @@ interface IL2ERC20Gateway {
     /// @param l1Token The address of l1 token.
     function getL2ERC20Address(address l1Token) external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Withdraw of some token to a caller's account on L1.
     /// @dev Make this function payable to send relayer fee in Ether.
     /// @param token The address of token in L2.
     /// @param amount The amount of token to transfer.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC20(
-        address token,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC20(address token, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Withdraw of some token to a recipient's account on L1.
     /// @dev Make this function payable to send relayer fee in Ether.
@@ -656,12 +633,7 @@ interface IL2ERC20Gateway {
     /// @param to The address of recipient's account on L1.
     /// @param amount The amount of token to transfer.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC20(
-        address token,
-        address to,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC20(address token, address to, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Withdraw of some token to a recipient's account on L1 and call.
     /// @dev Make this function payable to send relayer fee in Ether.
@@ -670,13 +642,9 @@ interface IL2ERC20Gateway {
     /// @param amount The amount of token to transfer.
     /// @param data Optional data to forward to recipient's account.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC20AndCall(
-        address token,
-        address to,
-        uint256 amount,
-        bytes calldata data,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC20AndCall(address token, address to, uint256 amount, bytes calldata data, uint256 gasLimit)
+        external
+        payable;
 
     /// @notice Complete a deposit from L1 to L2 and send fund to recipient's account in L2.
     /// @dev Make this function payable to handle WETH deposit/withdraw.
@@ -699,9 +667,11 @@ interface IL2ERC20Gateway {
 }
 
 interface IL2GatewayRouter is IL2ETHGateway, IL2ERC20Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the address of ETH Gateway is updated.
     /// @param oldETHGateway The address of the old ETH Gateway.
@@ -726,9 +696,11 @@ interface IL2GatewayRouter is IL2ETHGateway, IL2ERC20Gateway {
 /// @dev One can also use this contract to query L1/L2 token address mapping.
 /// In the future, ERC-721 and ERC-1155 tokens will be added to the router too.
 contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L2ETHGateway.
     address public ethGateway;
@@ -740,10 +712,11 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
     // solhint-disable-next-line var-name-mixedcase
     mapping(address => address) public ERC20Gateway;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -764,9 +737,11 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
         }
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function getL2ERC20Address(address) external pure override returns (address) {
@@ -793,37 +768,28 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
         return _gateway;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20(
-        address _token,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC20(address _token, uint256 _amount, uint256 _gasLimit) external payable override {
         withdrawERC20AndCall(_token, _msgSender(), _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20(
-        address _token,
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC20(address _token, address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         withdrawERC20AndCall(_token, _to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20AndCall(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawERC20AndCall(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         address _gateway = getERC20Gateway(_token);
         require(_gateway != address(0), "no gateway available");
 
@@ -839,21 +805,16 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETH(
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawETH(address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         withdrawETHAndCall(_to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETHAndCall(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETHAndCall(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         address _gateway = ethGateway;
         require(_gateway != address(0), "eth gateway available");
 
@@ -864,30 +825,25 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
     }
 
     /// @inheritdoc IL2ETHGateway
-    function finalizeDepositETH(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeDepositETH(address, address, uint256, bytes calldata) external payable virtual override {
         revert("should never be called");
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function finalizeDepositERC20(
-        address,
-        address,
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeDepositERC20(address, address, address, address, uint256, bytes calldata)
+        external
+        payable
+        virtual
+        override
+    {
         revert("should never be called");
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of ETH gateway contract.
     /// @dev This function should only be called by contract owner.

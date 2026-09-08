@@ -3,9 +3,9 @@ pragma solidity 0.8.11;
 
 import "@openzeppelin/contracts/utils/math/Math.sol";
 
-import "./common/UsingRegistryUpgradeable.sol";
-import "./common/UUPSOwnableUpgradeable.sol";
 import "./Managed.sol";
+import "./common/UUPSOwnableUpgradeable.sol";
+import "./common/UsingRegistryUpgradeable.sol";
 
 import "./interfaces/IAccount.sol";
 import "./interfaces/IStakedCelo.sol";
@@ -86,13 +86,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
      * @param noVotes The no votes.
      * @param abstainVotes The abstain votes.
      */
-    event ProposalVoted(
-        address voter,
-        uint256 proposalId,
-        uint256 yesVotes,
-        uint256 noVotes,
-        uint256 abstainVotes
-    );
+    event ProposalVoted(address voter, uint256 proposalId, uint256 yesVotes, uint256 noVotes, uint256 abstainVotes);
 
     /**
      * @notice Emitted when unlock of stCELO is requested.
@@ -141,11 +135,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
      * @param _owner The address of the contract owner.
      * @param _manager The address of the contract manager.
      */
-    function initialize(
-        address _registry,
-        address _owner,
-        address _manager
-    ) external initializer {
+    function initialize(address _registry, address _owner, address _manager) external initializer {
         __UsingRegistry_init(_registry);
         __Managed_init(_manager);
         _transferOwnership(_owner);
@@ -173,11 +163,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
      * @param proposalId The proposal id.
      * @param index Index of voter's proposal id.
      */
-    function deleteExpiredVoterProposalId(
-        address voter,
-        uint256 proposalId,
-        uint256 index
-    ) external {
+    function deleteExpiredVoterProposalId(address voter, uint256 proposalId, uint256 index) external {
         Voter storage voterStruct = voters[voter];
 
         uint256 proposalIdOnChain = voterStruct.votedProposalIds[index];
@@ -190,9 +176,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
             deleteExpiredProposalTimestamp(proposalId);
         }
 
-        voterStruct.votedProposalIds[index] = voterStruct.votedProposalIds[
-            voterStruct.votedProposalIds.length - 1
-        ];
+        voterStruct.votedProposalIds[index] = voterStruct.votedProposalIds[voterStruct.votedProposalIds.length - 1];
         voterStruct.votedProposalIds.pop();
     }
 
@@ -203,16 +187,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 2, 0);
     }
 
@@ -234,18 +209,8 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
         uint256 yesVotes,
         uint256 noVotes,
         uint256 abstainVotes
-    )
-        public
-        onlyManager
-        returns (
-            uint256,
-            uint256 totalYesVotes,
-            uint256 totalNoVotes,
-            uint256 totalAbstainVotes
-        )
-    {
-        uint256 stakedCeloBalance = stakedCelo.balanceOf(accountVoter) +
-            stakedCelo.lockedVoteBalanceOf(accountVoter);
+    ) public onlyManager returns (uint256, uint256 totalYesVotes, uint256 totalNoVotes, uint256 totalAbstainVotes) {
+        uint256 stakedCeloBalance = stakedCelo.balanceOf(accountVoter) + stakedCelo.lockedVoteBalanceOf(accountVoter);
         if (stakedCeloBalance == 0) {
             revert NoStakedCelo(accountVoter);
         }
@@ -270,10 +235,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
         proposalVoteRecord.abstainVotes += abstainVotes;
 
         voteRecords[proposalId] = ProposalVoteRecord(
-            proposalId,
-            proposalVoteRecord.yesVotes,
-            proposalVoteRecord.noVotes,
-            proposalVoteRecord.abstainVotes
+            proposalId, proposalVoteRecord.yesVotes, proposalVoteRecord.noVotes, proposalVoteRecord.abstainVotes
         );
 
         if (previousVoterRecord.proposalId == 0) {
@@ -307,19 +269,9 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
     function revokeVotes(address accountVoter, uint256 proposalId)
         public
         onlyManager
-        returns (
-            uint256 totalYesVotes,
-            uint256 totalNoVotes,
-            uint256 totalAbstainVotes
-        )
+        returns (uint256 totalYesVotes, uint256 totalNoVotes, uint256 totalAbstainVotes)
     {
-        (, totalYesVotes, totalNoVotes, totalAbstainVotes) = voteProposal(
-            accountVoter,
-            proposalId,
-            0,
-            0,
-            0
-        );
+        (, totalYesVotes, totalNoVotes, totalAbstainVotes) = voteProposal(accountVoter, proposalId, 0, 0, 0);
         return (totalYesVotes, totalNoVotes, totalAbstainVotes);
     }
 
@@ -330,10 +282,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
      * @param beneficiary The beneficiary.
      * @return Currently locked stCELO in voting.
      */
-    function updateHistoryAndReturnLockedStCeloInVoting(address beneficiary)
-        public
-        returns (uint256)
-    {
+    function updateHistoryAndReturnLockedStCeloInVoting(address beneficiary) public returns (uint256) {
         Voter storage voter = voters[beneficiary];
         uint256 lockedAmount;
 
@@ -343,25 +292,17 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
             uint256 proposalTimestamp = proposalTimestamps[proposalId];
 
             if (proposalTimestamp == 0) {
-                voter.votedProposalIds[i] = voter.votedProposalIds[
-                    voter.votedProposalIds.length - 1
-                ];
+                voter.votedProposalIds[i] = voter.votedProposalIds[voter.votedProposalIds.length - 1];
                 voter.votedProposalIds.pop();
                 continue;
             }
 
-            if (
-                block.timestamp < proposalTimestamp + getGovernance().getReferendumStageDuration()
-            ) {
+            if (block.timestamp < proposalTimestamp + getGovernance().getReferendumStageDuration()) {
                 VoterRecord storage voterRecord = voter.proposalVotes[proposalId];
-                lockedAmount = Math.max(
-                    lockedAmount,
-                    voterRecord.yesVotes + voterRecord.noVotes + voterRecord.abstainVotes
-                );
+                lockedAmount =
+                    Math.max(lockedAmount, voterRecord.yesVotes + voterRecord.noVotes + voterRecord.abstainVotes);
             } else {
-                voter.votedProposalIds[i] = voter.votedProposalIds[
-                    voter.votedProposalIds.length - 1
-                ];
+                voter.votedProposalIds[i] = voter.votedProposalIds[voter.votedProposalIds.length - 1];
                 voter.votedProposalIds.pop();
                 delete proposalTimestamps[proposalId];
             }
@@ -391,7 +332,7 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
      * @return The timestamp of proposal.
      */
     function getProposalTimestamp(uint256 proposalId) public view returns (uint256) {
-        (, , uint256 timestamp, , ) = getGovernance().getProposal(proposalId);
+        (,, uint256 timestamp,,) = getGovernance().getProposal(proposalId);
         return timestamp;
     }
 
@@ -422,14 +363,10 @@ contract Vote is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed {
                 continue;
             }
 
-            if (
-                block.timestamp < proposalTimestamp + getGovernance().getReferendumStageDuration()
-            ) {
+            if (block.timestamp < proposalTimestamp + getGovernance().getReferendumStageDuration()) {
                 VoterRecord storage voterRecord = voter.proposalVotes[proposalId];
-                lockedAmount = Math.max(
-                    lockedAmount,
-                    voterRecord.yesVotes + voterRecord.noVotes + voterRecord.abstainVotes
-                );
+                lockedAmount =
+                    Math.max(lockedAmount, voterRecord.yesVotes + voterRecord.noVotes + voterRecord.abstainVotes);
             }
         }
 

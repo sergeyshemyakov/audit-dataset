@@ -3,24 +3,15 @@
 pragma solidity >=0.6.10 <=0.8.10;
 pragma experimental ABIEncoderV2;
 
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {IDefiBridge} from "../../interfaces/IDefiBridge.sol";
 import {AztecTypes} from "../../aztec/AztecTypes.sol";
+import {IDefiBridge} from "../../interfaces/IDefiBridge.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 interface ICurvePool {
-    function get_dy(
-        int128 i,
-        int128 j,
-        uint256 dx
-    ) external view returns (uint256);
+    function get_dy(int128 i, int128 j, uint256 dx) external view returns (uint256);
 
-    function exchange(
-        int128 i,
-        int128 j,
-        uint256 dx,
-        uint256 min_dy
-    ) external payable returns (uint256);
+    function exchange(int128 i, int128 j, uint256 dx, uint256 min_dy) external payable returns (uint256);
 }
 
 interface ILido {
@@ -28,7 +19,10 @@ interface ILido {
 }
 
 interface ILidoOracle {
-    function getLastCompletedReportDelta() external view returns (uint256 postTotalPooledEther, uint256 preTotalPooledEther, uint256 timeElapsed);
+    function getLastCompletedReportDelta()
+        external
+        view
+        returns (uint256 postTotalPooledEther, uint256 preTotalPooledEther, uint256 timeElapsed);
 }
 
 interface IWstETH {
@@ -71,32 +65,30 @@ contract LidoBridge is IDefiBridge {
         uint256 interactionNonce,
         uint64,
         address
-    )
-        external
-        payable
-        returns (
-            uint256 outputValueA,
-            uint256,
-            bool isAsync
-        )
-    {
+    ) external payable returns (uint256 outputValueA, uint256, bool isAsync) {
         require(msg.sender == rollupProcessor, "LidoBridge: Invalid Caller");
 
         bool isETHInput = inputAssetA.assetType == AztecTypes.AztecAssetType.ETH;
-        bool isWstETHInput = inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20 && inputAssetA.erc20Address == address(wrappedStETH);
+        bool isWstETHInput = inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20
+            && inputAssetA.erc20Address == address(wrappedStETH);
 
         require(isETHInput || isWstETHInput, "LidoBridge: Invalid Input");
 
         isAsync = false;
-        outputValueA = isETHInput ? wrapETH(inputValue, outputAssetA) : unwrapETH(inputValue, outputAssetA, interactionNonce);
+        outputValueA =
+            isETHInput ? wrapETH(inputValue, outputAssetA) : unwrapETH(inputValue, outputAssetA, interactionNonce);
     }
 
     /**
-        Convert ETH -> wstETH
+     * Convert ETH -> wstETH
      */
-    function wrapETH(uint256 inputValue, AztecTypes.AztecAsset calldata outputAsset) private returns (uint256 outputValue) {
+    function wrapETH(uint256 inputValue, AztecTypes.AztecAsset calldata outputAsset)
+        private
+        returns (uint256 outputValue)
+    {
         require(
-            outputAsset.assetType == AztecTypes.AztecAssetType.ERC20 && outputAsset.erc20Address == address(wrappedStETH),
+            outputAsset.assetType == AztecTypes.AztecAssetType.ERC20
+                && outputAsset.erc20Address == address(wrappedStETH),
             "LidoBridge: Invalid Output Token"
         );
 
@@ -128,9 +120,12 @@ contract LidoBridge is IDefiBridge {
     }
 
     /**
-        Convert wstETH to ETH
+     * Convert wstETH to ETH
      */
-    function unwrapETH(uint256 inputValue, AztecTypes.AztecAsset calldata outputAsset, uint256 interactionNonce) private returns (uint256 outputValue) {
+    function unwrapETH(uint256 inputValue, AztecTypes.AztecAsset calldata outputAsset, uint256 interactionNonce)
+        private
+        returns (uint256 outputValue)
+    {
         require(outputAsset.assetType == AztecTypes.AztecAssetType.ETH, "LidoBridge: Invalid Output Token");
 
         // Convert wstETH to stETH so we can exchange it on curve
@@ -144,14 +139,14 @@ contract LidoBridge is IDefiBridge {
         IRollupProcessor(rollupProcessor).receiveEthFromBridge{value: outputValue}(interactionNonce);
     }
 
-  function finalise(
-    AztecTypes.AztecAsset calldata,
-    AztecTypes.AztecAsset calldata,
-    AztecTypes.AztecAsset calldata,
-    AztecTypes.AztecAsset calldata,
-    uint256,
-    uint64
-  ) external payable returns (uint256, uint256, bool) {
-    require(false);
-  }
+    function finalise(
+        AztecTypes.AztecAsset calldata,
+        AztecTypes.AztecAsset calldata,
+        AztecTypes.AztecAsset calldata,
+        AztecTypes.AztecAsset calldata,
+        uint256,
+        uint64
+    ) external payable returns (uint256, uint256, bool) {
+        require(false);
+    }
 }

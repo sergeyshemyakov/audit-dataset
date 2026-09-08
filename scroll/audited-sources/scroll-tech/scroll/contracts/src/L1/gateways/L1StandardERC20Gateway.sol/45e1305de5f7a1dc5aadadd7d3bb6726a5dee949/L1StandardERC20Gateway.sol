@@ -3,7 +3,8 @@
 pragma solidity =0.8.16;
 
 import {ClonesUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/ClonesUpgradeable.sol";
-import {IERC20MetadataUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol";
+import {IERC20MetadataUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol";
 
 import {IL2ERC20Gateway} from "../../L2/gateways/IL2ERC20Gateway.sol";
 import {IL1ScrollMessenger} from "../IL1ScrollMessenger.sol";
@@ -19,9 +20,11 @@ import {L1ERC20Gateway} from "./L1ERC20Gateway.sol";
 /// token will be transfer to the recipient directly. Any ERC20 that requires non-standard functionality
 /// should use a separate gateway.
 contract L1StandardERC20Gateway is L1ERC20Gateway {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of ScrollStandardERC20 implementation in L2.
     address public immutable l2TokenImplementation;
@@ -29,9 +32,11 @@ contract L1StandardERC20Gateway is L1ERC20Gateway {
     /// @notice The address of ScrollStandardERC20Factory contract in L2.
     address public immutable l2TokenFactory;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slot used as ScrollStandardERC20 implementation in L2, which is deprecated now.
     address private __l2TokenImplementation;
@@ -45,9 +50,11 @@ contract L1StandardERC20Gateway is L1ERC20Gateway {
     /// pass deploy data on first call to the token.
     mapping(address => address) private tokenMapping;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L1StandardERC20Gateway` implementation contract.
     ///
@@ -96,9 +103,11 @@ contract L1StandardERC20Gateway is L1ERC20Gateway {
         __l2TokenFactory = _l2TokenFactory;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
     function getL2ERC20Address(address _l1Token) public view override returns (address) {
@@ -109,19 +118,18 @@ contract L1StandardERC20Gateway is L1ERC20Gateway {
         return ClonesUpgradeable.predictDeterministicAddress(l2TokenImplementation, _salt, l2TokenFactory);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @inheritdoc L1ERC20Gateway
-    function _beforeFinalizeWithdrawERC20(
-        address _l1Token,
-        address _l2Token,
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) internal virtual override {
+    function _beforeFinalizeWithdrawERC20(address _l1Token, address _l2Token, address, address, uint256, bytes calldata)
+        internal
+        virtual
+        override
+    {
         require(msg.value == 0, "nonzero msg.value");
         require(_l2Token != address(0), "token address cannot be 0");
         require(getL2ERC20Address(_l1Token) == _l2Token, "l2 token mismatch");
@@ -136,22 +144,17 @@ contract L1StandardERC20Gateway is L1ERC20Gateway {
     }
 
     /// @inheritdoc L1ERC20Gateway
-    function _beforeDropMessage(
-        address,
-        address,
-        uint256
-    ) internal virtual override {
+    function _beforeDropMessage(address, address, uint256) internal virtual override {
         require(msg.value == 0, "nonzero msg.value");
     }
 
     /// @inheritdoc L1ERC20Gateway
-    function _deposit(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual override nonReentrant {
+    function _deposit(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        override
+        nonReentrant
+    {
         require(_amount > 0, "deposit zero amount");
 
         // 1. Transfer token into this contract.
@@ -175,10 +178,8 @@ contract L1StandardERC20Gateway is L1ERC20Gateway {
         } else {
             _l2Data = abi.encode(false, _data);
         }
-        bytes memory _message = abi.encodeCall(
-            IL2ERC20Gateway.finalizeDepositERC20,
-            (_token, _l2Token, _from, _to, _amount, _l2Data)
-        );
+        bytes memory _message =
+            abi.encodeCall(IL2ERC20Gateway.finalizeDepositERC20, (_token, _l2Token, _from, _to, _amount, _l2Data));
 
         // 3. Send message to L1ScrollMessenger.
         IL1ScrollMessenger(messenger).sendMessage{value: msg.value}(counterpart, 0, _message, _gasLimit, _from);

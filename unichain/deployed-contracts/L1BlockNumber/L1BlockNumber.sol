@@ -105,33 +105,87 @@ library Predeploys {
     /// @notice Returns the name of the predeploy at the given address.
     function getName(address _addr) internal pure returns (string memory out_) {
         require(isPredeployNamespace(_addr), "Predeploys: address must be a predeploy");
-        if (_addr == LEGACY_MESSAGE_PASSER) return "LegacyMessagePasser";
-        if (_addr == L1_MESSAGE_SENDER) return "L1MessageSender";
-        if (_addr == DEPLOYER_WHITELIST) return "DeployerWhitelist";
-        if (_addr == WETH) return "WETH";
-        if (_addr == L2_CROSS_DOMAIN_MESSENGER) return "L2CrossDomainMessenger";
-        if (_addr == GAS_PRICE_ORACLE) return "GasPriceOracle";
-        if (_addr == L2_STANDARD_BRIDGE) return "L2StandardBridge";
-        if (_addr == SEQUENCER_FEE_WALLET) return "SequencerFeeVault";
-        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) return "OptimismMintableERC20Factory";
-        if (_addr == L1_BLOCK_NUMBER) return "L1BlockNumber";
-        if (_addr == L2_ERC721_BRIDGE) return "L2ERC721Bridge";
-        if (_addr == L1_BLOCK_ATTRIBUTES) return "L1Block";
-        if (_addr == L2_TO_L1_MESSAGE_PASSER) return "L2ToL1MessagePasser";
-        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) return "OptimismMintableERC721Factory";
-        if (_addr == PROXY_ADMIN) return "ProxyAdmin";
-        if (_addr == BASE_FEE_VAULT) return "BaseFeeVault";
-        if (_addr == L1_FEE_VAULT) return "L1FeeVault";
-        if (_addr == SCHEMA_REGISTRY) return "SchemaRegistry";
-        if (_addr == EAS) return "EAS";
-        if (_addr == GOVERNANCE_TOKEN) return "GovernanceToken";
-        if (_addr == LEGACY_ERC20_ETH) return "LegacyERC20ETH";
-        if (_addr == CROSS_L2_INBOX) return "CrossL2Inbox";
-        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) return "L2ToL2CrossDomainMessenger";
-        if (_addr == SUPERCHAIN_WETH) return "SuperchainWETH";
-        if (_addr == ETH_LIQUIDITY) return "ETHLiquidity";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) return "OptimismSuperchainERC20Factory";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) return "OptimismSuperchainERC20Beacon";
+        if (_addr == LEGACY_MESSAGE_PASSER) {
+            return "LegacyMessagePasser";
+        }
+        if (_addr == L1_MESSAGE_SENDER) {
+            return "L1MessageSender";
+        }
+        if (_addr == DEPLOYER_WHITELIST) {
+            return "DeployerWhitelist";
+        }
+        if (_addr == WETH) {
+            return "WETH";
+        }
+        if (_addr == L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2CrossDomainMessenger";
+        }
+        if (_addr == GAS_PRICE_ORACLE) {
+            return "GasPriceOracle";
+        }
+        if (_addr == L2_STANDARD_BRIDGE) {
+            return "L2StandardBridge";
+        }
+        if (_addr == SEQUENCER_FEE_WALLET) {
+            return "SequencerFeeVault";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) {
+            return "OptimismMintableERC20Factory";
+        }
+        if (_addr == L1_BLOCK_NUMBER) {
+            return "L1BlockNumber";
+        }
+        if (_addr == L2_ERC721_BRIDGE) {
+            return "L2ERC721Bridge";
+        }
+        if (_addr == L1_BLOCK_ATTRIBUTES) {
+            return "L1Block";
+        }
+        if (_addr == L2_TO_L1_MESSAGE_PASSER) {
+            return "L2ToL1MessagePasser";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) {
+            return "OptimismMintableERC721Factory";
+        }
+        if (_addr == PROXY_ADMIN) {
+            return "ProxyAdmin";
+        }
+        if (_addr == BASE_FEE_VAULT) {
+            return "BaseFeeVault";
+        }
+        if (_addr == L1_FEE_VAULT) {
+            return "L1FeeVault";
+        }
+        if (_addr == SCHEMA_REGISTRY) {
+            return "SchemaRegistry";
+        }
+        if (_addr == EAS) {
+            return "EAS";
+        }
+        if (_addr == GOVERNANCE_TOKEN) {
+            return "GovernanceToken";
+        }
+        if (_addr == LEGACY_ERC20_ETH) {
+            return "LegacyERC20ETH";
+        }
+        if (_addr == CROSS_L2_INBOX) {
+            return "CrossL2Inbox";
+        }
+        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2ToL2CrossDomainMessenger";
+        }
+        if (_addr == SUPERCHAIN_WETH) {
+            return "SuperchainWETH";
+        }
+        if (_addr == ETH_LIQUIDITY) {
+            return "ETHLiquidity";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) {
+            return "OptimismSuperchainERC20Factory";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) {
+            return "OptimismSuperchainERC20Beacon";
+        }
         revert("Predeploys: unnamed predeploy");
     }
 

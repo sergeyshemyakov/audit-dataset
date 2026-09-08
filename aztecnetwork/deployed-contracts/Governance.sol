@@ -2,172 +2,172 @@
 pragma solidity 0.8.30;
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
 
 struct ProposeWithLockConfiguration {
-  Timestamp lockDelay;
-  uint256 lockAmount;
+    Timestamp lockDelay;
+    uint256 lockAmount;
 }
 
 struct Configuration {
-  ProposeWithLockConfiguration proposeConfig;
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    ProposeWithLockConfiguration proposeConfig;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 // @notice if this changes, please update the enum in governance.ts
 enum ProposalState {
-  Pending,
-  Active,
-  Queued,
-  Executable,
-  Rejected,
-  Executed,
-  Droppable,
-  Dropped,
-  Expired
+    Pending,
+    Active,
+    Queued,
+    Executable,
+    Rejected,
+    Executed,
+    Droppable,
+    Dropped,
+    Expired
 }
 
 // Configuration for proposals - same as Configuration but without proposeConfig
 // since proposeConfig is only used for proposeWithLock, not for the proposal itself
 struct ProposalConfiguration {
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 struct Ballot {
-  uint256 yea;
-  uint256 nay;
+    uint256 yea;
+    uint256 nay;
 }
 
 struct Proposal {
-  ProposalConfiguration config;
-  ProposalState cachedState;
-  IPayload payload;
-  address proposer;
-  Timestamp creation;
-  Ballot summedBallot;
+    ProposalConfiguration config;
+    ProposalState cachedState;
+    IPayload payload;
+    address proposer;
+    Timestamp creation;
+    Ballot summedBallot;
 }
 
 struct Withdrawal {
-  uint256 amount;
-  Timestamp unlocksAt;
-  address recipient;
-  bool claimed;
+    uint256 amount;
+    Timestamp unlocksAt;
+    address recipient;
+    bool claimed;
 }
 
 interface IGovernance {
-  event BeneficiaryAdded(address beneficiary);
-  event FloodGatesOpened();
+    event BeneficiaryAdded(address beneficiary);
+    event FloodGatesOpened();
 
-  event Proposed(uint256 indexed proposalId, address indexed proposal);
-  event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
-  event ProposalExecuted(uint256 indexed proposalId);
-  event ProposalDropped(uint256 indexed proposalId);
-  event GovernanceProposerUpdated(address indexed governanceProposer);
-  event ConfigurationUpdated(Timestamp indexed time);
+    event Proposed(uint256 indexed proposalId, address indexed proposal);
+    event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
+    event ProposalExecuted(uint256 indexed proposalId);
+    event ProposalDropped(uint256 indexed proposalId);
+    event GovernanceProposerUpdated(address indexed governanceProposer);
+    event ConfigurationUpdated(Timestamp indexed time);
 
-  event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
-  event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(uint256 indexed withdrawalId);
+    event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
+    event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(uint256 indexed withdrawalId);
 
-  function addBeneficiary(address _beneficiary) external;
-  function openFloodgates() external;
+    function addBeneficiary(address _beneficiary) external;
+    function openFloodgates() external;
 
-  function updateGovernanceProposer(address _governanceProposer) external;
-  function updateConfiguration(Configuration memory _configuration) external;
-  function deposit(address _onBehalfOf, uint256 _amount) external;
-  function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function propose(IPayload _proposal) external returns (uint256);
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function execute(uint256 _proposalId) external;
-  function dropProposal(uint256 _proposalId) external;
+    function updateGovernanceProposer(address _governanceProposer) external;
+    function updateConfiguration(Configuration memory _configuration) external;
+    function deposit(address _onBehalfOf, uint256 _amount) external;
+    function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function propose(IPayload _proposal) external returns (uint256);
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function execute(uint256 _proposalId) external;
+    function dropProposal(uint256 _proposalId) external;
 
-  function isPermittedInGovernance(address _caller) external view returns (bool);
-  function isAllBeneficiariesAllowed() external view returns (bool);
+    function isPermittedInGovernance(address _caller) external view returns (bool);
+    function isAllBeneficiariesAllowed() external view returns (bool);
 
-  function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
-  function powerNow(address _owner) external view returns (uint256);
-  function totalPowerAt(Timestamp _ts) external view returns (uint256);
-  function totalPowerNow() external view returns (uint256);
-  function getProposalState(uint256 _proposalId) external view returns (ProposalState);
-  function getConfiguration() external view returns (Configuration memory);
-  function getProposal(uint256 _proposalId) external view returns (Proposal memory);
-  function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
-  function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
+    function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
+    function powerNow(address _owner) external view returns (uint256);
+    function totalPowerAt(Timestamp _ts) external view returns (uint256);
+    function totalPowerNow() external view returns (uint256);
+    function getProposalState(uint256 _proposalId) external view returns (ProposalState);
+    function getConfiguration() external view returns (Configuration memory);
+    function getProposal(uint256 _proposalId) external view returns (Proposal memory);
+    function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
+    function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
 }
 
 /**
@@ -323,7 +323,9 @@ interface IERC1363 is IERC20, IERC165 {
      * @param data Additional data with no specified format, sent in call to `to`.
      * @return A boolean value indicating whether the operation succeeded unless throwing.
      */
-    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data) external returns (bool);
+    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data)
+        external
+        returns (bool);
 
     /**
      * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
@@ -468,13 +470,9 @@ library SafeERC20 {
      *
      * Reverts if the returned value is other than `true`.
      */
-    function transferFromAndCallRelaxed(
-        IERC1363 token,
-        address from,
-        address to,
-        uint256 value,
-        bytes memory data
-    ) internal {
+    function transferFromAndCallRelaxed(IERC1363 token, address from, address to, uint256 value, bytes memory data)
+        internal
+    {
         if (to.code.length == 0) {
             safeTransferFrom(token, from, to, value);
         } else if (!token.transferFromAndCall(from, to, value, data)) {
@@ -1710,48 +1708,48 @@ library SafeCast {
 }
 
 function eqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) == Slot.unwrap(_b);
+    return Slot.unwrap(_a) == Slot.unwrap(_b);
 }
 
 function neqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) != Slot.unwrap(_b);
+    return Slot.unwrap(_a) != Slot.unwrap(_b);
 }
 
 function gteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) >= Slot.unwrap(_b);
+    return Slot.unwrap(_a) >= Slot.unwrap(_b);
 }
 
 function gtSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) > Slot.unwrap(_b);
+    return Slot.unwrap(_a) > Slot.unwrap(_b);
 }
 
 function lteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) <= Slot.unwrap(_b);
+    return Slot.unwrap(_a) <= Slot.unwrap(_b);
 }
 
 function ltSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) < Slot.unwrap(_b);
+    return Slot.unwrap(_a) < Slot.unwrap(_b);
 }
 
 // Slot
 
 function addSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
 }
 
 function subSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
 }
 
 using {
-  eqSlot as ==,
-  neqSlot as !=,
-  gteSlot as >=,
-  gtSlot as >,
-  lteSlot as <=,
-  ltSlot as <,
-  addSlot as +,
-  subSlot as -
+    eqSlot as ==,
+    neqSlot as !=,
+    gteSlot as >=,
+    gtSlot as >,
+    lteSlot as <=,
+    ltSlot as <,
+    addSlot as +,
+    subSlot as -
 } for Slot global;
 
 type Slot is uint256;
@@ -1759,48 +1757,48 @@ type Slot is uint256;
 type CompressedSlot is uint32;
 
 function addEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
 }
 
 function subEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
 }
 
 // Epoch
 
 function eqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) == Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) == Epoch.unwrap(_b);
 }
 
 function neqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) != Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) != Epoch.unwrap(_b);
 }
 
 function gteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
 }
 
 function gtEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) > Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) > Epoch.unwrap(_b);
 }
 
 function lteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
 }
 
 function ltEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) < Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) < Epoch.unwrap(_b);
 }
 
 using {
-  addEpoch as +,
-  subEpoch as -,
-  eqEpoch as ==,
-  neqEpoch as !=,
-  gteEpoch as >=,
-  gtEpoch as >,
-  lteEpoch as <=,
-  ltEpoch as <
+    addEpoch as +,
+    subEpoch as -,
+    eqEpoch as ==,
+    neqEpoch as !=,
+    gteEpoch as >=,
+    gtEpoch as >,
+    lteEpoch as <=,
+    ltEpoch as <
 } for Epoch global;
 
 type Epoch is uint256;
@@ -1808,79 +1806,79 @@ type Epoch is uint256;
 type CompressedEpoch is uint32;
 
 library CompressedTimeMath {
-  function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
-    return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
-  }
+    function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
+        return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
+    }
 
-  function compress(Slot _slot) internal pure returns (CompressedSlot) {
-    return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
-  }
+    function compress(Slot _slot) internal pure returns (CompressedSlot) {
+        return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
+    }
 
-  function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
-    return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
-  }
+    function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
+        return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
+    }
 
-  function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
-    return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
-  }
+    function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
+        return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
+    }
 
-  function decompress(CompressedSlot _slot) internal pure returns (Slot) {
-    return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
-  }
+    function decompress(CompressedSlot _slot) internal pure returns (Slot) {
+        return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
+    }
 
-  function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
-    return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
-  }
+    function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
+        return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
+    }
 }
 
 type CompressedBallot is uint256;
 
 library BallotLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  uint256 internal constant YEA_MASK = 0xffffffffffffffffffffffffffffffff00000000000000000000000000000000;
-  uint256 internal constant NAY_MASK = 0xffffffffffffffffffffffffffffffff;
+    uint256 internal constant YEA_MASK = 0xffffffffffffffffffffffffffffffff00000000000000000000000000000000;
+    uint256 internal constant NAY_MASK = 0xffffffffffffffffffffffffffffffff;
 
-  function getYea(CompressedBallot _compressedBallot) internal pure returns (uint256) {
-    return CompressedBallot.unwrap(_compressedBallot) >> 128;
-  }
+    function getYea(CompressedBallot _compressedBallot) internal pure returns (uint256) {
+        return CompressedBallot.unwrap(_compressedBallot) >> 128;
+    }
 
-  function getNay(CompressedBallot _compressedBallot) internal pure returns (uint256) {
-    return CompressedBallot.unwrap(_compressedBallot) & NAY_MASK;
-  }
+    function getNay(CompressedBallot _compressedBallot) internal pure returns (uint256) {
+        return CompressedBallot.unwrap(_compressedBallot) & NAY_MASK;
+    }
 
-  function updateYea(CompressedBallot _compressedBallot, uint256 _yea) internal pure returns (CompressedBallot) {
-    uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~YEA_MASK;
-    return CompressedBallot.wrap(value | (_yea << 128));
-  }
+    function updateYea(CompressedBallot _compressedBallot, uint256 _yea) internal pure returns (CompressedBallot) {
+        uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~YEA_MASK;
+        return CompressedBallot.wrap(value | (_yea << 128));
+    }
 
-  function updateNay(CompressedBallot _compressedBallot, uint256 _nay) internal pure returns (CompressedBallot) {
-    uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~NAY_MASK;
-    return CompressedBallot.wrap(value | _nay);
-  }
+    function updateNay(CompressedBallot _compressedBallot, uint256 _nay) internal pure returns (CompressedBallot) {
+        uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~NAY_MASK;
+        return CompressedBallot.wrap(value | _nay);
+    }
 
-  function addYea(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
-    uint256 currentYea = getYea(_compressedBallot);
-    uint256 newYea = currentYea + _amount;
-    return updateYea(_compressedBallot, newYea.toUint128());
-  }
+    function addYea(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
+        uint256 currentYea = getYea(_compressedBallot);
+        uint256 newYea = currentYea + _amount;
+        return updateYea(_compressedBallot, newYea.toUint128());
+    }
 
-  function addNay(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
-    uint256 currentNay = getNay(_compressedBallot);
-    uint256 newNay = currentNay + _amount;
-    return updateNay(_compressedBallot, newNay.toUint128());
-  }
+    function addNay(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
+        uint256 currentNay = getNay(_compressedBallot);
+        uint256 newNay = currentNay + _amount;
+        return updateNay(_compressedBallot, newNay.toUint128());
+    }
 
-  function compress(Ballot memory _ballot) internal pure returns (CompressedBallot) {
-    // We are doing cast to uint128 but inside a uint256 to not wreck the shifting.
-    uint256 yea = _ballot.yea.toUint128();
-    uint256 nay = _ballot.nay.toUint128();
-    return CompressedBallot.wrap((yea << 128) | nay);
-  }
+    function compress(Ballot memory _ballot) internal pure returns (CompressedBallot) {
+        // We are doing cast to uint128 but inside a uint256 to not wreck the shifting.
+        uint256 yea = _ballot.yea.toUint128();
+        uint256 nay = _ballot.nay.toUint128();
+        return CompressedBallot.wrap((yea << 128) | nay);
+    }
 
-  function decompress(CompressedBallot _compressedBallot) internal pure returns (Ballot memory) {
-    return Ballot({yea: getYea(_compressedBallot), nay: getNay(_compressedBallot)});
-  }
+    function decompress(CompressedBallot _compressedBallot) internal pure returns (Ballot memory) {
+        return Ballot({yea: getYea(_compressedBallot), nay: getNay(_compressedBallot)});
+    }
 }
 
 /**
@@ -1896,22 +1894,22 @@ library BallotLib {
  * directly instead of storing the entire configuration struct.
  */
 struct CompressedProposal {
-  // Slot 1: Core Identity (256 bits)
-  address proposer; // 160 bits
-  uint96 minimumVotes; // 96 bits - from config
-  // Slot 2: Timing (232 bits used, 24 bits padding)
-  ProposalState cachedState; // 8 bits
-  CompressedTimestamp creation; // 32 bits
-  CompressedTimestamp votingDelay; // 32 bits - from config
-  CompressedTimestamp votingDuration; // 32 bits - from config
-  CompressedTimestamp executionDelay; // 32 bits - from config
-  CompressedTimestamp gracePeriod; // 32 bits - from config
-  uint64 quorum; // 64 bits - from config
-  // Slot 3: Votes (256 bits)
-  CompressedBallot summedBallot; // 256 bits (128 yea + 128 nay)
-  // Slot 4: References (224 bits used, 32 bits padding)
-  IPayload payload; // 160 bits
-  uint64 requiredYeaMargin; // 64 bits - from config
+    // Slot 1: Core Identity (256 bits)
+    address proposer; // 160 bits
+    uint96 minimumVotes; // 96 bits - from config
+    // Slot 2: Timing (232 bits used, 24 bits padding)
+    ProposalState cachedState; // 8 bits
+    CompressedTimestamp creation; // 32 bits
+    CompressedTimestamp votingDelay; // 32 bits - from config
+    CompressedTimestamp votingDuration; // 32 bits - from config
+    CompressedTimestamp executionDelay; // 32 bits - from config
+    CompressedTimestamp gracePeriod; // 32 bits - from config
+    uint64 quorum; // 64 bits - from config
+    // Slot 3: Votes (256 bits)
+    CompressedBallot summedBallot; // 256 bits (128 yea + 128 nay)
+    // Slot 4: References (224 bits used, 32 bits padding)
+    IPayload payload; // 160 bits
+    uint64 requiredYeaMargin; // 64 bits - from config
 }
 
 /**
@@ -1929,147 +1927,147 @@ struct CompressedProposal {
  * ProposeConfig fields are kept together in Slot 2.
  */
 struct CompressedConfiguration {
-  // Slot 1: Timing and percentages - 32*4 + 64*2 = 256 bits
-  CompressedTimestamp votingDelay;
-  CompressedTimestamp votingDuration;
-  CompressedTimestamp executionDelay;
-  CompressedTimestamp gracePeriod;
-  uint64 quorum;
-  uint64 requiredYeaMargin;
-  // Slot 2: Amounts and proposeConfig - 96 + 96 + 32 = 224 bits (32 bits unused)
-  uint96 minimumVotes;
-  uint96 lockAmount;
-  CompressedTimestamp lockDelay;
+    // Slot 1: Timing and percentages - 32*4 + 64*2 = 256 bits
+    CompressedTimestamp votingDelay;
+    CompressedTimestamp votingDuration;
+    CompressedTimestamp executionDelay;
+    CompressedTimestamp gracePeriod;
+    uint64 quorum;
+    uint64 requiredYeaMargin;
+    // Slot 2: Amounts and proposeConfig - 96 + 96 + 32 = 224 bits (32 bits unused)
+    uint96 minimumVotes;
+    uint96 lockAmount;
+    CompressedTimestamp lockDelay;
 }
 
 library CompressedProposalLib {
-  using SafeCast for uint256;
-  using CompressedTimeMath for Timestamp;
-  using CompressedTimeMath for CompressedTimestamp;
-  using BallotLib for CompressedBallot;
+    using SafeCast for uint256;
+    using CompressedTimeMath for Timestamp;
+    using CompressedTimeMath for CompressedTimestamp;
+    using BallotLib for CompressedBallot;
 
-  /**
-   * @notice Add yea votes to the proposal
-   * @param _compressed Storage pointer to compressed proposal
-   * @param _amount The amount of yea votes to add
-   */
-  function addYea(CompressedProposal storage _compressed, uint256 _amount) internal {
-    _compressed.summedBallot = _compressed.summedBallot.addYea(_amount);
-  }
+    /**
+     * @notice Add yea votes to the proposal
+     * @param _compressed Storage pointer to compressed proposal
+     * @param _amount The amount of yea votes to add
+     */
+    function addYea(CompressedProposal storage _compressed, uint256 _amount) internal {
+        _compressed.summedBallot = _compressed.summedBallot.addYea(_amount);
+    }
 
-  /**
-   * @notice Add nay votes to the proposal
-   * @param _compressed Storage pointer to compressed proposal
-   * @param _amount The amount of nay votes to add
-   */
-  function addNay(CompressedProposal storage _compressed, uint256 _amount) internal {
-    _compressed.summedBallot = _compressed.summedBallot.addNay(_amount);
-  }
+    /**
+     * @notice Add nay votes to the proposal
+     * @param _compressed Storage pointer to compressed proposal
+     * @param _amount The amount of nay votes to add
+     */
+    function addNay(CompressedProposal storage _compressed, uint256 _amount) internal {
+        _compressed.summedBallot = _compressed.summedBallot.addNay(_amount);
+    }
 
-  /**
-   * @notice Get yea and nay votes
-   * @param _compressed Storage pointer to compressed proposal
-   * @return yea The yea votes
-   * @return nay The nay votes
-   */
-  function getVotes(CompressedProposal storage _compressed) internal view returns (uint256 yea, uint256 nay) {
-    yea = _compressed.summedBallot.getYea();
-    nay = _compressed.summedBallot.getNay();
-  }
+    /**
+     * @notice Get yea and nay votes
+     * @param _compressed Storage pointer to compressed proposal
+     * @return yea The yea votes
+     * @return nay The nay votes
+     */
+    function getVotes(CompressedProposal storage _compressed) internal view returns (uint256 yea, uint256 nay) {
+        yea = _compressed.summedBallot.getYea();
+        nay = _compressed.summedBallot.getNay();
+    }
 
-  /**
-   * @notice Create a compressed proposal from uncompressed data and config
-   * @param _proposer The proposal creator
-   * @param _payload The payload to execute
-   * @param _creation The creation timestamp
-   * @param _config The compressed configuration to embed
-   * @return The compressed proposal
-   */
-  function create(address _proposer, IPayload _payload, Timestamp _creation, CompressedConfiguration memory _config)
-    internal
-    pure
-    returns (CompressedProposal memory)
-  {
-    return CompressedProposal({
-      proposer: _proposer,
-      minimumVotes: _config.minimumVotes,
-      cachedState: ProposalState.Pending,
-      creation: _creation.compress(),
-      votingDelay: _config.votingDelay,
-      votingDuration: _config.votingDuration,
-      executionDelay: _config.executionDelay,
-      gracePeriod: _config.gracePeriod,
-      quorum: _config.quorum,
-      summedBallot: CompressedBallot.wrap(0),
-      payload: _payload,
-      requiredYeaMargin: _config.requiredYeaMargin
-    });
-  }
+    /**
+     * @notice Create a compressed proposal from uncompressed data and config
+     * @param _proposer The proposal creator
+     * @param _payload The payload to execute
+     * @param _creation The creation timestamp
+     * @param _config The compressed configuration to embed
+     * @return The compressed proposal
+     */
+    function create(address _proposer, IPayload _payload, Timestamp _creation, CompressedConfiguration memory _config)
+        internal
+        pure
+        returns (CompressedProposal memory)
+    {
+        return CompressedProposal({
+            proposer: _proposer,
+            minimumVotes: _config.minimumVotes,
+            cachedState: ProposalState.Pending,
+            creation: _creation.compress(),
+            votingDelay: _config.votingDelay,
+            votingDuration: _config.votingDuration,
+            executionDelay: _config.executionDelay,
+            gracePeriod: _config.gracePeriod,
+            quorum: _config.quorum,
+            summedBallot: CompressedBallot.wrap(0),
+            payload: _payload,
+            requiredYeaMargin: _config.requiredYeaMargin
+        });
+    }
 
-  /**
-   * @notice Compress an uncompressed Proposal into a CompressedProposal
-   * @param _proposal The uncompressed proposal to compress
-   * @return The compressed proposal
-   */
-  function compress(Proposal memory _proposal) internal pure returns (CompressedProposal memory) {
-    return CompressedProposal({
-      proposer: _proposal.proposer,
-      minimumVotes: _proposal.config.minimumVotes.toUint96(),
-      cachedState: _proposal.cachedState,
-      creation: _proposal.creation.compress(),
-      votingDelay: _proposal.config.votingDelay.compress(),
-      votingDuration: _proposal.config.votingDuration.compress(),
-      executionDelay: _proposal.config.executionDelay.compress(),
-      gracePeriod: _proposal.config.gracePeriod.compress(),
-      quorum: _proposal.config.quorum.toUint64(),
-      summedBallot: BallotLib.compress(_proposal.summedBallot),
-      payload: _proposal.payload,
-      requiredYeaMargin: _proposal.config.requiredYeaMargin.toUint64()
-    });
-  }
+    /**
+     * @notice Compress an uncompressed Proposal into a CompressedProposal
+     * @param _proposal The uncompressed proposal to compress
+     * @return The compressed proposal
+     */
+    function compress(Proposal memory _proposal) internal pure returns (CompressedProposal memory) {
+        return CompressedProposal({
+            proposer: _proposal.proposer,
+            minimumVotes: _proposal.config.minimumVotes.toUint96(),
+            cachedState: _proposal.cachedState,
+            creation: _proposal.creation.compress(),
+            votingDelay: _proposal.config.votingDelay.compress(),
+            votingDuration: _proposal.config.votingDuration.compress(),
+            executionDelay: _proposal.config.executionDelay.compress(),
+            gracePeriod: _proposal.config.gracePeriod.compress(),
+            quorum: _proposal.config.quorum.toUint64(),
+            summedBallot: BallotLib.compress(_proposal.summedBallot),
+            payload: _proposal.payload,
+            requiredYeaMargin: _proposal.config.requiredYeaMargin.toUint64()
+        });
+    }
 
-  /**
-   * @notice Decompress a CompressedProposal into a standard Proposal
-   * @param _compressed The compressed proposal
-   * @return The uncompressed proposal
-   */
-  function decompress(CompressedProposal memory _compressed) internal pure returns (Proposal memory) {
-    return Proposal({
-      config: ProposalConfiguration({
-        votingDelay: _compressed.votingDelay.decompress(),
-        votingDuration: _compressed.votingDuration.decompress(),
-        executionDelay: _compressed.executionDelay.decompress(),
-        gracePeriod: _compressed.gracePeriod.decompress(),
-        quorum: _compressed.quorum,
-        requiredYeaMargin: _compressed.requiredYeaMargin,
-        minimumVotes: _compressed.minimumVotes
-      }),
-      cachedState: _compressed.cachedState,
-      payload: _compressed.payload,
-      proposer: _compressed.proposer,
-      creation: _compressed.creation.decompress(),
-      summedBallot: _compressed.summedBallot.decompress()
-    });
-  }
+    /**
+     * @notice Decompress a CompressedProposal into a standard Proposal
+     * @param _compressed The compressed proposal
+     * @return The uncompressed proposal
+     */
+    function decompress(CompressedProposal memory _compressed) internal pure returns (Proposal memory) {
+        return Proposal({
+            config: ProposalConfiguration({
+                votingDelay: _compressed.votingDelay.decompress(),
+                votingDuration: _compressed.votingDuration.decompress(),
+                executionDelay: _compressed.executionDelay.decompress(),
+                gracePeriod: _compressed.gracePeriod.decompress(),
+                quorum: _compressed.quorum,
+                requiredYeaMargin: _compressed.requiredYeaMargin,
+                minimumVotes: _compressed.minimumVotes
+            }),
+            cachedState: _compressed.cachedState,
+            payload: _compressed.payload,
+            proposer: _compressed.proposer,
+            creation: _compressed.creation.decompress(),
+            summedBallot: _compressed.summedBallot.decompress()
+        });
+    }
 }
 
 enum VoteTabulationReturn {
-  Accepted,
-  Rejected,
-  Invalid
+    Accepted,
+    Rejected,
+    Invalid
 }
 
 enum VoteTabulationInfo {
-  TotalPowerLtMinimum,
-  VotesNeededEqZero,
-  VotesNeededGtTotalPower,
-  VotesCastLtVotesNeeded,
-  YeaLimitEqZero,
-  YeaLimitGtVotesCast,
-  YeaLimitEqVotesCast,
-  YeaVotesEqVotesCast,
-  YeaVotesLeYeaLimit,
-  YeaVotesGtYeaLimit
+    TotalPowerLtMinimum,
+    VotesNeededEqZero,
+    VotesNeededGtTotalPower,
+    VotesCastLtVotesNeeded,
+    YeaLimitEqZero,
+    YeaLimitGtVotesCast,
+    YeaLimitEqVotesCast,
+    YeaVotesEqVotesCast,
+    YeaVotesLeYeaLimit,
+    YeaVotesGtYeaLimit
 }
 
 /**
@@ -2134,6 +2132,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -2433,7 +2432,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -2474,7 +2475,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -2526,7 +2529,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -2565,12 +2570,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -2930,106 +2937,106 @@ library Math {
  *          4. Executable: queued end → queued end + gracePeriod
  */
 library ProposalLib {
-  using CompressedTimeMath for CompressedTimestamp;
-  using CompressedProposalLib for CompressedProposal;
-  /**
-   * @notice Tabulate the votes for a proposal.
-   * @dev This function is used to determine if a proposal has met the acceptance criteria.
-   *
-   * @param _self The proposal to tabulate the votes for.
-   * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
-   * @return The vote tabulation result, and additional information.
-   */
+    using CompressedTimeMath for CompressedTimestamp;
+    using CompressedProposalLib for CompressedProposal;
+    /**
+     * @notice Tabulate the votes for a proposal.
+     * @dev This function is used to determine if a proposal has met the acceptance criteria.
+     *
+     * @param _self The proposal to tabulate the votes for.
+     * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
+     * @return The vote tabulation result, and additional information.
+     */
 
-  function voteTabulation(CompressedProposal storage _self, uint256 _totalPower)
-    internal
-    view
-    returns (VoteTabulationReturn, VoteTabulationInfo)
-  {
-    if (_totalPower < _self.minimumVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
-    }
+    function voteTabulation(CompressedProposal storage _self, uint256 _totalPower)
+        internal
+        view
+        returns (VoteTabulationReturn, VoteTabulationInfo)
+    {
+        if (_totalPower < _self.minimumVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
+        }
 
-    uint256 votesNeeded = Math.mulDiv(_totalPower, _self.quorum, 1e18, Math.Rounding.Ceil);
-    if (votesNeeded == 0) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
-    }
-    if (votesNeeded > _totalPower) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
-    }
+        uint256 votesNeeded = Math.mulDiv(_totalPower, _self.quorum, 1e18, Math.Rounding.Ceil);
+        if (votesNeeded == 0) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
+        }
+        if (votesNeeded > _totalPower) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
+        }
 
-    (uint256 yea, uint256 nay) = _self.getVotes();
-    uint256 votesCast = nay + yea;
-    if (votesCast < votesNeeded) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
-    }
+        (uint256 yea, uint256 nay) = _self.getVotes();
+        uint256 votesCast = nay + yea;
+        if (votesCast < votesNeeded) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
+        }
 
-    // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
-    // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
-    // i.e. we cannot require more votes to be yes than total votes.
-    if (yea == votesCast) {
-      return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
-    }
+        // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
+        // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
+        // i.e. we cannot require more votes to be yes than total votes.
+        if (yea == votesCast) {
+            return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
+        }
 
-    uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.requiredYeaMargin, 2);
-    uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
+        uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.requiredYeaMargin, 2);
+        uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
 
-    /*if (requiredApprovalVotes == 0) {
+        /*if (requiredApprovalVotes == 0) {
       // It should be impossible to hit this case as `requiredApprovalVotesFraction` cannot be 0,
       // and due to rounding up, only way to hit this would be if `votesCast = 0`,
       // which is already handled as `votesCast >= votesNeeded` and `votesNeeded > 0`.
       return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitEqZero);
     }*/
-    if (requiredApprovalVotes > votesCast) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        if (requiredApprovalVotes > votesCast) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        }
+
+        // We want to see that there are MORE votes on yea than needed
+        // We explicitly need MORE to ensure we don't "tie".
+        // If we need as many yea as there are votes, we know it is impossible already.
+        // due to the check earlier, that summedBallot.yea == votesCast.
+        if (yea <= requiredApprovalVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+        }
+
+        return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
     }
 
-    // We want to see that there are MORE votes on yea than needed
-    // We explicitly need MORE to ensure we don't "tie".
-    // If we need as many yea as there are votes, we know it is impossible already.
-    // due to the check earlier, that summedBallot.yea == votesCast.
-    if (yea <= requiredApprovalVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+    /**
+     * @notice Get when the pending phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when pending phase ends
+     */
+    function pendingThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return _compressed.creation.decompress() + _compressed.votingDelay.decompress();
     }
 
-    return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
-  }
+    /**
+     * @notice Get when the active phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when active phase ends
+     */
+    function activeThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return pendingThrough(_compressed) + _compressed.votingDuration.decompress();
+    }
 
-  /**
-   * @notice Get when the pending phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when pending phase ends
-   */
-  function pendingThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return _compressed.creation.decompress() + _compressed.votingDelay.decompress();
-  }
+    /**
+     * @notice Get when the queued phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when queued phase ends
+     */
+    function queuedThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return activeThrough(_compressed) + _compressed.executionDelay.decompress();
+    }
 
-  /**
-   * @notice Get when the active phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when active phase ends
-   */
-  function activeThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return pendingThrough(_compressed) + _compressed.votingDuration.decompress();
-  }
-
-  /**
-   * @notice Get when the queued phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when queued phase ends
-   */
-  function queuedThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return activeThrough(_compressed) + _compressed.executionDelay.decompress();
-  }
-
-  /**
-   * @notice Get when the executable phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when executable phase ends
-   */
-  function executableThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return queuedThrough(_compressed) + _compressed.gracePeriod.decompress();
-  }
+    /**
+     * @notice Get when the executable phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when executable phase ends
+     */
+    function executableThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return queuedThrough(_compressed) + _compressed.gracePeriod.decompress();
+    }
 }
 
 /**
@@ -3062,11 +3069,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint32).max` key set will disable the
      * library.
      */
-    function push(
-        Trace224 storage self,
-        uint32 key,
-        uint224 value
-    ) internal returns (uint224 oldValue, uint224 newValue) {
+    function push(Trace224 storage self, uint32 key, uint224 value)
+        internal
+        returns (uint224 oldValue, uint224 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -3157,11 +3163,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint224 value
-    ) private returns (uint224 oldValue, uint224 newValue) {
+    function _insert(Checkpoint224[] storage self, uint32 key, uint224 value)
+        private
+        returns (uint224 oldValue, uint224 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -3194,12 +3199,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -3218,12 +3222,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -3238,10 +3241,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint224[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint224 storage result) {
+    function _unsafeAccess(Checkpoint224[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint224 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -3265,11 +3269,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint48).max` key set will disable the
      * library.
      */
-    function push(
-        Trace208 storage self,
-        uint48 key,
-        uint208 value
-    ) internal returns (uint208 oldValue, uint208 newValue) {
+    function push(Trace208 storage self, uint48 key, uint208 value)
+        internal
+        returns (uint208 oldValue, uint208 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -3360,11 +3363,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint208 value
-    ) private returns (uint208 oldValue, uint208 newValue) {
+    function _insert(Checkpoint208[] storage self, uint48 key, uint208 value)
+        private
+        returns (uint208 oldValue, uint208 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -3397,12 +3399,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -3421,12 +3422,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -3441,10 +3441,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint208[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint208 storage result) {
+    function _unsafeAccess(Checkpoint208[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint208 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -3468,11 +3469,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint96).max` key set will disable the
      * library.
      */
-    function push(
-        Trace160 storage self,
-        uint96 key,
-        uint160 value
-    ) internal returns (uint160 oldValue, uint160 newValue) {
+    function push(Trace160 storage self, uint96 key, uint160 value)
+        internal
+        returns (uint160 oldValue, uint160 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -3563,11 +3563,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint160 value
-    ) private returns (uint160 oldValue, uint160 newValue) {
+    function _insert(Checkpoint160[] storage self, uint96 key, uint160 value)
+        private
+        returns (uint160 oldValue, uint160 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -3600,12 +3599,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -3624,12 +3622,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -3644,10 +3641,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint160[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint160 storage result) {
+    function _unsafeAccess(Checkpoint160[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint160 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -3663,77 +3661,77 @@ library Checkpoints {
  * when there are multiple contracts that could have thrown the error.
  */
 library Errors {
-  error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
-  error Governance__GovernanceProposerCannotBeSelf();
-  error Governance__CallerNotSelf(address caller, address self);
-  error Governance__CallerCannotBeSelf();
-  error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
-  error Governance__CannotWithdrawToAddressZero();
-  error Governance__WithdrawalNotInitiated();
-  error Governance__WithdrawalAlreadyClaimed();
-  error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
-  error Governance__ProposalNotActive();
-  error Governance__ProposalNotExecutable();
-  error Governance__CannotCallAsset();
-  error Governance__CallFailed(address target);
-  error Governance__ProposalDoesNotExists(uint256 proposalId);
-  error Governance__ProposalAlreadyDropped();
-  error Governance__ProposalCannotBeDropped();
-  error Governance__DepositNotAllowed();
+    error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
+    error Governance__GovernanceProposerCannotBeSelf();
+    error Governance__CallerNotSelf(address caller, address self);
+    error Governance__CallerCannotBeSelf();
+    error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
+    error Governance__CannotWithdrawToAddressZero();
+    error Governance__WithdrawalNotInitiated();
+    error Governance__WithdrawalAlreadyClaimed();
+    error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
+    error Governance__ProposalNotActive();
+    error Governance__ProposalNotExecutable();
+    error Governance__CannotCallAsset();
+    error Governance__CallFailed(address target);
+    error Governance__ProposalDoesNotExists(uint256 proposalId);
+    error Governance__ProposalAlreadyDropped();
+    error Governance__ProposalCannotBeDropped();
+    error Governance__DepositNotAllowed();
 
-  error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
-  error Governance__CheckpointedUintLib__NotInPast();
+    error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
+    error Governance__CheckpointedUintLib__NotInPast();
 
-  error Governance__ConfigurationLib__InvalidMinimumVotes();
-  error Governance__ConfigurationLib__LockAmountTooSmall();
-  error Governance__ConfigurationLib__LockAmountTooBig();
-  error Governance__ConfigurationLib__QuorumTooSmall();
-  error Governance__ConfigurationLib__QuorumTooBig();
-  error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
-  error Governance__ConfigurationLib__TimeTooSmall(string name);
-  error Governance__ConfigurationLib__TimeTooBig(string name);
+    error Governance__ConfigurationLib__InvalidMinimumVotes();
+    error Governance__ConfigurationLib__LockAmountTooSmall();
+    error Governance__ConfigurationLib__LockAmountTooBig();
+    error Governance__ConfigurationLib__QuorumTooSmall();
+    error Governance__ConfigurationLib__QuorumTooBig();
+    error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
+    error Governance__ConfigurationLib__TimeTooSmall(string name);
+    error Governance__ConfigurationLib__TimeTooBig(string name);
 
-  error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
-  error EmpireBase__InstanceHaveNoCode(address instance);
-  error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
-  error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
-  error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
-  error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
-  error EmpireBase__PayloadCannotBeAddressZero();
-  error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
-  error GovernanceProposer__GSEPayloadInvalid();
+    error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
+    error EmpireBase__InstanceHaveNoCode(address instance);
+    error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
+    error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
+    error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
+    error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
+    error EmpireBase__PayloadCannotBeAddressZero();
+    error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
+    error GovernanceProposer__GSEPayloadInvalid();
 
-  error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
-  error CoinIssuer__InvalidConfiguration();
+    error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
+    error CoinIssuer__InvalidConfiguration();
 
-  error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
-  error Registry__RollupNotRegistered(uint256 version);
-  error Registry__NoRollupsRegistered();
+    error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
+    error Registry__RollupNotRegistered(uint256 version);
+    error Registry__NoRollupsRegistered();
 
-  error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
+    error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
 
-  error GSE__NotRollup(address);
-  error GSE__GovernanceAlreadySet();
-  error GSE__InvalidRollupAddress(address);
-  error GSE__RollupAlreadyRegistered(address);
-  error GSE__NotLatestRollup(address);
-  error GSE__AlreadyRegistered(address, address);
-  error GSE__NothingToExit(address);
-  error GSE__InsufficientBalance(uint256, uint256);
-  error GSE__FailedToRemove(address);
-  error GSE__InstanceDoesNotExist(address);
-  error GSE__NotWithdrawer(address, address);
-  error GSE__OutOfBounds(uint256, uint256);
-  error GSE__FatalError(string);
-  error GSE__InvalidProofOfPossession();
-  error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
-  error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
+    error GSE__NotRollup(address);
+    error GSE__GovernanceAlreadySet();
+    error GSE__InvalidRollupAddress(address);
+    error GSE__RollupAlreadyRegistered(address);
+    error GSE__NotLatestRollup(address);
+    error GSE__AlreadyRegistered(address, address);
+    error GSE__NothingToExit(address);
+    error GSE__InsufficientBalance(uint256, uint256);
+    error GSE__FailedToRemove(address);
+    error GSE__InstanceDoesNotExist(address);
+    error GSE__NotWithdrawer(address, address);
+    error GSE__OutOfBounds(uint256, uint256);
+    error GSE__FatalError(string);
+    error GSE__InvalidProofOfPossession();
+    error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
+    error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
 
-  error Delegation__InsufficientPower(address, uint256, uint256);
+    error Delegation__InsufficientPower(address, uint256, uint256);
 }
 
 /**
@@ -3742,220 +3740,227 @@ library Errors {
  *          Provides helper functions to `add` to or `sub` from the current value.
  */
 library CheckpointedUintLib {
-  using Checkpoints for Checkpoints.Trace224;
-  using SafeCast for uint256;
+    using Checkpoints for Checkpoints.Trace224;
+    using SafeCast for uint256;
 
-  /**
-   * @notice  Add `_amount` to the current value
-   *
-   * @dev   The amounts are cast to uint224 before storing such that the (key: value) fits in a single slot
-   *
-   * @param _self - The Trace224 to add to
-   * @param _amount - The amount to add
-   *
-   * @return - The current value and the new value
-   */
-  function add(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
-    uint224 current = _self.latest();
-    if (_amount == 0) {
-      return (current, current);
+    /**
+     * @notice  Add `_amount` to the current value
+     *
+     * @dev   The amounts are cast to uint224 before storing such that the (key: value) fits in a single slot
+     *
+     * @param _self - The Trace224 to add to
+     * @param _amount - The amount to add
+     *
+     * @return - The current value and the new value
+     */
+    function add(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
+        uint224 current = _self.latest();
+        if (_amount == 0) {
+            return (current, current);
+        }
+        uint224 amount = _amount.toUint224();
+        _self.push(block.timestamp.toUint32(), current + amount);
+        return (current, current + amount);
     }
-    uint224 amount = _amount.toUint224();
-    _self.push(block.timestamp.toUint32(), current + amount);
-    return (current, current + amount);
-  }
 
-  /**
-   * @notice  Subtract `_amount` from the current value
-   *
-   * @param _self - The Trace224 to subtract from
-   * @param _amount - The amount to subtract
-   * @return - The current value and the new value
-   */
-  function sub(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
-    uint224 current = _self.latest();
-    if (_amount == 0) {
-      return (current, current);
+    /**
+     * @notice  Subtract `_amount` from the current value
+     *
+     * @param _self - The Trace224 to subtract from
+     * @param _amount - The amount to subtract
+     * @return - The current value and the new value
+     */
+    function sub(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
+        uint224 current = _self.latest();
+        if (_amount == 0) {
+            return (current, current);
+        }
+        uint224 amount = _amount.toUint224();
+        require(
+            current >= amount, Errors.Governance__CheckpointedUintLib__InsufficientValue(msg.sender, current, amount)
+        );
+        _self.push(block.timestamp.toUint32(), current - amount);
+        return (current, current - amount);
     }
-    uint224 amount = _amount.toUint224();
-    require(current >= amount, Errors.Governance__CheckpointedUintLib__InsufficientValue(msg.sender, current, amount));
-    _self.push(block.timestamp.toUint32(), current - amount);
-    return (current, current - amount);
-  }
 
-  /**
-   * @notice  Get the current value
-   *
-   * @param _self - The Trace224 to get the value of
-   * @return - The current value
-   */
-  function valueNow(Checkpoints.Trace224 storage _self) internal view returns (uint256) {
-    return _self.latest();
-  }
+    /**
+     * @notice  Get the current value
+     *
+     * @param _self - The Trace224 to get the value of
+     * @return - The current value
+     */
+    function valueNow(Checkpoints.Trace224 storage _self) internal view returns (uint256) {
+        return _self.latest();
+    }
 
-  /**
-   * @notice  Get the value at a given timestamp
-   *          The timestamp MUST be in the past to guarantee it is stable
-   *
-   * @dev     Uses `upperLookupRecent` instead of just `upperLookup` as it will most
-   *          likely be a recent value when looked up as part of governance.
-   *
-   * @param _self - The Trace224 to get the value of
-   * @param _time - The timestamp to get the value at
-   * @return - The value at the given timestamp
-   */
-  function valueAt(Checkpoints.Trace224 storage _self, Timestamp _time) internal view returns (uint256) {
-    require(_time < Timestamp.wrap(block.timestamp), Errors.Governance__CheckpointedUintLib__NotInPast());
-    return _self.upperLookupRecent(Timestamp.unwrap(_time).toUint32());
-  }
+    /**
+     * @notice  Get the value at a given timestamp
+     *          The timestamp MUST be in the past to guarantee it is stable
+     *
+     * @dev     Uses `upperLookupRecent` instead of just `upperLookup` as it will most
+     *          likely be a recent value when looked up as part of governance.
+     *
+     * @param _self - The Trace224 to get the value of
+     * @param _time - The timestamp to get the value at
+     * @return - The value at the given timestamp
+     */
+    function valueAt(Checkpoints.Trace224 storage _self, Timestamp _time) internal view returns (uint256) {
+        require(_time < Timestamp.wrap(block.timestamp), Errors.Governance__CheckpointedUintLib__NotInPast());
+        return _self.upperLookupRecent(Timestamp.unwrap(_time).toUint32());
+    }
 }
 
 library ConfigurationLib {
-  using CompressedTimeMath for CompressedTimestamp;
+    using CompressedTimeMath for CompressedTimestamp;
 
-  uint256 internal constant QUORUM_LOWER = 1;
-  uint256 internal constant QUORUM_UPPER = 1e18;
+    uint256 internal constant QUORUM_LOWER = 1;
+    uint256 internal constant QUORUM_UPPER = 1e18;
 
-  uint256 internal constant REQUIRED_YEA_MARGIN_UPPER = 1e18;
+    uint256 internal constant REQUIRED_YEA_MARGIN_UPPER = 1e18;
 
-  uint256 internal constant VOTES_LOWER = 1;
-  uint256 internal constant VOTES_UPPER = type(uint96).max; // Maximum for compressed storage (uint96)
+    uint256 internal constant VOTES_LOWER = 1;
+    uint256 internal constant VOTES_UPPER = type(uint96).max; // Maximum for compressed storage (uint96)
 
-  uint256 internal constant LOCK_AMOUNT_LOWER = 2;
-  uint256 internal constant LOCK_AMOUNT_UPPER = type(uint96).max; // Maximum for compressed storage (uint96)
+    uint256 internal constant LOCK_AMOUNT_LOWER = 2;
+    uint256 internal constant LOCK_AMOUNT_UPPER = type(uint96).max; // Maximum for compressed storage (uint96)
 
-  Timestamp internal constant TIME_LOWER = Timestamp.wrap(60);
-  Timestamp internal constant TIME_UPPER = Timestamp.wrap(90 * 24 * 3600);
+    Timestamp internal constant TIME_LOWER = Timestamp.wrap(60);
+    Timestamp internal constant TIME_UPPER = Timestamp.wrap(90 * 24 * 3600);
 
-  /**
-   * @notice The delay after which a withdrawal can be finalized.
-   * @dev This applies to the "normal" withdrawal, not one induced by proposeWithLock.
-   * @dev Making the delay equal to the voting duration + execution delay + a "small buffer"
-   * ensures that if you were able to vote on a proposal, someone may execute it before you can exit.
-   *
-   * The "small buffer" is somewhat arbitrarily set to the votingDelay / 5.
-   */
-  function getWithdrawalDelay(CompressedConfiguration storage _self) internal view returns (Timestamp) {
-    Timestamp votingDelay = _self.votingDelay.decompress();
-    Timestamp votingDuration = _self.votingDuration.decompress();
-    Timestamp executionDelay = _self.executionDelay.decompress();
+    /**
+     * @notice The delay after which a withdrawal can be finalized.
+     * @dev This applies to the "normal" withdrawal, not one induced by proposeWithLock.
+     * @dev Making the delay equal to the voting duration + execution delay + a "small buffer"
+     * ensures that if you were able to vote on a proposal, someone may execute it before you can exit.
+     *
+     * The "small buffer" is somewhat arbitrarily set to the votingDelay / 5.
+     */
+    function getWithdrawalDelay(CompressedConfiguration storage _self) internal view returns (Timestamp) {
+        Timestamp votingDelay = _self.votingDelay.decompress();
+        Timestamp votingDuration = _self.votingDuration.decompress();
+        Timestamp executionDelay = _self.executionDelay.decompress();
 
-    return Timestamp.wrap(Timestamp.unwrap(votingDelay) / 5) + votingDuration + executionDelay;
-  }
+        return Timestamp.wrap(Timestamp.unwrap(votingDelay) / 5) + votingDuration + executionDelay;
+    }
 
-  /**
-   * @notice
-   * @dev     We specify `memory` here since it is called on outside import for validation
-   *          before writing it to state.
-   */
-  function assertValid(Configuration memory _self) internal pure {
-    require(_self.quorum >= QUORUM_LOWER, Errors.Governance__ConfigurationLib__QuorumTooSmall());
-    require(_self.quorum <= QUORUM_UPPER, Errors.Governance__ConfigurationLib__QuorumTooBig());
+    /**
+     * @notice
+     * @dev     We specify `memory` here since it is called on outside import for validation
+     *          before writing it to state.
+     */
+    function assertValid(Configuration memory _self) internal pure {
+        require(_self.quorum >= QUORUM_LOWER, Errors.Governance__ConfigurationLib__QuorumTooSmall());
+        require(_self.quorum <= QUORUM_UPPER, Errors.Governance__ConfigurationLib__QuorumTooBig());
 
-    require(
-      _self.requiredYeaMargin <= REQUIRED_YEA_MARGIN_UPPER,
-      Errors.Governance__ConfigurationLib__RequiredYeaMarginTooBig()
-    );
+        require(
+            _self.requiredYeaMargin <= REQUIRED_YEA_MARGIN_UPPER,
+            Errors.Governance__ConfigurationLib__RequiredYeaMarginTooBig()
+        );
 
-    require(_self.minimumVotes >= VOTES_LOWER, Errors.Governance__ConfigurationLib__InvalidMinimumVotes());
-    require(_self.minimumVotes <= VOTES_UPPER, Errors.Governance__ConfigurationLib__InvalidMinimumVotes());
+        require(_self.minimumVotes >= VOTES_LOWER, Errors.Governance__ConfigurationLib__InvalidMinimumVotes());
+        require(_self.minimumVotes <= VOTES_UPPER, Errors.Governance__ConfigurationLib__InvalidMinimumVotes());
 
-    require(
-      _self.proposeConfig.lockAmount >= LOCK_AMOUNT_LOWER, Errors.Governance__ConfigurationLib__LockAmountTooSmall()
-    );
-    require(
-      _self.proposeConfig.lockAmount <= LOCK_AMOUNT_UPPER, Errors.Governance__ConfigurationLib__LockAmountTooBig()
-    );
+        require(
+            _self.proposeConfig.lockAmount >= LOCK_AMOUNT_LOWER,
+            Errors.Governance__ConfigurationLib__LockAmountTooSmall()
+        );
+        require(
+            _self.proposeConfig.lockAmount <= LOCK_AMOUNT_UPPER, Errors.Governance__ConfigurationLib__LockAmountTooBig()
+        );
 
-    // Beyond checking the bounds like this, it might be useful to ensure that the value is larger than the withdrawal
-    // delay. this, can be useful if one want to ensure that the "locker" cannot himself vote in the proposal, but as
-    // it is unclear if this is a useful property, it is not enforced.
-    require(_self.proposeConfig.lockDelay >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("LockDelay"));
-    require(
-      _self.proposeConfig.lockDelay <= Timestamp.wrap(type(uint32).max),
-      Errors.Governance__ConfigurationLib__TimeTooBig("LockDelay")
-    );
+        // Beyond checking the bounds like this, it might be useful to ensure that the value is larger than the withdrawal
+        // delay. this, can be useful if one want to ensure that the "locker" cannot himself vote in the proposal, but as
+        // it is unclear if this is a useful property, it is not enforced.
+        require(
+            _self.proposeConfig.lockDelay >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("LockDelay")
+        );
+        require(
+            _self.proposeConfig.lockDelay <= Timestamp.wrap(type(uint32).max),
+            Errors.Governance__ConfigurationLib__TimeTooBig("LockDelay")
+        );
 
-    require(_self.votingDelay >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("VotingDelay"));
-    require(_self.votingDelay <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("VotingDelay"));
+        require(_self.votingDelay >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("VotingDelay"));
+        require(_self.votingDelay <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("VotingDelay"));
 
-    require(_self.votingDuration >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("VotingDuration"));
-    require(_self.votingDuration <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("VotingDuration"));
+        require(_self.votingDuration >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("VotingDuration"));
+        require(_self.votingDuration <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("VotingDuration"));
 
-    require(_self.executionDelay >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("ExecutionDelay"));
-    require(_self.executionDelay <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("ExecutionDelay"));
+        require(_self.executionDelay >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("ExecutionDelay"));
+        require(_self.executionDelay <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("ExecutionDelay"));
 
-    require(_self.gracePeriod >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("GracePeriod"));
-    require(_self.gracePeriod <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("GracePeriod"));
-  }
+        require(_self.gracePeriod >= TIME_LOWER, Errors.Governance__ConfigurationLib__TimeTooSmall("GracePeriod"));
+        require(_self.gracePeriod <= TIME_UPPER, Errors.Governance__ConfigurationLib__TimeTooBig("GracePeriod"));
+    }
 }
 
 library CompressedConfigurationLib {
-  using SafeCast for uint256;
-  using CompressedTimeMath for Timestamp;
-  using CompressedTimeMath for CompressedTimestamp;
+    using SafeCast for uint256;
+    using CompressedTimeMath for Timestamp;
+    using CompressedTimeMath for CompressedTimestamp;
 
-  /**
-   * @notice Get the propose configuration directly from storage
-   * @param _compressed Storage pointer to compressed configuration
-   * @return The propose configuration
-   */
-  function getProposeConfig(CompressedConfiguration storage _compressed)
-    internal
-    view
-    returns (ProposeWithLockConfiguration memory)
-  {
-    return
-      ProposeWithLockConfiguration({lockDelay: _compressed.lockDelay.decompress(), lockAmount: _compressed.lockAmount});
-  }
+    /**
+     * @notice Get the propose configuration directly from storage
+     * @param _compressed Storage pointer to compressed configuration
+     * @return The propose configuration
+     */
+    function getProposeConfig(CompressedConfiguration storage _compressed)
+        internal
+        view
+        returns (ProposeWithLockConfiguration memory)
+    {
+        return ProposeWithLockConfiguration({
+            lockDelay: _compressed.lockDelay.decompress(),
+            lockAmount: _compressed.lockAmount
+        });
+    }
 
-  /**
-   * @notice Compress a Configuration struct into CompressedConfiguration
-   * @param _config The uncompressed configuration
-   * @return The compressed configuration
-   * @dev Values that exceed the compressed type limits will cause a revert.
-   *      This is intentional to prevent storing invalid configurations.
-   */
-  function compress(Configuration memory _config) internal pure returns (CompressedConfiguration memory) {
-    // Validate that amounts fit in their compressed types
-    require(_config.proposeConfig.lockAmount <= type(uint96).max, "lockAmount exceeds uint96");
-    require(_config.minimumVotes <= type(uint96).max, "minimumVotes exceeds uint96");
-    require(_config.quorum <= type(uint64).max, "quorum exceeds uint64");
-    require(_config.requiredYeaMargin <= type(uint64).max, "requiredYeaMargin exceeds uint64");
+    /**
+     * @notice Compress a Configuration struct into CompressedConfiguration
+     * @param _config The uncompressed configuration
+     * @return The compressed configuration
+     * @dev Values that exceed the compressed type limits will cause a revert.
+     *      This is intentional to prevent storing invalid configurations.
+     */
+    function compress(Configuration memory _config) internal pure returns (CompressedConfiguration memory) {
+        // Validate that amounts fit in their compressed types
+        require(_config.proposeConfig.lockAmount <= type(uint96).max, "lockAmount exceeds uint96");
+        require(_config.minimumVotes <= type(uint96).max, "minimumVotes exceeds uint96");
+        require(_config.quorum <= type(uint64).max, "quorum exceeds uint64");
+        require(_config.requiredYeaMargin <= type(uint64).max, "requiredYeaMargin exceeds uint64");
 
-    return CompressedConfiguration({
-      votingDelay: _config.votingDelay.compress(),
-      votingDuration: _config.votingDuration.compress(),
-      executionDelay: _config.executionDelay.compress(),
-      gracePeriod: _config.gracePeriod.compress(),
-      quorum: _config.quorum.toUint64(),
-      requiredYeaMargin: _config.requiredYeaMargin.toUint64(),
-      minimumVotes: _config.minimumVotes.toUint96(),
-      lockAmount: _config.proposeConfig.lockAmount.toUint96(),
-      lockDelay: _config.proposeConfig.lockDelay.compress()
-    });
-  }
+        return CompressedConfiguration({
+            votingDelay: _config.votingDelay.compress(),
+            votingDuration: _config.votingDuration.compress(),
+            executionDelay: _config.executionDelay.compress(),
+            gracePeriod: _config.gracePeriod.compress(),
+            quorum: _config.quorum.toUint64(),
+            requiredYeaMargin: _config.requiredYeaMargin.toUint64(),
+            minimumVotes: _config.minimumVotes.toUint96(),
+            lockAmount: _config.proposeConfig.lockAmount.toUint96(),
+            lockDelay: _config.proposeConfig.lockDelay.compress()
+        });
+    }
 
-  /**
-   * @notice Decompress a CompressedConfiguration into Configuration
-   * @param _compressed The compressed configuration
-   * @return The uncompressed configuration
-   */
-  function decompress(CompressedConfiguration memory _compressed) internal pure returns (Configuration memory) {
-    return Configuration({
-      proposeConfig: ProposeWithLockConfiguration({
-        lockDelay: _compressed.lockDelay.decompress(),
-        lockAmount: _compressed.lockAmount
-      }),
-      votingDelay: _compressed.votingDelay.decompress(),
-      votingDuration: _compressed.votingDuration.decompress(),
-      executionDelay: _compressed.executionDelay.decompress(),
-      gracePeriod: _compressed.gracePeriod.decompress(),
-      quorum: _compressed.quorum,
-      requiredYeaMargin: _compressed.requiredYeaMargin,
-      minimumVotes: _compressed.minimumVotes
-    });
-  }
+    /**
+     * @notice Decompress a CompressedConfiguration into Configuration
+     * @param _compressed The compressed configuration
+     * @return The uncompressed configuration
+     */
+    function decompress(CompressedConfiguration memory _compressed) internal pure returns (Configuration memory) {
+        return Configuration({
+            proposeConfig: ProposeWithLockConfiguration({
+                lockDelay: _compressed.lockDelay.decompress(),
+                lockAmount: _compressed.lockAmount
+            }),
+            votingDelay: _compressed.votingDelay.decompress(),
+            votingDuration: _compressed.votingDuration.decompress(),
+            executionDelay: _compressed.executionDelay.decompress(),
+            gracePeriod: _compressed.gracePeriod.decompress(),
+            quorum: _compressed.quorum,
+            requiredYeaMargin: _compressed.requiredYeaMargin,
+            minimumVotes: _compressed.minimumVotes
+        });
+    }
 }
 
 /**
@@ -3974,8 +3979,8 @@ library CompressedConfigurationLib {
  * contract. In turn, it is the GSE that votes on proposals.
  */
 struct DepositControl {
-  mapping(address beneficiary => bool allowed) isAllowed;
-  bool allBeneficiariesAllowed;
+    mapping(address beneficiary => bool allowed) isAllowed;
+    bool allBeneficiariesAllowed;
 }
 
 /**
@@ -4067,637 +4072,654 @@ struct DepositControl {
  * - lockDelay: The delay before a withdrawal created by `proposeWithLock` is finalized
  */
 contract Governance is IGovernance {
-  using SafeERC20 for IERC20;
-  using ProposalLib for CompressedProposal;
-  using CheckpointedUintLib for Checkpoints.Trace224;
-  using ConfigurationLib for Configuration;
-  using ConfigurationLib for CompressedConfiguration;
-  using CompressedConfigurationLib for CompressedConfiguration;
-  using CompressedProposalLib for CompressedProposal;
-  using BallotLib for CompressedBallot;
+    using SafeERC20 for IERC20;
+    using ProposalLib for CompressedProposal;
+    using CheckpointedUintLib for Checkpoints.Trace224;
+    using ConfigurationLib for Configuration;
+    using ConfigurationLib for CompressedConfiguration;
+    using CompressedConfigurationLib for CompressedConfiguration;
+    using CompressedProposalLib for CompressedProposal;
+    using BallotLib for CompressedBallot;
 
-  IERC20 public immutable ASSET;
+    IERC20 public immutable ASSET;
 
-  /**
-   * @dev The address that is allowed to `propose` new proposals.
-   *
-   * This address can only be updated by the governance itself through a proposal.
-   */
-  address public governanceProposer;
+    /**
+     * @dev The address that is allowed to `propose` new proposals.
+     *
+     * This address can only be updated by the governance itself through a proposal.
+     */
+    address public governanceProposer;
 
-  /**
-   * @dev The whitelist of beneficiaries that are allowed to hold power via `deposit`,
-   * and the flag to allow all beneficiaries to hold power.
-   */
-  DepositControl internal depositControl;
+    /**
+     * @dev The whitelist of beneficiaries that are allowed to hold power via `deposit`,
+     * and the flag to allow all beneficiaries to hold power.
+     */
+    DepositControl internal depositControl;
 
-  /**
-   * @dev The proposals that have been made.
-   *
-   * The proposal ID is the current count of proposals (see `proposalCount`).
-   * New proposals are created by calling `_propose`, via `propose` or `proposeWithLock`.
-   * The storage of a proposal may be modified by calling `vote`, `execute`, or `dropProposal`.
-   */
-  mapping(uint256 proposalId => CompressedProposal proposal) internal proposals;
+    /**
+     * @dev The proposals that have been made.
+     *
+     * The proposal ID is the current count of proposals (see `proposalCount`).
+     * New proposals are created by calling `_propose`, via `propose` or `proposeWithLock`.
+     * The storage of a proposal may be modified by calling `vote`, `execute`, or `dropProposal`.
+     */
+    mapping(uint256 proposalId => CompressedProposal proposal) internal proposals;
 
-  /**
-   * @dev The ballots that have been cast for each proposal.
-   *
-   * `CompressedBallot`s contain a compressed `yea` and `nay` count (uint128 each packed into uint256),
-   * which are the number of votes for and against the proposal.
-   * `ballots` is only updated during `vote`.
-   */
-  mapping(uint256 proposalId => mapping(address user => CompressedBallot ballot)) internal ballots;
+    /**
+     * @dev The ballots that have been cast for each proposal.
+     *
+     * `CompressedBallot`s contain a compressed `yea` and `nay` count (uint128 each packed into uint256),
+     * which are the number of votes for and against the proposal.
+     * `ballots` is only updated during `vote`.
+     */
+    mapping(uint256 proposalId => mapping(address user => CompressedBallot ballot)) internal ballots;
 
-  /**
-   * @dev Checkpointed deposit amounts for an address.
-   *
-   * `users` is only updated during `deposit`, `initiateWithdraw`, and `proposeWithLock`.
-   */
-  mapping(address userAddress => Checkpoints.Trace224 user) internal users;
+    /**
+     * @dev Checkpointed deposit amounts for an address.
+     *
+     * `users` is only updated during `deposit`, `initiateWithdraw`, and `proposeWithLock`.
+     */
+    mapping(address userAddress => Checkpoints.Trace224 user) internal users;
 
-  /**
-   * @dev Withdrawals that have been initiated.
-   *
-   * `withdrawals` is only updated during `initiateWithdraw`, `proposeWithLock`, and `finalizeWithdraw`.
-   */
-  mapping(uint256 withdrawalId => Withdrawal withdrawal) internal withdrawals;
+    /**
+     * @dev Withdrawals that have been initiated.
+     *
+     * `withdrawals` is only updated during `initiateWithdraw`, `proposeWithLock`, and `finalizeWithdraw`.
+     */
+    mapping(uint256 withdrawalId => Withdrawal withdrawal) internal withdrawals;
 
-  /**
-   * @dev The configuration of the governance contract.
-   *
-   * `configuration` is set in the constructor, and is only updated during `updateConfiguration`,
-   * which must be done via a proposal.
-   */
-  CompressedConfiguration internal configuration;
+    /**
+     * @dev The configuration of the governance contract.
+     *
+     * `configuration` is set in the constructor, and is only updated during `updateConfiguration`,
+     * which must be done via a proposal.
+     */
+    CompressedConfiguration internal configuration;
 
-  /**
-   * @dev The total power of the governance contract.
-   *
-   * `total` is only updated during `deposit`, `initiateWithdraw`, and `proposeWithLock`.
-   */
-  Checkpoints.Trace224 internal total;
+    /**
+     * @dev The total power of the governance contract.
+     *
+     * `total` is only updated during `deposit`, `initiateWithdraw`, and `proposeWithLock`.
+     */
+    Checkpoints.Trace224 internal total;
 
-  /**
-   * @dev The count of proposals that have been made.
-   *
-   * `proposalCount` is only updated during `_propose`.
-   */
-  uint256 public proposalCount;
+    /**
+     * @dev The count of proposals that have been made.
+     *
+     * `proposalCount` is only updated during `_propose`.
+     */
+    uint256 public proposalCount;
 
-  /**
-   * @dev The count of withdrawals that have been initiated.
-   *
-   * `withdrawalCount` is only updated during `initiateWithdraw` and `proposeWithLock`.
-   */
-  uint256 public withdrawalCount;
+    /**
+     * @dev The count of withdrawals that have been initiated.
+     *
+     * `withdrawalCount` is only updated during `initiateWithdraw` and `proposeWithLock`.
+     */
+    uint256 public withdrawalCount;
 
-  /**
-   * @dev Modifier to ensure that the caller is the governance contract itself.
-   *
-   * The caller will only be the governance itself if executed via a proposal.
-   */
-  modifier onlySelf() {
-    require(msg.sender == address(this), Errors.Governance__CallerNotSelf(msg.sender, address(this)));
-    _;
-  }
-
-  /**
-   * @dev Modifier to ensure that the beneficiary is allowed to hold power in Governance.
-   */
-  modifier isDepositAllowed(address _beneficiary) {
-    require(msg.sender != address(this), Errors.Governance__CallerCannotBeSelf());
-    require(
-      depositControl.allBeneficiariesAllowed || depositControl.isAllowed[_beneficiary],
-      Errors.Governance__DepositNotAllowed()
-    );
-
-    _;
-  }
-
-  /**
-   * @dev the initial _beneficiary is expected to be the GSE or address(0) for anyone
-   */
-  constructor(IERC20 _asset, address _governanceProposer, address _beneficiary, Configuration memory _configuration) {
-    ASSET = _asset;
-    governanceProposer = _governanceProposer;
-
-    _configuration.assertValid();
-    configuration = CompressedConfigurationLib.compress(_configuration);
-
-    if (_beneficiary == address(0)) {
-      depositControl.allBeneficiariesAllowed = true;
-      emit FloodGatesOpened();
-    } else {
-      depositControl.allBeneficiariesAllowed = false;
-      depositControl.isAllowed[_beneficiary] = true;
-      emit BeneficiaryAdded(_beneficiary);
-    }
-  }
-
-  /**
-   * @notice Add a beneficiary to the whitelist.
-   * @dev The beneficiary may hold power in the governance contract after this call.
-   * only callable by the governance contract itself.
-   *
-   * @param _beneficiary The address to add to the whitelist.
-   */
-  function addBeneficiary(address _beneficiary) external override(IGovernance) onlySelf {
-    depositControl.isAllowed[_beneficiary] = true;
-    emit BeneficiaryAdded(_beneficiary);
-  }
-
-  /**
-   * @notice Allow all addresses to hold power in the governance contract.
-   * @dev This is a one-way valve.
-   * only callable by the governance contract itself.
-   */
-  function openFloodgates() external override(IGovernance) onlySelf {
-    depositControl.allBeneficiariesAllowed = true;
-    emit FloodGatesOpened();
-  }
-
-  /**
-   * @notice Update the governance proposer.
-   * @dev The governance proposer is the address that is allowed to use `propose`.
-   *
-   * @dev only callable by the governance contract itself.
-   *
-   * @dev causes all proposals proposed by the previous governance proposer to be `Droppable`.
-   *
-   * @dev prevents the governance proposer from being set to the governance contract itself.
-   *
-   * @param _governanceProposer The new governance proposer.
-   */
-  function updateGovernanceProposer(address _governanceProposer) external override(IGovernance) onlySelf {
-    require(_governanceProposer != address(this), Errors.Governance__GovernanceProposerCannotBeSelf());
-    governanceProposer = _governanceProposer;
-    emit GovernanceProposerUpdated(_governanceProposer);
-  }
-
-  /**
-   * @notice Update the governance configuration.
-   * only callable by the governance contract itself.
-   *
-   * @dev all existing proposals will use the configuration they were created with.
-   */
-  function updateConfiguration(Configuration memory _configuration) external override(IGovernance) onlySelf {
-    // This following MUST revert if the configuration is invalid
-    _configuration.assertValid();
-
-    configuration = CompressedConfigurationLib.compress(_configuration);
-
-    emit ConfigurationUpdated(Timestamp.wrap(block.timestamp));
-  }
-
-  /**
-   * @notice Deposit funds into the governance contract, transferring ASSET from msg.sender to the governance contract,
-   * increasing the power 1:1 of the beneficiary within the governance contract.
-   *
-   * @dev The beneficiary must be allowed to hold power in the governance contract,
-   * according to `depositControl`.
-   *
-   * Increments the checkpointed power of the specified beneficiary, and the total power of the governance contract.
-   *
-   * Note that anyone may deposit funds into the governance contract, and the only restriction is that
-   * the beneficiary must be allowed to hold power in the governance contract, according to `depositControl`.
-   *
-   * It is worth pointing out that someone could attempt to spam the deposit function, and increase the cost to vote
-   * as a result of creating many checkpoints. In reality though, as the checkpoints are using time as a key it would
-   * take ~36 years of continuous spamming to increase the cost to vote by ~66K gas with 12 second block times.
-   *
-   * @param _beneficiary The beneficiary to increase the power of.
-   * @param _amount The amount of funds to deposit, which is converted to power 1:1.
-   */
-  function deposit(address _beneficiary, uint256 _amount) external override(IGovernance) isDepositAllowed(_beneficiary) {
-    ASSET.safeTransferFrom(msg.sender, address(this), _amount);
-    users[_beneficiary].add(_amount);
-    total.add(_amount);
-
-    emit Deposit(msg.sender, _beneficiary, _amount);
-  }
-
-  /**
-   * @notice Initiate a withdrawal of funds from the governance contract,
-   * decreasing the power of the beneficiary within the governance contract.
-   *
-   * @dev the withdraw may be finalized by anyone after configuration.getWithdrawalDelay() has passed.
-   *
-   * @param _to The address that will receive the funds when the withdrawal is finalized.
-   * @param _amount The amount of power to reduce, and thus funds to withdraw.
-   * @return The id of the withdrawal, passed to `finalizeWithdraw`.
-   */
-  function initiateWithdraw(address _to, uint256 _amount) external override(IGovernance) returns (uint256) {
-    return _initiateWithdraw(msg.sender, _to, _amount, configuration.getWithdrawalDelay());
-  }
-
-  /**
-   * @notice Finalize a withdrawal of funds from the governance contract,
-   * transferring ASSET from the governance contract to the recipient specified in the withdrawal.
-   *
-   * @dev The withdrawal must not have been claimed, and the delay specified on the withdrawal must have passed.
-   *
-   * @param _withdrawalId The id of the withdrawal to finalize.
-   */
-  function finalizeWithdraw(uint256 _withdrawalId) external override(IGovernance) {
-    Withdrawal storage withdrawal = withdrawals[_withdrawalId];
-    // This is a sanity check, the `recipient` will only be zero for a non-existent withdrawal, so this avoids
-    // `finalize`ing non-existent withdrawals. Note, that `_initiateWithdraw` will fail if `_to` is `address(0)`
-    require(withdrawal.recipient != address(0), Errors.Governance__WithdrawalNotInitiated());
-    require(!withdrawal.claimed, Errors.Governance__WithdrawalAlreadyClaimed());
-    require(
-      Timestamp.wrap(block.timestamp) >= withdrawal.unlocksAt,
-      Errors.Governance__WithdrawalNotUnlockedYet(Timestamp.wrap(block.timestamp), withdrawal.unlocksAt)
-    );
-    withdrawal.claimed = true;
-
-    emit WithdrawFinalized(_withdrawalId);
-
-    ASSET.safeTransfer(withdrawal.recipient, withdrawal.amount);
-  }
-
-  /**
-   * @notice Propose a new proposal as the governanceProposer
-   *
-   * @dev the state of the proposal may be retrieved via `getProposalState`.
-   *
-   * Note that the `proposer` of the proposal is the *current* governanceProposer; if the governanceProposer
-   * no longer matches the one stored in the proposal, the state of the proposal will be `Droppable`.
-   *
-   * @param _proposal The IPayload address, which is a contract that contains the proposed actions to be executed by the
-   * governance.
-   * @return The id of the proposal.
-   */
-  function propose(IPayload _proposal) external override(IGovernance) returns (uint256) {
-    require(
-      msg.sender == governanceProposer, Errors.Governance__CallerNotGovernanceProposer(msg.sender, governanceProposer)
-    );
-    return _propose(_proposal, governanceProposer);
-  }
-
-  /**
-   * @notice Propose a new proposal by withdrawing an existing amount of power from Governance with a longer delay.
-   *
-   * @dev proposals made in this way are identical to those made by the governanceProposer, with the exception
-   * that the "proposer" stored in the proposal is the address of the governance contract itself,
-   * which means it will not transition to a "Droppable" state if the governanceProposer changes.
-   *
-   * @dev this is intended to only be used in an emergency, where the governanceProposer is compromised.
-   *
-   * @dev We don't actually need to check available power here, since if the msg.sender does not have
-   * sufficient balance, the `_initiateWithdraw` would revert with an underflow.
-   *
-   * @param _proposal The IPayload address, which is a contract that contains the proposed actions to be executed by
-   * the governance.
-   * @param _to The address that will receive the withdrawn funds when the withdrawal is finalized (see
-   * `finalizeWithdraw`)
-   * @return The id of the proposal
-   */
-  function proposeWithLock(IPayload _proposal, address _to) external override(IGovernance) returns (uint256) {
-    ProposeWithLockConfiguration memory proposeConfig = configuration.getProposeConfig();
-    _initiateWithdraw(msg.sender, _to, proposeConfig.lockAmount, proposeConfig.lockDelay);
-    return _propose(_proposal, address(this));
-  }
-
-  /**
-   * @notice Vote on a proposal.
-   * @dev The proposal must be `Active` to vote on it.
-   *
-   * NOTE: The amount of power to vote is equal to the power of msg.sender at the time
-   * just before the proposal became active.
-   *
-   * The same caller (e.g. the GSE) may `vote` multiple times, voting different ways,
-   * so long as their total votes are less than or equal to their available power;
-   * each vote is tracked per proposal, per caller within the `ballots` mapping.
-   *
-   * We keep track of the total yea and nay votes as a `summedBallot` on the proposal in storage.
-   *
-   * @param _proposalId The id of the proposal to vote on.
-   * @param _amount The amount of power to vote with, which must be less than the available power.
-   * @param _support The support of the vote.
-   */
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external override(IGovernance) {
-    ProposalState state = getProposalState(_proposalId);
-    require(state == ProposalState.Active, Errors.Governance__ProposalNotActive());
-
-    // Compute the power at the time the proposals goes from pending to active.
-    // This is the last second before active, and NOT the first second active, because it would then be possible to
-    // alter the power while the proposal is active since all txs in a block have the same timestamp.
-    uint256 userPower = users[msg.sender].valueAt(proposals[_proposalId].pendingThrough());
-
-    CompressedBallot userBallot = ballots[_proposalId][msg.sender];
-
-    uint256 availablePower = userPower - (userBallot.getNay() + userBallot.getYea());
-    require(_amount <= availablePower, Errors.Governance__InsufficientPower(msg.sender, availablePower, _amount));
-
-    CompressedProposal storage proposal = proposals[_proposalId];
-    if (_support) {
-      ballots[_proposalId][msg.sender] = userBallot.addYea(_amount);
-      proposal.addYea(_amount);
-    } else {
-      ballots[_proposalId][msg.sender] = userBallot.addNay(_amount);
-      proposal.addNay(_amount);
+    /**
+     * @dev Modifier to ensure that the caller is the governance contract itself.
+     *
+     * The caller will only be the governance itself if executed via a proposal.
+     */
+    modifier onlySelf() {
+        require(msg.sender == address(this), Errors.Governance__CallerNotSelf(msg.sender, address(this)));
+        _;
     }
 
-    emit VoteCast(_proposalId, msg.sender, _support, _amount);
-  }
+    /**
+     * @dev Modifier to ensure that the beneficiary is allowed to hold power in Governance.
+     */
+    modifier isDepositAllowed(address _beneficiary) {
+        require(msg.sender != address(this), Errors.Governance__CallerCannotBeSelf());
+        require(
+            depositControl.allBeneficiariesAllowed || depositControl.isAllowed[_beneficiary],
+            Errors.Governance__DepositNotAllowed()
+        );
 
-  /**
-   * @notice Execute a proposal.
-   * @dev The proposal must be `Executable` to execute it.
-   * If it is, we mark the proposal as `Executed` and execute the actions,
-   * simply looping through and calling them.
-   *
-   * As far as the individual calls, there are 2 safety measures:
-   *  - The call cannot target the ASSET which underlies the governance contract
-   *  - The call must succeed
-   *
-   * @param _proposalId The id of the proposal to execute.
-   */
-  function execute(uint256 _proposalId) external override(IGovernance) {
-    ProposalState state = getProposalState(_proposalId);
-    require(state == ProposalState.Executable, Errors.Governance__ProposalNotExecutable());
-
-    CompressedProposal storage proposal = proposals[_proposalId];
-    proposal.cachedState = ProposalState.Executed;
-
-    IPayload.Action[] memory actions = proposal.payload.getActions();
-
-    for (uint256 i = 0; i < actions.length; i++) {
-      require(actions[i].target != address(ASSET), Errors.Governance__CannotCallAsset());
-      // We allow calls to EOAs. If you really want be my guest.
-      // solhint-disable-next-line avoid-low-level-calls
-      (bool success,) = actions[i].target.call(actions[i].data);
-      require(success, Errors.Governance__CallFailed(actions[i].target));
+        _;
     }
 
-    emit ProposalExecuted(_proposalId);
-  }
+    /**
+     * @dev the initial _beneficiary is expected to be the GSE or address(0) for anyone
+     */
+    constructor(IERC20 _asset, address _governanceProposer, address _beneficiary, Configuration memory _configuration) {
+        ASSET = _asset;
+        governanceProposer = _governanceProposer;
 
-  /**
-   * @notice Update a proposal to be `Dropped`.
-   * @dev The proposal must be `Droppable` to mark it permanently as `Dropped`.
-   * See `getProposalState` for more details.
-   *
-   * @param _proposalId The id of the proposal to mark as `Dropped`.
-   */
-  function dropProposal(uint256 _proposalId) external override(IGovernance) {
-    CompressedProposal storage self = proposals[_proposalId];
-    require(self.cachedState != ProposalState.Dropped, Errors.Governance__ProposalAlreadyDropped());
-    require(getProposalState(_proposalId) == ProposalState.Droppable, Errors.Governance__ProposalCannotBeDropped());
+        _configuration.assertValid();
+        configuration = CompressedConfigurationLib.compress(_configuration);
 
-    self.cachedState = ProposalState.Dropped;
-
-    emit ProposalDropped(_proposalId);
-  }
-
-  /**
-   * @notice Get the power of an address at a given timestamp.
-   *
-   * @param _owner The address to get the power of.
-   * @param _ts The timestamp to get the power at.
-   * @return The power of the address at the given timestamp.
-   */
-  function powerAt(address _owner, Timestamp _ts) external view override(IGovernance) returns (uint256) {
-    return users[_owner].valueAt(_ts);
-  }
-
-  /**
-   * @notice Get the power of an address at the current block timestamp.
-   *
-   * Note that `powerNow` with the current block timestamp is NOT STABLE.
-   *
-   *  For example, imagine a transaction that performs the following:
-   *  1. deposit
-   *  2. powerNow
-   *  3. deposit
-   *  4. powerNow
-   *
-   *  The powerNow at 4 will be different from the powerNow at 2.
-   *
-   * @param _owner The address to get the power of.
-   * @return The power of the address at the current block timestamp.
-   */
-  function powerNow(address _owner) external view override(IGovernance) returns (uint256) {
-    return users[_owner].valueNow();
-  }
-
-  /**
-   * @notice Get the total power in Governance at a given timestamp.
-   *
-   * @param _ts The timestamp to get the power at.
-   * @return The total power at the given timestamp.
-   */
-  function totalPowerAt(Timestamp _ts) external view override(IGovernance) returns (uint256) {
-    return total.valueAt(_ts);
-  }
-
-  /**
-   * @notice Get the total power in Governance at the current block timestamp.
-   * Note that `powerNow` with the current block timestamp is NOT STABLE.
-   *
-   * @return The total power at the current block timestamp.
-   */
-  function totalPowerNow() external view override(IGovernance) returns (uint256) {
-    return total.valueNow();
-  }
-
-  /**
-   * @notice Check if an address is permitted to hold power in Governance.
-   *
-   * @param _beneficiary The address to check.
-   * @return True if the address is permitted to hold power in Governance.
-   */
-  function isPermittedInGovernance(address _beneficiary) external view override(IGovernance) returns (bool) {
-    return depositControl.isAllowed[_beneficiary];
-  }
-
-  /**
-   * @notice Check if everyone is permitted to hold power in Governance.
-   *
-   * @return True if everyone is permitted to hold power in Governance.
-   */
-  function isAllBeneficiariesAllowed() external view override(IGovernance) returns (bool) {
-    return depositControl.allBeneficiariesAllowed;
-  }
-
-  function getConfiguration() external view override(IGovernance) returns (Configuration memory) {
-    return configuration.decompress();
-  }
-
-  /**
-   * @notice Get a proposal by its id.
-   *
-   * @dev   Will return default values (0) for non-existing proposals
-   *
-   * @param _proposalId The id of the proposal to get.
-   * @return The proposal.
-   */
-  function getProposal(uint256 _proposalId) external view override(IGovernance) returns (Proposal memory) {
-    return proposals[_proposalId].decompress();
-  }
-
-  /**
-   * @notice Get a withdrawal by its id.
-   *
-   * @dev   Will return default values (0) for non-existing withdrawals
-   *
-   * @param _withdrawalId The id of the withdrawal to get.
-   * @return The withdrawal.
-   */
-  function getWithdrawal(uint256 _withdrawalId) external view override(IGovernance) returns (Withdrawal memory) {
-    return withdrawals[_withdrawalId];
-  }
-
-  /**
-   * @notice Get a user's ballot for a specific proposal.
-   *
-   * @dev Returns the uncompressed Ballot struct for external callers.
-   *
-   * @param _proposalId The id of the proposal.
-   * @param _user The address of the user.
-   * @return The user's ballot with yea and nay votes.
-   */
-  function getBallot(uint256 _proposalId, address _user) external view override(IGovernance) returns (Ballot memory) {
-    return ballots[_proposalId][_user].decompress();
-  }
-
-  /**
-   * @notice Get the state of a proposal in the governance system
-   *
-   * @dev Determine the current state of a proposal based on timestamps, vote results, and governance configuration.
-   *
-   * @dev NB: the state returned here is LOGICAL, and is the "true state" of the proposal:
-   * it need not match the state of the proposal in storage, which is effectively just a cache.
-   *
-   *  Flow Logic:
-   *  1. Check if proposal exists (revert if not)
-   *  2. If the cached state of the proposal is "stable" (Executed/Dropped), return that state
-   *  3. Check if governance proposer changed (→ Droppable, unless proposed via lock)
-   *  4. Time-based state transitions:
-   *   - currentTime ≤ pendingThrough() → Pending
-   *   - currentTime ≤ activeThrough() → Active
-   *   - Vote tabulation check → Rejected if not accepted
-   *   - currentTime ≤ queuedThrough() → Queued
-   *   - currentTime ≤ executableThrough() → Executable
-   *   - Otherwise → Expired
-   *
-   * @dev State Descriptions:
-   *      - Pending: Proposal created but voting hasn't started yet
-   *      - Active: Voting is currently open
-   *      - Rejected: Voting closed but proposal didn't meet acceptance criteria
-   *      - Queued: Proposal accepted and waiting for execution window
-   *      - Executable: Proposal can be executed
-   *      - Expired: Execution window has passed
-   *      - Droppable: Proposer changed
-   *      - Dropped: Proposal dropped by calling `dropProposal`
-   *      - Executed: Proposal has been successfully executed
-   *
-   * @dev edge case: it is possible that a proposal be "Droppable" according to the logic here,
-   * but no one called `dropProposal`, and then be in a different state later.
-   * This can happen if, for whatever reason, the governance proposer stored by this contract changes
-   * from the one the proposal is made via, (which would cause this function to return `Droppable`),
-   * but then a separate proposal is executed which restores the original governance proposer.
-   * So, `Dropped` is permanent, but `Droppable` is not.
-   *
-   * @param _proposalId The ID of the proposal to check
-   * @return The current state of the proposal
-   */
-  function getProposalState(uint256 _proposalId) public view override(IGovernance) returns (ProposalState) {
-    require(_proposalId < proposalCount, Errors.Governance__ProposalDoesNotExists(_proposalId));
-
-    CompressedProposal storage self = proposals[_proposalId];
-
-    // A proposal's state is "stable" after `execute` or `dropProposal` has been called on it.
-    // In this case, the state of the proposal as returned by `getProposalState` is the same as the cached state,
-    // and the state will not change.
-    if (self.cachedState == ProposalState.Executed || self.cachedState == ProposalState.Dropped) {
-      return self.cachedState;
+        if (_beneficiary == address(0)) {
+            depositControl.allBeneficiariesAllowed = true;
+            emit FloodGatesOpened();
+        } else {
+            depositControl.allBeneficiariesAllowed = false;
+            depositControl.isAllowed[_beneficiary] = true;
+            emit BeneficiaryAdded(_beneficiary);
+        }
     }
 
-    // If the governanceProposer has changed, and the proposal did not come through `proposeWithLock`,
-    // the state of the proposal is `Droppable`.
-    if (governanceProposer != self.proposer && address(this) != self.proposer) {
-      return ProposalState.Droppable;
+    /**
+     * @notice Add a beneficiary to the whitelist.
+     * @dev The beneficiary may hold power in the governance contract after this call.
+     * only callable by the governance contract itself.
+     *
+     * @param _beneficiary The address to add to the whitelist.
+     */
+    function addBeneficiary(address _beneficiary) external override(IGovernance) onlySelf {
+        depositControl.isAllowed[_beneficiary] = true;
+        emit BeneficiaryAdded(_beneficiary);
     }
 
-    Timestamp currentTime = Timestamp.wrap(block.timestamp);
-
-    if (currentTime <= self.pendingThrough()) {
-      return ProposalState.Pending;
+    /**
+     * @notice Allow all addresses to hold power in the governance contract.
+     * @dev This is a one-way valve.
+     * only callable by the governance contract itself.
+     */
+    function openFloodgates() external override(IGovernance) onlySelf {
+        depositControl.allBeneficiariesAllowed = true;
+        emit FloodGatesOpened();
     }
 
-    if (currentTime <= self.activeThrough()) {
-      return ProposalState.Active;
+    /**
+     * @notice Update the governance proposer.
+     * @dev The governance proposer is the address that is allowed to use `propose`.
+     *
+     * @dev only callable by the governance contract itself.
+     *
+     * @dev causes all proposals proposed by the previous governance proposer to be `Droppable`.
+     *
+     * @dev prevents the governance proposer from being set to the governance contract itself.
+     *
+     * @param _governanceProposer The new governance proposer.
+     */
+    function updateGovernanceProposer(address _governanceProposer) external override(IGovernance) onlySelf {
+        require(_governanceProposer != address(this), Errors.Governance__GovernanceProposerCannotBeSelf());
+        governanceProposer = _governanceProposer;
+        emit GovernanceProposerUpdated(_governanceProposer);
     }
 
-    uint256 totalPower = total.valueAt(self.pendingThrough());
-    (VoteTabulationReturn vtr,) = self.voteTabulation(totalPower);
-    if (vtr != VoteTabulationReturn.Accepted) {
-      return ProposalState.Rejected;
+    /**
+     * @notice Update the governance configuration.
+     * only callable by the governance contract itself.
+     *
+     * @dev all existing proposals will use the configuration they were created with.
+     */
+    function updateConfiguration(Configuration memory _configuration) external override(IGovernance) onlySelf {
+        // This following MUST revert if the configuration is invalid
+        _configuration.assertValid();
+
+        configuration = CompressedConfigurationLib.compress(_configuration);
+
+        emit ConfigurationUpdated(Timestamp.wrap(block.timestamp));
     }
 
-    if (currentTime <= self.queuedThrough()) {
-      return ProposalState.Queued;
+    /**
+     * @notice Deposit funds into the governance contract, transferring ASSET from msg.sender to the governance contract,
+     * increasing the power 1:1 of the beneficiary within the governance contract.
+     *
+     * @dev The beneficiary must be allowed to hold power in the governance contract,
+     * according to `depositControl`.
+     *
+     * Increments the checkpointed power of the specified beneficiary, and the total power of the governance contract.
+     *
+     * Note that anyone may deposit funds into the governance contract, and the only restriction is that
+     * the beneficiary must be allowed to hold power in the governance contract, according to `depositControl`.
+     *
+     * It is worth pointing out that someone could attempt to spam the deposit function, and increase the cost to vote
+     * as a result of creating many checkpoints. In reality though, as the checkpoints are using time as a key it would
+     * take ~36 years of continuous spamming to increase the cost to vote by ~66K gas with 12 second block times.
+     *
+     * @param _beneficiary The beneficiary to increase the power of.
+     * @param _amount The amount of funds to deposit, which is converted to power 1:1.
+     */
+    function deposit(address _beneficiary, uint256 _amount)
+        external
+        override(IGovernance)
+        isDepositAllowed(_beneficiary)
+    {
+        ASSET.safeTransferFrom(msg.sender, address(this), _amount);
+        users[_beneficiary].add(_amount);
+        total.add(_amount);
+
+        emit Deposit(msg.sender, _beneficiary, _amount);
     }
 
-    if (currentTime <= self.executableThrough()) {
-      return ProposalState.Executable;
+    /**
+     * @notice Initiate a withdrawal of funds from the governance contract,
+     * decreasing the power of the beneficiary within the governance contract.
+     *
+     * @dev the withdraw may be finalized by anyone after configuration.getWithdrawalDelay() has passed.
+     *
+     * @param _to The address that will receive the funds when the withdrawal is finalized.
+     * @param _amount The amount of power to reduce, and thus funds to withdraw.
+     * @return The id of the withdrawal, passed to `finalizeWithdraw`.
+     */
+    function initiateWithdraw(address _to, uint256 _amount) external override(IGovernance) returns (uint256) {
+        return _initiateWithdraw(msg.sender, _to, _amount, configuration.getWithdrawalDelay());
     }
 
-    return ProposalState.Expired;
-  }
+    /**
+     * @notice Finalize a withdrawal of funds from the governance contract,
+     * transferring ASSET from the governance contract to the recipient specified in the withdrawal.
+     *
+     * @dev The withdrawal must not have been claimed, and the delay specified on the withdrawal must have passed.
+     *
+     * @param _withdrawalId The id of the withdrawal to finalize.
+     */
+    function finalizeWithdraw(uint256 _withdrawalId) external override(IGovernance) {
+        Withdrawal storage withdrawal = withdrawals[_withdrawalId];
+        // This is a sanity check, the `recipient` will only be zero for a non-existent withdrawal, so this avoids
+        // `finalize`ing non-existent withdrawals. Note, that `_initiateWithdraw` will fail if `_to` is `address(0)`
+        require(withdrawal.recipient != address(0), Errors.Governance__WithdrawalNotInitiated());
+        require(!withdrawal.claimed, Errors.Governance__WithdrawalAlreadyClaimed());
+        require(
+            Timestamp.wrap(block.timestamp) >= withdrawal.unlocksAt,
+            Errors.Governance__WithdrawalNotUnlockedYet(Timestamp.wrap(block.timestamp), withdrawal.unlocksAt)
+        );
+        withdrawal.claimed = true;
 
-  /**
-   * @dev reduce the user's power, the total power, and insert a new withdrawal.
-   *
-   *  The reason for a configurable delay is that `proposeWithLock` creates a withdrawal,
-   *  which has a (presumably) very long delay, whereas `initiateWithdraw` has a much shorter delay.
-   *
-   * @param _from The address to reduce the power of.
-   * @param _to The address to send the funds to.
-   * @param _amount The amount of power to reduce, and thus funds to withdraw.
-   * @param _delay The delay before the funds can be withdrawn.
-   * @return The id of the withdrawal.
-   */
-  function _initiateWithdraw(address _from, address _to, uint256 _amount, Timestamp _delay) internal returns (uint256) {
-    require(_to != address(0), Errors.Governance__CannotWithdrawToAddressZero());
-    users[_from].sub(_amount);
-    total.sub(_amount);
+        emit WithdrawFinalized(_withdrawalId);
 
-    uint256 withdrawalId = withdrawalCount++;
+        ASSET.safeTransfer(withdrawal.recipient, withdrawal.amount);
+    }
 
-    withdrawals[withdrawalId] =
-      Withdrawal({amount: _amount, unlocksAt: Timestamp.wrap(block.timestamp) + _delay, recipient: _to, claimed: false});
+    /**
+     * @notice Propose a new proposal as the governanceProposer
+     *
+     * @dev the state of the proposal may be retrieved via `getProposalState`.
+     *
+     * Note that the `proposer` of the proposal is the *current* governanceProposer; if the governanceProposer
+     * no longer matches the one stored in the proposal, the state of the proposal will be `Droppable`.
+     *
+     * @param _proposal The IPayload address, which is a contract that contains the proposed actions to be executed by the
+     * governance.
+     * @return The id of the proposal.
+     */
+    function propose(IPayload _proposal) external override(IGovernance) returns (uint256) {
+        require(
+            msg.sender == governanceProposer,
+            Errors.Governance__CallerNotGovernanceProposer(msg.sender, governanceProposer)
+        );
+        return _propose(_proposal, governanceProposer);
+    }
 
-    emit WithdrawInitiated(withdrawalId, _to, _amount);
+    /**
+     * @notice Propose a new proposal by withdrawing an existing amount of power from Governance with a longer delay.
+     *
+     * @dev proposals made in this way are identical to those made by the governanceProposer, with the exception
+     * that the "proposer" stored in the proposal is the address of the governance contract itself,
+     * which means it will not transition to a "Droppable" state if the governanceProposer changes.
+     *
+     * @dev this is intended to only be used in an emergency, where the governanceProposer is compromised.
+     *
+     * @dev We don't actually need to check available power here, since if the msg.sender does not have
+     * sufficient balance, the `_initiateWithdraw` would revert with an underflow.
+     *
+     * @param _proposal The IPayload address, which is a contract that contains the proposed actions to be executed by
+     * the governance.
+     * @param _to The address that will receive the withdrawn funds when the withdrawal is finalized (see
+     * `finalizeWithdraw`)
+     * @return The id of the proposal
+     */
+    function proposeWithLock(IPayload _proposal, address _to) external override(IGovernance) returns (uint256) {
+        ProposeWithLockConfiguration memory proposeConfig = configuration.getProposeConfig();
+        _initiateWithdraw(msg.sender, _to, proposeConfig.lockAmount, proposeConfig.lockDelay);
+        return _propose(_proposal, address(this));
+    }
 
-    return withdrawalId;
-  }
+    /**
+     * @notice Vote on a proposal.
+     * @dev The proposal must be `Active` to vote on it.
+     *
+     * NOTE: The amount of power to vote is equal to the power of msg.sender at the time
+     * just before the proposal became active.
+     *
+     * The same caller (e.g. the GSE) may `vote` multiple times, voting different ways,
+     * so long as their total votes are less than or equal to their available power;
+     * each vote is tracked per proposal, per caller within the `ballots` mapping.
+     *
+     * We keep track of the total yea and nay votes as a `summedBallot` on the proposal in storage.
+     *
+     * @param _proposalId The id of the proposal to vote on.
+     * @param _amount The amount of power to vote with, which must be less than the available power.
+     * @param _support The support of the vote.
+     */
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external override(IGovernance) {
+        ProposalState state = getProposalState(_proposalId);
+        require(state == ProposalState.Active, Errors.Governance__ProposalNotActive());
 
-  /**
-   * @dev create a new proposal. In it we store:
-   *
-   *  - a copy of the current governance configuration, effectively "freezing" the config for the proposal.
-   *      This is done to ensure that in progress proposals that alter the delays etc won't take effect on existing
-   *      proposals.
-   *  - the summed ballots
-   *  - the proposer, which can be:
-   *    - the current governanceProposer (which can be updated on the Governance contract), if created via `propose`
-   *    - the governance contract itself, if created via `proposeWithLock`
-   *
-   * @param _proposal The proposal to propose.
-   * @param _proposer The address that is proposing the proposal.
-   * @return The id of the proposal, which is one less than the current count of proposals.
-   */
-  function _propose(IPayload _proposal, address _proposer) internal returns (uint256) {
-    uint256 proposalId = proposalCount++;
+        // Compute the power at the time the proposals goes from pending to active.
+        // This is the last second before active, and NOT the first second active, because it would then be possible to
+        // alter the power while the proposal is active since all txs in a block have the same timestamp.
+        uint256 userPower = users[msg.sender].valueAt(proposals[_proposalId].pendingThrough());
 
-    proposals[proposalId] =
-      CompressedProposalLib.create(_proposer, _proposal, Timestamp.wrap(block.timestamp), configuration);
+        CompressedBallot userBallot = ballots[_proposalId][msg.sender];
 
-    emit Proposed(proposalId, address(_proposal));
+        uint256 availablePower = userPower - (userBallot.getNay() + userBallot.getYea());
+        require(_amount <= availablePower, Errors.Governance__InsufficientPower(msg.sender, availablePower, _amount));
 
-    return proposalId;
-  }
+        CompressedProposal storage proposal = proposals[_proposalId];
+        if (_support) {
+            ballots[_proposalId][msg.sender] = userBallot.addYea(_amount);
+            proposal.addYea(_amount);
+        } else {
+            ballots[_proposalId][msg.sender] = userBallot.addNay(_amount);
+            proposal.addNay(_amount);
+        }
+
+        emit VoteCast(_proposalId, msg.sender, _support, _amount);
+    }
+
+    /**
+     * @notice Execute a proposal.
+     * @dev The proposal must be `Executable` to execute it.
+     * If it is, we mark the proposal as `Executed` and execute the actions,
+     * simply looping through and calling them.
+     *
+     * As far as the individual calls, there are 2 safety measures:
+     *  - The call cannot target the ASSET which underlies the governance contract
+     *  - The call must succeed
+     *
+     * @param _proposalId The id of the proposal to execute.
+     */
+    function execute(uint256 _proposalId) external override(IGovernance) {
+        ProposalState state = getProposalState(_proposalId);
+        require(state == ProposalState.Executable, Errors.Governance__ProposalNotExecutable());
+
+        CompressedProposal storage proposal = proposals[_proposalId];
+        proposal.cachedState = ProposalState.Executed;
+
+        IPayload.Action[] memory actions = proposal.payload.getActions();
+
+        for (uint256 i = 0; i < actions.length; i++) {
+            require(actions[i].target != address(ASSET), Errors.Governance__CannotCallAsset());
+            // We allow calls to EOAs. If you really want be my guest.
+            // solhint-disable-next-line avoid-low-level-calls
+            (bool success,) = actions[i].target.call(actions[i].data);
+            require(success, Errors.Governance__CallFailed(actions[i].target));
+        }
+
+        emit ProposalExecuted(_proposalId);
+    }
+
+    /**
+     * @notice Update a proposal to be `Dropped`.
+     * @dev The proposal must be `Droppable` to mark it permanently as `Dropped`.
+     * See `getProposalState` for more details.
+     *
+     * @param _proposalId The id of the proposal to mark as `Dropped`.
+     */
+    function dropProposal(uint256 _proposalId) external override(IGovernance) {
+        CompressedProposal storage self = proposals[_proposalId];
+        require(self.cachedState != ProposalState.Dropped, Errors.Governance__ProposalAlreadyDropped());
+        require(getProposalState(_proposalId) == ProposalState.Droppable, Errors.Governance__ProposalCannotBeDropped());
+
+        self.cachedState = ProposalState.Dropped;
+
+        emit ProposalDropped(_proposalId);
+    }
+
+    /**
+     * @notice Get the power of an address at a given timestamp.
+     *
+     * @param _owner The address to get the power of.
+     * @param _ts The timestamp to get the power at.
+     * @return The power of the address at the given timestamp.
+     */
+    function powerAt(address _owner, Timestamp _ts) external view override(IGovernance) returns (uint256) {
+        return users[_owner].valueAt(_ts);
+    }
+
+    /**
+     * @notice Get the power of an address at the current block timestamp.
+     *
+     * Note that `powerNow` with the current block timestamp is NOT STABLE.
+     *
+     *  For example, imagine a transaction that performs the following:
+     *  1. deposit
+     *  2. powerNow
+     *  3. deposit
+     *  4. powerNow
+     *
+     *  The powerNow at 4 will be different from the powerNow at 2.
+     *
+     * @param _owner The address to get the power of.
+     * @return The power of the address at the current block timestamp.
+     */
+    function powerNow(address _owner) external view override(IGovernance) returns (uint256) {
+        return users[_owner].valueNow();
+    }
+
+    /**
+     * @notice Get the total power in Governance at a given timestamp.
+     *
+     * @param _ts The timestamp to get the power at.
+     * @return The total power at the given timestamp.
+     */
+    function totalPowerAt(Timestamp _ts) external view override(IGovernance) returns (uint256) {
+        return total.valueAt(_ts);
+    }
+
+    /**
+     * @notice Get the total power in Governance at the current block timestamp.
+     * Note that `powerNow` with the current block timestamp is NOT STABLE.
+     *
+     * @return The total power at the current block timestamp.
+     */
+    function totalPowerNow() external view override(IGovernance) returns (uint256) {
+        return total.valueNow();
+    }
+
+    /**
+     * @notice Check if an address is permitted to hold power in Governance.
+     *
+     * @param _beneficiary The address to check.
+     * @return True if the address is permitted to hold power in Governance.
+     */
+    function isPermittedInGovernance(address _beneficiary) external view override(IGovernance) returns (bool) {
+        return depositControl.isAllowed[_beneficiary];
+    }
+
+    /**
+     * @notice Check if everyone is permitted to hold power in Governance.
+     *
+     * @return True if everyone is permitted to hold power in Governance.
+     */
+    function isAllBeneficiariesAllowed() external view override(IGovernance) returns (bool) {
+        return depositControl.allBeneficiariesAllowed;
+    }
+
+    function getConfiguration() external view override(IGovernance) returns (Configuration memory) {
+        return configuration.decompress();
+    }
+
+    /**
+     * @notice Get a proposal by its id.
+     *
+     * @dev   Will return default values (0) for non-existing proposals
+     *
+     * @param _proposalId The id of the proposal to get.
+     * @return The proposal.
+     */
+    function getProposal(uint256 _proposalId) external view override(IGovernance) returns (Proposal memory) {
+        return proposals[_proposalId].decompress();
+    }
+
+    /**
+     * @notice Get a withdrawal by its id.
+     *
+     * @dev   Will return default values (0) for non-existing withdrawals
+     *
+     * @param _withdrawalId The id of the withdrawal to get.
+     * @return The withdrawal.
+     */
+    function getWithdrawal(uint256 _withdrawalId) external view override(IGovernance) returns (Withdrawal memory) {
+        return withdrawals[_withdrawalId];
+    }
+
+    /**
+     * @notice Get a user's ballot for a specific proposal.
+     *
+     * @dev Returns the uncompressed Ballot struct for external callers.
+     *
+     * @param _proposalId The id of the proposal.
+     * @param _user The address of the user.
+     * @return The user's ballot with yea and nay votes.
+     */
+    function getBallot(uint256 _proposalId, address _user)
+        external
+        view
+        override(IGovernance)
+        returns (Ballot memory)
+    {
+        return ballots[_proposalId][_user].decompress();
+    }
+
+    /**
+     * @notice Get the state of a proposal in the governance system
+     *
+     * @dev Determine the current state of a proposal based on timestamps, vote results, and governance configuration.
+     *
+     * @dev NB: the state returned here is LOGICAL, and is the "true state" of the proposal:
+     * it need not match the state of the proposal in storage, which is effectively just a cache.
+     *
+     *  Flow Logic:
+     *  1. Check if proposal exists (revert if not)
+     *  2. If the cached state of the proposal is "stable" (Executed/Dropped), return that state
+     *  3. Check if governance proposer changed (→ Droppable, unless proposed via lock)
+     *  4. Time-based state transitions:
+     *   - currentTime ≤ pendingThrough() → Pending
+     *   - currentTime ≤ activeThrough() → Active
+     *   - Vote tabulation check → Rejected if not accepted
+     *   - currentTime ≤ queuedThrough() → Queued
+     *   - currentTime ≤ executableThrough() → Executable
+     *   - Otherwise → Expired
+     *
+     * @dev State Descriptions:
+     *      - Pending: Proposal created but voting hasn't started yet
+     *      - Active: Voting is currently open
+     *      - Rejected: Voting closed but proposal didn't meet acceptance criteria
+     *      - Queued: Proposal accepted and waiting for execution window
+     *      - Executable: Proposal can be executed
+     *      - Expired: Execution window has passed
+     *      - Droppable: Proposer changed
+     *      - Dropped: Proposal dropped by calling `dropProposal`
+     *      - Executed: Proposal has been successfully executed
+     *
+     * @dev edge case: it is possible that a proposal be "Droppable" according to the logic here,
+     * but no one called `dropProposal`, and then be in a different state later.
+     * This can happen if, for whatever reason, the governance proposer stored by this contract changes
+     * from the one the proposal is made via, (which would cause this function to return `Droppable`),
+     * but then a separate proposal is executed which restores the original governance proposer.
+     * So, `Dropped` is permanent, but `Droppable` is not.
+     *
+     * @param _proposalId The ID of the proposal to check
+     * @return The current state of the proposal
+     */
+    function getProposalState(uint256 _proposalId) public view override(IGovernance) returns (ProposalState) {
+        require(_proposalId < proposalCount, Errors.Governance__ProposalDoesNotExists(_proposalId));
+
+        CompressedProposal storage self = proposals[_proposalId];
+
+        // A proposal's state is "stable" after `execute` or `dropProposal` has been called on it.
+        // In this case, the state of the proposal as returned by `getProposalState` is the same as the cached state,
+        // and the state will not change.
+        if (self.cachedState == ProposalState.Executed || self.cachedState == ProposalState.Dropped) {
+            return self.cachedState;
+        }
+
+        // If the governanceProposer has changed, and the proposal did not come through `proposeWithLock`,
+        // the state of the proposal is `Droppable`.
+        if (governanceProposer != self.proposer && address(this) != self.proposer) {
+            return ProposalState.Droppable;
+        }
+
+        Timestamp currentTime = Timestamp.wrap(block.timestamp);
+
+        if (currentTime <= self.pendingThrough()) {
+            return ProposalState.Pending;
+        }
+
+        if (currentTime <= self.activeThrough()) {
+            return ProposalState.Active;
+        }
+
+        uint256 totalPower = total.valueAt(self.pendingThrough());
+        (VoteTabulationReturn vtr,) = self.voteTabulation(totalPower);
+        if (vtr != VoteTabulationReturn.Accepted) {
+            return ProposalState.Rejected;
+        }
+
+        if (currentTime <= self.queuedThrough()) {
+            return ProposalState.Queued;
+        }
+
+        if (currentTime <= self.executableThrough()) {
+            return ProposalState.Executable;
+        }
+
+        return ProposalState.Expired;
+    }
+
+    /**
+     * @dev reduce the user's power, the total power, and insert a new withdrawal.
+     *
+     *  The reason for a configurable delay is that `proposeWithLock` creates a withdrawal,
+     *  which has a (presumably) very long delay, whereas `initiateWithdraw` has a much shorter delay.
+     *
+     * @param _from The address to reduce the power of.
+     * @param _to The address to send the funds to.
+     * @param _amount The amount of power to reduce, and thus funds to withdraw.
+     * @param _delay The delay before the funds can be withdrawn.
+     * @return The id of the withdrawal.
+     */
+    function _initiateWithdraw(address _from, address _to, uint256 _amount, Timestamp _delay)
+        internal
+        returns (uint256)
+    {
+        require(_to != address(0), Errors.Governance__CannotWithdrawToAddressZero());
+        users[_from].sub(_amount);
+        total.sub(_amount);
+
+        uint256 withdrawalId = withdrawalCount++;
+
+        withdrawals[withdrawalId] = Withdrawal({
+            amount: _amount,
+            unlocksAt: Timestamp.wrap(block.timestamp) + _delay,
+            recipient: _to,
+            claimed: false
+        });
+
+        emit WithdrawInitiated(withdrawalId, _to, _amount);
+
+        return withdrawalId;
+    }
+
+    /**
+     * @dev create a new proposal. In it we store:
+     *
+     *  - a copy of the current governance configuration, effectively "freezing" the config for the proposal.
+     *      This is done to ensure that in progress proposals that alter the delays etc won't take effect on existing
+     *      proposals.
+     *  - the summed ballots
+     *  - the proposer, which can be:
+     *    - the current governanceProposer (which can be updated on the Governance contract), if created via `propose`
+     *    - the governance contract itself, if created via `proposeWithLock`
+     *
+     * @param _proposal The proposal to propose.
+     * @param _proposer The address that is proposing the proposal.
+     * @return The id of the proposal, which is one less than the current count of proposals.
+     */
+    function _propose(IPayload _proposal, address _proposer) internal returns (uint256) {
+        uint256 proposalId = proposalCount++;
+
+        proposals[proposalId] =
+            CompressedProposalLib.create(_proposer, _proposal, Timestamp.wrap(block.timestamp), configuration);
+
+        emit Proposed(proposalId, address(_proposal));
+
+        return proposalId;
+    }
 }

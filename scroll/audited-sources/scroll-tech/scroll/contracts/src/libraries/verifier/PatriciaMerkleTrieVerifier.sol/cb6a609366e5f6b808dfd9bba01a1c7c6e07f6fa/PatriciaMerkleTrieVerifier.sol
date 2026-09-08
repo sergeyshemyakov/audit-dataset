@@ -21,11 +21,11 @@ library PatriciaMerkleTrieVerifier {
     /// |        1 byte        |      ...      |        1 byte        |      ...      |
     /// | account proof length | account proof | storage proof length | storage proof |
     /// ```
-    function verifyPatriciaProof(
-        address account,
-        bytes32 storageKey,
-        bytes calldata proof
-    ) internal pure returns (bytes32 stateRoot, bytes32 storageValue) {
+    function verifyPatriciaProof(address account, bytes32 storageKey, bytes calldata proof)
+        internal
+        pure
+        returns (bytes32 stateRoot, bytes32 storageValue)
+    {
         assembly {
             // hashes 32 bytes of `v`
             function keccak_32(v) -> r {
@@ -45,11 +45,7 @@ library PatriciaMerkleTrieVerifier {
                 mstore(0x04, 0x20) // str.offset
                 mstore(0x44, msg)
                 let msgLen
-                for {
-
-                } msg {
-
-                } {
+                for {} msg {} {
                     msg := shl(8, msg)
                     msgLen := add(msgLen, 1)
                 }
@@ -59,9 +55,7 @@ library PatriciaMerkleTrieVerifier {
             // reverts with `msg` when condition is not matched.
             // make sure the length of error string <= 32
             function require(cond, msg) {
-                if iszero(cond) {
-                    revertWith(msg)
-                }
+                if iszero(cond) { revertWith(msg) }
             }
 
             // special function for decoding the storage value
@@ -72,14 +66,10 @@ library PatriciaMerkleTrieVerifier {
                 ret := word
 
                 // RLP single byte
-                if lt(word, 0x80) {
-                    leave
-                }
+                if lt(word, 0x80) { leave }
 
                 // truncated
-                if gt(len, 32) {
-                    leave
-                }
+                if gt(len, 32) { leave }
 
                 // value is >= 0x80 and <= 32 bytes.
                 // `len` should be at least 2 (prefix byte + value)
@@ -108,9 +98,7 @@ library PatriciaMerkleTrieVerifier {
                     // of the RLP encodings of the items.
                     // the extended length is ignored
                     let lengthBytes := sub(b0, 0xf7)
-                    if gt(lengthBytes, 32) {
-                        invalid()
-                    }
+                    if gt(lengthBytes, 32) { invalid() }
 
                     // load the extended length
                     startOffset := add(ptr, 1)
@@ -165,9 +153,7 @@ library PatriciaMerkleTrieVerifier {
                     // plus the length in bytes of the length of the string in binary form,
                     // followed by the length of the string, followed by the string.
                     let lengthBytes := sub(b0, 0xb7)
-                    if gt(lengthBytes, 4) {
-                        invalid()
-                    }
+                    if gt(lengthBytes, 4) { invalid() }
 
                     // load the extended length
                     valueOffset := add(ptr, 1)
@@ -219,11 +205,7 @@ library PatriciaMerkleTrieVerifier {
                 ptr := startOffset
 
                 // decode until the end of the list
-                for {
-
-                } lt(ptr, ptrStop) {
-
-                } {
+                for {} lt(ptr, ptrStop) {} {
                     let kind, len, valuePtr := decodeValue(ptr)
                     ptr := add(len, valuePtr)
 
@@ -237,9 +219,7 @@ library PatriciaMerkleTrieVerifier {
                     }
                 }
 
-                if iszero(eq(ptr, ptrStop)) {
-                    invalid()
-                }
+                if iszero(eq(ptr, ptrStop)) { invalid() }
 
                 nItems := div(sub(memPtr, memStart), 32)
             }
@@ -338,9 +318,7 @@ library PatriciaMerkleTrieVerifier {
                 let memStart, nItems
                 ptr, memStart, nItems, hash := decodeFlat(ptr)
 
-                if iszero(eq(nItems, nValues)) {
-                    revertWith("Node items mismatch")
-                }
+                if iszero(eq(nItems, nValues)) { revertWith("Node items mismatch") }
 
                 v0out, v1outlen := loadValueLen(memStart, v0)
                 v1out, v1outlen := loadValueLen(memStart, v1)
@@ -359,11 +337,7 @@ library PatriciaMerkleTrieVerifier {
                 let depth
 
                 // treat the leaf node with different logic
-                for {
-                    let i := 1
-                } lt(i, nodes) {
-                    i := add(i, 1)
-                } {
+                for { let i := 1 } lt(i, nodes) { i := add(i, 1) } {
                     let memStart, nItems, hash
                     ptr, memStart, nItems, hash := decodeFlat(ptr)
 
@@ -371,12 +345,8 @@ library PatriciaMerkleTrieVerifier {
                     // Otherwise verifies that the hash of the current node
                     // is the same as the previous choosen one.
                     switch i
-                    case 1 {
-                        rootHash := hash
-                    }
-                    default {
-                        require(eq(hash, expectedHash), "Hash mismatch")
-                    }
+                    case 1 { rootHash := hash }
+                    default { require(eq(hash, expectedHash), "Hash mismatch") }
 
                     switch nItems
                     case 2 {
@@ -492,9 +462,7 @@ library PatriciaMerkleTrieVerifier {
             // in case an attacker crafted a malicous payload
             // and succeeds in the prior verification steps
             // then this should catch any bogus accesses
-            if iszero(eq(ptr, add(proof.offset, proof.length))) {
-                revertWith("Proof length mismatch")
-            }
+            if iszero(eq(ptr, add(proof.offset, proof.length))) { revertWith("Proof length mismatch") }
         }
     }
 }

@@ -69,7 +69,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -101,11 +101,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -120,11 +119,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -134,12 +129,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -163,11 +156,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -190,11 +183,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -207,11 +199,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -463,11 +455,7 @@ interface IERC20 {
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
 }
 
 /**
@@ -640,11 +628,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - the caller must have allowance for ``from``'s tokens of at least
      * `amount`.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) public virtual override returns (bool) {
+    function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
         address spender = _msgSender();
         _spendAllowance(from, spender, amount);
         _transfer(from, to, amount);
@@ -708,11 +692,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `to` cannot be the zero address.
      * - `from` must have a balance of at least `amount`.
      */
-    function _transfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {
+    function _transfer(address from, address to, uint256 amount) internal virtual {
         require(from != address(0), "ERC20: transfer from the zero address");
         require(to != address(0), "ERC20: transfer to the zero address");
 
@@ -730,7 +710,8 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         _afterTokenTransfer(from, to, amount);
     }
 
-    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
+    /**
+     * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
      * Emits a {Transfer} event with `from` set to the zero address.
@@ -792,11 +773,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `owner` cannot be the zero address.
      * - `spender` cannot be the zero address.
      */
-    function _approve(
-        address owner,
-        address spender,
-        uint256 amount
-    ) internal virtual {
+    function _approve(address owner, address spender, uint256 amount) internal virtual {
         require(owner != address(0), "ERC20: approve from the zero address");
         require(spender != address(0), "ERC20: approve to the zero address");
 
@@ -812,11 +789,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * Might emit an {Approval} event.
      */
-    function _spendAllowance(
-        address owner,
-        address spender,
-        uint256 amount
-    ) internal virtual {
+    function _spendAllowance(address owner, address spender, uint256 amount) internal virtual {
         uint256 currentAllowance = allowance(owner, spender);
         if (currentAllowance != type(uint256).max) {
             require(currentAllowance >= amount, "ERC20: insufficient allowance");
@@ -840,11 +813,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
      */
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {}
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
 
     /**
      * @dev Hook that is called after any transfer of tokens. This includes
@@ -860,11 +829,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
      */
-    function _afterTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {}
+    function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual {}
 }
 
 /**
@@ -897,15 +862,8 @@ interface IERC20Permit {
      * https://eips.ethereum.org/EIPS/eip-2612#specification[relevant EIP
      * section].
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 
     /**
      * @dev Returns the current nonce for `owner`. This value must be
@@ -1089,11 +1047,7 @@ library ECDSA {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address, RecoverError) {
         bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
         uint8 v = uint8((uint256(vs) >> 255) + 27);
         return tryRecover(hash, v, r, s);
@@ -1104,11 +1058,7 @@ library ECDSA {
      *
      * _Available since v4.2._
      */
-    function recover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
         _throwError(error);
         return recovered;
@@ -1120,12 +1070,7 @@ library ECDSA {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address, RecoverError) {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -1155,12 +1100,7 @@ library ECDSA {
      * @dev Overload of {ECDSA-recover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function recover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
         _throwError(error);
         return recovered;
@@ -1254,9 +1194,8 @@ abstract contract EIP712 {
     constructor(string memory name, string memory version) {
         bytes32 hashedName = keccak256(bytes(name));
         bytes32 hashedVersion = keccak256(bytes(version));
-        bytes32 typeHash = keccak256(
-            "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
-        );
+        bytes32 typeHash =
+            keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
         _HASHED_NAME = hashedName;
         _HASHED_VERSION = hashedVersion;
         _CACHED_CHAIN_ID = block.chainid;
@@ -1276,11 +1215,11 @@ abstract contract EIP712 {
         }
     }
 
-    function _buildDomainSeparator(
-        bytes32 typeHash,
-        bytes32 nameHash,
-        bytes32 versionHash
-    ) private view returns (bytes32) {
+    function _buildDomainSeparator(bytes32 typeHash, bytes32 nameHash, bytes32 versionHash)
+        private
+        view
+        returns (bytes32)
+    {
         return keccak256(abi.encode(typeHash, nameHash, versionHash, block.chainid, address(this)));
     }
 
@@ -1380,15 +1319,11 @@ abstract contract ERC20Permit is ERC20, IERC20Permit, EIP712 {
     /**
      * @dev See {IERC20Permit-permit}.
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public virtual override {
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        public
+        virtual
+        override
+    {
         require(block.timestamp <= deadline, "ERC20Permit: expired deadline");
 
         bytes32 structHash = keccak256(abi.encode(_PERMIT_TYPEHASH, owner, spender, value, _useNonce(owner), deadline));
@@ -1457,10 +1392,7 @@ abstract contract AbstractFeeCurrency is ERC20 {
         uint256 tipTxFee,
         uint256, // gatewayFee, unused
         uint256 baseTxFee
-    )
-        external
-        onlyVm
-    {
+    ) external onlyVm {
         // Calling the new creditGasFees would make sense here, but that is not
         // possible due to its calldata arguments.
         _mint(from, refund);
@@ -1590,45 +1522,109 @@ library Preinstalls {
         hex"3373fffffffffffffffffffffffffffffffffffffffe14604657602036036042575f35600143038111604257611fff81430311604257611fff9006545f5260205ff35b5f5ffd5b5f35611fff60014303065500";
 
     function getDeployedCode(address _addr, uint256 _chainID) internal pure returns (bytes memory out_) {
-        if (_addr == MultiCall3) return MultiCall3Code;
-        if (_addr == Create2Deployer) return Create2DeployerCode;
-        if (_addr == Safe_v130) return Safe_v130Code;
-        if (_addr == SafeL2_v130) return SafeL2_v130Code;
-        if (_addr == MultiSendCallOnly_v130) return MultiSendCallOnly_v130Code;
-        if (_addr == SafeSingletonFactory) return SafeSingletonFactoryCode;
-        if (_addr == DeterministicDeploymentProxy) return DeterministicDeploymentProxyCode;
-        if (_addr == MultiSend_v130) return MultiSend_v130Code;
-        if (_addr == SenderCreator_v060) return SenderCreator_v060Code;
-        if (_addr == EntryPoint_v060) return EntryPoint_v060Code;
-        if (_addr == SenderCreator_v070) return SenderCreator_v070Code;
-        if (_addr == EntryPoint_v070) return EntryPoint_v070Code;
+        if (_addr == MultiCall3) {
+            return MultiCall3Code;
+        }
+        if (_addr == Create2Deployer) {
+            return Create2DeployerCode;
+        }
+        if (_addr == Safe_v130) {
+            return Safe_v130Code;
+        }
+        if (_addr == SafeL2_v130) {
+            return SafeL2_v130Code;
+        }
+        if (_addr == MultiSendCallOnly_v130) {
+            return MultiSendCallOnly_v130Code;
+        }
+        if (_addr == SafeSingletonFactory) {
+            return SafeSingletonFactoryCode;
+        }
+        if (_addr == DeterministicDeploymentProxy) {
+            return DeterministicDeploymentProxyCode;
+        }
+        if (_addr == MultiSend_v130) {
+            return MultiSend_v130Code;
+        }
+        if (_addr == SenderCreator_v060) {
+            return SenderCreator_v060Code;
+        }
+        if (_addr == EntryPoint_v060) {
+            return EntryPoint_v060Code;
+        }
+        if (_addr == SenderCreator_v070) {
+            return SenderCreator_v070Code;
+        }
+        if (_addr == EntryPoint_v070) {
+            return EntryPoint_v070Code;
+        }
 
-        if (_addr == Permit2) return getPermit2Code(_chainID);
-        if (_addr == BeaconBlockRoots) return BeaconBlockRootsCode;
-        if (_addr == HistoryStorage) return HistoryStorageCode;
-        if (_addr == CreateX) return CreateXCode;
+        if (_addr == Permit2) {
+            return getPermit2Code(_chainID);
+        }
+        if (_addr == BeaconBlockRoots) {
+            return BeaconBlockRootsCode;
+        }
+        if (_addr == HistoryStorage) {
+            return HistoryStorageCode;
+        }
+        if (_addr == CreateX) {
+            return CreateXCode;
+        }
 
         revert("Preinstalls: unknown preinstall");
     }
 
     /// @notice Returns the name of the preinstall at the given address.
     function getName(address _addr) internal pure returns (string memory out_) {
-        if (_addr == Permit2) return "Permit2";
-        if (_addr == MultiCall3) return "MultiCall3";
-        if (_addr == Create2Deployer) return "Create2Deployer";
-        if (_addr == Safe_v130) return "Safe_v130";
-        if (_addr == SafeL2_v130) return "SafeL2_v130";
-        if (_addr == MultiSendCallOnly_v130) return "MultiSendCallOnly_v130";
-        if (_addr == SafeSingletonFactory) return "SafeSingletonFactory";
-        if (_addr == DeterministicDeploymentProxy) return "DeterministicDeploymentProxy";
-        if (_addr == MultiSend_v130) return "MultiSend_v130";
-        if (_addr == SenderCreator_v060) return "SenderCreator_v060";
-        if (_addr == EntryPoint_v060) return "EntryPoint_v060";
-        if (_addr == SenderCreator_v070) return "SenderCreator_v070";
-        if (_addr == EntryPoint_v070) return "EntryPoint_v070";
-        if (_addr == BeaconBlockRoots) return "BeaconBlockRoots";
-        if (_addr == HistoryStorage) return "HistoryStorage";
-        if (_addr == CreateX) return "CreateX";
+        if (_addr == Permit2) {
+            return "Permit2";
+        }
+        if (_addr == MultiCall3) {
+            return "MultiCall3";
+        }
+        if (_addr == Create2Deployer) {
+            return "Create2Deployer";
+        }
+        if (_addr == Safe_v130) {
+            return "Safe_v130";
+        }
+        if (_addr == SafeL2_v130) {
+            return "SafeL2_v130";
+        }
+        if (_addr == MultiSendCallOnly_v130) {
+            return "MultiSendCallOnly_v130";
+        }
+        if (_addr == SafeSingletonFactory) {
+            return "SafeSingletonFactory";
+        }
+        if (_addr == DeterministicDeploymentProxy) {
+            return "DeterministicDeploymentProxy";
+        }
+        if (_addr == MultiSend_v130) {
+            return "MultiSend_v130";
+        }
+        if (_addr == SenderCreator_v060) {
+            return "SenderCreator_v060";
+        }
+        if (_addr == EntryPoint_v060) {
+            return "EntryPoint_v060";
+        }
+        if (_addr == SenderCreator_v070) {
+            return "SenderCreator_v070";
+        }
+        if (_addr == EntryPoint_v070) {
+            return "EntryPoint_v070";
+        }
+        if (_addr == BeaconBlockRoots) {
+            return "BeaconBlockRoots";
+        }
+        if (_addr == HistoryStorage) {
+            return "HistoryStorage";
+        }
+        if (_addr == CreateX) {
+            return "CreateX";
+        }
         revert("Preinstalls: unnamed preinstall");
     }
 
@@ -1743,13 +1739,7 @@ contract OptimismMintableERC20 is ERC20Permit, ISemver, AbstractFeeCurrency {
     /// @param _remoteToken Address of the corresponding L1 token.
     /// @param _name        ERC20 name.
     /// @param _symbol      ERC20 symbol.
-    constructor(
-        address _bridge,
-        address _remoteToken,
-        string memory _name,
-        string memory _symbol,
-        uint8 _decimals
-    )
+    constructor(address _bridge, address _remoteToken, string memory _name, string memory _symbol, uint8 _decimals)
         ERC20(_name, _symbol)
         ERC20Permit(_name)
     {
@@ -1904,11 +1894,7 @@ contract OptimismMintableERC20Factory is ISemver, Initializable, IOptimismERC20F
     /// @param _name        ERC20 name.
     /// @param _symbol      ERC20 symbol.
     /// @return Address of the newly created token.
-    function createStandardL2Token(
-        address _remoteToken,
-        string memory _name,
-        string memory _symbol
-    )
+    function createStandardL2Token(address _remoteToken, string memory _name, string memory _symbol)
         external
         returns (address)
     {
@@ -1920,11 +1906,7 @@ contract OptimismMintableERC20Factory is ISemver, Initializable, IOptimismERC20F
     /// @param _name        ERC20 name.
     /// @param _symbol      ERC20 symbol.
     /// @return Address of the newly created token.
-    function createOptimismMintableERC20(
-        address _remoteToken,
-        string memory _name,
-        string memory _symbol
-    )
+    function createOptimismMintableERC20(address _remoteToken, string memory _name, string memory _symbol)
         public
         returns (address)
     {
@@ -1942,16 +1924,13 @@ contract OptimismMintableERC20Factory is ISemver, Initializable, IOptimismERC20F
         string memory _name,
         string memory _symbol,
         uint8 _decimals
-    )
-        public
-        returns (address)
-    {
+    ) public returns (address) {
         require(_remoteToken != address(0), "OptimismMintableERC20Factory: must provide remote token address");
 
         bytes32 salt = keccak256(abi.encode(_remoteToken, _name, _symbol, _decimals));
 
         address localToken =
-            address(new OptimismMintableERC20{ salt: salt }(bridge, _remoteToken, _name, _symbol, _decimals));
+            address(new OptimismMintableERC20{salt: salt}(bridge, _remoteToken, _name, _symbol, _decimals));
 
         deployments[localToken] = _remoteToken;
 

@@ -3,7 +3,8 @@
 pragma solidity ^0.8.0;
 
 import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
-import {IERC20PermitUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/draft-IERC20PermitUpgradeable.sol";
+import {IERC20PermitUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/draft-IERC20PermitUpgradeable.sol";
 
 // The recommended ERC20 implementation for bridge token.
 // deployed in L2 when original token is on L1
@@ -18,11 +19,7 @@ interface IScrollERC20Upgradeable is IERC20Upgradeable, IERC20PermitUpgradeable 
     /// @dev ERC677 Standard, see https://github.com/ethereum/EIPs/issues/677
     /// Defi can use this method to transfer L1/L2 token to L2/L1,
     /// and deposit to L2/L1 contract in one transaction
-    function transferAndCall(
-        address receiver,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool success);
+    function transferAndCall(address receiver, uint256 amount, bytes calldata data) external returns (bool success);
 
     /// @notice Mint some token to recipient's account.
     /// @dev Gateway Utilities, only gateway contract can call

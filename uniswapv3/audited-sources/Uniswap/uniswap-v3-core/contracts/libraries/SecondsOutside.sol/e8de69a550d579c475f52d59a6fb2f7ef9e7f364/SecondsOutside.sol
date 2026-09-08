@@ -44,11 +44,7 @@ library SecondsOutside {
     /// @param self the packed mapping of tick to seconds outside
     /// @param tick the tick to be cleared
     /// @param tickSpacing the spacing between usable ticks
-    function clear(
-        mapping(int24 => uint256) storage self,
-        int24 tick,
-        int24 tickSpacing
-    ) internal {
+    function clear(mapping(int24 => uint256) storage self, int24 tick, int24 tickSpacing) internal {
         (int24 wordPos, uint8 shift) = position(tick, tickSpacing);
         self[wordPos] &= ~(uint256(type(uint32).max) << shift);
     }
@@ -59,12 +55,7 @@ library SecondsOutside {
     /// @param tick the tick to be crossed
     /// @param tickSpacing the spacing between usable ticks
     /// @param time the current block timestamp truncated to 32 bits
-    function cross(
-        mapping(int24 => uint256) storage self,
-        int24 tick,
-        int24 tickSpacing,
-        uint32 time
-    ) internal {
+    function cross(mapping(int24 => uint256) storage self, int24 tick, int24 tickSpacing, uint32 time) internal {
         (int24 wordPos, uint8 shift) = position(tick, tickSpacing);
         uint256 prev = self[wordPos];
         uint32 timePrev = uint32(prev >> shift);
@@ -77,11 +68,11 @@ library SecondsOutside {
     /// @param tick the tick to get the seconds outside value for
     /// @param tickSpacing the spacing between usable ticks
     /// @return the seconds outside value for that tick
-    function get(
-        mapping(int24 => uint256) storage self,
-        int24 tick,
-        int24 tickSpacing
-    ) internal view returns (uint32) {
+    function get(mapping(int24 => uint256) storage self, int24 tick, int24 tickSpacing)
+        internal
+        view
+        returns (uint32)
+    {
         (int24 wordPos, uint8 shift) = position(tick, tickSpacing);
         uint256 prev = self[wordPos];
         return uint32(prev >> shift);

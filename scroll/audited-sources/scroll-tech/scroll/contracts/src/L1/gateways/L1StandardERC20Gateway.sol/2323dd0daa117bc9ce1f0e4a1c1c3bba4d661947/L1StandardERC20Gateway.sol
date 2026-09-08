@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.0;
 
+import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 
-import {IERC20Metadata} from "../../interfaces/IERC20Metadata.sol";
 import {IL2ERC20Gateway} from "../../L2/gateways/IL2ERC20Gateway.sol";
+import {IERC20Metadata} from "../../interfaces/IERC20Metadata.sol";
 import {IL1ScrollMessenger} from "../IL1ScrollMessenger.sol";
 import {IL1ERC20Gateway} from "./IL1ERC20Gateway.sol";
 
@@ -24,9 +24,11 @@ import {L1ERC20Gateway} from "./L1ERC20Gateway.sol";
 contract L1StandardERC20Gateway is Initializable, ScrollGatewayBase, L1ERC20Gateway {
     using SafeERC20 for IERC20;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of ScrollStandardERC20 implementation in L2.
     address public l2TokenImplementation;
@@ -40,9 +42,11 @@ contract L1StandardERC20Gateway is Initializable, ScrollGatewayBase, L1ERC20Gate
     /// pass deploy data on first call to the token.
     mapping(address => address) private tokenMapping;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Initialize the storage of L1StandardERC20Gateway.
     /// @param _counterpart The address of L2StandardERC20Gateway in L2.
@@ -67,9 +71,11 @@ contract L1StandardERC20Gateway is Initializable, ScrollGatewayBase, L1ERC20Gate
         l2TokenFactory = _l2TokenFactory;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
     function getL2ERC20Address(address _l1Token) public view override returns (address) {
@@ -80,9 +86,11 @@ contract L1StandardERC20Gateway is Initializable, ScrollGatewayBase, L1ERC20Gate
         return Clones.predictDeterministicAddress(l2TokenImplementation, _salt, l2TokenFactory);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
     function finalizeWithdrawERC20(
@@ -114,18 +122,19 @@ contract L1StandardERC20Gateway is Initializable, ScrollGatewayBase, L1ERC20Gate
         emit FinalizeWithdrawERC20(_l1Token, _l2Token, _from, _to, _amount, _data);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @inheritdoc L1ERC20Gateway
-    function _deposit(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual override nonReentrant {
+    function _deposit(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        override
+        nonReentrant
+    {
         require(_amount > 0, "deposit zero amount");
 
         // 1. Transfer token into this contract.
@@ -150,13 +159,7 @@ contract L1StandardERC20Gateway is Initializable, ScrollGatewayBase, L1ERC20Gate
             _l2Data = abi.encode(false, _data);
         }
         bytes memory _message = abi.encodeWithSelector(
-            IL2ERC20Gateway.finalizeDepositERC20.selector,
-            _token,
-            _l2Token,
-            _from,
-            _to,
-            _amount,
-            _l2Data
+            IL2ERC20Gateway.finalizeDepositERC20.selector, _token, _l2Token, _from, _to, _amount, _l2Data
         );
 
         // 3. Send message to L1ScrollMessenger.

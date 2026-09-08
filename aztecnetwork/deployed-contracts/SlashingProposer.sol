@@ -1498,6 +1498,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -1506,7 +1507,9 @@ library Math {
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
             uint256 c = a + b;
-            if (c < a) return (false, 0);
+            if (c < a) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1516,7 +1519,9 @@ library Math {
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b > a) return (false, 0);
+            if (b > a) {
+                return (false, 0);
+            }
             return (true, a - b);
         }
     }
@@ -1529,9 +1534,13 @@ library Math {
             // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
             // benefit is lost if 'b' is also tested.
             // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-            if (a == 0) return (true, 0);
+            if (a == 0) {
+                return (true, 0);
+            }
             uint256 c = a * b;
-            if (c / a != b) return (false, 0);
+            if (c / a != b) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1541,7 +1550,9 @@ library Math {
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a / b);
         }
     }
@@ -1551,7 +1562,9 @@ library Math {
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a % b);
         }
     }
@@ -1725,7 +1738,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -1766,7 +1781,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -1818,7 +1835,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -1857,12 +1876,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -2274,7 +2295,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), HEX_DIGITS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -2374,7 +2397,9 @@ library Strings {
      */
     function parseUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -2393,17 +2418,19 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
+    function tryParseUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         uint256 result = 0;
         for (uint256 i = begin; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 9) return (false, 0);
+            if (chr > 9) {
+                return (false, 0);
+            }
             result *= 10;
             result += chr;
         }
@@ -2431,7 +2458,9 @@ library Strings {
      */
     function parseInt(string memory input, uint256 begin, uint256 end) internal pure returns (int256) {
         (bool success, int256 value) = tryParseInt(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -2453,11 +2482,11 @@ library Strings {
      *
      * NOTE: This function will revert if the absolute value of the result does not fit in a `uint256`.
      */
-    function tryParseInt(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, int256 value) {
+    function tryParseInt(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, int256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // Check presence of a negative sign.
@@ -2472,7 +2501,9 @@ library Strings {
             return (true, negativeSign ? -int256(absValue) : int256(absValue));
         } else if (absSuccess && negativeSign && absValue == ABS_MIN_INT256) {
             return (true, type(int256).min);
-        } else return (false, 0);
+        } else {
+            return (false, 0);
+        }
     }
 
     /**
@@ -2496,7 +2527,9 @@ library Strings {
      */
     function parseHexUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseHexUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -2515,11 +2548,11 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseHexUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
+    function tryParseHexUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // skip 0x prefix if present
@@ -2529,7 +2562,9 @@ library Strings {
         uint256 result = 0;
         for (uint256 i = begin + offset; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 15) return (false, 0);
+            if (chr > 15) {
+                return (false, 0);
+            }
             result *= 16;
             unchecked {
                 // Multiplying by 16 is equivalent to a shift of 4 bits (with additional overflow check).
@@ -2559,7 +2594,9 @@ library Strings {
      */
     function parseAddress(string memory input, uint256 begin, uint256 end) internal pure returns (address) {
         (bool success, address value) = tryParseAddress(input, begin, end);
-        if (!success) revert StringsInvalidAddressFormat();
+        if (!success) {
+            revert StringsInvalidAddressFormat();
+        }
         return value;
     }
 
@@ -2575,11 +2612,11 @@ library Strings {
      * @dev Variant of {parseAddress-string-uint256-uint256} that returns false if the parsing fails because input is not a properly
      * formatted address. See {parseAddress} requirements.
      */
-    function tryParseAddress(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, address value) {
+    function tryParseAddress(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, address value)
+    {
         // check that input is the correct length
         bool hasPrefix = bytes2(_unsafeReadBytesOffset(bytes(input), begin)) == bytes2("0x");
         uint256 expectedLength = 40 + hasPrefix.toUint() * 2;
@@ -2602,10 +2639,15 @@ library Strings {
         // - Case 3: [A-F]
         // - otherwise not supported
         unchecked {
-            if (value > 47 && value < 58) value -= 48;
-            else if (value > 96 && value < 103) value -= 87;
-            else if (value > 64 && value < 71) value -= 55;
-            else return type(uint8).max;
+            if (value > 47 && value < 58) {
+                value -= 48;
+            } else if (value > 96 && value < 103) {
+                value -= 87;
+            } else if (value > 64 && value < 71) {
+                value -= 55;
+            } else {
+                return type(uint8).max;
+            }
         }
 
         return value;
@@ -2680,7 +2722,7 @@ library MessageHashUtils {
      * See {ECDSA-recover}.
      */
     function toDataWithIntendedValidatorHash(address validator, bytes memory data) internal pure returns (bytes32) {
-        return keccak256(abi.encodePacked(hex"19_00", validator, data));
+        return keccak256(abi.encodePacked(hex"1900", validator, data));
     }
 
     /**
@@ -2695,7 +2737,7 @@ library MessageHashUtils {
     function toTypedDataHash(bytes32 domainSeparator, bytes32 structHash) internal pure returns (bytes32 digest) {
         assembly ("memory-safe") {
             let ptr := mload(0x40)
-            mstore(ptr, hex"19_01")
+            mstore(ptr, hex"1901")
             mstore(add(ptr, 0x02), domainSeparator)
             mstore(add(ptr, 0x22), structHash)
             digest := keccak256(ptr, 0x42)
@@ -2856,22 +2898,22 @@ abstract contract EIP712 is IERC5267 {
 }
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 /**
@@ -2966,7 +3008,11 @@ library Create2 {
      * @dev Returns the address where a contract will be stored if deployed via {deploy} from a contract located at
      * `deployer`. If `deployer` is this contract's address, returns the same value as {computeAddress}.
      */
-    function computeAddress(bytes32 salt, bytes32 bytecodeHash, address deployer) internal pure returns (address addr) {
+    function computeAddress(bytes32 salt, bytes32 bytecodeHash, address deployer)
+        internal
+        pure
+        returns (address addr)
+    {
         assembly ("memory-safe") {
             let ptr := mload(0x40) // Get free memory pointer
 
@@ -3055,11 +3101,10 @@ library Clones {
      * NOTE: Using a non-zero value at creation will require the contract using this function (e.g. a factory)
      * to always have enough balance for new deployments. Consider exposing this function under a payable method.
      */
-    function cloneDeterministic(
-        address implementation,
-        bytes32 salt,
-        uint256 value
-    ) internal returns (address instance) {
+    function cloneDeterministic(address implementation, bytes32 salt, uint256 value)
+        internal
+        returns (address instance)
+    {
         if (address(this).balance < value) {
             revert Errors.InsufficientBalance(address(this).balance, value);
         }
@@ -3079,11 +3124,11 @@ library Clones {
     /**
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
      */
-    function predictDeterministicAddress(
-        address implementation,
-        bytes32 salt,
-        address deployer
-    ) internal pure returns (address predicted) {
+    function predictDeterministicAddress(address implementation, bytes32 salt, address deployer)
+        internal
+        pure
+        returns (address predicted)
+    {
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             mstore(add(ptr, 0x38), deployer)
@@ -3099,10 +3144,11 @@ library Clones {
     /**
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
      */
-    function predictDeterministicAddress(
-        address implementation,
-        bytes32 salt
-    ) internal view returns (address predicted) {
+    function predictDeterministicAddress(address implementation, bytes32 salt)
+        internal
+        view
+        returns (address predicted)
+    {
         return predictDeterministicAddress(implementation, salt, address(this));
     }
 
@@ -3124,11 +3170,10 @@ library Clones {
      * NOTE: Using a non-zero value at creation will require the contract using this function (e.g. a factory)
      * to always have enough balance for new deployments. Consider exposing this function under a payable method.
      */
-    function cloneWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        uint256 value
-    ) internal returns (address instance) {
+    function cloneWithImmutableArgs(address implementation, bytes memory args, uint256 value)
+        internal
+        returns (address instance)
+    {
         if (address(this).balance < value) {
             revert Errors.InsufficientBalance(address(this).balance, value);
         }
@@ -3150,11 +3195,10 @@ library Clones {
      * `implementation` and `salt` multiple time will revert, since the clones cannot be deployed twice at the same
      * address.
      */
-    function cloneDeterministicWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        bytes32 salt
-    ) internal returns (address instance) {
+    function cloneDeterministicWithImmutableArgs(address implementation, bytes memory args, bytes32 salt)
+        internal
+        returns (address instance)
+    {
         return cloneDeterministicWithImmutableArgs(implementation, args, salt, 0);
     }
 
@@ -3165,12 +3209,10 @@ library Clones {
      * NOTE: Using a non-zero value at creation will require the contract using this function (e.g. a factory)
      * to always have enough balance for new deployments. Consider exposing this function under a payable method.
      */
-    function cloneDeterministicWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        bytes32 salt,
-        uint256 value
-    ) internal returns (address instance) {
+    function cloneDeterministicWithImmutableArgs(address implementation, bytes memory args, bytes32 salt, uint256 value)
+        internal
+        returns (address instance)
+    {
         bytes memory bytecode = _cloneCodeWithImmutableArgs(implementation, args);
         return Create2.deploy(value, salt, bytecode);
     }
@@ -3191,11 +3233,11 @@ library Clones {
     /**
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministicWithImmutableArgs}.
      */
-    function predictDeterministicAddressWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        bytes32 salt
-    ) internal view returns (address predicted) {
+    function predictDeterministicAddressWithImmutableArgs(address implementation, bytes memory args, bytes32 salt)
+        internal
+        view
+        returns (address predicted)
+    {
         return predictDeterministicAddressWithImmutableArgs(implementation, args, salt, address(this));
     }
 
@@ -3228,33 +3270,35 @@ library Clones {
      * NOTE: https://eips.ethereum.org/EIPS/eip-170[EIP-170] limits the length of the contract code to 24576 bytes.
      * With the proxy code taking 45 bytes, that limits the length of the immutable args to 24531 bytes.
      */
-    function _cloneCodeWithImmutableArgs(
-        address implementation,
-        bytes memory args
-    ) private pure returns (bytes memory) {
-        if (args.length > 0x5fd3) revert CloneArgumentsTooLong();
-        return
-            abi.encodePacked(
-                hex"61",
-                uint16(args.length + 0x2d),
-                hex"3d81600a3d39f3363d3d373d3d3d363d73",
-                implementation,
-                hex"5af43d82803e903d91602b57fd5bf3",
-                args
-            );
+    function _cloneCodeWithImmutableArgs(address implementation, bytes memory args)
+        private
+        pure
+        returns (bytes memory)
+    {
+        if (args.length > 0x5fd3) {
+            revert CloneArgumentsTooLong();
+        }
+        return abi.encodePacked(
+            hex"61",
+            uint16(args.length + 0x2d),
+            hex"3d81600a3d39f3363d3d373d3d3d363d73",
+            implementation,
+            hex"5af43d82803e903d91602b57fd5bf3",
+            args
+        );
     }
 }
 
 struct G1Point {
-  uint256 x;
-  uint256 y;
+    uint256 x;
+    uint256 y;
 }
 
 struct G2Point {
-  uint256 x0;
-  uint256 x1;
-  uint256 y0;
-  uint256 y1;
+    uint256 x0;
+    uint256 x1;
+    uint256 y0;
+    uint256 y1;
 }
 
 /**
@@ -3279,60 +3323,60 @@ struct G2Point {
  * This can be used to prevent a situation where flushing the queue would exceed the block gas limit.
  */
 struct StakingQueueConfig {
-  uint256 bootstrapValidatorSetSize;
-  uint256 bootstrapFlushSize;
-  uint256 normalFlushSizeMin;
-  uint256 normalFlushSizeQuotient;
-  uint256 maxQueueFlushSize;
+    uint256 bootstrapValidatorSetSize;
+    uint256 bootstrapFlushSize;
+    uint256 normalFlushSizeMin;
+    uint256 normalFlushSizeQuotient;
+    uint256 maxQueueFlushSize;
 }
 
 interface IStakingCore {
-  event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
-  event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
-  event PendingSlasherCancelled(address indexed slasher);
-  event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
-  event ValidatorQueued(address indexed attester, address indexed withdrawer);
-  event Deposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession,
-    uint256 amount
-  );
-  event FailedDeposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession
-  );
-  event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
-  event Slashed(address indexed attester, uint256 amount);
-  event StakingQueueConfigUpdated(StakingQueueConfig config);
+    event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
+    event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
+    event PendingSlasherCancelled(address indexed slasher);
+    event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
+    event ValidatorQueued(address indexed attester, address indexed withdrawer);
+    event Deposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession,
+        uint256 amount
+    );
+    event FailedDeposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession
+    );
+    event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
+    event Slashed(address indexed attester, uint256 amount);
+    event StakingQueueConfigUpdated(StakingQueueConfig config);
 
-  function queueSetSlasher(address _slasher) external;
-  function cancelSetSlasher() external;
-  function finalizeSetSlasher() external;
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external;
-  function flushEntryQueue() external;
-  function flushEntryQueue(uint256 _toAdd) external;
-  function initiateWithdraw(address _attester, address _recipient) external returns (bool);
-  function finalizeWithdraw(address _attester) external;
-  function slash(address _attester, uint256 _amount) external returns (bool);
-  function vote(uint256 _proposalId) external;
-  function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
+    function queueSetSlasher(address _slasher) external;
+    function cancelSetSlasher() external;
+    function finalizeSetSlasher() external;
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external;
+    function flushEntryQueue() external;
+    function flushEntryQueue(uint256 _toAdd) external;
+    function initiateWithdraw(address _attester, address _recipient) external returns (bool);
+    function finalizeWithdraw(address _attester) external;
+    function slash(address _attester, uint256 _amount) external returns (bool);
+    function vote(uint256 _proposalId) external;
+    function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
 
-  function getEntryQueueFlushSize() external view returns (uint256);
-  function getActiveAttesterCount() external view returns (uint256);
+    function getEntryQueueFlushSize() external view returns (uint256);
+    function getActiveAttesterCount() external view returns (uint256);
 }
 
 /**
@@ -3345,91 +3389,92 @@ interface IStakingCore {
  * just compute them on the fly on the proposer, since we need the committees to be provided as calldata.
  */
 contract SlashPayloadCloneable is IPayload {
-  using Clones for address;
+    using Clones for address;
 
-  /**
-   * @notice Get the actions to execute for this slash payload
-   * @return actions Array of actions to slash validators
-   */
-  function getActions() external view override(IPayload) returns (IPayload.Action[] memory actions) {
-    (address validatorSelection, address[] memory validators, uint96[] memory amounts) = _getImmutableArgs();
+    /**
+     * @notice Get the actions to execute for this slash payload
+     * @return actions Array of actions to slash validators
+     */
+    function getActions() external view override(IPayload) returns (IPayload.Action[] memory actions) {
+        (address validatorSelection, address[] memory validators, uint96[] memory amounts) = _getImmutableArgs();
 
-    actions = new IPayload.Action[](validators.length);
+        actions = new IPayload.Action[](validators.length);
 
-    for (uint256 i = 0; i < validators.length; i++) {
-      actions[i] = IPayload.Action({
-        target: validatorSelection, data: abi.encodeWithSelector(IStakingCore.slash.selector, validators[i], amounts[i])
-      });
+        for (uint256 i = 0; i < validators.length; i++) {
+            actions[i] = IPayload.Action({
+                target: validatorSelection,
+                data: abi.encodeWithSelector(IStakingCore.slash.selector, validators[i], amounts[i])
+            });
+        }
     }
-  }
 
-  /**
-   * @notice Get the URI for this payload
-   * @return The URI string
-   */
-  function getURI() external pure override(IPayload) returns (string memory) {
-    return "SlashPayload";
-  }
-
-  /**
-   * @notice Decode the immutable arguments stored in the clone's bytecode
-   * @return validatorSelection The address of the validator selection contract
-   * @return validators Array of validator addresses to slash
-   * @return amounts Array of amounts to slash for each validator
-   */
-  function _getImmutableArgs()
-    private
-    view
-    returns (address validatorSelection, address[] memory validators, uint96[] memory amounts)
-  {
-    // Fetch immutable args from clone's bytecode
-    bytes memory args = Clones.fetchCloneArgs(address(this));
-
-    // Decode the arguments
-    // Layout: [validatorSelection(20 bytes)][arrayLength(32 bytes)][validators+amounts array data]
-    assembly {
-      // Read validator selection address (first 20 bytes)
-      validatorSelection := shr(96, mload(add(args, 0x20)))
-
-      // Read array length (next 32 bytes after the address)
-      let arrayLen := mload(add(args, 0x34))
-
-      // Allocate memory for validators array
-      validators := mload(0x40)
-      mstore(validators, arrayLen)
-      let validatorsData := add(validators, 0x20)
-
-      // Allocate memory for amounts array
-      amounts := add(validatorsData, mul(arrayLen, 0x20))
-      mstore(amounts, arrayLen)
-      let amountsData := add(amounts, 0x20)
-
-      // Update free memory pointer
-      mstore(0x40, add(amountsData, mul(arrayLen, 0x20)))
-
-      // Copy validator addresses and amounts
-      let srcPtr := add(args, 0x54) // Start after validatorSelection + arrayLength
-
-      for { let i := 0 } lt(i, arrayLen) { i := add(i, 1) } {
-        // Read validator address (20 bytes)
-        let validator := shr(96, mload(srcPtr))
-        mstore(add(validatorsData, mul(i, 0x20)), validator)
-        srcPtr := add(srcPtr, 0x14)
-
-        // Read amount (12 bytes for uint96)
-        let amount := shr(160, mload(srcPtr))
-        mstore(add(amountsData, mul(i, 0x20)), amount)
-        srcPtr := add(srcPtr, 0x0c)
-      }
+    /**
+     * @notice Get the URI for this payload
+     * @return The URI string
+     */
+    function getURI() external pure override(IPayload) returns (string memory) {
+        return "SlashPayload";
     }
-  }
+
+    /**
+     * @notice Decode the immutable arguments stored in the clone's bytecode
+     * @return validatorSelection The address of the validator selection contract
+     * @return validators Array of validator addresses to slash
+     * @return amounts Array of amounts to slash for each validator
+     */
+    function _getImmutableArgs()
+        private
+        view
+        returns (address validatorSelection, address[] memory validators, uint96[] memory amounts)
+    {
+        // Fetch immutable args from clone's bytecode
+        bytes memory args = Clones.fetchCloneArgs(address(this));
+
+        // Decode the arguments
+        // Layout: [validatorSelection(20 bytes)][arrayLength(32 bytes)][validators+amounts array data]
+        assembly {
+            // Read validator selection address (first 20 bytes)
+            validatorSelection := shr(96, mload(add(args, 0x20)))
+
+            // Read array length (next 32 bytes after the address)
+            let arrayLen := mload(add(args, 0x34))
+
+            // Allocate memory for validators array
+            validators := mload(0x40)
+            mstore(validators, arrayLen)
+            let validatorsData := add(validators, 0x20)
+
+            // Allocate memory for amounts array
+            amounts := add(validatorsData, mul(arrayLen, 0x20))
+            mstore(amounts, arrayLen)
+            let amountsData := add(amounts, 0x20)
+
+            // Update free memory pointer
+            mstore(0x40, add(amountsData, mul(arrayLen, 0x20)))
+
+            // Copy validator addresses and amounts
+            let srcPtr := add(args, 0x54) // Start after validatorSelection + arrayLength
+
+            for { let i := 0 } lt(i, arrayLen) { i := add(i, 1) } {
+                // Read validator address (20 bytes)
+                let validator := shr(96, mload(srcPtr))
+                mstore(add(validatorsData, mul(i, 0x20)), validator)
+                srcPtr := add(srcPtr, 0x14)
+
+                // Read amount (12 bytes for uint96)
+                let amount := shr(160, mload(srcPtr))
+                mstore(add(amountsData, mul(i, 0x20)), amount)
+                srcPtr := add(srcPtr, 0x0c)
+            }
+        }
+    }
 }
 
 // Signature
 struct Signature {
-  uint8 v;
-  bytes32 r;
-  bytes32 s;
+    uint8 v;
+    bytes32 r;
+    bytes32 s;
 }
 
 /**
@@ -3482,10 +3527,11 @@ library ECDSA {
      * - with https://web3js.readthedocs.io/en/v1.3.4/web3-eth-accounts.html#sign[Web3.js]
      * - with https://docs.ethers.io/v5/api/signer/#Signer-signMessage[ethers]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes memory signature
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes memory signature)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         if (signature.length == 65) {
             bytes32 r;
             bytes32 s;
@@ -3528,11 +3574,11 @@ library ECDSA {
      *
      * See https://eips.ethereum.org/EIPS/eip-2098[ERC-2098 short signatures]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         unchecked {
             bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
             // We do not check for an overflow here since the shift operation results in 0 or 1.
@@ -3554,12 +3600,11 @@ library ECDSA {
      * @dev Overload of {ECDSA-tryRecover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -3611,65 +3656,65 @@ library ECDSA {
 error SignatureLib__InvalidSignature(address, address);
 
 library SignatureLib {
-  /**
-   * @notice Verifies a signature, throws if the signature is invalid or empty
-   *
-   * @param _signature - The signature to verify
-   * @param _signer - The expected signer of the signature
-   * @param _digest - The digest that was signed
-   */
-  function verify(Signature memory _signature, address _signer, bytes32 _digest) internal pure returns (bool) {
-    address recovered = ECDSA.recover(_digest, _signature.v, _signature.r, _signature.s);
-    require(_signer == recovered, SignatureLib__InvalidSignature(_signer, recovered));
-    return true;
-  }
+    /**
+     * @notice Verifies a signature, throws if the signature is invalid or empty
+     *
+     * @param _signature - The signature to verify
+     * @param _signer - The expected signer of the signature
+     * @param _digest - The digest that was signed
+     */
+    function verify(Signature memory _signature, address _signer, bytes32 _digest) internal pure returns (bool) {
+        address recovered = ECDSA.recover(_digest, _signature.v, _signature.r, _signature.s);
+        require(_signer == recovered, SignatureLib__InvalidSignature(_signer, recovered));
+        return true;
+    }
 
-  function isEmpty(Signature memory _signature) internal pure returns (bool) {
-    return _signature.v == 0;
-  }
+    function isEmpty(Signature memory _signature) internal pure returns (bool) {
+        return _signature.v == 0;
+    }
 }
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
@@ -3677,48 +3722,48 @@ type Timestamp is uint256;
 type CompressedTimestamp is uint32;
 
 function eqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) == Slot.unwrap(_b);
+    return Slot.unwrap(_a) == Slot.unwrap(_b);
 }
 
 function neqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) != Slot.unwrap(_b);
+    return Slot.unwrap(_a) != Slot.unwrap(_b);
 }
 
 function gteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) >= Slot.unwrap(_b);
+    return Slot.unwrap(_a) >= Slot.unwrap(_b);
 }
 
 function gtSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) > Slot.unwrap(_b);
+    return Slot.unwrap(_a) > Slot.unwrap(_b);
 }
 
 function lteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) <= Slot.unwrap(_b);
+    return Slot.unwrap(_a) <= Slot.unwrap(_b);
 }
 
 function ltSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) < Slot.unwrap(_b);
+    return Slot.unwrap(_a) < Slot.unwrap(_b);
 }
 
 // Slot
 
 function addSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
 }
 
 function subSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
 }
 
 using {
-  eqSlot as ==,
-  neqSlot as !=,
-  gteSlot as >=,
-  gtSlot as >,
-  lteSlot as <=,
-  ltSlot as <,
-  addSlot as +,
-  subSlot as -
+    eqSlot as ==,
+    neqSlot as !=,
+    gteSlot as >=,
+    gtSlot as >,
+    lteSlot as <=,
+    ltSlot as <,
+    addSlot as +,
+    subSlot as -
 } for Slot global;
 
 type Slot is uint256;
@@ -3726,48 +3771,48 @@ type Slot is uint256;
 type CompressedSlot is uint32;
 
 function addEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
 }
 
 function subEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
 }
 
 // Epoch
 
 function eqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) == Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) == Epoch.unwrap(_b);
 }
 
 function neqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) != Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) != Epoch.unwrap(_b);
 }
 
 function gteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
 }
 
 function gtEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) > Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) > Epoch.unwrap(_b);
 }
 
 function lteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
 }
 
 function ltEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) < Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) < Epoch.unwrap(_b);
 }
 
 using {
-  addEpoch as +,
-  subEpoch as -,
-  eqEpoch as ==,
-  neqEpoch as !=,
-  gteEpoch as >=,
-  gtEpoch as >,
-  lteEpoch as <=,
-  ltEpoch as <
+    addEpoch as +,
+    subEpoch as -,
+    eqEpoch as ==,
+    neqEpoch as !=,
+    gteEpoch as >=,
+    gtEpoch as >,
+    lteEpoch as <=,
+    ltEpoch as <
 } for Epoch global;
 
 type Epoch is uint256;
@@ -3775,72 +3820,72 @@ type Epoch is uint256;
 type CompressedEpoch is uint32;
 
 library CompressedTimeMath {
-  function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
-    return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
-  }
+    function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
+        return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
+    }
 
-  function compress(Slot _slot) internal pure returns (CompressedSlot) {
-    return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
-  }
+    function compress(Slot _slot) internal pure returns (CompressedSlot) {
+        return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
+    }
 
-  function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
-    return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
-  }
+    function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
+        return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
+    }
 
-  function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
-    return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
-  }
+    function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
+        return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
+    }
 
-  function decompress(CompressedSlot _slot) internal pure returns (Slot) {
-    return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
-  }
+    function decompress(CompressedSlot _slot) internal pure returns (Slot) {
+        return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
+    }
 
-  function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
-    return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
-  }
+    function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
+        return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
+    }
 }
 
 function addSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
 }
 
 function subSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
 }
 
 function eqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
 }
 
 function neqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
 }
 
 function ltSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
 }
 
 function lteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
 }
 
 function gtSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
 }
 
 function gteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
 }
 
 using {
-  addSlashRound as +,
-  subSlashRound as -,
-  eqSlashRound as ==,
-  neqSlashRound as !=,
-  ltSlashRound as <,
-  lteSlashRound as <=,
-  gtSlashRound as >,
-  gteSlashRound as >=
+    addSlashRound as +,
+    subSlashRound as -,
+    eqSlashRound as ==,
+    neqSlashRound as !=,
+    ltSlashRound as <,
+    lteSlashRound as <=,
+    gtSlashRound as >,
+    gteSlashRound as >=
 } for SlashRound global;
 
 type SlashRound is uint256;
@@ -3848,13 +3893,13 @@ type SlashRound is uint256;
 type CompressedSlashRound is uint32;
 
 library CompressedSlashRoundMath {
-  function compress(SlashRound _round) internal pure returns (CompressedSlashRound) {
-    return CompressedSlashRound.wrap(SafeCast.toUint32(SlashRound.unwrap(_round)));
-  }
+    function compress(SlashRound _round) internal pure returns (CompressedSlashRound) {
+        return CompressedSlashRound.wrap(SafeCast.toUint32(SlashRound.unwrap(_round)));
+    }
 
-  function decompress(CompressedSlashRound _round) internal pure returns (SlashRound) {
-    return SlashRound.wrap(uint256(CompressedSlashRound.unwrap(_round)));
-  }
+    function decompress(CompressedSlashRound _round) internal pure returns (SlashRound) {
+        return SlashRound.wrap(uint256(CompressedSlashRound.unwrap(_round)));
+    }
 }
 
 /**
@@ -3868,18 +3913,18 @@ library CompressedSlashRoundMath {
  * @param EXITING - The candidate is exiting and waiting for the exit delay to pass
  */
 enum Status {
-  NONE,
-  ACTIVE,
-  PROPOSING,
-  EXITING
+    NONE,
+    ACTIVE,
+    PROPOSING,
+    EXITING
 }
 
 function addHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
 }
 
 function subHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
 }
 
 using {addHatch as +, subHatch as -} for Hatch global;
@@ -3903,266 +3948,266 @@ type Hatch is uint256;
  * src/core/libraries/Errors.sol:Errors errors`
  */
 library Errors_1 {
-  // DEVNET related
-  error DevNet__NoPruningAllowed(); // 0x6984c590
-  error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
+    // DEVNET related
+    error DevNet__NoPruningAllowed(); // 0x6984c590
+    error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
 
-  // Inbox
-  error Inbox__Unauthorized(); // 0xe5336a6b
-  error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
-  error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
-  error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
-  error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
-  error Inbox__MustBuildBeforeConsume(); // 0xc4901999
+    // Inbox
+    error Inbox__Unauthorized(); // 0xe5336a6b
+    error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
+    error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
+    error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
+    error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
+    error Inbox__MustBuildBeforeConsume(); // 0xc4901999
 
-  // Outbox
-  error Outbox__Unauthorized(); // 0x2c9490c2
-  error Outbox__InvalidChainId(); // 0x577ec7c4
-  error Outbox__VersionMismatch(uint256 expected, uint256 actual);
-  error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
-  error Outbox__IncompatibleEntryArguments(
-    bytes32 messageHash,
-    uint64 storedFee,
-    uint64 feePassed,
-    uint32 storedVersion,
-    uint32 versionPassed,
-    uint32 storedDeadline,
-    uint32 deadlinePassed
-  ); // 0x5e789f34
-  error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
-  error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
-  error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
-  error Outbox__PathTooLong();
-  error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
-  error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
+    // Outbox
+    error Outbox__Unauthorized(); // 0x2c9490c2
+    error Outbox__InvalidChainId(); // 0x577ec7c4
+    error Outbox__VersionMismatch(uint256 expected, uint256 actual);
+    error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
+    error Outbox__IncompatibleEntryArguments(
+        bytes32 messageHash,
+        uint64 storedFee,
+        uint64 feePassed,
+        uint32 storedVersion,
+        uint32 versionPassed,
+        uint32 storedDeadline,
+        uint32 deadlinePassed
+    ); // 0x5e789f34
+    error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
+    error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
+    error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
+    error Outbox__PathTooLong();
+    error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
+    error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
 
-  // Rollup
-  error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
-  error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
-  error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
-  error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
-  error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
-  error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
-  error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
-  error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidProof(); // 0xa5b2ba17
-  error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
-  error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
-  error Rollup__InvalidAttestations();
-  error Rollup__AttestationsAreValid();
-  error Rollup__InvalidAttestationIndex();
-  error Rollup__CheckpointAlreadyProven();
-  error Rollup__CheckpointNotInPendingChain();
-  error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
-  error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
-  error Rollup__NoEpochToProve(); // 0xcbaa3951
-  error Rollup__NonSequentialProving(); // 0x1e5be132
-  error Rollup__NothingToPrune(); // 0x850defd3
-  error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
-  error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
-  error Rollup__TimestampTooOld(); // 0x72ed9c81
-  error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
-  error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
-  error Rollup__NonZeroDaFee(); // 0xd9c75f52
-  error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
-  error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
-  error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
-  error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
-  error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
-  error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
-  error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
-  error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error Rollup__ManaLimitExceeded();
-  error Rollup__InvalidFirstEpochProof();
-  error Rollup__InvalidCoinbase();
-  error Rollup__UnavailableTempCheckpointLog(
-    uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
-  );
-  error Rollup__NoBlobsInCheckpoint();
-  error Rollup__CannotInvalidateEscapeHatch();
-  error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
-  error Rollup__FieldElementOutOfRange(bytes32 value);
+    // Rollup
+    error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
+    error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
+    error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
+    error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
+    error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
+    error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
+    error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
+    error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidProof(); // 0xa5b2ba17
+    error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
+    error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
+    error Rollup__InvalidAttestations();
+    error Rollup__AttestationsAreValid();
+    error Rollup__InvalidAttestationIndex();
+    error Rollup__CheckpointAlreadyProven();
+    error Rollup__CheckpointNotInPendingChain();
+    error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
+    error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
+    error Rollup__NoEpochToProve(); // 0xcbaa3951
+    error Rollup__NonSequentialProving(); // 0x1e5be132
+    error Rollup__NothingToPrune(); // 0x850defd3
+    error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
+    error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
+    error Rollup__TimestampTooOld(); // 0x72ed9c81
+    error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
+    error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
+    error Rollup__NonZeroDaFee(); // 0xd9c75f52
+    error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
+    error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
+    error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
+    error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
+    error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
+    error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
+    error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
+    error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error Rollup__ManaLimitExceeded();
+    error Rollup__InvalidFirstEpochProof();
+    error Rollup__InvalidCoinbase();
+    error Rollup__UnavailableTempCheckpointLog(
+        uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
+    );
+    error Rollup__NoBlobsInCheckpoint();
+    error Rollup__CannotInvalidateEscapeHatch();
+    error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
+    error Rollup__FieldElementOutOfRange(bytes32 value);
 
-  // EscapeHatch
-  error EscapeHatch__AlreadyInCandidateSet(address candidate);
-  error EscapeHatch__NotInCandidateSet(address candidate);
-  error EscapeHatch__InvalidStatus(Status expected, Status actual);
-  error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
-  error EscapeHatch__OnlyRollup(address caller, address rollup);
-  error EscapeHatch__NoDesignatedProposer(Hatch hatch);
-  error EscapeHatch__InvalidConfiguration();
-  error EscapeHatch__SetUnstable(Hatch hatch);
-  error EscapeHatch__AlreadyValidated(Hatch hatch);
-  error EscapeHatch__HatchTooEarly(Hatch hatch);
+    // EscapeHatch
+    error EscapeHatch__AlreadyInCandidateSet(address candidate);
+    error EscapeHatch__NotInCandidateSet(address candidate);
+    error EscapeHatch__InvalidStatus(Status expected, Status actual);
+    error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
+    error EscapeHatch__OnlyRollup(address caller, address rollup);
+    error EscapeHatch__NoDesignatedProposer(Hatch hatch);
+    error EscapeHatch__InvalidConfiguration();
+    error EscapeHatch__SetUnstable(Hatch hatch);
+    error EscapeHatch__AlreadyValidated(Hatch hatch);
+    error EscapeHatch__HatchTooEarly(Hatch hatch);
 
-  // ProposedHeaderLib
-  error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
-  error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
+    // ProposedHeaderLib
+    error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
+    error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
 
-  // MerkleLib
-  error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
-  error MerkleLib__InvalidIndexForPathLength();
+    // MerkleLib
+    error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
+    error MerkleLib__InvalidIndexForPathLength();
 
-  // SampleLib
-  error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
-  error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
+    // SampleLib
+    error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
+    error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
 
-  // Sequencer Selection (ValidatorSelection)
-  error ValidatorSelection__EpochNotSetup(); // 0x10816cae
-  error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
-  error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
-  error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
-  error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
-  error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
-  error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
-  error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
-  error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
-  error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
-  error ValidatorSelection__EscapeHatchAlreadySet();
-  error ValidatorSelection__EscapeHatchCannotBeZero();
-  error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
+    // Sequencer Selection (ValidatorSelection)
+    error ValidatorSelection__EpochNotSetup(); // 0x10816cae
+    error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
+    error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
+    error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
+    error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
+    error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
+    error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
+    error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
+    error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
+    error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
+    error ValidatorSelection__EscapeHatchAlreadySet();
+    error ValidatorSelection__EscapeHatchCannotBeZero();
+    error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
 
-  // Staking
-  error Staking__AlreadyQueued(address _attester);
-  error Staking__QueueEmpty();
-  error Staking__DepositOutOfGas();
-  error Staking__AlreadyActive(address attester); // 0x5e206fa4
-  error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
-  error Staking__AlreadyRegistered(address instance, address attester);
-  error Staking__CannotSlashExitedStake(address); // 0x45bf4940
-  error Staking__FailedToRemove(address); // 0xa7d7baab
-  error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
-  error Staking__InvalidRecipient(address); // 0x7e2f7f1c
-  error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
-  error Staking__NoOneToSlash(address); // 0x7e2f7f1c
-  error Staking__NotExiting(address); // 0xef566ee0
-  error Staking__InitiateWithdrawNeeded(address);
-  error Staking__NotSlasher(address, address); // 0x23a6f432
-  error Staking__NotWithdrawer(address, address); // 0x8e668e5d
-  error Staking__NothingToExit(address); // 0xd2aac9b6
-  error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
-  error Staking__WithdrawFailed(address); // 0x377422c1
-  error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
-  error Staking__NotRollup(address); // 0xf5509eb3
-  error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
-  error Staking__InvalidRollupAddress(address); // 0xd876720e
-  error Staking__NotCanonical(address); // 0x6244212e
-  error Staking__InstanceDoesNotExist(address);
-  error Staking__InsufficientPower(uint256, uint256);
-  error Staking__AlreadyExiting(address);
-  error Staking__FatalError(string);
-  error Staking__NotOurProposal(uint256, address, address);
-  error Staking__IncorrectGovProposer(uint256);
-  error Staking__GovernanceAlreadySet();
-  error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
-  error Staking__InvalidStakingQueueConfig();
-  error Staking__InvalidNormalFlushSizeQuotient();
-  error Staking__InvalidMaxQueueFlushSize();
-  error Staking__InvalidBootstrapFlushSize();
-  error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
-  error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
-  error Staking__SlasherProposerNotInitialized(address slasher);
-  error Staking__NoPendingSlasher();
-  error Staking__SlasherNotReady(Timestamp readyAt);
+    // Staking
+    error Staking__AlreadyQueued(address _attester);
+    error Staking__QueueEmpty();
+    error Staking__DepositOutOfGas();
+    error Staking__AlreadyActive(address attester); // 0x5e206fa4
+    error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
+    error Staking__AlreadyRegistered(address instance, address attester);
+    error Staking__CannotSlashExitedStake(address); // 0x45bf4940
+    error Staking__FailedToRemove(address); // 0xa7d7baab
+    error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
+    error Staking__InvalidRecipient(address); // 0x7e2f7f1c
+    error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
+    error Staking__NoOneToSlash(address); // 0x7e2f7f1c
+    error Staking__NotExiting(address); // 0xef566ee0
+    error Staking__InitiateWithdrawNeeded(address);
+    error Staking__NotSlasher(address, address); // 0x23a6f432
+    error Staking__NotWithdrawer(address, address); // 0x8e668e5d
+    error Staking__NothingToExit(address); // 0xd2aac9b6
+    error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
+    error Staking__WithdrawFailed(address); // 0x377422c1
+    error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
+    error Staking__NotRollup(address); // 0xf5509eb3
+    error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
+    error Staking__InvalidRollupAddress(address); // 0xd876720e
+    error Staking__NotCanonical(address); // 0x6244212e
+    error Staking__InstanceDoesNotExist(address);
+    error Staking__InsufficientPower(uint256, uint256);
+    error Staking__AlreadyExiting(address);
+    error Staking__FatalError(string);
+    error Staking__NotOurProposal(uint256, address, address);
+    error Staking__IncorrectGovProposer(uint256);
+    error Staking__GovernanceAlreadySet();
+    error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
+    error Staking__InvalidStakingQueueConfig();
+    error Staking__InvalidNormalFlushSizeQuotient();
+    error Staking__InvalidMaxQueueFlushSize();
+    error Staking__InvalidBootstrapFlushSize();
+    error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
+    error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
+    error Staking__SlasherProposerNotInitialized(address slasher);
+    error Staking__NoPendingSlasher();
+    error Staking__SlasherNotReady(Timestamp readyAt);
 
-  // Fee Juice Portal
-  error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
-  error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
-  error FeeJuicePortal__Unauthorized(); // 0x67e3691e
+    // Fee Juice Portal
+    error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
+    error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
+    error FeeJuicePortal__Unauthorized(); // 0x67e3691e
 
-  // Proof Commitment Escrow
-  error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
-  error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
-  error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
+    // Proof Commitment Escrow
+    error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
+    error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
+    error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
 
-  // FeeLib
-  error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
-  error FeeLib__AlreadyPreheated();
-  error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
-  error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
-  error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
-  error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
-  error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
-  error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
+    // FeeLib
+    error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
+    error FeeLib__AlreadyPreheated();
+    error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
+    error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
+    error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
+    error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
+    error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
+    error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
 
-  // SignatureLib (duplicated)
-  error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
+    // SignatureLib (duplicated)
+    error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
 
-  error AttestationLib__InvalidDataSize(uint256, uint256);
-  error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignersSizeMismatch(uint256, uint256);
-  error AttestationLib__NotASignatureAtIndex(uint256 index);
-  error AttestationLib__NotAnAddressAtIndex(uint256 index);
+    error AttestationLib__InvalidDataSize(uint256, uint256);
+    error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignersSizeMismatch(uint256, uint256);
+    error AttestationLib__NotASignatureAtIndex(uint256 index);
+    error AttestationLib__NotAnAddressAtIndex(uint256 index);
 
-  // RewardBooster
-  error RewardBooster__OnlyRollup(address caller);
-  error RewardBooster__InvalidConfig();
+    // RewardBooster
+    error RewardBooster__OnlyRollup(address caller);
+    error RewardBooster__InvalidConfig();
 
-  error RewardLib__InvalidSequencerBps();
-  error RewardLib__ZeroShares(address prover);
+    error RewardLib__InvalidSequencerBps();
+    error RewardLib__ZeroShares(address prover);
 
-  // SlashingProposer
-  error SlashingProposer__InvalidSignature();
-  error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
-  error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundNotComplete(SlashRound round);
-  error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
-  error SlashingProposer__InvalidCommitteeCommitment();
-  error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
-  error SlashingProposer__QuorumMustBeGreaterThanZero();
-  error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
-  error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
-  error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
-  error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
-  error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
-  error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
-  error SlashingProposer__SlashAmountTooLarge();
-  error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
-  error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
-  error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
-  error SlashingProposer__VotingNotOpen(SlashRound currentRound);
-  error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
-  error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
-  error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
-  error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
-  error SlashingProposer__SlashAmountMustBeGtZero(string info);
+    // SlashingProposer
+    error SlashingProposer__InvalidSignature();
+    error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
+    error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundNotComplete(SlashRound round);
+    error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
+    error SlashingProposer__InvalidCommitteeCommitment();
+    error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
+    error SlashingProposer__QuorumMustBeGreaterThanZero();
+    error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
+    error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
+    error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
+    error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
+    error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
+    error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
+    error SlashingProposer__SlashAmountTooLarge();
+    error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
+    error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
+    error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
+    error SlashingProposer__VotingNotOpen(SlashRound currentRound);
+    error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
+    error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
+    error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
+    error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
+    error SlashingProposer__SlashAmountMustBeGtZero(string info);
 
-  // SlashPayloadLib
-  error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
+    // SlashPayloadLib
+    error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
 
-  // OpenZeppelin dependencies
+    // OpenZeppelin dependencies
 
-  // ECDSA
-  error ECDSAInvalidSignature();
-  error ECDSAInvalidSignatureLength(uint256 length);
-  error ECDSAInvalidSignatureS(bytes32 s);
+    // ECDSA
+    error ECDSAInvalidSignature();
+    error ECDSAInvalidSignatureLength(uint256 length);
+    error ECDSAInvalidSignatureS(bytes32 s);
 
-  // Ownable
-  error OwnableUnauthorizedAccount(address account);
-  error OwnableInvalidOwner(address owner);
+    // Ownable
+    error OwnableUnauthorizedAccount(address account);
+    error OwnableInvalidOwner(address owner);
 
-  // Checkpoints
-  error CheckpointUnorderedInsertion();
+    // Checkpoints
+    error CheckpointUnorderedInsertion();
 
-  // ERC20
-  error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
-  error ERC20InvalidSender(address sender);
-  error ERC20InvalidReceiver(address receiver);
-  error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
-  error ERC20InvalidApprover(address approver);
-  error ERC20InvalidSpender(address spender);
+    // ERC20
+    error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
+    error ERC20InvalidSender(address sender);
+    error ERC20InvalidReceiver(address receiver);
+    error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
+    error ERC20InvalidApprover(address approver);
+    error ERC20InvalidSpender(address spender);
 
-  // SafeCast
-  error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
-  error SafeCastOverflowedIntToUint(int256 value);
-  error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
-  error SafeCastOverflowedUintToInt(uint256 value);
+    // SafeCast
+    error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
+    error SafeCastOverflowedIntToUint(int256 value);
+    error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
+    error SafeCastOverflowedUintToInt(uint256 value);
 }
 
 /**
@@ -4173,103 +4218,104 @@ library Errors_1 {
  *      suitable for use with EIP-1167 minimal proxy clones with immutable arguments
  */
 library SlashPayloadLib {
-  /**
-   * @notice Encode immutable arguments for SlashPayloadCloneable clones
-   * @dev Encodes data in the format expected by SlashPayloadCloneable._getImmutableArgs()
-   *      Layout: [validatorSelection(20 bytes)][arrayLength(32 bytes)][validators+amounts array data]
-   *      Each validator entry: [address(20 bytes)][amount(12 bytes for uint96)]
-   * @param _validatorSelection Address of the validator selection contract
-   * @param _validators Array of validator addresses to slash
-   * @param _amounts Array of amounts to slash for each validator (uint96 values)
-   * @return Encoded arguments for use with cloneDeterministicWithImmutableArgs
-   */
-  function encodeImmutableArgs(address _validatorSelection, address[] memory _validators, uint96[] memory _amounts)
-    internal
-    pure
-    returns (bytes memory)
-  {
-    require(
-      _validators.length == _amounts.length, Errors_1.SlashPayload_ArraySizeMismatch(_validators.length, _amounts.length)
-    );
+    /**
+     * @notice Encode immutable arguments for SlashPayloadCloneable clones
+     * @dev Encodes data in the format expected by SlashPayloadCloneable._getImmutableArgs()
+     *      Layout: [validatorSelection(20 bytes)][arrayLength(32 bytes)][validators+amounts array data]
+     *      Each validator entry: [address(20 bytes)][amount(12 bytes for uint96)]
+     * @param _validatorSelection Address of the validator selection contract
+     * @param _validators Array of validator addresses to slash
+     * @param _amounts Array of amounts to slash for each validator (uint96 values)
+     * @return Encoded arguments for use with cloneDeterministicWithImmutableArgs
+     */
+    function encodeImmutableArgs(address _validatorSelection, address[] memory _validators, uint96[] memory _amounts)
+        internal
+        pure
+        returns (bytes memory)
+    {
+        require(
+            _validators.length == _amounts.length,
+            Errors_1.SlashPayload_ArraySizeMismatch(_validators.length, _amounts.length)
+        );
 
-    // Calculate total size: 20 bytes (address) + 32 bytes (length) + (20 + 12) * length
-    uint256 dataSize = 52 + 32 * _validators.length;
-    bytes memory data = new bytes(dataSize);
+        // Calculate total size: 20 bytes (address) + 32 bytes (length) + (20 + 12) * length
+        uint256 dataSize = 52 + 32 * _validators.length;
+        bytes memory data = new bytes(dataSize);
 
-    assembly {
-      let ptr := add(data, 0x20)
+        assembly {
+            let ptr := add(data, 0x20)
 
-      // Store validator selection address (20 bytes)
-      // Shift left by 96 bits (12 bytes) to align to the left of the 32-byte slot
-      mstore(ptr, shl(96, _validatorSelection))
-      ptr := add(ptr, 0x14) // Move 20 bytes forward
+            // Store validator selection address (20 bytes)
+            // Shift left by 96 bits (12 bytes) to align to the left of the 32-byte slot
+            mstore(ptr, shl(96, _validatorSelection))
+            ptr := add(ptr, 0x14) // Move 20 bytes forward
 
-      // Store array length (32 bytes)
-      mstore(ptr, mload(_validators))
-      ptr := add(ptr, 0x20) // Move 32 bytes forward
+            // Store array length (32 bytes)
+            mstore(ptr, mload(_validators))
+            ptr := add(ptr, 0x20) // Move 32 bytes forward
 
-      // Store validators and amounts
-      let len := mload(_validators)
-      let validatorsPtr := add(_validators, 0x20)
-      let amountsPtr := add(_amounts, 0x20)
+            // Store validators and amounts
+            let len := mload(_validators)
+            let validatorsPtr := add(_validators, 0x20)
+            let amountsPtr := add(_amounts, 0x20)
 
-      for { let i := 0 } lt(i, len) { i := add(i, 1) } {
-        // Store validator address (20 bytes)
-        // Shift left by 96 bits to align to the left of the 32-byte slot
-        mstore(ptr, shl(96, mload(add(validatorsPtr, mul(i, 0x20)))))
-        ptr := add(ptr, 0x14) // Move 20 bytes forward
+            for { let i := 0 } lt(i, len) { i := add(i, 1) } {
+                // Store validator address (20 bytes)
+                // Shift left by 96 bits to align to the left of the 32-byte slot
+                mstore(ptr, shl(96, mload(add(validatorsPtr, mul(i, 0x20)))))
+                ptr := add(ptr, 0x14) // Move 20 bytes forward
 
-        // Store amount (12 bytes for uint96)
-        // Shift left by 160 bits (20 bytes) to align to the left of the remaining space
-        mstore(ptr, shl(160, mload(add(amountsPtr, mul(i, 0x20)))))
-        ptr := add(ptr, 0x0c) // Move 12 bytes forward
-      }
+                // Store amount (12 bytes for uint96)
+                // Shift left by 160 bits (20 bytes) to align to the left of the remaining space
+                mstore(ptr, shl(160, mload(add(amountsPtr, mul(i, 0x20)))))
+                ptr := add(ptr, 0x0c) // Move 12 bytes forward
+            }
+        }
+
+        return data;
     }
-
-    return data;
-  }
 }
 
 interface ISlasher {
-  event VetoedPayload(address indexed payload);
-  event SlashingDisabled(uint256 disabledUntil);
+    event VetoedPayload(address indexed payload);
+    event SlashingDisabled(uint256 disabledUntil);
 
-  function slash(IPayload _payload) external returns (bool);
-  function vetoPayload(IPayload _payload) external returns (bool);
-  function setSlashingEnabled(bool _enabled) external;
-  function isSlashingEnabled() external view returns (bool);
+    function slash(IPayload _payload) external returns (bool);
+    function vetoPayload(IPayload _payload) external returns (bool);
+    function setSlashingEnabled(bool _enabled) external;
+    function isSlashingEnabled() external view returns (bool);
 }
 
 interface IValidatorSelectionCore {
-  event EscapeHatchSet(address escapeHatch);
+    event EscapeHatchSet(address escapeHatch);
 
-  function setupEpoch() external;
-  function checkpointRandao() external;
-  function setEscapeHatch(address _escapeHatch) external;
+    function setupEpoch() external;
+    function checkpointRandao() external;
+    function setEscapeHatch(address _escapeHatch) external;
 }
 
 interface IEmperor {
-  // Not view because it might rely on transient storage.
-  // Calls are essentially trusted
-  function getCurrentProposer() external returns (address);
+    // Not view because it might rely on transient storage.
+    // Calls are essentially trusted
+    function getCurrentProposer() external returns (address);
 
-  function getCurrentSlot() external view returns (Slot);
+    function getCurrentSlot() external view returns (Slot);
 }
 
 interface IEscapeHatchCore {
-  event CandidateJoined(address indexed candidate);
-  event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
-  event CandidateExited(address indexed candidate, uint256 amountReturned);
-  event CandidateSelected(Hatch indexed hatch, address indexed candidate);
-  event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
-  event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
+    event CandidateJoined(address indexed candidate);
+    event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
+    event CandidateExited(address indexed candidate, uint256 amountReturned);
+    event CandidateSelected(Hatch indexed hatch, address indexed candidate);
+    event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
+    event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
 
-  function joinCandidateSet() external;
-  function initiateExit() external;
-  function leaveCandidateSet() external;
-  function selectCandidates() external;
-  function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
-  function validateProofSubmission(Hatch _hatch) external;
+    function joinCandidateSet() external;
+    function initiateExit() external;
+    function leaveCandidateSet() external;
+    function selectCandidates() external;
+    function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
+    function validateProofSubmission(Hatch _hatch) external;
 }
 
 /**
@@ -4278,74 +4324,74 @@ interface IEscapeHatchCore {
  * @notice Information about an escape hatch candidate
  */
 struct CandidateInfo {
-  Status status;
-  uint96 amount;
-  uint32 exitableAt;
-  uint32 lastCheckpointNumber;
-  bytes32 lastSubmittedArchive;
+    Status status;
+    uint96 amount;
+    uint32 exitableAt;
+    uint32 lastCheckpointNumber;
+    bytes32 lastSubmittedArchive;
 }
 
 interface IEscapeHatch is IEscapeHatchCore {
-  function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
-  function getCurrentHatch() external view returns (Hatch);
-  function getHatch(Epoch _epoch) external view returns (Hatch);
-  function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
-  function getDesignatedProposer(Hatch _hatch) external view returns (address);
-  function isHatchPrepared(Hatch _hatch) external view returns (bool);
-  function isHatchValidated(Hatch _hatch) external view returns (bool);
-  function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
-  function getCandidateCount() external view returns (uint256);
-  function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
-  function getCandidateAtIndex(uint256 _index) external view returns (address);
-  function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
-  function isCandidate(address _candidate) external view returns (bool);
-  function getSetTimestamp(Hatch _hatch) external view returns (uint32);
-  function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
-  function getRollup() external view returns (address);
-  function getBondToken() external view returns (address);
-  function getBondSize() external view returns (uint96);
-  function getWithdrawalTax() external view returns (uint96);
-  function getFailedHatchPunishment() external view returns (uint96);
-  function getFrequency() external view returns (uint256);
-  function getActiveDuration() external view returns (uint256);
-  function getLagInHatches() external view returns (uint256);
-  function getProposingExitDelay() external view returns (uint256);
+    function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
+    function getCurrentHatch() external view returns (Hatch);
+    function getHatch(Epoch _epoch) external view returns (Hatch);
+    function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
+    function getDesignatedProposer(Hatch _hatch) external view returns (address);
+    function isHatchPrepared(Hatch _hatch) external view returns (bool);
+    function isHatchValidated(Hatch _hatch) external view returns (bool);
+    function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
+    function getCandidateCount() external view returns (uint256);
+    function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
+    function getCandidateAtIndex(uint256 _index) external view returns (address);
+    function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
+    function isCandidate(address _candidate) external view returns (bool);
+    function getSetTimestamp(Hatch _hatch) external view returns (uint32);
+    function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
+    function getRollup() external view returns (address);
+    function getBondToken() external view returns (address);
+    function getBondSize() external view returns (uint96);
+    function getWithdrawalTax() external view returns (uint96);
+    function getFailedHatchPunishment() external view returns (uint96);
+    function getFrequency() external view returns (uint256);
+    function getActiveDuration() external view returns (uint256);
+    function getLagInHatches() external view returns (uint256);
+    function getProposingExitDelay() external view returns (uint256);
 }
 
 interface IValidatorSelection is IValidatorSelectionCore, IEmperor {
-  function getProposerAt(Timestamp _ts) external returns (address);
+    function getProposerAt(Timestamp _ts) external returns (address);
 
-  // Non view as uses transient storage
-  function getCurrentEpochCommittee() external returns (address[] memory);
-  function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
-  function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
-  function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
-  function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
+    // Non view as uses transient storage
+    function getCurrentEpochCommittee() external returns (address[] memory);
+    function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
+    function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
+    function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
+    function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
 
-  // Stable
-  function getCurrentEpoch() external view returns (Epoch);
+    // Stable
+    function getCurrentEpoch() external view returns (Epoch);
 
-  // Consider removing below this point
-  function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
-  function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
+    // Consider removing below this point
+    function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
+    function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
 
-  function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
-  function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
-  function getLagInEpochsForValidatorSet() external view returns (uint256);
-  function getLagInEpochsForRandao() external view returns (uint256);
-  function getCurrentSampleSeed() external view returns (uint256);
+    function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
+    function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
+    function getLagInEpochsForValidatorSet() external view returns (uint256);
+    function getLagInEpochsForRandao() external view returns (uint256);
+    function getCurrentSampleSeed() external view returns (uint256);
 
-  function getEpochAt(Timestamp _ts) external view returns (Epoch);
-  function getSlotAt(Timestamp _ts) external view returns (Slot);
-  function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
+    function getEpochAt(Timestamp _ts) external view returns (Epoch);
+    function getSlotAt(Timestamp _ts) external view returns (Slot);
+    function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
 
-  function getGenesisTime() external view returns (Timestamp);
-  function getSlotDuration() external view returns (uint256);
-  function getEpochDuration() external view returns (uint256);
-  function getTargetCommitteeSize() external view returns (uint256);
+    function getGenesisTime() external view returns (Timestamp);
+    function getSlotDuration() external view returns (uint256);
+    function getEpochDuration() external view returns (uint256);
+    function getTargetCommitteeSize() external view returns (uint256);
 
-  function getEscapeHatch() external view returns (IEscapeHatch);
-  function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
+    function getEscapeHatch() external view returns (IEscapeHatch);
+    function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
 }
 
 /**
@@ -4414,1120 +4460,1157 @@ interface IValidatorSelection is IValidatorSelectionCore, IEmperor {
  *      - COMMITTEE_SIZE: Number of validators per committee
  */
 contract SlashingProposer is EIP712 {
-  using SignatureLib for Signature;
-  using CompressedTimeMath for CompressedSlot;
-  using CompressedTimeMath for Slot;
-  using CompressedSlashRoundMath for CompressedSlashRound;
-  using CompressedSlashRoundMath for SlashRound;
-  using Clones for address;
-  using SlashPayloadLib for address[];
+    using SignatureLib for Signature;
+    using CompressedTimeMath for CompressedSlot;
+    using CompressedTimeMath for Slot;
+    using CompressedSlashRoundMath for CompressedSlashRound;
+    using CompressedSlashRoundMath for SlashRound;
+    using Clones for address;
+    using SlashPayloadLib for address[];
 
-  /**
-   * @notice Contains metadata about a slashing round stored in uncompressed format
-   * @dev Used for in-memory operations and as the return type for getRoundData()
-   * @param roundNumber The actual round number (used to detect stale data in circular storage)
-   * @param voteCount Number of votes collected in this round so far
-   * @param lastVoteSlot The most recent slot in which a vote was cast for this round
-   * @param executed Whether this round has been executed and slashing has occurred
-   */
-  struct RoundData {
-    SlashRound roundNumber;
-    uint256 voteCount;
-    Slot lastVoteSlot;
-    bool executed;
-  }
+    /**
+     * @notice Contains metadata about a slashing round stored in uncompressed format
+     * @dev Used for in-memory operations and as the return type for getRoundData()
+     * @param roundNumber The actual round number (used to detect stale data in circular storage)
+     * @param voteCount Number of votes collected in this round so far
+     * @param lastVoteSlot The most recent slot in which a vote was cast for this round
+     * @param executed Whether this round has been executed and slashing has occurred
+     */
+    struct RoundData {
+        SlashRound roundNumber;
+        uint256 voteCount;
+        Slot lastVoteSlot;
+        bool executed;
+    }
 
-  /**
-   * @notice Compressed version of RoundData optimized for storage efficiency (fits in 32 bytes)
-   * @dev Used in the circular storage buffer to minimize gas costs for storage operations
-   * @param roundNumber Compressed round number for staleness detection
-   * @param lastVoteSlot Compressed slot number of the last vote
-   * @param voteCount Number of votes (max 65535, must fit MAX_ROUND_SIZE constraint)
-   * @param executed Whether this round has been executed
-   */
-  struct CompressedRoundData {
-    CompressedSlashRound roundNumber;
-    CompressedSlot lastVoteSlot;
-    uint16 voteCount;
-    bool executed;
-  }
+    /**
+     * @notice Compressed version of RoundData optimized for storage efficiency (fits in 32 bytes)
+     * @dev Used in the circular storage buffer to minimize gas costs for storage operations
+     * @param roundNumber Compressed round number for staleness detection
+     * @param lastVoteSlot Compressed slot number of the last vote
+     * @param voteCount Number of votes (max 65535, must fit MAX_ROUND_SIZE constraint)
+     * @param executed Whether this round has been executed
+     */
+    struct CompressedRoundData {
+        CompressedSlashRound roundNumber;
+        CompressedSlot lastVoteSlot;
+        uint16 voteCount;
+        bool executed;
+    }
 
-  /**
-   * @notice Contains all vote data for a single round
-   * @dev Stores up to MAX_ROUND_SIZE votes as fixed-size arrays. Each vote encodes slash amounts
-   *      for all validators in the round using 2 bits per validator.
-   * @param votes Array of encoded vote data, one entry per proposer vote in the round
-   *         Each vote is stored as fixed-size bytes32 chunks, to avoid the overhead of an extra SLOAD/SSTORE operation
-   *         just to load/write the length of the array, which we already know.
-   *         Vote size = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4 bytes
-   *         Number of bytes32 slots needed = ceil(voteSize / 32)
-   *         Note that we check the vote size in the constructor to avoid issues
-   */
-  struct RoundVotes {
-    bytes32[4][1024] votes; // Assuming max 4 slots (128 bytes) per vote
-  }
+    /**
+     * @notice Contains all vote data for a single round
+     * @dev Stores up to MAX_ROUND_SIZE votes as fixed-size arrays. Each vote encodes slash amounts
+     *      for all validators in the round using 2 bits per validator.
+     * @param votes Array of encoded vote data, one entry per proposer vote in the round
+     *         Each vote is stored as fixed-size bytes32 chunks, to avoid the overhead of an extra SLOAD/SSTORE operation
+     *         just to load/write the length of the array, which we already know.
+     *         Vote size = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4 bytes
+     *         Number of bytes32 slots needed = ceil(voteSize / 32)
+     *         Note that we check the vote size in the constructor to avoid issues
+     */
+    struct RoundVotes {
+        bytes32[4][1024] votes; // Assuming max 4 slots (128 bytes) per vote
+    }
 
-  /**
-   * @notice Represents a slashing action to be executed against a specific validator
-   * @dev Used to package slashing decisions for execution by the Slasher contract
-   * @param validator The address of the validator to be slashed
-   * @param slashAmount The amount of stake to slash from the validator (in wei)
-   */
-  struct SlashAction {
-    address validator;
-    uint256 slashAmount;
-  }
+    /**
+     * @notice Represents a slashing action to be executed against a specific validator
+     * @dev Used to package slashing decisions for execution by the Slasher contract
+     * @param validator The address of the validator to be slashed
+     * @param slashAmount The amount of stake to slash from the validator (in wei)
+     */
+    struct SlashAction {
+        address validator;
+        uint256 slashAmount;
+    }
 
-  /**
-   * @notice EIP-712 type hash for the Vote struct used in signature verification
-   * @dev Defines the structure: Vote(bytes votes,uint256 slot) for EIP-712 signing
-   */
-  bytes32 public constant VOTE_TYPEHASH = keccak256("Vote(bytes votes,uint256 slot)");
+    /**
+     * @notice EIP-712 type hash for the Vote struct used in signature verification
+     * @dev Defines the structure: Vote(bytes votes,uint256 slot) for EIP-712 signing
+     */
+    bytes32 public constant VOTE_TYPEHASH = keccak256("Vote(bytes votes,uint256 slot)");
 
-  /**
-   * @notice Size of the circular storage buffer for round data
-   * @dev Determines how many recent rounds can be kept in storage simultaneously.
-   *      Older rounds are overwritten as new rounds are created. Must be larger than
-   *      LIFETIME_IN_ROUNDS to prevent data corruption.
-   */
-  uint256 public constant ROUNDABOUT_SIZE = 128;
+    /**
+     * @notice Size of the circular storage buffer for round data
+     * @dev Determines how many recent rounds can be kept in storage simultaneously.
+     *      Older rounds are overwritten as new rounds are created. Must be larger than
+     *      LIFETIME_IN_ROUNDS to prevent data corruption.
+     */
+    uint256 public constant ROUNDABOUT_SIZE = 128;
 
-  /**
-   * @notice Maximum number of votes that can be cast in a single round
-   * @dev Hard limit to prevent excessive gas usage and storage requirements.
-   *      Also serves as the maximum number of slots per round.
-   */
-  uint256 public constant MAX_ROUND_SIZE = 1024;
+    /**
+     * @notice Maximum number of votes that can be cast in a single round
+     * @dev Hard limit to prevent excessive gas usage and storage requirements.
+     *      Also serves as the maximum number of slots per round.
+     */
+    uint256 public constant MAX_ROUND_SIZE = 1024;
 
-  /**
-   * @notice Address of the main rollup contract that this slashing proposer integrates with
-   * @dev Used to query current proposers, committee data, and slot information
-   */
-  address public immutable INSTANCE;
+    /**
+     * @notice Address of the main rollup contract that this slashing proposer integrates with
+     * @dev Used to query current proposers, committee data, and slot information
+     */
+    address public immutable INSTANCE;
 
-  /**
-   * @notice The slasher contract that executes actual slashing operations
-   * @dev Receives SlashPayload contracts from this proposer to perform validator punishment
-   */
-  ISlasher public immutable SLASHER;
+    /**
+     * @notice The slasher contract that executes actual slashing operations
+     * @dev Receives SlashPayload contracts from this proposer to perform validator punishment
+     */
+    ISlasher public immutable SLASHER;
 
-  /**
-   * @notice The implementation contract for SlashPayload clones
-   * @dev Single instance deployed once and used as template for all slash payload clones
-   */
-  address public immutable SLASH_PAYLOAD_IMPLEMENTATION;
+    /**
+     * @notice The implementation contract for SlashPayload clones
+     * @dev Single instance deployed once and used as template for all slash payload clones
+     */
+    address public immutable SLASH_PAYLOAD_IMPLEMENTATION;
 
-  /**
-   * @notice Base amount of stake to slash per slashing unit (in wei)
-   * @dev Validators can be voted to be slashed by 1-3 units, multiplied by this base amount
-   * @notice Small slash amount for 1 unit votes (in wei)
-   */
-  uint256 public immutable SLASH_AMOUNT_SMALL;
+    /**
+     * @notice Base amount of stake to slash per slashing unit (in wei)
+     * @dev Validators can be voted to be slashed by 1-3 units, multiplied by this base amount
+     * @notice Small slash amount for 1 unit votes (in wei)
+     */
+    uint256 public immutable SLASH_AMOUNT_SMALL;
 
-  /**
-   * @notice Medium slash amount for 2 unit votes (in wei)
-   */
-  uint256 public immutable SLASH_AMOUNT_MEDIUM;
+    /**
+     * @notice Medium slash amount for 2 unit votes (in wei)
+     */
+    uint256 public immutable SLASH_AMOUNT_MEDIUM;
 
-  /**
-   * @notice Large slash amount for 3 unit votes (in wei)
-   */
-  uint256 public immutable SLASH_AMOUNT_LARGE;
+    /**
+     * @notice Large slash amount for 3 unit votes (in wei)
+     */
+    uint256 public immutable SLASH_AMOUNT_LARGE;
 
-  /**
-   * @notice Minimum number of votes required to slash a validator
-   * @dev Must be greater than ROUND_SIZE/2 to ensure majority agreement
-   */
-  uint256 public immutable QUORUM;
+    /**
+     * @notice Minimum number of votes required to slash a validator
+     * @dev Must be greater than ROUND_SIZE/2 to ensure majority agreement
+     */
+    uint256 public immutable QUORUM;
 
-  /**
-   * @notice Number of slots per slashing round
-   * @dev Determines the duration of voting periods and must be a multiple of epoch duration
-   */
-  uint256 public immutable ROUND_SIZE;
+    /**
+     * @notice Number of slots per slashing round
+     * @dev Determines the duration of voting periods and must be a multiple of epoch duration
+     */
+    uint256 public immutable ROUND_SIZE;
 
-  /**
-   * @notice Number of validators per committee
-   * @dev Used to determine vote encoding length and validator indexing
-   */
-  uint256 public immutable COMMITTEE_SIZE;
+    /**
+     * @notice Number of validators per committee
+     * @dev Used to determine vote encoding length and validator indexing
+     */
+    uint256 public immutable COMMITTEE_SIZE;
 
-  /**
-   * @notice Number of epochs per slashing round
-   * @dev Calculated as ROUND_SIZE / epoch duration, determines how many committees are voted on per round
-   */
-  uint256 public immutable ROUND_SIZE_IN_EPOCHS;
+    /**
+     * @notice Number of epochs per slashing round
+     * @dev Calculated as ROUND_SIZE / epoch duration, determines how many committees are voted on per round
+     */
+    uint256 public immutable ROUND_SIZE_IN_EPOCHS;
 
-  /**
-   * @notice Maximum age in rounds for which a round can still be executed
-   * @dev Prevents execution of very old rounds that may no longer be relevant
-   */
-  uint256 public immutable LIFETIME_IN_ROUNDS;
+    /**
+     * @notice Maximum age in rounds for which a round can still be executed
+     * @dev Prevents execution of very old rounds that may no longer be relevant
+     */
+    uint256 public immutable LIFETIME_IN_ROUNDS;
 
-  /**
-   * @notice Number of rounds to wait after a round ends before it can be executed
-   * @dev Provides time for review and potential challenges before slashing occurs
-   */
-  uint256 public immutable EXECUTION_DELAY_IN_ROUNDS;
+    /**
+     * @notice Number of rounds to wait after a round ends before it can be executed
+     * @dev Provides time for review and potential challenges before slashing occurs
+     */
+    uint256 public immutable EXECUTION_DELAY_IN_ROUNDS;
 
-  /**
-   * @notice How many rounds in the past to look when determining which validators to slash
-   * @dev During round N, we cannot slash the validators from the epochs of the same round, since the round is not over,
-   * and besides we would be asking the current validators to vote to slash themselves. So during round N we look at the
-   * epochs spanned during round N - SLASH_OFFSET_IN_ROUNDS. This offset means that the epochs we slash are complete,
-   * and also gives nodes time to detect any misbehavior (eg slashing for prunes requires the proof submission window to
-   * pass).
-   */
-  uint256 public immutable SLASH_OFFSET_IN_ROUNDS;
+    /**
+     * @notice How many rounds in the past to look when determining which validators to slash
+     * @dev During round N, we cannot slash the validators from the epochs of the same round, since the round is not over,
+     * and besides we would be asking the current validators to vote to slash themselves. So during round N we look at the
+     * epochs spanned during round N - SLASH_OFFSET_IN_ROUNDS. This offset means that the epochs we slash are complete,
+     * and also gives nodes time to detect any misbehavior (eg slashing for prunes requires the proof submission window to
+     * pass).
+     */
+    uint256 public immutable SLASH_OFFSET_IN_ROUNDS;
 
-  // Circular mappings of round number to round data and votes
-  CompressedRoundData[ROUNDABOUT_SIZE] private roundDatas;
-  RoundVotes[ROUNDABOUT_SIZE] private roundVotes;
+    // Circular mappings of round number to round data and votes
+    CompressedRoundData[ROUNDABOUT_SIZE] private roundDatas;
+    RoundVotes[ROUNDABOUT_SIZE] private roundVotes;
 
-  /**
-   * @notice Emitted when a proposer casts a vote in a slashing round
-   * @param round The round number in which the vote was cast
-   * @param proposer The address of the proposer who cast the vote
-   */
-  event VoteCast(SlashRound indexed round, Slot indexed slot, address indexed proposer);
+    /**
+     * @notice Emitted when a proposer casts a vote in a slashing round
+     * @param round The round number in which the vote was cast
+     * @param proposer The address of the proposer who cast the vote
+     */
+    event VoteCast(SlashRound indexed round, Slot indexed slot, address indexed proposer);
 
-  /**
-   * @notice Emitted when a slashing round is executed and validators are slashed
-   * @param round The round number that was executed
-   * @param slashCount The number of validators that were slashed in this round
-   */
-  event RoundExecuted(SlashRound indexed round, uint256 slashCount);
+    /**
+     * @notice Emitted when a slashing round is executed and validators are slashed
+     * @param round The round number that was executed
+     * @param slashCount The number of validators that were slashed in this round
+     */
+    event RoundExecuted(SlashRound indexed round, uint256 slashCount);
 
-  /**
-   * @notice Initializes the SlashingProposer with configuration parameters
-   * @dev Sets up all the voting and slashing parameters and validates their correctness.
-   *      The constructor enforces several important invariants to ensure the system operates correctly.
-   *
-   * @param _instance The address of the rollup contract that this slashing proposer will interact with
-   * @param _slasher The slasher contract that will execute the actual slashing operations
-   * @param _quorum The minimum number of votes required to slash a validator (must be > ROUND_SIZE/2 and <= ROUND_SIZE)
-   * @param _roundSize The number of slots in each voting round (must be > 1 and < MAX_ROUND_SIZE)
-   * @param _lifetimeInRounds The maximum age in rounds for which a round can still be executed (must be >
-   * _executionDelayInRounds and < ROUNDABOUT_SIZE)
-   * @param _executionDelayInRounds The number of rounds to wait after a round ends before it can be executed (provides
-   * time for review)
-   * @param _slashAmounts Array of 3 slash amounts [small, medium, large] for 1, 2, 3 unit votes (all must be > 0)
-   * @param _committeeSize The number of validators in each committee (must be > 0)
-   * @param _epochDuration The number of slots in each epoch (used to calculate ROUND_SIZE_IN_EPOCHS)
-   * @param _slashOffsetInRounds How many rounds in the past to look when determining which validators to slash (must be
-   * > 0)
-   */
-  constructor(
-    address _instance,
-    ISlasher _slasher,
-    uint256 _quorum,
-    uint256 _roundSize,
-    uint256 _lifetimeInRounds,
-    uint256 _executionDelayInRounds,
-    uint256[3] memory _slashAmounts,
-    uint256 _committeeSize,
-    uint256 _epochDuration,
-    uint256 _slashOffsetInRounds
-  ) EIP712("SlashingProposer", "1") {
-    INSTANCE = _instance;
-    SLASHER = _slasher;
-    SLASH_AMOUNT_SMALL = _slashAmounts[0];
-    SLASH_AMOUNT_MEDIUM = _slashAmounts[1];
-    SLASH_AMOUNT_LARGE = _slashAmounts[2];
-    QUORUM = _quorum;
-    ROUND_SIZE = _roundSize;
-    ROUND_SIZE_IN_EPOCHS = _roundSize / _epochDuration;
-    COMMITTEE_SIZE = _committeeSize;
-    LIFETIME_IN_ROUNDS = _lifetimeInRounds;
-    EXECUTION_DELAY_IN_ROUNDS = _executionDelayInRounds;
-    SLASH_OFFSET_IN_ROUNDS = _slashOffsetInRounds;
+    /**
+     * @notice Initializes the SlashingProposer with configuration parameters
+     * @dev Sets up all the voting and slashing parameters and validates their correctness.
+     *      The constructor enforces several important invariants to ensure the system operates correctly.
+     *
+     * @param _instance The address of the rollup contract that this slashing proposer will interact with
+     * @param _slasher The slasher contract that will execute the actual slashing operations
+     * @param _quorum The minimum number of votes required to slash a validator (must be > ROUND_SIZE/2 and <= ROUND_SIZE)
+     * @param _roundSize The number of slots in each voting round (must be > 1 and < MAX_ROUND_SIZE)
+     * @param _lifetimeInRounds The maximum age in rounds for which a round can still be executed (must be >
+     * _executionDelayInRounds and < ROUNDABOUT_SIZE)
+     * @param _executionDelayInRounds The number of rounds to wait after a round ends before it can be executed (provides
+     * time for review)
+     * @param _slashAmounts Array of 3 slash amounts [small, medium, large] for 1, 2, 3 unit votes (all must be > 0)
+     * @param _committeeSize The number of validators in each committee (must be > 0)
+     * @param _epochDuration The number of slots in each epoch (used to calculate ROUND_SIZE_IN_EPOCHS)
+     * @param _slashOffsetInRounds How many rounds in the past to look when determining which validators to slash (must be
+     * > 0)
+     */
+    constructor(
+        address _instance,
+        ISlasher _slasher,
+        uint256 _quorum,
+        uint256 _roundSize,
+        uint256 _lifetimeInRounds,
+        uint256 _executionDelayInRounds,
+        uint256[3] memory _slashAmounts,
+        uint256 _committeeSize,
+        uint256 _epochDuration,
+        uint256 _slashOffsetInRounds
+    ) EIP712("SlashingProposer", "1") {
+        INSTANCE = _instance;
+        SLASHER = _slasher;
+        SLASH_AMOUNT_SMALL = _slashAmounts[0];
+        SLASH_AMOUNT_MEDIUM = _slashAmounts[1];
+        SLASH_AMOUNT_LARGE = _slashAmounts[2];
+        QUORUM = _quorum;
+        ROUND_SIZE = _roundSize;
+        ROUND_SIZE_IN_EPOCHS = _roundSize / _epochDuration;
+        COMMITTEE_SIZE = _committeeSize;
+        LIFETIME_IN_ROUNDS = _lifetimeInRounds;
+        EXECUTION_DELAY_IN_ROUNDS = _executionDelayInRounds;
+        SLASH_OFFSET_IN_ROUNDS = _slashOffsetInRounds;
 
-    // Deploy the SlashPayloadCloneable implementation contract once
-    SLASH_PAYLOAD_IMPLEMENTATION = address(new SlashPayloadCloneable{salt: bytes32(bytes20(uint160(address(this))))}());
+        // Deploy the SlashPayloadCloneable implementation contract once
+        SLASH_PAYLOAD_IMPLEMENTATION =
+            address(new SlashPayloadCloneable{salt: bytes32(bytes20(uint160(address(this))))}());
 
-    require(
-      SLASH_OFFSET_IN_ROUNDS > 0, Errors_1.SlashingProposer__SlashOffsetMustBeGreaterThanZero(SLASH_OFFSET_IN_ROUNDS)
-    );
-    require(
-      ROUND_SIZE_IN_EPOCHS * _epochDuration == ROUND_SIZE,
-      Errors_1.SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(ROUND_SIZE, _epochDuration)
-    );
-    require(QUORUM > 0, Errors_1.SlashingProposer__QuorumMustBeGreaterThanZero());
-    require(ROUND_SIZE > 1, Errors_1.SlashingProposer__InvalidQuorumAndRoundSize(QUORUM, ROUND_SIZE));
-    require(QUORUM > ROUND_SIZE / 2, Errors_1.SlashingProposer__InvalidQuorumAndRoundSize(QUORUM, ROUND_SIZE));
-    require(QUORUM <= ROUND_SIZE, Errors_1.SlashingProposer__InvalidQuorumAndRoundSize(QUORUM, ROUND_SIZE));
-    require(_slashAmounts[0] <= _slashAmounts[1], Errors_1.SlashingProposer__InvalidSlashAmounts(_slashAmounts));
-    require(_slashAmounts[1] <= _slashAmounts[2], Errors_1.SlashingProposer__InvalidSlashAmounts(_slashAmounts));
-    require(
-      LIFETIME_IN_ROUNDS > EXECUTION_DELAY_IN_ROUNDS,
-      Errors_1.SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(LIFETIME_IN_ROUNDS, EXECUTION_DELAY_IN_ROUNDS)
-    );
-    require(
-      LIFETIME_IN_ROUNDS < ROUNDABOUT_SIZE,
-      Errors_1.SlashingProposer__LifetimeMustBeLessThanRoundabout(LIFETIME_IN_ROUNDS, ROUNDABOUT_SIZE)
-    );
-    require(
-      ROUND_SIZE_IN_EPOCHS > 0, Errors_1.SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(ROUND_SIZE_IN_EPOCHS)
-    );
-    require(ROUND_SIZE <= MAX_ROUND_SIZE, Errors_1.SlashingProposer__RoundSizeTooLarge(ROUND_SIZE, MAX_ROUND_SIZE));
-    require(COMMITTEE_SIZE > 0, Errors_1.SlashingProposer__CommitteeSizeMustBeGreaterThanZero(COMMITTEE_SIZE));
-
-    // Validate that vote size doesn't exceed our fixed 4 bytes32 allocation
-    // Each vote requires COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4 bytes
-    // We have allocated 4 bytes32 slots = 128 bytes maximum
-    uint256 voteSize = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
-    require(voteSize <= 128, Errors_1.SlashingProposer__VoteSizeTooBig(voteSize, 128));
-
-    require(
-      COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS % 4 == 0,
-      Errors_1.SlashingProposer__VotesMustBeMultipleOf4(COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS)
-    );
-
-    // Defense in depth: the ordering constraints (small <= medium <= large) above mean that
-    // if medium or large is zero, small must also be zero, so the small check would fire first.
-    // We keep all three checks explicitly for clarity and to guard against future refactors
-    // that might remove or reorder the sorting constraints.
-    require(SLASH_AMOUNT_SMALL > 0, Errors_1.SlashingProposer__SlashAmountMustBeGtZero("small"));
-    require(SLASH_AMOUNT_MEDIUM > 0, Errors_1.SlashingProposer__SlashAmountMustBeGtZero("medium"));
-    require(SLASH_AMOUNT_LARGE > 0, Errors_1.SlashingProposer__SlashAmountMustBeGtZero("large"));
-  }
-
-  /**
-   * @notice Submit a vote for slashing validators from SLASH_OFFSET_IN_ROUNDS rounds ago
-   * @dev Only the current checkpoint proposer can submit votes, enforced via EIP-712 signature verification.
-   *      Each byte in the votes encodes slash amounts for 4 validators using 2 bits each (0-3 units each).
-   *      The vote includes the current slot number to prevent replay attacks.
-   *
-   * @param _votes Encoded voting data where each byte represents slash amounts for 4 validators.
-   *               Bits 0-1 for first validator, bits 2-3 for second, bits 4-5 for third, bits 6-7 for fourth.
-   *               Length must equal (COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS) / 4 bytes.
-   * @param _sig EIP-712 signature from the current proposer proving authorization to vote.
-   *             Signature covers the vote data and current slot number.
-   *
-   * Emits:
-   * - VoteCast: When the vote is successfully recorded
-   *
-   * Reverts with:
-   * - SlashingProposer__VotingNotOpen: If current round is less than SLASH_OFFSET_IN_ROUNDS
-   * - SlashingProposer__InvalidSignature: If signature verification fails
-   * - SlashingProposer__InvalidVoteLength: If vote data length is incorrect
-   * - SlashingProposer__VoteAlreadyCastInCurrentSlot: If proposer already voted in this slot
-   */
-  function vote(bytes calldata _votes, Signature calldata _sig) external {
-    Slot slot = _getCurrentSlot();
-    SlashRound round = _computeRound(slot);
-
-    // We vote for slashing validators for epochs from SLASH_OFFSET_IN_ROUNDS ago, so in early rounds there is no one to
-    // be slashed.
-    require(round >= SlashRound.wrap(SLASH_OFFSET_IN_ROUNDS), Errors_1.SlashingProposer__VotingNotOpen(round));
-
-    // Get the current proposer from the rollup - only they can submit votes
-    address proposer = _getCurrentProposer();
-
-    // Verify EIP-712 signature (which includes slot to prevent replay attacks)
-    bytes32 digest = getVoteSignatureDigest(_votes, slot);
-    require(_sig.verify(proposer, digest), Errors_1.SlashingProposer__InvalidSignature());
-
-    // Each byte encodes 4 validators (2 bits each), so each validator is represented as 2 bits in the byte array.
-    uint256 expectedLength = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
-    require(_votes.length == expectedLength, Errors_1.SlashingProposer__InvalidVoteLength(expectedLength, _votes.length));
-
-    // Get the round data for the current round
-    RoundData memory roundData = _getRoundData(round, round);
-
-    // Check if a vote has already been cast in the current slot
-    require(roundData.lastVoteSlot < slot, Errors_1.SlashingProposer__VoteAlreadyCastInCurrentSlot(slot));
-
-    // Store the vote for this round
-    uint256 voteCount = roundData.voteCount;
-    _storeVoteData(round, voteCount, _votes);
-
-    // Increment the vote count for this round (all other fields remain unchanged)
-    _setRoundData(round, slot, voteCount + 1, roundData.executed);
-
-    emit VoteCast(round, slot, proposer);
-  }
-
-  /**
-   * @notice Execute the slashing round by tallying votes and executing slashes for validators that reached quorum
-   * @dev Can be called by anyone once a round has passed its execution delay but is still within its lifetime.
-   *      The function tallies all votes cast during the round, identifies validators that reached the quorum threshold,
-   *      and executes slashing by deploying a SlashPayload contract and calling the Slasher.
-   *
-   * @param _round The round number to execute (must be ready for execution based on timing constraints)
-   * @param _committees Array of validator committees slashed for each epoch in the round being executed.
-   *                   Must contain exactly ROUND_SIZE_IN_EPOCHS committees. Only committees with slashed
-   *                   validators will have their commitments verified against onchain data.
-   *
-   * Emits:
-   * - RoundExecuted: When the round execution completes, regardless of whether any slashing occurred
-   *
-   * Reverts with:
-   * - SlashingProposer__RoundAlreadyExecuted: If the round has already been executed
-   * - SlashingProposer__RoundNotComplete: If the round is not yet ready for execution or has expired
-   * - SlashingProposer__InvalidCommitteeCommitment: If any committee commitment doesn't match onchain data
-   * - SlashingProposer__InvalidNumberOfCommittees: If the number of committees doesn't match
-   * ROUND_SIZE_IN_EPOCHS
-   */
-  function executeRound(SlashRound _round, address[][] calldata _committees) external {
-    // Get round data to check if already executed
-    SlashRound currentRound = getCurrentRound();
-    RoundData memory roundData = _getRoundData(_round, currentRound);
-    require(!roundData.executed, Errors_1.SlashingProposer__RoundAlreadyExecuted(_round));
-
-    // Ensure enough time has passed (execution delay) but not too much (lifetime)
-    require(_isRoundReadyToExecute(_round, currentRound), Errors_1.SlashingProposer__RoundNotComplete(_round));
-
-    // Get the slash actions by tallying votes and which committees have slashes
-    (SlashAction[] memory actions, bool[] memory committeesWithSlashes) = _tally(roundData, _committees);
-
-    // Only verify committees that have slashed validators
-    unchecked {
-      uint256 length = committeesWithSlashes.length;
-      for (uint256 i; i < length; ++i) {
-        if (!committeesWithSlashes[i]) {
-          continue;
-        }
-
-        // Check committee commitments against the stored onchain data
-        bytes32 commitment = _computeCommitteeCommitment(_committees[i]);
-        Epoch epochNumber = getSlashTargetEpoch(_round, i);
         require(
-          commitment == _getCommitteeCommitment(epochNumber), Errors_1.SlashingProposer__InvalidCommitteeCommitment()
+            SLASH_OFFSET_IN_ROUNDS > 0,
+            Errors_1.SlashingProposer__SlashOffsetMustBeGreaterThanZero(SLASH_OFFSET_IN_ROUNDS)
         );
-      }
+        require(
+            ROUND_SIZE_IN_EPOCHS * _epochDuration == ROUND_SIZE,
+            Errors_1.SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(ROUND_SIZE, _epochDuration)
+        );
+        require(QUORUM > 0, Errors_1.SlashingProposer__QuorumMustBeGreaterThanZero());
+        require(ROUND_SIZE > 1, Errors_1.SlashingProposer__InvalidQuorumAndRoundSize(QUORUM, ROUND_SIZE));
+        require(QUORUM > ROUND_SIZE / 2, Errors_1.SlashingProposer__InvalidQuorumAndRoundSize(QUORUM, ROUND_SIZE));
+        require(QUORUM <= ROUND_SIZE, Errors_1.SlashingProposer__InvalidQuorumAndRoundSize(QUORUM, ROUND_SIZE));
+        require(_slashAmounts[0] <= _slashAmounts[1], Errors_1.SlashingProposer__InvalidSlashAmounts(_slashAmounts));
+        require(_slashAmounts[1] <= _slashAmounts[2], Errors_1.SlashingProposer__InvalidSlashAmounts(_slashAmounts));
+        require(
+            LIFETIME_IN_ROUNDS > EXECUTION_DELAY_IN_ROUNDS,
+            Errors_1.SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(
+                LIFETIME_IN_ROUNDS, EXECUTION_DELAY_IN_ROUNDS
+            )
+        );
+        require(
+            LIFETIME_IN_ROUNDS < ROUNDABOUT_SIZE,
+            Errors_1.SlashingProposer__LifetimeMustBeLessThanRoundabout(LIFETIME_IN_ROUNDS, ROUNDABOUT_SIZE)
+        );
+        require(
+            ROUND_SIZE_IN_EPOCHS > 0,
+            Errors_1.SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(ROUND_SIZE_IN_EPOCHS)
+        );
+        require(ROUND_SIZE <= MAX_ROUND_SIZE, Errors_1.SlashingProposer__RoundSizeTooLarge(ROUND_SIZE, MAX_ROUND_SIZE));
+        require(COMMITTEE_SIZE > 0, Errors_1.SlashingProposer__CommitteeSizeMustBeGreaterThanZero(COMMITTEE_SIZE));
+
+        // Validate that vote size doesn't exceed our fixed 4 bytes32 allocation
+        // Each vote requires COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4 bytes
+        // We have allocated 4 bytes32 slots = 128 bytes maximum
+        uint256 voteSize = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
+        require(voteSize <= 128, Errors_1.SlashingProposer__VoteSizeTooBig(voteSize, 128));
+
+        require(
+            COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS % 4 == 0,
+            Errors_1.SlashingProposer__VotesMustBeMultipleOf4(COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS)
+        );
+
+        // Defense in depth: the ordering constraints (small <= medium <= large) above mean that
+        // if medium or large is zero, small must also be zero, so the small check would fire first.
+        // We keep all three checks explicitly for clarity and to guard against future refactors
+        // that might remove or reorder the sorting constraints.
+        require(SLASH_AMOUNT_SMALL > 0, Errors_1.SlashingProposer__SlashAmountMustBeGtZero("small"));
+        require(SLASH_AMOUNT_MEDIUM > 0, Errors_1.SlashingProposer__SlashAmountMustBeGtZero("medium"));
+        require(SLASH_AMOUNT_LARGE > 0, Errors_1.SlashingProposer__SlashAmountMustBeGtZero("large"));
     }
 
-    // Mark round as executed to prevent re-execution
-    // We set this flag before actually slashing to avoid re-entrancy issues
-    _setRoundData(
-      _round,
-      roundData.lastVoteSlot,
-      roundData.voteCount,
-      /*executed=*/
-      true
-    );
+    /**
+     * @notice Submit a vote for slashing validators from SLASH_OFFSET_IN_ROUNDS rounds ago
+     * @dev Only the current checkpoint proposer can submit votes, enforced via EIP-712 signature verification.
+     *      Each byte in the votes encodes slash amounts for 4 validators using 2 bits each (0-3 units each).
+     *      The vote includes the current slot number to prevent replay attacks.
+     *
+     * @param _votes Encoded voting data where each byte represents slash amounts for 4 validators.
+     *               Bits 0-1 for first validator, bits 2-3 for second, bits 4-5 for third, bits 6-7 for fourth.
+     *               Length must equal (COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS) / 4 bytes.
+     * @param _sig EIP-712 signature from the current proposer proving authorization to vote.
+     *             Signature covers the vote data and current slot number.
+     *
+     * Emits:
+     * - VoteCast: When the vote is successfully recorded
+     *
+     * Reverts with:
+     * - SlashingProposer__VotingNotOpen: If current round is less than SLASH_OFFSET_IN_ROUNDS
+     * - SlashingProposer__InvalidSignature: If signature verification fails
+     * - SlashingProposer__InvalidVoteLength: If vote data length is incorrect
+     * - SlashingProposer__VoteAlreadyCastInCurrentSlot: If proposer already voted in this slot
+     */
+    function vote(bytes calldata _votes, Signature calldata _sig) external {
+        Slot slot = _getCurrentSlot();
+        SlashRound round = _computeRound(slot);
 
-    // Execute slashes if any were determined
-    if (actions.length > 0) {
-      // Deploy payload contract and execute slashes
-      IPayload slashPayload = _deploySlashPayload(_round, actions);
-      SLASHER.slash(slashPayload);
+        // We vote for slashing validators for epochs from SLASH_OFFSET_IN_ROUNDS ago, so in early rounds there is no one to
+        // be slashed.
+        require(round >= SlashRound.wrap(SLASH_OFFSET_IN_ROUNDS), Errors_1.SlashingProposer__VotingNotOpen(round));
+
+        // Get the current proposer from the rollup - only they can submit votes
+        address proposer = _getCurrentProposer();
+
+        // Verify EIP-712 signature (which includes slot to prevent replay attacks)
+        bytes32 digest = getVoteSignatureDigest(_votes, slot);
+        require(_sig.verify(proposer, digest), Errors_1.SlashingProposer__InvalidSignature());
+
+        // Each byte encodes 4 validators (2 bits each), so each validator is represented as 2 bits in the byte array.
+        uint256 expectedLength = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
+        require(
+            _votes.length == expectedLength, Errors_1.SlashingProposer__InvalidVoteLength(expectedLength, _votes.length)
+        );
+
+        // Get the round data for the current round
+        RoundData memory roundData = _getRoundData(round, round);
+
+        // Check if a vote has already been cast in the current slot
+        require(roundData.lastVoteSlot < slot, Errors_1.SlashingProposer__VoteAlreadyCastInCurrentSlot(slot));
+
+        // Store the vote for this round
+        uint256 voteCount = roundData.voteCount;
+        _storeVoteData(round, voteCount, _votes);
+
+        // Increment the vote count for this round (all other fields remain unchanged)
+        _setRoundData(round, slot, voteCount + 1, roundData.executed);
+
+        emit VoteCast(round, slot, proposer);
     }
 
-    emit RoundExecuted(_round, actions.length);
-  }
+    /**
+     * @notice Execute the slashing round by tallying votes and executing slashes for validators that reached quorum
+     * @dev Can be called by anyone once a round has passed its execution delay but is still within its lifetime.
+     *      The function tallies all votes cast during the round, identifies validators that reached the quorum threshold,
+     *      and executes slashing by deploying a SlashPayload contract and calling the Slasher.
+     *
+     * @param _round The round number to execute (must be ready for execution based on timing constraints)
+     * @param _committees Array of validator committees slashed for each epoch in the round being executed.
+     *                   Must contain exactly ROUND_SIZE_IN_EPOCHS committees. Only committees with slashed
+     *                   validators will have their commitments verified against onchain data.
+     *
+     * Emits:
+     * - RoundExecuted: When the round execution completes, regardless of whether any slashing occurred
+     *
+     * Reverts with:
+     * - SlashingProposer__RoundAlreadyExecuted: If the round has already been executed
+     * - SlashingProposer__RoundNotComplete: If the round is not yet ready for execution or has expired
+     * - SlashingProposer__InvalidCommitteeCommitment: If any committee commitment doesn't match onchain data
+     * - SlashingProposer__InvalidNumberOfCommittees: If the number of committees doesn't match
+     * ROUND_SIZE_IN_EPOCHS
+     */
+    function executeRound(SlashRound _round, address[][] calldata _committees) external {
+        // Get round data to check if already executed
+        SlashRound currentRound = getCurrentRound();
+        RoundData memory roundData = _getRoundData(_round, currentRound);
+        require(!roundData.executed, Errors_1.SlashingProposer__RoundAlreadyExecuted(_round));
 
-  /**
-   * @notice Load committees for all epochs to be potentially slashed in a round from the rollup instance
-   * @dev This is an expensive call. It is not marked as view since `getEpochCommittee` may modify rollup state.
-   *      If `getEpochCommittee` throws (eg committee not yet formed), an empty committee is returned for that epoch.
-   * @param _round The round number to load committees for
-   * @return committees Array of committees, one for each epoch in the round (may contain empty arrays for early epochs)
-   */
-  function getSlashTargetCommittees(SlashRound _round) external returns (address[][] memory committees) {
-    committees = new address[][](ROUND_SIZE_IN_EPOCHS);
+        // Ensure enough time has passed (execution delay) but not too much (lifetime)
+        require(_isRoundReadyToExecute(_round, currentRound), Errors_1.SlashingProposer__RoundNotComplete(_round));
 
-    IValidatorSelection rollup = IValidatorSelection(INSTANCE);
-    unchecked {
-      for (uint256 epochIndex; epochIndex < ROUND_SIZE_IN_EPOCHS; ++epochIndex) {
-        Epoch epoch = getSlashTargetEpoch(_round, epochIndex);
-        try rollup.getEpochCommittee(epoch) returns (address[] memory committee) {
-          committees[epochIndex] = committee;
-        } catch {
-          committees[epochIndex] = new address[](0);
-        }
-      }
-    }
+        // Get the slash actions by tallying votes and which committees have slashes
+        (SlashAction[] memory actions, bool[] memory committeesWithSlashes) = _tally(roundData, _committees);
 
-    return committees;
-  }
+        // Only verify committees that have slashed validators
+        unchecked {
+            uint256 length = committeesWithSlashes.length;
+            for (uint256 i; i < length; ++i) {
+                if (!committeesWithSlashes[i]) {
+                    continue;
+                }
 
-  /**
-   * @notice Get the tally results for a specific round, showing which validators would be slashed
-   * @dev This function is intended for offchain querying and analysis of voting results.
-   *      It uses transient storage when calling getEpochCommittee on the rollup contract.
-   *      Returns the same slash actions that would be executed if executeRound() were called for this round.
-   *
-   * @param _round The round number to analyze and return tally results for
-   * @param _committees The list of committees to consider for the tally (get them via `getSlashTargetCommittees`)
-   * @return actions Array of SlashAction structs containing validator addresses and slash amounts
-   *                for all validators that reached the quorum threshold in this round
-   */
-  function getTally(SlashRound _round, address[][] calldata _committees) external view returns (SlashAction[] memory) {
-    // Get the round data for the specified round
-    RoundData memory roundData = _getRoundData(_round, getCurrentRound());
-
-    // Tally votes and return slash actions
-    (SlashAction[] memory actions,) = _tally(roundData, _committees);
-    return actions;
-  }
-
-  /**
-   * @notice Get the deterministic address where a slash payload would be deployed for given actions
-   * @dev Uses CREATE2 to predict the deployment address based on the round number and slash actions.
-   *      Returns zero address if no actions are provided. The address is deterministic and will be
-   *      the same across multiple calls with identical parameters.
-   *
-   * @param _round The round number that will be mixed into the CREATE2 salt
-   * @param _actions Array of SlashAction structs containing validator addresses and slash amounts
-   * @return The predicted deployment address of the SlashPayload contract, or zero address if no actions
-   */
-  function getPayloadAddress(SlashRound _round, SlashAction[] memory _actions) external view returns (address) {
-    // Return zero address if no actions
-    if (_actions.length == 0) {
-      return address(0);
-    }
-    (,,, address predictedAddress) = _preparePayloadDataAndAddress(_round, _actions);
-    return predictedAddress;
-  }
-
-  /**
-   * @notice Get information about a specific slashing round's status and voting data
-   * @param _round The round number to retrieve information for
-   * @return isExecuted True if the round has already been executed and slashing has occurred
-   * @return voteCount The total number of votes that have been cast in this round by proposers
-   */
-  function getRound(SlashRound _round) external view returns (bool isExecuted, uint256 voteCount) {
-    // Load round data from the circular storage
-    RoundData memory roundData = _getRoundData(_round, getCurrentRound());
-    return (roundData.executed, roundData.voteCount);
-  }
-
-  /**
-   * @notice Check if a specific slashing round is ready for execution
-   * @param _round The round number to check
-   * @param _slot The slot number at which to evaluate readiness (typically current or slot)
-   */
-  function isRoundReadyToExecute(SlashRound _round, Slot _slot) external view returns (bool) {
-    SlashRound currentRound = _computeRound(_slot);
-    return _isRoundReadyToExecute(_round, currentRound);
-  }
-
-  /**
-   * @notice Get the votes for a specific `_round` at a specific `_index`
-   * @param _round The round number to retrieve votes for
-   * @param _index The index to retrieve votes for
-   * @return The votes retrieved
-   */
-  function getVotes(SlashRound _round, uint256 _index) external view returns (bytes memory) {
-    uint256 expectedLength = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
-
-    // _getRoundData reverts if _round is out of the roundabout range and
-    // returns empty metadata if this circular slot still contains round data
-    // from an older round number.
-    SlashRound currentRound = getCurrentRound();
-    RoundData memory roundData = _getRoundData(_round, currentRound);
-
-    // Vote storage is not cleared when a circular slot is reused. If this
-    // round has fewer votes than a previous one that shared the same slot,
-    // indices >= voteCount would otherwise return stale vote bytes.
-    if (_index >= roundData.voteCount) {
-      return new bytes(expectedLength);
-    }
-
-    bytes32[4] storage voteSlots = _getRoundVotes(_round).votes[_index];
-    return _loadVoteDataFromStorage(voteSlots, expectedLength);
-  }
-
-  /**
-   * @notice Get the current round number based on the current slot from the rollup
-   * @dev Calculates the current round by dividing the current slot number by ROUND_SIZE.
-   *      This determines which voting round is currently active.
-   * @return The current SlashRound number
-   */
-  function getCurrentRound() public view returns (SlashRound) {
-    // Get current slot from the rollup instance
-    IValidatorSelection rollup = IValidatorSelection(INSTANCE);
-    Slot currentSlot = rollup.getCurrentSlot();
-    // Divide slot by round size to get round number
-    return SlashRound.wrap(Slot.unwrap(currentSlot) / ROUND_SIZE);
-  }
-
-  /**
-   * @notice Get the epoch number that will be slashed during a specific round at a given epoch index
-   * @dev Calculates which epoch's validators are being voted on for slashing in a given round.
-   *      The epoch is determined by looking back SLASH_OFFSET_IN_ROUNDS rounds from the voting round
-   *      and then adding the epoch index within that round.
-   *
-   * @param _round The round number during which voting is taking place
-   * @param _epochIndex The index of the epoch within the round (must be 0 to ROUND_SIZE_IN_EPOCHS-1)
-   * @return epochNumber The epoch number whose validators will be considered for slashing
-   *
-   * Reverts with:
-   * - SlashingProposer__VotingNotOpen: If the round is less than SLASH_OFFSET_IN_ROUNDS
-   */
-  function getSlashTargetEpoch(SlashRound _round, uint256 _epochIndex) public view returns (Epoch epochNumber) {
-    require(_round >= SlashRound.wrap(SLASH_OFFSET_IN_ROUNDS), Errors_1.SlashingProposer__VotingNotOpen(_round));
-    require(
-      _epochIndex < ROUND_SIZE_IN_EPOCHS, Errors_1.SlashingProposer__InvalidEpochIndex(_epochIndex, ROUND_SIZE_IN_EPOCHS)
-    );
-    return Epoch.wrap((SlashRound.unwrap(_round) - SLASH_OFFSET_IN_ROUNDS) * ROUND_SIZE_IN_EPOCHS + _epochIndex);
-  }
-
-  /**
-   * @notice Generate the EIP-712 signature digest for a vote to prevent replay attacks
-   * @dev Creates a typed data hash according to EIP-712 standard that includes both the vote data
-   *      and the slot number. The slot number inclusion prevents votes from being replayed in
-   *      different slots, ensuring each vote is tied to a specific time.
-   *
-   * @param _votes The encoded vote data that will be signed by the proposer
-   * @param _slot The slot number when the vote is being cast (prevents replay attacks)
-   * @return The EIP-712 compliant signature digest that should be signed by the proposer
-   */
-  function getVoteSignatureDigest(bytes calldata _votes, Slot _slot) public view returns (bytes32) {
-    return _hashTypedDataV4(keccak256(abi.encode(VOTE_TYPEHASH, keccak256(_votes), Slot.unwrap(_slot))));
-  }
-
-  /**
-   * @notice Get the address of the validator who is authorized to propose in the current slot
-   * @dev Queries the rollup contract to determine which validator has proposing rights.
-   *      This is used to verify that vote signatures come from the authorized proposer.
-   * @return The address of the current slot's designated proposer
-   */
-  function _getCurrentProposer() internal returns (address) {
-    // Query the rollup for who is allowed to propose in the current slot
-    IValidatorSelection rollup = IValidatorSelection(INSTANCE);
-    return rollup.getCurrentProposer();
-  }
-
-  /**
-   * @notice Get the committee commitment from the Rollup.
-   * @param _epoch The epoch number
-   */
-  function _getCommitteeCommitment(Epoch _epoch) internal returns (bytes32) {
-    IValidatorSelection rollup = IValidatorSelection(INSTANCE);
-    (bytes32 commitment,) = rollup.getEpochCommitteeCommitment(_epoch);
-    return commitment;
-  }
-
-  /**
-   * @notice Deploy a slash payload contract with the given actions
-   * @dev Deploys a SlashPayload contract using CREATE2 for deterministic addresses
-   * @param _round The round number (mixed into the salt)
-   * @param _actions Array of slash actions to encode in the payload
-   */
-  function _deploySlashPayload(SlashRound _round, SlashAction[] memory _actions) internal returns (IPayload) {
-    // Prepare arrays for the SlashPayload constructor and get the predicted address
-    (address[] memory validators, uint96[] memory amounts, bytes32 salt, address predictedAddress) =
-      _preparePayloadDataAndAddress(_round, _actions);
-    // Return existing payload if already deployed
-    if (predictedAddress.code.length > 0) {
-      return IPayload(predictedAddress);
-    }
-
-    // Deploy clone of SlashPayload using EIP-1167 minimal proxy with immutable args
-    // Encode the immutable arguments for the clone
-    bytes memory immutableArgs = SlashPayloadLib.encodeImmutableArgs(INSTANCE, validators, amounts);
-
-    // Deploy the clone with deterministic address
-    address clone = Clones.cloneDeterministicWithImmutableArgs(SLASH_PAYLOAD_IMPLEMENTATION, immutableArgs, salt);
-
-    return IPayload(clone);
-  }
-
-  /**
-   * @notice Store vote data in fixed-size format
-   * @param roundNumber The round to store the vote for
-   * @param voteIndex The index of the vote within the round
-   * @param voteData The vote data to store
-   */
-  function _storeVoteData(SlashRound roundNumber, uint256 voteIndex, bytes calldata voteData) internal {
-    bytes32[4] storage voteSlots = _getRoundVotes(roundNumber).votes[voteIndex];
-    uint256 dataLength = voteData.length;
-
-    // Ensure we don't exceed maximum size
-    require(dataLength <= 128, Errors_1.SlashingProposer__VoteSizeTooBig(dataLength, 128));
-
-    unchecked {
-      assembly {
-        let offset := voteData.offset
-
-        // Store chunk 0 (bytes 0-31)
-        if dataLength {
-          let chunk := calldataload(offset)
-          // For partial chunks, we need to keep data left-aligned in the slot
-          // No masking needed since unused bytes are already zero in calldata
-          sstore(voteSlots.slot, chunk)
+                // Check committee commitments against the stored onchain data
+                bytes32 commitment = _computeCommitteeCommitment(_committees[i]);
+                Epoch epochNumber = getSlashTargetEpoch(_round, i);
+                require(
+                    commitment == _getCommitteeCommitment(epochNumber),
+                    Errors_1.SlashingProposer__InvalidCommitteeCommitment()
+                );
+            }
         }
 
-        // Store chunk 1 (bytes 32-63)
-        if gt(dataLength, 32) {
-          let chunk := calldataload(add(offset, 32))
-          sstore(add(voteSlots.slot, 1), chunk)
+        // Mark round as executed to prevent re-execution
+        // We set this flag before actually slashing to avoid re-entrancy issues
+        _setRoundData(
+            _round,
+            roundData.lastVoteSlot,
+            roundData.voteCount,
+            /*executed=*/
+            true
+        );
+
+        // Execute slashes if any were determined
+        if (actions.length > 0) {
+            // Deploy payload contract and execute slashes
+            IPayload slashPayload = _deploySlashPayload(_round, actions);
+            SLASHER.slash(slashPayload);
         }
 
-        // Store chunk 2 (bytes 64-95)
-        if gt(dataLength, 64) {
-          let chunk := calldataload(add(offset, 64))
-          sstore(add(voteSlots.slot, 2), chunk)
-        }
-
-        // Store chunk 3 (bytes 96-127)
-        if gt(dataLength, 96) {
-          let chunk := calldataload(add(offset, 96))
-          sstore(add(voteSlots.slot, 3), chunk)
-        }
-      }
-    }
-  }
-
-  /**
-   * @notice Set round data in the circular storage
-   * This function DOES NOT check for round validity or range within the roundabout
-   * @param roundNumber The round number to set
-   * @param lastVoteSlot The last slot for which a vote was received
-   * @param voteCount The number of votes collected so far in this round
-   * @param executed Whether this round has been executed
-   * @dev This is an internal function that should only be called after verifying the round is valid and within range
-   * @dev It updates the round data in the circular storage buffer
-   */
-  function _setRoundData(SlashRound roundNumber, Slot lastVoteSlot, uint256 voteCount, bool executed) internal {
-    roundDatas[SlashRound.unwrap(roundNumber) % ROUNDABOUT_SIZE] = CompressedRoundData({
-      roundNumber: roundNumber.compress(),
-      lastVoteSlot: lastVoteSlot.compress(),
-      voteCount: SafeCast.toUint16(voteCount), // Ensure voteCount fits in uint16
-      executed: executed
-    });
-  }
-
-  /**
-   * @notice Tally votes for a specific round and return the slash actions to execute
-   * @param _roundData The round data containing votes to tally
-   * @param _committees The committees for each epoch in the round
-   * @return slashActions Array of slash actions that reached quorum
-   * @return committeesWithSlashes Boolean array indicating which committees have at least one slashed validator
-   */
-  function _tally(RoundData memory _roundData, address[][] calldata _committees)
-    internal
-    view
-    returns (SlashAction[] memory slashActions, bool[] memory committeesWithSlashes)
-  {
-    // Must have one committee per epoch in the round
-    require(
-      _committees.length == ROUND_SIZE_IN_EPOCHS,
-      Errors_1.SlashingProposer__InvalidNumberOfCommittees(ROUND_SIZE_IN_EPOCHS, _committees.length)
-    );
-
-    uint256 voteCount = _roundData.voteCount;
-
-    // No votes cast, return empty array
-    if (voteCount == 0) {
-      return (new SlashAction[](0), new bool[](ROUND_SIZE_IN_EPOCHS));
+        emit RoundExecuted(_round, actions.length);
     }
 
-    // Pre-calculate total validators to optimize memory allocation
-    uint256 totalValidators = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS;
+    /**
+     * @notice Load committees for all epochs to be potentially slashed in a round from the rollup instance
+     * @dev This is an expensive call. It is not marked as view since `getEpochCommittee` may modify rollup state.
+     *      If `getEpochCommittee` throws (eg committee not yet formed), an empty committee is returned for that epoch.
+     * @param _round The round number to load committees for
+     * @return committees Array of committees, one for each epoch in the round (may contain empty arrays for early epochs)
+     */
+    function getSlashTargetCommittees(SlashRound _round) external returns (address[][] memory committees) {
+        committees = new address[][](ROUND_SIZE_IN_EPOCHS);
 
-    // Create a voting tally array where each uint256 packs all vote counts for a validator
-    // Layout: [0-63: votes for 1 unit][64-127: votes for 2 units][128-191: votes for 3 units][192-255: unused]
-    // Each 64-bit segment can store up to 2^64-1 votes
-    // Overflow protection: With MAX_ROUND_SIZE=1024, maximum possible votes per validator is 1024,
-    // which is well below 2^64-1, preventing any overflow in the packed counters
-    uint256[] memory tallyMatrix = new uint256[](totalValidators);
-
-    // Process all votes cast during this round to populate the tally matrix
-    _processVotes(_roundData, tallyMatrix, voteCount);
-
-    // Determine which validators reached quorum and return slash actions, applying escape hatch at tally time
-    bool[] memory escapeHatchEpochs = _getEscapeHatchEpochFlags(_roundData.roundNumber);
-    return _determineSlashActions(tallyMatrix, _committees, totalValidators, escapeHatchEpochs);
-  }
-
-  /**
-   * @notice Process all votes and populate the tally matrix
-   */
-  function _processVotes(RoundData memory _roundData, uint256[] memory tallyMatrix, uint256 voteCount) internal view {
-    SlashRound roundNumber = _roundData.roundNumber;
-    uint256 voteLength = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
-
-    // Cache the RoundVotes storage reference to avoid repeated calls
-    RoundVotes storage targetRoundVotes = _getRoundVotes(roundNumber);
-
-    unchecked {
-      for (uint256 i; i < voteCount; ++i) {
-        // Load the i-th votes from this round from storage into memory
-        bytes memory currentVote = _loadVoteDataFromStorage(targetRoundVotes.votes[i], voteLength);
-
-        // Process votes 32 bytes at a time
-        uint256 j;
-        for (; j + 31 < voteLength; j += 32) {
-          // Process 32 bytes at once (128 validators)
-          _process32BytesVotes(tallyMatrix, currentVote, j);
+        IValidatorSelection rollup = IValidatorSelection(INSTANCE);
+        unchecked {
+            for (uint256 epochIndex; epochIndex < ROUND_SIZE_IN_EPOCHS; ++epochIndex) {
+                Epoch epoch = getSlashTargetEpoch(_round, epochIndex);
+                try rollup.getEpochCommittee(epoch) returns (address[] memory committee) {
+                    committees[epochIndex] = committee;
+                } catch {
+                    committees[epochIndex] = new address[](0);
+                }
+            }
         }
 
-        // Process remaining bytes one at a time (inlined)
-        for (; j < voteLength; ++j) {
-          uint256 baseIndex = j << 2; // j * 4 using bit shift
-          uint8 currentByte;
-
-          assembly {
-            currentByte := byte(0, mload(add(add(currentVote, 0x20), j)))
-          }
-
-          // Next byte if this one is empty
-          if (currentByte == 0) continue;
-
-          // Extract 2 bits for each of the 4 validators in this byte,
-          // and increment vote count for the given slash amount
-          // Extract validator 0 vote: bits 0-1 (mask with 0x03 = 0b00000011)
-          uint8 validatorSlash0 = currentByte & 0x03;
-          if (validatorSlash0 != 0) {
-            // Increment vote count at position (slashAmount-1) * 64 bits in packed uint256
-            // Layout: [0-63: votes for 1 unit][64-127: votes for 2 units][128-191: votes for 3 units]
-            tallyMatrix[baseIndex] += uint256(1) << ((validatorSlash0 - 1) << 6);
-          }
-
-          // Extract validator 1 vote: bits 2-3 (shift right 2, then mask with 0x03)
-          uint8 validatorSlash1 = (currentByte >> 2) & 0x03;
-          if (validatorSlash1 != 0) {
-            tallyMatrix[baseIndex + 1] += uint256(1) << ((validatorSlash1 - 1) << 6);
-          }
-
-          // Extract validator 2 vote: bits 4-5 (shift right 4, then mask with 0x03)
-          uint8 validatorSlash2 = (currentByte >> 4) & 0x03;
-          if (validatorSlash2 != 0) {
-            tallyMatrix[baseIndex + 2] += uint256(1) << ((validatorSlash2 - 1) << 6);
-          }
-
-          // Extract validator 3 vote: bits 6-7 (shift right 6, no mask needed as top 2 bits)
-          uint8 validatorSlash3 = currentByte >> 6;
-          if (validatorSlash3 != 0) {
-            tallyMatrix[baseIndex + 3] += uint256(1) << ((validatorSlash3 - 1) << 6);
-          }
-        }
-      }
+        return committees;
     }
-  }
 
-  /**
-   * @notice Determine which validators reached quorum and should be slashed
-   */
-  function _determineSlashActions(
-    uint256[] memory tallyMatrix,
-    address[][] calldata _committees,
-    uint256 totalValidators,
-    bool[] memory escapeHatchEpochs
-  ) internal view returns (SlashAction[] memory actions, bool[] memory committeesWithSlashes) {
-    actions = new SlashAction[](totalValidators);
-    uint256 actionCount;
-    committeesWithSlashes = new bool[](ROUND_SIZE_IN_EPOCHS);
+    /**
+     * @notice Get the tally results for a specific round, showing which validators would be slashed
+     * @dev This function is intended for offchain querying and analysis of voting results.
+     *      It uses transient storage when calling getEpochCommittee on the rollup contract.
+     *      Returns the same slash actions that would be executed if executeRound() were called for this round.
+     *
+     * @param _round The round number to analyze and return tally results for
+     * @param _committees The list of committees to consider for the tally (get them via `getSlashTargetCommittees`)
+     * @return actions Array of SlashAction structs containing validator addresses and slash amounts
+     *                for all validators that reached the quorum threshold in this round
+     */
+    function getTally(SlashRound _round, address[][] calldata _committees)
+        external
+        view
+        returns (SlashAction[] memory)
+    {
+        // Get the round data for the specified round
+        RoundData memory roundData = _getRoundData(_round, getCurrentRound());
 
-    unchecked {
-      for (uint256 i; i < totalValidators; ++i) {
-        uint256 epochIndex = i / COMMITTEE_SIZE;
+        // Tally votes and return slash actions
+        (SlashAction[] memory actions,) = _tally(roundData, _committees);
+        return actions;
+    }
 
-        // Skip validators that belong to escape-hatch epochs
-        if (escapeHatchEpochs[epochIndex]) {
-          continue;
+    /**
+     * @notice Get the deterministic address where a slash payload would be deployed for given actions
+     * @dev Uses CREATE2 to predict the deployment address based on the round number and slash actions.
+     *      Returns zero address if no actions are provided. The address is deterministic and will be
+     *      the same across multiple calls with identical parameters.
+     *
+     * @param _round The round number that will be mixed into the CREATE2 salt
+     * @param _actions Array of SlashAction structs containing validator addresses and slash amounts
+     * @return The predicted deployment address of the SlashPayload contract, or zero address if no actions
+     */
+    function getPayloadAddress(SlashRound _round, SlashAction[] memory _actions) external view returns (address) {
+        // Return zero address if no actions
+        if (_actions.length == 0) {
+            return address(0);
         }
-        uint256 packedVotes = tallyMatrix[i];
+        (,,, address predictedAddress) = _preparePayloadDataAndAddress(_round, _actions);
+        return predictedAddress;
+    }
 
-        // Skip if no votes for this validator
-        if (packedVotes == 0) continue;
+    /**
+     * @notice Get information about a specific slashing round's status and voting data
+     * @param _round The round number to retrieve information for
+     * @return isExecuted True if the round has already been executed and slashing has occurred
+     * @return voteCount The total number of votes that have been cast in this round by proposers
+     */
+    function getRound(SlashRound _round) external view returns (bool isExecuted, uint256 voteCount) {
+        // Load round data from the circular storage
+        RoundData memory roundData = _getRoundData(_round, getCurrentRound());
+        return (roundData.executed, roundData.voteCount);
+    }
 
-        uint256 voteCountForValidator;
+    /**
+     * @notice Check if a specific slashing round is ready for execution
+     * @param _round The round number to check
+     * @param _slot The slot number at which to evaluate readiness (typically current or slot)
+     */
+    function isRoundReadyToExecute(SlashRound _round, Slot _slot) external view returns (bool) {
+        SlashRound currentRound = _computeRound(_slot);
+        return _isRoundReadyToExecute(_round, currentRound);
+    }
 
-        // Check slash amounts from highest (3 units) to lowest (1 unit)
-        // Cumulative voting: votes for N units also count for N-1, N-2, etc.
-        for (uint256 j = 3; j > 0;) {
-          // Extract vote count for this slash amount from packed data
-          // Shift right by (slashAmount-1) * 64 bits, then mask to get 64-bit segment
-          // Layout: [0-63: votes for 1 unit][64-127: votes for 2 units][128-191: votes for 3 units]
-          uint256 votesForAmount = (packedVotes >> ((j - 1) << 6)) & 0xFFFFFFFFFFFFFFFF;
-          voteCountForValidator += votesForAmount;
+    /**
+     * @notice Get the votes for a specific `_round` at a specific `_index`
+     * @param _round The round number to retrieve votes for
+     * @param _index The index to retrieve votes for
+     * @return The votes retrieved
+     */
+    function getVotes(SlashRound _round, uint256 _index) external view returns (bytes memory) {
+        uint256 expectedLength = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
 
-          // Check if this slash amount has reached quorum
-          if (voteCountForValidator >= QUORUM) {
-            // Convert units to actual slash amount
-            uint256 slashAmount;
-            if (j == 1) {
-              slashAmount = SLASH_AMOUNT_SMALL;
-            } else if (j == 2) {
-              slashAmount = SLASH_AMOUNT_MEDIUM;
-            } else if (j == 3) {
-              slashAmount = SLASH_AMOUNT_LARGE;
+        // _getRoundData reverts if _round is out of the roundabout range and
+        // returns empty metadata if this circular slot still contains round data
+        // from an older round number.
+        SlashRound currentRound = getCurrentRound();
+        RoundData memory roundData = _getRoundData(_round, currentRound);
+
+        // Vote storage is not cleared when a circular slot is reused. If this
+        // round has fewer votes than a previous one that shared the same slot,
+        // indices >= voteCount would otherwise return stale vote bytes.
+        if (_index >= roundData.voteCount) {
+            return new bytes(expectedLength);
+        }
+
+        bytes32[4] storage voteSlots = _getRoundVotes(_round).votes[_index];
+        return _loadVoteDataFromStorage(voteSlots, expectedLength);
+    }
+
+    /**
+     * @notice Get the current round number based on the current slot from the rollup
+     * @dev Calculates the current round by dividing the current slot number by ROUND_SIZE.
+     *      This determines which voting round is currently active.
+     * @return The current SlashRound number
+     */
+    function getCurrentRound() public view returns (SlashRound) {
+        // Get current slot from the rollup instance
+        IValidatorSelection rollup = IValidatorSelection(INSTANCE);
+        Slot currentSlot = rollup.getCurrentSlot();
+        // Divide slot by round size to get round number
+        return SlashRound.wrap(Slot.unwrap(currentSlot) / ROUND_SIZE);
+    }
+
+    /**
+     * @notice Get the epoch number that will be slashed during a specific round at a given epoch index
+     * @dev Calculates which epoch's validators are being voted on for slashing in a given round.
+     *      The epoch is determined by looking back SLASH_OFFSET_IN_ROUNDS rounds from the voting round
+     *      and then adding the epoch index within that round.
+     *
+     * @param _round The round number during which voting is taking place
+     * @param _epochIndex The index of the epoch within the round (must be 0 to ROUND_SIZE_IN_EPOCHS-1)
+     * @return epochNumber The epoch number whose validators will be considered for slashing
+     *
+     * Reverts with:
+     * - SlashingProposer__VotingNotOpen: If the round is less than SLASH_OFFSET_IN_ROUNDS
+     */
+    function getSlashTargetEpoch(SlashRound _round, uint256 _epochIndex) public view returns (Epoch epochNumber) {
+        require(_round >= SlashRound.wrap(SLASH_OFFSET_IN_ROUNDS), Errors_1.SlashingProposer__VotingNotOpen(_round));
+        require(
+            _epochIndex < ROUND_SIZE_IN_EPOCHS,
+            Errors_1.SlashingProposer__InvalidEpochIndex(_epochIndex, ROUND_SIZE_IN_EPOCHS)
+        );
+        return Epoch.wrap((SlashRound.unwrap(_round) - SLASH_OFFSET_IN_ROUNDS) * ROUND_SIZE_IN_EPOCHS + _epochIndex);
+    }
+
+    /**
+     * @notice Generate the EIP-712 signature digest for a vote to prevent replay attacks
+     * @dev Creates a typed data hash according to EIP-712 standard that includes both the vote data
+     *      and the slot number. The slot number inclusion prevents votes from being replayed in
+     *      different slots, ensuring each vote is tied to a specific time.
+     *
+     * @param _votes The encoded vote data that will be signed by the proposer
+     * @param _slot The slot number when the vote is being cast (prevents replay attacks)
+     * @return The EIP-712 compliant signature digest that should be signed by the proposer
+     */
+    function getVoteSignatureDigest(bytes calldata _votes, Slot _slot) public view returns (bytes32) {
+        return _hashTypedDataV4(keccak256(abi.encode(VOTE_TYPEHASH, keccak256(_votes), Slot.unwrap(_slot))));
+    }
+
+    /**
+     * @notice Get the address of the validator who is authorized to propose in the current slot
+     * @dev Queries the rollup contract to determine which validator has proposing rights.
+     *      This is used to verify that vote signatures come from the authorized proposer.
+     * @return The address of the current slot's designated proposer
+     */
+    function _getCurrentProposer() internal returns (address) {
+        // Query the rollup for who is allowed to propose in the current slot
+        IValidatorSelection rollup = IValidatorSelection(INSTANCE);
+        return rollup.getCurrentProposer();
+    }
+
+    /**
+     * @notice Get the committee commitment from the Rollup.
+     * @param _epoch The epoch number
+     */
+    function _getCommitteeCommitment(Epoch _epoch) internal returns (bytes32) {
+        IValidatorSelection rollup = IValidatorSelection(INSTANCE);
+        (bytes32 commitment,) = rollup.getEpochCommitteeCommitment(_epoch);
+        return commitment;
+    }
+
+    /**
+     * @notice Deploy a slash payload contract with the given actions
+     * @dev Deploys a SlashPayload contract using CREATE2 for deterministic addresses
+     * @param _round The round number (mixed into the salt)
+     * @param _actions Array of slash actions to encode in the payload
+     */
+    function _deploySlashPayload(SlashRound _round, SlashAction[] memory _actions) internal returns (IPayload) {
+        // Prepare arrays for the SlashPayload constructor and get the predicted address
+        (address[] memory validators, uint96[] memory amounts, bytes32 salt, address predictedAddress) =
+            _preparePayloadDataAndAddress(_round, _actions);
+        // Return existing payload if already deployed
+        if (predictedAddress.code.length > 0) {
+            return IPayload(predictedAddress);
+        }
+
+        // Deploy clone of SlashPayload using EIP-1167 minimal proxy with immutable args
+        // Encode the immutable arguments for the clone
+        bytes memory immutableArgs = SlashPayloadLib.encodeImmutableArgs(INSTANCE, validators, amounts);
+
+        // Deploy the clone with deterministic address
+        address clone = Clones.cloneDeterministicWithImmutableArgs(SLASH_PAYLOAD_IMPLEMENTATION, immutableArgs, salt);
+
+        return IPayload(clone);
+    }
+
+    /**
+     * @notice Store vote data in fixed-size format
+     * @param roundNumber The round to store the vote for
+     * @param voteIndex The index of the vote within the round
+     * @param voteData The vote data to store
+     */
+    function _storeVoteData(SlashRound roundNumber, uint256 voteIndex, bytes calldata voteData) internal {
+        bytes32[4] storage voteSlots = _getRoundVotes(roundNumber).votes[voteIndex];
+        uint256 dataLength = voteData.length;
+
+        // Ensure we don't exceed maximum size
+        require(dataLength <= 128, Errors_1.SlashingProposer__VoteSizeTooBig(dataLength, 128));
+
+        unchecked {
+            assembly {
+                let offset := voteData.offset
+
+                // Store chunk 0 (bytes 0-31)
+                if dataLength {
+                    let chunk := calldataload(offset)
+                    // For partial chunks, we need to keep data left-aligned in the slot
+                    // No masking needed since unused bytes are already zero in calldata
+                    sstore(voteSlots.slot, chunk)
+                }
+
+                // Store chunk 1 (bytes 32-63)
+                if gt(dataLength, 32) {
+                    let chunk := calldataload(add(offset, 32))
+                    sstore(add(voteSlots.slot, 1), chunk)
+                }
+
+                // Store chunk 2 (bytes 64-95)
+                if gt(dataLength, 64) {
+                    let chunk := calldataload(add(offset, 64))
+                    sstore(add(voteSlots.slot, 2), chunk)
+                }
+
+                // Store chunk 3 (bytes 96-127)
+                if gt(dataLength, 96) {
+                    let chunk := calldataload(add(offset, 96))
+                    sstore(add(voteSlots.slot, 3), chunk)
+                }
+            }
+        }
+    }
+
+    /**
+     * @notice Set round data in the circular storage
+     * This function DOES NOT check for round validity or range within the roundabout
+     * @param roundNumber The round number to set
+     * @param lastVoteSlot The last slot for which a vote was received
+     * @param voteCount The number of votes collected so far in this round
+     * @param executed Whether this round has been executed
+     * @dev This is an internal function that should only be called after verifying the round is valid and within range
+     * @dev It updates the round data in the circular storage buffer
+     */
+    function _setRoundData(SlashRound roundNumber, Slot lastVoteSlot, uint256 voteCount, bool executed) internal {
+        roundDatas[SlashRound.unwrap(roundNumber) % ROUNDABOUT_SIZE] = CompressedRoundData({
+            roundNumber: roundNumber.compress(),
+            lastVoteSlot: lastVoteSlot.compress(),
+            voteCount: SafeCast.toUint16(voteCount), // Ensure voteCount fits in uint16
+            executed: executed
+        });
+    }
+
+    /**
+     * @notice Tally votes for a specific round and return the slash actions to execute
+     * @param _roundData The round data containing votes to tally
+     * @param _committees The committees for each epoch in the round
+     * @return slashActions Array of slash actions that reached quorum
+     * @return committeesWithSlashes Boolean array indicating which committees have at least one slashed validator
+     */
+    function _tally(RoundData memory _roundData, address[][] calldata _committees)
+        internal
+        view
+        returns (SlashAction[] memory slashActions, bool[] memory committeesWithSlashes)
+    {
+        // Must have one committee per epoch in the round
+        require(
+            _committees.length == ROUND_SIZE_IN_EPOCHS,
+            Errors_1.SlashingProposer__InvalidNumberOfCommittees(ROUND_SIZE_IN_EPOCHS, _committees.length)
+        );
+
+        uint256 voteCount = _roundData.voteCount;
+
+        // No votes cast, return empty array
+        if (voteCount == 0) {
+            return (new SlashAction[](0), new bool[](ROUND_SIZE_IN_EPOCHS));
+        }
+
+        // Pre-calculate total validators to optimize memory allocation
+        uint256 totalValidators = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS;
+
+        // Create a voting tally array where each uint256 packs all vote counts for a validator
+        // Layout: [0-63: votes for 1 unit][64-127: votes for 2 units][128-191: votes for 3 units][192-255: unused]
+        // Each 64-bit segment can store up to 2^64-1 votes
+        // Overflow protection: With MAX_ROUND_SIZE=1024, maximum possible votes per validator is 1024,
+        // which is well below 2^64-1, preventing any overflow in the packed counters
+        uint256[] memory tallyMatrix = new uint256[](totalValidators);
+
+        // Process all votes cast during this round to populate the tally matrix
+        _processVotes(_roundData, tallyMatrix, voteCount);
+
+        // Determine which validators reached quorum and return slash actions, applying escape hatch at tally time
+        bool[] memory escapeHatchEpochs = _getEscapeHatchEpochFlags(_roundData.roundNumber);
+        return _determineSlashActions(tallyMatrix, _committees, totalValidators, escapeHatchEpochs);
+    }
+
+    /**
+     * @notice Process all votes and populate the tally matrix
+     */
+    function _processVotes(RoundData memory _roundData, uint256[] memory tallyMatrix, uint256 voteCount)
+        internal
+        view
+    {
+        SlashRound roundNumber = _roundData.roundNumber;
+        uint256 voteLength = COMMITTEE_SIZE * ROUND_SIZE_IN_EPOCHS / 4;
+
+        // Cache the RoundVotes storage reference to avoid repeated calls
+        RoundVotes storage targetRoundVotes = _getRoundVotes(roundNumber);
+
+        unchecked {
+            for (uint256 i; i < voteCount; ++i) {
+                // Load the i-th votes from this round from storage into memory
+                bytes memory currentVote = _loadVoteDataFromStorage(targetRoundVotes.votes[i], voteLength);
+
+                // Process votes 32 bytes at a time
+                uint256 j;
+                for (; j + 31 < voteLength; j += 32) {
+                    // Process 32 bytes at once (128 validators)
+                    _process32BytesVotes(tallyMatrix, currentVote, j);
+                }
+
+                // Process remaining bytes one at a time (inlined)
+                for (; j < voteLength; ++j) {
+                    uint256 baseIndex = j << 2; // j * 4 using bit shift
+                    uint8 currentByte;
+
+                    assembly {
+                        currentByte := byte(0, mload(add(add(currentVote, 0x20), j)))
+                    }
+
+                    // Next byte if this one is empty
+                    if (currentByte == 0) {
+                        continue;
+                    }
+
+                    // Extract 2 bits for each of the 4 validators in this byte,
+                    // and increment vote count for the given slash amount
+                    // Extract validator 0 vote: bits 0-1 (mask with 0x03 = 0b00000011)
+                    uint8 validatorSlash0 = currentByte & 0x03;
+                    if (validatorSlash0 != 0) {
+                        // Increment vote count at position (slashAmount-1) * 64 bits in packed uint256
+                        // Layout: [0-63: votes for 1 unit][64-127: votes for 2 units][128-191: votes for 3 units]
+                        tallyMatrix[baseIndex] += uint256(1) << ((validatorSlash0 - 1) << 6);
+                    }
+
+                    // Extract validator 1 vote: bits 2-3 (shift right 2, then mask with 0x03)
+                    uint8 validatorSlash1 = (currentByte >> 2) & 0x03;
+                    if (validatorSlash1 != 0) {
+                        tallyMatrix[baseIndex + 1] += uint256(1) << ((validatorSlash1 - 1) << 6);
+                    }
+
+                    // Extract validator 2 vote: bits 4-5 (shift right 4, then mask with 0x03)
+                    uint8 validatorSlash2 = (currentByte >> 4) & 0x03;
+                    if (validatorSlash2 != 0) {
+                        tallyMatrix[baseIndex + 2] += uint256(1) << ((validatorSlash2 - 1) << 6);
+                    }
+
+                    // Extract validator 3 vote: bits 6-7 (shift right 6, no mask needed as top 2 bits)
+                    uint8 validatorSlash3 = currentByte >> 6;
+                    if (validatorSlash3 != 0) {
+                        tallyMatrix[baseIndex + 3] += uint256(1) << ((validatorSlash3 - 1) << 6);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @notice Determine which validators reached quorum and should be slashed
+     */
+    function _determineSlashActions(
+        uint256[] memory tallyMatrix,
+        address[][] calldata _committees,
+        uint256 totalValidators,
+        bool[] memory escapeHatchEpochs
+    ) internal view returns (SlashAction[] memory actions, bool[] memory committeesWithSlashes) {
+        actions = new SlashAction[](totalValidators);
+        uint256 actionCount;
+        committeesWithSlashes = new bool[](ROUND_SIZE_IN_EPOCHS);
+
+        unchecked {
+            for (uint256 i; i < totalValidators; ++i) {
+                uint256 epochIndex = i / COMMITTEE_SIZE;
+
+                // Skip validators that belong to escape-hatch epochs
+                if (escapeHatchEpochs[epochIndex]) {
+                    continue;
+                }
+                uint256 packedVotes = tallyMatrix[i];
+
+                // Skip if no votes for this validator
+                if (packedVotes == 0) {
+                    continue;
+                }
+
+                uint256 voteCountForValidator;
+
+                // Check slash amounts from highest (3 units) to lowest (1 unit)
+                // Cumulative voting: votes for N units also count for N-1, N-2, etc.
+                for (uint256 j = 3; j > 0;) {
+                    // Extract vote count for this slash amount from packed data
+                    // Shift right by (slashAmount-1) * 64 bits, then mask to get 64-bit segment
+                    // Layout: [0-63: votes for 1 unit][64-127: votes for 2 units][128-191: votes for 3 units]
+                    uint256 votesForAmount = (packedVotes >> ((j - 1) << 6)) & 0xFFFFFFFFFFFFFFFF;
+                    voteCountForValidator += votesForAmount;
+
+                    // Check if this slash amount has reached quorum
+                    if (voteCountForValidator >= QUORUM) {
+                        // Convert units to actual slash amount
+                        uint256 slashAmount;
+                        if (j == 1) {
+                            slashAmount = SLASH_AMOUNT_SMALL;
+                        } else if (j == 2) {
+                            slashAmount = SLASH_AMOUNT_MEDIUM;
+                        } else if (j == 3) {
+                            slashAmount = SLASH_AMOUNT_LARGE;
+                        }
+
+                        // Record the slashing action
+                        actions[actionCount] = SlashAction({
+                            validator: _committees[epochIndex][i % COMMITTEE_SIZE],
+                            slashAmount: slashAmount
+                        });
+                        ++actionCount;
+
+                        // Mark this committee as having at least one slashed validator
+                        committeesWithSlashes[epochIndex] = true;
+
+                        // Only slash each validator once at the highest amount that reached quorum
+                        break;
+                    }
+
+                    --j;
+                }
+            }
+        }
+
+        // Resize actions array to the actual number of actions using assembly
+        assembly {
+            mstore(actions, actionCount)
+        }
+
+        return (actions, committeesWithSlashes);
+    }
+
+    /**
+     * @notice Load vote data from fixed-size format (optimized with unrolled loop)
+     * @param voteSlots The storage reference to the vote slots
+     * @param expectedLength The expected length of the vote data
+     * @return voteData The reconstructed vote data as bytes
+     */
+    function _loadVoteDataFromStorage(bytes32[4] storage voteSlots, uint256 expectedLength)
+        internal
+        view
+        returns (bytes memory voteData)
+    {
+        // Allocate memory for full chunks
+        // This avoids complex masking by over-allocating slightly
+        voteData = new bytes(4 * 32);
+
+        unchecked {
+            // Load full chunks without masking
+            assembly {
+                let dataPtr := add(voteData, 0x20)
+
+                // Chunk 0 (bytes 0-31)
+                if expectedLength {
+                    let chunk := sload(voteSlots.slot)
+                    mstore(dataPtr, chunk)
+                }
+
+                // Chunk 1 (bytes 32-63)
+                if gt(expectedLength, 32) {
+                    let chunk := sload(add(voteSlots.slot, 1))
+                    mstore(add(dataPtr, 32), chunk)
+                }
+
+                // Chunk 2 (bytes 64-95)
+                if gt(expectedLength, 64) {
+                    let chunk := sload(add(voteSlots.slot, 2))
+                    mstore(add(dataPtr, 64), chunk)
+                }
+
+                // Chunk 3 (bytes 96-127)
+                if gt(expectedLength, 96) {
+                    let chunk := sload(add(voteSlots.slot, 3))
+                    mstore(add(dataPtr, 96), chunk)
+                }
+
+                // Adjust the array length to the expected length
+                // This ensures the bytes array reports the correct length
+                // even though we allocated extra memory
+                mstore(voteData, expectedLength)
+            }
+        }
+    }
+
+    /**
+     * @notice Get the current slot number from the rollup contract
+     * @dev Retrieves the current time-based slot number which determines the active round and proposer.
+     * @return The current Slot number
+     */
+    function _getCurrentSlot() internal view returns (Slot) {
+        IValidatorSelection rollup = IValidatorSelection(INSTANCE);
+        return rollup.getCurrentSlot();
+    }
+
+    /**
+     * @notice Determine which epochs targeted by a round are in escape-hatch mode
+     * @param _round The round number to check for
+     * @return escapeHatchEpochs A bool array for escape hatch status of the epochs in the round
+     */
+    function _getEscapeHatchEpochFlags(SlashRound _round) internal view returns (bool[] memory escapeHatchEpochs) {
+        escapeHatchEpochs = new bool[](ROUND_SIZE_IN_EPOCHS);
+
+        for (uint256 epochIndex; epochIndex < ROUND_SIZE_IN_EPOCHS; epochIndex++) {
+            Epoch epoch = getSlashTargetEpoch(_round, epochIndex);
+            IEscapeHatch escapeHatch = IValidatorSelection(INSTANCE).getEscapeHatchForEpoch(epoch);
+            if (address(escapeHatch) == address(0)) {
+                continue;
+            }
+            (bool isOpen,) = escapeHatch.isHatchOpen(epoch);
+            escapeHatchEpochs[epochIndex] = isOpen;
+        }
+    }
+
+    /**
+     * @notice Check if a round is ready for execution based on timing constraints
+     * @dev A round is ready for execution when:
+     *      1. Enough time has passed (current round > round + execution delay)
+     *      2. Not too much time has passed (current round <= round + lifetime)
+     *      This ensures there's time for review before execution while preventing stale executions.
+     *
+     * @param _round The round number to check readiness for
+     * @param _currentRound The current round number for comparison
+     * @return True if the round is ready for execution, false otherwise
+     */
+    function _isRoundReadyToExecute(SlashRound _round, SlashRound _currentRound) internal view returns (bool) {
+        // Round must have passed execution delay but not exceeded lifetime
+        // This gives time for review before execution and prevents stale executions
+        return SlashRound.unwrap(_currentRound) > SlashRound.unwrap(_round) + EXECUTION_DELAY_IN_ROUNDS
+            && SlashRound.unwrap(_currentRound) <= SlashRound.unwrap(_round) + LIFETIME_IN_ROUNDS;
+    }
+
+    /**
+     * @notice Internal function to prepare payload data and compute address from slash actions
+     * @param _round The round number (mixed into the salt)
+     * @param _actions Array of slash actions
+     * @return validators Array of validator addresses
+     * @return amounts Array of slash amounts as uint96
+     * @return salt The computed salt for CREATE2 deployment
+     * @return predictedAddress The predicted address where the payload would be deployed
+     */
+    function _preparePayloadDataAndAddress(SlashRound _round, SlashAction[] memory _actions)
+        internal
+        view
+        returns (address[] memory validators, uint96[] memory amounts, bytes32 salt, address predictedAddress)
+    {
+        uint256 actionCount = _actions.length;
+        validators = new address[](actionCount);
+        amounts = new uint96[](actionCount);
+
+        // Extract validators and amounts from actions
+        unchecked {
+            for (uint256 i; i < actionCount; ++i) {
+                validators[i] = _actions[i].validator;
+                // Convert uint256 to uint96, checking for overflow
+                require(_actions[i].slashAmount <= type(uint96).max, Errors_1.SlashingProposer__SlashAmountTooLarge());
+                amounts[i] = uint96(_actions[i].slashAmount);
+            }
+        }
+
+        // Compute salt for CREATE2 deployment, including round number
+        salt = keccak256(abi.encodePacked(SlashRound.unwrap(_round), validators, amounts));
+
+        // Compute predicted address using clone deterministic address prediction
+        bytes memory immutableArgs = SlashPayloadLib.encodeImmutableArgs(INSTANCE, validators, amounts);
+        predictedAddress = Clones.predictDeterministicAddressWithImmutableArgs(
+            SLASH_PAYLOAD_IMPLEMENTATION, immutableArgs, salt, address(this)
+        );
+
+        return (validators, amounts, salt, predictedAddress);
+    }
+
+    /**
+     * @notice Returns a storage reference to the round votes for a specific round from the circular storage buffer
+     * @dev Uses modulo arithmetic to map round numbers to storage slots in the circular buffer.
+     *      IMPORTANT: This function DOES NOT validate that the round is within the valid range or that
+     *      the data hasn't been overwritten by newer rounds. Always call getRoundData() first to ensure
+     *      the round data is valid before using this function.
+     *
+     * @param _round The round number to get votes for
+     * @return A storage reference to the RoundVotes struct containing the vote data for this round
+     */
+    function _getRoundVotes(SlashRound _round) internal view returns (RoundVotes storage) {
+        // Map round number to circular storage index using modulo
+        // This allows reuse of storage slots as older rounds become irrelevant
+        return roundVotes[SlashRound.unwrap(_round) % ROUNDABOUT_SIZE];
+    }
+
+    /**
+     * @notice Get round data for a specific round, loading from circular storage and decompressing it
+     * @param _round The round number to retrieve data for
+     * @param _currentRound The current round number, so we dont try loading data outside the valid roundabout range.
+     * Required as a parameter to avoid having to recompute it on every call to this function.
+     * @return RoundData struct containing the round's data
+     */
+    function _getRoundData(SlashRound _round, SlashRound _currentRound) internal view returns (RoundData memory) {
+        // Check if the requested round is within the valid roundabout range
+        if (
+            SlashRound.unwrap(_round) > SlashRound.unwrap(_currentRound)
+                || SlashRound.unwrap(_round) + ROUNDABOUT_SIZE <= SlashRound.unwrap(_currentRound)
+        ) {
+            revert Errors_1.SlashingProposer__RoundOutOfRange((_round), (_currentRound));
+        }
+
+        // Load round data from the circular storage into memory in a single SLOAD
+        CompressedRoundData memory roundData = roundDatas[SlashRound.unwrap(_round) % ROUNDABOUT_SIZE];
+
+        // If we find in storage round data for an older round since we've gone around the roundabout, return an empty one
+        if (roundData.roundNumber.decompress() != _round) {
+            return RoundData({roundNumber: _round, lastVoteSlot: Slot.wrap(0), voteCount: 0, executed: false});
+        }
+
+        return RoundData({
+            roundNumber: _round,
+            lastVoteSlot: roundData.lastVoteSlot.decompress(),
+            voteCount: roundData.voteCount,
+            executed: roundData.executed
+        });
+    }
+
+    /**
+     * @notice Computes the round at the given slot
+     * @param _slot - The slot to compute round for
+     * @return The round number
+     */
+    function _computeRound(Slot _slot) internal view returns (SlashRound) {
+        return SlashRound.wrap(Slot.unwrap(_slot) / ROUND_SIZE);
+    }
+
+    /**
+     * @notice Process 32 bytes of vote data at once
+     * @dev Processes a full word for maximum efficiency with early exit for zero words
+     */
+    function _process32BytesVotes(uint256[] memory tallyMatrix, bytes memory currentVote, uint256 startJ)
+        internal
+        pure
+    {
+        unchecked {
+            // Load 32 bytes as a single word
+            uint256 word;
+            assembly {
+                word := mload(add(add(currentVote, 0x20), startJ))
             }
 
-            // Record the slashing action
-            actions[actionCount] =
-              SlashAction({validator: _committees[epochIndex][i % COMMITTEE_SIZE], slashAmount: slashAmount});
-            ++actionCount;
+            // Early exit if entire word is zero (no votes)
+            if (word == 0) {
+                return;
+            }
 
-            // Mark this committee as having at least one slashed validator
-            committeesWithSlashes[epochIndex] = true;
+            // Process the 32-byte word byte by byte, maintaining big-endian order
+            uint256 baseIndex = startJ << 2; // Convert byte index to validator index: startJ * 4
 
-            // Only slash each validator once at the highest amount that reached quorum
-            break;
-          }
+            for (uint256 i; i < 32; ++i) {
+                // Early exit if remaining word is zero
+                if (word == 0) {
+                    break;
+                }
 
-          --j;
+                // Extract most significant byte from word (big-endian order)
+                // Shift right 248 bits (31 bytes) to get the leftmost byte
+                uint8 currentByte = uint8(word >> 248);
+
+                // Shift word left by 8 bits for next iteration, removing processed byte
+                word <<= 8;
+
+                if (currentByte != 0) {
+                    uint256 idx = baseIndex + (i << 2); // Convert byte index to validator index: baseIndex + i * 4
+
+                    // Extract validator 0 vote: bits 0-1 (mask with 0x03 = 0b00000011)
+                    uint8 v0 = currentByte & 0x03;
+                    if (v0 != 0) {
+                        tallyMatrix[idx] += uint256(1) << ((v0 - 1) << 6);
+                    }
+
+                    // Extract validator 1 vote: bits 2-3 (shift right 2, then mask with 0x03)
+                    uint8 v1 = (currentByte >> 2) & 0x03;
+                    if (v1 != 0) {
+                        tallyMatrix[idx + 1] += uint256(1) << ((v1 - 1) << 6);
+                    }
+
+                    // Extract validator 2 vote: bits 4-5 (shift right 4, then mask with 0x03)
+                    uint8 v2 = (currentByte >> 4) & 0x03;
+                    if (v2 != 0) {
+                        tallyMatrix[idx + 2] += uint256(1) << ((v2 - 1) << 6);
+                    }
+
+                    // Extract validator 3 vote: bits 6-7 (shift right 6, no mask needed)
+                    uint8 v3 = currentByte >> 6;
+                    if (v3 != 0) {
+                        tallyMatrix[idx + 3] += uint256(1) << ((v3 - 1) << 6);
+                    }
+                }
+            }
         }
-      }
     }
 
-    // Resize actions array to the actual number of actions using assembly
-    assembly {
-      mstore(actions, actionCount)
+    /**
+     * @notice Reconstruct committee commitment from addresses
+     */
+    function _computeCommitteeCommitment(address[] calldata _committee) internal pure returns (bytes32) {
+        // Hash the committee addresses to create a commitment for verification
+        // Duplicated from ValidatorSelectionLib.sol
+        return keccak256(abi.encode(_committee));
     }
-
-    return (actions, committeesWithSlashes);
-  }
-
-  /**
-   * @notice Load vote data from fixed-size format (optimized with unrolled loop)
-   * @param voteSlots The storage reference to the vote slots
-   * @param expectedLength The expected length of the vote data
-   * @return voteData The reconstructed vote data as bytes
-   */
-  function _loadVoteDataFromStorage(bytes32[4] storage voteSlots, uint256 expectedLength)
-    internal
-    view
-    returns (bytes memory voteData)
-  {
-    // Allocate memory for full chunks
-    // This avoids complex masking by over-allocating slightly
-    voteData = new bytes(4 * 32);
-
-    unchecked {
-      // Load full chunks without masking
-      assembly {
-        let dataPtr := add(voteData, 0x20)
-
-        // Chunk 0 (bytes 0-31)
-        if expectedLength {
-          let chunk := sload(voteSlots.slot)
-          mstore(dataPtr, chunk)
-        }
-
-        // Chunk 1 (bytes 32-63)
-        if gt(expectedLength, 32) {
-          let chunk := sload(add(voteSlots.slot, 1))
-          mstore(add(dataPtr, 32), chunk)
-        }
-
-        // Chunk 2 (bytes 64-95)
-        if gt(expectedLength, 64) {
-          let chunk := sload(add(voteSlots.slot, 2))
-          mstore(add(dataPtr, 64), chunk)
-        }
-
-        // Chunk 3 (bytes 96-127)
-        if gt(expectedLength, 96) {
-          let chunk := sload(add(voteSlots.slot, 3))
-          mstore(add(dataPtr, 96), chunk)
-        }
-
-        // Adjust the array length to the expected length
-        // This ensures the bytes array reports the correct length
-        // even though we allocated extra memory
-        mstore(voteData, expectedLength)
-      }
-    }
-  }
-
-  /**
-   * @notice Get the current slot number from the rollup contract
-   * @dev Retrieves the current time-based slot number which determines the active round and proposer.
-   * @return The current Slot number
-   */
-  function _getCurrentSlot() internal view returns (Slot) {
-    IValidatorSelection rollup = IValidatorSelection(INSTANCE);
-    return rollup.getCurrentSlot();
-  }
-
-  /**
-   * @notice Determine which epochs targeted by a round are in escape-hatch mode
-   * @param _round The round number to check for
-   * @return escapeHatchEpochs A bool array for escape hatch status of the epochs in the round
-   */
-  function _getEscapeHatchEpochFlags(SlashRound _round) internal view returns (bool[] memory escapeHatchEpochs) {
-    escapeHatchEpochs = new bool[](ROUND_SIZE_IN_EPOCHS);
-
-    for (uint256 epochIndex; epochIndex < ROUND_SIZE_IN_EPOCHS; epochIndex++) {
-      Epoch epoch = getSlashTargetEpoch(_round, epochIndex);
-      IEscapeHatch escapeHatch = IValidatorSelection(INSTANCE).getEscapeHatchForEpoch(epoch);
-      if (address(escapeHatch) == address(0)) {
-        continue;
-      }
-      (bool isOpen,) = escapeHatch.isHatchOpen(epoch);
-      escapeHatchEpochs[epochIndex] = isOpen;
-    }
-  }
-
-  /**
-   * @notice Check if a round is ready for execution based on timing constraints
-   * @dev A round is ready for execution when:
-   *      1. Enough time has passed (current round > round + execution delay)
-   *      2. Not too much time has passed (current round <= round + lifetime)
-   *      This ensures there's time for review before execution while preventing stale executions.
-   *
-   * @param _round The round number to check readiness for
-   * @param _currentRound The current round number for comparison
-   * @return True if the round is ready for execution, false otherwise
-   */
-  function _isRoundReadyToExecute(SlashRound _round, SlashRound _currentRound) internal view returns (bool) {
-    // Round must have passed execution delay but not exceeded lifetime
-    // This gives time for review before execution and prevents stale executions
-    return SlashRound.unwrap(_currentRound) > SlashRound.unwrap(_round) + EXECUTION_DELAY_IN_ROUNDS
-      && SlashRound.unwrap(_currentRound) <= SlashRound.unwrap(_round) + LIFETIME_IN_ROUNDS;
-  }
-
-  /**
-   * @notice Internal function to prepare payload data and compute address from slash actions
-   * @param _round The round number (mixed into the salt)
-   * @param _actions Array of slash actions
-   * @return validators Array of validator addresses
-   * @return amounts Array of slash amounts as uint96
-   * @return salt The computed salt for CREATE2 deployment
-   * @return predictedAddress The predicted address where the payload would be deployed
-   */
-  function _preparePayloadDataAndAddress(SlashRound _round, SlashAction[] memory _actions)
-    internal
-    view
-    returns (address[] memory validators, uint96[] memory amounts, bytes32 salt, address predictedAddress)
-  {
-    uint256 actionCount = _actions.length;
-    validators = new address[](actionCount);
-    amounts = new uint96[](actionCount);
-
-    // Extract validators and amounts from actions
-    unchecked {
-      for (uint256 i; i < actionCount; ++i) {
-        validators[i] = _actions[i].validator;
-        // Convert uint256 to uint96, checking for overflow
-        require(_actions[i].slashAmount <= type(uint96).max, Errors_1.SlashingProposer__SlashAmountTooLarge());
-        amounts[i] = uint96(_actions[i].slashAmount);
-      }
-    }
-
-    // Compute salt for CREATE2 deployment, including round number
-    salt = keccak256(abi.encodePacked(SlashRound.unwrap(_round), validators, amounts));
-
-    // Compute predicted address using clone deterministic address prediction
-    bytes memory immutableArgs = SlashPayloadLib.encodeImmutableArgs(INSTANCE, validators, amounts);
-    predictedAddress = Clones.predictDeterministicAddressWithImmutableArgs(
-      SLASH_PAYLOAD_IMPLEMENTATION, immutableArgs, salt, address(this)
-    );
-
-    return (validators, amounts, salt, predictedAddress);
-  }
-
-  /**
-   * @notice Returns a storage reference to the round votes for a specific round from the circular storage buffer
-   * @dev Uses modulo arithmetic to map round numbers to storage slots in the circular buffer.
-   *      IMPORTANT: This function DOES NOT validate that the round is within the valid range or that
-   *      the data hasn't been overwritten by newer rounds. Always call getRoundData() first to ensure
-   *      the round data is valid before using this function.
-   *
-   * @param _round The round number to get votes for
-   * @return A storage reference to the RoundVotes struct containing the vote data for this round
-   */
-  function _getRoundVotes(SlashRound _round) internal view returns (RoundVotes storage) {
-    // Map round number to circular storage index using modulo
-    // This allows reuse of storage slots as older rounds become irrelevant
-    return roundVotes[SlashRound.unwrap(_round) % ROUNDABOUT_SIZE];
-  }
-
-  /**
-   * @notice Get round data for a specific round, loading from circular storage and decompressing it
-   * @param _round The round number to retrieve data for
-   * @param _currentRound The current round number, so we dont try loading data outside the valid roundabout range.
-   * Required as a parameter to avoid having to recompute it on every call to this function.
-   * @return RoundData struct containing the round's data
-   */
-  function _getRoundData(SlashRound _round, SlashRound _currentRound) internal view returns (RoundData memory) {
-    // Check if the requested round is within the valid roundabout range
-    if (
-      SlashRound.unwrap(_round) > SlashRound.unwrap(_currentRound)
-        || SlashRound.unwrap(_round) + ROUNDABOUT_SIZE <= SlashRound.unwrap(_currentRound)
-    ) {
-      revert Errors_1.SlashingProposer__RoundOutOfRange((_round), (_currentRound));
-    }
-
-    // Load round data from the circular storage into memory in a single SLOAD
-    CompressedRoundData memory roundData = roundDatas[SlashRound.unwrap(_round) % ROUNDABOUT_SIZE];
-
-    // If we find in storage round data for an older round since we've gone around the roundabout, return an empty one
-    if (roundData.roundNumber.decompress() != _round) {
-      return RoundData({roundNumber: _round, lastVoteSlot: Slot.wrap(0), voteCount: 0, executed: false});
-    }
-
-    return RoundData({
-      roundNumber: _round,
-      lastVoteSlot: roundData.lastVoteSlot.decompress(),
-      voteCount: roundData.voteCount,
-      executed: roundData.executed
-    });
-  }
-
-  /**
-   * @notice Computes the round at the given slot
-   * @param _slot - The slot to compute round for
-   * @return The round number
-   */
-  function _computeRound(Slot _slot) internal view returns (SlashRound) {
-    return SlashRound.wrap(Slot.unwrap(_slot) / ROUND_SIZE);
-  }
-
-  /**
-   * @notice Process 32 bytes of vote data at once
-   * @dev Processes a full word for maximum efficiency with early exit for zero words
-   */
-  function _process32BytesVotes(uint256[] memory tallyMatrix, bytes memory currentVote, uint256 startJ) internal pure {
-    unchecked {
-      // Load 32 bytes as a single word
-      uint256 word;
-      assembly {
-        word := mload(add(add(currentVote, 0x20), startJ))
-      }
-
-      // Early exit if entire word is zero (no votes)
-      if (word == 0) return;
-
-      // Process the 32-byte word byte by byte, maintaining big-endian order
-      uint256 baseIndex = startJ << 2; // Convert byte index to validator index: startJ * 4
-
-      for (uint256 i; i < 32; ++i) {
-        // Early exit if remaining word is zero
-        if (word == 0) break;
-
-        // Extract most significant byte from word (big-endian order)
-        // Shift right 248 bits (31 bytes) to get the leftmost byte
-        uint8 currentByte = uint8(word >> 248);
-
-        // Shift word left by 8 bits for next iteration, removing processed byte
-        word <<= 8;
-
-        if (currentByte != 0) {
-          uint256 idx = baseIndex + (i << 2); // Convert byte index to validator index: baseIndex + i * 4
-
-          // Extract validator 0 vote: bits 0-1 (mask with 0x03 = 0b00000011)
-          uint8 v0 = currentByte & 0x03;
-          if (v0 != 0) tallyMatrix[idx] += uint256(1) << ((v0 - 1) << 6);
-
-          // Extract validator 1 vote: bits 2-3 (shift right 2, then mask with 0x03)
-          uint8 v1 = (currentByte >> 2) & 0x03;
-          if (v1 != 0) tallyMatrix[idx + 1] += uint256(1) << ((v1 - 1) << 6);
-
-          // Extract validator 2 vote: bits 4-5 (shift right 4, then mask with 0x03)
-          uint8 v2 = (currentByte >> 4) & 0x03;
-          if (v2 != 0) tallyMatrix[idx + 2] += uint256(1) << ((v2 - 1) << 6);
-
-          // Extract validator 3 vote: bits 6-7 (shift right 6, no mask needed)
-          uint8 v3 = currentByte >> 6;
-          if (v3 != 0) tallyMatrix[idx + 3] += uint256(1) << ((v3 - 1) << 6);
-        }
-      }
-    }
-  }
-
-  /**
-   * @notice Reconstruct committee commitment from addresses
-   */
-  function _computeCommitteeCommitment(address[] calldata _committee) internal pure returns (bytes32) {
-    // Hash the committee addresses to create a commitment for verification
-    // Duplicated from ValidatorSelectionLib.sol
-    return keccak256(abi.encode(_committee));
-  }
 }

@@ -2,19 +2,19 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import { SystemConfig } from "src/L1/SystemConfig.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {SystemConfig} from "src/L1/SystemConfig.sol";
 
 // Libraries
-import { Constants } from "src/libraries/Constants.sol";
-import { GasPayingToken } from "src/libraries/GasPayingToken.sol";
-import { StaticConfig } from "src/libraries/StaticConfig.sol";
-import { Storage } from "src/libraries/Storage.sol";
+import {Constants} from "src/libraries/Constants.sol";
+import {GasPayingToken} from "src/libraries/GasPayingToken.sol";
+import {StaticConfig} from "src/libraries/StaticConfig.sol";
+import {Storage} from "src/libraries/Storage.sol";
 
 // Interfaces
-import { IOptimismPortalInterop as IOptimismPortal } from "interfaces/L1/IOptimismPortalInterop.sol";
-import { IResourceMetering } from "interfaces/L1/IResourceMetering.sol";
-import { ConfigType } from "interfaces/L2/IL1BlockInterop.sol";
+import {IOptimismPortalInterop as IOptimismPortal} from "interfaces/L1/IOptimismPortalInterop.sol";
+import {IResourceMetering} from "interfaces/L1/IResourceMetering.sol";
+import {ConfigType} from "interfaces/L2/IL1BlockInterop.sol";
 
 /// @custom:proxied true
 /// @title SystemConfigInterop
@@ -50,9 +50,7 @@ contract SystemConfigInterop is SystemConfig {
         address _batchInbox,
         SystemConfig.Addresses memory _addresses,
         address _dependencyManager
-    )
-        external
-    {
+    ) external {
         // This method has an initializer modifier, and will revert if already initialized.
         initialize({
             _owner: _owner,
@@ -82,7 +80,6 @@ contract SystemConfigInterop is SystemConfig {
     /// @param _token Address of the gas paying token.
     function _setGasPayingToken(address _token) internal override {
         if (_token != address(0) && _token != Constants.ETHER && !isCustomGasToken()) {
-
             require(
                 ERC20(_token).decimals() == GAS_PAYING_TOKEN_DECIMALS, "SystemConfig: bad decimals of gas paying token"
             );
@@ -90,7 +87,7 @@ contract SystemConfigInterop is SystemConfig {
             bytes32 symbol = GasPayingToken.sanitize(ERC20(_token).symbol());
 
             // Set the gas paying token in storage and in the OptimismPortal.
-            GasPayingToken.set({ _token: _token, _decimals: GAS_PAYING_TOKEN_DECIMALS, _name: name, _symbol: symbol });
+            GasPayingToken.set({_token: _token, _decimals: GAS_PAYING_TOKEN_DECIMALS, _name: name, _symbol: symbol});
             IOptimismPortal(payable(optimismPortal())).setConfig(
                 ConfigType.SET_GAS_PAYING_TOKEN,
                 StaticConfig.encodeSetGasPayingToken({

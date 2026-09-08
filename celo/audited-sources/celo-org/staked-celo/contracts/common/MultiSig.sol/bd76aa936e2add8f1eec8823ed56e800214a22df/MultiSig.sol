@@ -1,9 +1,9 @@
 //SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity 0.8.11;
 
-import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
-import "@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol";
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
 import "../libraries/ExternalCall.sol";
 
@@ -380,10 +380,8 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      */
     modifier validRequirement(uint256 ownerCount, uint256 requiredConfirmations) {
         if (
-            ownerCount > MAX_OWNER_COUNT ||
-            requiredConfirmations > ownerCount ||
-            requiredConfirmations == 0 ||
-            ownerCount == 0
+            ownerCount > MAX_OWNER_COUNT || requiredConfirmations > ownerCount || requiredConfirmations == 0
+                || ownerCount == 0
         ) {
             revert InvalidRequirement(ownerCount, requiredConfirmations);
         }
@@ -460,11 +458,11 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      * to be fully confirmed.
      * @param _delay The delay that must elapse to be able to execute a proposal.
      */
-    function initialize(
-        address[] calldata initialOwners,
-        uint256 requiredConfirmations,
-        uint256 _delay
-    ) external initializer validRequirement(initialOwners.length, requiredConfirmations) {
+    function initialize(address[] calldata initialOwners, uint256 requiredConfirmations, uint256 _delay)
+        external
+        initializer
+        validRequirement(initialOwners.length, requiredConfirmations)
+    {
         for (uint256 i = 0; i < initialOwners.length; i++) {
             if (owners.contains(initialOwners[i])) {
                 revert OwnerAlreadyExists(initialOwners[i]);
@@ -556,11 +554,10 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      * @param payloads The payloads of the proposal.
      * @return proposalId Returns the ID of the proposal that gets generated.
      */
-    function submitProposal(
-        address[] calldata destinations,
-        uint256[] calldata values,
-        bytes[] calldata payloads
-    ) external returns (uint256 proposalId) {
+    function submitProposal(address[] calldata destinations, uint256[] calldata values, bytes[] calldata payloads)
+        external
+        returns (uint256 proposalId)
+    {
         if (destinations.length != values.length) {
             revert ParamLengthsMismatch();
         }
@@ -611,11 +608,7 @@ contract MultiSig is Initializable, UUPSUpgradeable {
     function getProposal(uint256 proposalId)
         external
         view
-        returns (
-            address[] memory destinations,
-            uint256[] memory values,
-            bytes[] memory payloads
-        )
+        returns (address[] memory destinations, uint256[] memory values, bytes[] memory payloads)
     {
         Proposal storage proposal = proposals[proposalId];
         return (proposal.destinations, proposal.values, proposal.payloads);
@@ -627,11 +620,7 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      * @dev Proposal has to be sent by wallet.
      * @param newRequired The new number of confirmations required.
      */
-    function changeRequirement(uint256 newRequired)
-        public
-        onlyWallet
-        validRequirement(owners.length(), newRequired)
-    {
+    function changeRequirement(uint256 newRequired) public onlyWallet validRequirement(owners.length(), newRequired) {
         _changeRequirement(newRequired);
     }
 
@@ -667,11 +656,7 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      * @notice Schedules a proposal with a time lock.
      * @param proposalId The ID of the proposal to confirm.
      */
-    function scheduleProposal(uint256 proposalId)
-        public
-        ownerExists(msg.sender)
-        notExecuted(proposalId)
-    {
+    function scheduleProposal(uint256 proposalId) public ownerExists(msg.sender) notExecuted(proposalId) {
         schedule(proposalId);
         emit ProposalScheduled(proposalId);
     }
@@ -692,11 +677,8 @@ contract MultiSig is Initializable, UUPSUpgradeable {
         proposal.timestampExecutable = DONE_TIMESTAMP;
 
         for (uint256 i = 0; i < proposals[proposalId].destinations.length; i++) {
-            bytes memory returnData = ExternalCall.execute(
-                proposal.destinations[i],
-                proposal.values[i],
-                proposal.payloads[i]
-            );
+            bytes memory returnData =
+                ExternalCall.execute(proposal.destinations[i], proposal.values[i], proposal.payloads[i]);
             emit TransactionExecuted(i, proposalId, returnData);
         }
     }
@@ -728,9 +710,7 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      */
     function isProposalTimelockReached(uint256 proposalId) public view returns (bool) {
         uint256 timestamp = getTimestamp(proposalId);
-        return
-            timestamp <= block.timestamp &&
-            proposals[proposalId].timestampExecutable > DONE_TIMESTAMP;
+        return timestamp <= block.timestamp && proposals[proposalId].timestampExecutable > DONE_TIMESTAMP;
     }
 
     /**
@@ -778,11 +758,11 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      * @param payloads The payloads of the proposal.
      * @return proposalId Returns the ID of the proposal that gets generated.
      */
-    function addProposal(
-        address[] memory destinations,
-        uint256[] memory values,
-        bytes[] memory payloads
-    ) internal notNullBatch(destinations) returns (uint256 proposalId) {
+    function addProposal(address[] memory destinations, uint256[] memory values, bytes[] memory payloads)
+        internal
+        notNullBatch(destinations)
+        returns (uint256 proposalId)
+    {
         proposalId = proposalCount;
         Proposal storage proposal = proposals[proposalId];
 
@@ -798,11 +778,7 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      * @notice Schedules a proposal with a time lock.
      * @param proposalId The ID of the proposal to schedule.
      */
-    function schedule(uint256 proposalId)
-        internal
-        notScheduled(proposalId)
-        fullyConfirmed(proposalId)
-    {
+    function schedule(uint256 proposalId) internal notScheduled(proposalId) fullyConfirmed(proposalId) {
         proposals[proposalId].timestampExecutable = block.timestamp + delay;
     }
 
@@ -848,16 +824,7 @@ contract MultiSig is Initializable, UUPSUpgradeable {
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 1, 0);
     }
 }

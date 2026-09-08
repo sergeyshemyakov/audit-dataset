@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -496,11 +492,10 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -606,9 +601,11 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
 }
 
 interface IScrollGateway {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
@@ -622,9 +619,11 @@ interface IScrollGateway {
     /// @dev Thrown when ScrollMessenger is not dropping message.
     error ErrorNotInDropMessageContext();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice The address of corresponding L1/L2 Gateway contract.
     function counterpart() external view returns (address);
@@ -637,9 +636,11 @@ interface IScrollGateway {
 }
 
 interface IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a cross domain message is sent.
     /// @param sender The address of the sender who initiates the message.
@@ -665,35 +666,36 @@ interface IScrollMessenger {
     /// @param messageHash The hash of the message.
     event FailedRelayedMessage(bytes32 indexed messageHash);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the sender of a cross domain message.
     function xDomainMessageSender() external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
     /// @param value The amount of ether passed when call target contract.
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit) external payable;
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
@@ -701,13 +703,9 @@ interface IScrollMessenger {
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
     /// @param refundAddress The address of account who will receive the refunded fee.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit,
-        address refundAddress
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit, address refundAddress)
+        external
+        payable;
 }
 
 library ScrollConstants {
@@ -726,9 +724,11 @@ interface IScrollGatewayCallback {
 /// @title ScrollGatewayBase
 /// @notice The `ScrollGatewayBase` is a base contract for gateway contracts used in both in L1 and L2.
 abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgradeable, IScrollGateway {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @inheritdoc IScrollGateway
     address public immutable override counterpart;
@@ -739,9 +739,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @inheritdoc IScrollGateway
     address public immutable override messenger;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slot used as counterpart gateway contract, which is deprecated now.
     address private __counterpart;
@@ -758,10 +760,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @dev The storage slots for future usage.
     uint256[46] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier onlyCallByCounterpart() {
         // check caller is messenger
         if (_msgSender() != messenger) {
@@ -788,15 +791,12 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) {
+     *
+     */
+    constructor(address _counterpart, address _router, address _messenger) {
         if (_counterpart == address(0) || _messenger == address(0)) {
             revert ErrorZeroAddress();
         }
@@ -806,18 +806,16 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         messenger = _messenger;
     }
 
-    function _initialize(
-        address,
-        address,
-        address
-    ) internal {
+    function _initialize(address, address, address) internal {
         ReentrancyGuardUpgradeable.__ReentrancyGuard_init();
         OwnableUpgradeable.__Ownable_init();
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to forward calldata to target contract.
     /// @param _to The address of contract to call.
@@ -830,9 +828,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
 }
 
 interface IL2ERC20Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when ERC20 token is deposited from L1 to L2 and transfer to recipient.
     /// @param l1Token The address of the token in L1.
@@ -842,12 +842,7 @@ interface IL2ERC20Gateway {
     /// @param amount The amount of token withdrawn from L1 to L2.
     /// @param data The optional calldata passed to recipient in L2.
     event FinalizeDepositERC20(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 amount,
-        bytes data
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes data
     );
 
     /// @notice Emitted when someone withdraw ERC20 token from L2 to L1.
@@ -858,17 +853,14 @@ interface IL2ERC20Gateway {
     /// @param amount The amount of token will be deposited from L2 to L1.
     /// @param data The optional calldata passed to recipient in L1.
     event WithdrawERC20(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 amount,
-        bytes data
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes data
     );
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the corresponding l1 token address given l2 token address.
     /// @param l2Token The address of l2 token.
@@ -878,20 +870,18 @@ interface IL2ERC20Gateway {
     /// @param l1Token The address of l1 token.
     function getL2ERC20Address(address l1Token) external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Withdraw of some token to a caller's account on L1.
     /// @dev Make this function payable to send relayer fee in Ether.
     /// @param token The address of token in L2.
     /// @param amount The amount of token to transfer.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC20(
-        address token,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC20(address token, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Withdraw of some token to a recipient's account on L1.
     /// @dev Make this function payable to send relayer fee in Ether.
@@ -899,12 +889,7 @@ interface IL2ERC20Gateway {
     /// @param to The address of recipient's account on L1.
     /// @param amount The amount of token to transfer.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC20(
-        address token,
-        address to,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC20(address token, address to, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Withdraw of some token to a recipient's account on L1 and call.
     /// @dev Make this function payable to send relayer fee in Ether.
@@ -913,13 +898,9 @@ interface IL2ERC20Gateway {
     /// @param amount The amount of token to transfer.
     /// @param data Optional data to forward to recipient's account.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC20AndCall(
-        address token,
-        address to,
-        uint256 amount,
-        bytes calldata data,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC20AndCall(address token, address to, uint256 amount, bytes calldata data, uint256 gasLimit)
+        external
+        payable;
 
     /// @notice Complete a deposit from L1 to L2 and send fund to recipient's account in L2.
     /// @dev Make this function payable to handle WETH deposit/withdraw.
@@ -942,58 +923,48 @@ interface IL2ERC20Gateway {
 }
 
 abstract contract L2ERC20Gateway is ScrollGatewayBase, IL2ERC20Gateway {
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slots for future usage.
     uint256[50] private __gap;
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20(
-        address _token,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC20(address _token, uint256 _amount, uint256 _gasLimit) external payable override {
         _withdraw(_token, _msgSender(), _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20(
-        address _token,
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC20(address _token, address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         _withdraw(_token, _to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20AndCall(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes calldata _data,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC20AndCall(address _token, address _to, uint256 _amount, bytes calldata _data, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _withdraw(_token, _to, _amount, _data, _gasLimit);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
-
-    function _withdraw(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual;
+     *
+     */
+    function _withdraw(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual;
 }
 
 interface IScrollStandardERC20Factory {
@@ -1117,15 +1088,8 @@ interface IERC20PermitUpgradeable {
      * https://eips.ethereum.org/EIPS/eip-2612#specification[relevant EIP
      * section].
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 
     /**
      * @dev Returns the current nonce for `owner`. This value must be
@@ -1156,11 +1120,7 @@ interface IScrollERC20Upgradeable is IERC20Upgradeable, IERC20PermitUpgradeable 
     /// @dev ERC677 Standard, see https://github.com/ethereum/EIPs/issues/677
     /// Defi can use this method to transfer L1/L2 token to L2/L1,
     /// and deposit to L2/L1 contract in one transaction
-    function transferAndCall(
-        address receiver,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool success);
+    function transferAndCall(address receiver, uint256 amount, bytes calldata data) external returns (bool success);
 
     /// @notice Mint some token to recipient's account.
     /// @dev Gateway Utilities, only gateway contract can call
@@ -1176,9 +1136,11 @@ interface IScrollERC20Upgradeable is IERC20Upgradeable, IERC20PermitUpgradeable 
 }
 
 interface IL1ERC20Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when ERC20 token is withdrawn from L2 to L1 and transfer to recipient.
     /// @param l1Token The address of the token in L1.
@@ -1188,12 +1150,7 @@ interface IL1ERC20Gateway {
     /// @param amount The amount of token withdrawn from L2 to L1.
     /// @param data The optional calldata passed to recipient in L1.
     event FinalizeWithdrawERC20(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 amount,
-        bytes data
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes data
     );
 
     /// @notice Emitted when someone deposit ERC20 token from L1 to L2.
@@ -1204,12 +1161,7 @@ interface IL1ERC20Gateway {
     /// @param amount The amount of token will be deposited from L1 to L2.
     /// @param data The optional calldata passed to recipient in L2.
     event DepositERC20(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 amount,
-        bytes data
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 amount, bytes data
     );
 
     /// @notice Emitted when some ERC20 token is refunded.
@@ -1218,28 +1170,28 @@ interface IL1ERC20Gateway {
     /// @param amount The amount of token refunded to receiver.
     event RefundERC20(address indexed token, address indexed recipient, uint256 amount);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the corresponding l2 token address given l1 token address.
     /// @param _l1Token The address of l1 token.
     function getL2ERC20Address(address _l1Token) external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Deposit some token to a caller's account on L2.
     /// @dev Make this function payable to send relayer fee in Ether.
     /// @param _token The address of token in L1.
     /// @param _amount The amount of token to transfer.
     /// @param _gasLimit Gas limit required to complete the deposit on L2.
-    function depositERC20(
-        address _token,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC20(address _token, uint256 _amount, uint256 _gasLimit) external payable;
 
     /// @notice Deposit some token to a recipient's account on L2.
     /// @dev Make this function payable to send relayer fee in Ether.
@@ -1247,12 +1199,7 @@ interface IL1ERC20Gateway {
     /// @param _to The address of recipient's account on L2.
     /// @param _amount The amount of token to transfer.
     /// @param _gasLimit Gas limit required to complete the deposit on L2.
-    function depositERC20(
-        address _token,
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC20(address _token, address _to, uint256 _amount, uint256 _gasLimit) external payable;
 
     /// @notice Deposit some token to a recipient's account on L2 and call.
     /// @dev Make this function payable to send relayer fee in Ether.
@@ -1261,13 +1208,9 @@ interface IL1ERC20Gateway {
     /// @param _amount The amount of token to transfer.
     /// @param _data Optional data to forward to recipient's account.
     /// @param _gasLimit Gas limit required to complete the deposit on L2.
-    function depositERC20AndCall(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC20AndCall(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        external
+        payable;
 
     /// @notice Complete ERC20 withdraw from L2 to L1 and send fund to recipient's account in L1.
     /// @dev Make this function payable to handle WETH deposit/withdraw.
@@ -1290,18 +1233,22 @@ interface IL1ERC20Gateway {
 }
 
 interface IL2ScrollMessenger is IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the maximum number of times each message can fail in L2 is updated.
     /// @param oldMaxFailedExecutionTimes The old maximum number of times each message can fail in L2.
     /// @param newMaxFailedExecutionTimes The new maximum number of times each message can fail in L2.
     event UpdateMaxFailedExecutionTimes(uint256 oldMaxFailedExecutionTimes, uint256 newMaxFailedExecutionTimes);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice execute L1 => L2 message
     /// @dev Make sure this is only called by privileged accounts.
@@ -1310,13 +1257,7 @@ interface IL2ScrollMessenger is IScrollMessenger {
     /// @param value The msg.value passed to the message call.
     /// @param nonce The nonce of the message to avoid replay attack.
     /// @param message The content of the message.
-    function relayMessage(
-        address from,
-        address to,
-        uint256 value,
-        uint256 nonce,
-        bytes calldata message
-    ) external;
+    function relayMessage(address from, address to, uint256 value, uint256 nonce, bytes calldata message) external;
 }
 
 /**
@@ -1577,7 +1518,8 @@ contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20Upgradeabl
         _afterTokenTransfer(from, to, amount);
     }
 
-    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
+    /**
+     * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
      * Emits a {Transfer} event with `from` set to the zero address.
@@ -1741,6 +1683,7 @@ library MathUpgradeable {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -2133,7 +2076,9 @@ library StringsUpgradeable {
                     mstore8(ptr, byte(mod(value, 10), _SYMBOLS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -2198,6 +2143,7 @@ library ECDSAUpgradeable {
         InvalidSignatureLength,
         InvalidSignatureS,
         InvalidSignatureV // Deprecated in v4.8
+
     }
 
     function _throwError(RecoverError error) private pure {
@@ -2529,7 +2475,7 @@ abstract contract EIP712Upgradeable is Initializable, IERC5267Upgradeable {
      * NOTE: This function reads from storage by default, but can be redefined to return a constant value if gas costs
      * are a concern.
      */
-    function _EIP712Name() internal virtual view returns (string memory) {
+    function _EIP712Name() internal view virtual returns (string memory) {
         return _name;
     }
 
@@ -2539,7 +2485,7 @@ abstract contract EIP712Upgradeable is Initializable, IERC5267Upgradeable {
      * NOTE: This function reads from storage by default, but can be redefined to return a constant value if gas costs
      * are a concern.
      */
-    function _EIP712Version() internal virtual view returns (string memory) {
+    function _EIP712Version() internal view virtual returns (string memory) {
         return _version;
     }
 
@@ -2644,7 +2590,12 @@ library CountersUpgradeable {
  *
  * @custom:storage-size 51
  */
-abstract contract ERC20PermitUpgradeable is Initializable, ERC20Upgradeable, IERC20PermitUpgradeable, EIP712Upgradeable {
+abstract contract ERC20PermitUpgradeable is
+    Initializable,
+    ERC20Upgradeable,
+    IERC20PermitUpgradeable,
+    EIP712Upgradeable
+{
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
     mapping(address => CountersUpgradeable.Counter) private _nonces;
@@ -2675,15 +2626,11 @@ abstract contract ERC20PermitUpgradeable is Initializable, ERC20Upgradeable, IER
     /**
      * @dev See {IERC20Permit-permit}.
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public virtual override {
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        public
+        virtual
+        override
+    {
         require(block.timestamp <= deadline, "ERC20Permit: expired deadline");
 
         bytes32 structHash = keccak256(abi.encode(_PERMIT_TYPEHASH, owner, spender, value, _useNonce(owner), deadline));
@@ -2731,11 +2678,7 @@ abstract contract ERC20PermitUpgradeable is Initializable, ERC20Upgradeable, IER
 }
 
 interface IERC677Receiver {
-    function onTokenTransfer(
-        address sender,
-        uint256 value,
-        bytes memory data
-    ) external;
+    function onTokenTransfer(address sender, uint256 value, bytes memory data) external;
 }
 
 /// @notice The `ScrollStandardERC20` is the ERC20 token contract created by
@@ -2785,11 +2728,7 @@ contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollERC20Upgradeable 
     /// @dev ERC677 Standard, see https://github.com/ethereum/EIPs/issues/677
     /// Defi can use this method to transfer L1/L2 token to L2/L1,
     /// and deposit to L2/L1 contract in one transaction
-    function transferAndCall(
-        address receiver,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool success) {
+    function transferAndCall(address receiver, uint256 amount, bytes calldata data) external returns (bool success) {
         ERC20Upgradeable.transfer(receiver, amount);
         if (isContract(receiver)) {
             contractFallback(receiver, amount, data);
@@ -2797,11 +2736,7 @@ contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollERC20Upgradeable 
         return true;
     }
 
-    function contractFallback(
-        address to,
-        uint256 value,
-        bytes memory data
-    ) private {
+    function contractFallback(address to, uint256 value, bytes memory data) private {
         IERC677Receiver receiver = IERC677Receiver(to);
         receiver.onTokenTransfer(_msgSender(), value, data);
     }
@@ -2830,16 +2765,20 @@ contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollERC20Upgradeable 
 contract L2StandardERC20Gateway is L2ERC20Gateway {
     using AddressUpgradeable for address;
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of ScrollStandardERC20Factory.
     address public immutable tokenFactory;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from l2 token address to l1 token address.
     mapping(address => address) private tokenMapping;
@@ -2847,9 +2786,11 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
     /// @dev The storage slot used as ScrollStandardERC20Factory contract, which is deprecated now.
     address private __tokenFactory;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L2StandardERC20Gateway` implementation contract.
     ///
@@ -2857,13 +2798,12 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
     /// @param _router The address of `L2GatewayRouter` contract in L2.
     /// @param _messenger The address of `L2ScrollMessenger` contract in L2.
     /// @param _tokenFactory The address of `ScrollStandardERC20Factory` contract in L2.
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger,
-        address _tokenFactory
-    ) ScrollGatewayBase(_counterpart, _router, _messenger) {
-        if (_router == address(0) || _tokenFactory == address(0)) revert ErrorZeroAddress();
+    constructor(address _counterpart, address _router, address _messenger, address _tokenFactory)
+        ScrollGatewayBase(_counterpart, _router, _messenger)
+    {
+        if (_router == address(0) || _tokenFactory == address(0)) {
+            revert ErrorZeroAddress();
+        }
 
         _disableInitializers();
 
@@ -2877,18 +2817,18 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
     /// @param _counterpart The address of `L1StandardERC20Gateway` contract in L1.
     /// @param _router The address of `L2GatewayRouter` contract in L2.
     /// @param _messenger The address of `L2ScrollMessenger` contract in L2.
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger,
-        address /*_tokenFactory*/
-    ) external initializer {
+    function initialize(address _counterpart, address _router, address _messenger, address /*_tokenFactory*/ )
+        external
+        initializer
+    {
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function getL1ERC20Address(address _l2Token) external view override returns (address) {
@@ -2900,9 +2840,11 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
         return IScrollStandardERC20Factory(tokenFactory).computeL2TokenAddress(address(this), _l1Token);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function finalizeDepositERC20(
@@ -2918,10 +2860,8 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
 
         {
             // avoid stack too deep
-            address _expectedL2Token = IScrollStandardERC20Factory(tokenFactory).computeL2TokenAddress(
-                address(this),
-                _l1Token
-            );
+            address _expectedL2Token =
+                IScrollStandardERC20Factory(tokenFactory).computeL2TokenAddress(address(this), _l1Token);
             require(_l2Token == _expectedL2Token, "l2 token mismatch");
         }
 
@@ -2952,18 +2892,19 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
         emit FinalizeDepositERC20(_l1Token, _l2Token, _from, _to, _amount, _callData);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @inheritdoc L2ERC20Gateway
-    function _withdraw(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual override nonReentrant {
+    function _withdraw(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        override
+        nonReentrant
+    {
         require(_amount > 0, "withdraw zero amount");
 
         // 1. Extract real sender if this call is from L2GatewayRouter.
@@ -2979,10 +2920,8 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
         IScrollERC20Upgradeable(_token).burn(_from, _amount);
 
         // 3. Generate message passed to L1StandardERC20Gateway.
-        bytes memory _message = abi.encodeCall(
-            IL1ERC20Gateway.finalizeWithdrawERC20,
-            (_l1Token, _token, _from, _to, _amount, _data)
-        );
+        bytes memory _message =
+            abi.encodeCall(IL1ERC20Gateway.finalizeWithdrawERC20, (_l1Token, _token, _from, _to, _amount, _data));
 
         // 4. send message to L2ScrollMessenger
         IL2ScrollMessenger(messenger).sendMessage{value: msg.value}(counterpart, 0, _message, _gasLimit);
@@ -2992,10 +2931,7 @@ contract L2StandardERC20Gateway is L2ERC20Gateway {
 
     function _deployL2Token(bytes memory _deployData, address _l1Token) internal {
         address _l2Token = IScrollStandardERC20Factory(tokenFactory).deployL2Token(address(this), _l1Token);
-        (string memory _symbol, string memory _name, uint8 _decimals) = abi.decode(
-            _deployData,
-            (string, string, uint8)
-        );
+        (string memory _symbol, string memory _name, uint8 _decimals) = abi.decode(_deployData, (string, string, uint8));
         ScrollStandardERC20(_l2Token).initialize(_name, _symbol, _decimals, address(this), _l1Token);
     }
 }

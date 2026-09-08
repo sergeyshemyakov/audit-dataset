@@ -6,5 +6,5 @@ pragma solidity >=0.5.13 <0.9.0;
  * in the absence of interface inheritance is intended as a companion to IERC20.sol.
  */
 interface ICeloTokenInitializer {
-  function initialize(address) external;
+    function initialize(address) external;
 }

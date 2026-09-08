@@ -66,11 +66,7 @@ library ChunkCodec {
     /// @param dstPtr The destination memory offset to store the block context.
     /// @param index The index of block context to copy.
     /// @return uint256 The new destination memory offset after copy.
-    function copyBlockContext(
-        uint256 chunkPtr,
-        uint256 dstPtr,
-        uint256 index
-    ) internal pure returns (uint256) {
+    function copyBlockContext(uint256 chunkPtr, uint256 dstPtr, uint256 index) internal pure returns (uint256) {
         // only first 58 bytes is needed.
         assembly {
             chunkPtr := add(chunkPtr, add(1, mul(BLOCK_CONTEXT_LENGTH, index)))

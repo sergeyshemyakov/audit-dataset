@@ -2,31 +2,35 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { ProxyAdminOwnedBase } from "src/L1/ProxyAdminOwnedBase.sol";
-import { Initializable } from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
-import { ResourceMetering } from "src/L1/ResourceMetering.sol";
-import { ReinitializableBase } from "src/universal/ReinitializableBase.sol";
+
+import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+import {ProxyAdminOwnedBase} from "src/L1/ProxyAdminOwnedBase.sol";
+import {ResourceMetering} from "src/L1/ResourceMetering.sol";
+import {ReinitializableBase} from "src/universal/ReinitializableBase.sol";
 
 // Libraries
-import { EOA } from "src/libraries/EOA.sol";
-import { SafeCall } from "src/libraries/SafeCall.sol";
-import { Constants } from "src/libraries/Constants.sol";
-import { Types } from "src/libraries/Types.sol";
-import { Hashing } from "src/libraries/Hashing.sol";
-import { SecureMerkleTrie } from "src/libraries/trie/SecureMerkleTrie.sol";
-import { AddressAliasHelper } from "src/vendor/AddressAliasHelper.sol";
-import { GameStatus, GameType } from "src/dispute/lib/Types.sol";
-import { Features } from "src/libraries/Features.sol";
+
+import {GameStatus, GameType} from "src/dispute/lib/Types.sol";
+import {Constants} from "src/libraries/Constants.sol";
+import {EOA} from "src/libraries/EOA.sol";
+
+import {Features} from "src/libraries/Features.sol";
+import {Hashing} from "src/libraries/Hashing.sol";
+import {SafeCall} from "src/libraries/SafeCall.sol";
+import {Types} from "src/libraries/Types.sol";
+import {SecureMerkleTrie} from "src/libraries/trie/SecureMerkleTrie.sol";
+import {AddressAliasHelper} from "src/vendor/AddressAliasHelper.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { ISystemConfig } from "interfaces/L1/ISystemConfig.sol";
-import { IResourceMetering } from "interfaces/L1/IResourceMetering.sol";
-import { IDisputeGameFactory } from "interfaces/dispute/IDisputeGameFactory.sol";
-import { IDisputeGame } from "interfaces/dispute/IDisputeGame.sol";
-import { IAnchorStateRegistry } from "interfaces/dispute/IAnchorStateRegistry.sol";
-import { IETHLockbox } from "interfaces/L1/IETHLockbox.sol";
-import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
+
+import {IETHLockbox} from "interfaces/L1/IETHLockbox.sol";
+import {IResourceMetering} from "interfaces/L1/IResourceMetering.sol";
+import {ISuperchainConfig} from "interfaces/L1/ISuperchainConfig.sol";
+import {ISystemConfig} from "interfaces/L1/ISystemConfig.sol";
+import {IAnchorStateRegistry} from "interfaces/dispute/IAnchorStateRegistry.sol";
+import {IDisputeGame} from "interfaces/dispute/IDisputeGame.sol";
+import {IDisputeGameFactory} from "interfaces/dispute/IDisputeGameFactory.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @title OptimismPortal2
@@ -219,10 +223,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
     /// @notice Initializer.
     /// @param _systemConfig Address of the SystemConfig.
     /// @param _anchorStateRegistry Address of the AnchorStateRegistry.
-    function initialize(
-        ISystemConfig _systemConfig,
-        IAnchorStateRegistry _anchorStateRegistry
-    )
+    function initialize(ISystemConfig _systemConfig, IAnchorStateRegistry _anchorStateRegistry)
         external
         reinitializer(initVersion())
     {
@@ -350,9 +351,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
         uint256 _disputeGameIndex,
         Types.OutputRootProof calldata _outputRootProof,
         bytes[] calldata _withdrawalProof
-    )
-        external
-    {
+    ) external {
         // Cannot prove withdrawal transactions while the system is paused.
         _assertNotPaused();
 
@@ -424,7 +423,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
         // the provenWithdrawals mapping. A given user may re-prove a withdrawalHash multiple
         // times, but each proof will reset the proof timer.
         provenWithdrawals[withdrawalHash][msg.sender] =
-            ProvenWithdrawal({ disputeGameProxy: disputeGameProxy, timestamp: uint64(block.timestamp) });
+            ProvenWithdrawal({disputeGameProxy: disputeGameProxy, timestamp: uint64(block.timestamp)});
 
         // Add the proof submitter to the list of proof submitters for this withdrawal hash.
         proofSubmitters[withdrawalHash].push(msg.sender);
@@ -443,10 +442,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
     /// @notice Finalizes a withdrawal transaction, using an external proof submitter.
     /// @param _tx Withdrawal transaction to finalize.
     /// @param _proofSubmitter Address of the proof submitter.
-    function finalizeWithdrawalTransactionExternalProof(
-        Types.WithdrawalTransaction memory _tx,
-        address _proofSubmitter
-    )
+    function finalizeWithdrawalTransactionExternalProof(Types.WithdrawalTransaction memory _tx, address _proofSubmitter)
         public
     {
         // Cannot finalize withdrawal transactions while the system is paused.
@@ -475,7 +471,9 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
 
         // If using ETHLockbox, unlock the ETH from the ETHLockbox.
         if (_isUsingLockbox()) {
-            if (_tx.value > 0) ethLockbox.unlockETH(_tx.value);
+            if (_tx.value > 0) {
+                ethLockbox.unlockETH(_tx.value);
+            }
         }
 
         // Set the l2Sender so contracts know who triggered this withdrawal on L2.
@@ -501,7 +499,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
         // it'll get stuck here and would need to be moved back via admin action.
         if (_isUsingLockbox()) {
             if (!success && _tx.value > 0) {
-                ethLockbox.lockETH{ value: _tx.value }();
+                ethLockbox.lockETH{value: _tx.value}();
             }
         }
 
@@ -563,20 +561,16 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
     /// @param _gasLimit   Amount of L2 gas to purchase by burning gas on L1.
     /// @param _isCreation Whether or not the transaction is a contract creation.
     /// @param _data       Data to trigger the recipient with.
-    function depositTransaction(
-        address _to,
-        uint256 _value,
-        uint64 _gasLimit,
-        bool _isCreation,
-        bytes memory _data
-    )
+    function depositTransaction(address _to, uint256 _value, uint64 _gasLimit, bool _isCreation, bytes memory _data)
         public
         payable
         metered(_gasLimit)
     {
         // If using ETHLockbox, lock the ETH in the ETHLockbox.
         if (_isUsingLockbox()) {
-            if (msg.value > 0) ethLockbox.lockETH{ value: msg.value }();
+            if (msg.value > 0) {
+                ethLockbox.lockETH{value: msg.value}();
+            }
         }
 
         // Just to be safe, make sure that people specify address(0) as the target when doing

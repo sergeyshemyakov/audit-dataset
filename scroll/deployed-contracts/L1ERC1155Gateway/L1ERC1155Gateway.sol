@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -437,14 +433,13 @@ interface IERC165Upgradeable {
  * Alternatively, {ERC165Storage} provides an easier to use but more expensive implementation.
  */
 abstract contract ERC165Upgradeable is Initializable, IERC165Upgradeable {
-    function __ERC165_init() internal onlyInitializing {
-    }
+    function __ERC165_init() internal onlyInitializing {}
 
-    function __ERC165_init_unchained() internal onlyInitializing {
-    }
+    function __ERC165_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
+
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return interfaceId == type(IERC165Upgradeable).interfaceId;
     }
@@ -476,13 +471,9 @@ interface IERC1155ReceiverUpgradeable is IERC165Upgradeable {
      * @param data Additional data with no specified format
      * @return `bytes4(keccak256("onERC1155Received(address,address,uint256,uint256,bytes)"))` if transfer is allowed
      */
-    function onERC1155Received(
-        address operator,
-        address from,
-        uint256 id,
-        uint256 value,
-        bytes calldata data
-    ) external returns (bytes4);
+    function onERC1155Received(address operator, address from, uint256 id, uint256 value, bytes calldata data)
+        external
+        returns (bytes4);
 
     /**
      * @dev Handles the receipt of a multiple ERC1155 token types. This function
@@ -513,15 +504,20 @@ interface IERC1155ReceiverUpgradeable is IERC165Upgradeable {
  * @dev _Available since v3.1._
  */
 abstract contract ERC1155ReceiverUpgradeable is Initializable, ERC165Upgradeable, IERC1155ReceiverUpgradeable {
-    function __ERC1155Receiver_init() internal onlyInitializing {
-    }
+    function __ERC1155Receiver_init() internal onlyInitializing {}
 
-    function __ERC1155Receiver_init_unchained() internal onlyInitializing {
-    }
+    function __ERC1155Receiver_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165Upgradeable, IERC165Upgradeable) returns (bool) {
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(ERC165Upgradeable, IERC165Upgradeable)
+        returns (bool)
+    {
         return interfaceId == type(IERC1155ReceiverUpgradeable).interfaceId || super.supportsInterface(interfaceId);
     }
 
@@ -542,28 +538,25 @@ abstract contract ERC1155ReceiverUpgradeable is Initializable, ERC165Upgradeable
  * @dev _Available since v3.1._
  */
 contract ERC1155HolderUpgradeable is Initializable, ERC1155ReceiverUpgradeable {
-    function __ERC1155Holder_init() internal onlyInitializing {
-    }
+    function __ERC1155Holder_init() internal onlyInitializing {}
 
-    function __ERC1155Holder_init_unchained() internal onlyInitializing {
-    }
-    function onERC1155Received(
-        address,
-        address,
-        uint256,
-        uint256,
-        bytes memory
-    ) public virtual override returns (bytes4) {
+    function __ERC1155Holder_init_unchained() internal onlyInitializing {}
+
+    function onERC1155Received(address, address, uint256, uint256, bytes memory)
+        public
+        virtual
+        override
+        returns (bytes4)
+    {
         return this.onERC1155Received.selector;
     }
 
-    function onERC1155BatchReceived(
-        address,
-        address,
-        uint256[] memory,
-        uint256[] memory,
-        bytes memory
-    ) public virtual override returns (bytes4) {
+    function onERC1155BatchReceived(address, address, uint256[] memory, uint256[] memory, bytes memory)
+        public
+        virtual
+        override
+        returns (bytes4)
+    {
         return this.onERC1155BatchReceived.selector;
     }
 
@@ -670,11 +663,10 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -780,9 +772,11 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
 }
 
 interface IScrollGateway {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
@@ -796,9 +790,11 @@ interface IScrollGateway {
     /// @dev Thrown when ScrollMessenger is not dropping message.
     error ErrorNotInDropMessageContext();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice The address of corresponding L1/L2 Gateway contract.
     function counterpart() external view returns (address);
@@ -811,9 +807,11 @@ interface IScrollGateway {
 }
 
 interface IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a cross domain message is sent.
     /// @param sender The address of the sender who initiates the message.
@@ -839,35 +837,36 @@ interface IScrollMessenger {
     /// @param messageHash The hash of the message.
     event FailedRelayedMessage(bytes32 indexed messageHash);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the sender of a cross domain message.
     function xDomainMessageSender() external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
     /// @param value The amount of ether passed when call target contract.
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit) external payable;
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
@@ -875,13 +874,9 @@ interface IScrollMessenger {
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
     /// @param refundAddress The address of account who will receive the refunded fee.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit,
-        address refundAddress
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit, address refundAddress)
+        external
+        payable;
 }
 
 library ScrollConstants {
@@ -900,9 +895,11 @@ interface IScrollGatewayCallback {
 /// @title ScrollGatewayBase
 /// @notice The `ScrollGatewayBase` is a base contract for gateway contracts used in both in L1 and L2.
 abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgradeable, IScrollGateway {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @inheritdoc IScrollGateway
     address public immutable override counterpart;
@@ -913,9 +910,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @inheritdoc IScrollGateway
     address public immutable override messenger;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slot used as counterpart gateway contract, which is deprecated now.
     address private __counterpart;
@@ -932,10 +931,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @dev The storage slots for future usage.
     uint256[46] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier onlyCallByCounterpart() {
         // check caller is messenger
         if (_msgSender() != messenger) {
@@ -962,15 +962,12 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) {
+     *
+     */
+    constructor(address _counterpart, address _router, address _messenger) {
         if (_counterpart == address(0) || _messenger == address(0)) {
             revert ErrorZeroAddress();
         }
@@ -980,18 +977,16 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         messenger = _messenger;
     }
 
-    function _initialize(
-        address,
-        address,
-        address
-    ) internal {
+    function _initialize(address, address, address) internal {
         ReentrancyGuardUpgradeable.__ReentrancyGuard_init();
         OwnableUpgradeable.__Ownable_init();
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to forward calldata to target contract.
     /// @param _to The address of contract to call.
@@ -1005,9 +1000,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
 
 /// @title The interface for the ERC1155 cross chain gateway on layer 1.
 interface IL1ERC1155Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the ERC1155 NFT is transferred to recipient on layer 1.
     /// @param _l1Token The address of ERC1155 NFT on layer 1.
@@ -1087,21 +1084,18 @@ interface IL1ERC1155Gateway {
     /// @param amounts The list of amount of token refunded.
     event BatchRefundERC1155(address indexed token, address indexed recipient, uint256[] tokenIds, uint256[] amounts);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Deposit some ERC1155 NFT to caller's account on layer 2.
     /// @param _token The address of ERC1155 NFT on layer 1.
     /// @param _tokenId The token id to deposit.
     /// @param _amount The amount of token to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function depositERC1155(
-        address _token,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC1155(address _token, uint256 _tokenId, uint256 _amount, uint256 _gasLimit) external payable;
 
     /// @notice Deposit some ERC1155 NFT to a recipient's account on layer 2.
     /// @param _token The address of ERC1155 NFT on layer 1.
@@ -1109,13 +1103,9 @@ interface IL1ERC1155Gateway {
     /// @param _tokenId The token id to deposit.
     /// @param _amount The amount of token to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function depositERC1155(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC1155(address _token, address _to, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        external
+        payable;
 
     /// @notice Deposit a list of some ERC1155 NFT to caller's account on layer 2.
     /// @param _token The address of ERC1155 NFT on layer 1.
@@ -1197,11 +1187,7 @@ interface IERC1155Upgradeable is IERC165Upgradeable {
      * transfers.
      */
     event TransferBatch(
-        address indexed operator,
-        address indexed from,
-        address indexed to,
-        uint256[] ids,
-        uint256[] values
+        address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] values
     );
 
     /**
@@ -1235,10 +1221,10 @@ interface IERC1155Upgradeable is IERC165Upgradeable {
      *
      * - `accounts` and `ids` must have the same length.
      */
-    function balanceOfBatch(
-        address[] calldata accounts,
-        uint256[] calldata ids
-    ) external view returns (uint256[] memory);
+    function balanceOfBatch(address[] calldata accounts, uint256[] calldata ids)
+        external
+        view
+        returns (uint256[] memory);
 
     /**
      * @dev Grants or revokes permission to `operator` to transfer the caller's tokens, according to `approved`,
@@ -1295,9 +1281,11 @@ interface IERC1155Upgradeable is IERC165Upgradeable {
 
 /// @title The interface for the ERC1155 cross chain gateway on layer 2.
 interface IL2ERC1155Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the ERC1155 NFT is transferred to recipient on layer 2.
     /// @param l1Token The address of ERC1155 NFT on layer 1.
@@ -1363,21 +1351,18 @@ interface IL2ERC1155Gateway {
         uint256[] amounts
     );
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Withdraw some ERC1155 NFT to caller's account on layer 1.
     /// @param token The address of ERC1155 NFT on layer 2.
     /// @param tokenId The token id to withdraw.
     /// @param amount The amount of token to withdraw.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC1155(
-        address token,
-        uint256 tokenId,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC1155(address token, uint256 tokenId, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Withdraw some ERC1155 NFT to caller's account on layer 1.
     /// @param token The address of ERC1155 NFT on layer 2.
@@ -1385,25 +1370,18 @@ interface IL2ERC1155Gateway {
     /// @param tokenId The token id to withdraw.
     /// @param amount The amount of token to withdraw.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC1155(
-        address token,
-        address to,
-        uint256 tokenId,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC1155(address token, address to, uint256 tokenId, uint256 amount, uint256 gasLimit)
+        external
+        payable;
 
     /// @notice Batch withdraw a list of ERC1155 NFT to caller's account on layer 1.
     /// @param token The address of ERC1155 NFT on layer 2.
     /// @param tokenIds The list of token ids to withdraw.
     /// @param amounts The list of corresponding amounts to withdraw.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function batchWithdrawERC1155(
-        address token,
-        uint256[] memory tokenIds,
-        uint256[] memory amounts,
-        uint256 gasLimit
-    ) external payable;
+    function batchWithdrawERC1155(address token, uint256[] memory tokenIds, uint256[] memory amounts, uint256 gasLimit)
+        external
+        payable;
 
     /// @notice Batch withdraw a list of ERC1155 NFT to caller's account on layer 1.
     /// @param token The address of ERC1155 NFT on layer 2.
@@ -1459,10 +1437,11 @@ interface IL2ERC1155Gateway {
 }
 
 interface IL1ScrollMessenger is IScrollMessenger {
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct L2MessageProof {
         // The index of the batch where the message belongs to.
         uint256 batchIndex;
@@ -1470,9 +1449,11 @@ interface IL1ScrollMessenger is IScrollMessenger {
         bytes merkleProof;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Relay a L2 => L1 message with message proof.
     /// @param from The address of the sender of the message.
@@ -1517,9 +1498,11 @@ interface IL1ScrollMessenger is IScrollMessenger {
 ///
 /// This will be changed if we have more specific scenarios.
 contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC1155Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when token mapping for ERC1155 token is updated.
     /// @param l1Token The address of ERC1155 token in layer 1.
@@ -1527,16 +1510,20 @@ contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC
     /// @param newL2Token The address of the new corresponding ERC1155 token in layer 2.
     event UpdateTokenMapping(address indexed l1Token, address indexed oldL2Token, address indexed newL2Token);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from l1 token address to l2 token address for ERC1155 NFT.
     mapping(address => address) public tokenMapping;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L1ERC1155Gateway` implementation contract.
     ///
@@ -1556,28 +1543,27 @@ contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC
         ScrollGatewayBase._initialize(_counterpart, address(0), _messenger);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC1155Gateway
-    function depositERC1155(
-        address _token,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC1155(address _token, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _depositERC1155(_token, _msgSender(), _tokenId, _amount, _gasLimit);
     }
 
     /// @inheritdoc IL1ERC1155Gateway
-    function depositERC1155(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC1155(address _token, address _to, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _depositERC1155(_token, _to, _tokenId, _amount, _gasLimit);
     }
 
@@ -1636,9 +1622,11 @@ contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC
         emit FinalizeBatchWithdrawERC1155(_l1Token, _l2Token, _from, _to, _tokenIds, _amounts);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update layer 2 to layer 2 token mapping.
     /// @param _l1Token The address of ERC1155 token on layer 1.
@@ -1652,9 +1640,11 @@ contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC
         emit UpdateTokenMapping(_l1Token, _oldL2Token, _l2Token);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to deposit ERC1155 NFT to layer 2.
     /// @param _token The address of ERC1155 NFT on layer 1.
@@ -1662,13 +1652,11 @@ contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC
     /// @param _tokenId The token id to deposit.
     /// @param _amount The amount of token to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function _depositERC1155(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) internal virtual nonReentrant {
+    function _depositERC1155(address _token, address _to, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        internal
+        virtual
+        nonReentrant
+    {
         require(_amount > 0, "deposit zero amount");
 
         address _l2Token = tokenMapping[_token];
@@ -1681,8 +1669,7 @@ contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC
 
         // 2. Generate message passed to L2ERC1155Gateway.
         bytes memory _message = abi.encodeCall(
-            IL2ERC1155Gateway.finalizeDepositERC1155,
-            (_token, _l2Token, _sender, _to, _tokenId, _amount)
+            IL2ERC1155Gateway.finalizeDepositERC1155, (_token, _l2Token, _sender, _to, _tokenId, _amount)
         );
 
         // 3. Send message to L1ScrollMessenger.
@@ -1721,8 +1708,7 @@ contract L1ERC1155Gateway is ERC1155HolderUpgradeable, ScrollGatewayBase, IL1ERC
 
         // 2. Generate message passed to L2ERC1155Gateway.
         bytes memory _message = abi.encodeCall(
-            IL2ERC1155Gateway.finalizeBatchDepositERC1155,
-            (_token, _l2Token, _sender, _to, _tokenIds, _amounts)
+            IL2ERC1155Gateway.finalizeBatchDepositERC1155, (_token, _l2Token, _sender, _to, _tokenIds, _amounts)
         );
 
         // 3. Send message to L1ScrollMessenger.

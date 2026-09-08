@@ -118,11 +118,10 @@ contract Subsidy is ISubsidy {
      * @param _gasUsage The gas usage of the subsidized action. Used as upper limit for subsidy.
      * @param _minGasPerMinute Minimum amount of gas per minute that subsidizer has to subsidize
      */
-    function setGasUsageAndMinGasPerMinute(
-        uint256 _criteria,
-        uint32 _gasUsage,
-        uint32 _minGasPerMinute
-    ) external override(ISubsidy) {
+    function setGasUsageAndMinGasPerMinute(uint256 _criteria, uint32 _gasUsage, uint32 _minGasPerMinute)
+        external
+        override(ISubsidy)
+    {
         subsidies[msg.sender][_criteria] = Subsidy({
             available: 0,
             gasUsage: _gasUsage,
@@ -151,7 +150,7 @@ contract Subsidy is ISubsidy {
             revert ArrayLengthsDoNotMatch();
         }
 
-        for (uint256 i; i < criteriasLength; ) {
+        for (uint256 i; i < criteriasLength;) {
             subsidies[msg.sender][_criteria[i]] = Subsidy({
                 available: 0,
                 gasUsage: _gasUsage[i],
@@ -189,11 +188,7 @@ contract Subsidy is ISubsidy {
      *                                       3) subsidy.gasUsage not set: `subsidy.gasUsage` == 0,
      *                                       4) ETH value sent too low: `msg.value` < `MIN_SUBSIDY_VALUE`.
      */
-    function subsidize(
-        address _bridge,
-        uint256 _criteria,
-        uint32 _gasPerMinute
-    ) external payable {
+    function subsidize(address _bridge, uint256 _criteria, uint32 _gasPerMinute) external payable {
         if (msg.value < MIN_SUBSIDY_VALUE) {
             revert SubsidyTooLow();
         }
@@ -281,7 +276,7 @@ contract Subsidy is ISubsidy {
 
         // Sending 30k gas in a call to allow receiver to be a multi-sig and write to storage
         /* solhint-disable avoid-low-level-calls */
-        (bool success, ) = _beneficiary.call{value: withdrawableBalance, gas: 30000}("");
+        (bool success,) = _beneficiary.call{value: withdrawableBalance, gas: 30000}("");
         if (!success) {
             revert EthTransferFailed();
         }

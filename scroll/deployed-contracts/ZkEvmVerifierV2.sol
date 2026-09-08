@@ -11,16 +11,20 @@ interface IZkEvmVerifierV2 {
 // solhint-disable no-inline-assembly
 
 contract ZkEvmVerifierV2 is IZkEvmVerifierV2 {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when bundle recursion zk proof verification is failed.
     error VerificationFailed();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of highly optimized plonk verifier contract.
     address public immutable plonkVerifier;
@@ -28,18 +32,21 @@ contract ZkEvmVerifierV2 is IZkEvmVerifierV2 {
     /// @notice A predetermined digest for the `plonkVerifier`.
     bytes32 public immutable verifierDigest;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _verifier, bytes32 _verifierDigest) {
         plonkVerifier = _verifier;
         verifierDigest = _verifierDigest;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IZkEvmVerifierV2
     ///

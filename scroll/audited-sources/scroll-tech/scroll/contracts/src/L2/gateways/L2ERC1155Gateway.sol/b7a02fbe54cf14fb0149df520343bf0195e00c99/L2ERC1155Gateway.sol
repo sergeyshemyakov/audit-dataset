@@ -4,13 +4,16 @@ pragma solidity =0.8.16;
 
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {IERC1155Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1155/IERC1155Upgradeable.sol";
-import {ERC1155HolderUpgradeable, ERC1155ReceiverUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpgradeable.sol";
+import {
+    ERC1155HolderUpgradeable,
+    ERC1155ReceiverUpgradeable
+} from "@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpgradeable.sol";
 
-import {IL2ERC1155Gateway} from "./IL2ERC1155Gateway.sol";
-import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
 import {IL1ERC1155Gateway} from "../../L1/gateways/IL1ERC1155Gateway.sol";
-import {ScrollGatewayBase, IScrollGateway} from "../../libraries/gateway/ScrollGatewayBase.sol";
+import {IScrollGateway, ScrollGatewayBase} from "../../libraries/gateway/ScrollGatewayBase.sol";
 import {IScrollERC1155} from "../../libraries/token/IScrollERC1155.sol";
+import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
+import {IL2ERC1155Gateway} from "./IL2ERC1155Gateway.sol";
 
 /// @title L2ERC1155Gateway
 /// @notice The `L2ERC1155Gateway` is used to withdraw ERC1155 compatible NFTs in layer 2 and
@@ -20,9 +23,11 @@ import {IScrollERC1155} from "../../libraries/token/IScrollERC1155.sol";
 ///
 /// This will be changed if we have more specific scenarios.
 contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, ScrollGatewayBase, IL2ERC1155Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when token mapping for ERC1155 token is updated.
     /// @param l2Token The address of corresponding ERC1155 token in layer 2.
@@ -30,17 +35,21 @@ contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, Scrol
     /// @param newL1Token The address of the new corresponding ERC1155 token in layer 1.
     event UpdateTokenMapping(address indexed l2Token, address indexed oldL1Token, address indexed newL1Token);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from layer 2 token address to layer 1 token address for ERC1155 NFT.
     // solhint-disable-next-line var-name-mixedcase
     mapping(address => address) public tokenMapping;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -53,28 +62,27 @@ contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, Scrol
         ScrollGatewayBase._initialize(_counterpart, address(0), _messenger);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC1155Gateway
-    function withdrawERC1155(
-        address _token,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC1155(address _token, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _withdrawERC1155(_token, msg.sender, _tokenId, _amount, _gasLimit);
     }
 
     /// @inheritdoc IL2ERC1155Gateway
-    function withdrawERC1155(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC1155(address _token, address _to, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _withdrawERC1155(_token, _to, _tokenId, _amount, _gasLimit);
     }
 
@@ -133,9 +141,11 @@ contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, Scrol
         emit FinalizeBatchDepositERC1155(_l1Token, _l2Token, _from, _to, _tokenIds, _amounts);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update layer 2 to layer 1 token mapping.
     /// @param _l2Token The address of corresponding ERC1155 token in layer 2.
@@ -149,9 +159,11 @@ contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, Scrol
         emit UpdateTokenMapping(_l2Token, _oldL1Token, _l1Token);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to withdraw ERC1155 NFT to layer 2.
     /// @param _token The address of ERC1155 NFT in layer 1.
@@ -159,13 +171,11 @@ contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, Scrol
     /// @param _tokenId The token id to withdraw.
     /// @param _amount The amount of token to withdraw.
     /// @param _gasLimit Estimated gas limit required to complete the withdraw on layer 2.
-    function _withdrawERC1155(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) internal virtual nonReentrant {
+    function _withdrawERC1155(address _token, address _to, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        internal
+        virtual
+        nonReentrant
+    {
         require(_amount > 0, "withdraw zero amount");
 
         address _l1Token = tokenMapping[_token];
@@ -176,8 +186,7 @@ contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, Scrol
 
         // 2. Generate message passed to L1ERC1155Gateway.
         bytes memory _message = abi.encodeCall(
-            IL1ERC1155Gateway.finalizeWithdrawERC1155,
-            (_l1Token, _token, msg.sender, _to, _tokenId, _amount)
+            IL1ERC1155Gateway.finalizeWithdrawERC1155, (_l1Token, _token, msg.sender, _to, _tokenId, _amount)
         );
 
         // 3. Send message to L2ScrollMessenger.
@@ -214,8 +223,7 @@ contract L2ERC1155Gateway is OwnableUpgradeable, ERC1155HolderUpgradeable, Scrol
 
         // 2. Generate message passed to L1ERC1155Gateway.
         bytes memory _message = abi.encodeCall(
-            IL1ERC1155Gateway.finalizeBatchWithdrawERC1155,
-            (_l1Token, _token, msg.sender, _to, _tokenIds, _amounts)
+            IL1ERC1155Gateway.finalizeBatchWithdrawERC1155, (_l1Token, _token, msg.sender, _to, _tokenIds, _amounts)
         );
 
         // 3. Send message to L2ScrollMessenger.

@@ -68,13 +68,10 @@ abstract contract Executor {
      * @param operation Operation type.
      * @return success boolean flag indicating if the call succeeded.
      */
-    function execute(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation,
-        uint256 txGas
-    ) internal returns (bool success) {
+    function execute(address to, uint256 value, bytes memory data, Enum.Operation operation, uint256 txGas)
+        internal
+        returns (bool success)
+    {
         if (operation == Enum.Operation.DelegateCall) {
             // solhint-disable-next-line no-inline-assembly
             assembly {
@@ -92,9 +89,9 @@ abstract contract Executor {
 /**
  * @title Module Manager - A contract managing Safe modules
  * @notice Modules are extensions with unlimited access to a Safe that can be added to a Safe by its owners.
-           ⚠️ WARNING: Modules are a security risk since they can execute arbitrary transactions, 
-           so only trusted and audited modules should be added to a Safe. A malicious module can
-           completely takeover a Safe.
+ *            ⚠️ WARNING: Modules are a security risk since they can execute arbitrary transactions, 
+ *            so only trusted and audited modules should be added to a Safe. A malicious module can
+ *            completely takeover a Safe.
  * @author Stefan George - @Georgi87
  * @author Richard Meissner - @rmeissner
  */
@@ -163,18 +160,20 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
      * @param operation Operation type of module transaction.
      * @return success Boolean flag indicating if the call succeeded.
      */
-    function execTransactionFromModule(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation
-    ) public virtual returns (bool success) {
+    function execTransactionFromModule(address to, uint256 value, bytes memory data, Enum.Operation operation)
+        public
+        virtual
+        returns (bool success)
+    {
         // Only whitelisted modules are allowed.
         require(msg.sender != SENTINEL_MODULES && modules[msg.sender] != address(0), "GS104");
         // Execute transaction without further confirmations.
         success = execute(to, value, data, operation, type(uint256).max);
-        if (success) emit ExecutionFromModuleSuccess(msg.sender);
-        else emit ExecutionFromModuleFailure(msg.sender);
+        if (success) {
+            emit ExecutionFromModuleSuccess(msg.sender);
+        } else {
+            emit ExecutionFromModuleFailure(msg.sender);
+        }
     }
 
     /**
@@ -186,12 +185,10 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
      * @return success Boolean flag indicating if the call succeeded.
      * @return returnData Data returned by the call.
      */
-    function execTransactionFromModuleReturnData(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation
-    ) public returns (bool success, bytes memory returnData) {
+    function execTransactionFromModuleReturnData(address to, uint256 value, bytes memory data, Enum.Operation operation)
+        public
+        returns (bool success, bytes memory returnData)
+    {
         success = execTransactionFromModule(to, value, data, operation);
         // solhint-disable-next-line no-inline-assembly
         assembly {
@@ -226,7 +223,11 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
      * @return array Array of modules.
      * @return next Start of the next page.
      */
-    function getModulesPaginated(address start, uint256 pageSize) external view returns (address[] memory array, address next) {
+    function getModulesPaginated(address start, uint256 pageSize)
+        external
+        view
+        returns (address[] memory array, address next)
+    {
         require(start == SENTINEL_MODULES || isModuleEnabled(start), "GS105");
         require(pageSize > 0, "GS106");
         // Init array with max page size
@@ -242,13 +243,13 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
         }
 
         /**
-          Because of the argument validation, we can assume that the loop will always iterate over the valid module list values
-          and the `next` variable will either be an enabled module or a sentinel address (signalling the end). 
-          
-          If we haven't reached the end inside the loop, we need to set the next pointer to the last element of the modules array
-          because the `next` variable (which is a module by itself) acting as a pointer to the start of the next page is neither 
-          included to the current page, nor will it be included in the next one if you pass it as a start.
-        */
+         * Because of the argument validation, we can assume that the loop will always iterate over the valid module list values
+         *       and the `next` variable will either be an enabled module or a sentinel address (signalling the end). 
+         *
+         *       If we haven't reached the end inside the loop, we need to set the next pointer to the last element of the modules array
+         *       because the `next` variable (which is a module by itself) acting as a pointer to the start of the next page is neither 
+         *       included to the current page, nor will it be included in the next one if you pass it as a start.
+         */
         if (next != SENTINEL_MODULES) {
             next = array[moduleCount - 1];
         }
@@ -311,7 +312,10 @@ abstract contract OwnerManager is SelfAuthorized {
         for (uint256 i = 0; i < _owners.length; i++) {
             // Owner address cannot be null.
             address owner = _owners[i];
-            require(owner != address(0) && owner != SENTINEL_OWNERS && owner != address(this) && currentOwner != owner, "GS203");
+            require(
+                owner != address(0) && owner != SENTINEL_OWNERS && owner != address(this) && currentOwner != owner,
+                "GS203"
+            );
             // No duplicate owners allowed.
             require(owners[owner] == address(0), "GS204");
             owners[currentOwner] = owner;
@@ -338,7 +342,9 @@ abstract contract OwnerManager is SelfAuthorized {
         ownerCount++;
         emit AddedOwner(owner);
         // Change threshold if threshold was changed.
-        if (threshold != _threshold) changeThreshold(_threshold);
+        if (threshold != _threshold) {
+            changeThreshold(_threshold);
+        }
     }
 
     /**
@@ -359,7 +365,9 @@ abstract contract OwnerManager is SelfAuthorized {
         ownerCount--;
         emit RemovedOwner(owner);
         // Change threshold if threshold was changed.
-        if (threshold != _threshold) changeThreshold(_threshold);
+        if (threshold != _threshold) {
+            changeThreshold(_threshold);
+        }
     }
 
     /**
@@ -450,7 +458,11 @@ abstract contract SignatureDecoder {
      * @return r Output value r of the signature.
      * @return s Output value s of the signature.
      */
-    function signatureSplit(bytes memory signatures, uint256 pos) internal pure returns (uint8 v, bytes32 r, bytes32 s) {
+    function signatureSplit(bytes memory signatures, uint256 pos)
+        internal
+        pure
+        returns (uint8 v, bytes32 r, bytes32 s)
+    {
         // solhint-disable-next-line no-inline-assembly
         assembly {
             let signaturePos := mul(0x41, pos)
@@ -490,15 +502,9 @@ abstract contract SecuredTokenTransfer {
             // See https://docs.soliditylang.org/en/v0.7.6/internals/layout_in_memory.html#layout-in-memory
             let success := call(sub(gas(), 10000), token, 0, add(data, 0x20), mload(data), 0, 0x20)
             switch returndatasize()
-            case 0 {
-                transferred := success
-            }
-            case 0x20 {
-                transferred := iszero(or(iszero(success), iszero(mload(0))))
-            }
-            default {
-                transferred := 0
-            }
+            case 0 { transferred := success }
+            case 0x20 { transferred := iszero(or(iszero(success), iszero(mload(0)))) }
+            default { transferred := 0 }
         }
     }
 }
@@ -516,7 +522,8 @@ abstract contract FallbackManager is SelfAuthorized {
     event ChangedFallbackHandler(address indexed handler);
 
     // keccak256("fallback_manager.handler.address")
-    bytes32 internal constant FALLBACK_HANDLER_STORAGE_SLOT = 0x6c9a6c4a39284e37ed1cf53d337577d14212a4870fb976a4366c693b939918d5;
+    bytes32 internal constant FALLBACK_HANDLER_STORAGE_SLOT =
+        0x6c9a6c4a39284e37ed1cf53d337577d14212a4870fb976a4366c693b939918d5;
 
     /**
      *  @notice Internal function to set the fallback handler.
@@ -568,9 +575,7 @@ abstract contract FallbackManager is SelfAuthorized {
         // solhint-disable-next-line no-inline-assembly
         assembly {
             let handler := sload(slot)
-            if iszero(handler) {
-                return(0, 0)
-            }
+            if iszero(handler) { return(0, 0) }
             calldatacopy(0, 0, calldatasize())
             // The msg.sender address is shifted to the left by 12 bytes to remove the padding
             // Then the address without padding is stored right after the calldata
@@ -578,9 +583,7 @@ abstract contract FallbackManager is SelfAuthorized {
             // Add 20 bytes for the address appended add the end
             let success := call(gas(), handler, 0, 0, add(calldatasize(), 20), 0, 0)
             returndatacopy(0, 0, returndatasize())
-            if iszero(success) {
-                revert(0, returndatasize())
-            }
+            if iszero(success) { revert(0, returndatasize()) }
             return(0, returndatasize())
         }
     }
@@ -824,14 +827,17 @@ contract Safe is
     // keccak256(
     //     "EIP712Domain(uint256 chainId,address verifyingContract)"
     // );
-    bytes32 private constant DOMAIN_SEPARATOR_TYPEHASH = 0x47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a79469218;
+    bytes32 private constant DOMAIN_SEPARATOR_TYPEHASH =
+        0x47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a79469218;
 
     // keccak256(
     //     "SafeTx(address to,uint256 value,bytes data,uint8 operation,uint256 safeTxGas,uint256 baseGas,uint256 gasPrice,address gasToken,address refundReceiver,uint256 nonce)"
     // );
     bytes32 private constant SAFE_TX_TYPEHASH = 0xbb8310d486368db6bd6f849402fdd73ad53d316b5a4b2644ad6efe0f941286d8;
 
-    event SafeSetup(address indexed initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler);
+    event SafeSetup(
+        address indexed initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler
+    );
     event ApproveHash(bytes32 indexed approvedHash, address indexed owner);
     event SignMsg(bytes32 indexed msgHash);
     event ExecutionFailure(bytes32 indexed txHash, uint256 payment);
@@ -879,7 +885,9 @@ contract Safe is
     ) external {
         // setupOwners checks if the Threshold is already set, therefore preventing that this method is called twice
         setupOwners(_owners, _threshold);
-        if (fallbackHandler != address(0)) internalSetFallbackHandler(fallbackHandler);
+        if (fallbackHandler != address(0)) {
+            internalSetFallbackHandler(fallbackHandler);
+        }
         // As setupOwners can only be called if the contract has not been initialized we don't need a check for setupModules
         setupModules(to, data);
 
@@ -891,7 +899,8 @@ contract Safe is
         emit SafeSetup(msg.sender, _owners, _threshold, to, fallbackHandler);
     }
 
-    /** @notice Executes a `operation` {0: Call, 1: DelegateCall}} transaction to `to` with `value` (Native Currency)
+    /**
+     * @notice Executes a `operation` {0: Call, 1: DelegateCall}} transaction to `to` with `value` (Native Currency)
      *          and pays `gasPrice` * `gasLimit` in `gasToken` token to `refundReceiver`.
      * @dev The fees are always transferred, even if the user transaction fails.
      *      This method doesn't perform any sanity check of the transaction, such as:
@@ -985,8 +994,11 @@ contract Safe is
             if (gasPrice > 0) {
                 payment = handlePayment(gasUsed, baseGas, gasPrice, gasToken, refundReceiver);
             }
-            if (success) emit ExecutionSuccess(txHash, payment);
-            else emit ExecutionFailure(txHash, payment);
+            if (success) {
+                emit ExecutionSuccess(txHash, payment);
+            } else {
+                emit ExecutionFailure(txHash, payment);
+            }
         }
         {
             if (guard != address(0)) {
@@ -1046,7 +1058,10 @@ contract Safe is
      *                   Can be packed ECDSA signature ({bytes32 r}{bytes32 s}{uint8 v}), contract signature (EIP-1271) or approved hash.
      * @param requiredSignatures Amount of required valid signatures.
      */
-    function checkNSignatures(bytes32 dataHash, bytes memory data, bytes memory signatures, uint256 requiredSignatures) public view {
+    function checkNSignatures(bytes32 dataHash, bytes memory data, bytes memory signatures, uint256 requiredSignatures)
+        public
+        view
+    {
         // Check that the provided signature data is not too short
         require(signatures.length >= requiredSignatures.mul(65), "GS020");
         // There cannot be an owner with address 0.
@@ -1087,7 +1102,10 @@ contract Safe is
                     // The signature data for contract signatures is appended to the concatenated signatures and the offset is stored in s
                     contractSignature := add(add(signatures, s), 0x20)
                 }
-                require(ISignatureValidator(currentOwner).isValidSignature(data, contractSignature) == EIP1271_MAGIC_VALUE, "GS024");
+                require(
+                    ISignatureValidator(currentOwner).isValidSignature(data, contractSignature) == EIP1271_MAGIC_VALUE,
+                    "GS024"
+                );
             } else if (v == 1) {
                 // If v is 1 then it is an approved hash
                 // When handling approved hashes the address of the approver is encoded into r
@@ -1097,13 +1115,17 @@ contract Safe is
             } else if (v > 30) {
                 // If v > 30 then default va (27,28) has been adjusted for eth_sign flow
                 // To support eth_sign and similar we adjust v and hash the messageHash with the Ethereum message prefix before applying ecrecover
-                currentOwner = ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", dataHash)), v - 4, r, s);
+                currentOwner =
+                    ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", dataHash)), v - 4, r, s);
             } else {
                 // Default is the ecrecover flow with the provided data hash
                 // Use ecrecover with the messageHash for EOA signatures
                 currentOwner = ecrecover(dataHash, v, r, s);
             }
-            require(currentOwner > lastOwner && owners[currentOwner] != address(0) && currentOwner != SENTINEL_OWNERS, "GS026");
+            require(
+                currentOwner > lastOwner && owners[currentOwner] != address(0) && currentOwner != SENTINEL_OWNERS,
+                "GS026"
+            );
             lastOwner = currentOwner;
         }
     }
@@ -1211,7 +1233,11 @@ contract Safe is
         address refundReceiver,
         uint256 _nonce
     ) public view returns (bytes32) {
-        return keccak256(encodeTransactionData(to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, _nonce));
+        return keccak256(
+            encodeTransactionData(
+                to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, _nonce
+            )
+        );
     }
 }
 
@@ -1270,16 +1296,17 @@ contract SafeL2 is Safe {
             signatures,
             additionalInfo
         );
-        return super.execTransaction(to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, signatures);
+        return super.execTransaction(
+            to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, signatures
+        );
     }
 
     // @inheritdoc Safe
-    function execTransactionFromModule(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation
-    ) public override returns (bool success) {
+    function execTransactionFromModule(address to, uint256 value, bytes memory data, Enum.Operation operation)
+        public
+        override
+        returns (bool success)
+    {
         emit SafeModuleTransaction(msg.sender, to, value, data, operation);
         success = super.execTransactionFromModule(to, value, data, operation);
     }

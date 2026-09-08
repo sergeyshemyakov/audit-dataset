@@ -2,22 +2,22 @@
 pragma solidity 0.8.30;
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 /**
@@ -112,7 +112,11 @@ library Create2 {
      * @dev Returns the address where a contract will be stored if deployed via {deploy} from a contract located at
      * `deployer`. If `deployer` is this contract's address, returns the same value as {computeAddress}.
      */
-    function computeAddress(bytes32 salt, bytes32 bytecodeHash, address deployer) internal pure returns (address addr) {
+    function computeAddress(bytes32 salt, bytes32 bytecodeHash, address deployer)
+        internal
+        pure
+        returns (address addr)
+    {
         assembly ("memory-safe") {
             let ptr := mload(0x40) // Get free memory pointer
 
@@ -201,11 +205,10 @@ library Clones {
      * NOTE: Using a non-zero value at creation will require the contract using this function (e.g. a factory)
      * to always have enough balance for new deployments. Consider exposing this function under a payable method.
      */
-    function cloneDeterministic(
-        address implementation,
-        bytes32 salt,
-        uint256 value
-    ) internal returns (address instance) {
+    function cloneDeterministic(address implementation, bytes32 salt, uint256 value)
+        internal
+        returns (address instance)
+    {
         if (address(this).balance < value) {
             revert Errors.InsufficientBalance(address(this).balance, value);
         }
@@ -225,11 +228,11 @@ library Clones {
     /**
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
      */
-    function predictDeterministicAddress(
-        address implementation,
-        bytes32 salt,
-        address deployer
-    ) internal pure returns (address predicted) {
+    function predictDeterministicAddress(address implementation, bytes32 salt, address deployer)
+        internal
+        pure
+        returns (address predicted)
+    {
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             mstore(add(ptr, 0x38), deployer)
@@ -245,10 +248,11 @@ library Clones {
     /**
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
      */
-    function predictDeterministicAddress(
-        address implementation,
-        bytes32 salt
-    ) internal view returns (address predicted) {
+    function predictDeterministicAddress(address implementation, bytes32 salt)
+        internal
+        view
+        returns (address predicted)
+    {
         return predictDeterministicAddress(implementation, salt, address(this));
     }
 
@@ -270,11 +274,10 @@ library Clones {
      * NOTE: Using a non-zero value at creation will require the contract using this function (e.g. a factory)
      * to always have enough balance for new deployments. Consider exposing this function under a payable method.
      */
-    function cloneWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        uint256 value
-    ) internal returns (address instance) {
+    function cloneWithImmutableArgs(address implementation, bytes memory args, uint256 value)
+        internal
+        returns (address instance)
+    {
         if (address(this).balance < value) {
             revert Errors.InsufficientBalance(address(this).balance, value);
         }
@@ -296,11 +299,10 @@ library Clones {
      * `implementation` and `salt` multiple time will revert, since the clones cannot be deployed twice at the same
      * address.
      */
-    function cloneDeterministicWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        bytes32 salt
-    ) internal returns (address instance) {
+    function cloneDeterministicWithImmutableArgs(address implementation, bytes memory args, bytes32 salt)
+        internal
+        returns (address instance)
+    {
         return cloneDeterministicWithImmutableArgs(implementation, args, salt, 0);
     }
 
@@ -311,12 +313,10 @@ library Clones {
      * NOTE: Using a non-zero value at creation will require the contract using this function (e.g. a factory)
      * to always have enough balance for new deployments. Consider exposing this function under a payable method.
      */
-    function cloneDeterministicWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        bytes32 salt,
-        uint256 value
-    ) internal returns (address instance) {
+    function cloneDeterministicWithImmutableArgs(address implementation, bytes memory args, bytes32 salt, uint256 value)
+        internal
+        returns (address instance)
+    {
         bytes memory bytecode = _cloneCodeWithImmutableArgs(implementation, args);
         return Create2.deploy(value, salt, bytecode);
     }
@@ -337,11 +337,11 @@ library Clones {
     /**
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministicWithImmutableArgs}.
      */
-    function predictDeterministicAddressWithImmutableArgs(
-        address implementation,
-        bytes memory args,
-        bytes32 salt
-    ) internal view returns (address predicted) {
+    function predictDeterministicAddressWithImmutableArgs(address implementation, bytes memory args, bytes32 salt)
+        internal
+        view
+        returns (address predicted)
+    {
         return predictDeterministicAddressWithImmutableArgs(implementation, args, salt, address(this));
     }
 
@@ -374,33 +374,35 @@ library Clones {
      * NOTE: https://eips.ethereum.org/EIPS/eip-170[EIP-170] limits the length of the contract code to 24576 bytes.
      * With the proxy code taking 45 bytes, that limits the length of the immutable args to 24531 bytes.
      */
-    function _cloneCodeWithImmutableArgs(
-        address implementation,
-        bytes memory args
-    ) private pure returns (bytes memory) {
-        if (args.length > 0x5fd3) revert CloneArgumentsTooLong();
-        return
-            abi.encodePacked(
-                hex"61",
-                uint16(args.length + 0x2d),
-                hex"3d81600a3d39f3363d3d373d3d3d363d73",
-                implementation,
-                hex"5af43d82803e903d91602b57fd5bf3",
-                args
-            );
+    function _cloneCodeWithImmutableArgs(address implementation, bytes memory args)
+        private
+        pure
+        returns (bytes memory)
+    {
+        if (args.length > 0x5fd3) {
+            revert CloneArgumentsTooLong();
+        }
+        return abi.encodePacked(
+            hex"61",
+            uint16(args.length + 0x2d),
+            hex"3d81600a3d39f3363d3d373d3d3d363d73",
+            implementation,
+            hex"5af43d82803e903d91602b57fd5bf3",
+            args
+        );
     }
 }
 
 struct G1Point {
-  uint256 x;
-  uint256 y;
+    uint256 x;
+    uint256 y;
 }
 
 struct G2Point {
-  uint256 x0;
-  uint256 x1;
-  uint256 y0;
-  uint256 y1;
+    uint256 x0;
+    uint256 x1;
+    uint256 y0;
+    uint256 y1;
 }
 
 /**
@@ -425,60 +427,60 @@ struct G2Point {
  * This can be used to prevent a situation where flushing the queue would exceed the block gas limit.
  */
 struct StakingQueueConfig {
-  uint256 bootstrapValidatorSetSize;
-  uint256 bootstrapFlushSize;
-  uint256 normalFlushSizeMin;
-  uint256 normalFlushSizeQuotient;
-  uint256 maxQueueFlushSize;
+    uint256 bootstrapValidatorSetSize;
+    uint256 bootstrapFlushSize;
+    uint256 normalFlushSizeMin;
+    uint256 normalFlushSizeQuotient;
+    uint256 maxQueueFlushSize;
 }
 
 interface IStakingCore {
-  event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
-  event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
-  event PendingSlasherCancelled(address indexed slasher);
-  event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
-  event ValidatorQueued(address indexed attester, address indexed withdrawer);
-  event Deposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession,
-    uint256 amount
-  );
-  event FailedDeposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession
-  );
-  event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
-  event Slashed(address indexed attester, uint256 amount);
-  event StakingQueueConfigUpdated(StakingQueueConfig config);
+    event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
+    event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
+    event PendingSlasherCancelled(address indexed slasher);
+    event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
+    event ValidatorQueued(address indexed attester, address indexed withdrawer);
+    event Deposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession,
+        uint256 amount
+    );
+    event FailedDeposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession
+    );
+    event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
+    event Slashed(address indexed attester, uint256 amount);
+    event StakingQueueConfigUpdated(StakingQueueConfig config);
 
-  function queueSetSlasher(address _slasher) external;
-  function cancelSetSlasher() external;
-  function finalizeSetSlasher() external;
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external;
-  function flushEntryQueue() external;
-  function flushEntryQueue(uint256 _toAdd) external;
-  function initiateWithdraw(address _attester, address _recipient) external returns (bool);
-  function finalizeWithdraw(address _attester) external;
-  function slash(address _attester, uint256 _amount) external returns (bool);
-  function vote(uint256 _proposalId) external;
-  function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
+    function queueSetSlasher(address _slasher) external;
+    function cancelSetSlasher() external;
+    function finalizeSetSlasher() external;
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external;
+    function flushEntryQueue() external;
+    function flushEntryQueue(uint256 _toAdd) external;
+    function initiateWithdraw(address _attester, address _recipient) external returns (bool);
+    function finalizeWithdraw(address _attester) external;
+    function slash(address _attester, uint256 _amount) external returns (bool);
+    function vote(uint256 _proposalId) external;
+    function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
 
-  function getEntryQueueFlushSize() external view returns (uint256);
-  function getActiveAttesterCount() external view returns (uint256);
+    function getEntryQueueFlushSize() external view returns (uint256);
+    function getActiveAttesterCount() external view returns (uint256);
 }
 
 /**
@@ -491,82 +493,83 @@ interface IStakingCore {
  * just compute them on the fly on the proposer, since we need the committees to be provided as calldata.
  */
 contract SlashPayloadCloneable is IPayload {
-  using Clones for address;
+    using Clones for address;
 
-  /**
-   * @notice Get the actions to execute for this slash payload
-   * @return actions Array of actions to slash validators
-   */
-  function getActions() external view override(IPayload) returns (IPayload.Action[] memory actions) {
-    (address validatorSelection, address[] memory validators, uint96[] memory amounts) = _getImmutableArgs();
+    /**
+     * @notice Get the actions to execute for this slash payload
+     * @return actions Array of actions to slash validators
+     */
+    function getActions() external view override(IPayload) returns (IPayload.Action[] memory actions) {
+        (address validatorSelection, address[] memory validators, uint96[] memory amounts) = _getImmutableArgs();
 
-    actions = new IPayload.Action[](validators.length);
+        actions = new IPayload.Action[](validators.length);
 
-    for (uint256 i = 0; i < validators.length; i++) {
-      actions[i] = IPayload.Action({
-        target: validatorSelection, data: abi.encodeWithSelector(IStakingCore.slash.selector, validators[i], amounts[i])
-      });
+        for (uint256 i = 0; i < validators.length; i++) {
+            actions[i] = IPayload.Action({
+                target: validatorSelection,
+                data: abi.encodeWithSelector(IStakingCore.slash.selector, validators[i], amounts[i])
+            });
+        }
     }
-  }
 
-  /**
-   * @notice Get the URI for this payload
-   * @return The URI string
-   */
-  function getURI() external pure override(IPayload) returns (string memory) {
-    return "SlashPayload";
-  }
-
-  /**
-   * @notice Decode the immutable arguments stored in the clone's bytecode
-   * @return validatorSelection The address of the validator selection contract
-   * @return validators Array of validator addresses to slash
-   * @return amounts Array of amounts to slash for each validator
-   */
-  function _getImmutableArgs()
-    private
-    view
-    returns (address validatorSelection, address[] memory validators, uint96[] memory amounts)
-  {
-    // Fetch immutable args from clone's bytecode
-    bytes memory args = Clones.fetchCloneArgs(address(this));
-
-    // Decode the arguments
-    // Layout: [validatorSelection(20 bytes)][arrayLength(32 bytes)][validators+amounts array data]
-    assembly {
-      // Read validator selection address (first 20 bytes)
-      validatorSelection := shr(96, mload(add(args, 0x20)))
-
-      // Read array length (next 32 bytes after the address)
-      let arrayLen := mload(add(args, 0x34))
-
-      // Allocate memory for validators array
-      validators := mload(0x40)
-      mstore(validators, arrayLen)
-      let validatorsData := add(validators, 0x20)
-
-      // Allocate memory for amounts array
-      amounts := add(validatorsData, mul(arrayLen, 0x20))
-      mstore(amounts, arrayLen)
-      let amountsData := add(amounts, 0x20)
-
-      // Update free memory pointer
-      mstore(0x40, add(amountsData, mul(arrayLen, 0x20)))
-
-      // Copy validator addresses and amounts
-      let srcPtr := add(args, 0x54) // Start after validatorSelection + arrayLength
-
-      for { let i := 0 } lt(i, arrayLen) { i := add(i, 1) } {
-        // Read validator address (20 bytes)
-        let validator := shr(96, mload(srcPtr))
-        mstore(add(validatorsData, mul(i, 0x20)), validator)
-        srcPtr := add(srcPtr, 0x14)
-
-        // Read amount (12 bytes for uint96)
-        let amount := shr(160, mload(srcPtr))
-        mstore(add(amountsData, mul(i, 0x20)), amount)
-        srcPtr := add(srcPtr, 0x0c)
-      }
+    /**
+     * @notice Get the URI for this payload
+     * @return The URI string
+     */
+    function getURI() external pure override(IPayload) returns (string memory) {
+        return "SlashPayload";
     }
-  }
+
+    /**
+     * @notice Decode the immutable arguments stored in the clone's bytecode
+     * @return validatorSelection The address of the validator selection contract
+     * @return validators Array of validator addresses to slash
+     * @return amounts Array of amounts to slash for each validator
+     */
+    function _getImmutableArgs()
+        private
+        view
+        returns (address validatorSelection, address[] memory validators, uint96[] memory amounts)
+    {
+        // Fetch immutable args from clone's bytecode
+        bytes memory args = Clones.fetchCloneArgs(address(this));
+
+        // Decode the arguments
+        // Layout: [validatorSelection(20 bytes)][arrayLength(32 bytes)][validators+amounts array data]
+        assembly {
+            // Read validator selection address (first 20 bytes)
+            validatorSelection := shr(96, mload(add(args, 0x20)))
+
+            // Read array length (next 32 bytes after the address)
+            let arrayLen := mload(add(args, 0x34))
+
+            // Allocate memory for validators array
+            validators := mload(0x40)
+            mstore(validators, arrayLen)
+            let validatorsData := add(validators, 0x20)
+
+            // Allocate memory for amounts array
+            amounts := add(validatorsData, mul(arrayLen, 0x20))
+            mstore(amounts, arrayLen)
+            let amountsData := add(amounts, 0x20)
+
+            // Update free memory pointer
+            mstore(0x40, add(amountsData, mul(arrayLen, 0x20)))
+
+            // Copy validator addresses and amounts
+            let srcPtr := add(args, 0x54) // Start after validatorSelection + arrayLength
+
+            for { let i := 0 } lt(i, arrayLen) { i := add(i, 1) } {
+                // Read validator address (20 bytes)
+                let validator := shr(96, mload(srcPtr))
+                mstore(add(validatorsData, mul(i, 0x20)), validator)
+                srcPtr := add(srcPtr, 0x14)
+
+                // Read amount (12 bytes for uint96)
+                let amount := shr(160, mload(srcPtr))
+                mstore(add(amountsData, mul(i, 0x20)), amount)
+                srcPtr := add(srcPtr, 0x0c)
+            }
+        }
+    }
 }

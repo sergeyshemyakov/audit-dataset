@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -412,11 +408,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -522,9 +517,11 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
 }
 
 interface IL1MessageQueueV2 {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new L1 => L2 transaction is appended to the queue.
     /// @param sender The address of the sender account on L2.
@@ -534,21 +531,18 @@ interface IL1MessageQueueV2 {
     /// @param gasLimit The gas limit used on L2.
     /// @param data The calldata passed to the target account on L2.
     event QueueTransaction(
-        address indexed sender,
-        address indexed target,
-        uint256 value,
-        uint64 queueIndex,
-        uint256 gasLimit,
-        bytes data
+        address indexed sender, address indexed target, uint256 value, uint64 queueIndex, uint256 gasLimit, bytes data
     );
 
     /// @notice Emitted when some L1 => L2 transactions are finalized on L1.
     /// @param finalizedIndex The index of the last message finalized.
     event FinalizedDequeuedTransaction(uint256 finalizedIndex);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the start index of all messages in this contract.
     function firstCrossDomainMessageIndex() external view returns (uint256);
@@ -598,20 +592,18 @@ interface IL1MessageQueueV2 {
         bytes calldata data
     ) external view returns (bytes32);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Append a L1 => L2 cross-domain message to the message queue.
     /// @param target The address of the target account on L2.
     /// @param gasLimit The gas limit used on L2.
     /// @param data The calldata passed to the target account on L2.
     /// @dev This function can only be called by `L1ScrollMessenger`.
-    function appendCrossDomainMessage(
-        address target,
-        uint256 gasLimit,
-        bytes calldata data
-    ) external;
+    function appendCrossDomainMessage(address target, uint256 gasLimit, bytes calldata data) external;
 
     /// @notice Append an enforced transaction to the message queue.
     /// @param sender The address of the sender account on L2.
@@ -636,9 +628,11 @@ interface IL1MessageQueueV2 {
 
 /// @custom:deprecated This contract is no longer used in production.
 interface IL1MessageQueueV1 {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new L1 => L2 transaction is appended to the queue.
     /// @param sender The address of account who initiates the transaction.
@@ -648,12 +642,7 @@ interface IL1MessageQueueV1 {
     /// @param gasLimit Gas limit required to complete the message relay on L2.
     /// @param data The calldata of the transaction.
     event QueueTransaction(
-        address indexed sender,
-        address indexed target,
-        uint256 value,
-        uint64 queueIndex,
-        uint256 gasLimit,
-        bytes data
+        address indexed sender, address indexed target, uint256 value, uint64 queueIndex, uint256 gasLimit, bytes data
     );
 
     /// @notice Emitted when some L1 => L2 transactions are included in L1.
@@ -684,16 +673,20 @@ interface IL1MessageQueueV1 {
     /// @param _newMaxGasLimit The new max gas limit.
     event UpdateMaxGasLimit(uint256 _oldMaxGasLimit, uint256 _newMaxGasLimit);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice The start index of all pending inclusion messages.
     /// @custom:deprecated Please use `IL1MessageQueueV2.pendingQueueIndex` instead.
@@ -751,20 +744,18 @@ interface IL1MessageQueueV1 {
     /// @custom:deprecated
     function isMessageDropped(uint256 queueIndex) external view returns (bool);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Append a L1 to L2 message into this contract.
     /// @param target The address of target contract to call in L2.
     /// @param gasLimit The maximum gas should be used for relay this message in L2.
     /// @param data The calldata passed to target contract.
     /// @custom:deprecated Please use `IL1MessageQueueV2.appendCrossDomainMessage` instead.
-    function appendCrossDomainMessage(
-        address target,
-        uint256 gasLimit,
-        bytes calldata data
-    ) external;
+    function appendCrossDomainMessage(address target, uint256 gasLimit, bytes calldata data) external;
 
     /// @notice Append an enforced transaction to this contract.
     /// @dev The address of sender should be an EOA.
@@ -791,11 +782,7 @@ interface IL1MessageQueueV1 {
     /// @param count The number of messages to pop.
     /// @param skippedBitmap A bitmap indicates whether a message is skipped.
     /// @custom:deprecated
-    function popCrossDomainMessage(
-        uint256 startIndex,
-        uint256 count,
-        uint256 skippedBitmap
-    ) external;
+    function popCrossDomainMessage(uint256 startIndex, uint256 count, uint256 skippedBitmap) external;
 
     /// @notice Reset status of popped messages.
     ///
@@ -816,9 +803,11 @@ interface IL1MessageQueueV1 {
 }
 
 contract SystemConfig is OwnableUpgradeable {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the message queue parameters are updated.
     /// @param oldParams The old parameters.
@@ -835,9 +824,11 @@ contract SystemConfig is OwnableUpgradeable {
     /// @param newSigner The new signer.
     event SignerUpdated(address oldSigner, address newSigner);
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     /// @notice Parameters for the message queue.
     /// @param maxGasLimit The maximum gas limit allowed for each L1 message.
@@ -861,9 +852,11 @@ contract SystemConfig is OwnableUpgradeable {
         uint24 maxDelayMessageQueue;
     }
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @notice The parameters for the message queue.
     MessageQueueParameters public messageQueueParameters;
@@ -874,10 +867,11 @@ contract SystemConfig is OwnableUpgradeable {
     /// @dev The address of the current authorized signer.
     address private currentSigner;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -896,9 +890,11 @@ contract SystemConfig is OwnableUpgradeable {
         enforcedBatchParameters = _enforcedBatchParameters;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the current authorized signer.
     /// @return The authorized signer address.
@@ -906,9 +902,11 @@ contract SystemConfig is OwnableUpgradeable {
         return currentSigner;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the message queue parameters.
     /// @param _params The new message queue parameters.
@@ -973,9 +971,11 @@ library AddressAliasHelper {
 /// @dev Each appended message is assigned a unique and increasing `uint256` index.
 /// @dev For each message we store its enqueue timestamp and a rolling hash of all messages.
 contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when caller is not `L1ScrollMessenger`.
     error ErrorCallerIsNotMessenger();
@@ -998,9 +998,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @dev Thrown when the given gas limit is lower than the intrinsic gas.
     error ErrorGasLimitBelowIntrinsicGas();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The intrinsic gas for transaction.
     uint256 private constant INTRINSIC_GAS_TX = 21000;
@@ -1011,9 +1013,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
 
     uint256 private constant PRECISION = 1e18;
 
-    /***********************
+    /**
+     *
      * Immutable Variables *
-     ***********************/
+     *
+     */
 
     /// @notice The address of `L1ScrollMessenger`.
     address public immutable messenger;
@@ -1030,9 +1034,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @notice The address of `SystemConfig`.
     address public immutable systemConfig;
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @dev The list of queued cross-domain messages. The encoding for `bytes32` is
     /// ```text
@@ -1058,9 +1064,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @dev The storage slots reserved for future usage.
     uint256[46] private __gap;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for the `L1MessageQueueV2` implementation contract.
     ///
@@ -1095,9 +1103,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         nextUnfinalizedQueueIndex = _nextCrossDomainMessageIndex;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueueV2
     function getFirstUnfinalizedMessageEnqueueTime() external view returns (uint256 timestamp) {
@@ -1109,7 +1119,7 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
 
     /// @inheritdoc IL1MessageQueueV2
     function getMessageRollingHash(uint256 queueIndex) external view returns (bytes32 hash) {
-        (hash, ) = _loadAndDecodeRollingHash(queueIndex);
+        (hash,) = _loadAndDecodeRollingHash(queueIndex);
     }
 
     /// @inheritdoc IL1MessageQueueV2
@@ -1164,11 +1174,7 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
                     len := 1
                     leave
                 }
-                for {
-
-                } gt(v, 0) {
-
-                } {
+                for {} gt(v, 0) {} {
                     len := add(len, 1)
                     v := shr(8, v)
                 }
@@ -1274,17 +1280,17 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         return hash;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueueV2
-    function appendCrossDomainMessage(
-        address _target,
-        uint256 _gasLimit,
-        bytes calldata _data
-    ) external {
-        if (_msgSender() != messenger) revert ErrorCallerIsNotMessenger();
+    function appendCrossDomainMessage(address _target, uint256 _gasLimit, bytes calldata _data) external {
+        if (_msgSender() != messenger) {
+            revert ErrorCallerIsNotMessenger();
+        }
 
         // validate gas limit
         _validateGasLimit(_gasLimit, _data);
@@ -1301,7 +1307,9 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         uint256 _gasLimit,
         bytes calldata _data
     ) external {
-        if (_msgSender() != enforcedTxGateway) revert ErrorCallerIsNotEnforcedTxGateway();
+        if (_msgSender() != enforcedTxGateway) {
+            revert ErrorCallerIsNotEnforcedTxGateway();
+        }
 
         // validate gas limit
         _validateGasLimit(_gasLimit, _data);
@@ -1312,12 +1320,20 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
 
     /// @inheritdoc IL1MessageQueueV2
     function finalizePoppedCrossDomainMessage(uint256 _nextUnfinalizedQueueIndex) external {
-        if (_msgSender() != scrollChain) revert ErrorCallerIsNotScrollChain();
+        if (_msgSender() != scrollChain) {
+            revert ErrorCallerIsNotScrollChain();
+        }
 
         uint256 cachedNextUnfinalizedQueueIndex = nextUnfinalizedQueueIndex;
-        if (_nextUnfinalizedQueueIndex == cachedNextUnfinalizedQueueIndex) return;
-        if (_nextUnfinalizedQueueIndex < cachedNextUnfinalizedQueueIndex) revert ErrorFinalizedIndexTooSmall();
-        if (_nextUnfinalizedQueueIndex > nextCrossDomainMessageIndex) revert ErrorFinalizedIndexTooLarge();
+        if (_nextUnfinalizedQueueIndex == cachedNextUnfinalizedQueueIndex) {
+            return;
+        }
+        if (_nextUnfinalizedQueueIndex < cachedNextUnfinalizedQueueIndex) {
+            revert ErrorFinalizedIndexTooSmall();
+        }
+        if (_nextUnfinalizedQueueIndex > nextCrossDomainMessageIndex) {
+            revert ErrorFinalizedIndexTooLarge();
+        }
 
         nextUnfinalizedQueueIndex = _nextUnfinalizedQueueIndex;
         unchecked {
@@ -1325,9 +1341,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to queue a L1 => L2 cross-domain transaction.
     /// @param _sender The address of the sender account on L2.
@@ -1346,7 +1364,7 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         uint256 _queueIndex = nextCrossDomainMessageIndex;
         bytes32 _hash = computeTransactionHash(_sender, _queueIndex, _value, _target, _gasLimit, _data);
         unchecked {
-            (bytes32 _rollingHash, ) = _loadAndDecodeRollingHash(_queueIndex - 1);
+            (bytes32 _rollingHash,) = _loadAndDecodeRollingHash(_queueIndex - 1);
             _rollingHash = _efficientHash(_rollingHash, _hash);
             messageRollingHashes[_queueIndex] = _encodeRollingHash(_rollingHash, block.timestamp);
             nextCrossDomainMessageIndex = _queueIndex + 1;
@@ -1359,11 +1377,15 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @param _gasLimit The value of given gas limit.
     /// @param _calldata The calldata for this message.
     function _validateGasLimit(uint256 _gasLimit, bytes calldata _calldata) internal view {
-        (uint256 maxGasLimit, , ) = SystemConfig(systemConfig).messageQueueParameters();
-        if (_gasLimit > maxGasLimit) revert ErrorGasLimitExceeded();
+        (uint256 maxGasLimit,,) = SystemConfig(systemConfig).messageQueueParameters();
+        if (_gasLimit > maxGasLimit) {
+            revert ErrorGasLimitExceeded();
+        }
         // check if the gas limit is above intrinsic gas
         uint256 intrinsicGas = calculateIntrinsicGasFee(_calldata);
-        if (_gasLimit < intrinsicGas) revert ErrorGasLimitBelowIntrinsicGas();
+        if (_gasLimit < intrinsicGas) {
+            revert ErrorGasLimitBelowIntrinsicGas();
+        }
     }
 
     /// @dev Internal function to load the rolling hash and enqueue timestamp from storage.

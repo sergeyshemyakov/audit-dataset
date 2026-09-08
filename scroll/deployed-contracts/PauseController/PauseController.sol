@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -412,11 +408,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -711,6 +706,7 @@ library Math {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -1103,7 +1099,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), _SYMBOLS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -1828,9 +1826,11 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
 contract ScrollOwner is AccessControlEnumerable {
     using EnumerableSet for EnumerableSet.Bytes32Set;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the access to target contract is granted.
     /// @param role The role to grant access.
@@ -1844,38 +1844,40 @@ contract ScrollOwner is AccessControlEnumerable {
     /// @param selectors The list of function selectors to revoke access.
     event RevokeAccess(bytes32 indexed role, address indexed target, bytes4[] selectors);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from target address to selector to the list of accessible roles.
     mapping(address => mapping(bytes4 => EnumerableSet.Bytes32Set)) private targetAccess;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
-    modifier hasAccess(
-        address _target,
-        bytes4 _selector,
-        bytes32 _role
-    ) {
+     *
+     */
+    modifier hasAccess(address _target, bytes4 _selector, bytes32 _role) {
         // admin has access to all methods
         require(_role == DEFAULT_ADMIN_ROLE || targetAccess[_target][_selector].contains(_role), "no access");
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return a list of roles which has access to the function.
     /// @param _target The address of target contract.
@@ -1889,42 +1891,44 @@ contract ScrollOwner is AccessControlEnumerable {
         }
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Perform a function call from arbitrary role.
     /// @param _target The address of target contract.
     /// @param _value The value passing to target contract.
     /// @param _data The calldata passing to target contract.
     /// @param _role The expected role of the caller.
-    function execute(
-        address _target,
-        uint256 _value,
-        bytes calldata _data,
-        bytes32 _role
-    ) external payable onlyRole(_role) hasAccess(_target, bytes4(_data[0:4]), _role) {
+    function execute(address _target, uint256 _value, bytes calldata _data, bytes32 _role)
+        external
+        payable
+        onlyRole(_role)
+        hasAccess(_target, bytes4(_data[0:4]), _role)
+    {
         _execute(_target, _value, _data);
     }
 
     // allow others to send ether to this contract.
     receive() external payable {}
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the access to target contract.
     /// @param _target The address of target contract.
     /// @param _selectors The list of function selectors to update.
     /// @param _role The role to change.
     /// @param _status True if we are going to add the role, otherwise remove the role.
-    function updateAccess(
-        address _target,
-        bytes4[] memory _selectors,
-        bytes32 _role,
-        bool _status
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function updateAccess(address _target, bytes4[] memory _selectors, bytes32 _role, bool _status)
+        external
+        onlyRole(DEFAULT_ADMIN_ROLE)
+    {
         if (_status) {
             for (uint256 i = 0; i < _selectors.length; i++) {
                 targetAccess[_target][_selectors[i]].add(_role);
@@ -1940,23 +1944,21 @@ contract ScrollOwner is AccessControlEnumerable {
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to call contract. If the call reverted, the error will be popped up.
     /// @param _target The address of target contract.
     /// @param _value The value passing to target contract.
     /// @param _data The calldata passing to target contract.
-    function _execute(
-        address _target,
-        uint256 _value,
-        bytes calldata _data
-    ) private {
+    function _execute(address _target, uint256 _value, bytes calldata _data) private {
         // solhint-disable-next-line avoid-low-level-calls
         // no reentrancy risk.
         // slither-disable-next-line arbitrary-send-eth
-        (bool success, ) = _target.call{value: _value}(_data);
+        (bool success,) = _target.call{value: _value}(_data);
         if (!success) {
             // solhint-disable-next-line no-inline-assembly
             assembly {
@@ -1973,9 +1975,11 @@ contract ScrollOwner is AccessControlEnumerable {
 /// @notice This contract is used to pause and unpause components in Scroll.
 /// @dev The owner of this contract should be `ScrollOwner` contract to allow fine-grained control over the pause and unpause of components.
 contract PauseController is OwnableUpgradeable {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a component is paused.
     /// @param component The component that is paused.
@@ -1994,9 +1998,11 @@ contract PauseController is OwnableUpgradeable {
     /// @param newPauseCooldownPeriod The new pause cooldown period.
     event UpdatePauseCooldownPeriod(uint256 oldPauseCooldownPeriod, uint256 newPauseCooldownPeriod);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the cooldown period is not passed.
     error ErrorCooldownPeriodNotPassed();
@@ -2013,23 +2019,29 @@ contract PauseController is OwnableUpgradeable {
     /// @dev Thrown when the execution of `ScrollOwner` contract fails.
     error ErrorExecuteUnpauseFailed();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The role for pause controller in `ScrollOwner` contract.
     bytes32 public constant PAUSE_CONTROLLER_ROLE = keccak256("PAUSE_CONTROLLER_ROLE");
 
-    /***********************
+    /**
+     *
      * Immutable Variables *
-     ***********************/
+     *
+     */
 
     /// @notice The address of the ScrollOwner contract.
     address public immutable SCROLL_OWNER;
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @notice The pause cooldown period. That is the minimum time between two consecutive pauses.
     uint256 public pauseCooldownPeriod;
@@ -2037,10 +2049,11 @@ contract PauseController is OwnableUpgradeable {
     /// @notice The last unpause time of each component.
     mapping(address => uint256) private lastUnpauseTime;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _scrollOwner) {
         SCROLL_OWNER = _scrollOwner;
 
@@ -2053,9 +2066,11 @@ contract PauseController is OwnableUpgradeable {
         _updatePauseCooldownPeriod(_pauseCooldownPeriod);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Get the last unpause timestamp of a component.
     /// @param component The component to get the last unpause timestamp.
@@ -2064,9 +2079,11 @@ contract PauseController is OwnableUpgradeable {
         return lastUnpauseTime[address(component)];
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Pause a component.
     /// @param component The component to pause.
@@ -2080,10 +2097,7 @@ contract PauseController is OwnableUpgradeable {
         }
 
         ScrollOwner(payable(SCROLL_OWNER)).execute(
-            address(component),
-            0,
-            abi.encodeWithSelector(IPausable.setPause.selector, true),
-            PAUSE_CONTROLLER_ROLE
+            address(component), 0, abi.encodeWithSelector(IPausable.setPause.selector, true), PAUSE_CONTROLLER_ROLE
         );
 
         if (!component.paused()) {
@@ -2101,10 +2115,7 @@ contract PauseController is OwnableUpgradeable {
         }
 
         ScrollOwner(payable(SCROLL_OWNER)).execute(
-            address(component),
-            0,
-            abi.encodeWithSelector(IPausable.setPause.selector, false),
-            PAUSE_CONTROLLER_ROLE
+            address(component), 0, abi.encodeWithSelector(IPausable.setPause.selector, false), PAUSE_CONTROLLER_ROLE
         );
 
         lastUnpauseTime[address(component)] = block.timestamp;
@@ -2130,9 +2141,11 @@ contract PauseController is OwnableUpgradeable {
         _updatePauseCooldownPeriod(newPauseCooldownPeriod);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to set the pause cooldown period.
     /// @param newPauseCooldownPeriod The new pause cooldown period.

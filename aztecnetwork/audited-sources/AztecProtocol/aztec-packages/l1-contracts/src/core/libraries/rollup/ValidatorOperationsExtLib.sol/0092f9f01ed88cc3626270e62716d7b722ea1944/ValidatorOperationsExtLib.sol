@@ -3,12 +3,12 @@
 // solhint-disable imports-order
 pragma solidity >=0.8.27;
 
-import {IEscapeHatch} from "@aztec/core/interfaces/IEscapeHatch.sol";
-import {Epoch, Slot, Timestamp, TimeLib} from "@aztec/core/libraries/TimeLib.sol";
-import {StakingQueueConfig} from "@aztec/core/libraries/compressed-data/StakingQueueConfig.sol";
-import {StakingLib} from "./StakingLib.sol";
 import {InvalidateLib} from "./InvalidateLib.sol";
+import {StakingLib} from "./StakingLib.sol";
 import {ValidatorSelectionLib} from "./ValidatorSelectionLib.sol";
+import {IEscapeHatch} from "@aztec/core/interfaces/IEscapeHatch.sol";
+import {Epoch, Slot, TimeLib, Timestamp} from "@aztec/core/libraries/TimeLib.sol";
+import {StakingQueueConfig} from "@aztec/core/libraries/compressed-data/StakingQueueConfig.sol";
 import {CommitteeAttestations} from "@aztec/core/libraries/rollup/AttestationLib.sol";
 import {G1Point, G2Point} from "@aztec/shared/libraries/BN254Lib.sol";
 
@@ -28,138 +28,138 @@ import {G1Point, G2Point} from "@aztec/shared/libraries/BN254Lib.sol";
  *      - Epoch and proposer management
  */
 library ValidatorOperationsExtLib {
-  using TimeLib for Timestamp;
+    using TimeLib for Timestamp;
 
-  function setSlasher(address _slasher) external {
-    StakingLib.setSlasher(_slasher);
-  }
+    function setSlasher(address _slasher) external {
+        StakingLib.setSlasher(_slasher);
+    }
 
-  function setLocalEjectionThreshold(uint256 _localEjectionThreshold) external {
-    StakingLib.setLocalEjectionThreshold(_localEjectionThreshold);
-  }
+    function setLocalEjectionThreshold(uint256 _localEjectionThreshold) external {
+        StakingLib.setLocalEjectionThreshold(_localEjectionThreshold);
+    }
 
-  function vote(uint256 _proposalId) external {
-    StakingLib.vote(_proposalId);
-  }
+    function vote(uint256 _proposalId) external {
+        StakingLib.vote(_proposalId);
+    }
 
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external {
-    StakingLib.deposit(
-      _attester, _withdrawer, _publicKeyInG1, _publicKeyInG2, _proofOfPossession, _moveWithLatestRollup
-    );
-  }
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external {
+        StakingLib.deposit(
+            _attester, _withdrawer, _publicKeyInG1, _publicKeyInG2, _proofOfPossession, _moveWithLatestRollup
+        );
+    }
 
-  function flushEntryQueue(uint256 _toAdd) external {
-    StakingLib.flushEntryQueue(_toAdd);
-  }
+    function flushEntryQueue(uint256 _toAdd) external {
+        StakingLib.flushEntryQueue(_toAdd);
+    }
 
-  function initiateWithdraw(address _attester, address _recipient) external returns (bool) {
-    return StakingLib.initiateWithdraw(_attester, _recipient);
-  }
+    function initiateWithdraw(address _attester, address _recipient) external returns (bool) {
+        return StakingLib.initiateWithdraw(_attester, _recipient);
+    }
 
-  function finalizeWithdraw(address _attester) external {
-    StakingLib.finalizeWithdraw(_attester);
-  }
+    function finalizeWithdraw(address _attester) external {
+        StakingLib.finalizeWithdraw(_attester);
+    }
 
-  function initializeValidatorSelection(
-    uint256 _targetCommitteeSize,
-    uint256 _lagInEpochsForValidatorSet,
-    uint256 _lagInEpochsForRandao
-  ) external {
-    ValidatorSelectionLib.initialize(_targetCommitteeSize, _lagInEpochsForValidatorSet, _lagInEpochsForRandao);
-  }
+    function initializeValidatorSelection(
+        uint256 _targetCommitteeSize,
+        uint256 _lagInEpochsForValidatorSet,
+        uint256 _lagInEpochsForRandao
+    ) external {
+        ValidatorSelectionLib.initialize(_targetCommitteeSize, _lagInEpochsForValidatorSet, _lagInEpochsForRandao);
+    }
 
-  function setupEpoch() external {
-    Epoch currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
-    ValidatorSelectionLib.setupEpoch(currentEpoch);
-  }
+    function setupEpoch() external {
+        Epoch currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
+        ValidatorSelectionLib.setupEpoch(currentEpoch);
+    }
 
-  function checkpointRandao() external {
-    Epoch currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
-    ValidatorSelectionLib.checkpointRandao(currentEpoch);
-  }
+    function checkpointRandao() external {
+        Epoch currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
+        ValidatorSelectionLib.checkpointRandao(currentEpoch);
+    }
 
-  function updateStakingQueueConfig(StakingQueueConfig memory _config) external {
-    StakingLib.updateStakingQueueConfig(_config);
-  }
+    function updateStakingQueueConfig(StakingQueueConfig memory _config) external {
+        StakingLib.updateStakingQueueConfig(_config);
+    }
 
-  function updateEscapeHatch(address _escapeHatch) external {
-    ValidatorSelectionLib.updateEscapeHatch(_escapeHatch);
-  }
+    function updateEscapeHatch(address _escapeHatch) external {
+        ValidatorSelectionLib.updateEscapeHatch(_escapeHatch);
+    }
 
-  function invalidateBadAttestation(
-    uint256 _checkpointNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee,
-    uint256 _invalidIndex
-  ) external {
-    InvalidateLib.invalidateBadAttestation(_checkpointNumber, _attestations, _committee, _invalidIndex);
-  }
+    function invalidateBadAttestation(
+        uint256 _checkpointNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee,
+        uint256 _invalidIndex
+    ) external {
+        InvalidateLib.invalidateBadAttestation(_checkpointNumber, _attestations, _committee, _invalidIndex);
+    }
 
-  function invalidateInsufficientAttestations(
-    uint256 _checkpointNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee
-  ) external {
-    InvalidateLib.invalidateInsufficientAttestations(_checkpointNumber, _attestations, _committee);
-  }
+    function invalidateInsufficientAttestations(
+        uint256 _checkpointNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee
+    ) external {
+        InvalidateLib.invalidateInsufficientAttestations(_checkpointNumber, _attestations, _committee);
+    }
 
-  function slash(address _attester, uint256 _amount) external returns (bool) {
-    return StakingLib.trySlash(_attester, _amount);
-  }
+    function slash(address _attester, uint256 _amount) external returns (bool) {
+        return StakingLib.trySlash(_attester, _amount);
+    }
 
-  function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) external returns (Slot, uint256) {
-    return ValidatorSelectionLib.canProposeAtTime(_ts, _archive, _who);
-  }
+    function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) external returns (Slot, uint256) {
+        return ValidatorSelectionLib.canProposeAtTime(_ts, _archive, _who);
+    }
 
-  function getCommitteeAt(Epoch _epoch) external returns (address[] memory) {
-    return ValidatorSelectionLib.getCommitteeAt(_epoch);
-  }
+    function getCommitteeAt(Epoch _epoch) external returns (address[] memory) {
+        return ValidatorSelectionLib.getCommitteeAt(_epoch);
+    }
 
-  function getProposerAt(Slot _slot) external returns (address proposer) {
-    (proposer,) = ValidatorSelectionLib.getProposerAt(_slot);
-  }
+    function getProposerAt(Slot _slot) external returns (address proposer) {
+        (proposer,) = ValidatorSelectionLib.getProposerAt(_slot);
+    }
 
-  function getCommitteeCommitmentAt(Epoch _epoch) external returns (bytes32, uint256) {
-    return ValidatorSelectionLib.getCommitteeCommitmentAt(_epoch);
-  }
+    function getCommitteeCommitmentAt(Epoch _epoch) external returns (bytes32, uint256) {
+        return ValidatorSelectionLib.getCommitteeCommitmentAt(_epoch);
+    }
 
-  function getSampleSeedAt(Epoch _epoch) external view returns (uint256) {
-    return ValidatorSelectionLib.getSampleSeed(_epoch);
-  }
+    function getSampleSeedAt(Epoch _epoch) external view returns (uint256) {
+        return ValidatorSelectionLib.getSampleSeed(_epoch);
+    }
 
-  function getSamplingSizeAt(Epoch _epoch) external view returns (uint256) {
-    return ValidatorSelectionLib.getSamplingSize(_epoch);
-  }
+    function getSamplingSizeAt(Epoch _epoch) external view returns (uint256) {
+        return ValidatorSelectionLib.getSamplingSize(_epoch);
+    }
 
-  function getLagInEpochsForValidatorSet() external view returns (uint256) {
-    return ValidatorSelectionLib.getLagInEpochsForValidatorSet();
-  }
+    function getLagInEpochsForValidatorSet() external view returns (uint256) {
+        return ValidatorSelectionLib.getLagInEpochsForValidatorSet();
+    }
 
-  function getLagInEpochsForRandao() external view returns (uint256) {
-    return ValidatorSelectionLib.getLagInEpochsForRandao();
-  }
+    function getLagInEpochsForRandao() external view returns (uint256) {
+        return ValidatorSelectionLib.getLagInEpochsForRandao();
+    }
 
-  function getEscapeHatch() external view returns (IEscapeHatch) {
-    return ValidatorSelectionLib.getEscapeHatch();
-  }
+    function getEscapeHatch() external view returns (IEscapeHatch) {
+        return ValidatorSelectionLib.getEscapeHatch();
+    }
 
-  function getTargetCommitteeSize() external view returns (uint256) {
-    return ValidatorSelectionLib.getStorage().targetCommitteeSize;
-  }
+    function getTargetCommitteeSize() external view returns (uint256) {
+        return ValidatorSelectionLib.getStorage().targetCommitteeSize;
+    }
 
-  function getEntryQueueFlushSize() external view returns (uint256) {
-    uint256 activeAttesterCount = StakingLib.getAttesterCountAtTime(Timestamp.wrap(block.timestamp));
-    return StakingLib.getEntryQueueFlushSize(activeAttesterCount);
-  }
+    function getEntryQueueFlushSize() external view returns (uint256) {
+        uint256 activeAttesterCount = StakingLib.getAttesterCountAtTime(Timestamp.wrap(block.timestamp));
+        return StakingLib.getEntryQueueFlushSize(activeAttesterCount);
+    }
 
-  function getAvailableValidatorFlushes() external view returns (uint256) {
-    return StakingLib.getAvailableValidatorFlushes();
-  }
+    function getAvailableValidatorFlushes() external view returns (uint256) {
+        return StakingLib.getAvailableValidatorFlushes();
+    }
 }

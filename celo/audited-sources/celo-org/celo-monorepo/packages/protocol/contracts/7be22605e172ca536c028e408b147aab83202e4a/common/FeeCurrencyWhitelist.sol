@@ -10,21 +10,21 @@ import "../common/Initializable.sol";
  * @title Holds a whitelist of the ERC20+ tokens that can be used to pay for gas
  */
 contract FeeCurrencyWhitelist is IFeeCurrencyWhitelist, Ownable, Initializable {
-  address[] public whitelist;
+    address[] public whitelist;
 
-  function initialize() external initializer {
-    _transferOwnership(msg.sender);
-  }
+    function initialize() external initializer {
+        _transferOwnership(msg.sender);
+    }
 
-  /**
-   * @dev Add a token to the whitelist
-   * @param tokenAddress The address of the token to add.
-   */
-  function addToken(address tokenAddress) external onlyOwner {
-    whitelist.push(tokenAddress);
-  }
+    /**
+     * @dev Add a token to the whitelist
+     * @param tokenAddress The address of the token to add.
+     */
+    function addToken(address tokenAddress) external onlyOwner {
+        whitelist.push(tokenAddress);
+    }
 
-  function getWhitelist() external view returns (address[] memory) {
-    return whitelist;
-  }
+    function getWhitelist() external view returns (address[] memory) {
+        return whitelist;
+    }
 }

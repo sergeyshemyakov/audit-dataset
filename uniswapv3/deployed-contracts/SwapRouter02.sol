@@ -14,12 +14,10 @@ interface IV2SwapRouter {
     /// @param path The ordered list of tokens to swap through
     /// @param to The recipient address
     /// @return amountOut The amount of the received token
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to
-    ) external payable returns (uint256 amountOut);
+    function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] calldata path, address to)
+        external
+        payable
+        returns (uint256 amountOut);
 
     /// @notice Swaps as little as possible of one token for an exact amount of another token
     /// @param amountOut The amount of token to swap for
@@ -27,12 +25,10 @@ interface IV2SwapRouter {
     /// @param path The ordered list of tokens to swap through
     /// @param to The recipient address
     /// @return amountIn The amount of token to pay
-    function swapTokensForExactTokens(
-        uint256 amountOut,
-        uint256 amountInMax,
-        address[] calldata path,
-        address to
-    ) external payable returns (uint256 amountIn);
+    function swapTokensForExactTokens(uint256 amountOut, uint256 amountInMax, address[] calldata path, address to)
+        external
+        payable
+        returns (uint256 amountIn);
 }
 
 /// @title Callback for IUniswapV3PoolActions#swap
@@ -47,11 +43,7 @@ interface IUniswapV3SwapCallback {
     /// @param amount1Delta The amount of token1 that was sent (negative) or must be received (positive) by the pool by
     /// the end of the swap. If positive, the callback must send that amount of token1 to the pool.
     /// @param data Any data passed through by the caller via the IUniswapV3PoolActions#swap call
-    function uniswapV3SwapCallback(
-        int256 amount0Delta,
-        int256 amount1Delta,
-        bytes calldata data
-    ) external;
+    function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external;
 }
 
 /// @title Router token swapping functionality
@@ -119,7 +111,13 @@ interface IV3SwapRouter is IUniswapV3SwapCallback {
 }
 
 interface IApproveAndCall {
-    enum ApprovalType {NOT_REQUIRED, MAX, MAX_MINUS_ONE, ZERO_THEN_MAX, ZERO_THEN_MAX_MINUS_ONE}
+    enum ApprovalType {
+        NOT_REQUIRED,
+        MAX,
+        MAX_MINUS_ONE,
+        ZERO_THEN_MAX,
+        ZERO_THEN_MAX_MINUS_ONE
+    }
 
     /// @dev Lens to be called off-chain to determine which (if any) of the relevant approval functions should be called
     /// @param token The token to approve
@@ -175,7 +173,10 @@ interface IApproveAndCall {
     /// @notice Calls the position manager's increaseLiquidity function
     /// @param params Calldata to pass along to the position manager
     /// @return result The result from the call
-    function increaseLiquidity(IncreaseLiquidityParams calldata params) external payable returns (bytes memory result);
+    function increaseLiquidity(IncreaseLiquidityParams calldata params)
+        external
+        payable
+        returns (bytes memory result);
 }
 
 /// @title Multicall interface
@@ -220,14 +221,9 @@ interface ISelfPermit {
     /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`
     /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`
     /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`
-    function selfPermit(
-        address token,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable;
+    function selfPermit(address token, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable;
 
     /// @notice Permits this contract to spend a given token from `msg.sender`
     /// @dev The `owner` is always msg.sender and the `spender` is always address(this).
@@ -238,14 +234,9 @@ interface ISelfPermit {
     /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`
     /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`
     /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`
-    function selfPermitIfNecessary(
-        address token,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable;
+    function selfPermitIfNecessary(address token, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable;
 
     /// @notice Permits this contract to spend the sender's tokens for permit signatures that have the `allowed` parameter
     /// @dev The `owner` is always msg.sender and the `spender` is always address(this)
@@ -255,14 +246,9 @@ interface ISelfPermit {
     /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`
     /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`
     /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`
-    function selfPermitAllowed(
-        address token,
-        uint256 nonce,
-        uint256 expiry,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable;
+    function selfPermitAllowed(address token, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable;
 
     /// @notice Permits this contract to spend the sender's tokens for permit signatures that have the `allowed` parameter
     /// @dev The `owner` is always msg.sender and the `spender` is always address(this)
@@ -273,20 +259,13 @@ interface ISelfPermit {
     /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`
     /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`
     /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`
-    function selfPermitAllowedIfNecessary(
-        address token,
-        uint256 nonce,
-        uint256 expiry,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable;
+    function selfPermitAllowedIfNecessary(address token, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable;
 }
 
 /// @title Router token swapping functionality
-interface ISwapRouter02 is IV2SwapRouter, IV3SwapRouter, IApproveAndCall, IMulticallExtended, ISelfPermit {
-
-}
+interface ISwapRouter02 is IV2SwapRouter, IV3SwapRouter, IApproveAndCall, IMulticallExtended, ISelfPermit {}
 
 /// @title Immutable state
 /// @notice Functions that return immutable state of the router
@@ -331,11 +310,7 @@ interface IPeripheryPayments {
     /// @param token The contract address of the token which will be transferred to `recipient`
     /// @param amountMinimum The minimum amount of token required for a transfer
     /// @param recipient The destination address of the token
-    function sweepToken(
-        address token,
-        uint256 amountMinimum,
-        address recipient
-    ) external payable;
+    function sweepToken(address token, uint256 amountMinimum, address recipient) external payable;
 }
 
 /// @title Periphery Payments Extended
@@ -369,12 +344,9 @@ interface IPeripheryPaymentsWithFee is IPeripheryPayments {
     /// @notice Unwraps the contract's WETH9 balance and sends it to recipient as ETH, with a percentage between
     /// 0 (exclusive), and 1 (inclusive) going to feeRecipient
     /// @dev The amountMinimum parameter prevents malicious contracts from stealing WETH9 from users.
-    function unwrapWETH9WithFee(
-        uint256 amountMinimum,
-        address recipient,
-        uint256 feeBips,
-        address feeRecipient
-    ) external payable;
+    function unwrapWETH9WithFee(uint256 amountMinimum, address recipient, uint256 feeBips, address feeRecipient)
+        external
+        payable;
 
     /// @notice Transfers the full amount of a token held by this contract to recipient, with a percentage between
     /// 0 (exclusive) and 1 (inclusive) going to feeRecipient
@@ -394,21 +366,14 @@ interface IPeripheryPaymentsWithFeeExtended is IPeripheryPaymentsExtended, IPeri
     /// @notice Unwraps the contract's WETH9 balance and sends it to msg.sender as ETH, with a percentage between
     /// 0 (exclusive), and 1 (inclusive) going to feeRecipient
     /// @dev The amountMinimum parameter prevents malicious contracts from stealing WETH9 from users.
-    function unwrapWETH9WithFee(
-        uint256 amountMinimum,
-        uint256 feeBips,
-        address feeRecipient
-    ) external payable;
+    function unwrapWETH9WithFee(uint256 amountMinimum, uint256 feeBips, address feeRecipient) external payable;
 
     /// @notice Transfers the full amount of a token held by this contract to msg.sender, with a percentage between
     /// 0 (exclusive) and 1 (inclusive) going to feeRecipient
     /// @dev The amountMinimum parameter prevents malicious contracts from stealing the token from users
-    function sweepTokenWithFee(
-        address token,
-        uint256 amountMinimum,
-        uint256 feeBips,
-        address feeRecipient
-    ) external payable;
+    function sweepTokenWithFee(address token, uint256 amountMinimum, uint256 feeBips, address feeRecipient)
+        external
+        payable;
 }
 
 /// @title Immutable state
@@ -525,15 +490,10 @@ library TransferHelper {
     /// @param from The originating address from which the tokens will be transferred
     /// @param to The destination address of the transfer
     /// @param value The amount to be transferred
-    function safeTransferFrom(
-        address token,
-        address from,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransferFrom(address token, address from, address to, uint256 value) internal {
         (bool success, bytes memory data) =
             token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, from, to, value));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), 'STF');
+        require(success && (data.length == 0 || abi.decode(data, (bool))), "STF");
     }
 
     /// @notice Transfers tokens from msg.sender to a recipient
@@ -541,13 +501,9 @@ library TransferHelper {
     /// @param token The contract address of the token which will be transferred
     /// @param to The recipient of the transfer
     /// @param value The value of the transfer
-    function safeTransfer(
-        address token,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransfer(address token, address to, uint256 value) internal {
         (bool success, bytes memory data) = token.call(abi.encodeWithSelector(IERC20.transfer.selector, to, value));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), 'ST');
+        require(success && (data.length == 0 || abi.decode(data, (bool))), "ST");
     }
 
     /// @notice Approves the stipulated contract to spend the given allowance in the given token
@@ -555,13 +511,9 @@ library TransferHelper {
     /// @param token The contract address of the token to be approved
     /// @param to The target of the approval
     /// @param value The amount of the given token the target will be allowed to spend
-    function safeApprove(
-        address token,
-        address to,
-        uint256 value
-    ) internal {
+    function safeApprove(address token, address to, uint256 value) internal {
         (bool success, bytes memory data) = token.call(abi.encodeWithSelector(IERC20.approve.selector, to, value));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), 'SA');
+        require(success && (data.length == 0 || abi.decode(data, (bool))), "SA");
     }
 
     /// @notice Transfers ETH to the recipient address
@@ -569,20 +521,20 @@ library TransferHelper {
     /// @param to The destination of the transfer
     /// @param value The value to be transferred
     function safeTransferETH(address to, uint256 value) internal {
-        (bool success, ) = to.call{value: value}(new bytes(0));
-        require(success, 'STE');
+        (bool success,) = to.call{value: value}(new bytes(0));
+        require(success, "STE");
     }
 }
 
 abstract contract PeripheryPayments is IPeripheryPayments, PeripheryImmutableState {
     receive() external payable {
-        require(msg.sender == WETH9, 'Not WETH9');
+        require(msg.sender == WETH9, "Not WETH9");
     }
 
     /// @inheritdoc IPeripheryPayments
     function unwrapWETH9(uint256 amountMinimum, address recipient) public payable override {
         uint256 balanceWETH9 = IWETH9(WETH9).balanceOf(address(this));
-        require(balanceWETH9 >= amountMinimum, 'Insufficient WETH9');
+        require(balanceWETH9 >= amountMinimum, "Insufficient WETH9");
 
         if (balanceWETH9 > 0) {
             IWETH9(WETH9).withdraw(balanceWETH9);
@@ -591,13 +543,9 @@ abstract contract PeripheryPayments is IPeripheryPayments, PeripheryImmutableSta
     }
 
     /// @inheritdoc IPeripheryPayments
-    function sweepToken(
-        address token,
-        uint256 amountMinimum,
-        address recipient
-    ) public payable override {
+    function sweepToken(address token, uint256 amountMinimum, address recipient) public payable override {
         uint256 balanceToken = IERC20(token).balanceOf(address(this));
-        require(balanceToken >= amountMinimum, 'Insufficient token');
+        require(balanceToken >= amountMinimum, "Insufficient token");
 
         if (balanceToken > 0) {
             TransferHelper.safeTransfer(token, recipient, balanceToken);
@@ -606,19 +554,16 @@ abstract contract PeripheryPayments is IPeripheryPayments, PeripheryImmutableSta
 
     /// @inheritdoc IPeripheryPayments
     function refundETH() external payable override {
-        if (address(this).balance > 0) TransferHelper.safeTransferETH(msg.sender, address(this).balance);
+        if (address(this).balance > 0) {
+            TransferHelper.safeTransferETH(msg.sender, address(this).balance);
+        }
     }
 
     /// @param token The token to pay
     /// @param payer The entity that must pay
     /// @param recipient The entity that will receive payment
     /// @param value The amount to pay
-    function pay(
-        address token,
-        address payer,
-        address recipient,
-        uint256 value
-    ) internal {
+    function pay(address token, address payer, address recipient, uint256 value) internal {
         if (token == WETH9 && address(this).balance >= value) {
             // pay with WETH9
             IWETH9(WETH9).deposit{value: value}(); // wrap only what is needed to pay
@@ -703,21 +648,22 @@ abstract contract PeripheryPaymentsWithFee is PeripheryPayments, IPeripheryPayme
     using LowGasSafeMath for uint256;
 
     /// @inheritdoc IPeripheryPaymentsWithFee
-    function unwrapWETH9WithFee(
-        uint256 amountMinimum,
-        address recipient,
-        uint256 feeBips,
-        address feeRecipient
-    ) public payable override {
+    function unwrapWETH9WithFee(uint256 amountMinimum, address recipient, uint256 feeBips, address feeRecipient)
+        public
+        payable
+        override
+    {
         require(feeBips > 0 && feeBips <= 100);
 
         uint256 balanceWETH9 = IWETH9(WETH9).balanceOf(address(this));
-        require(balanceWETH9 >= amountMinimum, 'Insufficient WETH9');
+        require(balanceWETH9 >= amountMinimum, "Insufficient WETH9");
 
         if (balanceWETH9 > 0) {
             IWETH9(WETH9).withdraw(balanceWETH9);
             uint256 feeAmount = balanceWETH9.mul(feeBips) / 10_000;
-            if (feeAmount > 0) TransferHelper.safeTransferETH(feeRecipient, feeAmount);
+            if (feeAmount > 0) {
+                TransferHelper.safeTransferETH(feeRecipient, feeAmount);
+            }
             TransferHelper.safeTransferETH(recipient, balanceWETH9 - feeAmount);
         }
     }
@@ -733,11 +679,13 @@ abstract contract PeripheryPaymentsWithFee is PeripheryPayments, IPeripheryPayme
         require(feeBips > 0 && feeBips <= 100);
 
         uint256 balanceToken = IERC20(token).balanceOf(address(this));
-        require(balanceToken >= amountMinimum, 'Insufficient token');
+        require(balanceToken >= amountMinimum, "Insufficient token");
 
         if (balanceToken > 0) {
             uint256 feeAmount = balanceToken.mul(feeBips) / 10_000;
-            if (feeAmount > 0) TransferHelper.safeTransfer(token, feeRecipient, feeAmount);
+            if (feeAmount > 0) {
+                TransferHelper.safeTransfer(token, feeRecipient, feeAmount);
+            }
             TransferHelper.safeTransfer(token, recipient, balanceToken - feeAmount);
         }
     }
@@ -749,70 +697,70 @@ abstract contract PeripheryPaymentsWithFeeExtended is
     PeripheryPaymentsWithFee
 {
     /// @inheritdoc IPeripheryPaymentsWithFeeExtended
-    function unwrapWETH9WithFee(
-        uint256 amountMinimum,
-        uint256 feeBips,
-        address feeRecipient
-    ) external payable override {
+    function unwrapWETH9WithFee(uint256 amountMinimum, uint256 feeBips, address feeRecipient)
+        external
+        payable
+        override
+    {
         unwrapWETH9WithFee(amountMinimum, msg.sender, feeBips, feeRecipient);
     }
 
     /// @inheritdoc IPeripheryPaymentsWithFeeExtended
-    function sweepTokenWithFee(
-        address token,
-        uint256 amountMinimum,
-        uint256 feeBips,
-        address feeRecipient
-    ) external payable override {
+    function sweepTokenWithFee(address token, uint256 amountMinimum, uint256 feeBips, address feeRecipient)
+        external
+        payable
+        override
+    {
         sweepTokenWithFee(token, amountMinimum, msg.sender, feeBips, feeRecipient);
     }
 }
 
 interface IUniswapV2Pair {
-    event Approval(address indexed owner, address indexed spender, uint value);
-    event Transfer(address indexed from, address indexed to, uint value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
     function name() external pure returns (string memory);
     function symbol() external pure returns (string memory);
     function decimals() external pure returns (uint8);
-    function totalSupply() external view returns (uint);
-    function balanceOf(address owner) external view returns (uint);
-    function allowance(address owner, address spender) external view returns (uint);
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address owner) external view returns (uint256);
+    function allowance(address owner, address spender) external view returns (uint256);
 
-    function approve(address spender, uint value) external returns (bool);
-    function transfer(address to, uint value) external returns (bool);
-    function transferFrom(address from, address to, uint value) external returns (bool);
+    function approve(address spender, uint256 value) external returns (bool);
+    function transfer(address to, uint256 value) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 
     function DOMAIN_SEPARATOR() external view returns (bytes32);
     function PERMIT_TYPEHASH() external pure returns (bytes32);
-    function nonces(address owner) external view returns (uint);
+    function nonces(address owner) external view returns (uint256);
 
-    function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 
-    event Mint(address indexed sender, uint amount0, uint amount1);
-    event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+    event Mint(address indexed sender, uint256 amount0, uint256 amount1);
+    event Burn(address indexed sender, uint256 amount0, uint256 amount1, address indexed to);
     event Swap(
         address indexed sender,
-        uint amount0In,
-        uint amount1In,
-        uint amount0Out,
-        uint amount1Out,
+        uint256 amount0In,
+        uint256 amount1In,
+        uint256 amount0Out,
+        uint256 amount1Out,
         address indexed to
     );
     event Sync(uint112 reserve0, uint112 reserve1);
 
-    function MINIMUM_LIQUIDITY() external pure returns (uint);
+    function MINIMUM_LIQUIDITY() external pure returns (uint256);
     function factory() external view returns (address);
     function token0() external view returns (address);
     function token1() external view returns (address);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
-    function price0CumulativeLast() external view returns (uint);
-    function price1CumulativeLast() external view returns (uint);
-    function kLast() external view returns (uint);
+    function price0CumulativeLast() external view returns (uint256);
+    function price1CumulativeLast() external view returns (uint256);
+    function kLast() external view returns (uint256);
 
-    function mint(address to) external returns (uint liquidity);
-    function burn(address to) external returns (uint amount0, uint amount1);
-    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+    function mint(address to) external returns (uint256 liquidity);
+    function burn(address to) external returns (uint256 amount0, uint256 amount1);
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
     function skim(address to) external;
     function sync() external;
 
@@ -830,20 +778,16 @@ library UniswapV2Library {
     }
 
     // calculates the CREATE2 address for a pair without making any external calls
-    function pairFor(
-        address factory,
-        address tokenA,
-        address tokenB
-    ) internal pure returns (address pair) {
+    function pairFor(address factory, address tokenA, address tokenB) internal pure returns (address pair) {
         (address token0, address token1) = sortTokens(tokenA, tokenB);
         pair = address(
             uint256(
                 keccak256(
                     abi.encodePacked(
-                        hex'ff',
+                        hex"ff",
                         factory,
                         keccak256(abi.encodePacked(token0, token1)),
-                        hex'96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f' // init code hash
+                        hex"96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f" // init code hash
                     )
                 )
             )
@@ -851,23 +795,23 @@ library UniswapV2Library {
     }
 
     // fetches and sorts the reserves for a pair
-    function getReserves(
-        address factory,
-        address tokenA,
-        address tokenB
-    ) internal view returns (uint256 reserveA, uint256 reserveB) {
-        (address token0, ) = sortTokens(tokenA, tokenB);
-        (uint256 reserve0, uint256 reserve1, ) = IUniswapV2Pair(pairFor(factory, tokenA, tokenB)).getReserves();
+    function getReserves(address factory, address tokenA, address tokenB)
+        internal
+        view
+        returns (uint256 reserveA, uint256 reserveB)
+    {
+        (address token0,) = sortTokens(tokenA, tokenB);
+        (uint256 reserve0, uint256 reserve1,) = IUniswapV2Pair(pairFor(factory, tokenA, tokenB)).getReserves();
         (reserveA, reserveB) = tokenA == token0 ? (reserve0, reserve1) : (reserve1, reserve0);
     }
 
     // given an input amount of an asset and pair reserves, returns the maximum output amount of the other asset
-    function getAmountOut(
-        uint256 amountIn,
-        uint256 reserveIn,
-        uint256 reserveOut
-    ) internal pure returns (uint256 amountOut) {
-        require(amountIn > 0, 'INSUFFICIENT_INPUT_AMOUNT');
+    function getAmountOut(uint256 amountIn, uint256 reserveIn, uint256 reserveOut)
+        internal
+        pure
+        returns (uint256 amountOut)
+    {
+        require(amountIn > 0, "INSUFFICIENT_INPUT_AMOUNT");
         require(reserveIn > 0 && reserveOut > 0);
         uint256 amountInWithFee = amountIn.mul(997);
         uint256 numerator = amountInWithFee.mul(reserveOut);
@@ -876,12 +820,12 @@ library UniswapV2Library {
     }
 
     // given an output amount of an asset and pair reserves, returns a required input amount of the other asset
-    function getAmountIn(
-        uint256 amountOut,
-        uint256 reserveIn,
-        uint256 reserveOut
-    ) internal pure returns (uint256 amountIn) {
-        require(amountOut > 0, 'INSUFFICIENT_OUTPUT_AMOUNT');
+    function getAmountIn(uint256 amountOut, uint256 reserveIn, uint256 reserveOut)
+        internal
+        pure
+        returns (uint256 amountIn)
+    {
+        require(amountOut > 0, "INSUFFICIENT_OUTPUT_AMOUNT");
         require(reserveIn > 0 && reserveOut > 0);
         uint256 numerator = reserveIn.mul(amountOut).mul(1000);
         uint256 denominator = reserveOut.sub(amountOut).mul(997);
@@ -889,11 +833,11 @@ library UniswapV2Library {
     }
 
     // performs chained getAmountIn calculations on any number of pairs
-    function getAmountsIn(
-        address factory,
-        uint256 amountOut,
-        address[] memory path
-    ) internal view returns (uint256[] memory amounts) {
+    function getAmountsIn(address factory, uint256 amountOut, address[] memory path)
+        internal
+        view
+        returns (uint256[] memory amounts)
+    {
         require(path.length >= 2);
         amounts = new uint256[](path.length);
         amounts[amounts.length - 1] = amountOut;
@@ -927,13 +871,13 @@ abstract contract V2SwapRouter is IV2SwapRouter, ImmutableState, PeripheryPaymen
     function _swap(address[] memory path, address _to) private {
         for (uint256 i; i < path.length - 1; i++) {
             (address input, address output) = (path[i], path[i + 1]);
-            (address token0, ) = UniswapV2Library.sortTokens(input, output);
+            (address token0,) = UniswapV2Library.sortTokens(input, output);
             IUniswapV2Pair pair = IUniswapV2Pair(UniswapV2Library.pairFor(factoryV2, input, output));
             uint256 amountInput;
             uint256 amountOutput;
             // scope to avoid stack too deep errors
             {
-                (uint256 reserve0, uint256 reserve1, ) = pair.getReserves();
+                (uint256 reserve0, uint256 reserve1,) = pair.getReserves();
                 (uint256 reserveInput, uint256 reserveOutput) =
                     input == token0 ? (reserve0, reserve1) : (reserve1, reserve0);
                 amountInput = IERC20(input).balanceOf(address(pair)).sub(reserveInput);
@@ -947,12 +891,12 @@ abstract contract V2SwapRouter is IV2SwapRouter, ImmutableState, PeripheryPaymen
     }
 
     /// @inheritdoc IV2SwapRouter
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to
-    ) external payable override returns (uint256 amountOut) {
+    function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] calldata path, address to)
+        external
+        payable
+        override
+        returns (uint256 amountOut)
+    {
         // use amountIn == Constants.CONTRACT_BALANCE as a flag to swap the entire balance of the contract
         bool hasAlreadyPaid;
         if (amountIn == Constants.CONTRACT_BALANCE) {
@@ -968,32 +912,38 @@ abstract contract V2SwapRouter is IV2SwapRouter, ImmutableState, PeripheryPaymen
         );
 
         // find and replace to addresses
-        if (to == Constants.MSG_SENDER) to = msg.sender;
-        else if (to == Constants.ADDRESS_THIS) to = address(this);
+        if (to == Constants.MSG_SENDER) {
+            to = msg.sender;
+        } else if (to == Constants.ADDRESS_THIS) {
+            to = address(this);
+        }
 
         uint256 balanceBefore = IERC20(path[path.length - 1]).balanceOf(to);
 
         _swap(path, to);
 
         amountOut = IERC20(path[path.length - 1]).balanceOf(to).sub(balanceBefore);
-        require(amountOut >= amountOutMin, 'Too little received');
+        require(amountOut >= amountOutMin, "Too little received");
     }
 
     /// @inheritdoc IV2SwapRouter
-    function swapTokensForExactTokens(
-        uint256 amountOut,
-        uint256 amountInMax,
-        address[] calldata path,
-        address to
-    ) external payable override returns (uint256 amountIn) {
+    function swapTokensForExactTokens(uint256 amountOut, uint256 amountInMax, address[] calldata path, address to)
+        external
+        payable
+        override
+        returns (uint256 amountIn)
+    {
         amountIn = UniswapV2Library.getAmountsIn(factoryV2, amountOut, path)[0];
-        require(amountIn <= amountInMax, 'Too much requested');
+        require(amountIn <= amountInMax, "Too much requested");
 
         pay(path[0], msg.sender, UniswapV2Library.pairFor(factoryV2, path[0], path[1]), amountIn);
 
         // find and replace to addresses
-        if (to == Constants.MSG_SENDER) to = msg.sender;
-        else if (to == Constants.ADDRESS_THIS) to = address(this);
+        if (to == Constants.MSG_SENDER) {
+            to = msg.sender;
+        } else if (to == Constants.ADDRESS_THIS) {
+            to = address(this);
+        }
 
         _swap(path, to);
     }
@@ -1007,11 +957,7 @@ interface IOracleSlippage {
     /// @param path The path to fetch prices over
     /// @param maximumTickDivergence The maximum number of ticks that the price can degrade by
     /// @param secondsAgo The number of seconds ago to compute oracle prices against
-    function checkOracleSlippage(
-        bytes memory path,
-        uint24 maximumTickDivergence,
-        uint32 secondsAgo
-    ) external view;
+    function checkOracleSlippage(bytes memory path, uint24 maximumTickDivergence, uint32 secondsAgo) external view;
 
     /// @notice Ensures that the weighted average current (synthetic) tick over the path is no
     /// worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`
@@ -1038,75 +984,69 @@ abstract contract BlockTimestamp {
 }
 
 library BytesLib {
-    function slice(
-        bytes memory _bytes,
-        uint256 _start,
-        uint256 _length
-    ) internal pure returns (bytes memory) {
-        require(_length + 31 >= _length, 'slice_overflow');
-        require(_start + _length >= _start, 'slice_overflow');
-        require(_bytes.length >= _start + _length, 'slice_outOfBounds');
+    function slice(bytes memory _bytes, uint256 _start, uint256 _length) internal pure returns (bytes memory) {
+        require(_length + 31 >= _length, "slice_overflow");
+        require(_start + _length >= _start, "slice_overflow");
+        require(_bytes.length >= _start + _length, "slice_outOfBounds");
 
         bytes memory tempBytes;
 
         assembly {
             switch iszero(_length)
-                case 0 {
-                    // Get a location of some free memory and store it in tempBytes as
-                    // Solidity does for memory variables.
-                    tempBytes := mload(0x40)
+            case 0 {
+                // Get a location of some free memory and store it in tempBytes as
+                // Solidity does for memory variables.
+                tempBytes := mload(0x40)
 
-                    // The first word of the slice result is potentially a partial
-                    // word read from the original array. To read it, we calculate
-                    // the length of that partial word and start copying that many
-                    // bytes into the array. The first word we copy will start with
-                    // data we don't care about, but the last `lengthmod` bytes will
-                    // land at the beginning of the contents of the new array. When
-                    // we're done copying, we overwrite the full first word with
-                    // the actual length of the slice.
-                    let lengthmod := and(_length, 31)
+                // The first word of the slice result is potentially a partial
+                // word read from the original array. To read it, we calculate
+                // the length of that partial word and start copying that many
+                // bytes into the array. The first word we copy will start with
+                // data we don't care about, but the last `lengthmod` bytes will
+                // land at the beginning of the contents of the new array. When
+                // we're done copying, we overwrite the full first word with
+                // the actual length of the slice.
+                let lengthmod := and(_length, 31)
 
-                    // The multiplication in the next line is necessary
-                    // because when slicing multiples of 32 bytes (lengthmod == 0)
-                    // the following copy loop was copying the origin's length
-                    // and then ending prematurely not copying everything it should.
-                    let mc := add(add(tempBytes, lengthmod), mul(0x20, iszero(lengthmod)))
-                    let end := add(mc, _length)
+                // The multiplication in the next line is necessary
+                // because when slicing multiples of 32 bytes (lengthmod == 0)
+                // the following copy loop was copying the origin's length
+                // and then ending prematurely not copying everything it should.
+                let mc := add(add(tempBytes, lengthmod), mul(0x20, iszero(lengthmod)))
+                let end := add(mc, _length)
 
-                    for {
-                        // The multiplication in the next line has the same exact purpose
-                        // as the one above.
-                        let cc := add(add(add(_bytes, lengthmod), mul(0x20, iszero(lengthmod))), _start)
-                    } lt(mc, end) {
-                        mc := add(mc, 0x20)
-                        cc := add(cc, 0x20)
-                    } {
-                        mstore(mc, mload(cc))
-                    }
+                for {
+                    // The multiplication in the next line has the same exact purpose
+                    // as the one above.
+                    let cc := add(add(add(_bytes, lengthmod), mul(0x20, iszero(lengthmod))), _start)
+                } lt(mc, end) {
+                    mc := add(mc, 0x20)
+                    cc := add(cc, 0x20)
+                } { mstore(mc, mload(cc)) }
 
-                    mstore(tempBytes, _length)
+                mstore(tempBytes, _length)
 
-                    //update free-memory pointer
-                    //allocating the array padded to 32 bytes like the compiler does now
-                    mstore(0x40, and(add(mc, 31), not(31)))
-                }
-                //if we want a zero-length slice let's just return a zero-length array
-                default {
-                    tempBytes := mload(0x40)
-                    //zero out the 32 bytes slice we are about to return
-                    //we need to do it because Solidity does not garbage collect
-                    mstore(tempBytes, 0)
+                //update free-memory pointer
+                //allocating the array padded to 32 bytes like the compiler does now
+                mstore(0x40, and(add(mc, 31), not(31)))
+            }
+            //if we want a zero-length slice let's just return a zero-length array
+            default {
+                tempBytes := mload(0x40)
+                //zero out the 32 bytes slice we are about to return
+                //we need to do it because Solidity does not garbage collect
+                mstore(tempBytes, 0)
 
-                    mstore(0x40, add(tempBytes, 0x20))
-                }
+                mstore(0x40, add(tempBytes, 0x20))
+            }
         }
 
         return tempBytes;
     }
 
     function toAddress(bytes memory _bytes, uint256 _start) internal pure returns (address) {
-        require(_start + 20 >= _start, 'toAddress_overflow');
-        require(_bytes.length >= _start + 20, 'toAddress_outOfBounds');
+        require(_start + 20 >= _start, "toAddress_overflow");
+        require(_bytes.length >= _start + 20, "toAddress_outOfBounds");
         address tempAddress;
 
         assembly {
@@ -1117,8 +1057,8 @@ library BytesLib {
     }
 
     function toUint24(bytes memory _bytes, uint256 _start) internal pure returns (uint24) {
-        require(_start + 3 >= _start, 'toUint24_overflow');
-        require(_bytes.length >= _start + 3, 'toUint24_outOfBounds');
+        require(_start + 3 >= _start, "toUint24_overflow");
+        require(_bytes.length >= _start + 3, "toUint24_outOfBounds");
         uint24 tempUint;
 
         assembly {
@@ -1165,15 +1105,7 @@ library Path {
     /// @return tokenA The first token of the given pool
     /// @return tokenB The second token of the given pool
     /// @return fee The fee level of the pool
-    function decodeFirstPool(bytes memory path)
-        internal
-        pure
-        returns (
-            address tokenA,
-            address tokenB,
-            uint24 fee
-        )
-    {
+    function decodeFirstPool(bytes memory path) internal pure returns (address tokenA, address tokenB, uint24 fee) {
         tokenA = path.toAddress(0);
         fee = path.toUint24(ADDR_SIZE);
         tokenB = path.toAddress(NEXT_OFFSET);
@@ -1372,11 +1304,7 @@ interface IUniswapV3PoolDerivedState {
     function snapshotCumulativesInside(int24 tickLower, int24 tickUpper)
         external
         view
-        returns (
-            int56 tickCumulativeInside,
-            uint160 secondsPerLiquidityInsideX128,
-            uint32 secondsInside
-        );
+        returns (int56 tickCumulativeInside, uint160 secondsPerLiquidityInsideX128, uint32 secondsInside);
 }
 
 /// @title Permissionless pool actions
@@ -1398,13 +1326,9 @@ interface IUniswapV3PoolActions {
     /// @param data Any data that should be passed through to the callback
     /// @return amount0 The amount of token0 that was paid to mint the given amount of liquidity. Matches the value in the callback
     /// @return amount1 The amount of token1 that was paid to mint the given amount of liquidity. Matches the value in the callback
-    function mint(
-        address recipient,
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount,
-        bytes calldata data
-    ) external returns (uint256 amount0, uint256 amount1);
+    function mint(address recipient, int24 tickLower, int24 tickUpper, uint128 amount, bytes calldata data)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Collects tokens owed to a position
     /// @dev Does not recompute fees earned, which must be done either via mint or burn of any amount of liquidity.
@@ -1434,11 +1358,9 @@ interface IUniswapV3PoolActions {
     /// @param amount How much liquidity to burn
     /// @return amount0 The amount of token0 sent to the recipient
     /// @return amount1 The amount of token1 sent to the recipient
-    function burn(
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount
-    ) external returns (uint256 amount0, uint256 amount1);
+    function burn(int24 tickLower, int24 tickUpper, uint128 amount)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
@@ -1466,12 +1388,7 @@ interface IUniswapV3PoolActions {
     /// @param amount0 The amount of token0 to send
     /// @param amount1 The amount of token1 to send
     /// @param data Any data to be passed through to the callback
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 
     /// @notice Increase the maximum number of price and liquidity observations that this pool will store
     /// @dev This method is no-op if the pool already has an observationCardinalityNext greater than or equal to
@@ -1494,11 +1411,9 @@ interface IUniswapV3PoolOwnerActions {
     /// @param amount1Requested The maximum amount of token1 to send, can be 0 to collect fees in only token0
     /// @return amount0 The protocol fee collected in token0
     /// @return amount1 The protocol fee collected in token1
-    function collectProtocol(
-        address recipient,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) external returns (uint128 amount0, uint128 amount1);
+    function collectProtocol(address recipient, uint128 amount0Requested, uint128 amount1Requested)
+        external
+        returns (uint128 amount0, uint128 amount1);
 }
 
 /// @title Events emitted by a pool
@@ -1601,8 +1516,7 @@ interface IUniswapV3PoolEvents {
     /// @param observationCardinalityNextOld The previous value of the next observation cardinality
     /// @param observationCardinalityNextNew The updated value of the next observation cardinality
     event IncreaseObservationCardinalityNext(
-        uint16 observationCardinalityNextOld,
-        uint16 observationCardinalityNextNew
+        uint16 observationCardinalityNextOld, uint16 observationCardinalityNextNew
     );
 
     /// @notice Emitted when the protocol fee is changed by the pool
@@ -1631,9 +1545,7 @@ interface IUniswapV3Pool is
     IUniswapV3PoolActions,
     IUniswapV3PoolOwnerActions,
     IUniswapV3PoolEvents
-{
-
-}
+{}
 
 /// @title Provides functions for deriving a pool address from the factory, tokens, and the fee
 library PoolAddress {
@@ -1651,12 +1563,10 @@ library PoolAddress {
     /// @param tokenB The second token of a pool, unsorted
     /// @param fee The fee level of the pool
     /// @return Poolkey The pool details with ordered token0 and token1 assignments
-    function getPoolKey(
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) internal pure returns (PoolKey memory) {
-        if (tokenA > tokenB) (tokenA, tokenB) = (tokenB, tokenA);
+    function getPoolKey(address tokenA, address tokenB, uint24 fee) internal pure returns (PoolKey memory) {
+        if (tokenA > tokenB) {
+            (tokenA, tokenB) = (tokenB, tokenA);
+        }
         return PoolKey({token0: tokenA, token1: tokenB, fee: fee});
     }
 
@@ -1670,10 +1580,7 @@ library PoolAddress {
             uint256(
                 keccak256(
                     abi.encodePacked(
-                        hex'ff',
-                        factory,
-                        keccak256(abi.encode(key.token0, key.token1, key.fee)),
-                        POOL_INIT_CODE_HASH
+                        hex"ff", factory, keccak256(abi.encode(key.token0, key.token1, key.fee)), POOL_INIT_CODE_HASH
                     )
                 )
             )
@@ -1702,30 +1609,70 @@ library TickMath {
     /// at the given tick
     function getSqrtRatioAtTick(int24 tick) internal pure returns (uint160 sqrtPriceX96) {
         uint256 absTick = tick < 0 ? uint256(-int256(tick)) : uint256(int256(tick));
-        require(absTick <= uint256(MAX_TICK), 'T');
+        require(absTick <= uint256(MAX_TICK), "T");
 
         uint256 ratio = absTick & 0x1 != 0 ? 0xfffcb933bd6fad37aa2d162d1a594001 : 0x100000000000000000000000000000000;
-        if (absTick & 0x2 != 0) ratio = (ratio * 0xfff97272373d413259a46990580e213a) >> 128;
-        if (absTick & 0x4 != 0) ratio = (ratio * 0xfff2e50f5f656932ef12357cf3c7fdcc) >> 128;
-        if (absTick & 0x8 != 0) ratio = (ratio * 0xffe5caca7e10e4e61c3624eaa0941cd0) >> 128;
-        if (absTick & 0x10 != 0) ratio = (ratio * 0xffcb9843d60f6159c9db58835c926644) >> 128;
-        if (absTick & 0x20 != 0) ratio = (ratio * 0xff973b41fa98c081472e6896dfb254c0) >> 128;
-        if (absTick & 0x40 != 0) ratio = (ratio * 0xff2ea16466c96a3843ec78b326b52861) >> 128;
-        if (absTick & 0x80 != 0) ratio = (ratio * 0xfe5dee046a99a2a811c461f1969c3053) >> 128;
-        if (absTick & 0x100 != 0) ratio = (ratio * 0xfcbe86c7900a88aedcffc83b479aa3a4) >> 128;
-        if (absTick & 0x200 != 0) ratio = (ratio * 0xf987a7253ac413176f2b074cf7815e54) >> 128;
-        if (absTick & 0x400 != 0) ratio = (ratio * 0xf3392b0822b70005940c7a398e4b70f3) >> 128;
-        if (absTick & 0x800 != 0) ratio = (ratio * 0xe7159475a2c29b7443b29c7fa6e889d9) >> 128;
-        if (absTick & 0x1000 != 0) ratio = (ratio * 0xd097f3bdfd2022b8845ad8f792aa5825) >> 128;
-        if (absTick & 0x2000 != 0) ratio = (ratio * 0xa9f746462d870fdf8a65dc1f90e061e5) >> 128;
-        if (absTick & 0x4000 != 0) ratio = (ratio * 0x70d869a156d2a1b890bb3df62baf32f7) >> 128;
-        if (absTick & 0x8000 != 0) ratio = (ratio * 0x31be135f97d08fd981231505542fcfa6) >> 128;
-        if (absTick & 0x10000 != 0) ratio = (ratio * 0x9aa508b5b7a84e1c677de54f3e99bc9) >> 128;
-        if (absTick & 0x20000 != 0) ratio = (ratio * 0x5d6af8dedb81196699c329225ee604) >> 128;
-        if (absTick & 0x40000 != 0) ratio = (ratio * 0x2216e584f5fa1ea926041bedfe98) >> 128;
-        if (absTick & 0x80000 != 0) ratio = (ratio * 0x48a170391f7dc42444e8fa2) >> 128;
+        if (absTick & 0x2 != 0) {
+            ratio = (ratio * 0xfff97272373d413259a46990580e213a) >> 128;
+        }
+        if (absTick & 0x4 != 0) {
+            ratio = (ratio * 0xfff2e50f5f656932ef12357cf3c7fdcc) >> 128;
+        }
+        if (absTick & 0x8 != 0) {
+            ratio = (ratio * 0xffe5caca7e10e4e61c3624eaa0941cd0) >> 128;
+        }
+        if (absTick & 0x10 != 0) {
+            ratio = (ratio * 0xffcb9843d60f6159c9db58835c926644) >> 128;
+        }
+        if (absTick & 0x20 != 0) {
+            ratio = (ratio * 0xff973b41fa98c081472e6896dfb254c0) >> 128;
+        }
+        if (absTick & 0x40 != 0) {
+            ratio = (ratio * 0xff2ea16466c96a3843ec78b326b52861) >> 128;
+        }
+        if (absTick & 0x80 != 0) {
+            ratio = (ratio * 0xfe5dee046a99a2a811c461f1969c3053) >> 128;
+        }
+        if (absTick & 0x100 != 0) {
+            ratio = (ratio * 0xfcbe86c7900a88aedcffc83b479aa3a4) >> 128;
+        }
+        if (absTick & 0x200 != 0) {
+            ratio = (ratio * 0xf987a7253ac413176f2b074cf7815e54) >> 128;
+        }
+        if (absTick & 0x400 != 0) {
+            ratio = (ratio * 0xf3392b0822b70005940c7a398e4b70f3) >> 128;
+        }
+        if (absTick & 0x800 != 0) {
+            ratio = (ratio * 0xe7159475a2c29b7443b29c7fa6e889d9) >> 128;
+        }
+        if (absTick & 0x1000 != 0) {
+            ratio = (ratio * 0xd097f3bdfd2022b8845ad8f792aa5825) >> 128;
+        }
+        if (absTick & 0x2000 != 0) {
+            ratio = (ratio * 0xa9f746462d870fdf8a65dc1f90e061e5) >> 128;
+        }
+        if (absTick & 0x4000 != 0) {
+            ratio = (ratio * 0x70d869a156d2a1b890bb3df62baf32f7) >> 128;
+        }
+        if (absTick & 0x8000 != 0) {
+            ratio = (ratio * 0x31be135f97d08fd981231505542fcfa6) >> 128;
+        }
+        if (absTick & 0x10000 != 0) {
+            ratio = (ratio * 0x9aa508b5b7a84e1c677de54f3e99bc9) >> 128;
+        }
+        if (absTick & 0x20000 != 0) {
+            ratio = (ratio * 0x5d6af8dedb81196699c329225ee604) >> 128;
+        }
+        if (absTick & 0x40000 != 0) {
+            ratio = (ratio * 0x2216e584f5fa1ea926041bedfe98) >> 128;
+        }
+        if (absTick & 0x80000 != 0) {
+            ratio = (ratio * 0x48a170391f7dc42444e8fa2) >> 128;
+        }
 
-        if (tick > 0) ratio = type(uint256).max / ratio;
+        if (tick > 0) {
+            ratio = type(uint256).max / ratio;
+        }
 
         // this divides by 1<<32 rounding up to go from a Q128.128 to a Q128.96.
         // we then downcast because we know the result always fits within 160 bits due to our tick input constraint
@@ -1740,7 +1687,7 @@ library TickMath {
     /// @return tick The greatest tick for which the ratio is less than or equal to the input ratio
     function getTickAtSqrtRatio(uint160 sqrtPriceX96) internal pure returns (int24 tick) {
         // second inequality must be < because the price can never reach the price at the max tick
-        require(sqrtPriceX96 >= MIN_SQRT_RATIO && sqrtPriceX96 < MAX_SQRT_RATIO, 'R');
+        require(sqrtPriceX96 >= MIN_SQRT_RATIO && sqrtPriceX96 < MAX_SQRT_RATIO, "R");
         uint256 ratio = uint256(sqrtPriceX96) << 32;
 
         uint256 r = ratio;
@@ -1786,8 +1733,11 @@ library TickMath {
             msb := or(msb, f)
         }
 
-        if (msb >= 128) r = ratio >> (msb - 127);
-        else r = ratio << (127 - msb);
+        if (msb >= 128) {
+            r = ratio >> (msb - 127);
+        } else {
+            r = ratio << (127 - msb);
+        }
 
         int256 log_2 = (int256(msb) - 128) << 64;
 
@@ -1894,11 +1844,7 @@ library FullMath {
     /// @param denominator The divisor
     /// @return result The 256-bit result
     /// @dev Credit to Remco Bloemen under MIT license https://xn--2-umb.com/21/muldiv
-    function mulDiv(
-        uint256 a,
-        uint256 b,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDiv(uint256 a, uint256 b, uint256 denominator) internal pure returns (uint256 result) {
         // 512-bit multiply [prod1 prod0] = a * b
         // Compute the product mod 2**256 and mod 2**256 - 1
         // then use the Chinese Remainder Theorem to reconstruct
@@ -1993,11 +1939,7 @@ library FullMath {
     /// @param b The multiplier
     /// @param denominator The divisor
     /// @return result The 256-bit result
-    function mulDivRoundingUp(
-        uint256 a,
-        uint256 b,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDivRoundingUp(uint256 a, uint256 b, uint256 denominator) internal pure returns (uint256 result) {
         result = mulDiv(a, b, denominator);
         if (mulmod(a, b, denominator) > 0) {
             require(result < type(uint256).max);
@@ -2019,7 +1961,7 @@ library OracleLibrary {
         view
         returns (int24 arithmeticMeanTick, uint128 harmonicMeanLiquidity)
     {
-        require(secondsAgo != 0, 'BP');
+        require(secondsAgo != 0, "BP");
 
         uint32[] memory secondsAgos = new uint32[](2);
         secondsAgos[0] = secondsAgo;
@@ -2034,7 +1976,9 @@ library OracleLibrary {
 
         arithmeticMeanTick = int24(tickCumulativesDelta / secondsAgo);
         // Always round to negative infinity
-        if (tickCumulativesDelta < 0 && (tickCumulativesDelta % secondsAgo != 0)) arithmeticMeanTick--;
+        if (tickCumulativesDelta < 0 && (tickCumulativesDelta % secondsAgo != 0)) {
+            arithmeticMeanTick--;
+        }
 
         // We are multiplying here instead of shifting to ensure that harmonicMeanLiquidity doesn't overflow uint128
         uint192 secondsAgoX160 = uint192(secondsAgo) * type(uint160).max;
@@ -2047,12 +1991,11 @@ library OracleLibrary {
     /// @param baseToken Address of an ERC20 token contract used as the baseAmount denomination
     /// @param quoteToken Address of an ERC20 token contract used as the quoteAmount denomination
     /// @return quoteAmount Amount of quoteToken received for baseAmount of baseToken
-    function getQuoteAtTick(
-        int24 tick,
-        uint128 baseAmount,
-        address baseToken,
-        address quoteToken
-    ) internal pure returns (uint256 quoteAmount) {
+    function getQuoteAtTick(int24 tick, uint128 baseAmount, address baseToken, address quoteToken)
+        internal
+        pure
+        returns (uint256 quoteAmount)
+    {
         uint160 sqrtRatioX96 = TickMath.getSqrtRatioAtTick(tick);
 
         // Calculate quoteAmount with better precision if it doesn't overflow when multiplied by itself
@@ -2073,16 +2016,16 @@ library OracleLibrary {
     /// @param pool Address of Uniswap V3 pool that we want to observe
     /// @return secondsAgo The number of seconds ago of the oldest observation stored for the pool
     function getOldestObservationSecondsAgo(address pool) internal view returns (uint32 secondsAgo) {
-        (, , uint16 observationIndex, uint16 observationCardinality, , , ) = IUniswapV3Pool(pool).slot0();
-        require(observationCardinality > 0, 'NI');
+        (,, uint16 observationIndex, uint16 observationCardinality,,,) = IUniswapV3Pool(pool).slot0();
+        require(observationCardinality > 0, "NI");
 
-        (uint32 observationTimestamp, , , bool initialized) =
+        (uint32 observationTimestamp,,, bool initialized) =
             IUniswapV3Pool(pool).observations((observationIndex + 1) % observationCardinality);
 
         // The next index might not be initialized if the cardinality is in the process of increasing
         // In this case the oldest observation is always in index 0
         if (!initialized) {
-            (observationTimestamp, , , ) = IUniswapV3Pool(pool).observations(0);
+            (observationTimestamp,,,) = IUniswapV3Pool(pool).observations(0);
         }
 
         secondsAgo = uint32(block.timestamp) - observationTimestamp;
@@ -2092,15 +2035,15 @@ library OracleLibrary {
     /// @param pool Address of Uniswap V3 pool
     /// @return The tick that the pool was in at the start of the current block
     function getBlockStartingTickAndLiquidity(address pool) internal view returns (int24, uint128) {
-        (, int24 tick, uint16 observationIndex, uint16 observationCardinality, , , ) = IUniswapV3Pool(pool).slot0();
+        (, int24 tick, uint16 observationIndex, uint16 observationCardinality,,,) = IUniswapV3Pool(pool).slot0();
 
         // 2 observations are needed to reliably calculate the block starting tick
-        require(observationCardinality > 1, 'NEO');
+        require(observationCardinality > 1, "NEO");
 
         // If the latest observation occurred in the past, then no tick-changing trades have happened in this block
         // therefore the tick in `slot0` is the same as at the beginning of the current block.
         // We don't need to check if this observation is initialized - it is guaranteed to be.
-        (uint32 observationTimestamp, int56 tickCumulative, uint160 secondsPerLiquidityCumulativeX128, ) =
+        (uint32 observationTimestamp, int56 tickCumulative, uint160 secondsPerLiquidityCumulativeX128,) =
             IUniswapV3Pool(pool).observations(observationIndex);
         if (observationTimestamp != uint32(block.timestamp)) {
             return (tick, IUniswapV3Pool(pool).liquidity());
@@ -2114,15 +2057,14 @@ library OracleLibrary {
             bool prevInitialized
         ) = IUniswapV3Pool(pool).observations(prevIndex);
 
-        require(prevInitialized, 'ONI');
+        require(prevInitialized, "ONI");
 
         uint32 delta = observationTimestamp - prevObservationTimestamp;
         tick = int24((tickCumulative - prevTickCumulative) / delta);
-        uint128 liquidity =
-            uint128(
-                (uint192(delta) * type(uint160).max) /
-                    (uint192(secondsPerLiquidityCumulativeX128 - prevSecondsPerLiquidityCumulativeX128) << 32)
-            );
+        uint128 liquidity = uint128(
+            (uint192(delta) * type(uint160).max)
+                / (uint192(secondsPerLiquidityCumulativeX128 - prevSecondsPerLiquidityCumulativeX128) << 32)
+        );
         return (tick, liquidity);
     }
 
@@ -2157,7 +2099,9 @@ library OracleLibrary {
 
         weightedArithmeticMeanTick = int24(numerator / int256(denominator));
         // Always round to negative infinity
-        if (numerator < 0 && (numerator % int256(denominator) != 0)) weightedArithmeticMeanTick--;
+        if (numerator < 0 && (numerator % int256(denominator) != 0)) {
+            weightedArithmeticMeanTick--;
+        }
     }
 }
 
@@ -2172,23 +2116,23 @@ abstract contract OracleSlippage is IOracleSlippage, PeripheryImmutableState, Bl
     {
         uint16 observationIndex;
         uint16 observationCardinality;
-        (, currentTick, observationIndex, observationCardinality, , , ) = pool.slot0();
+        (, currentTick, observationIndex, observationCardinality,,,) = pool.slot0();
 
         // 2 observations are needed to reliably calculate the block starting tick
-        require(observationCardinality > 1, 'NEO');
+        require(observationCardinality > 1, "NEO");
 
         // If the latest observation occurred in the past, then no tick-changing trades have happened in this block
         // therefore the tick in `slot0` is the same as at the beginning of the current block.
         // We don't need to check if this observation is initialized - it is guaranteed to be.
-        (uint32 observationTimestamp, int56 tickCumulative, , ) = pool.observations(observationIndex);
+        (uint32 observationTimestamp, int56 tickCumulative,,) = pool.observations(observationIndex);
         if (observationTimestamp != uint32(_blockTimestamp())) {
             blockStartingTick = currentTick;
         } else {
             uint256 prevIndex = (uint256(observationIndex) + observationCardinality - 1) % observationCardinality;
-            (uint32 prevObservationTimestamp, int56 prevTickCumulative, , bool prevInitialized) =
+            (uint32 prevObservationTimestamp, int56 prevTickCumulative,, bool prevInitialized) =
                 pool.observations(prevIndex);
 
-            require(prevInitialized, 'ONI');
+            require(prevInitialized, "ONI");
 
             uint32 delta = observationTimestamp - prevObservationTimestamp;
             blockStartingTick = int24((tickCumulative - prevTickCumulative) / delta);
@@ -2196,11 +2140,12 @@ abstract contract OracleSlippage is IOracleSlippage, PeripheryImmutableState, Bl
     }
 
     /// @dev Virtual function to get pool addresses that can be overridden in tests.
-    function getPoolAddress(
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) internal view virtual returns (IUniswapV3Pool pool) {
+    function getPoolAddress(address tokenA, address tokenB, uint24 fee)
+        internal
+        view
+        virtual
+        returns (IUniswapV3Pool pool)
+    {
         pool = IUniswapV3Pool(PoolAddress.computeAddress(factory, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
     }
 
@@ -2228,8 +2173,8 @@ abstract contract OracleSlippage is IOracleSlippage, PeripheryImmutableState, Bl
                 // we optimize for the secondsAgo == 0 case, i.e. since the beginning of the block
                 (averageTick, currentTick) = getBlockStartingAndCurrentTick(pool);
             } else {
-                (averageTick, ) = OracleLibrary.consult(address(pool), secondsAgo);
-                (, currentTick, , , , , ) = IUniswapV3Pool(pool).slot0();
+                (averageTick,) = OracleLibrary.consult(address(pool), secondsAgo);
+                (, currentTick,,,,,) = IUniswapV3Pool(pool).slot0();
             }
 
             if (i == numPools - 1) {
@@ -2273,11 +2218,11 @@ abstract contract OracleSlippage is IOracleSlippage, PeripheryImmutableState, Bl
     /// average, where the weights are the fraction of the total input amount allocated to each path.
     /// Returned synthetic ticks always represent tokenOut/tokenIn prices, meaning lower ticks are worse.
     /// Paths must all start and end in the same token.
-    function getSyntheticTicks(
-        bytes[] memory paths,
-        uint128[] memory amounts,
-        uint32 secondsAgo
-    ) internal view returns (int256 averageSyntheticAverageTick, int256 averageSyntheticCurrentTick) {
+    function getSyntheticTicks(bytes[] memory paths, uint128[] memory amounts, uint32 secondsAgo)
+        internal
+        view
+        returns (int256 averageSyntheticAverageTick, int256 averageSyntheticCurrentTick)
+    {
         require(paths.length == amounts.length);
 
         OracleLibrary.WeightedTickData[] memory weightedSyntheticAverageTicks =
@@ -2298,13 +2243,13 @@ abstract contract OracleSlippage is IOracleSlippage, PeripheryImmutableState, Bl
     }
 
     /// @inheritdoc IOracleSlippage
-    function checkOracleSlippage(
-        bytes memory path,
-        uint24 maximumTickDivergence,
-        uint32 secondsAgo
-    ) external view override {
+    function checkOracleSlippage(bytes memory path, uint24 maximumTickDivergence, uint32 secondsAgo)
+        external
+        view
+        override
+    {
         (int256 syntheticAverageTick, int256 syntheticCurrentTick) = getSyntheticTicks(path, secondsAgo);
-        require(syntheticAverageTick - syntheticCurrentTick < maximumTickDivergence, 'TD');
+        require(syntheticAverageTick - syntheticCurrentTick < maximumTickDivergence, "TD");
     }
 
     /// @inheritdoc IOracleSlippage
@@ -2316,7 +2261,7 @@ abstract contract OracleSlippage is IOracleSlippage, PeripheryImmutableState, Bl
     ) external view override {
         (int256 averageSyntheticAverageTick, int256 averageSyntheticCurrentTick) =
             getSyntheticTicks(paths, amounts, secondsAgo);
-        require(averageSyntheticAverageTick - averageSyntheticCurrentTick < maximumTickDivergence, 'TD');
+        require(averageSyntheticAverageTick - averageSyntheticCurrentTick < maximumTickDivergence, "TD");
     }
 }
 
@@ -2341,7 +2286,7 @@ library SafeCast {
     /// @param y The uint256 to be casted
     /// @return z The casted integer, now type int256
     function toInt256(uint256 y) internal pure returns (int256 z) {
-        require(y < 2**255);
+        require(y < 2 ** 255);
         z = int256(y);
     }
 }
@@ -2354,12 +2299,11 @@ library CallbackValidation {
     /// @param tokenB The contract address of the other token
     /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
     /// @return pool The V3 pool contract address
-    function verifyCallback(
-        address factory,
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) internal view returns (IUniswapV3Pool pool) {
+    function verifyCallback(address factory, address tokenA, address tokenB, uint24 fee)
+        internal
+        view
+        returns (IUniswapV3Pool pool)
+    {
         return verifyCallback(factory, PoolAddress.getPoolKey(tokenA, tokenB, fee));
     }
 
@@ -2391,11 +2335,7 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
     uint256 private amountInCached = DEFAULT_AMOUNT_IN_CACHED;
 
     /// @dev Returns the pool for the given token pair and fee. The pool contract may or may not exist.
-    function getPool(
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) private view returns (IUniswapV3Pool) {
+    function getPool(address tokenA, address tokenB, uint24 fee) private view returns (IUniswapV3Pool) {
         return IUniswapV3Pool(PoolAddress.computeAddress(factory, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
     }
 
@@ -2405,20 +2345,14 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
     }
 
     /// @inheritdoc IUniswapV3SwapCallback
-    function uniswapV3SwapCallback(
-        int256 amount0Delta,
-        int256 amount1Delta,
-        bytes calldata _data
-    ) external override {
+    function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata _data) external override {
         require(amount0Delta > 0 || amount1Delta > 0); // swaps entirely within 0-liquidity regions are not supported
         SwapCallbackData memory data = abi.decode(_data, (SwapCallbackData));
         (address tokenIn, address tokenOut, uint24 fee) = data.path.decodeFirstPool();
         CallbackValidation.verifyCallback(factory, tokenIn, tokenOut, fee);
 
         (bool isExactInput, uint256 amountToPay) =
-            amount0Delta > 0
-                ? (tokenIn < tokenOut, uint256(amount0Delta))
-                : (tokenOut < tokenIn, uint256(amount1Delta));
+            amount0Delta > 0 ? (tokenIn < tokenOut, uint256(amount0Delta)) : (tokenOut < tokenIn, uint256(amount1Delta));
 
         if (isExactInput) {
             pay(tokenIn, data.payer, msg.sender, amountToPay);
@@ -2443,23 +2377,25 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
         SwapCallbackData memory data
     ) private returns (uint256 amountOut) {
         // find and replace recipient addresses
-        if (recipient == Constants.MSG_SENDER) recipient = msg.sender;
-        else if (recipient == Constants.ADDRESS_THIS) recipient = address(this);
+        if (recipient == Constants.MSG_SENDER) {
+            recipient = msg.sender;
+        } else if (recipient == Constants.ADDRESS_THIS) {
+            recipient = address(this);
+        }
 
         (address tokenIn, address tokenOut, uint24 fee) = data.path.decodeFirstPool();
 
         bool zeroForOne = tokenIn < tokenOut;
 
-        (int256 amount0, int256 amount1) =
-            getPool(tokenIn, tokenOut, fee).swap(
-                recipient,
-                zeroForOne,
-                amountIn.toInt256(),
-                sqrtPriceLimitX96 == 0
-                    ? (zeroForOne ? TickMath.MIN_SQRT_RATIO + 1 : TickMath.MAX_SQRT_RATIO - 1)
-                    : sqrtPriceLimitX96,
-                abi.encode(data)
-            );
+        (int256 amount0, int256 amount1) = getPool(tokenIn, tokenOut, fee).swap(
+            recipient,
+            zeroForOne,
+            amountIn.toInt256(),
+            sqrtPriceLimitX96 == 0
+                ? (zeroForOne ? TickMath.MIN_SQRT_RATIO + 1 : TickMath.MAX_SQRT_RATIO - 1)
+                : sqrtPriceLimitX96,
+            abi.encode(data)
+        );
 
         return uint256(-(zeroForOne ? amount1 : amount0));
     }
@@ -2487,7 +2423,7 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
                 payer: hasAlreadyPaid ? address(this) : msg.sender
             })
         );
-        require(amountOut >= params.amountOutMinimum, 'Too little received');
+        require(amountOut >= params.amountOutMinimum, "Too little received");
     }
 
     /// @inheritdoc IV3SwapRouter
@@ -2496,7 +2432,7 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
         bool hasAlreadyPaid;
         if (params.amountIn == Constants.CONTRACT_BALANCE) {
             hasAlreadyPaid = true;
-            (address tokenIn, , ) = params.path.decodeFirstPool();
+            (address tokenIn,,) = params.path.decodeFirstPool();
             params.amountIn = IERC20(tokenIn).balanceOf(address(this));
         }
 
@@ -2526,7 +2462,7 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
             }
         }
 
-        require(amountOut >= params.amountOutMinimum, 'Too little received');
+        require(amountOut >= params.amountOutMinimum, "Too little received");
     }
 
     /// @dev Performs a single exact output swap
@@ -2537,23 +2473,25 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
         SwapCallbackData memory data
     ) private returns (uint256 amountIn) {
         // find and replace recipient addresses
-        if (recipient == Constants.MSG_SENDER) recipient = msg.sender;
-        else if (recipient == Constants.ADDRESS_THIS) recipient = address(this);
+        if (recipient == Constants.MSG_SENDER) {
+            recipient = msg.sender;
+        } else if (recipient == Constants.ADDRESS_THIS) {
+            recipient = address(this);
+        }
 
         (address tokenOut, address tokenIn, uint24 fee) = data.path.decodeFirstPool();
 
         bool zeroForOne = tokenIn < tokenOut;
 
-        (int256 amount0Delta, int256 amount1Delta) =
-            getPool(tokenIn, tokenOut, fee).swap(
-                recipient,
-                zeroForOne,
-                -amountOut.toInt256(),
-                sqrtPriceLimitX96 == 0
-                    ? (zeroForOne ? TickMath.MIN_SQRT_RATIO + 1 : TickMath.MAX_SQRT_RATIO - 1)
-                    : sqrtPriceLimitX96,
-                abi.encode(data)
-            );
+        (int256 amount0Delta, int256 amount1Delta) = getPool(tokenIn, tokenOut, fee).swap(
+            recipient,
+            zeroForOne,
+            -amountOut.toInt256(),
+            sqrtPriceLimitX96 == 0
+                ? (zeroForOne ? TickMath.MIN_SQRT_RATIO + 1 : TickMath.MAX_SQRT_RATIO - 1)
+                : sqrtPriceLimitX96,
+            abi.encode(data)
+        );
 
         uint256 amountOutReceived;
         (amountIn, amountOutReceived) = zeroForOne
@@ -2561,7 +2499,9 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
             : (uint256(amount1Delta), uint256(-amount0Delta));
         // it's technically possible to not receive the full output amount,
         // so if no price limit has been specified, require this possibility away
-        if (sqrtPriceLimitX96 == 0) require(amountOutReceived == amountOut);
+        if (sqrtPriceLimitX96 == 0) {
+            require(amountOutReceived == amountOut);
+        }
     }
 
     /// @inheritdoc IV3SwapRouter
@@ -2579,7 +2519,7 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
             SwapCallbackData({path: abi.encodePacked(params.tokenOut, params.fee, params.tokenIn), payer: msg.sender})
         );
 
-        require(amountIn <= params.amountInMaximum, 'Too much requested');
+        require(amountIn <= params.amountInMaximum, "Too much requested");
         // has to be reset even though we don't use it in the single hop case
         amountInCached = DEFAULT_AMOUNT_IN_CACHED;
     }
@@ -2587,14 +2527,11 @@ abstract contract V3SwapRouter is IV3SwapRouter, PeripheryPaymentsWithFeeExtende
     /// @inheritdoc IV3SwapRouter
     function exactOutput(ExactOutputParams calldata params) external payable override returns (uint256 amountIn) {
         exactOutputInternal(
-            params.amountOut,
-            params.recipient,
-            0,
-            SwapCallbackData({path: params.path, payer: msg.sender})
+            params.amountOut, params.recipient, 0, SwapCallbackData({path: params.path, payer: msg.sender})
         );
 
         amountIn = amountInCached;
-        require(amountIn <= params.amountInMaximum, 'Too much requested');
+        require(amountIn <= params.amountInMaximum, "Too much requested");
         amountInCached = DEFAULT_AMOUNT_IN_CACHED;
     }
 }
@@ -2610,12 +2547,10 @@ interface IPoolInitializer {
     /// @param fee The fee amount of the v3 pool for the specified token pair
     /// @param sqrtPriceX96 The initial square root price of the pool as a Q64.96 value
     /// @return pool Returns the pool address based on the pair of tokens and fee, will return the newly created pool address if necessary
-    function createAndInitializePoolIfNecessary(
-        address token0,
-        address token1,
-        uint24 fee,
-        uint160 sqrtPriceX96
-    ) external payable returns (address pool);
+    function createAndInitializePoolIfNecessary(address token0, address token1, uint24 fee, uint160 sqrtPriceX96)
+        external
+        payable
+        returns (address pool);
 }
 
 /**
@@ -2748,18 +2683,18 @@ interface IERC721 is IERC165 {
     function isApprovedForAll(address owner, address operator) external view returns (bool);
 
     /**
-      * @dev Safely transfers `tokenId` token from `from` to `to`.
-      *
-      * Requirements:
-      *
-      * - `from` cannot be the zero address.
-      * - `to` cannot be the zero address.
-      * - `tokenId` token must exist and be owned by `from`.
-      * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
-      * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.
-      *
-      * Emits a {Transfer} event.
-      */
+     * @dev Safely transfers `tokenId` token from `from` to `to`.
+     *
+     * Requirements:
+     *
+     * - `from` cannot be the zero address.
+     * - `to` cannot be the zero address.
+     * - `tokenId` token must exist and be owned by `from`.
+     * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+     * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.
+     *
+     * Emits a {Transfer} event.
+     */
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 }
 
@@ -2768,7 +2703,6 @@ interface IERC721 is IERC165 {
  * @dev See https://eips.ethereum.org/EIPS/eip-721
  */
 interface IERC721Metadata is IERC721 {
-
     /**
      * @dev Returns the token collection name.
      */
@@ -2790,7 +2724,6 @@ interface IERC721Metadata is IERC721 {
  * @dev See https://eips.ethereum.org/EIPS/eip-721
  */
 interface IERC721Enumerable is IERC721 {
-
     /**
      * @dev Returns the total amount of tokens stored by the contract.
      */
@@ -2827,14 +2760,9 @@ interface IERC721Permit is IERC721 {
     /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`
     /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`
     /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`
-    function permit(
-        address spender,
-        uint256 tokenId,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable;
+    function permit(address spender, uint256 tokenId, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable;
 }
 
 /// @title Non-fungible token for positions
@@ -2927,12 +2855,7 @@ interface INonfungiblePositionManager is
     function mint(MintParams calldata params)
         external
         payable
-        returns (
-            uint256 tokenId,
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+        returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct IncreaseLiquidityParams {
         uint256 tokenId;
@@ -2956,11 +2879,7 @@ interface INonfungiblePositionManager is
     function increaseLiquidity(IncreaseLiquidityParams calldata params)
         external
         payable
-        returns (
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+        returns (uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct DecreaseLiquidityParams {
         uint256 tokenId;
@@ -3018,18 +2937,28 @@ abstract contract ApproveAndCall is IApproveAndCall, ImmutableState {
     /// @inheritdoc IApproveAndCall
     function getApprovalType(address token, uint256 amount) external override returns (ApprovalType) {
         // check existing approval
-        if (IERC20(token).allowance(address(this), positionManager) >= amount) return ApprovalType.NOT_REQUIRED;
+        if (IERC20(token).allowance(address(this), positionManager) >= amount) {
+            return ApprovalType.NOT_REQUIRED;
+        }
 
         // try type(uint256).max / type(uint256).max - 1
-        if (tryApprove(token, type(uint256).max)) return ApprovalType.MAX;
-        if (tryApprove(token, type(uint256).max - 1)) return ApprovalType.MAX_MINUS_ONE;
+        if (tryApprove(token, type(uint256).max)) {
+            return ApprovalType.MAX;
+        }
+        if (tryApprove(token, type(uint256).max - 1)) {
+            return ApprovalType.MAX_MINUS_ONE;
+        }
 
         // set approval to 0 (must succeed)
         require(tryApprove(token, 0));
 
         // try type(uint256).max / type(uint256).max - 1
-        if (tryApprove(token, type(uint256).max)) return ApprovalType.ZERO_THEN_MAX;
-        if (tryApprove(token, type(uint256).max - 1)) return ApprovalType.ZERO_THEN_MAX_MINUS_ONE;
+        if (tryApprove(token, type(uint256).max)) {
+            return ApprovalType.ZERO_THEN_MAX;
+        }
+        if (tryApprove(token, type(uint256).max - 1)) {
+            return ApprovalType.ZERO_THEN_MAX_MINUS_ONE;
+        }
 
         revert();
     }
@@ -3063,7 +2992,9 @@ abstract contract ApproveAndCall is IApproveAndCall, ImmutableState {
 
         if (!success) {
             // Next 5 lines from https://ethereum.stackexchange.com/a/83577
-            if (result.length < 68) revert();
+            if (result.length < 68) {
+                revert();
+            }
             assembly {
                 result := add(result, 0x04)
             }
@@ -3077,25 +3008,24 @@ abstract contract ApproveAndCall is IApproveAndCall, ImmutableState {
 
     /// @inheritdoc IApproveAndCall
     function mint(MintParams calldata params) external payable override returns (bytes memory result) {
-        return
-            callPositionManager(
-                abi.encodeWithSelector(
-                    INonfungiblePositionManager.mint.selector,
-                    INonfungiblePositionManager.MintParams({
-                        token0: params.token0,
-                        token1: params.token1,
-                        fee: params.fee,
-                        tickLower: params.tickLower,
-                        tickUpper: params.tickUpper,
-                        amount0Desired: balanceOf(params.token0),
-                        amount1Desired: balanceOf(params.token1),
-                        amount0Min: params.amount0Min,
-                        amount1Min: params.amount1Min,
-                        recipient: params.recipient,
-                        deadline: type(uint256).max // deadline should be checked via multicall
-                    })
-                )
-            );
+        return callPositionManager(
+            abi.encodeWithSelector(
+                INonfungiblePositionManager.mint.selector,
+                INonfungiblePositionManager.MintParams({
+                    token0: params.token0,
+                    token1: params.token1,
+                    fee: params.fee,
+                    tickLower: params.tickLower,
+                    tickUpper: params.tickUpper,
+                    amount0Desired: balanceOf(params.token0),
+                    amount1Desired: balanceOf(params.token1),
+                    amount0Min: params.amount0Min,
+                    amount1Min: params.amount1Min,
+                    recipient: params.recipient,
+                    deadline: type(uint256).max // deadline should be checked via multicall
+                })
+            )
+        );
     }
 
     /// @inheritdoc IApproveAndCall
@@ -3105,20 +3035,19 @@ abstract contract ApproveAndCall is IApproveAndCall, ImmutableState {
         override
         returns (bytes memory result)
     {
-        return
-            callPositionManager(
-                abi.encodeWithSelector(
-                    INonfungiblePositionManager.increaseLiquidity.selector,
-                    INonfungiblePositionManager.IncreaseLiquidityParams({
-                        tokenId: params.tokenId,
-                        amount0Desired: balanceOf(params.token0),
-                        amount1Desired: balanceOf(params.token1),
-                        amount0Min: params.amount0Min,
-                        amount1Min: params.amount1Min,
-                        deadline: type(uint256).max // deadline should be checked via multicall
-                    })
-                )
-            );
+        return callPositionManager(
+            abi.encodeWithSelector(
+                INonfungiblePositionManager.increaseLiquidity.selector,
+                INonfungiblePositionManager.IncreaseLiquidityParams({
+                    tokenId: params.tokenId,
+                    amount0Desired: balanceOf(params.token0),
+                    amount1Desired: balanceOf(params.token1),
+                    amount0Min: params.amount0Min,
+                    amount1Min: params.amount1Min,
+                    deadline: type(uint256).max // deadline should be checked via multicall
+                })
+            )
+        );
     }
 }
 
@@ -3133,7 +3062,9 @@ abstract contract Multicall is IMulticall {
 
             if (!success) {
                 // Next 5 lines from https://ethereum.stackexchange.com/a/83577
-                if (result.length < 68) revert();
+                if (result.length < 68) {
+                    revert();
+                }
                 assembly {
                     result := add(result, 0x04)
                 }
@@ -3147,14 +3078,14 @@ abstract contract Multicall is IMulticall {
 
 abstract contract PeripheryValidation is BlockTimestamp {
     modifier checkDeadline(uint256 deadline) {
-        require(_blockTimestamp() <= deadline, 'Transaction too old');
+        require(_blockTimestamp() <= deadline, "Transaction too old");
         _;
     }
 }
 
 abstract contract PeripheryValidationExtended is PeripheryValidation {
     modifier checkPreviousBlockhash(bytes32 previousBlockhash) {
-        require(blockhash(block.number - 1) == previousBlockhash, 'Blockhash');
+        require(blockhash(block.number - 1) == previousBlockhash, "Blockhash");
         _;
     }
 }
@@ -3215,7 +3146,8 @@ interface IERC20Permit {
      * https://eips.ethereum.org/EIPS/eip-2612#specification[relevant EIP
      * section].
      */
-    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 
     /**
      * @dev Returns the current nonce for `owner`. This value must be
@@ -3264,61 +3196,50 @@ interface IERC20PermitAllowed {
 /// that requires an approval in a single transaction.
 abstract contract SelfPermit is ISelfPermit {
     /// @inheritdoc ISelfPermit
-    function selfPermit(
-        address token,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public payable override {
+    function selfPermit(address token, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        public
+        payable
+        override
+    {
         IERC20Permit(token).permit(msg.sender, address(this), value, deadline, v, r, s);
     }
 
     /// @inheritdoc ISelfPermit
-    function selfPermitIfNecessary(
-        address token,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable override {
-        if (IERC20(token).allowance(msg.sender, address(this)) < value) selfPermit(token, value, deadline, v, r, s);
+    function selfPermitIfNecessary(address token, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable
+        override
+    {
+        if (IERC20(token).allowance(msg.sender, address(this)) < value) {
+            selfPermit(token, value, deadline, v, r, s);
+        }
     }
 
     /// @inheritdoc ISelfPermit
-    function selfPermitAllowed(
-        address token,
-        uint256 nonce,
-        uint256 expiry,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public payable override {
+    function selfPermitAllowed(address token, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s)
+        public
+        payable
+        override
+    {
         IERC20PermitAllowed(token).permit(msg.sender, address(this), nonce, expiry, true, v, r, s);
     }
 
     /// @inheritdoc ISelfPermit
-    function selfPermitAllowedIfNecessary(
-        address token,
-        uint256 nonce,
-        uint256 expiry,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external payable override {
-        if (IERC20(token).allowance(msg.sender, address(this)) < type(uint256).max)
+    function selfPermitAllowedIfNecessary(address token, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s)
+        external
+        payable
+        override
+    {
+        if (IERC20(token).allowance(msg.sender, address(this)) < type(uint256).max) {
             selfPermitAllowed(token, nonce, expiry, v, r, s);
+        }
     }
 }
 
 /// @title Uniswap V2 and V3 Swap Router
 contract SwapRouter02 is ISwapRouter02, V2SwapRouter, V3SwapRouter, ApproveAndCall, MulticallExtended, SelfPermit {
-    constructor(
-        address _factoryV2,
-        address factoryV3,
-        address _positionManager,
-        address _WETH9
-    ) ImmutableState(_factoryV2, _positionManager) PeripheryImmutableState(factoryV3, _WETH9) {}
+    constructor(address _factoryV2, address factoryV3, address _positionManager, address _WETH9)
+        ImmutableState(_factoryV2, _positionManager)
+        PeripheryImmutableState(factoryV3, _WETH9)
+    {}
 }

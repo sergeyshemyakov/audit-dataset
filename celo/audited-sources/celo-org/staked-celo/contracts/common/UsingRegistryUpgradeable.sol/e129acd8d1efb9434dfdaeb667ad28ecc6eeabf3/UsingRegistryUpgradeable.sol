@@ -6,9 +6,10 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "../interfaces/IAccounts.sol";
 import "../interfaces/IElection.sol";
 import "../interfaces/IGoldToken.sol";
+
+import "../interfaces/IGovernance.sol";
 import "../interfaces/ILockedGold.sol";
 import "../interfaces/IRegistry.sol";
-import "../interfaces/IGovernance.sol";
 import "../interfaces/IValidators.sol";
 
 /**

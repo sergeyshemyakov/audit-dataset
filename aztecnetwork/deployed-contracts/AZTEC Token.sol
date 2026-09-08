@@ -687,15 +687,8 @@ interface IERC20Permit {
      *
      * CAUTION: See Security Considerations above.
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 
     /**
      * @dev Returns the current nonce for `owner`. This value must be
@@ -2210,6 +2203,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -2509,7 +2503,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -2550,7 +2546,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -2602,7 +2600,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -2641,12 +2641,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -3013,14 +3015,13 @@ library Strings {
 
     bytes16 private constant HEX_DIGITS = "0123456789abcdef";
     uint8 private constant ADDRESS_LENGTH = 20;
-    uint256 private constant SPECIAL_CHARS_LOOKUP =
-        (1 << 0x08) | // backspace
-            (1 << 0x09) | // tab
-            (1 << 0x0a) | // newline
-            (1 << 0x0c) | // form feed
-            (1 << 0x0d) | // carriage return
-            (1 << 0x22) | // double quote
-            (1 << 0x5c); // backslash
+    uint256 private constant SPECIAL_CHARS_LOOKUP = (1 << 0x08) // backspace
+        | (1 << 0x09) // tab
+        | (1 << 0x0a) // newline
+        | (1 << 0x0c) // form feed
+        | (1 << 0x0d) // carriage return
+        | (1 << 0x22) // double quote
+        | (1 << 0x5c); // backslash
 
     /**
      * @dev The `value` string doesn't fit in the specified `length`.
@@ -3054,7 +3055,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), HEX_DIGITS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -3154,7 +3157,9 @@ library Strings {
      */
     function parseUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -3173,12 +3178,14 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
-        if (end > bytes(input).length || begin > end) return (false, 0);
+    function tryParseUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, 0);
+        }
         return _tryParseUintUncheckedBounds(input, begin, end);
     }
 
@@ -3186,17 +3193,19 @@ library Strings {
      * @dev Implementation of {tryParseUint-string-uint256-uint256} that does not check bounds. Caller should make sure that
      * `begin <= end <= input.length`. Other inputs would result in undefined behavior.
      */
-    function _tryParseUintUncheckedBounds(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) private pure returns (bool success, uint256 value) {
+    function _tryParseUintUncheckedBounds(string memory input, uint256 begin, uint256 end)
+        private
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         uint256 result = 0;
         for (uint256 i = begin; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 9) return (false, 0);
+            if (chr > 9) {
+                return (false, 0);
+            }
             result *= 10;
             result += chr;
         }
@@ -3224,7 +3233,9 @@ library Strings {
      */
     function parseInt(string memory input, uint256 begin, uint256 end) internal pure returns (int256) {
         (bool success, int256 value) = tryParseInt(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -3246,12 +3257,14 @@ library Strings {
      *
      * NOTE: This function will revert if the absolute value of the result does not fit in a `uint256`.
      */
-    function tryParseInt(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, int256 value) {
-        if (end > bytes(input).length || begin > end) return (false, 0);
+    function tryParseInt(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, int256 value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, 0);
+        }
         return _tryParseIntUncheckedBounds(input, begin, end);
     }
 
@@ -3259,11 +3272,11 @@ library Strings {
      * @dev Implementation of {tryParseInt-string-uint256-uint256} that does not check bounds. Caller should make sure that
      * `begin <= end <= input.length`. Other inputs would result in undefined behavior.
      */
-    function _tryParseIntUncheckedBounds(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) private pure returns (bool success, int256 value) {
+    function _tryParseIntUncheckedBounds(string memory input, uint256 begin, uint256 end)
+        private
+        pure
+        returns (bool success, int256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // Check presence of a negative sign.
@@ -3278,7 +3291,9 @@ library Strings {
             return (true, negativeSign ? -int256(absValue) : int256(absValue));
         } else if (absSuccess && negativeSign && absValue == ABS_MIN_INT256) {
             return (true, type(int256).min);
-        } else return (false, 0);
+        } else {
+            return (false, 0);
+        }
     }
 
     /**
@@ -3302,7 +3317,9 @@ library Strings {
      */
     function parseHexUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseHexUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -3321,12 +3338,14 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseHexUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
-        if (end > bytes(input).length || begin > end) return (false, 0);
+    function tryParseHexUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, 0);
+        }
         return _tryParseHexUintUncheckedBounds(input, begin, end);
     }
 
@@ -3334,11 +3353,11 @@ library Strings {
      * @dev Implementation of {tryParseHexUint-string-uint256-uint256} that does not check bounds. Caller should make sure that
      * `begin <= end <= input.length`. Other inputs would result in undefined behavior.
      */
-    function _tryParseHexUintUncheckedBounds(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) private pure returns (bool success, uint256 value) {
+    function _tryParseHexUintUncheckedBounds(string memory input, uint256 begin, uint256 end)
+        private
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // skip 0x prefix if present
@@ -3348,7 +3367,9 @@ library Strings {
         uint256 result = 0;
         for (uint256 i = begin + offset; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 15) return (false, 0);
+            if (chr > 15) {
+                return (false, 0);
+            }
             result *= 16;
             unchecked {
                 // Multiplying by 16 is equivalent to a shift of 4 bits (with additional overflow check).
@@ -3378,7 +3399,9 @@ library Strings {
      */
     function parseAddress(string memory input, uint256 begin, uint256 end) internal pure returns (address) {
         (bool success, address value) = tryParseAddress(input, begin, end);
-        if (!success) revert StringsInvalidAddressFormat();
+        if (!success) {
+            revert StringsInvalidAddressFormat();
+        }
         return value;
     }
 
@@ -3394,12 +3417,14 @@ library Strings {
      * @dev Variant of {parseAddress-string-uint256-uint256} that returns false if the parsing fails because input is not a properly
      * formatted address. See {parseAddress-string-uint256-uint256} requirements.
      */
-    function tryParseAddress(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, address value) {
-        if (end > bytes(input).length || begin > end) return (false, address(0));
+    function tryParseAddress(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, address value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, address(0));
+        }
 
         bool hasPrefix = (end > begin + 1) && bytes2(_unsafeReadBytesOffset(bytes(input), begin)) == bytes2("0x"); // don't do out-of-bound (possibly unsafe) read if sub-string is empty
         uint256 expectedLength = 40 + hasPrefix.toUint() * 2;
@@ -3423,10 +3448,15 @@ library Strings {
         // - Case 3: [A-F]
         // - otherwise not supported
         unchecked {
-            if (value > 47 && value < 58) value -= 48;
-            else if (value > 96 && value < 103) value -= 87;
-            else if (value > 64 && value < 71) value -= 55;
-            else return type(uint8).max;
+            if (value > 47 && value < 58) {
+                value -= 48;
+            } else if (value > 96 && value < 103) {
+                value -= 87;
+            } else if (value > 64 && value < 71) {
+                value -= 55;
+            } else {
+                return type(uint8).max;
+            }
         }
 
         return value;
@@ -3450,13 +3480,19 @@ library Strings {
             bytes1 char = bytes1(_unsafeReadBytesOffset(buffer, i));
             if (((SPECIAL_CHARS_LOOKUP & (1 << uint8(char))) != 0)) {
                 output[outputLength++] = "\\";
-                if (char == 0x08) output[outputLength++] = "b";
-                else if (char == 0x09) output[outputLength++] = "t";
-                else if (char == 0x0a) output[outputLength++] = "n";
-                else if (char == 0x0c) output[outputLength++] = "f";
-                else if (char == 0x0d) output[outputLength++] = "r";
-                else if (char == 0x5c) output[outputLength++] = "\\";
-                else if (char == 0x22) {
+                if (char == 0x08) {
+                    output[outputLength++] = "b";
+                } else if (char == 0x09) {
+                    output[outputLength++] = "t";
+                } else if (char == 0x0a) {
+                    output[outputLength++] = "n";
+                } else if (char == 0x0c) {
+                    output[outputLength++] = "f";
+                } else if (char == 0x0d) {
+                    output[outputLength++] = "r";
+                } else if (char == 0x5c) {
+                    output[outputLength++] = "\\";
+                } else if (char == 0x22) {
                     // solhint-disable-next-line quotes
                     output[outputLength++] = '"';
                 }
@@ -3542,18 +3578,19 @@ library MessageHashUtils {
      * See {ECDSA-recover}.
      */
     function toDataWithIntendedValidatorHash(address validator, bytes memory data) internal pure returns (bytes32) {
-        return keccak256(abi.encodePacked(hex"19_00", validator, data));
+        return keccak256(abi.encodePacked(hex"1900", validator, data));
     }
 
     /**
      * @dev Variant of {toDataWithIntendedValidatorHash-address-bytes} optimized for cases where `data` is a bytes32.
      */
-    function toDataWithIntendedValidatorHash(
-        address validator,
-        bytes32 messageHash
-    ) internal pure returns (bytes32 digest) {
+    function toDataWithIntendedValidatorHash(address validator, bytes32 messageHash)
+        internal
+        pure
+        returns (bytes32 digest)
+    {
         assembly ("memory-safe") {
-            mstore(0x00, hex"19_00")
+            mstore(0x00, hex"1900")
             mstore(0x02, shl(96, validator))
             mstore(0x16, messageHash)
             digest := keccak256(0x00, 0x36)
@@ -3572,7 +3609,7 @@ library MessageHashUtils {
     function toTypedDataHash(bytes32 domainSeparator, bytes32 structHash) internal pure returns (bytes32 digest) {
         assembly ("memory-safe") {
             let ptr := mload(0x40)
-            mstore(ptr, hex"19_01")
+            mstore(ptr, hex"1901")
             mstore(add(ptr, 0x02), domainSeparator)
             mstore(add(ptr, 0x22), structHash)
             digest := keccak256(ptr, 0x42)
@@ -3827,10 +3864,11 @@ library ECDSA {
      * - with https://web3js.readthedocs.io/en/v1.3.4/web3-eth-accounts.html#sign[Web3.js]
      * - with https://docs.ethers.io/v5/api/signer/#Signer-signMessage[ethers]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes memory signature
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes memory signature)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         if (signature.length == 65) {
             bytes32 r;
             bytes32 s;
@@ -3873,11 +3911,11 @@ library ECDSA {
      *
      * See https://eips.ethereum.org/EIPS/eip-2098[ERC-2098 short signatures]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         unchecked {
             bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
             // We do not check for an overflow here since the shift operation results in 0 or 1.
@@ -3899,12 +3937,11 @@ library ECDSA {
      * @dev Overload of {ECDSA-tryRecover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -3985,15 +4022,10 @@ abstract contract ERC20Permit is ERC20, IERC20Permit, EIP712, Nonces {
     /**
      * @inheritdoc IERC20Permit
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public virtual {
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        public
+        virtual
+    {
         if (block.timestamp > deadline) {
             revert ERC2612ExpiredSignature(deadline);
         }

@@ -2,10 +2,10 @@
 // Copyright 2024 Aztec Labs.
 pragma solidity >=0.8.27;
 
-import {IGSE} from "@aztec/governance/GSE.sol";
-import {Errors} from "@aztec/governance/libraries/Errors.sol";
 import {IPayload} from "./interfaces/IPayload.sol";
 import {IProposerPayload} from "./interfaces/IProposerPayload.sol";
+import {IGSE} from "@aztec/governance/GSE.sol";
+import {Errors} from "@aztec/governance/libraries/Errors.sol";
 
 /**
  * @title   GSEPayload
@@ -32,57 +32,57 @@ import {IProposerPayload} from "./interfaces/IProposerPayload.sol";
  * - `GSE.proposeWithLock`, which bypasses the GovernanceProposer
  */
 contract GSEPayload is IProposerPayload {
-  IPayload public immutable ORIGINAL;
-  IGSE public immutable GSE;
+    IPayload public immutable ORIGINAL;
+    IGSE public immutable GSE;
 
-  constructor(IPayload _originalPayloadProposal, IGSE _gse) {
-    ORIGINAL = _originalPayloadProposal;
-    GSE = _gse;
-  }
-
-  function getOriginalPayload() external view override(IProposerPayload) returns (IPayload) {
-    return ORIGINAL;
-  }
-
-  function getURI() external view override(IPayload) returns (string memory) {
-    return ORIGINAL.getURI();
-  }
-
-  /**
-   * @notice called by the Governance contract when executing the proposal.
-   *
-   * Note that this contract simply appends a call to `amIValid` to the original actions.
-   */
-  function getActions() external view override(IPayload) returns (IPayload.Action[] memory) {
-    IPayload.Action[] memory originalActions = ORIGINAL.getActions();
-    IPayload.Action[] memory actions = new IPayload.Action[](originalActions.length + 1);
-
-    for (uint256 i = 0; i < originalActions.length; i++) {
-      actions[i] = originalActions[i];
+    constructor(IPayload _originalPayloadProposal, IGSE _gse) {
+        ORIGINAL = _originalPayloadProposal;
+        GSE = _gse;
     }
 
-    actions[originalActions.length] =
-      IPayload.Action({target: address(this), data: abi.encodeWithSelector(GSEPayload.amIValid.selector)});
+    function getOriginalPayload() external view override(IProposerPayload) returns (IPayload) {
+        return ORIGINAL;
+    }
 
-    return actions;
-  }
+    function getURI() external view override(IPayload) returns (string memory) {
+        return ORIGINAL.getURI();
+    }
 
-  /**
-   * @notice We see the proposal as valid if after its execution,
-   * the latest rollup in the GSE (including the "bonus instance")
-   * have >2/3 of total stake.
-   *
-   * @dev This function is ONLY meant to be called by the entity executing the proposal, i.e. Governance.
-   * As you can see, a call to this function is embedded in the `getActions` above, and its return value
-   * is effectively meaningless outside the context of this payload's execution by Governance.
-   */
-  function amIValid() external view override(IProposerPayload) returns (bool) {
-    uint256 totalSupply = GSE.totalSupply();
-    address latestRollup = GSE.getLatestRollup();
-    address bonusInstance = GSE.getBonusInstanceAddress();
-    uint256 effectiveSupplyOfLatestRollup = GSE.supplyOf(latestRollup) + GSE.supplyOf(bonusInstance);
+    /**
+     * @notice called by the Governance contract when executing the proposal.
+     *
+     * Note that this contract simply appends a call to `amIValid` to the original actions.
+     */
+    function getActions() external view override(IPayload) returns (IPayload.Action[] memory) {
+        IPayload.Action[] memory originalActions = ORIGINAL.getActions();
+        IPayload.Action[] memory actions = new IPayload.Action[](originalActions.length + 1);
 
-    require(effectiveSupplyOfLatestRollup > totalSupply * 2 / 3, Errors.GovernanceProposer__GSEPayloadInvalid());
-    return true;
-  }
+        for (uint256 i = 0; i < originalActions.length; i++) {
+            actions[i] = originalActions[i];
+        }
+
+        actions[originalActions.length] =
+            IPayload.Action({target: address(this), data: abi.encodeWithSelector(GSEPayload.amIValid.selector)});
+
+        return actions;
+    }
+
+    /**
+     * @notice We see the proposal as valid if after its execution,
+     * the latest rollup in the GSE (including the "bonus instance")
+     * have >2/3 of total stake.
+     *
+     * @dev This function is ONLY meant to be called by the entity executing the proposal, i.e. Governance.
+     * As you can see, a call to this function is embedded in the `getActions` above, and its return value
+     * is effectively meaningless outside the context of this payload's execution by Governance.
+     */
+    function amIValid() external view override(IProposerPayload) returns (bool) {
+        uint256 totalSupply = GSE.totalSupply();
+        address latestRollup = GSE.getLatestRollup();
+        address bonusInstance = GSE.getBonusInstanceAddress();
+        uint256 effectiveSupplyOfLatestRollup = GSE.supplyOf(latestRollup) + GSE.supplyOf(bonusInstance);
+
+        require(effectiveSupplyOfLatestRollup > totalSupply * 2 / 3, Errors.GovernanceProposer__GSEPayloadInvalid());
+        return true;
+    }
 }

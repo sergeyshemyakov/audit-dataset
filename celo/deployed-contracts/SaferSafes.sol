@@ -68,13 +68,10 @@ abstract contract Executor {
      * @param operation Operation type.
      * @return success boolean flag indicating if the call succeeded.
      */
-    function execute(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation,
-        uint256 txGas
-    ) internal returns (bool success) {
+    function execute(address to, uint256 value, bytes memory data, Enum.Operation operation, uint256 txGas)
+        internal
+        returns (bool success)
+    {
         if (operation == Enum.Operation.DelegateCall) {
             // solhint-disable-next-line no-inline-assembly
             assembly {
@@ -92,9 +89,9 @@ abstract contract Executor {
 /**
  * @title Module Manager - A contract managing Safe modules
  * @notice Modules are extensions with unlimited access to a Safe that can be added to a Safe by its owners.
-           ⚠️ WARNING: Modules are a security risk since they can execute arbitrary transactions, 
-           so only trusted and audited modules should be added to a Safe. A malicious module can
-           completely takeover a Safe.
+ *            ⚠️ WARNING: Modules are a security risk since they can execute arbitrary transactions, 
+ *            so only trusted and audited modules should be added to a Safe. A malicious module can
+ *            completely takeover a Safe.
  * @author Stefan George - @Georgi87
  * @author Richard Meissner - @rmeissner
  */
@@ -163,18 +160,20 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
      * @param operation Operation type of module transaction.
      * @return success Boolean flag indicating if the call succeeded.
      */
-    function execTransactionFromModule(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation
-    ) public virtual returns (bool success) {
+    function execTransactionFromModule(address to, uint256 value, bytes memory data, Enum.Operation operation)
+        public
+        virtual
+        returns (bool success)
+    {
         // Only whitelisted modules are allowed.
         require(msg.sender != SENTINEL_MODULES && modules[msg.sender] != address(0), "GS104");
         // Execute transaction without further confirmations.
         success = execute(to, value, data, operation, type(uint256).max);
-        if (success) emit ExecutionFromModuleSuccess(msg.sender);
-        else emit ExecutionFromModuleFailure(msg.sender);
+        if (success) {
+            emit ExecutionFromModuleSuccess(msg.sender);
+        } else {
+            emit ExecutionFromModuleFailure(msg.sender);
+        }
     }
 
     /**
@@ -186,12 +185,10 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
      * @return success Boolean flag indicating if the call succeeded.
      * @return returnData Data returned by the call.
      */
-    function execTransactionFromModuleReturnData(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation
-    ) public returns (bool success, bytes memory returnData) {
+    function execTransactionFromModuleReturnData(address to, uint256 value, bytes memory data, Enum.Operation operation)
+        public
+        returns (bool success, bytes memory returnData)
+    {
         success = execTransactionFromModule(to, value, data, operation);
         // solhint-disable-next-line no-inline-assembly
         assembly {
@@ -226,7 +223,11 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
      * @return array Array of modules.
      * @return next Start of the next page.
      */
-    function getModulesPaginated(address start, uint256 pageSize) external view returns (address[] memory array, address next) {
+    function getModulesPaginated(address start, uint256 pageSize)
+        external
+        view
+        returns (address[] memory array, address next)
+    {
         require(start == SENTINEL_MODULES || isModuleEnabled(start), "GS105");
         require(pageSize > 0, "GS106");
         // Init array with max page size
@@ -242,13 +243,13 @@ abstract contract ModuleManager is SelfAuthorized, Executor {
         }
 
         /**
-          Because of the argument validation, we can assume that the loop will always iterate over the valid module list values
-          and the `next` variable will either be an enabled module or a sentinel address (signalling the end). 
-          
-          If we haven't reached the end inside the loop, we need to set the next pointer to the last element of the modules array
-          because the `next` variable (which is a module by itself) acting as a pointer to the start of the next page is neither 
-          included to the current page, nor will it be included in the next one if you pass it as a start.
-        */
+         * Because of the argument validation, we can assume that the loop will always iterate over the valid module list values
+         *       and the `next` variable will either be an enabled module or a sentinel address (signalling the end). 
+         *
+         *       If we haven't reached the end inside the loop, we need to set the next pointer to the last element of the modules array
+         *       because the `next` variable (which is a module by itself) acting as a pointer to the start of the next page is neither 
+         *       included to the current page, nor will it be included in the next one if you pass it as a start.
+         */
         if (next != SENTINEL_MODULES) {
             next = array[moduleCount - 1];
         }
@@ -311,7 +312,10 @@ abstract contract OwnerManager is SelfAuthorized {
         for (uint256 i = 0; i < _owners.length; i++) {
             // Owner address cannot be null.
             address owner = _owners[i];
-            require(owner != address(0) && owner != SENTINEL_OWNERS && owner != address(this) && currentOwner != owner, "GS203");
+            require(
+                owner != address(0) && owner != SENTINEL_OWNERS && owner != address(this) && currentOwner != owner,
+                "GS203"
+            );
             // No duplicate owners allowed.
             require(owners[owner] == address(0), "GS204");
             owners[currentOwner] = owner;
@@ -338,7 +342,9 @@ abstract contract OwnerManager is SelfAuthorized {
         ownerCount++;
         emit AddedOwner(owner);
         // Change threshold if threshold was changed.
-        if (threshold != _threshold) changeThreshold(_threshold);
+        if (threshold != _threshold) {
+            changeThreshold(_threshold);
+        }
     }
 
     /**
@@ -359,7 +365,9 @@ abstract contract OwnerManager is SelfAuthorized {
         ownerCount--;
         emit RemovedOwner(owner);
         // Change threshold if threshold was changed.
-        if (threshold != _threshold) changeThreshold(_threshold);
+        if (threshold != _threshold) {
+            changeThreshold(_threshold);
+        }
     }
 
     /**
@@ -450,7 +458,11 @@ abstract contract SignatureDecoder {
      * @return r Output value r of the signature.
      * @return s Output value s of the signature.
      */
-    function signatureSplit(bytes memory signatures, uint256 pos) internal pure returns (uint8 v, bytes32 r, bytes32 s) {
+    function signatureSplit(bytes memory signatures, uint256 pos)
+        internal
+        pure
+        returns (uint8 v, bytes32 r, bytes32 s)
+    {
         // solhint-disable-next-line no-inline-assembly
         assembly {
             let signaturePos := mul(0x41, pos)
@@ -490,15 +502,9 @@ abstract contract SecuredTokenTransfer {
             // See https://docs.soliditylang.org/en/v0.7.6/internals/layout_in_memory.html#layout-in-memory
             let success := call(sub(gas(), 10000), token, 0, add(data, 0x20), mload(data), 0, 0x20)
             switch returndatasize()
-            case 0 {
-                transferred := success
-            }
-            case 0x20 {
-                transferred := iszero(or(iszero(success), iszero(mload(0))))
-            }
-            default {
-                transferred := 0
-            }
+            case 0 { transferred := success }
+            case 0x20 { transferred := iszero(or(iszero(success), iszero(mload(0)))) }
+            default { transferred := 0 }
         }
     }
 }
@@ -516,7 +522,8 @@ abstract contract FallbackManager is SelfAuthorized {
     event ChangedFallbackHandler(address indexed handler);
 
     // keccak256("fallback_manager.handler.address")
-    bytes32 internal constant FALLBACK_HANDLER_STORAGE_SLOT = 0x6c9a6c4a39284e37ed1cf53d337577d14212a4870fb976a4366c693b939918d5;
+    bytes32 internal constant FALLBACK_HANDLER_STORAGE_SLOT =
+        0x6c9a6c4a39284e37ed1cf53d337577d14212a4870fb976a4366c693b939918d5;
 
     /**
      *  @notice Internal function to set the fallback handler.
@@ -568,9 +575,7 @@ abstract contract FallbackManager is SelfAuthorized {
         // solhint-disable-next-line no-inline-assembly
         assembly {
             let handler := sload(slot)
-            if iszero(handler) {
-                return(0, 0)
-            }
+            if iszero(handler) { return(0, 0) }
             calldatacopy(0, 0, calldatasize())
             // The msg.sender address is shifted to the left by 12 bytes to remove the padding
             // Then the address without padding is stored right after the calldata
@@ -578,9 +583,7 @@ abstract contract FallbackManager is SelfAuthorized {
             // Add 20 bytes for the address appended add the end
             let success := call(gas(), handler, 0, 0, add(calldatasize(), 20), 0, 0)
             returndatacopy(0, 0, returndatasize())
-            if iszero(success) {
-                revert(0, returndatasize())
-            }
+            if iszero(success) { revert(0, returndatasize()) }
             return(0, returndatasize())
         }
     }
@@ -824,14 +827,17 @@ contract Safe is
     // keccak256(
     //     "EIP712Domain(uint256 chainId,address verifyingContract)"
     // );
-    bytes32 private constant DOMAIN_SEPARATOR_TYPEHASH = 0x47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a79469218;
+    bytes32 private constant DOMAIN_SEPARATOR_TYPEHASH =
+        0x47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a79469218;
 
     // keccak256(
     //     "SafeTx(address to,uint256 value,bytes data,uint8 operation,uint256 safeTxGas,uint256 baseGas,uint256 gasPrice,address gasToken,address refundReceiver,uint256 nonce)"
     // );
     bytes32 private constant SAFE_TX_TYPEHASH = 0xbb8310d486368db6bd6f849402fdd73ad53d316b5a4b2644ad6efe0f941286d8;
 
-    event SafeSetup(address indexed initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler);
+    event SafeSetup(
+        address indexed initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler
+    );
     event ApproveHash(bytes32 indexed approvedHash, address indexed owner);
     event SignMsg(bytes32 indexed msgHash);
     event ExecutionFailure(bytes32 indexed txHash, uint256 payment);
@@ -879,7 +885,9 @@ contract Safe is
     ) external {
         // setupOwners checks if the Threshold is already set, therefore preventing that this method is called twice
         setupOwners(_owners, _threshold);
-        if (fallbackHandler != address(0)) internalSetFallbackHandler(fallbackHandler);
+        if (fallbackHandler != address(0)) {
+            internalSetFallbackHandler(fallbackHandler);
+        }
         // As setupOwners can only be called if the contract has not been initialized we don't need a check for setupModules
         setupModules(to, data);
 
@@ -891,7 +899,8 @@ contract Safe is
         emit SafeSetup(msg.sender, _owners, _threshold, to, fallbackHandler);
     }
 
-    /** @notice Executes a `operation` {0: Call, 1: DelegateCall}} transaction to `to` with `value` (Native Currency)
+    /**
+     * @notice Executes a `operation` {0: Call, 1: DelegateCall}} transaction to `to` with `value` (Native Currency)
      *          and pays `gasPrice` * `gasLimit` in `gasToken` token to `refundReceiver`.
      * @dev The fees are always transferred, even if the user transaction fails.
      *      This method doesn't perform any sanity check of the transaction, such as:
@@ -985,8 +994,11 @@ contract Safe is
             if (gasPrice > 0) {
                 payment = handlePayment(gasUsed, baseGas, gasPrice, gasToken, refundReceiver);
             }
-            if (success) emit ExecutionSuccess(txHash, payment);
-            else emit ExecutionFailure(txHash, payment);
+            if (success) {
+                emit ExecutionSuccess(txHash, payment);
+            } else {
+                emit ExecutionFailure(txHash, payment);
+            }
         }
         {
             if (guard != address(0)) {
@@ -1046,7 +1058,10 @@ contract Safe is
      *                   Can be packed ECDSA signature ({bytes32 r}{bytes32 s}{uint8 v}), contract signature (EIP-1271) or approved hash.
      * @param requiredSignatures Amount of required valid signatures.
      */
-    function checkNSignatures(bytes32 dataHash, bytes memory data, bytes memory signatures, uint256 requiredSignatures) public view {
+    function checkNSignatures(bytes32 dataHash, bytes memory data, bytes memory signatures, uint256 requiredSignatures)
+        public
+        view
+    {
         // Check that the provided signature data is not too short
         require(signatures.length >= requiredSignatures.mul(65), "GS020");
         // There cannot be an owner with address 0.
@@ -1087,7 +1102,10 @@ contract Safe is
                     // The signature data for contract signatures is appended to the concatenated signatures and the offset is stored in s
                     contractSignature := add(add(signatures, s), 0x20)
                 }
-                require(ISignatureValidator(currentOwner).isValidSignature(data, contractSignature) == EIP1271_MAGIC_VALUE, "GS024");
+                require(
+                    ISignatureValidator(currentOwner).isValidSignature(data, contractSignature) == EIP1271_MAGIC_VALUE,
+                    "GS024"
+                );
             } else if (v == 1) {
                 // If v is 1 then it is an approved hash
                 // When handling approved hashes the address of the approver is encoded into r
@@ -1097,13 +1115,17 @@ contract Safe is
             } else if (v > 30) {
                 // If v > 30 then default va (27,28) has been adjusted for eth_sign flow
                 // To support eth_sign and similar we adjust v and hash the messageHash with the Ethereum message prefix before applying ecrecover
-                currentOwner = ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", dataHash)), v - 4, r, s);
+                currentOwner =
+                    ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", dataHash)), v - 4, r, s);
             } else {
                 // Default is the ecrecover flow with the provided data hash
                 // Use ecrecover with the messageHash for EOA signatures
                 currentOwner = ecrecover(dataHash, v, r, s);
             }
-            require(currentOwner > lastOwner && owners[currentOwner] != address(0) && currentOwner != SENTINEL_OWNERS, "GS026");
+            require(
+                currentOwner > lastOwner && owners[currentOwner] != address(0) && currentOwner != SENTINEL_OWNERS,
+                "GS026"
+            );
             lastOwner = currentOwner;
         }
     }
@@ -1211,7 +1233,11 @@ contract Safe is
         address refundReceiver,
         uint256 _nonce
     ) public view returns (bytes32) {
-        return keccak256(encodeTransactionData(to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, _nonce));
+        return keccak256(
+            encodeTransactionData(
+                to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, _nonce
+            )
+        );
     }
 }
 
@@ -1328,11 +1354,7 @@ library LibString {
     /// The output is prefixed with "0x" encoded using 2 hexadecimal digits per byte,
     /// giving a total length of `length * 2` bytes.
     /// Reverts if `length` is too small for the output to contain all the digits.
-    function toHexStringNoPrefix(uint256 value, uint256 length)
-        internal
-        pure
-        returns (string memory str)
-    {
+    function toHexStringNoPrefix(uint256 value, uint256 length) internal pure returns (string memory str) {
         /// @solidity memory-safe-assembly
         assembly {
             // We need 0x20 bytes for the trailing zeros padding, `length * 2` bytes
@@ -1765,11 +1787,7 @@ library LibString {
     /// @dev Returns the byte index of the first location of `search` in `subject`,
     /// searching from left to right.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `search` is not found.
-    function indexOf(string memory subject, string memory search)
-        internal
-        pure
-        returns (uint256 result)
-    {
+    function indexOf(string memory subject, string memory search) internal pure returns (uint256 result) {
         result = indexOf(subject, search, 0);
     }
 
@@ -1813,11 +1831,7 @@ library LibString {
     /// @dev Returns the byte index of the first location of `search` in `subject`,
     /// searching from right to left.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `search` is not found.
-    function lastIndexOf(string memory subject, string memory search)
-        internal
-        pure
-        returns (uint256 result)
-    {
+    function lastIndexOf(string memory subject, string memory search) internal pure returns (uint256 result) {
         result = lastIndexOf(subject, search, uint256(int256(-1)));
     }
 
@@ -1827,11 +1841,7 @@ library LibString {
     }
 
     /// @dev Returns whether `subject` starts with `search`.
-    function startsWith(string memory subject, string memory search)
-        internal
-        pure
-        returns (bool result)
-    {
+    function startsWith(string memory subject, string memory search) internal pure returns (bool result) {
         /// @solidity memory-safe-assembly
         assembly {
             let searchLength := mload(search)
@@ -1848,11 +1858,7 @@ library LibString {
     }
 
     /// @dev Returns whether `subject` ends with `search`.
-    function endsWith(string memory subject, string memory search)
-        internal
-        pure
-        returns (bool result)
-    {
+    function endsWith(string memory subject, string memory search) internal pure returns (bool result) {
         /// @solidity memory-safe-assembly
         assembly {
             let searchLength := mload(search)
@@ -1876,11 +1882,7 @@ library LibString {
     }
 
     /// @dev Returns `subject` repeated `times`.
-    function repeat(string memory subject, uint256 times)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function repeat(string memory subject, uint256 times) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let subjectLength := mload(subject)
@@ -1910,11 +1912,7 @@ library LibString {
 
     /// @dev Returns a copy of `subject` sliced from `start` to `end` (exclusive).
     /// `start` and `end` are byte offsets.
-    function slice(string memory subject, uint256 start, uint256 end)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function slice(string memory subject, uint256 start, uint256 end) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let subjectLength := mload(subject)
@@ -1943,21 +1941,13 @@ library LibString {
 
     /// @dev Returns a copy of `subject` sliced from `start` to the end of the string.
     /// `start` is a byte offset.
-    function slice(string memory subject, uint256 start)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function slice(string memory subject, uint256 start) internal pure returns (string memory result) {
         result = slice(subject, start, uint256(int256(-1)));
     }
 
     /// @dev Returns all the indices of `search` in `subject`.
     /// The indices are byte offsets.
-    function indicesOf(string memory subject, string memory search)
-        internal
-        pure
-        returns (uint256[] memory result)
-    {
+    function indicesOf(string memory subject, string memory search) internal pure returns (uint256[] memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let subjectLength := mload(subject)
@@ -2012,11 +2002,7 @@ library LibString {
     }
 
     /// @dev Returns a arrays of strings based on the `delimiter` inside of the `subject` string.
-    function split(string memory subject, string memory delimiter)
-        internal
-        pure
-        returns (string[] memory result)
-    {
+    function split(string memory subject, string memory delimiter) internal pure returns (string[] memory result) {
         uint256[] memory indices = indicesOf(subject, delimiter);
         /// @solidity memory-safe-assembly
         assembly {
@@ -2061,11 +2047,7 @@ library LibString {
 
     /// @dev Returns a concatenated string of `a` and `b`.
     /// Cheaper than `string.concat()` and does not de-align the free memory pointer.
-    function concat(string memory a, string memory b)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function concat(string memory a, string memory b) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let w := not(0x1f)
@@ -2099,11 +2081,7 @@ library LibString {
 
     /// @dev Returns a copy of the string in either lowercase or UPPERCASE.
     /// WARNING! This function is only compatible with 7-bit ASCII strings.
-    function toCase(string memory subject, bool toUpper)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toCase(string memory subject, bool toUpper) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let length := mload(subject)
@@ -2214,11 +2192,7 @@ library LibString {
 
     /// @dev Escapes the string to be used within double-quotes in a JSON.
     /// If `addDoubleQuotes` is true, the result will be enclosed in double-quotes.
-    function escapeJSON(string memory s, bool addDoubleQuotes)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function escapeJSON(string memory s, bool addDoubleQuotes) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let end := add(s, mload(s))
@@ -2352,10 +2326,7 @@ library LibString {
             result :=
                 mul(
                     // Load the length and the bytes of `a` and `b`.
-                    or(
-                        shl(shl(3, sub(0x1f, aLength)), mload(add(a, aLength))),
-                        mload(sub(add(b, 0x1e), aLength))
-                    ),
+                    or(shl(shl(3, sub(0x1f, aLength)), mload(add(a, aLength))), mload(sub(add(b, 0x1e), aLength))),
                     // `totalLength != 0 && totalLength < 31`. Abuses underflow.
                     // Assumes that the lengths are valid and within the block gas limit.
                     lt(sub(add(aLength, mload(b)), 1), 0x1e)
@@ -2366,11 +2337,7 @@ library LibString {
     /// @dev Unpacks strings packed using {packTwo}.
     /// Returns the empty strings if `packed` is `bytes32(0)`.
     /// If `packed` is not an output of {packTwo}, the output behavior is undefined.
-    function unpackTwo(bytes32 packed)
-        internal
-        pure
-        returns (string memory resultA, string memory resultB)
-    {
+    function unpackTwo(bytes32 packed) internal pure returns (string memory resultA, string memory resultB) {
         /// @solidity memory-safe-assembly
         assembly {
             // Grab the free memory pointer.
@@ -2532,9 +2499,7 @@ library JSONParserLib {
     function index(Item memory item) internal pure returns (uint256 result) {
         /// @solidity memory-safe-assembly
         assembly {
-            if and(mload(item), _PARENT_IS_ARRAY) {
-                result := and(_BITMASK_POINTER, shr(_BITPOS_KEY, mload(item)))
-            }
+            if and(mload(item), _PARENT_IS_ARRAY) { result := and(_BITMASK_POINTER, shr(_BITPOS_KEY, mload(item))) }
         }
     }
 
@@ -2589,9 +2554,7 @@ library JSONParserLib {
         /// @solidity memory-safe-assembly
         assembly {
             result := mload(add(add(r, 0x20), shl(5, i)))
-            if iszero(and(lt(i, mload(r)), eq(and(mload(item), _BITMASK_TYPE), TYPE_ARRAY))) {
-                result := 0x60 // Reset to the zero pointer.
-            }
+            if iszero(and(lt(i, mload(r)), eq(and(mload(item), _BITMASK_TYPE), TYPE_ARRAY))) { result := 0x60 } // Reset to the zero pointer.
         }
     }
 
@@ -2618,7 +2581,9 @@ library JSONParserLib {
                     item := mload(add(r, i))
                     i := sub(i, 0x20)
                 }
-                if (keccak256(bytes(key(item))) != kHash) continue;
+                if (keccak256(bytes(key(item))) != kHash) {
+                    continue;
+                }
                 result = item;
                 break;
             }
@@ -2833,9 +2798,8 @@ library JSONParserLib {
 
             let n := mload(s)
             let end := add(add(s, n), 0x1f)
-            if iszero(and(gt(n, 1), eq(0x2222, or(and(0xff00, mload(add(s, 2))), chr(end))))) {
-                fail() // Fail if not double-quoted.
-            }
+            if iszero(and(gt(n, 1), eq(0x2222, or(and(0xff00, mload(add(s, 2))), chr(end))))) { fail() } // Fail if not double-quoted.
+
             let out := add(mload(0x40), 0x20)
             for { let curr := add(s, 0x21) } iszero(eq(curr, end)) {} {
                 let c := chr(curr)
@@ -3076,9 +3040,8 @@ library JSONParserLib {
             }
 
             function skip0To9s(pIn_, end_, atLeastOne_) -> _pOut {
-                for { _pOut := pIn_ } 1 { _pOut := add(_pOut, 1) } {
-                    if iszero(lt(sub(chr(_pOut), 48), 10)) { break } // Not '0'..'9'.
-                }
+                for { _pOut := pIn_ } 1 { _pOut := add(_pOut, 1) } { if iszero(lt(sub(chr(_pOut), 48), 10)) { break } } // Not '0'..'9'.
+
                 if and(atLeastOne_, eq(pIn_, _pOut)) { fail() }
             }
 
@@ -3717,7 +3680,9 @@ abstract contract LivenessModule2 {
     /// @param _safe The Safe address for which to cancel the challenge.
     function _cancelChallenge(Safe _safe) internal {
         // Early return if no challenge exists
-        if (challengeStartTime[_safe] == 0) return;
+        if (challengeStartTime[_safe] == 0) {
+            return;
+        }
 
         delete challengeStartTime[_safe];
         emit ChallengeCancelled(address(_safe));
@@ -3726,9 +3691,8 @@ abstract contract LivenessModule2 {
 
 abstract contract BaseGuard is Guard {
     function supportsInterface(bytes4 interfaceId) external view virtual override returns (bool) {
-        return
-            interfaceId == type(Guard).interfaceId || // 0xe6d7a83a
-            interfaceId == type(IERC165).interfaceId; // 0x01ffc9a7
+        return interfaceId == type(Guard).interfaceId // 0xe6d7a83a
+            || interfaceId == type(IERC165).interfaceId; // 0x01ffc9a7
     }
 }
 
@@ -4498,10 +4462,7 @@ abstract contract TimelockGuard is BaseGuard {
         address payable _refundReceiver,
         bytes memory, /* signatures */
         address _msgSender
-    )
-        external
-        override
-    {
+    ) external override {
         Safe callingSafe = Safe(payable(msg.sender));
 
         if (_currentSafeState(callingSafe).timelockDelay == 0) {
@@ -4570,7 +4531,7 @@ abstract contract TimelockGuard is BaseGuard {
     }
 
     /// @notice Implementation of Guard interface. Called by the Safe after executing a transaction
-    function checkAfterExecution(bytes32 _txHash, bool _success) external override { }
+    function checkAfterExecution(bytes32 _txHash, bool _success) external override {}
 
     ////////////////////////////////////////////////////////////////
     //              Internal State-Changing Functions             //
@@ -4688,9 +4649,7 @@ abstract contract TimelockGuard is BaseGuard {
         uint256 _nonce,
         ExecTransactionParams memory _params,
         bytes memory _signatures
-    )
-        external
-    {
+    ) external {
         // Check that this guard is enabled on the calling Safe
         if (!_isGuardEnabled(_safe)) {
             revert TimelockGuard_GuardNotEnabled();

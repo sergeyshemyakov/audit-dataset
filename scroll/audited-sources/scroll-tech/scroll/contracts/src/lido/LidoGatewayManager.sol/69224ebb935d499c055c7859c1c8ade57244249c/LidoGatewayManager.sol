@@ -11,9 +11,11 @@ import {ScrollGatewayBase} from "../libraries/gateway/ScrollGatewayBase.sol";
 abstract contract LidoGatewayManager is ScrollGatewayBase {
     using EnumerableSetUpgradeable for EnumerableSetUpgradeable.AddressSet;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted then caller enable deposits.
     /// @param enabler The address of caller.
@@ -45,9 +47,11 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
     /// @param sender The address of owner.
     event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when deposits are enabled while caller try to enable it again.
     error ErrorDepositsEnabled();
@@ -73,9 +77,11 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
     /// @dev Thrown when caller is not withdrawals disabler.
     error ErrorCallerIsNotWithdrawalsDisabler();
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     /// @dev Stores the state of the bridging
     /// @param isDepositsEnabled Stores the state of the deposits
@@ -87,9 +93,11 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
         mapping(bytes32 => EnumerableSetUpgradeable.AddressSet) roles;
     }
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev The location of the slot with State
     bytes32 private constant STATE_SLOT = keccak256("LidoGatewayManager.bridgingState");
@@ -106,25 +114,33 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
     /// @notice The role for withdrawals disabler.
     bytes32 public constant WITHDRAWALS_DISABLER_ROLE = keccak256("BridgingManager.WITHDRAWALS_DISABLER_ROLE");
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
+     *
+     */
 
     /// @dev Validates that deposits are enabled
     modifier whenDepositsEnabled() {
-        if (!isDepositsEnabled()) revert ErrorDepositsDisabled();
+        if (!isDepositsEnabled()) {
+            revert ErrorDepositsDisabled();
+        }
         _;
     }
 
     /// @dev Validates that withdrawals are enabled
     modifier whenWithdrawalsEnabled() {
-        if (!isWithdrawalsEnabled()) revert ErrorWithdrawalsDisabled();
+        if (!isWithdrawalsEnabled()) {
+            revert ErrorWithdrawalsDisabled();
+        }
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Initialize the storage of LidoGatewayManager.
     /// @param _depositsEnabler The address of user who can enable deposits
@@ -151,9 +167,11 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
         _grantRole(WITHDRAWALS_DISABLER_ROLE, _withdrawalsDisabler);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Returns whether the deposits are enabled or not
     function isDepositsEnabled() public view returns (bool) {
@@ -187,13 +205,17 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
         return _loadState().roles[_role].length();
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Enables the deposits if they are disabled
     function enableDeposits() external {
-        if (isDepositsEnabled()) revert ErrorDepositsEnabled();
+        if (isDepositsEnabled()) {
+            revert ErrorDepositsEnabled();
+        }
         if (!hasRole(DEPOSITS_ENABLER_ROLE, _msgSender())) {
             revert ErrorCallerIsNotDepositsEnabler();
         }
@@ -214,7 +236,9 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
 
     /// @notice Enables the withdrawals if they are disabled
     function enableWithdrawals() external {
-        if (isWithdrawalsEnabled()) revert ErrorWithdrawalsEnabled();
+        if (isWithdrawalsEnabled()) {
+            revert ErrorWithdrawalsEnabled();
+        }
         if (!hasRole(WITHDRAWALS_ENABLER_ROLE, _msgSender())) {
             revert ErrorCallerIsNotWithdrawalsEnabler();
         }
@@ -251,9 +275,11 @@ abstract contract LidoGatewayManager is ScrollGatewayBase {
         _revokeRole(_role, _account);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Returns the reference to the slot with State struct
     function _loadState() private pure returns (State storage r) {

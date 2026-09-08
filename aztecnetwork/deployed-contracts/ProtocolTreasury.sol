@@ -15,172 +15,172 @@ interface IProtocolTreasury {
 }
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
 
 struct ProposeWithLockConfiguration {
-  Timestamp lockDelay;
-  uint256 lockAmount;
+    Timestamp lockDelay;
+    uint256 lockAmount;
 }
 
 struct Configuration {
-  ProposeWithLockConfiguration proposeConfig;
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    ProposeWithLockConfiguration proposeConfig;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 // @notice if this changes, please update the enum in governance.ts
 enum ProposalState {
-  Pending,
-  Active,
-  Queued,
-  Executable,
-  Rejected,
-  Executed,
-  Droppable,
-  Dropped,
-  Expired
+    Pending,
+    Active,
+    Queued,
+    Executable,
+    Rejected,
+    Executed,
+    Droppable,
+    Dropped,
+    Expired
 }
 
 // Configuration for proposals - same as Configuration but without proposeConfig
 // since proposeConfig is only used for proposeWithLock, not for the proposal itself
 struct ProposalConfiguration {
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 struct Ballot {
-  uint256 yea;
-  uint256 nay;
+    uint256 yea;
+    uint256 nay;
 }
 
 struct Proposal {
-  ProposalConfiguration config;
-  ProposalState cachedState;
-  IPayload payload;
-  address proposer;
-  Timestamp creation;
-  Ballot summedBallot;
+    ProposalConfiguration config;
+    ProposalState cachedState;
+    IPayload payload;
+    address proposer;
+    Timestamp creation;
+    Ballot summedBallot;
 }
 
 struct Withdrawal {
-  uint256 amount;
-  Timestamp unlocksAt;
-  address recipient;
-  bool claimed;
+    uint256 amount;
+    Timestamp unlocksAt;
+    address recipient;
+    bool claimed;
 }
 
 interface IGovernance {
-  event BeneficiaryAdded(address beneficiary);
-  event FloodGatesOpened();
+    event BeneficiaryAdded(address beneficiary);
+    event FloodGatesOpened();
 
-  event Proposed(uint256 indexed proposalId, address indexed proposal);
-  event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
-  event ProposalExecuted(uint256 indexed proposalId);
-  event ProposalDropped(uint256 indexed proposalId);
-  event GovernanceProposerUpdated(address indexed governanceProposer);
-  event ConfigurationUpdated(Timestamp indexed time);
+    event Proposed(uint256 indexed proposalId, address indexed proposal);
+    event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
+    event ProposalExecuted(uint256 indexed proposalId);
+    event ProposalDropped(uint256 indexed proposalId);
+    event GovernanceProposerUpdated(address indexed governanceProposer);
+    event ConfigurationUpdated(Timestamp indexed time);
 
-  event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
-  event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(uint256 indexed withdrawalId);
+    event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
+    event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(uint256 indexed withdrawalId);
 
-  function addBeneficiary(address _beneficiary) external;
-  function openFloodgates() external;
+    function addBeneficiary(address _beneficiary) external;
+    function openFloodgates() external;
 
-  function updateGovernanceProposer(address _governanceProposer) external;
-  function updateConfiguration(Configuration memory _configuration) external;
-  function deposit(address _onBehalfOf, uint256 _amount) external;
-  function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function propose(IPayload _proposal) external returns (uint256);
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function execute(uint256 _proposalId) external;
-  function dropProposal(uint256 _proposalId) external;
+    function updateGovernanceProposer(address _governanceProposer) external;
+    function updateConfiguration(Configuration memory _configuration) external;
+    function deposit(address _onBehalfOf, uint256 _amount) external;
+    function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function propose(IPayload _proposal) external returns (uint256);
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function execute(uint256 _proposalId) external;
+    function dropProposal(uint256 _proposalId) external;
 
-  function isPermittedInGovernance(address _caller) external view returns (bool);
-  function isAllBeneficiariesAllowed() external view returns (bool);
+    function isPermittedInGovernance(address _caller) external view returns (bool);
+    function isAllBeneficiariesAllowed() external view returns (bool);
 
-  function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
-  function powerNow(address _owner) external view returns (uint256);
-  function totalPowerAt(Timestamp _ts) external view returns (uint256);
-  function totalPowerNow() external view returns (uint256);
-  function getProposalState(uint256 _proposalId) external view returns (ProposalState);
-  function getConfiguration() external view returns (Configuration memory);
-  function getProposal(uint256 _proposalId) external view returns (Proposal memory);
-  function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
-  function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
+    function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
+    function powerNow(address _owner) external view returns (uint256);
+    function totalPowerAt(Timestamp _ts) external view returns (uint256);
+    function totalPowerNow() external view returns (uint256);
+    function getProposalState(uint256 _proposalId) external view returns (ProposalState);
+    function getConfiguration() external view returns (Configuration memory);
+    function getProposal(uint256 _proposalId) external view returns (Proposal memory);
+    function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
+    function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
 }
 
 // NOTE(l2beat): This is an interface, generated from the contract source code.
@@ -498,11 +498,11 @@ library Address {
      * was not a contract or bubbling up the revert reason (falling back to {Errors.FailedCall}) in case
      * of an unsuccessful call.
      */
-    function verifyCallResultFromTarget(
-        address target,
-        bool success,
-        bytes memory returndata
-    ) internal view returns (bytes memory) {
+    function verifyCallResultFromTarget(address target, bool success, bytes memory returndata)
+        internal
+        view
+        returns (bytes memory)
+    {
         if (!success) {
             _revert(returndata);
         } else {

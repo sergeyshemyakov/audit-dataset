@@ -3,9 +3,11 @@
 pragma solidity ^0.8.0;
 
 interface IL1GasPriceOracle {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when current fee overhead is updated.
     /// @param overhead The current fee overhead updated.
@@ -19,9 +21,11 @@ interface IL1GasPriceOracle {
     /// @param l1BaseFee The current l1 base fee updated.
     event L1BaseFeeUpdated(uint256 l1BaseFee);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the current l1 fee overhead.
     function overhead() external view returns (uint256);
@@ -46,9 +50,11 @@ interface IL1GasPriceOracle {
     /// @return Amount of L1 gas used to publish the transaction.
     function getL1GasUsed(bytes memory data) external view returns (uint256);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Allows whitelisted caller to modify the l1 base fee.
     /// @param _l1BaseFee New l1 base fee.

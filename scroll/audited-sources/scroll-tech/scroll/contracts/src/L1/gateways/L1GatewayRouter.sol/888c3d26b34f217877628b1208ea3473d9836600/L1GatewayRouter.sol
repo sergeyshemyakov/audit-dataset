@@ -6,8 +6,8 @@ import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Own
 import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import {SafeERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
 
-import {IL1ETHGateway} from "./IL1ETHGateway.sol";
 import {IL1ERC20Gateway} from "./IL1ERC20Gateway.sol";
+import {IL1ETHGateway} from "./IL1ETHGateway.sol";
 import {IL1GatewayRouter} from "./IL1GatewayRouter.sol";
 
 /// @title L1GatewayRouter
@@ -18,9 +18,11 @@ import {IL1GatewayRouter} from "./IL1GatewayRouter.sol";
 contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     using SafeERC20Upgradeable for IERC20Upgradeable;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L1ETHGateway.
     address public ethGateway;
@@ -35,10 +37,11 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     /// @notice The address of gateway in current execution context.
     address public gatewayInContext;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier onlyNotInContext() {
         require(gatewayInContext == address(0), "Only not in context");
         _;
@@ -49,10 +52,11 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -76,9 +80,11 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
         }
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
     function getL2ERC20Address(address _l1Address) external view override returns (address) {
@@ -99,17 +105,15 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
         return _gateway;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1GatewayRouter
     /// @dev All the gateways should have reentrancy guard to prevent potential attack though this function.
-    function requestERC20(
-        address _sender,
-        address _token,
-        uint256 _amount
-    ) external onlyInContext returns (uint256) {
+    function requestERC20(address _sender, address _token, uint256 _amount) external onlyInContext returns (uint256) {
         address _caller = _msgSender();
         uint256 _balance = IERC20Upgradeable(_token).balanceOf(_caller);
         IERC20Upgradeable(_token).safeTransferFrom(_sender, _caller, _amount);
@@ -117,37 +121,29 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
         return _amount;
     }
 
-    /*************************************************
+    /**
+     *
      * Public Mutating Functions from L1ERC20Gateway *
-     *************************************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20(
-        address _token,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC20(address _token, uint256 _amount, uint256 _gasLimit) external payable override {
         depositERC20AndCall(_token, _msgSender(), _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20(
-        address _token,
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC20(address _token, address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         depositERC20AndCall(_token, _to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20AndCall(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override onlyNotInContext {
+    function depositERC20AndCall(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+        onlyNotInContext
+    {
         address _gateway = getERC20Gateway(_token);
         require(_gateway != address(0), "no gateway available");
 
@@ -164,20 +160,20 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function finalizeWithdrawERC20(
-        address,
-        address,
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeWithdrawERC20(address, address, address, address, uint256, bytes calldata)
+        external
+        payable
+        virtual
+        override
+    {
         revert("should never be called");
     }
 
-    /***********************************************
+    /**
+     *
      * Public Mutating Functions from L1ETHGateway *
-     ***********************************************/
+     *
+     */
 
     /// @inheritdoc IL1ETHGateway
     function depositETH(uint256 _amount, uint256 _gasLimit) external payable override {
@@ -185,21 +181,17 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     }
 
     /// @inheritdoc IL1ETHGateway
-    function depositETH(
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositETH(address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         depositETHAndCall(_to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ETHGateway
-    function depositETHAndCall(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override onlyNotInContext {
+    function depositETHAndCall(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+        onlyNotInContext
+    {
         address _gateway = ethGateway;
         require(_gateway != address(0), "eth gateway available");
 
@@ -210,18 +202,15 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     }
 
     /// @inheritdoc IL1ETHGateway
-    function finalizeWithdrawETH(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeWithdrawETH(address, address, uint256, bytes calldata) external payable virtual override {
         revert("should never be called");
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @inheritdoc IL1GatewayRouter
     function setETHGateway(address _newEthGateway) external onlyOwner {

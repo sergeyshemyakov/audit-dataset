@@ -5,35 +5,40 @@ pragma solidity >=0.8.27;
 
 import {IFeeJuicePortal} from "@aztec/core/interfaces/IFeeJuicePortal.sol";
 import {
-  IRollupCore, RollupStore, SubmitEpochRootProofArgs, RollupConfigInput
+    IRollupCore, RollupConfigInput, RollupStore, SubmitEpochRootProofArgs
 } from "@aztec/core/interfaces/IRollup.sol";
-import {IVerifier} from "@aztec/core/interfaces/IVerifier.sol";
+
 import {IStakingCore} from "@aztec/core/interfaces/IStaking.sol";
 import {IValidatorSelectionCore} from "@aztec/core/interfaces/IValidatorSelection.sol";
+import {IVerifier} from "@aztec/core/interfaces/IVerifier.sol";
 import {IInbox} from "@aztec/core/interfaces/messagebridge/IInbox.sol";
 import {IOutbox} from "@aztec/core/interfaces/messagebridge/IOutbox.sol";
 import {Constants} from "@aztec/core/libraries/ConstantsGen.sol";
-import {CommitteeAttestations} from "@aztec/core/libraries/rollup/AttestationLib.sol";
+
 import {Errors} from "@aztec/core/libraries/Errors.sol";
+
+import {Epoch, Slot, TimeLib, Timestamp} from "@aztec/core/libraries/TimeLib.sol";
+
+import {StakingQueueConfig} from "@aztec/core/libraries/compressed-data/StakingQueueConfig.sol";
+import {CompressedFeeConfig, FeeConfigLib} from "@aztec/core/libraries/compressed-data/fees/FeeConfig.sol";
+import {CommitteeAttestations} from "@aztec/core/libraries/rollup/AttestationLib.sol";
 import {ExtRollupLib} from "@aztec/core/libraries/rollup/ExtRollupLib.sol";
 import {ExtRollupLib2} from "@aztec/core/libraries/rollup/ExtRollupLib2.sol";
 import {ExtRollupLib3} from "@aztec/core/libraries/rollup/ExtRollupLib3.sol";
 import {EthValue, FeeLib} from "@aztec/core/libraries/rollup/FeeLib.sol";
 import {ProposeArgs} from "@aztec/core/libraries/rollup/ProposeLib.sol";
-import {STFLib, GenesisState} from "@aztec/core/libraries/rollup/STFLib.sol";
+import {RewardConfig, RewardLib} from "@aztec/core/libraries/rollup/RewardLib.sol";
+import {GenesisState, STFLib} from "@aztec/core/libraries/rollup/STFLib.sol";
 import {StakingLib} from "@aztec/core/libraries/rollup/StakingLib.sol";
-import {Timestamp, Slot, Epoch, TimeLib} from "@aztec/core/libraries/TimeLib.sol";
 import {Inbox} from "@aztec/core/messagebridge/Inbox.sol";
 import {Outbox} from "@aztec/core/messagebridge/Outbox.sol";
 import {ISlasher} from "@aztec/core/slashing/Slasher.sol";
 import {GSE} from "@aztec/governance/GSE.sol";
+
+import {G1Point, G2Point} from "@aztec/shared/libraries/BN254Lib.sol";
 import {Ownable} from "@oz/access/Ownable.sol";
 import {IERC20} from "@oz/token/ERC20/IERC20.sol";
 import {EIP712} from "@oz/utils/cryptography/EIP712.sol";
-import {RewardLib, RewardConfig} from "@aztec/core/libraries/rollup/RewardLib.sol";
-import {StakingQueueConfig} from "@aztec/core/libraries/compressed-data/StakingQueueConfig.sol";
-import {FeeConfigLib, CompressedFeeConfig} from "@aztec/core/libraries/compressed-data/fees/FeeConfig.sol";
-import {G1Point, G2Point} from "@aztec/shared/libraries/BN254Lib.sol";
 
 /**
  * @title RollupCore
@@ -170,400 +175,401 @@ import {G1Point, G2Point} from "@aztec/shared/libraries/BN254Lib.sol";
  *         - This ensures the integrity of the chain by penalizing those who contribute to invalid blocks
  */
 contract RollupCore is EIP712("Aztec Rollup", "1"), Ownable, IStakingCore, IValidatorSelectionCore, IRollupCore {
-  using TimeLib for Timestamp;
-  using TimeLib for Slot;
-  using TimeLib for Epoch;
-  using FeeConfigLib for CompressedFeeConfig;
+    using TimeLib for Timestamp;
+    using TimeLib for Slot;
+    using TimeLib for Epoch;
+    using FeeConfigLib for CompressedFeeConfig;
 
-  /**
-   * @notice The L1 block number when this rollup was deployed
-   * @dev Used when synching the node as starting block for event watching
-   */
-  uint256 public immutable L1_BLOCK_AT_GENESIS;
+    /**
+     * @notice The L1 block number when this rollup was deployed
+     * @dev Used when synching the node as starting block for event watching
+     */
+    uint256 public immutable L1_BLOCK_AT_GENESIS;
 
-  /**
-   * @dev Storage gap to ensure checkBlob is in its own storage slot
-   */
-  uint256 private gap = 0;
+    /**
+     * @dev Storage gap to ensure checkBlob is in its own storage slot
+     */
+    uint256 private gap = 0;
 
-  /**
-   * @notice Flag to enable/disable blob verification during simulations
-   * @dev Always true, gets unset only via state overrides during off-chain simulations or in tests
-   */
-  bool public checkBlob = true;
+    /**
+     * @notice Flag to enable/disable blob verification during simulations
+     * @dev Always true, gets unset only via state overrides during off-chain simulations or in tests
+     */
+    bool public checkBlob = true;
 
-  /**
-   * @notice Flag controlling whether rewards can be claimed
-   */
-  bool public isRewardsClaimable = false;
+    /**
+     * @notice Flag controlling whether rewards can be claimed
+     */
+    bool public isRewardsClaimable = false;
 
-  /**
-   * @notice Initializes the Aztec rollup with all required configurations
-   * @dev Sets up time parameters, deploys auxiliary contracts (slasher, reward booster),
-   *      initializes staking, validator selection, and creates inbox/outbox contracts
-   * @param _feeAsset The ERC20 token used for transaction fees
-   * @param _stakingAsset The ERC20 token used for validator staking
-   * @param _gse The Governance Staking Escrow contract
-   * @param _epochProofVerifier The honk verifier contract for root epoch proofs
-   * @param _governance The address with owner privileges
-   * @param _genesisState Initial state containing VK tree root, protocol contract tree root, and genesis archive
-   * @param _config Comprehensive configuration including timing, staking, slashing, and reward parameters
-   */
-  constructor(
-    IERC20 _feeAsset,
-    IERC20 _stakingAsset,
-    GSE _gse,
-    IVerifier _epochProofVerifier,
-    address _governance,
-    GenesisState memory _genesisState,
-    RollupConfigInput memory _config
-  ) Ownable(_governance) {
-    // We do not allow the `normalFlushSizeMin` to be 0 when deployed as it would lock deposits (which is never desired
-    // from the onset). It might be updated later to 0 by governance in order to close the validator set for this
-    // instance. For details see `StakingLib.getEntryQueueFlushSize` function.
-    require(_config.stakingQueueConfig.normalFlushSizeMin > 0, Errors.Staking__InvalidStakingQueueConfig());
+    /**
+     * @notice Initializes the Aztec rollup with all required configurations
+     * @dev Sets up time parameters, deploys auxiliary contracts (slasher, reward booster),
+     *      initializes staking, validator selection, and creates inbox/outbox contracts
+     * @param _feeAsset The ERC20 token used for transaction fees
+     * @param _stakingAsset The ERC20 token used for validator staking
+     * @param _gse The Governance Staking Escrow contract
+     * @param _epochProofVerifier The honk verifier contract for root epoch proofs
+     * @param _governance The address with owner privileges
+     * @param _genesisState Initial state containing VK tree root, protocol contract tree root, and genesis archive
+     * @param _config Comprehensive configuration including timing, staking, slashing, and reward parameters
+     */
+    constructor(
+        IERC20 _feeAsset,
+        IERC20 _stakingAsset,
+        GSE _gse,
+        IVerifier _epochProofVerifier,
+        address _governance,
+        GenesisState memory _genesisState,
+        RollupConfigInput memory _config
+    ) Ownable(_governance) {
+        // We do not allow the `normalFlushSizeMin` to be 0 when deployed as it would lock deposits (which is never desired
+        // from the onset). It might be updated later to 0 by governance in order to close the validator set for this
+        // instance. For details see `StakingLib.getEntryQueueFlushSize` function.
+        require(_config.stakingQueueConfig.normalFlushSizeMin > 0, Errors.Staking__InvalidStakingQueueConfig());
 
-    TimeLib.initialize(
-      block.timestamp, _config.aztecSlotDuration, _config.aztecEpochDuration, _config.aztecProofSubmissionEpochs
-    );
+        TimeLib.initialize(
+            block.timestamp, _config.aztecSlotDuration, _config.aztecEpochDuration, _config.aztecProofSubmissionEpochs
+        );
 
-    Timestamp exitDelay = Timestamp.wrap(_config.exitDelaySeconds);
-    ISlasher slasher = ExtRollupLib3.deploySlasher(
-      address(this),
-      _config.slashingQuorum,
-      _config.slashingRoundSize,
-      _config.slashingLifetimeInRounds,
-      _config.slashingExecutionDelayInRounds,
-      _config.slashingVetoer
-    );
+        Timestamp exitDelay = Timestamp.wrap(_config.exitDelaySeconds);
+        ISlasher slasher = ExtRollupLib3.deploySlasher(
+            address(this),
+            _config.slashingQuorum,
+            _config.slashingRoundSize,
+            _config.slashingLifetimeInRounds,
+            _config.slashingExecutionDelayInRounds,
+            _config.slashingVetoer
+        );
 
-    StakingLib.initialize(_stakingAsset, _gse, exitDelay, address(slasher), _config.stakingQueueConfig);
-    ExtRollupLib2.initializeValidatorSelection(_config.targetCommitteeSize);
+        StakingLib.initialize(_stakingAsset, _gse, exitDelay, address(slasher), _config.stakingQueueConfig);
+        ExtRollupLib2.initializeValidatorSelection(_config.targetCommitteeSize);
 
-    // If no booster is specifically provided, deploy one.
-    if (address(_config.rewardConfig.booster) == address(0)) {
-      _config.rewardConfig.booster = ExtRollupLib3.deployRewardBooster(_config.rewardBoostConfig);
+        // If no booster is specifically provided, deploy one.
+        if (address(_config.rewardConfig.booster) == address(0)) {
+            _config.rewardConfig.booster = ExtRollupLib3.deployRewardBooster(_config.rewardBoostConfig);
+        }
+
+        RewardLib.setConfig(_config.rewardConfig);
+
+        L1_BLOCK_AT_GENESIS = block.number;
+
+        STFLib.initialize(_genesisState);
+        RollupStore storage rollupStore = STFLib.getStorage();
+
+        rollupStore.config.feeAsset = _feeAsset;
+        rollupStore.config.epochProofVerifier = _epochProofVerifier;
+
+        uint32 version = _config.version;
+        rollupStore.config.version = version;
+
+        IInbox inbox =
+            IInbox(address(new Inbox(address(this), _feeAsset, version, Constants.L1_TO_L2_MSG_SUBTREE_HEIGHT)));
+
+        rollupStore.config.inbox = inbox;
+
+        rollupStore.config.outbox = IOutbox(address(new Outbox(address(this), version)));
+
+        rollupStore.config.feeAssetPortal = IFeeJuicePortal(inbox.getFeeAssetPortal());
+
+        FeeLib.initialize(_config.manaTarget, _config.provingCostPerMana);
     }
 
-    RewardLib.setConfig(_config.rewardConfig);
+    /**
+     * @notice Updates the reward configuration for sequencers and provers
+     * @dev Only callable by the contract owner. Updates how rewards are calculated and distributed.
+     * @param _config The new reward configuration including rates and booster settings
+     */
+    function setRewardConfig(RewardConfig memory _config) external override(IRollupCore) onlyOwner {
+        RewardLib.setConfig(_config);
+        emit RewardConfigUpdated(_config);
+    }
 
-    L1_BLOCK_AT_GENESIS = block.number;
+    /**
+     * @notice Updates the target mana (computational units) per slot
+     * @dev Only callable by owner. The new target must be greater than or equal to the current target
+     *      to avoid the ability for governance to use it directly to kill an old rollup.
+     *      Mana is the unit of computational work in Aztec.
+     * @param _manaTarget The new target mana per slot
+     */
+    function updateManaTarget(uint256 _manaTarget) external override(IRollupCore) onlyOwner {
+        uint256 currentManaTarget = FeeLib.getStorage().config.getManaTarget();
+        require(_manaTarget >= currentManaTarget, Errors.Rollup__InvalidManaTarget(currentManaTarget, _manaTarget));
+        FeeLib.updateManaTarget(_manaTarget);
+        emit IRollupCore.ManaTargetUpdated(_manaTarget);
+    }
 
-    STFLib.initialize(_genesisState);
-    RollupStore storage rollupStore = STFLib.getStorage();
+    /**
+     * @notice Enables or disables reward claiming
+     * @dev Only callable by owner. This is a safety mechanism to control when rewards can be withdrawn.
+     * @param _isRewardsClaimable True to enable reward claims, false to disable
+     */
+    function setRewardsClaimable(bool _isRewardsClaimable) external override(IRollupCore) onlyOwner {
+        isRewardsClaimable = _isRewardsClaimable;
+        emit RewardsClaimableUpdated(_isRewardsClaimable);
+    }
 
-    rollupStore.config.feeAsset = _feeAsset;
-    rollupStore.config.epochProofVerifier = _epochProofVerifier;
+    /**
+     * @notice Updates the slasher contract address
+     * @dev Only callable by owner. The slasher handles punishment for validator misbehavior.
+     * @param _slasher The address of the new slasher contract
+     */
+    function setSlasher(address _slasher) external override(IStakingCore) onlyOwner {
+        ExtRollupLib2.setSlasher(_slasher);
+    }
 
-    uint32 version = _config.version;
-    rollupStore.config.version = version;
+    /**
+     * @notice Updates the cost of proving per unit of mana
+     * @dev Only callable by owner. This affects how proving costs are calculated in the fee model.
+     * @param _provingCostPerMana The cost in ETH per unit of mana for proving
+     */
+    function setProvingCostPerMana(EthValue _provingCostPerMana) external override(IRollupCore) onlyOwner {
+        FeeLib.updateProvingCostPerMana(_provingCostPerMana);
+    }
 
-    IInbox inbox = IInbox(address(new Inbox(address(this), _feeAsset, version, Constants.L1_TO_L2_MSG_SUBTREE_HEIGHT)));
+    /**
+     * @notice Updates the configuration for the staking entry queue
+     * @dev Only callable by owner. Controls how validators enter the active set.
+     * @param _config New configuration including queue size limits and timing parameters
+     */
+    function updateStakingQueueConfig(StakingQueueConfig memory _config) external override(IStakingCore) onlyOwner {
+        ExtRollupLib2.updateStakingQueueConfig(_config);
+    }
 
-    rollupStore.config.inbox = inbox;
+    /**
+     * @notice Claims accumulated rewards for a sequencer (block proposer)
+     * @dev Rewards must be enabled via isRewardsClaimable. Transfers all accumulated rewards to the recipient.
+     * @param _coinbase The address that has accumulated the rewards - rewards are sent to this address
+     * @return The amount of rewards claimed
+     */
+    function claimSequencerRewards(address _coinbase) external override(IRollupCore) returns (uint256) {
+        require(isRewardsClaimable, Errors.Rollup__RewardsNotClaimable());
+        return RewardLib.claimSequencerRewards(_coinbase);
+    }
 
-    rollupStore.config.outbox = IOutbox(address(new Outbox(address(this), version)));
+    /**
+     * @notice Claims prover rewards for specified epochs
+     * @dev Rewards must be enabled. Provers earn rewards for successfully proving epoch transitions.
+     *      Each epoch can only be claimed once per prover.
+     * @param _coinbase The address that has accumulated the rewards - rewards are sent to this address
+     * @param _epochs Array of epochs to claim rewards for
+     * @return The total amount of rewards claimed
+     */
+    function claimProverRewards(address _coinbase, Epoch[] memory _epochs)
+        external
+        override(IRollupCore)
+        returns (uint256)
+    {
+        require(isRewardsClaimable, Errors.Rollup__RewardsNotClaimable());
+        return RewardLib.claimProverRewards(_coinbase, _epochs);
+    }
 
-    rollupStore.config.feeAssetPortal = IFeeJuicePortal(inbox.getFeeAssetPortal());
+    /**
+     * @notice Allows the rollup itself to vote on governance proposals
+     * @dev This enables the rollup to participate in governance by voting on proposals.
+     *      See StakingLib.sol for more details on the voting mechanism.
+     * @param _proposalId The ID of the proposal to vote on
+     */
+    function vote(uint256 _proposalId) external override(IStakingCore) {
+        ExtRollupLib2.vote(_proposalId);
+    }
 
-    FeeLib.initialize(_config.manaTarget, _config.provingCostPerMana);
-  }
+    /**
+     * @notice Deposits stake to become a validator
+     * @dev The caller must have approved the staking asset. Validators enter a queue before becoming active.
+     * @param _attester The address that will act as the validator (sign attestations)
+     * @param _withdrawer The address that can withdraw the stake
+     * @param _publicKeyInG1 The G1 point for the BLS public key (used for efficient signature verification in GSE)
+     * @param _publicKeyInG2 The G2 point for the BLS public key (used for BLS aggregation and pairing operations in GSE)
+     * @param _proofOfPossession The proof of possession to show that the keys in G1 and G2 share secret key
+     * @param _moveWithLatestRollup Whether to follow the chain if governance migrates to a new rollup version
+     */
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external override(IStakingCore) {
+        ExtRollupLib2.deposit(
+            _attester, _withdrawer, _publicKeyInG1, _publicKeyInG2, _proofOfPossession, _moveWithLatestRollup
+        );
+    }
 
-  /**
-   * @notice Updates the reward configuration for sequencers and provers
-   * @dev Only callable by the contract owner. Updates how rewards are calculated and distributed.
-   * @param _config The new reward configuration including rates and booster settings
-   */
-  function setRewardConfig(RewardConfig memory _config) external override(IRollupCore) onlyOwner {
-    RewardLib.setConfig(_config);
-    emit RewardConfigUpdated(_config);
-  }
+    /**
+     * @notice Processes the validator entry queue to add new validators to the active set
+     * @dev Can be called by anyone. The number of validators added is limited by queue configuration.
+     *      This helps maintain a controlled growth rate of the validator set.
+     */
+    function flushEntryQueue() external override(IStakingCore) {
+        ExtRollupLib2.flushEntryQueue();
+    }
 
-  /**
-   * @notice Updates the target mana (computational units) per slot
-   * @dev Only callable by owner. The new target must be greater than or equal to the current target
-   *      to avoid the ability for governance to use it directly to kill an old rollup.
-   *      Mana is the unit of computational work in Aztec.
-   * @param _manaTarget The new target mana per slot
-   */
-  function updateManaTarget(uint256 _manaTarget) external override(IRollupCore) onlyOwner {
-    uint256 currentManaTarget = FeeLib.getStorage().config.getManaTarget();
-    require(_manaTarget >= currentManaTarget, Errors.Rollup__InvalidManaTarget(currentManaTarget, _manaTarget));
-    FeeLib.updateManaTarget(_manaTarget);
-    emit IRollupCore.ManaTargetUpdated(_manaTarget);
-  }
+    /**
+     * @notice Initiates withdrawal of a validator's stake
+     * @dev Starts the exit delay period. The validator is immediately removed from the active set.
+     *      Only the registered withdrawer can initiate withdrawal.
+     * @param _attester The validator address to withdraw
+     * @param _recipient The address to receive the withdrawn stake
+     * @return True if withdrawal was initiated, false if already initiated
+     */
+    function initiateWithdraw(address _attester, address _recipient) external override(IStakingCore) returns (bool) {
+        return ExtRollupLib2.initiateWithdraw(_attester, _recipient);
+    }
 
-  /**
-   * @notice Enables or disables reward claiming
-   * @dev Only callable by owner. This is a safety mechanism to control when rewards can be withdrawn.
-   * @param _isRewardsClaimable True to enable reward claims, false to disable
-   */
-  function setRewardsClaimable(bool _isRewardsClaimable) external override(IRollupCore) onlyOwner {
-    isRewardsClaimable = _isRewardsClaimable;
-    emit RewardsClaimableUpdated(_isRewardsClaimable);
-  }
+    /**
+     * @notice Completes a withdrawal after the exit delay has passed
+     * @dev Can be called by anyone. Transfers the stake to the designated recipient.
+     * @param _attester The validator address whose withdrawal to finalize
+     */
+    function finaliseWithdraw(address _attester) external override(IStakingCore) {
+        ExtRollupLib2.finaliseWithdraw(_attester);
+    }
 
-  /**
-   * @notice Updates the slasher contract address
-   * @dev Only callable by owner. The slasher handles punishment for validator misbehavior.
-   * @param _slasher The address of the new slasher contract
-   */
-  function setSlasher(address _slasher) external override(IStakingCore) onlyOwner {
-    ExtRollupLib2.setSlasher(_slasher);
-  }
+    /**
+     * @notice Slashes a validator's stake for misbehavior
+     * @dev Only callable by the authorized slasher contract. Reduces the validator's stake.
+     * @param _attester The validator to slash
+     * @param _amount The amount of stake to slash
+     * @return True if slashing was successful
+     */
+    function slash(address _attester, uint256 _amount) external override(IStakingCore) returns (bool) {
+        return ExtRollupLib2.slash(_attester, _amount);
+    }
 
-  /**
-   * @notice Updates the cost of proving per unit of mana
-   * @dev Only callable by owner. This affects how proving costs are calculated in the fee model.
-   * @param _provingCostPerMana The cost in ETH per unit of mana for proving
-   */
-  function setProvingCostPerMana(EthValue _provingCostPerMana) external override(IRollupCore) onlyOwner {
-    FeeLib.updateProvingCostPerMana(_provingCostPerMana);
-  }
+    /**
+     * @notice Removes unproven blocks from the pending chain
+     * @dev Can only be called after the proof submission window has expired for an epoch.
+     *      This maintains liveness by preventing the chain from being stuck on unproven blocks.
+     *      Pruning occurs at epoch boundaries and removes all blocks in unproven epochs.
+     */
+    function prune() external override(IRollupCore) {
+        ExtRollupLib.prune();
+    }
 
-  /**
-   * @notice Updates the configuration for the staking entry queue
-   * @dev Only callable by owner. Controls how validators enter the active set.
-   * @param _config New configuration including queue size limits and timing parameters
-   */
-  function updateStakingQueueConfig(StakingQueueConfig memory _config) external override(IStakingCore) onlyOwner {
-    ExtRollupLib2.updateStakingQueueConfig(_config);
-  }
+    /**
+     * @notice Submits a zero-knowledge proof for an epoch's state transition
+     * @dev Proves the validity of a prefix of the blocks in an epoch. Once proven, blocks become final
+     *      and cannot be pruned. The proof must be submitted within the submission window.
+     *      Successful submission triggers prover rewards.
+     * @param _args Contains the epoch range, public inputs, fees, attestations, and the ZK proof
+     */
+    function submitEpochRootProof(SubmitEpochRootProofArgs calldata _args) external override(IRollupCore) {
+        ExtRollupLib.submitEpochRootProof(_args);
+    }
 
-  /**
-   * @notice Claims accumulated rewards for a sequencer (block proposer)
-   * @dev Rewards must be enabled via isRewardsClaimable. Transfers all accumulated rewards to the recipient.
-   * @param _coinbase The address that has accumulated the rewards - rewards are sent to this address
-   * @return The amount of rewards claimed
-   */
-  function claimSequencerRewards(address _coinbase) external override(IRollupCore) returns (uint256) {
-    require(isRewardsClaimable, Errors.Rollup__RewardsNotClaimable());
-    return RewardLib.claimSequencerRewards(_coinbase);
-  }
+    /**
+     * @notice Proposes a new L2 block to extend the chain
+     * @dev Core function for block production.
+     *      The attestations must include a signature from designated proposer to be accepted.
+     *      The block must build on the previous block and include valid attestations from committee members.
+     *      Failed proposals revert; successful ones emit L2BlockProposed and advance the chain state.
+     *      See ProposeLib#propose for more details.
+     * @param _args Block data including header, state updates, oracle inputs, and archive
+     * @param _attestations Aggregated signatures from committee members attesting to block validity
+     * @param _signers Addresses of committee members who signed (must match attestations)
+     * @param _blobInput Blob commitment data for data availability (format: [numBlobs][48-byte commitments...])
+     */
+    function propose(
+        ProposeArgs calldata _args,
+        CommitteeAttestations memory _attestations,
+        address[] calldata _signers,
+        bytes calldata _blobInput
+    ) external override(IRollupCore) {
+        ExtRollupLib.propose(_args, _attestations, _signers, _blobInput, checkBlob);
+    }
 
-  /**
-   * @notice Claims prover rewards for specified epochs
-   * @dev Rewards must be enabled. Provers earn rewards for successfully proving epoch transitions.
-   *      Each epoch can only be claimed once per prover.
-   * @param _coinbase The address that has accumulated the rewards - rewards are sent to this address
-   * @param _epochs Array of epochs to claim rewards for
-   * @return The total amount of rewards claimed
-   */
-  function claimProverRewards(address _coinbase, Epoch[] memory _epochs)
-    external
-    override(IRollupCore)
-    returns (uint256)
-  {
-    require(isRewardsClaimable, Errors.Rollup__RewardsNotClaimable());
-    return RewardLib.claimProverRewards(_coinbase, _epochs);
-  }
+    /**
+     * @notice Invalidates a block due to a bad attestation signature
+     * @dev Anyone can call this if they detect an invalid signature. This removes the block
+     *      and all subsequent blocks from the pending chain. Used to maintain pending chain integrity.
+     * @param _blockNumber The L2 block number to invalidate
+     * @param _attestations The attestations that were submitted with the block
+     * @param _committee The committee members for the block's epoch
+     * @param _invalidIndex The index of the invalid signature in the attestations
+     */
+    function invalidateBadAttestation(
+        uint256 _blockNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee,
+        uint256 _invalidIndex
+    ) external override(IRollupCore) {
+        ExtRollupLib2.invalidateBadAttestation(_blockNumber, _attestations, _committee, _invalidIndex);
+    }
 
-  /**
-   * @notice Allows the rollup itself to vote on governance proposals
-   * @dev This enables the rollup to participate in governance by voting on proposals.
-   *      See StakingLib.sol for more details on the voting mechanism.
-   * @param _proposalId The ID of the proposal to vote on
-   */
-  function vote(uint256 _proposalId) external override(IStakingCore) {
-    ExtRollupLib2.vote(_proposalId);
-  }
+    /**
+     * @notice Invalidates a block due to insufficient valid attestations (>2/3 of committee required)
+     * @dev Anyone can call this if a block doesn't meet the required attestation threshold.
+     *      Even if all signatures are valid, blocks need a minimum number of attestations.
+     * @param _blockNumber The L2 block number to invalidate
+     * @param _attestations The attestations that were submitted with the block
+     * @param _committee The committee members for the block's epoch
+     */
+    function invalidateInsufficientAttestations(
+        uint256 _blockNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee
+    ) external override(IRollupCore) {
+        ExtRollupLib2.invalidateInsufficientAttestations(_blockNumber, _attestations, _committee);
+    }
 
-  /**
-   * @notice Deposits stake to become a validator
-   * @dev The caller must have approved the staking asset. Validators enter a queue before becoming active.
-   * @param _attester The address that will act as the validator (sign attestations)
-   * @param _withdrawer The address that can withdraw the stake
-   * @param _publicKeyInG1 The G1 point for the BLS public key (used for efficient signature verification in GSE)
-   * @param _publicKeyInG2 The G2 point for the BLS public key (used for BLS aggregation and pairing operations in GSE)
-   * @param _proofOfPossession The proof of possession to show that the keys in G1 and G2 share secret key
-   * @param _moveWithLatestRollup Whether to follow the chain if governance migrates to a new rollup version
-   */
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external override(IStakingCore) {
-    ExtRollupLib2.deposit(
-      _attester, _withdrawer, _publicKeyInG1, _publicKeyInG2, _proofOfPossession, _moveWithLatestRollup
-    );
-  }
+    /**
+     * @notice Sets up validator selection for the current epoch
+     * @dev Can be called by anyone at the start of an epoch. Samples the committee and determines proposers for all
+     *      slots in the epoch. Also stores a seed that is used for future sampling. The corresponding library
+     *      functionality is automatically called when `RollupCore.propose(...)` is called (via the
+     *      `ExtRollupLib.propose(...)` -> `ProposeLib.propose(...)` -> `ValidatorSelectionLib.setupEpoch(...)`).
+     *
+     *      If there are missed proposals then setupEpoch does not get called automatically. Since the next committee
+     *      selection is computed based on the stored randao and the epoch number, failing to update the randao stored
+     *      will keep the committee predictable longer into the future. We would only fail to get a fresh randao if:
+     *      1. All the proposals in the epoch were missed
+     *      2. Nobody called setupEpoch on the Rollup contract
+     *
+     *      While an attacker might theoretically benefit from preventing a fresh seed (e.g. by DoSing all proposers),
+     *      preventing anyone from calling this function directly is not really feasible. This makes attacks on seed
+     *      generation impractical.
+     */
+    function setupEpoch() external override(IValidatorSelectionCore) {
+        ExtRollupLib2.setupEpoch();
+    }
 
-  /**
-   * @notice Processes the validator entry queue to add new validators to the active set
-   * @dev Can be called by anyone. The number of validators added is limited by queue configuration.
-   *      This helps maintain a controlled growth rate of the validator set.
-   */
-  function flushEntryQueue() external override(IStakingCore) {
-    ExtRollupLib2.flushEntryQueue();
-  }
+    /**
+     * @notice Captures the randao for future validator selection
+     * @dev Can be called by anyone. Takes a snapshot of the current randao to ensure unpredictable but deterministic
+     *      validator selection. Automatically called from setupEpoch. Can be used as a cheaper alternative to
+     *      `setupEpoch` to update the randao checkpoints.
+     */
+    function checkpointRandao() public override(IValidatorSelectionCore) {
+        ExtRollupLib2.checkpointRandao();
+    }
 
-  /**
-   * @notice Initiates withdrawal of a validator's stake
-   * @dev Starts the exit delay period. The validator is immediately removed from the active set.
-   *      Only the registered withdrawer can initiate withdrawal.
-   * @param _attester The validator address to withdraw
-   * @param _recipient The address to receive the withdrawn stake
-   * @return True if withdrawal was initiated, false if already initiated
-   */
-  function initiateWithdraw(address _attester, address _recipient) external override(IStakingCore) returns (bool) {
-    return ExtRollupLib2.initiateWithdraw(_attester, _recipient);
-  }
+    /**
+     * @notice Updates the L1 gas fee oracle with current gas prices
+     * @dev Automatically called during block proposal but can be called manually.
+     *      Updates the fee model's view of L1 costs to ensure accurate L2 fee pricing.
+     *      Uses current L1 gas price and blob gas price for calculations.
+     */
+    function updateL1GasFeeOracle() public override(IRollupCore) {
+        FeeLib.updateL1GasFeeOracle();
+    }
 
-  /**
-   * @notice Completes a withdrawal after the exit delay has passed
-   * @dev Can be called by anyone. Transfers the stake to the designated recipient.
-   * @param _attester The validator address whose withdrawal to finalize
-   */
-  function finaliseWithdraw(address _attester) external override(IStakingCore) {
-    ExtRollupLib2.finaliseWithdraw(_attester);
-  }
+    /**
+     * @notice Returns the maximum number of validators that can be added from the entry queue
+     * @dev Based on queue configuration and current validator set size. Used by flushEntryQueue.
+     * @return The number of validators that can be added in the next flush
+     */
+    function getEntryQueueFlushSize() public view override(IStakingCore) returns (uint256) {
+        return ExtRollupLib2.getEntryQueueFlushSize();
+    }
 
-  /**
-   * @notice Slashes a validator's stake for misbehavior
-   * @dev Only callable by the authorized slasher contract. Reduces the validator's stake.
-   * @param _attester The validator to slash
-   * @param _amount The amount of stake to slash
-   * @return True if slashing was successful
-   */
-  function slash(address _attester, uint256 _amount) external override(IStakingCore) returns (bool) {
-    return ExtRollupLib2.slash(_attester, _amount);
-  }
-
-  /**
-   * @notice Removes unproven blocks from the pending chain
-   * @dev Can only be called after the proof submission window has expired for an epoch.
-   *      This maintains liveness by preventing the chain from being stuck on unproven blocks.
-   *      Pruning occurs at epoch boundaries and removes all blocks in unproven epochs.
-   */
-  function prune() external override(IRollupCore) {
-    ExtRollupLib.prune();
-  }
-
-  /**
-   * @notice Submits a zero-knowledge proof for an epoch's state transition
-   * @dev Proves the validity of a prefix of the blocks in an epoch. Once proven, blocks become final
-   *      and cannot be pruned. The proof must be submitted within the submission window.
-   *      Successful submission triggers prover rewards.
-   * @param _args Contains the epoch range, public inputs, fees, attestations, and the ZK proof
-   */
-  function submitEpochRootProof(SubmitEpochRootProofArgs calldata _args) external override(IRollupCore) {
-    ExtRollupLib.submitEpochRootProof(_args);
-  }
-
-  /**
-   * @notice Proposes a new L2 block to extend the chain
-   * @dev Core function for block production.
-   *      The attestations must include a signature from designated proposer to be accepted.
-   *      The block must build on the previous block and include valid attestations from committee members.
-   *      Failed proposals revert; successful ones emit L2BlockProposed and advance the chain state.
-   *      See ProposeLib#propose for more details.
-   * @param _args Block data including header, state updates, oracle inputs, and archive
-   * @param _attestations Aggregated signatures from committee members attesting to block validity
-   * @param _signers Addresses of committee members who signed (must match attestations)
-   * @param _blobInput Blob commitment data for data availability (format: [numBlobs][48-byte commitments...])
-   */
-  function propose(
-    ProposeArgs calldata _args,
-    CommitteeAttestations memory _attestations,
-    address[] calldata _signers,
-    bytes calldata _blobInput
-  ) external override(IRollupCore) {
-    ExtRollupLib.propose(_args, _attestations, _signers, _blobInput, checkBlob);
-  }
-
-  /**
-   * @notice Invalidates a block due to a bad attestation signature
-   * @dev Anyone can call this if they detect an invalid signature. This removes the block
-   *      and all subsequent blocks from the pending chain. Used to maintain pending chain integrity.
-   * @param _blockNumber The L2 block number to invalidate
-   * @param _attestations The attestations that were submitted with the block
-   * @param _committee The committee members for the block's epoch
-   * @param _invalidIndex The index of the invalid signature in the attestations
-   */
-  function invalidateBadAttestation(
-    uint256 _blockNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee,
-    uint256 _invalidIndex
-  ) external override(IRollupCore) {
-    ExtRollupLib2.invalidateBadAttestation(_blockNumber, _attestations, _committee, _invalidIndex);
-  }
-
-  /**
-   * @notice Invalidates a block due to insufficient valid attestations (>2/3 of committee required)
-   * @dev Anyone can call this if a block doesn't meet the required attestation threshold.
-   *      Even if all signatures are valid, blocks need a minimum number of attestations.
-   * @param _blockNumber The L2 block number to invalidate
-   * @param _attestations The attestations that were submitted with the block
-   * @param _committee The committee members for the block's epoch
-   */
-  function invalidateInsufficientAttestations(
-    uint256 _blockNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee
-  ) external override(IRollupCore) {
-    ExtRollupLib2.invalidateInsufficientAttestations(_blockNumber, _attestations, _committee);
-  }
-
-  /**
-   * @notice Sets up validator selection for the current epoch
-   * @dev Can be called by anyone at the start of an epoch. Samples the committee and determines proposers for all
-   *      slots in the epoch. Also stores a seed that is used for future sampling. The corresponding library
-   *      functionality is automatically called when `RollupCore.propose(...)` is called (via the
-   *      `ExtRollupLib.propose(...)` -> `ProposeLib.propose(...)` -> `ValidatorSelectionLib.setupEpoch(...)`).
-   *
-   *      If there are missed proposals then setupEpoch does not get called automatically. Since the next committee
-   *      selection is computed based on the stored randao and the epoch number, failing to update the randao stored
-   *      will keep the committee predictable longer into the future. We would only fail to get a fresh randao if:
-   *      1. All the proposals in the epoch were missed
-   *      2. Nobody called setupEpoch on the Rollup contract
-   *
-   *      While an attacker might theoretically benefit from preventing a fresh seed (e.g. by DoSing all proposers),
-   *      preventing anyone from calling this function directly is not really feasible. This makes attacks on seed
-   *      generation impractical.
-   */
-  function setupEpoch() external override(IValidatorSelectionCore) {
-    ExtRollupLib2.setupEpoch();
-  }
-
-  /**
-   * @notice Captures the randao for future validator selection
-   * @dev Can be called by anyone. Takes a snapshot of the current randao to ensure unpredictable but deterministic
-   *      validator selection. Automatically called from setupEpoch. Can be used as a cheaper alternative to
-   *      `setupEpoch` to update the randao checkpoints.
-   */
-  function checkpointRandao() public override(IValidatorSelectionCore) {
-    ExtRollupLib2.checkpointRandao();
-  }
-
-  /**
-   * @notice Updates the L1 gas fee oracle with current gas prices
-   * @dev Automatically called during block proposal but can be called manually.
-   *      Updates the fee model's view of L1 costs to ensure accurate L2 fee pricing.
-   *      Uses current L1 gas price and blob gas price for calculations.
-   */
-  function updateL1GasFeeOracle() public override(IRollupCore) {
-    FeeLib.updateL1GasFeeOracle();
-  }
-
-  /**
-   * @notice Returns the maximum number of validators that can be added from the entry queue
-   * @dev Based on queue configuration and current validator set size. Used by flushEntryQueue.
-   * @return The number of validators that can be added in the next flush
-   */
-  function getEntryQueueFlushSize() public view override(IStakingCore) returns (uint256) {
-    return ExtRollupLib2.getEntryQueueFlushSize();
-  }
-
-  /**
-   * @notice Returns the current number of active validators
-   * @dev Active validators can propose blocks and participate in committees
-   * @return The count of validators in the active set
-   */
-  function getActiveAttesterCount() public view override(IStakingCore) returns (uint256) {
-    return StakingLib.getAttesterCountAtTime(Timestamp.wrap(block.timestamp));
-  }
+    /**
+     * @notice Returns the current number of active validators
+     * @dev Active validators can propose blocks and participate in committees
+     * @return The count of validators in the active set
+     */
+    function getActiveAttesterCount() public view override(IStakingCore) returns (uint256) {
+        return StakingLib.getAttesterCountAtTime(Timestamp.wrap(block.timestamp));
+    }
 }

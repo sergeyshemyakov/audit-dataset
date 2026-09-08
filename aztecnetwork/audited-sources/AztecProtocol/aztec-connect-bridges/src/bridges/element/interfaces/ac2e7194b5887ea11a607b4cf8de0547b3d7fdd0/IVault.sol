@@ -2,18 +2,24 @@
 pragma solidity <=0.8.10;
 pragma abicoder v2;
 
-import {IERC20} from './IERC20Permit.sol';
+import {IERC20} from "./IERC20Permit.sol";
 
 interface IAsset {
-    // solhint-disable-previous-line no-empty-blocks
+// solhint-disable-previous-line no-empty-blocks
 }
 
-
-enum PoolSpecialization { GENERAL, MINIMAL_SWAP_INFO, TWO_TOKEN }
+enum PoolSpecialization {
+    GENERAL,
+    MINIMAL_SWAP_INFO,
+    TWO_TOKEN
+}
 
 interface IVault {
-    enum SwapKind { GIVEN_IN, GIVEN_OUT }
-/**
+    enum SwapKind {
+        GIVEN_IN,
+        GIVEN_OUT
+    }
+    /**
      * @dev Performs a swap with a single Pool.
      *
      * If the swap is 'given in' (the number of tokens to send to the Pool is known), it returns the amount of tokens
@@ -26,12 +32,11 @@ interface IVault {
      *
      * Emits a `Swap` event.
      */
-    function swap(
-        SingleSwap memory singleSwap,
-        FundManagement memory funds,
-        uint256 limit,
-        uint256 deadline
-    ) external payable returns (uint256);
+
+    function swap(SingleSwap memory singleSwap, FundManagement memory funds, uint256 limit, uint256 deadline)
+        external
+        payable
+        returns (uint256);
 
     /**
      * @dev Data for a single swap executed by `swap`. `amount` is either `amountIn` or `amountOut` depending on
@@ -79,7 +84,6 @@ interface IVault {
     // will revert if poolId is not a registered pool
     function getPool(bytes32 poolId) external view returns (address, PoolSpecialization);
 
-
     /**
      * @dev Simulates a call to `batchSwap`, returning an array of Vault asset deltas. Calls to `swap` cannot be
      * simulated directly, but an equivalent `batchSwap` call can and will yield the exact same result.
@@ -95,7 +99,6 @@ interface IVault {
      * Note that this function is not 'view' (due to implementation details): the client code must explicitly execute
      * eth_call instead of eth_sendTransaction.
      */
-
     struct BatchSwapStep {
         bytes32 poolId;
         uint256 assetInIndex;
@@ -103,13 +106,13 @@ interface IVault {
         uint256 amount;
         bytes userData;
     }
+
     function queryBatchSwap(
         SwapKind kind,
         BatchSwapStep[] memory swaps,
         IAsset[] memory assets,
         FundManagement memory funds
     ) external view returns (int256[] memory assetDeltas);
-
 
     /**
      * @dev Returns a Pool's registered tokens, the total balance for each, and the latest block when *any* of
@@ -128,9 +131,5 @@ interface IVault {
     function getPoolTokens(bytes32 poolId)
         external
         view
-        returns (
-            IERC20[] memory tokens,
-            uint256[] memory balances,
-            uint256 lastChangeBlock
-        );
+        returns (IERC20[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock);
 }

@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -416,12 +412,9 @@ interface IERC721ReceiverUpgradeable {
      *
      * The selector can be obtained in Solidity with `IERC721Receiver.onERC721Received.selector`.
      */
-    function onERC721Received(
-        address operator,
-        address from,
-        uint256 tokenId,
-        bytes calldata data
-    ) external returns (bytes4);
+    function onERC721Received(address operator, address from, uint256 tokenId, bytes calldata data)
+        external
+        returns (bytes4);
 }
 
 /**
@@ -431,16 +424,15 @@ interface IERC721ReceiverUpgradeable {
  * Make sure the contract is able to use its token with {IERC721-safeTransferFrom}, {IERC721-approve} or {IERC721-setApprovalForAll}.
  */
 contract ERC721HolderUpgradeable is Initializable, IERC721ReceiverUpgradeable {
-    function __ERC721Holder_init() internal onlyInitializing {
-    }
+    function __ERC721Holder_init() internal onlyInitializing {}
 
-    function __ERC721Holder_init_unchained() internal onlyInitializing {
-    }
+    function __ERC721Holder_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC721Receiver-onERC721Received}.
      *
      * Always returns `IERC721Receiver.onERC721Received.selector`.
      */
+
     function onERC721Received(address, address, uint256, bytes memory) public virtual override returns (bytes4) {
         return this.onERC721Received.selector;
     }
@@ -548,11 +540,10 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -658,9 +649,11 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
 }
 
 interface IScrollGateway {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
@@ -674,9 +667,11 @@ interface IScrollGateway {
     /// @dev Thrown when ScrollMessenger is not dropping message.
     error ErrorNotInDropMessageContext();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice The address of corresponding L1/L2 Gateway contract.
     function counterpart() external view returns (address);
@@ -689,9 +684,11 @@ interface IScrollGateway {
 }
 
 interface IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a cross domain message is sent.
     /// @param sender The address of the sender who initiates the message.
@@ -717,35 +714,36 @@ interface IScrollMessenger {
     /// @param messageHash The hash of the message.
     event FailedRelayedMessage(bytes32 indexed messageHash);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the sender of a cross domain message.
     function xDomainMessageSender() external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
     /// @param value The amount of ether passed when call target contract.
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit) external payable;
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
@@ -753,13 +751,9 @@ interface IScrollMessenger {
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
     /// @param refundAddress The address of account who will receive the refunded fee.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit,
-        address refundAddress
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit, address refundAddress)
+        external
+        payable;
 }
 
 library ScrollConstants {
@@ -778,9 +772,11 @@ interface IScrollGatewayCallback {
 /// @title ScrollGatewayBase
 /// @notice The `ScrollGatewayBase` is a base contract for gateway contracts used in both in L1 and L2.
 abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgradeable, IScrollGateway {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @inheritdoc IScrollGateway
     address public immutable override counterpart;
@@ -791,9 +787,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @inheritdoc IScrollGateway
     address public immutable override messenger;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slot used as counterpart gateway contract, which is deprecated now.
     address private __counterpart;
@@ -810,10 +808,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @dev The storage slots for future usage.
     uint256[46] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier onlyCallByCounterpart() {
         // check caller is messenger
         if (_msgSender() != messenger) {
@@ -840,15 +839,12 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) {
+     *
+     */
+    constructor(address _counterpart, address _router, address _messenger) {
         if (_counterpart == address(0) || _messenger == address(0)) {
             revert ErrorZeroAddress();
         }
@@ -858,18 +854,16 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         messenger = _messenger;
     }
 
-    function _initialize(
-        address,
-        address,
-        address
-    ) internal {
+    function _initialize(address, address, address) internal {
         ReentrancyGuardUpgradeable.__ReentrancyGuard_init();
         OwnableUpgradeable.__Ownable_init();
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to forward calldata to target contract.
     /// @param _to The address of contract to call.
@@ -883,9 +877,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
 
 /// @title The interface for the ERC721 cross chain gateway on layer 2.
 interface IL2ERC721Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the ERC721 NFT is transfered to recipient on layer 2.
     /// @param l1Token The address of ERC721 NFT on layer 1.
@@ -894,11 +890,7 @@ interface IL2ERC721Gateway {
     /// @param to The address of recipient on layer 2.
     /// @param tokenId The token id of the ERC721 NFT deposited on layer 1.
     event FinalizeDepositERC721(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 tokenId
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 tokenId
     );
 
     /// @notice Emitted when the ERC721 NFT is batch transfered to recipient on layer 2.
@@ -908,11 +900,7 @@ interface IL2ERC721Gateway {
     /// @param to The address of recipient on layer 2.
     /// @param tokenIds The list of token ids of the ERC721 NFT deposited on layer 1.
     event FinalizeBatchDepositERC721(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256[] tokenIds
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256[] tokenIds
     );
 
     /// @notice Emitted when the ERC721 NFT is transfered to gateway on layer 2.
@@ -922,11 +910,7 @@ interface IL2ERC721Gateway {
     /// @param to The address of recipient on layer 1.
     /// @param tokenId The token id of the ERC721 NFT to withdraw on layer 2.
     event WithdrawERC721(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256 tokenId
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256 tokenId
     );
 
     /// @notice Emitted when the ERC721 NFT is batch transfered to gateway on layer 2.
@@ -936,60 +920,42 @@ interface IL2ERC721Gateway {
     /// @param to The address of recipient on layer 1.
     /// @param tokenIds The list of token ids of the ERC721 NFT to withdraw on layer 2.
     event BatchWithdrawERC721(
-        address indexed l1Token,
-        address indexed l2Token,
-        address indexed from,
-        address to,
-        uint256[] tokenIds
+        address indexed l1Token, address indexed l2Token, address indexed from, address to, uint256[] tokenIds
     );
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Withdraw some ERC721 NFT to caller's account on layer 1.
     /// @param token The address of ERC721 NFT on layer 2.
     /// @param tokenId The token id to withdraw.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC721(
-        address token,
-        uint256 tokenId,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC721(address token, uint256 tokenId, uint256 gasLimit) external payable;
 
     /// @notice Withdraw some ERC721 NFT to caller's account on layer 1.
     /// @param token The address of ERC721 NFT on layer 2.
     /// @param to The address of recipient on layer 1.
     /// @param tokenId The token id to withdraw.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function withdrawERC721(
-        address token,
-        address to,
-        uint256 tokenId,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawERC721(address token, address to, uint256 tokenId, uint256 gasLimit) external payable;
 
     /// @notice Batch withdraw a list of ERC721 NFT to caller's account on layer 1.
     /// @param token The address of ERC721 NFT on layer 2.
     /// @param tokenIds The list of token ids to withdraw.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function batchWithdrawERC721(
-        address token,
-        uint256[] memory tokenIds,
-        uint256 gasLimit
-    ) external payable;
+    function batchWithdrawERC721(address token, uint256[] memory tokenIds, uint256 gasLimit) external payable;
 
     /// @notice Batch withdraw a list of ERC721 NFT to caller's account on layer 1.
     /// @param token The address of ERC721 NFT on layer 2.
     /// @param to The address of recipient on layer 1.
     /// @param tokenIds The list of token ids to withdraw.
     /// @param gasLimit Unused, but included for potential forward compatibility considerations.
-    function batchWithdrawERC721(
-        address token,
-        address to,
-        uint256[] memory tokenIds,
-        uint256 gasLimit
-    ) external payable;
+    function batchWithdrawERC721(address token, address to, uint256[] memory tokenIds, uint256 gasLimit)
+        external
+        payable;
 
     /// @notice Complete ERC721 deposit from layer 1 to layer 2 and send NFT to recipient's account on layer 2.
     /// @dev Requirements:
@@ -1000,13 +966,8 @@ interface IL2ERC721Gateway {
     /// @param from The address of account who withdraw the token on layer 1.
     /// @param to The address of recipient on layer 2 to receive the token.
     /// @param tokenId The token id to withdraw.
-    function finalizeDepositERC721(
-        address l1Token,
-        address l2Token,
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
+    function finalizeDepositERC721(address l1Token, address l2Token, address from, address to, uint256 tokenId)
+        external;
 
     /// @notice Complete ERC721 deposit from layer 1 to layer 2 and send NFT to recipient's account on layer 2.
     /// @dev Requirements:
@@ -1196,15 +1157,15 @@ interface IScrollERC721Extension {
 // The recommended ERC721 implementation for bridge token.
 // deployed in L2 when original token is on L1
 // deployed in L1 when original token is on L2
-interface IScrollERC721 is IERC721, IScrollERC721Extension {
-
-}
+interface IScrollERC721 is IERC721, IScrollERC721Extension {}
 
 /// @title The interface for the ERC721 cross chain gateway on layer 1.
 interface IL1ERC721Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the ERC721 NFT is transfered to recipient on layer 1.
     /// @param _l1Token The address of ERC721 NFT on layer 1.
@@ -1213,11 +1174,7 @@ interface IL1ERC721Gateway {
     /// @param _to The address of recipient on layer 1.
     /// @param _tokenId The token id of the ERC721 NFT to withdraw from layer 2.
     event FinalizeWithdrawERC721(
-        address indexed _l1Token,
-        address indexed _l2Token,
-        address indexed _from,
-        address _to,
-        uint256 _tokenId
+        address indexed _l1Token, address indexed _l2Token, address indexed _from, address _to, uint256 _tokenId
     );
 
     /// @notice Emitted when the ERC721 NFT is batch transfered to recipient on layer 1.
@@ -1227,11 +1184,7 @@ interface IL1ERC721Gateway {
     /// @param _to The address of recipient on layer 1.
     /// @param _tokenIds The list of token ids of the ERC721 NFT to withdraw from layer 2.
     event FinalizeBatchWithdrawERC721(
-        address indexed _l1Token,
-        address indexed _l2Token,
-        address indexed _from,
-        address _to,
-        uint256[] _tokenIds
+        address indexed _l1Token, address indexed _l2Token, address indexed _from, address _to, uint256[] _tokenIds
     );
 
     /// @notice Emitted when the ERC721 NFT is deposited to gateway on layer 1.
@@ -1241,11 +1194,7 @@ interface IL1ERC721Gateway {
     /// @param _to The address of recipient on layer 2.
     /// @param _tokenId The token id of the ERC721 NFT to deposit on layer 1.
     event DepositERC721(
-        address indexed _l1Token,
-        address indexed _l2Token,
-        address indexed _from,
-        address _to,
-        uint256 _tokenId
+        address indexed _l1Token, address indexed _l2Token, address indexed _from, address _to, uint256 _tokenId
     );
 
     /// @notice Emitted when the ERC721 NFT is batch deposited to gateway on layer 1.
@@ -1255,11 +1204,7 @@ interface IL1ERC721Gateway {
     /// @param _to The address of recipient on layer 2.
     /// @param _tokenIds The list of token ids of the ERC721 NFT to deposit on layer 1.
     event BatchDepositERC721(
-        address indexed _l1Token,
-        address indexed _l2Token,
-        address indexed _from,
-        address _to,
-        uint256[] _tokenIds
+        address indexed _l1Token, address indexed _l2Token, address indexed _from, address _to, uint256[] _tokenIds
     );
 
     /// @notice Emitted when some ERC721 token is refunded.
@@ -1274,53 +1219,39 @@ interface IL1ERC721Gateway {
     /// @param tokenIds The list of token ids of the ERC721 NFT refunded.
     event BatchRefundERC721(address indexed token, address indexed recipient, uint256[] tokenIds);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Deposit some ERC721 NFT to caller's account on layer 2.
     /// @param _token The address of ERC721 NFT on layer 1.
     /// @param _tokenId The token id to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function depositERC721(
-        address _token,
-        uint256 _tokenId,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC721(address _token, uint256 _tokenId, uint256 _gasLimit) external payable;
 
     /// @notice Deposit some ERC721 NFT to a recipient's account on layer 2.
     /// @param _token The address of ERC721 NFT on layer 1.
     /// @param _to The address of recipient on layer 2.
     /// @param _tokenId The token id to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function depositERC721(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC721(address _token, address _to, uint256 _tokenId, uint256 _gasLimit) external payable;
 
     /// @notice Deposit a list of some ERC721 NFT to caller's account on layer 2.
     /// @param _token The address of ERC721 NFT on layer 1.
     /// @param _tokenIds The list of token ids to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function batchDepositERC721(
-        address _token,
-        uint256[] calldata _tokenIds,
-        uint256 _gasLimit
-    ) external payable;
+    function batchDepositERC721(address _token, uint256[] calldata _tokenIds, uint256 _gasLimit) external payable;
 
     /// @notice Deposit a list of some ERC721 NFT to a recipient's account on layer 2.
     /// @param _token The address of ERC721 NFT on layer 1.
     /// @param _to The address of recipient on layer 2.
     /// @param _tokenIds The list of token ids to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function batchDepositERC721(
-        address _token,
-        address _to,
-        uint256[] calldata _tokenIds,
-        uint256 _gasLimit
-    ) external payable;
+    function batchDepositERC721(address _token, address _to, uint256[] calldata _tokenIds, uint256 _gasLimit)
+        external
+        payable;
 
     /// @notice Complete ERC721 withdraw from layer 2 to layer 1 and send NFT to recipient's account on layer 1.
     /// @dev Requirements:
@@ -1331,13 +1262,8 @@ interface IL1ERC721Gateway {
     /// @param _from The address of account who withdraw the token on layer 2.
     /// @param _to The address of recipient on layer 1 to receive the token.
     /// @param _tokenId The token id to withdraw.
-    function finalizeWithdrawERC721(
-        address _l1Token,
-        address _l2Token,
-        address _from,
-        address _to,
-        uint256 _tokenId
-    ) external;
+    function finalizeWithdrawERC721(address _l1Token, address _l2Token, address _from, address _to, uint256 _tokenId)
+        external;
 
     /// @notice Complete ERC721 batch withdraw from layer 2 to layer 1 and send NFT to recipient's account on layer 1.
     /// @dev Requirements:
@@ -1358,18 +1284,22 @@ interface IL1ERC721Gateway {
 }
 
 interface IL2ScrollMessenger is IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the maximum number of times each message can fail in L2 is updated.
     /// @param oldMaxFailedExecutionTimes The old maximum number of times each message can fail in L2.
     /// @param newMaxFailedExecutionTimes The new maximum number of times each message can fail in L2.
     event UpdateMaxFailedExecutionTimes(uint256 oldMaxFailedExecutionTimes, uint256 newMaxFailedExecutionTimes);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice execute L1 => L2 message
     /// @dev Make sure this is only called by privileged accounts.
@@ -1378,13 +1308,7 @@ interface IL2ScrollMessenger is IScrollMessenger {
     /// @param value The msg.value passed to the message call.
     /// @param nonce The nonce of the message to avoid replay attack.
     /// @param message The content of the message.
-    function relayMessage(
-        address from,
-        address to,
-        uint256 value,
-        uint256 nonce,
-        bytes calldata message
-    ) external;
+    function relayMessage(address from, address to, uint256 value, uint256 nonce, bytes calldata message) external;
 }
 
 /// @title L2ERC721Gateway
@@ -1395,9 +1319,11 @@ interface IL2ScrollMessenger is IScrollMessenger {
 ///
 /// This will be changed if we have more specific scenarios.
 contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC721Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when token mapping for ERC721 token is updated.
     /// @param l2Token The address of corresponding ERC721 token in layer 2.
@@ -1405,17 +1331,21 @@ contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC72
     /// @param newL1Token The address of the new corresponding ERC721 token in layer 1.
     event UpdateTokenMapping(address indexed l2Token, address indexed oldL1Token, address indexed newL1Token);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from layer 2 token address to layer 1 token address for ERC721 NFT.
     // solhint-disable-next-line var-name-mixedcase
     mapping(address => address) public tokenMapping;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L2ERC721Gateway` implementation contract.
     ///
@@ -1437,56 +1367,51 @@ contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC72
         ScrollGatewayBase._initialize(_counterpart, address(0), _messenger);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC721Gateway
-    function withdrawERC721(
-        address _token,
-        uint256 _tokenId,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC721(address _token, uint256 _tokenId, uint256 _gasLimit) external payable override {
         _withdrawERC721(_token, _msgSender(), _tokenId, _gasLimit);
     }
 
     /// @inheritdoc IL2ERC721Gateway
-    function withdrawERC721(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC721(address _token, address _to, uint256 _tokenId, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _withdrawERC721(_token, _to, _tokenId, _gasLimit);
     }
 
     /// @inheritdoc IL2ERC721Gateway
-    function batchWithdrawERC721(
-        address _token,
-        uint256[] calldata _tokenIds,
-        uint256 _gasLimit
-    ) external payable override {
+    function batchWithdrawERC721(address _token, uint256[] calldata _tokenIds, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _batchWithdrawERC721(_token, _msgSender(), _tokenIds, _gasLimit);
     }
 
     /// @inheritdoc IL2ERC721Gateway
-    function batchWithdrawERC721(
-        address _token,
-        address _to,
-        uint256[] calldata _tokenIds,
-        uint256 _gasLimit
-    ) external payable override {
+    function batchWithdrawERC721(address _token, address _to, uint256[] calldata _tokenIds, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _batchWithdrawERC721(_token, _to, _tokenIds, _gasLimit);
     }
 
     /// @inheritdoc IL2ERC721Gateway
-    function finalizeDepositERC721(
-        address _l1Token,
-        address _l2Token,
-        address _from,
-        address _to,
-        uint256 _tokenId
-    ) external virtual onlyCallByCounterpart nonReentrant {
+    function finalizeDepositERC721(address _l1Token, address _l2Token, address _from, address _to, uint256 _tokenId)
+        external
+        virtual
+        onlyCallByCounterpart
+        nonReentrant
+    {
         require(_l1Token != address(0), "token address cannot be 0");
         require(_l1Token == tokenMapping[_l2Token], "l2 token mismatch");
 
@@ -1513,9 +1438,11 @@ contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC72
         emit FinalizeBatchDepositERC721(_l1Token, _l2Token, _from, _to, _tokenIds);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update layer 2 to layer 1 token mapping.
     /// @param _l2Token The address of corresponding ERC721 token on layer 2.
@@ -1529,21 +1456,22 @@ contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC72
         emit UpdateTokenMapping(_l2Token, _oldL1Token, _l1Token);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to withdraw ERC721 NFT to layer 1.
     /// @param _token The address of ERC721 NFT on layer 2.
     /// @param _to The address of recipient on layer 1.
     /// @param _tokenId The token id to withdraw.
     /// @param _gasLimit Estimated gas limit required to complete the withdraw on layer 1.
-    function _withdrawERC721(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _gasLimit
-    ) internal virtual nonReentrant {
+    function _withdrawERC721(address _token, address _to, uint256 _tokenId, uint256 _gasLimit)
+        internal
+        virtual
+        nonReentrant
+    {
         address _l1Token = tokenMapping[_token];
         require(_l1Token != address(0), "no corresponding l1 token");
 
@@ -1555,10 +1483,8 @@ contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC72
         IScrollERC721(_token).burn(_tokenId);
 
         // 2. Generate message passed to L1ERC721Gateway.
-        bytes memory _message = abi.encodeCall(
-            IL1ERC721Gateway.finalizeWithdrawERC721,
-            (_l1Token, _token, _sender, _to, _tokenId)
-        );
+        bytes memory _message =
+            abi.encodeCall(IL1ERC721Gateway.finalizeWithdrawERC721, (_l1Token, _token, _sender, _to, _tokenId));
 
         // 3. Send message to L2ScrollMessenger.
         IL2ScrollMessenger(messenger).sendMessage{value: msg.value}(counterpart, 0, _message, _gasLimit);
@@ -1571,12 +1497,11 @@ contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC72
     /// @param _to The address of recipient on layer 1.
     /// @param _tokenIds The list of token ids to withdraw.
     /// @param _gasLimit Estimated gas limit required to complete the withdraw on layer 1.
-    function _batchWithdrawERC721(
-        address _token,
-        address _to,
-        uint256[] calldata _tokenIds,
-        uint256 _gasLimit
-    ) internal virtual nonReentrant {
+    function _batchWithdrawERC721(address _token, address _to, uint256[] calldata _tokenIds, uint256 _gasLimit)
+        internal
+        virtual
+        nonReentrant
+    {
         require(_tokenIds.length > 0, "no token to withdraw");
 
         address _l1Token = tokenMapping[_token];
@@ -1592,10 +1517,8 @@ contract L2ERC721Gateway is ERC721HolderUpgradeable, ScrollGatewayBase, IL2ERC72
         }
 
         // 2. Generate message passed to L1ERC721Gateway.
-        bytes memory _message = abi.encodeCall(
-            IL1ERC721Gateway.finalizeBatchWithdrawERC721,
-            (_l1Token, _token, _sender, _to, _tokenIds)
-        );
+        bytes memory _message =
+            abi.encodeCall(IL1ERC721Gateway.finalizeBatchWithdrawERC721, (_l1Token, _token, _sender, _to, _tokenIds));
 
         // 3. Send message to L2ScrollMessenger.
         IL2ScrollMessenger(messenger).sendMessage{value: msg.value}(counterpart, 0, _message, _gasLimit);

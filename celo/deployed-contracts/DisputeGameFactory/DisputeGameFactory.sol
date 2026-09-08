@@ -322,7 +322,9 @@ abstract contract ReinitializableBase {
     /// @param _initVersion Current initialization version.
     constructor(uint8 _initVersion) {
         // Sanity check, we should never have a zero init version.
-        if (_initVersion == 0) revert ReinitializableBase_ZeroInitVersion();
+        if (_initVersion == 0) {
+            revert ReinitializableBase_ZeroInitVersion();
+        }
         INIT_VERSION = _initVersion;
     }
 
@@ -390,7 +392,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -422,11 +424,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -441,11 +442,7 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -455,12 +452,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -484,11 +479,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -501,11 +496,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -667,11 +662,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -911,10 +905,7 @@ library LibClone {
     }
 
     /// @dev Deploys a deterministic clone of `implementation` with `salt`.
-    function cloneDeterministic(address implementation, bytes32 salt)
-        internal
-        returns (address instance)
-    {
+    function cloneDeterministic(address implementation, bytes32 salt) internal returns (address instance) {
         instance = cloneDeterministic(0, implementation, salt);
     }
 
@@ -972,10 +963,7 @@ library LibClone {
     }
 
     /// @dev Deploys a PUSH0 clone of `implementation`.
-    function clone_PUSH0(uint256 value, address implementation)
-        internal
-        returns (address instance)
-    {
+    function clone_PUSH0(uint256 value, address implementation) internal returns (address instance) {
         /// @solidity memory-safe-assembly
         assembly {
             /**
@@ -1048,10 +1036,7 @@ library LibClone {
     }
 
     /// @dev Deploys a deterministic PUSH0 clone of `implementation` with `salt`.
-    function cloneDeterministic_PUSH0(address implementation, bytes32 salt)
-        internal
-        returns (address instance)
-    {
+    function cloneDeterministic_PUSH0(address implementation, bytes32 salt) internal returns (address instance) {
         instance = cloneDeterministic_PUSH0(0, implementation, salt);
     }
 
@@ -1090,11 +1075,11 @@ library LibClone {
     /// @dev Returns the address of the deterministic PUSH0 clone of `implementation`,
     /// with `salt` by `deployer`.
     /// Note: The returned result has dirty upper 96 bits. Please clean if used in assembly.
-    function predictDeterministicAddress_PUSH0(
-        address implementation,
-        bytes32 salt,
-        address deployer
-    ) internal pure returns (address predicted) {
+    function predictDeterministicAddress_PUSH0(address implementation, bytes32 salt, address deployer)
+        internal
+        pure
+        returns (address predicted)
+    {
         bytes32 hash = initCodeHash_PUSH0(implementation);
         predicted = predictDeterministicAddress(hash, salt, deployer);
     }
@@ -1112,10 +1097,7 @@ library LibClone {
     }
 
     /// @dev Deploys a clone of `implementation` with immutable arguments encoded in `data`.
-    function clone(uint256 value, address implementation, bytes memory data)
-        internal
-        returns (address instance)
-    {
+    function clone(uint256 value, address implementation, bytes memory data) internal returns (address instance) {
         assembly {
             // Compute the boundaries of the data and cache the memory slots around it.
             let mBefore3 := mload(sub(data, 0x60))
@@ -1211,14 +1193,9 @@ library LibClone {
             mstore(data, 0x5af43d3d93803e606057fd5bf3) // Write the bytecode before the data.
             mstore(sub(data, 0x0d), implementation) // Write the address of the implementation.
             // Write the rest of the bytecode.
-            mstore(
-                sub(data, 0x21),
-                or(shl(0x48, extraLength), 0x593da1005b363d3d373d3d3d3d610000806062363936013d73)
-            )
+            mstore(sub(data, 0x21), or(shl(0x48, extraLength), 0x593da1005b363d3d373d3d3d3d610000806062363936013d73))
             // `keccak256("ReceiveETH(uint256)")`
-            mstore(
-                sub(data, 0x3a), 0x9e4ac34f21c619cefc926c8bd93b54bf5a39c7ab2127a895af1cc0691d7e3dff
-            )
+            mstore(sub(data, 0x3a), 0x9e4ac34f21c619cefc926c8bd93b54bf5a39c7ab2127a895af1cc0691d7e3dff)
             mstore(
                 // Do a out-of-gas revert if `extraLength` is too big. 0xffff - 0x62 + 0x01 = 0xff9e.
                 // The actual EVM limit may be smaller and may change over time.
@@ -1253,12 +1230,10 @@ library LibClone {
 
     /// @dev Deploys a deterministic clone of `implementation`
     /// with immutable arguments encoded in `data` and `salt`.
-    function cloneDeterministic(
-        uint256 value,
-        address implementation,
-        bytes memory data,
-        bytes32 salt
-    ) internal returns (address instance) {
+    function cloneDeterministic(uint256 value, address implementation, bytes memory data, bytes32 salt)
+        internal
+        returns (address instance)
+    {
         assembly {
             // Compute the boundaries of the data and cache the memory slots around it.
             let mBefore3 := mload(sub(data, 0x60))
@@ -1274,14 +1249,9 @@ library LibClone {
             mstore(data, 0x5af43d3d93803e606057fd5bf3) // Write the bytecode before the data.
             mstore(sub(data, 0x0d), implementation) // Write the address of the implementation.
             // Write the rest of the bytecode.
-            mstore(
-                sub(data, 0x21),
-                or(shl(0x48, extraLength), 0x593da1005b363d3d373d3d3d3d610000806062363936013d73)
-            )
+            mstore(sub(data, 0x21), or(shl(0x48, extraLength), 0x593da1005b363d3d373d3d3d3d610000806062363936013d73))
             // `keccak256("ReceiveETH(uint256)")`
-            mstore(
-                sub(data, 0x3a), 0x9e4ac34f21c619cefc926c8bd93b54bf5a39c7ab2127a895af1cc0691d7e3dff
-            )
+            mstore(sub(data, 0x3a), 0x9e4ac34f21c619cefc926c8bd93b54bf5a39c7ab2127a895af1cc0691d7e3dff)
             mstore(
                 // Do a out-of-gas revert if `extraLength` is too big. 0xffff - 0x62 + 0x01 = 0xff9e.
                 // The actual EVM limit may be smaller and may change over time.
@@ -1308,11 +1278,7 @@ library LibClone {
     /// @dev Returns the initialization code hash of the clone of `implementation`
     /// using immutable arguments encoded in `data`.
     /// Used for mining vanity addresses with create2crunch.
-    function initCodeHash(address implementation, bytes memory data)
-        internal
-        pure
-        returns (bytes32 hash)
-    {
+    function initCodeHash(address implementation, bytes memory data) internal pure returns (bytes32 hash) {
         assembly {
             // Compute the boundaries of the data and cache the memory slots around it.
             let mBefore3 := mload(sub(data, 0x60))
@@ -1332,18 +1298,10 @@ library LibClone {
             mstore(data, 0x5af43d3d93803e606057fd5bf3) // Write the bytecode before the data.
             mstore(sub(data, 0x0d), implementation) // Write the address of the implementation.
             // Write the rest of the bytecode.
-            mstore(
-                sub(data, 0x21),
-                or(shl(0x48, extraLength), 0x593da1005b363d3d373d3d3d3d610000806062363936013d73)
-            )
+            mstore(sub(data, 0x21), or(shl(0x48, extraLength), 0x593da1005b363d3d373d3d3d3d610000806062363936013d73))
             // `keccak256("ReceiveETH(uint256)")`
-            mstore(
-                sub(data, 0x3a), 0x9e4ac34f21c619cefc926c8bd93b54bf5a39c7ab2127a895af1cc0691d7e3dff
-            )
-            mstore(
-                sub(data, 0x5a),
-                or(shl(0x78, add(extraLength, 0x62)), 0x6100003d81600a3d39f336602c57343d527f)
-            )
+            mstore(sub(data, 0x3a), 0x9e4ac34f21c619cefc926c8bd93b54bf5a39c7ab2127a895af1cc0691d7e3dff)
+            mstore(sub(data, 0x5a), or(shl(0x78, add(extraLength, 0x62)), 0x6100003d81600a3d39f336602c57343d527f))
             mstore(dataEnd, shl(0xf0, extraLength))
 
             hash := keccak256(sub(data, 0x4c), add(extraLength, 0x6c))
@@ -1360,12 +1318,11 @@ library LibClone {
     /// @dev Returns the address of the deterministic clone of
     /// `implementation` using immutable arguments encoded in `data`, with `salt`, by `deployer`.
     /// Note: The returned result has dirty upper 96 bits. Please clean if used in assembly.
-    function predictDeterministicAddress(
-        address implementation,
-        bytes memory data,
-        bytes32 salt,
-        address deployer
-    ) internal pure returns (address predicted) {
+    function predictDeterministicAddress(address implementation, bytes memory data, bytes32 salt, address deployer)
+        internal
+        pure
+        returns (address predicted)
+    {
         bytes32 hash = initCodeHash(implementation, data);
         predicted = predictDeterministicAddress(hash, salt, deployer);
     }
@@ -1383,10 +1340,7 @@ library LibClone {
     }
 
     /// @dev Deploys a minimal ERC1967 proxy with `implementation`.
-    function deployERC1967(uint256 value, address implementation)
-        internal
-        returns (address instance)
-    {
+    function deployERC1967(uint256 value, address implementation) internal returns (address instance) {
         /// @solidity memory-safe-assembly
         assembly {
             /**
@@ -1467,10 +1421,7 @@ library LibClone {
     }
 
     /// @dev Deploys a deterministic minimal ERC1967 proxy with `implementation` and `salt`.
-    function deployDeterministicERC1967(address implementation, bytes32 salt)
-        internal
-        returns (address instance)
-    {
+    function deployDeterministicERC1967(address implementation, bytes32 salt) internal returns (address instance) {
         instance = deployDeterministicERC1967(0, implementation, salt);
     }
 
@@ -1571,11 +1522,11 @@ library LibClone {
     /// @dev Returns the address of the deterministic clone of
     /// `implementation` using immutable arguments encoded in `data`, with `salt`, by `deployer`.
     /// Note: The returned result has dirty upper 96 bits. Please clean if used in assembly.
-    function predictDeterministicAddressERC1967(
-        address implementation,
-        bytes32 salt,
-        address deployer
-    ) internal pure returns (address predicted) {
+    function predictDeterministicAddressERC1967(address implementation, bytes32 salt, address deployer)
+        internal
+        pure
+        returns (address predicted)
+    {
         bytes32 hash = initCodeHashERC1967(implementation);
         predicted = predictDeterministicAddress(hash, salt, deployer);
     }
@@ -1778,10 +1729,7 @@ library LibPosition {
     /// @param _upperBoundExclusive The exclusive upper depth bound, used to inform where to stop in order
     ///                             to not escape a sub-tree.
     /// @return ancestor_ The highest ancestor of `position` that commits to the same trace index.
-    function traceAncestorBounded(
-        Position _position,
-        uint256 _upperBoundExclusive
-    )
+    function traceAncestorBounded(Position _position, uint256 _upperBoundExclusive)
         internal
         pure
         returns (Position ancestor_)
@@ -1872,11 +1820,7 @@ library LibClaim {
     /// @param _position The position of `claim`.
     /// @param _challengeIndex The index of the claim being moved against.
     /// @return claimHash_ A hash of abi.encodePacked(claim, position|challengeIndex);
-    function hashClaimPos(
-        Claim _claim,
-        Position _position,
-        uint256 _challengeIndex
-    )
+    function hashClaimPos(Claim _claim, Position _position, uint256 _challengeIndex)
         internal
         pure
         returns (Hash claimHash_)
@@ -1920,11 +1864,7 @@ library LibGameId {
     /// @param _timestamp The timestamp of the game's creation.
     /// @param _gameProxy The game proxy address.
     /// @return gameId_ The packed GameId.
-    function pack(
-        GameType _gameType,
-        Timestamp _timestamp,
-        address _gameProxy
-    )
+    function pack(GameType _gameType, Timestamp _timestamp, address _gameProxy)
         internal
         pure
         returns (GameId gameId_)
@@ -2105,11 +2045,7 @@ contract DisputeGameFactory is ProxyAdminOwnedBase, ReinitializableBase, Ownable
     /// @return proxy_ The clone of the `DisputeGame` created with the given parameters.
     ///         Returns `address(0)` if nonexistent.
     /// @return timestamp_ The timestamp of the creation of the dispute game.
-    function games(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes calldata _extraData
-    )
+    function games(GameType _gameType, Claim _rootClaim, bytes calldata _extraData)
         external
         view
         returns (IDisputeGame proxy_, Timestamp timestamp_)
@@ -2140,11 +2076,7 @@ contract DisputeGameFactory is ProxyAdminOwnedBase, ReinitializableBase, Ownable
     /// @param _rootClaim The root claim of the DisputeGame.
     /// @param _extraData Any extra data that should be provided to the created dispute game.
     /// @return proxy_ The address of the created DisputeGame proxy.
-    function create(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes calldata _extraData
-    )
+    function create(GameType _gameType, Claim _rootClaim, bytes calldata _extraData)
         external
         payable
         returns (IDisputeGame proxy_)
@@ -2153,10 +2085,14 @@ contract DisputeGameFactory is ProxyAdminOwnedBase, ReinitializableBase, Ownable
         IDisputeGame impl = gameImpls[_gameType];
 
         // If there is no implementation to clone for the given `GameType`, revert.
-        if (address(impl) == address(0)) revert NoImplementation(_gameType);
+        if (address(impl) == address(0)) {
+            revert NoImplementation(_gameType);
+        }
 
         // If the required initialization bond is not met, revert.
-        if (msg.value != initBonds[_gameType]) revert IncorrectBondAmount();
+        if (msg.value != initBonds[_gameType]) {
+            revert IncorrectBondAmount();
+        }
 
         // Get the hash of the parent block.
         bytes32 parentHash = blockhash(block.number - 1);
@@ -2176,13 +2112,15 @@ contract DisputeGameFactory is ProxyAdminOwnedBase, ReinitializableBase, Ownable
         proxy_ = IDisputeGame(
             address(impl).clone(abi.encodePacked(msg.sender, _rootClaim, parentHash, _extraData, gameArgs[_gameType]))
         );
-        proxy_.initialize{ value: msg.value }();
+        proxy_.initialize{value: msg.value}();
 
         // Compute the unique identifier for the dispute game.
         Hash uuid = getGameUUID(_gameType, _rootClaim, _extraData);
 
         // If a dispute game with the same UUID already exists, revert.
-        if (GameId.unwrap(_disputeGames[uuid]) != bytes32(0)) revert GameAlreadyExists(uuid);
+        if (GameId.unwrap(_disputeGames[uuid]) != bytes32(0)) {
+            revert GameAlreadyExists(uuid);
+        }
 
         // Pack the game ID.
         GameId id = LibGameId.pack(_gameType, Timestamp.wrap(uint64(block.timestamp)), address(proxy_));
@@ -2200,11 +2138,7 @@ contract DisputeGameFactory is ProxyAdminOwnedBase, ReinitializableBase, Ownable
     /// @param _rootClaim The root claim of the DisputeGame.
     /// @param _extraData Any extra data that should be provided to the created dispute game.
     /// @return uuid_ The unique identifier for the given dispute game parameters.
-    function getGameUUID(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes calldata _extraData
-    )
+    function getGameUUID(GameType _gameType, Claim _rootClaim, bytes calldata _extraData)
         public
         pure
         returns (Hash uuid_)
@@ -2217,17 +2151,15 @@ contract DisputeGameFactory is ProxyAdminOwnedBase, ReinitializableBase, Ownable
     /// @param _gameType The type of game to find.
     /// @param _start The index to start the reverse search from.
     /// @param _n The number of games to find.
-    function findLatestGames(
-        GameType _gameType,
-        uint256 _start,
-        uint256 _n
-    )
+    function findLatestGames(GameType _gameType, uint256 _start, uint256 _n)
         external
         view
         returns (GameSearchResult[] memory games_)
     {
         // If the `_start` index is greater than or equal to the game array length or `_n == 0`, return an empty array.
-        if (_start >= _disputeGameList.length || _n == 0) return games_;
+        if (_start >= _disputeGameList.length || _n == 0) {
+            return games_;
+        }
 
         // Allocate enough memory for the full array, but start the array's length at `0`. We may not use all of the
         // memory allocated, but we don't know ahead of time the final size of the array.
@@ -2258,7 +2190,9 @@ contract DisputeGameFactory is ProxyAdminOwnedBase, ReinitializableBase, Ownable
                     rootClaim: rootClaim,
                     extraData: extraData
                 });
-                if (games_.length >= _n) break;
+                if (games_.length >= _n) {
+                    break;
+                }
             }
 
             unchecked {

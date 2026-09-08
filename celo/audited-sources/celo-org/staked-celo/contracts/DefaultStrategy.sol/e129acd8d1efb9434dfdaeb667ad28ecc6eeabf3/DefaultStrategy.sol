@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity 0.8.11;
 
-import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
+import "./Managed.sol";
 import "./common/UUPSOwnableUpgradeable.sol";
 import "./common/linkedlists/AddressSortedLinkedList.sol";
 import "./interfaces/IAccount.sol";
 import "./interfaces/IGroupHealth.sol";
 import "./interfaces/IManager.sol";
 import "./interfaces/ISpecificGroupStrategy.sol";
-import "./Managed.sol";
 
 /**
  * @title DefaultStrategy is responsible for handling any deposit/withdrawal
@@ -230,16 +230,11 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      * @param _groupHealth The address of the GroupHealth contract.
      * @param _specificGroupStrategy The address of the SpecificGroupStrategy contract.
      */
-    function setDependencies(
-        address _account,
-        address _groupHealth,
-        address _specificGroupStrategy
-    ) external onlyOwner {
-        if (
-            _account == address(0) ||
-            _groupHealth == address(0) ||
-            _specificGroupStrategy == address(0)
-        ) {
+    function setDependencies(address _account, address _groupHealth, address _specificGroupStrategy)
+        external
+        onlyOwner
+    {
+        if (_account == address(0) || _groupHealth == address(0) || _specificGroupStrategy == address(0)) {
             revert AddressZeroNotAllowed();
         }
 
@@ -254,11 +249,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      * @param withdrawFrom Maximum number of groups that can be withdrawn from.
      * @param loopLimit The sorting loop limit while sorting active groups on chain.
      */
-    function setSortingParams(
-        uint256 distributeTo,
-        uint256 withdrawFrom,
-        uint256 loopLimit
-    ) external onlyOwner {
+    function setSortingParams(uint256 distributeTo, uint256 withdrawFrom, uint256 loopLimit) external onlyOwner {
         maxGroupsToDistributeTo = distributeTo;
         maxGroupsToWithdrawFrom = withdrawFrom;
         sortingLoopLimit = loopLimit;
@@ -287,11 +278,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      * @param lesserKey The key of the group less than the group to update.
      * @param greaterKey The key of the group greater than the group to update.
      */
-    function updateActiveGroupOrder(
-        address group,
-        address lesserKey,
-        address greaterKey
-    ) external {
+    function updateActiveGroupOrder(address group, address lesserKey, address greaterKey) external {
         if (!unsortedGroups.contains(group)) {
             revert NotUnsortedGroup();
         }
@@ -314,11 +301,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      * @param greater The group receiving more votes (in default strategy) than `group`,
      *  or 0 if `group` has the most votes of any validator group.
      */
-    function activateGroup(
-        address group,
-        address lesser,
-        address greater
-    ) external onlyOwner {
+    function activateGroup(address group, address lesser, address greater) external onlyOwner {
         if (!groupHealth.isGroupValid(group)) {
             revert GroupNotEligible(group);
         }
@@ -329,15 +312,11 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
 
         // For migration purposes between V1 and V2. It can be removed once migrated to V2.
         uint256 currentStCelo = 0;
-        uint256 stCeloForWholeGroup = IManager(manager).toStakedCelo(
-            account.getCeloForGroup(group)
-        );
+        uint256 stCeloForWholeGroup = IManager(manager).toStakedCelo(account.getCeloForGroup(group));
 
         if (stCeloForWholeGroup != 0) {
-            (uint256 specificGroupTotalStCelo, , ) = specificGroupStrategy.getStCeloInGroup(group);
-            currentStCelo =
-                stCeloForWholeGroup -
-                Math.min(stCeloForWholeGroup, specificGroupTotalStCelo);
+            (uint256 specificGroupTotalStCelo,,) = specificGroupStrategy.getStCeloInGroup(group);
+            currentStCelo = stCeloForWholeGroup - Math.min(stCeloForWholeGroup, specificGroupTotalStCelo);
             updateGroupStCelo(group, currentStCelo, true);
         }
 
@@ -362,27 +341,20 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
             revert InvalidToGroup(toGroup);
         }
 
-        (uint256 expectedFromStCelo, uint256 actualFromStCelo) = getExpectedAndActualStCeloForGroup(
-            fromGroup
-        );
+        (uint256 expectedFromStCelo, uint256 actualFromStCelo) = getExpectedAndActualStCeloForGroup(fromGroup);
         if (actualFromStCelo <= expectedFromStCelo) {
             // fromGroup needs to have more stCELO than it should
             revert RebalanceNoExtraStCelo(fromGroup, actualFromStCelo, expectedFromStCelo);
         }
 
-        (uint256 expectedToStCelo, uint256 actualToStCelo) = getExpectedAndActualStCeloForGroup(
-            toGroup
-        );
+        (uint256 expectedToStCelo, uint256 actualToStCelo) = getExpectedAndActualStCeloForGroup(toGroup);
 
         if (actualToStCelo >= expectedToStCelo) {
             // toGroup needs to have less stCELO than it should
             revert RebalanceEnoughStCelo(toGroup, actualToStCelo, expectedToStCelo);
         }
 
-        uint256 toMove = Math.min(
-            actualFromStCelo - expectedFromStCelo,
-            expectedToStCelo - actualToStCelo
-        );
+        uint256 toMove = Math.min(actualFromStCelo - expectedFromStCelo, expectedToStCelo - actualToStCelo);
 
         updateGroupStCelo(fromGroup, toMove, false);
         updateGroupStCelo(toGroup, toMove, true);
@@ -417,26 +389,19 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
 
         while (groupsIndex < maxGroupCount && celoAmount != 0 && votedGroup != address(0)) {
             votes[groupsIndex] = Math.min(
-                Math.min(
-                    account.getCeloForGroup(votedGroup),
-                    IManager(manager).toCelo(stCeloInGroup[votedGroup])
-                ),
+                Math.min(account.getCeloForGroup(votedGroup), IManager(manager).toCelo(stCeloInGroup[votedGroup])),
                 celoAmount
             );
 
             groups[groupsIndex] = votedGroup;
             celoAmount -= votes[groupsIndex];
-            updateGroupStCelo(
-                votedGroup,
-                IManager(manager).toStakedCelo(votes[groupsIndex]),
-                false
-            );
+            updateGroupStCelo(votedGroup, IManager(manager).toStakedCelo(votes[groupsIndex]), false);
             trySort(votedGroup, stCeloInGroup[votedGroup], false);
 
             if (sorted) {
                 votedGroup = activeGroups.getHead();
             } else {
-                (, votedGroup, ) = activeGroups.get(votedGroup);
+                (, votedGroup,) = activeGroups.get(votedGroup);
             }
 
             groupsIndex++;
@@ -503,7 +468,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      */
     function getGroupsHead() external view returns (address head, address previousAddress) {
         head = activeGroups.getHead();
-        (, previousAddress, ) = activeGroups.get(head);
+        (, previousAddress,) = activeGroups.get(head);
     }
 
     /**
@@ -513,7 +478,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      */
     function getGroupsTail() external view returns (address tail, address nextAddress) {
         tail = activeGroups.getTail();
-        (, , nextAddress) = activeGroups.get(tail);
+        (,, nextAddress) = activeGroups.get(tail);
     }
 
     /**
@@ -548,16 +513,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 0, 0);
     }
 
@@ -578,8 +534,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
         uint256 numberOfActiveGroups = activeGroups.getNumElements();
         expectedStCelo = totalStCeloInStrategy / numberOfActiveGroups;
         if (group == head) {
-            uint256 divisionResidue = totalStCeloInStrategy -
-                (expectedStCelo * numberOfActiveGroups);
+            uint256 divisionResidue = totalStCeloInStrategy - (expectedStCelo * numberOfActiveGroups);
             expectedStCelo += divisionResidue;
         }
 
@@ -593,11 +548,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      * @param stCeloAmount The amount of stCELO.
      * @param add Whether to add or substract.
      */
-    function updateGroupStCelo(
-        address group,
-        uint256 stCeloAmount,
-        bool add
-    ) internal {
+    function updateGroupStCelo(address group, uint256 stCeloAmount, bool add) internal {
         if (add) {
             stCeloInGroup[group] += stCeloAmount;
             totalStCeloInStrategy += stCeloAmount;
@@ -626,19 +577,9 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
             uint256[] memory fromVotes = new uint256[](1);
             fromGroups[0] = group;
             fromVotes[0] = IManager(manager).toCelo(groupTotalStCeloVotes);
-            (
-                address[] memory toGroups,
-                uint256[] memory toVotes
-            ) = _generateDepositVoteDistribution(
-                    IManager(manager).toCelo(groupTotalStCeloVotes),
-                    address(0)
-                );
-            IManager(manager).scheduleTransferWithinStrategy(
-                fromGroups,
-                toGroups,
-                fromVotes,
-                toVotes
-            );
+            (address[] memory toGroups, uint256[] memory toVotes) =
+                _generateDepositVoteDistribution(IManager(manager).toCelo(groupTotalStCeloVotes), address(0));
+            IManager(manager).scheduleTransferWithinStrategy(fromGroups, toGroups, fromVotes, toVotes);
         }
 
         emit GroupRemoved(group);
@@ -671,7 +612,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
         while (groupsIndex < maxGroupCount && celoAmount != 0 && votedGroup != address(0)) {
             uint256 receivableVotes = IManager(manager).getReceivableVotesForGroup(votedGroup);
             if (votedGroup == depositGroupToIgnore || receivableVotes == 0) {
-                (, , votedGroup) = activeGroups.get(votedGroup);
+                (,, votedGroup) = activeGroups.get(votedGroup);
                 continue;
             }
 
@@ -684,7 +625,7 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
             if (sorted) {
                 votedGroup = activeGroups.getTail();
             } else {
-                (, , votedGroup) = activeGroups.get(votedGroup);
+                (,, votedGroup) = activeGroups.get(votedGroup);
             }
             groupsIndex++;
         }
@@ -708,26 +649,14 @@ contract DefaultStrategy is UUPSOwnableUpgradeable, Managed {
      * @param newValue The new value of group.
      * @param valueIncreased Whether value increased/decreased compared to original value.
      */
-    function trySort(
-        address group,
-        uint256 newValue,
-        bool valueIncreased
-    ) private {
+    function trySort(address group, uint256 newValue, bool valueIncreased) private {
         if (unsortedGroups.contains(group)) {
             return;
         }
 
         (address lesserKey, address greaterKey) = valueIncreased
-            ? activeGroups.getLesserAndGreaterOfAddressThatIncreasedValue(
-                group,
-                newValue,
-                sortingLoopLimit
-            )
-            : activeGroups.getLesserAndGreaterOfAddressThatDecreasedValue(
-                group,
-                newValue,
-                sortingLoopLimit
-            );
+            ? activeGroups.getLesserAndGreaterOfAddressThatIncreasedValue(group, newValue, sortingLoopLimit)
+            : activeGroups.getLesserAndGreaterOfAddressThatDecreasedValue(group, newValue, sortingLoopLimit);
         if (lesserKey != greaterKey || activeGroups.getNumElements() == 1) {
             activeGroups.update(group, newValue, lesserKey, greaterKey);
         } else {

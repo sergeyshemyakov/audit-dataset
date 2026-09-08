@@ -35,7 +35,7 @@ contract WrappedEther is ERC20Permit {
     function withdraw(uint256 wad) external {
         _burn(msg.sender, wad);
 
-        (bool success, ) = msg.sender.call{value: wad}("");
+        (bool success,) = msg.sender.call{value: wad}("");
         require(success, "withdraw ETH failed");
 
         emit Withdrawal(msg.sender, wad);

@@ -1,13 +1,14 @@
 //SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity 0.8.11;
 
-import "@openzeppelin/contracts/utils/math/Math.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
+import "@openzeppelin/contracts/utils/math/Math.sol";
 
-import "./common/ERC20Upgradeable.sol";
-import "./common/UsingRegistryUpgradeable.sol";
-import "./common/UUPSOwnableUpgradeable.sol";
 import "./Managed.sol";
+import "./common/ERC20Upgradeable.sol";
+import "./common/UUPSOwnableUpgradeable.sol";
+import "./common/UsingRegistryUpgradeable.sol";
+
 import "./interfaces/IManager.sol";
 
 /**
@@ -113,16 +114,7 @@ contract StakedCelo is ERC20Upgradeable, UUPSOwnableUpgradeable, Managed {
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 2, 1);
     }
 
@@ -135,9 +127,7 @@ contract StakedCelo is ERC20Upgradeable, UUPSOwnableUpgradeable, Managed {
         if (previouslyLocked == 0) {
             revert NoLockedStakedCelo(beneficiary);
         }
-        uint256 currentlyLocked = IManager(manager).updateHistoryAndReturnLockedStCeloInVoting(
-            beneficiary
-        );
+        uint256 currentlyLocked = IManager(manager).updateHistoryAndReturnLockedStCeloInVoting(beneficiary);
         if (previouslyLocked <= currentlyLocked) {
             revert NothingToUnlock(beneficiary);
         }
@@ -159,12 +149,9 @@ contract StakedCelo is ERC20Upgradeable, UUPSOwnableUpgradeable, Managed {
 
     /**
      * @notice Registers transfer to manager whenever stCELO is being transfered.
-     **/
-    function _afterTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal override {
+     *
+     */
+    function _afterTokenTransfer(address from, address to, uint256 amount) internal override {
         if (from == address(0) || to == address(0)) {
             // mint or burn
             return;

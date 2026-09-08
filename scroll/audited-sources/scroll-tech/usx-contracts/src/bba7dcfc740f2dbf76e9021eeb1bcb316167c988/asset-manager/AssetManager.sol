@@ -1,20 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-import {EnumerableMap} from "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 import {AccessControlUpgradeable} from "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import {EnumerableMap} from "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 
 import {IAssetManager} from "../interfaces/IAssetManager.sol";
 
-contract AssetManager is
-    UUPSUpgradeable,
-    AccessControlUpgradeable,
-    IAssetManager
-{
+contract AssetManager is UUPSUpgradeable, AccessControlUpgradeable, IAssetManager {
     using SafeERC20 for IERC20;
     using EnumerableMap for EnumerableMap.AddressToUintMap;
 
@@ -24,11 +20,7 @@ contract AssetManager is
     /// @param account The account whose weight was updated
     /// @param oldWeight The old weight of the account
     /// @param newWeight The new weight of the account
-    event WeightUpdated(
-        address indexed account,
-        uint256 oldWeight,
-        uint256 newWeight
-    );
+    event WeightUpdated(address indexed account, uint256 oldWeight, uint256 newWeight);
 
     /// @notice Emitted when USDC is distributed to an account
     /// @param account The account to which USDC was distributed
@@ -63,18 +55,16 @@ contract AssetManager is
     bytes32 private constant ASSET_MANAGER_STORAGE_LOCATION =
         0xde282b4c51a1df38ec1c6abe7d3af4a304418f4234a686e0dde0c8e3f160a500;
 
-    function _getStorage()
-        private
-        pure
-        returns (AssetManagerStorage storage $)
-    {
+    function _getStorage() private pure returns (AssetManagerStorage storage $) {
         assembly {
             $.slot := ASSET_MANAGER_STORAGE_LOCATION
         }
     }
 
     modifier onlyTreasury() {
-        if (msg.sender != treasury) revert NotTreasury();
+        if (msg.sender != treasury) {
+            revert NotTreasury();
+        }
         _;
     }
 
@@ -164,10 +154,7 @@ contract AssetManager is
     /// @notice Update the weight of an account
     /// @param account The account to update the weight of
     /// @param newWeight The new weight of the account
-    function updateWeight(
-        address account,
-        uint256 newWeight
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function updateWeight(address account, uint256 newWeight) external onlyRole(DEFAULT_ADMIN_ROLE) {
         AssetManagerStorage storage $ = _getStorage();
         (bool exists, uint256 oldWeight) = $.weights.tryGet(account);
         if (!exists) {
@@ -187,7 +174,5 @@ contract AssetManager is
 
     /// @notice Authorize upgrade to new implementation
     /// @param newImplementation Address of new implementation
-    function _authorizeUpgrade(
-        address newImplementation
-    ) internal override onlyRole(GOVERNANCE_ROLE) {}
+    function _authorizeUpgrade(address newImplementation) internal override onlyRole(GOVERNANCE_ROLE) {}
 }

@@ -11,10 +11,11 @@ import {ITokenRateLimiter} from "./ITokenRateLimiter.sol";
 // solhint-disable not-rely-on-time
 
 contract TokenRateLimiter is AccessControlEnumerable, ITokenRateLimiter {
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct TokenAmount {
         // The timestamp when the amount is updated.
         uint48 lastUpdateTs;
@@ -24,9 +25,11 @@ contract TokenRateLimiter is AccessControlEnumerable, ITokenRateLimiter {
         uint104 amount;
     }
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The role for token spender.
     bytes32 public constant TOKEN_SPENDER_ROLE = keccak256("TOKEN_SPENDER_ROLE");
@@ -35,9 +38,11 @@ contract TokenRateLimiter is AccessControlEnumerable, ITokenRateLimiter {
     /// @dev The time frame for the `k`-th period is `[periodDuration * k, periodDuration * (k + 1))`.
     uint256 public immutable periodDuration;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from token address to the total amounts used in current period and total token amount limit.
     mapping(address => TokenAmount) public currentPeriod;
@@ -45,10 +50,11 @@ contract TokenRateLimiter is AccessControlEnumerable, ITokenRateLimiter {
     /// @dev The storage slots for future usage.
     uint256[49] private __gap;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(uint256 _periodDuration) {
         if (_periodDuration == 0) {
             revert PeriodIsZero();
@@ -59,13 +65,17 @@ contract TokenRateLimiter is AccessControlEnumerable, ITokenRateLimiter {
         periodDuration = _periodDuration;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc ITokenRateLimiter
     function addUsedAmount(address _token, uint256 _amount) external override onlyRole(TOKEN_SPENDER_ROLE) {
-        if (_amount == 0) return;
+        if (_amount == 0) {
+            return;
+        }
 
         uint256 _currentPeriodStart = (block.timestamp / periodDuration) * periodDuration;
 
@@ -87,9 +97,11 @@ contract TokenRateLimiter is AccessControlEnumerable, ITokenRateLimiter {
         currentPeriod[_token] = _currentPeriod;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the total token amount limit.
     /// @param _newTotalLimit The new total limit.

@@ -259,11 +259,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         (, uint16 version) = decodeVersionedNonce(_nonce);
         if (version == 0) {
             return encodeCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -280,12 +276,7 @@ library Encoding {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Encoded cross domain message.
-    function encodeCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function encodeCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes memory)
@@ -308,11 +299,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         return abi.encodeWithSignature(
             "relayMessage(uint256,address,address,uint256,uint256,bytes)",
             _nonce,
@@ -370,11 +357,7 @@ library Encoding {
         uint256 blobBaseFee,
         bytes32 hash,
         bytes32 batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesEcotone()"));
         return abi.encodePacked(
             functionSignature,
@@ -410,11 +393,7 @@ library Encoding {
         uint256 _blobBaseFee,
         bytes32 _hash,
         bytes32 _batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesIsthmus()"));
         return abi.encodePacked(
             functionSignature,
@@ -468,11 +447,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         (, uint16 version) = Encoding.decodeVersionedNonce(_nonce);
         if (version == 0) {
             return hashCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -489,12 +464,7 @@ library Hashing {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Hashed cross domain message.
-    function hashCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function hashCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes32)
@@ -517,11 +487,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(Encoding.encodeCrossDomainMessageV1(_nonce, _sender, _target, _value, _gasLimit, _data));
     }
 
@@ -552,7 +518,7 @@ library Burn {
     /// @notice Burns a given amount of ETH.
     /// @param _amount Amount of ETH to burn.
     function eth(uint256 _amount) internal {
-        new Burner{ value: _amount }();
+        new Burner{value: _amount}();
     }
 
     /// @notice Burns a given amount of gas.

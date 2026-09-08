@@ -123,35 +123,93 @@ library Predeploys {
     /// @notice Returns the name of the predeploy at the given address.
     function getName(address _addr) internal pure returns (string memory out_) {
         require(isPredeployNamespace(_addr), "Predeploys: address must be a predeploy");
-        if (_addr == LEGACY_MESSAGE_PASSER) return "LegacyMessagePasser";
-        if (_addr == L1_MESSAGE_SENDER) return "L1MessageSender";
-        if (_addr == DEPLOYER_WHITELIST) return "DeployerWhitelist";
-        if (_addr == WETH) return "WETH";
-        if (_addr == L2_CROSS_DOMAIN_MESSENGER) return "L2CrossDomainMessenger";
-        if (_addr == GAS_PRICE_ORACLE) return "GasPriceOracle";
-        if (_addr == L2_STANDARD_BRIDGE) return "L2StandardBridge";
-        if (_addr == SEQUENCER_FEE_WALLET) return "SequencerFeeVault";
-        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) return "OptimismMintableERC20Factory";
-        if (_addr == L1_BLOCK_NUMBER) return "L1BlockNumber";
-        if (_addr == L2_ERC721_BRIDGE) return "L2ERC721Bridge";
-        if (_addr == L1_BLOCK_ATTRIBUTES) return "L1Block";
-        if (_addr == L2_TO_L1_MESSAGE_PASSER) return "L2ToL1MessagePasser";
-        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) return "OptimismMintableERC721Factory";
-        if (_addr == PROXY_ADMIN) return "ProxyAdmin";
-        if (_addr == BASE_FEE_VAULT) return "BaseFeeVault";
-        if (_addr == L1_FEE_VAULT) return "L1FeeVault";
-        if (_addr == OPERATOR_FEE_VAULT) return "OperatorFeeVault";
-        if (_addr == SCHEMA_REGISTRY) return "SchemaRegistry";
-        if (_addr == EAS) return "EAS";
-        if (_addr == GOVERNANCE_TOKEN) return "GovernanceToken";
-        if (_addr == LEGACY_ERC20_ETH) return "LegacyERC20ETH";
-        if (_addr == CROSS_L2_INBOX) return "CrossL2Inbox";
-        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) return "L2ToL2CrossDomainMessenger";
-        if (_addr == SUPERCHAIN_ETH_BRIDGE) return "SuperchainETHBridge";
-        if (_addr == ETH_LIQUIDITY) return "ETHLiquidity";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) return "OptimismSuperchainERC20Factory";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) return "OptimismSuperchainERC20Beacon";
-        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) return "SuperchainTokenBridge";
+        if (_addr == LEGACY_MESSAGE_PASSER) {
+            return "LegacyMessagePasser";
+        }
+        if (_addr == L1_MESSAGE_SENDER) {
+            return "L1MessageSender";
+        }
+        if (_addr == DEPLOYER_WHITELIST) {
+            return "DeployerWhitelist";
+        }
+        if (_addr == WETH) {
+            return "WETH";
+        }
+        if (_addr == L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2CrossDomainMessenger";
+        }
+        if (_addr == GAS_PRICE_ORACLE) {
+            return "GasPriceOracle";
+        }
+        if (_addr == L2_STANDARD_BRIDGE) {
+            return "L2StandardBridge";
+        }
+        if (_addr == SEQUENCER_FEE_WALLET) {
+            return "SequencerFeeVault";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) {
+            return "OptimismMintableERC20Factory";
+        }
+        if (_addr == L1_BLOCK_NUMBER) {
+            return "L1BlockNumber";
+        }
+        if (_addr == L2_ERC721_BRIDGE) {
+            return "L2ERC721Bridge";
+        }
+        if (_addr == L1_BLOCK_ATTRIBUTES) {
+            return "L1Block";
+        }
+        if (_addr == L2_TO_L1_MESSAGE_PASSER) {
+            return "L2ToL1MessagePasser";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) {
+            return "OptimismMintableERC721Factory";
+        }
+        if (_addr == PROXY_ADMIN) {
+            return "ProxyAdmin";
+        }
+        if (_addr == BASE_FEE_VAULT) {
+            return "BaseFeeVault";
+        }
+        if (_addr == L1_FEE_VAULT) {
+            return "L1FeeVault";
+        }
+        if (_addr == OPERATOR_FEE_VAULT) {
+            return "OperatorFeeVault";
+        }
+        if (_addr == SCHEMA_REGISTRY) {
+            return "SchemaRegistry";
+        }
+        if (_addr == EAS) {
+            return "EAS";
+        }
+        if (_addr == GOVERNANCE_TOKEN) {
+            return "GovernanceToken";
+        }
+        if (_addr == LEGACY_ERC20_ETH) {
+            return "LegacyERC20ETH";
+        }
+        if (_addr == CROSS_L2_INBOX) {
+            return "CrossL2Inbox";
+        }
+        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2ToL2CrossDomainMessenger";
+        }
+        if (_addr == SUPERCHAIN_ETH_BRIDGE) {
+            return "SuperchainETHBridge";
+        }
+        if (_addr == ETH_LIQUIDITY) {
+            return "ETHLiquidity";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) {
+            return "OptimismSuperchainERC20Factory";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) {
+            return "OptimismSuperchainERC20Beacon";
+        }
+        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) {
+            return "SuperchainTokenBridge";
+        }
         revert("Predeploys: unnamed predeploy");
     }
 
@@ -161,11 +219,7 @@ library Predeploys {
     }
 
     /// @notice Returns true if the address is a defined predeploy that is embedded into new OP-Stack chains.
-    function isSupportedPredeploy(
-        address _addr,
-        uint256 _fork,
-        bool _enableCrossL2Inbox
-    )
+    function isSupportedPredeploy(address _addr, uint256 _fork, bool _enableCrossL2Inbox)
         internal
         pure
         returns (bool)
@@ -215,7 +269,9 @@ abstract contract ReinitializableBase {
     /// @param _initVersion Current initialization version.
     constructor(uint8 _initVersion) {
         // Sanity check, we should never have a zero init version.
-        if (_initVersion == 0) revert ReinitializableBase_ZeroInitVersion();
+        if (_initVersion == 0) {
+            revert ReinitializableBase_ZeroInitVersion();
+        }
         INIT_VERSION = _initVersion;
     }
 
@@ -459,7 +515,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -491,11 +547,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -510,11 +565,7 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -524,12 +575,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -553,11 +602,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -570,11 +619,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -1018,11 +1067,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         (, uint16 version) = decodeVersionedNonce(_nonce);
         if (version == 0) {
             return encodeCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -1039,12 +1084,7 @@ library Encoding {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Encoded cross domain message.
-    function encodeCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function encodeCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes memory)
@@ -1068,11 +1108,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         // nosemgrep: sol-style-use-abi-encodecall
         return abi.encodeWithSignature(
             "relayMessage(uint256,address,address,uint256,uint256,bytes)",
@@ -1131,11 +1167,7 @@ library Encoding {
         uint256 _blobBaseFee,
         bytes32 _hash,
         bytes32 _batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesEcotone()"));
         return abi.encodePacked(
             functionSignature,
@@ -1175,11 +1207,7 @@ library Encoding {
         bytes32 _batcherHash,
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesIsthmus()"));
         return abi.encodePacked(
             functionSignature,
@@ -1223,11 +1251,7 @@ library Encoding {
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant,
         uint16 _daFootprintGasScalar
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesJovian()"));
 
         // Split up the encoding into multiple parts to avoid stack too deep.
@@ -1305,11 +1329,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         (, uint16 version) = Encoding.decodeVersionedNonce(_nonce);
         if (version == 0) {
             return hashCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -1326,12 +1346,7 @@ library Hashing {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Hashed cross domain message.
-    function hashCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function hashCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes32)
@@ -1354,11 +1369,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(Encoding.encodeCrossDomainMessageV1(_nonce, _sender, _target, _value, _gasLimit, _data));
     }
 
@@ -1400,11 +1411,7 @@ library Hashing {
         address _sender,
         address _target,
         bytes memory _message
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(abi.encode(_destination, _source, _nonce, _sender, _target, _message));
     }
 
@@ -1449,12 +1456,7 @@ library SafeCall {
     /// @param _gas      Amount of gas to pass to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function call(
-        address _target,
-        uint256 _gas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function call(address _target, uint256 _gas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool success_)
     {
@@ -1477,14 +1479,14 @@ library SafeCall {
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, uint256 _value, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata});
     }
 
     /// @notice Perform a low level call without copying any returndata
     /// @param _target   Address to call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata});
     }
 
     /// @notice Helper function to determine if there is sufficient gas remaining within the context
@@ -1526,12 +1528,7 @@ library SafeCall {
     /// @param _minGas   The minimum amount of gas that may be passed to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function callWithMinGas(
-        address _target,
-        uint256 _minGas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function callWithMinGas(address _target, uint256 _minGas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool)
     {
@@ -1630,6 +1627,7 @@ library Math {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -1671,11 +1669,7 @@ library Math {
      * @dev Original credit to Remco Bloemen under MIT license (https://xn--2-umb.com/21/muldiv)
      * with further edits by Uniswap Labs also under MIT license.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 result) {
         unchecked {
             // 512-bit multiply [prod1 prod0] = x * y. Compute the product mod 2^256 and mod 2^256 - 1, then use
             // use the Chinese Remainder Theorem to reconstruct the 512 bit result. The result is stored in two 256
@@ -1756,12 +1750,7 @@ library Math {
     /**
      * @notice Calculates x * y / denominator with full precision, following the selected rounding direction.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator,
-        Rounding rounding
-    ) internal pure returns (uint256) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator, Rounding rounding) internal pure returns (uint256) {
         uint256 result = mulDiv(x, y, denominator);
         if (rounding == Rounding.Up && mulmod(x, y, denominator) > 0) {
             result += 1;
@@ -1984,10 +1973,7 @@ abstract contract CrossDomainMessenger is
         uint256 _value,
         uint256 _minGasLimit,
         bytes calldata _message
-    )
-        external
-        payable
-    {
+    ) external payable {
         // On L1 this function will check the Portal for its paused status.
         // On L2 this function should be a no-op, because paused will always return false.
         require(paused() == false, "CrossDomainMessenger: paused");
@@ -2236,7 +2222,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ProxyAdminOwnedBase, Re
         // Now perform initialization logic.
         systemConfig = _systemConfig;
         portal = _portal;
-        __CrossDomainMessenger_init({ _otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER) });
+        __CrossDomainMessenger_init({_otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER)});
     }
 
     /// @inheritdoc CrossDomainMessenger
@@ -2260,7 +2246,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ProxyAdminOwnedBase, Re
 
     /// @inheritdoc CrossDomainMessenger
     function _sendMessage(address _to, uint64 _gasLimit, uint256 _value, bytes memory _data) internal override {
-        portal.depositTransaction{ value: _value }({
+        portal.depositTransaction{value: _value}({
             _to: _to,
             _value: _value,
             _gasLimit: _gasLimit,

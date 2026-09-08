@@ -123,35 +123,93 @@ library Predeploys {
     /// @notice Returns the name of the predeploy at the given address.
     function getName(address _addr) internal pure returns (string memory out_) {
         require(isPredeployNamespace(_addr), "Predeploys: address must be a predeploy");
-        if (_addr == LEGACY_MESSAGE_PASSER) return "LegacyMessagePasser";
-        if (_addr == L1_MESSAGE_SENDER) return "L1MessageSender";
-        if (_addr == DEPLOYER_WHITELIST) return "DeployerWhitelist";
-        if (_addr == WETH) return "WETH";
-        if (_addr == L2_CROSS_DOMAIN_MESSENGER) return "L2CrossDomainMessenger";
-        if (_addr == GAS_PRICE_ORACLE) return "GasPriceOracle";
-        if (_addr == L2_STANDARD_BRIDGE) return "L2StandardBridge";
-        if (_addr == SEQUENCER_FEE_WALLET) return "SequencerFeeVault";
-        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) return "OptimismMintableERC20Factory";
-        if (_addr == L1_BLOCK_NUMBER) return "L1BlockNumber";
-        if (_addr == L2_ERC721_BRIDGE) return "L2ERC721Bridge";
-        if (_addr == L1_BLOCK_ATTRIBUTES) return "L1Block";
-        if (_addr == L2_TO_L1_MESSAGE_PASSER) return "L2ToL1MessagePasser";
-        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) return "OptimismMintableERC721Factory";
-        if (_addr == PROXY_ADMIN) return "ProxyAdmin";
-        if (_addr == BASE_FEE_VAULT) return "BaseFeeVault";
-        if (_addr == L1_FEE_VAULT) return "L1FeeVault";
-        if (_addr == OPERATOR_FEE_VAULT) return "OperatorFeeVault";
-        if (_addr == SCHEMA_REGISTRY) return "SchemaRegistry";
-        if (_addr == EAS) return "EAS";
-        if (_addr == GOVERNANCE_TOKEN) return "GovernanceToken";
-        if (_addr == LEGACY_ERC20_ETH) return "LegacyERC20ETH";
-        if (_addr == CROSS_L2_INBOX) return "CrossL2Inbox";
-        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) return "L2ToL2CrossDomainMessenger";
-        if (_addr == SUPERCHAIN_ETH_BRIDGE) return "SuperchainETHBridge";
-        if (_addr == ETH_LIQUIDITY) return "ETHLiquidity";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) return "OptimismSuperchainERC20Factory";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) return "OptimismSuperchainERC20Beacon";
-        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) return "SuperchainTokenBridge";
+        if (_addr == LEGACY_MESSAGE_PASSER) {
+            return "LegacyMessagePasser";
+        }
+        if (_addr == L1_MESSAGE_SENDER) {
+            return "L1MessageSender";
+        }
+        if (_addr == DEPLOYER_WHITELIST) {
+            return "DeployerWhitelist";
+        }
+        if (_addr == WETH) {
+            return "WETH";
+        }
+        if (_addr == L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2CrossDomainMessenger";
+        }
+        if (_addr == GAS_PRICE_ORACLE) {
+            return "GasPriceOracle";
+        }
+        if (_addr == L2_STANDARD_BRIDGE) {
+            return "L2StandardBridge";
+        }
+        if (_addr == SEQUENCER_FEE_WALLET) {
+            return "SequencerFeeVault";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) {
+            return "OptimismMintableERC20Factory";
+        }
+        if (_addr == L1_BLOCK_NUMBER) {
+            return "L1BlockNumber";
+        }
+        if (_addr == L2_ERC721_BRIDGE) {
+            return "L2ERC721Bridge";
+        }
+        if (_addr == L1_BLOCK_ATTRIBUTES) {
+            return "L1Block";
+        }
+        if (_addr == L2_TO_L1_MESSAGE_PASSER) {
+            return "L2ToL1MessagePasser";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) {
+            return "OptimismMintableERC721Factory";
+        }
+        if (_addr == PROXY_ADMIN) {
+            return "ProxyAdmin";
+        }
+        if (_addr == BASE_FEE_VAULT) {
+            return "BaseFeeVault";
+        }
+        if (_addr == L1_FEE_VAULT) {
+            return "L1FeeVault";
+        }
+        if (_addr == OPERATOR_FEE_VAULT) {
+            return "OperatorFeeVault";
+        }
+        if (_addr == SCHEMA_REGISTRY) {
+            return "SchemaRegistry";
+        }
+        if (_addr == EAS) {
+            return "EAS";
+        }
+        if (_addr == GOVERNANCE_TOKEN) {
+            return "GovernanceToken";
+        }
+        if (_addr == LEGACY_ERC20_ETH) {
+            return "LegacyERC20ETH";
+        }
+        if (_addr == CROSS_L2_INBOX) {
+            return "CrossL2Inbox";
+        }
+        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2ToL2CrossDomainMessenger";
+        }
+        if (_addr == SUPERCHAIN_ETH_BRIDGE) {
+            return "SuperchainETHBridge";
+        }
+        if (_addr == ETH_LIQUIDITY) {
+            return "ETHLiquidity";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) {
+            return "OptimismSuperchainERC20Factory";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) {
+            return "OptimismSuperchainERC20Beacon";
+        }
+        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) {
+            return "SuperchainTokenBridge";
+        }
         revert("Predeploys: unnamed predeploy");
     }
 
@@ -161,11 +219,7 @@ library Predeploys {
     }
 
     /// @notice Returns true if the address is a defined predeploy that is embedded into new OP-Stack chains.
-    function isSupportedPredeploy(
-        address _addr,
-        uint256 _fork,
-        bool _enableCrossL2Inbox
-    )
+    function isSupportedPredeploy(address _addr, uint256 _fork, bool _enableCrossL2Inbox)
         internal
         pure
         returns (bool)
@@ -215,7 +269,9 @@ abstract contract ReinitializableBase {
     /// @param _initVersion Current initialization version.
     constructor(uint8 _initVersion) {
         // Sanity check, we should never have a zero init version.
-        if (_initVersion == 0) revert ReinitializableBase_ZeroInitVersion();
+        if (_initVersion == 0) {
+            revert ReinitializableBase_ZeroInitVersion();
+        }
         INIT_VERSION = _initVersion;
     }
 
@@ -580,7 +636,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -612,11 +668,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -631,11 +686,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -645,12 +696,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -674,11 +723,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -701,11 +750,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -718,11 +766,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -744,20 +792,11 @@ library Address {
 library SafeERC20 {
     using Address for address;
 
-    function safeTransfer(
-        IERC20 token,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransfer(IERC20 token, address to, uint256 value) internal {
         _callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));
     }
 
-    function safeTransferFrom(
-        IERC20 token,
-        address from,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransferFrom(IERC20 token, address from, address to, uint256 value) internal {
         _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));
     }
 
@@ -768,11 +807,7 @@ library SafeERC20 {
      * Whenever possible, use {safeIncreaseAllowance} and
      * {safeDecreaseAllowance} instead.
      */
-    function safeApprove(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeApprove(IERC20 token, address spender, uint256 value) internal {
         // safeApprove should only be called when setting an initial allowance,
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
@@ -783,20 +818,12 @@ library SafeERC20 {
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
     }
 
-    function safeIncreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeIncreaseAllowance(IERC20 token, address spender, uint256 value) internal {
         uint256 newAllowance = token.allowance(address(this), spender) + value;
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
-    function safeDecreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
         unchecked {
             uint256 oldAllowance = token.allowance(address(this), spender);
             require(oldAllowance >= value, "SafeERC20: decreased allowance below zero");
@@ -894,12 +921,7 @@ library SafeCall {
     /// @param _gas      Amount of gas to pass to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function call(
-        address _target,
-        uint256 _gas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function call(address _target, uint256 _gas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool success_)
     {
@@ -922,14 +944,14 @@ library SafeCall {
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, uint256 _value, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata});
     }
 
     /// @notice Perform a low level call without copying any returndata
     /// @param _target   Address to call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata});
     }
 
     /// @notice Helper function to determine if there is sufficient gas remaining within the context
@@ -971,12 +993,7 @@ library SafeCall {
     /// @param _minGas   The minimum amount of gas that may be passed to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function callWithMinGas(
-        address _target,
-        uint256 _minGas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function callWithMinGas(address _target, uint256 _minGas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool)
     {
@@ -1035,9 +1052,8 @@ library ERC165Checker {
     function supportsERC165(address account) internal view returns (bool) {
         // Any contract that implements ERC165 must explicitly indicate support of
         // InterfaceId_ERC165 and explicitly indicate non-support of InterfaceId_Invalid
-        return
-            _supportsERC165Interface(account, type(IERC165).interfaceId) &&
-            !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
+        return _supportsERC165Interface(account, type(IERC165).interfaceId)
+            && !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
     }
 
     /**
@@ -1233,10 +1249,7 @@ abstract contract StandardBridge is Initializable {
     /// @notice Initializer.
     /// @param _messenger   Contract for CrossDomainMessenger on this network.
     /// @param _otherBridge Contract for the other StandardBridge contract.
-    function __StandardBridge_init(
-        ICrossDomainMessenger _messenger,
-        StandardBridge _otherBridge
-    )
+    function __StandardBridge_init(ICrossDomainMessenger _messenger, StandardBridge _otherBridge)
         internal
         onlyInitializing
     {
@@ -1311,11 +1324,7 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        public
-        virtual
-        onlyEOA
-    {
+    ) public virtual onlyEOA {
         _initiateBridgeERC20(_localToken, _remoteToken, msg.sender, msg.sender, _amount, _minGasLimit, _extraData);
     }
 
@@ -1335,10 +1344,7 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        public
-        virtual
-    {
+    ) public virtual {
         _initiateBridgeERC20(_localToken, _remoteToken, msg.sender, _to, _amount, _minGasLimit, _extraData);
     }
 
@@ -1350,12 +1356,7 @@ abstract contract StandardBridge is Initializable {
     /// @param _extraData Extra data to be sent with the transaction. Note that the recipient will
     ///                   not be triggered with this data, but it will be emitted and can be used
     ///                   to identify the transaction.
-    function finalizeBridgeETH(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _extraData
-    )
+    function finalizeBridgeETH(address _from, address _to, uint256 _amount, bytes calldata _extraData)
         public
         payable
         onlyOtherBridge
@@ -1390,10 +1391,7 @@ abstract contract StandardBridge is Initializable {
         address _to,
         uint256 _amount,
         bytes calldata _extraData
-    )
-        public
-        onlyOtherBridge
-    {
+    ) public onlyOtherBridge {
         require(paused() == false, "StandardBridge: paused");
         if (_isOptimismMintableERC20(_localToken)) {
             require(
@@ -1426,16 +1424,14 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes memory _extraData
-    )
-        internal
-    {
+    ) internal {
         require(msg.value == _amount, "StandardBridge: bridging ETH must include sufficient ETH value");
 
         // Emit the correct events. By default this will be _amount, but child
         // contracts may override this function in order to emit legacy events as well.
         _emitETHBridgeInitiated(_from, _to, _amount, _extraData);
 
-        messenger.sendMessage{ value: _amount }({
+        messenger.sendMessage{value: _amount}({
             _target: address(otherBridge),
             _message: abi.encodeWithSelector(this.finalizeBridgeETH.selector, _from, _to, _amount, _extraData),
             _minGasLimit: _minGasLimit
@@ -1459,9 +1455,7 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes memory _extraData
-    )
-        internal
-    {
+    ) internal {
         require(msg.value == 0, "StandardBridge: cannot send value");
 
         if (_isOptimismMintableERC20(_localToken)) {
@@ -1527,12 +1521,7 @@ abstract contract StandardBridge is Initializable {
     /// @param _to        Address of the receiver.
     /// @param _amount    Amount of ETH sent.
     /// @param _extraData Extra data sent with the transaction.
-    function _emitETHBridgeInitiated(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeInitiated(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         virtual
     {
@@ -1545,12 +1534,7 @@ abstract contract StandardBridge is Initializable {
     /// @param _to        Address of the receiver.
     /// @param _amount    Amount of ETH sent.
     /// @param _extraData Extra data sent with the transaction.
-    function _emitETHBridgeFinalized(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeFinalized(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         virtual
     {
@@ -1572,10 +1556,7 @@ abstract contract StandardBridge is Initializable {
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        virtual
-    {
+    ) internal virtual {
         emit ERC20BridgeInitiated(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }
 
@@ -1594,10 +1575,7 @@ abstract contract StandardBridge is Initializable {
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        virtual
-    {
+    ) internal virtual {
         emit ERC20BridgeFinalized(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }
 }
@@ -1678,10 +1656,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
     /// @notice Initializer.
     /// @param _messenger        Contract for the CrossDomainMessenger on this network.
     /// @param _systemConfig Contract for the SystemConfig on this network.
-    function initialize(
-        ICrossDomainMessenger _messenger,
-        ISystemConfig _systemConfig
-    )
+    function initialize(ICrossDomainMessenger _messenger, ISystemConfig _systemConfig)
         external
         reinitializer(initVersion())
     {
@@ -1752,11 +1727,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        external
-        virtual
-        onlyEOA
-    {
+    ) external virtual onlyEOA {
         _initiateERC20Deposit(_l1Token, _l2Token, msg.sender, msg.sender, _amount, _minGasLimit, _extraData);
     }
 
@@ -1777,10 +1748,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        external
-        virtual
-    {
+    ) external virtual {
         _initiateERC20Deposit(_l1Token, _l2Token, msg.sender, _to, _amount, _minGasLimit, _extraData);
     }
 
@@ -1790,12 +1758,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
     /// @param _to        Address of the recipient on L1.
     /// @param _amount    Amount of ETH to withdraw.
     /// @param _extraData Optional data forwarded from L2.
-    function finalizeETHWithdrawal(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _extraData
-    )
+    function finalizeETHWithdrawal(address _from, address _to, uint256 _amount, bytes calldata _extraData)
         external
         payable
     {
@@ -1817,9 +1780,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
         address _to,
         uint256 _amount,
         bytes calldata _extraData
-    )
-        external
-    {
+    ) external {
         finalizeBridgeERC20(_l1Token, _l2Token, _from, _to, _amount, _extraData);
     }
 
@@ -1855,21 +1816,14 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
         uint256 _amount,
         uint32 _minGasLimit,
         bytes memory _extraData
-    )
-        internal
-    {
+    ) internal {
         _initiateBridgeERC20(_l1Token, _l2Token, _from, _to, _amount, _minGasLimit, _extraData);
     }
 
     /// @inheritdoc StandardBridge
     /// @notice Emits the legacy ETHDepositInitiated event followed by the ETHBridgeInitiated event.
     ///         This is necessary for backwards compatibility with the legacy bridge.
-    function _emitETHBridgeInitiated(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeInitiated(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         override
     {
@@ -1880,12 +1834,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
     /// @inheritdoc StandardBridge
     /// @notice Emits the legacy ERC20DepositInitiated event followed by the ERC20BridgeInitiated
     ///         event. This is necessary for backwards compatibility with the legacy bridge.
-    function _emitETHBridgeFinalized(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeFinalized(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         override
     {
@@ -1903,10 +1852,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        override
-    {
+    ) internal override {
         emit ERC20DepositInitiated(_localToken, _remoteToken, _from, _to, _amount, _extraData);
         super._emitERC20BridgeInitiated(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }
@@ -1921,10 +1867,7 @@ contract L1StandardBridge is StandardBridge, ProxyAdminOwnedBase, Reinitializabl
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        override
-    {
+    ) internal override {
         emit ERC20WithdrawalFinalized(_localToken, _remoteToken, _from, _to, _amount, _extraData);
         super._emitERC20BridgeFinalized(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }

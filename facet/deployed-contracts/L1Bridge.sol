@@ -29,14 +29,16 @@ library RLPReader {
     /// @return out_ Output memory reference.
     function toRLPItem(bytes memory _in) internal pure returns (RLPItem memory out_) {
         // Empty arrays are not RLP items.
-        if (_in.length == 0) revert EmptyItem();
+        if (_in.length == 0) {
+            revert EmptyItem();
+        }
 
         MemoryPointer ptr;
         assembly {
             ptr := add(_in, 32)
         }
 
-        out_ = RLPItem({ length: _in.length, ptr: ptr });
+        out_ = RLPItem({length: _in.length, ptr: ptr});
     }
 
     /// @notice Reads an RLP list value into a list of RLP items.
@@ -45,9 +47,13 @@ library RLPReader {
     function readList(RLPItem memory _in) internal pure returns (RLPItem[] memory out_) {
         (uint256 listOffset, uint256 listLength, RLPItemType itemType) = _decodeLength(_in);
 
-        if (itemType != RLPItemType.LIST_ITEM) revert UnexpectedString();
+        if (itemType != RLPItemType.LIST_ITEM) {
+            revert UnexpectedString();
+        }
 
-        if (listOffset + listLength != _in.length) revert InvalidDataRemainder();
+        if (listOffset + listLength != _in.length) {
+            revert InvalidDataRemainder();
+        }
 
         // Solidity in-memory arrays can't be increased in size, but *can* be decreased in size by
         // writing to the length. Since we can't know the number of RLP items without looping over
@@ -59,7 +65,7 @@ library RLPReader {
         uint256 offset = listOffset;
         while (offset < _in.length) {
             (uint256 itemOffset, uint256 itemLength,) = _decodeLength(
-                RLPItem({ length: _in.length - offset, ptr: MemoryPointer.wrap(MemoryPointer.unwrap(_in.ptr) + offset) })
+                RLPItem({length: _in.length - offset, ptr: MemoryPointer.wrap(MemoryPointer.unwrap(_in.ptr) + offset)})
             );
 
             // We don't need to check itemCount < out.length explicitly because Solidity already
@@ -92,9 +98,13 @@ library RLPReader {
     function readBytes(RLPItem memory _in) internal pure returns (bytes memory out_) {
         (uint256 itemOffset, uint256 itemLength, RLPItemType itemType) = _decodeLength(_in);
 
-        if (itemType != RLPItemType.DATA_ITEM) revert UnexpectedList();
+        if (itemType != RLPItemType.DATA_ITEM) {
+            revert UnexpectedList();
+        }
 
-        if (_in.length != itemOffset + itemLength) revert InvalidDataRemainder();
+        if (_in.length != itemOffset + itemLength) {
+            revert InvalidDataRemainder();
+        }
 
         out_ = _copy(_in.ptr, itemOffset, itemLength);
     }
@@ -126,7 +136,9 @@ library RLPReader {
         // Short-circuit if there's nothing to decode, note that we perform this check when
         // the user creates an RLP item via toRLPItem, but it's always possible for them to bypass
         // that function and create an RLP item directly. So we need to check this anyway.
-        if (_in.length == 0) revert EmptyItem();
+        if (_in.length == 0) {
+            revert EmptyItem();
+        }
 
         MemoryPointer ptr = _in.ptr;
         uint256 prefix;
@@ -143,37 +155,49 @@ library RLPReader {
             // slither-disable-next-line variable-scope
             uint256 strLen = prefix - 0x80;
 
-            if (_in.length <= strLen) revert ContentLengthMismatch();
+            if (_in.length <= strLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (strLen == 1 && firstByteOfContent < 0x80) revert InvalidHeader();
+            if (strLen == 1 && firstByteOfContent < 0x80) {
+                revert InvalidHeader();
+            }
 
             return (1, strLen, RLPItemType.DATA_ITEM);
         } else if (prefix <= 0xbf) {
             // Long string.
             uint256 lenOfStrLen = prefix - 0xb7;
 
-            if (_in.length <= lenOfStrLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfStrLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (firstByteOfContent == 0x00) revert InvalidHeader();
+            if (firstByteOfContent == 0x00) {
+                revert InvalidHeader();
+            }
 
             uint256 strLen;
             assembly {
                 strLen := shr(sub(256, mul(8, lenOfStrLen)), mload(add(ptr, 1)))
             }
 
-            if (strLen <= 55) revert InvalidHeader();
+            if (strLen <= 55) {
+                revert InvalidHeader();
+            }
 
-            if (_in.length <= lenOfStrLen + strLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfStrLen + strLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1 + lenOfStrLen, strLen, RLPItemType.DATA_ITEM);
         } else if (prefix <= 0xf7) {
@@ -181,30 +205,40 @@ library RLPReader {
             // slither-disable-next-line variable-scope
             uint256 listLen = prefix - 0xc0;
 
-            if (_in.length <= listLen) revert ContentLengthMismatch();
+            if (_in.length <= listLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1, listLen, RLPItemType.LIST_ITEM);
         } else {
             // Long list.
             uint256 lenOfListLen = prefix - 0xf7;
 
-            if (_in.length <= lenOfListLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfListLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (firstByteOfContent == 0x00) revert InvalidHeader();
+            if (firstByteOfContent == 0x00) {
+                revert InvalidHeader();
+            }
 
             uint256 listLen;
             assembly {
                 listLen := shr(sub(256, mul(8, lenOfListLen)), mload(add(ptr, 1)))
             }
 
-            if (listLen <= 55) revert InvalidHeader();
+            if (listLen <= 55) {
+                revert InvalidHeader();
+            }
 
-            if (_in.length <= lenOfListLen + listLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfListLen + listLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1 + lenOfListLen, listLen, RLPItemType.LIST_ITEM);
         }
@@ -227,7 +261,7 @@ library RLPReader {
         assembly {
             let dest := add(out_, 32)
             let i := 0
-            for { } lt(i, _length) { i := add(i, 32) } { mstore(add(dest, i), mload(add(src, i))) }
+            for {} lt(i, _length) { i := add(i, 32) } { mstore(add(dest, i), mload(add(src, i))) }
 
             if gt(i, _length) { mstore(add(dest, _length), 0) }
         }
@@ -413,12 +447,7 @@ library MerkleTrie {
     /// @param _root  Known root of the Merkle trie. Used to verify that the included proof is
     ///               correctly constructed.
     /// @return valid_ Whether or not the proof is valid.
-    function verifyInclusionProof(
-        bytes memory _key,
-        bytes memory _value,
-        bytes[] memory _proof,
-        bytes32 _root
-    )
+    function verifyInclusionProof(bytes memory _key, bytes memory _value, bytes[] memory _proof, bytes32 _root)
         internal
         pure
         returns (bool valid_)
@@ -549,7 +578,7 @@ library MerkleTrie {
         uint256 length = _proof.length;
         proof_ = new TrieNode[](length);
         for (uint256 i = 0; i < length;) {
-            proof_[i] = TrieNode({ encoded: _proof[i], decoded: RLPReader.readList(_proof[i]) });
+            proof_[i] = TrieNode({encoded: _proof[i], decoded: RLPReader.readList(_proof[i])});
             unchecked {
                 ++i;
             }
@@ -595,12 +624,7 @@ library SecureMerkleTrie {
     /// @param _root  Known root of the Merkle trie. Used to verify that the included proof is
     ///               correctly constructed.
     /// @return valid_ Whether or not the proof is valid.
-    function verifyInclusionProof(
-        bytes memory _key,
-        bytes memory _value,
-        bytes[] memory _proof,
-        bytes32 _root
-    )
+    function verifyInclusionProof(bytes memory _key, bytes memory _value, bytes[] memory _proof, bytes32 _root)
         internal
         pure
         returns (bool valid_)
@@ -819,11 +843,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         (, uint16 version) = decodeVersionedNonce(_nonce);
         if (version == 0) {
             return encodeCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -840,12 +860,7 @@ library Encoding {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Encoded cross domain message.
-    function encodeCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function encodeCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes memory)
@@ -869,11 +884,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         // nosemgrep: sol-style-use-abi-encodecall
         return abi.encodeWithSignature(
             "relayMessage(uint256,address,address,uint256,uint256,bytes)",
@@ -932,11 +943,7 @@ library Encoding {
         uint256 _blobBaseFee,
         bytes32 _hash,
         bytes32 _batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesEcotone()"));
         return abi.encodePacked(
             functionSignature,
@@ -972,11 +979,7 @@ library Encoding {
         uint256 _blobBaseFee,
         bytes32 _hash,
         bytes32 _batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesInterop()"));
         return abi.encodePacked(
             functionSignature,
@@ -1030,11 +1033,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         (, uint16 version) = Encoding.decodeVersionedNonce(_nonce);
         if (version == 0) {
             return hashCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -1051,12 +1050,7 @@ library Hashing {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Hashed cross domain message.
-    function hashCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function hashCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes32)
@@ -1079,11 +1073,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(Encoding.encodeCrossDomainMessageV1(_nonce, _sender, _target, _value, _gasLimit, _data));
     }
 
@@ -1125,11 +1115,7 @@ library Hashing {
         address _sender,
         address _target,
         bytes memory _message
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(abi.encode(_destination, _source, _nonce, _sender, _target, _message));
     }
 }
@@ -1272,11 +1258,7 @@ library LibRLP {
     /// `address(uint160(uint256(keccak256(LibRLP.p(deployer).p(nonce).encode()))))`.
     ///
     /// Note: The returned result has dirty upper 96 bits. Please clean if used in assembly.
-    function computeAddress(address deployer, uint256 nonce)
-        internal
-        pure
-        returns (address deployed)
-    {
+    function computeAddress(address deployer, uint256 nonce) internal pure returns (address deployed) {
         /// @solidity memory-safe-assembly
         assembly {
             for {} 1 {} {
@@ -1626,31 +1608,12 @@ library LibFacet {
     bytes32 constant facetEventSignature = 0x00000000000000000000000000000000000000000000000000000000000face7;
     uint8 constant facetTxType = 0x46;
 
-    function sendFacetTransaction(
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: bytes(''),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: bytes(""), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
-    function sendFacetTransaction(
-        address to,
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: abi.encodePacked(to),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(address to, uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: abi.encodePacked(to), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
     function prepareFacetTransaction(
@@ -1706,13 +1669,8 @@ library LibFacet {
         bytes memory data,
         bytes memory mineBoost
     ) internal {
-        bytes memory payload = prepareFacetTransaction({
-            to: to,
-            value: value,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: mineBoost
-        });
+        bytes memory payload =
+            prepareFacetTransaction({to: to, value: value, gasLimit: gasLimit, data: data, mineBoost: mineBoost});
 
         assembly {
             log1(add(payload, 32), mload(payload), facetEventSignature)
@@ -1856,10 +1814,7 @@ library SafeTransferLib {
     }
 
     /// @dev Sends `amount` (in wei) ETH to `to`, with a `gasStipend`.
-    function trySafeTransferETH(address to, uint256 amount, uint256 gasStipend)
-        internal
-        returns (bool success)
-    {
+    function trySafeTransferETH(address to, uint256 amount, uint256 gasStipend) internal returns (bool success) {
         /// @solidity memory-safe-assembly
         assembly {
             success := call(gasStipend, to, amount, codesize(), 0x00, codesize(), 0x00)
@@ -1867,10 +1822,7 @@ library SafeTransferLib {
     }
 
     /// @dev Sends all the ETH in the current contract to `to`, with a `gasStipend`.
-    function trySafeTransferAllETH(address to, uint256 gasStipend)
-        internal
-        returns (bool success)
-    {
+    function trySafeTransferAllETH(address to, uint256 gasStipend) internal returns (bool success) {
         /// @solidity memory-safe-assembly
         assembly {
             success := call(gasStipend, to, selfbalance(), codesize(), 0x00, codesize(), 0x00)
@@ -1914,10 +1866,7 @@ library SafeTransferLib {
     ///
     /// The `from` account must have their entire balance approved for
     /// the current contract to manage.
-    function safeTransferAllFrom(address token, address from, address to)
-        internal
-        returns (uint256 amount)
-    {
+    function safeTransferAllFrom(address token, address from, address to) internal returns (uint256 amount) {
         /// @solidity memory-safe-assembly
         assembly {
             let m := mload(0x40) // Cache the free memory pointer.
@@ -2294,11 +2243,11 @@ abstract contract Ownable is Context {
 
 contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
     using SafeTransferLib for address;
-    
+
     /*//////////////////////////////////////////////////////////////
                                 STRUCTS
     //////////////////////////////////////////////////////////////*/
-    
+
     /**
      * @notice Represents a deposit transaction that can be replayed if FACET blocks are full
      * @dev This struct enables deposit retry functionality when L2 blocks hit gas limits
@@ -2337,7 +2286,7 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
 
     Rollup public rollup;
     address public l2Bridge;
-    
+
     // Training wheels
     mapping(bytes32 => bool) public rootBlacklisted;
     uint256 public withdrawalDelay; // seconds
@@ -2353,13 +2302,13 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
 
     mapping(bytes32 => mapping(Rollup => ProvenWithdrawal)) public proven;
     mapping(bytes32 => bool) public finalized;
-    
+
     /**
      * @notice Stores hashes of deposit parameters for replay verification
      * @dev Maps nonce => keccak256(nonce, to, amount) to ensure replays use identical parameters
      */
     mapping(uint256 => bytes32) public depositHashes;
-    
+
     /**
      * @notice Global nonce counter for deposits
      * @dev Incremented for each new deposit to ensure uniqueness
@@ -2372,7 +2321,9 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
 
     event DepositInitiated(uint256 indexed nonce, address indexed from, address indexed to, uint256 amount);
     event DepositReplayed(uint256 indexed nonce, address indexed to, uint256 amount);
-    event WithdrawalProven(address indexed rollup, address indexed to, uint256 amount, uint256 nonce, uint256 proposalId);
+    event WithdrawalProven(
+        address indexed rollup, address indexed to, uint256 amount, uint256 nonce, uint256 proposalId
+    );
     event WithdrawalFinalized(address indexed to, uint256 amount, uint256 nonce);
     event RollupUpdated(address indexed oldRollup, address indexed newRollup);
     event RootBlacklistStatusChanged(bytes32 indexed root, bool blacklisted);
@@ -2384,7 +2335,7 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
 
     // storage key slot used by the L2ToL1MessagePasser contract
     bytes32 internal constant MESSAGE_PASSER_SLOT = bytes32(uint256(0));
-    
+
     // Gas limit for FACET transactions
     uint256 internal constant DEPOSIT_GAS_LIMIT = 500_000;
 
@@ -2397,15 +2348,17 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
     }
 
     function setL2Bridge(address _l2Bridge) external onlyOwner {
-        if (l2Bridge != address(0)) revert L2BridgeAlreadySet();
+        if (l2Bridge != address(0)) {
+            revert L2BridgeAlreadySet();
+        }
 
         l2Bridge = _l2Bridge;
     }
-    
+
     /*//////////////////////////////////////////////////////////////
                            TRAINING WHEELS
     //////////////////////////////////////////////////////////////*/
-    
+
     /**
      * @notice Update the rollup contract reference to support new forks or state transition rules.
      * @dev CRITICAL: This function enables fork flexibility but also represents the primary
@@ -2418,21 +2371,21 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
         rollup = Rollup(_rollup);
         emit RollupUpdated(oldRollup, _rollup);
     }
-    
+
     /**
      * @notice Pause the bridge
      */
     function pause() external onlyOwner {
         _pause();
     }
-    
+
     /**
      * @notice Unpause the bridge
      */
     function unpause() external onlyOwner {
         _unpause();
     }
-    
+
     /**
      * @notice Blacklist or unblacklist a root
      * @param root The root to blacklist/unblacklist
@@ -2442,7 +2395,7 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
         rootBlacklisted[root] = blacklisted;
         emit RootBlacklistStatusChanged(root, blacklisted);
     }
-    
+
     /**
      * @notice Update withdrawal delay period
      * @param _withdrawalDelay New delay in seconds
@@ -2465,25 +2418,25 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
      * @return nonce Unique nonce for this deposit that must be used for any replay attempts
      */
     function initiateDeposit(address to) public payable virtual whenNotPaused returns (uint256 nonce) {
-        if (l2Bridge == address(0)) revert L2BridgeNotSet();
-        if (msg.value == 0) revert InvalidDepositAmount();
-        
+        if (l2Bridge == address(0)) {
+            revert L2BridgeNotSet();
+        }
+        if (msg.value == 0) {
+            revert InvalidDepositAmount();
+        }
+
         // Increment nonce and store deposit hash
         nonce = ++depositNonce;
-        
+
         // Create deposit transaction struct
-        DepositTransaction memory deposit = DepositTransaction({
-            nonce: nonce,
-            to: to,
-            amount: msg.value
-        });
-        
+        DepositTransaction memory deposit = DepositTransaction({nonce: nonce, to: to, amount: msg.value});
+
         // Store hash of deposit for replay verification
         depositHashes[nonce] = _hashDeposit(deposit);
-        
+
         // Send the deposit message to L2
         _sendDepositToL2(deposit);
-        
+
         emit DepositInitiated(nonce, msg.sender, to, msg.value);
     }
 
@@ -2494,34 +2447,29 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
      *      This function does NOT require msg.value as it uses the originally deposited ETH.
      * @param deposit The deposit transaction to replay (must match original parameters exactly)
      */
-    function replayDeposit(
-        DepositTransaction calldata deposit
-    ) external virtual whenNotPaused {
+    function replayDeposit(DepositTransaction calldata deposit) external virtual whenNotPaused {
         // Verify nonce exists and parameters match
         bytes32 storedHash = depositHashes[deposit.nonce];
         bytes32 paramsHash = _hashDeposit(deposit);
-        
-        if (storedHash != paramsHash) revert InvalidDepositParameters();
-        
+
+        if (storedHash != paramsHash) {
+            revert InvalidDepositParameters();
+        }
+
         // Send the same deposit message to L2
         _sendDepositToL2(deposit);
-        
+
         emit DepositReplayed(deposit.nonce, deposit.to, deposit.amount);
     }
-    
+
     /**
      * @notice Internal function to send deposit message to L2
      * @dev Uses LibFacet to send cross-chain message to FACET L2
      * @param deposit The deposit transaction to send to L2
      */
-    function _sendDepositToL2(
-        DepositTransaction memory deposit
-    ) internal {
-        bytes memory data = abi.encodeWithSelector(
-            L2Bridge.finalizeDeposit.selector,
-            deposit
-        );
-        
+    function _sendDepositToL2(DepositTransaction memory deposit) internal {
+        bytes memory data = abi.encodeWithSelector(L2Bridge.finalizeDeposit.selector, deposit);
+
         LibFacet.sendFacetTransaction({to: l2Bridge, gasLimit: DEPOSIT_GAS_LIMIT, data: data});
     }
 
@@ -2532,8 +2480,10 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
      *      Includes EIP-7702 delegated EOA support.
      */
     receive() external payable {
-        if (!EOA.isSenderEOA()) revert OnlyCanDepositWithoutTo();
-        
+        if (!EOA.isSenderEOA()) {
+            revert OnlyCanDepositWithoutTo();
+        }
+
         // For EOAs depositing via receive, deposit to themselves
         initiateDeposit(msg.sender);
     }
@@ -2566,16 +2516,26 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
 
         ProvenWithdrawal storage info = proven[withdrawalHash][rollup];
 
-        if (info.provenAt != 0) revert WithdrawalAlreadyProven();
-        if (finalized[withdrawalHash]) revert WithdrawalAlreadyFinalized();
-        if (!rollup.proposalIsCanonical(proposalId)) revert ProposalNotCanonical();
+        if (info.provenAt != 0) {
+            revert WithdrawalAlreadyProven();
+        }
+        if (finalized[withdrawalHash]) {
+            revert WithdrawalAlreadyFinalized();
+        }
+        if (!rollup.proposalIsCanonical(proposalId)) {
+            revert ProposalNotCanonical();
+        }
 
         Rollup.Proposal memory prop = rollup.getProposal(proposalId);
-        
-        // Check if root is blacklisted
-        if (rootBlacklisted[prop.rootClaim]) revert RootBlacklisted();
 
-        if (prop.rootClaim != Hashing.hashOutputRootProof(rootProof)) revert InvalidOutputRoot();
+        // Check if root is blacklisted
+        if (rootBlacklisted[prop.rootClaim]) {
+            revert RootBlacklisted();
+        }
+
+        if (prop.rootClaim != Hashing.hashOutputRootProof(rootProof)) {
+            revert InvalidOutputRoot();
+        }
 
         // verify inclusion of message in L2 storage
         bytes32 storageKey = keccak256(abi.encode(withdrawalHash, uint256(0))); // slot 0
@@ -2585,12 +2545,12 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
             _proof: withdrawalProof,
             _root: rootProof.messagePasserStorageRoot
         });
-        if (!valid) revert InvalidWithdrawalProof();
+        if (!valid) {
+            revert InvalidWithdrawalProof();
+        }
 
-        proven[withdrawalHash][rollup] = ProvenWithdrawal({
-            proposalId: uint32(proposalId),
-            provenAt: uint32(block.timestamp)
-        });
+        proven[withdrawalHash][rollup] =
+            ProvenWithdrawal({proposalId: uint32(proposalId), provenAt: uint32(block.timestamp)});
 
         emit WithdrawalProven(address(rollup), to, amount, nonce, proposalId);
     }
@@ -2604,15 +2564,23 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
 
         ProvenWithdrawal storage info = proven[withdrawalHash][rollup];
 
-        if (info.provenAt == 0) revert WithdrawalNotProven();
-        if (finalized[withdrawalHash]) revert WithdrawalAlreadyFinalized();
-        
+        if (info.provenAt == 0) {
+            revert WithdrawalNotProven();
+        }
+        if (finalized[withdrawalHash]) {
+            revert WithdrawalAlreadyFinalized();
+        }
+
         // Respect safety delay
-        if (block.timestamp <= info.provenAt + withdrawalDelay) revert WithdrawalDelayNotMet();
-        
+        if (block.timestamp <= info.provenAt + withdrawalDelay) {
+            revert WithdrawalDelayNotMet();
+        }
+
         // Check if the root of the proposal used for proving is blacklisted
         Rollup.Proposal memory prop = rollup.getProposal(info.proposalId);
-        if (rootBlacklisted[prop.rootClaim]) revert RootBlacklisted();
+        if (rootBlacklisted[prop.rootClaim]) {
+            revert RootBlacklisted();
+        }
 
         finalized[withdrawalHash] = true;
 
@@ -2637,7 +2605,7 @@ contract L1Bridge is Ownable, ReentrancyGuard, Pausable {
         });
         return Hashing.hashWithdrawal(w);
     }
-    
+
     /**
      * @notice Internal function to hash a deposit transaction for replay verification
      * @dev Creates a unique hash from deposit parameters to ensure replay safety

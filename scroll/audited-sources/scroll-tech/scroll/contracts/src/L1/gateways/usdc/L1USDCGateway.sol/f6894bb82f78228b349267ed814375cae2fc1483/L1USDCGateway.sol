@@ -5,9 +5,9 @@ pragma solidity =0.8.16;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 
+import {IL2ERC20Gateway} from "../../../L2/gateways/IL2ERC20Gateway.sol";
 import {IFiatToken} from "../../../interfaces/IFiatToken.sol";
 import {IUSDCBurnableSourceBridge} from "../../../interfaces/IUSDCBurnableSourceBridge.sol";
-import {IL2ERC20Gateway} from "../../../L2/gateways/IL2ERC20Gateway.sol";
 import {IL1ScrollMessenger} from "../../IL1ScrollMessenger.sol";
 import {IL1ERC20Gateway} from "../IL1ERC20Gateway.sol";
 
@@ -18,9 +18,11 @@ import {L1ERC20Gateway} from "../L1ERC20Gateway.sol";
 /// @notice The `L1USDCGateway` contract is used to deposit `USDC` token in layer 1 and
 /// finalize withdraw `USDC` from layer 2, before USDC become native in layer 2.
 contract L1USDCGateway is L1ERC20Gateway, IUSDCBurnableSourceBridge {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of L1 USDC address.
     // solhint-disable-next-line var-name-mixedcase
@@ -29,9 +31,11 @@ contract L1USDCGateway is L1ERC20Gateway, IUSDCBurnableSourceBridge {
     /// @notice The address of L2 USDC address.
     address public immutable l2USDC;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of caller from Circle.
     address public circleCaller;
@@ -48,10 +52,11 @@ contract L1USDCGateway is L1ERC20Gateway, IUSDCBurnableSourceBridge {
     /// @dev Only deposited USDC will count. Accidentally transferred USDC will be ignored.
     uint256 public totalBridgedUSDC;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _l1USDC, address _l2USDC) {
         _disableInitializers();
 
@@ -63,27 +68,27 @@ contract L1USDCGateway is L1ERC20Gateway, IUSDCBurnableSourceBridge {
     /// @param _counterpart The address of L2ETHGateway in L2.
     /// @param _router The address of L1GatewayRouter.
     /// @param _messenger The address of L1ScrollMessenger.
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) external initializer {
+    function initialize(address _counterpart, address _router, address _messenger) external initializer {
         require(_router != address(0), "zero router address");
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
     function getL2ERC20Address(address) public view override returns (address) {
         return l2USDC;
     }
 
-    /*******************************
+    /**
+     *
      * Public Restricted Functions *
-     *******************************/
+     *
+     */
 
     /// @inheritdoc IUSDCBurnableSourceBridge
     function burnAllLockedUSDC() external override {
@@ -114,9 +119,11 @@ contract L1USDCGateway is L1ERC20Gateway, IUSDCBurnableSourceBridge {
         withdrawPaused = _paused;
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @inheritdoc L1ERC20Gateway
     function _beforeFinalizeWithdrawERC20(
@@ -136,23 +143,18 @@ contract L1USDCGateway is L1ERC20Gateway, IUSDCBurnableSourceBridge {
     }
 
     /// @inheritdoc L1ERC20Gateway
-    function _beforeDropMessage(
-        address,
-        address,
-        uint256 _amount
-    ) internal virtual override {
+    function _beforeDropMessage(address, address, uint256 _amount) internal virtual override {
         require(msg.value == 0, "nonzero msg.value");
         totalBridgedUSDC -= _amount;
     }
 
     /// @inheritdoc L1ERC20Gateway
-    function _deposit(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual override nonReentrant {
+    function _deposit(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        override
+        nonReentrant
+    {
         require(_amount > 0, "deposit zero amount");
         require(_token == l1USDC, "only USDC is allowed");
         require(!depositPaused, "deposit paused");
@@ -164,10 +166,8 @@ contract L1USDCGateway is L1ERC20Gateway, IUSDCBurnableSourceBridge {
         totalBridgedUSDC += _amount;
 
         // 2. Generate message passed to L2USDCGateway.
-        bytes memory _message = abi.encodeCall(
-            IL2ERC20Gateway.finalizeDepositERC20,
-            (_token, l2USDC, _from, _to, _amount, _data)
-        );
+        bytes memory _message =
+            abi.encodeCall(IL2ERC20Gateway.finalizeDepositERC20, (_token, l2USDC, _from, _to, _amount, _data));
 
         // 3. Send message to L1ScrollMessenger.
         IL1ScrollMessenger(messenger).sendMessage{value: msg.value}(counterpart, 0, _message, _gasLimit, _from);

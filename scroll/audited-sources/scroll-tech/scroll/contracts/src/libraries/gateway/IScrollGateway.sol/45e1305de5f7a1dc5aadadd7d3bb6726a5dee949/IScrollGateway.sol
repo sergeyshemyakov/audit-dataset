@@ -3,9 +3,11 @@
 pragma solidity ^0.8.16;
 
 interface IScrollGateway {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
@@ -19,9 +21,11 @@ interface IScrollGateway {
     /// @dev Thrown when ScrollMessenger is not dropping message.
     error ErrorNotInDropMessageContext();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice The address of corresponding L1/L2 Gateway contract.
     function counterpart() external view returns (address);

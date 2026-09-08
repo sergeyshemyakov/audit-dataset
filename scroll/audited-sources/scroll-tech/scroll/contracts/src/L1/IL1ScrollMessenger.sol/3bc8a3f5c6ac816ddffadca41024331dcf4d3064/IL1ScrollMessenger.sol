@@ -5,10 +5,11 @@ pragma solidity ^0.8.0;
 import {IScrollMessenger} from "../libraries/IScrollMessenger.sol";
 
 interface IL1ScrollMessenger is IScrollMessenger {
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct L2MessageProof {
         // The index of the batch where the message belongs to.
         uint256 batchIndex;
@@ -16,9 +17,11 @@ interface IL1ScrollMessenger is IScrollMessenger {
         bytes merkleProof;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Relay a L2 => L1 message with message proof.
     /// @param from The address of the sender of the message.

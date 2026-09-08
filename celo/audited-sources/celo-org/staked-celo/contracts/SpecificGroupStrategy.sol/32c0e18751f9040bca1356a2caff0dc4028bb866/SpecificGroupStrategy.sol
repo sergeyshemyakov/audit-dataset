@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity 0.8.11;
 
-import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-import "./common/UUPSOwnableUpgradeable.sol";
-import "./interfaces/IAccount.sol";
-import "./interfaces/IGroupHealth.sol";
-import "./interfaces/IManager.sol";
-import "./interfaces/IDefaultStrategy.sol";
 import "./Managed.sol";
 import "./Pausable.sol";
 import "./common/Errors.sol";
+import "./common/UUPSOwnableUpgradeable.sol";
+import "./interfaces/IAccount.sol";
+import "./interfaces/IDefaultStrategy.sol";
+import "./interfaces/IGroupHealth.sol";
+import "./interfaces/IManager.sol";
 
 /**
  * @title SpecificGroupStrategy is responsible for handling any deposit/withdrawal
@@ -193,14 +193,8 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      * @param _groupHealth The address of the GroupHealth contract.
      * @param _defaultStrategy The address of the DefaultStrategy contract.
      */
-    function setDependencies(
-        address _account,
-        address _groupHealth,
-        address _defaultStrategy
-    ) external onlyOwner {
-        if (
-            _account == address(0) || _groupHealth == address(0) || _defaultStrategy == address(0)
-        ) {
+    function setDependencies(address _account, address _groupHealth, address _defaultStrategy) external onlyOwner {
+        if (_account == address(0) || _groupHealth == address(0) || _defaultStrategy == address(0)) {
             revert AddressZeroNotAllowed();
         }
 
@@ -271,20 +265,14 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
         uint256 overflowingStCelo = stCeloInGroupOverflowed[group];
         uint256 unhealthyStCelo = stCeloInGroupUnhealthy[group];
         if (overflowingStCelo > 0 || unhealthyStCelo > 0) {
-            uint256 celoToBeMovedFromDefaultStrategy = Math.min(
-                celoWithdrawalAmount,
-                IManager(manager).toCelo(overflowingStCelo + unhealthyStCelo)
-            );
+            uint256 celoToBeMovedFromDefaultStrategy =
+                Math.min(celoWithdrawalAmount, IManager(manager).toCelo(overflowingStCelo + unhealthyStCelo));
             celoWithdrawalAmount -= celoToBeMovedFromDefaultStrategy;
 
-            (address[] memory overflowGroups, uint256[] memory overflowVotes) = defaultStrategy
-                .generateWithdrawalVoteDistribution(celoToBeMovedFromDefaultStrategy);
+            (address[] memory overflowGroups, uint256[] memory overflowVotes) =
+                defaultStrategy.generateWithdrawalVoteDistribution(celoToBeMovedFromDefaultStrategy);
 
-            handleWithdrawalOverflowAndUnhealthyAccounting(
-                group,
-                celoToBeMovedFromDefaultStrategy,
-                overflowingStCelo
-            );
+            handleWithdrawalOverflowAndUnhealthyAccounting(group, celoToBeMovedFromDefaultStrategy, overflowingStCelo);
 
             if (celoWithdrawalAmount > 0) {
                 groups = new address[](overflowGroups.length + 1);
@@ -318,11 +306,11 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      * @return finalGroups The groups to withdraw from.
      * @return finalVotes The amount to withdraw from each group.
      */
-    function generateDepositVoteDistribution(
-        address group,
-        uint256 celoAmount,
-        uint256 stCeloAmount
-    ) external onlyManager returns (address[] memory finalGroups, uint256[] memory finalVotes) {
+    function generateDepositVoteDistribution(address group, uint256 celoAmount, uint256 stCeloAmount)
+        external
+        onlyManager
+        returns (address[] memory finalGroups, uint256[] memory finalVotes)
+    {
         votedGroups.add(group);
         updateGroupStCelo(group, stCeloAmount, true);
 
@@ -333,13 +321,9 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
             celoAmount -= votesToBeScheduledForSpecificGroup;
             if (celoAmount > 0) {
                 // overflow
-                (address[] memory groups, uint256[] memory votesForGroups) = defaultStrategy
-                    .generateDepositVoteDistribution(celoAmount, group);
-                updateOverflowGroup(
-                    group,
-                    Math.min(IManager(manager).toStakedCelo(celoAmount), stCeloAmount),
-                    true
-                );
+                (address[] memory groups, uint256[] memory votesForGroups) =
+                    defaultStrategy.generateDepositVoteDistribution(celoAmount, group);
+                updateOverflowGroup(group, Math.min(IManager(manager).toStakedCelo(celoAmount), stCeloAmount), true);
                 finalGroups = new address[](groups.length + 1);
                 finalVotes = new uint256[](groups.length + 1);
                 for (uint256 i = 0; i < groups.length; i++) {
@@ -355,10 +339,7 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
                 finalVotes[0] = votesToBeScheduledForSpecificGroup;
             }
         } else {
-            (finalGroups, finalVotes) = defaultStrategy.generateDepositVoteDistribution(
-                celoAmount,
-                group
-            );
+            (finalGroups, finalVotes) = defaultStrategy.generateDepositVoteDistribution(celoAmount, group);
             updateUnhealthyGroupStCelo(group, stCeloAmount, true);
         }
     }
@@ -454,16 +435,7 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 1, 0);
     }
 
@@ -501,15 +473,7 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      * @return unhealthy The stCELO amount that is moved to default strategy
      * because group is/was unhealthy.
      */
-    function getStCeloInGroup(address group)
-        public
-        view
-        returns (
-            uint256 total,
-            uint256 overflow,
-            uint256 unhealthy
-        )
-    {
+    function getStCeloInGroup(address group) public view returns (uint256 total, uint256 overflow, uint256 unhealthy) {
         total = stCeloInGroup[group];
         overflow = stCeloInGroupOverflowed[group];
         unhealthy = stCeloInGroupUnhealthy[group];
@@ -522,11 +486,7 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      * @param stCeloAmount The amount of stCELO.
      * @param add Whether to add or substract.
      */
-    function updateGroupStCelo(
-        address group,
-        uint256 stCeloAmount,
-        bool add
-    ) internal {
+    function updateGroupStCelo(address group, uint256 stCeloAmount, bool add) internal {
         if (add) {
             stCeloInGroup[group] += stCeloAmount;
             totalStCeloLocked += stCeloAmount;
@@ -543,11 +503,7 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      * @param stCeloAmount The amount of stCELO.
      * @param add Whether to add or substract.
      */
-    function updateUnhealthyGroupStCelo(
-        address group,
-        uint256 stCeloAmount,
-        bool add
-    ) internal {
+    function updateUnhealthyGroupStCelo(address group, uint256 stCeloAmount, bool add) internal {
         if (add) {
             stCeloInGroupUnhealthy[group] += stCeloAmount;
             totalStCeloUnhealthy += stCeloAmount;
@@ -563,11 +519,7 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      * @param stCeloAmount The stCELO amount.
      * @param add Whether to add or subtract stCELO amount.
      */
-    function updateOverflowGroup(
-        address group,
-        uint256 stCeloAmount,
-        bool add
-    ) private {
+    function updateOverflowGroup(address group, uint256 stCeloAmount, bool add) private {
         if (add) {
             stCeloInGroupOverflowed[group] += stCeloAmount;
             totalStCeloOverflow += stCeloAmount;
@@ -606,8 +558,8 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
         uint256[] memory fromVotes = new uint256[](1);
         fromGroups[0] = group;
         fromVotes[0] = toMoveCelo;
-        (address[] memory toGroups, uint256[] memory toVotes) = defaultStrategy
-            .generateDepositVoteDistribution(toMoveCelo, address(0));
+        (address[] memory toGroups, uint256[] memory toVotes) =
+            defaultStrategy.generateDepositVoteDistribution(toMoveCelo, address(0));
         IManager(manager).scheduleTransferWithinStrategy(fromGroups, toGroups, fromVotes, toVotes);
     }
 
@@ -618,8 +570,8 @@ contract SpecificGroupStrategy is Errors, UUPSOwnableUpgradeable, Managed, Pausa
      */
     function transferFromDefaultStrategy(address group, uint256 stCeloToMove) private {
         uint256 toMoveCelo = IManager(manager).toCelo(stCeloToMove);
-        (address[] memory fromGroups, uint256[] memory fromVotes) = defaultStrategy
-            .generateWithdrawalVoteDistribution(toMoveCelo);
+        (address[] memory fromGroups, uint256[] memory fromVotes) =
+            defaultStrategy.generateWithdrawalVoteDistribution(toMoveCelo);
         address[] memory toGroups = new address[](1);
         uint256[] memory toVotes = new uint256[](1);
         toGroups[0] = group;

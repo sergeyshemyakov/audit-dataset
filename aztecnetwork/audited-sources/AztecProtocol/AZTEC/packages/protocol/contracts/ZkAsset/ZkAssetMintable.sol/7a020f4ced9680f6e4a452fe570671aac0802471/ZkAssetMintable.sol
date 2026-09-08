@@ -1,19 +1,17 @@
-
-
 pragma solidity >=0.5.0 <0.6.0;
 
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-import "./ZkAsset.sol";
 import "../ACE/ACE.sol";
 import "../ERC20/ERC20Mintable.sol";
 import "../libs/LibEIP712.sol";
 import "../libs/ProofUtils.sol";
+import "./ZkAsset.sol";
 import "./ZkAssetOwnable.sol";
-
 
 contract ZkAssetMintable is ZkAssetOwnable {
     event UpdateTotalMinted(bytes32 noteHash, bytes noteData);
+
     address public owner;
 
     constructor(
@@ -22,13 +20,7 @@ contract ZkAssetMintable is ZkAssetOwnable {
         uint256 _scalingFactor,
         bool _canAdjustSupply,
         bool _canConvert
-    ) public ZkAssetOwnable(
-        _aceAddress,
-        _linkedTokenAddress,
-        _scalingFactor,
-        _canAdjustSupply,
-        _canConvert
-    ) {
+    ) public ZkAssetOwnable(_aceAddress, _linkedTokenAddress, _scalingFactor, _canAdjustSupply, _canConvert) {
         owner = msg.sender;
     }
 
@@ -38,13 +30,11 @@ contract ZkAssetMintable is ZkAssetOwnable {
 
         (bytes memory _proofOutputs) = ace.mint(_proof, _proofData, address(this));
 
-        (, bytes memory newTotal, ,) = _proofOutputs.get(0).extractProofOutput();
+        (, bytes memory newTotal,,) = _proofOutputs.get(0).extractProofOutput();
 
-        (, bytes memory mintedNotes, ,) = _proofOutputs.get(1).extractProofOutput();
+        (, bytes memory mintedNotes,,) = _proofOutputs.get(1).extractProofOutput();
 
-        (,
-        bytes32 noteHash,
-        bytes memory metadata) = newTotal.get(0).extractNote();
+        (, bytes32 noteHash, bytes memory metadata) = newTotal.get(0).extractNote();
 
         logOutputNotes(mintedNotes);
         emit UpdateTotalMinted(noteHash, metadata);
@@ -56,19 +46,9 @@ contract ZkAssetMintable is ZkAssetOwnable {
 
         bytes memory proofOutput = proofOutputs.get(0);
 
-        (,
-        ,
-        ,
-        int256 publicValue) = proofOutput.extractProofOutput();
+        (,,, int256 publicValue) = proofOutput.extractProofOutput();
 
-        (
-            ,
-            uint256 scalingFactor,
-            uint256 totalSupply,
-            ,
-            ,
-            ,
-        ) = ace.getRegistry(address(this));
+        (, uint256 scalingFactor, uint256 totalSupply,,,,) = ace.getRegistry(address(this));
         if (publicValue > 0) {
             if (totalSupply < uint256(publicValue)) {
                 uint256 supplementValue = uint256(publicValue).sub(totalSupply);
@@ -82,4 +62,3 @@ contract ZkAssetMintable is ZkAssetOwnable {
         confidentialTransferInternal(proofOutputs);
     }
 }
-

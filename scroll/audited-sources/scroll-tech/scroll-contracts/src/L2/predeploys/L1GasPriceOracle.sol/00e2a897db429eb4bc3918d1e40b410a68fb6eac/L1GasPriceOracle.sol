@@ -2,24 +2,28 @@
 
 pragma solidity =0.8.24;
 
-import {OwnableBase} from "../../libraries/common/OwnableBase.sol";
 import {IWhitelist} from "../../libraries/common/IWhitelist.sol";
+import {OwnableBase} from "../../libraries/common/OwnableBase.sol";
 
 import {IL1GasPriceOracle} from "./IL1GasPriceOracle.sol";
 
 contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates whitelist contract.
     /// @param _oldWhitelist The address of old whitelist contract.
     /// @param _newWhitelist The address of new whitelist contract.
     event UpdateWhitelist(address _oldWhitelist, address _newWhitelist);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the blob fee scalar exceed `MAX_BLOB_SCALAR`.
     error ErrExceedMaxBlobScalar();
@@ -50,9 +54,11 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// @dev Thrown when we enable Feynman fork after Feynman fork.
     error ErrAlreadyInFeynmanFork();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev The precision used in the scalar.
     uint256 private constant PRECISION = 1e9;
@@ -71,7 +77,7 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// commit_scalar = commit_gas_per_tx * fluctuation_multiplier * 1e9
     /// ```
     /// So, the value should not exceed 10^9 * 1e9 normally.
-    uint256 private constant MAX_COMMIT_SCALAR = 10**9 * PRECISION;
+    uint256 private constant MAX_COMMIT_SCALAR = 10 ** 9 * PRECISION;
 
     /// @dev The maximum possible l1 blob fee scalar after Curie.
     /// We derive the blob scalar by
@@ -79,19 +85,21 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// blob_scalar = fluctuation_multiplier / compression_ratio / blob_util_ratio * 1e9
     /// ```
     /// So, the value should not exceed 10^9 * 1e9 normally.
-    uint256 private constant MAX_BLOB_SCALAR = 10**9 * PRECISION;
+    uint256 private constant MAX_BLOB_SCALAR = 10 ** 9 * PRECISION;
 
     /// @dev The maximum possible compression penalty threshold after Feynman.
     /// The value should not exceed 10^9 * 1e9 normally.
-    uint256 private constant MAX_PENALTY_THRESHOLD = 10**9 * PRECISION;
+    uint256 private constant MAX_PENALTY_THRESHOLD = 10 ** 9 * PRECISION;
 
     /// @dev The maximum possible compression penalty factor after Feynman.
     /// The value should not exceed 10^9 * 1e9 normally.
-    uint256 private constant MAX_PENALTY_FACTOR = 10**9 * PRECISION;
+    uint256 private constant MAX_PENALTY_FACTOR = 10 ** 9 * PRECISION;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @inheritdoc IL1GasPriceOracle
     uint256 public l1BaseFee;
@@ -126,26 +134,32 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// @notice Indicates whether the network has gone through the Feynman upgrade.
     bool public isFeynman;
 
-    /*************
+    /**
+     *
      * Modifiers *
-     *************/
-
+     *
+     */
     modifier onlyWhitelistedSender() {
-        if (!whitelist.isSenderAllowed(msg.sender)) revert ErrCallerNotWhitelisted();
+        if (!whitelist.isSenderAllowed(msg.sender)) {
+            revert ErrCallerNotWhitelisted();
+        }
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _owner) {
         _transferOwnership(_owner);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1GasPriceOracle
     function getL1Fee(bytes memory _data) external view override returns (uint256) {
@@ -168,9 +182,11 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
         }
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1GasPriceOracle
     function setL1BaseFee(uint256 _l1BaseFee) external override onlyWhitelistedSender {
@@ -192,14 +208,18 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
         emit L1BlobBaseFeeUpdated(_l1BlobBaseFee);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Allows the owner to modify the overhead.
     /// @param _overhead New overhead
     function setOverhead(uint256 _overhead) external onlyOwner {
-        if (_overhead > MAX_OVERHEAD) revert ErrExceedMaxOverhead();
+        if (_overhead > MAX_OVERHEAD) {
+            revert ErrExceedMaxOverhead();
+        }
 
         overhead = _overhead;
         emit OverheadUpdated(_overhead);
@@ -208,7 +228,9 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// Allows the owner to modify the scalar.
     /// @param _scalar New scalar
     function setScalar(uint256 _scalar) external onlyOwner {
-        if (_scalar > MAX_SCALAR) revert ErrExceedMaxScalar();
+        if (_scalar > MAX_SCALAR) {
+            revert ErrExceedMaxScalar();
+        }
 
         scalar = _scalar;
         emit ScalarUpdated(_scalar);
@@ -217,7 +239,9 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// Allows the owner to modify the commit scalar.
     /// @param _scalar New scalar
     function setCommitScalar(uint256 _scalar) external onlyOwner {
-        if (_scalar > MAX_COMMIT_SCALAR) revert ErrExceedMaxCommitScalar();
+        if (_scalar > MAX_COMMIT_SCALAR) {
+            revert ErrExceedMaxCommitScalar();
+        }
 
         commitScalar = _scalar;
         emit CommitScalarUpdated(_scalar);
@@ -226,7 +250,9 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// Allows the owner to modify the blob scalar.
     /// @param _scalar New scalar
     function setBlobScalar(uint256 _scalar) external onlyOwner {
-        if (_scalar > MAX_BLOB_SCALAR) revert ErrExceedMaxBlobScalar();
+        if (_scalar > MAX_BLOB_SCALAR) {
+            revert ErrExceedMaxBlobScalar();
+        }
 
         blobScalar = _scalar;
         emit BlobScalarUpdated(_scalar);
@@ -235,7 +261,9 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// Allows the owner to modify the penaltyThreshold.
     /// @param _threshold New threshold
     function setPenaltyThreshold(uint256 _threshold) external onlyOwner {
-        if (_threshold < PRECISION || _threshold > MAX_PENALTY_THRESHOLD) revert ErrInvalidPenaltyThreshold();
+        if (_threshold < PRECISION || _threshold > MAX_PENALTY_THRESHOLD) {
+            revert ErrInvalidPenaltyThreshold();
+        }
 
         penaltyThreshold = _threshold;
         emit PenaltyThresholdUpdated(_threshold);
@@ -244,7 +272,9 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// Allows the owner to modify the penaltyFactor.
     /// @param _factor New factor
     function setPenaltyFactor(uint256 _factor) external onlyOwner {
-        if (_factor < PRECISION || _factor > MAX_PENALTY_FACTOR) revert ErrInvalidPenaltyFactor();
+        if (_factor < PRECISION || _factor > MAX_PENALTY_FACTOR) {
+            revert ErrInvalidPenaltyFactor();
+        }
 
         penaltyFactor = _factor;
         emit PenaltyFactorUpdated(_factor);
@@ -266,7 +296,9 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// to avoid external owner operations.
     /// The reason that we keep this function is for easy unit testing.
     function enableCurie() external onlyOwner {
-        if (isCurie) revert ErrAlreadyInCurieFork();
+        if (isCurie) {
+            revert ErrAlreadyInCurieFork();
+        }
         isCurie = true;
     }
 
@@ -276,13 +308,17 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// to avoid external owner operations.
     /// The reason that we keep this function is for easy unit testing.
     function enableFeynman() external onlyOwner {
-        if (isFeynman) revert ErrAlreadyInFeynmanFork();
+        if (isFeynman) {
+            revert ErrAlreadyInFeynmanFork();
+        }
         isFeynman = true;
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to computes the amount of L1 gas used for a transaction before Curie fork.
     ///   The `_data` is the RLP-encoded transaction with signature. And we also reserve additional
@@ -329,9 +365,7 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// @return L1 fee that should be paid for the tx
     function _getL1FeeFeynman(bytes memory _data) private view returns (uint256) {
         // We have bounded the value of `commitScalar`, `blobScalar`, and `penalty`, the whole expression won't overflow.
-        return
-            ((commitScalar * l1BaseFee + blobScalar * l1BlobBaseFee) * _data.length * penaltyFactor) /
-            PRECISION /
-            PRECISION;
+        return ((commitScalar * l1BaseFee + blobScalar * l1BlobBaseFee) * _data.length * penaltyFactor) / PRECISION
+            / PRECISION;
     }
 }

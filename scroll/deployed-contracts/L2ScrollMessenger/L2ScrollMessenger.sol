@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -412,11 +408,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -716,9 +711,11 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
 }
 
 interface IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a cross domain message is sent.
     /// @param sender The address of the sender who initiates the message.
@@ -744,35 +741,36 @@ interface IScrollMessenger {
     /// @param messageHash The hash of the message.
     event FailedRelayedMessage(bytes32 indexed messageHash);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the sender of a cross domain message.
     function xDomainMessageSender() external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
     /// @param value The amount of ether passed when call target contract.
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit) external payable;
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
@@ -780,13 +778,9 @@ interface IScrollMessenger {
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
     /// @param refundAddress The address of account who will receive the refunded fee.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit,
-        address refundAddress
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit, address refundAddress)
+        external
+        payable;
 }
 
 library ScrollConstants {
@@ -806,25 +800,31 @@ abstract contract ScrollMessengerBase is
     ReentrancyGuardUpgradeable,
     IScrollMessenger
 {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates fee vault contract.
     /// @param _oldFeeVault The address of old fee vault contract.
     /// @param _newFeeVault The address of new fee vault contract.
     event UpdateFeeVault(address _oldFeeVault, address _newFeeVault);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of counterpart ScrollMessenger contract in L1/L2.
     address public immutable counterpart;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice See {IScrollMessenger-xDomainMessageSender}
     address public override xDomainMessageSender;
@@ -841,22 +841,23 @@ abstract contract ScrollMessengerBase is
     /// @dev The storage slots for future usage.
     uint256[46] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier notInExecution() {
         require(
-            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER,
-            "Message is already in execution"
+            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER, "Message is already in execution"
         );
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _counterpart) {
         if (_counterpart == address(0)) {
             revert ErrorZeroAddress();
@@ -881,9 +882,11 @@ abstract contract ScrollMessengerBase is
     // make sure only owner can send ether to messenger to avoid possible user fund loss.
     receive() external payable onlyOwner {}
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update fee vault contract.
     /// @dev This function can only called by contract owner.
@@ -906,9 +909,11 @@ abstract contract ScrollMessengerBase is
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to generate the correct cross domain calldata for a message.
     /// @param _sender Message sender address.
@@ -924,15 +929,9 @@ abstract contract ScrollMessengerBase is
         uint256 _messageNonce,
         bytes memory _message
     ) internal pure returns (bytes memory) {
-        return
-            abi.encodeWithSignature(
-                "relayMessage(address,address,uint256,uint256,bytes)",
-                _sender,
-                _target,
-                _value,
-                _messageNonce,
-                _message
-            );
+        return abi.encodeWithSignature(
+            "relayMessage(address,address,uint256,uint256,bytes)", _sender, _target, _value, _messageNonce, _message
+        );
     }
 
     /// @dev Internal function to check whether the `_target` address is allowed to avoid attack.
@@ -945,18 +944,22 @@ abstract contract ScrollMessengerBase is
 }
 
 interface IL2ScrollMessenger is IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the maximum number of times each message can fail in L2 is updated.
     /// @param oldMaxFailedExecutionTimes The old maximum number of times each message can fail in L2.
     /// @param newMaxFailedExecutionTimes The new maximum number of times each message can fail in L2.
     event UpdateMaxFailedExecutionTimes(uint256 oldMaxFailedExecutionTimes, uint256 newMaxFailedExecutionTimes);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice execute L1 => L2 message
     /// @dev Make sure this is only called by privileged accounts.
@@ -965,13 +968,7 @@ interface IL2ScrollMessenger is IScrollMessenger {
     /// @param value The msg.value passed to the message call.
     /// @param nonce The nonce of the message to avoid replay attack.
     /// @param message The content of the message.
-    function relayMessage(
-        address from,
-        address to,
-        uint256 value,
-        uint256 nonce,
-        bytes calldata message
-    ) external;
+    function relayMessage(address from, address to, uint256 value, uint256 nonce, bytes calldata message) external;
 }
 
 library AddressAliasHelper {
@@ -1070,25 +1067,31 @@ abstract contract AppendOnlyMerkleTree {
 }
 
 abstract contract OwnableBase {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner is changed by current owner.
     /// @param _oldOwner The address of previous owner.
     /// @param _newOwner The address of new owner.
     event OwnershipTransferred(address indexed _oldOwner, address indexed _newOwner);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of the current owner.
     address public owner;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
+     *
+     */
 
     /// @dev Throws if called by any account other than the owner.
     modifier onlyOwner() {
@@ -1096,9 +1099,11 @@ abstract contract OwnableBase {
         _;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Leaves the contract without owner. It will not be possible to call
     /// `onlyOwner` functions anymore. Can only be called by the current owner.
@@ -1116,9 +1121,11 @@ abstract contract OwnableBase {
         _transferOwnership(_newOwner);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Transfers ownership of the contract to a new account (`newOwner`).
     /// Internal function without access restriction.
@@ -1136,26 +1143,31 @@ abstract contract OwnableBase {
 /// _verifyStorageProof function, which verifies the existence of the transaction hash in this
 /// contract's `sentMessages` mapping.
 contract L2MessageQueue is AppendOnlyMerkleTree, OwnableBase {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new message is added to the merkle tree.
     /// @param index The index of the corresponding message.
     /// @param messageHash The hash of the corresponding message.
     event AppendMessage(uint256 index, bytes32 messageHash);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L2ScrollMessenger contract.
     address public messenger;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _owner) {
         _transferOwnership(_owner);
     }
@@ -1171,9 +1183,11 @@ contract L2MessageQueue is AppendOnlyMerkleTree, OwnableBase {
         messenger = _messenger;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice record the message to merkle tree and compute the new root.
     /// @param _messageHash The hash of the new added message.
@@ -1202,16 +1216,20 @@ contract L2MessageQueue is AppendOnlyMerkleTree, OwnableBase {
 /// @dev It should be a predeployed contract on layer 2 and should hold infinite amount
 /// of Ether (Specifically, `uint256(-1)`), which can be initialized in Genesis Block.
 contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of L2MessageQueue.
     address public immutable messageQueue;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from L2 message hash to the timestamp when the message is sent.
     mapping(bytes32 => uint256) public messageSendTimestamp;
@@ -1222,10 +1240,11 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
     /// @dev The storage slots used by previous versions of this contract.
     uint256[2] private __used;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _counterpart, address _messageQueue) ScrollMessengerBase(_counterpart) {
         if (_messageQueue == address(0)) {
             revert ErrorZeroAddress();
@@ -1240,39 +1259,38 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
         ScrollMessengerBase.__ScrollMessengerBase_init(address(0), address(0));
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit);
     }
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes calldata _message,
-        uint256 _gasLimit,
-        address
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes calldata _message, uint256 _gasLimit, address)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit);
     }
 
     /// @inheritdoc IL2ScrollMessenger
-    function relayMessage(
-        address _from,
-        address _to,
-        uint256 _value,
-        uint256 _nonce,
-        bytes memory _message
-    ) external override whenNotPaused {
+    function relayMessage(address _from, address _to, uint256 _value, uint256 _nonce, bytes memory _message)
+        external
+        override
+        whenNotPaused
+    {
         // It is impossible to deploy a contract with the same address, reentrance is prevented in nature.
         require(AddressAliasHelper.undoL1ToL2Alias(_msgSender()) == counterpart, "Caller is not L1ScrollMessenger");
 
@@ -1283,21 +1301,21 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
         _executeMessage(_from, _to, _value, _message, _xDomainCalldataHash);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to send cross domain message.
     /// @param _to The address of account who receive the message.
     /// @param _value The amount of ether passed when call target contract.
     /// @param _message The content of the message.
     /// @param _gasLimit Optional gas limit to complete the message relay on corresponding chain.
-    function _sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) internal nonReentrant {
+    function _sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        internal
+        nonReentrant
+    {
         require(msg.value == _value, "msg.value mismatch");
 
         uint256 _nonce = L2MessageQueue(messageQueue).nextMessageIndex();
@@ -1334,7 +1352,7 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
 
         xDomainMessageSender = _from;
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, ) = _to.call{value: _value}(_message);
+        (bool success,) = _to.call{value: _value}(_message);
         // reset value to refund gas.
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
 

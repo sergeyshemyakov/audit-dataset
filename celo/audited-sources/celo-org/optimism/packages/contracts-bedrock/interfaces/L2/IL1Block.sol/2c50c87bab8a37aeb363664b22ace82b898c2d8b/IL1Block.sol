@@ -33,8 +33,7 @@ interface IL1Block {
         bytes32 _batcherHash,
         uint256 _l1FeeOverhead,
         uint256 _l1FeeScalar
-    )
-        external;
+    ) external;
     function setL1BlockValuesEcotone() external;
     function setL1BlockValuesIsthmus() external;
     function timestamp() external view returns (uint64);

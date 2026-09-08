@@ -182,6 +182,7 @@ library Math {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -574,7 +575,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), _SYMBOLS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -1299,9 +1302,11 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
 contract ScrollOwner is AccessControlEnumerable {
     using EnumerableSet for EnumerableSet.Bytes32Set;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the access to target contract is granted.
     /// @param role The role to grant access.
@@ -1315,38 +1320,40 @@ contract ScrollOwner is AccessControlEnumerable {
     /// @param selectors The list of function selectors to revoke access.
     event RevokeAccess(bytes32 indexed role, address indexed target, bytes4[] selectors);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from target address to selector to the list of accessible roles.
     mapping(address => mapping(bytes4 => EnumerableSet.Bytes32Set)) private targetAccess;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
-    modifier hasAccess(
-        address _target,
-        bytes4 _selector,
-        bytes32 _role
-    ) {
+     *
+     */
+    modifier hasAccess(address _target, bytes4 _selector, bytes32 _role) {
         // admin has access to all methods
         require(_role == DEFAULT_ADMIN_ROLE || targetAccess[_target][_selector].contains(_role), "no access");
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return a list of roles which has access to the function.
     /// @param _target The address of target contract.
@@ -1360,42 +1367,44 @@ contract ScrollOwner is AccessControlEnumerable {
         }
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Perform a function call from arbitrary role.
     /// @param _target The address of target contract.
     /// @param _value The value passing to target contract.
     /// @param _data The calldata passing to target contract.
     /// @param _role The expected role of the caller.
-    function execute(
-        address _target,
-        uint256 _value,
-        bytes calldata _data,
-        bytes32 _role
-    ) external payable onlyRole(_role) hasAccess(_target, bytes4(_data[0:4]), _role) {
+    function execute(address _target, uint256 _value, bytes calldata _data, bytes32 _role)
+        external
+        payable
+        onlyRole(_role)
+        hasAccess(_target, bytes4(_data[0:4]), _role)
+    {
         _execute(_target, _value, _data);
     }
 
     // allow others to send ether to this contract.
     receive() external payable {}
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the access to target contract.
     /// @param _target The address of target contract.
     /// @param _selectors The list of function selectors to update.
     /// @param _role The role to change.
     /// @param _status True if we are going to add the role, otherwise remove the role.
-    function updateAccess(
-        address _target,
-        bytes4[] memory _selectors,
-        bytes32 _role,
-        bool _status
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function updateAccess(address _target, bytes4[] memory _selectors, bytes32 _role, bool _status)
+        external
+        onlyRole(DEFAULT_ADMIN_ROLE)
+    {
         if (_status) {
             for (uint256 i = 0; i < _selectors.length; i++) {
                 targetAccess[_target][_selectors[i]].add(_role);
@@ -1411,21 +1420,19 @@ contract ScrollOwner is AccessControlEnumerable {
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to call contract. If the call reverted, the error will be popped up.
     /// @param _target The address of target contract.
     /// @param _value The value passing to target contract.
     /// @param _data The calldata passing to target contract.
-    function _execute(
-        address _target,
-        uint256 _value,
-        bytes calldata _data
-    ) private {
+    function _execute(address _target, uint256 _value, bytes calldata _data) private {
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, ) = _target.call{value: _value}(_data);
+        (bool success,) = _target.call{value: _value}(_data);
         if (!success) {
             // solhint-disable-next-line no-inline-assembly
             assembly {

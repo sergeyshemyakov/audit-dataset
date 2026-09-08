@@ -7,23 +7,23 @@ import {Timestamp} from "@aztec/shared/libraries/TimeMath.sol";
 import {Math} from "@oz/utils/math/Math.sol";
 
 enum VoteTabulationReturn {
-  Accepted,
-  Rejected,
-  Invalid
+    Accepted,
+    Rejected,
+    Invalid
 }
 
 enum VoteTabulationInfo {
-  MinimumEqZero,
-  TotalPowerLtMinimum,
-  VotesNeededEqZero,
-  VotesNeededGtTotalPower,
-  VotesCastLtVotesNeeded,
-  YeaLimitEqZero,
-  YeaLimitGtVotesCast,
-  YeaLimitEqVotesCast,
-  YeaVotesEqVotesCast,
-  YeaVotesLeYeaLimit,
-  YeaVotesGtYeaLimit
+    MinimumEqZero,
+    TotalPowerLtMinimum,
+    VotesNeededEqZero,
+    VotesNeededGtTotalPower,
+    VotesCastLtVotesNeeded,
+    YeaLimitEqZero,
+    YeaLimitGtVotesCast,
+    YeaLimitEqVotesCast,
+    YeaVotesEqVotesCast,
+    YeaVotesLeYeaLimit,
+    YeaVotesGtYeaLimit
 }
 
 /**
@@ -89,85 +89,85 @@ enum VoteTabulationInfo {
  *          4. Executable: queued end → queued end + gracePeriod
  */
 library ProposalLib {
-  /**
-   * @notice Tabulate the votes for a proposal.
-   * @dev This function is used to determine if a proposal has met the acceptance criteria.
-   *
-   * @param _self The proposal to tabulate the votes for.
-   * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
-   * @return The vote tabulation result, and additional information.
-   */
-  function voteTabulation(Proposal storage _self, uint256 _totalPower)
-    internal
-    view
-    returns (VoteTabulationReturn, VoteTabulationInfo)
-  {
-    if (_totalPower < _self.config.minimumVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
-    }
+    /**
+     * @notice Tabulate the votes for a proposal.
+     * @dev This function is used to determine if a proposal has met the acceptance criteria.
+     *
+     * @param _self The proposal to tabulate the votes for.
+     * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
+     * @return The vote tabulation result, and additional information.
+     */
+    function voteTabulation(Proposal storage _self, uint256 _totalPower)
+        internal
+        view
+        returns (VoteTabulationReturn, VoteTabulationInfo)
+    {
+        if (_totalPower < _self.config.minimumVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
+        }
 
-    uint256 votesNeeded = Math.mulDiv(_totalPower, _self.config.quorum, 1e18, Math.Rounding.Ceil);
-    if (votesNeeded == 0) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
-    }
-    if (votesNeeded > _totalPower) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
-    }
+        uint256 votesNeeded = Math.mulDiv(_totalPower, _self.config.quorum, 1e18, Math.Rounding.Ceil);
+        if (votesNeeded == 0) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
+        }
+        if (votesNeeded > _totalPower) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
+        }
 
-    uint256 votesCast = _self.summedBallot.nay + _self.summedBallot.yea;
-    if (votesCast < votesNeeded) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
-    }
+        uint256 votesCast = _self.summedBallot.nay + _self.summedBallot.yea;
+        if (votesCast < votesNeeded) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
+        }
 
-    // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
-    // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
-    // i.e. we cannot require more votes to be yes than total votes.
-    if (_self.summedBallot.yea == votesCast) {
-      return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
-    }
+        // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
+        // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
+        // i.e. we cannot require more votes to be yes than total votes.
+        if (_self.summedBallot.yea == votesCast) {
+            return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
+        }
 
-    uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.config.requiredYeaMargin, 2);
-    uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
+        uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.config.requiredYeaMargin, 2);
+        uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
 
-    /*if (requiredApprovalVotes == 0) {
+        /*if (requiredApprovalVotes == 0) {
       // It should be impossible to hit this case as `requiredApprovalVotesFraction` cannot be 0,
       // and due to rounding up, only way to hit this would be if `votesCast = 0`,
       // which is already handled as `votesCast >= votesNeeded` and `votesNeeded > 0`.
       return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitEqZero);
     }*/
-    if (requiredApprovalVotes > votesCast) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        if (requiredApprovalVotes > votesCast) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        }
+
+        // We want to see that there are MORE votes on yea than needed
+        // We explicitly need MORE to ensure we don't "tie".
+        // If we need as many yea as there are votes, we know it is impossible already.
+        // due to the check earlier, that summedBallot.yea == votesCast.
+        if (_self.summedBallot.yea <= requiredApprovalVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+        }
+
+        return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
     }
 
-    // We want to see that there are MORE votes on yea than needed
-    // We explicitly need MORE to ensure we don't "tie".
-    // If we need as many yea as there are votes, we know it is impossible already.
-    // due to the check earlier, that summedBallot.yea == votesCast.
-    if (_self.summedBallot.yea <= requiredApprovalVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+    function pendingThrough(Proposal storage _self) internal view returns (Timestamp) {
+        return _self.creation + _self.config.votingDelay;
     }
 
-    return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
-  }
+    function activeThrough(Proposal storage _self) internal view returns (Timestamp) {
+        return ProposalLib.pendingThrough(_self) + _self.config.votingDuration;
+    }
 
-  function pendingThrough(Proposal storage _self) internal view returns (Timestamp) {
-    return _self.creation + _self.config.votingDelay;
-  }
+    function queuedThrough(Proposal storage _self) internal view returns (Timestamp) {
+        return ProposalLib.activeThrough(_self) + _self.config.executionDelay;
+    }
 
-  function activeThrough(Proposal storage _self) internal view returns (Timestamp) {
-    return ProposalLib.pendingThrough(_self) + _self.config.votingDuration;
-  }
+    function executableThrough(Proposal storage _self) internal view returns (Timestamp) {
+        return ProposalLib.queuedThrough(_self) + _self.config.gracePeriod;
+    }
 
-  function queuedThrough(Proposal storage _self) internal view returns (Timestamp) {
-    return ProposalLib.activeThrough(_self) + _self.config.executionDelay;
-  }
-
-  function executableThrough(Proposal storage _self) internal view returns (Timestamp) {
-    return ProposalLib.queuedThrough(_self) + _self.config.gracePeriod;
-  }
-
-  // Identical to `pendingThrough` but for proposals already in memory
-  function pendingThroughMemory(Proposal memory _self) internal pure returns (Timestamp) {
-    return _self.creation + _self.config.votingDelay;
-  }
+    // Identical to `pendingThrough` but for proposals already in memory
+    function pendingThroughMemory(Proposal memory _self) internal pure returns (Timestamp) {
+        return _self.creation + _self.config.votingDelay;
+    }
 }

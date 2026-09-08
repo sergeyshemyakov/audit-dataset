@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
-import {Predeploys} from '@eth-optimism-bedrock/src/libraries/Predeploys.sol';
-import {SafeCall} from '@eth-optimism-bedrock/src/libraries/SafeCall.sol';
+import {Predeploys} from "@eth-optimism-bedrock/src/libraries/Predeploys.sol";
+import {SafeCall} from "@eth-optimism-bedrock/src/libraries/SafeCall.sol";
 
-import {IFeeSplitter} from '../interfaces/FeeSplitter/IFeeSplitter.sol';
-import {IFeeVault} from '../interfaces/optimism/IFeeVault.sol';
+import {IFeeSplitter} from "../interfaces/FeeSplitter/IFeeSplitter.sol";
+import {IFeeVault} from "../interfaces/optimism/IFeeVault.sol";
 
 /// @title FeeSplitter
 /// @dev Withdraws funds from system FeeVault contracts, shares revenue with Optimism, sends remaining revenue to L1 and net fee recipients
@@ -103,11 +103,17 @@ contract FeeSplitter is IFeeSplitter {
             remainingNetRevenue = netFeeRevenue - optimismRevenueShare;
         }
 
-        if (!SafeCall.send(OPTIMISM_WALLET, gasleft(), optimismRevenueShare)) revert TransferFailed();
+        if (!SafeCall.send(OPTIMISM_WALLET, gasleft(), optimismRevenueShare)) {
+            revert TransferFailed();
+        }
 
-        if (!SafeCall.send(L1_FEE_RECIPIENT, gasleft(), l1Fee)) revert TransferFailed();
+        if (!SafeCall.send(L1_FEE_RECIPIENT, gasleft(), l1Fee)) {
+            revert TransferFailed();
+        }
 
-        if (!SafeCall.send(NET_FEE_RECIPIENT, gasleft(), remainingNetRevenue)) revert TransferFailed();
+        if (!SafeCall.send(NET_FEE_RECIPIENT, gasleft(), remainingNetRevenue)) {
+            revert TransferFailed();
+        }
 
         emit FeesDistributed(optimismRevenueShare, l1Fee, remainingNetRevenue);
         return true;
@@ -121,7 +127,9 @@ contract FeeSplitter is IFeeSplitter {
         assembly ("memory-safe") {
             unlocked := tload(LOCK_STORAGE_SLOT)
         }
-        if (unlocked == 0) revert Locked();
+        if (unlocked == 0) {
+            revert Locked();
+        }
 
         // TODO: explore whether the withdraw function can return a value indicating the amount of fees withdrawn
         if (msg.sender == Predeploys.SEQUENCER_FEE_WALLET || msg.sender == Predeploys.BASE_FEE_VAULT) {

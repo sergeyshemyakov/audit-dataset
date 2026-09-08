@@ -735,13 +735,7 @@ contract PreimageOracle is ISemver {
     ///      │          4 │ L2 Block Number (u64)  │
     ///      │          5 │ Chain ID (u64)         │
     ///      └────────────┴────────────────────────┘
-    function loadLocalData(
-        uint256 _ident,
-        bytes32 _localContext,
-        bytes32 _word,
-        uint256 _size,
-        uint256 _partOffset
-    )
+    function loadLocalData(uint256 _ident, bytes32 _localContext, bytes32 _word, uint256 _size, uint256 _partOffset)
         external
         returns (bytes32 key_)
     {
@@ -877,9 +871,7 @@ contract PreimageOracle is ISemver {
         bytes calldata _commitment,
         bytes calldata _proof,
         uint256 _partOffset
-    )
-        external
-    {
+    ) external {
         bytes32 key;
         bytes32 part;
         assembly {
@@ -973,9 +965,7 @@ contract PreimageOracle is ISemver {
         address _precompile,
         uint64 _requiredGas,
         bytes calldata _input
-    )
-        external
-    {
+    ) external {
         bytes32 res;
         bytes32 key;
         bytes32 part;
@@ -1070,24 +1060,34 @@ contract PreimageOracle is ISemver {
     /// @notice Initialize a large preimage proposal. Must be called before adding any leaves.
     function initLPP(uint256 _uuid, uint32 _partOffset, uint32 _claimedSize) external payable {
         // The bond provided must be at least `MIN_BOND_SIZE`.
-        if (msg.value < MIN_BOND_SIZE) revert InsufficientBond();
+        if (msg.value < MIN_BOND_SIZE) {
+            revert InsufficientBond();
+        }
 
         // Legacy check, no longer technically required but keeping for now. Can be bypassed using
         // EIP-7702. Challenger loads this information directly from the proposals array instead of
         // looking at transaction calldata.
-        if (msg.sender != tx.origin) revert NotEOA();
+        if (msg.sender != tx.origin) {
+            revert NotEOA();
+        }
 
         // The part offset must be within the bounds of the claimed size + 8.
-        if (_partOffset >= _claimedSize + 8) revert PartOffsetOOB();
+        if (_partOffset >= _claimedSize + 8) {
+            revert PartOffsetOOB();
+        }
 
         // The claimed size must be at least `MIN_LPP_SIZE_BYTES`.
-        if (_claimedSize < MIN_LPP_SIZE_BYTES) revert InvalidInputSize();
+        if (_claimedSize < MIN_LPP_SIZE_BYTES) {
+            revert InvalidInputSize();
+        }
 
         // Initialize the proposal metadata.
         LPPMetaData metaData = proposalMetadata[msg.sender][_uuid];
 
         // Revert if the proposal has already been initialized. 0-size preimages are *not* allowed.
-        if (metaData.claimedSize() != 0) revert AlreadyInitialized();
+        if (metaData.claimedSize() != 0) {
+            revert AlreadyInitialized();
+        }
 
         proposalMetadata[msg.sender][_uuid] = metaData.setPartOffset(_partOffset).setClaimedSize(_claimedSize);
         proposals.push(LargePreimageProposalKeys(msg.sender, _uuid));
@@ -1103,9 +1103,7 @@ contract PreimageOracle is ISemver {
         bytes calldata _input,
         bytes32[] calldata _stateCommitments,
         bool _finalize
-    )
-        external
-    {
+    ) external {
         // If we're finalizing, pad the input for the submitter. If not, copy the input into memory verbatim.
         bytes memory input;
         if (_finalize) {
@@ -1122,17 +1120,25 @@ contract PreimageOracle is ISemver {
         // Legacy check, no longer technically required but keeping for now. Can be bypassed using
         // EIP-7702. Challenger loads this information from the log at the end of this function
         // instead of looking at transaction calldata.
-        if (msg.sender != tx.origin) revert NotEOA();
+        if (msg.sender != tx.origin) {
+            revert NotEOA();
+        }
 
         // Revert if the proposal has not been initialized. 0-size preimages are *not* allowed.
-        if (metaData.claimedSize() == 0) revert NotInitialized();
+        if (metaData.claimedSize() == 0) {
+            revert NotInitialized();
+        }
 
         // Revert if the proposal has already been finalized. No leaves can be added after this point.
-        if (metaData.timestamp() != 0) revert AlreadyFinalized();
+        if (metaData.timestamp() != 0) {
+            revert AlreadyFinalized();
+        }
 
         // Revert if the starting block is not the next block to be added. This is to aid submitters in ensuring that
         // they don't corrupt an in-progress proposal by submitting input out of order.
-        if (blocksProcessed != _inputStartBlock) revert WrongStartingBlock();
+        if (blocksProcessed != _inputStartBlock) {
+            revert WrongStartingBlock();
+        }
 
         // Attempt to extract the preimage part from the input data, if the part offset is present in the current
         // chunk of input. This function has side effects, and will persist the preimage part to the caller's large
@@ -1192,7 +1198,9 @@ contract PreimageOracle is ISemver {
         // Do not allow for posting preimages larger than the merkle tree can support. The incremental merkle tree
         // algorithm only supports 2**height - 1 leaves, the right most leaf must always be kept empty.
         // Reference: https://daejunpark.github.io/papers/deposit.pdf - Page 10, Section 5.1.
-        if (blocksProcessed > MAX_LEAF_COUNT) revert TreeSizeOverflow();
+        if (blocksProcessed > MAX_LEAF_COUNT) {
+            revert TreeSizeOverflow();
+        }
 
         // Update the proposal metadata to include the number of blocks processed and total bytes processed.
         metaData = metaData.setBlocksProcessed(uint32(blocksProcessed)).setBytesProcessed(
@@ -1204,7 +1212,9 @@ contract PreimageOracle is ISemver {
             metaData = metaData.setTimestamp(uint64(block.timestamp));
 
             // If the number of bytes processed is not equal to the claimed size, the proposal cannot be finalized.
-            if (metaData.bytesProcessed() != metaData.claimedSize()) revert InvalidInputSize();
+            if (metaData.bytesProcessed() != metaData.claimedSize()) {
+                revert InvalidInputSize();
+            }
         }
 
         // Perist the latest branch to storage.
@@ -1233,9 +1243,7 @@ contract PreimageOracle is ISemver {
         bytes32[] calldata _preStateProof,
         Leaf calldata _postState,
         bytes32[] calldata _postStateProof
-    )
-        external
-    {
+    ) external {
         // Verify that both leaves are present in the merkle tree.
         bytes32 root = getTreeRootLPP(_claimant, _uuid);
         if (
@@ -1243,20 +1251,28 @@ contract PreimageOracle is ISemver {
                 _verify(_preStateProof, root, _preState.index, _hashLeaf(_preState))
                     && _verify(_postStateProof, root, _postState.index, _hashLeaf(_postState))
             )
-        ) revert InvalidProof();
+        ) {
+            revert InvalidProof();
+        }
 
         // Verify that the prestate passed matches the intermediate state claimed in the leaf.
-        if (keccak256(abi.encode(_stateMatrix)) != _preState.stateCommitment) revert InvalidPreimage();
+        if (keccak256(abi.encode(_stateMatrix)) != _preState.stateCommitment) {
+            revert InvalidPreimage();
+        }
 
         // Verify that the pre/post state are contiguous.
-        if (_preState.index + 1 != _postState.index) revert StatesNotContiguous();
+        if (_preState.index + 1 != _postState.index) {
+            revert StatesNotContiguous();
+        }
 
         // Absorb and permute the input bytes.
         LibKeccak.absorb(_stateMatrix, _postState.input);
         LibKeccak.permutation(_stateMatrix);
 
         // Verify that the post state hash doesn't match the expected hash.
-        if (keccak256(abi.encode(_stateMatrix)) == _postState.stateCommitment) revert PostStateMatches();
+        if (keccak256(abi.encode(_stateMatrix)) == _postState.stateCommitment) {
+            revert PostStateMatches();
+        }
 
         // Mark the keccak claim as countered.
         proposalMetadata[_claimant][_uuid] = proposalMetadata[_claimant][_uuid].setCountered(true);
@@ -1271,15 +1287,17 @@ contract PreimageOracle is ISemver {
         uint256 _uuid,
         Leaf calldata _postState,
         bytes32[] calldata _postStateProof
-    )
-        external
-    {
+    ) external {
         // Verify that the leaf is present in the merkle tree.
         bytes32 root = getTreeRootLPP(_claimant, _uuid);
-        if (!_verify(_postStateProof, root, _postState.index, _hashLeaf(_postState))) revert InvalidProof();
+        if (!_verify(_postStateProof, root, _postState.index, _hashLeaf(_postState))) {
+            revert InvalidProof();
+        }
 
         // The poststate index must be 0 in order to challenge it with this function.
-        if (_postState.index != 0) revert StatesNotContiguous();
+        if (_postState.index != 0) {
+            revert StatesNotContiguous();
+        }
 
         // Absorb and permute the input bytes into a fresh state matrix.
         LibKeccak.StateMatrix memory stateMatrix;
@@ -1287,7 +1305,9 @@ contract PreimageOracle is ISemver {
         LibKeccak.permutation(stateMatrix);
 
         // Verify that the post state hash doesn't match the expected hash.
-        if (keccak256(abi.encode(stateMatrix)) == _postState.stateCommitment) revert PostStateMatches();
+        if (keccak256(abi.encode(stateMatrix)) == _postState.stateCommitment) {
+            revert PostStateMatches();
+        }
 
         // Mark the keccak claim as countered.
         proposalMetadata[_claimant][_uuid] = proposalMetadata[_claimant][_uuid].setCountered(true);
@@ -1305,19 +1325,23 @@ contract PreimageOracle is ISemver {
         bytes32[] calldata _preStateProof,
         Leaf calldata _postState,
         bytes32[] calldata _postStateProof
-    )
-        external
-    {
+    ) external {
         LPPMetaData metaData = proposalMetadata[_claimant][_uuid];
 
         // Check if the proposal was countered.
-        if (metaData.countered()) revert BadProposal();
+        if (metaData.countered()) {
+            revert BadProposal();
+        }
 
         // Check if the proposal has been finalized at all.
-        if (metaData.timestamp() == 0) revert ActiveProposal();
+        if (metaData.timestamp() == 0) {
+            revert ActiveProposal();
+        }
 
         // Check if the challenge period has passed since the proposal was finalized.
-        if (block.timestamp - metaData.timestamp() <= CHALLENGE_PERIOD) revert ActiveProposal();
+        if (block.timestamp - metaData.timestamp() <= CHALLENGE_PERIOD) {
+            revert ActiveProposal();
+        }
 
         // Verify that both leaves are present in the merkle tree.
         bytes32 root = getTreeRootLPP(_claimant, _uuid);
@@ -1326,10 +1350,14 @@ contract PreimageOracle is ISemver {
                 _verify(_preStateProof, root, _preState.index, _hashLeaf(_preState))
                     && _verify(_postStateProof, root, _postState.index, _hashLeaf(_postState))
             )
-        ) revert InvalidProof();
+        ) {
+            revert InvalidProof();
+        }
 
         // Verify that the prestate passed matches the intermediate state claimed in the leaf.
-        if (keccak256(abi.encode(_stateMatrix)) != _preState.stateCommitment) revert InvalidPreimage();
+        if (keccak256(abi.encode(_stateMatrix)) != _preState.stateCommitment) {
+            revert InvalidPreimage();
+        }
 
         // Verify that the pre/post state are contiguous.
         if (_preState.index + 1 != _postState.index || _postState.index != metaData.blocksProcessed() - 1) {
@@ -1374,12 +1402,7 @@ contract PreimageOracle is ISemver {
     /// @param _uuid The UUID of the large preimage proposal.
     /// @param _finalize Whether or not the proposal is being finalized in the current call.
     /// @param _metaData The metadata of the large preimage proposal.
-    function _extractPreimagePart(
-        bytes calldata _input,
-        uint256 _uuid,
-        bool _finalize,
-        LPPMetaData _metaData
-    )
+    function _extractPreimagePart(bytes calldata _input, uint256 _uuid, bool _finalize, LPPMetaData _metaData)
         internal
     {
         uint256 offset = _metaData.partOffset();
@@ -1402,7 +1425,9 @@ contract PreimageOracle is ISemver {
             // supply data that contains the full preimage part so that no partial preimage parts are stored in the
             // oracle. Partial parts are *only* allowed at the tail end of the preimage, where no more data is available
             // to be absorbed.
-            if (relativeOffset + 32 >= _input.length && !_finalize) revert PartOffsetOOB();
+            if (relativeOffset + 32 >= _input.length && !_finalize) {
+                revert PartOffsetOOB();
+            }
 
             // If the preimage part is in the data we're about to absorb, persist the part to the caller's large
             // preimaage metadata.
@@ -1416,12 +1441,7 @@ contract PreimageOracle is ISemver {
 
     /// @notice Check if leaf` at `index` verifies against the Merkle `root` and `branch`.
     /// https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#is_valid_merkle_branch
-    function _verify(
-        bytes32[] calldata _proof,
-        bytes32 _root,
-        uint256 _index,
-        bytes32 _leaf
-    )
+    function _verify(bytes32[] calldata _proof, bytes32 _root, uint256 _index, bytes32 _leaf)
         internal
         pure
         returns (bool isValid_)
@@ -1452,8 +1472,10 @@ contract PreimageOracle is ISemver {
         // Pay out the bond to the claimant.
         uint256 bond = proposalBonds[_claimant][_uuid];
         proposalBonds[_claimant][_uuid] = 0;
-        (bool success,) = _to.call{ value: bond }("");
-        if (!success) revert BondTransferFailed();
+        (bool success,) = _to.call{value: bond}("");
+        if (!success) {
+            revert BondTransferFailed();
+        }
     }
 
     /// @notice Hashes leaf data for the preimage proposals tree

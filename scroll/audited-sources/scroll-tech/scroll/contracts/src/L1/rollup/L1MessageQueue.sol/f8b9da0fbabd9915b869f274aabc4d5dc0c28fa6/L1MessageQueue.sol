@@ -5,8 +5,8 @@ pragma solidity =0.8.16;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {BitMapsUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/structs/BitMapsUpgradeable.sol";
 
-import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 import {IL1MessageQueue} from "./IL1MessageQueue.sol";
+import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 
 import {AddressAliasHelper} from "../../libraries/common/AddressAliasHelper.sol";
 
@@ -20,9 +20,11 @@ import {AddressAliasHelper} from "../../libraries/common/AddressAliasHelper.sol"
 contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     using BitMapsUpgradeable for BitMapsUpgradeable.BitMap;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates gas oracle contract.
     /// @param _oldGasOracle The address of old gas oracle contract.
@@ -39,9 +41,11 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     /// @param _newMaxGasLimit The new max gas limit.
     event UpdateMaxGasLimit(uint256 _oldMaxGasLimit, uint256 _newMaxGasLimit);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L1ScrollMessenger contract.
     address public messenger;
@@ -70,19 +74,21 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     /// @dev The bitmap for skipped messages, where `skippedMessageBitmap[i]` keeps the bits from `[i*256, (i+1)*256)`.
     mapping(uint256 => uint256) private skippedMessageBitmap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier onlyMessenger() {
         require(msg.sender == messenger, "Only callable by the L1ScrollMessenger");
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -103,9 +109,11 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
         maxGasLimit = _maxGasLimit;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueue
     function nextCrossDomainMessageIndex() external view returns (uint256) {
@@ -120,14 +128,18 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     /// @inheritdoc IL1MessageQueue
     function estimateCrossDomainMessageFee(uint256 _gasLimit) external view override returns (uint256) {
         address _oracle = gasOracle;
-        if (_oracle == address(0)) return 0;
+        if (_oracle == address(0)) {
+            return 0;
+        }
         return IL2GasPriceOracle(_oracle).estimateCrossDomainMessageFee(_gasLimit);
     }
 
     /// @inheritdoc IL1MessageQueue
     function calculateIntrinsicGasFee(bytes memory _calldata) public view override returns (uint256) {
         address _oracle = gasOracle;
-        if (_oracle == address(0)) return 0;
+        if (_oracle == address(0)) {
+            return 0;
+        }
         return IL2GasPriceOracle(_oracle).calculateIntrinsicGasFee(_calldata);
     }
 
@@ -155,11 +167,7 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
                     len := 1
                     leave
                 }
-                for {
-
-                } gt(v, 0) {
-
-                } {
+                for {} gt(v, 0) {} {
                     len := add(len, 1)
                     v := shr(8, v)
                 }
@@ -267,7 +275,9 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
 
     /// @inheritdoc IL1MessageQueue
     function isMessageSkipped(uint256 _queueIndex) external view returns (bool) {
-        if (_queueIndex >= pendingQueueIndex) return false;
+        if (_queueIndex >= pendingQueueIndex) {
+            return false;
+        }
 
         return _isMessageSkipped(_queueIndex);
     }
@@ -278,16 +288,18 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
         return _isMessageSkipped(_queueIndex) && droppedMessageBitmap.get(_queueIndex);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueue
-    function appendCrossDomainMessage(
-        address _target,
-        uint256 _gasLimit,
-        bytes calldata _data
-    ) external override onlyMessenger {
+    function appendCrossDomainMessage(address _target, uint256 _gasLimit, bytes calldata _data)
+        external
+        override
+        onlyMessenger
+    {
         // validate gas limit
         _validateGasLimit(_gasLimit, _data);
 
@@ -316,11 +328,7 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     }
 
     /// @inheritdoc IL1MessageQueue
-    function popCrossDomainMessage(
-        uint256 _startIndex,
-        uint256 _count,
-        uint256 _skippedBitmap
-    ) external {
+    function popCrossDomainMessage(uint256 _startIndex, uint256 _count, uint256 _skippedBitmap) external {
         require(msg.sender == scrollChain, "Only callable by the ScrollChain");
 
         require(_count <= 256, "pop too many messages");
@@ -355,9 +363,11 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
         emit DropTransaction(_index);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of gas oracle.
     /// @dev This function can only called by contract owner.
@@ -389,9 +399,11 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
         emit UpdateMaxGasLimit(_oldMaxGasLimit, _newMaxGasLimit);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to queue a L1 transaction.
     /// @param _sender The address of sender who will initiate this transaction in L2.

@@ -19,51 +19,52 @@ pragma experimental ABIEncoderV2;
  * because this is not dealt with automatically as with constructors.
  */
 contract Initializable {
+    /**
+     * @dev Indicates that the contract has been initialized.
+     */
+    bool private initialized;
 
-  /**
-   * @dev Indicates that the contract has been initialized.
-   */
-  bool private initialized;
+    /**
+     * @dev Indicates that the contract is in the process of being initialized.
+     */
+    bool private initializing;
 
-  /**
-   * @dev Indicates that the contract is in the process of being initialized.
-   */
-  bool private initializing;
+    /**
+     * @dev Modifier to use in the initializer function of a contract.
+     */
+    modifier initializer() {
+        require(initializing || isConstructor() || !initialized, "Contract instance has already been initialized");
 
-  /**
-   * @dev Modifier to use in the initializer function of a contract.
-   */
-  modifier initializer() {
-    require(initializing || isConstructor() || !initialized, "Contract instance has already been initialized");
+        bool isTopLevelCall = !initializing;
+        if (isTopLevelCall) {
+            initializing = true;
+            initialized = true;
+        }
 
-    bool isTopLevelCall = !initializing;
-    if (isTopLevelCall) {
-      initializing = true;
-      initialized = true;
+        _;
+
+        if (isTopLevelCall) {
+            initializing = false;
+        }
     }
 
-    _;
-
-    if (isTopLevelCall) {
-      initializing = false;
+    /// @dev Returns true if and only if the function is running in the constructor
+    function isConstructor() private view returns (bool) {
+        // extcodesize checks the size of the code stored in an address, and
+        // address returns the current address. Since the code is still not
+        // deployed when running a constructor, any checks on its code size will
+        // yield zero, making it an effective way to detect if a contract is
+        // under construction or not.
+        address self = address(this);
+        uint256 cs;
+        assembly {
+            cs := extcodesize(self)
+        }
+        return cs == 0;
     }
-  }
 
-  /// @dev Returns true if and only if the function is running in the constructor
-  function isConstructor() private view returns (bool) {
-    // extcodesize checks the size of the code stored in an address, and
-    // address returns the current address. Since the code is still not
-    // deployed when running a constructor, any checks on its code size will
-    // yield zero, making it an effective way to detect if a contract is
-    // under construction or not.
-    address self = address(this);
-    uint256 cs;
-    assembly { cs := extcodesize(self) }
-    return cs == 0;
-  }
-
-  // Reserved storage space to allow for layout changes in the future.
-  uint256[50] private ______gap;
+    // Reserved storage space to allow for layout changes in the future.
+    uint256[50] private ______gap;
 }
 
 contract Configuration {
@@ -169,18 +170,12 @@ abstract contract Delegation is Core {
         emit Undelegated(msg.sender, previous);
     }
 
-    function proposeByDelegate(address from, address target, string memory description)
-        external
-        returns (uint256)
-    {
+    function proposeByDelegate(address from, address target, string memory description) external returns (uint256) {
         require(delegatedTo[from] == msg.sender, "Governance: not authorized");
         return _propose(from, target, description);
     }
 
-    function _propose(address proposer, address target, string memory description)
-        internal
-        virtual
-        returns (uint256);
+    function _propose(address proposer, address target, string memory description) internal virtual returns (uint256);
 
     function castDelegatedVote(address[] memory from, uint256 proposalId, bool support) external virtual {
         for (uint256 i = 0; i < from.length; i++) {
@@ -196,35 +191,35 @@ abstract contract Delegation is Core {
 }
 
 interface Resolver {
-  function addr(bytes32 node) external view returns (address);
+    function addr(bytes32 node) external view returns (address);
 }
 
 interface ENS {
-  function resolver(bytes32 node) external view returns (Resolver);
+    function resolver(bytes32 node) external view returns (Resolver);
 }
 
 contract EnsResolve {
-  function resolve(bytes32 node) public view virtual returns (address) {
-    ENS Registry = ENS(
-      getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
-    );
-    return Registry.resolver(node).addr(node);
-  }
-
-  function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
-    result = new address[](domains.length);
-    for (uint256 i = 0; i < domains.length; i++) {
-      result[i] = resolve(domains[i]);
+    function resolve(bytes32 node) public view virtual returns (address) {
+        ENS Registry = ENS(
+            getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
+        );
+        return Registry.resolver(node).addr(node);
     }
-  }
 
-  function getChainId() internal pure returns (uint256) {
-    uint256 chainId;
-    assembly {
-      chainId := chainid()
+    function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
+        result = new address[](domains.length);
+        for (uint256 i = 0; i < domains.length; i++) {
+            result[i] = resolve(domains[i]);
+        }
     }
-    return chainId;
-  }
+
+    function getChainId() internal pure returns (uint256) {
+        uint256 chainId;
+        assembly {
+            chainId := chainid()
+        }
+        return chainId;
+    }
 }
 
 /**
@@ -248,7 +243,9 @@ library SafeMath {
      */
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         uint256 c = a + b;
-        if (c < a) return (false, 0);
+        if (c < a) {
+            return (false, 0);
+        }
         return (true, c);
     }
 
@@ -258,7 +255,9 @@ library SafeMath {
      * _Available since v3.4._
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b > a) return (false, 0);
+        if (b > a) {
+            return (false, 0);
+        }
         return (true, a - b);
     }
 
@@ -271,9 +270,13 @@ library SafeMath {
         // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
         // benefit is lost if 'b' is also tested.
         // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-        if (a == 0) return (true, 0);
+        if (a == 0) {
+            return (true, 0);
+        }
         uint256 c = a * b;
-        if (c / a != b) return (false, 0);
+        if (c / a != b) {
+            return (false, 0);
+        }
         return (true, c);
     }
 
@@ -283,7 +286,9 @@ library SafeMath {
      * _Available since v3.4._
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b == 0) return (false, 0);
+        if (b == 0) {
+            return (false, 0);
+        }
         return (true, a / b);
     }
 
@@ -293,7 +298,9 @@ library SafeMath {
      * _Available since v3.4._
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b == 0) return (false, 0);
+        if (b == 0) {
+            return (false, 0);
+        }
         return (true, a % b);
     }
 
@@ -339,7 +346,9 @@ library SafeMath {
      * - Multiplication cannot overflow.
      */
     function mul(uint256 a, uint256 b) internal pure returns (uint256) {
-        if (a == 0) return 0;
+        if (a == 0) {
+            return 0;
+        }
         uint256 c = a * b;
         require(c / a == b, "SafeMath: multiplication overflow");
         return c;
@@ -560,9 +569,9 @@ interface IERC20 {
 contract ERC20 is Context, IERC20 {
     using SafeMath for uint256;
 
-    mapping (address => uint256) private _balances;
+    mapping(address => uint256) private _balances;
 
-    mapping (address => mapping (address => uint256)) private _allowances;
+    mapping(address => mapping(address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
 
@@ -579,7 +588,7 @@ contract ERC20 is Context, IERC20 {
      * All three of these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (string memory name_, string memory symbol_) public {
+    constructor(string memory name_, string memory symbol_) public {
         _name = name_;
         _symbol = symbol_;
         _decimals = 18;
@@ -678,7 +687,11 @@ contract ERC20 is Context, IERC20 {
      */
     function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {
         _transfer(sender, recipient, amount);
-        _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance"));
+        _approve(
+            sender,
+            _msgSender(),
+            _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance")
+        );
         return true;
     }
 
@@ -714,7 +727,11 @@ contract ERC20 is Context, IERC20 {
      * `subtractedValue`.
      */
     function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
-        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero"));
+        _approve(
+            _msgSender(),
+            spender,
+            _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero")
+        );
         return true;
     }
 
@@ -743,7 +760,8 @@ contract ERC20 is Context, IERC20 {
         emit Transfer(sender, recipient, amount);
     }
 
-    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
+    /**
+     * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
      * Emits a {Transfer} event with `from` set to the zero address.
@@ -829,7 +847,7 @@ contract ERC20 is Context, IERC20 {
      *
      * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
      */
-    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual { }
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
 }
 
 /**
@@ -861,7 +879,8 @@ abstract contract ERC20Burnable is Context, ERC20 {
      * `amount`.
      */
     function burnFrom(address account, uint256 amount) public virtual {
-        uint256 decreasedAllowance = allowance(account, _msgSender()).sub(amount, "ERC20: burn amount exceeds allowance");
+        uint256 decreasedAllowance =
+            allowance(account, _msgSender()).sub(amount, "ERC20: burn amount exceeds allowance");
 
         _approve(account, _msgSender(), decreasedAllowance);
         _burn(account, amount);
@@ -877,85 +896,83 @@ abstract contract ERC20Burnable is Context, ERC20 {
  * of the private keys of a given address.
  */
 library ECDSA {
-  /**
-   * @dev Returns the address that signed a hashed message (`hash`) with
-   * `signature`. This address can then be used for verification purposes.
-   *
-   * The `ecrecover` EVM opcode allows for malleable (non-unique) signatures:
-   * this function rejects them by requiring the `s` value to be in the lower
-   * half order, and the `v` value to be either 27 or 28.
-   *
-   * IMPORTANT: `hash` _must_ be the result of a hash operation for the
-   * verification to be secure: it is possible to craft signatures that
-   * recover to arbitrary addresses for non-hashed data. A safe way to ensure
-   * this is by receiving a hash of the original message (which may otherwise
-   * be too long), and then calling {toEthSignedMessageHash} on it.
-   */
-  function recover(bytes32 hash, bytes memory signature) internal pure returns (address) {
-    // Check the signature length
-    if (signature.length != 65) {
-      revert("ECDSA: invalid signature length");
+    /**
+     * @dev Returns the address that signed a hashed message (`hash`) with
+     * `signature`. This address can then be used for verification purposes.
+     *
+     * The `ecrecover` EVM opcode allows for malleable (non-unique) signatures:
+     * this function rejects them by requiring the `s` value to be in the lower
+     * half order, and the `v` value to be either 27 or 28.
+     *
+     * IMPORTANT: `hash` _must_ be the result of a hash operation for the
+     * verification to be secure: it is possible to craft signatures that
+     * recover to arbitrary addresses for non-hashed data. A safe way to ensure
+     * this is by receiving a hash of the original message (which may otherwise
+     * be too long), and then calling {toEthSignedMessageHash} on it.
+     */
+    function recover(bytes32 hash, bytes memory signature) internal pure returns (address) {
+        // Check the signature length
+        if (signature.length != 65) {
+            revert("ECDSA: invalid signature length");
+        }
+
+        // Divide the signature in r, s and v variables
+        bytes32 r;
+        bytes32 s;
+        uint8 v;
+
+        // ecrecover takes the signature parameters, and the only way to get them
+        // currently is to use assembly.
+        // solhint-disable-next-line no-inline-assembly
+        assembly {
+            r := mload(add(signature, 0x20))
+            s := mload(add(signature, 0x40))
+            v := mload(add(signature, 0x41))
+        }
+
+        return recover(hash, v, r, s);
     }
 
-    // Divide the signature in r, s and v variables
-    bytes32 r;
-    bytes32 s;
-    uint8 v;
+    /**
+     * @dev Overload of {ECDSA-recover-bytes32-bytes-} that receives the `v`,
+     * `r` and `s` signature fields separately.
+     */
+    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {
+        // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
+        // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
+        // the valid range for s in (281): 0 < s < secp256k1n ÷ 2 + 1, and for v in (282): v ∈ {27, 28}. Most
+        // signatures from current libraries generate a unique signature with an s-value in the lower half order.
+        //
+        // If your library generates malleable signatures, such as s-values in the upper range, calculate a new s-value
+        // with 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 - s1 and flip v from 27 to 28 or
+        // vice versa. If your library also generates signatures with 0/1 for v instead 27/28, add 27 to v to accept
+        // these malleable signatures as well.
+        require(
+            uint256(s) <= 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0,
+            "ECDSA: invalid signature 's' value"
+        );
+        require(v == 27 || v == 28, "ECDSA: invalid signature 'v' value");
 
-    // ecrecover takes the signature parameters, and the only way to get them
-    // currently is to use assembly.
-    // solhint-disable-next-line no-inline-assembly
-    assembly {
-      r := mload(add(signature, 0x20))
-      s := mload(add(signature, 0x40))
-      v := mload(add(signature, 0x41))
+        // If the signature is valid (and not malleable), return the signer address
+        address signer = ecrecover(hash, v, r, s);
+        require(signer != address(0), "ECDSA: invalid signature");
+
+        return signer;
     }
 
-    return recover(hash, v, r, s);
-  }
-
-  /**
-   * @dev Overload of {ECDSA-recover-bytes32-bytes-} that receives the `v`,
-   * `r` and `s` signature fields separately.
-   */
-  function recover(
-    bytes32 hash,
-    uint8 v,
-    bytes32 r,
-    bytes32 s
-  ) internal pure returns (address) {
-    // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
-    // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
-    // the valid range for s in (281): 0 < s < secp256k1n ÷ 2 + 1, and for v in (282): v ∈ {27, 28}. Most
-    // signatures from current libraries generate a unique signature with an s-value in the lower half order.
-    //
-    // If your library generates malleable signatures, such as s-values in the upper range, calculate a new s-value
-    // with 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 - s1 and flip v from 27 to 28 or
-    // vice versa. If your library also generates signatures with 0/1 for v instead 27/28, add 27 to v to accept
-    // these malleable signatures as well.
-    require(uint256(s) <= 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0, "ECDSA: invalid signature 's' value");
-    require(v == 27 || v == 28, "ECDSA: invalid signature 'v' value");
-
-    // If the signature is valid (and not malleable), return the signer address
-    address signer = ecrecover(hash, v, r, s);
-    require(signer != address(0), "ECDSA: invalid signature");
-
-    return signer;
-  }
-
-  /**
-   * @dev Returns an Ethereum Signed Message, created from a `hash`. This
-   * replicates the behavior of the
-   * https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign[`eth_sign`]
-   * JSON-RPC method.
-   *
-   * See {recover}.
-   */
-  function toEthSignedMessageHash(bytes32 hash) internal pure returns (bytes32) {
-    // 32 is the length in bytes of hash,
-    // enforced by the type signature above
-    return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
-  }
+    /**
+     * @dev Returns an Ethereum Signed Message, created from a `hash`. This
+     * replicates the behavior of the
+     * https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign[`eth_sign`]
+     * JSON-RPC method.
+     *
+     * See {recover}.
+     */
+    function toEthSignedMessageHash(bytes32 hash) internal pure returns (bytes32) {
+        // 32 is the length in bytes of hash,
+        // enforced by the type signature above
+        return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
+    }
 }
 
 /**
@@ -967,93 +984,86 @@ library ECDSA {
  * The {permit} signature mechanism conforms to the {IERC2612Permit} interface.
  */
 abstract contract ERC20Permit is ERC20 {
-  mapping(address => uint256) private _nonces;
+    mapping(address => uint256) private _nonces;
 
-  bytes32 private constant _PERMIT_TYPEHASH = keccak256(
-    "Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)"
-  );
+    bytes32 private constant _PERMIT_TYPEHASH =
+        keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
 
-  // Mapping of ChainID to domain separators. This is a very gas efficient way
-  // to not recalculate the domain separator on every call, while still
-  // automatically detecting ChainID changes.
-  mapping(uint256 => bytes32) private _domainSeparators;
+    // Mapping of ChainID to domain separators. This is a very gas efficient way
+    // to not recalculate the domain separator on every call, while still
+    // automatically detecting ChainID changes.
+    mapping(uint256 => bytes32) private _domainSeparators;
 
-  constructor() internal {
-    _updateDomainSeparator();
-  }
-
-  /**
-   * @dev See {IERC2612Permit-permit}.
-   *
-   * If https://eips.ethereum.org/EIPS/eip-1344[ChainID] ever changes, the
-   * EIP712 Domain Separator is automatically recalculated.
-   */
-  function permit(
-    address owner,
-    address spender,
-    uint256 amount,
-    uint256 deadline,
-    uint8 v,
-    bytes32 r,
-    bytes32 s
-  ) public {
-    require(blockTimestamp() <= deadline, "ERC20Permit: expired deadline");
-
-    bytes32 hashStruct = keccak256(abi.encode(_PERMIT_TYPEHASH, owner, spender, amount, _nonces[owner], deadline));
-
-    bytes32 hash = keccak256(abi.encodePacked(uint16(0x1901), _domainSeparator(), hashStruct));
-
-    address signer = ECDSA.recover(hash, v, r, s);
-    require(signer == owner, "ERC20Permit: invalid signature");
-
-    _nonces[owner]++;
-    _approve(owner, spender, amount);
-  }
-
-  /**
-   * @dev See {IERC2612Permit-nonces}.
-   */
-  function nonces(address owner) public view returns (uint256) {
-    return _nonces[owner];
-  }
-
-  function _updateDomainSeparator() private returns (bytes32) {
-    uint256 _chainID = chainID();
-
-    bytes32 newDomainSeparator = keccak256(
-      abi.encode(
-        keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"),
-        keccak256(bytes(name())),
-        keccak256(bytes("1")), // Version
-        _chainID,
-        address(this)
-      )
-    );
-
-    _domainSeparators[_chainID] = newDomainSeparator;
-
-    return newDomainSeparator;
-  }
-
-  // Returns the domain separator, updating it if chainID changes
-  function _domainSeparator() private returns (bytes32) {
-    bytes32 domainSeparator = _domainSeparators[chainID()];
-    if (domainSeparator != 0x00) {
-      return domainSeparator;
-    } else {
-      return _updateDomainSeparator();
+    constructor() internal {
+        _updateDomainSeparator();
     }
-  }
 
-  function chainID() public view virtual returns (uint256 _chainID) {
-    assembly {
-      _chainID := chainid()
+    /**
+     * @dev See {IERC2612Permit-permit}.
+     *
+     * If https://eips.ethereum.org/EIPS/eip-1344[ChainID] ever changes, the
+     * EIP712 Domain Separator is automatically recalculated.
+     */
+    function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        public
+    {
+        require(blockTimestamp() <= deadline, "ERC20Permit: expired deadline");
+
+        bytes32 hashStruct = keccak256(abi.encode(_PERMIT_TYPEHASH, owner, spender, amount, _nonces[owner], deadline));
+
+        bytes32 hash = keccak256(abi.encodePacked(uint16(0x1901), _domainSeparator(), hashStruct));
+
+        address signer = ECDSA.recover(hash, v, r, s);
+        require(signer == owner, "ERC20Permit: invalid signature");
+
+        _nonces[owner]++;
+        _approve(owner, spender, amount);
     }
-  }
 
-  function blockTimestamp() public view virtual returns (uint256) {
-    return block.timestamp;
-  }
+    /**
+     * @dev See {IERC2612Permit-nonces}.
+     */
+    function nonces(address owner) public view returns (uint256) {
+        return _nonces[owner];
+    }
+
+    function _updateDomainSeparator() private returns (bytes32) {
+        uint256 _chainID = chainID();
+
+        bytes32 newDomainSeparator = keccak256(
+            abi.encode(
+                keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"),
+                keccak256(bytes(name())),
+                keccak256(bytes("1")), // Version
+                _chainID,
+                address(this)
+            )
+        );
+
+        _domainSeparators[_chainID] = newDomainSeparator;
+
+        return newDomainSeparator;
+    }
+
+    // Returns the domain separator, updating it if chainID changes
+    function _domainSeparator() private returns (bytes32) {
+        bytes32 domainSeparator = _domainSeparators[chainID()];
+        if (domainSeparator != 0x00) {
+            return domainSeparator;
+        } else {
+            return _updateDomainSeparator();
+        }
+    }
+
+    function chainID() public view virtual returns (uint256 _chainID) {
+        assembly {
+            _chainID := chainid()
+        }
+    }
+
+    function blockTimestamp() public view virtual returns (uint256) {
+        return block.timestamp;
+    }
 }
 
 /**
@@ -1081,7 +1091,7 @@ abstract contract Pausable is Context {
     /**
      * @dev Initializes the contract in unpaused state.
      */
-    constructor () internal {
+    constructor() internal {
         _paused = false;
     }
 
@@ -1169,7 +1179,9 @@ library Address {
 
         uint256 size;
         // solhint-disable-next-line no-inline-assembly
-        assembly { size := extcodesize(account) }
+        assembly {
+            size := extcodesize(account)
+        }
         return size > 0;
     }
 
@@ -1193,7 +1205,7 @@ library Address {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{ value: amount }("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -1216,7 +1228,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-      return functionCall(target, data, "Address: low-level call failed");
+        return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -1225,7 +1237,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -1250,12 +1265,15 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.call{ value: value }(data);
+        (bool success, bytes memory returndata) = target.call{value: value}(data);
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
@@ -1275,7 +1293,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(address target, bytes memory data, string memory errorMessage) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
@@ -1299,7 +1321,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
@@ -1307,7 +1332,11 @@ library Address {
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
-    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage) private pure returns(bytes memory) {
+    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        private
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -1360,7 +1389,8 @@ library SafeERC20 {
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
         // solhint-disable-next-line max-line-length
-        require((value == 0) || (token.allowance(address(this), spender) == 0),
+        require(
+            (value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
@@ -1372,7 +1402,8 @@ library SafeERC20 {
     }
 
     function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
+        uint256 newAllowance =
+            token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
@@ -1388,7 +1419,8 @@ library SafeERC20 {
         // the target address contains contract code and also asserts for success in the low-level call.
 
         bytes memory returndata = address(token).functionCall(data, "SafeERC20: low-level call failed");
-        if (returndata.length > 0) { // Return data is optional
+        if (returndata.length > 0) {
+            // Return data is optional
             // solhint-disable-next-line max-line-length
             require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
         }
@@ -1424,99 +1456,87 @@ library Math {
 }
 
 contract TORN is ERC20("TornadoCash", "TORN"), ERC20Burnable, ERC20Permit, Pausable, EnsResolve {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  uint256 public immutable canUnpauseAfter;
-  address public immutable governance;
-  mapping(address => bool) public allowedTransferee;
+    uint256 public immutable canUnpauseAfter;
+    address public immutable governance;
+    mapping(address => bool) public allowedTransferee;
 
-  event Allowed(address target);
-  event Disallowed(address target);
+    event Allowed(address target);
+    event Disallowed(address target);
 
-  struct Recipient {
-    bytes32 to;
-    uint256 amount;
-  }
-
-  constructor(
-    bytes32 _governance,
-    uint256 _pausePeriod,
-    Recipient[] memory _vestings
-  ) public {
-    address _resolvedGovernance = resolve(_governance);
-    governance = _resolvedGovernance;
-    allowedTransferee[_resolvedGovernance] = true;
-
-    for (uint256 i = 0; i < _vestings.length; i++) {
-      address to = resolve(_vestings[i].to);
-      _mint(to, _vestings[i].amount);
-      allowedTransferee[to] = true;
+    struct Recipient {
+        bytes32 to;
+        uint256 amount;
     }
 
-    canUnpauseAfter = blockTimestamp().add(_pausePeriod);
-    _pause();
-    require(totalSupply() == 10000000 ether, "TORN: incorrect distribution");
-  }
+    constructor(bytes32 _governance, uint256 _pausePeriod, Recipient[] memory _vestings) public {
+        address _resolvedGovernance = resolve(_governance);
+        governance = _resolvedGovernance;
+        allowedTransferee[_resolvedGovernance] = true;
 
-  modifier onlyGovernance() {
-    require(_msgSender() == governance, "TORN: only governance can perform this action");
-    _;
-  }
+        for (uint256 i = 0; i < _vestings.length; i++) {
+            address to = resolve(_vestings[i].to);
+            _mint(to, _vestings[i].amount);
+            allowedTransferee[to] = true;
+        }
 
-  function changeTransferability(bool decision) public onlyGovernance {
-    require(blockTimestamp() > canUnpauseAfter, "TORN: cannot change transferability yet");
-    if (decision) {
-      _unpause();
-    } else {
-      _pause();
+        canUnpauseAfter = blockTimestamp().add(_pausePeriod);
+        _pause();
+        require(totalSupply() == 10000000 ether, "TORN: incorrect distribution");
     }
-  }
 
-  function addToAllowedList(address[] memory target) public onlyGovernance {
-    for (uint256 i = 0; i < target.length; i++) {
-      allowedTransferee[target[i]] = true;
-      emit Allowed(target[i]);
+    modifier onlyGovernance() {
+        require(_msgSender() == governance, "TORN: only governance can perform this action");
+        _;
     }
-  }
 
-  function removeFromAllowedList(address[] memory target) public onlyGovernance {
-    for (uint256 i = 0; i < target.length; i++) {
-      allowedTransferee[target[i]] = false;
-      emit Disallowed(target[i]);
+    function changeTransferability(bool decision) public onlyGovernance {
+        require(blockTimestamp() > canUnpauseAfter, "TORN: cannot change transferability yet");
+        if (decision) {
+            _unpause();
+        } else {
+            _pause();
+        }
     }
-  }
 
-  function _beforeTokenTransfer(
-    address from,
-    address to,
-    uint256 amount
-  ) internal override {
-    super._beforeTokenTransfer(from, to, amount);
-    require(!paused() || allowedTransferee[from] || allowedTransferee[to], "TORN: paused");
-    require(to != address(this), "TORN: invalid recipient");
-  }
-
-  /// @dev Method to claim junk and accidentally sent tokens
-  function rescueTokens(
-    IERC20 _token,
-    address payable _to,
-    uint256 _balance
-  ) external onlyGovernance {
-    require(_to != address(0), "TORN: can not send to zero address");
-
-    if (_token == IERC20(0)) {
-      // for Ether
-      uint256 totalBalance = address(this).balance;
-      uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
-      _to.transfer(balance);
-    } else {
-      // any other erc20
-      uint256 totalBalance = _token.balanceOf(address(this));
-      uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
-      require(balance > 0, "TORN: trying to send 0 balance");
-      _token.safeTransfer(_to, balance);
+    function addToAllowedList(address[] memory target) public onlyGovernance {
+        for (uint256 i = 0; i < target.length; i++) {
+            allowedTransferee[target[i]] = true;
+            emit Allowed(target[i]);
+        }
     }
-  }
+
+    function removeFromAllowedList(address[] memory target) public onlyGovernance {
+        for (uint256 i = 0; i < target.length; i++) {
+            allowedTransferee[target[i]] = false;
+            emit Disallowed(target[i]);
+        }
+    }
+
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal override {
+        super._beforeTokenTransfer(from, to, amount);
+        require(!paused() || allowedTransferee[from] || allowedTransferee[to], "TORN: paused");
+        require(to != address(this), "TORN: invalid recipient");
+    }
+
+    /// @dev Method to claim junk and accidentally sent tokens
+    function rescueTokens(IERC20 _token, address payable _to, uint256 _balance) external onlyGovernance {
+        require(_to != address(0), "TORN: can not send to zero address");
+
+        if (_token == IERC20(0)) {
+            // for Ether
+            uint256 totalBalance = address(this).balance;
+            uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
+            _to.transfer(balance);
+        } else {
+            // any other erc20
+            uint256 totalBalance = _token.balanceOf(address(this));
+            uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
+            require(balance > 0, "TORN: trying to send 0 balance");
+            _token.safeTransfer(_to, balance);
+        }
+    }
 }
 
 contract Governance is Initializable, Configuration, Delegation, EnsResolve {
@@ -1641,11 +1661,12 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
      * @param description description of the proposal
      * @return the new proposal id
      */
-    function _propose(
-        address proposer,
-        address target,
-        string memory description
-    ) internal virtual override(Delegation) returns (uint256) {
+    function _propose(address proposer, address target, string memory description)
+        internal
+        virtual
+        override(Delegation)
+        returns (uint256)
+    {
         uint256 votingPower = lockedBalance[proposer];
         require(votingPower >= PROPOSAL_THRESHOLD, "Governance::propose: proposer votes below proposal threshold");
         // target should be a contract
@@ -1655,8 +1676,8 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
         if (latestProposalId != 0) {
             ProposalState proposersLatestProposalState = state(latestProposalId);
             require(
-                proposersLatestProposalState != ProposalState.Active &&
-                    proposersLatestProposalState != ProposalState.Pending,
+                proposersLatestProposalState != ProposalState.Active
+                    && proposersLatestProposalState != ProposalState.Pending,
                 "Governance::propose: one live proposal per proposer, found an already active proposal"
             );
         }
@@ -1898,7 +1919,7 @@ contract GovernanceGasUpgrade is GovernanceVaultUpgrade, GasCompensator {
         public
         GovernanceVaultUpgrade(_userVault)
         GasCompensator(_gasCompLogic)
-    { }
+    {}
 
     /// @notice check that msg.sender is multisig
     modifier onlyMultisig() {
@@ -1910,7 +1931,7 @@ contract GovernanceGasUpgrade is GovernanceVaultUpgrade, GasCompensator {
      * @notice receive ether function, does nothing but receive ether
      *
      */
-    receive() external payable { }
+    receive() external payable {}
 
     /**
      * @notice function to add a certain amount of ether for gas compensations
@@ -1919,11 +1940,7 @@ contract GovernanceGasUpgrade is GovernanceVaultUpgrade, GasCompensator {
      *
      */
     function setGasCompensations(uint256 gasCompensationsLimit) external virtual override onlyMultisig {
-        require(
-            payable(address(gasCompensationVault)).send(
-                Math.min(gasCompensationsLimit, address(this).balance)
-            )
-        );
+        require(payable(address(gasCompensationVault)).send(Math.min(gasCompensationsLimit, address(this).balance)));
     }
 
     /**
@@ -1968,17 +1985,10 @@ contract GovernanceGasUpgrade is GovernanceVaultUpgrade, GasCompensator {
      * @param support true if yes false if no
      *
      */
-    function castDelegatedVote(address[] memory from, uint256 proposalId, bool support)
-        external
-        virtual
-        override
-    {
+    function castDelegatedVote(address[] memory from, uint256 proposalId, bool support) external virtual override {
         require(from.length > 0, "Can not be empty");
         _castDelegatedVote(
-            from,
-            proposalId,
-            support,
-            !hasAccountVoted(proposalId, msg.sender) && !checkIfQuorumReached(proposalId)
+            from, proposalId, support, !hasAccountVoted(proposalId, msg.sender) && !checkIfQuorumReached(proposalId)
         );
     }
 
@@ -2040,9 +2050,7 @@ contract GovernanceGasUpgrade is GovernanceVaultUpgrade, GasCompensator {
     {
         for (uint256 i = 0; i < from.length; i++) {
             address delegator = from[i];
-            require(
-                delegatedTo[delegator] == msg.sender || delegator == msg.sender, "Governance: not authorized"
-            );
+            require(delegatedTo[delegator] == msg.sender || delegator == msg.sender, "Governance: not authorized");
             require(!gasCompensated || !hasAccountVoted(proposalId, delegator), "Governance: voted already");
             _castVote(delegator, proposalId, support);
         }
@@ -2108,11 +2116,10 @@ contract GovernanceStakingUpgrade is GovernanceGasUpgrade {
 contract GovernanceExploitPatchUpgrade is GovernanceStakingUpgrade {
     mapping(uint256 => bytes32) public proposalCodehashes;
 
-    constructor(
-        address stakingRewardsAddress,
-        address gasCompLogic,
-        address userVaultAddress
-    ) public GovernanceStakingUpgrade(stakingRewardsAddress, gasCompLogic, userVaultAddress) {}
+    constructor(address stakingRewardsAddress, address gasCompLogic, address userVaultAddress)
+        public
+        GovernanceStakingUpgrade(stakingRewardsAddress, gasCompLogic, userVaultAddress)
+    {}
 
     /// @notice Return the version of the contract
     function version() external pure virtual override returns (string memory) {
@@ -2138,8 +2145,7 @@ contract GovernanceExploitPatchUpgrade is GovernanceStakingUpgrade {
         }
 
         require(
-            proposalCodehash == proposalCodehashes[proposalId],
-            "Governance::propose: metamorphic contracts not allowed"
+            proposalCodehash == proposalCodehashes[proposalId], "Governance::propose: metamorphic contracts not allowed"
         );
 
         super.execute(proposalId);
@@ -2153,11 +2159,12 @@ contract GovernanceExploitPatchUpgrade is GovernanceStakingUpgrade {
      * @param description description of the proposal
      * @return proposalId new proposal id
      */
-    function _propose(
-        address proposer,
-        address target,
-        string memory description
-    ) internal virtual override(Governance) returns (uint256 proposalId) {
+    function _propose(address proposer, address target, string memory description)
+        internal
+        virtual
+        override(Governance)
+        returns (uint256 proposalId)
+    {
         // Implies all former predicates were valid
         proposalId = super._propose(proposer, target, description);
 
@@ -2172,11 +2179,10 @@ contract GovernanceExploitPatchUpgrade is GovernanceStakingUpgrade {
 }
 
 contract GovernanceProposalStateUpgrade is GovernanceExploitPatchUpgrade {
-    constructor(
-        address stakingRewardsAddress,
-        address gasCompLogic,
-        address userVaultAddress
-    ) public GovernanceExploitPatchUpgrade(stakingRewardsAddress, gasCompLogic, userVaultAddress) {}
+    constructor(address stakingRewardsAddress, address gasCompLogic, address userVaultAddress)
+        public
+        GovernanceExploitPatchUpgrade(stakingRewardsAddress, gasCompLogic, userVaultAddress)
+    {}
 
     /// @notice Return the version of the contract
     function version() external pure virtual override returns (string memory) {

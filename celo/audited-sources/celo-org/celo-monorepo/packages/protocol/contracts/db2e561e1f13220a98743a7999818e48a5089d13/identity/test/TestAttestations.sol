@@ -8,17 +8,17 @@ import "../Attestations.sol";
  * couldn't test `request` with the current ganache local testnet.
  */
 contract TestAttestations is Attestations {
-  address[] private __testValidators;
+    address[] private __testValidators;
 
-  function __setValidators(address[] memory validators) public {
-    __testValidators = validators;
-  }
+    function __setValidators(address[] memory validators) public {
+        __testValidators = validators;
+    }
 
-  function numberValidatorsInCurrentSet() public view returns (uint256) {
-    return __testValidators.length;
-  }
+    function numberValidatorsInCurrentSet() public view returns (uint256) {
+        return __testValidators.length;
+    }
 
-  function validatorSignerAddressFromCurrentSet(uint256 index) public view returns (address) {
-    return __testValidators[index];
-  }
+    function validatorSignerAddressFromCurrentSet(uint256 index) public view returns (address) {
+        return __testValidators[index];
+    }
 }

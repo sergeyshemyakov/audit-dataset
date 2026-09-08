@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import { IResourceMetering } from "interfaces/L1/IResourceMetering.sol";
-import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
-import { IProxyAdminOwnedBase } from "interfaces/L1/IProxyAdminOwnedBase.sol";
+import {IProxyAdminOwnedBase} from "interfaces/L1/IProxyAdminOwnedBase.sol";
+import {IResourceMetering} from "interfaces/L1/IResourceMetering.sol";
+import {ISuperchainConfig} from "interfaces/L1/ISuperchainConfig.sol";
 
 /// @notice This interface corresponds to the Custom Gas Token version of the SystemConfig contract.
 interface ISystemConfig is IProxyAdminOwnedBase {
@@ -62,8 +62,7 @@ interface ISystemConfig is IProxyAdminOwnedBase {
         Addresses memory _addresses,
         uint256 _l2ChainId,
         ISuperchainConfig _superchainConfig
-    )
-        external;
+    ) external;
     function initVersion() external view returns (uint8);
     function l1CrossDomainMessenger() external view returns (address addr_);
     function l1ERC721Bridge() external view returns (address addr_);

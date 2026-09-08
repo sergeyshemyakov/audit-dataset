@@ -5,16 +5,16 @@ pragma solidity 0.6.12;
  * @dev This abstract contract provides a fallback function that delegates all calls to another contract using the EVM
  * instruction `delegatecall`. We refer to the second contract as the _implementation_ behind the proxy, and it has to
  * be specified by overriding the virtual {_implementation} function.
- * 
+ *
  * Additionally, delegation to the implementation can be triggered manually through the {_fallback} function, or to a
  * different contract through the {_delegate} function.
- * 
+ *
  * The success and return data of the delegated call will be returned back to the caller of the proxy.
  */
 abstract contract Proxy {
     /**
      * @dev Delegates the current call to `implementation`.
-     * 
+     *
      * This function does not return to its internall call site, it will return directly to the external caller.
      */
     function _delegate(address implementation) internal {
@@ -43,11 +43,11 @@ abstract contract Proxy {
      * @dev This is a virtual function that should be overriden so it returns the address to which the fallback function
      * and {_fallback} should delegate.
      */
-    function _implementation() internal virtual view returns (address);
+    function _implementation() internal view virtual returns (address);
 
     /**
      * @dev Delegates the current call to the address returned by `_implementation()`.
-     * 
+     *
      * This function does not return to its internall call site, it will return directly to the external caller.
      */
     function _fallback() internal {
@@ -59,7 +59,7 @@ abstract contract Proxy {
      * @dev Fallback function that delegates calls to the address returned by `_implementation()`. Will run if no other
      * function in the contract matches the call data.
      */
-    fallback () payable external {
+    fallback() external payable {
         _fallback();
     }
 
@@ -67,18 +67,17 @@ abstract contract Proxy {
      * @dev Fallback function that delegates calls to the address returned by `_implementation()`. Will run if call data
      * is empty.
      */
-    receive () payable external {
+    receive() external payable {
         _fallback();
     }
 
     /**
      * @dev Hook that is called before falling back to the implementation. Can happen as part of a manual `_fallback`
      * call, or as part of the Solidity `fallback` or `receive` functions.
-     * 
+     *
      * If overriden should call `super._beforeFallback()`.
      */
-    function _beforeFallback() internal virtual {
-    }
+    function _beforeFallback() internal virtual {}
 }
 
 /**
@@ -109,7 +108,9 @@ library Address {
 
         uint256 size;
         // solhint-disable-next-line no-inline-assembly
-        assembly { size := extcodesize(account) }
+        assembly {
+            size := extcodesize(account)
+        }
         return size > 0;
     }
 
@@ -133,7 +134,7 @@ library Address {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{ value: amount }("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -156,7 +157,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-      return functionCall(target, data, "Address: low-level call failed");
+        return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -165,7 +166,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return _functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -190,16 +194,22 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         return _functionCallWithValue(target, data, value, errorMessage);
     }
 
-    function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage) private returns (bytes memory) {
+    function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage)
+        private
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+        (bool success, bytes memory returndata) = target.call{value: weiValue}(data);
         if (success) {
             return returndata;
         } else {
@@ -224,21 +234,21 @@ library Address {
  * implementation address that can be changed. This address is stored in storage in the location specified by
  * https://eips.ethereum.org/EIPS/eip-1967[EIP1967], so that it doesn't conflict with the storage layout of the
  * implementation behind the proxy.
- * 
+ *
  * Upgradeability is only provided internally through {_upgradeTo}. For an externally upgradeable proxy see
  * {TransparentUpgradeableProxy}.
  */
 contract UpgradeableProxy is Proxy {
     /**
      * @dev Initializes the upgradeable proxy with an initial implementation specified by `_logic`.
-     * 
+     *
      * If `_data` is nonempty, it's used as data in a delegate call to `_logic`. This will typically be an encoded
      * function call, and allows initializating the storage of the proxy like a Solidity constructor.
      */
     constructor(address _logic, bytes memory _data) public payable {
         assert(_IMPLEMENTATION_SLOT == bytes32(uint256(keccak256("eip1967.proxy.implementation")) - 1));
         _setImplementation(_logic);
-        if(_data.length > 0) {
+        if (_data.length > 0) {
             // solhint-disable-next-line avoid-low-level-calls
             (bool success,) = _logic.delegatecall(_data);
             require(success);
@@ -260,7 +270,7 @@ contract UpgradeableProxy is Proxy {
     /**
      * @dev Returns the current implementation address.
      */
-    function _implementation() internal override view returns (address impl) {
+    function _implementation() internal view override returns (address impl) {
         bytes32 slot = _IMPLEMENTATION_SLOT;
         // solhint-disable-next-line no-inline-assembly
         assembly {
@@ -270,7 +280,7 @@ contract UpgradeableProxy is Proxy {
 
     /**
      * @dev Upgrades the proxy to a new implementation.
-     * 
+     *
      * Emits an {Upgraded} event.
      */
     function _upgradeTo(address newImplementation) internal {
@@ -295,22 +305,22 @@ contract UpgradeableProxy is Proxy {
 
 /**
  * @dev This contract implements a proxy that is upgradeable by an admin.
- * 
+ *
  * To avoid https://medium.com/nomic-labs-blog/malicious-backdoors-in-ethereum-proxies-62629adf3357[proxy selector
  * clashing], which can potentially be used in an attack, this contract uses the
  * https://blog.openzeppelin.com/the-transparent-proxy-pattern/[transparent proxy pattern]. This pattern implies two
  * things that go hand in hand:
- * 
+ *
  * 1. If any account other than the admin calls the proxy, the call will be forwarded to the implementation, even if
  * that call matches one of the admin functions exposed by the proxy itself.
  * 2. If the admin calls the proxy, it can access the admin functions, but its calls will never be forwarded to the
  * implementation. If the admin tries to call a function on the implementation it will fail with an error that says
  * "admin cannot fallback to proxy target".
- * 
+ *
  * These properties mean that the admin account can only be used for admin actions like upgrading the proxy or changing
  * the admin, so it's best if it's a dedicated account that is not used for anything else. This will avoid headaches due
  * to sudden errors when trying to call a function from the proxy implementation.
- * 
+ *
  * Our recommendation is for the dedicated account to be an instance of the {ProxyAdmin} contract. If set up this way,
  * you should think of the `ProxyAdmin` instance as the real administrative inerface of your proxy.
  */
@@ -349,9 +359,9 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Returns the current admin.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyAdmin}.
-     * 
+     *
      * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the
      * https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call.
      * `0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103`
@@ -362,9 +372,9 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Returns the current implementation.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyImplementation}.
-     * 
+     *
      * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the
      * https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call.
      * `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc`
@@ -375,9 +385,9 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Changes the admin of the proxy.
-     * 
+     *
      * Emits an {AdminChanged} event.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-changeProxyAdmin}.
      */
     function changeAdmin(address newAdmin) external ifAdmin {
@@ -388,7 +398,7 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Upgrade the implementation of the proxy.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-upgrade}.
      */
     function upgradeTo(address newImplementation) external ifAdmin {
@@ -399,7 +409,7 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
      * @dev Upgrade the implementation of the proxy, and then call a function from the new implementation as specified
      * by `data`, which should be an encoded function call. This is useful to initialize new storage variables in the
      * proxied contract.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-upgradeAndCall}.
      */
     function upgradeToAndCall(address newImplementation, bytes calldata data) external payable ifAdmin {
@@ -435,42 +445,42 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
     /**
      * @dev Makes sure the admin cannot access the fallback function. See {Proxy-_beforeFallback}.
      */
-    function _beforeFallback() internal override virtual {
+    function _beforeFallback() internal virtual override {
         require(msg.sender != _admin(), "TransparentUpgradeableProxy: admin cannot fallback to proxy target");
         super._beforeFallback();
     }
 }
 
 interface Resolver {
-  function addr(bytes32 node) external view returns (address);
+    function addr(bytes32 node) external view returns (address);
 }
 
 interface ENS {
-  function resolver(bytes32 node) external view returns (Resolver);
+    function resolver(bytes32 node) external view returns (Resolver);
 }
 
 contract EnsResolve {
-  function resolve(bytes32 node) public view virtual returns (address) {
-    ENS Registry = ENS(
-      getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
-    );
-    return Registry.resolver(node).addr(node);
-  }
-
-  function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
-    result = new address[](domains.length);
-    for (uint256 i = 0; i < domains.length; i++) {
-      result[i] = resolve(domains[i]);
+    function resolve(bytes32 node) public view virtual returns (address) {
+        ENS Registry = ENS(
+            getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
+        );
+        return Registry.resolver(node).addr(node);
     }
-  }
 
-  function getChainId() internal pure returns (uint256) {
-    uint256 chainId;
-    assembly {
-      chainId := chainid()
+    function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
+        result = new address[](domains.length);
+        for (uint256 i = 0; i < domains.length; i++) {
+            result[i] = resolve(domains[i]);
+        }
     }
-    return chainId;
-  }
+
+    function getChainId() internal pure returns (uint256) {
+        uint256 chainId;
+        assembly {
+            chainId := chainid()
+        }
+        return chainId;
+    }
 }
 
 /**
@@ -478,17 +488,17 @@ contract EnsResolve {
  * It is also allowed to call implementation methods.
  */
 contract LoopbackProxy is TransparentUpgradeableProxy, EnsResolve {
-  /**
-   * @dev Initializes an upgradeable proxy backed by the implementation at `_logic`.
-   */
-  constructor(bytes32 _logic, bytes memory _data)
-    public
-    payable
-    TransparentUpgradeableProxy(resolve(_logic), address(this), _data)
-  {}
+    /**
+     * @dev Initializes an upgradeable proxy backed by the implementation at `_logic`.
+     */
+    constructor(bytes32 _logic, bytes memory _data)
+        public
+        payable
+        TransparentUpgradeableProxy(resolve(_logic), address(this), _data)
+    {}
 
-  /**
-   * @dev Override to allow admin (itself) access the fallback function.
-   */
-  function _beforeFallback() internal override {}
+    /**
+     * @dev Override to allow admin (itself) access the fallback function.
+     */
+    function _beforeFallback() internal override {}
 }

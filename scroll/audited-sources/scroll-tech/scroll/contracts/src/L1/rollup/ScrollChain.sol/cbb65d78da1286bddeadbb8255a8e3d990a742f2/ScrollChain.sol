@@ -5,13 +5,13 @@ pragma solidity =0.8.24;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-import {IL1MessageQueue} from "./IL1MessageQueue.sol";
-import {IScrollChain} from "./IScrollChain.sol";
 import {BatchHeaderV0Codec} from "../../libraries/codec/BatchHeaderV0Codec.sol";
 import {BatchHeaderV1Codec} from "../../libraries/codec/BatchHeaderV1Codec.sol";
 import {ChunkCodecV0} from "../../libraries/codec/ChunkCodecV0.sol";
 import {ChunkCodecV1} from "../../libraries/codec/ChunkCodecV1.sol";
 import {IRollupVerifier} from "../../libraries/verifier/IRollupVerifier.sol";
+import {IL1MessageQueue} from "./IL1MessageQueue.sol";
+import {IScrollChain} from "./IScrollChain.sol";
 
 // solhint-disable no-inline-assembly
 // solhint-disable reason-string
@@ -19,9 +19,11 @@ import {IRollupVerifier} from "../../libraries/verifier/IRollupVerifier.sol";
 /// @title ScrollChain
 /// @notice This contract maintains data for the Scroll rollup.
 contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given account is not EOA account.
     error ErrorAccountIsNotEOA();
@@ -110,9 +112,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev Address of the point evaluation precompile used for EIP-4844 blob verification.
     address constant POINT_EVALUATION_PRECOMPILE_ADDR = address(0x0A);
@@ -130,9 +134,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @notice The address of RollupVerifier.
     address public immutable verifier;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The maximum number of transactions allowed in each chunk.
     uint256 public maxNumTxInChunk;
@@ -161,35 +167,38 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @inheritdoc IScrollChain
     mapping(uint256 => bytes32) public override withdrawRoots;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier OnlySequencer() {
         // @note In the decentralized mode, it should be only called by a list of validator.
-        if (!isSequencer[_msgSender()]) revert ErrorCallerIsNotSequencer();
+        if (!isSequencer[_msgSender()]) {
+            revert ErrorCallerIsNotSequencer();
+        }
         _;
     }
 
     modifier OnlyProver() {
-        if (!isProver[_msgSender()]) revert ErrorCallerIsNotProver();
+        if (!isProver[_msgSender()]) {
+            revert ErrorCallerIsNotProver();
+        }
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `ScrollChain` implementation contract.
     ///
     /// @param _chainId The chain id of L2.
     /// @param _messageQueue The address of `L1MessageQueue` contract.
     /// @param _verifier The address of zkevm verifier contract.
-    constructor(
-        uint64 _chainId,
-        address _messageQueue,
-        address _verifier
-    ) {
+    constructor(uint64 _chainId, address _messageQueue, address _verifier) {
         if (_messageQueue == address(0) || _verifier == address(0)) {
             revert ErrorZeroAddress();
         }
@@ -208,11 +217,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @param _messageQueue The address of `L1MessageQueue` contract.
     /// @param _verifier The address of zkevm verifier contract.
     /// @param _maxNumTxInChunk The maximum number of transactions allowed in each chunk.
-    function initialize(
-        address _messageQueue,
-        address _verifier,
-        uint256 _maxNumTxInChunk
-    ) public initializer {
+    function initialize(address _messageQueue, address _verifier, uint256 _maxNumTxInChunk) public initializer {
         OwnableUpgradeable.__Ownable_init();
 
         maxNumTxInChunk = _maxNumTxInChunk;
@@ -222,39 +227,51 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         emit UpdateMaxNumTxInChunk(0, _maxNumTxInChunk);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IScrollChain
     function isBatchFinalized(uint256 _batchIndex) external view override returns (bool) {
         return _batchIndex <= lastFinalizedBatchIndex;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Import layer 2 genesis block
     function importGenesisBatch(bytes calldata _batchHeader, bytes32 _stateRoot) external {
         // check genesis batch header length
-        if (_stateRoot == bytes32(0)) revert ErrorStateRootIsZero();
+        if (_stateRoot == bytes32(0)) {
+            revert ErrorStateRootIsZero();
+        }
 
         // check whether the genesis batch is imported
-        if (finalizedStateRoots[0] != bytes32(0)) revert ErrorGenesisBatchImported();
+        if (finalizedStateRoots[0] != bytes32(0)) {
+            revert ErrorGenesisBatchImported();
+        }
 
-        (uint256 memPtr, bytes32 _batchHash, , ) = _loadBatchHeader(_batchHeader);
+        (uint256 memPtr, bytes32 _batchHash,,) = _loadBatchHeader(_batchHeader);
 
         // check all fields except `dataHash` and `lastBlockHash` are zero
         unchecked {
-            uint256 sum = BatchHeaderV0Codec.getVersion(memPtr) +
-                BatchHeaderV0Codec.getBatchIndex(memPtr) +
-                BatchHeaderV0Codec.getL1MessagePopped(memPtr) +
-                BatchHeaderV0Codec.getTotalL1MessagePopped(memPtr);
-            if (sum != 0) revert ErrorGenesisBatchHasNonZeroField();
+            uint256 sum = BatchHeaderV0Codec.getVersion(memPtr) + BatchHeaderV0Codec.getBatchIndex(memPtr)
+                + BatchHeaderV0Codec.getL1MessagePopped(memPtr) + BatchHeaderV0Codec.getTotalL1MessagePopped(memPtr);
+            if (sum != 0) {
+                revert ErrorGenesisBatchHasNonZeroField();
+            }
         }
-        if (BatchHeaderV0Codec.getDataHash(memPtr) == bytes32(0)) revert ErrorGenesisDataHashIsZero();
-        if (BatchHeaderV0Codec.getParentBatchHash(memPtr) != bytes32(0)) revert ErrorGenesisParentBatchHashIsNonZero();
+        if (BatchHeaderV0Codec.getDataHash(memPtr) == bytes32(0)) {
+            revert ErrorGenesisDataHashIsZero();
+        }
+        if (BatchHeaderV0Codec.getParentBatchHash(memPtr) != bytes32(0)) {
+            revert ErrorGenesisParentBatchHashIsNonZero();
+        }
 
         committedBatches[0] = _batchHash;
         finalizedStateRoots[0] = _stateRoot;
@@ -271,26 +288,26 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         bytes calldata _skippedL1MessageBitmap
     ) external override OnlySequencer whenNotPaused {
         // check whether the batch is empty
-        if (_chunks.length == 0) revert ErrorBatchIsEmpty();
+        if (_chunks.length == 0) {
+            revert ErrorBatchIsEmpty();
+        }
 
-        (, bytes32 _parentBatchHash, uint256 _batchIndex, uint256 _totalL1MessagesPoppedOverall) = _loadBatchHeader(
-            _parentBatchHeader
-        );
+        (, bytes32 _parentBatchHash, uint256 _batchIndex, uint256 _totalL1MessagesPoppedOverall) =
+            _loadBatchHeader(_parentBatchHeader);
         unchecked {
             _batchIndex += 1;
         }
-        if (committedBatches[_batchIndex] != 0) revert ErrorBatchIsAlreadyCommitted();
+        if (committedBatches[_batchIndex] != 0) {
+            revert ErrorBatchIsAlreadyCommitted();
+        }
 
         bytes32 _batchHash;
         uint256 batchPtr;
         bytes32 _dataHash;
         uint256 _totalL1MessagesPoppedInBatch;
         if (_version == 0) {
-            (_dataHash, _totalL1MessagesPoppedInBatch) = _commitChunksV0(
-                _totalL1MessagesPoppedOverall,
-                _chunks,
-                _skippedL1MessageBitmap
-            );
+            (_dataHash, _totalL1MessagesPoppedInBatch) =
+                _commitChunksV0(_totalL1MessagesPoppedOverall, _chunks, _skippedL1MessageBitmap);
             assembly {
                 batchPtr := mload(0x40)
                 _totalL1MessagesPoppedOverall := add(_totalL1MessagesPoppedOverall, _totalL1MessagesPoppedInBatch)
@@ -305,16 +322,12 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             BatchHeaderV0Codec.storeSkippedBitmap(batchPtr, _skippedL1MessageBitmap);
             // compute batch hash
             _batchHash = BatchHeaderV0Codec.computeBatchHash(
-                batchPtr,
-                BatchHeaderV0Codec.BATCH_HEADER_FIXED_LENGTH + _skippedL1MessageBitmap.length
+                batchPtr, BatchHeaderV0Codec.BATCH_HEADER_FIXED_LENGTH + _skippedL1MessageBitmap.length
             );
         } else if (_version == 1) {
             bytes32 blobVersionedHash;
-            (blobVersionedHash, _dataHash, _totalL1MessagesPoppedInBatch) = _commitChunksV1(
-                _totalL1MessagesPoppedOverall,
-                _chunks,
-                _skippedL1MessageBitmap
-            );
+            (blobVersionedHash, _dataHash, _totalL1MessagesPoppedInBatch) =
+                _commitChunksV1(_totalL1MessagesPoppedOverall, _chunks, _skippedL1MessageBitmap);
             assembly {
                 batchPtr := mload(0x40)
                 _totalL1MessagesPoppedOverall := add(_totalL1MessagesPoppedOverall, _totalL1MessagesPoppedInBatch)
@@ -330,8 +343,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             BatchHeaderV1Codec.storeSkippedBitmap(batchPtr, _skippedL1MessageBitmap);
             // compute batch hash
             _batchHash = BatchHeaderV1Codec.computeBatchHash(
-                batchPtr,
-                BatchHeaderV1Codec.BATCH_HEADER_FIXED_LENGTH + _skippedL1MessageBitmap.length
+                batchPtr, BatchHeaderV1Codec.BATCH_HEADER_FIXED_LENGTH + _skippedL1MessageBitmap.length
             );
         } else {
             revert ErrorInvalidBatchHeaderVersion();
@@ -352,14 +364,20 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @dev If the owner want to revert a sequence of batches by sending multiple transactions,
     ///      make sure to revert recent batches first.
     function revertBatch(bytes calldata _batchHeader, uint256 _count) external onlyOwner {
-        if (_count == 0) revert ErrorRevertZeroBatches();
+        if (_count == 0) {
+            revert ErrorRevertZeroBatches();
+        }
 
-        (, bytes32 _batchHash, uint256 _batchIndex, ) = _loadBatchHeader(_batchHeader);
+        (, bytes32 _batchHash, uint256 _batchIndex,) = _loadBatchHeader(_batchHeader);
         // make sure no gap is left when reverting from the ending to the beginning.
-        if (committedBatches[_batchIndex + _count] != bytes32(0)) revert ErrorRevertNotStartFromEnd();
+        if (committedBatches[_batchIndex + _count] != bytes32(0)) {
+            revert ErrorRevertNotStartFromEnd();
+        }
 
         // check finalization
-        if (_batchIndex <= lastFinalizedBatchIndex) revert ErrorRevertFinalizedBatch();
+        if (_batchIndex <= lastFinalizedBatchIndex) {
+            revert ErrorRevertFinalizedBatch();
+        }
 
         while (_count > 0) {
             committedBatches[_batchIndex] = bytes32(0);
@@ -372,7 +390,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             }
 
             _batchHash = committedBatches[_batchIndex];
-            if (_batchHash == bytes32(0)) break;
+            if (_batchHash == bytes32(0)) {
+                break;
+            }
         }
     }
 
@@ -385,30 +405,39 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         bytes32 _withdrawRoot,
         bytes calldata _aggrProof
     ) external override OnlyProver whenNotPaused {
-        if (_prevStateRoot == bytes32(0)) revert ErrorPreviousStateRootIsZero();
-        if (_postStateRoot == bytes32(0)) revert ErrorStateRootIsZero();
+        if (_prevStateRoot == bytes32(0)) {
+            revert ErrorPreviousStateRootIsZero();
+        }
+        if (_postStateRoot == bytes32(0)) {
+            revert ErrorStateRootIsZero();
+        }
 
         // compute batch hash and verify
-        (uint256 memPtr, bytes32 _batchHash, uint256 _batchIndex, ) = _loadBatchHeader(_batchHeader);
+        (uint256 memPtr, bytes32 _batchHash, uint256 _batchIndex,) = _loadBatchHeader(_batchHeader);
         bytes32 _dataHash = BatchHeaderV0Codec.getDataHash(memPtr);
 
         // verify previous state root.
-        if (finalizedStateRoots[_batchIndex - 1] != _prevStateRoot) revert ErrorIncorrectPreviousStateRoot();
+        if (finalizedStateRoots[_batchIndex - 1] != _prevStateRoot) {
+            revert ErrorIncorrectPreviousStateRoot();
+        }
 
         // avoid duplicated verification
-        if (finalizedStateRoots[_batchIndex] != bytes32(0)) revert ErrorBatchIsAlreadyVerified();
+        if (finalizedStateRoots[_batchIndex] != bytes32(0)) {
+            revert ErrorBatchIsAlreadyVerified();
+        }
 
         // compute public input hash
-        bytes32 _publicInputHash = keccak256(
-            abi.encodePacked(layer2ChainId, _prevStateRoot, _postStateRoot, _withdrawRoot, _dataHash)
-        );
+        bytes32 _publicInputHash =
+            keccak256(abi.encodePacked(layer2ChainId, _prevStateRoot, _postStateRoot, _withdrawRoot, _dataHash));
 
         // verify batch
         IRollupVerifier(verifier).verifyAggregateProof(0, _batchIndex, _aggrProof, _publicInputHash);
 
         // check and update lastFinalizedBatchIndex
         unchecked {
-            if (lastFinalizedBatchIndex + 1 != _batchIndex) revert ErrorIncorrectBatchIndex();
+            if (lastFinalizedBatchIndex + 1 != _batchIndex) {
+                revert ErrorIncorrectBatchIndex();
+            }
             lastFinalizedBatchIndex = _batchIndex;
         }
 
@@ -441,41 +470,47 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         bytes calldata _blobDataProof,
         bytes calldata _aggrProof
     ) external override OnlyProver whenNotPaused {
-        if (_prevStateRoot == bytes32(0)) revert ErrorPreviousStateRootIsZero();
-        if (_postStateRoot == bytes32(0)) revert ErrorStateRootIsZero();
+        if (_prevStateRoot == bytes32(0)) {
+            revert ErrorPreviousStateRootIsZero();
+        }
+        if (_postStateRoot == bytes32(0)) {
+            revert ErrorStateRootIsZero();
+        }
 
         // compute batch hash and verify
-        (uint256 memPtr, bytes32 _batchHash, uint256 _batchIndex, ) = _loadBatchHeader(_batchHeader);
+        (uint256 memPtr, bytes32 _batchHash, uint256 _batchIndex,) = _loadBatchHeader(_batchHeader);
         bytes32 _dataHash = BatchHeaderV1Codec.getDataHash(memPtr);
         bytes32 _blobVersionedHash = BatchHeaderV1Codec.getBlobVersionedHash(memPtr);
 
         // Calls the point evaluation precompile and verifies the output
         {
-            (bool success, bytes memory data) = POINT_EVALUATION_PRECOMPILE_ADDR.staticcall(
-                abi.encodePacked(_blobVersionedHash, _blobDataProof)
-            );
+            (bool success, bytes memory data) =
+                POINT_EVALUATION_PRECOMPILE_ADDR.staticcall(abi.encodePacked(_blobVersionedHash, _blobDataProof));
             // We verify that the point evaluation precompile call was successful by testing the latter 32 bytes of the
             // response is equal to BLS_MODULUS as defined in https://eips.ethereum.org/EIPS/eip-4844#point-evaluation-precompile
-            if (!success) revert ErrorCallPointEvaluationPrecompileFailed();
+            if (!success) {
+                revert ErrorCallPointEvaluationPrecompileFailed();
+            }
             (, uint256 result) = abi.decode(data, (uint256, uint256));
-            if (result != BLS_MODULUS) revert ErrorUnexpectedPointEvaluationPrecompileOutput();
+            if (result != BLS_MODULUS) {
+                revert ErrorUnexpectedPointEvaluationPrecompileOutput();
+            }
         }
 
         // verify previous state root.
-        if (finalizedStateRoots[_batchIndex - 1] != _prevStateRoot) revert ErrorIncorrectPreviousStateRoot();
+        if (finalizedStateRoots[_batchIndex - 1] != _prevStateRoot) {
+            revert ErrorIncorrectPreviousStateRoot();
+        }
 
         // avoid duplicated verification
-        if (finalizedStateRoots[_batchIndex] != bytes32(0)) revert ErrorBatchIsAlreadyVerified();
+        if (finalizedStateRoots[_batchIndex] != bytes32(0)) {
+            revert ErrorBatchIsAlreadyVerified();
+        }
 
         // compute public input hash
         bytes32 _publicInputHash = keccak256(
             abi.encodePacked(
-                layer2ChainId,
-                _prevStateRoot,
-                _postStateRoot,
-                _withdrawRoot,
-                _dataHash,
-                _blobDataProof[0:64]
+                layer2ChainId, _prevStateRoot, _postStateRoot, _withdrawRoot, _dataHash, _blobDataProof[0:64]
             )
         );
 
@@ -489,7 +524,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
 
         // check and update lastFinalizedBatchIndex
         unchecked {
-            if (lastFinalizedBatchIndex + 1 != _batchIndex) revert ErrorIncorrectBatchIndex();
+            if (lastFinalizedBatchIndex + 1 != _batchIndex) {
+                revert ErrorIncorrectBatchIndex();
+            }
             lastFinalizedBatchIndex = _batchIndex;
         }
 
@@ -507,16 +544,20 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         emit FinalizeBatch(_batchIndex, _batchHash, _postStateRoot, _withdrawRoot);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Add an account to the sequencer list.
     /// @param _account The address of account to add.
     function addSequencer(address _account) external onlyOwner {
         // @note Currently many external services rely on EOA sequencer to decode metadata directly from tx.calldata.
         // So we explicitly make sure the account is EOA.
-        if (_account.code.length > 0) revert ErrorAccountIsNotEOA();
+        if (_account.code.length > 0) {
+            revert ErrorAccountIsNotEOA();
+        }
 
         isSequencer[_account] = true;
 
@@ -536,7 +577,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     function addProver(address _account) external onlyOwner {
         // @note Currently many external services rely on EOA prover to decode metadata directly from tx.calldata.
         // So we explicitly make sure the account is EOA.
-        if (_account.code.length > 0) revert ErrorAccountIsNotEOA();
+        if (_account.code.length > 0) {
+            revert ErrorAccountIsNotEOA();
+        }
         isProver[_account] = true;
 
         emit UpdateProver(_account, true);
@@ -569,9 +612,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to commit chunks with version 0
     /// @param _totalL1MessagesPoppedOverall The number of L1 messages popped before the list of chunks.
@@ -598,10 +643,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             uint256 _totalNumL1MessagesInChunk;
             bytes32 _chunkDataHash;
             (_chunkDataHash, _totalNumL1MessagesInChunk) = _commitChunkV0(
-                _chunks[i],
-                _totalL1MessagesPoppedInBatch,
-                _totalL1MessagesPoppedOverall,
-                _skippedL1MessageBitmap
+                _chunks[i], _totalL1MessagesPoppedInBatch, _totalL1MessagesPoppedOverall, _skippedL1MessageBitmap
             );
             unchecked {
                 _totalL1MessagesPoppedInBatch += _totalNumL1MessagesInChunk;
@@ -633,11 +675,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     )
         internal
         view
-        returns (
-            bytes32 _blobVersionedHash,
-            bytes32 _batchDataHash,
-            uint256 _totalL1MessagesPoppedInBatch
-        )
+        returns (bytes32 _blobVersionedHash, bytes32 _batchDataHash, uint256 _totalL1MessagesPoppedInBatch)
     {
         {
             bytes32 _secondBlob;
@@ -646,8 +684,12 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
                 _blobVersionedHash := blobhash(0)
                 _secondBlob := blobhash(1)
             }
-            if (_blobVersionedHash == bytes32(0)) revert ErrorNoBlobFound();
-            if (_secondBlob != bytes32(0)) revert ErrorFoundMultipleBlob();
+            if (_blobVersionedHash == bytes32(0)) {
+                revert ErrorNoBlobFound();
+            }
+            if (_secondBlob != bytes32(0)) {
+                revert ErrorFoundMultipleBlob();
+            }
         }
 
         uint256 _chunksLength = _chunks.length;
@@ -664,10 +706,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             uint256 _totalNumL1MessagesInChunk;
             bytes32 _chunkDataHash;
             (_chunkDataHash, _totalNumL1MessagesInChunk) = _commitChunkV1(
-                _chunks[i],
-                _totalL1MessagesPoppedInBatch,
-                _totalL1MessagesPoppedOverall,
-                _skippedL1MessageBitmap
+                _chunks[i], _totalL1MessagesPoppedInBatch, _totalL1MessagesPoppedOverall, _skippedL1MessageBitmap
             );
             unchecked {
                 _totalL1MessagesPoppedInBatch += _totalNumL1MessagesInChunk;
@@ -695,12 +734,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     function _loadBatchHeader(bytes calldata _batchHeader)
         internal
         view
-        returns (
-            uint256 batchPtr,
-            bytes32 _batchHash,
-            uint256 _batchIndex,
-            uint256 _totalL1MessagesPoppedOverall
-        )
+        returns (uint256 batchPtr, bytes32 _batchHash, uint256 _batchIndex, uint256 _totalL1MessagesPoppedOverall)
     {
         // load version from batch header, it is always the first byte.
         uint256 version;
@@ -787,7 +821,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
 
             // concatenate l2 transaction hashes
             uint256 _numTransactionsInBlock = ChunkCodecV0.getNumTransactions(chunkPtr);
-            if (_numTransactionsInBlock < _numL1MessagesInBlock) revert ErrorNumTxsLessThanNumL1Msgs();
+            if (_numTransactionsInBlock < _numL1MessagesInBlock) {
+                revert ErrorNumTxsLessThanNumL1Msgs();
+            }
             for (uint256 j = _numL1MessagesInBlock; j < _numTransactionsInBlock; j++) {
                 bytes32 txHash;
                 (txHash, l2TxPtr) = ChunkCodecV0.loadL2TxHash(l2TxPtr);
@@ -808,13 +844,17 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         }
 
         // check the actual number of transactions in the chunk
-        if ((dataPtr - txHashStartDataPtr) / 32 > maxNumTxInChunk) revert ErrorTooManyTxsInOneChunk();
+        if ((dataPtr - txHashStartDataPtr) / 32 > maxNumTxInChunk) {
+            revert ErrorTooManyTxsInOneChunk();
+        }
 
         assembly {
             chunkPtr := add(_chunk, 0x20)
         }
         // check chunk has correct length
-        if (l2TxPtr - chunkPtr != _chunk.length) revert ErrorIncompleteL2TransactionData();
+        if (l2TxPtr - chunkPtr != _chunk.length) {
+            revert ErrorIncompleteL2TransactionData();
+        }
 
         // compute data hash and store to memory
         assembly {
@@ -875,7 +915,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
                 _skippedL1MessageBitmap
             );
             uint256 _numTransactionsInBlock = ChunkCodecV1.getNumTransactions(chunkPtr);
-            if (_numTransactionsInBlock < _numL1MessagesInBlock) revert ErrorNumTxsLessThanNumL1Msgs();
+            if (_numTransactionsInBlock < _numL1MessagesInBlock) {
+                revert ErrorNumTxsLessThanNumL1Msgs();
+            }
             unchecked {
                 _totalTransactionsInChunk += (dataPtr - startPtr) / 32; // number of non-skipped l1 messages
                 _totalTransactionsInChunk += _numTransactionsInBlock - _numL1MessagesInBlock; // number of l2 txs
@@ -912,7 +954,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         uint256 _totalL1MessagesPoppedOverall,
         bytes calldata _skippedL1MessageBitmap
     ) internal view returns (uint256) {
-        if (_numL1Messages == 0) return _ptr;
+        if (_numL1Messages == 0) {
+            return _ptr;
+        }
         IL1MessageQueue _messageQueue = IL1MessageQueue(messageQueue);
 
         unchecked {
@@ -943,7 +987,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
 
             // check last L1 message is not skipped, _totalL1MessagesPoppedInBatch must > 0
             rem = (_totalL1MessagesPoppedInBatch - 1) & 0xff;
-            if (((_bitmap >> rem) & 1) > 0) revert ErrorLastL1MessageSkipped();
+            if (((_bitmap >> rem) & 1) > 0) {
+                revert ErrorLastL1MessageSkipped();
+            }
         }
 
         return _ptr;
@@ -953,12 +999,10 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @param bitmapPtr The memory offset of `skippedL1MessageBitmap`.
     /// @param totalL1MessagePopped The total number of L1 messages poped in all batches including current batch.
     /// @param l1MessagePopped The number of L1 messages popped in current batch.
-    function _popL1Messages(
-        uint256 bitmapPtr,
-        uint256 totalL1MessagePopped,
-        uint256 l1MessagePopped
-    ) internal {
-        if (l1MessagePopped == 0) return;
+    function _popL1Messages(uint256 bitmapPtr, uint256 totalL1MessagePopped, uint256 l1MessagePopped) internal {
+        if (l1MessagePopped == 0) {
+            return;
+        }
 
         unchecked {
             uint256 startIndex = totalL1MessagePopped - l1MessagePopped;

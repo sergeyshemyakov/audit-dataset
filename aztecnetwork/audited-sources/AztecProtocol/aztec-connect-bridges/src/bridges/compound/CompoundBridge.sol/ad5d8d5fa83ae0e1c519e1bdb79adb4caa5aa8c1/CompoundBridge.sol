@@ -4,13 +4,13 @@ pragma solidity >=0.8.4;
 
 import {IRollupProcessor} from "../../interfaces/IRollupProcessor.sol";
 
-import {ErrorLib} from "./../base/ErrorLib.sol";
-import {BridgeBase} from "./../base/BridgeBase.sol";
 import {AztecTypes} from "../../aztec/AztecTypes.sol";
+import {BridgeBase} from "./../base/BridgeBase.sol";
+import {ErrorLib} from "./../base/ErrorLib.sol";
 
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {ICERC20} from "./interfaces/ICERC20.sol";
 import {ICETH} from "./interfaces/ICETH.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
@@ -51,20 +51,12 @@ contract CompoundBridge is BridgeBase {
         uint256 _interactionNonce,
         uint64 _auxData,
         address
-    )
-        external
-        payable
-        override(BridgeBase)
-        onlyRollup
-        returns (
-            uint256 outputValueA,
-            uint256,
-            bool
-        )
-    {
+    ) external payable override(BridgeBase) onlyRollup returns (uint256 outputValueA, uint256, bool) {
         if (_auxData == 0) {
             // Mint
-            if (_outputAssetA.assetType != AztecTypes.AztecAssetType.ERC20) revert ErrorLib.InvalidOutputA();
+            if (_outputAssetA.assetType != AztecTypes.AztecAssetType.ERC20) {
+                revert ErrorLib.InvalidOutputA();
+            }
 
             if (_inputAssetA.assetType == AztecTypes.AztecAssetType.ETH) {
                 ICETH cToken = ICETH(_outputAssetA.erc20Address);
@@ -84,7 +76,9 @@ contract CompoundBridge is BridgeBase {
             }
         } else if (_auxData == 1) {
             // Redeem
-            if (_inputAssetA.assetType != AztecTypes.AztecAssetType.ERC20) revert ErrorLib.InvalidInputA();
+            if (_inputAssetA.assetType != AztecTypes.AztecAssetType.ERC20) {
+                revert ErrorLib.InvalidInputA();
+            }
 
             if (_outputAssetA.assetType == AztecTypes.AztecAssetType.ETH) {
                 // Redeem cETH case

@@ -2,11 +2,11 @@
 pragma solidity 0.8.30;
 
 function addHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
 }
 
 function subHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
 }
 
 using {addHatch as +, subHatch as -} for Hatch global;
@@ -20,64 +20,64 @@ using {addHatch as +, subHatch as -} for Hatch global;
 type Hatch is uint256;
 
 interface IEscapeHatchCore {
-  event CandidateJoined(address indexed candidate);
-  event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
-  event CandidateExited(address indexed candidate, uint256 amountReturned);
-  event CandidateSelected(Hatch indexed hatch, address indexed candidate);
-  event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
-  event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
+    event CandidateJoined(address indexed candidate);
+    event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
+    event CandidateExited(address indexed candidate, uint256 amountReturned);
+    event CandidateSelected(Hatch indexed hatch, address indexed candidate);
+    event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
+    event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
 
-  function joinCandidateSet() external;
-  function initiateExit() external;
-  function leaveCandidateSet() external;
-  function selectCandidates() external;
-  function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
-  function validateProofSubmission(Hatch _hatch) external;
+    function joinCandidateSet() external;
+    function initiateExit() external;
+    function leaveCandidateSet() external;
+    function selectCandidates() external;
+    function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
+    function validateProofSubmission(Hatch _hatch) external;
 }
 
 function addEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
 }
 
 function subEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
 }
 
 // Epoch
 
 function eqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) == Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) == Epoch.unwrap(_b);
 }
 
 function neqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) != Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) != Epoch.unwrap(_b);
 }
 
 function gteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
 }
 
 function gtEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) > Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) > Epoch.unwrap(_b);
 }
 
 function lteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
 }
 
 function ltEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) < Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) < Epoch.unwrap(_b);
 }
 
 using {
-  addEpoch as +,
-  subEpoch as -,
-  eqEpoch as ==,
-  neqEpoch as !=,
-  gteEpoch as >=,
-  gtEpoch as >,
-  lteEpoch as <=,
-  ltEpoch as <
+    addEpoch as +,
+    subEpoch as -,
+    eqEpoch as ==,
+    neqEpoch as !=,
+    gteEpoch as >=,
+    gtEpoch as >,
+    lteEpoch as <=,
+    ltEpoch as <
 } for Epoch global;
 
 type Epoch is uint256;
@@ -93,10 +93,10 @@ type Epoch is uint256;
  * @param EXITING - The candidate is exiting and waiting for the exit delay to pass
  */
 enum Status {
-  NONE,
-  ACTIVE,
-  PROPOSING,
-  EXITING
+    NONE,
+    ACTIVE,
+    PROPOSING,
+    EXITING
 }
 
 /**
@@ -105,38 +105,38 @@ enum Status {
  * @notice Information about an escape hatch candidate
  */
 struct CandidateInfo {
-  Status status;
-  uint96 amount;
-  uint32 exitableAt;
-  uint32 lastCheckpointNumber;
-  bytes32 lastSubmittedArchive;
+    Status status;
+    uint96 amount;
+    uint32 exitableAt;
+    uint32 lastCheckpointNumber;
+    bytes32 lastSubmittedArchive;
 }
 
 interface IEscapeHatch is IEscapeHatchCore {
-  function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
-  function getCurrentHatch() external view returns (Hatch);
-  function getHatch(Epoch _epoch) external view returns (Hatch);
-  function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
-  function getDesignatedProposer(Hatch _hatch) external view returns (address);
-  function isHatchPrepared(Hatch _hatch) external view returns (bool);
-  function isHatchValidated(Hatch _hatch) external view returns (bool);
-  function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
-  function getCandidateCount() external view returns (uint256);
-  function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
-  function getCandidateAtIndex(uint256 _index) external view returns (address);
-  function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
-  function isCandidate(address _candidate) external view returns (bool);
-  function getSetTimestamp(Hatch _hatch) external view returns (uint32);
-  function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
-  function getRollup() external view returns (address);
-  function getBondToken() external view returns (address);
-  function getBondSize() external view returns (uint96);
-  function getWithdrawalTax() external view returns (uint96);
-  function getFailedHatchPunishment() external view returns (uint96);
-  function getFrequency() external view returns (uint256);
-  function getActiveDuration() external view returns (uint256);
-  function getLagInHatches() external view returns (uint256);
-  function getProposingExitDelay() external view returns (uint256);
+    function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
+    function getCurrentHatch() external view returns (Hatch);
+    function getHatch(Epoch _epoch) external view returns (Hatch);
+    function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
+    function getDesignatedProposer(Hatch _hatch) external view returns (address);
+    function isHatchPrepared(Hatch _hatch) external view returns (bool);
+    function isHatchValidated(Hatch _hatch) external view returns (bool);
+    function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
+    function getCandidateCount() external view returns (uint256);
+    function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
+    function getCandidateAtIndex(uint256 _index) external view returns (address);
+    function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
+    function isCandidate(address _candidate) external view returns (bool);
+    function getSetTimestamp(Hatch _hatch) external view returns (uint32);
+    function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
+    function getRollup() external view returns (address);
+    function getBondToken() external view returns (address);
+    function getBondSize() external view returns (uint96);
+    function getWithdrawalTax() external view returns (uint96);
+    function getFailedHatchPunishment() external view returns (uint96);
+    function getFrequency() external view returns (uint256);
+    function getActiveDuration() external view returns (uint256);
+    function getLagInHatches() external view returns (uint256);
+    function getProposingExitDelay() external view returns (uint256);
 }
 
 /**
@@ -1358,6 +1358,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -1366,7 +1367,9 @@ library Math {
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
             uint256 c = a + b;
-            if (c < a) return (false, 0);
+            if (c < a) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1376,7 +1379,9 @@ library Math {
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b > a) return (false, 0);
+            if (b > a) {
+                return (false, 0);
+            }
             return (true, a - b);
         }
     }
@@ -1389,9 +1394,13 @@ library Math {
             // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
             // benefit is lost if 'b' is also tested.
             // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-            if (a == 0) return (true, 0);
+            if (a == 0) {
+                return (true, 0);
+            }
             uint256 c = a * b;
-            if (c / a != b) return (false, 0);
+            if (c / a != b) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1401,7 +1410,9 @@ library Math {
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a / b);
         }
     }
@@ -1411,7 +1422,9 @@ library Math {
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a % b);
         }
     }
@@ -1585,7 +1598,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -1626,7 +1641,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -1678,7 +1695,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -1717,12 +1736,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -2061,11 +2082,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint32).max` key set will disable the
      * library.
      */
-    function push(
-        Trace224 storage self,
-        uint32 key,
-        uint224 value
-    ) internal returns (uint224 oldValue, uint224 newValue) {
+    function push(Trace224 storage self, uint32 key, uint224 value)
+        internal
+        returns (uint224 oldValue, uint224 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -2156,11 +2176,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint224 value
-    ) private returns (uint224 oldValue, uint224 newValue) {
+    function _insert(Checkpoint224[] storage self, uint32 key, uint224 value)
+        private
+        returns (uint224 oldValue, uint224 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -2193,12 +2212,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -2217,12 +2235,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -2237,10 +2254,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint224[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint224 storage result) {
+    function _unsafeAccess(Checkpoint224[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint224 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -2264,11 +2282,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint48).max` key set will disable the
      * library.
      */
-    function push(
-        Trace208 storage self,
-        uint48 key,
-        uint208 value
-    ) internal returns (uint208 oldValue, uint208 newValue) {
+    function push(Trace208 storage self, uint48 key, uint208 value)
+        internal
+        returns (uint208 oldValue, uint208 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -2359,11 +2376,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint208 value
-    ) private returns (uint208 oldValue, uint208 newValue) {
+    function _insert(Checkpoint208[] storage self, uint48 key, uint208 value)
+        private
+        returns (uint208 oldValue, uint208 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -2396,12 +2412,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -2420,12 +2435,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -2440,10 +2454,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint208[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint208 storage result) {
+    function _unsafeAccess(Checkpoint208[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint208 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -2467,11 +2482,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint96).max` key set will disable the
      * library.
      */
-    function push(
-        Trace160 storage self,
-        uint96 key,
-        uint160 value
-    ) internal returns (uint160 oldValue, uint160 newValue) {
+    function push(Trace160 storage self, uint96 key, uint160 value)
+        internal
+        returns (uint160 oldValue, uint160 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -2562,11 +2576,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint160 value
-    ) private returns (uint160 oldValue, uint160 newValue) {
+    function _insert(Checkpoint160[] storage self, uint96 key, uint160 value)
+        private
+        returns (uint160 oldValue, uint160 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -2599,12 +2612,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -2623,12 +2635,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -2643,10 +2654,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint160[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint160 storage result) {
+    function _unsafeAccess(Checkpoint160[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint160 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -2655,8 +2667,8 @@ library Checkpoints {
 }
 
 struct Index {
-  bool exists;
-  uint224 index;
+    bool exists;
+    uint224 index;
 }
 
 /**
@@ -2666,12 +2678,12 @@ struct Index {
  * @param addressToCurrentIndex Mapping of address to its current index in the set
  */
 struct SnapshottedAddressSet {
-  // This size must also be snapshotted
-  Checkpoints.Trace224 size;
-  // For each index, store the timestamped history of addresses
-  mapping(uint256 index => Checkpoints.Trace224) indexToAddressHistory;
-  // For each address, store its current index in the set
-  mapping(address addr => Index index) addressToCurrentIndex;
+    // This size must also be snapshotted
+    Checkpoints.Trace224 size;
+    // For each index, store the timestamped history of addresses
+    mapping(uint256 index => Checkpoints.Trace224) indexToAddressHistory;
+    // For each address, store its current index in the set
+    mapping(address addr => Index index) addressToCurrentIndex;
 }
 
 error AddressSnapshotLib__CannotAddAddressZero();
@@ -2692,217 +2704,221 @@ error AddressSnapshotLib__IndexOutOfBounds(uint256 index, uint256 size);
  * `size`
  */
 library AddressSnapshotLib {
-  using SafeCast for *;
-  using Checkpoints for Checkpoints.Trace224;
+    using SafeCast for *;
+    using Checkpoints for Checkpoints.Trace224;
 
-  /**
-   * @notice Adds a validator to the set
-   * @param _self The storage reference to the set
-   * @param _address The address to add
-   * @return bool True if the address was added, false if it was already present
-   */
-  function add(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
-    require(_address != address(0), AddressSnapshotLib__CannotAddAddressZero());
-    // Prevent against double insertion
-    if (_self.addressToCurrentIndex[_address].exists) {
-      return false;
+    /**
+     * @notice Adds a validator to the set
+     * @param _self The storage reference to the set
+     * @param _address The address to add
+     * @return bool True if the address was added, false if it was already present
+     */
+    function add(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
+        require(_address != address(0), AddressSnapshotLib__CannotAddAddressZero());
+        // Prevent against double insertion
+        if (_self.addressToCurrentIndex[_address].exists) {
+            return false;
+        }
+
+        uint224 index = _self.size.latest();
+        _self.addressToCurrentIndex[_address] = Index({exists: true, index: index});
+
+        uint32 key = block.timestamp.toUint32();
+
+        _self.indexToAddressHistory[index].push(key, uint160(_address).toUint224());
+        _self.size.push(key, (index + 1).toUint224());
+
+        return true;
     }
 
-    uint224 index = _self.size.latest();
-    _self.addressToCurrentIndex[_address] = Index({exists: true, index: index});
+    /**
+     * @notice Removes a address from the set by address
+     *
+     * @param _self The storage reference to the set
+     * @param _address The address of the address to remove
+     * @return bool True if the address was removed, false if it wasn't found
+     */
+    function remove(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
+        Index memory index = _self.addressToCurrentIndex[_address];
+        if (!index.exists) {
+            return false;
+        }
 
-    uint32 key = block.timestamp.toUint32();
-
-    _self.indexToAddressHistory[index].push(key, uint160(_address).toUint224());
-    _self.size.push(key, (index + 1).toUint224());
-
-    return true;
-  }
-
-  /**
-   * @notice Removes a address from the set by address
-   *
-   * @param _self The storage reference to the set
-   * @param _address The address of the address to remove
-   * @return bool True if the address was removed, false if it wasn't found
-   */
-  function remove(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
-    Index memory index = _self.addressToCurrentIndex[_address];
-    if (!index.exists) {
-      return false;
+        return _remove(_self, index.index, _address);
     }
 
-    return _remove(_self, index.index, _address);
-  }
-
-  /**
-   * @notice Removes a validator from the set by index
-   * @param _self The storage reference to the set
-   * @param _index The index of the validator to remove
-   * @return bool True if the validator was removed, reverts otherwise
-   */
-  function remove(SnapshottedAddressSet storage _self, uint224 _index) internal returns (bool) {
-    address _address = address(_self.indexToAddressHistory[_index].latest().toUint160());
-    return _remove(_self, _index, _address);
-  }
-
-  /**
-   * @notice Removes a validator from the set
-   * @param _self The storage reference to the set
-   * @param _index The index of the validator to remove
-   * @param _address The address to remove
-   * @return bool True if the validator was removed, reverts otherwise
-   */
-  function _remove(SnapshottedAddressSet storage _self, uint224 _index, address _address) internal returns (bool) {
-    uint224 currentSize = _self.size.latest();
-    if (_index >= currentSize) {
-      revert AddressSnapshotLib__IndexOutOfBounds(_index, currentSize);
+    /**
+     * @notice Removes a validator from the set by index
+     * @param _self The storage reference to the set
+     * @param _index The index of the validator to remove
+     * @return bool True if the validator was removed, reverts otherwise
+     */
+    function remove(SnapshottedAddressSet storage _self, uint224 _index) internal returns (bool) {
+        address _address = address(_self.indexToAddressHistory[_index].latest().toUint160());
+        return _remove(_self, _index, _address);
     }
 
-    // Mark the address to remove as not existing
-    _self.addressToCurrentIndex[_address] = Index({exists: false, index: 0});
+    /**
+     * @notice Removes a validator from the set
+     * @param _self The storage reference to the set
+     * @param _index The index of the validator to remove
+     * @param _address The address to remove
+     * @return bool True if the validator was removed, reverts otherwise
+     */
+    function _remove(SnapshottedAddressSet storage _self, uint224 _index, address _address) internal returns (bool) {
+        uint224 currentSize = _self.size.latest();
+        if (_index >= currentSize) {
+            revert AddressSnapshotLib__IndexOutOfBounds(_index, currentSize);
+        }
 
-    // Now we need to update the indexToAddressHistory.
-    // Suppose the current size is 3, and we are removing Bob from index 1, and Charlie is at index 2.
-    // We effectively push Charlie into the snapshot at index 1,
-    // then update Charlie in addressToCurrentIndex to reflect the new index of 1.
+        // Mark the address to remove as not existing
+        _self.addressToCurrentIndex[_address] = Index({exists: false, index: 0});
 
-    uint224 lastIndex = currentSize - 1;
-    uint32 key = block.timestamp.toUint32();
+        // Now we need to update the indexToAddressHistory.
+        // Suppose the current size is 3, and we are removing Bob from index 1, and Charlie is at index 2.
+        // We effectively push Charlie into the snapshot at index 1,
+        // then update Charlie in addressToCurrentIndex to reflect the new index of 1.
 
-    // If not removing the last item, swap the value of the last item into the `_index` to remove
-    if (lastIndex != _index) {
-      address lastValidator = address(_self.indexToAddressHistory[lastIndex].latest().toUint160());
+        uint224 lastIndex = currentSize - 1;
+        uint32 key = block.timestamp.toUint32();
 
-      _self.addressToCurrentIndex[lastValidator] = Index({exists: true, index: _index.toUint224()});
-      _self.indexToAddressHistory[_index].push(key, uint160(lastValidator).toUint224());
+        // If not removing the last item, swap the value of the last item into the `_index` to remove
+        if (lastIndex != _index) {
+            address lastValidator = address(_self.indexToAddressHistory[lastIndex].latest().toUint160());
+
+            _self.addressToCurrentIndex[lastValidator] = Index({exists: true, index: _index.toUint224()});
+            _self.indexToAddressHistory[_index].push(key, uint160(lastValidator).toUint224());
+        }
+
+        // Then "pop" the last index by setting the value to `address(0)`
+        _self.indexToAddressHistory[lastIndex].push(key, uint224(0));
+
+        // Finally, we update the size to reflect the new size of the set.
+        _self.size.push(key, (lastIndex).toUint224());
+        return true;
     }
 
-    // Then "pop" the last index by setting the value to `address(0)`
-    _self.indexToAddressHistory[lastIndex].push(key, uint224(0));
-
-    // Finally, we update the size to reflect the new size of the set.
-    _self.size.push(key, (lastIndex).toUint224());
-    return true;
-  }
-
-  /**
-   * @notice Gets the current address at a specific index at the time right now
-   * @param _self The storage reference to the set
-   * @param _index The index to query
-   * @return address The current address at the given index
-   */
-  function at(SnapshottedAddressSet storage _self, uint256 _index) internal view returns (address) {
-    return getAddressFromIndexAtTimestamp(_self, _index, block.timestamp.toUint32());
-  }
-
-  /**
-   * @notice Gets the address at a specific index and timestamp
-   * @param _self The storage reference to the set
-   * @param _index The index to query
-   * @param _timestamp The timestamp to query
-   * @return address The address at the given index and timestamp
-   */
-  function getAddressFromIndexAtTimestamp(SnapshottedAddressSet storage _self, uint256 _index, uint32 _timestamp)
-    internal
-    view
-    returns (address)
-  {
-    uint256 size = lengthAtTimestamp(_self, _timestamp);
-    require(_index < size, AddressSnapshotLib__IndexOutOfBounds(_index, size));
-
-    // Since the _index is less than the size, we know that the address at _index
-    // exists at/before _timestamp.
-    uint224 addr = _self.indexToAddressHistory[_index].upperLookup(_timestamp);
-    return address(addr.toUint160());
-  }
-
-  /**
-   * @notice Gets the address at a specific index and timestamp
-   *
-   * @dev     The caller MUST have ensure that `_index` < `size`
-   *          at the `_timestamp` provided.
-   * @dev     Primed for recent checkpoints in the address history.
-   *
-   * @param _self The storage reference to the set
-   * @param _index The index to query
-   * @param _timestamp The timestamp to query
-   * @return address The address at the given index and timestamp
-   */
-  function unsafeGetRecentAddressFromIndexAtTimestamp(
-    SnapshottedAddressSet storage _self,
-    uint256 _index,
-    uint32 _timestamp
-  ) internal view returns (address) {
-    uint224 addr = _self.indexToAddressHistory[_index].upperLookupRecent(_timestamp);
-    return address(addr.toUint160());
-  }
-
-  /**
-   * @notice Gets the current size of the set
-   * @param _self The storage reference to the set
-   * @return uint256 The number of addresses in the set
-   */
-  function length(SnapshottedAddressSet storage _self) internal view returns (uint256) {
-    return lengthAtTimestamp(_self, block.timestamp.toUint32());
-  }
-
-  /**
-   * @notice Gets the size of the set at a specific timestamp
-   * @param _self The storage reference to the set
-   * @param _timestamp The timestamp to query
-   * @return uint256 The number of addresses in the set at the given timestamp
-   *
-   * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
-   */
-  function lengthAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp) internal view returns (uint256) {
-    return _self.size.upperLookup(_timestamp);
-  }
-
-  /**
-   * @notice Gets all current addresses in the set
-   *
-   * @dev This function is only used in tests.
-   *
-   * @param _self The storage reference to the set
-   * @return address[] Array of all current addresses in the set
-   */
-  function values(SnapshottedAddressSet storage _self) internal view returns (address[] memory) {
-    return valuesAtTimestamp(_self, block.timestamp.toUint32());
-  }
-
-  /**
-   * @notice Gets all addresses in the set at a specific timestamp
-   *
-   * @dev This function is only used in tests.
-   *
-   * @param _self The storage reference to the set
-   * @param _timestamp The timestamp to query
-   * @return address[] Array of all addresses in the set at the given timestamp
-   *
-   * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
-   *
-   */
-  function valuesAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp)
-    internal
-    view
-    returns (address[] memory)
-  {
-    uint256 size = lengthAtTimestamp(_self, _timestamp);
-    address[] memory vals = new address[](size);
-    for (uint256 i; i < size;) {
-      vals[i] = getAddressFromIndexAtTimestamp(_self, i, _timestamp);
-
-      unchecked {
-        ++i;
-      }
+    /**
+     * @notice Gets the current address at a specific index at the time right now
+     * @param _self The storage reference to the set
+     * @param _index The index to query
+     * @return address The current address at the given index
+     */
+    function at(SnapshottedAddressSet storage _self, uint256 _index) internal view returns (address) {
+        return getAddressFromIndexAtTimestamp(_self, _index, block.timestamp.toUint32());
     }
-    return vals;
-  }
 
-  function contains(SnapshottedAddressSet storage _self, address _address) internal view returns (bool) {
-    return _self.addressToCurrentIndex[_address].exists;
-  }
+    /**
+     * @notice Gets the address at a specific index and timestamp
+     * @param _self The storage reference to the set
+     * @param _index The index to query
+     * @param _timestamp The timestamp to query
+     * @return address The address at the given index and timestamp
+     */
+    function getAddressFromIndexAtTimestamp(SnapshottedAddressSet storage _self, uint256 _index, uint32 _timestamp)
+        internal
+        view
+        returns (address)
+    {
+        uint256 size = lengthAtTimestamp(_self, _timestamp);
+        require(_index < size, AddressSnapshotLib__IndexOutOfBounds(_index, size));
+
+        // Since the _index is less than the size, we know that the address at _index
+        // exists at/before _timestamp.
+        uint224 addr = _self.indexToAddressHistory[_index].upperLookup(_timestamp);
+        return address(addr.toUint160());
+    }
+
+    /**
+     * @notice Gets the address at a specific index and timestamp
+     *
+     * @dev     The caller MUST have ensure that `_index` < `size`
+     *          at the `_timestamp` provided.
+     * @dev     Primed for recent checkpoints in the address history.
+     *
+     * @param _self The storage reference to the set
+     * @param _index The index to query
+     * @param _timestamp The timestamp to query
+     * @return address The address at the given index and timestamp
+     */
+    function unsafeGetRecentAddressFromIndexAtTimestamp(
+        SnapshottedAddressSet storage _self,
+        uint256 _index,
+        uint32 _timestamp
+    ) internal view returns (address) {
+        uint224 addr = _self.indexToAddressHistory[_index].upperLookupRecent(_timestamp);
+        return address(addr.toUint160());
+    }
+
+    /**
+     * @notice Gets the current size of the set
+     * @param _self The storage reference to the set
+     * @return uint256 The number of addresses in the set
+     */
+    function length(SnapshottedAddressSet storage _self) internal view returns (uint256) {
+        return lengthAtTimestamp(_self, block.timestamp.toUint32());
+    }
+
+    /**
+     * @notice Gets the size of the set at a specific timestamp
+     * @param _self The storage reference to the set
+     * @param _timestamp The timestamp to query
+     * @return uint256 The number of addresses in the set at the given timestamp
+     *
+     * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
+     */
+    function lengthAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.size.upperLookup(_timestamp);
+    }
+
+    /**
+     * @notice Gets all current addresses in the set
+     *
+     * @dev This function is only used in tests.
+     *
+     * @param _self The storage reference to the set
+     * @return address[] Array of all current addresses in the set
+     */
+    function values(SnapshottedAddressSet storage _self) internal view returns (address[] memory) {
+        return valuesAtTimestamp(_self, block.timestamp.toUint32());
+    }
+
+    /**
+     * @notice Gets all addresses in the set at a specific timestamp
+     *
+     * @dev This function is only used in tests.
+     *
+     * @param _self The storage reference to the set
+     * @param _timestamp The timestamp to query
+     * @return address[] Array of all addresses in the set at the given timestamp
+     *
+     * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
+     *
+     */
+    function valuesAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp)
+        internal
+        view
+        returns (address[] memory)
+    {
+        uint256 size = lengthAtTimestamp(_self, _timestamp);
+        address[] memory vals = new address[](size);
+        for (uint256 i; i < size;) {
+            vals[i] = getAddressFromIndexAtTimestamp(_self, i, _timestamp);
+
+            unchecked {
+                ++i;
+            }
+        }
+        return vals;
+    }
+
+    function contains(SnapshottedAddressSet storage _self, address _address) internal view returns (bool) {
+        return _self.addressToCurrentIndex[_address].exists;
+    }
 }
 
 /**
@@ -3058,7 +3074,9 @@ interface IERC1363 is IERC20, IERC165 {
      * @param data Additional data with no specified format, sent in call to `to`.
      * @return A boolean value indicating whether the operation succeeded unless throwing.
      */
-    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data) external returns (bool);
+    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data)
+        external
+        returns (bool);
 
     /**
      * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
@@ -3189,13 +3207,9 @@ library SafeERC20 {
      *
      * Reverts if the returned value is other than `true`.
      */
-    function transferFromAndCallRelaxed(
-        IERC1363 token,
-        address from,
-        address to,
-        uint256 value,
-        bytes memory data
-    ) internal {
+    function transferFromAndCallRelaxed(IERC1363 token, address from, address to, uint256 value, bytes memory data)
+        internal
+    {
         if (to.code.length == 0) {
             safeTransferFrom(token, from, to, value);
         } else if (!token.transferFromAndCall(from, to, value, data)) {
@@ -3329,15 +3343,15 @@ library BitMaps {
 }
 
 struct G1Point {
-  uint256 x;
-  uint256 y;
+    uint256 x;
+    uint256 y;
 }
 
 struct G2Point {
-  uint256 x0;
-  uint256 x1;
-  uint256 y0;
-  uint256 y1;
+    uint256 x0;
+    uint256 x1;
+    uint256 y0;
+    uint256 y1;
 }
 
 /**
@@ -3362,111 +3376,111 @@ struct G2Point {
  * This can be used to prevent a situation where flushing the queue would exceed the block gas limit.
  */
 struct StakingQueueConfig {
-  uint256 bootstrapValidatorSetSize;
-  uint256 bootstrapFlushSize;
-  uint256 normalFlushSizeMin;
-  uint256 normalFlushSizeQuotient;
-  uint256 maxQueueFlushSize;
+    uint256 bootstrapValidatorSetSize;
+    uint256 bootstrapFlushSize;
+    uint256 normalFlushSizeMin;
+    uint256 normalFlushSizeQuotient;
+    uint256 maxQueueFlushSize;
 }
 
 interface IStakingCore {
-  event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
-  event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
-  event PendingSlasherCancelled(address indexed slasher);
-  event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
-  event ValidatorQueued(address indexed attester, address indexed withdrawer);
-  event Deposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession,
-    uint256 amount
-  );
-  event FailedDeposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession
-  );
-  event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
-  event Slashed(address indexed attester, uint256 amount);
-  event StakingQueueConfigUpdated(StakingQueueConfig config);
+    event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
+    event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
+    event PendingSlasherCancelled(address indexed slasher);
+    event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
+    event ValidatorQueued(address indexed attester, address indexed withdrawer);
+    event Deposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession,
+        uint256 amount
+    );
+    event FailedDeposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession
+    );
+    event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
+    event Slashed(address indexed attester, uint256 amount);
+    event StakingQueueConfigUpdated(StakingQueueConfig config);
 
-  function queueSetSlasher(address _slasher) external;
-  function cancelSetSlasher() external;
-  function finalizeSetSlasher() external;
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external;
-  function flushEntryQueue() external;
-  function flushEntryQueue(uint256 _toAdd) external;
-  function initiateWithdraw(address _attester, address _recipient) external returns (bool);
-  function finalizeWithdraw(address _attester) external;
-  function slash(address _attester, uint256 _amount) external returns (bool);
-  function vote(uint256 _proposalId) external;
-  function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
+    function queueSetSlasher(address _slasher) external;
+    function cancelSetSlasher() external;
+    function finalizeSetSlasher() external;
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external;
+    function flushEntryQueue() external;
+    function flushEntryQueue(uint256 _toAdd) external;
+    function initiateWithdraw(address _attester, address _recipient) external returns (bool);
+    function finalizeWithdraw(address _attester) external;
+    function slash(address _attester, uint256 _amount) external returns (bool);
+    function vote(uint256 _proposalId) external;
+    function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
 
-  function getEntryQueueFlushSize() external view returns (uint256);
-  function getActiveAttesterCount() external view returns (uint256);
+    function getEntryQueueFlushSize() external view returns (uint256);
+    function getActiveAttesterCount() external view returns (uint256);
 }
 
 // Struct to store configuration of an attester (checkpoint producer)
 // Keep track of the actor who can initiate and control withdraws for the attester.
 // Keep track of the public key in G1 of BN254 that has registered on the instance
 struct AttesterConfig {
-  G1Point publicKey;
-  address withdrawer;
+    G1Point publicKey;
+    address withdrawer;
 }
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
@@ -3496,181 +3510,181 @@ type Timestamp is uint256;
  * @param exists True if this exit record exists, false if not yet created
  */
 struct Exit {
-  uint256 withdrawalId;
-  uint256 amount;
-  Timestamp exitableAt;
-  address recipientOrWithdrawer;
-  bool isRecipient;
-  bool exists;
+    uint256 withdrawalId;
+    uint256 amount;
+    Timestamp exitableAt;
+    address recipientOrWithdrawer;
+    bool isRecipient;
+    bool exists;
 }
 
 struct ProposeWithLockConfiguration {
-  Timestamp lockDelay;
-  uint256 lockAmount;
+    Timestamp lockDelay;
+    uint256 lockAmount;
 }
 
 struct Configuration {
-  ProposeWithLockConfiguration proposeConfig;
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    ProposeWithLockConfiguration proposeConfig;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 // @notice if this changes, please update the enum in governance.ts
 enum ProposalState {
-  Pending,
-  Active,
-  Queued,
-  Executable,
-  Rejected,
-  Executed,
-  Droppable,
-  Dropped,
-  Expired
+    Pending,
+    Active,
+    Queued,
+    Executable,
+    Rejected,
+    Executed,
+    Droppable,
+    Dropped,
+    Expired
 }
 
 // Configuration for proposals - same as Configuration but without proposeConfig
 // since proposeConfig is only used for proposeWithLock, not for the proposal itself
 struct ProposalConfiguration {
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 struct Ballot {
-  uint256 yea;
-  uint256 nay;
+    uint256 yea;
+    uint256 nay;
 }
 
 struct Proposal {
-  ProposalConfiguration config;
-  ProposalState cachedState;
-  IPayload payload;
-  address proposer;
-  Timestamp creation;
-  Ballot summedBallot;
+    ProposalConfiguration config;
+    ProposalState cachedState;
+    IPayload payload;
+    address proposer;
+    Timestamp creation;
+    Ballot summedBallot;
 }
 
 struct Withdrawal {
-  uint256 amount;
-  Timestamp unlocksAt;
-  address recipient;
-  bool claimed;
+    uint256 amount;
+    Timestamp unlocksAt;
+    address recipient;
+    bool claimed;
 }
 
 interface IGovernance {
-  event BeneficiaryAdded(address beneficiary);
-  event FloodGatesOpened();
+    event BeneficiaryAdded(address beneficiary);
+    event FloodGatesOpened();
 
-  event Proposed(uint256 indexed proposalId, address indexed proposal);
-  event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
-  event ProposalExecuted(uint256 indexed proposalId);
-  event ProposalDropped(uint256 indexed proposalId);
-  event GovernanceProposerUpdated(address indexed governanceProposer);
-  event ConfigurationUpdated(Timestamp indexed time);
+    event Proposed(uint256 indexed proposalId, address indexed proposal);
+    event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
+    event ProposalExecuted(uint256 indexed proposalId);
+    event ProposalDropped(uint256 indexed proposalId);
+    event GovernanceProposerUpdated(address indexed governanceProposer);
+    event ConfigurationUpdated(Timestamp indexed time);
 
-  event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
-  event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(uint256 indexed withdrawalId);
+    event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
+    event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(uint256 indexed withdrawalId);
 
-  function addBeneficiary(address _beneficiary) external;
-  function openFloodgates() external;
+    function addBeneficiary(address _beneficiary) external;
+    function openFloodgates() external;
 
-  function updateGovernanceProposer(address _governanceProposer) external;
-  function updateConfiguration(Configuration memory _configuration) external;
-  function deposit(address _onBehalfOf, uint256 _amount) external;
-  function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function propose(IPayload _proposal) external returns (uint256);
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function execute(uint256 _proposalId) external;
-  function dropProposal(uint256 _proposalId) external;
+    function updateGovernanceProposer(address _governanceProposer) external;
+    function updateConfiguration(Configuration memory _configuration) external;
+    function deposit(address _onBehalfOf, uint256 _amount) external;
+    function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function propose(IPayload _proposal) external returns (uint256);
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function execute(uint256 _proposalId) external;
+    function dropProposal(uint256 _proposalId) external;
 
-  function isPermittedInGovernance(address _caller) external view returns (bool);
-  function isAllBeneficiariesAllowed() external view returns (bool);
+    function isPermittedInGovernance(address _caller) external view returns (bool);
+    function isAllBeneficiariesAllowed() external view returns (bool);
 
-  function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
-  function powerNow(address _owner) external view returns (uint256);
-  function totalPowerAt(Timestamp _ts) external view returns (uint256);
-  function totalPowerNow() external view returns (uint256);
-  function getProposalState(uint256 _proposalId) external view returns (ProposalState);
-  function getConfiguration() external view returns (Configuration memory);
-  function getProposal(uint256 _proposalId) external view returns (Proposal memory);
-  function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
-  function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
+    function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
+    function powerNow(address _owner) external view returns (uint256);
+    function totalPowerAt(Timestamp _ts) external view returns (uint256);
+    function totalPowerNow() external view returns (uint256);
+    function getProposalState(uint256 _proposalId) external view returns (ProposalState);
+    function getConfiguration() external view returns (Configuration memory);
+    function getProposal(uint256 _proposalId) external view returns (Proposal memory);
+    function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
+    function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
 }
 
 function eqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) == Slot.unwrap(_b);
+    return Slot.unwrap(_a) == Slot.unwrap(_b);
 }
 
 function neqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) != Slot.unwrap(_b);
+    return Slot.unwrap(_a) != Slot.unwrap(_b);
 }
 
 function gteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) >= Slot.unwrap(_b);
+    return Slot.unwrap(_a) >= Slot.unwrap(_b);
 }
 
 function gtSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) > Slot.unwrap(_b);
+    return Slot.unwrap(_a) > Slot.unwrap(_b);
 }
 
 function lteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) <= Slot.unwrap(_b);
+    return Slot.unwrap(_a) <= Slot.unwrap(_b);
 }
 
 function ltSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) < Slot.unwrap(_b);
+    return Slot.unwrap(_a) < Slot.unwrap(_b);
 }
 
 // Slot
 
 function addSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
 }
 
 function subSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
 }
 
 using {
-  eqSlot as ==,
-  neqSlot as !=,
-  gteSlot as >=,
-  gtSlot as >,
-  lteSlot as <=,
-  ltSlot as <,
-  addSlot as +,
-  subSlot as -
+    eqSlot as ==,
+    neqSlot as !=,
+    gteSlot as >=,
+    gtSlot as >,
+    lteSlot as <=,
+    ltSlot as <,
+    addSlot as +,
+    subSlot as -
 } for Slot global;
 
 type Slot is uint256;
@@ -3683,80 +3697,80 @@ type Slot is uint256;
  * when there are multiple contracts that could have thrown the error.
  */
 library Errors {
-  error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
-  error Governance__GovernanceProposerCannotBeSelf();
-  error Governance__CallerNotSelf(address caller, address self);
-  error Governance__CallerCannotBeSelf();
-  error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
-  error Governance__CannotWithdrawToAddressZero();
-  error Governance__WithdrawalNotInitiated();
-  error Governance__WithdrawalAlreadyClaimed();
-  error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
-  error Governance__ProposalNotActive();
-  error Governance__ProposalNotExecutable();
-  error Governance__CannotCallAsset();
-  error Governance__CallFailed(address target);
-  error Governance__ProposalDoesNotExists(uint256 proposalId);
-  error Governance__ProposalAlreadyDropped();
-  error Governance__ProposalCannotBeDropped();
-  error Governance__DepositNotAllowed();
+    error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
+    error Governance__GovernanceProposerCannotBeSelf();
+    error Governance__CallerNotSelf(address caller, address self);
+    error Governance__CallerCannotBeSelf();
+    error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
+    error Governance__CannotWithdrawToAddressZero();
+    error Governance__WithdrawalNotInitiated();
+    error Governance__WithdrawalAlreadyClaimed();
+    error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
+    error Governance__ProposalNotActive();
+    error Governance__ProposalNotExecutable();
+    error Governance__CannotCallAsset();
+    error Governance__CallFailed(address target);
+    error Governance__ProposalDoesNotExists(uint256 proposalId);
+    error Governance__ProposalAlreadyDropped();
+    error Governance__ProposalCannotBeDropped();
+    error Governance__DepositNotAllowed();
 
-  error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
-  error Governance__CheckpointedUintLib__NotInPast();
+    error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
+    error Governance__CheckpointedUintLib__NotInPast();
 
-  error Governance__ConfigurationLib__InvalidMinimumVotes();
-  error Governance__ConfigurationLib__LockAmountTooSmall();
-  error Governance__ConfigurationLib__LockAmountTooBig();
-  error Governance__ConfigurationLib__QuorumTooSmall();
-  error Governance__ConfigurationLib__QuorumTooBig();
-  error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
-  error Governance__ConfigurationLib__TimeTooSmall(string name);
-  error Governance__ConfigurationLib__TimeTooBig(string name);
+    error Governance__ConfigurationLib__InvalidMinimumVotes();
+    error Governance__ConfigurationLib__LockAmountTooSmall();
+    error Governance__ConfigurationLib__LockAmountTooBig();
+    error Governance__ConfigurationLib__QuorumTooSmall();
+    error Governance__ConfigurationLib__QuorumTooBig();
+    error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
+    error Governance__ConfigurationLib__TimeTooSmall(string name);
+    error Governance__ConfigurationLib__TimeTooBig(string name);
 
-  error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
-  error EmpireBase__InstanceHaveNoCode(address instance);
-  error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
-  error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
-  error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
-  error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
-  error EmpireBase__PayloadCannotBeAddressZero();
-  error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
-  error GovernanceProposer__GSEPayloadInvalid();
+    error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
+    error EmpireBase__InstanceHaveNoCode(address instance);
+    error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
+    error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
+    error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
+    error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
+    error EmpireBase__PayloadCannotBeAddressZero();
+    error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
+    error GovernanceProposer__GSEPayloadInvalid();
 
-  error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
-  error CoinIssuer__InvalidConfiguration();
+    error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
+    error CoinIssuer__InvalidConfiguration();
 
-  error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
-  error Registry__RollupNotRegistered(uint256 version);
-  error Registry__NoRollupsRegistered();
+    error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
+    error Registry__RollupNotRegistered(uint256 version);
+    error Registry__NoRollupsRegistered();
 
-  error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
-  error RewardDistributor__InsufficientAvailable(uint256 requested, uint256 available);
-  error RewardDistributor__ZeroRollup();
-  error RewardDistributor__WrongRecoverMechanism();
+    error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
+    error RewardDistributor__InsufficientAvailable(uint256 requested, uint256 available);
+    error RewardDistributor__ZeroRollup();
+    error RewardDistributor__WrongRecoverMechanism();
 
-  error GSE__NotRollup(address);
-  error GSE__GovernanceAlreadySet();
-  error GSE__InvalidRollupAddress(address);
-  error GSE__RollupAlreadyRegistered(address);
-  error GSE__NotLatestRollup(address);
-  error GSE__AlreadyRegistered(address, address);
-  error GSE__NothingToExit(address);
-  error GSE__InsufficientBalance(uint256, uint256);
-  error GSE__FailedToRemove(address);
-  error GSE__InstanceDoesNotExist(address);
-  error GSE__NotWithdrawer(address, address);
-  error GSE__OutOfBounds(uint256, uint256);
-  error GSE__FatalError(string);
-  error GSE__InvalidProofOfPossession();
-  error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
-  error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
+    error GSE__NotRollup(address);
+    error GSE__GovernanceAlreadySet();
+    error GSE__InvalidRollupAddress(address);
+    error GSE__RollupAlreadyRegistered(address);
+    error GSE__NotLatestRollup(address);
+    error GSE__AlreadyRegistered(address, address);
+    error GSE__NothingToExit(address);
+    error GSE__InsufficientBalance(uint256, uint256);
+    error GSE__FailedToRemove(address);
+    error GSE__InstanceDoesNotExist(address);
+    error GSE__NotWithdrawer(address, address);
+    error GSE__OutOfBounds(uint256, uint256);
+    error GSE__FatalError(string);
+    error GSE__InvalidProofOfPossession();
+    error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
+    error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
 
-  error Delegation__InsufficientPower(address, uint256, uint256);
+    error Delegation__InsufficientPower(address, uint256, uint256);
 }
 
 /**
@@ -3765,72 +3779,74 @@ library Errors {
  *          Provides helper functions to `add` to or `sub` from the current value.
  */
 library CheckpointedUintLib {
-  using Checkpoints for Checkpoints.Trace224;
-  using SafeCast for uint256;
+    using Checkpoints for Checkpoints.Trace224;
+    using SafeCast for uint256;
 
-  /**
-   * @notice  Add `_amount` to the current value
-   *
-   * @dev   The amounts are cast to uint224 before storing such that the (key: value) fits in a single slot
-   *
-   * @param _self - The Trace224 to add to
-   * @param _amount - The amount to add
-   *
-   * @return - The current value and the new value
-   */
-  function add(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
-    uint224 current = _self.latest();
-    if (_amount == 0) {
-      return (current, current);
+    /**
+     * @notice  Add `_amount` to the current value
+     *
+     * @dev   The amounts are cast to uint224 before storing such that the (key: value) fits in a single slot
+     *
+     * @param _self - The Trace224 to add to
+     * @param _amount - The amount to add
+     *
+     * @return - The current value and the new value
+     */
+    function add(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
+        uint224 current = _self.latest();
+        if (_amount == 0) {
+            return (current, current);
+        }
+        uint224 amount = _amount.toUint224();
+        _self.push(block.timestamp.toUint32(), current + amount);
+        return (current, current + amount);
     }
-    uint224 amount = _amount.toUint224();
-    _self.push(block.timestamp.toUint32(), current + amount);
-    return (current, current + amount);
-  }
 
-  /**
-   * @notice  Subtract `_amount` from the current value
-   *
-   * @param _self - The Trace224 to subtract from
-   * @param _amount - The amount to subtract
-   * @return - The current value and the new value
-   */
-  function sub(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
-    uint224 current = _self.latest();
-    if (_amount == 0) {
-      return (current, current);
+    /**
+     * @notice  Subtract `_amount` from the current value
+     *
+     * @param _self - The Trace224 to subtract from
+     * @param _amount - The amount to subtract
+     * @return - The current value and the new value
+     */
+    function sub(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
+        uint224 current = _self.latest();
+        if (_amount == 0) {
+            return (current, current);
+        }
+        uint224 amount = _amount.toUint224();
+        require(
+            current >= amount, Errors.Governance__CheckpointedUintLib__InsufficientValue(msg.sender, current, amount)
+        );
+        _self.push(block.timestamp.toUint32(), current - amount);
+        return (current, current - amount);
     }
-    uint224 amount = _amount.toUint224();
-    require(current >= amount, Errors.Governance__CheckpointedUintLib__InsufficientValue(msg.sender, current, amount));
-    _self.push(block.timestamp.toUint32(), current - amount);
-    return (current, current - amount);
-  }
 
-  /**
-   * @notice  Get the current value
-   *
-   * @param _self - The Trace224 to get the value of
-   * @return - The current value
-   */
-  function valueNow(Checkpoints.Trace224 storage _self) internal view returns (uint256) {
-    return _self.latest();
-  }
+    /**
+     * @notice  Get the current value
+     *
+     * @param _self - The Trace224 to get the value of
+     * @return - The current value
+     */
+    function valueNow(Checkpoints.Trace224 storage _self) internal view returns (uint256) {
+        return _self.latest();
+    }
 
-  /**
-   * @notice  Get the value at a given timestamp
-   *          The timestamp MUST be in the past to guarantee it is stable
-   *
-   * @dev     Uses `upperLookupRecent` instead of just `upperLookup` as it will most
-   *          likely be a recent value when looked up as part of governance.
-   *
-   * @param _self - The Trace224 to get the value of
-   * @param _time - The timestamp to get the value at
-   * @return - The value at the given timestamp
-   */
-  function valueAt(Checkpoints.Trace224 storage _self, Timestamp _time) internal view returns (uint256) {
-    require(_time < Timestamp.wrap(block.timestamp), Errors.Governance__CheckpointedUintLib__NotInPast());
-    return _self.upperLookupRecent(Timestamp.unwrap(_time).toUint32());
-  }
+    /**
+     * @notice  Get the value at a given timestamp
+     *          The timestamp MUST be in the past to guarantee it is stable
+     *
+     * @dev     Uses `upperLookupRecent` instead of just `upperLookup` as it will most
+     *          likely be a recent value when looked up as part of governance.
+     *
+     * @param _self - The Trace224 to get the value of
+     * @param _time - The timestamp to get the value at
+     * @return - The value at the given timestamp
+     */
+    function valueAt(Checkpoints.Trace224 storage _self, Timestamp _time) internal view returns (uint256) {
+        require(_time < Timestamp.wrap(block.timestamp), Errors.Governance__CheckpointedUintLib__NotInPast());
+        return _self.upperLookupRecent(Timestamp.unwrap(_time).toUint32());
+    }
 }
 
 // NOTE(l2beat): This is an interface, generated from the contract source code.
@@ -3846,58 +3862,58 @@ interface Governance is IGovernance {
 }
 
 interface IGSECore {
-  event Deposit(address indexed instance, address indexed attester, address withdrawer);
+    event Deposit(address indexed instance, address indexed attester, address withdrawer);
 
-  function setGovernance(Governance _governance) external;
-  function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external;
-  function addRollup(address _rollup) external;
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external;
-  function withdraw(address _attester, uint256 _amount) external returns (uint256, bool, uint256);
-  function delegate(address _instance, address _attester, address _delegatee) external;
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function setGovernance(Governance _governance) external;
+    function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external;
+    function addRollup(address _rollup) external;
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external;
+    function withdraw(address _attester, uint256 _amount) external returns (uint256, bool, uint256);
+    function delegate(address _instance, address _attester, address _delegatee) external;
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
 
-  function isRegistered(address _instance, address _attester) external view returns (bool);
-  function isRollupRegistered(address _instance) external view returns (bool);
-  function getLatestRollup() external view returns (address);
-  function getLatestRollupAt(Timestamp _timestamp) external view returns (address);
-  function getGovernance() external view returns (Governance);
+    function isRegistered(address _instance, address _attester) external view returns (bool);
+    function isRollupRegistered(address _instance) external view returns (bool);
+    function getLatestRollup() external view returns (address);
+    function getLatestRollupAt(Timestamp _timestamp) external view returns (address);
+    function getGovernance() external view returns (Governance);
 }
 
 interface IGSE is IGSECore {
-  function getRegistrationDigest(G1Point memory _publicKey) external view returns (G1Point memory);
-  function getDelegatee(address _instance, address _attester) external view returns (address);
-  function getVotingPower(address _attester) external view returns (uint256);
-  function getVotingPowerAt(address _attester, Timestamp _timestamp) external view returns (uint256);
+    function getRegistrationDigest(G1Point memory _publicKey) external view returns (G1Point memory);
+    function getDelegatee(address _instance, address _attester) external view returns (address);
+    function getVotingPower(address _attester) external view returns (uint256);
+    function getVotingPowerAt(address _attester, Timestamp _timestamp) external view returns (uint256);
 
-  function getWithdrawer(address _attester) external view returns (address);
-  function balanceOf(address _instance, address _attester) external view returns (uint256);
-  function effectiveBalanceOf(address _instance, address _attester) external view returns (uint256);
-  function supplyOf(address _instance) external view returns (uint256);
-  function totalSupply() external view returns (uint256);
-  function getConfig(address _attester) external view returns (AttesterConfig memory);
-  function getAttesterCountAtTime(address _instance, Timestamp _timestamp) external view returns (uint256);
+    function getWithdrawer(address _attester) external view returns (address);
+    function balanceOf(address _instance, address _attester) external view returns (uint256);
+    function effectiveBalanceOf(address _instance, address _attester) external view returns (uint256);
+    function supplyOf(address _instance) external view returns (uint256);
+    function totalSupply() external view returns (uint256);
+    function getConfig(address _attester) external view returns (AttesterConfig memory);
+    function getAttesterCountAtTime(address _instance, Timestamp _timestamp) external view returns (uint256);
 
-  function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
-    external
-    view
-    returns (address[] memory);
-  function getG1PublicKeysFromAddresses(address[] memory _attesters) external view returns (G1Point[] memory);
-  function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
-    external
-    view
-    returns (address);
-  function getPowerUsed(address _delegatee, uint256 _proposalId) external view returns (uint256);
-  function getBonusInstanceAddress() external view returns (address);
+    function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
+        external
+        view
+        returns (address[] memory);
+    function getG1PublicKeysFromAddresses(address[] memory _attesters) external view returns (G1Point[] memory);
+    function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
+        external
+        view
+        returns (address);
+    function getPowerUsed(address _delegatee, uint256 _proposalId) external view returns (uint256);
+    function getBonusInstanceAddress() external view returns (address);
 }
 
 /**
@@ -4019,13 +4035,13 @@ abstract contract Ownable is Context {
 }
 
 interface IBn254LibWrapper {
-  function proofOfPossession(
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession
-  ) external view returns (bool);
+    function proofOfPossession(
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession
+    ) external view returns (bool);
 
-  function g1ToDigestPoint(G1Point memory pk1) external view returns (G1Point memory);
+    function g1ToDigestPoint(G1Point memory pk1) external view returns (G1Point memory);
 }
 
 /**
@@ -4041,599 +4057,611 @@ interface IBn254LibWrapper {
  * because the Aztec rollup's security is already reliant on BN254.
  */
 library BN254Lib {
-  /**
-   * We use uint256[2] for G1 points and uint256[4] for G2 points.
-   * For G1 points, the expected order is (x, y).
-   * For G2 points, the expected order is (x_imaginary, x_real, y_imaginary, y_real)
-   * Using structs would be more readable, but it would be more expensive to use them, particularly
-   * when aggregating the public keys, since we need to convert to uint256[2] and uint256[4] anyway.
-   */
-  // See bn254_registration.test.ts and BLSKey.t.sol for tests which validate these constants.
-  uint256 public constant BASE_FIELD_ORDER =
-    21_888_242_871_839_275_222_246_405_745_257_275_088_696_311_157_297_823_662_689_037_894_645_226_208_583;
+    /**
+     * We use uint256[2] for G1 points and uint256[4] for G2 points.
+     * For G1 points, the expected order is (x, y).
+     * For G2 points, the expected order is (x_imaginary, x_real, y_imaginary, y_real)
+     * Using structs would be more readable, but it would be more expensive to use them, particularly
+     * when aggregating the public keys, since we need to convert to uint256[2] and uint256[4] anyway.
+     */
+    // See bn254_registration.test.ts and BLSKey.t.sol for tests which validate these constants.
+    uint256 public constant BASE_FIELD_ORDER =
+        21_888_242_871_839_275_222_246_405_745_257_275_088_696_311_157_297_823_662_689_037_894_645_226_208_583;
 
-  uint256 public constant GROUP_ORDER =
-    21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
+    uint256 public constant GROUP_ORDER =
+        21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
 
-  bytes32 public constant STAKING_DOMAIN_SEPARATOR = bytes32("AZTEC_BLS_POP_BN254_V1");
+    bytes32 public constant STAKING_DOMAIN_SEPARATOR = bytes32("AZTEC_BLS_POP_BN254_V1");
 
-  error AddPointFail();
-  error MulPointFail();
-  error GammaZero();
-  error SqrtFail();
-  error PairingFail();
-  error NoPointFound();
-  error InfinityNotAllowed();
+    error AddPointFail();
+    error MulPointFail();
+    error GammaZero();
+    error SqrtFail();
+    error PairingFail();
+    error NoPointFound();
+    error InfinityNotAllowed();
 
-  /**
-   * @notice Prove possession of a secret for a point in G1 and G2.
-   *
-   * Ultimately, we want to check:
-   * - That the caller knows the secret key of pk2 (to prevent rogue-key attacks)
-   * - That pk1 and pk2 have the same secret key (as an optimization)
-   *
-   * Registering two public keys is an optimization: It means we can do G1-only operations
-   * at the time of verifying a signature, which is much cheaper than G2 operations.
-   *
-   * In this function, we check:
-   * e(signature + gamma * pk1, -G2) * e(hashToPoint(pk1) + gamma * G1, pk2) == 1
-   *
-   * Which is effectively a check that:
-   * e(signature, G2) == e(hashToPoint(pk1), pk2) // a BLS signature over msg = pk1, to prove knowledge of the sk.
-   * e(pk1, G2) == e(G1, pk2) // a demonstration that pk1 and pk2 have the same sk.
-   *
-   * @param pk1 The G1 point of the BLS public key (x, y coordinates)
-   * @param pk2 The G2 point of the BLS public key (x_1, x_0, y_1, y_0 coordinates)
-   * @param signature The G1 point that acts as a proof of possession of the private keys corresponding to pk1 and pk2
-   */
-  function proofOfPossession(G1Point memory pk1, G2Point memory pk2, G1Point memory signature)
-    internal
-    view
-    returns (bool)
-  {
-    // Ensure that provided points are not infinity
-    require(!isZero(pk1), InfinityNotAllowed());
-    require(!isZero(pk2), InfinityNotAllowed());
-    require(!isZero(signature), InfinityNotAllowed());
+    /**
+     * @notice Prove possession of a secret for a point in G1 and G2.
+     *
+     * Ultimately, we want to check:
+     * - That the caller knows the secret key of pk2 (to prevent rogue-key attacks)
+     * - That pk1 and pk2 have the same secret key (as an optimization)
+     *
+     * Registering two public keys is an optimization: It means we can do G1-only operations
+     * at the time of verifying a signature, which is much cheaper than G2 operations.
+     *
+     * In this function, we check:
+     * e(signature + gamma * pk1, -G2) * e(hashToPoint(pk1) + gamma * G1, pk2) == 1
+     *
+     * Which is effectively a check that:
+     * e(signature, G2) == e(hashToPoint(pk1), pk2) // a BLS signature over msg = pk1, to prove knowledge of the sk.
+     * e(pk1, G2) == e(G1, pk2) // a demonstration that pk1 and pk2 have the same sk.
+     *
+     * @param pk1 The G1 point of the BLS public key (x, y coordinates)
+     * @param pk2 The G2 point of the BLS public key (x_1, x_0, y_1, y_0 coordinates)
+     * @param signature The G1 point that acts as a proof of possession of the private keys corresponding to pk1 and pk2
+     */
+    function proofOfPossession(G1Point memory pk1, G2Point memory pk2, G1Point memory signature)
+        internal
+        view
+        returns (bool)
+    {
+        // Ensure that provided points are not infinity
+        require(!isZero(pk1), InfinityNotAllowed());
+        require(!isZero(pk2), InfinityNotAllowed());
+        require(!isZero(signature), InfinityNotAllowed());
 
-    // Compute the point "digest" of the pk1 that sigma is a signature over
-    G1Point memory pk1DigestPoint = g1ToDigestPoint(pk1);
+        // Compute the point "digest" of the pk1 that sigma is a signature over
+        G1Point memory pk1DigestPoint = g1ToDigestPoint(pk1);
 
-    // Random challenge:
-    // gamma = keccak(pk1, pk2, signature) mod |Fr|
-    uint256 gamma = gammaOf(pk1, pk2, signature);
-    require(gamma != 0, GammaZero());
+        // Random challenge:
+        // gamma = keccak(pk1, pk2, signature) mod |Fr|
+        uint256 gamma = gammaOf(pk1, pk2, signature);
+        require(gamma != 0, GammaZero());
 
-    // Build G1 L = signature + gamma * pk1
-    G1Point memory left = g1Add(signature, g1Mul(pk1, gamma));
+        // Build G1 L = signature + gamma * pk1
+        G1Point memory left = g1Add(signature, g1Mul(pk1, gamma));
 
-    // Build G1 R = pk1DigestPoint + gamma * G1
-    G1Point memory right = g1Add(pk1DigestPoint, g1Mul(g1Generator(), gamma));
+        // Build G1 R = pk1DigestPoint + gamma * G1
+        G1Point memory right = g1Add(pk1DigestPoint, g1Mul(g1Generator(), gamma));
 
-    // Pairing: e(L, -G2) * e(R, pk2) == 1
-    return bn254Pairing(left, g2NegatedGenerator(), right, pk2);
-  }
-
-  /// @notice Convert a G1 point (public key) to the digest point that must be signed to prove possession.
-  /// @dev exposed as public to allow clients not to have implemented the hashToPoint function.
-  function g1ToDigestPoint(G1Point memory pk1) internal view returns (G1Point memory) {
-    bytes memory pk1Bytes = abi.encodePacked(pk1.x, pk1.y);
-    return hashToPoint(STAKING_DOMAIN_SEPARATOR, pk1Bytes);
-  }
-
-  /// @dev Add two points on BN254 G1 (affine coords).
-  ///      Reverts if the inputs are not on‐curve.
-  function g1Add(G1Point memory p1, G1Point memory p2) internal view returns (G1Point memory output) {
-    uint256[4] memory input;
-    input[0] = p1.x;
-    input[1] = p1.y;
-    input[2] = p2.x;
-    input[3] = p2.y;
-
-    bool success;
-    assembly {
-      // call(gas, to, value, in, insize, out, outsize)
-      // STATICCALL is 40 gas vs 700 gas for CALL
-      success := staticcall(
-        sub(gas(), 2000),
-        0x06, // precompile address
-        input,
-        0x80, // input size = 4 × 32 bytes
-        output,
-        0x40 // output size = 2 × 32 bytes
-      )
+        // Pairing: e(L, -G2) * e(R, pk2) == 1
+        return bn254Pairing(left, g2NegatedGenerator(), right, pk2);
     }
 
-    if (!success) revert AddPointFail();
-    return output;
-  }
-
-  /// @dev Multiply a point by a scalar (little‑endian 256‑bit integer).
-  ///      Reverts if the point is not on‐curve or the scalar ≥ p.
-  function g1Mul(G1Point memory p, uint256 s) internal view returns (G1Point memory output) {
-    uint256[3] memory input;
-    input[0] = p.x;
-    input[1] = p.y;
-    input[2] = s;
-
-    bool success;
-    assembly {
-      success := staticcall(
-        sub(gas(), 2000),
-        0x07, // precompile address
-        input,
-        0x60, // input size = 3 × 32 bytes
-        output,
-        0x40 // output size = 2 × 32 bytes
-      )
+    /// @notice Convert a G1 point (public key) to the digest point that must be signed to prove possession.
+    /// @dev exposed as public to allow clients not to have implemented the hashToPoint function.
+    function g1ToDigestPoint(G1Point memory pk1) internal view returns (G1Point memory) {
+        bytes memory pk1Bytes = abi.encodePacked(pk1.x, pk1.y);
+        return hashToPoint(STAKING_DOMAIN_SEPARATOR, pk1Bytes);
     }
-    if (!success) revert MulPointFail();
-    return output;
-  }
 
-  function bn254Pairing(G1Point memory g1a, G2Point memory g2a, G1Point memory g1b, G2Point memory g2b)
-    internal
-    view
-    returns (bool)
-  {
-    uint256[12] memory input;
+    /// @dev Add two points on BN254 G1 (affine coords).
+    ///      Reverts if the inputs are not on‐curve.
+    function g1Add(G1Point memory p1, G1Point memory p2) internal view returns (G1Point memory output) {
+        uint256[4] memory input;
+        input[0] = p1.x;
+        input[1] = p1.y;
+        input[2] = p2.x;
+        input[3] = p2.y;
 
-    input[0] = g1a.x;
-    input[1] = g1a.y;
-    input[2] = g2a.x1;
-    input[3] = g2a.x0;
-    input[4] = g2a.y1;
-    input[5] = g2a.y0;
-
-    input[6] = g1b.x;
-    input[7] = g1b.y;
-    input[8] = g2b.x1;
-    input[9] = g2b.x0;
-    input[10] = g2b.y1;
-    input[11] = g2b.y0;
-
-    uint256[1] memory result;
-    bool didCallSucceed;
-    assembly {
-      didCallSucceed := staticcall(
-        sub(gas(), 2000),
-        8,
-        input,
-        0x180, // input size = 12 * 32 bytes
-        result,
-        0x20 // output size = 32 bytes
-      )
-    }
-    require(didCallSucceed, PairingFail());
-    return result[0] == 1;
-  }
-
-  // The hash to point is based on the "mapToPoint" function in https://www.iacr.org/archive/asiacrypt2001/22480516.pdf
-  function hashToPoint(bytes32 domain, bytes memory message) internal view returns (G1Point memory output) {
-    bool found = false;
-    uint256 attempts = 0;
-    while (true) {
-      uint256 x = uint256(keccak256(abi.encode(domain, message, attempts)));
-      attempts++;
-
-      if (x >= BASE_FIELD_ORDER) {
-        continue;
-      }
-
-      uint256 y = mulmod(x, x, BASE_FIELD_ORDER);
-      y = mulmod(y, x, BASE_FIELD_ORDER);
-      y = addmod(y, 3, BASE_FIELD_ORDER);
-      (y, found) = sqrt(y);
-      if (found) {
-        uint256 y0 = y;
-        uint256 y1 = BASE_FIELD_ORDER - y;
-
-        // Ensure that y1 > y0, flip em if necessary
-        if (y0 > y1) {
-          (y0, y1) = (y1, y0);
+        bool success;
+        assembly {
+            // call(gas, to, value, in, insize, out, outsize)
+            // STATICCALL is 40 gas vs 700 gas for CALL
+            success :=
+                staticcall(
+                    sub(gas(), 2000),
+                    0x06, // precompile address
+                    input,
+                    0x80, // input size = 4 × 32 bytes
+                    output,
+                    0x40 // output size = 2 × 32 bytes
+                )
         }
 
-        uint256 b = uint256(keccak256(abi.encode(domain, message, type(uint256).max)));
-        if (b & 1 == 0) {
-          output = G1Point({x: x, y: y0});
-        } else {
-          output = G1Point({x: x, y: y1});
+        if (!success) {
+            revert AddPointFail();
+        }
+        return output;
+    }
+
+    /// @dev Multiply a point by a scalar (little‑endian 256‑bit integer).
+    ///      Reverts if the point is not on‐curve or the scalar ≥ p.
+    function g1Mul(G1Point memory p, uint256 s) internal view returns (G1Point memory output) {
+        uint256[3] memory input;
+        input[0] = p.x;
+        input[1] = p.y;
+        input[2] = s;
+
+        bool success;
+        assembly {
+            success :=
+                staticcall(
+                    sub(gas(), 2000),
+                    0x07, // precompile address
+                    input,
+                    0x60, // input size = 3 × 32 bytes
+                    output,
+                    0x40 // output size = 2 × 32 bytes
+                )
+        }
+        if (!success) {
+            revert MulPointFail();
+        }
+        return output;
+    }
+
+    function bn254Pairing(G1Point memory g1a, G2Point memory g2a, G1Point memory g1b, G2Point memory g2b)
+        internal
+        view
+        returns (bool)
+    {
+        uint256[12] memory input;
+
+        input[0] = g1a.x;
+        input[1] = g1a.y;
+        input[2] = g2a.x1;
+        input[3] = g2a.x0;
+        input[4] = g2a.y1;
+        input[5] = g2a.y0;
+
+        input[6] = g1b.x;
+        input[7] = g1b.y;
+        input[8] = g2b.x1;
+        input[9] = g2b.x0;
+        input[10] = g2b.y1;
+        input[11] = g2b.y0;
+
+        uint256[1] memory result;
+        bool didCallSucceed;
+        assembly {
+            didCallSucceed :=
+                staticcall(
+                    sub(gas(), 2000),
+                    8,
+                    input,
+                    0x180, // input size = 12 * 32 bytes
+                    result,
+                    0x20 // output size = 32 bytes
+                )
+        }
+        require(didCallSucceed, PairingFail());
+        return result[0] == 1;
+    }
+
+    // The hash to point is based on the "mapToPoint" function in https://www.iacr.org/archive/asiacrypt2001/22480516.pdf
+    function hashToPoint(bytes32 domain, bytes memory message) internal view returns (G1Point memory output) {
+        bool found = false;
+        uint256 attempts = 0;
+        while (true) {
+            uint256 x = uint256(keccak256(abi.encode(domain, message, attempts)));
+            attempts++;
+
+            if (x >= BASE_FIELD_ORDER) {
+                continue;
+            }
+
+            uint256 y = mulmod(x, x, BASE_FIELD_ORDER);
+            y = mulmod(y, x, BASE_FIELD_ORDER);
+            y = addmod(y, 3, BASE_FIELD_ORDER);
+            (y, found) = sqrt(y);
+            if (found) {
+                uint256 y0 = y;
+                uint256 y1 = BASE_FIELD_ORDER - y;
+
+                // Ensure that y1 > y0, flip em if necessary
+                if (y0 > y1) {
+                    (y0, y1) = (y1, y0);
+                }
+
+                uint256 b = uint256(keccak256(abi.encode(domain, message, type(uint256).max)));
+                if (b & 1 == 0) {
+                    output = G1Point({x: x, y: y0});
+                } else {
+                    output = G1Point({x: x, y: y1});
+                }
+
+                break;
+            }
+        }
+        require(found, NoPointFound());
+        return output;
+    }
+
+    function sqrt(uint256 xx) internal view returns (uint256 x, bool hasRoot) {
+        bool callSuccess;
+        assembly {
+            let freeMem := mload(0x40)
+            mstore(freeMem, 0x20)
+            mstore(add(freeMem, 0x20), 0x20)
+            mstore(add(freeMem, 0x40), 0x20)
+            mstore(add(freeMem, 0x60), xx)
+            // (N + 1) / 4 = 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52
+            mstore(add(freeMem, 0x80), 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52)
+            // N = BASE_FIELD_ORDER
+            mstore(add(freeMem, 0xA0), BASE_FIELD_ORDER)
+            callSuccess := staticcall(sub(gas(), 2000), 5, freeMem, 0xC0, freeMem, 0x20)
+            x := mload(freeMem)
+            hasRoot := eq(xx, mulmod(x, x, BASE_FIELD_ORDER))
+        }
+        require(callSuccess, SqrtFail());
+    }
+
+    /// @notice γ = keccak(PK1, PK2, σ_init) mod Fr
+    function gammaOf(G1Point memory pk1, G2Point memory pk2, G1Point memory sigmaInit)
+        internal
+        pure
+        returns (uint256)
+    {
+        return uint256(keccak256(abi.encode(pk1.x, pk1.y, pk2.x0, pk2.x1, pk2.y0, pk2.y1, sigmaInit.x, sigmaInit.y)))
+            % GROUP_ORDER;
+    }
+
+    function g1Negate(G1Point memory p) internal pure returns (G1Point memory) {
+        if (p.x == 0 && p.y == 0) {
+            // Point at infinity remains unchanged
+            return p;
         }
 
-        break;
-      }
-    }
-    require(found, NoPointFound());
-    return output;
-  }
-
-  function sqrt(uint256 xx) internal view returns (uint256 x, bool hasRoot) {
-    bool callSuccess;
-    assembly {
-      let freeMem := mload(0x40)
-      mstore(freeMem, 0x20)
-      mstore(add(freeMem, 0x20), 0x20)
-      mstore(add(freeMem, 0x40), 0x20)
-      mstore(add(freeMem, 0x60), xx)
-      // (N + 1) / 4 = 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52
-      mstore(add(freeMem, 0x80), 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52)
-      // N = BASE_FIELD_ORDER
-      mstore(add(freeMem, 0xA0), BASE_FIELD_ORDER)
-      callSuccess := staticcall(sub(gas(), 2000), 5, freeMem, 0xC0, freeMem, 0x20)
-      x := mload(freeMem)
-      hasRoot := eq(xx, mulmod(x, x, BASE_FIELD_ORDER))
-    }
-    require(callSuccess, SqrtFail());
-  }
-
-  /// @notice γ = keccak(PK1, PK2, σ_init) mod Fr
-  function gammaOf(G1Point memory pk1, G2Point memory pk2, G1Point memory sigmaInit) internal pure returns (uint256) {
-    return uint256(keccak256(abi.encode(pk1.x, pk1.y, pk2.x0, pk2.x1, pk2.y0, pk2.y1, sigmaInit.x, sigmaInit.y)))
-      % GROUP_ORDER;
-  }
-
-  function g1Negate(G1Point memory p) internal pure returns (G1Point memory) {
-    if (p.x == 0 && p.y == 0) {
-      // Point at infinity remains unchanged
-      return p;
+        // For a point (x, y), its negation is (x, -y mod p)
+        // Since we're working in the field Fp, -y mod p = p - y
+        return G1Point({x: p.x, y: BASE_FIELD_ORDER - p.y});
     }
 
-    // For a point (x, y), its negation is (x, -y mod p)
-    // Since we're working in the field Fp, -y mod p = p - y
-    return G1Point({x: p.x, y: BASE_FIELD_ORDER - p.y});
-  }
+    function g1Zero() internal pure returns (G1Point memory) {
+        return G1Point({x: 0, y: 0});
+    }
 
-  function g1Zero() internal pure returns (G1Point memory) {
-    return G1Point({x: 0, y: 0});
-  }
+    function isZero(G1Point memory p) internal pure returns (bool) {
+        return p.x == 0 && p.y == 0;
+    }
 
-  function isZero(G1Point memory p) internal pure returns (bool) {
-    return p.x == 0 && p.y == 0;
-  }
+    function g1Generator() internal pure returns (G1Point memory) {
+        return G1Point({x: 1, y: 2});
+    }
 
-  function g1Generator() internal pure returns (G1Point memory) {
-    return G1Point({x: 1, y: 2});
-  }
+    function g2Zero() internal pure returns (G2Point memory) {
+        return G2Point({x0: 0, x1: 0, y0: 0, y1: 0});
+    }
 
-  function g2Zero() internal pure returns (G2Point memory) {
-    return G2Point({x0: 0, x1: 0, y0: 0, y1: 0});
-  }
+    function isZero(G2Point memory p) internal pure returns (bool) {
+        return p.x0 == 0 && p.x1 == 0 && p.y0 == 0 && p.y1 == 0;
+    }
 
-  function isZero(G2Point memory p) internal pure returns (bool) {
-    return p.x0 == 0 && p.x1 == 0 && p.y0 == 0 && p.y1 == 0;
-  }
-
-  function g2NegatedGenerator() internal pure returns (G2Point memory) {
-    return G2Point({
-      x0: 10_857_046_999_023_057_135_944_570_762_232_829_481_370_756_359_578_518_086_990_519_993_285_655_852_781,
-      x1: 11_559_732_032_986_387_107_991_004_021_392_285_783_925_812_861_821_192_530_917_403_151_452_391_805_634,
-      y0: 13_392_588_948_715_843_804_641_432_497_768_002_650_278_120_570_034_223_513_918_757_245_338_268_106_653,
-      y1: 17_805_874_995_975_841_540_914_202_342_111_839_520_379_459_829_704_422_454_583_296_818_431_106_115_052
-    });
-  }
+    function g2NegatedGenerator() internal pure returns (G2Point memory) {
+        return G2Point({
+            x0: 10_857_046_999_023_057_135_944_570_762_232_829_481_370_756_359_578_518_086_990_519_993_285_655_852_781,
+            x1: 11_559_732_032_986_387_107_991_004_021_392_285_783_925_812_861_821_192_530_917_403_151_452_391_805_634,
+            y0: 13_392_588_948_715_843_804_641_432_497_768_002_650_278_120_570_034_223_513_918_757_245_338_268_106_653,
+            y1: 17_805_874_995_975_841_540_914_202_342_111_839_520_379_459_829_704_422_454_583_296_818_431_106_115_052
+        });
+    }
 }
 
 contract Bn254LibWrapper is IBn254LibWrapper {
-  function proofOfPossession(
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession
-  ) external view override(IBn254LibWrapper) returns (bool) {
-    return BN254Lib.proofOfPossession(_publicKeyInG1, _publicKeyInG2, _proofOfPossession);
-  }
+    function proofOfPossession(
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession
+    ) external view override(IBn254LibWrapper) returns (bool) {
+        return BN254Lib.proofOfPossession(_publicKeyInG1, _publicKeyInG2, _proofOfPossession);
+    }
 
-  function g1ToDigestPoint(G1Point memory pk1) external view override(IBn254LibWrapper) returns (G1Point memory) {
-    return BN254Lib.g1ToDigestPoint(pk1);
-  }
+    function g1ToDigestPoint(G1Point memory pk1) external view override(IBn254LibWrapper) returns (G1Point memory) {
+        return BN254Lib.g1ToDigestPoint(pk1);
+    }
 }
 
 // A struct storing balance and delegatee for an attester
 struct DepositPosition {
-  uint256 balance;
-  address delegatee;
+    uint256 balance;
+    address delegatee;
 }
 
 // A struct storing all the positions for an instance along with a supply
 struct DepositLedger {
-  mapping(address attester => DepositPosition position) positions;
-  Checkpoints.Trace224 supply;
+    mapping(address attester => DepositPosition position) positions;
+    Checkpoints.Trace224 supply;
 }
 
 // A struct storing the voting power used for each proposal for a delegatee
 // as well as their checkpointed voting power
 struct VotingAccount {
-  mapping(uint256 proposalId => uint256 powerUsed) powerUsed;
-  Checkpoints.Trace224 votingPower;
+    mapping(uint256 proposalId => uint256 powerUsed) powerUsed;
+    Checkpoints.Trace224 votingPower;
 }
 
 // A struct storing the ledgers for the individual rollup instances, the voting
 // account for delegatees and the total supply.
 struct DepositAndDelegationAccounting {
-  mapping(address instance => DepositLedger ledger) ledgers;
-  mapping(address delegatee => VotingAccount votingAccount) votingAccounts;
-  Checkpoints.Trace224 supply;
+    mapping(address instance => DepositLedger ledger) ledgers;
+    mapping(address delegatee => VotingAccount votingAccount) votingAccounts;
+    Checkpoints.Trace224 supply;
 }
 
 // This library have a lot of overlap with `Votes.sol` from Openzeppelin,
 // It mainly differs as it is a library to allow us having many accountings in the same contract
 // the unit of time and allowing multiple uses of power.
 library DepositDelegationLib {
-  using CheckpointedUintLib for Checkpoints.Trace224;
+    using CheckpointedUintLib for Checkpoints.Trace224;
 
-  event DelegateChanged(address indexed attester, address oldDelegatee, address newDelegatee);
-  event DelegateVotesChanged(address indexed delegatee, uint256 oldValue, uint256 newValue);
+    event DelegateChanged(address indexed attester, address oldDelegatee, address newDelegatee);
+    event DelegateVotesChanged(address indexed delegatee, uint256 oldValue, uint256 newValue);
 
-  /**
-   * @notice Increase the balance of an `_attester` on `_instance` by `_amount`,
-   *         increases the voting power of the delegatee equally.
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to increase the balance of
-   * @param _amount The amount to increase by
-   */
-  function increaseBalance(
-    DepositAndDelegationAccounting storage _self,
-    address _instance,
-    address _attester,
-    uint256 _amount
-  ) internal {
-    if (_amount == 0) {
-      return;
+    /**
+     * @notice Increase the balance of an `_attester` on `_instance` by `_amount`,
+     *         increases the voting power of the delegatee equally.
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to increase the balance of
+     * @param _amount The amount to increase by
+     */
+    function increaseBalance(
+        DepositAndDelegationAccounting storage _self,
+        address _instance,
+        address _attester,
+        uint256 _amount
+    ) internal {
+        if (_amount == 0) {
+            return;
+        }
+
+        DepositLedger storage instance = _self.ledgers[_instance];
+
+        instance.positions[_attester].balance += _amount;
+        moveVotingPower(_self, address(0), instance.positions[_attester].delegatee, _amount);
+
+        instance.supply.add(_amount);
+        _self.supply.add(_amount);
     }
 
-    DepositLedger storage instance = _self.ledgers[_instance];
+    /**
+     * @notice Decrease the balance of an `_attester` on `_instance` by `_amount`,
+     *         decrease the voting power of the delegatee equally
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to decrease the balance of
+     * @param _amount The amount to decrease by
+     */
+    function decreaseBalance(
+        DepositAndDelegationAccounting storage _self,
+        address _instance,
+        address _attester,
+        uint256 _amount
+    ) internal {
+        if (_amount == 0) {
+            return;
+        }
 
-    instance.positions[_attester].balance += _amount;
-    moveVotingPower(_self, address(0), instance.positions[_attester].delegatee, _amount);
+        DepositLedger storage instance = _self.ledgers[_instance];
 
-    instance.supply.add(_amount);
-    _self.supply.add(_amount);
-  }
+        instance.positions[_attester].balance -= _amount;
+        moveVotingPower(_self, instance.positions[_attester].delegatee, address(0), _amount);
 
-  /**
-   * @notice Decrease the balance of an `_attester` on `_instance` by `_amount`,
-   *         decrease the voting power of the delegatee equally
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to decrease the balance of
-   * @param _amount The amount to decrease by
-   */
-  function decreaseBalance(
-    DepositAndDelegationAccounting storage _self,
-    address _instance,
-    address _attester,
-    uint256 _amount
-  ) internal {
-    if (_amount == 0) {
-      return;
+        instance.supply.sub(_amount);
+        _self.supply.sub(_amount);
     }
 
-    DepositLedger storage instance = _self.ledgers[_instance];
+    /**
+     * @notice    Use `_amount` of `_delegatee`'s voting power on `_proposalId`
+     *            The `_delegatee`'s voting power based on the snapshot at `_timestamp`
+     *
+     * @dev       If different timestamps are passed, it can cause mismatch in the amount of
+     *            power that can be voted with, so it is very important that it is stable for
+     *            a given `_proposalId`
+     *
+     * @param _self       - The DelegationDate struct to modify in storage
+     * @param _delegatee  - The delegatee using their power
+     * @param _proposalId - The id to use for accounting
+     * @param _timestamp  - The timestamp for voting power of the specific `_proposalId`
+     * @param _amount     - The amount of power to use
+     */
+    function usePower(
+        DepositAndDelegationAccounting storage _self,
+        address _delegatee,
+        uint256 _proposalId,
+        Timestamp _timestamp,
+        uint256 _amount
+    ) internal {
+        uint256 powerAt = getVotingPowerAt(_self, _delegatee, _timestamp);
+        uint256 powerUsed = getPowerUsed(_self, _delegatee, _proposalId);
 
-    instance.positions[_attester].balance -= _amount;
-    moveVotingPower(_self, instance.positions[_attester].delegatee, address(0), _amount);
+        require(
+            powerAt >= powerUsed + _amount,
+            Errors.Delegation__InsufficientPower(_delegatee, powerAt, powerUsed + _amount)
+        );
 
-    instance.supply.sub(_amount);
-    _self.supply.sub(_amount);
-  }
-
-  /**
-   * @notice    Use `_amount` of `_delegatee`'s voting power on `_proposalId`
-   *            The `_delegatee`'s voting power based on the snapshot at `_timestamp`
-   *
-   * @dev       If different timestamps are passed, it can cause mismatch in the amount of
-   *            power that can be voted with, so it is very important that it is stable for
-   *            a given `_proposalId`
-   *
-   * @param _self       - The DelegationDate struct to modify in storage
-   * @param _delegatee  - The delegatee using their power
-   * @param _proposalId - The id to use for accounting
-   * @param _timestamp  - The timestamp for voting power of the specific `_proposalId`
-   * @param _amount     - The amount of power to use
-   */
-  function usePower(
-    DepositAndDelegationAccounting storage _self,
-    address _delegatee,
-    uint256 _proposalId,
-    Timestamp _timestamp,
-    uint256 _amount
-  ) internal {
-    uint256 powerAt = getVotingPowerAt(_self, _delegatee, _timestamp);
-    uint256 powerUsed = getPowerUsed(_self, _delegatee, _proposalId);
-
-    require(
-      powerAt >= powerUsed + _amount, Errors.Delegation__InsufficientPower(_delegatee, powerAt, powerUsed + _amount)
-    );
-
-    _self.votingAccounts[_delegatee].powerUsed[_proposalId] += _amount;
-  }
-
-  /**
-   * @notice Delegate the voting power of an `_attester` on a specific `_instance` to a `_delegatee`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance the attester is on
-   * @param _attester The attester to delegate the voting power of
-   * @param _delegatee The delegatee to delegate the voting power to
-   */
-  function delegate(
-    DepositAndDelegationAccounting storage _self,
-    address _instance,
-    address _attester,
-    address _delegatee
-  ) internal {
-    address oldDelegate = getDelegatee(_self, _instance, _attester);
-    if (oldDelegate == _delegatee) {
-      return;
-    }
-    _self.ledgers[_instance].positions[_attester].delegatee = _delegatee;
-    emit DelegateChanged(_attester, oldDelegate, _delegatee);
-
-    moveVotingPower(_self, oldDelegate, _delegatee, getBalanceOf(_self, _instance, _attester));
-  }
-
-  /**
-   * @notice Convenience function to remove delegation from `_attester` at `_instance`
-   *
-   * @dev Similar as calling `delegate` with `_delegatee = address(0)`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to undelegate the voting power of
-   */
-  function undelegate(DepositAndDelegationAccounting storage _self, address _instance, address _attester) internal {
-    delegate(_self, _instance, _attester, address(0));
-  }
-
-  /**
-   * @notice Get the balance of an `_attester` on `_instance`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to get the balance of
-   *
-   * @return The balance of the attester
-   */
-  function getBalanceOf(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.ledgers[_instance].positions[_attester].balance;
-  }
-
-  /**
-   * @notice Get the supply of an `_instance`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _instance The instance to get the supply of
-   *
-   * @return The supply of the instance
-   */
-  function getSupplyOf(DepositAndDelegationAccounting storage _self, address _instance)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.ledgers[_instance].supply.valueNow();
-  }
-
-  /**
-   * @notice Get the total supply of all instances
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   *
-   * @return The total supply of all instances
-   */
-  function getSupply(DepositAndDelegationAccounting storage _self) internal view returns (uint256) {
-    return _self.supply.valueNow();
-  }
-
-  /**
-   * @notice Get the delegatee of an `_attester` on `_instance`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to get the delegatee of
-   *
-   * @return The delegatee of the attester
-   */
-  function getDelegatee(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
-    internal
-    view
-    returns (address)
-  {
-    return _self.ledgers[_instance].positions[_attester].delegatee;
-  }
-
-  /**
-   * @notice Get the voting power of a `_delegatee`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _delegatee The delegatee to get the voting power of
-   *
-   * @return The voting power of the delegatee
-   */
-  function getVotingPower(DepositAndDelegationAccounting storage _self, address _delegatee)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.votingAccounts[_delegatee].votingPower.valueNow();
-  }
-
-  /**
-   * @notice Get the voting power of a `_delegatee` at a specific `_timestamp`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _delegatee The delegatee to get the voting power of
-   * @param _timestamp The timestamp to get the voting power at
-   *
-   * @return The voting power of the delegatee at the specific `_timestamp`
-   */
-  function getVotingPowerAt(DepositAndDelegationAccounting storage _self, address _delegatee, Timestamp _timestamp)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.votingAccounts[_delegatee].votingPower.valueAt(_timestamp);
-  }
-
-  /**
-   * @notice Get the power used by a `_delegatee` on a specific `_proposalId`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _delegatee The delegatee to get the power used by
-   * @param _proposalId The proposal to get the power used on
-   *
-   * @return The voting power used by the `_delegatee` at `_proposalId`
-   */
-  function getPowerUsed(DepositAndDelegationAccounting storage _self, address _delegatee, uint256 _proposalId)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.votingAccounts[_delegatee].powerUsed[_proposalId];
-  }
-
-  /**
-   * @notice Move `_amount` of voting power from the delegatee of `_from` to the delegatee of `_to`
-   *
-   * @dev If the `_from` is `address(0)` the decrease is skipped, and it is effectively a mint
-   * @dev If the `_to` is `address(0)` the increase is skipped, and it is effectively a burn
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _from The address to move the voting power from
-   * @param _to The address to move the voting power to
-   * @param _amount The amount of voting power to move
-   */
-  function moveVotingPower(DepositAndDelegationAccounting storage _self, address _from, address _to, uint256 _amount)
-    private
-  {
-    if (_from == _to || _amount == 0) {
-      return;
+        _self.votingAccounts[_delegatee].powerUsed[_proposalId] += _amount;
     }
 
-    if (_from != address(0)) {
-      (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_from].votingPower.sub(_amount);
-      emit DelegateVotesChanged(_from, oldValue, newValue);
+    /**
+     * @notice Delegate the voting power of an `_attester` on a specific `_instance` to a `_delegatee`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance the attester is on
+     * @param _attester The attester to delegate the voting power of
+     * @param _delegatee The delegatee to delegate the voting power to
+     */
+    function delegate(
+        DepositAndDelegationAccounting storage _self,
+        address _instance,
+        address _attester,
+        address _delegatee
+    ) internal {
+        address oldDelegate = getDelegatee(_self, _instance, _attester);
+        if (oldDelegate == _delegatee) {
+            return;
+        }
+        _self.ledgers[_instance].positions[_attester].delegatee = _delegatee;
+        emit DelegateChanged(_attester, oldDelegate, _delegatee);
+
+        moveVotingPower(_self, oldDelegate, _delegatee, getBalanceOf(_self, _instance, _attester));
     }
 
-    if (_to != address(0)) {
-      (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_to].votingPower.add(_amount);
-      emit DelegateVotesChanged(_to, oldValue, newValue);
+    /**
+     * @notice Convenience function to remove delegation from `_attester` at `_instance`
+     *
+     * @dev Similar as calling `delegate` with `_delegatee = address(0)`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to undelegate the voting power of
+     */
+    function undelegate(DepositAndDelegationAccounting storage _self, address _instance, address _attester) internal {
+        delegate(_self, _instance, _attester, address(0));
     }
-  }
+
+    /**
+     * @notice Get the balance of an `_attester` on `_instance`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to get the balance of
+     *
+     * @return The balance of the attester
+     */
+    function getBalanceOf(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.ledgers[_instance].positions[_attester].balance;
+    }
+
+    /**
+     * @notice Get the supply of an `_instance`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _instance The instance to get the supply of
+     *
+     * @return The supply of the instance
+     */
+    function getSupplyOf(DepositAndDelegationAccounting storage _self, address _instance)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.ledgers[_instance].supply.valueNow();
+    }
+
+    /**
+     * @notice Get the total supply of all instances
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     *
+     * @return The total supply of all instances
+     */
+    function getSupply(DepositAndDelegationAccounting storage _self) internal view returns (uint256) {
+        return _self.supply.valueNow();
+    }
+
+    /**
+     * @notice Get the delegatee of an `_attester` on `_instance`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to get the delegatee of
+     *
+     * @return The delegatee of the attester
+     */
+    function getDelegatee(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
+        internal
+        view
+        returns (address)
+    {
+        return _self.ledgers[_instance].positions[_attester].delegatee;
+    }
+
+    /**
+     * @notice Get the voting power of a `_delegatee`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _delegatee The delegatee to get the voting power of
+     *
+     * @return The voting power of the delegatee
+     */
+    function getVotingPower(DepositAndDelegationAccounting storage _self, address _delegatee)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.votingAccounts[_delegatee].votingPower.valueNow();
+    }
+
+    /**
+     * @notice Get the voting power of a `_delegatee` at a specific `_timestamp`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _delegatee The delegatee to get the voting power of
+     * @param _timestamp The timestamp to get the voting power at
+     *
+     * @return The voting power of the delegatee at the specific `_timestamp`
+     */
+    function getVotingPowerAt(DepositAndDelegationAccounting storage _self, address _delegatee, Timestamp _timestamp)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.votingAccounts[_delegatee].votingPower.valueAt(_timestamp);
+    }
+
+    /**
+     * @notice Get the power used by a `_delegatee` on a specific `_proposalId`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _delegatee The delegatee to get the power used by
+     * @param _proposalId The proposal to get the power used on
+     *
+     * @return The voting power used by the `_delegatee` at `_proposalId`
+     */
+    function getPowerUsed(DepositAndDelegationAccounting storage _self, address _delegatee, uint256 _proposalId)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.votingAccounts[_delegatee].powerUsed[_proposalId];
+    }
+
+    /**
+     * @notice Move `_amount` of voting power from the delegatee of `_from` to the delegatee of `_to`
+     *
+     * @dev If the `_from` is `address(0)` the decrease is skipped, and it is effectively a mint
+     * @dev If the `_to` is `address(0)` the increase is skipped, and it is effectively a burn
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _from The address to move the voting power from
+     * @param _to The address to move the voting power to
+     * @param _amount The amount of voting power to move
+     */
+    function moveVotingPower(DepositAndDelegationAccounting storage _self, address _from, address _to, uint256 _amount)
+        private
+    {
+        if (_from == _to || _amount == 0) {
+            return;
+        }
+
+        if (_from != address(0)) {
+            (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_from].votingPower.sub(_amount);
+            emit DelegateVotesChanged(_from, oldValue, newValue);
+        }
+
+        if (_to != address(0)) {
+            (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_to].votingPower.add(_amount);
+            emit DelegateVotesChanged(_to, oldValue, newValue);
+        }
+    }
 }
 
 // Struct to track the attesters (checkpoint producers) on a particular rollup instance
 // throughout time, along with each attester's current config.
 // Finally a flag to track if the instance exists.
 struct InstanceAttesterRegistry {
-  SnapshottedAddressSet attesters;
-  bool exists;
+    SnapshottedAddressSet attesters;
+    bool exists;
 }
 
 /**
@@ -4665,753 +4693,754 @@ struct InstanceAttesterRegistry {
  * then have the deployer `setGovernance`, and then `transferOwnership` to Governance.
  */
 contract GSECore is IGSECore, Ownable {
-  using AddressSnapshotLib for SnapshottedAddressSet;
-  using SafeCast for uint256;
-  using SafeCast for uint224;
-  using Checkpoints for Checkpoints.Trace224;
-  using DepositDelegationLib for DepositAndDelegationAccounting;
-  using SafeERC20 for IERC20;
+    using AddressSnapshotLib for SnapshottedAddressSet;
+    using SafeCast for uint256;
+    using SafeCast for uint224;
+    using Checkpoints for Checkpoints.Trace224;
+    using DepositDelegationLib for DepositAndDelegationAccounting;
+    using SafeERC20 for IERC20;
 
-  /**
-   * Create a special "bonus" address for use by the latest rollup.
-   * This is a convenience mechanism to allow attesters to always be staked on the latest rollup.
-   *
-   * As far as terminology, the GSE tracks deposits and voting/delegation data for "instances",
-   * and an "instance" is either the address of a "true" rollup contract which was added via `addRollup`,
-   * or (ONLY IN THIS CONTRACT) this special "bonus" address, which has its own accounting.
-   *
-   * NB: in every other context, "instance" refers broadly to a specific instance of an aztec rollup contract
-   * (possibly inclusive of its family of related contracts e.g. Inbox, Outbox, etc.)
-   *
-   * Thus, this bonus address appears in `delegation` and `instances`, and from the perspective of the GSE,
-   * it is an instance (though it can never be in the list of rollups).
-   *
-   * Lower in the code, we use "rollup" if we know we're talking about a rollup (often msg.sender),
-   * and "instance" if we are talking about about either a rollup instance or the bonus instance.
-   *
-   * The latest rollup according to `rollups` may use the attesters and voting power
-   * from the BONUS_INSTANCE_ADDRESS as a "bonus" to their own.
-   *
-   * One invariant of the GSE is that the attesters available to any rollup instance must form a set.
-   * i.e. there must be no duplicates.
-   *
-   * Thus, for the latest rollup, there are two "buckets" of attesters available:
-   * - the attesters that are associated with the rollup's address
-   * - the attesters that are associated with the BONUS_INSTANCE_ADDRESS
-   *
-   * The GSE ensures that:
-   * - each bucket individually is a set
-   * - when you add these two buckets together, it is a set.
-   *
-   * For a rollup that is no longer the latest, the attesters available to it are the attesters that are
-   * associated with the rollup's address. In effect, when a rollup goes from being the latest to not being
-   * the latest, it loses all attesters that were associated with the bonus instance.
-   *
-   * In this way, the "effective" attesters/balance/etc for a rollup (at a point in time) is:
-   * - the rollup's bucket and the bonus bucket if the rollup was the latest at that point in time
-   * - only the rollup's bucket if the rollup was not the latest at that point in time
-   *
-   * Note further, that operations like deposit and withdraw are initiated by a rollup,
-   * but the "affected instance" address will be either the rollup's address or the BONUS_INSTANCE_ADDRESS;
-   * we will typically need to look at both instances to know what to do.
-   *
-   * NB: in a large way, the BONUS_INSTANCE_ADDRESS is the entire point of the GSE,
-   * otherwise the rollups would've managed their own attesters/delegation/etc.
-   */
-  address public constant BONUS_INSTANCE_ADDRESS = address(uint160(uint256(keccak256("bonus-instance"))));
+    /**
+     * Create a special "bonus" address for use by the latest rollup.
+     * This is a convenience mechanism to allow attesters to always be staked on the latest rollup.
+     *
+     * As far as terminology, the GSE tracks deposits and voting/delegation data for "instances",
+     * and an "instance" is either the address of a "true" rollup contract which was added via `addRollup`,
+     * or (ONLY IN THIS CONTRACT) this special "bonus" address, which has its own accounting.
+     *
+     * NB: in every other context, "instance" refers broadly to a specific instance of an aztec rollup contract
+     * (possibly inclusive of its family of related contracts e.g. Inbox, Outbox, etc.)
+     *
+     * Thus, this bonus address appears in `delegation` and `instances`, and from the perspective of the GSE,
+     * it is an instance (though it can never be in the list of rollups).
+     *
+     * Lower in the code, we use "rollup" if we know we're talking about a rollup (often msg.sender),
+     * and "instance" if we are talking about about either a rollup instance or the bonus instance.
+     *
+     * The latest rollup according to `rollups` may use the attesters and voting power
+     * from the BONUS_INSTANCE_ADDRESS as a "bonus" to their own.
+     *
+     * One invariant of the GSE is that the attesters available to any rollup instance must form a set.
+     * i.e. there must be no duplicates.
+     *
+     * Thus, for the latest rollup, there are two "buckets" of attesters available:
+     * - the attesters that are associated with the rollup's address
+     * - the attesters that are associated with the BONUS_INSTANCE_ADDRESS
+     *
+     * The GSE ensures that:
+     * - each bucket individually is a set
+     * - when you add these two buckets together, it is a set.
+     *
+     * For a rollup that is no longer the latest, the attesters available to it are the attesters that are
+     * associated with the rollup's address. In effect, when a rollup goes from being the latest to not being
+     * the latest, it loses all attesters that were associated with the bonus instance.
+     *
+     * In this way, the "effective" attesters/balance/etc for a rollup (at a point in time) is:
+     * - the rollup's bucket and the bonus bucket if the rollup was the latest at that point in time
+     * - only the rollup's bucket if the rollup was not the latest at that point in time
+     *
+     * Note further, that operations like deposit and withdraw are initiated by a rollup,
+     * but the "affected instance" address will be either the rollup's address or the BONUS_INSTANCE_ADDRESS;
+     * we will typically need to look at both instances to know what to do.
+     *
+     * NB: in a large way, the BONUS_INSTANCE_ADDRESS is the entire point of the GSE,
+     * otherwise the rollups would've managed their own attesters/delegation/etc.
+     */
+    address public constant BONUS_INSTANCE_ADDRESS = address(uint160(uint256(keccak256("bonus-instance"))));
 
-  // External wrapper of the BN254 library to more easily allow gas limits.
-  Bn254LibWrapper internal immutable BN254_LIB_WRAPPER = new Bn254LibWrapper();
+    // External wrapper of the BN254 library to more easily allow gas limits.
+    Bn254LibWrapper internal immutable BN254_LIB_WRAPPER = new Bn254LibWrapper();
 
-  // The amount of ASSET needed to add an attester to the set
-  uint256 public immutable ACTIVATION_THRESHOLD;
+    // The amount of ASSET needed to add an attester to the set
+    uint256 public immutable ACTIVATION_THRESHOLD;
 
-  // The amount of ASSET needed to keep an attester in the set, if the attester balance fall below this threshold
-  // the attester will be ejected from the set.
-  uint256 public immutable EJECTION_THRESHOLD;
+    // The amount of ASSET needed to keep an attester in the set, if the attester balance fall below this threshold
+    // the attester will be ejected from the set.
+    uint256 public immutable EJECTION_THRESHOLD;
 
-  // The asset used for sybil resistance and power in governance. Must match the ASSET in `Governance` to work as
-  // intended.
-  IERC20 public immutable ASSET;
+    // The asset used for sybil resistance and power in governance. Must match the ASSET in `Governance` to work as
+    // intended.
+    IERC20 public immutable ASSET;
 
-  // The GSE's history of rollups.
-  Checkpoints.Trace224 internal rollups;
-  // Mapping from instance address to its historical attester information.
-  mapping(address instanceAddress => InstanceAttesterRegistry instance) internal instances;
+    // The GSE's history of rollups.
+    Checkpoints.Trace224 internal rollups;
+    // Mapping from instance address to its historical attester information.
+    mapping(address instanceAddress => InstanceAttesterRegistry instance) internal instances;
 
-  // Global attester information
-  mapping(address attester => AttesterConfig config) internal configOf;
-  // Mapping from the hashed public key in G1 of BN254 to the keys are registered.
-  mapping(bytes32 hashedPK1 => bool isRegistered) public ownedPKs;
+    // Global attester information
+    mapping(address attester => AttesterConfig config) internal configOf;
+    // Mapping from the hashed public key in G1 of BN254 to the keys are registered.
+    mapping(bytes32 hashedPK1 => bool isRegistered) public ownedPKs;
 
-  /**
-   * Contains state for:
-   * checkpointed total supply
-   * instance => {
-   *   checkpointed supply
-   *   attester => { balance, delegatee }
-   * }
-   * delegatee => {
-   *   checkpointed voting power
-   *   proposal ID => { power used }
-   * }
-   */
-  DepositAndDelegationAccounting internal delegation;
-  Governance internal governance;
+    /**
+     * Contains state for:
+     * checkpointed total supply
+     * instance => {
+     *   checkpointed supply
+     *   attester => { balance, delegatee }
+     * }
+     * delegatee => {
+     *   checkpointed voting power
+     *   proposal ID => { power used }
+     * }
+     */
+    DepositAndDelegationAccounting internal delegation;
+    Governance internal governance;
 
-  // Gas limit for proof of possession validation.
-  //
-  // Must exceed the happy path gas consumption to ensure deposits succeed.
-  // Acts as a cap on unhappy path gas usage to prevent excessive consumption.
-  //
-  // - Happy path average: 150K gas
-  // - Buffer for loop: 50K gas
-  // - Buffer for opcode cost changes: 50K gas
-  //
-  // WARNING: If set below happy path requirements, all deposits will fail.
-  // Governance can adjust this value via proposal.
-  uint64 public proofOfPossessionGasLimit = 250_000;
+    // Gas limit for proof of possession validation.
+    //
+    // Must exceed the happy path gas consumption to ensure deposits succeed.
+    // Acts as a cap on unhappy path gas usage to prevent excessive consumption.
+    //
+    // - Happy path average: 150K gas
+    // - Buffer for loop: 50K gas
+    // - Buffer for opcode cost changes: 50K gas
+    //
+    // WARNING: If set below happy path requirements, all deposits will fail.
+    // Governance can adjust this value via proposal.
+    uint64 public proofOfPossessionGasLimit = 250_000;
 
-  /**
-   * @dev enforces that the caller is a registered rollup.
-   */
-  modifier onlyRollup() {
-    require(isRollupRegistered(msg.sender), Errors.GSE__NotRollup(msg.sender));
-    _;
-  }
-
-  /**
-   * @param __owner - The owner of the GSE.
-   *                  Initially a deployer to allow adding an initial rollup, then handed over to governance.
-   * @param _asset - The ERC20 token asset used in governance and for sybil resistance.
-   *                 This token is deposited by attesters to gain voting power in governance
-   *                 (ratio of voting power to staked amount is 1:1).
-   * @param _activationThreshold - The amount of asset required to deposit an attester on the rollup.
-   * @param _ejectionThreshold - The minimum amount of asset required to be in the set to be considered an attester.
-   *                        If the balance falls below this threshold, the attester is ejected from the set.
-   */
-  constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
-    Ownable(__owner)
-  {
-    ASSET = _asset;
-    ACTIVATION_THRESHOLD = _activationThreshold;
-    EJECTION_THRESHOLD = _ejectionThreshold;
-    instances[BONUS_INSTANCE_ADDRESS].exists = true;
-  }
-
-  function setGovernance(Governance _governance) external override(IGSECore) onlyOwner {
-    require(address(governance) == address(0), Errors.GSE__GovernanceAlreadySet());
-    governance = _governance;
-  }
-
-  function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external override(IGSECore) onlyOwner {
-    proofOfPossessionGasLimit = _proofOfPossessionGasLimit;
-  }
-
-  /**
-   * @notice  Adds another rollup to the instances, which is the new latest rollup.
-   *          Only callable by the owner (usually governance) and only when the rollup is not already in the set
-   *
-   * @dev rollups only have access to the "bonus instance" while they are the most recent rollup.
-   *
-   * @dev The GSE only supports adding rollups, not removing them. If a rollup becomes compromised, governance can
-   * simply add a new rollup and the bonus instance mechanism ensures a smooth transition by allowing the new rollup
-   * to immediately inherit attesters.
-   *
-   * @dev Beware that multiple calls to `addRollup` at the same `block.timestamp` will override each other and only
-   * the last will be in the `rollups`.
-   *
-   * @param _rollup - The address of the rollup to add
-   */
-  function addRollup(address _rollup) external override(IGSECore) onlyOwner {
-    require(_rollup != address(0), Errors.GSE__InvalidRollupAddress(_rollup));
-    require(!instances[_rollup].exists, Errors.GSE__RollupAlreadyRegistered(_rollup));
-    instances[_rollup].exists = true;
-    rollups.push(block.timestamp.toUint32(), uint224(uint160(_rollup)));
-  }
-
-  /**
-   * @notice Deposits a new attester
-   *
-   * @dev msg.sender must be a registered rollup.
-   *
-   * @dev Transfers ASSET from msg.sender to the GSE, and then into Governance.
-   *
-   * @dev if _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
-   *
-   * @dev An attester configuration is registered globally to avoid BLS troubles when moving stake.
-   *
-   * Suppose the registered rollups are A, then B, then C, so C's effective attesters are
-   * those associated with C and the bonus address.
-   *
-   * Alice may come along now and deposit on A or B, with _moveWithLatestRollup=false in either case.
-   *
-   * For depositing into C, she can deposit *either* with _moveWithLatestRollup = true OR false.
-   * If she deposits with _moveWithLatestRollup = false, then she is associated with C's address.
-   * If she deposits with _moveWithLatestRollup = true, then she is associated with the bonus address.
-   *
-   * Suppose she deposits with _moveWithLatestRollup = true, and a new rollup D is added to the rollups.
-   * Then her stake moves to D, and she is in the effective attesters of D.
-   *
-   * @param _attester     - The attester address on behalf of which the deposit is made.
-   * @param _withdrawer   - Address which the user wish to use to initiate a withdraw for the `_attester` and
-   *                        to update delegation with. The withdrawals are enforced by the rollup to which it is
-   *                        controlled, so it is practically a value for the rollup to use, meaning dishonest rollup
-   *                        can reject withdrawal attempts.
-   * @param _publicKeyInG1 - BLS public key for the attester in G1
-   * @param _publicKeyInG2 - BLS public key for the attester in G2
-   * @param _proofOfPossession - A proof of possessions for the private key corresponding _publicKey in G1 and G2
-   * @param _moveWithLatestRollup - Whether to deposit into the specific instance, or the bonus instance
-   */
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external override(IGSECore) onlyRollup {
-    bool isMsgSenderLatestRollup = getLatestRollup() == msg.sender;
-
-    // If _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
-    if (_moveWithLatestRollup) {
-      require(isMsgSenderLatestRollup, Errors.GSE__NotLatestRollup(msg.sender));
+    /**
+     * @dev enforces that the caller is a registered rollup.
+     */
+    modifier onlyRollup() {
+        require(isRollupRegistered(msg.sender), Errors.GSE__NotRollup(msg.sender));
+        _;
     }
 
-    // Ensure that we are not already attesting on the rollup
-    require(!isRegistered(msg.sender, _attester), Errors.GSE__AlreadyRegistered(msg.sender, _attester));
-
-    // Ensure that if we are the latest rollup, we are not already attesting on the bonus instance.
-    if (isMsgSenderLatestRollup) {
-      require(
-        !isRegistered(BONUS_INSTANCE_ADDRESS, _attester),
-        Errors.GSE__AlreadyRegistered(BONUS_INSTANCE_ADDRESS, _attester)
-      );
+    /**
+     * @param __owner - The owner of the GSE.
+     *                  Initially a deployer to allow adding an initial rollup, then handed over to governance.
+     * @param _asset - The ERC20 token asset used in governance and for sybil resistance.
+     *                 This token is deposited by attesters to gain voting power in governance
+     *                 (ratio of voting power to staked amount is 1:1).
+     * @param _activationThreshold - The amount of asset required to deposit an attester on the rollup.
+     * @param _ejectionThreshold - The minimum amount of asset required to be in the set to be considered an attester.
+     *                        If the balance falls below this threshold, the attester is ejected from the set.
+     */
+    constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
+        Ownable(__owner)
+    {
+        ASSET = _asset;
+        ACTIVATION_THRESHOLD = _activationThreshold;
+        EJECTION_THRESHOLD = _ejectionThreshold;
+        instances[BONUS_INSTANCE_ADDRESS].exists = true;
     }
 
-    // Set the recipient instance address, i.e. the one that will receive the attester.
-    // From above, we know that if we are here, and _moveWithLatestRollup is true,
-    // then msg.sender is the latest instance,
-    // but the user is targeting the bonus address.
-    // Otherwise, we use the msg.sender, which we know is a registered rollup
-    // thanks to the modifier.
-    address recipientInstance = _moveWithLatestRollup ? BONUS_INSTANCE_ADDRESS : msg.sender;
-
-    // Add the attester to the instance's checkpointed set of attesters.
-    require(
-      instances[recipientInstance].attesters.add(_attester), Errors.GSE__AlreadyRegistered(recipientInstance, _attester)
-    );
-
-    _checkProofOfPossession(_attester, _publicKeyInG1, _publicKeyInG2, _proofOfPossession);
-
-    // This is the ONLY place where we set the configuration for an attester.
-    // This means that their withdrawer and public keys are set once, globally.
-    // If they exit, they must re-deposit with a new key.
-    configOf[_attester] = AttesterConfig({withdrawer: _withdrawer, publicKey: _publicKeyInG1});
-
-    delegation.delegate(recipientInstance, _attester, recipientInstance);
-    delegation.increaseBalance(recipientInstance, _attester, ACTIVATION_THRESHOLD);
-
-    ASSET.safeTransferFrom(msg.sender, address(this), ACTIVATION_THRESHOLD);
-
-    Governance gov = getGovernance();
-    ASSET.approve(address(gov), ACTIVATION_THRESHOLD);
-    gov.deposit(address(this), ACTIVATION_THRESHOLD);
-
-    emit Deposit(recipientInstance, _attester, _withdrawer);
-  }
-
-  /**
-   * @notice  Withdraws at least the amount specified.
-   *          If the leftover balance is less than the minimum deposit, the entire balance is withdrawn.
-   *
-   * @dev     To be used by a rollup to withdraw funds from the GSE. For example if slashing or
-   *          just withdrawing events happen, a rollup can use this function to withdraw the funds.
-   *          It looks in both the rollup instance and the bonus address for the attester.
-   *
-   * @dev     Note that all funds are returned to the rollup, so for slashing the rollup itself must
-   *          address the problem of "what to do" with the funds. And it must look at the returned amount
-   *          withdrawn and the bool.
-   *
-   * @param _attester - The attester to withdraw from.
-   * @param _amount   - The amount of staking asset to withdraw. Has 1:1 ratio with voting power.
-   *
-   * @return The actual amount withdrawn.
-   * @return True if attester is removed from set, false otherwise
-   * @return The id of the withdrawal at the governance
-   */
-  function withdraw(address _attester, uint256 _amount)
-    external
-    override(IGSECore)
-    onlyRollup
-    returns (uint256, bool, uint256)
-  {
-    // We need to figure out where the attester is effectively located
-    // we start by looking at the instance that is withdrawing the attester
-    address withdrawingInstance = msg.sender;
-    InstanceAttesterRegistry storage attesterRegistry = instances[msg.sender];
-    bool foundAttester = attesterRegistry.attesters.contains(_attester);
-
-    // If we haven't found the attester in the rollup instance, and we are latest rollup, go look in the "bonus"
-    // instance.
-    if (
-      !foundAttester && getLatestRollup() == msg.sender
-        && instances[BONUS_INSTANCE_ADDRESS].attesters.contains(_attester)
-    ) {
-      withdrawingInstance = BONUS_INSTANCE_ADDRESS;
-      attesterRegistry = instances[BONUS_INSTANCE_ADDRESS];
-      foundAttester = true;
+    function setGovernance(Governance _governance) external override(IGSECore) onlyOwner {
+        require(address(governance) == address(0), Errors.GSE__GovernanceAlreadySet());
+        governance = _governance;
     }
 
-    require(foundAttester, Errors.GSE__NothingToExit(_attester));
-
-    uint256 balance = delegation.getBalanceOf(withdrawingInstance, _attester);
-    require(balance >= _amount, Errors.GSE__InsufficientBalance(balance, _amount));
-
-    // First assume we are only withdrawing the amount specified.
-    uint256 amountWithdrawn = _amount;
-    // If the balance after withdrawal is less than the ejection threshold,
-    // we will remove the attester from the instance.
-    bool isRemoved = balance - _amount < EJECTION_THRESHOLD;
-
-    // Note that the current implementation of the rollup does not allow for partial withdrawals,
-    // via `initiateWithdraw`, so a "normal" withdrawal will always remove the attester from the instance.
-    // However, if the attester is slashed, we might just reduce the balance.
-    if (isRemoved) {
-      require(attesterRegistry.attesters.remove(_attester), Errors.GSE__FailedToRemove(_attester));
-      amountWithdrawn = balance;
-
-      // When removing the user, remove the delegating as well.
-      delegation.undelegate(withdrawingInstance, _attester);
-
-      // NOTE
-      // We intentionally did not remove the attester config.
-      // Attester config is set ONCE when the attester is first seen by the GSE,
-      // and is shared across all instances.
+    function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external override(IGSECore) onlyOwner {
+        proofOfPossessionGasLimit = _proofOfPossessionGasLimit;
     }
 
-    // Decrease the balance of the attester in the instance.
-    // Move voting power from the attester's delegatee to address(0) (unless the delegatee is already address(0))
-    // Reduce the supply of the instance and the total supply.
-    delegation.decreaseBalance(withdrawingInstance, _attester, amountWithdrawn);
-
-    // The withdrawal contains a pending amount that may be claimed using the withdrawal ID when a delay enforced by
-    // the Governance contract has passed.
-    // Note that the rollup is the one that receives the funds when the withdrawal is claimed.
-    uint256 withdrawalId = getGovernance().initiateWithdraw(msg.sender, amountWithdrawn);
-
-    return (amountWithdrawn, isRemoved, withdrawalId);
-  }
-
-  /**
-   * @notice  A helper function to make it easy for users of the GSE to finalize
-   *          a pending exit in the governance.
-   *
-   *          Kept in here since it is already connected to Governance:
-   *          we don't want the rollup to have to deal with links to gov etc.
-   *
-   * @dev     Will be a no operation if the withdrawal is already collected.
-   *
-   * @param _withdrawalId - The id of the withdrawal
-   */
-  function finalizeWithdraw(uint256 _withdrawalId) external override(IGSECore) {
-    Governance gov = getGovernance();
-    if (!gov.getWithdrawal(_withdrawalId).claimed) {
-      gov.finalizeWithdraw(_withdrawalId);
+    /**
+     * @notice  Adds another rollup to the instances, which is the new latest rollup.
+     *          Only callable by the owner (usually governance) and only when the rollup is not already in the set
+     *
+     * @dev rollups only have access to the "bonus instance" while they are the most recent rollup.
+     *
+     * @dev The GSE only supports adding rollups, not removing them. If a rollup becomes compromised, governance can
+     * simply add a new rollup and the bonus instance mechanism ensures a smooth transition by allowing the new rollup
+     * to immediately inherit attesters.
+     *
+     * @dev Beware that multiple calls to `addRollup` at the same `block.timestamp` will override each other and only
+     * the last will be in the `rollups`.
+     *
+     * @param _rollup - The address of the rollup to add
+     */
+    function addRollup(address _rollup) external override(IGSECore) onlyOwner {
+        require(_rollup != address(0), Errors.GSE__InvalidRollupAddress(_rollup));
+        require(!instances[_rollup].exists, Errors.GSE__RollupAlreadyRegistered(_rollup));
+        instances[_rollup].exists = true;
+        rollups.push(block.timestamp.toUint32(), uint224(uint160(_rollup)));
     }
-  }
 
-  /**
-   * @notice Make a proposal to Governance via `Governance.proposeWithLock`
-   *
-   * @dev It is required to expose this on the GSE, since it is assumed that only the GSE can hold
-   * power in Governance (see the comment at the top of Governance.sol).
-   *
-   * @dev Transfers governance's configured `lockAmount` of ASSET from msg.sender to the GSE,
-   * and then into Governance.
-   *
-   * @dev Immediately creates a withdrawal from Governance for the `lockAmount`.
-   *
-   * @dev The delay until the withdrawal may be finalized is equal to the current `lockDelay` in Governance.
-   *
-   * @param _payload - The IPayload address, which is a contract that contains the proposed actions to be executed by
-   * the governance.
-   * @param _to - The address that will receive the withdrawn funds when the withdrawal is finalized (see
-   * `finalizeWithdraw`)
-   *
-   * @return The id of the proposal
-   */
-  function proposeWithLock(IPayload _payload, address _to) external override(IGSECore) returns (uint256) {
-    Governance gov = getGovernance();
-    uint256 amount = gov.getConfiguration().proposeConfig.lockAmount;
+    /**
+     * @notice Deposits a new attester
+     *
+     * @dev msg.sender must be a registered rollup.
+     *
+     * @dev Transfers ASSET from msg.sender to the GSE, and then into Governance.
+     *
+     * @dev if _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
+     *
+     * @dev An attester configuration is registered globally to avoid BLS troubles when moving stake.
+     *
+     * Suppose the registered rollups are A, then B, then C, so C's effective attesters are
+     * those associated with C and the bonus address.
+     *
+     * Alice may come along now and deposit on A or B, with _moveWithLatestRollup=false in either case.
+     *
+     * For depositing into C, she can deposit *either* with _moveWithLatestRollup = true OR false.
+     * If she deposits with _moveWithLatestRollup = false, then she is associated with C's address.
+     * If she deposits with _moveWithLatestRollup = true, then she is associated with the bonus address.
+     *
+     * Suppose she deposits with _moveWithLatestRollup = true, and a new rollup D is added to the rollups.
+     * Then her stake moves to D, and she is in the effective attesters of D.
+     *
+     * @param _attester     - The attester address on behalf of which the deposit is made.
+     * @param _withdrawer   - Address which the user wish to use to initiate a withdraw for the `_attester` and
+     *                        to update delegation with. The withdrawals are enforced by the rollup to which it is
+     *                        controlled, so it is practically a value for the rollup to use, meaning dishonest rollup
+     *                        can reject withdrawal attempts.
+     * @param _publicKeyInG1 - BLS public key for the attester in G1
+     * @param _publicKeyInG2 - BLS public key for the attester in G2
+     * @param _proofOfPossession - A proof of possessions for the private key corresponding _publicKey in G1 and G2
+     * @param _moveWithLatestRollup - Whether to deposit into the specific instance, or the bonus instance
+     */
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external override(IGSECore) onlyRollup {
+        bool isMsgSenderLatestRollup = getLatestRollup() == msg.sender;
 
-    ASSET.safeTransferFrom(msg.sender, address(this), amount);
-    ASSET.approve(address(gov), amount);
+        // If _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
+        if (_moveWithLatestRollup) {
+            require(isMsgSenderLatestRollup, Errors.GSE__NotLatestRollup(msg.sender));
+        }
 
-    gov.deposit(address(this), amount);
+        // Ensure that we are not already attesting on the rollup
+        require(!isRegistered(msg.sender, _attester), Errors.GSE__AlreadyRegistered(msg.sender, _attester));
 
-    return gov.proposeWithLock(_payload, _to);
-  }
+        // Ensure that if we are the latest rollup, we are not already attesting on the bonus instance.
+        if (isMsgSenderLatestRollup) {
+            require(
+                !isRegistered(BONUS_INSTANCE_ADDRESS, _attester),
+                Errors.GSE__AlreadyRegistered(BONUS_INSTANCE_ADDRESS, _attester)
+            );
+        }
 
-  /**
-   * @notice  Delegates the voting power of `_attester` at `_instance` to `_delegatee`
-   *
-   *          Only callable by the `withdrawer` for the given `_attester` at the given
-   *          `_instance`. This is to ensure that the depositor in poor mans delegation;
-   *          listing another entity as the `attester`, still controls his voting power,
-   *          even if someone else is running the node. Separately, it makes it simpler
-   *          to use cold-storage for more impactful actions.
-   *
-   * @dev The delegatee may use this voting power to vote on proposals in Governance.
-   *
-   * Note that voting power for a delegatee is timestamped. The delegatee must have this
-   * power before a proposal becomes "active" in order to use it.
-   * See `Governance.getProposalState` for more details.
-   *
-   * @param _instance   - The address of the rollup instance (or bonus instance address)
-   *                      to which the `_attester` deposit is pledged.
-   * @param _attester   - The address of the attester to delegate on behalf of
-   * @param _delegatee  - The delegatee that should receive the power
-   */
-  function delegate(address _instance, address _attester, address _delegatee) external override(IGSECore) {
-    require(isRollupRegistered(_instance), Errors.GSE__InstanceDoesNotExist(_instance));
-    address withdrawer = configOf[_attester].withdrawer;
-    require(msg.sender == withdrawer, Errors.GSE__NotWithdrawer(withdrawer, msg.sender));
-    delegation.delegate(_instance, _attester, _delegatee);
-  }
+        // Set the recipient instance address, i.e. the one that will receive the attester.
+        // From above, we know that if we are here, and _moveWithLatestRollup is true,
+        // then msg.sender is the latest instance,
+        // but the user is targeting the bonus address.
+        // Otherwise, we use the msg.sender, which we know is a registered rollup
+        // thanks to the modifier.
+        address recipientInstance = _moveWithLatestRollup ? BONUS_INSTANCE_ADDRESS : msg.sender;
 
-  /**
-   * @notice  Votes at the governance using the power delegated to `msg.sender`
-   *
-   * @param _proposalId - The id of the proposal in the governance to vote on
-   * @param _amount     - The amount of voting power to use in the vote
-   *                      In the gov, it is possible to do a vote with partial power
-   * @param _support    - True if supporting the proposal, false otherwise.
-   */
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
-    _vote(msg.sender, _proposalId, _amount, _support);
-  }
+        // Add the attester to the instance's checkpointed set of attesters.
+        require(
+            instances[recipientInstance].attesters.add(_attester),
+            Errors.GSE__AlreadyRegistered(recipientInstance, _attester)
+        );
 
-  /**
-   * @notice  Votes at the governance using the power delegated to the bonus instance.
-   *          Only callable by the rollup that was the latest rollup at the time of the proposal.
-   *
-   * @param _proposalId - The id of the proposal in the governance to vote on
-   * @param _amount     - The amount of voting power to use in the vote
-   *                      In the gov, it is possible to do a vote with partial power
-   */
-  function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
-    Timestamp ts = _pendingThrough(_proposalId);
-    require(msg.sender == getLatestRollupAt(ts), Errors.GSE__NotLatestRollup(msg.sender));
-    _vote(BONUS_INSTANCE_ADDRESS, _proposalId, _amount, _support);
-  }
+        _checkProofOfPossession(_attester, _publicKeyInG1, _publicKeyInG2, _proofOfPossession);
 
-  function isRollupRegistered(address _instance) public view override(IGSECore) returns (bool) {
-    return instances[_instance].exists;
-  }
+        // This is the ONLY place where we set the configuration for an attester.
+        // This means that their withdrawer and public keys are set once, globally.
+        // If they exit, they must re-deposit with a new key.
+        configOf[_attester] = AttesterConfig({withdrawer: _withdrawer, publicKey: _publicKeyInG1});
 
-  /**
-   * @notice  Lookup if the `_attester` is in the `_instance` attester set
-   *
-   * @param _instance   - The instance to look at
-   * @param _attester   - The attester to lookup
-   *
-   * @return  True if the `_attester` is in the set of `_instance`, false otherwise
-   */
-  function isRegistered(address _instance, address _attester) public view override(IGSECore) returns (bool) {
-    return instances[_instance].attesters.contains(_attester);
-  }
+        delegation.delegate(recipientInstance, _attester, recipientInstance);
+        delegation.increaseBalance(recipientInstance, _attester, ACTIVATION_THRESHOLD);
 
-  /**
-   * @notice  Get the address of latest instance
-   *
-   * @return  The address of the latest instance
-   */
-  function getLatestRollup() public view override(IGSECore) returns (address) {
-    return address(rollups.latest().toUint160());
-  }
+        ASSET.safeTransferFrom(msg.sender, address(this), ACTIVATION_THRESHOLD);
 
-  /**
-   * @notice  Get the address of the instance that was latest at time `_timestamp`
-   *
-   * @param _timestamp  - The timestamp to lookup
-   *
-   * @return  The address of the latest instance at the time of lookup
-   */
-  function getLatestRollupAt(Timestamp _timestamp) public view override(IGSECore) returns (address) {
-    return address(rollups.upperLookup(Timestamp.unwrap(_timestamp).toUint32()).toUint160());
-  }
+        Governance gov = getGovernance();
+        ASSET.approve(address(gov), ACTIVATION_THRESHOLD);
+        gov.deposit(address(this), ACTIVATION_THRESHOLD);
 
-  function getGovernance() public view override(IGSECore) returns (Governance) {
-    return governance;
-  }
+        emit Deposit(recipientInstance, _attester, _withdrawer);
+    }
 
-  /**
-   * @notice  Inner logic for the vote
-   *
-   * @dev     Fetches the timestamp where proposal becomes active, and use it for the voting power
-   *          of the `_voter`
-   *
-   * @param _voter      - The voter
-   * @param _proposalId - The proposal to vote on
-   * @param _amount     - The amount of power to use
-   * @param _support    - True to support the proposal, false otherwise
-   */
-  function _vote(address _voter, uint256 _proposalId, uint256 _amount, bool _support) internal {
-    Timestamp ts = _pendingThrough(_proposalId);
-    // Mark the power as spent within our delegation accounting.
-    delegation.usePower(_voter, _proposalId, ts, _amount);
-    // Vote on the proposal
-    getGovernance().vote(_proposalId, _amount, _support);
-  }
+    /**
+     * @notice  Withdraws at least the amount specified.
+     *          If the leftover balance is less than the minimum deposit, the entire balance is withdrawn.
+     *
+     * @dev     To be used by a rollup to withdraw funds from the GSE. For example if slashing or
+     *          just withdrawing events happen, a rollup can use this function to withdraw the funds.
+     *          It looks in both the rollup instance and the bonus address for the attester.
+     *
+     * @dev     Note that all funds are returned to the rollup, so for slashing the rollup itself must
+     *          address the problem of "what to do" with the funds. And it must look at the returned amount
+     *          withdrawn and the bool.
+     *
+     * @param _attester - The attester to withdraw from.
+     * @param _amount   - The amount of staking asset to withdraw. Has 1:1 ratio with voting power.
+     *
+     * @return The actual amount withdrawn.
+     * @return True if attester is removed from set, false otherwise
+     * @return The id of the withdrawal at the governance
+     */
+    function withdraw(address _attester, uint256 _amount)
+        external
+        override(IGSECore)
+        onlyRollup
+        returns (uint256, bool, uint256)
+    {
+        // We need to figure out where the attester is effectively located
+        // we start by looking at the instance that is withdrawing the attester
+        address withdrawingInstance = msg.sender;
+        InstanceAttesterRegistry storage attesterRegistry = instances[msg.sender];
+        bool foundAttester = attesterRegistry.attesters.contains(_attester);
 
-  function _checkProofOfPossession(
-    address _attester,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession
-  ) internal virtual {
-    // Make sure the attester has not registered before
-    G1Point memory previouslyRegisteredPoint = configOf[_attester].publicKey;
-    require(
-      (previouslyRegisteredPoint.x == 0 && previouslyRegisteredPoint.y == 0),
-      Errors.GSE__CannotChangePublicKeys(previouslyRegisteredPoint.x, previouslyRegisteredPoint.y)
-    );
+        // If we haven't found the attester in the rollup instance, and we are latest rollup, go look in the "bonus"
+        // instance.
+        if (
+            !foundAttester && getLatestRollup() == msg.sender
+                && instances[BONUS_INSTANCE_ADDRESS].attesters.contains(_attester)
+        ) {
+            withdrawingInstance = BONUS_INSTANCE_ADDRESS;
+            attesterRegistry = instances[BONUS_INSTANCE_ADDRESS];
+            foundAttester = true;
+        }
 
-    // Make sure the incoming point has not been seen before
-    // NOTE: we only need to check for the existence of Pk1, and not also for Pk2,
-    // as the Pk2 will be constrained to have the same underlying secret key as part of the proofOfPossession,
-    // so existence/correctness of Pk2 is implied by existence/correctness of Pk1.
-    bytes32 hashedIncomingPoint = keccak256(abi.encodePacked(_publicKeyInG1.x, _publicKeyInG1.y));
-    require((!ownedPKs[hashedIncomingPoint]), Errors.GSE__ProofOfPossessionAlreadySeen(hashedIncomingPoint));
-    ownedPKs[hashedIncomingPoint] = true;
+        require(foundAttester, Errors.GSE__NothingToExit(_attester));
 
-    // We validate the proof of possession using an external contract to limit gas potentially "sacrificed"
-    // in case of failure.
-    require(
-      BN254_LIB_WRAPPER.proofOfPossession{
-        gas: proofOfPossessionGasLimit
-      }(_publicKeyInG1, _publicKeyInG2, _proofOfPossession),
-      Errors.GSE__InvalidProofOfPossession()
-    );
-  }
+        uint256 balance = delegation.getBalanceOf(withdrawingInstance, _attester);
+        require(balance >= _amount, Errors.GSE__InsufficientBalance(balance, _amount));
 
-  function _pendingThrough(uint256 _proposalId) internal view returns (Timestamp) {
-    // Directly compute pendingThrough for memory proposal
-    Proposal memory proposal = getGovernance().getProposal(_proposalId);
-    return proposal.creation + proposal.config.votingDelay;
-  }
+        // First assume we are only withdrawing the amount specified.
+        uint256 amountWithdrawn = _amount;
+        // If the balance after withdrawal is less than the ejection threshold,
+        // we will remove the attester from the instance.
+        bool isRemoved = balance - _amount < EJECTION_THRESHOLD;
+
+        // Note that the current implementation of the rollup does not allow for partial withdrawals,
+        // via `initiateWithdraw`, so a "normal" withdrawal will always remove the attester from the instance.
+        // However, if the attester is slashed, we might just reduce the balance.
+        if (isRemoved) {
+            require(attesterRegistry.attesters.remove(_attester), Errors.GSE__FailedToRemove(_attester));
+            amountWithdrawn = balance;
+
+            // When removing the user, remove the delegating as well.
+            delegation.undelegate(withdrawingInstance, _attester);
+
+            // NOTE
+            // We intentionally did not remove the attester config.
+            // Attester config is set ONCE when the attester is first seen by the GSE,
+            // and is shared across all instances.
+        }
+
+        // Decrease the balance of the attester in the instance.
+        // Move voting power from the attester's delegatee to address(0) (unless the delegatee is already address(0))
+        // Reduce the supply of the instance and the total supply.
+        delegation.decreaseBalance(withdrawingInstance, _attester, amountWithdrawn);
+
+        // The withdrawal contains a pending amount that may be claimed using the withdrawal ID when a delay enforced by
+        // the Governance contract has passed.
+        // Note that the rollup is the one that receives the funds when the withdrawal is claimed.
+        uint256 withdrawalId = getGovernance().initiateWithdraw(msg.sender, amountWithdrawn);
+
+        return (amountWithdrawn, isRemoved, withdrawalId);
+    }
+
+    /**
+     * @notice  A helper function to make it easy for users of the GSE to finalize
+     *          a pending exit in the governance.
+     *
+     *          Kept in here since it is already connected to Governance:
+     *          we don't want the rollup to have to deal with links to gov etc.
+     *
+     * @dev     Will be a no operation if the withdrawal is already collected.
+     *
+     * @param _withdrawalId - The id of the withdrawal
+     */
+    function finalizeWithdraw(uint256 _withdrawalId) external override(IGSECore) {
+        Governance gov = getGovernance();
+        if (!gov.getWithdrawal(_withdrawalId).claimed) {
+            gov.finalizeWithdraw(_withdrawalId);
+        }
+    }
+
+    /**
+     * @notice Make a proposal to Governance via `Governance.proposeWithLock`
+     *
+     * @dev It is required to expose this on the GSE, since it is assumed that only the GSE can hold
+     * power in Governance (see the comment at the top of Governance.sol).
+     *
+     * @dev Transfers governance's configured `lockAmount` of ASSET from msg.sender to the GSE,
+     * and then into Governance.
+     *
+     * @dev Immediately creates a withdrawal from Governance for the `lockAmount`.
+     *
+     * @dev The delay until the withdrawal may be finalized is equal to the current `lockDelay` in Governance.
+     *
+     * @param _payload - The IPayload address, which is a contract that contains the proposed actions to be executed by
+     * the governance.
+     * @param _to - The address that will receive the withdrawn funds when the withdrawal is finalized (see
+     * `finalizeWithdraw`)
+     *
+     * @return The id of the proposal
+     */
+    function proposeWithLock(IPayload _payload, address _to) external override(IGSECore) returns (uint256) {
+        Governance gov = getGovernance();
+        uint256 amount = gov.getConfiguration().proposeConfig.lockAmount;
+
+        ASSET.safeTransferFrom(msg.sender, address(this), amount);
+        ASSET.approve(address(gov), amount);
+
+        gov.deposit(address(this), amount);
+
+        return gov.proposeWithLock(_payload, _to);
+    }
+
+    /**
+     * @notice  Delegates the voting power of `_attester` at `_instance` to `_delegatee`
+     *
+     *          Only callable by the `withdrawer` for the given `_attester` at the given
+     *          `_instance`. This is to ensure that the depositor in poor mans delegation;
+     *          listing another entity as the `attester`, still controls his voting power,
+     *          even if someone else is running the node. Separately, it makes it simpler
+     *          to use cold-storage for more impactful actions.
+     *
+     * @dev The delegatee may use this voting power to vote on proposals in Governance.
+     *
+     * Note that voting power for a delegatee is timestamped. The delegatee must have this
+     * power before a proposal becomes "active" in order to use it.
+     * See `Governance.getProposalState` for more details.
+     *
+     * @param _instance   - The address of the rollup instance (or bonus instance address)
+     *                      to which the `_attester` deposit is pledged.
+     * @param _attester   - The address of the attester to delegate on behalf of
+     * @param _delegatee  - The delegatee that should receive the power
+     */
+    function delegate(address _instance, address _attester, address _delegatee) external override(IGSECore) {
+        require(isRollupRegistered(_instance), Errors.GSE__InstanceDoesNotExist(_instance));
+        address withdrawer = configOf[_attester].withdrawer;
+        require(msg.sender == withdrawer, Errors.GSE__NotWithdrawer(withdrawer, msg.sender));
+        delegation.delegate(_instance, _attester, _delegatee);
+    }
+
+    /**
+     * @notice  Votes at the governance using the power delegated to `msg.sender`
+     *
+     * @param _proposalId - The id of the proposal in the governance to vote on
+     * @param _amount     - The amount of voting power to use in the vote
+     *                      In the gov, it is possible to do a vote with partial power
+     * @param _support    - True if supporting the proposal, false otherwise.
+     */
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
+        _vote(msg.sender, _proposalId, _amount, _support);
+    }
+
+    /**
+     * @notice  Votes at the governance using the power delegated to the bonus instance.
+     *          Only callable by the rollup that was the latest rollup at the time of the proposal.
+     *
+     * @param _proposalId - The id of the proposal in the governance to vote on
+     * @param _amount     - The amount of voting power to use in the vote
+     *                      In the gov, it is possible to do a vote with partial power
+     */
+    function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
+        Timestamp ts = _pendingThrough(_proposalId);
+        require(msg.sender == getLatestRollupAt(ts), Errors.GSE__NotLatestRollup(msg.sender));
+        _vote(BONUS_INSTANCE_ADDRESS, _proposalId, _amount, _support);
+    }
+
+    function isRollupRegistered(address _instance) public view override(IGSECore) returns (bool) {
+        return instances[_instance].exists;
+    }
+
+    /**
+     * @notice  Lookup if the `_attester` is in the `_instance` attester set
+     *
+     * @param _instance   - The instance to look at
+     * @param _attester   - The attester to lookup
+     *
+     * @return  True if the `_attester` is in the set of `_instance`, false otherwise
+     */
+    function isRegistered(address _instance, address _attester) public view override(IGSECore) returns (bool) {
+        return instances[_instance].attesters.contains(_attester);
+    }
+
+    /**
+     * @notice  Get the address of latest instance
+     *
+     * @return  The address of the latest instance
+     */
+    function getLatestRollup() public view override(IGSECore) returns (address) {
+        return address(rollups.latest().toUint160());
+    }
+
+    /**
+     * @notice  Get the address of the instance that was latest at time `_timestamp`
+     *
+     * @param _timestamp  - The timestamp to lookup
+     *
+     * @return  The address of the latest instance at the time of lookup
+     */
+    function getLatestRollupAt(Timestamp _timestamp) public view override(IGSECore) returns (address) {
+        return address(rollups.upperLookup(Timestamp.unwrap(_timestamp).toUint32()).toUint160());
+    }
+
+    function getGovernance() public view override(IGSECore) returns (Governance) {
+        return governance;
+    }
+
+    /**
+     * @notice  Inner logic for the vote
+     *
+     * @dev     Fetches the timestamp where proposal becomes active, and use it for the voting power
+     *          of the `_voter`
+     *
+     * @param _voter      - The voter
+     * @param _proposalId - The proposal to vote on
+     * @param _amount     - The amount of power to use
+     * @param _support    - True to support the proposal, false otherwise
+     */
+    function _vote(address _voter, uint256 _proposalId, uint256 _amount, bool _support) internal {
+        Timestamp ts = _pendingThrough(_proposalId);
+        // Mark the power as spent within our delegation accounting.
+        delegation.usePower(_voter, _proposalId, ts, _amount);
+        // Vote on the proposal
+        getGovernance().vote(_proposalId, _amount, _support);
+    }
+
+    function _checkProofOfPossession(
+        address _attester,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession
+    ) internal virtual {
+        // Make sure the attester has not registered before
+        G1Point memory previouslyRegisteredPoint = configOf[_attester].publicKey;
+        require(
+            (previouslyRegisteredPoint.x == 0 && previouslyRegisteredPoint.y == 0),
+            Errors.GSE__CannotChangePublicKeys(previouslyRegisteredPoint.x, previouslyRegisteredPoint.y)
+        );
+
+        // Make sure the incoming point has not been seen before
+        // NOTE: we only need to check for the existence of Pk1, and not also for Pk2,
+        // as the Pk2 will be constrained to have the same underlying secret key as part of the proofOfPossession,
+        // so existence/correctness of Pk2 is implied by existence/correctness of Pk1.
+        bytes32 hashedIncomingPoint = keccak256(abi.encodePacked(_publicKeyInG1.x, _publicKeyInG1.y));
+        require((!ownedPKs[hashedIncomingPoint]), Errors.GSE__ProofOfPossessionAlreadySeen(hashedIncomingPoint));
+        ownedPKs[hashedIncomingPoint] = true;
+
+        // We validate the proof of possession using an external contract to limit gas potentially "sacrificed"
+        // in case of failure.
+        require(
+            BN254_LIB_WRAPPER.proofOfPossession{gas: proofOfPossessionGasLimit}(
+                _publicKeyInG1, _publicKeyInG2, _proofOfPossession
+            ),
+            Errors.GSE__InvalidProofOfPossession()
+        );
+    }
+
+    function _pendingThrough(uint256 _proposalId) internal view returns (Timestamp) {
+        // Directly compute pendingThrough for memory proposal
+        Proposal memory proposal = getGovernance().getProposal(_proposalId);
+        return proposal.creation + proposal.config.votingDelay;
+    }
 }
 
 contract GSE is IGSE, GSECore {
-  using AddressSnapshotLib for SnapshottedAddressSet;
-  using SafeCast for uint256;
-  using SafeCast for uint224;
-  using Checkpoints for Checkpoints.Trace224;
-  using DepositDelegationLib for DepositAndDelegationAccounting;
+    using AddressSnapshotLib for SnapshottedAddressSet;
+    using SafeCast for uint256;
+    using SafeCast for uint224;
+    using Checkpoints for Checkpoints.Trace224;
+    using DepositDelegationLib for DepositAndDelegationAccounting;
 
-  constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
-    GSECore(__owner, _asset, _activationThreshold, _ejectionThreshold)
-  {}
+    constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
+        GSECore(__owner, _asset, _activationThreshold, _ejectionThreshold)
+    {}
 
-  /**
-   * @notice  Get the registration digest of a public key
-   *          by hashing the the public key to a point on the curve which may subsequently
-   *          be signed by the corresponding private key.
-   *
-   * @param _publicKey - The public key to get the registration digest of
-   *
-   * @return The registration digest of the public key. Sign and submit as a proof of possession.
-   */
-  function getRegistrationDigest(G1Point memory _publicKey) external view override(IGSE) returns (G1Point memory) {
-    return BN254_LIB_WRAPPER.g1ToDigestPoint(_publicKey);
-  }
-
-  function getConfig(address _attester) external view override(IGSE) returns (AttesterConfig memory) {
-    return configOf[_attester];
-  }
-
-  function getWithdrawer(address _attester) external view override(IGSE) returns (address withdrawer) {
-    AttesterConfig memory config = configOf[_attester];
-
-    return config.withdrawer;
-  }
-
-  function balanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
-    return delegation.getBalanceOf(_instance, _attester);
-  }
-
-  /**
-   * @notice  Get the effective balance of the attester at the instance.
-   *
-   *          The effective balance is the balance of the attester at the specific instance or at the bonus if the
-   *          instance is the latest rollup and he was not at the specific. We can do this as an `or` since the
-   *          attester may only be active at one of them.
-   *
-   * @param _instance   - The instance to look at
-   * @param _attester   - The attester to look at
-   *
-   * @return The effective balance of the attester at the instance
-   */
-  function effectiveBalanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
-    uint256 balance = delegation.getBalanceOf(_instance, _attester);
-    if (balance == 0 && getLatestRollup() == _instance) {
-      return delegation.getBalanceOf(BONUS_INSTANCE_ADDRESS, _attester);
-    }
-    return balance;
-  }
-
-  function supplyOf(address _instance) external view override(IGSE) returns (uint256) {
-    return delegation.getSupplyOf(_instance);
-  }
-
-  function totalSupply() external view override(IGSE) returns (uint256) {
-    return delegation.getSupply();
-  }
-
-  function getDelegatee(address _instance, address _attester) external view override(IGSE) returns (address) {
-    return delegation.getDelegatee(_instance, _attester);
-  }
-
-  function getVotingPower(address _delegatee) external view override(IGSE) returns (uint256) {
-    return delegation.getVotingPower(_delegatee);
-  }
-
-  function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
-    external
-    view
-    override(IGSE)
-    returns (address[] memory)
-  {
-    return _getAddressFromIndicesAtTimestamp(_instance, _indices, _timestamp);
-  }
-
-  /**
-   * @notice  Get the G1 public keys of the attesters
-   *
-   * NOTE: this function does NOT check if the attesters are CURRENTLY ACTIVE.
-   *
-   * @param _attesters  - The attesters to lookup
-   *
-   * @return The G1 public keys of the attesters
-   */
-  function getG1PublicKeysFromAddresses(address[] memory _attesters)
-    external
-    view
-    override(IGSE)
-    returns (G1Point[] memory)
-  {
-    G1Point[] memory keys = new G1Point[](_attesters.length);
-    for (uint256 i = 0; i < _attesters.length; i++) {
-      keys[i] = configOf[_attesters[i]].publicKey;
+    /**
+     * @notice  Get the registration digest of a public key
+     *          by hashing the the public key to a point on the curve which may subsequently
+     *          be signed by the corresponding private key.
+     *
+     * @param _publicKey - The public key to get the registration digest of
+     *
+     * @return The registration digest of the public key. Sign and submit as a proof of possession.
+     */
+    function getRegistrationDigest(G1Point memory _publicKey) external view override(IGSE) returns (G1Point memory) {
+        return BN254_LIB_WRAPPER.g1ToDigestPoint(_publicKey);
     }
 
-    return keys;
-  }
-
-  function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
-    external
-    view
-    override(IGSE)
-    returns (address)
-  {
-    uint256[] memory indices = new uint256[](1);
-    indices[0] = _index;
-    return _getAddressFromIndicesAtTimestamp(_instance, indices, _timestamp)[0];
-  }
-
-  function getPowerUsed(address _delegatee, uint256 _proposalId) external view override(IGSE) returns (uint256) {
-    return delegation.getPowerUsed(_delegatee, _proposalId);
-  }
-
-  function getBonusInstanceAddress() external pure override(IGSE) returns (address) {
-    return BONUS_INSTANCE_ADDRESS;
-  }
-
-  function getVotingPowerAt(address _delegatee, Timestamp _timestamp) public view override(IGSE) returns (uint256) {
-    return delegation.getVotingPowerAt(_delegatee, _timestamp);
-  }
-
-  /**
-   * @notice  Get the number of effective attesters at the instance at the time of `_timestamp`
-   *          (including the bonus instance)
-   *
-   * @param _instance   - The instance to look at
-   * @param _timestamp  - The timestamp to lookup
-   *
-   * @return The number of effective attesters at the instance at the time of `_timestamp`
-   */
-  function getAttesterCountAtTime(address _instance, Timestamp _timestamp)
-    public
-    view
-    override(IGSE)
-    returns (uint256)
-  {
-    InstanceAttesterRegistry storage store = instances[_instance];
-    uint32 timestamp = Timestamp.unwrap(_timestamp).toUint32();
-
-    uint256 count = store.attesters.lengthAtTimestamp(timestamp);
-    if (getLatestRollupAt(_timestamp) == _instance) {
-      count += instances[BONUS_INSTANCE_ADDRESS].attesters.lengthAtTimestamp(timestamp);
+    function getConfig(address _attester) external view override(IGSE) returns (AttesterConfig memory) {
+        return configOf[_attester];
     }
 
-    return count;
-  }
+    function getWithdrawer(address _attester) external view override(IGSE) returns (address withdrawer) {
+        AttesterConfig memory config = configOf[_attester];
 
-  /**
-   * @notice  Get the addresses of the attesters at the instance at the time of `_timestamp`
-   *
-   * @dev
-   *
-   * @param _instance   - The instance to look at
-   * @param _indices    - The indices of the attesters to lookup
-   * @param _timestamp  - The timestamp to lookup
-   *
-   * @return The addresses of the attesters at the instance at the time of `_timestamp`
-   */
-  function _getAddressFromIndicesAtTimestamp(address _instance, uint256[] memory _indices, Timestamp _timestamp)
-    internal
-    view
-    returns (address[] memory)
-  {
-    address[] memory attesters = new address[](_indices.length);
-
-    // Note: This function could get called where _instance is the bonus instance.
-    // This is okay, because we know that in this case, `isLatestRollup` will be false.
-    // So we won't double count.
-    InstanceAttesterRegistry storage instanceStore = instances[_instance];
-    InstanceAttesterRegistry storage bonusStore = instances[BONUS_INSTANCE_ADDRESS];
-    bool isLatestRollup = getLatestRollupAt(_timestamp) == _instance;
-
-    uint32 ts = Timestamp.unwrap(_timestamp).toUint32();
-
-    // The effective size of the set will be the size of the instance attesters, plus the size of the bonus attesters
-    // if the instance is the latest rollup. This will effectively work as one long list with [...instance, ...bonus]
-    uint256 storeSize = instanceStore.attesters.lengthAtTimestamp(ts);
-    uint256 canonicalSize = isLatestRollup ? bonusStore.attesters.lengthAtTimestamp(ts) : 0;
-    uint256 totalSize = storeSize + canonicalSize;
-
-    // We loop through the indices, and for each index we get the attester from the instance or bonus instance
-    // depending on value in the collective list [...instance, ...bonus]
-    for (uint256 i = 0; i < _indices.length; i++) {
-      uint256 index = _indices[i];
-      require(index < totalSize, Errors.GSE__OutOfBounds(index, totalSize));
-
-      // since we have ensured that the index is not out of bounds, we can use the unsafe function in
-      // `AddressSnapshotLib` to fetch if. We use the `recent` variant as we expect the attesters to
-      // mainly be from recent history when fetched during tx execution.
-
-      if (index < storeSize) {
-        attesters[i] = instanceStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index, ts);
-      } else if (isLatestRollup) {
-        attesters[i] = bonusStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index - storeSize, ts);
-      } else {
-        revert Errors.GSE__FatalError("SHOULD NEVER HAPPEN");
-      }
+        return config.withdrawer;
     }
 
-    return attesters;
-  }
+    function balanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
+        return delegation.getBalanceOf(_instance, _attester);
+    }
+
+    /**
+     * @notice  Get the effective balance of the attester at the instance.
+     *
+     *          The effective balance is the balance of the attester at the specific instance or at the bonus if the
+     *          instance is the latest rollup and he was not at the specific. We can do this as an `or` since the
+     *          attester may only be active at one of them.
+     *
+     * @param _instance   - The instance to look at
+     * @param _attester   - The attester to look at
+     *
+     * @return The effective balance of the attester at the instance
+     */
+    function effectiveBalanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
+        uint256 balance = delegation.getBalanceOf(_instance, _attester);
+        if (balance == 0 && getLatestRollup() == _instance) {
+            return delegation.getBalanceOf(BONUS_INSTANCE_ADDRESS, _attester);
+        }
+        return balance;
+    }
+
+    function supplyOf(address _instance) external view override(IGSE) returns (uint256) {
+        return delegation.getSupplyOf(_instance);
+    }
+
+    function totalSupply() external view override(IGSE) returns (uint256) {
+        return delegation.getSupply();
+    }
+
+    function getDelegatee(address _instance, address _attester) external view override(IGSE) returns (address) {
+        return delegation.getDelegatee(_instance, _attester);
+    }
+
+    function getVotingPower(address _delegatee) external view override(IGSE) returns (uint256) {
+        return delegation.getVotingPower(_delegatee);
+    }
+
+    function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
+        external
+        view
+        override(IGSE)
+        returns (address[] memory)
+    {
+        return _getAddressFromIndicesAtTimestamp(_instance, _indices, _timestamp);
+    }
+
+    /**
+     * @notice  Get the G1 public keys of the attesters
+     *
+     * NOTE: this function does NOT check if the attesters are CURRENTLY ACTIVE.
+     *
+     * @param _attesters  - The attesters to lookup
+     *
+     * @return The G1 public keys of the attesters
+     */
+    function getG1PublicKeysFromAddresses(address[] memory _attesters)
+        external
+        view
+        override(IGSE)
+        returns (G1Point[] memory)
+    {
+        G1Point[] memory keys = new G1Point[](_attesters.length);
+        for (uint256 i = 0; i < _attesters.length; i++) {
+            keys[i] = configOf[_attesters[i]].publicKey;
+        }
+
+        return keys;
+    }
+
+    function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
+        external
+        view
+        override(IGSE)
+        returns (address)
+    {
+        uint256[] memory indices = new uint256[](1);
+        indices[0] = _index;
+        return _getAddressFromIndicesAtTimestamp(_instance, indices, _timestamp)[0];
+    }
+
+    function getPowerUsed(address _delegatee, uint256 _proposalId) external view override(IGSE) returns (uint256) {
+        return delegation.getPowerUsed(_delegatee, _proposalId);
+    }
+
+    function getBonusInstanceAddress() external pure override(IGSE) returns (address) {
+        return BONUS_INSTANCE_ADDRESS;
+    }
+
+    function getVotingPowerAt(address _delegatee, Timestamp _timestamp) public view override(IGSE) returns (uint256) {
+        return delegation.getVotingPowerAt(_delegatee, _timestamp);
+    }
+
+    /**
+     * @notice  Get the number of effective attesters at the instance at the time of `_timestamp`
+     *          (including the bonus instance)
+     *
+     * @param _instance   - The instance to look at
+     * @param _timestamp  - The timestamp to lookup
+     *
+     * @return The number of effective attesters at the instance at the time of `_timestamp`
+     */
+    function getAttesterCountAtTime(address _instance, Timestamp _timestamp)
+        public
+        view
+        override(IGSE)
+        returns (uint256)
+    {
+        InstanceAttesterRegistry storage store = instances[_instance];
+        uint32 timestamp = Timestamp.unwrap(_timestamp).toUint32();
+
+        uint256 count = store.attesters.lengthAtTimestamp(timestamp);
+        if (getLatestRollupAt(_timestamp) == _instance) {
+            count += instances[BONUS_INSTANCE_ADDRESS].attesters.lengthAtTimestamp(timestamp);
+        }
+
+        return count;
+    }
+
+    /**
+     * @notice  Get the addresses of the attesters at the instance at the time of `_timestamp`
+     *
+     * @dev
+     *
+     * @param _instance   - The instance to look at
+     * @param _indices    - The indices of the attesters to lookup
+     * @param _timestamp  - The timestamp to lookup
+     *
+     * @return The addresses of the attesters at the instance at the time of `_timestamp`
+     */
+    function _getAddressFromIndicesAtTimestamp(address _instance, uint256[] memory _indices, Timestamp _timestamp)
+        internal
+        view
+        returns (address[] memory)
+    {
+        address[] memory attesters = new address[](_indices.length);
+
+        // Note: This function could get called where _instance is the bonus instance.
+        // This is okay, because we know that in this case, `isLatestRollup` will be false.
+        // So we won't double count.
+        InstanceAttesterRegistry storage instanceStore = instances[_instance];
+        InstanceAttesterRegistry storage bonusStore = instances[BONUS_INSTANCE_ADDRESS];
+        bool isLatestRollup = getLatestRollupAt(_timestamp) == _instance;
+
+        uint32 ts = Timestamp.unwrap(_timestamp).toUint32();
+
+        // The effective size of the set will be the size of the instance attesters, plus the size of the bonus attesters
+        // if the instance is the latest rollup. This will effectively work as one long list with [...instance, ...bonus]
+        uint256 storeSize = instanceStore.attesters.lengthAtTimestamp(ts);
+        uint256 canonicalSize = isLatestRollup ? bonusStore.attesters.lengthAtTimestamp(ts) : 0;
+        uint256 totalSize = storeSize + canonicalSize;
+
+        // We loop through the indices, and for each index we get the attester from the instance or bonus instance
+        // depending on value in the collective list [...instance, ...bonus]
+        for (uint256 i = 0; i < _indices.length; i++) {
+            uint256 index = _indices[i];
+            require(index < totalSize, Errors.GSE__OutOfBounds(index, totalSize));
+
+            // since we have ensured that the index is not out of bounds, we can use the unsafe function in
+            // `AddressSnapshotLib` to fetch if. We use the `recent` variant as we expect the attesters to
+            // mainly be from recent history when fetched during tx execution.
+
+            if (index < storeSize) {
+                attesters[i] = instanceStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index, ts);
+            } else if (isLatestRollup) {
+                attesters[i] = bonusStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index - storeSize, ts);
+            } else {
+                revert Errors.GSE__FatalError("SHOULD NEVER HAPPEN");
+            }
+        }
+
+        return attesters;
+    }
 }
 
 // None -> Does not exist in our setup
@@ -5420,17 +5449,17 @@ contract GSE is IGSE, GSECore {
 //     hit if slashes and going below the minimum
 // Exiting -> In the process of exiting the system
 enum Status_1 {
-  NONE,
-  VALIDATING,
-  ZOMBIE,
-  EXITING
+    NONE,
+    VALIDATING,
+    ZOMBIE,
+    EXITING
 }
 
 struct AttesterView {
-  Status_1 status;
-  uint256 effectiveBalance;
-  Exit exit;
-  AttesterConfig config;
+    Status_1 status;
+    uint256 effectiveBalance;
+    Exit exit;
+    AttesterConfig config;
 }
 
 /**
@@ -5438,88 +5467,88 @@ struct AttesterView {
  * @dev Used to store validator information in the entry queue before they are processed
  */
 struct DepositArgs {
-  address attester;
-  address withdrawer;
-  G1Point publicKeyInG1;
-  G2Point publicKeyInG2;
-  G1Point proofOfPossession;
-  bool moveWithLatestRollup;
+    address attester;
+    address withdrawer;
+    G1Point publicKeyInG1;
+    G2Point publicKeyInG2;
+    G1Point proofOfPossession;
+    bool moveWithLatestRollup;
 }
 
 interface IStaking is IStakingCore {
-  function getConfig(address _attester) external view returns (AttesterConfig memory);
-  function getExit(address _attester) external view returns (Exit memory);
-  function getAttesterAtIndex(uint256 _index) external view returns (address);
-  function getSlasher() external view returns (address);
-  function getPendingSlasher() external view returns (address slasher, Timestamp readyAt);
-  function getLegacySlasher() external view returns (address slasher, Timestamp authorizedUntil);
-  function getLocalEjectionThreshold() external view returns (uint256);
-  function getSlasherExecutionDelay() external view returns (uint256);
-  function getLegacySlasherDrainWindow() external view returns (uint256);
-  function getStakingAsset() external view returns (IERC20);
-  function getActivationThreshold() external view returns (uint256);
-  function getEjectionThreshold() external view returns (uint256);
-  function getExitDelay() external view returns (Timestamp);
-  function getGSE() external view returns (GSE);
-  function getAttesterView(address _attester) external view returns (AttesterView memory);
-  function getStatus(address _attester) external view returns (Status_1);
-  function getNextFlushableEpoch() external view returns (Epoch);
-  function getEntryQueueLength() external view returns (uint256);
-  function getEntryQueueAt(uint256 _index) external view returns (DepositArgs memory);
-  function getAvailableValidatorFlushes() external view returns (uint256);
-  function getIsBootstrapped() external view returns (bool);
+    function getConfig(address _attester) external view returns (AttesterConfig memory);
+    function getExit(address _attester) external view returns (Exit memory);
+    function getAttesterAtIndex(uint256 _index) external view returns (address);
+    function getSlasher() external view returns (address);
+    function getPendingSlasher() external view returns (address slasher, Timestamp readyAt);
+    function getLegacySlasher() external view returns (address slasher, Timestamp authorizedUntil);
+    function getLocalEjectionThreshold() external view returns (uint256);
+    function getSlasherExecutionDelay() external view returns (uint256);
+    function getLegacySlasherDrainWindow() external view returns (uint256);
+    function getStakingAsset() external view returns (IERC20);
+    function getActivationThreshold() external view returns (uint256);
+    function getEjectionThreshold() external view returns (uint256);
+    function getExitDelay() external view returns (Timestamp);
+    function getGSE() external view returns (GSE);
+    function getAttesterView(address _attester) external view returns (AttesterView memory);
+    function getStatus(address _attester) external view returns (Status_1);
+    function getNextFlushableEpoch() external view returns (Epoch);
+    function getEntryQueueLength() external view returns (uint256);
+    function getEntryQueueAt(uint256 _index) external view returns (DepositArgs memory);
+    function getAvailableValidatorFlushes() external view returns (uint256);
+    function getIsBootstrapped() external view returns (bool);
 }
 
 interface IValidatorSelectionCore {
-  event EscapeHatchSet(address escapeHatch);
+    event EscapeHatchSet(address escapeHatch);
 
-  function setupEpoch() external;
-  function checkpointRandao() external;
-  function setEscapeHatch(address _escapeHatch) external;
+    function setupEpoch() external;
+    function checkpointRandao() external;
+    function setEscapeHatch(address _escapeHatch) external;
 }
 
 interface IEmperor {
-  // Not view because it might rely on transient storage.
-  // Calls are essentially trusted
-  function getCurrentProposer() external returns (address);
+    // Not view because it might rely on transient storage.
+    // Calls are essentially trusted
+    function getCurrentProposer() external returns (address);
 
-  function getCurrentSlot() external view returns (Slot);
+    function getCurrentSlot() external view returns (Slot);
 }
 
 interface IValidatorSelection is IValidatorSelectionCore, IEmperor {
-  function getProposerAt(Timestamp _ts) external returns (address);
+    function getProposerAt(Timestamp _ts) external returns (address);
 
-  // Non view as uses transient storage
-  function getCurrentEpochCommittee() external returns (address[] memory);
-  function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
-  function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
-  function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
-  function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
+    // Non view as uses transient storage
+    function getCurrentEpochCommittee() external returns (address[] memory);
+    function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
+    function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
+    function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
+    function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
 
-  // Stable
-  function getCurrentEpoch() external view returns (Epoch);
+    // Stable
+    function getCurrentEpoch() external view returns (Epoch);
 
-  // Consider removing below this point
-  function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
-  function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
+    // Consider removing below this point
+    function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
+    function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
 
-  function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
-  function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
-  function getLagInEpochsForValidatorSet() external view returns (uint256);
-  function getLagInEpochsForRandao() external view returns (uint256);
-  function getCurrentSampleSeed() external view returns (uint256);
+    function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
+    function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
+    function getLagInEpochsForValidatorSet() external view returns (uint256);
+    function getLagInEpochsForRandao() external view returns (uint256);
+    function getCurrentSampleSeed() external view returns (uint256);
 
-  function getEpochAt(Timestamp _ts) external view returns (Epoch);
-  function getSlotAt(Timestamp _ts) external view returns (Slot);
-  function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
+    function getEpochAt(Timestamp _ts) external view returns (Epoch);
+    function getSlotAt(Timestamp _ts) external view returns (Slot);
+    function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
 
-  function getGenesisTime() external view returns (Timestamp);
-  function getSlotDuration() external view returns (uint256);
-  function getEpochDuration() external view returns (uint256);
-  function getTargetCommitteeSize() external view returns (uint256);
+    function getGenesisTime() external view returns (Timestamp);
+    function getSlotDuration() external view returns (uint256);
+    function getEpochDuration() external view returns (uint256);
+    function getTargetCommitteeSize() external view returns (uint256);
 
-  function getEscapeHatch() external view returns (IEscapeHatch);
-  function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
+    function getEscapeHatch() external view returns (IEscapeHatch);
+    function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
 }
 
 type Bps is uint32;
@@ -5528,16 +5557,16 @@ type Bps is uint32;
 /// @dev `rewardDistributor` and `booster` are deliberately *not* in this struct: they are
 ///      set once at construction and immutable thereafter.
 struct MutableRewardConfig {
-  Bps sequencerBps;
-  uint96 checkpointReward;
+    Bps sequencerBps;
+    uint96 checkpointReward;
 }
 
 function addEthValue(EthValue _a, EthValue _b) pure returns (EthValue) {
-  return EthValue.wrap(EthValue.unwrap(_a) + EthValue.unwrap(_b));
+    return EthValue.wrap(EthValue.unwrap(_a) + EthValue.unwrap(_b));
 }
 
 function subEthValue(EthValue _a, EthValue _b) pure returns (EthValue) {
-  return EthValue.wrap(EthValue.unwrap(_a) - EthValue.unwrap(_b));
+    return EthValue.wrap(EthValue.unwrap(_a) - EthValue.unwrap(_b));
 }
 
 using {addEthValue as +, subEthValue as -} for EthValue global;
@@ -5546,120 +5575,120 @@ using {addEthValue as +, subEthValue as -} for EthValue global;
 type EthValue is uint256;
 
 struct OracleInput {
-  int256 feeAssetPriceModifier;
+    int256 feeAssetPriceModifier;
 }
 
 struct GasFees {
-  uint128 feePerDaGas;
-  uint128 feePerL2Gas;
+    uint128 feePerDaGas;
+    uint128 feePerL2Gas;
 }
 
 struct ProposedHeader {
-  bytes32 lastArchiveRoot;
-  bytes32 blockHeadersHash;
-  bytes32 blobsHash;
-  bytes32 inHash;
-  bytes32 outHash;
-  Slot slotNumber;
-  Timestamp timestamp;
-  address coinbase;
-  bytes32 feeRecipient;
-  GasFees gasFees;
-  uint256 totalManaUsed;
-  uint256 accumulatedFees;
+    bytes32 lastArchiveRoot;
+    bytes32 blockHeadersHash;
+    bytes32 blobsHash;
+    bytes32 inHash;
+    bytes32 outHash;
+    Slot slotNumber;
+    Timestamp timestamp;
+    address coinbase;
+    bytes32 feeRecipient;
+    GasFees gasFees;
+    uint256 totalManaUsed;
+    uint256 accumulatedFees;
 }
 
 struct ProposeArgs {
-  bytes32 archive;
-  OracleInput oracleInput;
-  ProposedHeader header;
+    bytes32 archive;
+    OracleInput oracleInput;
+    ProposedHeader header;
 }
 
 struct CommitteeAttestations {
-  // bitmap of which indices are signatures
-  bytes signatureIndices;
-  // tightly packed signatures and addresses
-  bytes signaturesOrAddresses;
+    // bitmap of which indices are signatures
+    bytes signatureIndices;
+    // tightly packed signatures and addresses
+    bytes signaturesOrAddresses;
 }
 
 // Signature
 struct Signature {
-  uint8 v;
-  bytes32 r;
-  bytes32 s;
+    uint8 v;
+    bytes32 r;
+    bytes32 s;
 }
 
 struct PublicInputArgs {
-  bytes32 previousArchive;
-  bytes32 endArchive;
-  bytes32 outHash;
-  address proverId;
+    bytes32 previousArchive;
+    bytes32 endArchive;
+    bytes32 outHash;
+    address proverId;
 }
 
 struct SubmitEpochRootProofArgs {
-  uint256 start; // inclusive
-  uint256 end; // inclusive
-  PublicInputArgs args;
-  ProposedHeader[] headers; // Must match what was proposed by the committee
-  CommitteeAttestations attestations; // attestations for the last checkpoint in epoch
-  bytes blobInputs;
-  bytes proof;
+    uint256 start; // inclusive
+    uint256 end; // inclusive
+    PublicInputArgs args;
+    ProposedHeader[] headers; // Must match what was proposed by the committee
+    CommitteeAttestations attestations; // attestations for the last checkpoint in epoch
+    bytes blobInputs;
+    bytes proof;
 }
 
 interface IRollupCore {
-  event CheckpointProposed(
-    uint256 indexed checkpointNumber,
-    bytes32 indexed archive,
-    bytes32[] versionedBlobHashes,
-    bytes32 payloadDigest,
-    bytes32 attestationsHash
-  );
-  event L2ProofVerified(uint256 indexed checkpointNumber, address indexed proverId);
-  event CheckpointInvalidated(uint256 indexed checkpointNumber);
-  event RewardConfigUpdated(MutableRewardConfig rewardConfig);
-  event ManaTargetUpdated(uint256 indexed manaTarget);
-  event PrunedPending(uint256 provenCheckpointNumber, uint256 pendingCheckpointNumber);
+    event CheckpointProposed(
+        uint256 indexed checkpointNumber,
+        bytes32 indexed archive,
+        bytes32[] versionedBlobHashes,
+        bytes32 payloadDigest,
+        bytes32 attestationsHash
+    );
+    event L2ProofVerified(uint256 indexed checkpointNumber, address indexed proverId);
+    event CheckpointInvalidated(uint256 indexed checkpointNumber);
+    event RewardConfigUpdated(MutableRewardConfig rewardConfig);
+    event ManaTargetUpdated(uint256 indexed manaTarget);
+    event PrunedPending(uint256 provenCheckpointNumber, uint256 pendingCheckpointNumber);
 
-  function claimSequencerRewards(address _recipient) external returns (uint256);
-  function claimProverRewards(address _recipient, Epoch[] memory _epochs) external returns (uint256);
+    function claimSequencerRewards(address _recipient) external returns (uint256);
+    function claimProverRewards(address _recipient, Epoch[] memory _epochs) external returns (uint256);
 
-  function prune() external;
-  function updateL1GasFeeOracle() external;
+    function prune() external;
+    function updateL1GasFeeOracle() external;
 
-  function setProvingCostPerMana(EthValue _provingCostPerMana) external;
+    function setProvingCostPerMana(EthValue _provingCostPerMana) external;
 
-  function propose(
-    ProposeArgs calldata _args,
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    Signature memory _attestationsAndSignersSignature,
-    bytes calldata _blobInput
-  ) external;
+    function propose(
+        ProposeArgs calldata _args,
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        Signature memory _attestationsAndSignersSignature,
+        bytes calldata _blobInput
+    ) external;
 
-  function submitEpochRootProof(SubmitEpochRootProofArgs calldata _args) external;
+    function submitEpochRootProof(SubmitEpochRootProofArgs calldata _args) external;
 
-  function invalidateBadAttestation(
-    uint256 _checkpointNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee,
-    uint256 _invalidIndex
-  ) external;
+    function invalidateBadAttestation(
+        uint256 _checkpointNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee,
+        uint256 _invalidIndex
+    ) external;
 
-  function invalidateInsufficientAttestations(
-    uint256 _checkpointNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee
-  ) external;
+    function invalidateInsufficientAttestations(
+        uint256 _checkpointNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee
+    ) external;
 
-  function setRewardConfig(MutableRewardConfig memory _config) external;
-  function updateManaTarget(uint256 _manaTarget) external;
+    function setRewardConfig(MutableRewardConfig memory _config) external;
+    function updateManaTarget(uint256 _manaTarget) external;
 
-  // solhint-disable-next-line func-name-mixedcase
-  function L1_BLOCK_AT_GENESIS() external view returns (uint256);
+    // solhint-disable-next-line func-name-mixedcase
+    function L1_BLOCK_AT_GENESIS() external view returns (uint256);
 }
 
 interface IHaveVersion {
-  function getVersion() external view returns (uint256);
+    function getVersion() external view returns (uint256);
 }
 
 /**
@@ -5667,24 +5696,24 @@ interface IHaveVersion {
  * @param ignoreDA - True will ignore DA check, otherwise checks
  */
 struct CheckpointHeaderValidationFlags {
-  bool ignoreDA;
+    bool ignoreDA;
 }
 
 struct ChainTips {
-  uint256 pending;
-  uint256 proven;
+    uint256 pending;
+    uint256 proven;
 }
 
 struct ManaMinFeeComponents {
-  uint256 congestionCost;
-  uint256 congestionMultiplier;
-  uint256 sequencerCost;
-  uint256 proverCost;
+    uint256 congestionCost;
+    uint256 congestionMultiplier;
+    uint256 sequencerCost;
+    uint256 proverCost;
 }
 
 struct L1FeeData {
-  uint256 baseFee;
-  uint256 blobFee;
+    uint256 baseFee;
+    uint256 blobFee;
 }
 
 /*
@@ -5702,11 +5731,11 @@ struct L1FeeData {
 type EthPerFeeAssetE12 is uint256;
 
 struct FeeHeader {
-  uint256 excessMana;
-  uint256 manaUsed;
-  uint256 ethPerFeeAsset;
-  uint256 congestionCost;
-  uint256 proverCost;
+    uint256 excessMana;
+    uint256 manaUsed;
+    uint256 ethPerFeeAsset;
+    uint256 congestionCost;
+    uint256 proverCost;
 }
 
 /**
@@ -5720,14 +5749,14 @@ struct FeeHeader {
  * @param slotNumber - This checkpoint's slot
  */
 struct CheckpointLog {
-  bytes32 archive;
-  bytes32 headerHash;
-  bytes32 blobCommitmentsHash;
-  bytes32 outHash;
-  bytes32 attestationsHash;
-  bytes32 payloadDigest;
-  Slot slotNumber;
-  FeeHeader feeHeader;
+    bytes32 archive;
+    bytes32 headerHash;
+    bytes32 blobCommitmentsHash;
+    bytes32 outHash;
+    bytes32 attestationsHash;
+    bytes32 payloadDigest;
+    Slot slotNumber;
+    FeeHeader feeHeader;
 }
 
 // Represents a value denominated in the fee asset (e.g., AZTEC token).
@@ -5739,66 +5768,66 @@ type FeeAssetValue is uint256;
  * @notice Library that contains data structures used throughout the Aztec protocol
  */
 library DataStructures {
-  // docs:start:l1_actor
-  /**
-   * @notice Actor on L1.
-   * @param actor - The address of the actor
-   * @param chainId - The chainId of the actor
-   */
-  struct L1Actor {
-    address actor;
-    uint256 chainId;
-  }
+    // docs:start:l1_actor
+    /**
+     * @notice Actor on L1.
+     * @param actor - The address of the actor
+     * @param chainId - The chainId of the actor
+     */
+    struct L1Actor {
+        address actor;
+        uint256 chainId;
+    }
 
-  // docs:end:l1_actor
+    // docs:end:l1_actor
 
-  // docs:start:l2_actor
-  /**
-   * @notice Actor on L2.
-   * @param actor - The aztec address of the actor
-   * @param version - Ahe Aztec instance the actor is on
-   */
-  struct L2Actor {
-    bytes32 actor;
-    uint256 version;
-  }
+    // docs:start:l2_actor
+    /**
+     * @notice Actor on L2.
+     * @param actor - The aztec address of the actor
+     * @param version - Ahe Aztec instance the actor is on
+     */
+    struct L2Actor {
+        bytes32 actor;
+        uint256 version;
+    }
 
-  // docs:end:l2_actor
+    // docs:end:l2_actor
 
-  // docs:start:l1_to_l2_msg
-  /**
-   * @notice Struct containing a message from L1 to L2
-   * @param sender - The sender of the message
-   * @param recipient - The recipient of the message
-   * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
-   * @param secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed on
-   * L2).
-   * @param index - Global leaf index on the L1 to L2 messages tree.
-   */
-  struct L1ToL2Msg {
-    L1Actor sender;
-    L2Actor recipient;
-    bytes32 content;
-    bytes32 secretHash;
-    uint256 index;
-  }
+    // docs:start:l1_to_l2_msg
+    /**
+     * @notice Struct containing a message from L1 to L2
+     * @param sender - The sender of the message
+     * @param recipient - The recipient of the message
+     * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
+     * @param secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed on
+     * L2).
+     * @param index - Global leaf index on the L1 to L2 messages tree.
+     */
+    struct L1ToL2Msg {
+        L1Actor sender;
+        L2Actor recipient;
+        bytes32 content;
+        bytes32 secretHash;
+        uint256 index;
+    }
 
-  // docs:end:l1_to_l2_msg
+    // docs:end:l1_to_l2_msg
 
-  // docs:start:l2_to_l1_msg
-  /**
-   * @notice Struct containing a message from L2 to L1
-   * @param sender - The sender of the message
-   * @param recipient - The recipient of the message
-   * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
-   * @dev Not to be confused with L2ToL1Message in Noir circuits
-   */
-  struct L2ToL1Msg {
-    DataStructures.L2Actor sender;
-    DataStructures.L1Actor recipient;
-    bytes32 content;
-  }
-  // docs:end:l2_to_l1_msg
+    // docs:start:l2_to_l1_msg
+    /**
+     * @notice Struct containing a message from L2 to L1
+     * @param sender - The sender of the message
+     * @param recipient - The recipient of the message
+     * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
+     * @dev Not to be confused with L2ToL1Message in Noir circuits
+     */
+    struct L2ToL1Msg {
+        DataStructures.L2Actor sender;
+        DataStructures.L1Actor recipient;
+        bytes32 content;
+    }
+    // docs:end:l2_to_l1_msg
 }
 
 /**
@@ -5807,104 +5836,110 @@ library DataStructures {
  * @notice Lives on L1 and is used to pass messages into the rollup from L1.
  */
 interface IInbox {
-  struct InboxState {
-    // Rolling hash of all messages inserted into the inbox.
-    // Used by clients to check for consistency.
-    bytes16 rollingHash;
-    // This value is not used much by the contract, but it is useful for synching the node faster
-    // as it can more easily figure out if it can just skip looking for events for a time period.
-    uint64 totalMessagesInserted;
-    // Number of a tree which is currently being filled
-    uint64 inProgress;
-  }
+    struct InboxState {
+        // Rolling hash of all messages inserted into the inbox.
+        // Used by clients to check for consistency.
+        bytes16 rollingHash;
+        // This value is not used much by the contract, but it is useful for synching the node faster
+        // as it can more easily figure out if it can just skip looking for events for a time period.
+        uint64 totalMessagesInserted;
+        // Number of a tree which is currently being filled
+        uint64 inProgress;
+    }
 
-  /**
-   * @notice Emitted when a message is sent
-   * @param checkpointNumber - The checkpoint number in which the message is included
-   * @param index - The index of the message in the L1 to L2 messages tree
-   * @param hash - The hash of the message
-   * @param rollingHash - The rolling hash of all messages inserted into the inbox
-   */
-  event MessageSent(uint256 indexed checkpointNumber, uint256 index, bytes32 indexed hash, bytes16 rollingHash);
+    /**
+     * @notice Emitted when a message is sent
+     * @param checkpointNumber - The checkpoint number in which the message is included
+     * @param index - The index of the message in the L1 to L2 messages tree
+     * @param hash - The hash of the message
+     * @param rollingHash - The rolling hash of all messages inserted into the inbox
+     */
+    event MessageSent(uint256 indexed checkpointNumber, uint256 index, bytes32 indexed hash, bytes16 rollingHash);
 
-  // docs:start:send_l1_to_l2_message
-  /**
-   * @notice Inserts a new message into the Inbox
-   * @dev Emits `MessageSent` with data for easy access by the sequencer
-   * @param _recipient - The recipient of the message
-   * @param _content - The content of the message (application specific)
-   * @param _secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed
-   * on L2)
-   * @return The key of the message in the set and its leaf index in the tree
-   */
-  function sendL2Message(DataStructures.L2Actor memory _recipient, bytes32 _content, bytes32 _secretHash)
-    external
-    returns (bytes32, uint256);
-  // docs:end:send_l1_to_l2_message
+    // docs:start:send_l1_to_l2_message
+    /**
+     * @notice Inserts a new message into the Inbox
+     * @dev Emits `MessageSent` with data for easy access by the sequencer
+     * @param _recipient - The recipient of the message
+     * @param _content - The content of the message (application specific)
+     * @param _secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed
+     * on L2)
+     * @return The key of the message in the set and its leaf index in the tree
+     */
+    function sendL2Message(DataStructures.L2Actor memory _recipient, bytes32 _content, bytes32 _secretHash)
+        external
+        returns (bytes32, uint256);
+    // docs:end:send_l1_to_l2_message
 
-  // docs:start:consume
-  /**
-   * @notice Consumes the current tree, and starts a new one if needed
-   * @dev Only callable by the rollup contract
-   * @dev In the first iteration we return empty tree root because first checkpoint's messages tree is always
-   * empty because there has to be a 1 checkpoint lag to prevent sequencer DOS attacks
-   *
-   * @param _toConsume - The checkpoint number to consume
-   *
-   * @return The root of the consumed tree
-   */
-  function consume(uint256 _toConsume) external returns (bytes32);
-  // docs:end:consume
+    // docs:start:consume
+    /**
+     * @notice Consumes the current tree, and starts a new one if needed
+     * @dev Only callable by the rollup contract
+     * @dev In the first iteration we return empty tree root because first checkpoint's messages tree is always
+     * empty because there has to be a 1 checkpoint lag to prevent sequencer DOS attacks
+     *
+     * @param _toConsume - The checkpoint number to consume
+     *
+     * @return The root of the consumed tree
+     */
+    function consume(uint256 _toConsume) external returns (bytes32);
+    // docs:end:consume
 
-  function getFeeAssetPortal() external view returns (address);
+    function getFeeAssetPortal() external view returns (address);
 
-  function getRoot(uint256 _checkpointNumber) external view returns (bytes32);
+    function getRoot(uint256 _checkpointNumber) external view returns (bytes32);
 
-  function getState() external view returns (InboxState memory);
+    function getState() external view returns (InboxState memory);
 
-  function getTotalMessagesInserted() external view returns (uint64);
+    function getTotalMessagesInserted() external view returns (uint64);
 
-  function getInProgress() external view returns (uint64);
+    function getInProgress() external view returns (uint64);
 }
 
 interface IFeeJuicePortal {
-  event DepositToAztecPublic(bytes32 indexed to, uint256 amount, bytes32 secretHash, bytes32 key, uint256 index);
-  event FeesDistributed(address indexed to, uint256 amount);
+    event DepositToAztecPublic(bytes32 indexed to, uint256 amount, bytes32 secretHash, bytes32 key, uint256 index);
+    event FeesDistributed(address indexed to, uint256 amount);
 
-  function distributeFees(address _to, uint256 _amount) external;
-  function depositToAztecPublic(bytes32 _to, uint256 _amount, bytes32 _secretHash) external returns (bytes32, uint256);
+    function distributeFees(address _to, uint256 _amount) external;
+    function depositToAztecPublic(bytes32 _to, uint256 _amount, bytes32 _secretHash)
+        external
+        returns (bytes32, uint256);
 
-  // solhint-disable-next-line func-name-mixedcase
-  function UNDERLYING() external view returns (IERC20);
-  // solhint-disable-next-line func-name-mixedcase
-  function L2_TOKEN_ADDRESS() external view returns (bytes32);
-  // solhint-disable-next-line func-name-mixedcase
-  function VERSION() external view returns (uint256);
-  // solhint-disable-next-line func-name-mixedcase
-  function INBOX() external view returns (IInbox);
-  // solhint-disable-next-line func-name-mixedcase
-  function ROLLUP() external view returns (IRollup);
+    // solhint-disable-next-line func-name-mixedcase
+    function UNDERLYING() external view returns (IERC20);
+    // solhint-disable-next-line func-name-mixedcase
+    function L2_TOKEN_ADDRESS() external view returns (bytes32);
+    // solhint-disable-next-line func-name-mixedcase
+    function VERSION() external view returns (uint256);
+    // solhint-disable-next-line func-name-mixedcase
+    function INBOX() external view returns (IInbox);
+    // solhint-disable-next-line func-name-mixedcase
+    function ROLLUP() external view returns (IRollup);
 }
 
 interface IRewardDistributor {
-  /// @notice Emitted when a funder earmarks ASSET for a specific recipient via `subsidizeAddress`.
-  event Subsidized(address indexed funder, address indexed recipient, uint256 amount);
+    /// @notice Emitted when a funder earmarks ASSET for a specific recipient via `subsidizeAddress`.
+    event Subsidized(address indexed funder, address indexed recipient, uint256 amount);
 
-  /// @notice Emitted whenever `claim` or `recoverFrom` debits the distributor.
-  /// @dev `implicitAmountUsed` is the share drawn from the canonical-rollup implicit pool,
-  ///      `earmarkedAmountUsed` is the share drawn from `from`'s earmarked balance, and the two
-  ///      always sum to `amount`. Lets a log-only indexer reconstruct bucket-by-bucket history
-  ///      without polling storage at every block.
-  event Distributed(
-    address indexed from, address indexed to, uint256 amount, uint256 implicitAmountUsed, uint256 earmarkedAmountUsed
-  );
+    /// @notice Emitted whenever `claim` or `recoverFrom` debits the distributor.
+    /// @dev `implicitAmountUsed` is the share drawn from the canonical-rollup implicit pool,
+    ///      `earmarkedAmountUsed` is the share drawn from `from`'s earmarked balance, and the two
+    ///      always sum to `amount`. Lets a log-only indexer reconstruct bucket-by-bucket history
+    ///      without polling storage at every block.
+    event Distributed(
+        address indexed from,
+        address indexed to,
+        uint256 amount,
+        uint256 implicitAmountUsed,
+        uint256 earmarkedAmountUsed
+    );
 
-  function claim(address _to, uint256 _amount) external;
-  function recoverFrom(address _from, address _to, uint256 _amount) external;
-  function recoverWrongAsset(address _asset, address _to, uint256 _amount) external;
-  function subsidizeAddress(address _recipient, uint256 _amount) external;
-  function canonicalRollup() external view returns (address);
-  function availableTo(address _recipient) external view returns (uint256);
+    function claim(address _to, uint256 _amount) external;
+    function recoverFrom(address _from, address _to, uint256 _amount) external;
+    function recoverWrongAsset(address _asset, address _to, uint256 _amount) external;
+    function subsidizeAddress(address _recipient, uint256 _amount) external;
+    function canonicalRollup() external view returns (address);
+    function availableTo(address _recipient) external view returns (uint256);
 }
 
 // File-level integer literal so it can be used as a fixed-size array length. MUST equal
@@ -5918,234 +5953,237 @@ uint256 constant MAX_CHECKPOINTS_PER_EPOCH = 32;
  * and will be consumed by the portal contracts.
  */
 interface IOutbox {
-  event RootAdded(Epoch indexed epoch, uint256 indexed numCheckpointsInEpoch, bytes32 root);
-  event MessageConsumed(
-    Epoch indexed epoch,
-    bytes32 indexed root,
-    bytes32 indexed messageHash,
-    uint256 leafId,
-    uint256 numCheckpointsInEpoch
-  );
+    event RootAdded(Epoch indexed epoch, uint256 indexed numCheckpointsInEpoch, bytes32 root);
+    event MessageConsumed(
+        Epoch indexed epoch,
+        bytes32 indexed root,
+        bytes32 indexed messageHash,
+        uint256 leafId,
+        uint256 numCheckpointsInEpoch
+    );
 
-  // docs:start:outbox_insert
-  /**
-   * @notice Inserts the root of a merkle tree containing all of the L2 to L1 messages in an epoch
-   *         after a proof covering the first `_numCheckpointsInEpoch` checkpoints of that epoch lands.
-   * @dev Only callable by the rollup contract
-   * @dev Emits `RootAdded` upon inserting the root successfully
-   * @dev Successive inserts for the same epoch with larger `_numCheckpointsInEpoch` values do not
-   * disturb earlier entries, so users with witnesses built against an earlier partial proof can still
-   * consume them.
-   * @param _epoch - The epoch in which the L2 to L1 messages reside
-   * @param _numCheckpointsInEpoch - The number of checkpoints the inserting proof covered in this
-   * epoch. Must be in [1, MAX_CHECKPOINTS_PER_EPOCH].
-   * @param _root - The merkle root of the tree where all the L2 to L1 messages are leaves
-   */
-  function insert(Epoch _epoch, uint256 _numCheckpointsInEpoch, bytes32 _root) external;
-  // docs:end:outbox_insert
+    // docs:start:outbox_insert
+    /**
+     * @notice Inserts the root of a merkle tree containing all of the L2 to L1 messages in an epoch
+     *         after a proof covering the first `_numCheckpointsInEpoch` checkpoints of that epoch lands.
+     * @dev Only callable by the rollup contract
+     * @dev Emits `RootAdded` upon inserting the root successfully
+     * @dev Successive inserts for the same epoch with larger `_numCheckpointsInEpoch` values do not
+     * disturb earlier entries, so users with witnesses built against an earlier partial proof can still
+     * consume them.
+     * @param _epoch - The epoch in which the L2 to L1 messages reside
+     * @param _numCheckpointsInEpoch - The number of checkpoints the inserting proof covered in this
+     * epoch. Must be in [1, MAX_CHECKPOINTS_PER_EPOCH].
+     * @param _root - The merkle root of the tree where all the L2 to L1 messages are leaves
+     */
+    function insert(Epoch _epoch, uint256 _numCheckpointsInEpoch, bytes32 _root) external;
+    // docs:end:outbox_insert
 
-  // docs:start:outbox_consume
-  /**
-   * @notice Consumes an entry from the Outbox
-   * @dev Only useable by portals / recipients of messages
-   * @dev Emits `MessageConsumed` when consuming messages
-   * @param _message - The L2 to L1 message
-   * @param _epoch - The epoch that contains the message we want to consume
-   * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root this
-   * consume verifies against. The caller's witness path must have been built against the epoch tree
-   * padded to that number of real checkpoints.
-   * @param _leafIndex - The index at the level in the epoch message tree where the message is located
-   * @param _path - The sibling path used to prove inclusion of the message, the _path length depends
-   * on the location of the L2 to L1 message in the epoch message tree.
-   */
-  function consume(
-    DataStructures.L2ToL1Msg calldata _message,
-    Epoch _epoch,
-    uint256 _numCheckpointsInEpoch,
-    uint256 _leafIndex,
-    bytes32[] calldata _path
-  ) external;
-  // docs:end:outbox_consume
+    // docs:start:outbox_consume
+    /**
+     * @notice Consumes an entry from the Outbox
+     * @dev Only useable by portals / recipients of messages
+     * @dev Emits `MessageConsumed` when consuming messages
+     * @param _message - The L2 to L1 message
+     * @param _epoch - The epoch that contains the message we want to consume
+     * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root this
+     * consume verifies against. The caller's witness path must have been built against the epoch tree
+     * padded to that number of real checkpoints.
+     * @param _leafIndex - The index at the level in the epoch message tree where the message is located
+     * @param _path - The sibling path used to prove inclusion of the message, the _path length depends
+     * on the location of the L2 to L1 message in the epoch message tree.
+     */
+    function consume(
+        DataStructures.L2ToL1Msg calldata _message,
+        Epoch _epoch,
+        uint256 _numCheckpointsInEpoch,
+        uint256 _leafIndex,
+        bytes32[] calldata _path
+    ) external;
+    // docs:end:outbox_consume
 
-  // docs:start:outbox_has_message_been_consumed_at_epoch_and_index
-  /**
-   * @notice Checks to see if an L2 to L1 message in a specific epoch has been consumed
-   * @dev - This function does not throw. Out-of-bounds access is considered valid, but will always return false
-   * @param _epoch - The epoch that contains the message we want to check
-   * @param _leafId - The unique id of the message leaf
-   */
-  function hasMessageBeenConsumedAtEpoch(Epoch _epoch, uint256 _leafId) external view returns (bool);
-  // docs:end:outbox_has_message_been_consumed_at_epoch_and_index
+    // docs:start:outbox_has_message_been_consumed_at_epoch_and_index
+    /**
+     * @notice Checks to see if an L2 to L1 message in a specific epoch has been consumed
+     * @dev - This function does not throw. Out-of-bounds access is considered valid, but will always return false
+     * @param _epoch - The epoch that contains the message we want to check
+     * @param _leafId - The unique id of the message leaf
+     */
+    function hasMessageBeenConsumedAtEpoch(Epoch _epoch, uint256 _leafId) external view returns (bool);
+    // docs:end:outbox_has_message_been_consumed_at_epoch_and_index
 
-  /**
-   * @notice  Fetch the root data for a given epoch and partial-proof depth.
-   *          Returns 0 if no proof has been inserted at that depth.
-   *
-   * @param _epoch - The epoch to fetch the root data for
-   * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root to fetch
-   *
-   * @return bytes32 - The root of the merkle tree containing the L2 to L1 messages
-   */
-  function getRootData(Epoch _epoch, uint256 _numCheckpointsInEpoch) external view returns (bytes32);
+    /**
+     * @notice  Fetch the root data for a given epoch and partial-proof depth.
+     *          Returns 0 if no proof has been inserted at that depth.
+     *
+     * @param _epoch - The epoch to fetch the root data for
+     * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root to fetch
+     *
+     * @return bytes32 - The root of the merkle tree containing the L2 to L1 messages
+     */
+    function getRootData(Epoch _epoch, uint256 _numCheckpointsInEpoch) external view returns (bytes32);
 
-  /**
-   * @notice  Fetch every root stored for a given epoch. The returned array has
-   *          MAX_CHECKPOINTS_PER_EPOCH entries; slot `i` holds the root for
-   *          `numCheckpointsInEpoch = i + 1`, or zero if no proof of that depth has been inserted.
-   *
-   * @param _epoch - The epoch to fetch the roots for
-   *
-   * @return bytes32[] - The roots stored for this epoch.
-   */
-  function getRoots(Epoch _epoch) external view returns (bytes32[MAX_CHECKPOINTS_PER_EPOCH] memory);
+    /**
+     * @notice  Fetch every root stored for a given epoch. The returned array has
+     *          MAX_CHECKPOINTS_PER_EPOCH entries; slot `i` holds the root for
+     *          `numCheckpointsInEpoch = i + 1`, or zero if no proof of that depth has been inserted.
+     *
+     * @param _epoch - The epoch to fetch the roots for
+     *
+     * @return bytes32[] - The roots stored for this epoch.
+     */
+    function getRoots(Epoch _epoch) external view returns (bytes32[MAX_CHECKPOINTS_PER_EPOCH] memory);
 }
 
 interface IVerifier {
-  function verify(bytes calldata _proof, bytes32[] calldata _publicInputs) external view returns (bool);
+    function verify(bytes calldata _proof, bytes32[] calldata _publicInputs) external view returns (bool);
 }
 
 interface IBoosterCore {
-  function updateAndGetShares(address _prover) external returns (uint256);
-  function getSharesFor(address _prover) external view returns (uint256);
+    function updateAndGetShares(address _prover) external returns (uint256);
+    function getSharesFor(address _prover) external view returns (uint256);
 }
 
 struct RewardConfig {
-  IRewardDistributor rewardDistributor;
-  Bps sequencerBps;
-  IBoosterCore booster;
-  uint96 checkpointReward;
+    IRewardDistributor rewardDistributor;
+    Bps sequencerBps;
+    IBoosterCore booster;
+    uint96 checkpointReward;
 }
 
 interface IRollup is IRollupCore, IHaveVersion {
-  function validateHeaderWithAttestations(
-    ProposedHeader calldata _header,
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    Signature memory _attestationsAndSignersSignature,
-    bytes32 _digest,
-    bytes32 _blobsHash,
-    CheckpointHeaderValidationFlags memory _flags
-  ) external;
+    function validateHeaderWithAttestations(
+        ProposedHeader calldata _header,
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        Signature memory _attestationsAndSignersSignature,
+        bytes32 _digest,
+        bytes32 _blobsHash,
+        CheckpointHeaderValidationFlags memory _flags
+    ) external;
 
-  function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) external returns (Slot, uint256);
+    function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) external returns (Slot, uint256);
 
-  function getTips() external view returns (ChainTips memory);
+    function getTips() external view returns (ChainTips memory);
 
-  function status(uint256 _myHeaderCheckpointNumber)
-    external
-    view
-    returns (
-      uint256 provenCheckpointNumber,
-      bytes32 provenArchive,
-      uint256 pendingCheckpointNumber,
-      bytes32 pendingArchive,
-      bytes32 archiveOfMyCheckpoint,
-      Epoch provenEpochNumber
-    );
+    function status(uint256 _myHeaderCheckpointNumber)
+        external
+        view
+        returns (
+            uint256 provenCheckpointNumber,
+            bytes32 provenArchive,
+            uint256 pendingCheckpointNumber,
+            bytes32 pendingArchive,
+            bytes32 archiveOfMyCheckpoint,
+            Epoch provenEpochNumber
+        );
 
-  function getEpochProofPublicInputs(
-    uint256 _start,
-    uint256 _end,
-    PublicInputArgs calldata _args,
-    ProposedHeader[] calldata _headers,
-    bytes calldata _blobPublicInputs
-  ) external view returns (bytes32[] memory);
+    function getEpochProofPublicInputs(
+        uint256 _start,
+        uint256 _end,
+        PublicInputArgs calldata _args,
+        ProposedHeader[] calldata _headers,
+        bytes calldata _blobPublicInputs
+    ) external view returns (bytes32[] memory);
 
-  function validateBlobs(bytes calldata _blobsInputs) external view returns (bytes32[] memory, bytes32, bytes[] memory);
+    function validateBlobs(bytes calldata _blobsInputs)
+        external
+        view
+        returns (bytes32[] memory, bytes32, bytes[] memory);
 
-  function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
-    external
-    view
-    returns (ManaMinFeeComponents memory);
-  function getManaMinFeeAt(Timestamp _timestamp, bool _inFeeAsset) external view returns (uint256);
-  function getL1FeesAt(Timestamp _timestamp) external view returns (L1FeeData memory);
-  function getEthPerFeeAsset() external view returns (EthPerFeeAssetE12);
+    function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
+        external
+        view
+        returns (ManaMinFeeComponents memory);
+    function getManaMinFeeAt(Timestamp _timestamp, bool _inFeeAsset) external view returns (uint256);
+    function getL1FeesAt(Timestamp _timestamp) external view returns (L1FeeData memory);
+    function getEthPerFeeAsset() external view returns (EthPerFeeAssetE12);
 
-  function getEpochForCheckpoint(uint256 _checkpointNumber) external view returns (Epoch);
-  function canPruneAtTime(Timestamp _ts) external view returns (bool);
+    function getEpochForCheckpoint(uint256 _checkpointNumber) external view returns (Epoch);
+    function canPruneAtTime(Timestamp _ts) external view returns (bool);
 
-  function archive() external view returns (bytes32);
-  function archiveAt(uint256 _checkpointNumber) external view returns (bytes32);
-  function getProvenCheckpointNumber() external view returns (uint256);
-  function getPendingCheckpointNumber() external view returns (uint256);
-  function getCheckpoint(uint256 _checkpointNumber) external view returns (CheckpointLog memory);
-  function getFeeHeader(uint256 _checkpointNumber) external view returns (FeeHeader memory);
-  function getBlobCommitmentsHash(uint256 _checkpointNumber) external view returns (bytes32);
-  function getCurrentBlobCommitmentsHash() external view returns (bytes32);
+    function archive() external view returns (bytes32);
+    function archiveAt(uint256 _checkpointNumber) external view returns (bytes32);
+    function getProvenCheckpointNumber() external view returns (uint256);
+    function getPendingCheckpointNumber() external view returns (uint256);
+    function getCheckpoint(uint256 _checkpointNumber) external view returns (CheckpointLog memory);
+    function getFeeHeader(uint256 _checkpointNumber) external view returns (FeeHeader memory);
+    function getBlobCommitmentsHash(uint256 _checkpointNumber) external view returns (bytes32);
+    function getCurrentBlobCommitmentsHash() external view returns (bytes32);
 
-  function getSharesFor(address _prover) external view returns (uint256);
-  function getSequencerRewards(address _sequencer) external view returns (uint256);
-  function getCollectiveProverRewardsForEpoch(Epoch _epoch) external view returns (uint256);
-  function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) external view returns (uint256);
-  function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) external view returns (bool);
-  function getHasClaimed(address _prover, Epoch _epoch) external view returns (bool);
+    function getSharesFor(address _prover) external view returns (uint256);
+    function getSequencerRewards(address _sequencer) external view returns (uint256);
+    function getCollectiveProverRewardsForEpoch(Epoch _epoch) external view returns (uint256);
+    function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) external view returns (uint256);
+    function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) external view returns (bool);
+    function getHasClaimed(address _prover, Epoch _epoch) external view returns (bool);
 
-  function getProofSubmissionEpochs() external view returns (uint256);
-  function getManaTarget() external view returns (uint256);
-  function getManaLimit() external view returns (uint256);
-  function getProvingCostPerManaInEth() external view returns (EthValue);
+    function getProofSubmissionEpochs() external view returns (uint256);
+    function getManaTarget() external view returns (uint256);
+    function getManaLimit() external view returns (uint256);
+    function getProvingCostPerManaInEth() external view returns (EthValue);
 
-  function getProvingCostPerManaInFeeAsset() external view returns (FeeAssetValue);
+    function getProvingCostPerManaInFeeAsset() external view returns (FeeAssetValue);
 
-  function getFeeAsset() external view returns (IERC20);
-  function getFeeAssetPortal() external view returns (IFeeJuicePortal);
-  function getRewardDistributor() external view returns (IRewardDistributor);
-  function getBurnAddress() external view returns (address);
+    function getFeeAsset() external view returns (IERC20);
+    function getFeeAssetPortal() external view returns (IFeeJuicePortal);
+    function getRewardDistributor() external view returns (IRewardDistributor);
+    function getBurnAddress() external view returns (address);
 
-  function getInbox() external view returns (IInbox);
-  function getOutbox() external view returns (IOutbox);
+    function getInbox() external view returns (IInbox);
+    function getOutbox() external view returns (IOutbox);
 
-  function getVkTreeRoot() external view returns (bytes32);
-  function getProtocolContractsHash() external view returns (bytes32);
-  function getEpochProofVerifier() external view returns (IVerifier);
+    function getVkTreeRoot() external view returns (bytes32);
+    function getProtocolContractsHash() external view returns (bytes32);
+    function getEpochProofVerifier() external view returns (IVerifier);
 
-  function getRewardConfig() external view returns (RewardConfig memory);
-  function getCheckpointReward() external view returns (uint256);
+    function getRewardConfig() external view returns (RewardConfig memory);
+    function getCheckpointReward() external view returns (uint256);
 }
 
 interface IInstance is IStaking, IValidatorSelection, IRollup {}
 
 function addSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
 }
 
 function subSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
 }
 
 function eqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
 }
 
 function neqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
 }
 
 function ltSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
 }
 
 function lteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
 }
 
 function gtSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
 }
 
 function gteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
 }
 
 using {
-  addSlashRound as +,
-  subSlashRound as -,
-  eqSlashRound as ==,
-  neqSlashRound as !=,
-  ltSlashRound as <,
-  lteSlashRound as <=,
-  gtSlashRound as >,
-  gteSlashRound as >=
+    addSlashRound as +,
+    subSlashRound as -,
+    eqSlashRound as ==,
+    neqSlashRound as !=,
+    ltSlashRound as <,
+    lteSlashRound as <=,
+    gtSlashRound as >,
+    gteSlashRound as >=
 } for SlashRound global;
 
 type SlashRound is uint256;
@@ -6161,266 +6199,266 @@ type SlashRound is uint256;
  * src/core/libraries/Errors.sol:Errors errors`
  */
 library Errors_1 {
-  // DEVNET related
-  error DevNet__NoPruningAllowed(); // 0x6984c590
-  error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
+    // DEVNET related
+    error DevNet__NoPruningAllowed(); // 0x6984c590
+    error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
 
-  // Inbox
-  error Inbox__Unauthorized(); // 0xe5336a6b
-  error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
-  error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
-  error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
-  error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
-  error Inbox__MustBuildBeforeConsume(); // 0xc4901999
+    // Inbox
+    error Inbox__Unauthorized(); // 0xe5336a6b
+    error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
+    error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
+    error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
+    error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
+    error Inbox__MustBuildBeforeConsume(); // 0xc4901999
 
-  // Outbox
-  error Outbox__Unauthorized(); // 0x2c9490c2
-  error Outbox__InvalidChainId(); // 0x577ec7c4
-  error Outbox__VersionMismatch(uint256 expected, uint256 actual);
-  error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
-  error Outbox__IncompatibleEntryArguments(
-    bytes32 messageHash,
-    uint64 storedFee,
-    uint64 feePassed,
-    uint32 storedVersion,
-    uint32 versionPassed,
-    uint32 storedDeadline,
-    uint32 deadlinePassed
-  ); // 0x5e789f34
-  error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
-  error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
-  error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
-  error Outbox__PathTooLong();
-  error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
-  error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
+    // Outbox
+    error Outbox__Unauthorized(); // 0x2c9490c2
+    error Outbox__InvalidChainId(); // 0x577ec7c4
+    error Outbox__VersionMismatch(uint256 expected, uint256 actual);
+    error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
+    error Outbox__IncompatibleEntryArguments(
+        bytes32 messageHash,
+        uint64 storedFee,
+        uint64 feePassed,
+        uint32 storedVersion,
+        uint32 versionPassed,
+        uint32 storedDeadline,
+        uint32 deadlinePassed
+    ); // 0x5e789f34
+    error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
+    error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
+    error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
+    error Outbox__PathTooLong();
+    error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
+    error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
 
-  // Rollup
-  error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
-  error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
-  error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
-  error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
-  error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
-  error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
-  error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
-  error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidProof(); // 0xa5b2ba17
-  error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
-  error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
-  error Rollup__InvalidAttestations();
-  error Rollup__AttestationsAreValid();
-  error Rollup__InvalidAttestationIndex();
-  error Rollup__CheckpointAlreadyProven();
-  error Rollup__CheckpointNotInPendingChain();
-  error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
-  error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
-  error Rollup__NoEpochToProve(); // 0xcbaa3951
-  error Rollup__NonSequentialProving(); // 0x1e5be132
-  error Rollup__NothingToPrune(); // 0x850defd3
-  error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
-  error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
-  error Rollup__TimestampTooOld(); // 0x72ed9c81
-  error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
-  error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
-  error Rollup__NonZeroDaFee(); // 0xd9c75f52
-  error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
-  error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
-  error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
-  error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
-  error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
-  error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
-  error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
-  error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error Rollup__ManaLimitExceeded();
-  error Rollup__InvalidFirstEpochProof();
-  error Rollup__InvalidCoinbase();
-  error Rollup__UnavailableTempCheckpointLog(
-    uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
-  );
-  error Rollup__NoBlobsInCheckpoint();
-  error Rollup__CannotInvalidateEscapeHatch();
-  error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
-  error Rollup__FieldElementOutOfRange(bytes32 value);
+    // Rollup
+    error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
+    error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
+    error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
+    error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
+    error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
+    error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
+    error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
+    error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidProof(); // 0xa5b2ba17
+    error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
+    error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
+    error Rollup__InvalidAttestations();
+    error Rollup__AttestationsAreValid();
+    error Rollup__InvalidAttestationIndex();
+    error Rollup__CheckpointAlreadyProven();
+    error Rollup__CheckpointNotInPendingChain();
+    error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
+    error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
+    error Rollup__NoEpochToProve(); // 0xcbaa3951
+    error Rollup__NonSequentialProving(); // 0x1e5be132
+    error Rollup__NothingToPrune(); // 0x850defd3
+    error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
+    error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
+    error Rollup__TimestampTooOld(); // 0x72ed9c81
+    error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
+    error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
+    error Rollup__NonZeroDaFee(); // 0xd9c75f52
+    error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
+    error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
+    error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
+    error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
+    error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
+    error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
+    error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
+    error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error Rollup__ManaLimitExceeded();
+    error Rollup__InvalidFirstEpochProof();
+    error Rollup__InvalidCoinbase();
+    error Rollup__UnavailableTempCheckpointLog(
+        uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
+    );
+    error Rollup__NoBlobsInCheckpoint();
+    error Rollup__CannotInvalidateEscapeHatch();
+    error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
+    error Rollup__FieldElementOutOfRange(bytes32 value);
 
-  // EscapeHatch
-  error EscapeHatch__AlreadyInCandidateSet(address candidate);
-  error EscapeHatch__NotInCandidateSet(address candidate);
-  error EscapeHatch__InvalidStatus(Status expected, Status actual);
-  error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
-  error EscapeHatch__OnlyRollup(address caller, address rollup);
-  error EscapeHatch__NoDesignatedProposer(Hatch hatch);
-  error EscapeHatch__InvalidConfiguration();
-  error EscapeHatch__SetUnstable(Hatch hatch);
-  error EscapeHatch__AlreadyValidated(Hatch hatch);
-  error EscapeHatch__HatchTooEarly(Hatch hatch);
+    // EscapeHatch
+    error EscapeHatch__AlreadyInCandidateSet(address candidate);
+    error EscapeHatch__NotInCandidateSet(address candidate);
+    error EscapeHatch__InvalidStatus(Status expected, Status actual);
+    error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
+    error EscapeHatch__OnlyRollup(address caller, address rollup);
+    error EscapeHatch__NoDesignatedProposer(Hatch hatch);
+    error EscapeHatch__InvalidConfiguration();
+    error EscapeHatch__SetUnstable(Hatch hatch);
+    error EscapeHatch__AlreadyValidated(Hatch hatch);
+    error EscapeHatch__HatchTooEarly(Hatch hatch);
 
-  // ProposedHeaderLib
-  error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
-  error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
+    // ProposedHeaderLib
+    error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
+    error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
 
-  // MerkleLib
-  error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
-  error MerkleLib__InvalidIndexForPathLength();
+    // MerkleLib
+    error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
+    error MerkleLib__InvalidIndexForPathLength();
 
-  // SampleLib
-  error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
-  error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
+    // SampleLib
+    error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
+    error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
 
-  // Sequencer Selection (ValidatorSelection)
-  error ValidatorSelection__EpochNotSetup(); // 0x10816cae
-  error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
-  error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
-  error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
-  error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
-  error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
-  error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
-  error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
-  error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
-  error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
-  error ValidatorSelection__EscapeHatchAlreadySet();
-  error ValidatorSelection__EscapeHatchCannotBeZero();
-  error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
+    // Sequencer Selection (ValidatorSelection)
+    error ValidatorSelection__EpochNotSetup(); // 0x10816cae
+    error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
+    error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
+    error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
+    error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
+    error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
+    error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
+    error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
+    error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
+    error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
+    error ValidatorSelection__EscapeHatchAlreadySet();
+    error ValidatorSelection__EscapeHatchCannotBeZero();
+    error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
 
-  // Staking
-  error Staking__AlreadyQueued(address _attester);
-  error Staking__QueueEmpty();
-  error Staking__DepositOutOfGas();
-  error Staking__AlreadyActive(address attester); // 0x5e206fa4
-  error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
-  error Staking__AlreadyRegistered(address instance, address attester);
-  error Staking__CannotSlashExitedStake(address); // 0x45bf4940
-  error Staking__FailedToRemove(address); // 0xa7d7baab
-  error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
-  error Staking__InvalidRecipient(address); // 0x7e2f7f1c
-  error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
-  error Staking__NoOneToSlash(address); // 0x7e2f7f1c
-  error Staking__NotExiting(address); // 0xef566ee0
-  error Staking__InitiateWithdrawNeeded(address);
-  error Staking__NotSlasher(address, address); // 0x23a6f432
-  error Staking__NotWithdrawer(address, address); // 0x8e668e5d
-  error Staking__NothingToExit(address); // 0xd2aac9b6
-  error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
-  error Staking__WithdrawFailed(address); // 0x377422c1
-  error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
-  error Staking__NotRollup(address); // 0xf5509eb3
-  error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
-  error Staking__InvalidRollupAddress(address); // 0xd876720e
-  error Staking__NotCanonical(address); // 0x6244212e
-  error Staking__InstanceDoesNotExist(address);
-  error Staking__InsufficientPower(uint256, uint256);
-  error Staking__AlreadyExiting(address);
-  error Staking__FatalError(string);
-  error Staking__NotOurProposal(uint256, address, address);
-  error Staking__IncorrectGovProposer(uint256);
-  error Staking__GovernanceAlreadySet();
-  error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
-  error Staking__InvalidStakingQueueConfig();
-  error Staking__InvalidNormalFlushSizeQuotient();
-  error Staking__InvalidMaxQueueFlushSize();
-  error Staking__InvalidBootstrapFlushSize();
-  error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
-  error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
-  error Staking__SlasherProposerNotInitialized(address slasher);
-  error Staking__NoPendingSlasher();
-  error Staking__SlasherNotReady(Timestamp readyAt);
+    // Staking
+    error Staking__AlreadyQueued(address _attester);
+    error Staking__QueueEmpty();
+    error Staking__DepositOutOfGas();
+    error Staking__AlreadyActive(address attester); // 0x5e206fa4
+    error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
+    error Staking__AlreadyRegistered(address instance, address attester);
+    error Staking__CannotSlashExitedStake(address); // 0x45bf4940
+    error Staking__FailedToRemove(address); // 0xa7d7baab
+    error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
+    error Staking__InvalidRecipient(address); // 0x7e2f7f1c
+    error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
+    error Staking__NoOneToSlash(address); // 0x7e2f7f1c
+    error Staking__NotExiting(address); // 0xef566ee0
+    error Staking__InitiateWithdrawNeeded(address);
+    error Staking__NotSlasher(address, address); // 0x23a6f432
+    error Staking__NotWithdrawer(address, address); // 0x8e668e5d
+    error Staking__NothingToExit(address); // 0xd2aac9b6
+    error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
+    error Staking__WithdrawFailed(address); // 0x377422c1
+    error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
+    error Staking__NotRollup(address); // 0xf5509eb3
+    error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
+    error Staking__InvalidRollupAddress(address); // 0xd876720e
+    error Staking__NotCanonical(address); // 0x6244212e
+    error Staking__InstanceDoesNotExist(address);
+    error Staking__InsufficientPower(uint256, uint256);
+    error Staking__AlreadyExiting(address);
+    error Staking__FatalError(string);
+    error Staking__NotOurProposal(uint256, address, address);
+    error Staking__IncorrectGovProposer(uint256);
+    error Staking__GovernanceAlreadySet();
+    error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
+    error Staking__InvalidStakingQueueConfig();
+    error Staking__InvalidNormalFlushSizeQuotient();
+    error Staking__InvalidMaxQueueFlushSize();
+    error Staking__InvalidBootstrapFlushSize();
+    error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
+    error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
+    error Staking__SlasherProposerNotInitialized(address slasher);
+    error Staking__NoPendingSlasher();
+    error Staking__SlasherNotReady(Timestamp readyAt);
 
-  // Fee Juice Portal
-  error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
-  error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
-  error FeeJuicePortal__Unauthorized(); // 0x67e3691e
+    // Fee Juice Portal
+    error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
+    error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
+    error FeeJuicePortal__Unauthorized(); // 0x67e3691e
 
-  // Proof Commitment Escrow
-  error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
-  error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
-  error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
+    // Proof Commitment Escrow
+    error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
+    error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
+    error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
 
-  // FeeLib
-  error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
-  error FeeLib__AlreadyPreheated();
-  error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
-  error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
-  error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
-  error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
-  error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
-  error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
+    // FeeLib
+    error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
+    error FeeLib__AlreadyPreheated();
+    error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
+    error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
+    error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
+    error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
+    error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
+    error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
 
-  // SignatureLib (duplicated)
-  error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
+    // SignatureLib (duplicated)
+    error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
 
-  error AttestationLib__InvalidDataSize(uint256, uint256);
-  error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignersSizeMismatch(uint256, uint256);
-  error AttestationLib__NotASignatureAtIndex(uint256 index);
-  error AttestationLib__NotAnAddressAtIndex(uint256 index);
+    error AttestationLib__InvalidDataSize(uint256, uint256);
+    error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignersSizeMismatch(uint256, uint256);
+    error AttestationLib__NotASignatureAtIndex(uint256 index);
+    error AttestationLib__NotAnAddressAtIndex(uint256 index);
 
-  // RewardBooster
-  error RewardBooster__OnlyRollup(address caller);
-  error RewardBooster__InvalidConfig();
+    // RewardBooster
+    error RewardBooster__OnlyRollup(address caller);
+    error RewardBooster__InvalidConfig();
 
-  error RewardLib__InvalidSequencerBps();
-  error RewardLib__ZeroShares(address prover);
+    error RewardLib__InvalidSequencerBps();
+    error RewardLib__ZeroShares(address prover);
 
-  // SlashingProposer
-  error SlashingProposer__InvalidSignature();
-  error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
-  error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundNotComplete(SlashRound round);
-  error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
-  error SlashingProposer__InvalidCommitteeCommitment();
-  error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
-  error SlashingProposer__QuorumMustBeGreaterThanZero();
-  error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
-  error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
-  error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
-  error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
-  error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
-  error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
-  error SlashingProposer__SlashAmountTooLarge();
-  error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
-  error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
-  error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
-  error SlashingProposer__VotingNotOpen(SlashRound currentRound);
-  error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
-  error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
-  error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
-  error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
-  error SlashingProposer__SlashAmountMustBeGtZero(string info);
+    // SlashingProposer
+    error SlashingProposer__InvalidSignature();
+    error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
+    error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundNotComplete(SlashRound round);
+    error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
+    error SlashingProposer__InvalidCommitteeCommitment();
+    error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
+    error SlashingProposer__QuorumMustBeGreaterThanZero();
+    error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
+    error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
+    error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
+    error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
+    error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
+    error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
+    error SlashingProposer__SlashAmountTooLarge();
+    error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
+    error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
+    error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
+    error SlashingProposer__VotingNotOpen(SlashRound currentRound);
+    error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
+    error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
+    error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
+    error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
+    error SlashingProposer__SlashAmountMustBeGtZero(string info);
 
-  // SlashPayloadLib
-  error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
+    // SlashPayloadLib
+    error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
 
-  // OpenZeppelin dependencies
+    // OpenZeppelin dependencies
 
-  // ECDSA
-  error ECDSAInvalidSignature();
-  error ECDSAInvalidSignatureLength(uint256 length);
-  error ECDSAInvalidSignatureS(bytes32 s);
+    // ECDSA
+    error ECDSAInvalidSignature();
+    error ECDSAInvalidSignatureLength(uint256 length);
+    error ECDSAInvalidSignatureS(bytes32 s);
 
-  // Ownable
-  error OwnableUnauthorizedAccount(address account);
-  error OwnableInvalidOwner(address owner);
+    // Ownable
+    error OwnableUnauthorizedAccount(address account);
+    error OwnableInvalidOwner(address owner);
 
-  // Checkpoints
-  error CheckpointUnorderedInsertion();
+    // Checkpoints
+    error CheckpointUnorderedInsertion();
 
-  // ERC20
-  error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
-  error ERC20InvalidSender(address sender);
-  error ERC20InvalidReceiver(address receiver);
-  error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
-  error ERC20InvalidApprover(address approver);
-  error ERC20InvalidSpender(address spender);
+    // ERC20
+    error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
+    error ERC20InvalidSender(address sender);
+    error ERC20InvalidReceiver(address receiver);
+    error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
+    error ERC20InvalidApprover(address approver);
+    error ERC20InvalidSpender(address spender);
 
-  // SafeCast
-  error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
-  error SafeCastOverflowedIntToUint(int256 value);
-  error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
-  error SafeCastOverflowedUintToInt(uint256 value);
+    // SafeCast
+    error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
+    error SafeCastOverflowedIntToUint(int256 value);
+    error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
+    error SafeCastOverflowedUintToInt(uint256 value);
 }
 
 /**
@@ -6441,677 +6479,682 @@ library Errors_1 {
  *      - Candidate does NOT receive access to governance
  */
 contract EscapeHatch is IEscapeHatch {
-  using AddressSnapshotLib for SnapshottedAddressSet;
-  using SafeERC20 for IERC20;
-  using BitMaps for BitMaps.BitMap;
-  using SafeCast for uint256;
-  using SafeCast for uint128;
+    using AddressSnapshotLib for SnapshottedAddressSet;
+    using SafeERC20 for IERC20;
+    using BitMaps for BitMaps.BitMap;
+    using SafeCast for uint256;
+    using SafeCast for uint128;
 
-  // ============ Constants ============
+    // ============ Constants ============
 
-  /// @notice Number of epochs to look back from the START of the hatch for stable candidate set
-  uint256 public constant LAG_IN_EPOCHS_FOR_SET_SIZE = 2;
+    /// @notice Number of epochs to look back from the START of the hatch for stable candidate set
+    uint256 public constant LAG_IN_EPOCHS_FOR_SET_SIZE = 2;
 
-  /// @notice Number of epochs to look back from the START of the hatch for stable RANDAO
-  uint256 public constant LAG_IN_EPOCHS_FOR_RANDAO = 1;
+    /// @notice Number of epochs to look back from the START of the hatch for stable RANDAO
+    uint256 public constant LAG_IN_EPOCHS_FOR_RANDAO = 1;
 
-  // ============ Immutables ============
+    // ============ Immutables ============
 
-  // The rollup contract that the escape hatch belongs to
-  IInstance internal immutable ROLLUP;
+    // The rollup contract that the escape hatch belongs to
+    IInstance internal immutable ROLLUP;
 
-  // The lag defines how far in advance we pick the
-  uint256 internal immutable LAG_IN_HATCHES;
+    // The lag defines how far in advance we pick the
+    uint256 internal immutable LAG_IN_HATCHES;
 
-  // The token used for candidate bonds
-  IERC20 internal immutable BOND_TOKEN;
+    // The token used for candidate bonds
+    IERC20 internal immutable BOND_TOKEN;
 
-  // The required bond size for candidates
-  uint96 internal immutable BOND_SIZE;
+    // The required bond size for candidates
+    uint96 internal immutable BOND_SIZE;
 
-  // The tax applied when a candidate exits
-  uint96 internal immutable WITHDRAWAL_TAX;
+    // The tax applied when a candidate exits
+    uint96 internal immutable WITHDRAWAL_TAX;
 
-  // The punishment applied when a candidate fails to prove their proof submission
-  uint96 internal immutable FAILED_HATCH_PUNISHMENT;
+    // The punishment applied when a candidate fails to prove their proof submission
+    uint96 internal immutable FAILED_HATCH_PUNISHMENT;
 
-  // The frequency of escape hatches in epochs
-  uint256 internal immutable FREQUENCY;
+    // The frequency of escape hatches in epochs
+    uint256 internal immutable FREQUENCY;
 
-  // The duration of an escape hatch in epochs
-  uint256 internal immutable ACTIVE_DURATION;
+    // The duration of an escape hatch in epochs
+    uint256 internal immutable ACTIVE_DURATION;
 
-  // The additional exit delay after proposing in seconds
-  uint256 internal immutable PROPOSING_EXIT_DELAY;
+    // The additional exit delay after proposing in seconds
+    uint256 internal immutable PROPOSING_EXIT_DELAY;
 
-  // ============ Storage ============
+    // ============ Storage ============
 
-  BitMaps.BitMap internal $isHatchPrepared;
-  BitMaps.BitMap internal $isHatchValidated;
-  SnapshottedAddressSet internal $activeCandidates;
-  mapping(address candidate => CandidateInfo data) internal $candidateDatas;
-  mapping(Hatch hatch => address proposer) internal $designatedProposer;
+    BitMaps.BitMap internal $isHatchPrepared;
+    BitMaps.BitMap internal $isHatchValidated;
+    SnapshottedAddressSet internal $activeCandidates;
+    mapping(address candidate => CandidateInfo data) internal $candidateDatas;
+    mapping(Hatch hatch => address proposer) internal $designatedProposer;
 
-  constructor(
-    address _rollup,
-    address _bondToken,
-    uint96 _bondSize,
-    uint96 _withdrawalTax,
-    uint96 _failedHatchPunishment,
-    uint256 _frequency,
-    uint256 _activeDuration,
-    uint256 _lagInHatches,
-    uint256 _proposingExitDelay
-  ) {
-    // Validate configuration
-    // LAG_IN_EPOCHS_FOR_SET_SIZE must be greater than LAG_IN_EPOCHS_FOR_RANDAO
-    // to prevent bias from set manipulation
-    require(LAG_IN_EPOCHS_FOR_SET_SIZE > LAG_IN_EPOCHS_FOR_RANDAO, Errors_1.EscapeHatch__InvalidConfiguration());
+    constructor(
+        address _rollup,
+        address _bondToken,
+        uint96 _bondSize,
+        uint96 _withdrawalTax,
+        uint96 _failedHatchPunishment,
+        uint256 _frequency,
+        uint256 _activeDuration,
+        uint256 _lagInHatches,
+        uint256 _proposingExitDelay
+    ) {
+        // Validate configuration
+        // LAG_IN_EPOCHS_FOR_SET_SIZE must be greater than LAG_IN_EPOCHS_FOR_RANDAO
+        // to prevent bias from set manipulation
+        require(LAG_IN_EPOCHS_FOR_SET_SIZE > LAG_IN_EPOCHS_FOR_RANDAO, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    require(_lagInHatches >= 1, Errors_1.EscapeHatch__InvalidConfiguration());
+        require(_lagInHatches >= 1, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    // ACTIVE_DURATION must be at least proofSubmissionEpochs + 1 to ensure
-    // the proposer cannot be "rugged" by malicious committee.
-    uint256 proofSubmissionEpochs = IInstance(_rollup).getProofSubmissionEpochs();
-    require(_activeDuration >= proofSubmissionEpochs + 1, Errors_1.EscapeHatch__InvalidConfiguration());
+        // ACTIVE_DURATION must be at least proofSubmissionEpochs + 1 to ensure
+        // the proposer cannot be "rugged" by malicious committee.
+        uint256 proofSubmissionEpochs = IInstance(_rollup).getProofSubmissionEpochs();
+        require(_activeDuration >= proofSubmissionEpochs + 1, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    // FREQUENCY must be > LAG_IN_EPOCHS_FOR_SET_SIZE to ensure valid selection window.
-    // Selection must happen in window [hatchTime(H), setSnapshotTime(H+1)).
-    // With too large a lag `setSnapshotTime(H+1) < hatchTime(H)`
-    require(_frequency > LAG_IN_EPOCHS_FOR_SET_SIZE, Errors_1.EscapeHatch__InvalidConfiguration());
+        // FREQUENCY must be > LAG_IN_EPOCHS_FOR_SET_SIZE to ensure valid selection window.
+        // Selection must happen in window [hatchTime(H), setSnapshotTime(H+1)).
+        // With too large a lag `setSnapshotTime(H+1) < hatchTime(H)`
+        require(_frequency > LAG_IN_EPOCHS_FOR_SET_SIZE, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    require(_frequency > _activeDuration, Errors_1.EscapeHatch__InvalidConfiguration());
+        require(_frequency > _activeDuration, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    // BOND_SIZE must be non-zero to ensure "something at stake"
-    require(_bondSize > 0, Errors_1.EscapeHatch__InvalidConfiguration());
+        // BOND_SIZE must be non-zero to ensure "something at stake"
+        require(_bondSize > 0, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    // FAILED_HATCH_PUNISHMENT must be <= BOND_SIZE to avoid underflow
-    require(_failedHatchPunishment <= _bondSize, Errors_1.EscapeHatch__InvalidConfiguration());
+        // FAILED_HATCH_PUNISHMENT must be <= BOND_SIZE to avoid underflow
+        require(_failedHatchPunishment <= _bondSize, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    // WITHDRAWAL_TAX must be <= BOND_SIZE to ensure valid refund calculation
-    require(_withdrawalTax <= _bondSize, Errors_1.EscapeHatch__InvalidConfiguration());
+        // WITHDRAWAL_TAX must be <= BOND_SIZE to ensure valid refund calculation
+        require(_withdrawalTax <= _bondSize, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    require(_proposingExitDelay <= 30 days, Errors_1.EscapeHatch__InvalidConfiguration());
+        require(_proposingExitDelay <= 30 days, Errors_1.EscapeHatch__InvalidConfiguration());
 
-    ROLLUP = IInstance(_rollup);
-    BOND_TOKEN = IERC20(_bondToken);
-    BOND_SIZE = _bondSize;
-    WITHDRAWAL_TAX = _withdrawalTax;
-    FAILED_HATCH_PUNISHMENT = _failedHatchPunishment;
-    FREQUENCY = _frequency;
-    ACTIVE_DURATION = _activeDuration;
-    LAG_IN_HATCHES = _lagInHatches;
-    PROPOSING_EXIT_DELAY = _proposingExitDelay;
-  }
-
-  /**
-   * @notice Join the escape hatch candidate set by depositing the required bond
-   *
-   * @dev Transfers BOND_SIZE tokens from the caller
-   *
-   * @custom:reverts EscapeHatch__HatchTooEarly if called during early period when exit would revert
-   * @custom:reverts EscapeHatch__AlreadyInCandidateSet if caller is already in the candidate set
-   * @custom:reverts EscapeHatch__InvalidStatus if caller has a non-NONE status
-   */
-  function joinCandidateSet() external override(IEscapeHatchCore) {
-    // Ensure exit path is viable (reverts with EscapeHatch__HatchTooEarly during early period)
-    getSetTimestamp(getCurrentHatch() + Hatch.wrap(LAG_IN_HATCHES));
-
-    address candidate = msg.sender;
-
-    require(!$activeCandidates.contains(candidate), Errors_1.EscapeHatch__AlreadyInCandidateSet(candidate));
-
-    CandidateInfo storage data = $candidateDatas[candidate];
-    require(data.status == Status.NONE, Errors_1.EscapeHatch__InvalidStatus(Status.NONE, data.status));
-
-    $activeCandidates.add(candidate);
-
-    data.status = Status.ACTIVE;
-    data.amount = BOND_SIZE;
-
-    BOND_TOKEN.safeTransferFrom(candidate, address(this), BOND_SIZE);
-
-    emit CandidateJoined(candidate);
-  }
-
-  /**
-   * @notice Initiate exit from the candidate set
-   *
-   * @dev The exit may be immediate or delayed depending on timing relative to next hatch.
-   *
-   *      Calls selectCandidates() first, which may select the caller as the designated
-   *      proposer for an upcoming hatch. If the caller is selected, their status transitions
-   *      to PROPOSING and they are removed from $activeCandidates, causing the subsequent
-   *      checks to revert. This is intentional - a designated proposer cannot exit and must
-   *      instead follow the PROPOSING -> validateProofSubmission -> EXITING -> leaveCandidateSet
-   *      flow.
-   *
-   * @custom:reverts EscapeHatch__NotInCandidateSet if caller is not in the candidate set
-   *                 (including when caller was just selected as proposer by selectCandidates)
-   * @custom:reverts EscapeHatch__InvalidStatus if caller's status is not ACTIVE
-   */
-  function initiateExit() external override(IEscapeHatchCore) {
-    // Prepare the current hatch. If this selects the caller as designated proposer, their
-    // status becomes PROPOSING and they are removed from $activeCandidates. The requires
-    // below will then revert, preventing a designated proposer from exiting.
-    selectCandidates();
-
-    address candidate = msg.sender;
-    require($activeCandidates.contains(candidate), Errors_1.EscapeHatch__NotInCandidateSet(candidate));
-
-    CandidateInfo storage data = $candidateDatas[candidate];
-    require(data.status == Status.ACTIVE, Errors_1.EscapeHatch__InvalidStatus(Status.ACTIVE, data.status));
-
-    $activeCandidates.remove(candidate);
-    data.status = Status.EXITING;
-
-    // Calculate exit time based on whether we're before or after the next freeze
-    // If before the freeze we are free to leave, otherwise we will be in the snapshot
-    // and will need to wait until we know we have not been chosen, or have the selection
-    // update the exitableAt time.
-    Hatch nextTargetHatch = getCurrentHatch() + Hatch.wrap(1 + LAG_IN_HATCHES);
-    uint32 nextFreezeTs = getSetTimestamp(nextTargetHatch);
-
-    if (block.timestamp < nextFreezeTs) {
-      data.exitableAt = block.timestamp.toUint32();
-    } else {
-      data.exitableAt = getSetTimestamp(nextTargetHatch + Hatch.wrap(1));
+        ROLLUP = IInstance(_rollup);
+        BOND_TOKEN = IERC20(_bondToken);
+        BOND_SIZE = _bondSize;
+        WITHDRAWAL_TAX = _withdrawalTax;
+        FAILED_HATCH_PUNISHMENT = _failedHatchPunishment;
+        FREQUENCY = _frequency;
+        ACTIVE_DURATION = _activeDuration;
+        LAG_IN_HATCHES = _lagInHatches;
+        PROPOSING_EXIT_DELAY = _proposingExitDelay;
     }
 
-    emit CandidateExitInitiated(candidate, data.exitableAt);
-  }
+    /**
+     * @notice Join the escape hatch candidate set by depositing the required bond
+     *
+     * @dev Transfers BOND_SIZE tokens from the caller
+     *
+     * @custom:reverts EscapeHatch__HatchTooEarly if called during early period when exit would revert
+     * @custom:reverts EscapeHatch__AlreadyInCandidateSet if caller is already in the candidate set
+     * @custom:reverts EscapeHatch__InvalidStatus if caller has a non-NONE status
+     */
+    function joinCandidateSet() external override(IEscapeHatchCore) {
+        // Ensure exit path is viable (reverts with EscapeHatch__HatchTooEarly during early period)
+        getSetTimestamp(getCurrentHatch() + Hatch.wrap(LAG_IN_HATCHES));
 
-  /**
-   * @notice Complete exit from the candidate set and reclaim bond minus tax
-   *
-   * @dev Only callable after exitableAt timestamp has passed
-   *
-   * @custom:reverts EscapeHatch__InvalidStatus if caller's status is not EXITING
-   * @custom:reverts EscapeHatch__NotExitableYet if exitableAt has not been reached
-   */
-  function leaveCandidateSet() external override(IEscapeHatchCore) {
-    address candidate = msg.sender;
-    CandidateInfo storage data = $candidateDatas[candidate];
+        address candidate = msg.sender;
 
-    require(data.status == Status.EXITING, Errors_1.EscapeHatch__InvalidStatus(Status.EXITING, data.status));
+        require(!$activeCandidates.contains(candidate), Errors_1.EscapeHatch__AlreadyInCandidateSet(candidate));
 
-    require(block.timestamp >= data.exitableAt, Errors_1.EscapeHatch__NotExitableYet(data.exitableAt, block.timestamp));
+        CandidateInfo storage data = $candidateDatas[candidate];
+        require(data.status == Status.NONE, Errors_1.EscapeHatch__InvalidStatus(Status.NONE, data.status));
 
-    uint256 refund = uint256(data.amount);
-    if (refund > WITHDRAWAL_TAX) {
-      refund -= WITHDRAWAL_TAX;
-    } else {
-      refund = 0;
+        $activeCandidates.add(candidate);
+
+        data.status = Status.ACTIVE;
+        data.amount = BOND_SIZE;
+
+        BOND_TOKEN.safeTransferFrom(candidate, address(this), BOND_SIZE);
+
+        emit CandidateJoined(candidate);
     }
 
-    delete $candidateDatas[candidate];
+    /**
+     * @notice Initiate exit from the candidate set
+     *
+     * @dev The exit may be immediate or delayed depending on timing relative to next hatch.
+     *
+     *      Calls selectCandidates() first, which may select the caller as the designated
+     *      proposer for an upcoming hatch. If the caller is selected, their status transitions
+     *      to PROPOSING and they are removed from $activeCandidates, causing the subsequent
+     *      checks to revert. This is intentional - a designated proposer cannot exit and must
+     *      instead follow the PROPOSING -> validateProofSubmission -> EXITING -> leaveCandidateSet
+     *      flow.
+     *
+     * @custom:reverts EscapeHatch__NotInCandidateSet if caller is not in the candidate set
+     *                 (including when caller was just selected as proposer by selectCandidates)
+     * @custom:reverts EscapeHatch__InvalidStatus if caller's status is not ACTIVE
+     */
+    function initiateExit() external override(IEscapeHatchCore) {
+        // Prepare the current hatch. If this selects the caller as designated proposer, their
+        // status becomes PROPOSING and they are removed from $activeCandidates. The requires
+        // below will then revert, preventing a designated proposer from exiting.
+        selectCandidates();
 
-    if (refund > 0) {
-      BOND_TOKEN.safeTransfer(candidate, refund);
+        address candidate = msg.sender;
+        require($activeCandidates.contains(candidate), Errors_1.EscapeHatch__NotInCandidateSet(candidate));
+
+        CandidateInfo storage data = $candidateDatas[candidate];
+        require(data.status == Status.ACTIVE, Errors_1.EscapeHatch__InvalidStatus(Status.ACTIVE, data.status));
+
+        $activeCandidates.remove(candidate);
+        data.status = Status.EXITING;
+
+        // Calculate exit time based on whether we're before or after the next freeze
+        // If before the freeze we are free to leave, otherwise we will be in the snapshot
+        // and will need to wait until we know we have not been chosen, or have the selection
+        // update the exitableAt time.
+        Hatch nextTargetHatch = getCurrentHatch() + Hatch.wrap(1 + LAG_IN_HATCHES);
+        uint32 nextFreezeTs = getSetTimestamp(nextTargetHatch);
+
+        if (block.timestamp < nextFreezeTs) {
+            data.exitableAt = block.timestamp.toUint32();
+        } else {
+            data.exitableAt = getSetTimestamp(nextTargetHatch + Hatch.wrap(1));
+        }
+
+        emit CandidateExitInitiated(candidate, data.exitableAt);
     }
 
-    emit CandidateExited(candidate, refund);
-  }
+    /**
+     * @notice Complete exit from the candidate set and reclaim bond minus tax
+     *
+     * @dev Only callable after exitableAt timestamp has passed
+     *
+     * @custom:reverts EscapeHatch__InvalidStatus if caller's status is not EXITING
+     * @custom:reverts EscapeHatch__NotExitableYet if exitableAt has not been reached
+     */
+    function leaveCandidateSet() external override(IEscapeHatchCore) {
+        address candidate = msg.sender;
+        CandidateInfo storage data = $candidateDatas[candidate];
 
-  /**
-   * @notice Update the last submitted archive for a proposer during escape hatch
-   *
-   * @param _proposer The escape hatch proposer
-   * @param _checkpointNumber The checkpoint number being proposed, safely downcasted to 32 bits
-   * @param _archive The archive root of the proposed checkpoint
-   *
-   * @custom:reverts EscapeHatch__OnlyRollup if caller is not the Rollup contract
-   */
-  function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive)
-    external
-    override(IEscapeHatchCore)
-  {
-    require(msg.sender == address(ROLLUP), Errors_1.EscapeHatch__OnlyRollup(msg.sender, address(ROLLUP)));
+        require(data.status == Status.EXITING, Errors_1.EscapeHatch__InvalidStatus(Status.EXITING, data.status));
 
-    CandidateInfo storage data = $candidateDatas[_proposer];
-    data.lastCheckpointNumber = _checkpointNumber.toUint32();
-    data.lastSubmittedArchive = _archive;
+        require(
+            block.timestamp >= data.exitableAt, Errors_1.EscapeHatch__NotExitableYet(data.exitableAt, block.timestamp)
+        );
 
-    emit ArchiveUpdated(_proposer, _checkpointNumber, _archive);
-  }
+        uint256 refund = uint256(data.amount);
+        if (refund > WITHDRAWAL_TAX) {
+            refund -= WITHDRAWAL_TAX;
+        } else {
+            refund = 0;
+        }
 
-  /**
-   * @notice Validate that the designated proposer fulfilled their duty
-   *
-   * @dev Checks that blocks were proposed and proven. Applies punishment if not.
-   *      This is the ONLY way to transition from PROPOSING to EXITING.
-   *
-   * @param _hatch The hatch to validate
-   *
-   * @custom:reverts EscapeHatch__AlreadyValidated if the hatch has already been validated
-   * @custom:reverts EscapeHatch__NoDesignatedProposer if no proposer was designated for the hatch
-   * @custom:reverts EscapeHatch__InvalidStatus if proposer's status is not PROPOSING
-   * @custom:reverts EscapeHatch__NotExitableYet if called before exitableAt timestamp
-   */
-  function validateProofSubmission(Hatch _hatch) external override(IEscapeHatchCore) {
-    require(!$isHatchValidated.get(Hatch.unwrap(_hatch)), Errors_1.EscapeHatch__AlreadyValidated(_hatch));
+        delete $candidateDatas[candidate];
 
-    address proposer = $designatedProposer[_hatch];
-    require(proposer != address(0), Errors_1.EscapeHatch__NoDesignatedProposer(_hatch));
+        if (refund > 0) {
+            BOND_TOKEN.safeTransfer(candidate, refund);
+        }
 
-    CandidateInfo storage data = $candidateDatas[proposer];
-    require(data.status == Status.PROPOSING, Errors_1.EscapeHatch__InvalidStatus(Status.PROPOSING, data.status));
-
-    require(block.timestamp >= data.exitableAt, Errors_1.EscapeHatch__NotExitableYet(data.exitableAt, block.timestamp));
-
-    // Check if this contract was the active escape hatch for the entire active period.
-    // If not, the proposer may have been unable to fulfill duties due to governance change.
-    Epoch firstActiveEpoch = _getFirstEpoch(_hatch);
-    bool wasActiveEntirePeriod = true;
-    for (uint256 i = 0; i < ACTIVE_DURATION; i++) {
-      Epoch epoch = firstActiveEpoch + Epoch.wrap(i);
-      if (address(ROLLUP.getEscapeHatchForEpoch(epoch)) != address(this)) {
-        wasActiveEntirePeriod = false;
-        break;
-      }
+        emit CandidateExited(candidate, refund);
     }
 
-    bool success = true;
-    uint256 punishment = 0;
+    /**
+     * @notice Update the last submitted archive for a proposer during escape hatch
+     *
+     * @param _proposer The escape hatch proposer
+     * @param _checkpointNumber The checkpoint number being proposed, safely downcasted to 32 bits
+     * @param _archive The archive root of the proposed checkpoint
+     *
+     * @custom:reverts EscapeHatch__OnlyRollup if caller is not the Rollup contract
+     */
+    function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive)
+        external
+        override(IEscapeHatchCore)
+    {
+        require(msg.sender == address(ROLLUP), Errors_1.EscapeHatch__OnlyRollup(msg.sender, address(ROLLUP)));
 
-    if (!wasActiveEntirePeriod && data.lastCheckpointNumber == 0) {
-      // Escape hatch was deactivated during the active window and proposer did nothing.
-      // This is acceptable - they couldn't (or chose not to) propose during disruption.
-      // Skip punishment, transition to EXITING.
-    } else {
-      // Normal validation: either was active the entire time, or proposer proposed something
-      // (if they proposed, they're on the hook regardless of escape hatch changes,
-      // since proofs go to the rollup directly and are unaffected by escape hatch changes).
+        CandidateInfo storage data = $candidateDatas[_proposer];
+        data.lastCheckpointNumber = _checkpointNumber.toUint32();
+        data.lastSubmittedArchive = _archive;
 
-      // 1. Something must have been proposed
-      if (data.lastCheckpointNumber == 0) {
-        success = false;
-      }
-
-      // 2. Proofs must have been submitted at least up to this checkpoint
-      if (success && ROLLUP.getProvenCheckpointNumber() < data.lastCheckpointNumber) {
-        success = false;
-      }
-
-      // 3. The checkpoint archive must still be in the chain (not pruned)
-      if (success && ROLLUP.archiveAt(data.lastCheckpointNumber) != data.lastSubmittedArchive) {
-        success = false;
-      }
-
-      if (!success) {
-        punishment = FAILED_HATCH_PUNISHMENT;
-        data.amount -= FAILED_HATCH_PUNISHMENT;
-      }
+        emit ArchiveUpdated(_proposer, _checkpointNumber, _archive);
     }
 
-    data.status = Status.EXITING;
-    data.lastCheckpointNumber = 0;
-    data.lastSubmittedArchive = bytes32(0);
+    /**
+     * @notice Validate that the designated proposer fulfilled their duty
+     *
+     * @dev Checks that blocks were proposed and proven. Applies punishment if not.
+     *      This is the ONLY way to transition from PROPOSING to EXITING.
+     *
+     * @param _hatch The hatch to validate
+     *
+     * @custom:reverts EscapeHatch__AlreadyValidated if the hatch has already been validated
+     * @custom:reverts EscapeHatch__NoDesignatedProposer if no proposer was designated for the hatch
+     * @custom:reverts EscapeHatch__InvalidStatus if proposer's status is not PROPOSING
+     * @custom:reverts EscapeHatch__NotExitableYet if called before exitableAt timestamp
+     */
+    function validateProofSubmission(Hatch _hatch) external override(IEscapeHatchCore) {
+        require(!$isHatchValidated.get(Hatch.unwrap(_hatch)), Errors_1.EscapeHatch__AlreadyValidated(_hatch));
 
-    $isHatchValidated.set(Hatch.unwrap(_hatch));
+        address proposer = $designatedProposer[_hatch];
+        require(proposer != address(0), Errors_1.EscapeHatch__NoDesignatedProposer(_hatch));
 
-    emit ProofValidated(_hatch, proposer, success, punishment);
-  }
+        CandidateInfo storage data = $candidateDatas[proposer];
+        require(data.status == Status.PROPOSING, Errors_1.EscapeHatch__InvalidStatus(Status.PROPOSING, data.status));
 
-  /**
-   * @notice Check if an epoch is within an open escape hatch period
-   *
-   * @param _epoch The epoch to check
-   *
-   * @return isOpen True if the epoch is within the escape hatch active duration
-   * @return proposer The designated proposer for this hatch (address(0) if none or not open)
-   */
-  function isHatchOpen(Epoch _epoch) external view override(IEscapeHatch) returns (bool isOpen, address proposer) {
-    uint256 epochInHatch = Epoch.unwrap(_epoch) % FREQUENCY;
-    if (epochInHatch >= ACTIVE_DURATION) {
-      return (false, address(0));
+        require(
+            block.timestamp >= data.exitableAt, Errors_1.EscapeHatch__NotExitableYet(data.exitableAt, block.timestamp)
+        );
+
+        // Check if this contract was the active escape hatch for the entire active period.
+        // If not, the proposer may have been unable to fulfill duties due to governance change.
+        Epoch firstActiveEpoch = _getFirstEpoch(_hatch);
+        bool wasActiveEntirePeriod = true;
+        for (uint256 i = 0; i < ACTIVE_DURATION; i++) {
+            Epoch epoch = firstActiveEpoch + Epoch.wrap(i);
+            if (address(ROLLUP.getEscapeHatchForEpoch(epoch)) != address(this)) {
+                wasActiveEntirePeriod = false;
+                break;
+            }
+        }
+
+        bool success = true;
+        uint256 punishment = 0;
+
+        if (!wasActiveEntirePeriod && data.lastCheckpointNumber == 0) {
+            // Escape hatch was deactivated during the active window and proposer did nothing.
+            // This is acceptable - they couldn't (or chose not to) propose during disruption.
+            // Skip punishment, transition to EXITING.
+        } else {
+            // Normal validation: either was active the entire time, or proposer proposed something
+            // (if they proposed, they're on the hook regardless of escape hatch changes,
+            // since proofs go to the rollup directly and are unaffected by escape hatch changes).
+
+            // 1. Something must have been proposed
+            if (data.lastCheckpointNumber == 0) {
+                success = false;
+            }
+
+            // 2. Proofs must have been submitted at least up to this checkpoint
+            if (success && ROLLUP.getProvenCheckpointNumber() < data.lastCheckpointNumber) {
+                success = false;
+            }
+
+            // 3. The checkpoint archive must still be in the chain (not pruned)
+            if (success && ROLLUP.archiveAt(data.lastCheckpointNumber) != data.lastSubmittedArchive) {
+                success = false;
+            }
+
+            if (!success) {
+                punishment = FAILED_HATCH_PUNISHMENT;
+                data.amount -= FAILED_HATCH_PUNISHMENT;
+            }
+        }
+
+        data.status = Status.EXITING;
+        data.lastCheckpointNumber = 0;
+        data.lastSubmittedArchive = bytes32(0);
+
+        $isHatchValidated.set(Hatch.unwrap(_hatch));
+
+        emit ProofValidated(_hatch, proposer, success, punishment);
     }
 
-    Hatch hatch = _getHatch(_epoch);
-    proposer = $designatedProposer[hatch];
+    /**
+     * @notice Check if an epoch is within an open escape hatch period
+     *
+     * @param _epoch The epoch to check
+     *
+     * @return isOpen True if the epoch is within the escape hatch active duration
+     * @return proposer The designated proposer for this hatch (address(0) if none or not open)
+     */
+    function isHatchOpen(Epoch _epoch) external view override(IEscapeHatch) returns (bool isOpen, address proposer) {
+        uint256 epochInHatch = Epoch.unwrap(_epoch) % FREQUENCY;
+        if (epochInHatch >= ACTIVE_DURATION) {
+            return (false, address(0));
+        }
 
-    return (proposer != address(0), proposer);
-  }
+        Hatch hatch = _getHatch(_epoch);
+        proposer = $designatedProposer[hatch];
 
-  /**
-   * @notice Convert an epoch to its corresponding hatch number
-   *
-   * @param _epoch The epoch
-   *
-   * @return The hatch number
-   */
-  function getHatch(Epoch _epoch) external view override(IEscapeHatch) returns (Hatch) {
-    return _getHatch(_epoch);
-  }
-
-  /**
-   * @notice Get the first epoch of a hatch
-   *
-   * @param _hatch The hatch number
-   *
-   * @return The first epoch of the hatch
-   */
-  function getFirstEpoch(Hatch _hatch) external view override(IEscapeHatch) returns (Epoch) {
-    return _getFirstEpoch(_hatch);
-  }
-
-  /**
-   * @notice Get the designated proposer for a hatch
-   *
-   * @param _hatch The hatch number
-   *
-   * @return The designated proposer address (address(0) if none)
-   */
-  function getDesignatedProposer(Hatch _hatch) external view override(IEscapeHatch) returns (address) {
-    return $designatedProposer[_hatch];
-  }
-
-  /**
-   * @notice Check if a hatch has been prepared
-   *
-   * @param _hatch The hatch number
-   *
-   * @return True if the hatch has been prepared
-   */
-  function isHatchPrepared(Hatch _hatch) external view override(IEscapeHatch) returns (bool) {
-    return $isHatchPrepared.get(Hatch.unwrap(_hatch));
-  }
-
-  /**
-   * @notice Check if a hatch has been validated
-   *
-   * @param _hatch The hatch number
-   *
-   * @return True if the hatch has been validated
-   */
-  function isHatchValidated(Hatch _hatch) external view override(IEscapeHatch) returns (bool) {
-    return $isHatchValidated.get(Hatch.unwrap(_hatch));
-  }
-
-  /**
-   * @notice Get information about a candidate
-   *
-   * @param _candidate The candidate address
-   *
-   * @return The candidate's information
-   */
-  function getCandidateInfo(address _candidate) external view override(IEscapeHatch) returns (CandidateInfo memory) {
-    return $candidateDatas[_candidate];
-  }
-
-  /**
-   * @notice Get the current number of active candidates
-   *
-   * @return The number of candidates in the active set
-   */
-  function getCandidateCount() external view override(IEscapeHatch) returns (uint256) {
-    return $activeCandidates.length();
-  }
-
-  /**
-   * @notice Get the number of candidates in the snapshot for a target hatch
-   *
-   * @param _hatch The target hatch (the one being prepared/proposed for)
-   *
-   * @return The number of candidates in the snapshot for this hatch
-   */
-  function getCandidateCountForHatch(Hatch _hatch) external view override(IEscapeHatch) returns (uint256) {
-    uint32 freezeTs = getSetTimestamp(_hatch);
-    require(freezeTs < block.timestamp, Errors_1.EscapeHatch__SetUnstable(_hatch));
-    return $activeCandidates.lengthAtTimestamp(freezeTs);
-  }
-
-  /**
-   * @notice Get the candidate address at a given index in the current active set
-   *
-   * @param _index The index in the candidate set
-   *
-   * @return The candidate address at the given index
-   */
-  function getCandidateAtIndex(uint256 _index) external view override(IEscapeHatch) returns (address) {
-    return $activeCandidates.at(_index);
-  }
-
-  /**
-   * @notice Get the candidate address at a given index in the snapshot for a target hatch
-   *
-   * @param _index The index in the snapshot
-   * @param _hatch The target hatch (the one being prepared/proposed for)
-   *
-   * @return The candidate address at the given index in the snapshot
-   */
-  function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch)
-    external
-    view
-    override(IEscapeHatch)
-    returns (address)
-  {
-    uint32 freezeTs = getSetTimestamp(_hatch);
-    require(freezeTs < block.timestamp, Errors_1.EscapeHatch__SetUnstable(_hatch));
-    return $activeCandidates.getAddressFromIndexAtTimestamp(_index, freezeTs);
-  }
-
-  /**
-   * @notice Check if an address is in the candidate set
-   *
-   * @param _candidate The address to check
-   *
-   * @return True if the address is in the active candidate set
-   */
-  function isCandidate(address _candidate) external view override(IEscapeHatch) returns (bool) {
-    return $activeCandidates.contains(_candidate);
-  }
-
-  /**
-   * @notice Get the rollup contract address
-   *
-   * @return The rollup contract address
-   */
-  function getRollup() external view override(IEscapeHatch) returns (address) {
-    return address(ROLLUP);
-  }
-
-  /**
-   * @notice Get the bond token address
-   *
-   * @return The ERC20 token used for candidate bonds
-   */
-  function getBondToken() external view override(IEscapeHatch) returns (address) {
-    return address(BOND_TOKEN);
-  }
-
-  /**
-   * @notice Get the required bond size for candidates
-   *
-   * @return The amount of tokens required to join the candidate set
-   */
-  function getBondSize() external view override(IEscapeHatch) returns (uint96) {
-    return BOND_SIZE;
-  }
-
-  /**
-   * @notice Get the withdrawal tax applied when exiting
-   *
-   * @return The amount deducted from bond on exit
-   */
-  function getWithdrawalTax() external view override(IEscapeHatch) returns (uint96) {
-    return WITHDRAWAL_TAX;
-  }
-
-  /**
-   * @notice Get the punishment for failing to fulfill proposer duties
-   *
-   * @return The amount deducted from bond on failed hatch
-   */
-  function getFailedHatchPunishment() external view override(IEscapeHatch) returns (uint96) {
-    return FAILED_HATCH_PUNISHMENT;
-  }
-
-  /**
-   * @notice Get the frequency of escape hatches in epochs
-   *
-   * @return The number of epochs between escape hatch windows
-   */
-  function getFrequency() external view override(IEscapeHatch) returns (uint256) {
-    return FREQUENCY;
-  }
-
-  /**
-   * @notice Get the active duration of each escape hatch in epochs
-   *
-   * @return The number of epochs an escape hatch remains open
-   */
-  function getActiveDuration() external view override(IEscapeHatch) returns (uint256) {
-    return ACTIVE_DURATION;
-  }
-
-  /**
-   * @notice Get the lag in hatches for candidate selection
-   *
-   * @return The number of hatches ahead candidates are selected for
-   */
-  function getLagInHatches() external view override(IEscapeHatch) returns (uint256) {
-    return LAG_IN_HATCHES;
-  }
-
-  /**
-   * @notice Get the additional exit delay after proposing
-   *
-   * @return The additional seconds a proposer must wait after hatch ends before exiting
-   */
-  function getProposingExitDelay() external view override(IEscapeHatch) returns (uint256) {
-    return PROPOSING_EXIT_DELAY;
-  }
-
-  /**
-   * @notice Prepare the designated proposer for an upcoming escape hatch
-   *
-   * @dev Called permissionlessly to set up the next hatch. Uses snapshotted
-   *      candidate set and RANDAO for unbiased selection.
-   *
-   * @custom:reverts EscapeHatch__SetUnstable if called before the freeze timestamp (defense in depth)
-   */
-  function selectCandidates() public override(IEscapeHatchCore) {
-    // Don't select new candidates if this contract is no longer the active escape hatch.
-    // We check the latest value rather than the epoch-stable one since we sample for the future,
-    // so if the current differs, the future will as well.
-    // Early return (not revert) is important because initiateExit() calls selectCandidates() internally.
-    if (address(ROLLUP.getEscapeHatch()) != address(this)) {
-      return;
+        return (proposer != address(0), proposer);
     }
 
-    Hatch currentHatch = getCurrentHatch();
-    Hatch targetHatch = currentHatch + Hatch.wrap(LAG_IN_HATCHES);
-
-    if ($isHatchPrepared.get(Hatch.unwrap(targetHatch))) {
-      return;
+    /**
+     * @notice Convert an epoch to its corresponding hatch number
+     *
+     * @param _epoch The epoch
+     *
+     * @return The hatch number
+     */
+    function getHatch(Epoch _epoch) external view override(IEscapeHatch) returns (Hatch) {
+        return _getHatch(_epoch);
     }
 
-    $isHatchPrepared.set(Hatch.unwrap(targetHatch));
-
-    // Get the freeze timestamp for this targetHatch (when candidate set was snapshotted)
-    uint32 freezeTs = getSetTimestamp(targetHatch);
-    // Defense in depth: ensure we're past the freeze timestamp
-    require(freezeTs < block.timestamp, Errors_1.EscapeHatch__SetUnstable(targetHatch));
-
-    uint256 setSize = $activeCandidates.lengthAtTimestamp(freezeTs);
-    if (setSize == 0) {
-      return;
+    /**
+     * @notice Get the first epoch of a hatch
+     *
+     * @param _hatch The hatch number
+     *
+     * @return The first epoch of the hatch
+     */
+    function getFirstEpoch(Hatch _hatch) external view override(IEscapeHatch) returns (Epoch) {
+        return _getFirstEpoch(_hatch);
     }
 
-    // Prevent selection after the freeze timestamp for the NEXT potential sampling.
-    // If we select after this timestamp, the selected candidate would still be in
-    // the next snapshot, allowing potential re-selection with reduced bond.
-    // We return early (no-op) rather than revert to allow initiateExit to proceed
-    // even when we're past the selection window.
-    uint32 nextFreezeTs = getSetTimestamp(targetHatch + Hatch.wrap(1));
-    if (block.timestamp >= nextFreezeTs) {
-      return;
+    /**
+     * @notice Get the designated proposer for a hatch
+     *
+     * @param _hatch The hatch number
+     *
+     * @return The designated proposer address (address(0) if none)
+     */
+    function getDesignatedProposer(Hatch _hatch) external view override(IEscapeHatch) returns (address) {
+        return $designatedProposer[_hatch];
     }
 
-    // Get the seed timestamp and sample RANDAO
-    uint32 seedTs = getSeedTimestamp(targetHatch);
-    uint256 seed = ROLLUP.getSampleSeedAt(Timestamp.wrap(seedTs));
-    uint256 index = uint256(keccak256(abi.encode(targetHatch, seed))) % setSize;
-    address proposer = $activeCandidates.getAddressFromIndexAtTimestamp(index, freezeTs);
-
-    $designatedProposer[targetHatch] = proposer;
-
-    CandidateInfo storage data = $candidateDatas[proposer];
-
-    // At snapshot time, the candidate must have been ACTIVE, but could have been changed to EXITING,
-    // if the candidate called `initiateExit` after the freeze. In that case, skip removal as already
-    // done. Any other status indicates a broken invariant and remove() will revert.
-    if (data.status != Status.EXITING) {
-      $activeCandidates.remove(proposer);
+    /**
+     * @notice Check if a hatch has been prepared
+     *
+     * @param _hatch The hatch number
+     *
+     * @return True if the hatch has been prepared
+     */
+    function isHatchPrepared(Hatch _hatch) external view override(IEscapeHatch) returns (bool) {
+        return $isHatchPrepared.get(Hatch.unwrap(_hatch));
     }
 
-    data.status = Status.PROPOSING;
+    /**
+     * @notice Check if a hatch has been validated
+     *
+     * @param _hatch The hatch number
+     *
+     * @return True if the hatch has been validated
+     */
+    function isHatchValidated(Hatch _hatch) external view override(IEscapeHatch) returns (bool) {
+        return $isHatchValidated.get(Hatch.unwrap(_hatch));
+    }
 
-    // exitableAt = end of hatch opening + proof submission window + proposing exit delay
-    Epoch exitableEpoch =
-    _getFirstEpoch(targetHatch) + Epoch.wrap(ACTIVE_DURATION) + Epoch.wrap(ROLLUP.getProofSubmissionEpochs());
-    data.exitableAt = (Timestamp.unwrap(ROLLUP.getTimestampForEpoch(exitableEpoch)) + PROPOSING_EXIT_DELAY).toUint32();
+    /**
+     * @notice Get information about a candidate
+     *
+     * @param _candidate The candidate address
+     *
+     * @return The candidate's information
+     */
+    function getCandidateInfo(address _candidate) external view override(IEscapeHatch) returns (CandidateInfo memory) {
+        return $candidateDatas[_candidate];
+    }
 
-    emit CandidateSelected(targetHatch, proposer);
-  }
+    /**
+     * @notice Get the current number of active candidates
+     *
+     * @return The number of candidates in the active set
+     */
+    function getCandidateCount() external view override(IEscapeHatch) returns (uint256) {
+        return $activeCandidates.length();
+    }
 
-  /**
-   * @notice Get the current hatch based on the current epoch
-   *
-   * @return The current hatch number
-   */
-  function getCurrentHatch() public view override(IEscapeHatch) returns (Hatch) {
-    return _getHatch(ROLLUP.getCurrentEpoch());
-  }
+    /**
+     * @notice Get the number of candidates in the snapshot for a target hatch
+     *
+     * @param _hatch The target hatch (the one being prepared/proposed for)
+     *
+     * @return The number of candidates in the snapshot for this hatch
+     */
+    function getCandidateCountForHatch(Hatch _hatch) external view override(IEscapeHatch) returns (uint256) {
+        uint32 freezeTs = getSetTimestamp(_hatch);
+        require(freezeTs < block.timestamp, Errors_1.EscapeHatch__SetUnstable(_hatch));
+        return $activeCandidates.lengthAtTimestamp(freezeTs);
+    }
 
-  /**
-   * @notice Get the freeze timestamp for a target hatch's candidate snapshot
-   *
-   * @dev The snapshot taken at this timestamp determines who was eligible to be
-   *      selected as proposer for this hatch.
-   *
-   * @param _hatch The target hatch (the one being prepared/proposed for)
-   *
-   * @return The timestamp at which the candidate set was frozen for this hatch
-   */
-  function getSetTimestamp(Hatch _hatch) public view override(IEscapeHatch) returns (uint32) {
-    require(Hatch.unwrap(_hatch) >= LAG_IN_HATCHES, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+    /**
+     * @notice Get the candidate address at a given index in the current active set
+     *
+     * @param _index The index in the candidate set
+     *
+     * @return The candidate address at the given index
+     */
+    function getCandidateAtIndex(uint256 _index) external view override(IEscapeHatch) returns (address) {
+        return $activeCandidates.at(_index);
+    }
 
-    Epoch firstEpoch = _getFirstEpoch(_hatch - Hatch.wrap(LAG_IN_HATCHES));
-    require(Epoch.unwrap(firstEpoch) >= LAG_IN_EPOCHS_FOR_SET_SIZE, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+    /**
+     * @notice Get the candidate address at a given index in the snapshot for a target hatch
+     *
+     * @param _index The index in the snapshot
+     * @param _hatch The target hatch (the one being prepared/proposed for)
+     *
+     * @return The candidate address at the given index in the snapshot
+     */
+    function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch)
+        external
+        view
+        override(IEscapeHatch)
+        returns (address)
+    {
+        uint32 freezeTs = getSetTimestamp(_hatch);
+        require(freezeTs < block.timestamp, Errors_1.EscapeHatch__SetUnstable(_hatch));
+        return $activeCandidates.getAddressFromIndexAtTimestamp(_index, freezeTs);
+    }
 
-    Epoch freezeEpoch = firstEpoch - Epoch.wrap(LAG_IN_EPOCHS_FOR_SET_SIZE);
-    return Timestamp.unwrap(ROLLUP.getTimestampForEpoch(freezeEpoch)).toUint32();
-  }
+    /**
+     * @notice Check if an address is in the candidate set
+     *
+     * @param _candidate The address to check
+     *
+     * @return True if the address is in the active candidate set
+     */
+    function isCandidate(address _candidate) external view override(IEscapeHatch) returns (bool) {
+        return $activeCandidates.contains(_candidate);
+    }
 
-  /**
-   * @notice Get the seed timestamp for a target hatch's RANDAO sampling
-   *
-   * @dev This is after the freeze timestamp to prevent manipulation of the
-   *      candidate set based on known RANDAO values.
-   *
-   * @param _hatch The target hatch (the one being prepared/proposed for)
-   *
-   * @return The timestamp at which the RANDAO seed is sampled for this hatch
-   */
-  function getSeedTimestamp(Hatch _hatch) public view override(IEscapeHatch) returns (uint32) {
-    require(Hatch.unwrap(_hatch) >= LAG_IN_HATCHES, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+    /**
+     * @notice Get the rollup contract address
+     *
+     * @return The rollup contract address
+     */
+    function getRollup() external view override(IEscapeHatch) returns (address) {
+        return address(ROLLUP);
+    }
 
-    Hatch samplingHatch = _hatch - Hatch.wrap(LAG_IN_HATCHES);
-    Epoch firstEpoch = _getFirstEpoch(samplingHatch);
-    require(Epoch.unwrap(firstEpoch) >= LAG_IN_EPOCHS_FOR_RANDAO, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+    /**
+     * @notice Get the bond token address
+     *
+     * @return The ERC20 token used for candidate bonds
+     */
+    function getBondToken() external view override(IEscapeHatch) returns (address) {
+        return address(BOND_TOKEN);
+    }
 
-    Epoch seedEpoch = firstEpoch - Epoch.wrap(LAG_IN_EPOCHS_FOR_RANDAO);
-    return Timestamp.unwrap(ROLLUP.getTimestampForEpoch(seedEpoch)).toUint32();
-  }
+    /**
+     * @notice Get the required bond size for candidates
+     *
+     * @return The amount of tokens required to join the candidate set
+     */
+    function getBondSize() external view override(IEscapeHatch) returns (uint96) {
+        return BOND_SIZE;
+    }
 
-  // ============ Internal Functions ============
-  function _getHatch(Epoch _epoch) internal view returns (Hatch) {
-    return Hatch.wrap(Epoch.unwrap(_epoch) / FREQUENCY);
-  }
+    /**
+     * @notice Get the withdrawal tax applied when exiting
+     *
+     * @return The amount deducted from bond on exit
+     */
+    function getWithdrawalTax() external view override(IEscapeHatch) returns (uint96) {
+        return WITHDRAWAL_TAX;
+    }
 
-  function _getFirstEpoch(Hatch _hatch) internal view returns (Epoch) {
-    return Epoch.wrap(Hatch.unwrap(_hatch) * FREQUENCY);
-  }
+    /**
+     * @notice Get the punishment for failing to fulfill proposer duties
+     *
+     * @return The amount deducted from bond on failed hatch
+     */
+    function getFailedHatchPunishment() external view override(IEscapeHatch) returns (uint96) {
+        return FAILED_HATCH_PUNISHMENT;
+    }
+
+    /**
+     * @notice Get the frequency of escape hatches in epochs
+     *
+     * @return The number of epochs between escape hatch windows
+     */
+    function getFrequency() external view override(IEscapeHatch) returns (uint256) {
+        return FREQUENCY;
+    }
+
+    /**
+     * @notice Get the active duration of each escape hatch in epochs
+     *
+     * @return The number of epochs an escape hatch remains open
+     */
+    function getActiveDuration() external view override(IEscapeHatch) returns (uint256) {
+        return ACTIVE_DURATION;
+    }
+
+    /**
+     * @notice Get the lag in hatches for candidate selection
+     *
+     * @return The number of hatches ahead candidates are selected for
+     */
+    function getLagInHatches() external view override(IEscapeHatch) returns (uint256) {
+        return LAG_IN_HATCHES;
+    }
+
+    /**
+     * @notice Get the additional exit delay after proposing
+     *
+     * @return The additional seconds a proposer must wait after hatch ends before exiting
+     */
+    function getProposingExitDelay() external view override(IEscapeHatch) returns (uint256) {
+        return PROPOSING_EXIT_DELAY;
+    }
+
+    /**
+     * @notice Prepare the designated proposer for an upcoming escape hatch
+     *
+     * @dev Called permissionlessly to set up the next hatch. Uses snapshotted
+     *      candidate set and RANDAO for unbiased selection.
+     *
+     * @custom:reverts EscapeHatch__SetUnstable if called before the freeze timestamp (defense in depth)
+     */
+    function selectCandidates() public override(IEscapeHatchCore) {
+        // Don't select new candidates if this contract is no longer the active escape hatch.
+        // We check the latest value rather than the epoch-stable one since we sample for the future,
+        // so if the current differs, the future will as well.
+        // Early return (not revert) is important because initiateExit() calls selectCandidates() internally.
+        if (address(ROLLUP.getEscapeHatch()) != address(this)) {
+            return;
+        }
+
+        Hatch currentHatch = getCurrentHatch();
+        Hatch targetHatch = currentHatch + Hatch.wrap(LAG_IN_HATCHES);
+
+        if ($isHatchPrepared.get(Hatch.unwrap(targetHatch))) {
+            return;
+        }
+
+        $isHatchPrepared.set(Hatch.unwrap(targetHatch));
+
+        // Get the freeze timestamp for this targetHatch (when candidate set was snapshotted)
+        uint32 freezeTs = getSetTimestamp(targetHatch);
+        // Defense in depth: ensure we're past the freeze timestamp
+        require(freezeTs < block.timestamp, Errors_1.EscapeHatch__SetUnstable(targetHatch));
+
+        uint256 setSize = $activeCandidates.lengthAtTimestamp(freezeTs);
+        if (setSize == 0) {
+            return;
+        }
+
+        // Prevent selection after the freeze timestamp for the NEXT potential sampling.
+        // If we select after this timestamp, the selected candidate would still be in
+        // the next snapshot, allowing potential re-selection with reduced bond.
+        // We return early (no-op) rather than revert to allow initiateExit to proceed
+        // even when we're past the selection window.
+        uint32 nextFreezeTs = getSetTimestamp(targetHatch + Hatch.wrap(1));
+        if (block.timestamp >= nextFreezeTs) {
+            return;
+        }
+
+        // Get the seed timestamp and sample RANDAO
+        uint32 seedTs = getSeedTimestamp(targetHatch);
+        uint256 seed = ROLLUP.getSampleSeedAt(Timestamp.wrap(seedTs));
+        uint256 index = uint256(keccak256(abi.encode(targetHatch, seed))) % setSize;
+        address proposer = $activeCandidates.getAddressFromIndexAtTimestamp(index, freezeTs);
+
+        $designatedProposer[targetHatch] = proposer;
+
+        CandidateInfo storage data = $candidateDatas[proposer];
+
+        // At snapshot time, the candidate must have been ACTIVE, but could have been changed to EXITING,
+        // if the candidate called `initiateExit` after the freeze. In that case, skip removal as already
+        // done. Any other status indicates a broken invariant and remove() will revert.
+        if (data.status != Status.EXITING) {
+            $activeCandidates.remove(proposer);
+        }
+
+        data.status = Status.PROPOSING;
+
+        // exitableAt = end of hatch opening + proof submission window + proposing exit delay
+        Epoch exitableEpoch =
+            _getFirstEpoch(targetHatch) + Epoch.wrap(ACTIVE_DURATION) + Epoch.wrap(ROLLUP.getProofSubmissionEpochs());
+        data.exitableAt =
+            (Timestamp.unwrap(ROLLUP.getTimestampForEpoch(exitableEpoch)) + PROPOSING_EXIT_DELAY).toUint32();
+
+        emit CandidateSelected(targetHatch, proposer);
+    }
+
+    /**
+     * @notice Get the current hatch based on the current epoch
+     *
+     * @return The current hatch number
+     */
+    function getCurrentHatch() public view override(IEscapeHatch) returns (Hatch) {
+        return _getHatch(ROLLUP.getCurrentEpoch());
+    }
+
+    /**
+     * @notice Get the freeze timestamp for a target hatch's candidate snapshot
+     *
+     * @dev The snapshot taken at this timestamp determines who was eligible to be
+     *      selected as proposer for this hatch.
+     *
+     * @param _hatch The target hatch (the one being prepared/proposed for)
+     *
+     * @return The timestamp at which the candidate set was frozen for this hatch
+     */
+    function getSetTimestamp(Hatch _hatch) public view override(IEscapeHatch) returns (uint32) {
+        require(Hatch.unwrap(_hatch) >= LAG_IN_HATCHES, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+
+        Epoch firstEpoch = _getFirstEpoch(_hatch - Hatch.wrap(LAG_IN_HATCHES));
+        require(Epoch.unwrap(firstEpoch) >= LAG_IN_EPOCHS_FOR_SET_SIZE, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+
+        Epoch freezeEpoch = firstEpoch - Epoch.wrap(LAG_IN_EPOCHS_FOR_SET_SIZE);
+        return Timestamp.unwrap(ROLLUP.getTimestampForEpoch(freezeEpoch)).toUint32();
+    }
+
+    /**
+     * @notice Get the seed timestamp for a target hatch's RANDAO sampling
+     *
+     * @dev This is after the freeze timestamp to prevent manipulation of the
+     *      candidate set based on known RANDAO values.
+     *
+     * @param _hatch The target hatch (the one being prepared/proposed for)
+     *
+     * @return The timestamp at which the RANDAO seed is sampled for this hatch
+     */
+    function getSeedTimestamp(Hatch _hatch) public view override(IEscapeHatch) returns (uint32) {
+        require(Hatch.unwrap(_hatch) >= LAG_IN_HATCHES, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+
+        Hatch samplingHatch = _hatch - Hatch.wrap(LAG_IN_HATCHES);
+        Epoch firstEpoch = _getFirstEpoch(samplingHatch);
+        require(Epoch.unwrap(firstEpoch) >= LAG_IN_EPOCHS_FOR_RANDAO, Errors_1.EscapeHatch__HatchTooEarly(_hatch));
+
+        Epoch seedEpoch = firstEpoch - Epoch.wrap(LAG_IN_EPOCHS_FOR_RANDAO);
+        return Timestamp.unwrap(ROLLUP.getTimestampForEpoch(seedEpoch)).toUint32();
+    }
+
+    // ============ Internal Functions ============
+    function _getHatch(Epoch _epoch) internal view returns (Hatch) {
+        return Hatch.wrap(Epoch.unwrap(_epoch) / FREQUENCY);
+    }
+
+    function _getFirstEpoch(Hatch _hatch) internal view returns (Epoch) {
+        return Epoch.wrap(Hatch.unwrap(_hatch) * FREQUENCY);
+    }
 }

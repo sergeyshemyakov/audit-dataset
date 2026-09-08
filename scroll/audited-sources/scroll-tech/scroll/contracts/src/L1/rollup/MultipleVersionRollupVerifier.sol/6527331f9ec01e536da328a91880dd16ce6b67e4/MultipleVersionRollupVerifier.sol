@@ -4,24 +4,27 @@ pragma solidity =0.8.16;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-import {IScrollChain} from "./IScrollChain.sol";
 import {IRollupVerifier} from "../../libraries/verifier/IRollupVerifier.sol";
 import {IZkEvmVerifier} from "../../libraries/verifier/IZkEvmVerifier.sol";
+import {IScrollChain} from "./IScrollChain.sol";
 
 contract MultipleVersionRollupVerifier is IRollupVerifier, Ownable {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the address of verifier is updated.
     /// @param startBatchIndex The start batch index when the verifier will be used.
     /// @param verifier The address of new verifier.
     event UpdateVerifier(uint256 startBatchIndex, address verifier);
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct Verifier {
         // The start batch index for the verifier.
         uint64 startBatchIndex;
@@ -29,9 +32,11 @@ contract MultipleVersionRollupVerifier is IRollupVerifier, Ownable {
         address verifier;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The list of legacy zkevm verifier, sorted by batchIndex in increasing order.
     Verifier[] public legacyVerifiers;
@@ -42,10 +47,11 @@ contract MultipleVersionRollupVerifier is IRollupVerifier, Ownable {
     /// @notice The address of ScrollChain contract.
     address public scrollChain;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _verifier) {
         require(_verifier != address(0), "zero verifier address");
 
@@ -58,9 +64,11 @@ contract MultipleVersionRollupVerifier is IRollupVerifier, Ownable {
         scrollChain = _scrollChain;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the number of legacy verifiers.
     function legacyVerifiersLength() external view returns (uint256) {
@@ -80,7 +88,9 @@ contract MultipleVersionRollupVerifier is IRollupVerifier, Ownable {
             unchecked {
                 for (uint256 i = _length; i > 0; --i) {
                     _verifier = legacyVerifiers[i - 1];
-                    if (_verifier.startBatchIndex <= _batchIndex) break;
+                    if (_verifier.startBatchIndex <= _batchIndex) {
+                        break;
+                    }
                 }
             }
         }
@@ -88,24 +98,28 @@ contract MultipleVersionRollupVerifier is IRollupVerifier, Ownable {
         return _verifier.verifier;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IRollupVerifier
-    function verifyAggregateProof(
-        uint256 _batchIndex,
-        bytes calldata _aggrProof,
-        bytes32 _publicInputHash
-    ) external view override {
+    function verifyAggregateProof(uint256 _batchIndex, bytes calldata _aggrProof, bytes32 _publicInputHash)
+        external
+        view
+        override
+    {
         address _verifier = getVerifier(_batchIndex);
 
         IZkEvmVerifier(_verifier).verify(_aggrProof, _publicInputHash);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of zkevm verifier.
     /// @param _startBatchIndex The start batch index when the verifier will be used.

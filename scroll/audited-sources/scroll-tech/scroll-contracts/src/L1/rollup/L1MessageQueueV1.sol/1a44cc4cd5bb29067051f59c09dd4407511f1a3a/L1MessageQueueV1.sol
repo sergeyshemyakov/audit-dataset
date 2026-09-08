@@ -5,8 +5,8 @@ pragma solidity =0.8.24;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {BitMapsUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/structs/BitMapsUpgradeable.sol";
 
-import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 import {IL1MessageQueueV1} from "./IL1MessageQueueV1.sol";
+import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 
 import {AddressAliasHelper} from "../../libraries/common/AddressAliasHelper.sol";
 
@@ -20,9 +20,11 @@ import {AddressAliasHelper} from "../../libraries/common/AddressAliasHelper.sol"
 contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
     using BitMapsUpgradeable for BitMapsUpgradeable.BitMap;
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of L1ScrollMessenger contract.
     address public immutable messenger;
@@ -33,9 +35,11 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
     /// @notice The address EnforcedTxGateway contract.
     address public immutable enforcedTxGateway;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slot used as L1ScrollMessenger contract, which is deprecated now.
     address private __messenger;
@@ -70,10 +74,11 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
     /// @dev The storage slots for future usage.
     uint256[40] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier onlyMessenger() {
         require(_msgSender() == messenger, "Only callable by the L1ScrollMessenger");
         _;
@@ -84,20 +89,18 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L1MessageQueue` implementation contract.
     ///
     /// @param _messenger The address of `L1ScrollMessenger` contract.
     /// @param _scrollChain The address of `ScrollChain` contract.
     /// @param _enforcedTxGateway The address of `EnforcedTxGateway` contract.
-    constructor(
-        address _messenger,
-        address _scrollChain,
-        address _enforcedTxGateway
-    ) {
+    constructor(address _messenger, address _scrollChain, address _enforcedTxGateway) {
         if (_messenger == address(0) || _scrollChain == address(0) || _enforcedTxGateway == address(0)) {
             revert ErrorZeroAddress();
         }
@@ -134,9 +137,11 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
         __enforcedTxGateway = _enforcedTxGateway;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueueV1
     function nextCrossDomainMessageIndex() external view returns (uint256) {
@@ -151,14 +156,18 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
     /// @inheritdoc IL1MessageQueueV1
     function estimateCrossDomainMessageFee(uint256 _gasLimit) external view virtual override returns (uint256) {
         address _oracle = gasOracle;
-        if (_oracle == address(0)) return 0;
+        if (_oracle == address(0)) {
+            return 0;
+        }
         return IL2GasPriceOracle(_oracle).estimateCrossDomainMessageFee(_gasLimit);
     }
 
     /// @inheritdoc IL1MessageQueueV1
     function calculateIntrinsicGasFee(bytes calldata _calldata) public view virtual override returns (uint256) {
         address _oracle = gasOracle;
-        if (_oracle == address(0)) return 0;
+        if (_oracle == address(0)) {
+            return 0;
+        }
         return IL2GasPriceOracle(_oracle).calculateIntrinsicGasFee(_calldata);
     }
 
@@ -186,11 +195,7 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
                     len := 1
                     leave
                 }
-                for {
-
-                } gt(v, 0) {
-
-                } {
+                for {} gt(v, 0) {} {
                     len := add(len, 1)
                     v := shr(8, v)
                 }
@@ -298,7 +303,9 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
 
     /// @inheritdoc IL1MessageQueueV1
     function isMessageSkipped(uint256 _queueIndex) external view returns (bool) {
-        if (_queueIndex >= pendingQueueIndex) return false;
+        if (_queueIndex >= pendingQueueIndex) {
+            return false;
+        }
 
         return _isMessageSkipped(_queueIndex);
     }
@@ -309,16 +316,18 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
         return _isMessageSkipped(_queueIndex) && droppedMessageBitmap.get(_queueIndex);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueueV1
-    function appendCrossDomainMessage(
-        address _target,
-        uint256 _gasLimit,
-        bytes calldata _data
-    ) external override onlyMessenger {
+    function appendCrossDomainMessage(address _target, uint256 _gasLimit, bytes calldata _data)
+        external
+        override
+        onlyMessenger
+    {
         // validate gas limit
         _validateGasLimit(_gasLimit, _data);
 
@@ -347,11 +356,11 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
     }
 
     /// @inheritdoc IL1MessageQueueV1
-    function popCrossDomainMessage(
-        uint256 _startIndex,
-        uint256 _count,
-        uint256 _skippedBitmap
-    ) external override onlyScrollChain {
+    function popCrossDomainMessage(uint256 _startIndex, uint256 _count, uint256 _skippedBitmap)
+        external
+        override
+        onlyScrollChain
+    {
         require(_count <= 256, "pop too many messages");
         require(pendingQueueIndex == _startIndex, "start index mismatch");
 
@@ -377,7 +386,9 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
     /// @dev Caller should make sure `_startIndex < pendingQueueIndex` to reduce unnecessary contract call.
     function resetPoppedCrossDomainMessage(uint256 _startIndex) external override onlyScrollChain {
         uint256 cachedPendingQueueIndex = pendingQueueIndex;
-        if (_startIndex == cachedPendingQueueIndex) return;
+        if (_startIndex == cachedPendingQueueIndex) {
+            return;
+        }
 
         require(_startIndex >= nextUnfinalizedQueueIndex, "reset finalized messages");
         require(_startIndex < cachedPendingQueueIndex, "reset pending messages");
@@ -391,7 +402,9 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
             while (numResetMessages < count) {
                 bucket += 1;
                 uint256 bitmap = skippedMessageBitmap[bucket];
-                if (bitmap > 0) skippedMessageBitmap[bucket] = 0;
+                if (bitmap > 0) {
+                    skippedMessageBitmap[bucket] = 0;
+                }
                 numResetMessages += 256;
             }
         }
@@ -407,7 +420,9 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
         onlyScrollChain
     {
         uint256 cachedFinalizedQueueIndexPlusOne = nextUnfinalizedQueueIndex;
-        if (_newFinalizedQueueIndexPlusOne == cachedFinalizedQueueIndexPlusOne) return;
+        if (_newFinalizedQueueIndexPlusOne == cachedFinalizedQueueIndexPlusOne) {
+            return;
+        }
         require(_newFinalizedQueueIndexPlusOne > cachedFinalizedQueueIndexPlusOne, "finalized index too small");
         require(_newFinalizedQueueIndexPlusOne <= pendingQueueIndex, "finalized index too large");
 
@@ -428,9 +443,11 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
         emit DropTransaction(_index);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of gas oracle.
     /// @dev This function can only called by contract owner.
@@ -452,9 +469,11 @@ contract L1MessageQueueV1 is OwnableUpgradeable, IL1MessageQueueV1 {
         emit UpdateMaxGasLimit(_oldMaxGasLimit, _newMaxGasLimit);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to queue a L1 transaction.
     /// @param _sender The address of sender who will initiate this transaction in L2.

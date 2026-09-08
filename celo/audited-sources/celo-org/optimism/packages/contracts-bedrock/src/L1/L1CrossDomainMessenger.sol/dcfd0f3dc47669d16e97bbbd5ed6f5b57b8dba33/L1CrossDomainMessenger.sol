@@ -2,16 +2,17 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { CrossDomainMessenger } from "src/universal/CrossDomainMessenger.sol";
+import {CrossDomainMessenger} from "src/universal/CrossDomainMessenger.sol";
 
 // Libraries
-import { Predeploys } from "src/libraries/Predeploys.sol";
+import {Predeploys} from "src/libraries/Predeploys.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
-import { ISystemConfig } from "interfaces/L1/ISystemConfig.sol";
-import { IOptimismPortal2 as IOptimismPortal } from "interfaces/L1/IOptimismPortal2.sol";
+
+import {IOptimismPortal2 as IOptimismPortal} from "interfaces/L1/IOptimismPortal2.sol";
+import {ISuperchainConfig} from "interfaces/L1/ISuperchainConfig.sol";
+import {ISystemConfig} from "interfaces/L1/ISystemConfig.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @title L1CrossDomainMessenger
@@ -42,18 +43,14 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ISemver {
     /// @param _superchainConfig Contract of the SuperchainConfig contract on this network.
     /// @param _portal Contract of the OptimismPortal contract on this network.
     /// @param _systemConfig Contract of the SystemConfig contract on this network.
-    function initialize(
-        ISuperchainConfig _superchainConfig,
-        IOptimismPortal _portal,
-        ISystemConfig _systemConfig
-    )
+    function initialize(ISuperchainConfig _superchainConfig, IOptimismPortal _portal, ISystemConfig _systemConfig)
         external
         initializer
     {
         superchainConfig = _superchainConfig;
         portal = _portal;
         systemConfig = _systemConfig;
-        __CrossDomainMessenger_init({ _otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER) });
+        __CrossDomainMessenger_init({_otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER)});
     }
 
     /// @inheritdoc CrossDomainMessenger
@@ -71,7 +68,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ISemver {
 
     /// @inheritdoc CrossDomainMessenger
     function _sendMessage(address _to, uint64 _gasLimit, uint256 _value, bytes memory _data) internal override {
-        portal.depositTransaction{ value: _value }({
+        portal.depositTransaction{value: _value}({
             _to: _to,
             _value: _value,
             _gasLimit: _gasLimit,

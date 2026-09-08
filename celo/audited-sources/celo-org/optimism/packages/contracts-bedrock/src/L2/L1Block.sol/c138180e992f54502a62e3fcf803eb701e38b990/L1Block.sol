@@ -2,10 +2,10 @@
 pragma solidity 0.8.15;
 
 // Libraries
-import { Constants } from "src/libraries/Constants.sol";
+import {Constants} from "src/libraries/Constants.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @custom:predeploy 0x4200000000000000000000000000000000000015
@@ -114,9 +114,7 @@ contract L1Block is ISemver {
         bytes32 _batcherHash,
         uint256 _l1FeeOverhead,
         uint256 _l1FeeScalar
-    )
-        external
-    {
+    ) external {
         require(msg.sender == DEPOSITOR_ACCOUNT(), "L1Block: only the depositor account can set L1 block values");
 
         number = _number;

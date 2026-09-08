@@ -95,20 +95,11 @@ abstract contract Initializable {
 library SafeERC20 {
     using Address for address;
 
-    function safeTransfer(
-        IERC20 token,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransfer(IERC20 token, address to, uint256 value) internal {
         _callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));
     }
 
-    function safeTransferFrom(
-        IERC20 token,
-        address from,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransferFrom(IERC20 token, address from, address to, uint256 value) internal {
         _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));
     }
 
@@ -119,11 +110,7 @@ library SafeERC20 {
      * Whenever possible, use {safeIncreaseAllowance} and
      * {safeDecreaseAllowance} instead.
      */
-    function safeApprove(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeApprove(IERC20 token, address spender, uint256 value) internal {
         // safeApprove should only be called when setting an initial allowance,
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
@@ -134,20 +121,12 @@ library SafeERC20 {
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
     }
 
-    function safeIncreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeIncreaseAllowance(IERC20 token, address spender, uint256 value) internal {
         uint256 newAllowance = token.allowance(address(this), spender) + value;
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
-    function safeDecreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
         unchecked {
             uint256 oldAllowance = token.allowance(address(this), spender);
             require(oldAllowance >= value, "SafeERC20: decreased allowance below zero");
@@ -245,7 +224,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -277,11 +256,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -296,11 +274,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -310,12 +284,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -339,11 +311,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -366,11 +338,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -383,11 +354,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -509,12 +480,7 @@ library SafeCall {
     /// @param _gas      Amount of gas to pass to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function call(
-        address _target,
-        uint256 _gas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function call(address _target, uint256 _gas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool success_)
     {
@@ -537,7 +503,7 @@ library SafeCall {
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, uint256 _value, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata});
     }
 
     /// @notice Helper function to determine if there is sufficient gas remaining within the context
@@ -579,12 +545,7 @@ library SafeCall {
     /// @param _minGas   The minimum amount of gas that may be passed to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function callWithMinGas(
-        address _target,
-        uint256 _minGas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function callWithMinGas(address _target, uint256 _minGas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool)
     {
@@ -672,11 +633,7 @@ library LibRLP {
     /// `address(uint160(uint256(keccak256(LibRLP.p(deployer).p(nonce).encode()))))`.
     ///
     /// Note: The returned result has dirty upper 96 bits. Please clean if used in assembly.
-    function computeAddress(address deployer, uint256 nonce)
-        internal
-        pure
-        returns (address deployed)
-    {
+    function computeAddress(address deployer, uint256 nonce) internal pure returns (address deployed) {
         /// @solidity memory-safe-assembly
         assembly {
             for {} 1 {} {
@@ -1026,31 +983,12 @@ library LibFacet {
     bytes32 constant facetEventSignature = 0x00000000000000000000000000000000000000000000000000000000000face7;
     uint8 constant facetTxType = 0x46;
 
-    function sendFacetTransaction(
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: bytes(''),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: bytes(""), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
-    function sendFacetTransaction(
-        address to,
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: abi.encodePacked(to),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(address to, uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: abi.encodePacked(to), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
     function prepareFacetTransaction(
@@ -1088,13 +1026,8 @@ library LibFacet {
         bytes memory data,
         bytes memory mineBoost
     ) internal {
-        bytes memory payload = prepareFacetTransaction({
-            to: to,
-            value: value,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: mineBoost
-        });
+        bytes memory payload =
+            prepareFacetTransaction({to: to, value: value, gasLimit: gasLimit, data: data, mineBoost: mineBoost});
 
         assembly {
             log1(add(payload, 32), mload(payload), facetEventSignature)
@@ -1112,9 +1045,8 @@ library ERC165Checker {
     function supportsERC165(address account) internal view returns (bool) {
         // Any contract that implements ERC165 must explicitly indicate support of
         // InterfaceId_ERC165 and explicitly indicate non-support of InterfaceId_Invalid
-        return
-            _supportsERC165Interface(account, type(IERC165).interfaceId) &&
-            !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
+        return _supportsERC165Interface(account, type(IERC165).interfaceId)
+            && !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
     }
 
     /**
@@ -1273,7 +1205,7 @@ abstract contract StandardBridge is Initializable {
         uint256 amount,
         bytes extraData
     );
-    
+
     event L1ERC20DepositAttempted(
         bytes32 indexed depositId,
         address indexed l1Token,
@@ -1317,7 +1249,7 @@ abstract contract StandardBridge is Initializable {
     function s() internal pure returns (BridgeStorage storage cs) {
         bytes32 position = keccak256("BridgeStorage.contract.storage");
         assembly {
-           cs.slot := position
+            cs.slot := position
         }
     }
 
@@ -1325,7 +1257,7 @@ abstract contract StandardBridge is Initializable {
         require(onL1(), "StandardBridge: function can only be called on L1");
         _;
     }
-    
+
     modifier onlyOnL2() {
         require(onL2(), "StandardBridge: function can only be called on L2");
         _;
@@ -1349,7 +1281,7 @@ abstract contract StandardBridge is Initializable {
     function onL2() internal pure returns (bool) {
         return !onL1();
     }
-    
+
     /// @notice Ensures that the caller is a cross-chain message from the other bridge.
     modifier onlyOtherBridge() {
         if (onL1()) {
@@ -1369,10 +1301,7 @@ abstract contract StandardBridge is Initializable {
     /// @notice Initializer.
     /// @param _messenger   Contract for CrossDomainMessenger on this network.
     /// @param _otherBridge Contract for the other StandardBridge contract.
-    function __StandardBridge_init(
-        CrossDomainMessenger _messenger,
-        StandardBridge _otherBridge
-    )
+    function __StandardBridge_init(CrossDomainMessenger _messenger, StandardBridge _otherBridge)
         internal
         onlyInitializing
     {
@@ -1456,11 +1385,7 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        public
-        virtual
-        onlyEOA
-    {
+    ) public virtual onlyEOA {
         _initiateBridgeERC20(_localToken, _remoteToken, msg.sender, msg.sender, _amount, _minGasLimit, _extraData);
     }
 
@@ -1480,10 +1405,7 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        public
-        virtual
-    {
+    ) public virtual {
         _initiateBridgeERC20(_localToken, _remoteToken, msg.sender, _to, _amount, _minGasLimit, _extraData);
     }
 
@@ -1495,12 +1417,7 @@ abstract contract StandardBridge is Initializable {
     /// @param _extraData Extra data to be sent with the transaction. Note that the recipient will
     ///                   not be triggered with this data, but it will be emitted and can be used
     ///                   to identify the transaction.
-    function finalizeBridgeETH(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _extraData
-    )
+    function finalizeBridgeETH(address _from, address _to, uint256 _amount, bytes calldata _extraData)
         public
         payable
         onlyOtherBridge
@@ -1539,7 +1456,7 @@ abstract contract StandardBridge is Initializable {
             _isInitialDeposit: false
         });
     }
-    
+
     function _sendERC20DepositMessage(
         bytes32 _depositId,
         address _l1Token,
@@ -1550,14 +1467,7 @@ abstract contract StandardBridge is Initializable {
         bytes memory _extraData,
         bool _isInitialDeposit
     ) internal onlyOnL1 {
-        bytes memory payload = abi.encode(
-            _l2Token,
-            _l1Token,
-            _from,
-            _to,
-            _amount,
-            _extraData
-        );
+        bytes memory payload = abi.encode(_l2Token, _l1Token, _from, _to, _amount, _extraData);
 
         if (_isInitialDeposit) {
             s().depositHashes[_depositId] = keccak256(payload);
@@ -1569,14 +1479,7 @@ abstract contract StandardBridge is Initializable {
             gasLimit: 500_000,
             to: address(otherBridge),
             data: abi.encodeWithSelector(
-                this.finalizeBridgeERC20Replayable.selector,
-                _depositId,
-                _l2Token,
-                _l1Token,
-                _from,
-                _to,
-                _amount,
-                _extraData
+                this.finalizeBridgeERC20Replayable.selector, _depositId, _l2Token, _l1Token, _from, _to, _amount, _extraData
             )
         });
 
@@ -1594,18 +1497,11 @@ abstract contract StandardBridge is Initializable {
     ) public onlyOnL2 onlyOtherBridge {
         bool depositFinalized = s().finalizedDeposits[_depositId];
         require(!depositFinalized, "StandardBridge: deposit already finalized");
-        
+
         s().finalizedDeposits[_depositId] = true;
 
         // Call the non-replayable finalizeBridgeERC20 function
-        finalizeBridgeERC20(
-            _localToken,
-            _remoteToken,
-            _from,
-            _to,
-            _amount,
-            _extraData
-        );
+        finalizeBridgeERC20(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }
 
     /// @notice Finalizes an ERC20 bridge on this chain. Can only be triggered by the other
@@ -1625,10 +1521,7 @@ abstract contract StandardBridge is Initializable {
         address _to,
         uint256 _amount,
         bytes calldata _extraData
-    )
-        public
-        onlyOtherBridge
-    {
+    ) public onlyOtherBridge {
         require(paused() == false, "StandardBridge: paused");
         if (_isOptimismMintableERC20(_localToken)) {
             require(
@@ -1661,9 +1554,7 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes memory _extraData
-    )
-        internal
-    {
+    ) internal {
         require(isCustomGasToken() == false, "StandardBridge: cannot bridge ETH with custom gas token");
         require(msg.value == _amount, "StandardBridge: bridging ETH must include sufficient ETH value");
 
@@ -1671,7 +1562,7 @@ abstract contract StandardBridge is Initializable {
         // contracts may override this function in order to emit legacy events as well.
         _emitETHBridgeInitiated(_from, _to, _amount, _extraData);
 
-        messenger.sendMessage{ value: _amount }({
+        messenger.sendMessage{value: _amount}({
             _target: address(otherBridge),
             _message: abi.encodeWithSelector(this.finalizeBridgeETH.selector, _from, _to, _amount, _extraData),
             _minGasLimit: _minGasLimit
@@ -1686,9 +1577,7 @@ abstract contract StandardBridge is Initializable {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes memory _extraData
-    )
-        internal
-    {
+    ) internal {
         _initiateBridgeERC20({
             _localToken: _localToken,
             _remoteToken: _remoteToken,
@@ -1721,10 +1610,7 @@ abstract contract StandardBridge is Initializable {
         bytes memory _extraData,
         bool _performSafeTransferFrom,
         bool _allowMsgValue
-    )
-        internal
-        virtual
-    {
+    ) internal virtual {
         require(msg.value == 0 || _allowMsgValue, "StandardBridge: cannot send value");
 
         if (_isOptimismMintableERC20(_localToken)) {
@@ -1738,7 +1624,7 @@ abstract contract StandardBridge is Initializable {
             if (_performSafeTransferFrom) {
                 IERC20(_localToken).safeTransferFrom(_from, address(this), _amount);
             }
-            
+
             deposits[_localToken][_remoteToken] = deposits[_localToken][_remoteToken] + _amount;
         }
 
@@ -1808,12 +1694,7 @@ abstract contract StandardBridge is Initializable {
     /// @param _to        Address of the receiver.
     /// @param _amount    Amount of ETH sent.
     /// @param _extraData Extra data sent with the transaction.
-    function _emitETHBridgeInitiated(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeInitiated(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         virtual
     {
@@ -1826,12 +1707,7 @@ abstract contract StandardBridge is Initializable {
     /// @param _to        Address of the receiver.
     /// @param _amount    Amount of ETH sent.
     /// @param _extraData Extra data sent with the transaction.
-    function _emitETHBridgeFinalized(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeFinalized(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         virtual
     {
@@ -1853,10 +1729,7 @@ abstract contract StandardBridge is Initializable {
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        virtual
-    {
+    ) internal virtual {
         emit ERC20BridgeInitiated(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }
 
@@ -1875,10 +1748,7 @@ abstract contract StandardBridge is Initializable {
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        virtual
-    {
+    ) internal virtual {
         emit ERC20BridgeFinalized(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }
 }
@@ -1966,32 +1836,26 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         SuperchainConfig _superchainConfig,
         SystemConfig _systemConfig,
         StandardBridge _otherBridge
-    )
-        public
-        initializer
-    {
+    ) public initializer {
         superchainConfig = _superchainConfig;
         systemConfig = _systemConfig;
-        __StandardBridge_init({
-            _messenger: _messenger,
-            _otherBridge: _otherBridge
-        });
+        __StandardBridge_init({_messenger: _messenger, _otherBridge: _otherBridge});
     }
 
     function adminWithdraw(address recipient, uint256 amount) external {
         require(msg.sender == admin(), "Only admin can call this function");
-         
+
         weth().withdraw(amount);
         Donateable(recipient).donateETH{value: amount}();
     }
-    
+
     function admin() public pure returns (address) {
         return 0xb2B01DeCb6cd36E7396b78D3744482627F22C525;
     }
-    
+
     function weth() public view returns (IWETH) {
         address addr;
-        
+
         if (block.chainid == 1) {
             addr = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
         } else if (block.chainid == 11155111) {
@@ -1999,12 +1863,11 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         } else {
             revert("Unsupported chain");
         }
-        
+
         return IWETH(addr);
     }
 
-    receive() external payable override {
-    }
+    receive() external payable override {}
 
     /// @inheritdoc StandardBridge
     function gasPayingToken() internal view override returns (address addr_, uint8 decimals_) {
@@ -2051,11 +1914,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        external
-        virtual
-        onlyEOA
-    {
+    ) external virtual onlyEOA {
         _initiateERC20Deposit(_l1Token, _l2Token, msg.sender, msg.sender, _amount, _minGasLimit, _extraData);
     }
 
@@ -2076,20 +1935,17 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        external
-        virtual
-    {
+    ) external virtual {
         _initiateERC20Deposit(_l1Token, _l2Token, msg.sender, _to, _amount, _minGasLimit, _extraData);
     }
-    
+
     function bridgeETHToWETH(
         IWETH _localWeth,
         address _remoteToken,
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    ) external virtual payable onlyEOA {
+    ) external payable virtual onlyEOA {
         bridgeETHToWETHTo({
             _localWeth: _localWeth,
             _remoteToken: _remoteToken,
@@ -2099,7 +1955,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
             _extraData: _extraData
         });
     }
-    
+
     function bridgeETHToWETHTo(
         IWETH _localWeth,
         address _remoteToken,
@@ -2107,11 +1963,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        public
-        virtual
-        payable
-    {
+    ) public payable virtual {
         require(msg.value == _amount, "Invalid amount");
         require(msg.value > 0, "Invalid amount");
 
@@ -2136,12 +1988,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
     /// @param _to        Address of the recipient on L1.
     /// @param _amount    Amount of ETH to withdraw.
     /// @param _extraData Optional data forwarded from L2.
-    function finalizeETHWithdrawal(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _extraData
-    )
+    function finalizeETHWithdrawal(address _from, address _to, uint256 _amount, bytes calldata _extraData)
         external
         payable
     {
@@ -2163,9 +2010,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         address _to,
         uint256 _amount,
         bytes calldata _extraData
-    )
-        external
-    {
+    ) external {
         finalizeBridgeERC20(_l1Token, _l2Token, _from, _to, _amount, _extraData);
     }
 
@@ -2201,12 +2046,10 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         uint256 _amount,
         uint32 _minGasLimit,
         bytes memory _extraData
-    )
-        internal
-    {
+    ) internal {
         _initiateBridgeERC20(_l1Token, _l2Token, _from, _to, _amount, _minGasLimit, _extraData);
     }
-    
+
     function _initiateBridgeERC20(
         address _localToken,
         address _remoteToken,
@@ -2217,22 +2060,14 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         bytes memory _extraData,
         bool _performSafeTransferFrom,
         bool _allowMsgValue
-    )
-        internal
-        pure
-        override {
-            revert("Use the fast bridge");
-        }
+    ) internal pure override {
+        revert("Use the fast bridge");
+    }
 
     /// @inheritdoc StandardBridge
     /// @notice Emits the legacy ETHDepositInitiated event followed by the ETHBridgeInitiated event.
     ///         This is necessary for backwards compatibility with the legacy bridge.
-    function _emitETHBridgeInitiated(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeInitiated(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         override
     {
@@ -2243,12 +2078,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
     /// @inheritdoc StandardBridge
     /// @notice Emits the legacy ERC20DepositInitiated event followed by the ERC20BridgeInitiated
     ///         event. This is necessary for backwards compatibility with the legacy bridge.
-    function _emitETHBridgeFinalized(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes memory _extraData
-    )
+    function _emitETHBridgeFinalized(address _from, address _to, uint256 _amount, bytes memory _extraData)
         internal
         override
     {
@@ -2266,10 +2096,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        override
-    {
+    ) internal override {
         emit ERC20DepositInitiated(_localToken, _remoteToken, _from, _to, _amount, _extraData);
         super._emitERC20BridgeInitiated(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }
@@ -2284,10 +2111,7 @@ contract PausedL1StandardBridge is StandardBridge, ISemver {
         address _to,
         uint256 _amount,
         bytes memory _extraData
-    )
-        internal
-        override
-    {
+    ) internal override {
         emit ERC20WithdrawalFinalized(_localToken, _remoteToken, _from, _to, _amount, _extraData);
         super._emitERC20BridgeFinalized(_localToken, _remoteToken, _from, _to, _amount, _extraData);
     }

@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -412,11 +408,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -716,9 +711,11 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
 }
 
 interface IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a cross domain message is sent.
     /// @param sender The address of the sender who initiates the message.
@@ -744,35 +741,36 @@ interface IScrollMessenger {
     /// @param messageHash The hash of the message.
     event FailedRelayedMessage(bytes32 indexed messageHash);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the sender of a cross domain message.
     function xDomainMessageSender() external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
     /// @param value The amount of ether passed when call target contract.
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit) external payable;
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
@@ -780,13 +778,9 @@ interface IScrollMessenger {
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
     /// @param refundAddress The address of account who will receive the refunded fee.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit,
-        address refundAddress
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit, address refundAddress)
+        external
+        payable;
 }
 
 library ScrollConstants {
@@ -806,25 +800,31 @@ abstract contract ScrollMessengerBase is
     ReentrancyGuardUpgradeable,
     IScrollMessenger
 {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates fee vault contract.
     /// @param _oldFeeVault The address of old fee vault contract.
     /// @param _newFeeVault The address of new fee vault contract.
     event UpdateFeeVault(address _oldFeeVault, address _newFeeVault);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of counterpart ScrollMessenger contract in L1/L2.
     address public immutable counterpart;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice See {IScrollMessenger-xDomainMessageSender}
     address public override xDomainMessageSender;
@@ -841,22 +841,23 @@ abstract contract ScrollMessengerBase is
     /// @dev The storage slots for future usage.
     uint256[46] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier notInExecution() {
         require(
-            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER,
-            "Message is already in execution"
+            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER, "Message is already in execution"
         );
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _counterpart) {
         if (_counterpart == address(0)) {
             revert ErrorZeroAddress();
@@ -881,9 +882,11 @@ abstract contract ScrollMessengerBase is
     // make sure only owner can send ether to messenger to avoid possible user fund loss.
     receive() external payable onlyOwner {}
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update fee vault contract.
     /// @dev This function can only called by contract owner.
@@ -906,9 +909,11 @@ abstract contract ScrollMessengerBase is
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to generate the correct cross domain calldata for a message.
     /// @param _sender Message sender address.
@@ -924,15 +929,9 @@ abstract contract ScrollMessengerBase is
         uint256 _messageNonce,
         bytes memory _message
     ) internal pure returns (bytes memory) {
-        return
-            abi.encodeWithSignature(
-                "relayMessage(address,address,uint256,uint256,bytes)",
-                _sender,
-                _target,
-                _value,
-                _messageNonce,
-                _message
-            );
+        return abi.encodeWithSignature(
+            "relayMessage(address,address,uint256,uint256,bytes)", _sender, _target, _value, _messageNonce, _message
+        );
     }
 
     /// @dev Internal function to check whether the `_target` address is allowed to avoid attack.
@@ -945,10 +944,11 @@ abstract contract ScrollMessengerBase is
 }
 
 interface IL1ScrollMessenger is IScrollMessenger {
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct L2MessageProof {
         // The index of the batch where the message belongs to.
         uint256 batchIndex;
@@ -956,9 +956,11 @@ interface IL1ScrollMessenger is IScrollMessenger {
         bytes merkleProof;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Relay a L2 => L1 message with message proof.
     /// @param from The address of the sender of the message.
@@ -998,9 +1000,11 @@ interface IL1ScrollMessenger is IScrollMessenger {
 /// @title IScrollChain
 /// @notice The interface for ScrollChain.
 interface IScrollChain {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new batch is committed.
     /// @param batchIndex The index of the batch.
@@ -1039,9 +1043,11 @@ interface IScrollChain {
     /// @param lastCommittedBatchIndex The index of the last committed batch.
     event UpdateEnforcedBatchMode(bool enabled, uint256 lastCommittedBatchIndex);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @return The latest finalized batch index.
     function lastFinalizedBatchIndex() external view returns (uint256);
@@ -1062,20 +1068,18 @@ interface IScrollChain {
     /// @return Whether the batch is finalized by batch index.
     function isBatchFinalized(uint256 batchIndex) external view returns (bool);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Commit one or more batches after the EuclidV2 upgrade.
     /// @param version The version of the committed batches.
     /// @param parentBatchHash The hash of parent batch.
     /// @param lastBatchHash The hash of the last committed batch after this call.
     /// @dev The batch payload is stored in the blobs.
-    function commitBatches(
-        uint8 version,
-        bytes32 parentBatchHash,
-        bytes32 lastBatchHash
-    ) external;
+    function commitBatches(uint8 version, bytes32 parentBatchHash, bytes32 lastBatchHash) external;
 
     /// @notice Revert pending batches.
     /// @dev one can only revert unfinalized batches.
@@ -1117,11 +1121,8 @@ interface IScrollChain {
     /// @param parentBatchHash The hash of parent batch.
     /// @param finalizeStruct The data needed to finalize this batch.
     /// @dev The batch payload is stored in the blob.
-    function commitAndFinalizeBatch(
-        uint8 version,
-        bytes32 parentBatchHash,
-        FinalizeStruct calldata finalizeStruct
-    ) external;
+    function commitAndFinalizeBatch(uint8 version, bytes32 parentBatchHash, FinalizeStruct calldata finalizeStruct)
+        external;
 }
 
 // solhint-disable no-inline-assembly
@@ -1141,12 +1142,11 @@ library WithdrawTrieVerifier {
     /// @param _hash The leaf node hash of the withdraw trie.
     /// @param _nonce The index of the leaf node from left to right, starting from 0.
     /// @param _proof The concatenated merkle proof verified the leaf node.
-    function verifyMerkleProof(
-        bytes32 _root,
-        bytes32 _hash,
-        uint256 _nonce,
-        bytes memory _proof
-    ) internal pure returns (bool) {
+    function verifyMerkleProof(bytes32 _root, bytes32 _hash, uint256 _nonce, bytes memory _proof)
+        internal
+        pure
+        returns (bool)
+    {
         require(_proof.length % 32 == 0, "Invalid proof");
         uint256 _length = _proof.length / 32;
 
@@ -1176,9 +1176,11 @@ library WithdrawTrieVerifier {
 }
 
 interface IL1MessageQueueV2 {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new L1 => L2 transaction is appended to the queue.
     /// @param sender The address of the sender account on L2.
@@ -1188,21 +1190,18 @@ interface IL1MessageQueueV2 {
     /// @param gasLimit The gas limit used on L2.
     /// @param data The calldata passed to the target account on L2.
     event QueueTransaction(
-        address indexed sender,
-        address indexed target,
-        uint256 value,
-        uint64 queueIndex,
-        uint256 gasLimit,
-        bytes data
+        address indexed sender, address indexed target, uint256 value, uint64 queueIndex, uint256 gasLimit, bytes data
     );
 
     /// @notice Emitted when some L1 => L2 transactions are finalized on L1.
     /// @param finalizedIndex The index of the last message finalized.
     event FinalizedDequeuedTransaction(uint256 finalizedIndex);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the start index of all messages in this contract.
     function firstCrossDomainMessageIndex() external view returns (uint256);
@@ -1252,20 +1251,18 @@ interface IL1MessageQueueV2 {
         bytes calldata data
     ) external view returns (bytes32);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Append a L1 => L2 cross-domain message to the message queue.
     /// @param target The address of the target account on L2.
     /// @param gasLimit The gas limit used on L2.
     /// @param data The calldata passed to the target account on L2.
     /// @dev This function can only be called by `L1ScrollMessenger`.
-    function appendCrossDomainMessage(
-        address target,
-        uint256 gasLimit,
-        bytes calldata data
-    ) external;
+    function appendCrossDomainMessage(address target, uint256 gasLimit, bytes calldata data) external;
 
     /// @notice Append an enforced transaction to the message queue.
     /// @param sender The address of the sender account on L2.
@@ -1310,15 +1307,18 @@ interface IL1MessageQueueV2 {
 /// The messages sent through this contract may possibly be skipped in layer 2 due to circuit capacity overflow.
 /// In such case, users can initiate `dropMessage` to claim refunds. But the cross domain relay fee won't be refunded.
 contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
-
+     *
+     */
     error ErrorForbidToCallMessageQueue();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of Rollup contract.
     address public immutable rollup;
@@ -1332,10 +1332,11 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
     /// @notice The address of `EnforcedTxGateway`.
     address public immutable enforcedTxGateway;
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct ReplayState {
         // The number of replayed times.
         uint128 times;
@@ -1343,9 +1344,11 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         uint128 lastIndex;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from L1 message hash to the timestamp when the message is sent.
     mapping(bytes32 => uint256) public messageSendTimestamp;
@@ -1386,10 +1389,11 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
     /// avoid such situation.
     mapping(uint256 => uint256) public prevReplayIndex;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(
         address _counterpart,
         address _rollup,
@@ -1413,29 +1417,29 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
     /// @param _feeVault The address of fee vault, which will be used to collect relayer fee.
     /// @param _rollup The address of ScrollChain contract.
     /// @param _messageQueue The address of L1MessageQueue contract.
-    function initialize(
-        address _counterpart,
-        address _feeVault,
-        address _rollup,
-        address _messageQueue
-    ) public initializer {
+    function initialize(address _counterpart, address _feeVault, address _rollup, address _messageQueue)
+        public
+        initializer
+    {
         ScrollMessengerBase.__ScrollMessengerBase_init(_counterpart, _feeVault);
 
         __rollup = _rollup;
         __messageQueue = _messageQueue;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit, _msgSender());
     }
 
@@ -1483,7 +1487,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         xDomainMessageSender = _from;
         // xDomainMessageSender serves as reentrancy guard (notInExecution modifier).
         // slither-disable-next-line reentrancy-eth
-        (bool success, ) = _to.call{value: _value}(_message);
+        (bool success,) = _to.call{value: _value}(_message);
         // reset value to refund gas.
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
 
@@ -1522,7 +1526,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         // charge relayer fee
         require(msg.value >= _fee, "Insufficient msg.value for fee");
         if (_fee > 0) {
-            (bool _success, ) = feeVault.call{value: _fee}("");
+            (bool _success,) = feeVault.call{value: _fee}("");
             require(_success, "Failed to deduct the fee");
         }
 
@@ -1551,23 +1555,21 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         unchecked {
             uint256 _refund = msg.value - _fee;
             if (_refund > 0) {
-                (bool _success, ) = _refundAddress.call{value: _refund}("");
+                (bool _success,) = _refundAddress.call{value: _refund}("");
                 require(_success, "Failed to refund the fee");
             }
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
-
-    function _sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit,
-        address _refundAddress
-    ) internal nonReentrant {
+     *
+     */
+    function _sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit, address _refundAddress)
+        internal
+        nonReentrant
+    {
         // compute the actual cross domain message calldata.
         uint256 _messageNonce = IL1MessageQueueV2(messageQueueV2).nextCrossDomainMessageIndex();
         bytes memory _xDomainCalldata = _encodeXDomainCalldata(_msgSender(), _to, _value, _messageNonce, _message);
@@ -1576,7 +1578,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         uint256 _fee = IL1MessageQueueV2(messageQueueV2).estimateCrossDomainMessageFee(_gasLimit);
         require(msg.value >= _fee + _value, "Insufficient msg.value");
         if (_fee > 0) {
-            (bool _success, ) = feeVault.call{value: _fee}("");
+            (bool _success,) = feeVault.call{value: _fee}("");
             require(_success, "Failed to deduct the fee");
         }
 
@@ -1596,7 +1598,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         unchecked {
             uint256 _refund = msg.value - _fee - _value;
             if (_refund > 0) {
-                (bool _success, ) = _refundAddress.call{value: _refund}("");
+                (bool _success,) = _refundAddress.call{value: _refund}("");
                 require(_success, "Failed to refund the fee");
             }
         }

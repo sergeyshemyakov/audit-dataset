@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
-import {L2StakeManager} from './L2StakeManager.sol';
-import {console2} from 'forge-std/console2.sol';
+import {L2StakeManager} from "./L2StakeManager.sol";
+import {console2} from "forge-std/console2.sol";
 
 contract RewardDistributor {
     /// @dev The number of blocks attesters have to vote on a block
@@ -61,11 +61,19 @@ contract RewardDistributor {
     function attest(uint256 blockNumber, bytes32 blockHash, bool vote) external {
         _finalizeNext(msg.sender);
         // subtract 2 because hash will be available after n + 1 blocks
-        if (blockNumber > block.number - 2) revert InvalidBlockNumber();
-        if (isFinalized(blockNumber)) revert AttestationPeriodExpired();
-        if (blockNumber <= _rewards[msg.sender].tail) revert AttestationOutOfOrder();
+        if (blockNumber > block.number - 2) {
+            revert InvalidBlockNumber();
+        }
+        if (isFinalized(blockNumber)) {
+            revert AttestationPeriodExpired();
+        }
+        if (blockNumber <= _rewards[msg.sender].tail) {
+            revert AttestationOutOfOrder();
+        }
         // in case of a reorg the attestation will fail
-        if (blockHash != _blocks[blockNumber].blockHash) revert InvalidBlockHash();
+        if (blockHash != _blocks[blockNumber].blockHash) {
+            revert InvalidBlockHash();
+        }
         uint256 balance = L2_STAKE_MANAGER.getPastVotes(msg.sender, blockNumber);
         if (vote) {
             _blocks[blockNumber].votesFor += balance;
@@ -80,8 +88,10 @@ contract RewardDistributor {
     function withdraw(address recipient) external {
         uint256 amount = _rewards[recipient].earned;
         _rewards[recipient].earned = 0;
-        (bool success,) = recipient.call{value: amount}('');
-        if (!success) revert TransferFailed();
+        (bool success,) = recipient.call{value: amount}("");
+        if (!success) {
+            revert TransferFailed();
+        }
         emit Withdrawn(recipient, amount);
     }
 
@@ -101,9 +111,13 @@ contract RewardDistributor {
 
     function _finalizeNext(address account) internal {
         uint256 head = _rewards[account].head;
-        if (!isFinalized(head)) return;
+        if (!isFinalized(head)) {
+            return;
+        }
         (uint256 next, bool vote) = _decodeNext(_rewards[account].next[head]);
-        if (next == 0) return;
+        if (next == 0) {
+            return;
+        }
         uint256 votes;
         if (!vote) {
             uint256 votesAgainst = _blocks[next].votesAgainst;

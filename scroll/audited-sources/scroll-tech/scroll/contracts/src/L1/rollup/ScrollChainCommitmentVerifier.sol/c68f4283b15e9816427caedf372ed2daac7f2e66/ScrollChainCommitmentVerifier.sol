@@ -2,8 +2,8 @@
 
 pragma solidity =0.8.16;
 
-import {IScrollChain} from "./IScrollChain.sol";
 import {ZkTrieVerifier} from "../../libraries/verifier/ZkTrieVerifier.sol";
+import {IScrollChain} from "./IScrollChain.sol";
 
 contract ScrollChainCommitmentVerifier {
     /// @notice The address of poseidon hash contract
@@ -29,11 +29,11 @@ contract ScrollChainCommitmentVerifier {
     /// |        1 byte        |      ...      |        1 byte        |      ...      |
     /// | account proof length | account proof | storage proof length | storage proof |
     /// ```
-    function verifyZkTrieProof(
-        address account,
-        bytes32 storageKey,
-        bytes calldata proof
-    ) public view returns (bytes32 stateRoot, bytes32 storageValue) {
+    function verifyZkTrieProof(address account, bytes32 storageKey, bytes calldata proof)
+        public
+        view
+        returns (bytes32 stateRoot, bytes32 storageValue)
+    {
         return ZkTrieVerifier.verifyZkTrieProof(poseidon, account, storageKey, proof);
     }
 
@@ -43,12 +43,11 @@ contract ScrollChainCommitmentVerifier {
     /// @param storageKey The storage key inside the contract in L2.
     /// @param proof The rlp encoding result of eth_getProof.
     /// @return storageValue The value of `storageKey`.
-    function verifyStateCommitment(
-        uint256 batchIndex,
-        address account,
-        bytes32 storageKey,
-        bytes calldata proof
-    ) external view returns (bytes32 storageValue) {
+    function verifyStateCommitment(uint256 batchIndex, address account, bytes32 storageKey, bytes calldata proof)
+        external
+        view
+        returns (bytes32 storageValue)
+    {
         require(IScrollChain(rollup).isBatchFinalized(batchIndex), "Batch not finalized");
 
         bytes32 computedStateRoot;

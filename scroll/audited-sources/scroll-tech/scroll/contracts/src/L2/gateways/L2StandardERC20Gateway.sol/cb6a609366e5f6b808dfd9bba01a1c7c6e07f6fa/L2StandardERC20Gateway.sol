@@ -7,13 +7,14 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
 
-import {IL2ERC20Gateway, L2ERC20Gateway} from "./L2ERC20Gateway.sol";
-import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
 import {IL1ERC20Gateway} from "../../L1/gateways/IL1ERC20Gateway.sol";
+
+import {IScrollGateway, ScrollGatewayBase} from "../../libraries/gateway/ScrollGatewayBase.sol";
 import {IScrollStandardERC20} from "../../libraries/token/IScrollStandardERC20.sol";
-import {ScrollStandardERC20} from "../../libraries/token/ScrollStandardERC20.sol";
 import {IScrollStandardERC20Factory} from "../../libraries/token/IScrollStandardERC20Factory.sol";
-import {ScrollGatewayBase, IScrollGateway} from "../../libraries/gateway/ScrollGatewayBase.sol";
+import {ScrollStandardERC20} from "../../libraries/token/ScrollStandardERC20.sol";
+import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
+import {IL2ERC20Gateway, L2ERC20Gateway} from "./L2ERC20Gateway.sol";
 
 /// @title L2StandardERC20Gateway
 /// @notice The `L2StandardERC20Gateway` is used to withdraw standard ERC20 tokens in layer 2 and
@@ -25,9 +26,11 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
     using SafeERC20 for IERC20;
     using Address for address;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from l2 token address to l1 token address.
     mapping(address => address) private tokenMapping;
@@ -35,16 +38,15 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
     /// @notice The address of ScrollStandardERC20Factory.
     address public tokenFactory;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger,
-        address _tokenFactory
-    ) external initializer {
+     *
+     */
+    function initialize(address _counterpart, address _router, address _messenger, address _tokenFactory)
+        external
+        initializer
+    {
         require(_router != address(0), "zero router address");
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
 
@@ -52,9 +54,11 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
         tokenFactory = _tokenFactory;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function getL1ERC20Address(address _l2Token) external view override returns (address) {
@@ -66,9 +70,11 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
         return IScrollStandardERC20Factory(tokenFactory).computeL2TokenAddress(address(this), _l1Token);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function finalizeDepositERC20(
@@ -83,10 +89,8 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
 
         {
             // avoid stack too deep
-            address _expectedL2Token = IScrollStandardERC20Factory(tokenFactory).computeL2TokenAddress(
-                address(this),
-                _l1Token
-            );
+            address _expectedL2Token =
+                IScrollStandardERC20Factory(tokenFactory).computeL2TokenAddress(address(this), _l1Token);
             require(_l2Token == _expectedL2Token, "l2 token mismatch");
         }
 
@@ -112,18 +116,18 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
         emit FinalizeDepositERC20(_l1Token, _l2Token, _from, _to, _amount, _callData);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @inheritdoc L2ERC20Gateway
-    function _withdraw(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual override {
+    function _withdraw(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        override
+    {
         require(_amount > 0, "withdraw zero amount");
 
         // 1. Extract real sender if this call is from L2GatewayRouter.
@@ -140,13 +144,7 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
 
         // 3. Generate message passed to L1StandardERC20Gateway.
         bytes memory _message = abi.encodeWithSelector(
-            IL1ERC20Gateway.finalizeWithdrawERC20.selector,
-            _l1Token,
-            _token,
-            _from,
-            _to,
-            _amount,
-            _data
+            IL1ERC20Gateway.finalizeWithdrawERC20.selector, _l1Token, _token, _from, _to, _amount, _data
         );
 
         // 4. send message to L2ScrollMessenger
@@ -157,10 +155,7 @@ contract L2StandardERC20Gateway is Initializable, ScrollGatewayBase, L2ERC20Gate
 
     function _deployL2Token(bytes memory _deployData, address _l1Token) internal {
         address _l2Token = IScrollStandardERC20Factory(tokenFactory).deployL2Token(address(this), _l1Token);
-        (string memory _symbol, string memory _name, uint8 _decimals) = abi.decode(
-            _deployData,
-            (string, string, uint8)
-        );
+        (string memory _symbol, string memory _name, uint8 _decimals) = abi.decode(_deployData, (string, string, uint8));
         ScrollStandardERC20(_l2Token).initialize(_name, _symbol, _decimals, address(this), _l1Token);
     }
 }

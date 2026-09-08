@@ -5,9 +5,11 @@ pragma solidity ^0.8.24;
 /// @title IScrollChain
 /// @notice The interface for ScrollChain.
 interface IScrollChain {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new batch is committed.
     /// @param batchIndex The index of the batch.
@@ -41,9 +43,11 @@ interface IScrollChain {
     /// @param newMaxNumTxInChunk The new value of `maxNumTxInChunk`.
     event UpdateMaxNumTxInChunk(uint256 oldMaxNumTxInChunk, uint256 newMaxNumTxInChunk);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @return The latest finalized batch index.
     function lastFinalizedBatchIndex() external view returns (uint256);
@@ -64,9 +68,11 @@ interface IScrollChain {
     /// @return Whether the batch is finalized by batch index.
     function isBatchFinalized(uint256 batchIndex) external view returns (bool);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Commit a batch of transactions on layer 1.
     ///

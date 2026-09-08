@@ -118,7 +118,9 @@ contract NetFeeSplitter is INetFeeSplitter {
     constructor(address[] memory initialRecipients, Recipient[] memory recipientData) {
         uint256 totalAllocation;
         uint256 length = initialRecipients.length;
-        if (initialRecipients.length != recipientData.length) revert InvalidRecipients();
+        if (initialRecipients.length != recipientData.length) {
+            revert InvalidRecipients();
+        }
         for (uint256 i = 0; i < length; i++) {
             address recipient = initialRecipients[i];
             bool duplicateRecipient = false;
@@ -126,14 +128,24 @@ contract NetFeeSplitter is INetFeeSplitter {
                 duplicateRecipient := tload(recipient)
                 tstore(recipient, 1)
             }
-            if (duplicateRecipient) revert DuplicateRecipient();
-            if (recipientData[i].setter == address(0)) revert SetterZero();
-            if (recipient == address(0)) revert RecipientZero();
-            if (recipientData[i].allocation == 0) revert AllocationZero();
+            if (duplicateRecipient) {
+                revert DuplicateRecipient();
+            }
+            if (recipientData[i].setter == address(0)) {
+                revert SetterZero();
+            }
+            if (recipient == address(0)) {
+                revert RecipientZero();
+            }
+            if (recipientData[i].allocation == 0) {
+                revert AllocationZero();
+            }
             recipients[recipient] = recipientData[i];
             totalAllocation += recipientData[i].allocation;
         }
-        if (totalAllocation != TOTAL_ALLOCATION) revert InvalidTotalAllocation();
+        if (totalAllocation != TOTAL_ALLOCATION) {
+            revert InvalidTotalAllocation();
+        }
     }
 
     /// @dev Keep track of incoming fees
@@ -143,7 +155,9 @@ contract NetFeeSplitter is INetFeeSplitter {
 
     /// @inheritdoc INetFeeSplitter
     function transferAllocation(address oldRecipient, address newRecipient, uint256 allocation) external {
-        if (setterOf(newRecipient) == address(0)) revert SetterZero();
+        if (setterOf(newRecipient) == address(0)) {
+            revert SetterZero();
+        }
         _transfer(oldRecipient, newRecipient, allocation);
     }
 
@@ -154,8 +168,12 @@ contract NetFeeSplitter is INetFeeSplitter {
         address newSetter,
         uint256 allocation
     ) external {
-        if (setterOf(newRecipient) != address(0)) revert SetterAlreadySet();
-        if (newSetter == address(0)) revert SetterZero();
+        if (setterOf(newRecipient) != address(0)) {
+            revert SetterAlreadySet();
+        }
+        if (newSetter == address(0)) {
+            revert SetterZero();
+        }
         recipients[newRecipient] = Recipient(newSetter, 0);
         emit SetterTransferred(newRecipient, address(0), newSetter);
         _transfer(oldRecipient, newRecipient, allocation);
@@ -163,9 +181,13 @@ contract NetFeeSplitter is INetFeeSplitter {
 
     /// @inheritdoc INetFeeSplitter
     function transferSetter(address recipient, address newSetter) external {
-        if (newSetter == address(0)) revert SetterZero();
+        if (newSetter == address(0)) {
+            revert SetterZero();
+        }
         address currentSetter = setterOf(recipient);
-        if (currentSetter != msg.sender) revert Unauthorized();
+        if (currentSetter != msg.sender) {
+            revert Unauthorized();
+        }
         recipients[recipient].setter = newSetter;
         emit SetterTransferred(recipient, currentSetter, newSetter);
     }
@@ -176,8 +198,10 @@ contract NetFeeSplitter is INetFeeSplitter {
         amount = _earned[msg.sender];
         if (amount != 0) {
             _earned[msg.sender] = 0;
-            (bool success,) = to.call{value: amount}('');
-            if (!success) revert WithdrawalFailed();
+            (bool success,) = to.call{value: amount}("");
+            if (!success) {
+                revert WithdrawalFailed();
+            }
         }
         emit Withdrawn(msg.sender, to, amount);
     }
@@ -198,10 +222,18 @@ contract NetFeeSplitter is INetFeeSplitter {
     }
 
     function _transfer(address oldRecipient, address newRecipient, uint256 allocation) private {
-        if (setterOf(oldRecipient) != msg.sender) revert Unauthorized();
-        if (newRecipient == address(0)) revert RecipientZero();
-        if (allocation == 0) revert AllocationZero();
-        if (balanceOf(oldRecipient) < allocation) revert InsufficientAllocation();
+        if (setterOf(oldRecipient) != msg.sender) {
+            revert Unauthorized();
+        }
+        if (newRecipient == address(0)) {
+            revert RecipientZero();
+        }
+        if (allocation == 0) {
+            revert AllocationZero();
+        }
+        if (balanceOf(oldRecipient) < allocation) {
+            revert InsufficientAllocation();
+        }
         _updateFees(oldRecipient);
         _updateFees(newRecipient);
 

@@ -2,10 +2,11 @@
 
 pragma solidity ^0.8.0;
 
-import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-import {ERC20PermitUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/draft-ERC20PermitUpgradeable.sol";
-import {IScrollStandardERC20} from "./IScrollStandardERC20.sol";
 import {IERC677Receiver} from "./IERC677Receiver.sol";
+import {IScrollStandardERC20} from "./IScrollStandardERC20.sol";
+import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
+import {ERC20PermitUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/draft-ERC20PermitUpgradeable.sol";
 
 contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollStandardERC20 {
     /// @inheritdoc IScrollStandardERC20
@@ -43,11 +44,7 @@ contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollStandardERC20 {
     /// @dev ERC677 Standard, see https://github.com/ethereum/EIPs/issues/677
     /// Defi can use this method to transfer L1/L2 token to L2/L1,
     /// and deposit to L2/L1 contract in one transaction
-    function transferAndCall(
-        address receiver,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool success) {
+    function transferAndCall(address receiver, uint256 amount, bytes calldata data) external returns (bool success) {
         ERC20Upgradeable.transfer(receiver, amount);
         if (isContract(receiver)) {
             contractFallback(receiver, amount, data);
@@ -55,11 +52,7 @@ contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollStandardERC20 {
         return true;
     }
 
-    function contractFallback(
-        address to,
-        uint256 value,
-        bytes memory data
-    ) private {
+    function contractFallback(address to, uint256 value, bytes memory data) private {
         IERC677Receiver receiver = IERC677Receiver(to);
         receiver.onTokenTransfer(msg.sender, value, data);
     }

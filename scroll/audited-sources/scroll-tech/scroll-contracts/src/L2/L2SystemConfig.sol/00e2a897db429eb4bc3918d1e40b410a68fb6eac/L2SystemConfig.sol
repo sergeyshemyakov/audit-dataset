@@ -5,9 +5,11 @@ pragma solidity =0.8.24;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract L2SystemConfig is OwnableUpgradeable {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the base fee overhead is updated.
     /// @param oldBaseFeeOverhead The old base fee overhead.
@@ -19,15 +21,18 @@ contract L2SystemConfig is OwnableUpgradeable {
     /// @param newBaseFeeScalar The new base fee scalar.
     event BaseFeeScalarUpdated(uint256 oldBaseFeeScalar, uint256 newBaseFeeScalar);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
-
+     *
+     */
     uint256 private constant PRECISION = 1e18;
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @notice The base fee overhead. This is part of the L2 base fee calculation.
     uint256 public baseFeeOverhead;
@@ -35,10 +40,11 @@ contract L2SystemConfig is OwnableUpgradeable {
     /// @notice The base fee scalar. This is part of the L2 base fee calculation.
     uint256 public baseFeeScalar;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -48,9 +54,11 @@ contract L2SystemConfig is OwnableUpgradeable {
         transferOwnership(_owner);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Calculates the L2 base fee based on the L1 base fee.
     /// @param l1BaseFee The L1 base fee.
@@ -59,9 +67,11 @@ contract L2SystemConfig is OwnableUpgradeable {
         l2BaseFee = (l1BaseFee * baseFeeScalar) / PRECISION + baseFeeOverhead;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Updates the base fee overhead.
     /// @param _baseFeeOverhead The new base fee overhead.

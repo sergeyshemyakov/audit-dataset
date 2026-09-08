@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import { Types } from "src/libraries/Types.sol";
-import { Hashing } from "src/libraries/Hashing.sol";
-import { Encoding } from "src/libraries/Encoding.sol";
-import { Burn } from "src/libraries/Burn.sol";
-import { ISemver } from "src/universal/ISemver.sol";
+import {Burn} from "src/libraries/Burn.sol";
+import {Encoding} from "src/libraries/Encoding.sol";
+import {Hashing} from "src/libraries/Hashing.sol";
+import {Types} from "src/libraries/Types.sol";
+
+import {ISemver} from "src/universal/ISemver.sol";
 
 /// @custom:proxied
 /// @custom:predeploy 0x4200000000000000000000000000000000000016

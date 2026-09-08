@@ -10,17 +10,9 @@ interface IAccount {
 
     function scheduledVotesForGroup(address group) external returns (uint256);
 
-    function scheduleWithdrawals(
-        address beneficiary,
-        address[] calldata group,
-        uint256[] calldata withdrawals
-    ) external;
+    function scheduleWithdrawals(address beneficiary, address[] calldata group, uint256[] calldata withdrawals)
+        external;
 
-    function votePartially(
-        uint256 proposalId,
-        uint256 index,
-        uint256 yesVotes,
-        uint256 noVotes,
-        uint256 abstainVotes
-    ) external;
+    function votePartially(uint256 proposalId, uint256 index, uint256 yesVotes, uint256 noVotes, uint256 abstainVotes)
+        external;
 }

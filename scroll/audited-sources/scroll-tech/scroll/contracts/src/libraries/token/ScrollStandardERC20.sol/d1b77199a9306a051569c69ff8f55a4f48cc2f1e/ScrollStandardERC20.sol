@@ -2,10 +2,11 @@
 
 pragma solidity ^0.8.0;
 
-import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-import {ERC20PermitUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/draft-ERC20PermitUpgradeable.sol";
-import {IScrollERC20Upgradeable} from "./IScrollERC20Upgradeable.sol";
 import {IERC677Receiver} from "../callbacks/IERC677Receiver.sol";
+import {IScrollERC20Upgradeable} from "./IScrollERC20Upgradeable.sol";
+import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
+import {ERC20PermitUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/draft-ERC20PermitUpgradeable.sol";
 
 /// @notice The `ScrollStandardERC20` is the ERC20 token contract created by
 /// `L2StandardERC20Gateway` when the first time the L1 ERC20 is bridged via
@@ -54,11 +55,7 @@ contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollERC20Upgradeable 
     /// @dev ERC677 Standard, see https://github.com/ethereum/EIPs/issues/677
     /// Defi can use this method to transfer L1/L2 token to L2/L1,
     /// and deposit to L2/L1 contract in one transaction
-    function transferAndCall(
-        address receiver,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool success) {
+    function transferAndCall(address receiver, uint256 amount, bytes calldata data) external returns (bool success) {
         ERC20Upgradeable.transfer(receiver, amount);
         if (isContract(receiver)) {
             contractFallback(receiver, amount, data);
@@ -66,11 +63,7 @@ contract ScrollStandardERC20 is ERC20PermitUpgradeable, IScrollERC20Upgradeable 
         return true;
     }
 
-    function contractFallback(
-        address to,
-        uint256 value,
-        bytes memory data
-    ) private {
+    function contractFallback(address to, uint256 value, bytes memory data) private {
         IERC677Receiver receiver = IERC677Receiver(to);
         receiver.onTokenTransfer(msg.sender, value, data);
     }

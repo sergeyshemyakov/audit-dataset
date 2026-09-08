@@ -9,17 +9,18 @@ import {IScrollMessenger} from "../../libraries/IScrollMessenger.sol";
 contract MockScrollMessenger is IScrollMessenger {
     address public override xDomainMessageSender;
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
-
+     *
+     */
     function setXDomainMessageSender(address _xDomainMessageSender) external {
         xDomainMessageSender = _xDomainMessageSender;
     }
 
     function callTarget(address to, bytes calldata data) external payable {
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, ) = address(to).call{value: msg.value}(data);
+        (bool success,) = address(to).call{value: msg.value}(data);
         if (!success) {
             // solhint-disable-next-line no-inline-assembly
             assembly {
@@ -31,18 +32,10 @@ contract MockScrollMessenger is IScrollMessenger {
         }
     }
 
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external payable {}
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit) external payable {}
 
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit,
-        address _refundAddress
-    ) external payable {}
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit, address _refundAddress)
+        external
+        payable
+    {}
 }

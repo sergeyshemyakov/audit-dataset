@@ -2,19 +2,22 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import { ReinitializableBase } from "src/universal/ReinitializableBase.sol";
-import { ProxyAdminOwnedBase } from "src/L1/ProxyAdminOwnedBase.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+
+import {ProxyAdminOwnedBase} from "src/L1/ProxyAdminOwnedBase.sol";
+import {ReinitializableBase} from "src/universal/ReinitializableBase.sol";
 
 // Libraries
-import { Storage } from "src/libraries/Storage.sol";
-import { Features } from "src/libraries/Features.sol";
+
+import {Features} from "src/libraries/Features.sol";
+import {Storage} from "src/libraries/Storage.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IResourceMetering } from "interfaces/L1/IResourceMetering.sol";
-import { IOptimismPortal2 } from "interfaces/L1/IOptimismPortal2.sol";
-import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
+
+import {IOptimismPortal2} from "interfaces/L1/IOptimismPortal2.sol";
+import {IResourceMetering} from "interfaces/L1/IResourceMetering.sol";
+import {ISuperchainConfig} from "interfaces/L1/ISuperchainConfig.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @title SystemConfig
@@ -193,10 +196,7 @@ contract SystemConfig is ProxyAdminOwnedBase, OwnableUpgradeable, Reinitializabl
         SystemConfig.Addresses memory _addresses,
         uint256 _l2ChainId,
         ISuperchainConfig _superchainConfig
-    )
-        public
-        reinitializer(initVersion())
-    {
+    ) public reinitializer(initVersion()) {
         // Initialization transactions must come from the ProxyAdmin or its owner.
         _assertOnlyProxyAdminOrProxyAdminOwner();
 
@@ -206,7 +206,7 @@ contract SystemConfig is ProxyAdminOwnedBase, OwnableUpgradeable, Reinitializabl
 
         // These are set in ascending order of their UpdateTypes.
         _setBatcherHash(_batcherHash);
-        _setGasConfigEcotone({ _basefeeScalar: _basefeeScalar, _blobbasefeeScalar: _blobbasefeeScalar });
+        _setGasConfigEcotone({_basefeeScalar: _basefeeScalar, _blobbasefeeScalar: _blobbasefeeScalar});
         _setGasLimit(_gasLimit);
 
         Storage.setAddress(UNSAFE_BLOCK_SIGNER_SLOT, _unsafeBlockSigner);

@@ -236,11 +236,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -382,14 +381,13 @@ interface IERC165 {
  * ```
  */
 abstract contract ERC165Upgradeable is Initializable, IERC165 {
-    function __ERC165_init() internal onlyInitializing {
-    }
+    function __ERC165_init() internal onlyInitializing {}
 
-    function __ERC165_init_unchained() internal onlyInitializing {
-    }
+    function __ERC165_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
+
     function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {
         return interfaceId == type(IERC165).interfaceId;
     }
@@ -442,14 +440,14 @@ abstract contract AccessControlUpgradeable is Initializable, ContextUpgradeable,
 
     bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
 
-
     /// @custom:storage-location erc7201:openzeppelin.storage.AccessControl
     struct AccessControlStorage {
         mapping(bytes32 role => RoleData) _roles;
     }
 
     // keccak256(abi.encode(uint256(keccak256("openzeppelin.storage.AccessControl")) - 1)) & ~bytes32(uint256(0xff))
-    bytes32 private constant AccessControlStorageLocation = 0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800;
+    bytes32 private constant AccessControlStorageLocation =
+        0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800;
 
     function _getAccessControlStorage() private pure returns (AccessControlStorage storage $) {
         assembly {
@@ -466,14 +464,13 @@ abstract contract AccessControlUpgradeable is Initializable, ContextUpgradeable,
         _;
     }
 
-    function __AccessControl_init() internal onlyInitializing {
-    }
+    function __AccessControl_init() internal onlyInitializing {}
 
-    function __AccessControl_init_unchained() internal onlyInitializing {
-    }
+    function __AccessControl_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
+
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return interfaceId == type(IAccessControl).interfaceId || super.supportsInterface(interfaceId);
     }
@@ -853,7 +850,7 @@ library Address {
             revert Errors.InsufficientBalance(address(this).balance, amount);
         }
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         if (!success) {
             revert Errors.FailedCall();
         }
@@ -921,11 +918,11 @@ library Address {
      * was not a contract or bubbling up the revert reason (falling back to {Errors.FailedCall}) in case
      * of an unsuccessful call.
      */
-    function verifyCallResultFromTarget(
-        address target,
-        bool success,
-        bytes memory returndata
-    ) internal view returns (bytes memory) {
+    function verifyCallResultFromTarget(address target, bool success, bytes memory returndata)
+        internal
+        view
+        returns (bytes memory)
+    {
         if (!success) {
             _revert(returndata);
         } else {
@@ -1202,11 +1199,9 @@ abstract contract UUPSUpgradeable is Initializable, IERC1822Proxiable {
         _;
     }
 
-    function __UUPSUpgradeable_init() internal onlyInitializing {
-    }
+    function __UUPSUpgradeable_init() internal onlyInitializing {}
 
-    function __UUPSUpgradeable_init_unchained() internal onlyInitializing {
-    }
+    function __UUPSUpgradeable_init_unchained() internal onlyInitializing {}
     /**
      * @dev Implementation of the ERC1822 {proxiableUUID} function. This returns the storage slot used by the
      * implementation. It is used to validate the implementation's compatibility when performing an upgrade.
@@ -1215,6 +1210,7 @@ abstract contract UUPSUpgradeable is Initializable, IERC1822Proxiable {
      * bricking a proxy that upgrades to it, by delegating to itself until out of gas. Thus it is critical that this
      * function revert if invoked through a proxy. This is guaranteed by the `notDelegated` modifier.
      */
+
     function proxiableUUID() external view virtual notDelegated returns (bytes32) {
         return ERC1967Utils.IMPLEMENTATION_SLOT;
     }
@@ -1241,8 +1237,8 @@ abstract contract UUPSUpgradeable is Initializable, IERC1822Proxiable {
      */
     function _checkProxy() internal view virtual {
         if (
-            address(this) == __self || // Must be called through delegatecall
-            ERC1967Utils.getImplementation() != __self // Must be called through an active proxy
+            address(this) == __self // Must be called through delegatecall
+                || ERC1967Utils.getImplementation() != __self // Must be called through an active proxy
         ) {
             revert UUPSUnauthorizedCallContext();
         }
@@ -1329,7 +1325,8 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
     }
 
     // keccak256(abi.encode(uint256(keccak256("openzeppelin.storage.ReentrancyGuard")) - 1)) & ~bytes32(uint256(0xff))
-    bytes32 private constant ReentrancyGuardStorageLocation = 0x9b779b17422d0df92223018b32b4d1fa46e071723d6817e2486d003becc55f00;
+    bytes32 private constant ReentrancyGuardStorageLocation =
+        0x9b779b17422d0df92223018b32b4d1fa46e071723d6817e2486d003becc55f00;
 
     function _getReentrancyGuardStorage() private pure returns (ReentrancyGuardStorage storage $) {
         assembly {
@@ -1397,35 +1394,35 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
  * @notice Interface of the Groth16 verifier contracts
  */
 interface IVerifier {
-  /**
-   * @notice Verifies a Withdrawal Proof
-   * @param _pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
-   * @param _pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
-   * @param _pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
-   * @param _pubSignals The proof public signals (both input and output)
-   * @return _valid The boolean indicating if the proof is valid
-   */
-  function verifyProof(
-    uint256[2] memory _pA,
-    uint256[2][2] memory _pB,
-    uint256[2] memory _pC,
-    uint256[8] memory _pubSignals
-  ) external returns (bool _valid);
+    /**
+     * @notice Verifies a Withdrawal Proof
+     * @param _pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
+     * @param _pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
+     * @param _pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
+     * @param _pubSignals The proof public signals (both input and output)
+     * @return _valid The boolean indicating if the proof is valid
+     */
+    function verifyProof(
+        uint256[2] memory _pA,
+        uint256[2][2] memory _pB,
+        uint256[2] memory _pC,
+        uint256[8] memory _pubSignals
+    ) external returns (bool _valid);
 
-  /**
-   * @notice Verifies a Ragequit Proof
-   * @param _pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
-   * @param _pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
-   * @param _pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
-   * @param _pubSignals The proof public signals (both input and output)
-   * @return _valid The boolean indicating if the proof is valid
-   */
-  function verifyProof(
-    uint256[2] memory _pA,
-    uint256[2][2] memory _pB,
-    uint256[2] memory _pC,
-    uint256[4] memory _pubSignals
-  ) external returns (bool _valid);
+    /**
+     * @notice Verifies a Ragequit Proof
+     * @param _pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
+     * @param _pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
+     * @param _pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
+     * @param _pubSignals The proof public signals (both input and output)
+     * @return _valid The boolean indicating if the proof is valid
+     */
+    function verifyProof(
+        uint256[2] memory _pA,
+        uint256[2][2] memory _pB,
+        uint256[2] memory _pC,
+        uint256[4] memory _pubSignals
+    ) external returns (bool _valid);
 }
 
 /**
@@ -1433,160 +1430,160 @@ interface IVerifier {
  * @notice Interface for the State contract
  */
 interface IState {
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               EVENTS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Emitted when inserting a leaf into the Merkle Tree
-   * @param _index The index of the leaf in the tree
-   * @param _leaf The leaf value
-   * @param _root The updated root
-   */
-  event LeafInserted(uint256 _index, uint256 _leaf, uint256 _root);
+    /**
+     * @notice Emitted when inserting a leaf into the Merkle Tree
+     * @param _index The index of the leaf in the tree
+     * @param _leaf The leaf value
+     * @param _root The updated root
+     */
+    event LeafInserted(uint256 _index, uint256 _leaf, uint256 _root);
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               ERRORS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Thrown when trying to call a method only available to the Entrypoint
-   */
-  error OnlyEntrypoint();
+    /**
+     * @notice Thrown when trying to call a method only available to the Entrypoint
+     */
+    error OnlyEntrypoint();
 
-  /**
-   * @notice Thrown when trying to deposit into a dead pool
-   */
-  error PoolIsDead();
+    /**
+     * @notice Thrown when trying to deposit into a dead pool
+     */
+    error PoolIsDead();
 
-  /**
-   * @notice Thrown when trying to spend a nullifier that has already been spent
-   */
-  error NullifierAlreadySpent();
+    /**
+     * @notice Thrown when trying to spend a nullifier that has already been spent
+     */
+    error NullifierAlreadySpent();
 
-  /**
-   * @notice Thrown when trying to initiate the ragequitting process of a commitment before the waiting period
-   */
-  error NotYetRagequitteable();
+    /**
+     * @notice Thrown when trying to initiate the ragequitting process of a commitment before the waiting period
+     */
+    error NotYetRagequitteable();
 
-  /**
-   * @notice Thrown when the max tree depth is reached and no more commitments can be inserted
-   */
-  error MaxTreeDepthReached();
+    /**
+     * @notice Thrown when the max tree depth is reached and no more commitments can be inserted
+     */
+    error MaxTreeDepthReached();
 
-  /**
-   * @notice Thrown when trying to set a state variable as address zero
-   */
-  error ZeroAddress();
+    /**
+     * @notice Thrown when trying to set a state variable as address zero
+     */
+    error ZeroAddress();
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               VIEWS 
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Returns the pool unique identifier
-   * @return _scope The scope id
-   */
-  function SCOPE() external view returns (uint256 _scope);
+    /**
+     * @notice Returns the pool unique identifier
+     * @return _scope The scope id
+     */
+    function SCOPE() external view returns (uint256 _scope);
 
-  /**
-   * @notice Returns the pool asset
-   * @return _asset The asset address
-   */
-  function ASSET() external view returns (address _asset);
+    /**
+     * @notice Returns the pool asset
+     * @return _asset The asset address
+     */
+    function ASSET() external view returns (address _asset);
 
-  /**
-   * @notice Returns the root history size for root caching
-   * @return _size The amount of valid roots to store
-   */
-  function ROOT_HISTORY_SIZE() external view returns (uint32 _size);
+    /**
+     * @notice Returns the root history size for root caching
+     * @return _size The amount of valid roots to store
+     */
+    function ROOT_HISTORY_SIZE() external view returns (uint32 _size);
 
-  /**
-   * @notice Returns the maximum depth of the state tree
-   * @dev Merkle tree depth must be capped at a fixed maximum because zero-knowledge circuits
-   * compile to R1CS (Rank-1 Constraint System) constraints that must be determined at compile time.
-   * R1CS cannot handle dynamic loops or recursion - all computation paths must be fully "unrolled"
-   * into a fixed number of constraints. Since each level of the Merkle tree requires its own set
-   * of constraints for hashing and path verification, we need to set a maximum depth that determines
-   * the total constraint size of the circuit.
-   * @return _maxDepth The max depth
-   */
-  function MAX_TREE_DEPTH() external view returns (uint32 _maxDepth);
+    /**
+     * @notice Returns the maximum depth of the state tree
+     * @dev Merkle tree depth must be capped at a fixed maximum because zero-knowledge circuits
+     * compile to R1CS (Rank-1 Constraint System) constraints that must be determined at compile time.
+     * R1CS cannot handle dynamic loops or recursion - all computation paths must be fully "unrolled"
+     * into a fixed number of constraints. Since each level of the Merkle tree requires its own set
+     * of constraints for hashing and path verification, we need to set a maximum depth that determines
+     * the total constraint size of the circuit.
+     * @return _maxDepth The max depth
+     */
+    function MAX_TREE_DEPTH() external view returns (uint32 _maxDepth);
 
-  /**
-   * @notice Returns the configured Entrypoint contract
-   * @return _entrypoint The Entrypoint contract
-   */
-  function ENTRYPOINT() external view returns (IEntrypoint _entrypoint);
+    /**
+     * @notice Returns the configured Entrypoint contract
+     * @return _entrypoint The Entrypoint contract
+     */
+    function ENTRYPOINT() external view returns (IEntrypoint _entrypoint);
 
-  /**
-   * @notice Returns the configured Verifier contract for withdrawals
-   * @return _verifier The Verifier contract
-   */
-  function WITHDRAWAL_VERIFIER() external view returns (IVerifier _verifier);
+    /**
+     * @notice Returns the configured Verifier contract for withdrawals
+     * @return _verifier The Verifier contract
+     */
+    function WITHDRAWAL_VERIFIER() external view returns (IVerifier _verifier);
 
-  /**
-   * @notice Returns the configured Verifier contract for ragequits
-   * @return _verifier The Verifier contract
-   */
-  function RAGEQUIT_VERIFIER() external view returns (IVerifier _verifier);
+    /**
+     * @notice Returns the configured Verifier contract for ragequits
+     * @return _verifier The Verifier contract
+     */
+    function RAGEQUIT_VERIFIER() external view returns (IVerifier _verifier);
 
-  /**
-   * @notice Returns the current root index
-   * @return _index The current index
-   */
-  function currentRootIndex() external view returns (uint32 _index);
+    /**
+     * @notice Returns the current root index
+     * @return _index The current index
+     */
+    function currentRootIndex() external view returns (uint32 _index);
 
-  /**
-   * @notice Returns the current state root
-   * @return _root The current state root
-   */
-  function currentRoot() external view returns (uint256 _root);
+    /**
+     * @notice Returns the current state root
+     * @return _root The current state root
+     */
+    function currentRoot() external view returns (uint256 _root);
 
-  /**
-   * @notice Returns the current state tree depth
-   * @return _depth The current state tree depth
-   */
-  function currentTreeDepth() external view returns (uint256 _depth);
+    /**
+     * @notice Returns the current state tree depth
+     * @return _depth The current state tree depth
+     */
+    function currentTreeDepth() external view returns (uint256 _depth);
 
-  /**
-   * @notice Returns the current state tree size
-   * @return _size The current state tree size
-   */
-  function currentTreeSize() external view returns (uint256 _size);
+    /**
+     * @notice Returns the current state tree size
+     * @return _size The current state tree size
+     */
+    function currentTreeSize() external view returns (uint256 _size);
 
-  /**
-   * @notice Returns the current label nonce
-   * @return _nonce The current nonce
-   */
-  function nonce() external view returns (uint256 _nonce);
+    /**
+     * @notice Returns the current label nonce
+     * @return _nonce The current nonce
+     */
+    function nonce() external view returns (uint256 _nonce);
 
-  /**
-   * @notice Returns the boolean indicating if the pool is dead
-   * @return _dead The dead boolean
-   */
-  function dead() external view returns (bool _dead);
+    /**
+     * @notice Returns the boolean indicating if the pool is dead
+     * @return _dead The dead boolean
+     */
+    function dead() external view returns (bool _dead);
 
-  /**
-   * @notice Returns the root stored at an index
-   * @param _index The root index
-   * @return _root The root value
-   */
-  function roots(uint256 _index) external view returns (uint256 _root);
+    /**
+     * @notice Returns the root stored at an index
+     * @param _index The root index
+     * @return _root The root value
+     */
+    function roots(uint256 _index) external view returns (uint256 _root);
 
-  /**
-   * @notice Returns the spending status of a nullifier hash
-   * @param _nullifierHash The nullifier hash
-   * @return _spent The boolean indicating if it is spent
-   */
-  function nullifierHashes(uint256 _nullifierHash) external view returns (bool _spent);
+    /**
+     * @notice Returns the spending status of a nullifier hash
+     * @param _nullifierHash The nullifier hash
+     * @return _spent The boolean indicating if it is spent
+     */
+    function nullifierHashes(uint256 _nullifierHash) external view returns (bool _spent);
 
-  /**
-   * @notice Returns the original depositor that generated a label
-   * @param _label The label
-   * @return _depositor The original depositor
-   */
-  function depositors(uint256 _label) external view returns (address _depositor);
+    /**
+     * @notice Returns the original depositor that generated a label
+     * @param _label The label
+     * @return _depositor The original depositor
+     */
+    function depositors(uint256 _label) external view returns (address _depositor);
 }
 
 /**
@@ -1595,163 +1592,163 @@ interface IState {
  * @custom:semver 0.1.0
  */
 library ProofLib {
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                          WITHDRAWAL PROOF 
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Struct containing Groth16 proof elements and public signals for withdrawal verification
-   * @dev The public signals array must match the order of public inputs/outputs in the circuit
-   * @param pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
-   * @param pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
-   * @param pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
-   * @param pubSignals Array of public inputs and outputs:
-   *        - [0] newCommitmentHash: Hash of the new commitment being created
-   *        - [1] existingNullifierHash: Hash of the nullifier being spent
-   *        - [2] withdrawnValue: Amount being withdrawn
-   *        - [3] stateRoot: Current state root of the privacy pool
-   *        - [4] stateTreeDepth: Current depth of the state tree
-   *        - [5] ASPRoot: Current root of the Association Set Provider tree
-   *        - [6] ASPTreeDepth: Current depth of the ASP tree
-   *        - [7] context: Context value for the withdrawal operation
-   */
-  struct WithdrawProof {
-    uint256[2] pA;
-    uint256[2][2] pB;
-    uint256[2] pC;
-    uint256[8] pubSignals;
-  }
+    /**
+     * @notice Struct containing Groth16 proof elements and public signals for withdrawal verification
+     * @dev The public signals array must match the order of public inputs/outputs in the circuit
+     * @param pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
+     * @param pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
+     * @param pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
+     * @param pubSignals Array of public inputs and outputs:
+     *        - [0] newCommitmentHash: Hash of the new commitment being created
+     *        - [1] existingNullifierHash: Hash of the nullifier being spent
+     *        - [2] withdrawnValue: Amount being withdrawn
+     *        - [3] stateRoot: Current state root of the privacy pool
+     *        - [4] stateTreeDepth: Current depth of the state tree
+     *        - [5] ASPRoot: Current root of the Association Set Provider tree
+     *        - [6] ASPTreeDepth: Current depth of the ASP tree
+     *        - [7] context: Context value for the withdrawal operation
+     */
+    struct WithdrawProof {
+        uint256[2] pA;
+        uint256[2][2] pB;
+        uint256[2] pC;
+        uint256[8] pubSignals;
+    }
 
-  /**
-   * @notice Retrieves the new commitment hash from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The hash of the new commitment being created
-   */
-  function newCommitmentHash(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[0];
-  }
+    /**
+     * @notice Retrieves the new commitment hash from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The hash of the new commitment being created
+     */
+    function newCommitmentHash(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[0];
+    }
 
-  /**
-   * @notice Retrieves the existing nullifier hash from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The hash of the nullifier being spent in this withdrawal
-   */
-  function existingNullifierHash(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[1];
-  }
+    /**
+     * @notice Retrieves the existing nullifier hash from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The hash of the nullifier being spent in this withdrawal
+     */
+    function existingNullifierHash(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[1];
+    }
 
-  /**
-   * @notice Retrieves the withdrawn value from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The amount being withdrawn from Privacy Pool
-   */
-  function withdrawnValue(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[2];
-  }
+    /**
+     * @notice Retrieves the withdrawn value from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The amount being withdrawn from Privacy Pool
+     */
+    function withdrawnValue(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[2];
+    }
 
-  /**
-   * @notice Retrieves the state root from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The root of the state tree at time of proof generation
-   */
-  function stateRoot(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[3];
-  }
+    /**
+     * @notice Retrieves the state root from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The root of the state tree at time of proof generation
+     */
+    function stateRoot(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[3];
+    }
 
-  /**
-   * @notice Retrieves the state tree depth from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The depth of the state tree at time of proof generation
-   */
-  function stateTreeDepth(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[4];
-  }
+    /**
+     * @notice Retrieves the state tree depth from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The depth of the state tree at time of proof generation
+     */
+    function stateTreeDepth(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[4];
+    }
 
-  /**
-   * @notice Retrieves the ASP root from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The latest root of the ASP tree at time of proof generation
-   */
-  function ASPRoot(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[5];
-  }
+    /**
+     * @notice Retrieves the ASP root from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The latest root of the ASP tree at time of proof generation
+     */
+    function ASPRoot(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[5];
+    }
 
-  /**
-   * @notice Retrieves the ASP tree depth from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The depth of the ASP tree at time of proof generation
-   */
-  function ASPTreeDepth(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[6];
-  }
+    /**
+     * @notice Retrieves the ASP tree depth from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The depth of the ASP tree at time of proof generation
+     */
+    function ASPTreeDepth(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[6];
+    }
 
-  /**
-   * @notice Retrieves the context value from the proof's public signals
-   * @param _p The proof containing the public signals
-   * @return The context value binding the proof to specific withdrawal data
-   */
-  function context(WithdrawProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[7];
-  }
+    /**
+     * @notice Retrieves the context value from the proof's public signals
+     * @param _p The proof containing the public signals
+     * @return The context value binding the proof to specific withdrawal data
+     */
+    function context(WithdrawProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[7];
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                           RAGEQUIT PROOF 
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Struct containing Groth16 proof elements and public signals for ragequit verification
-   * @dev The public signals array must match the order of public inputs/outputs in the circuit
-   * @param pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
-   * @param pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
-   * @param pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
-   * @param pubSignals Array of public inputs and outputs:
-   *        - [0] commitmentHash: Hash of the commitment being ragequit
-   *        - [1] nullifierHash: Nullifier hash of commitment being ragequit
-   *        - [2] value: Value of the commitment being ragequit
-   *        - [3] label: Label of commitment
-   */
-  struct RagequitProof {
-    uint256[2] pA;
-    uint256[2][2] pB;
-    uint256[2] pC;
-    uint256[4] pubSignals;
-  }
+    /**
+     * @notice Struct containing Groth16 proof elements and public signals for ragequit verification
+     * @dev The public signals array must match the order of public inputs/outputs in the circuit
+     * @param pA First elliptic curve point (π_A) of the Groth16 proof, encoded as two field elements
+     * @param pB Second elliptic curve point (π_B) of the Groth16 proof, encoded as 2x2 matrix of field elements
+     * @param pC Third elliptic curve point (π_C) of the Groth16 proof, encoded as two field elements
+     * @param pubSignals Array of public inputs and outputs:
+     *        - [0] commitmentHash: Hash of the commitment being ragequit
+     *        - [1] nullifierHash: Nullifier hash of commitment being ragequit
+     *        - [2] value: Value of the commitment being ragequit
+     *        - [3] label: Label of commitment
+     */
+    struct RagequitProof {
+        uint256[2] pA;
+        uint256[2][2] pB;
+        uint256[2] pC;
+        uint256[4] pubSignals;
+    }
 
-  /**
-   * @notice Retrieves the new commitment hash from the proof's public signals
-   * @param _p The ragequit proof containing the public signals
-   * @return The new commitment hash
-   */
-  function commitmentHash(RagequitProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[0];
-  }
+    /**
+     * @notice Retrieves the new commitment hash from the proof's public signals
+     * @param _p The ragequit proof containing the public signals
+     * @return The new commitment hash
+     */
+    function commitmentHash(RagequitProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[0];
+    }
 
-  /**
-   * @notice Retrieves the nullifier hash from the proof's public signals
-   * @param _p The ragequit proof containing the public signals
-   * @return The nullifier hash
-   */
-  function nullifierHash(RagequitProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[1];
-  }
+    /**
+     * @notice Retrieves the nullifier hash from the proof's public signals
+     * @param _p The ragequit proof containing the public signals
+     * @return The nullifier hash
+     */
+    function nullifierHash(RagequitProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[1];
+    }
 
-  /**
-   * @notice Retrieves the commitment value from the proof's public signals
-   * @param _p The ragequit proof containing the public signals
-   * @return The commitment value
-   */
-  function value(RagequitProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[2];
-  }
+    /**
+     * @notice Retrieves the commitment value from the proof's public signals
+     * @param _p The ragequit proof containing the public signals
+     * @return The commitment value
+     */
+    function value(RagequitProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[2];
+    }
 
-  /**
-   * @notice Retrieves the commitment label from the proof's public signals
-   * @param _p The ragequit proof containing the public signals
-   * @return The commitment label
-   */
-  function label(RagequitProof memory _p) internal pure returns (uint256) {
-    return _p.pubSignals[3];
-  }
+    /**
+     * @notice Retrieves the commitment label from the proof's public signals
+     * @param _p The ragequit proof containing the public signals
+     * @return The commitment label
+     */
+    function label(RagequitProof memory _p) internal pure returns (uint256) {
+        return _p.pubSignals[3];
+    }
 }
 
 /**
@@ -1759,152 +1756,151 @@ library ProofLib {
  * @notice Interface for the PrivacyPool contract
  */
 interface IPrivacyPool is IState {
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               STRUCTS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Struct for the withdrawal request
-   * @dev The integrity of this data is ensured by the `context` signal in the proof
-   * @param processooor The allowed address to process the withdrawal
-   * @param data Encoded arbitrary data used by the Entrypoint
-   */
-  struct Withdrawal {
-    address processooor;
-    bytes data;
-  }
+    /**
+     * @notice Struct for the withdrawal request
+     * @dev The integrity of this data is ensured by the `context` signal in the proof
+     * @param processooor The allowed address to process the withdrawal
+     * @param data Encoded arbitrary data used by the Entrypoint
+     */
+    struct Withdrawal {
+        address processooor;
+        bytes data;
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               EVENTS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Emitted when making a user deposit
-   * @param _depositor The address of the depositor
-   * @param _commitment The commitment hash
-   * @param _label The deposit generated label
-   * @param _value The deposited amount
-   * @param _precommitmentHash The deposit precommitment hash
-   */
-  event Deposited(
-    address indexed _depositor, uint256 _commitment, uint256 _label, uint256 _value, uint256 _precommitmentHash
-  );
+    /**
+     * @notice Emitted when making a user deposit
+     * @param _depositor The address of the depositor
+     * @param _commitment The commitment hash
+     * @param _label The deposit generated label
+     * @param _value The deposited amount
+     * @param _precommitmentHash The deposit precommitment hash
+     */
+    event Deposited(
+        address indexed _depositor, uint256 _commitment, uint256 _label, uint256 _value, uint256 _precommitmentHash
+    );
 
-  /**
-   * @notice Emitted when processing a withdrawal
-   * @param _processooor The address which processed the withdrawal
-   * @param _value The withdrawn amount
-   * @param _spentNullifier The spent nullifier
-   * @param _newCommitment The new commitment hash
-   */
-  event Withdrawn(address indexed _processooor, uint256 _value, uint256 _spentNullifier, uint256 _newCommitment);
+    /**
+     * @notice Emitted when processing a withdrawal
+     * @param _processooor The address which processed the withdrawal
+     * @param _value The withdrawn amount
+     * @param _spentNullifier The spent nullifier
+     * @param _newCommitment The new commitment hash
+     */
+    event Withdrawn(address indexed _processooor, uint256 _value, uint256 _spentNullifier, uint256 _newCommitment);
 
-  /**
-   * @notice Emitted when ragequitting a commitment
-   * @param _ragequitter The address who ragequit
-   * @param _commitment The ragequit commitment
-   * @param _label The commitment label
-   * @param _value The ragequit amount
-   */
-  event Ragequit(address indexed _ragequitter, uint256 _commitment, uint256 _label, uint256 _value);
+    /**
+     * @notice Emitted when ragequitting a commitment
+     * @param _ragequitter The address who ragequit
+     * @param _commitment The ragequit commitment
+     * @param _label The commitment label
+     * @param _value The ragequit amount
+     */
+    event Ragequit(address indexed _ragequitter, uint256 _commitment, uint256 _label, uint256 _value);
 
-  /**
-   * @notice Emitted irreversibly suspending deposits
-   */
-  event PoolDied();
+    /**
+     * @notice Emitted irreversibly suspending deposits
+     */
+    event PoolDied();
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               ERRORS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Thrown when failing to verify a withdrawal proof through the Groth16 verifier
-   */
-  error InvalidProof();
+    /**
+     * @notice Thrown when failing to verify a withdrawal proof through the Groth16 verifier
+     */
+    error InvalidProof();
 
-  /**
-   * @notice Thrown when trying to spend a commitment that does not exist in the state
-   */
-  error InvalidCommitment();
+    /**
+     * @notice Thrown when trying to spend a commitment that does not exist in the state
+     */
+    error InvalidCommitment();
 
-  /**
-   * @notice Thrown when calling `withdraw` while not being the allowed processooor
-   */
-  error InvalidProcessooor();
+    /**
+     * @notice Thrown when calling `withdraw` while not being the allowed processooor
+     */
+    error InvalidProcessooor();
 
-  /**
-   * @notice Thrown when calling `withdraw` with a ASP or state tree depth greater or equal than the max tree depth
-   */
-  error InvalidTreeDepth();
+    /**
+     * @notice Thrown when calling `withdraw` with a ASP or state tree depth greater or equal than the max tree depth
+     */
+    error InvalidTreeDepth();
 
-  /**
-   * @notice Thrown when trying to deposit an amount higher than 2**128
-   */
-  error InvalidDepositValue();
+    /**
+     * @notice Thrown when trying to deposit an amount higher than 2**128
+     */
+    error InvalidDepositValue();
 
-  /**
-   * @notice Thrown when providing an invalid scope for this pool
-   */
-  error ScopeMismatch();
+    /**
+     * @notice Thrown when providing an invalid scope for this pool
+     */
+    error ScopeMismatch();
 
-  /**
-   * @notice Thrown when providing an invalid context for the pool and withdrawal
-   */
-  error ContextMismatch();
+    /**
+     * @notice Thrown when providing an invalid context for the pool and withdrawal
+     */
+    error ContextMismatch();
 
-  /**
-   * @notice Thrown when providing an unknown or outdated state root
-   */
-  error UnknownStateRoot();
+    /**
+     * @notice Thrown when providing an unknown or outdated state root
+     */
+    error UnknownStateRoot();
 
-  /**
-   * @notice Thrown when providing an unknown or outdated ASP root
-   */
-  error IncorrectASPRoot();
+    /**
+     * @notice Thrown when providing an unknown or outdated ASP root
+     */
+    error IncorrectASPRoot();
 
-  /**
-   * @notice Thrown when trying to ragequit while not being the original depositor
-   */
-  error OnlyOriginalDepositor();
+    /**
+     * @notice Thrown when trying to ragequit while not being the original depositor
+     */
+    error OnlyOriginalDepositor();
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               LOGIC
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Deposit funds into the Privacy Pool
-   * @dev Only callable by the Entrypoint
-   * @param _depositor The depositor address
-   * @param _value The value being deposited
-   * @param _precommitment The precommitment hash
-   * @return _commitment The commitment hash
-   */
-  function deposit(
-    address _depositor,
-    uint256 _value,
-    uint256 _precommitment
-  ) external payable returns (uint256 _commitment);
+    /**
+     * @notice Deposit funds into the Privacy Pool
+     * @dev Only callable by the Entrypoint
+     * @param _depositor The depositor address
+     * @param _value The value being deposited
+     * @param _precommitment The precommitment hash
+     * @return _commitment The commitment hash
+     */
+    function deposit(address _depositor, uint256 _value, uint256 _precommitment)
+        external
+        payable
+        returns (uint256 _commitment);
 
-  /**
-   * @notice Privately withdraw funds by spending an existing commitment
-   * @param _w The `Withdrawal` struct
-   * @param _p The `WithdrawProof` struct
-   */
-  function withdraw(Withdrawal memory _w, ProofLib.WithdrawProof memory _p) external;
+    /**
+     * @notice Privately withdraw funds by spending an existing commitment
+     * @param _w The `Withdrawal` struct
+     * @param _p The `WithdrawProof` struct
+     */
+    function withdraw(Withdrawal memory _w, ProofLib.WithdrawProof memory _p) external;
 
-  /**
-   * @notice Publicly withdraw funds to original depositor without exposing secrets
-   * @dev Only callable by the original depositor
-   * @param _p the `RagequitProof` struct
-   */
-  function ragequit(ProofLib.RagequitProof memory _p) external;
+    /**
+     * @notice Publicly withdraw funds to original depositor without exposing secrets
+     * @dev Only callable by the original depositor
+     * @param _p the `RagequitProof` struct
+     */
+    function ragequit(ProofLib.RagequitProof memory _p) external;
 
-  /**
-   * @notice Irreversibly suspends deposits
-   * @dev Withdrawals can never be disabled
-   * @dev Only callable by the Entrypoint
-   */
-  function windDown() external;
+    /**
+     * @notice Irreversibly suspends deposits
+     * @dev Withdrawals can never be disabled
+     * @dev Only callable by the Entrypoint
+     */
+    function windDown() external;
 }
 
 /**
@@ -1987,383 +1983,380 @@ interface IERC20 {
  * @notice Interface for the Entrypoint contract
  */
 interface IEntrypoint {
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               STRUCTS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Struct for the asset configuration
-   * @param pool The Privacy Pool contracts for the asset
-   * @param minimumDepositAmount The minimum amount that can be deposited
-   * @param vettingfeeBPS The deposit fee in basis points
-   */
-  struct AssetConfig {
-    IPrivacyPool pool;
-    uint256 minimumDepositAmount;
-    uint256 vettingFeeBPS;
-    uint256 maxRelayFeeBPS;
-  }
+    /**
+     * @notice Struct for the asset configuration
+     * @param pool The Privacy Pool contracts for the asset
+     * @param minimumDepositAmount The minimum amount that can be deposited
+     * @param vettingfeeBPS The deposit fee in basis points
+     */
+    struct AssetConfig {
+        IPrivacyPool pool;
+        uint256 minimumDepositAmount;
+        uint256 vettingFeeBPS;
+        uint256 maxRelayFeeBPS;
+    }
 
-  /**
-   * @notice Struct for the relay data
-   * @param recipient The recipient of the funds withdrawn from the pool
-   * @param feeRecipient The recipient of the fee
-   * @param relayfeeBPS The relay fee in basis points
-   */
-  struct RelayData {
-    address recipient;
-    address feeRecipient;
-    uint256 relayFeeBPS;
-  }
+    /**
+     * @notice Struct for the relay data
+     * @param recipient The recipient of the funds withdrawn from the pool
+     * @param feeRecipient The recipient of the fee
+     * @param relayfeeBPS The relay fee in basis points
+     */
+    struct RelayData {
+        address recipient;
+        address feeRecipient;
+        uint256 relayFeeBPS;
+    }
 
-  /**
-   * @notice Struct for the onchain association set data
-   * @param root The ASP root
-   * @param ipfsCID The IPFS v1 CID of the ASP data. A content-addressed identifier computed by hashing
-   *                the content with SHA-256, adding multicodec/multihash prefixes, and encoding in base32/58.
-   *                This uniquely identifies data by its content rather than location.
-   * @param timestamp The timestamp on which the root was updated
-   */
-  struct AssociationSetData {
-    uint256 root;
-    string ipfsCID;
-    uint256 timestamp;
-  }
+    /**
+     * @notice Struct for the onchain association set data
+     * @param root The ASP root
+     * @param ipfsCID The IPFS v1 CID of the ASP data. A content-addressed identifier computed by hashing
+     *                the content with SHA-256, adding multicodec/multihash prefixes, and encoding in base32/58.
+     *                This uniquely identifies data by its content rather than location.
+     * @param timestamp The timestamp on which the root was updated
+     */
+    struct AssociationSetData {
+        uint256 root;
+        string ipfsCID;
+        uint256 timestamp;
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               EVENTS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Emitted when pushing a new root to the association root set
-   * @param _root The latest ASP root
-   * @param _ipfsCID The IPFS CID of the association set data
-   * @param _timestamp The timestamp of root update
-   */
-  event RootUpdated(uint256 _root, string _ipfsCID, uint256 _timestamp);
+    /**
+     * @notice Emitted when pushing a new root to the association root set
+     * @param _root The latest ASP root
+     * @param _ipfsCID The IPFS CID of the association set data
+     * @param _timestamp The timestamp of root update
+     */
+    event RootUpdated(uint256 _root, string _ipfsCID, uint256 _timestamp);
 
-  /**
-   * @notice Emitted when pushing a new root to the association root set
-   * @param _depositor The address of the depositor
-   * @param _pool The Privacy Pool contract
-   * @param _commitment The commitment hash for the deposit
-   * @param _amount The amount of asset deposited
-   */
-  event Deposited(address indexed _depositor, IPrivacyPool indexed _pool, uint256 _commitment, uint256 _amount);
+    /**
+     * @notice Emitted when pushing a new root to the association root set
+     * @param _depositor The address of the depositor
+     * @param _pool The Privacy Pool contract
+     * @param _commitment The commitment hash for the deposit
+     * @param _amount The amount of asset deposited
+     */
+    event Deposited(address indexed _depositor, IPrivacyPool indexed _pool, uint256 _commitment, uint256 _amount);
 
-  /**
-   * @notice Emitted when processing a withdrawal through the Entrypoint
-   * @param _relayer The address of the relayer
-   * @param _recipient The address of the withdrawal recipient
-   * @param _asset The asset being withdrawn
-   * @param _amount The amount of asset withdrawn
-   * @param _feeAmount The fee paid to the relayer
-   */
-  event WithdrawalRelayed(
-    address indexed _relayer, address indexed _recipient, IERC20 indexed _asset, uint256 _amount, uint256 _feeAmount
-  );
+    /**
+     * @notice Emitted when processing a withdrawal through the Entrypoint
+     * @param _relayer The address of the relayer
+     * @param _recipient The address of the withdrawal recipient
+     * @param _asset The asset being withdrawn
+     * @param _amount The amount of asset withdrawn
+     * @param _feeAmount The fee paid to the relayer
+     */
+    event WithdrawalRelayed(
+        address indexed _relayer, address indexed _recipient, IERC20 indexed _asset, uint256 _amount, uint256 _feeAmount
+    );
 
-  /**
-   * @notice Emitted when withdrawing fees from the Entrypoint
-   * @param _asset The asset being withdrawn
-   * @param _recipient The address of the fees withdrawal recipient
-   * @param _amount The amount of asset withdrawn
-   */
-  event FeesWithdrawn(IERC20 _asset, address _recipient, uint256 _amount);
+    /**
+     * @notice Emitted when withdrawing fees from the Entrypoint
+     * @param _asset The asset being withdrawn
+     * @param _recipient The address of the fees withdrawal recipient
+     * @param _amount The amount of asset withdrawn
+     */
+    event FeesWithdrawn(IERC20 _asset, address _recipient, uint256 _amount);
 
-  /**
-   * @notice Emitted when winding down a Privacy Pool
-   * @param _pool The Privacy Pool contract
-   */
-  event PoolWindDown(IPrivacyPool _pool);
+    /**
+     * @notice Emitted when winding down a Privacy Pool
+     * @param _pool The Privacy Pool contract
+     */
+    event PoolWindDown(IPrivacyPool _pool);
 
-  /**
-   * @notice Emitted when registering a Privacy Pool in the Entrypoint registry
-   * @param _pool The Privacy Pool contract
-   * @param _asset The asset of the pool
-   * @param _scope The unique scope of the pool
-   */
-  event PoolRegistered(IPrivacyPool _pool, IERC20 _asset, uint256 _scope);
+    /**
+     * @notice Emitted when registering a Privacy Pool in the Entrypoint registry
+     * @param _pool The Privacy Pool contract
+     * @param _asset The asset of the pool
+     * @param _scope The unique scope of the pool
+     */
+    event PoolRegistered(IPrivacyPool _pool, IERC20 _asset, uint256 _scope);
 
-  /**
-   * @notice Emitted when removing a Privacy Pool from the Entrypoint registry
-   * @param _pool The Privacy Pool contract
-   * @param _asset The asset of the pool
-   * @param _scope The unique scope of the pool
-   */
-  event PoolRemoved(IPrivacyPool _pool, IERC20 _asset, uint256 _scope);
+    /**
+     * @notice Emitted when removing a Privacy Pool from the Entrypoint registry
+     * @param _pool The Privacy Pool contract
+     * @param _asset The asset of the pool
+     * @param _scope The unique scope of the pool
+     */
+    event PoolRemoved(IPrivacyPool _pool, IERC20 _asset, uint256 _scope);
 
-  /**
-   * @notice Emitted when updating the configuration of a Privacy Pool
-   * @param _pool The Privacy Pool contract
-   * @param _asset The asset of the pool
-   * @param _newMinimumDepositAmount The updated minimum deposit amount
-   * @param _newVettingFeeBPS The updated vetting fee in basis points
-   * @param _newMaxRelayFeeBPS The updated maximum relay fee in basis points
-   */
-  event PoolConfigurationUpdated(
-    IPrivacyPool _pool,
-    IERC20 _asset,
-    uint256 _newMinimumDepositAmount,
-    uint256 _newVettingFeeBPS,
-    uint256 _newMaxRelayFeeBPS
-  );
+    /**
+     * @notice Emitted when updating the configuration of a Privacy Pool
+     * @param _pool The Privacy Pool contract
+     * @param _asset The asset of the pool
+     * @param _newMinimumDepositAmount The updated minimum deposit amount
+     * @param _newVettingFeeBPS The updated vetting fee in basis points
+     * @param _newMaxRelayFeeBPS The updated maximum relay fee in basis points
+     */
+    event PoolConfigurationUpdated(
+        IPrivacyPool _pool,
+        IERC20 _asset,
+        uint256 _newMinimumDepositAmount,
+        uint256 _newVettingFeeBPS,
+        uint256 _newMaxRelayFeeBPS
+    );
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                               ERRORS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Thrown when trying to withdraw an invalid amount
-   */
-  error InvalidWithdrawalAmount();
+    /**
+     * @notice Thrown when trying to withdraw an invalid amount
+     */
+    error InvalidWithdrawalAmount();
 
-  /**
-   * @notice Thrown when trying to access a non-existent pool
-   */
-  error PoolNotFound();
+    /**
+     * @notice Thrown when trying to access a non-existent pool
+     */
+    error PoolNotFound();
 
-  /**
-   * @notice Thrown when trying to register a dead pool
-   */
-  error PoolIsDead();
+    /**
+     * @notice Thrown when trying to register a dead pool
+     */
+    error PoolIsDead();
 
-  /**
-   * @notice Thrown when trying to register a pool whose configured Entrypoint is not this one
-   */
-  error InvalidEntrypointForPool();
+    /**
+     * @notice Thrown when trying to register a pool whose configured Entrypoint is not this one
+     */
+    error InvalidEntrypointForPool();
 
-  /**
-   * @notice Thrown when trying to register a pool for an asset that is already present in the registry
-   */
-  error AssetPoolAlreadyRegistered();
+    /**
+     * @notice Thrown when trying to register a pool for an asset that is already present in the registry
+     */
+    error AssetPoolAlreadyRegistered();
 
-  /**
-   * @notice Thrown when trying to register a pool for a scope that is already present in the registry
-   */
-  error ScopePoolAlreadyRegistered();
+    /**
+     * @notice Thrown when trying to register a pool for a scope that is already present in the registry
+     */
+    error ScopePoolAlreadyRegistered();
 
-  /**
-   * @notice Thrown when trying to deposit less than the minimum deposit amount
-   */
-  error MinimumDepositAmount();
+    /**
+     * @notice Thrown when trying to deposit less than the minimum deposit amount
+     */
+    error MinimumDepositAmount();
 
-  /**
-   * @notice Thrown when trying to relay with a relayer fee greater than the maximum configured
-   */
-  error RelayFeeGreaterThanMax();
+    /**
+     * @notice Thrown when trying to relay with a relayer fee greater than the maximum configured
+     */
+    error RelayFeeGreaterThanMax();
 
-  /**
-   * @notice Thrown when trying to process a withdrawal with an invalid processooor
-   */
-  error InvalidProcessooor();
+    /**
+     * @notice Thrown when trying to process a withdrawal with an invalid processooor
+     */
+    error InvalidProcessooor();
 
-  /**
-   * @notice Thrown when finding an invalid state in the pool like an invalid asset balance
-   */
-  error InvalidPoolState();
+    /**
+     * @notice Thrown when finding an invalid state in the pool like an invalid asset balance
+     */
+    error InvalidPoolState();
 
-  /**
-   * @notice Thrown when trying to push a an IPFS CID with an invalid length
-   */
-  error InvalidIPFSCIDLength();
+    /**
+     * @notice Thrown when trying to push a an IPFS CID with an invalid length
+     */
+    error InvalidIPFSCIDLength();
 
-  /**
-   * @notice Thrown when trying to push a root with an empty root
-   */
-  error EmptyRoot();
+    /**
+     * @notice Thrown when trying to push a root with an empty root
+     */
+    error EmptyRoot();
 
-  /**
-   * @notice Thrown when failing to send the native asset to an account
-   */
-  error NativeAssetTransferFailed();
+    /**
+     * @notice Thrown when failing to send the native asset to an account
+     */
+    error NativeAssetTransferFailed();
 
-  /**
-   * @notice Thrown when an address parameter is zero
-   */
-  error ZeroAddress();
+    /**
+     * @notice Thrown when an address parameter is zero
+     */
+    error ZeroAddress();
 
-  /**
-   * @notice Thrown when a fee in basis points is greater than 10000 (100%)
-   */
-  error InvalidFeeBPS();
+    /**
+     * @notice Thrown when a fee in basis points is greater than 10000 (100%)
+     */
+    error InvalidFeeBPS();
 
-  /**
-   * @notice Thrown when trying to access an association set at an invalid index
-   */
-  error InvalidIndex();
+    /**
+     * @notice Thrown when trying to access an association set at an invalid index
+     */
+    error InvalidIndex();
 
-  /**
-   * @notice Thrown when trying to get the latest root when no roots exist
-   */
-  error NoRootsAvailable();
+    /**
+     * @notice Thrown when trying to get the latest root when no roots exist
+     */
+    error NoRootsAvailable();
 
-  /**
-   * @notice Thrown when trying to register a pool with an asset that doesn't match the pool's asset
-   */
-  error AssetMismatch();
+    /**
+     * @notice Thrown when trying to register a pool with an asset that doesn't match the pool's asset
+     */
+    error AssetMismatch();
 
-  /**
-   * @notice Thrown when trying to send native asset to the Entrypoint
-   */
-  error NativeAssetNotAccepted();
+    /**
+     * @notice Thrown when trying to send native asset to the Entrypoint
+     */
+    error NativeAssetNotAccepted();
 
-  /**
-   * @notice Thrown when trying to deposit using a precommitment that has already been used by another deposit
-   */
-  error PrecommitmentAlreadyUsed();
+    /**
+     * @notice Thrown when trying to deposit using a precommitment that has already been used by another deposit
+     */
+    error PrecommitmentAlreadyUsed();
 
-  /*//////////////////////////////////////////////////////////////
+    /*//////////////////////////////////////////////////////////////
                                 LOGIC
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Initializes the contract state
-   * @param _owner The initial owner
-   * @param _postman The initial postman
-   */
-  function initialize(address _owner, address _postman) external;
+    /**
+     * @notice Initializes the contract state
+     * @param _owner The initial owner
+     * @param _postman The initial postman
+     */
+    function initialize(address _owner, address _postman) external;
 
-  /**
-   * @notice Push a new root to the association root set
-   * @param _root The new ASP root
-   * @param _ipfsCID The IPFS v1 CID of the association set data
-   * @return _index The index of the newly added root
-   */
-  function updateRoot(uint256 _root, string memory _ipfsCID) external returns (uint256 _index);
+    /**
+     * @notice Push a new root to the association root set
+     * @param _root The new ASP root
+     * @param _ipfsCID The IPFS v1 CID of the association set data
+     * @return _index The index of the newly added root
+     */
+    function updateRoot(uint256 _root, string memory _ipfsCID) external returns (uint256 _index);
 
-  /**
-   * @notice Make a native asset deposit into the Privacy Pool
-   * @param _precommitment The precommitment for the deposit
-   * @return _commitment The deposit commitment hash
-   */
-  function deposit(uint256 _precommitment) external payable returns (uint256 _commitment);
+    /**
+     * @notice Make a native asset deposit into the Privacy Pool
+     * @param _precommitment The precommitment for the deposit
+     * @return _commitment The deposit commitment hash
+     */
+    function deposit(uint256 _precommitment) external payable returns (uint256 _commitment);
 
-  /**
-   * @notice Make an ERC20 deposit into the Privacy Pool
-   * @param _asset The asset to deposit
-   * @param _value The amount of asset to deposit
-   * @param _precommitment The precommitment for the deposit
-   * @return _commitment The deposit commitment hash
-   */
-  function deposit(IERC20 _asset, uint256 _value, uint256 _precommitment) external returns (uint256 _commitment);
+    /**
+     * @notice Make an ERC20 deposit into the Privacy Pool
+     * @param _asset The asset to deposit
+     * @param _value The amount of asset to deposit
+     * @param _precommitment The precommitment for the deposit
+     * @return _commitment The deposit commitment hash
+     */
+    function deposit(IERC20 _asset, uint256 _value, uint256 _precommitment) external returns (uint256 _commitment);
 
-  /**
-   * @notice Process a withdrawal
-   * @param _withdrawal The `Withdrawal` struct
-   * @param _proof The `WithdrawProof` struct containing the withdarawal proof signals
-   * @param _scope The Pool scope to withdraw from
-   */
-  function relay(
-    IPrivacyPool.Withdrawal calldata _withdrawal,
-    ProofLib.WithdrawProof calldata _proof,
-    uint256 _scope
-  ) external;
+    /**
+     * @notice Process a withdrawal
+     * @param _withdrawal The `Withdrawal` struct
+     * @param _proof The `WithdrawProof` struct containing the withdarawal proof signals
+     * @param _scope The Pool scope to withdraw from
+     */
+    function relay(IPrivacyPool.Withdrawal calldata _withdrawal, ProofLib.WithdrawProof calldata _proof, uint256 _scope)
+        external;
 
-  /**
-   * @notice Register a Privacy Pool in the registry
-   * @param _asset The asset of the pool
-   * @param _pool The address of the Privacy Pool contract
-   * @param _minimumDepositAmount The minimum deposit amount for the asset
-   * @param _vettingFeeBPS The deposit fee in basis points
-   * @param _maxRelayFeeBPS The maximum relay fee in basis points
-   */
-  function registerPool(
-    IERC20 _asset,
-    IPrivacyPool _pool,
-    uint256 _minimumDepositAmount,
-    uint256 _vettingFeeBPS,
-    uint256 _maxRelayFeeBPS
-  ) external;
+    /**
+     * @notice Register a Privacy Pool in the registry
+     * @param _asset The asset of the pool
+     * @param _pool The address of the Privacy Pool contract
+     * @param _minimumDepositAmount The minimum deposit amount for the asset
+     * @param _vettingFeeBPS The deposit fee in basis points
+     * @param _maxRelayFeeBPS The maximum relay fee in basis points
+     */
+    function registerPool(
+        IERC20 _asset,
+        IPrivacyPool _pool,
+        uint256 _minimumDepositAmount,
+        uint256 _vettingFeeBPS,
+        uint256 _maxRelayFeeBPS
+    ) external;
 
-  /**
-   * @notice Remove a Privacy Pool from the registry
-   * @param _asset The asset of the pool
-   */
-  function removePool(IERC20 _asset) external;
+    /**
+     * @notice Remove a Privacy Pool from the registry
+     * @param _asset The asset of the pool
+     */
+    function removePool(IERC20 _asset) external;
 
-  /**
-   * @notice Updates the configuration of a specific pool
-   * @param _asset The asset of the pool to update
-   * @param _minimumDepositAmount The new minimum deposit amount
-   * @param _vettingFeeBPS The new vetting fee in basis points
-   * @param _maxRelayFeeBPS The new max relay fee in basis points
-   */
-  function updatePoolConfiguration(
-    IERC20 _asset,
-    uint256 _minimumDepositAmount,
-    uint256 _vettingFeeBPS,
-    uint256 _maxRelayFeeBPS
-  ) external;
+    /**
+     * @notice Updates the configuration of a specific pool
+     * @param _asset The asset of the pool to update
+     * @param _minimumDepositAmount The new minimum deposit amount
+     * @param _vettingFeeBPS The new vetting fee in basis points
+     * @param _maxRelayFeeBPS The new max relay fee in basis points
+     */
+    function updatePoolConfiguration(
+        IERC20 _asset,
+        uint256 _minimumDepositAmount,
+        uint256 _vettingFeeBPS,
+        uint256 _maxRelayFeeBPS
+    ) external;
 
-  /**
-   * @notice Irreversebly halt deposits from a Privacy Pool
-   * @param _pool The Privacy Pool contract
-   */
-  function windDownPool(IPrivacyPool _pool) external;
+    /**
+     * @notice Irreversebly halt deposits from a Privacy Pool
+     * @param _pool The Privacy Pool contract
+     */
+    function windDownPool(IPrivacyPool _pool) external;
 
-  /**
-   * @notice Withdraw fees from the Entrypoint
-   * @param _asset The asset to withdraw
-   * @param _recipient The recipient of the fees
-   */
-  function withdrawFees(IERC20 _asset, address _recipient) external;
+    /**
+     * @notice Withdraw fees from the Entrypoint
+     * @param _asset The asset to withdraw
+     * @param _recipient The recipient of the fees
+     */
+    function withdrawFees(IERC20 _asset, address _recipient) external;
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                             VIEWS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Returns the configured pool for a scope
-   * @param _scope The unique scope of the pool
-   * @return _pool The Privacy Pool contract
-   */
-  function scopeToPool(uint256 _scope) external view returns (IPrivacyPool _pool);
+    /**
+     * @notice Returns the configured pool for a scope
+     * @param _scope The unique scope of the pool
+     * @return _pool The Privacy Pool contract
+     */
+    function scopeToPool(uint256 _scope) external view returns (IPrivacyPool _pool);
 
-  /**
-   * @notice Returns the configuration for an asset
-   * @param _asset The asset address
-   * @return _pool The Privacy Pool contract
-   * @return _minimumDepositAmount The minimum deposit amount
-   * @return _vettingFeeBPS The deposit fee in basis points
-   * @return _maxRelayFeeBPS The max relayer fee in basis points
-   */
-  function assetConfig(IERC20 _asset)
-    external
-    view
-    returns (IPrivacyPool _pool, uint256 _minimumDepositAmount, uint256 _vettingFeeBPS, uint256 _maxRelayFeeBPS);
+    /**
+     * @notice Returns the configuration for an asset
+     * @param _asset The asset address
+     * @return _pool The Privacy Pool contract
+     * @return _minimumDepositAmount The minimum deposit amount
+     * @return _vettingFeeBPS The deposit fee in basis points
+     * @return _maxRelayFeeBPS The max relayer fee in basis points
+     */
+    function assetConfig(IERC20 _asset)
+        external
+        view
+        returns (IPrivacyPool _pool, uint256 _minimumDepositAmount, uint256 _vettingFeeBPS, uint256 _maxRelayFeeBPS);
 
-  /**
-   * @notice Returns the association set data at an index
-   * @param _index The index of the array
-   * @return _root The updated ASP root
-   * @return _ipfsCID The IPFS v1 CID for the association set data
-   * @return _timestamp The timestamp of the root update
-   */
-  function associationSets(uint256 _index)
-    external
-    view
-    returns (uint256 _root, string memory _ipfsCID, uint256 _timestamp);
+    /**
+     * @notice Returns the association set data at an index
+     * @param _index The index of the array
+     * @return _root The updated ASP root
+     * @return _ipfsCID The IPFS v1 CID for the association set data
+     * @return _timestamp The timestamp of the root update
+     */
+    function associationSets(uint256 _index)
+        external
+        view
+        returns (uint256 _root, string memory _ipfsCID, uint256 _timestamp);
 
-  /**
-   * @notice Returns the latest ASP root
-   * @return _root The latest ASP root
-   */
-  function latestRoot() external view returns (uint256 _root);
+    /**
+     * @notice Returns the latest ASP root
+     * @return _root The latest ASP root
+     */
+    function latestRoot() external view returns (uint256 _root);
 
-  /**
-   * @notice Returns an ASP root by index
-   * @param _index The index
-   * @return _root The ASP root at the index
-   */
-  function rootByIndex(uint256 _index) external view returns (uint256 _root);
+    /**
+     * @notice Returns an ASP root by index
+     * @param _index The index
+     * @return _root The ASP root at the index
+     */
+    function rootByIndex(uint256 _index) external view returns (uint256 _root);
 
-  /**
-   * @notice Returns a boolean indicating if the precommitment has been used
-   * @param _precommitment The precommitment hash
-   * @return _used The usage status
-   */
-  function usedPrecommitments(uint256 _precommitment) external view returns (bool _used);
+    /**
+     * @notice Returns a boolean indicating if the precommitment has been used
+     * @param _precommitment The precommitment hash
+     * @return _used The usage status
+     */
+    function usedPrecommitments(uint256 _precommitment) external view returns (bool _used);
 }
 
 /**
@@ -2423,7 +2416,9 @@ interface IERC1363 is IERC20, IERC165 {
      * @param data Additional data with no specified format, sent in call to `to`.
      * @return A boolean value indicating whether the operation succeeded unless throwing.
      */
-    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data) external returns (bool);
+    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data)
+        external
+        returns (bool);
 
     /**
      * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
@@ -2554,13 +2549,9 @@ library SafeERC20 {
      *
      * Reverts if the returned value is other than `true`.
      */
-    function transferFromAndCallRelaxed(
-        IERC1363 token,
-        address from,
-        address to,
-        uint256 value,
-        bytes memory data
-    ) internal {
+    function transferFromAndCallRelaxed(IERC1363 token, address from, address to, uint256 value, bytes memory data)
+        internal
+    {
         if (to.code.length == 0) {
             safeTransferFrom(token, from, to, value);
         } else if (!token.transferFromAndCall(from, to, value, data)) {
@@ -2637,10 +2628,10 @@ library SafeERC20 {
 }
 
 library Constants {
-  uint256 constant SNARK_SCALAR_FIELD =
-    21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
+    uint256 constant SNARK_SCALAR_FIELD =
+        21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
 
-  address constant NATIVE_ASSET = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+    address constant NATIVE_ASSET = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
 }
 
 /**
@@ -2648,369 +2639,433 @@ library Constants {
  * @notice Serves as the main entrypoint for a series of ASP-operated Privacy Pools
  */
 contract Entrypoint is AccessControlUpgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, IEntrypoint {
-  using SafeERC20 for IERC20;
-  using ProofLib for ProofLib.WithdrawProof;
+    using SafeERC20 for IERC20;
+    using ProofLib for ProofLib.WithdrawProof;
 
-  /// @dev 0xb19546dff01e856fb3f010c267a7b1c60363cf8a4664e21cc89c26224620214e
-  bytes32 internal constant _OWNER_ROLE = keccak256('OWNER_ROLE');
-  /// @dev 0xfc84ade01695dae2ade01aa4226dc40bdceaf9d5dbd3bf8630b1dd5af195bbc5
-  bytes32 internal constant _ASP_POSTMAN = keccak256('ASP_POSTMAN');
+    /// @dev 0xb19546dff01e856fb3f010c267a7b1c60363cf8a4664e21cc89c26224620214e
+    bytes32 internal constant _OWNER_ROLE = keccak256("OWNER_ROLE");
+    /// @dev 0xfc84ade01695dae2ade01aa4226dc40bdceaf9d5dbd3bf8630b1dd5af195bbc5
+    bytes32 internal constant _ASP_POSTMAN = keccak256("ASP_POSTMAN");
 
-  /// @inheritdoc IEntrypoint
-  mapping(uint256 _scope => IPrivacyPool _pool) public scopeToPool;
+    /// @inheritdoc IEntrypoint
+    mapping(uint256 _scope => IPrivacyPool _pool) public scopeToPool;
 
-  /// @inheritdoc IEntrypoint
-  mapping(IERC20 _asset => AssetConfig _config) public assetConfig;
+    /// @inheritdoc IEntrypoint
+    mapping(IERC20 _asset => AssetConfig _config) public assetConfig;
 
-  /// @inheritdoc IEntrypoint
-  AssociationSetData[] public associationSets;
+    /// @inheritdoc IEntrypoint
+    AssociationSetData[] public associationSets;
 
-  /// @inheritdoc IEntrypoint
-  mapping(uint256 _precommitment => bool _used) public usedPrecommitments;
+    /// @inheritdoc IEntrypoint
+    mapping(uint256 _precommitment => bool _used) public usedPrecommitments;
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                           INITIALIZATION
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Disables initializers. Using UUPS upgradeability pattern
-   */
-  constructor() {
-    _disableInitializers();
-  }
+    /**
+     * @notice Disables initializers. Using UUPS upgradeability pattern
+     */
+    constructor() {
+        _disableInitializers();
+    }
 
-  /// @inheritdoc IEntrypoint
-  function initialize(address _owner, address _postman) external initializer {
-    // Sanity check initial addresses
-    if (_owner == address(0)) revert ZeroAddress();
-    if (_postman == address(0)) revert ZeroAddress();
+    /// @inheritdoc IEntrypoint
+    function initialize(address _owner, address _postman) external initializer {
+        // Sanity check initial addresses
+        if (_owner == address(0)) {
+            revert ZeroAddress();
+        }
+        if (_postman == address(0)) {
+            revert ZeroAddress();
+        }
 
-    // Initialize upgradeable contracts
-    __UUPSUpgradeable_init();
-    __ReentrancyGuard_init();
-    __AccessControl_init();
+        // Initialize upgradeable contracts
+        __UUPSUpgradeable_init();
+        __ReentrancyGuard_init();
+        __AccessControl_init();
 
-    // Initialize roles
-    _setRoleAdmin(DEFAULT_ADMIN_ROLE, _OWNER_ROLE);
-    _setRoleAdmin(_OWNER_ROLE, _OWNER_ROLE); // Owner can manage owner role
-    _setRoleAdmin(_ASP_POSTMAN, _OWNER_ROLE); // Owner can manage postman role
+        // Initialize roles
+        _setRoleAdmin(DEFAULT_ADMIN_ROLE, _OWNER_ROLE);
+        _setRoleAdmin(_OWNER_ROLE, _OWNER_ROLE); // Owner can manage owner role
+        _setRoleAdmin(_ASP_POSTMAN, _OWNER_ROLE); // Owner can manage postman role
 
-    _grantRole(_OWNER_ROLE, _owner);
-    _grantRole(_ASP_POSTMAN, _postman);
-  }
+        _grantRole(_OWNER_ROLE, _owner);
+        _grantRole(_ASP_POSTMAN, _postman);
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                       ASSOCIATION SET METHODS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /// @inheritdoc IEntrypoint
-  function updateRoot(uint256 _root, string memory _ipfsCID) external onlyRole(_ASP_POSTMAN) returns (uint256 _index) {
-    // Check provided values are non-zero
-    if (_root == 0) revert EmptyRoot();
-    uint256 _cidLength = bytes(_ipfsCID).length;
-    if (_cidLength < 32 || _cidLength > 64) revert InvalidIPFSCIDLength();
+    /// @inheritdoc IEntrypoint
+    function updateRoot(uint256 _root, string memory _ipfsCID)
+        external
+        onlyRole(_ASP_POSTMAN)
+        returns (uint256 _index)
+    {
+        // Check provided values are non-zero
+        if (_root == 0) {
+            revert EmptyRoot();
+        }
+        uint256 _cidLength = bytes(_ipfsCID).length;
+        if (_cidLength < 32 || _cidLength > 64) {
+            revert InvalidIPFSCIDLength();
+        }
 
-    // Push new association set and update index
-    associationSets.push(AssociationSetData(_root, _ipfsCID, block.timestamp));
-    _index = associationSets.length - 1;
+        // Push new association set and update index
+        associationSets.push(AssociationSetData(_root, _ipfsCID, block.timestamp));
+        _index = associationSets.length - 1;
 
-    emit RootUpdated(_root, _ipfsCID, block.timestamp);
-  }
+        emit RootUpdated(_root, _ipfsCID, block.timestamp);
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                           DEPOSIT METHODS
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /// @inheritdoc IEntrypoint
-  function deposit(uint256 _precommitment) external payable nonReentrant returns (uint256 _commitment) {
-    // Handle deposit as native asset
-    _commitment = _handleDeposit(IERC20(Constants.NATIVE_ASSET), msg.value, _precommitment);
-  }
+    /// @inheritdoc IEntrypoint
+    function deposit(uint256 _precommitment) external payable nonReentrant returns (uint256 _commitment) {
+        // Handle deposit as native asset
+        _commitment = _handleDeposit(IERC20(Constants.NATIVE_ASSET), msg.value, _precommitment);
+    }
 
-  /// @inheritdoc IEntrypoint
-  function deposit(
-    IERC20 _asset,
-    uint256 _value,
-    uint256 _precommitment
-  ) external nonReentrant returns (uint256 _commitment) {
-    // Pull funds from user
-    _asset.safeTransferFrom(msg.sender, address(this), _value);
-    // Handle deposit as ERC20
-    _commitment = _handleDeposit(_asset, _value, _precommitment);
-  }
+    /// @inheritdoc IEntrypoint
+    function deposit(IERC20 _asset, uint256 _value, uint256 _precommitment)
+        external
+        nonReentrant
+        returns (uint256 _commitment)
+    {
+        // Pull funds from user
+        _asset.safeTransferFrom(msg.sender, address(this), _value);
+        // Handle deposit as ERC20
+        _commitment = _handleDeposit(_asset, _value, _precommitment);
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                                RELAY
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /// @inheritdoc IEntrypoint
-  function relay(
-    IPrivacyPool.Withdrawal calldata _withdrawal,
-    ProofLib.WithdrawProof calldata _proof,
-    uint256 _scope
-  ) external nonReentrant {
-    // Check withdrawn amount is non-zero
-    if (_proof.withdrawnValue() == 0) revert InvalidWithdrawalAmount();
-    // Check allowed processooor is this Entrypoint
-    if (_withdrawal.processooor != address(this)) revert InvalidProcessooor();
+    /// @inheritdoc IEntrypoint
+    function relay(IPrivacyPool.Withdrawal calldata _withdrawal, ProofLib.WithdrawProof calldata _proof, uint256 _scope)
+        external
+        nonReentrant
+    {
+        // Check withdrawn amount is non-zero
+        if (_proof.withdrawnValue() == 0) {
+            revert InvalidWithdrawalAmount();
+        }
+        // Check allowed processooor is this Entrypoint
+        if (_withdrawal.processooor != address(this)) {
+            revert InvalidProcessooor();
+        }
 
-    // Fetch pool by scope
-    IPrivacyPool _pool = scopeToPool[_scope];
-    if (address(_pool) == address(0)) revert PoolNotFound();
+        // Fetch pool by scope
+        IPrivacyPool _pool = scopeToPool[_scope];
+        if (address(_pool) == address(0)) {
+            revert PoolNotFound();
+        }
 
-    // Store pool asset
-    IERC20 _asset = IERC20(_pool.ASSET());
-    uint256 _balanceBefore = _assetBalance(_asset);
+        // Store pool asset
+        IERC20 _asset = IERC20(_pool.ASSET());
+        uint256 _balanceBefore = _assetBalance(_asset);
 
-    // Process withdrawal
-    _pool.withdraw(_withdrawal, _proof);
+        // Process withdrawal
+        _pool.withdraw(_withdrawal, _proof);
 
-    // Decode relay data
-    RelayData memory _data = abi.decode(_withdrawal.data, (RelayData));
+        // Decode relay data
+        RelayData memory _data = abi.decode(_withdrawal.data, (RelayData));
 
-    if (_data.relayFeeBPS > assetConfig[_asset].maxRelayFeeBPS) revert RelayFeeGreaterThanMax();
+        if (_data.relayFeeBPS > assetConfig[_asset].maxRelayFeeBPS) {
+            revert RelayFeeGreaterThanMax();
+        }
 
-    uint256 _withdrawnAmount = _proof.withdrawnValue();
+        uint256 _withdrawnAmount = _proof.withdrawnValue();
 
-    // Deduct fees
-    uint256 _amountAfterFees = _deductFee(_withdrawnAmount, _data.relayFeeBPS);
+        // Deduct fees
+        uint256 _amountAfterFees = _deductFee(_withdrawnAmount, _data.relayFeeBPS);
 
-    uint256 _feeAmount = _withdrawnAmount - _amountAfterFees;
+        uint256 _feeAmount = _withdrawnAmount - _amountAfterFees;
 
-    // Transfer withdrawn funds to recipient
-    _transfer(_asset, _data.recipient, _amountAfterFees);
-    // Transfer fees to fee recipient
-    _transfer(_asset, _data.feeRecipient, _feeAmount);
+        // Transfer withdrawn funds to recipient
+        _transfer(_asset, _data.recipient, _amountAfterFees);
+        // Transfer fees to fee recipient
+        _transfer(_asset, _data.feeRecipient, _feeAmount);
 
-    // Check pool balance has not been reduced
-    uint256 _balanceAfter = _assetBalance(_asset);
-    if (_balanceBefore > _balanceAfter) revert InvalidPoolState();
+        // Check pool balance has not been reduced
+        uint256 _balanceAfter = _assetBalance(_asset);
+        if (_balanceBefore > _balanceAfter) {
+            revert InvalidPoolState();
+        }
 
-    emit WithdrawalRelayed(msg.sender, _data.recipient, _asset, _withdrawnAmount, _feeAmount);
-  }
+        emit WithdrawalRelayed(msg.sender, _data.recipient, _asset, _withdrawnAmount, _feeAmount);
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                           POOL MANAGEMENT 
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /// @inheritdoc IEntrypoint
-  function registerPool(
-    IERC20 _asset,
-    IPrivacyPool _pool,
-    uint256 _minimumDepositAmount,
-    uint256 _vettingFeeBPS,
-    uint256 _maxRelayFeeBPS
-  ) external onlyRole(_OWNER_ROLE) {
-    // Sanity check addresses
-    if (address(_asset) == address(0)) revert ZeroAddress();
-    if (address(_pool) == address(0)) revert ZeroAddress();
+    /// @inheritdoc IEntrypoint
+    function registerPool(
+        IERC20 _asset,
+        IPrivacyPool _pool,
+        uint256 _minimumDepositAmount,
+        uint256 _vettingFeeBPS,
+        uint256 _maxRelayFeeBPS
+    ) external onlyRole(_OWNER_ROLE) {
+        // Sanity check addresses
+        if (address(_asset) == address(0)) {
+            revert ZeroAddress();
+        }
+        if (address(_pool) == address(0)) {
+            revert ZeroAddress();
+        }
 
-    // Fetch pool configuration
-    AssetConfig storage _config = assetConfig[_asset];
-    if (address(_config.pool) != address(0)) revert AssetPoolAlreadyRegistered();
+        // Fetch pool configuration
+        AssetConfig storage _config = assetConfig[_asset];
+        if (address(_config.pool) != address(0)) {
+            revert AssetPoolAlreadyRegistered();
+        }
 
-    if (_pool.dead()) revert PoolIsDead();
-    if (address(_pool.ENTRYPOINT()) != address(this)) revert InvalidEntrypointForPool();
+        if (_pool.dead()) {
+            revert PoolIsDead();
+        }
+        if (address(_pool.ENTRYPOINT()) != address(this)) {
+            revert InvalidEntrypointForPool();
+        }
 
-    // Fetch pool scope and validate asset
-    uint256 _scope = _pool.SCOPE();
-    if (address(scopeToPool[_scope]) != address(0)) revert ScopePoolAlreadyRegistered();
-    if (_asset != IERC20(_pool.ASSET())) revert AssetMismatch();
+        // Fetch pool scope and validate asset
+        uint256 _scope = _pool.SCOPE();
+        if (address(scopeToPool[_scope]) != address(0)) {
+            revert ScopePoolAlreadyRegistered();
+        }
+        if (_asset != IERC20(_pool.ASSET())) {
+            revert AssetMismatch();
+        }
 
-    // Store pool configuration
-    scopeToPool[_scope] = _pool;
-    _config.pool = _pool;
+        // Store pool configuration
+        scopeToPool[_scope] = _pool;
+        _config.pool = _pool;
 
-    // Update pool configuration with validation
-    _setPoolConfiguration(_config, _minimumDepositAmount, _vettingFeeBPS, _maxRelayFeeBPS);
+        // Update pool configuration with validation
+        _setPoolConfiguration(_config, _minimumDepositAmount, _vettingFeeBPS, _maxRelayFeeBPS);
 
-    // If asset is an ERC20, approve pool to spend
-    if (address(_asset) != Constants.NATIVE_ASSET) _asset.forceApprove(address(_pool), type(uint256).max);
+        // If asset is an ERC20, approve pool to spend
+        if (address(_asset) != Constants.NATIVE_ASSET) {
+            _asset.forceApprove(address(_pool), type(uint256).max);
+        }
 
-    emit PoolRegistered(_pool, _asset, _scope);
-  }
+        emit PoolRegistered(_pool, _asset, _scope);
+    }
 
-  /// @inheritdoc IEntrypoint
-  function removePool(IERC20 _asset) external onlyRole(_OWNER_ROLE) {
-    // Fetch pool by asset
-    IPrivacyPool _pool = assetConfig[_asset].pool;
-    if (address(_pool) == address(0)) revert PoolNotFound();
+    /// @inheritdoc IEntrypoint
+    function removePool(IERC20 _asset) external onlyRole(_OWNER_ROLE) {
+        // Fetch pool by asset
+        IPrivacyPool _pool = assetConfig[_asset].pool;
+        if (address(_pool) == address(0)) {
+            revert PoolNotFound();
+        }
 
-    // Fetch pool scope
-    uint256 _scope = _pool.SCOPE();
+        // Fetch pool scope
+        uint256 _scope = _pool.SCOPE();
 
-    // If asset is an ERC20, revoke pool allowance
-    if (address(_asset) != Constants.NATIVE_ASSET) _asset.forceApprove(address(_pool), 0);
+        // If asset is an ERC20, revoke pool allowance
+        if (address(_asset) != Constants.NATIVE_ASSET) {
+            _asset.forceApprove(address(_pool), 0);
+        }
 
-    // Remove pool configuration
-    delete scopeToPool[_scope];
-    delete assetConfig[_asset];
+        // Remove pool configuration
+        delete scopeToPool[_scope];
+        delete assetConfig[_asset];
 
-    emit PoolRemoved(_pool, _asset, _scope);
-  }
+        emit PoolRemoved(_pool, _asset, _scope);
+    }
 
-  /// @inheritdoc IEntrypoint
-  function updatePoolConfiguration(
-    IERC20 _asset,
-    uint256 _minimumDepositAmount,
-    uint256 _vettingFeeBPS,
-    uint256 _maxRelayFeeBPS
-  ) external onlyRole(_OWNER_ROLE) {
-    // Fetch pool configuration
-    AssetConfig storage _config = assetConfig[_asset];
-    if (address(_config.pool) == address(0)) revert PoolNotFound();
+    /// @inheritdoc IEntrypoint
+    function updatePoolConfiguration(
+        IERC20 _asset,
+        uint256 _minimumDepositAmount,
+        uint256 _vettingFeeBPS,
+        uint256 _maxRelayFeeBPS
+    ) external onlyRole(_OWNER_ROLE) {
+        // Fetch pool configuration
+        AssetConfig storage _config = assetConfig[_asset];
+        if (address(_config.pool) == address(0)) {
+            revert PoolNotFound();
+        }
 
-    // Update pool configuration with validation
-    _setPoolConfiguration(_config, _minimumDepositAmount, _vettingFeeBPS, _maxRelayFeeBPS);
+        // Update pool configuration with validation
+        _setPoolConfiguration(_config, _minimumDepositAmount, _vettingFeeBPS, _maxRelayFeeBPS);
 
-    emit PoolConfigurationUpdated(_config.pool, _asset, _minimumDepositAmount, _vettingFeeBPS, _maxRelayFeeBPS);
-  }
+        emit PoolConfigurationUpdated(_config.pool, _asset, _minimumDepositAmount, _vettingFeeBPS, _maxRelayFeeBPS);
+    }
 
-  /// @inheritdoc IEntrypoint
-  function windDownPool(IPrivacyPool _pool) external onlyRole(_OWNER_ROLE) {
-    // Call `windDown` on pool
-    _pool.windDown();
+    /// @inheritdoc IEntrypoint
+    function windDownPool(IPrivacyPool _pool) external onlyRole(_OWNER_ROLE) {
+        // Call `windDown` on pool
+        _pool.windDown();
 
-    emit PoolWindDown(_pool);
-  }
+        emit PoolWindDown(_pool);
+    }
 
-  /// @inheritdoc IEntrypoint
-  function withdrawFees(IERC20 _asset, address _recipient) external nonReentrant onlyRole(_OWNER_ROLE) {
-    // Fetch current asset balance
-    uint256 _balance = _assetBalance(_asset);
+    /// @inheritdoc IEntrypoint
+    function withdrawFees(IERC20 _asset, address _recipient) external nonReentrant onlyRole(_OWNER_ROLE) {
+        // Fetch current asset balance
+        uint256 _balance = _assetBalance(_asset);
 
-    // Transfer funds
-    _transfer(_asset, _recipient, _balance);
+        // Transfer funds
+        _transfer(_asset, _recipient, _balance);
 
-    emit FeesWithdrawn(_asset, _recipient, _balance);
-  }
+        emit FeesWithdrawn(_asset, _recipient, _balance);
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                            VIEW METHODS 
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /// @inheritdoc IEntrypoint
-  function latestRoot() external view returns (uint256 _root) {
-    if (associationSets.length == 0) revert NoRootsAvailable();
-    _root = associationSets[associationSets.length - 1].root;
-  }
+    /// @inheritdoc IEntrypoint
+    function latestRoot() external view returns (uint256 _root) {
+        if (associationSets.length == 0) {
+            revert NoRootsAvailable();
+        }
+        _root = associationSets[associationSets.length - 1].root;
+    }
 
-  /// @inheritdoc IEntrypoint
-  function rootByIndex(uint256 _index) external view returns (uint256 _root) {
-    if (_index >= associationSets.length) revert InvalidIndex();
-    _root = associationSets[_index].root;
-  }
+    /// @inheritdoc IEntrypoint
+    function rootByIndex(uint256 _index) external view returns (uint256 _root) {
+        if (_index >= associationSets.length) {
+            revert InvalidIndex();
+        }
+        _root = associationSets[_index].root;
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                             RECEIVE
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /**
-   * @notice Needed to receive native asset from a pool when withdrawing
-   * @dev Only accepts native asset from the local native asset pool
-   */
-  receive() external payable {
-    address _nativePool = address(assetConfig[IERC20(Constants.NATIVE_ASSET)].pool);
-    if (msg.sender != _nativePool) revert NativeAssetNotAccepted();
-  }
+    /**
+     * @notice Needed to receive native asset from a pool when withdrawing
+     * @dev Only accepts native asset from the local native asset pool
+     */
+    receive() external payable {
+        address _nativePool = address(assetConfig[IERC20(Constants.NATIVE_ASSET)].pool);
+        if (msg.sender != _nativePool) {
+            revert NativeAssetNotAccepted();
+        }
+    }
 
-  /*///////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////
                         INTERNAL METHODS 
-  //////////////////////////////////////////////////////////////*/
+    //////////////////////////////////////////////////////////////*/
 
-  /// @inheritdoc UUPSUpgradeable
-  function _authorizeUpgrade(address) internal override onlyRole(_OWNER_ROLE) {}
+    /// @inheritdoc UUPSUpgradeable
+    function _authorizeUpgrade(address) internal override onlyRole(_OWNER_ROLE) {}
 
-  /**
-   * @notice Handle deposit logic for both native asset and ERC20 deposits
-   * @param _asset The asset being deposited
-   * @param _value The amount being deposited
-   * @param _precommitment The precommitment for the deposit
-   * @return _commitment The deposit commitment hash
-   */
-  function _handleDeposit(IERC20 _asset, uint256 _value, uint256 _precommitment) internal returns (uint256 _commitment) {
-    // Fetch pool by asset
-    AssetConfig memory _config = assetConfig[_asset];
-    IPrivacyPool _pool = _config.pool;
-    if (address(_pool) == address(0)) revert PoolNotFound();
+    /**
+     * @notice Handle deposit logic for both native asset and ERC20 deposits
+     * @param _asset The asset being deposited
+     * @param _value The amount being deposited
+     * @param _precommitment The precommitment for the deposit
+     * @return _commitment The deposit commitment hash
+     */
+    function _handleDeposit(IERC20 _asset, uint256 _value, uint256 _precommitment)
+        internal
+        returns (uint256 _commitment)
+    {
+        // Fetch pool by asset
+        AssetConfig memory _config = assetConfig[_asset];
+        IPrivacyPool _pool = _config.pool;
+        if (address(_pool) == address(0)) {
+            revert PoolNotFound();
+        }
 
-    // Check if the `_precommitment` has already been used
-    if (usedPrecommitments[_precommitment]) revert PrecommitmentAlreadyUsed();
-    // Mark it as used
-    usedPrecommitments[_precommitment] = true;
+        // Check if the `_precommitment` has already been used
+        if (usedPrecommitments[_precommitment]) {
+            revert PrecommitmentAlreadyUsed();
+        }
+        // Mark it as used
+        usedPrecommitments[_precommitment] = true;
 
-    // Check minimum deposit amount
-    if (_value < _config.minimumDepositAmount) revert MinimumDepositAmount();
+        // Check minimum deposit amount
+        if (_value < _config.minimumDepositAmount) {
+            revert MinimumDepositAmount();
+        }
 
-    // Deduct vetting fees
-    uint256 _amountAfterFees = _deductFee(_value, _config.vettingFeeBPS);
+        // Deduct vetting fees
+        uint256 _amountAfterFees = _deductFee(_value, _config.vettingFeeBPS);
 
-    // Deposit commitment into pool (forwarding native asset if applicable)
-    uint256 _nativeAssetValue = address(_asset) == Constants.NATIVE_ASSET ? _amountAfterFees : 0;
-    _commitment = _pool.deposit{value: _nativeAssetValue}(msg.sender, _amountAfterFees, _precommitment);
+        // Deposit commitment into pool (forwarding native asset if applicable)
+        uint256 _nativeAssetValue = address(_asset) == Constants.NATIVE_ASSET ? _amountAfterFees : 0;
+        _commitment = _pool.deposit{value: _nativeAssetValue}(msg.sender, _amountAfterFees, _precommitment);
 
-    emit Deposited(msg.sender, _pool, _commitment, _amountAfterFees);
-  }
-
-  /**
-   * @notice Transfer out an asset to a recipient
-   * @param _asset The asset to send
-   * @param _recipient The recipient address
-   * @param _amount The amount to send
-   */
-  function _transfer(IERC20 _asset, address _recipient, uint256 _amount) internal {
-    if (_recipient == address(0)) revert ZeroAddress();
-
-    if (_asset == IERC20(Constants.NATIVE_ASSET)) {
-      (bool _success,) = _recipient.call{value: _amount}('');
-      if (!_success) revert NativeAssetTransferFailed();
-    } else {
-      _asset.safeTransfer(_recipient, _amount);
+        emit Deposited(msg.sender, _pool, _commitment, _amountAfterFees);
     }
-  }
 
-  /**
-   * @notice Fetch asset balance for the Entrypoint
-   * @param _asset The asset address
-   * @return _balance The asset balance
-   */
-  function _assetBalance(IERC20 _asset) internal view returns (uint256 _balance) {
-    if (_asset == IERC20(Constants.NATIVE_ASSET)) {
-      _balance = address(this).balance;
-    } else {
-      _balance = _asset.balanceOf(address(this));
+    /**
+     * @notice Transfer out an asset to a recipient
+     * @param _asset The asset to send
+     * @param _recipient The recipient address
+     * @param _amount The amount to send
+     */
+    function _transfer(IERC20 _asset, address _recipient, uint256 _amount) internal {
+        if (_recipient == address(0)) {
+            revert ZeroAddress();
+        }
+
+        if (_asset == IERC20(Constants.NATIVE_ASSET)) {
+            (bool _success,) = _recipient.call{value: _amount}("");
+            if (!_success) {
+                revert NativeAssetTransferFailed();
+            }
+        } else {
+            _asset.safeTransfer(_recipient, _amount);
+        }
     }
-  }
 
-  /**
-   * @notice Deduct fees from an amount
-   * @param _amount The amount before fees
-   * @param _feeBPS The fee in basis points
-   * @return _afterFees The amount after fees are deducted
-   */
-  function _deductFee(uint256 _amount, uint256 _feeBPS) internal pure returns (uint256 _afterFees) {
-    _afterFees = _amount - ((_amount * _feeBPS) / 10_000);
-  }
+    /**
+     * @notice Fetch asset balance for the Entrypoint
+     * @param _asset The asset address
+     * @return _balance The asset balance
+     */
+    function _assetBalance(IERC20 _asset) internal view returns (uint256 _balance) {
+        if (_asset == IERC20(Constants.NATIVE_ASSET)) {
+            _balance = address(this).balance;
+        } else {
+            _balance = _asset.balanceOf(address(this));
+        }
+    }
 
-  /**
-   * @notice Sets pool configuration parameters with validation
-   * @dev Validates and sets minimum deposit amount and vetting fee
-   * @param _config The pool configuration to update
-   * @param _minimumDepositAmount The new minimum deposit amount
-   * @param _vettingFeeBPS The new vetting fee in basis points
-   * @param _maxRelayFeeBPS The maximum relay fee in basis points
-   */
-  function _setPoolConfiguration(
-    AssetConfig storage _config,
-    uint256 _minimumDepositAmount,
-    uint256 _vettingFeeBPS,
-    uint256 _maxRelayFeeBPS
-  ) internal {
-    // Check fee is less than 100%
-    if (_vettingFeeBPS >= 10_000 || _maxRelayFeeBPS >= 10_000) revert InvalidFeeBPS();
+    /**
+     * @notice Deduct fees from an amount
+     * @param _amount The amount before fees
+     * @param _feeBPS The fee in basis points
+     * @return _afterFees The amount after fees are deducted
+     */
+    function _deductFee(uint256 _amount, uint256 _feeBPS) internal pure returns (uint256 _afterFees) {
+        _afterFees = _amount - ((_amount * _feeBPS) / 10_000);
+    }
 
-    _config.minimumDepositAmount = _minimumDepositAmount;
-    _config.vettingFeeBPS = _vettingFeeBPS;
-    _config.maxRelayFeeBPS = _maxRelayFeeBPS;
-  }
+    /**
+     * @notice Sets pool configuration parameters with validation
+     * @dev Validates and sets minimum deposit amount and vetting fee
+     * @param _config The pool configuration to update
+     * @param _minimumDepositAmount The new minimum deposit amount
+     * @param _vettingFeeBPS The new vetting fee in basis points
+     * @param _maxRelayFeeBPS The maximum relay fee in basis points
+     */
+    function _setPoolConfiguration(
+        AssetConfig storage _config,
+        uint256 _minimumDepositAmount,
+        uint256 _vettingFeeBPS,
+        uint256 _maxRelayFeeBPS
+    ) internal {
+        // Check fee is less than 100%
+        if (_vettingFeeBPS >= 10_000 || _maxRelayFeeBPS >= 10_000) {
+            revert InvalidFeeBPS();
+        }
+
+        _config.minimumDepositAmount = _minimumDepositAmount;
+        _config.vettingFeeBPS = _vettingFeeBPS;
+        _config.maxRelayFeeBPS = _maxRelayFeeBPS;
+    }
 }

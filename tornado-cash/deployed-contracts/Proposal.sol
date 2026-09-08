@@ -4,35 +4,35 @@ pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 interface Resolver {
-  function addr(bytes32 node) external view returns (address);
+    function addr(bytes32 node) external view returns (address);
 }
 
 interface ENS {
-  function resolver(bytes32 node) external view returns (Resolver);
+    function resolver(bytes32 node) external view returns (Resolver);
 }
 
 contract EnsResolve {
-  function resolve(bytes32 node) public view virtual returns (address) {
-    ENS Registry = ENS(
-      getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
-    );
-    return Registry.resolver(node).addr(node);
-  }
-
-  function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
-    result = new address[](domains.length);
-    for (uint256 i = 0; i < domains.length; i++) {
-      result[i] = resolve(domains[i]);
+    function resolve(bytes32 node) public view virtual returns (address) {
+        ENS Registry = ENS(
+            getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
+        );
+        return Registry.resolver(node).addr(node);
     }
-  }
 
-  function getChainId() internal pure returns (uint256) {
-    uint256 chainId;
-    assembly {
-      chainId := chainid()
+    function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
+        result = new address[](domains.length);
+        for (uint256 i = 0; i < domains.length; i++) {
+            result[i] = resolve(domains[i]);
+        }
     }
-    return chainId;
-  }
+
+    function getChainId() internal pure returns (uint256) {
+        uint256 chainId;
+        assembly {
+            chainId := chainid()
+        }
+        return chainId;
+    }
 }
 
 /**
@@ -48,363 +48,365 @@ contract EnsResolve {
  * because this is not dealt with automatically as with constructors.
  */
 contract Initializable {
+    /**
+     * @dev Indicates that the contract has been initialized.
+     */
+    bool private initialized;
 
-  /**
-   * @dev Indicates that the contract has been initialized.
-   */
-  bool private initialized;
+    /**
+     * @dev Indicates that the contract is in the process of being initialized.
+     */
+    bool private initializing;
 
-  /**
-   * @dev Indicates that the contract is in the process of being initialized.
-   */
-  bool private initializing;
+    /**
+     * @dev Modifier to use in the initializer function of a contract.
+     */
+    modifier initializer() {
+        require(initializing || isConstructor() || !initialized, "Contract instance has already been initialized");
 
-  /**
-   * @dev Modifier to use in the initializer function of a contract.
-   */
-  modifier initializer() {
-    require(initializing || isConstructor() || !initialized, "Contract instance has already been initialized");
+        bool isTopLevelCall = !initializing;
+        if (isTopLevelCall) {
+            initializing = true;
+            initialized = true;
+        }
 
-    bool isTopLevelCall = !initializing;
-    if (isTopLevelCall) {
-      initializing = true;
-      initialized = true;
+        _;
+
+        if (isTopLevelCall) {
+            initializing = false;
+        }
     }
 
-    _;
-
-    if (isTopLevelCall) {
-      initializing = false;
+    /// @dev Returns true if and only if the function is running in the constructor
+    function isConstructor() private view returns (bool) {
+        // extcodesize checks the size of the code stored in an address, and
+        // address returns the current address. Since the code is still not
+        // deployed when running a constructor, any checks on its code size will
+        // yield zero, making it an effective way to detect if a contract is
+        // under construction or not.
+        address self = address(this);
+        uint256 cs;
+        assembly {
+            cs := extcodesize(self)
+        }
+        return cs == 0;
     }
-  }
 
-  /// @dev Returns true if and only if the function is running in the constructor
-  function isConstructor() private view returns (bool) {
-    // extcodesize checks the size of the code stored in an address, and
-    // address returns the current address. Since the code is still not
-    // deployed when running a constructor, any checks on its code size will
-    // yield zero, making it an effective way to detect if a contract is
-    // under construction or not.
-    address self = address(this);
-    uint256 cs;
-    assembly { cs := extcodesize(self) }
-    return cs == 0;
-  }
-
-  // Reserved storage space to allow for layout changes in the future.
-  uint256[50] private ______gap;
+    // Reserved storage space to allow for layout changes in the future.
+    uint256[50] private ______gap;
 }
 
 interface IBatchTreeUpdateVerifier {
-  function verifyProof(bytes calldata proof, uint256[1] calldata input) external view returns (bool);
+    function verifyProof(bytes calldata proof, uint256[1] calldata input) external view returns (bool);
 }
 
 interface ITornadoTreesV1 {
-  function lastProcessedDepositLeaf() external view returns (uint256);
+    function lastProcessedDepositLeaf() external view returns (uint256);
 
-  function lastProcessedWithdrawalLeaf() external view returns (uint256);
+    function lastProcessedWithdrawalLeaf() external view returns (uint256);
 
-  function depositRoot() external view returns (bytes32);
+    function depositRoot() external view returns (bytes32);
 
-  function withdrawalRoot() external view returns (bytes32);
+    function withdrawalRoot() external view returns (bytes32);
 
-  function deposits(uint256 i) external view returns (bytes32);
+    function deposits(uint256 i) external view returns (bytes32);
 
-  function withdrawals(uint256 i) external view returns (bytes32);
+    function withdrawals(uint256 i) external view returns (bytes32);
 
-  function registerDeposit(address instance, bytes32 commitment) external;
+    function registerDeposit(address instance, bytes32 commitment) external;
 
-  function registerWithdrawal(address instance, bytes32 nullifier) external;
+    function registerWithdrawal(address instance, bytes32 nullifier) external;
 }
 
 /// @dev This contract holds a merkle tree of all tornado cash deposit and withdrawal events
 contract TornadoTrees is Initializable {
-  address public immutable governance;
-  bytes32 public depositRoot;
-  bytes32 public previousDepositRoot;
-  bytes32 public withdrawalRoot;
-  bytes32 public previousWithdrawalRoot;
-  address public tornadoProxy;
-  IBatchTreeUpdateVerifier public treeUpdateVerifier;
-  ITornadoTreesV1 public immutable tornadoTreesV1;
+    address public immutable governance;
+    bytes32 public depositRoot;
+    bytes32 public previousDepositRoot;
+    bytes32 public withdrawalRoot;
+    bytes32 public previousWithdrawalRoot;
+    address public tornadoProxy;
+    IBatchTreeUpdateVerifier public treeUpdateVerifier;
+    ITornadoTreesV1 public immutable tornadoTreesV1;
 
-  uint256 public constant CHUNK_TREE_HEIGHT = 8;
-  uint256 public constant CHUNK_SIZE = 2**CHUNK_TREE_HEIGHT;
-  uint256 public constant ITEM_SIZE = 32 + 20 + 4;
-  uint256 public constant BYTES_SIZE = 32 + 32 + 4 + CHUNK_SIZE * ITEM_SIZE;
-  uint256 public constant SNARK_FIELD = 21888242871839275222246405745257275088548364400416034343698204186575808495617;
+    uint256 public constant CHUNK_TREE_HEIGHT = 8;
+    uint256 public constant CHUNK_SIZE = 2 ** CHUNK_TREE_HEIGHT;
+    uint256 public constant ITEM_SIZE = 32 + 20 + 4;
+    uint256 public constant BYTES_SIZE = 32 + 32 + 4 + CHUNK_SIZE * ITEM_SIZE;
+    uint256 public constant SNARK_FIELD = 21888242871839275222246405745257275088548364400416034343698204186575808495617;
 
-  mapping(uint256 => bytes32) public deposits;
-  uint256 public depositsLength;
-  uint256 public lastProcessedDepositLeaf;
-  uint256 public immutable depositsV1Length;
+    mapping(uint256 => bytes32) public deposits;
+    uint256 public depositsLength;
+    uint256 public lastProcessedDepositLeaf;
+    uint256 public immutable depositsV1Length;
 
-  mapping(uint256 => bytes32) public withdrawals;
-  uint256 public withdrawalsLength;
-  uint256 public lastProcessedWithdrawalLeaf;
-  uint256 public immutable withdrawalsV1Length;
+    mapping(uint256 => bytes32) public withdrawals;
+    uint256 public withdrawalsLength;
+    uint256 public lastProcessedWithdrawalLeaf;
+    uint256 public immutable withdrawalsV1Length;
 
-  event DepositData(address instance, bytes32 indexed hash, uint256 block, uint256 index);
-  event WithdrawalData(address instance, bytes32 indexed hash, uint256 block, uint256 index);
-  event VerifierUpdated(address newVerifier);
-  event ProxyUpdated(address newProxy);
+    event DepositData(address instance, bytes32 indexed hash, uint256 block, uint256 index);
+    event WithdrawalData(address instance, bytes32 indexed hash, uint256 block, uint256 index);
+    event VerifierUpdated(address newVerifier);
+    event ProxyUpdated(address newProxy);
 
-  struct TreeLeaf {
-    bytes32 hash;
-    address instance;
-    uint32 block;
-  }
-
-  modifier onlyTornadoProxy {
-    require(msg.sender == tornadoProxy, "Not authorized");
-    _;
-  }
-
-  modifier onlyGovernance() {
-    require(msg.sender == governance, "Only governance can perform this action");
-    _;
-  }
-
-  struct SearchParams {
-    uint256 depositsFrom;
-    uint256 depositsStep;
-    uint256 withdrawalsFrom;
-    uint256 withdrawalsStep;
-  }
-
-  constructor(
-    address _governance,
-    ITornadoTreesV1 _tornadoTreesV1,
-    SearchParams memory _searchParams
-  ) public {
-    governance = _governance;
-    tornadoTreesV1 = _tornadoTreesV1;
-
-    depositsV1Length = findArrayLength(
-      _tornadoTreesV1,
-      "deposits(uint256)",
-      _searchParams.depositsFrom,
-      _searchParams.depositsStep
-    );
-
-    withdrawalsV1Length = findArrayLength(
-      _tornadoTreesV1,
-      "withdrawals(uint256)",
-      _searchParams.withdrawalsFrom,
-      _searchParams.withdrawalsStep
-    );
-  }
-
-  function initialize(address _tornadoProxy, IBatchTreeUpdateVerifier _treeUpdateVerifier) public initializer onlyGovernance {
-    tornadoProxy = _tornadoProxy;
-    treeUpdateVerifier = _treeUpdateVerifier;
-
-    depositRoot = tornadoTreesV1.depositRoot();
-    uint256 lastDepositLeaf = tornadoTreesV1.lastProcessedDepositLeaf();
-    require(lastDepositLeaf % CHUNK_SIZE == 0, "Incorrect TornadoTrees state");
-    lastProcessedDepositLeaf = lastDepositLeaf;
-    depositsLength = depositsV1Length;
-
-    withdrawalRoot = tornadoTreesV1.withdrawalRoot();
-    uint256 lastWithdrawalLeaf = tornadoTreesV1.lastProcessedWithdrawalLeaf();
-    require(lastWithdrawalLeaf % CHUNK_SIZE == 0, "Incorrect TornadoTrees state");
-    lastProcessedWithdrawalLeaf = lastWithdrawalLeaf;
-    withdrawalsLength = withdrawalsV1Length;
-  }
-
-  /// @dev Queue a new deposit data to be inserted into a merkle tree
-  function registerDeposit(address _instance, bytes32 _commitment) public onlyTornadoProxy {
-    uint256 _depositsLength = depositsLength;
-    deposits[_depositsLength] = keccak256(abi.encode(_instance, _commitment, blockNumber()));
-    emit DepositData(_instance, _commitment, blockNumber(), _depositsLength);
-    depositsLength = _depositsLength + 1;
-  }
-
-  /// @dev Queue a new withdrawal data to be inserted into a merkle tree
-  function registerWithdrawal(address _instance, bytes32 _nullifierHash) public onlyTornadoProxy {
-    uint256 _withdrawalsLength = withdrawalsLength;
-    withdrawals[_withdrawalsLength] = keccak256(abi.encode(_instance, _nullifierHash, blockNumber()));
-    emit WithdrawalData(_instance, _nullifierHash, blockNumber(), _withdrawalsLength);
-    withdrawalsLength = _withdrawalsLength + 1;
-  }
-
-  /// @dev Insert a full batch of queued deposits into a merkle tree
-  /// @param _proof A snark proof that elements were inserted correctly
-  /// @param _argsHash A hash of snark inputs
-  /// @param _argsHash Current merkle tree root
-  /// @param _newRoot Updated merkle tree root
-  /// @param _pathIndices Merkle path to inserted batch
-  /// @param _events A batch of inserted events (leaves)
-  function updateDepositTree(
-    bytes calldata _proof,
-    bytes32 _argsHash,
-    bytes32 _currentRoot,
-    bytes32 _newRoot,
-    uint32 _pathIndices,
-    TreeLeaf[CHUNK_SIZE] calldata _events
-  ) public {
-    uint256 offset = lastProcessedDepositLeaf;
-    require(_currentRoot == depositRoot, "Proposed deposit root is invalid");
-    require(_pathIndices == offset >> CHUNK_TREE_HEIGHT, "Incorrect deposit insert index");
-
-    bytes memory data = new bytes(BYTES_SIZE);
-    assembly {
-      mstore(add(data, 0x44), _pathIndices)
-      mstore(add(data, 0x40), _newRoot)
-      mstore(add(data, 0x20), _currentRoot)
-    }
-    for (uint256 i = 0; i < CHUNK_SIZE; i++) {
-      (bytes32 hash, address instance, uint32 blockNumber) = (_events[i].hash, _events[i].instance, _events[i].block);
-      bytes32 leafHash = keccak256(abi.encode(instance, hash, blockNumber));
-      bytes32 deposit = offset + i >= depositsV1Length ? deposits[offset + i] : tornadoTreesV1.deposits(offset + i);
-      require(leafHash == deposit, "Incorrect deposit");
-      assembly {
-        let itemOffset := add(data, mul(ITEM_SIZE, i))
-        mstore(add(itemOffset, 0x7c), blockNumber)
-        mstore(add(itemOffset, 0x78), instance)
-        mstore(add(itemOffset, 0x64), hash)
-      }
-      if (offset + i >= depositsV1Length) {
-        delete deposits[offset + i];
-      } else {
-        emit DepositData(instance, hash, blockNumber, offset + i);
-      }
+    struct TreeLeaf {
+        bytes32 hash;
+        address instance;
+        uint32 block;
     }
 
-    uint256 argsHash = uint256(sha256(data)) % SNARK_FIELD;
-    require(argsHash == uint256(_argsHash), "Invalid args hash");
-    require(treeUpdateVerifier.verifyProof(_proof, [argsHash]), "Invalid deposit tree update proof");
-
-    previousDepositRoot = _currentRoot;
-    depositRoot = _newRoot;
-    lastProcessedDepositLeaf = offset + CHUNK_SIZE;
-  }
-
-  /// @dev Insert a full batch of queued withdrawals into a merkle tree
-  /// @param _proof A snark proof that elements were inserted correctly
-  /// @param _argsHash A hash of snark inputs
-  /// @param _argsHash Current merkle tree root
-  /// @param _newRoot Updated merkle tree root
-  /// @param _pathIndices Merkle path to inserted batch
-  /// @param _events A batch of inserted events (leaves)
-  function updateWithdrawalTree(
-    bytes calldata _proof,
-    bytes32 _argsHash,
-    bytes32 _currentRoot,
-    bytes32 _newRoot,
-    uint32 _pathIndices,
-    TreeLeaf[CHUNK_SIZE] calldata _events
-  ) public {
-    uint256 offset = lastProcessedWithdrawalLeaf;
-    require(_currentRoot == withdrawalRoot, "Proposed withdrawal root is invalid");
-    require(_pathIndices == offset >> CHUNK_TREE_HEIGHT, "Incorrect withdrawal insert index");
-
-    bytes memory data = new bytes(BYTES_SIZE);
-    assembly {
-      mstore(add(data, 0x44), _pathIndices)
-      mstore(add(data, 0x40), _newRoot)
-      mstore(add(data, 0x20), _currentRoot)
-    }
-    for (uint256 i = 0; i < CHUNK_SIZE; i++) {
-      (bytes32 hash, address instance, uint32 blockNumber) = (_events[i].hash, _events[i].instance, _events[i].block);
-      bytes32 leafHash = keccak256(abi.encode(instance, hash, blockNumber));
-      bytes32 withdrawal = offset + i >= withdrawalsV1Length ? withdrawals[offset + i] : tornadoTreesV1.withdrawals(offset + i);
-      require(leafHash == withdrawal, "Incorrect withdrawal");
-      assembly {
-        let itemOffset := add(data, mul(ITEM_SIZE, i))
-        mstore(add(itemOffset, 0x7c), blockNumber)
-        mstore(add(itemOffset, 0x78), instance)
-        mstore(add(itemOffset, 0x64), hash)
-      }
-      if (offset + i >= withdrawalsV1Length) {
-        delete withdrawals[offset + i];
-      } else {
-        emit WithdrawalData(instance, hash, blockNumber, offset + i);
-      }
+    modifier onlyTornadoProxy() {
+        require(msg.sender == tornadoProxy, "Not authorized");
+        _;
     }
 
-    uint256 argsHash = uint256(sha256(data)) % SNARK_FIELD;
-    require(argsHash == uint256(_argsHash), "Invalid args hash");
-    require(treeUpdateVerifier.verifyProof(_proof, [argsHash]), "Invalid withdrawal tree update proof");
-
-    previousWithdrawalRoot = _currentRoot;
-    withdrawalRoot = _newRoot;
-    lastProcessedWithdrawalLeaf = offset + CHUNK_SIZE;
-  }
-
-  function validateRoots(bytes32 _depositRoot, bytes32 _withdrawalRoot) public view {
-    require(_depositRoot == depositRoot || _depositRoot == previousDepositRoot, "Incorrect deposit tree root");
-    require(_withdrawalRoot == withdrawalRoot || _withdrawalRoot == previousWithdrawalRoot, "Incorrect withdrawal tree root");
-  }
-
-  /// @dev There is no array length getter for deposit and withdrawal arrays
-  /// in the previous contract, so we have to find them length manually.
-  /// Used only during deployment
-  function findArrayLength(
-    ITornadoTreesV1 _tornadoTreesV1,
-    string memory _type,
-    uint256 _from, // most likely array length after the proposal has passed
-    uint256 _step // optimal step size to find first match, approximately equals dispersion
-  ) internal view virtual returns (uint256) {
-    // Find the segment with correct array length
-    bool direction = elementExists(_tornadoTreesV1, _type, _from);
-    do {
-      _from = direction ? _from + _step : _from - _step;
-    } while (direction == elementExists(_tornadoTreesV1, _type, _from));
-    uint256 high = direction ? _from : _from + _step;
-    uint256 low = direction ? _from - _step : _from;
-    uint256 mid = (high + low) / 2;
-
-    // Perform a binary search in this segment
-    while (low < mid) {
-      if (elementExists(_tornadoTreesV1, _type, mid)) {
-        low = mid;
-      } else {
-        high = mid;
-      }
-      mid = (low + high) / 2;
+    modifier onlyGovernance() {
+        require(msg.sender == governance, "Only governance can perform this action");
+        _;
     }
-    return mid + 1;
-  }
 
-  function elementExists(
-    ITornadoTreesV1 _tornadoTreesV1,
-    string memory _type,
-    uint256 index
-  ) public view returns (bool success) {
-    // Try to get the element. If it succeeds the array length is higher, it it reverts the length is equal or lower
-    (success, ) = address(_tornadoTreesV1).staticcall{ gas: 2500 }(abi.encodeWithSignature(_type, index));
-  }
+    struct SearchParams {
+        uint256 depositsFrom;
+        uint256 depositsStep;
+        uint256 withdrawalsFrom;
+        uint256 withdrawalsStep;
+    }
 
-  function setTornadoProxyContract(address _tornadoProxy) external onlyGovernance {
-    tornadoProxy = _tornadoProxy;
-    emit ProxyUpdated(_tornadoProxy);
-  }
+    constructor(address _governance, ITornadoTreesV1 _tornadoTreesV1, SearchParams memory _searchParams) public {
+        governance = _governance;
+        tornadoTreesV1 = _tornadoTreesV1;
 
-  function setVerifierContract(IBatchTreeUpdateVerifier _treeUpdateVerifier) external onlyGovernance {
-    treeUpdateVerifier = _treeUpdateVerifier;
-    emit VerifierUpdated(address(_treeUpdateVerifier));
-  }
+        depositsV1Length = findArrayLength(
+            _tornadoTreesV1, "deposits(uint256)", _searchParams.depositsFrom, _searchParams.depositsStep
+        );
 
-  function blockNumber() public view virtual returns (uint256) {
-    return block.number;
-  }
+        withdrawalsV1Length = findArrayLength(
+            _tornadoTreesV1, "withdrawals(uint256)", _searchParams.withdrawalsFrom, _searchParams.withdrawalsStep
+        );
+    }
+
+    function initialize(address _tornadoProxy, IBatchTreeUpdateVerifier _treeUpdateVerifier)
+        public
+        initializer
+        onlyGovernance
+    {
+        tornadoProxy = _tornadoProxy;
+        treeUpdateVerifier = _treeUpdateVerifier;
+
+        depositRoot = tornadoTreesV1.depositRoot();
+        uint256 lastDepositLeaf = tornadoTreesV1.lastProcessedDepositLeaf();
+        require(lastDepositLeaf % CHUNK_SIZE == 0, "Incorrect TornadoTrees state");
+        lastProcessedDepositLeaf = lastDepositLeaf;
+        depositsLength = depositsV1Length;
+
+        withdrawalRoot = tornadoTreesV1.withdrawalRoot();
+        uint256 lastWithdrawalLeaf = tornadoTreesV1.lastProcessedWithdrawalLeaf();
+        require(lastWithdrawalLeaf % CHUNK_SIZE == 0, "Incorrect TornadoTrees state");
+        lastProcessedWithdrawalLeaf = lastWithdrawalLeaf;
+        withdrawalsLength = withdrawalsV1Length;
+    }
+
+    /// @dev Queue a new deposit data to be inserted into a merkle tree
+    function registerDeposit(address _instance, bytes32 _commitment) public onlyTornadoProxy {
+        uint256 _depositsLength = depositsLength;
+        deposits[_depositsLength] = keccak256(abi.encode(_instance, _commitment, blockNumber()));
+        emit DepositData(_instance, _commitment, blockNumber(), _depositsLength);
+        depositsLength = _depositsLength + 1;
+    }
+
+    /// @dev Queue a new withdrawal data to be inserted into a merkle tree
+    function registerWithdrawal(address _instance, bytes32 _nullifierHash) public onlyTornadoProxy {
+        uint256 _withdrawalsLength = withdrawalsLength;
+        withdrawals[_withdrawalsLength] = keccak256(abi.encode(_instance, _nullifierHash, blockNumber()));
+        emit WithdrawalData(_instance, _nullifierHash, blockNumber(), _withdrawalsLength);
+        withdrawalsLength = _withdrawalsLength + 1;
+    }
+
+    /// @dev Insert a full batch of queued deposits into a merkle tree
+    /// @param _proof A snark proof that elements were inserted correctly
+    /// @param _argsHash A hash of snark inputs
+    /// @param _argsHash Current merkle tree root
+    /// @param _newRoot Updated merkle tree root
+    /// @param _pathIndices Merkle path to inserted batch
+    /// @param _events A batch of inserted events (leaves)
+    function updateDepositTree(
+        bytes calldata _proof,
+        bytes32 _argsHash,
+        bytes32 _currentRoot,
+        bytes32 _newRoot,
+        uint32 _pathIndices,
+        TreeLeaf[CHUNK_SIZE] calldata _events
+    ) public {
+        uint256 offset = lastProcessedDepositLeaf;
+        require(_currentRoot == depositRoot, "Proposed deposit root is invalid");
+        require(_pathIndices == offset >> CHUNK_TREE_HEIGHT, "Incorrect deposit insert index");
+
+        bytes memory data = new bytes(BYTES_SIZE);
+        assembly {
+            mstore(add(data, 0x44), _pathIndices)
+            mstore(add(data, 0x40), _newRoot)
+            mstore(add(data, 0x20), _currentRoot)
+        }
+        for (uint256 i = 0; i < CHUNK_SIZE; i++) {
+            (bytes32 hash, address instance, uint32 blockNumber) =
+                (_events[i].hash, _events[i].instance, _events[i].block);
+            bytes32 leafHash = keccak256(abi.encode(instance, hash, blockNumber));
+            bytes32 deposit =
+                offset + i >= depositsV1Length ? deposits[offset + i] : tornadoTreesV1.deposits(offset + i);
+            require(leafHash == deposit, "Incorrect deposit");
+            assembly {
+                let itemOffset := add(data, mul(ITEM_SIZE, i))
+                mstore(add(itemOffset, 0x7c), blockNumber)
+                mstore(add(itemOffset, 0x78), instance)
+                mstore(add(itemOffset, 0x64), hash)
+            }
+            if (offset + i >= depositsV1Length) {
+                delete deposits[offset + i];
+            } else {
+                emit DepositData(instance, hash, blockNumber, offset + i);
+            }
+        }
+
+        uint256 argsHash = uint256(sha256(data)) % SNARK_FIELD;
+        require(argsHash == uint256(_argsHash), "Invalid args hash");
+        require(treeUpdateVerifier.verifyProof(_proof, [argsHash]), "Invalid deposit tree update proof");
+
+        previousDepositRoot = _currentRoot;
+        depositRoot = _newRoot;
+        lastProcessedDepositLeaf = offset + CHUNK_SIZE;
+    }
+
+    /// @dev Insert a full batch of queued withdrawals into a merkle tree
+    /// @param _proof A snark proof that elements were inserted correctly
+    /// @param _argsHash A hash of snark inputs
+    /// @param _argsHash Current merkle tree root
+    /// @param _newRoot Updated merkle tree root
+    /// @param _pathIndices Merkle path to inserted batch
+    /// @param _events A batch of inserted events (leaves)
+    function updateWithdrawalTree(
+        bytes calldata _proof,
+        bytes32 _argsHash,
+        bytes32 _currentRoot,
+        bytes32 _newRoot,
+        uint32 _pathIndices,
+        TreeLeaf[CHUNK_SIZE] calldata _events
+    ) public {
+        uint256 offset = lastProcessedWithdrawalLeaf;
+        require(_currentRoot == withdrawalRoot, "Proposed withdrawal root is invalid");
+        require(_pathIndices == offset >> CHUNK_TREE_HEIGHT, "Incorrect withdrawal insert index");
+
+        bytes memory data = new bytes(BYTES_SIZE);
+        assembly {
+            mstore(add(data, 0x44), _pathIndices)
+            mstore(add(data, 0x40), _newRoot)
+            mstore(add(data, 0x20), _currentRoot)
+        }
+        for (uint256 i = 0; i < CHUNK_SIZE; i++) {
+            (bytes32 hash, address instance, uint32 blockNumber) =
+                (_events[i].hash, _events[i].instance, _events[i].block);
+            bytes32 leafHash = keccak256(abi.encode(instance, hash, blockNumber));
+            bytes32 withdrawal =
+                offset + i >= withdrawalsV1Length ? withdrawals[offset + i] : tornadoTreesV1.withdrawals(offset + i);
+            require(leafHash == withdrawal, "Incorrect withdrawal");
+            assembly {
+                let itemOffset := add(data, mul(ITEM_SIZE, i))
+                mstore(add(itemOffset, 0x7c), blockNumber)
+                mstore(add(itemOffset, 0x78), instance)
+                mstore(add(itemOffset, 0x64), hash)
+            }
+            if (offset + i >= withdrawalsV1Length) {
+                delete withdrawals[offset + i];
+            } else {
+                emit WithdrawalData(instance, hash, blockNumber, offset + i);
+            }
+        }
+
+        uint256 argsHash = uint256(sha256(data)) % SNARK_FIELD;
+        require(argsHash == uint256(_argsHash), "Invalid args hash");
+        require(treeUpdateVerifier.verifyProof(_proof, [argsHash]), "Invalid withdrawal tree update proof");
+
+        previousWithdrawalRoot = _currentRoot;
+        withdrawalRoot = _newRoot;
+        lastProcessedWithdrawalLeaf = offset + CHUNK_SIZE;
+    }
+
+    function validateRoots(bytes32 _depositRoot, bytes32 _withdrawalRoot) public view {
+        require(_depositRoot == depositRoot || _depositRoot == previousDepositRoot, "Incorrect deposit tree root");
+        require(
+            _withdrawalRoot == withdrawalRoot || _withdrawalRoot == previousWithdrawalRoot,
+            "Incorrect withdrawal tree root"
+        );
+    }
+
+    /// @dev There is no array length getter for deposit and withdrawal arrays
+    /// in the previous contract, so we have to find them length manually.
+    /// Used only during deployment
+    function findArrayLength(
+        ITornadoTreesV1 _tornadoTreesV1,
+        string memory _type,
+        uint256 _from, // most likely array length after the proposal has passed
+        uint256 _step // optimal step size to find first match, approximately equals dispersion
+    ) internal view virtual returns (uint256) {
+        // Find the segment with correct array length
+        bool direction = elementExists(_tornadoTreesV1, _type, _from);
+        do {
+            _from = direction ? _from + _step : _from - _step;
+        } while (direction == elementExists(_tornadoTreesV1, _type, _from));
+        uint256 high = direction ? _from : _from + _step;
+        uint256 low = direction ? _from - _step : _from;
+        uint256 mid = (high + low) / 2;
+
+        // Perform a binary search in this segment
+        while (low < mid) {
+            if (elementExists(_tornadoTreesV1, _type, mid)) {
+                low = mid;
+            } else {
+                high = mid;
+            }
+            mid = (low + high) / 2;
+        }
+        return mid + 1;
+    }
+
+    function elementExists(ITornadoTreesV1 _tornadoTreesV1, string memory _type, uint256 index)
+        public
+        view
+        returns (bool success)
+    {
+        // Try to get the element. If it succeeds the array length is higher, it it reverts the length is equal or lower
+        (success,) = address(_tornadoTreesV1).staticcall{gas: 2500}(abi.encodeWithSignature(_type, index));
+    }
+
+    function setTornadoProxyContract(address _tornadoProxy) external onlyGovernance {
+        tornadoProxy = _tornadoProxy;
+        emit ProxyUpdated(_tornadoProxy);
+    }
+
+    function setVerifierContract(IBatchTreeUpdateVerifier _treeUpdateVerifier) external onlyGovernance {
+        treeUpdateVerifier = _treeUpdateVerifier;
+        emit VerifierUpdated(address(_treeUpdateVerifier));
+    }
+
+    function blockNumber() public view virtual returns (uint256) {
+        return block.number;
+    }
 }
 
 /**
  * @dev This abstract contract provides a fallback function that delegates all calls to another contract using the EVM
  * instruction `delegatecall`. We refer to the second contract as the _implementation_ behind the proxy, and it has to
  * be specified by overriding the virtual {_implementation} function.
- * 
+ *
  * Additionally, delegation to the implementation can be triggered manually through the {_fallback} function, or to a
  * different contract through the {_delegate} function.
- * 
+ *
  * The success and return data of the delegated call will be returned back to the caller of the proxy.
  */
 abstract contract Proxy {
     /**
      * @dev Delegates the current call to `implementation`.
-     * 
+     *
      * This function does not return to its internall call site, it will return directly to the external caller.
      */
     function _delegate(address implementation) internal {
@@ -433,11 +435,11 @@ abstract contract Proxy {
      * @dev This is a virtual function that should be overriden so it returns the address to which the fallback function
      * and {_fallback} should delegate.
      */
-    function _implementation() internal virtual view returns (address);
+    function _implementation() internal view virtual returns (address);
 
     /**
      * @dev Delegates the current call to the address returned by `_implementation()`.
-     * 
+     *
      * This function does not return to its internall call site, it will return directly to the external caller.
      */
     function _fallback() internal {
@@ -449,7 +451,7 @@ abstract contract Proxy {
      * @dev Fallback function that delegates calls to the address returned by `_implementation()`. Will run if no other
      * function in the contract matches the call data.
      */
-    fallback () external payable {
+    fallback() external payable {
         _fallback();
     }
 
@@ -457,18 +459,17 @@ abstract contract Proxy {
      * @dev Fallback function that delegates calls to the address returned by `_implementation()`. Will run if call data
      * is empty.
      */
-    receive () external payable {
+    receive() external payable {
         _fallback();
     }
 
     /**
      * @dev Hook that is called before falling back to the implementation. Can happen as part of a manual `_fallback`
      * call, or as part of the Solidity `fallback` or `receive` functions.
-     * 
+     *
      * If overriden should call `super._beforeFallback()`.
      */
-    function _beforeFallback() internal virtual {
-    }
+    function _beforeFallback() internal virtual {}
 }
 
 /**
@@ -499,7 +500,9 @@ library Address {
 
         uint256 size;
         // solhint-disable-next-line no-inline-assembly
-        assembly { size := extcodesize(account) }
+        assembly {
+            size := extcodesize(account)
+        }
         return size > 0;
     }
 
@@ -523,7 +526,7 @@ library Address {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{ value: amount }("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -546,7 +549,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-      return functionCall(target, data, "Address: low-level call failed");
+        return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -555,7 +558,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -580,12 +586,15 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.call{ value: value }(data);
+        (bool success, bytes memory returndata) = target.call{value: value}(data);
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
@@ -605,7 +614,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(address target, bytes memory data, string memory errorMessage) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
@@ -613,7 +626,11 @@ library Address {
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
-    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage) private pure returns(bytes memory) {
+    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        private
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -638,21 +655,21 @@ library Address {
  * implementation address that can be changed. This address is stored in storage in the location specified by
  * https://eips.ethereum.org/EIPS/eip-1967[EIP1967], so that it doesn't conflict with the storage layout of the
  * implementation behind the proxy.
- * 
+ *
  * Upgradeability is only provided internally through {_upgradeTo}. For an externally upgradeable proxy see
  * {TransparentUpgradeableProxy}.
  */
 contract UpgradeableProxy is Proxy {
     /**
      * @dev Initializes the upgradeable proxy with an initial implementation specified by `_logic`.
-     * 
+     *
      * If `_data` is nonempty, it's used as data in a delegate call to `_logic`. This will typically be an encoded
      * function call, and allows initializating the storage of the proxy like a Solidity constructor.
      */
     constructor(address _logic, bytes memory _data) public payable {
         assert(_IMPLEMENTATION_SLOT == bytes32(uint256(keccak256("eip1967.proxy.implementation")) - 1));
         _setImplementation(_logic);
-        if(_data.length > 0) {
+        if (_data.length > 0) {
             // solhint-disable-next-line avoid-low-level-calls
             (bool success,) = _logic.delegatecall(_data);
             require(success);
@@ -674,7 +691,7 @@ contract UpgradeableProxy is Proxy {
     /**
      * @dev Returns the current implementation address.
      */
-    function _implementation() internal override view returns (address impl) {
+    function _implementation() internal view override returns (address impl) {
         bytes32 slot = _IMPLEMENTATION_SLOT;
         // solhint-disable-next-line no-inline-assembly
         assembly {
@@ -684,7 +701,7 @@ contract UpgradeableProxy is Proxy {
 
     /**
      * @dev Upgrades the proxy to a new implementation.
-     * 
+     *
      * Emits an {Upgraded} event.
      */
     function _upgradeTo(address newImplementation) internal {
@@ -709,22 +726,22 @@ contract UpgradeableProxy is Proxy {
 
 /**
  * @dev This contract implements a proxy that is upgradeable by an admin.
- * 
+ *
  * To avoid https://medium.com/nomic-labs-blog/malicious-backdoors-in-ethereum-proxies-62629adf3357[proxy selector
  * clashing], which can potentially be used in an attack, this contract uses the
  * https://blog.openzeppelin.com/the-transparent-proxy-pattern/[transparent proxy pattern]. This pattern implies two
  * things that go hand in hand:
- * 
+ *
  * 1. If any account other than the admin calls the proxy, the call will be forwarded to the implementation, even if
  * that call matches one of the admin functions exposed by the proxy itself.
  * 2. If the admin calls the proxy, it can access the admin functions, but its calls will never be forwarded to the
  * implementation. If the admin tries to call a function on the implementation it will fail with an error that says
  * "admin cannot fallback to proxy target".
- * 
+ *
  * These properties mean that the admin account can only be used for admin actions like upgrading the proxy or changing
  * the admin, so it's best if it's a dedicated account that is not used for anything else. This will avoid headaches due
  * to sudden errors when trying to call a function from the proxy implementation.
- * 
+ *
  * Our recommendation is for the dedicated account to be an instance of the {ProxyAdmin} contract. If set up this way,
  * you should think of the `ProxyAdmin` instance as the real administrative interface of your proxy.
  */
@@ -763,9 +780,9 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Returns the current admin.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyAdmin}.
-     * 
+     *
      * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the
      * https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call.
      * `0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103`
@@ -776,9 +793,9 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Returns the current implementation.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyImplementation}.
-     * 
+     *
      * TIP: To get this value clients can read directly from the storage slot shown below (specified by EIP1967) using the
      * https://eth.wiki/json-rpc/API#eth_getstorageat[`eth_getStorageAt`] RPC call.
      * `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc`
@@ -789,9 +806,9 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Changes the admin of the proxy.
-     * 
+     *
      * Emits an {AdminChanged} event.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-changeProxyAdmin}.
      */
     function changeAdmin(address newAdmin) external ifAdmin {
@@ -802,7 +819,7 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
 
     /**
      * @dev Upgrade the implementation of the proxy.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-upgrade}.
      */
     function upgradeTo(address newImplementation) external ifAdmin {
@@ -813,7 +830,7 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
      * @dev Upgrade the implementation of the proxy, and then call a function from the new implementation as specified
      * by `data`, which should be an encoded function call. This is useful to initialize new storage variables in the
      * proxied contract.
-     * 
+     *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-upgradeAndCall}.
      */
     function upgradeToAndCall(address newImplementation, bytes calldata data) external payable ifAdmin {
@@ -849,7 +866,7 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
     /**
      * @dev Makes sure the admin cannot access the fallback function. See {Proxy-_beforeFallback}.
      */
-    function _beforeFallback() internal override virtual {
+    function _beforeFallback() internal virtual override {
         require(msg.sender != _admin(), "TransparentUpgradeableProxy: admin cannot fallback to proxy target");
         super._beforeFallback();
     }
@@ -859,19 +876,19 @@ contract TransparentUpgradeableProxy is UpgradeableProxy {
  * @dev TransparentUpgradeableProxy where admin is allowed to call implementation methods.
  */
 contract AdminUpgradeableProxy is TransparentUpgradeableProxy {
-  /**
-   * @dev Initializes an upgradeable proxy backed by the implementation at `_logic`.
-   */
-  constructor(
-    address _logic,
-    address _admin,
-    bytes memory _data
-  ) public payable TransparentUpgradeableProxy(_logic, _admin, _data) {}
+    /**
+     * @dev Initializes an upgradeable proxy backed by the implementation at `_logic`.
+     */
+    constructor(address _logic, address _admin, bytes memory _data)
+        public
+        payable
+        TransparentUpgradeableProxy(_logic, _admin, _data)
+    {}
 
-  /**
-   * @dev Override to allow admin access the fallback function.
-   */
-  function _beforeFallback() internal override {}
+    /**
+     * @dev Override to allow admin access the fallback function.
+     */
+    function _beforeFallback() internal override {}
 }
 
 /**
@@ -1137,7 +1154,8 @@ library SafeERC20 {
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
         // solhint-disable-next-line max-line-length
-        require((value == 0) || (token.allowance(address(this), spender) == 0),
+        require(
+            (value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
@@ -1149,7 +1167,8 @@ library SafeERC20 {
     }
 
     function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
+        uint256 newAllowance =
+            token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
@@ -1165,7 +1184,8 @@ library SafeERC20 {
         // the target address contains contract code and also asserts for success in the low-level call.
 
         bytes memory returndata = address(token).functionCall(data, "SafeERC20: low-level call failed");
-        if (returndata.length > 0) { // Return data is optional
+        if (returndata.length > 0) {
+            // Return data is optional
             // solhint-disable-next-line max-line-length
             require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
         }
@@ -1173,27 +1193,27 @@ library SafeERC20 {
 }
 
 interface ITornadoInstance {
-  function token() external view returns (address);
+    function token() external view returns (address);
 
-  function denomination() external view returns (uint256);
+    function denomination() external view returns (uint256);
 
-  function deposit(bytes32 commitment) external payable;
+    function deposit(bytes32 commitment) external payable;
 
-  function withdraw(
-    bytes calldata proof,
-    bytes32 root,
-    bytes32 nullifierHash,
-    address payable recipient,
-    address payable relayer,
-    uint256 fee,
-    uint256 refund
-  ) external payable;
+    function withdraw(
+        bytes calldata proof,
+        bytes32 root,
+        bytes32 nullifierHash,
+        address payable recipient,
+        address payable relayer,
+        uint256 fee,
+        uint256 refund
+    ) external payable;
 }
 
 interface ITornadoTrees {
-  function registerDeposit(address instance, bytes32 commitment) external;
+    function registerDeposit(address instance, bytes32 commitment) external;
 
-  function registerWithdrawal(address instance, bytes32 nullifier) external;
+    function registerWithdrawal(address instance, bytes32 nullifier) external;
 }
 
 /**
@@ -1225,265 +1245,260 @@ library Math {
 }
 
 contract TornadoProxy {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  event EncryptedNote(address indexed sender, bytes encryptedNote);
-  event InstanceStateUpdated(ITornadoInstance indexed instance, InstanceState state);
-  event TornadoTreesUpdated(ITornadoTrees addr);
+    event EncryptedNote(address indexed sender, bytes encryptedNote);
+    event InstanceStateUpdated(ITornadoInstance indexed instance, InstanceState state);
+    event TornadoTreesUpdated(ITornadoTrees addr);
 
-  enum InstanceState { DISABLED, ENABLED, MINEABLE }
-
-  struct Instance {
-    bool isERC20;
-    IERC20 token;
-    InstanceState state;
-  }
-
-  struct Tornado {
-    ITornadoInstance addr;
-    Instance instance;
-  }
-
-  ITornadoTrees public tornadoTrees;
-  address public immutable governance;
-  mapping(ITornadoInstance => Instance) public instances;
-
-  modifier onlyGovernance() {
-    require(msg.sender == governance, "Not authorized");
-    _;
-  }
-
-  constructor(
-    address _tornadoTrees,
-    address _governance,
-    Tornado[] memory _instances
-  ) public {
-    tornadoTrees = ITornadoTrees(_tornadoTrees);
-    governance = _governance;
-
-    for (uint256 i = 0; i < _instances.length; i++) {
-      _updateInstance(_instances[i]);
+    enum InstanceState {
+        DISABLED,
+        ENABLED,
+        MINEABLE
     }
-  }
 
-  function deposit(
-    ITornadoInstance _tornado,
-    bytes32 _commitment,
-    bytes calldata _encryptedNote
-  ) external payable {
-    Instance memory instance = instances[_tornado];
-    require(instance.state != InstanceState.DISABLED, "The instance is not supported");
-
-    if (instance.isERC20) {
-      instance.token.safeTransferFrom(msg.sender, address(this), _tornado.denomination());
+    struct Instance {
+        bool isERC20;
+        IERC20 token;
+        InstanceState state;
     }
-    _tornado.deposit{ value: msg.value }(_commitment);
 
-    if (instance.state == InstanceState.MINEABLE) {
-      tornadoTrees.registerDeposit(address(_tornado), _commitment);
+    struct Tornado {
+        ITornadoInstance addr;
+        Instance instance;
     }
-    emit EncryptedNote(msg.sender, _encryptedNote);
-  }
 
-  function withdraw(
-    ITornadoInstance _tornado,
-    bytes calldata _proof,
-    bytes32 _root,
-    bytes32 _nullifierHash,
-    address payable _recipient,
-    address payable _relayer,
-    uint256 _fee,
-    uint256 _refund
-  ) external payable {
-    Instance memory instance = instances[_tornado];
-    require(instance.state != InstanceState.DISABLED, "The instance is not supported");
+    ITornadoTrees public tornadoTrees;
+    address public immutable governance;
+    mapping(ITornadoInstance => Instance) public instances;
 
-    _tornado.withdraw{ value: msg.value }(_proof, _root, _nullifierHash, _recipient, _relayer, _fee, _refund);
-    if (instance.state == InstanceState.MINEABLE) {
-      tornadoTrees.registerWithdrawal(address(_tornado), _nullifierHash);
+    modifier onlyGovernance() {
+        require(msg.sender == governance, "Not authorized");
+        _;
     }
-  }
 
-  function backupNotes(bytes[] calldata _encryptedNotes) external {
-    for (uint256 i = 0; i < _encryptedNotes.length; i++) {
-      emit EncryptedNote(msg.sender, _encryptedNotes[i]);
+    constructor(address _tornadoTrees, address _governance, Tornado[] memory _instances) public {
+        tornadoTrees = ITornadoTrees(_tornadoTrees);
+        governance = _governance;
+
+        for (uint256 i = 0; i < _instances.length; i++) {
+            _updateInstance(_instances[i]);
+        }
     }
-  }
 
-  function updateInstance(Tornado calldata _tornado) external onlyGovernance {
-    _updateInstance(_tornado);
-  }
+    function deposit(ITornadoInstance _tornado, bytes32 _commitment, bytes calldata _encryptedNote) external payable {
+        Instance memory instance = instances[_tornado];
+        require(instance.state != InstanceState.DISABLED, "The instance is not supported");
 
-  function setTornadoTreesContract(ITornadoTrees _tornadoTrees) external onlyGovernance {
-    tornadoTrees = _tornadoTrees;
-    emit TornadoTreesUpdated(_tornadoTrees);
-  }
+        if (instance.isERC20) {
+            instance.token.safeTransferFrom(msg.sender, address(this), _tornado.denomination());
+        }
+        _tornado.deposit{value: msg.value}(_commitment);
 
-  /// @dev Method to claim junk and accidentally sent tokens
-  function rescueTokens(
-    IERC20 _token,
-    address payable _to,
-    uint256 _amount
-  ) external onlyGovernance {
-    require(_to != address(0), "TORN: can not send to zero address");
-
-    if (_token == IERC20(0)) {
-      // for Ether
-      uint256 totalBalance = address(this).balance;
-      uint256 balance = Math.min(totalBalance, _amount);
-      _to.transfer(balance);
-    } else {
-      // any other erc20
-      uint256 totalBalance = _token.balanceOf(address(this));
-      uint256 balance = Math.min(totalBalance, _amount);
-      require(balance > 0, "TORN: trying to send 0 balance");
-      _token.safeTransfer(_to, balance);
+        if (instance.state == InstanceState.MINEABLE) {
+            tornadoTrees.registerDeposit(address(_tornado), _commitment);
+        }
+        emit EncryptedNote(msg.sender, _encryptedNote);
     }
-  }
 
-  function _updateInstance(Tornado memory _tornado) internal {
-    instances[_tornado.addr] = _tornado.instance;
-    if (_tornado.instance.isERC20) {
-      IERC20 token = IERC20(_tornado.addr.token());
-      require(token == _tornado.instance.token, "Incorrect token");
-      uint256 allowance = token.allowance(address(this), address(_tornado.addr));
+    function withdraw(
+        ITornadoInstance _tornado,
+        bytes calldata _proof,
+        bytes32 _root,
+        bytes32 _nullifierHash,
+        address payable _recipient,
+        address payable _relayer,
+        uint256 _fee,
+        uint256 _refund
+    ) external payable {
+        Instance memory instance = instances[_tornado];
+        require(instance.state != InstanceState.DISABLED, "The instance is not supported");
 
-      if (_tornado.instance.state != InstanceState.DISABLED && allowance == 0) {
-        token.safeApprove(address(_tornado.addr), uint256(-1));
-      } else if (_tornado.instance.state == InstanceState.DISABLED && allowance != 0) {
-        token.safeApprove(address(_tornado.addr), 0);
-      }
+        _tornado.withdraw{value: msg.value}(_proof, _root, _nullifierHash, _recipient, _relayer, _fee, _refund);
+        if (instance.state == InstanceState.MINEABLE) {
+            tornadoTrees.registerWithdrawal(address(_tornado), _nullifierHash);
+        }
     }
-    emit InstanceStateUpdated(_tornado.addr, _tornado.instance.state);
-  }
+
+    function backupNotes(bytes[] calldata _encryptedNotes) external {
+        for (uint256 i = 0; i < _encryptedNotes.length; i++) {
+            emit EncryptedNote(msg.sender, _encryptedNotes[i]);
+        }
+    }
+
+    function updateInstance(Tornado calldata _tornado) external onlyGovernance {
+        _updateInstance(_tornado);
+    }
+
+    function setTornadoTreesContract(ITornadoTrees _tornadoTrees) external onlyGovernance {
+        tornadoTrees = _tornadoTrees;
+        emit TornadoTreesUpdated(_tornadoTrees);
+    }
+
+    /// @dev Method to claim junk and accidentally sent tokens
+    function rescueTokens(IERC20 _token, address payable _to, uint256 _amount) external onlyGovernance {
+        require(_to != address(0), "TORN: can not send to zero address");
+
+        if (_token == IERC20(0)) {
+            // for Ether
+            uint256 totalBalance = address(this).balance;
+            uint256 balance = Math.min(totalBalance, _amount);
+            _to.transfer(balance);
+        } else {
+            // any other erc20
+            uint256 totalBalance = _token.balanceOf(address(this));
+            uint256 balance = Math.min(totalBalance, _amount);
+            require(balance > 0, "TORN: trying to send 0 balance");
+            _token.safeTransfer(_to, balance);
+        }
+    }
+
+    function _updateInstance(Tornado memory _tornado) internal {
+        instances[_tornado.addr] = _tornado.instance;
+        if (_tornado.instance.isERC20) {
+            IERC20 token = IERC20(_tornado.addr.token());
+            require(token == _tornado.instance.token, "Incorrect token");
+            uint256 allowance = token.allowance(address(this), address(_tornado.addr));
+
+            if (_tornado.instance.state != InstanceState.DISABLED && allowance == 0) {
+                token.safeApprove(address(_tornado.addr), uint256(-1));
+            } else if (_tornado.instance.state == InstanceState.DISABLED && allowance != 0) {
+                token.safeApprove(address(_tornado.addr), 0);
+            }
+        }
+        emit InstanceStateUpdated(_tornado.addr, _tornado.instance.state);
+    }
 }
 
 interface ITornadoProxyV1 {
-  function updateInstance(address _instance, bool _update) external;
+    function updateInstance(address _instance, bool _update) external;
 }
 
 interface IMiner {
-  function setTornadoTreesContract(address _tornadoTrees) external;
+    function setTornadoTreesContract(address _tornadoTrees) external;
 }
 
 contract Proposal is EnsResolve {
-  ITornadoTreesV1 public constant tornadoTreesV1 = ITornadoTreesV1(0x43a3bE4Ae954d9869836702AFd10393D3a7Ea417);
-  ITornadoProxyV1 public constant tornadoProxyV1 = ITornadoProxyV1(0x905b63Fff465B9fFBF41DeA908CEb12478ec7601);
-  IMiner public constant miner = IMiner(0x746Aebc06D2aE31B71ac51429A19D54E797878E9);
+    ITornadoTreesV1 public constant tornadoTreesV1 = ITornadoTreesV1(0x43a3bE4Ae954d9869836702AFd10393D3a7Ea417);
+    ITornadoProxyV1 public constant tornadoProxyV1 = ITornadoProxyV1(0x905b63Fff465B9fFBF41DeA908CEb12478ec7601);
+    IMiner public constant miner = IMiner(0x746Aebc06D2aE31B71ac51429A19D54E797878E9);
 
-  event DeploymentOf(string name, address addr);
+    event DeploymentOf(string name, address addr);
 
-  address public immutable verifier;
+    address public immutable verifier;
 
-  // params used to search for array lengths on V1 contracts
-  uint256 private immutable depositsFrom;
-  uint256 private immutable depositsStep;
-  uint256 private immutable withdrawalsFrom;
-  uint256 private immutable withdrawalsStep;
+    // params used to search for array lengths on V1 contracts
+    uint256 private immutable depositsFrom;
+    uint256 private immutable depositsStep;
+    uint256 private immutable withdrawalsFrom;
+    uint256 private immutable withdrawalsStep;
 
-  constructor(
-    address _verifier,
-    uint256 _depositsFrom,
-    uint256 _depositsStep,
-    uint256 _withdrawalsFrom,
-    uint256 _withdrawalsStep
-  ) public {
-    verifier = _verifier;
-    depositsFrom = _depositsFrom;
-    depositsStep = _depositsStep;
-    withdrawalsFrom = _withdrawalsFrom;
-    withdrawalsStep = _withdrawalsStep;
-  }
-
-  function executeProposal() public {
-    // Disable all instances on old tornado proxy
-    bytes32[4] memory miningInstances = getEthInstances();
-    for (uint256 i = 0; i < miningInstances.length; i++) {
-      tornadoProxyV1.updateInstance(resolve(miningInstances[i]), false);
+    constructor(
+        address _verifier,
+        uint256 _depositsFrom,
+        uint256 _depositsStep,
+        uint256 _withdrawalsFrom,
+        uint256 _withdrawalsStep
+    ) public {
+        verifier = _verifier;
+        depositsFrom = _depositsFrom;
+        depositsStep = _depositsStep;
+        withdrawalsFrom = _withdrawalsFrom;
+        withdrawalsStep = _withdrawalsStep;
     }
 
-    // Deploy new TornadoTrees implementation
-    TornadoTrees tornadoTreesImpl = new TornadoTrees(address(this), tornadoTreesV1, getSearchParams());
-    emit DeploymentOf("TornadoTrees implementation", address(tornadoTreesImpl));
+    function executeProposal() public {
+        // Disable all instances on old tornado proxy
+        bytes32[4] memory miningInstances = getEthInstances();
+        for (uint256 i = 0; i < miningInstances.length; i++) {
+            tornadoProxyV1.updateInstance(resolve(miningInstances[i]), false);
+        }
 
-    // Deploy TornadoTrees upgradeable proxy
-    AdminUpgradeableProxy upgradeableProxy = new AdminUpgradeableProxy(address(tornadoTreesImpl), address(this), "");
-    TornadoTrees tornadoTrees = TornadoTrees(address(upgradeableProxy));
-    emit DeploymentOf("TornadoTrees upgradeable proxy", address(upgradeableProxy));
+        // Deploy new TornadoTrees implementation
+        TornadoTrees tornadoTreesImpl = new TornadoTrees(address(this), tornadoTreesV1, getSearchParams());
+        emit DeploymentOf("TornadoTrees implementation", address(tornadoTreesImpl));
 
-    // Deploy new TornadoProxy
-    TornadoProxy tornadoProxy = new TornadoProxy(address(tornadoTrees), address(this), getInstances());
-    emit DeploymentOf("TornadoProxy", address(tornadoProxy));
+        // Deploy TornadoTrees upgradeable proxy
+        AdminUpgradeableProxy upgradeableProxy = new AdminUpgradeableProxy(address(tornadoTreesImpl), address(this), "");
+        TornadoTrees tornadoTrees = TornadoTrees(address(upgradeableProxy));
+        emit DeploymentOf("TornadoTrees upgradeable proxy", address(upgradeableProxy));
 
-    // Init tornado trees
-    tornadoTrees.initialize(address(tornadoProxy), IBatchTreeUpdateVerifier(verifier));
+        // Deploy new TornadoProxy
+        TornadoProxy tornadoProxy = new TornadoProxy(address(tornadoTrees), address(this), getInstances());
+        emit DeploymentOf("TornadoProxy", address(tornadoProxy));
 
-    // Update TornadoTrees address on the mining contract
-    miner.setTornadoTreesContract(address(tornadoTrees));
-  }
+        // Init tornado trees
+        tornadoTrees.initialize(address(tornadoProxy), IBatchTreeUpdateVerifier(verifier));
 
-  function getSearchParams() public view returns (TornadoTrees.SearchParams memory) {
-    return
-      TornadoTrees.SearchParams({
-        depositsFrom: depositsFrom,
-        depositsStep: depositsStep,
-        withdrawalsFrom: withdrawalsFrom,
-        withdrawalsStep: withdrawalsStep
-      });
-  }
-
-  function getEthInstances() internal pure returns (bytes32[4] memory) {
-    return [
-      bytes32(0xc041982b4f77cbbd82ef3b9ea748738ac6c281d3f1af198770d29f75ac32d80a), // eth-01.tornadocash.eth
-      bytes32(0x9e5bc9215eecd103644145a5db4f69d5efaf4885bb5bf968f8db271ec5cd539b), // eth-1.tornadocash.eth
-      bytes32(0x917e42347647689051abc744f502bff342c76ad30c0670b46b305b2f7e1f893d), // eth-10.tornadocash.eth
-      bytes32(0xddfc726d74f912f49389ef7471e75291969852ce7e5df0509a17bc1e46646985) //  eth-100.tornadocash.eth
-    ];
-  }
-
-  function getErc20Instances() internal pure returns (bytes32[15] memory) {
-    return [
-      bytes32(0x95ad5771ba164db3fc73cc74d4436cb6a6babd7a2774911c69d8caae30410982), // dai-100.tornadocash.eth
-      bytes32(0x109d0334da83a2c3a687972cc806b0eda52ee7a30f3e44e77b39ae2a20248321), // dai-1000.tornadocash.eth
-      bytes32(0x3de4b55be5058f538617d5a6a72bff5b5850a239424b34cc5271021cfcc4ccc8), // dai-10000.tornadocash.eth
-      bytes32(0xf50559e0d2f0213bcb8c67ad45b93308b46b9abdd5ca9c7044efc025fc557f59), // dai-100000.tornadocash.eth
-      bytes32(0xc9395879ffcee571b0dfd062153b27d62a6617e0f272515f2eb6259fe829c3df), // cdai-5000.tornadocash.eth
-      bytes32(0xf840ad6cba4dbbab0fa58a13b092556cd53a6eeff716a3c4a41d860a888b6155), // cdai-50000.tornadocash.eth
-      bytes32(0x8e52ade66daf81cf3f50053e9bfca86a57d685eca96bf6c0b45da481806952b1), // cdai-500000.tornadocash.eth
-      bytes32(0x0b86f5b8c2f9dcd95382a469480b35302eead707f3fd36359e346b59f3591de2), // cdai-5000000.tornadocash.eth
-      bytes32(0xd49809328056ea7b7be70076070bf741ec1a27b86bebafdc484eee88c1834191), // usdc-100.tornadocash.eth
-      bytes32(0x77e2b15eddc494b6da6cee0d797ed30ed3945f2c7de0150f16f0405a12e5665f), // usdc-1000.tornadocash.eth
-      bytes32(0x36bab2c045f88613be6004ec1dc0c3937941fcf4d4cb78d814c933bf1cf25baf), // usdt-100.tornadocash.eth
-      bytes32(0x7a3b0883165756c26821d9b8c9737166a156a78b478b17e42da72fba7a373356), // usdt-1000.tornadocash.eth
-      bytes32(0x10ca74c40211fa1598f0531f35c7d54c19c808082aad53c72ad1fb22ea94ab83), // wbtc-01.tornadocash.eth
-      bytes32(0x6cea0cba8e46fc4ffaf837edf544ba36e5a35503636c6bca4578e965ab640e2c), // wbtc-1.tornadocash.eth
-      bytes32(0x82c57bf2f80547b5e31b92c1f92c4f8bc02ad0df3d27326373e9f55adda5bd15) //  wbtc-10.tornadocash.eth
-    ];
-  }
-
-  function getInstances() public view returns (TornadoProxy.Tornado[] memory instances) {
-    bytes32[4] memory miningInstances = getEthInstances();
-    bytes32[15] memory allowedInstances = getErc20Instances();
-    instances = new TornadoProxy.Tornado[](allowedInstances.length + miningInstances.length);
-
-    for (uint256 i = 0; i < miningInstances.length; i++) {
-      // Enable mining for ETH instances
-      instances[i] = TornadoProxy.Tornado(
-        ITornadoInstance(resolve(miningInstances[i])),
-        TornadoProxy.Instance({ isERC20: false, token: IERC20(address(0)), state: TornadoProxy.InstanceState.MINEABLE })
-      );
+        // Update TornadoTrees address on the mining contract
+        miner.setTornadoTreesContract(address(tornadoTrees));
     }
-    for (uint256 i = 0; i < allowedInstances.length; i++) {
-      // ERC20 are only allowed on proxy without enabling mining for them
-      ITornadoInstance instance = ITornadoInstance(resolve(allowedInstances[i]));
-      instances[miningInstances.length + i] = TornadoProxy.Tornado({
-        addr: instance,
-        instance: TornadoProxy.Instance({
-          isERC20: true,
-          token: IERC20(instance.token()),
-          state: TornadoProxy.InstanceState.ENABLED
-        })
-      });
+
+    function getSearchParams() public view returns (TornadoTrees.SearchParams memory) {
+        return TornadoTrees.SearchParams({
+            depositsFrom: depositsFrom,
+            depositsStep: depositsStep,
+            withdrawalsFrom: withdrawalsFrom,
+            withdrawalsStep: withdrawalsStep
+        });
     }
-  }
+
+    function getEthInstances() internal pure returns (bytes32[4] memory) {
+        return [
+            bytes32(0xc041982b4f77cbbd82ef3b9ea748738ac6c281d3f1af198770d29f75ac32d80a), // eth-01.tornadocash.eth
+            bytes32(0x9e5bc9215eecd103644145a5db4f69d5efaf4885bb5bf968f8db271ec5cd539b), // eth-1.tornadocash.eth
+            bytes32(0x917e42347647689051abc744f502bff342c76ad30c0670b46b305b2f7e1f893d), // eth-10.tornadocash.eth
+            bytes32(0xddfc726d74f912f49389ef7471e75291969852ce7e5df0509a17bc1e46646985) //  eth-100.tornadocash.eth
+        ];
+    }
+
+    function getErc20Instances() internal pure returns (bytes32[15] memory) {
+        return [
+            bytes32(0x95ad5771ba164db3fc73cc74d4436cb6a6babd7a2774911c69d8caae30410982), // dai-100.tornadocash.eth
+            bytes32(0x109d0334da83a2c3a687972cc806b0eda52ee7a30f3e44e77b39ae2a20248321), // dai-1000.tornadocash.eth
+            bytes32(0x3de4b55be5058f538617d5a6a72bff5b5850a239424b34cc5271021cfcc4ccc8), // dai-10000.tornadocash.eth
+            bytes32(0xf50559e0d2f0213bcb8c67ad45b93308b46b9abdd5ca9c7044efc025fc557f59), // dai-100000.tornadocash.eth
+            bytes32(0xc9395879ffcee571b0dfd062153b27d62a6617e0f272515f2eb6259fe829c3df), // cdai-5000.tornadocash.eth
+            bytes32(0xf840ad6cba4dbbab0fa58a13b092556cd53a6eeff716a3c4a41d860a888b6155), // cdai-50000.tornadocash.eth
+            bytes32(0x8e52ade66daf81cf3f50053e9bfca86a57d685eca96bf6c0b45da481806952b1), // cdai-500000.tornadocash.eth
+            bytes32(0x0b86f5b8c2f9dcd95382a469480b35302eead707f3fd36359e346b59f3591de2), // cdai-5000000.tornadocash.eth
+            bytes32(0xd49809328056ea7b7be70076070bf741ec1a27b86bebafdc484eee88c1834191), // usdc-100.tornadocash.eth
+            bytes32(0x77e2b15eddc494b6da6cee0d797ed30ed3945f2c7de0150f16f0405a12e5665f), // usdc-1000.tornadocash.eth
+            bytes32(0x36bab2c045f88613be6004ec1dc0c3937941fcf4d4cb78d814c933bf1cf25baf), // usdt-100.tornadocash.eth
+            bytes32(0x7a3b0883165756c26821d9b8c9737166a156a78b478b17e42da72fba7a373356), // usdt-1000.tornadocash.eth
+            bytes32(0x10ca74c40211fa1598f0531f35c7d54c19c808082aad53c72ad1fb22ea94ab83), // wbtc-01.tornadocash.eth
+            bytes32(0x6cea0cba8e46fc4ffaf837edf544ba36e5a35503636c6bca4578e965ab640e2c), // wbtc-1.tornadocash.eth
+            bytes32(0x82c57bf2f80547b5e31b92c1f92c4f8bc02ad0df3d27326373e9f55adda5bd15) //  wbtc-10.tornadocash.eth
+        ];
+    }
+
+    function getInstances() public view returns (TornadoProxy.Tornado[] memory instances) {
+        bytes32[4] memory miningInstances = getEthInstances();
+        bytes32[15] memory allowedInstances = getErc20Instances();
+        instances = new TornadoProxy.Tornado[](allowedInstances.length + miningInstances.length);
+
+        for (uint256 i = 0; i < miningInstances.length; i++) {
+            // Enable mining for ETH instances
+            instances[i] = TornadoProxy.Tornado(
+                ITornadoInstance(resolve(miningInstances[i])),
+                TornadoProxy.Instance({
+                    isERC20: false,
+                    token: IERC20(address(0)),
+                    state: TornadoProxy.InstanceState.MINEABLE
+                })
+            );
+        }
+        for (uint256 i = 0; i < allowedInstances.length; i++) {
+            // ERC20 are only allowed on proxy without enabling mining for them
+            ITornadoInstance instance = ITornadoInstance(resolve(allowedInstances[i]));
+            instances[miningInstances.length + i] = TornadoProxy.Tornado({
+                addr: instance,
+                instance: TornadoProxy.Instance({
+                    isERC20: true,
+                    token: IERC20(instance.token()),
+                    state: TornadoProxy.InstanceState.ENABLED
+                })
+            });
+        }
+    }
 }

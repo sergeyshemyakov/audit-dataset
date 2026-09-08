@@ -2,25 +2,29 @@
 
 pragma solidity ^0.8.0;
 
-import {OwnableBase} from "../../libraries/common/OwnableBase.sol";
 import {IWhitelist} from "../../libraries/common/IWhitelist.sol";
+import {OwnableBase} from "../../libraries/common/OwnableBase.sol";
 
 import {IL1BlockContainer} from "./IL1BlockContainer.sol";
 import {IL1GasPriceOracle} from "./IL1GasPriceOracle.sol";
 
 contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates whitelist contract.
     /// @param _oldWhitelist The address of old whitelist contract.
     /// @param _newWhitelist The address of new whitelist contract.
     event UpdateWhitelist(address _oldWhitelist, address _newWhitelist);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev The precision used in the scalar.
     uint256 private constant PRECISION = 1e9;
@@ -33,9 +37,11 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     ///      x1000 should be enough.
     uint256 private constant MAX_SCALE = 1000 * PRECISION;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @inheritdoc IL1GasPriceOracle
     uint256 public l1BaseFee;
@@ -49,17 +55,20 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
     /// @notice The address of whitelist contract.
     IWhitelist public whitelist;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _owner) {
         _transferOwnership(_owner);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1GasPriceOracle
     function getL1Fee(bytes memory _data) external view override returns (uint256) {
@@ -93,9 +102,11 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
         }
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1GasPriceOracle
     function setL1BaseFee(uint256 _l1BaseFee) external override {
@@ -106,9 +117,11 @@ contract L1GasPriceOracle is OwnableBase, IL1GasPriceOracle {
         emit L1BaseFeeUpdated(_l1BaseFee);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Allows the owner to modify the overhead.
     /// @param _overhead New overhead

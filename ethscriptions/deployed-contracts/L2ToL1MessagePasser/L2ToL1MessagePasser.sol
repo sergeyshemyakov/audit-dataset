@@ -23,7 +23,7 @@ contract L2ToL1MessagePasser {
         uint256 gasLimit;
         bytes data;
     }
-    
+
     /// @notice The current message version identifier.
     uint16 public constant MESSAGE_VERSION = 1;
 
@@ -83,14 +83,14 @@ contract L2ToL1MessagePasser {
     function messageNonce() public view returns (uint256) {
         return encodeVersionedNonce(msgNonce, MESSAGE_VERSION);
     }
-    
+
     /// @notice Derives the withdrawal hash according to the encoding in the L2 Withdrawer contract
     /// @param _tx Withdrawal transaction to hash.
     /// @return Hashed withdrawal transaction.
     function hashWithdrawal(WithdrawalTransaction memory _tx) internal pure returns (bytes32) {
         return keccak256(abi.encode(_tx.nonce, _tx.sender, _tx.target, _tx.value, _tx.gasLimit, _tx.data));
     }
-    
+
     /// @notice Adds a version number into the first two bytes of a message nonce.
     /// @param _nonce   Message nonce to encode into.
     /// @param _version Version number to encode into the message nonce.

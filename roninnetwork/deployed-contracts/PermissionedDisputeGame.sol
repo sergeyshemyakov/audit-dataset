@@ -22,11 +22,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads an immutable arg with type bytes.
-    function _getArgBytes(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (bytes memory arg)
-    {
+    function _getArgBytes(uint256 argOffset, uint256 length) internal pure returns (bytes memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -49,11 +45,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads a uint256 array stored in the immutable args.
-    function _getArgUint256Array(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (uint256[] memory arg)
-    {
+    function _getArgUint256Array(uint256 argOffset, uint256 length) internal pure returns (uint256[] memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -65,11 +57,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads a bytes32 array stored in the immutable args.
-    function _getArgBytes32Array(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (bytes32[] memory arg)
-    {
+    function _getArgBytes32Array(uint256 argOffset, uint256 length) internal pure returns (bytes32[] memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -540,10 +528,7 @@ library LibPosition {
     /// @param _upperBoundExclusive The exclusive upper depth bound, used to inform where to stop in order
     ///                             to not escape a sub-tree.
     /// @return ancestor_ The highest ancestor of `position` that commits to the same trace index.
-    function traceAncestorBounded(
-        Position _position,
-        uint256 _upperBoundExclusive
-    )
+    function traceAncestorBounded(Position _position, uint256 _upperBoundExclusive)
         internal
         pure
         returns (Position ancestor_)
@@ -634,11 +619,7 @@ library LibClaim {
     /// @param _position The position of `claim`.
     /// @param _challengeIndex The index of the claim being moved against.
     /// @return claimHash_ A hash of abi.encodePacked(claim, position|challengeIndex);
-    function hashClaimPos(
-        Claim _claim,
-        Position _position,
-        uint256 _challengeIndex
-    )
+    function hashClaimPos(Claim _claim, Position _position, uint256 _challengeIndex)
         internal
         pure
         returns (Hash claimHash_)
@@ -818,6 +799,7 @@ library Math {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -859,11 +841,7 @@ library Math {
      * @dev Original credit to Remco Bloemen under MIT license (https://xn--2-umb.com/21/muldiv)
      * with further edits by Uniswap Labs also under MIT license.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 result) {
         unchecked {
             // 512-bit multiply [prod1 prod0] = x * y. Compute the product mod 2^256 and mod 2^256 - 1, then use
             // use the Chinese Remainder Theorem to reconstruct the 512 bit result. The result is stored in two 256
@@ -944,12 +922,7 @@ library Math {
     /**
      * @notice Calculates x * y / denominator with full precision, following the selected rounding direction.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator,
-        Rounding rounding
-    ) internal pure returns (uint256) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator, Rounding rounding) internal pure returns (uint256) {
         uint256 result = mulDiv(x, y, denominator);
         if (rounding == Rounding.Up && mulmod(x, y, denominator) > 0) {
             result += 1;
@@ -1600,15 +1573,13 @@ interface IPreimageOracle {
         bytes memory _input,
         bytes32[] memory _stateCommitments,
         bool _finalize
-    )
-        external;
+    ) external;
     function challengeFirstLPP(
         address _claimant,
         uint256 _uuid,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengeLPP(
         address _claimant,
         uint256 _uuid,
@@ -1617,8 +1588,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengePeriod() external view returns (uint256 challengePeriod_);
     function getTreeRootLPP(address _owner, uint256 _uuid) external view returns (bytes32 treeRoot_);
     function initLPP(uint256 _uuid, uint32 _partOffset, uint32 _claimedSize) external payable;
@@ -1628,16 +1598,9 @@ interface IPreimageOracle {
         bytes memory _commitment,
         bytes memory _proof,
         uint256 _partOffset
-    )
-        external;
+    ) external;
     function loadKeccak256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
-    function loadLocalData(
-        uint256 _ident,
-        bytes32 _localContext,
-        bytes32 _word,
-        uint256 _size,
-        uint256 _partOffset
-    )
+    function loadLocalData(uint256 _ident, bytes32 _localContext, bytes32 _word, uint256 _size, uint256 _partOffset)
         external
         returns (bytes32 key_);
     function loadPrecompilePreimagePart(
@@ -1645,8 +1608,7 @@ interface IPreimageOracle {
         address _precompile,
         uint64 _requiredGas,
         bytes memory _input
-    )
-        external;
+    ) external;
     function loadSha256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
     function minProposalSize() external view returns (uint256 minProposalSize_);
     function preimageLengths(bytes32) external view returns (uint256);
@@ -1670,8 +1632,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function version() external view returns (string memory);
     function zeroHashes(uint256) external view returns (bytes32);
 
@@ -1999,11 +1960,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         (, uint16 version) = decodeVersionedNonce(_nonce);
         if (version == 0) {
             return encodeCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -2020,12 +1977,7 @@ library Encoding {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Encoded cross domain message.
-    function encodeCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function encodeCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes memory)
@@ -2049,11 +2001,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         // nosemgrep: sol-style-use-abi-encodecall
         return abi.encodeWithSignature(
             "relayMessage(uint256,address,address,uint256,uint256,bytes)",
@@ -2112,11 +2060,7 @@ library Encoding {
         uint256 _blobBaseFee,
         bytes32 _hash,
         bytes32 _batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesEcotone()"));
         return abi.encodePacked(
             functionSignature,
@@ -2156,11 +2100,7 @@ library Encoding {
         bytes32 _batcherHash,
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesIsthmus()"));
         return abi.encodePacked(
             functionSignature,
@@ -2204,11 +2144,7 @@ library Encoding {
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant,
         uint16 _daFootprintGasScalar
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesJovian()"));
 
         // Split up the encoding into multiple parts to avoid stack too deep.
@@ -2288,11 +2224,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         (, uint16 version) = Encoding.decodeVersionedNonce(_nonce);
         if (version == 0) {
             return hashCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -2309,12 +2241,7 @@ library Hashing {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Hashed cross domain message.
-    function hashCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function hashCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes32)
@@ -2337,11 +2264,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(Encoding.encodeCrossDomainMessageV1(_nonce, _sender, _target, _value, _gasLimit, _data));
     }
 
@@ -2383,11 +2306,7 @@ library Hashing {
         address _sender,
         address _target,
         bytes memory _message
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(abi.encode(_destination, _source, _nonce, _sender, _target, _message));
     }
 
@@ -2456,14 +2375,16 @@ library RLPReader {
     /// @return out_ Output memory reference.
     function toRLPItem(bytes memory _in) internal pure returns (RLPItem memory out_) {
         // Empty arrays are not RLP items.
-        if (_in.length == 0) revert EmptyItem();
+        if (_in.length == 0) {
+            revert EmptyItem();
+        }
 
         MemoryPointer ptr;
         assembly {
             ptr := add(_in, 32)
         }
 
-        out_ = RLPItem({ length: _in.length, ptr: ptr });
+        out_ = RLPItem({length: _in.length, ptr: ptr});
     }
 
     /// @notice Reads an RLP list value into a list of RLP items.
@@ -2472,9 +2393,13 @@ library RLPReader {
     function readList(RLPItem memory _in) internal pure returns (RLPItem[] memory out_) {
         (uint256 listOffset, uint256 listLength, RLPItemType itemType) = _decodeLength(_in);
 
-        if (itemType != RLPItemType.LIST_ITEM) revert UnexpectedString();
+        if (itemType != RLPItemType.LIST_ITEM) {
+            revert UnexpectedString();
+        }
 
-        if (listOffset + listLength != _in.length) revert InvalidDataRemainder();
+        if (listOffset + listLength != _in.length) {
+            revert InvalidDataRemainder();
+        }
 
         // Solidity in-memory arrays can't be increased in size, but *can* be decreased in size by
         // writing to the length. Since we can't know the number of RLP items without looping over
@@ -2486,7 +2411,7 @@ library RLPReader {
         uint256 offset = listOffset;
         while (offset < _in.length) {
             (uint256 itemOffset, uint256 itemLength,) = _decodeLength(
-                RLPItem({ length: _in.length - offset, ptr: MemoryPointer.wrap(MemoryPointer.unwrap(_in.ptr) + offset) })
+                RLPItem({length: _in.length - offset, ptr: MemoryPointer.wrap(MemoryPointer.unwrap(_in.ptr) + offset)})
             );
 
             // We don't need to check itemCount < out.length explicitly because Solidity already
@@ -2519,9 +2444,13 @@ library RLPReader {
     function readBytes(RLPItem memory _in) internal pure returns (bytes memory out_) {
         (uint256 itemOffset, uint256 itemLength, RLPItemType itemType) = _decodeLength(_in);
 
-        if (itemType != RLPItemType.DATA_ITEM) revert UnexpectedList();
+        if (itemType != RLPItemType.DATA_ITEM) {
+            revert UnexpectedList();
+        }
 
-        if (_in.length != itemOffset + itemLength) revert InvalidDataRemainder();
+        if (_in.length != itemOffset + itemLength) {
+            revert InvalidDataRemainder();
+        }
 
         out_ = _copy(_in.ptr, itemOffset, itemLength);
     }
@@ -2553,7 +2482,9 @@ library RLPReader {
         // Short-circuit if there's nothing to decode, note that we perform this check when
         // the user creates an RLP item via toRLPItem, but it's always possible for them to bypass
         // that function and create an RLP item directly. So we need to check this anyway.
-        if (_in.length == 0) revert EmptyItem();
+        if (_in.length == 0) {
+            revert EmptyItem();
+        }
 
         MemoryPointer ptr = _in.ptr;
         uint256 prefix;
@@ -2570,37 +2501,49 @@ library RLPReader {
             // slither-disable-next-line variable-scope
             uint256 strLen = prefix - 0x80;
 
-            if (_in.length <= strLen) revert ContentLengthMismatch();
+            if (_in.length <= strLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (strLen == 1 && firstByteOfContent < 0x80) revert InvalidHeader();
+            if (strLen == 1 && firstByteOfContent < 0x80) {
+                revert InvalidHeader();
+            }
 
             return (1, strLen, RLPItemType.DATA_ITEM);
         } else if (prefix <= 0xbf) {
             // Long string.
             uint256 lenOfStrLen = prefix - 0xb7;
 
-            if (_in.length <= lenOfStrLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfStrLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (firstByteOfContent == 0x00) revert InvalidHeader();
+            if (firstByteOfContent == 0x00) {
+                revert InvalidHeader();
+            }
 
             uint256 strLen;
             assembly {
                 strLen := shr(sub(256, mul(8, lenOfStrLen)), mload(add(ptr, 1)))
             }
 
-            if (strLen <= 55) revert InvalidHeader();
+            if (strLen <= 55) {
+                revert InvalidHeader();
+            }
 
-            if (_in.length <= lenOfStrLen + strLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfStrLen + strLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1 + lenOfStrLen, strLen, RLPItemType.DATA_ITEM);
         } else if (prefix <= 0xf7) {
@@ -2608,30 +2551,40 @@ library RLPReader {
             // slither-disable-next-line variable-scope
             uint256 listLen = prefix - 0xc0;
 
-            if (_in.length <= listLen) revert ContentLengthMismatch();
+            if (_in.length <= listLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1, listLen, RLPItemType.LIST_ITEM);
         } else {
             // Long list.
             uint256 lenOfListLen = prefix - 0xf7;
 
-            if (_in.length <= lenOfListLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfListLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (firstByteOfContent == 0x00) revert InvalidHeader();
+            if (firstByteOfContent == 0x00) {
+                revert InvalidHeader();
+            }
 
             uint256 listLen;
             assembly {
                 listLen := shr(sub(256, mul(8, lenOfListLen)), mload(add(ptr, 1)))
             }
 
-            if (listLen <= 55) revert InvalidHeader();
+            if (listLen <= 55) {
+                revert InvalidHeader();
+            }
 
-            if (_in.length <= lenOfListLen + listLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfListLen + listLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1 + lenOfListLen, listLen, RLPItemType.LIST_ITEM);
         }
@@ -2654,7 +2607,7 @@ library RLPReader {
         assembly {
             let dest := add(out_, 32)
             let i := 0
-            for { } lt(i, _length) { i := add(i, 32) } { mstore(add(dest, i), mload(add(src, i))) }
+            for {} lt(i, _length) { i := add(i, 32) } { mstore(add(dest, i), mload(add(src, i))) }
 
             if gt(i, _length) { mstore(add(dest, _length), 0) }
         }
@@ -2703,11 +2656,7 @@ interface IBigStepper {
     /// @param _localContext The local key context for the preimage oracle. Optional, can be set as a constant if the
     ///                      implementation only requires one set of local keys.
     /// @return postState_ The hash of the post state witness after the state transition.
-    function step(
-        bytes calldata _stateData,
-        bytes calldata _proof,
-        bytes32 _localContext
-    )
+    function step(bytes calldata _stateData, bytes calldata _proof, bytes32 _localContext)
         external
         returns (bytes32 postState_);
 
@@ -2918,8 +2867,7 @@ interface ISystemConfig is IProxyAdminOwnedBase {
         Addresses memory _addresses,
         uint256 _l2ChainId,
         ISuperchainConfig _superchainConfig
-    )
-        external;
+    ) external;
     function initVersion() external view returns (uint8);
     function l1CrossDomainMessenger() external view returns (address addr_);
     function l1ERC721Bridge() external view returns (address addr_);
@@ -3094,6 +3042,7 @@ interface IFaultDisputeGame is IDisputeGame {
     error GameNotResolved();
     error ReservedGameType();
     error GamePaused();
+
     event Move(uint256 indexed parentIndex, Claim indexed claim, address indexed claimant);
     event GameClosed(BondDistributionMode bondDistributionMode);
 
@@ -3172,11 +3121,7 @@ library LibGameId {
     /// @param _timestamp The timestamp of the game's creation.
     /// @param _gameProxy The game proxy address.
     /// @return gameId_ The packed GameId.
-    function pack(
-        GameType _gameType,
-        Timestamp _timestamp,
-        address _gameProxy
-    )
+    function pack(GameType _gameType, Timestamp _timestamp, address _gameProxy)
         internal
         pure
         returns (GameId gameId_)
@@ -3237,19 +3182,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     event Initialized(uint8 version);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    function create(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function create(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         payable
         returns (IDisputeGame proxy_);
-    function findLatestGames(
-        GameType _gameType,
-        uint256 _start,
-        uint256 _n
-    )
+    function findLatestGames(GameType _gameType, uint256 _start, uint256 _n)
         external
         view
         returns (GameSearchResult[] memory games_);
@@ -3260,19 +3197,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     function gameCount() external view returns (uint256 gameCount_);
     function gameArgs(GameType) external view returns (bytes memory);
     function gameImpls(GameType) external view returns (IDisputeGame);
-    function games(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function games(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         view
         returns (IDisputeGame proxy_, Timestamp timestamp_);
-    function getGameUUID(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function getGameUUID(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         pure
         returns (Hash uuid_);
@@ -3314,8 +3243,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
         IDisputeGameFactory _disputeGameFactory,
         Proposal memory _startingAnchorRoot,
         GameType _startingRespectedGameType
-    )
-        external;
+    ) external;
     function isGameBlacklisted(IDisputeGame _game) external view returns (bool);
     function isGameProper(IDisputeGame _game) external view returns (bool);
     function isGameRegistered(IDisputeGame _game) external view returns (bool);
@@ -3334,9 +3262,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
     function version() external view returns (string memory);
     function superchainConfig() external view returns (ISuperchainConfig);
 
-    function __constructor__(
-        uint256 _disputeGameFinalityDelaySeconds
-    ) external;
+    function __constructor__(uint256 _disputeGameFinalityDelaySeconds) external;
 }
 
 /// @notice Arithmetic library with operations for fixed-point numbers.
@@ -3539,7 +3465,9 @@ library FixedPointMathLib {
         unchecked {
             // When the result is less than 0.5 we return zero.
             // This happens when `x <= floor(log(0.5e18) * 1e18) ≈ -42e18`.
-            if (x <= -41446531673892822313) return r;
+            if (x <= -41446531673892822313) {
+                return r;
+            }
 
             /// @solidity memory-safe-assembly
             assembly {
@@ -3596,9 +3524,7 @@ library FixedPointMathLib {
             // - The `1e18 / 2**96` factor for base conversion.
             // We do this all at once, with an intermediate result in `2**213`
             // basis, so the final right shift is always by a positive amount.
-            r = int256(
-                (uint256(r) * 3822833074963236453042738258902158003155416615667) >> uint256(195 - k)
-            );
+            r = int256((uint256(r) * 3822833074963236453042738258902158003155416615667) >> uint256(195 - k));
         }
     }
 
@@ -3832,10 +3758,7 @@ library FixedPointMathLib {
                         // Divide [p1 p0] by the factors of two.
                         // Shift in bits from `p1` into `p0`. For this we need
                         // to flip `t` such that it is `2**256 / t`.
-                        or(
-                            mul(sub(p1, gt(r, result)), add(div(sub(0, t), t), 1)),
-                            div(sub(result, r), t)
-                        ),
+                        or(mul(sub(p1, gt(r, result)), add(div(sub(0, t), t), 1)), div(sub(result, r), t)),
                         // inverse mod 2**256
                         mul(inv, sub(2, mul(d, inv)))
                     )
@@ -4284,11 +4207,7 @@ library FixedPointMathLib {
     }
 
     /// @dev Returns `x`, bounded to `minValue` and `maxValue`.
-    function clamp(uint256 x, uint256 minValue, uint256 maxValue)
-        internal
-        pure
-        returns (uint256 z)
-    {
+    function clamp(uint256 x, uint256 minValue, uint256 maxValue) internal pure returns (uint256 z) {
         /// @solidity memory-safe-assembly
         assembly {
             z := xor(x, mul(xor(x, minValue), gt(minValue, x)))
@@ -4607,7 +4526,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @param _params Parameters for creating a new FaultDisputeGame.
     constructor(GameConstructorParams memory _params) {
         // The max game depth may not be greater than `LibPosition.MAX_POSITION_BITLEN - 1`.
-        if (_params.maxGameDepth > LibPosition.MAX_POSITION_BITLEN - 1) revert MaxDepthTooLarge();
+        if (_params.maxGameDepth > LibPosition.MAX_POSITION_BITLEN - 1) {
+            revert MaxDepthTooLarge();
+        }
 
         // The split depth plus one cannot be greater than or equal to the max game depth. We add
         // an additional depth to the split depth to avoid a bug in trace ancestor lookup. We know
@@ -4618,17 +4539,23 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         }
 
         // The split depth cannot be 0 or 1 to stay in bounds of clock extension arithmetic.
-        if (_params.splitDepth < 2) revert InvalidSplitDepth();
+        if (_params.splitDepth < 2) {
+            revert InvalidSplitDepth();
+        }
 
         // Validate clock extension bounds that don't require VM access.
         // The split depth extension is always clockExtension * 2.
         uint256 splitDepthExtension = uint256(_params.clockExtension.raw()) * 2;
 
         // The split depth extension must fit into a uint64.
-        if (splitDepthExtension > type(uint64).max) revert InvalidClockExtension();
+        if (splitDepthExtension > type(uint64).max) {
+            revert InvalidClockExtension();
+        }
 
         // The split depth extension may not be greater than the maximum clock duration.
-        if (uint64(splitDepthExtension) > _params.maxClockDuration.raw()) revert InvalidClockExtension();
+        if (uint64(splitDepthExtension) > _params.maxClockDuration.raw()) {
+            revert InvalidClockExtension();
+        }
 
         // Set up initial game state.
         MAX_GAME_DEPTH = _params.maxGameDepth;
@@ -4652,31 +4579,41 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         // - An output root cannot be proposed at or before the starting block number.
 
         // INVARIANT: The game must not have already been initialized.
-        if (initialized) revert AlreadyInitialized();
+        if (initialized) {
+            revert AlreadyInitialized();
+        }
 
         // Revert if the calldata size is not the expected length.
         //
         // This is to prevent adding extra or omitting bytes from to `extraData` that result in a different game UUID
         // in the factory, but are not used by the game, which would allow for multiple dispute games for the same
         // output proposal to be created.
-        if (msg.data.length != expectedInitCallDataLength()) revert BadExtraData();
+        if (msg.data.length != expectedInitCallDataLength()) {
+            revert BadExtraData();
+        }
 
         // Grab the latest anchor root.
         (Hash root, uint256 rootBlockNumber) = anchorStateRegistry().getAnchorRoot();
 
         // Should only happen if this is a new game type that hasn't been set up yet.
-        if (root.raw() == bytes32(0)) revert AnchorRootNotFound();
+        if (root.raw() == bytes32(0)) {
+            revert AnchorRootNotFound();
+        }
 
         // Set the starting proposal.
-        startingOutputRoot = Proposal({ l2SequenceNumber: rootBlockNumber, root: root });
+        startingOutputRoot = Proposal({l2SequenceNumber: rootBlockNumber, root: root});
 
         // Do not allow the game to be initialized if the root claim corresponds to a block at or before the
         // configured starting block number.
-        if (l2BlockNumber() <= rootBlockNumber) revert UnexpectedRootClaim(rootClaim());
+        if (l2BlockNumber() <= rootBlockNumber) {
+            revert UnexpectedRootClaim(rootClaim());
+        }
 
         // Validate parameters that require access to the VM.
         // The PreimageOracle challenge period must fit into uint64 so we can safely use it here.
-        if (vm().oracle().challengePeriod() > type(uint64).max) revert InvalidChallengePeriod();
+        if (vm().oracle().challengePeriod() > type(uint64).max) {
+            revert InvalidChallengePeriod();
+        }
 
         // Determine the maximum clock extension which is either the split depth extension or the
         // maximum game depth extension depending on the configuration of these contracts.
@@ -4685,10 +4622,14 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         uint256 maxClockExtension = Math.max(splitDepthExtension, maxGameDepthExtension);
 
         // The maximum clock extension must fit into a uint64.
-        if (maxClockExtension > type(uint64).max) revert InvalidClockExtension();
+        if (maxClockExtension > type(uint64).max) {
+            revert InvalidClockExtension();
+        }
 
         // The maximum clock extension may not be greater than the maximum clock duration.
-        if (uint64(maxClockExtension) > MAX_CLOCK_DURATION.raw()) revert InvalidClockExtension();
+        if (uint64(maxClockExtension) > MAX_CLOCK_DURATION.raw()) {
+            revert InvalidClockExtension();
+        }
 
         // Set the root claim
         claimData.push(
@@ -4708,7 +4649,7 @@ contract FaultDisputeGameV2 is Clone, ISemver {
 
         // Deposit the bond.
         refundModeCredit[gameCreator()] += msg.value;
-        weth().deposit{ value: msg.value }();
+        weth().deposit{value: msg.value}();
 
         // Set the game's starting timestamp
         createdAt = Timestamp.wrap(uint64(block.timestamp));
@@ -4758,17 +4699,14 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     ///        the move is a defense. If the step is an attack on the first instruction, it is
     ///        the absolute prestate of the fault proof VM.
     /// @param _proof Proof to access memory nodes in the VM's merkle state tree.
-    function step(
-        uint256 _claimIndex,
-        bool _isAttack,
-        bytes calldata _stateData,
-        bytes calldata _proof
-    )
+    function step(uint256 _claimIndex, bool _isAttack, bytes calldata _stateData, bytes calldata _proof)
         public
         virtual
     {
         // INVARIANT: Steps cannot be made unless the game is currently in progress.
-        if (status != GameStatus.IN_PROGRESS) revert GameNotInProgress();
+        if (status != GameStatus.IN_PROGRESS) {
+            revert GameNotInProgress();
+        }
 
         // Get the parent. If it does not exist, the call will revert with OOB.
         ClaimData storage parent = claimData[_claimIndex];
@@ -4779,7 +4717,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         Position stepPos = parentPos.move(_isAttack);
 
         // INVARIANT: A step cannot be made unless the move position is 1 below the `MAX_GAME_DEPTH`
-        if (stepPos.depth() != MAX_GAME_DEPTH + 1) revert InvalidParent();
+        if (stepPos.depth() != MAX_GAME_DEPTH + 1) {
+            revert InvalidParent();
+        }
 
         // Determine the expected pre & post states of the step.
         Claim preStateClaim;
@@ -4809,7 +4749,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         //            preimage of the prestate claim hash.
         //            We ignore the highest order byte of the digest because it is used to
         //            indicate the VM Status and is added after the digest is computed.
-        if (keccak256(_stateData) << 8 != preStateClaim.raw() << 8) revert InvalidPrestate();
+        if (keccak256(_stateData) << 8 != preStateClaim.raw() << 8) {
+            revert InvalidPrestate();
+        }
 
         // Compute the local preimage context for the step.
         Hash uuid = _findLocalContext(_claimIndex);
@@ -4828,10 +4770,14 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         //            branch because (n - n) % 2 == 0.
         bool validStep = vm().step(_stateData, _proof, uuid.raw()) == postState.claim.raw();
         bool parentPostAgree = (parentPos.depth() - postState.position.depth()) % 2 == 0;
-        if (parentPostAgree == validStep) revert ValidStep();
+        if (parentPostAgree == validStep) {
+            revert ValidStep();
+        }
 
         // INVARIANT: A step cannot be made against a claim for a second time.
-        if (parent.counteredBy != address(0)) revert DuplicateStep();
+        if (parent.counteredBy != address(0)) {
+            revert DuplicateStep();
+        }
 
         // Set the parent claim as countered. We do not need to append a new claim to the game;
         // instead, we can just set the existing parent as countered.
@@ -4845,13 +4791,17 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @param _isAttack Whether or not the move is an attack or defense.
     function move(Claim _disputed, uint256 _challengeIndex, Claim _claim, bool _isAttack) public payable virtual {
         // INVARIANT: Moves cannot be made unless the game is currently in progress.
-        if (status != GameStatus.IN_PROGRESS) revert GameNotInProgress();
+        if (status != GameStatus.IN_PROGRESS) {
+            revert GameNotInProgress();
+        }
 
         // Get the parent. If it does not exist, the call will revert with OOB.
         ClaimData memory parent = claimData[_challengeIndex];
 
         // INVARIANT: The claim at the _challengeIndex must be the disputed claim.
-        if (Claim.unwrap(parent.claim) != Claim.unwrap(_disputed)) revert InvalidDisputedClaimIndex();
+        if (Claim.unwrap(parent.claim) != Claim.unwrap(_disputed)) {
+            revert InvalidDisputedClaimIndex();
+        }
 
         // Compute the position that the claim commits to. Because the parent's position is already
         // known, we can compute the next position by moving left or right depending on whether
@@ -4869,13 +4819,17 @@ contract FaultDisputeGameV2 is Clone, ISemver {
 
         // INVARIANT: No moves against the root claim can be made after it has been challenged with
         //            `challengeRootL2Block`.`
-        if (l2BlockNumberChallenged && _challengeIndex == 0) revert L2BlockNumberChallenged();
+        if (l2BlockNumberChallenged && _challengeIndex == 0) {
+            revert L2BlockNumberChallenged();
+        }
 
         // INVARIANT: A move can never surpass the `MAX_GAME_DEPTH`. The only option to counter a
         //            claim at this depth is to perform a single instruction step on-chain via
         //            the `step` function to prove that the state transition produces an unexpected
         //            post-state.
-        if (nextPositionDepth > MAX_GAME_DEPTH) revert GameDepthExceeded();
+        if (nextPositionDepth > MAX_GAME_DEPTH) {
+            revert GameDepthExceeded();
+        }
 
         // When the next position surpasses the split depth (i.e., it is the root claim of an execution
         // trace bisection sub-game), we need to perform some extra verification steps.
@@ -4884,7 +4838,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         }
 
         // INVARIANT: The `msg.value` must exactly equal the required bond.
-        if (getRequiredBond(nextPosition) != msg.value) revert IncorrectBondAmount();
+        if (getRequiredBond(nextPosition) != msg.value) {
+            revert IncorrectBondAmount();
+        }
 
         // Compute the duration of the next clock. This is done by adding the duration of the
         // grandparent claim to the difference between the current block timestamp and the
@@ -4893,7 +4849,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
 
         // INVARIANT: A move can never be made once its clock has exceeded `MAX_CLOCK_DURATION`
         //            seconds of time.
-        if (nextDuration.raw() == MAX_CLOCK_DURATION.raw()) revert ClockTimeExceeded();
+        if (nextDuration.raw() == MAX_CLOCK_DURATION.raw()) {
+            revert ClockTimeExceeded();
+        }
 
         // Clock extension is a mechanism that automatically extends the clock for a potential
         // grandchild claim when there would be less than the clock extension time left if a player
@@ -4927,7 +4885,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         //            claims at the same position may dispute the same challengeIndex. However, they must have different
         //            values.
         Hash claimHash = _claim.hashClaimPos(nextPosition, _challengeIndex);
-        if (claims[claimHash]) revert ClaimAlreadyExists();
+        if (claims[claimHash]) {
+            revert ClaimAlreadyExists();
+        }
         claims[claimHash] = true;
 
         // Create the new claim.
@@ -4949,7 +4909,7 @@ contract FaultDisputeGameV2 is Clone, ISemver {
 
         // Deposit the bond.
         refundModeCredit[msg.sender] += msg.value;
-        weth().deposit{ value: msg.value }();
+        weth().deposit{value: msg.value}();
 
         // Emit the appropriate event for the attack or defense.
         emit Move(_challengeIndex, _claim, msg.sender);
@@ -4979,7 +4939,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @param _partOffset The offset of the data to post.
     function addLocalData(uint256 _ident, uint256 _execLeafIdx, uint256 _partOffset) external {
         // INVARIANT: Local data can only be added if the game is currently in progress.
-        if (status != GameStatus.IN_PROGRESS) revert GameNotInProgress();
+        if (status != GameStatus.IN_PROGRESS) {
+            revert GameNotInProgress();
+        }
 
         (Claim starting, Position startingPos, Claim disputed, Position disputedPos) =
             _findStartingAndDisputedOutputs(_execLeafIdx);
@@ -5051,23 +5013,28 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     ///         and showing that the committed L2 block number is incorrect relative to the claimed L2 block number.
     /// @param _outputRootProof The output root proof.
     /// @param _headerRLP The RLP-encoded L2 block header.
-    function challengeRootL2Block(
-        Types.OutputRootProof calldata _outputRootProof,
-        bytes calldata _headerRLP
-    )
+    function challengeRootL2Block(Types.OutputRootProof calldata _outputRootProof, bytes calldata _headerRLP)
         external
     {
         // INVARIANT: Moves cannot be made unless the game is currently in progress.
-        if (status != GameStatus.IN_PROGRESS) revert GameNotInProgress();
+        if (status != GameStatus.IN_PROGRESS) {
+            revert GameNotInProgress();
+        }
 
         // The root L2 block claim can only be challenged once.
-        if (l2BlockNumberChallenged) revert L2BlockNumberChallenged();
+        if (l2BlockNumberChallenged) {
+            revert L2BlockNumberChallenged();
+        }
 
         // Verify the output root preimage.
-        if (Hashing.hashOutputRootProof(_outputRootProof) != rootClaim().raw()) revert InvalidOutputRootProof();
+        if (Hashing.hashOutputRootProof(_outputRootProof) != rootClaim().raw()) {
+            revert InvalidOutputRootProof();
+        }
 
         // Verify the block hash preimage.
-        if (keccak256(_headerRLP) != _outputRootProof.latestBlockhash) revert InvalidHeaderRLP();
+        if (keccak256(_headerRLP) != _outputRootProof.latestBlockhash) {
+            revert InvalidHeaderRLP();
+        }
 
         // Decode the header RLP to find the number of the block. In the consensus encoding, the timestamp
         // is the 9th element in the list that represents the block header.
@@ -5075,7 +5042,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         bytes memory rawBlockNumber = RLPReader.readBytes(headerContents[HEADER_BLOCK_NUMBER_INDEX]);
 
         // Sanity check the block number string length.
-        if (rawBlockNumber.length > 32) revert InvalidHeaderRLP();
+        if (rawBlockNumber.length > 32) {
+            revert InvalidHeaderRLP();
+        }
 
         // Convert the raw, left-aligned block number to a uint256 by aligning it as a big-endian
         // number in the low-order bytes of a 32-byte word.
@@ -5087,7 +5056,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         }
 
         // Ensure the block number does not match the block number claimed in the dispute game.
-        if (blockNumber == l2BlockNumber()) revert BlockNumberMatches();
+        if (blockNumber == l2BlockNumber()) {
+            revert BlockNumberMatches();
+        }
 
         // Issue a special counter to the root claim. This counter will always win the root claim subgame, and receive
         // the bond from the root claimant.
@@ -5107,10 +5078,14 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @return status_ The status of the game after resolution.
     function resolve() external returns (GameStatus status_) {
         // INVARIANT: Resolution cannot occur unless the game is currently in progress.
-        if (status != GameStatus.IN_PROGRESS) revert GameNotInProgress();
+        if (status != GameStatus.IN_PROGRESS) {
+            revert GameNotInProgress();
+        }
 
         // INVARIANT: Resolution cannot occur unless the absolute root subgame has been resolved.
-        if (!resolvedSubgames[0]) revert OutOfOrderResolution();
+        if (!resolvedSubgames[0]) {
+            revert OutOfOrderResolution();
+        }
 
         // Update the global game status; The dispute has concluded.
         status_ = claimData[0].counteredBy == address(0) ? GameStatus.DEFENDER_WINS : GameStatus.CHALLENGER_WINS;
@@ -5133,7 +5108,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     ///                      page, this function will attempt to check all of the subgame's children at once.
     function resolveClaim(uint256 _claimIndex, uint256 _numToResolve) external {
         // INVARIANT: Resolution cannot occur unless the game is currently in progress.
-        if (status != GameStatus.IN_PROGRESS) revert GameNotInProgress();
+        if (status != GameStatus.IN_PROGRESS) {
+            revert GameNotInProgress();
+        }
 
         ClaimData storage subgameRootClaim = claimData[_claimIndex];
         Duration challengeClockDuration = getChallengerDuration(_claimIndex);
@@ -5141,10 +5118,14 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         // INVARIANT: Cannot resolve a subgame unless the clock of its would-be counter has expired
         // INVARIANT: Assuming ordered subgame resolution, challengeClockDuration is always >= MAX_CLOCK_DURATION if all
         // descendant subgames are resolved
-        if (challengeClockDuration.raw() < MAX_CLOCK_DURATION.raw()) revert ClockNotExpired();
+        if (challengeClockDuration.raw() < MAX_CLOCK_DURATION.raw()) {
+            revert ClockNotExpired();
+        }
 
         // INVARIANT: Cannot resolve a subgame twice.
-        if (resolvedSubgames[_claimIndex]) revert ClaimAlreadyResolved();
+        if (resolvedSubgames[_claimIndex]) {
+            revert ClaimAlreadyResolved();
+        }
 
         uint256[] storage challengeIndices = subgames[_claimIndex];
         uint256 challengeIndicesLen = challengeIndices.length;
@@ -5172,7 +5153,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
             checkpoint.initialCheckpointComplete = true;
 
             // If `_numToResolve == 0`, assume that we can check all child subgames in this one callframe.
-            if (_numToResolve == 0) _numToResolve = challengeIndicesLen;
+            if (_numToResolve == 0) {
+                _numToResolve = challengeIndicesLen;
+            }
         }
 
         // Assume parent is honest until proven otherwise
@@ -5182,7 +5165,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
             uint256 challengeIndex = challengeIndices[i];
 
             // INVARIANT: Cannot resolve a subgame containing an unresolved claim
-            if (!resolvedSubgames[challengeIndex]) revert OutOfOrderResolution();
+            if (!resolvedSubgames[challengeIndex]) {
+                revert OutOfOrderResolution();
+            }
 
             ClaimData storage claim = claimData[challengeIndex];
 
@@ -5326,7 +5311,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @return requiredBond_ The required ETH bond for the given move, in wei.
     function getRequiredBond(Position _position) public view returns (uint256 requiredBond_) {
         uint256 depth = uint256(_position.depth());
-        if (depth > MAX_GAME_DEPTH) revert GameDepthExceeded();
+        if (depth > MAX_GAME_DEPTH) {
+            revert GameDepthExceeded();
+        }
 
         // Values taken from Big Bonds v1.5 (TM) spec.
         uint256 assumedBaseFee = 200 gwei;
@@ -5398,7 +5385,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         }
 
         // Revert if the recipient has no credit to claim.
-        if (recipientCredit == 0) revert NoCreditToClaim();
+        if (recipientCredit == 0) {
+            revert NoCreditToClaim();
+        }
 
         // Set the recipient's credit balances to 0.
         refundModeCredit[_recipient] = 0;
@@ -5408,8 +5397,10 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         weth().withdraw(_recipient, recipientCredit);
 
         // Transfer the credit to the recipient.
-        (bool success,) = _recipient.call{ value: recipientCredit }(hex"");
-        if (!success) revert BondTransferFailed();
+        (bool success,) = _recipient.call{value: recipientCredit}(hex"");
+        if (!success) {
+            revert BondTransferFailed();
+        }
     }
 
     /// @notice Closes out the game, determines the bond distribution mode, attempts to register
@@ -5450,7 +5441,7 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         // Try to update the anchor game first. Won't always succeed because delays can lead
         // to situations in which this game might not be eligible to be a new anchor game.
         // eip150-safe
-        try anchorStateRegistry().setAnchorState(IDisputeGame(address(this))) { } catch { }
+        try anchorStateRegistry().setAnchorState(IDisputeGame(address(this))) {} catch {}
 
         // Check if the game is a proper game, which will determine the bond distribution mode.
         bool properGame = anchorStateRegistry().isGameProper(IDisputeGame(address(this)));
@@ -5547,12 +5538,7 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @notice Verifies the integrity of an execution bisection subgame's root claim. Reverts if the claim
     ///         is invalid.
     /// @param _rootClaim The root claim of the execution bisection subgame.
-    function _verifyExecBisectionRoot(
-        Claim _rootClaim,
-        uint256 _parentIdx,
-        Position _parentPos,
-        bool _isAttack
-    )
+    function _verifyExecBisectionRoot(Claim _rootClaim, uint256 _parentIdx, Position _parentPos, bool _isAttack)
         internal
         view
     {
@@ -5564,7 +5550,7 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         // If the move is a defense, the disputed output could have been made by either party. In this case, we
         // need to search for the parent output to determine what the expected status byte should be.
         Position disputedLeafPos = Position.wrap(_parentPos.raw() + 1);
-        ClaimData storage disputed = _findTraceAncestor({ _pos: disputedLeafPos, _start: _parentIdx, _global: true });
+        ClaimData storage disputed = _findTraceAncestor({_pos: disputedLeafPos, _start: _parentIdx, _global: true});
         uint8 vmStatus = uint8(_rootClaim.raw()[0]);
 
         if (_isAttack || disputed.position.depth() % 2 == SPLIT_DEPTH % 2) {
@@ -5588,11 +5574,7 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @param _global Whether or not to search the entire dag or just within an execution trace subgame. If set to
     ///                `true`, and `_pos` is at or above the split depth, this function will revert.
     /// @return ancestor_ The ancestor claim that commits to the same trace index as `_pos`.
-    function _findTraceAncestor(
-        Position _pos,
-        uint256 _start,
-        bool _global
-    )
+    function _findTraceAncestor(Position _pos, uint256 _start, bool _global)
         internal
         view
         returns (ClaimData storage ancestor_)
@@ -5625,7 +5607,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
         ClaimData storage claim = claimData[claimIdx];
 
         // If the starting claim's depth is less than or equal to the split depth, we revert as this is UB.
-        if (claim.position.depth() <= SPLIT_DEPTH) revert ClaimAboveSplit();
+        if (claim.position.depth() <= SPLIT_DEPTH) {
+            revert ClaimAboveSplit();
+        }
 
         // We want to:
         // 1. Find the first claim at the split depth.
@@ -5641,7 +5625,9 @@ contract FaultDisputeGameV2 is Clone, ISemver {
             // If we're currently at the split depth + 1, we're at the root of the execution sub-game.
             // We need to keep track of the root claim here to determine whether the execution sub-game was
             // started with an attack or defense against the output leaf claim.
-            if (currentDepth == SPLIT_DEPTH + 1) execRootClaim = claim;
+            if (currentDepth == SPLIT_DEPTH + 1) {
+                execRootClaim = claim;
+            }
 
             claim = claimData[parentIndex];
             claimIdx = parentIndex;
@@ -5691,12 +5677,7 @@ contract FaultDisputeGameV2 is Clone, ISemver {
     /// @param _disputed The disputed claim.
     /// @param _disputedPos The disputed claim's position.
     /// @return uuid_ The local context hash.
-    function _computeLocalContext(
-        Claim _starting,
-        Position _startingPos,
-        Claim _disputed,
-        Position _disputedPos
-    )
+    function _computeLocalContext(Claim _starting, Position _startingPos, Claim _disputed, Position _disputedPos)
         internal
         pure
         returns (Hash uuid_)
@@ -5740,15 +5721,10 @@ contract PermissionedDisputeGameV2 is FaultDisputeGameV2 {
     }
 
     /// @param _params Parameters for creating a new FaultDisputeGame.
-    constructor(GameConstructorParams memory _params) FaultDisputeGameV2(_params) { }
+    constructor(GameConstructorParams memory _params) FaultDisputeGameV2(_params) {}
 
     /// @inheritdoc FaultDisputeGameV2
-    function step(
-        uint256 _claimIndex,
-        bool _isAttack,
-        bytes calldata _stateData,
-        bytes calldata _proof
-    )
+    function step(uint256 _claimIndex, bool _isAttack, bytes calldata _stateData, bytes calldata _proof)
         public
         override
         onlyAuthorized
@@ -5761,12 +5737,7 @@ contract PermissionedDisputeGameV2 is FaultDisputeGameV2 {
     /// @param _challengeIndex The index of the claim being moved against. This must match the `_disputed` claim.
     /// @param _claim The claim at the next logical position in the game.
     /// @param _isAttack Whether or not the move is an attack or defense.
-    function move(
-        Claim _disputed,
-        uint256 _challengeIndex,
-        Claim _claim,
-        bool _isAttack
-    )
+    function move(Claim _disputed, uint256 _challengeIndex, Claim _claim, bool _isAttack)
         public
         payable
         override
@@ -5780,7 +5751,9 @@ contract PermissionedDisputeGameV2 is FaultDisputeGameV2 {
         super.initialize();
 
         // The creator of the dispute game must be the proposer EOA.
-        if (tx.origin != proposer()) revert BadAuth();
+        if (tx.origin != proposer()) {
+            revert BadAuth();
+        }
     }
 
     function immutableArgsByteCount() internal pure override returns (uint256) {

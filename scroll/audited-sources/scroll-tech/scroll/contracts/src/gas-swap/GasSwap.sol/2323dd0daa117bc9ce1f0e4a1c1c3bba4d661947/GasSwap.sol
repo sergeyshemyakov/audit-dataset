@@ -5,9 +5,10 @@ pragma solidity ^0.8.0;
 import {ERC2771Context} from "@openzeppelin/contracts/metatx/ERC2771Context.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 import {OwnableBase} from "../libraries/common/OwnableBase.sol";
 
@@ -16,9 +17,11 @@ import {OwnableBase} from "../libraries/common/OwnableBase.sol";
 contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
     using SafeERC20 for IERC20;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the fee ratio is updated.
     /// @param feeRatio The new fee ratio, multiplied by 1e18.
@@ -29,17 +32,20 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
     /// @param status The status updated.
     event UpdateApprovedTarget(address target, bool status);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev The fee precision.
     uint256 private constant PRECISION = 1e18;
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct PermitData {
         // The address of token to spend.
         address token;
@@ -62,9 +68,11 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
         uint256 minOutput;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Keep track whether an address is approved.
     mapping(address => bool) public approvedTargets;
@@ -72,18 +80,20 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
     /// @notice The fee ratio charged for each swap, multiplied by 1e18.
     uint256 public feeRatio;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address trustedForwarder) ERC2771Context(trustedForwarder) {
         owner = msg.sender;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
-
+     *
+     */
     receive() external payable {}
 
     /// @notice Swap some token for ether.
@@ -95,13 +105,7 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
 
         // do permit
         IERC20Permit(_permit.token).permit(
-            _sender,
-            address(this),
-            _permit.value,
-            _permit.deadline,
-            _permit.v,
-            _permit.r,
-            _permit.s
+            _sender, address(this), _permit.value, _permit.deadline, _permit.v, _permit.r, _permit.s
         );
 
         // transfer token
@@ -124,7 +128,7 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
         require(_outputTokenAmount >= _swap.minOutput, "insufficient output amount");
 
         // tranfer ETH to sender
-        (_success, ) = _sender.call{value: _outputTokenAmount}("");
+        (_success,) = _sender.call{value: _outputTokenAmount}("");
         require(_success, "transfer ETH failed");
 
         // refund rest token
@@ -134,16 +138,18 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
         }
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Withdraw stucked tokens.
     /// @param _token The address of token to withdraw. Use `address(0)` if you want to withdraw Ether.
     /// @param _amount The amount of token to withdraw.
     function withdraw(address _token, uint256 _amount) external onlyOwner {
         if (_token == address(0)) {
-            (bool success, ) = msg.sender.call{value: _amount}("");
+            (bool success,) = msg.sender.call{value: _amount}("");
             require(success, "ETH transfer failed");
         } else {
             IERC20(_token).safeTransfer(msg.sender, _amount);
@@ -167,9 +173,11 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
         emit UpdateApprovedTarget(_target, _status);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to concat two bytes array.
     function concat(bytes memory a, bytes memory b) internal pure returns (bytes memory) {
@@ -178,7 +186,9 @@ contract GasSwap is ERC2771Context, ReentrancyGuard, OwnableBase {
 
     /// @dev Internal function decode revert message from return data.
     function getRevertMsg(bytes memory _returnData) internal pure returns (string memory) {
-        if (_returnData.length < 68) return "Transaction reverted silently";
+        if (_returnData.length < 68) {
+            return "Transaction reverted silently";
+        }
 
         // solhint-disable-next-line no-inline-assembly
         assembly {

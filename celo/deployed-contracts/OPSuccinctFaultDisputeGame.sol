@@ -22,11 +22,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads an immutable arg with type bytes.
-    function _getArgBytes(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (bytes memory arg)
-    {
+    function _getArgBytes(uint256 argOffset, uint256 length) internal pure returns (bytes memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -49,11 +45,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads a uint256 array stored in the immutable args.
-    function _getArgUint256Array(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (uint256[] memory arg)
-    {
+    function _getArgUint256Array(uint256 argOffset, uint256 length) internal pure returns (uint256[] memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -65,11 +57,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads a bytes32 array stored in the immutable args.
-    function _getArgBytes32Array(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (bytes32[] memory arg)
-    {
+    function _getArgBytes32Array(uint256 argOffset, uint256 length) internal pure returns (bytes32[] memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -590,10 +578,7 @@ library LibPosition {
     /// @param _upperBoundExclusive The exclusive upper depth bound, used to inform where to stop in order
     ///                             to not escape a sub-tree.
     /// @return ancestor_ The highest ancestor of `position` that commits to the same trace index.
-    function traceAncestorBounded(
-        Position _position,
-        uint256 _upperBoundExclusive
-    )
+    function traceAncestorBounded(Position _position, uint256 _upperBoundExclusive)
         internal
         pure
         returns (Position ancestor_)
@@ -684,11 +669,7 @@ library LibClaim {
     /// @param _position The position of `claim`.
     /// @param _challengeIndex The index of the claim being moved against.
     /// @return claimHash_ A hash of abi.encodePacked(claim, position|challengeIndex);
-    function hashClaimPos(
-        Claim _claim,
-        Position _position,
-        uint256 _challengeIndex
-    )
+    function hashClaimPos(Claim _claim, Position _position, uint256 _challengeIndex)
         internal
         pure
         returns (Hash claimHash_)
@@ -835,11 +816,7 @@ library LibGameId {
     /// @param _timestamp The timestamp of the game's creation.
     /// @param _gameProxy The game proxy address.
     /// @return gameId_ The packed GameId.
-    function pack(
-        GameType _gameType,
-        Timestamp _timestamp,
-        address _gameProxy
-    )
+    function pack(GameType _gameType, Timestamp _timestamp, address _gameProxy)
         internal
         pure
         returns (GameId gameId_)
@@ -900,19 +877,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     event Initialized(uint8 version);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    function create(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function create(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         payable
         returns (IDisputeGame proxy_);
-    function findLatestGames(
-        GameType _gameType,
-        uint256 _start,
-        uint256 _n
-    )
+    function findLatestGames(GameType _gameType, uint256 _start, uint256 _n)
         external
         view
         returns (GameSearchResult[] memory games_);
@@ -923,19 +892,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     function gameCount() external view returns (uint256 gameCount_);
     function gameArgs(GameType) external view returns (bytes memory);
     function gameImpls(GameType) external view returns (IDisputeGame);
-    function games(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function games(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         view
         returns (IDisputeGame proxy_, Timestamp timestamp_);
-    function getGameUUID(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function getGameUUID(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         pure
         returns (Hash uuid_);
@@ -962,11 +923,7 @@ interface ISP1Verifier {
     /// @param programVKey The verification key for the RISC-V program.
     /// @param publicValues The public values encoded as bytes.
     /// @param proofBytes The proof of the program execution the SP1 zkVM encoded as bytes.
-    function verifyProof(
-        bytes32 programVKey,
-        bytes calldata publicValues,
-        bytes calldata proofBytes
-    ) external view;
+    function verifyProof(bytes32 programVKey, bytes calldata publicValues, bytes calldata proofBytes) external view;
 }
 
 /// @title LibClock
@@ -1537,15 +1494,13 @@ interface IPreimageOracle {
         bytes memory _input,
         bytes32[] memory _stateCommitments,
         bool _finalize
-    )
-        external;
+    ) external;
     function challengeFirstLPP(
         address _claimant,
         uint256 _uuid,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengeLPP(
         address _claimant,
         uint256 _uuid,
@@ -1554,8 +1509,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengePeriod() external view returns (uint256 challengePeriod_);
     function getTreeRootLPP(address _owner, uint256 _uuid) external view returns (bytes32 treeRoot_);
     function initLPP(uint256 _uuid, uint32 _partOffset, uint32 _claimedSize) external payable;
@@ -1565,16 +1519,9 @@ interface IPreimageOracle {
         bytes memory _commitment,
         bytes memory _proof,
         uint256 _partOffset
-    )
-        external;
+    ) external;
     function loadKeccak256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
-    function loadLocalData(
-        uint256 _ident,
-        bytes32 _localContext,
-        bytes32 _word,
-        uint256 _size,
-        uint256 _partOffset
-    )
+    function loadLocalData(uint256 _ident, bytes32 _localContext, bytes32 _word, uint256 _size, uint256 _partOffset)
         external
         returns (bytes32 key_);
     function loadPrecompilePreimagePart(
@@ -1582,8 +1529,7 @@ interface IPreimageOracle {
         address _precompile,
         uint64 _requiredGas,
         bytes memory _input
-    )
-        external;
+    ) external;
     function loadSha256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
     function minProposalSize() external view returns (uint256 minProposalSize_);
     function preimageLengths(bytes32) external view returns (uint256);
@@ -1607,8 +1553,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function version() external view returns (string memory);
     function zeroHashes(uint256) external view returns (bytes32);
 
@@ -1644,11 +1589,7 @@ interface IBigStepper {
     /// @param _localContext The local key context for the preimage oracle. Optional, can be set as a constant if the
     ///                      implementation only requires one set of local keys.
     /// @return postState_ The hash of the post state witness after the state transition.
-    function step(
-        bytes calldata _stateData,
-        bytes calldata _proof,
-        bytes32 _localContext
-    )
+    function step(bytes calldata _stateData, bytes calldata _proof, bytes32 _localContext)
         external
         returns (bytes32 postState_);
 
@@ -1771,8 +1712,7 @@ interface ISystemConfig is IProxyAdminOwnedBase {
         Addresses memory _addresses,
         uint256 _l2ChainId,
         ISuperchainConfig _superchainConfig
-    )
-        external;
+    ) external;
     function initVersion() external view returns (uint8);
     function l1CrossDomainMessenger() external view returns (address addr_);
     function l1ERC721Bridge() external view returns (address addr_);
@@ -2038,6 +1978,7 @@ interface IFaultDisputeGame is IDisputeGame {
     error GameNotResolved();
     error ReservedGameType();
     error GamePaused();
+
     event Move(uint256 indexed parentIndex, Claim indexed claim, address indexed claimant);
     event GameClosed(BondDistributionMode bondDistributionMode);
 
@@ -2132,8 +2073,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
         IDisputeGameFactory _disputeGameFactory,
         Proposal memory _startingAnchorRoot,
         GameType _startingRespectedGameType
-    )
-        external;
+    ) external;
     function isGameBlacklisted(IDisputeGame _game) external view returns (bool);
     function isGameProper(IDisputeGame _game) external view returns (bool);
     function isGameRegistered(IDisputeGame _game) external view returns (bool);
@@ -2152,9 +2092,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
     function version() external view returns (string memory);
     function superchainConfig() external view returns (ISuperchainConfig);
 
-    function __constructor__(
-        uint256 _disputeGameFinalityDelaySeconds
-    ) external;
+    function __constructor__(uint256 _disputeGameFinalityDelaySeconds) external;
 }
 
 /**
@@ -2645,13 +2583,19 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
         // - An output root cannot be proposed at or before the starting block number.
 
         // INVARIANT: The game must not have already been initialized.
-        if (initialized) revert AlreadyInitialized();
+        if (initialized) {
+            revert AlreadyInitialized();
+        }
 
         // INVARIANT: The game can only be initialized by the dispute game factory.
-        if (address(DISPUTE_GAME_FACTORY) != msg.sender) revert IncorrectDisputeGameFactory();
+        if (address(DISPUTE_GAME_FACTORY) != msg.sender) {
+            revert IncorrectDisputeGameFactory();
+        }
 
         // INVARIANT: The proposer must be whitelisted.
-        if (!ACCESS_MANAGER.isAllowedProposer(gameCreator())) revert BadAuth();
+        if (!ACCESS_MANAGER.isAllowedProposer(gameCreator())) {
+            revert BadAuth();
+        }
 
         // Revert if the calldata size is not the expected length.
         //
@@ -2699,7 +2643,9 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
             });
 
             // INVARIANT: The parent game must be a valid game.
-            if (proxy.status() == GameStatus.CHALLENGER_WINS) revert InvalidParentGame();
+            if (proxy.status() == GameStatus.CHALLENGER_WINS) {
+                revert InvalidParentGame();
+            }
 
             // INVARIANT: The parent game's L2 block must be ahead of the anchor. This prevents
             // duplicate games (same startingOutputRoot via parent index vs uint32.max) and ensures
@@ -2778,16 +2724,24 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
     /// @notice Challenges the game.
     function challenge() external payable returns (ProposalStatus) {
         // INVARIANT: Can only challenge a game that has not been challenged yet.
-        if (claimData.status != ProposalStatus.Unchallenged) revert ClaimAlreadyChallenged();
+        if (claimData.status != ProposalStatus.Unchallenged) {
+            revert ClaimAlreadyChallenged();
+        }
 
         // INVARIANT: The challenger must be whitelisted.
-        if (!ACCESS_MANAGER.isAllowedChallenger(msg.sender)) revert BadAuth();
+        if (!ACCESS_MANAGER.isAllowedChallenger(msg.sender)) {
+            revert BadAuth();
+        }
 
         // INVARIANT: Cannot challenge if the game is over.
-        if (gameOver()) revert GameOver();
+        if (gameOver()) {
+            revert GameOver();
+        }
 
         // If the required bond is not met, revert.
-        if (msg.value != CHALLENGER_BOND) revert IncorrectBondAmount();
+        if (msg.value != CHALLENGER_BOND) {
+            revert IncorrectBondAmount();
+        }
 
         // Update the counteredBy address
         claimData.counteredBy = msg.sender;
@@ -2810,7 +2764,9 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
     /// @param proofBytes The proof bytes to validate the claim.
     function prove(bytes calldata proofBytes) external returns (ProposalStatus) {
         // INVARIANT: Cannot prove if the game is over.
-        if (gameOver()) revert GameOver();
+        if (gameOver()) {
+            revert GameOver();
+        }
 
         // Decode the public values to check the claim root
         AggregationOutputs memory publicValues = AggregationOutputs({
@@ -2861,11 +2817,15 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
     ///         its claim within the `MAX_PROVE_DURATION`.
     function resolve() external returns (GameStatus) {
         // INVARIANT: Resolution cannot occur if the game has already been resolved.
-        if (status != GameStatus.IN_PROGRESS) revert ClaimAlreadyResolved();
+        if (status != GameStatus.IN_PROGRESS) {
+            revert ClaimAlreadyResolved();
+        }
 
         // INVARIANT: Cannot resolve a game if the parent game has not been resolved.
         GameStatus parentGameStatus = getParentGameStatus();
-        if (parentGameStatus == GameStatus.IN_PROGRESS) revert ParentGameNotResolved();
+        if (parentGameStatus == GameStatus.IN_PROGRESS) {
+            revert ParentGameNotResolved();
+        }
 
         // INVARIANT: If the parent game's claim is invalid, then the current game's claim is invalid.
         if (parentGameStatus == GameStatus.CHALLENGER_WINS) {
@@ -2875,7 +2835,9 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
             normalModeCredit[claimData.counteredBy] = address(this).balance;
         } else {
             // INVARIANT: Game must be completed either by clock expiration or valid proof.
-            if (!gameOver()) revert GameNotOver();
+            if (!gameOver()) {
+                revert GameNotOver();
+            }
 
             // Determine status based on claim status.
             if (claimData.status == ProposalStatus.Unchallenged) {
@@ -2944,7 +2906,9 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
         }
 
         // Revert if the recipient has no credit to claim.
-        if (recipientCredit == 0) revert NoCreditToClaim();
+        if (recipientCredit == 0) {
+            revert NoCreditToClaim();
+        }
 
         // Set the recipient's credit balances to 0.
         refundModeCredit[_recipient] = 0;
@@ -2952,7 +2916,9 @@ contract OPSuccinctFaultDisputeGame is Clone, ISemver, IDisputeGame {
 
         // Transfer the credit to the recipient.
         (bool success,) = _recipient.call{value: recipientCredit}(hex"");
-        if (!success) revert BondTransferFailed();
+        if (!success) {
+            revert BondTransferFailed();
+        }
     }
 
     /// @notice Closes out the game, determines the bond distribution mode, attempts to register

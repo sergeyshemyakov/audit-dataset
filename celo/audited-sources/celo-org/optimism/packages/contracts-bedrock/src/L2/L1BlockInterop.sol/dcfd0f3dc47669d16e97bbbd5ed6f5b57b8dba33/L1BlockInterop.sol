@@ -2,21 +2,22 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { L1Block } from "src/L2/L1Block.sol";
+import {L1Block} from "src/L2/L1Block.sol";
 
 // Libraries
-import { EnumerableSet } from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
-import { GasPayingToken } from "src/libraries/GasPayingToken.sol";
-import { StaticConfig } from "src/libraries/StaticConfig.sol";
-import { Predeploys } from "src/libraries/Predeploys.sol";
+import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+import {GasPayingToken} from "src/libraries/GasPayingToken.sol";
+
 import {
-    NotDepositor,
+    AlreadyDependency,
+    CantRemovedDependency,
+    DependencySetSizeTooLarge,
     NotCrossL2Inbox,
     NotDependency,
-    DependencySetSizeTooLarge,
-    AlreadyDependency,
-    CantRemovedDependency
+    NotDepositor
 } from "src/libraries/L1BlockErrors.sol";
+import {Predeploys} from "src/libraries/Predeploys.sol";
+import {StaticConfig} from "src/libraries/StaticConfig.sol";
 
 /// @notice Enum representing different types of configurations that can be set on L1BlockInterop.
 /// @custom:value SET_GAS_PAYING_TOKEN  Represents the config type for setting the gas paying token.
@@ -57,7 +58,9 @@ contract L1BlockInterop is L1Block {
     /// @notice Returns whether the call was triggered from a a deposit or not.
     /// @notice This function is only callable by the CrossL2Inbox contract.
     function isDeposit() external view returns (bool isDeposit_) {
-        if (msg.sender != Predeploys.CROSS_L2_INBOX) revert NotCrossL2Inbox();
+        if (msg.sender != Predeploys.CROSS_L2_INBOX) {
+            revert NotCrossL2Inbox();
+        }
         assembly {
             isDeposit_ := sload(IS_DEPOSIT_SLOT)
         }
@@ -92,7 +95,9 @@ contract L1BlockInterop is L1Block {
     /// @notice Resets the isDeposit flag.
     ///         Should only be called by the depositor account after the deposits are complete.
     function depositsComplete() external {
-        if (msg.sender != DEPOSITOR_ACCOUNT()) revert NotDepositor();
+        if (msg.sender != DEPOSITOR_ACCOUNT()) {
+            revert NotDepositor();
+        }
 
         // Set the isDeposit flag to false.
         assembly {
@@ -105,7 +110,9 @@ contract L1BlockInterop is L1Block {
     /// @param _type  The type of configuration to set.
     /// @param _value The encoded value with which to set the configuration.
     function setConfig(ConfigType _type, bytes calldata _value) external {
-        if (msg.sender != DEPOSITOR_ACCOUNT()) revert NotDepositor();
+        if (msg.sender != DEPOSITOR_ACCOUNT()) {
+            revert NotDepositor();
+        }
 
         if (_type == ConfigType.SET_GAS_PAYING_TOKEN) {
             _setGasPayingToken(_value);
@@ -121,9 +128,9 @@ contract L1BlockInterop is L1Block {
     function _setGasPayingToken(bytes calldata _value) internal {
         (address token, uint8 decimals, bytes32 name, bytes32 symbol) = StaticConfig.decodeSetGasPayingToken(_value);
 
-        GasPayingToken.set({ _token: token, _decimals: decimals, _name: name, _symbol: symbol });
+        GasPayingToken.set({_token: token, _decimals: decimals, _name: name, _symbol: symbol});
 
-        emit GasPayingTokenSet({ token: token, decimals: decimals, name: name, symbol: symbol });
+        emit GasPayingTokenSet({token: token, decimals: decimals, name: name, symbol: symbol});
     }
 
     /// @notice Internal method to add a dependency to the interop dependency set.
@@ -131,9 +138,13 @@ contract L1BlockInterop is L1Block {
     function _addDependency(bytes calldata _value) internal {
         uint256 chainId = StaticConfig.decodeAddDependency(_value);
 
-        if (dependencySet.length() == type(uint8).max) revert DependencySetSizeTooLarge();
+        if (dependencySet.length() == type(uint8).max) {
+            revert DependencySetSizeTooLarge();
+        }
 
-        if (chainId == block.chainid || !dependencySet.add(chainId)) revert AlreadyDependency();
+        if (chainId == block.chainid || !dependencySet.add(chainId)) {
+            revert AlreadyDependency();
+        }
 
         emit DependencyAdded(chainId);
     }
@@ -143,9 +154,13 @@ contract L1BlockInterop is L1Block {
     function _removeDependency(bytes calldata _value) internal {
         uint256 chainId = StaticConfig.decodeRemoveDependency(_value);
 
-        if (chainId == block.chainid) revert CantRemovedDependency();
+        if (chainId == block.chainid) {
+            revert CantRemovedDependency();
+        }
 
-        if (!dependencySet.remove(chainId)) revert NotDependency();
+        if (!dependencySet.remove(chainId)) {
+            revert NotDependency();
+        }
 
         emit DependencyRemoved(chainId);
     }

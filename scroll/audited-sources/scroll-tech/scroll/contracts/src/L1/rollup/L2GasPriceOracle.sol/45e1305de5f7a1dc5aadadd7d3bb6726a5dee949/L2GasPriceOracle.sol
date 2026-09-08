@@ -11,9 +11,11 @@ import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 // solhint-disable reason-string
 
 contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates whitelist contract.
     /// @param _oldWhitelist The address of old whitelist contract.
@@ -32,9 +34,11 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
     /// @param nonZeroGas The intrinsic gas for each nonzero byte.
     event IntrinsicParamsUpdated(uint256 txGas, uint256 txGasContractCreation, uint256 zeroGas, uint256 nonZeroGas);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The latest known l2 base fee.
     uint256 public l2BaseFee;
@@ -56,28 +60,29 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
     /// @notice The intrinsic params for transaction.
     IntrinsicParams public intrinsicParams;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
 
-    function initialize(
-        uint64 _txGas,
-        uint64 _txGasContractCreation,
-        uint64 _zeroGas,
-        uint64 _nonZeroGas
-    ) external initializer {
+    function initialize(uint64 _txGas, uint64 _txGasContractCreation, uint64 _zeroGas, uint64 _nonZeroGas)
+        external
+        initializer
+    {
         OwnableUpgradeable.__Ownable_init();
 
         _setIntrinsicParams(_txGas, _txGasContractCreation, _zeroGas, _nonZeroGas);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL2GasPriceOracle
     function calculateIntrinsicGasFee(bytes memory _message) external view override returns (uint256) {
@@ -104,9 +109,11 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
         return _gasLimit * l2BaseFee;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Allows whitelisted caller to modify the l2 base fee.
     /// @param _newL2BaseFee The new l2 base fee.
@@ -119,9 +126,11 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
         emit L2BaseFeeUpdated(_oldL2BaseFee, _newL2BaseFee);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update whitelist contract.
     /// @dev This function can only called by contract owner.
@@ -138,30 +147,27 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
     /// @param _txGasContractCreation The intrinsic gas for contract creation.
     /// @param _zeroGas The intrinsic gas for each zero byte.
     /// @param _nonZeroGas The intrinsic gas for each nonzero byte.
-    function setIntrinsicParams(
-        uint64 _txGas,
-        uint64 _txGasContractCreation,
-        uint64 _zeroGas,
-        uint64 _nonZeroGas
-    ) external onlyOwner {
+    function setIntrinsicParams(uint64 _txGas, uint64 _txGasContractCreation, uint64 _zeroGas, uint64 _nonZeroGas)
+        external
+        onlyOwner
+    {
         _setIntrinsicParams(_txGas, _txGasContractCreation, _zeroGas, _nonZeroGas);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to update parameters for intrinsic gas calculation.
     /// @param _txGas The intrinsic gas for transaction.
     /// @param _txGasContractCreation The intrinsic gas for contract creation.
     /// @param _zeroGas The intrinsic gas for each zero byte.
     /// @param _nonZeroGas The intrinsic gas for each nonzero byte.
-    function _setIntrinsicParams(
-        uint64 _txGas,
-        uint64 _txGasContractCreation,
-        uint64 _zeroGas,
-        uint64 _nonZeroGas
-    ) internal {
+    function _setIntrinsicParams(uint64 _txGas, uint64 _txGasContractCreation, uint64 _zeroGas, uint64 _nonZeroGas)
+        internal
+    {
         require(_txGas > 0, "txGas is zero");
         require(_zeroGas > 0, "zeroGas is zero");
         require(_nonZeroGas > 0, "nonZeroGas is zero");

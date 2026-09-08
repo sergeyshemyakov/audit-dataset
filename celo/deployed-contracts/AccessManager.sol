@@ -142,11 +142,7 @@ library LibGameId {
     /// @param _timestamp The timestamp of the game's creation.
     /// @param _gameProxy The game proxy address.
     /// @return gameId_ The packed GameId.
-    function pack(
-        GameType _gameType,
-        Timestamp _timestamp,
-        address _gameProxy
-    )
+    function pack(GameType _gameType, Timestamp _timestamp, address _gameProxy)
         internal
         pure
         returns (GameId gameId_)
@@ -330,10 +326,7 @@ library LibPosition {
     /// @param _upperBoundExclusive The exclusive upper depth bound, used to inform where to stop in order
     ///                             to not escape a sub-tree.
     /// @return ancestor_ The highest ancestor of `position` that commits to the same trace index.
-    function traceAncestorBounded(
-        Position _position,
-        uint256 _upperBoundExclusive
-    )
+    function traceAncestorBounded(Position _position, uint256 _upperBoundExclusive)
         internal
         pure
         returns (Position ancestor_)
@@ -424,11 +417,7 @@ library LibClaim {
     /// @param _position The position of `claim`.
     /// @param _challengeIndex The index of the claim being moved against.
     /// @return claimHash_ A hash of abi.encodePacked(claim, position|challengeIndex);
-    function hashClaimPos(
-        Claim _claim,
-        Position _position,
-        uint256 _challengeIndex
-    )
+    function hashClaimPos(Claim _claim, Position _position, uint256 _challengeIndex)
         internal
         pure
         returns (Hash claimHash_)
@@ -496,19 +485,11 @@ interface IDisputeGameFactory {
     event Initialized(uint8 version);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    function create(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function create(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         payable
         returns (IDisputeGame proxy_);
-    function findLatestGames(
-        GameType _gameType,
-        uint256 _start,
-        uint256 _n
-    )
+    function findLatestGames(GameType _gameType, uint256 _start, uint256 _n)
         external
         view
         returns (GameSearchResult[] memory games_);
@@ -518,19 +499,11 @@ interface IDisputeGameFactory {
         returns (GameType gameType_, Timestamp timestamp_, IDisputeGame proxy_);
     function gameCount() external view returns (uint256 gameCount_);
     function gameImpls(GameType) external view returns (IDisputeGame);
-    function games(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function games(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         view
         returns (IDisputeGame proxy_, Timestamp timestamp_);
-    function getGameUUID(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function getGameUUID(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         pure
         returns (Hash uuid_);

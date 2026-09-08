@@ -3,18 +3,22 @@
 pragma solidity ^0.8.16;
 
 interface ITokenRateLimiter {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the total limit is updated.
     /// @param oldTotalLimit The previous value of total limit before updating.
     /// @param newTotalLimit The current value of total limit after updating.
     event UpdateTotalLimit(address indexed token, uint256 oldTotalLimit, uint256 newTotalLimit);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the `periodDuration` is initialized to zero.
     error PeriodIsZero();
@@ -27,9 +31,11 @@ interface ITokenRateLimiter {
     /// @param token The address of the token.
     error ExceedTotalLimit(address token);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Request some token usage for `sender`.
     /// @param token The address of the token.

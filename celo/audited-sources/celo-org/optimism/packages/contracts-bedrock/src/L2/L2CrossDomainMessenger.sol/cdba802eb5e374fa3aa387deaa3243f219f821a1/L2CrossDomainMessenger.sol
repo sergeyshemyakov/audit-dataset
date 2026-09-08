@@ -2,16 +2,18 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { CrossDomainMessenger } from "src/universal/CrossDomainMessenger.sol";
+import {CrossDomainMessenger} from "src/universal/CrossDomainMessenger.sol";
 
 // Libraries
-import { AddressAliasHelper } from "src/vendor/AddressAliasHelper.sol";
-import { Predeploys } from "src/libraries/Predeploys.sol";
+
+import {Predeploys} from "src/libraries/Predeploys.sol";
+import {AddressAliasHelper} from "src/vendor/AddressAliasHelper.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IL2ToL1MessagePasser } from "interfaces/L2/IL2ToL1MessagePasser.sol";
-import { IL1Block } from "interfaces/L2/IL1Block.sol";
+
+import {IL1Block} from "interfaces/L2/IL1Block.sol";
+import {IL2ToL1MessagePasser} from "interfaces/L2/IL2ToL1MessagePasser.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @custom:predeploy 0x4200000000000000000000000000000000000007
@@ -31,7 +33,7 @@ contract L2CrossDomainMessenger is CrossDomainMessenger, ISemver {
     /// @notice Initializer.
     /// @param _l1CrossDomainMessenger L1CrossDomainMessenger contract on the other network.
     function initialize(CrossDomainMessenger _l1CrossDomainMessenger) external initializer {
-        __CrossDomainMessenger_init({ _otherMessenger: _l1CrossDomainMessenger });
+        __CrossDomainMessenger_init({_otherMessenger: _l1CrossDomainMessenger});
     }
 
     /// @notice Getter for the remote messenger.
@@ -44,7 +46,7 @@ contract L2CrossDomainMessenger is CrossDomainMessenger, ISemver {
 
     /// @inheritdoc CrossDomainMessenger
     function _sendMessage(address _to, uint64 _gasLimit, uint256 _value, bytes memory _data) internal override {
-        IL2ToL1MessagePasser(payable(Predeploys.L2_TO_L1_MESSAGE_PASSER)).initiateWithdrawal{ value: _value }(
+        IL2ToL1MessagePasser(payable(Predeploys.L2_TO_L1_MESSAGE_PASSER)).initiateWithdrawal{value: _value}(
             _to, _gasLimit, _data
         );
     }

@@ -2,8 +2,8 @@
 
 pragma solidity =0.8.16;
 
-import {IWETH} from "../../interfaces/IWETH.sol";
 import {IL2ERC20Gateway} from "../../L2/gateways/IL2ERC20Gateway.sol";
+import {IWETH} from "../../interfaces/IWETH.sol";
 import {IL1ScrollMessenger} from "../IL1ScrollMessenger.sol";
 import {IL1ERC20Gateway} from "./IL1ERC20Gateway.sol";
 
@@ -18,9 +18,11 @@ import {L1ERC20Gateway} from "./L1ERC20Gateway.sol";
 /// On finalizing withdraw, the Ether will be transfered from `L1ScrollMessenger`, then
 /// wrapped as WETH and finally transfer to recipient.
 contract L1WETHGateway is ScrollGatewayBase, L1ERC20Gateway {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of L2 WETH address.
     address public immutable l2WETH;
@@ -29,10 +31,11 @@ contract L1WETHGateway is ScrollGatewayBase, L1ERC20Gateway {
     // solhint-disable-next-line var-name-mixedcase
     address public immutable WETH;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _WETH, address _l2WETH) {
         _disableInitializers();
 
@@ -44,11 +47,7 @@ contract L1WETHGateway is ScrollGatewayBase, L1ERC20Gateway {
     /// @param _counterpart The address of L2ETHGateway in L2.
     /// @param _router The address of L1GatewayRouter.
     /// @param _messenger The address of L1ScrollMessenger.
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) external initializer {
+    function initialize(address _counterpart, address _router, address _messenger) external initializer {
         require(_router != address(0), "zero router address");
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
     }
@@ -57,18 +56,22 @@ contract L1WETHGateway is ScrollGatewayBase, L1ERC20Gateway {
         require(msg.sender == WETH, "only WETH");
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
     function getL2ERC20Address(address) public view override returns (address) {
         return l2WETH;
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @inheritdoc L1ERC20Gateway
     function _beforeFinalizeWithdrawERC20(
@@ -87,11 +90,7 @@ contract L1WETHGateway is ScrollGatewayBase, L1ERC20Gateway {
     }
 
     /// @inheritdoc L1ERC20Gateway
-    function _beforeDropMessage(
-        address _token,
-        address,
-        uint256 _amount
-    ) internal virtual override {
+    function _beforeDropMessage(address _token, address, uint256 _amount) internal virtual override {
         require(_token == WETH, "token not WETH");
         require(_amount == msg.value, "msg.value mismatch");
 
@@ -99,13 +98,12 @@ contract L1WETHGateway is ScrollGatewayBase, L1ERC20Gateway {
     }
 
     /// @inheritdoc L1ERC20Gateway
-    function _deposit(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual override nonReentrant {
+    function _deposit(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        override
+        nonReentrant
+    {
         require(_amount > 0, "deposit zero amount");
         require(_token == WETH, "only WETH is allowed");
 
@@ -115,18 +113,12 @@ contract L1WETHGateway is ScrollGatewayBase, L1ERC20Gateway {
         IWETH(_token).withdraw(_amount);
 
         // 2. Generate message passed to L2WETHGateway.
-        bytes memory _message = abi.encodeCall(
-            IL2ERC20Gateway.finalizeDepositERC20,
-            (_token, l2WETH, _from, _to, _amount, _data)
-        );
+        bytes memory _message =
+            abi.encodeCall(IL2ERC20Gateway.finalizeDepositERC20, (_token, l2WETH, _from, _to, _amount, _data));
 
         // 3. Send message to L1ScrollMessenger.
         IL1ScrollMessenger(messenger).sendMessage{value: _amount + msg.value}(
-            counterpart,
-            _amount,
-            _message,
-            _gasLimit,
-            _from
+            counterpart, _amount, _message, _gasLimit, _from
         );
 
         emit DepositERC20(_token, l2WETH, _from, _to, _amount, _data);

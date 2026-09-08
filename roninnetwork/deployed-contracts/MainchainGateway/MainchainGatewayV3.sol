@@ -86,17 +86,17 @@ library StorageSlot {
 }
 
 enum RoleAccess {
-  UNKNOWN, // 0
-  ADMIN, // 1
-  COINBASE, // 2
-  GOVERNOR, // 3
-  CANDIDATE_ADMIN, // 4
-  WITHDRAWAL_MIGRATOR, // 5
-  __DEPRECATED_BRIDGE_OPERATOR, // 6
-  BLOCK_PRODUCER, // 7
-  VALIDATOR_CANDIDATE, // 8
-  CONSENSUS, // 9
-  TREASURY // 10
+    UNKNOWN, // 0
+    ADMIN, // 1
+    COINBASE, // 2
+    GOVERNOR, // 3
+    CANDIDATE_ADMIN, // 4
+    WITHDRAWAL_MIGRATOR, // 5
+    __DEPRECATED_BRIDGE_OPERATOR, // 6
+    BLOCK_PRODUCER, // 7
+    VALIDATOR_CANDIDATE, // 8
+    CONSENSUS, // 9
+    TREASURY // 10
 
 }
 
@@ -108,24 +108,26 @@ enum RoleAccess {
 error ErrUnauthorized(bytes4 msgSig, RoleAccess expectedRole);
 
 abstract contract HasProxyAdmin {
-  // bytes32(uint256(keccak256("eip1967.proxy.admin")) - 1));
-  bytes32 private constant _ADMIN_SLOT = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
+    // bytes32(uint256(keccak256("eip1967.proxy.admin")) - 1));
+    bytes32 private constant _ADMIN_SLOT = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
 
-  modifier onlyProxyAdmin() {
-    _requireProxyAdmin();
-    _;
-  }
+    modifier onlyProxyAdmin() {
+        _requireProxyAdmin();
+        _;
+    }
 
-  /**
-   * @dev Returns proxy admin.
-   */
-  function _getProxyAdmin() internal view virtual returns (address) {
-    return StorageSlot.getAddressSlot(_ADMIN_SLOT).value;
-  }
+    /**
+     * @dev Returns proxy admin.
+     */
+    function _getProxyAdmin() internal view virtual returns (address) {
+        return StorageSlot.getAddressSlot(_ADMIN_SLOT).value;
+    }
 
-  function _requireProxyAdmin() internal view {
-    if (msg.sender != _getProxyAdmin()) revert ErrUnauthorized(msg.sig, RoleAccess.ADMIN);
-  }
+    function _requireProxyAdmin() internal view {
+        if (msg.sender != _getProxyAdmin()) {
+            revert ErrUnauthorized(msg.sig, RoleAccess.ADMIN);
+        }
+    }
 }
 
 /**
@@ -308,11 +310,7 @@ interface IERC1155 is IERC165 {
      * transfers.
      */
     event TransferBatch(
-        address indexed operator,
-        address indexed from,
-        address indexed to,
-        uint256[] ids,
-        uint256[] values
+        address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] values
     );
 
     /**
@@ -382,13 +380,7 @@ interface IERC1155 is IERC165 {
      * - If `to` refers to a smart contract, it must implement {IERC1155Receiver-onERC1155Received} and return the
      * acceptance magic value.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 id,
-        uint256 amount,
-        bytes calldata data
-    ) external;
+    function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes calldata data) external;
 
     /**
      * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] version of {safeTransferFrom}.
@@ -483,7 +475,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -515,11 +507,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -534,11 +525,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -548,12 +535,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -577,11 +562,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -604,11 +589,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -621,11 +605,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -663,13 +647,9 @@ interface IERC1155Receiver is IERC165 {
      * @param data Additional data with no specified format
      * @return `bytes4(keccak256("onERC1155Received(address,address,uint256,uint256,bytes)"))` if transfer is allowed
      */
-    function onERC1155Received(
-        address operator,
-        address from,
-        uint256 id,
-        uint256 value,
-        bytes calldata data
-    ) external returns (bytes4);
+    function onERC1155Received(address operator, address from, uint256 id, uint256 value, bytes calldata data)
+        external
+        returns (bytes4);
 
     /**
      * @dev Handles the receipt of a multiple ERC1155 token types. This function
@@ -726,10 +706,8 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165, IERC165) returns (bool) {
-        return
-            interfaceId == type(IERC1155).interfaceId ||
-            interfaceId == type(IERC1155MetadataURI).interfaceId ||
-            super.supportsInterface(interfaceId);
+        return interfaceId == type(IERC1155).interfaceId || interfaceId == type(IERC1155MetadataURI).interfaceId
+            || super.supportsInterface(interfaceId);
     }
 
     /**
@@ -800,13 +778,11 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
     /**
      * @dev See {IERC1155-safeTransferFrom}.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 id,
-        uint256 amount,
-        bytes memory data
-    ) public virtual override {
+    function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes memory data)
+        public
+        virtual
+        override
+    {
         require(
             from == _msgSender() || isApprovedForAll(from, _msgSender()),
             "ERC1155: caller is not token owner nor approved"
@@ -843,13 +819,10 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
      * - If `to` refers to a smart contract, it must implement {IERC1155Receiver-onERC1155Received} and return the
      * acceptance magic value.
      */
-    function _safeTransferFrom(
-        address from,
-        address to,
-        uint256 id,
-        uint256 amount,
-        bytes memory data
-    ) internal virtual {
+    function _safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes memory data)
+        internal
+        virtual
+    {
         require(to != address(0), "ERC1155: transfer to the zero address");
 
         address operator = _msgSender();
@@ -949,12 +922,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
      * - If `to` refers to a smart contract, it must implement {IERC1155Receiver-onERC1155Received} and return the
      * acceptance magic value.
      */
-    function _mint(
-        address to,
-        uint256 id,
-        uint256 amount,
-        bytes memory data
-    ) internal virtual {
+    function _mint(address to, uint256 id, uint256 amount, bytes memory data) internal virtual {
         require(to != address(0), "ERC1155: mint to the zero address");
 
         address operator = _msgSender();
@@ -982,12 +950,10 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
      * - If `to` refers to a smart contract, it must implement {IERC1155Receiver-onERC1155BatchReceived} and return the
      * acceptance magic value.
      */
-    function _mintBatch(
-        address to,
-        uint256[] memory ids,
-        uint256[] memory amounts,
-        bytes memory data
-    ) internal virtual {
+    function _mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
+        internal
+        virtual
+    {
         require(to != address(0), "ERC1155: mint to the zero address");
         require(ids.length == amounts.length, "ERC1155: ids and amounts length mismatch");
 
@@ -1016,11 +982,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
      * - `from` cannot be the zero address.
      * - `from` must have at least `amount` tokens of token type `id`.
      */
-    function _burn(
-        address from,
-        uint256 id,
-        uint256 amount
-    ) internal virtual {
+    function _burn(address from, uint256 id, uint256 amount) internal virtual {
         require(from != address(0), "ERC1155: burn from the zero address");
 
         address operator = _msgSender();
@@ -1049,11 +1011,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
      *
      * - `ids` and `amounts` must have the same length.
      */
-    function _burnBatch(
-        address from,
-        uint256[] memory ids,
-        uint256[] memory amounts
-    ) internal virtual {
+    function _burnBatch(address from, uint256[] memory ids, uint256[] memory amounts) internal virtual {
         require(from != address(0), "ERC1155: burn from the zero address");
         require(ids.length == amounts.length, "ERC1155: ids and amounts length mismatch");
 
@@ -1082,11 +1040,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
      *
      * Emits an {ApprovalForAll} event.
      */
-    function _setApprovalForAll(
-        address owner,
-        address operator,
-        bool approved
-    ) internal virtual {
+    function _setApprovalForAll(address owner, address operator, bool approved) internal virtual {
         require(owner != operator, "ERC1155: setting approval status for self");
         _operatorApprovals[owner][operator] = approved;
         emit ApprovalForAll(owner, operator, approved);
@@ -1203,151 +1157,153 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
 }
 
 enum TokenStandard {
-  ERC20,
-  ERC721,
-  ERC1155
+    ERC20,
+    ERC721,
+    ERC1155
 }
 
 abstract contract FunctionRestrictable {
-  /// @custom:storage-location erc7201:ronin.bridge.FunctionRestrictable
-  struct FunctionalRestrictableStorage {
-    mapping(bytes4 fnSig => uint8 bitmap) _enumBitmap;
-  }
-
-  /// @dev Emit when a function is paused.
-  event Restricted(address indexed by, bytes4 indexed fnSig, uint8 enumBitmap);
-  /// @dev Emit when a function is unpaused.
-  event UnRestricted(address indexed by, bytes4 indexed fnSig);
-
-  /// @dev Error when the function is restricted for specific standard.
-  error ErrRestricted(bytes4 fnSig, TokenStandard standard);
-
-  /**
-   * @dev Modifier to check if the caller is authorized.
-   */
-  modifier onlyAuth() {
-    _requireAuth();
-    _;
-  }
-
-  /**
-   * @dev Restrict a specific function with standard bitmap.
-   *
-   * Requirement:
-   * - The caller must be authorized.
-   *
-   * Emits a {Restricted} event if `enumBitmap` is not 0.
-   * Emits a {UnRestricted} event if `enumBitmap` is 0.
-   *
-   * +-------------------------+---------+------------+------------+------------+------------+------------+---------+--------+-------+
-   * |          Case           | Decimal | Unused Bit | Unused Bit | Unused Bit | Unused Bit | Unused Bit | ERC1155 | ERC721 | ERC20 |
-   * +-------------------------+---------+------------+------------+------------+------------+------------+---------+--------+-------+
-   * | Allow All               |       0 |          0 |          0 |          0 |          0 |          0 |       0 |      0 |     0 |
-   * | Forbid ERC20            |       1 |          0 |          0 |          0 |          0 |          0 |       0 |      0 |     1 |
-   * | Forbid ERC721           |       2 |          0 |          0 |          0 |          0 |          0 |       0 |      1 |     0 |
-   * | Forbid ERC20 && ERC721  |       3 |          0 |          0 |          0 |          0 |          0 |       0 |      1 |     1 |
-   * | Forbid ERC1155 && ERC20 |       5 |          0 |          0 |          0 |          0 |          0 |       1 |      0 |     1 |
-   * | Forbid All              |     255 |          1 |          1 |          1 |          1 |          1 |       1 |      1 |     1 |
-   * | Forbid All              |       7 |          0 |          0 |          0 |          0 |          0 |       1 |      1 |     1 |
-   * +-------------------------+---------+------------+------------+------------+------------+------------+---------+--------+-------+
-   *
-   * @param fnSig The function signature to restrict.
-   * @param enumBitmap The bitmap of the standard to restrict.
-   */
-  function restrict(bytes4 fnSig, uint8 enumBitmap) external onlyAuth {
-    _restrict(fnSig, enumBitmap);
-  }
-
-  /**
-   * @dev Check if the function is restricted for specific standard.
-   *
-   * @param fnSig The function signature to check.
-   * @param standard The standard to check.
-   * @return yes True if the function is restricted for the specific standard.
-   */
-  function restricted(bytes4 fnSig, TokenStandard standard) public view returns (bool yes) {
-    yes = _getFunctionalRestrictable()._enumBitmap[fnSig] & _toBitmap(standard) != 0;
-  }
-
-  /**
-   * @dev Restrict a specific function with standard bitmap.
-   */
-  function _restrict(bytes4 fnSig, uint8 enumBitmap) internal {
-    _getFunctionalRestrictable()._enumBitmap[fnSig] = enumBitmap;
-
-    if (enumBitmap == 0) {
-      emit UnRestricted(msg.sender, fnSig);
-    } else {
-      emit Restricted(msg.sender, fnSig, enumBitmap);
+    /// @custom:storage-location erc7201:ronin.bridge.FunctionRestrictable
+    struct FunctionalRestrictableStorage {
+        mapping(bytes4 fnSig => uint8 bitmap) _enumBitmap;
     }
-  }
 
-  /**
-   * @dev Validate the caller is authorized.
-   */
-  function _requireAuth() internal virtual;
+    /// @dev Emit when a function is paused.
+    event Restricted(address indexed by, bytes4 indexed fnSig, uint8 enumBitmap);
+    /// @dev Emit when a function is unpaused.
+    event UnRestricted(address indexed by, bytes4 indexed fnSig);
 
-  /**
-   * @dev Require the function with specific `msg.sig` is not restricted for the specific standard.
-   */
-  function _requireNotRestricted(
-    TokenStandard standard
-  ) internal view {
-    require(!restricted(msg.sig, standard), ErrRestricted(msg.sig, standard));
-  }
+    /// @dev Error when the function is restricted for specific standard.
+    error ErrRestricted(bytes4 fnSig, TokenStandard standard);
 
-  /**
-   * @dev Convert the TokenStandard to bitmap.
-   */
-  function _toBitmap(
-    TokenStandard standard
-  ) internal pure returns (uint8) {
-    return uint8(1 << uint8(standard));
-  }
-
-  /**
-   * @dev Returns the storage pointer of the FunctionalRestrictableStorage struct.
-   */
-  function _getFunctionalRestrictable() private pure returns (FunctionalRestrictableStorage storage $) {
-    // value is equal to keccak256(abi.encode(uint256(keccak256("ronin.bridge.FunctionRestrictable")) - 1)) &
-    // ~bytes32(uint256(0xff))
-    bytes32 storageLoc = 0xa7959878b25ffc8190f7b5440888c97e9a819bbb4963604c213ae021e3145700;
-
-    assembly ("memory-safe") {
-      $.slot := storageLoc
+    /**
+     * @dev Modifier to check if the caller is authorized.
+     */
+    modifier onlyAuth() {
+        _requireAuth();
+        _;
     }
-  }
+
+    /**
+     * @dev Restrict a specific function with standard bitmap.
+     *
+     * Requirement:
+     * - The caller must be authorized.
+     *
+     * Emits a {Restricted} event if `enumBitmap` is not 0.
+     * Emits a {UnRestricted} event if `enumBitmap` is 0.
+     *
+     * +-------------------------+---------+------------+------------+------------+------------+------------+---------+--------+-------+
+     * |          Case           | Decimal | Unused Bit | Unused Bit | Unused Bit | Unused Bit | Unused Bit | ERC1155 | ERC721 | ERC20 |
+     * +-------------------------+---------+------------+------------+------------+------------+------------+---------+--------+-------+
+     * | Allow All               |       0 |          0 |          0 |          0 |          0 |          0 |       0 |      0 |     0 |
+     * | Forbid ERC20            |       1 |          0 |          0 |          0 |          0 |          0 |       0 |      0 |     1 |
+     * | Forbid ERC721           |       2 |          0 |          0 |          0 |          0 |          0 |       0 |      1 |     0 |
+     * | Forbid ERC20 && ERC721  |       3 |          0 |          0 |          0 |          0 |          0 |       0 |      1 |     1 |
+     * | Forbid ERC1155 && ERC20 |       5 |          0 |          0 |          0 |          0 |          0 |       1 |      0 |     1 |
+     * | Forbid All              |     255 |          1 |          1 |          1 |          1 |          1 |       1 |      1 |     1 |
+     * | Forbid All              |       7 |          0 |          0 |          0 |          0 |          0 |       1 |      1 |     1 |
+     * +-------------------------+---------+------------+------------+------------+------------+------------+---------+--------+-------+
+     *
+     * @param fnSig The function signature to restrict.
+     * @param enumBitmap The bitmap of the standard to restrict.
+     */
+    function restrict(bytes4 fnSig, uint8 enumBitmap) external onlyAuth {
+        _restrict(fnSig, enumBitmap);
+    }
+
+    /**
+     * @dev Check if the function is restricted for specific standard.
+     *
+     * @param fnSig The function signature to check.
+     * @param standard The standard to check.
+     * @return yes True if the function is restricted for the specific standard.
+     */
+    function restricted(bytes4 fnSig, TokenStandard standard) public view returns (bool yes) {
+        yes = _getFunctionalRestrictable()._enumBitmap[fnSig] & _toBitmap(standard) != 0;
+    }
+
+    /**
+     * @dev Restrict a specific function with standard bitmap.
+     */
+    function _restrict(bytes4 fnSig, uint8 enumBitmap) internal {
+        _getFunctionalRestrictable()._enumBitmap[fnSig] = enumBitmap;
+
+        if (enumBitmap == 0) {
+            emit UnRestricted(msg.sender, fnSig);
+        } else {
+            emit Restricted(msg.sender, fnSig, enumBitmap);
+        }
+    }
+
+    /**
+     * @dev Validate the caller is authorized.
+     */
+    function _requireAuth() internal virtual;
+
+    /**
+     * @dev Require the function with specific `msg.sig` is not restricted for the specific standard.
+     */
+    function _requireNotRestricted(TokenStandard standard) internal view {
+        require(!restricted(msg.sig, standard), ErrRestricted(msg.sig, standard));
+    }
+
+    /**
+     * @dev Convert the TokenStandard to bitmap.
+     */
+    function _toBitmap(TokenStandard standard) internal pure returns (uint8) {
+        return uint8(1 << uint8(standard));
+    }
+
+    /**
+     * @dev Returns the storage pointer of the FunctionalRestrictableStorage struct.
+     */
+    function _getFunctionalRestrictable() private pure returns (FunctionalRestrictableStorage storage $) {
+        // value is equal to keccak256(abi.encode(uint256(keccak256("ronin.bridge.FunctionRestrictable")) - 1)) &
+        // ~bytes32(uint256(0xff))
+        bytes32 storageLoc = 0xa7959878b25ffc8190f7b5440888c97e9a819bbb4963604c213ae021e3145700;
+
+        assembly ("memory-safe") {
+            $.slot := storageLoc
+        }
+    }
 }
 
 interface IQuorum {
-  /// @dev Emitted when the threshold is updated
-  event ThresholdUpdated(uint256 indexed nonce, uint256 indexed numerator, uint256 indexed denominator, uint256 previousNumerator, uint256 previousDenominator);
+    /// @dev Emitted when the threshold is updated
+    event ThresholdUpdated(
+        uint256 indexed nonce,
+        uint256 indexed numerator,
+        uint256 indexed denominator,
+        uint256 previousNumerator,
+        uint256 previousDenominator
+    );
 
-  /**
-   * @dev Returns the threshold.
-   */
-  function getThreshold() external view returns (uint256 _num, uint256 _denom);
+    /**
+     * @dev Returns the threshold.
+     */
+    function getThreshold() external view returns (uint256 _num, uint256 _denom);
 
-  /**
-   * @dev Checks whether the `_voteWeight` passes the threshold.
-   */
-  function checkThreshold(uint256 _voteWeight) external view returns (bool);
+    /**
+     * @dev Checks whether the `_voteWeight` passes the threshold.
+     */
+    function checkThreshold(uint256 _voteWeight) external view returns (bool);
 
-  /**
-   * @dev Returns the minimum vote weight to pass the threshold.
-   */
-  function minimumVoteWeight() external view returns (uint256);
+    /**
+     * @dev Returns the minimum vote weight to pass the threshold.
+     */
+    function minimumVoteWeight() external view returns (uint256);
 
-  /**
-   * @dev Sets the threshold.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   *
-   * Emits the `ThresholdUpdated` event.
-   *
-   */
-  function setThreshold(uint256 numerator, uint256 denominator) external;
+    /**
+     * @dev Sets the threshold.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     *
+     * Emits the `ThresholdUpdated` event.
+     *
+     */
+    function setThreshold(uint256 numerator, uint256 denominator) external;
 }
 
 /**
@@ -1357,128 +1313,126 @@ interface IQuorum {
 error ErrInvalidThreshold(bytes4 msgSig);
 
 abstract contract GatewayV3 is HasProxyAdmin, Pausable, FunctionRestrictable, IQuorum {
-  /**
-   * @dev Error indicating that `_minimumVoteWeight` is returning 0.
-   */
-  error ErrNullMinVoteWeightProvided(bytes4 msgSig);
+    /**
+     * @dev Error indicating that `_minimumVoteWeight` is returning 0.
+     */
+    error ErrNullMinVoteWeightProvided(bytes4 msgSig);
 
-  uint256 internal _num;
-  uint256 internal _denom;
+    uint256 internal _num;
+    uint256 internal _denom;
 
-  address private ______deprecated;
-  uint256 public nonce;
+    address private ______deprecated;
+    uint256 public nonce;
 
-  address public emergencyPauser;
+    address public emergencyPauser;
 
-  /**
-   * @dev This empty reserved space is put in place to allow future versions to add new
-   * variables without shifting down storage in the inheritance chain.
-   */
-  uint256[49] private ______gap;
+    /**
+     * @dev This empty reserved space is put in place to allow future versions to add new
+     * variables without shifting down storage in the inheritance chain.
+     */
+    uint256[49] private ______gap;
 
-  /**
-   * @dev Grant emergency pauser role for `_addr`.
-   */
-  function setEmergencyPauser(
-    address _addr
-  ) external onlyProxyAdmin {
-    emergencyPauser = _addr;
-  }
-
-  /**
-   * @inheritdoc IQuorum
-   */
-  function getThreshold() external view virtual returns (uint256 num_, uint256 denom_) {
-    return (_num, _denom);
-  }
-
-  /**
-   * @inheritdoc IQuorum
-   */
-  function checkThreshold(
-    uint256 _voteWeight
-  ) external view virtual returns (bool) {
-    return _voteWeight * _denom >= _num * _getTotalWeight();
-  }
-
-  /**
-   * @inheritdoc IQuorum
-   */
-  function setThreshold(uint256 _numerator, uint256 _denominator) external virtual onlyProxyAdmin {
-    return _setThreshold(_numerator, _denominator);
-  }
-
-  /**
-   * @dev Triggers paused state.
-   */
-  function pause() external {
-    _requireAuth();
-    _pause();
-  }
-
-  /**
-   * @dev Triggers unpaused state.
-   */
-  function unpause() external {
-    _requireAuth();
-    _unpause();
-  }
-
-  /**
-   * @inheritdoc IQuorum
-   */
-  function minimumVoteWeight() public view virtual returns (uint256) {
-    return _minimumVoteWeight(_getTotalWeight());
-  }
-
-  /**
-   * @dev Sets threshold and returns the old one.
-   *
-   * Emits the `ThresholdUpdated` event.
-   *
-   */
-  function _setThreshold(uint256 num, uint256 denom) internal virtual {
-    if (num > denom || denom == 0 || num == 0) revert ErrInvalidThreshold(msg.sig);
-
-    uint256 prevNum = _num;
-    uint256 prevDenom = _denom;
-
-    _num = num;
-    _denom = denom;
-
-    unchecked {
-      emit ThresholdUpdated(nonce++, num, denom, prevNum, prevDenom);
+    /**
+     * @dev Grant emergency pauser role for `_addr`.
+     */
+    function setEmergencyPauser(address _addr) external onlyProxyAdmin {
+        emergencyPauser = _addr;
     }
-  }
 
-  /**
-   * @dev Returns minimum vote weight.
-   */
-  function _minimumVoteWeight(
-    uint256 _totalWeight
-  ) internal view virtual returns (uint256 minVoteWeight) {
-    minVoteWeight = (_num * _totalWeight + _denom - 1) / _denom;
-    if (minVoteWeight == 0) revert ErrNullMinVoteWeightProvided(msg.sig);
-  }
-
-  /**
-   * @dev Internal method to check method caller.
-   *
-   * Requirements:
-   *
-   * - The method caller must be admin or pauser.
-   *
-   */
-  function _requireAuth() internal view override {
-    if (!(msg.sender == _getProxyAdmin() || msg.sender == emergencyPauser)) {
-      revert ErrUnauthorized(msg.sig, RoleAccess.ADMIN);
+    /**
+     * @inheritdoc IQuorum
+     */
+    function getThreshold() external view virtual returns (uint256 num_, uint256 denom_) {
+        return (_num, _denom);
     }
-  }
 
-  /**
-   * @dev Returns the total weight.
-   */
-  function _getTotalWeight() internal view virtual returns (uint256);
+    /**
+     * @inheritdoc IQuorum
+     */
+    function checkThreshold(uint256 _voteWeight) external view virtual returns (bool) {
+        return _voteWeight * _denom >= _num * _getTotalWeight();
+    }
+
+    /**
+     * @inheritdoc IQuorum
+     */
+    function setThreshold(uint256 _numerator, uint256 _denominator) external virtual onlyProxyAdmin {
+        return _setThreshold(_numerator, _denominator);
+    }
+
+    /**
+     * @dev Triggers paused state.
+     */
+    function pause() external {
+        _requireAuth();
+        _pause();
+    }
+
+    /**
+     * @dev Triggers unpaused state.
+     */
+    function unpause() external {
+        _requireAuth();
+        _unpause();
+    }
+
+    /**
+     * @inheritdoc IQuorum
+     */
+    function minimumVoteWeight() public view virtual returns (uint256) {
+        return _minimumVoteWeight(_getTotalWeight());
+    }
+
+    /**
+     * @dev Sets threshold and returns the old one.
+     *
+     * Emits the `ThresholdUpdated` event.
+     *
+     */
+    function _setThreshold(uint256 num, uint256 denom) internal virtual {
+        if (num > denom || denom == 0 || num == 0) {
+            revert ErrInvalidThreshold(msg.sig);
+        }
+
+        uint256 prevNum = _num;
+        uint256 prevDenom = _denom;
+
+        _num = num;
+        _denom = denom;
+
+        unchecked {
+            emit ThresholdUpdated(nonce++, num, denom, prevNum, prevDenom);
+        }
+    }
+
+    /**
+     * @dev Returns minimum vote weight.
+     */
+    function _minimumVoteWeight(uint256 _totalWeight) internal view virtual returns (uint256 minVoteWeight) {
+        minVoteWeight = (_num * _totalWeight + _denom - 1) / _denom;
+        if (minVoteWeight == 0) {
+            revert ErrNullMinVoteWeightProvided(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Internal method to check method caller.
+     *
+     * Requirements:
+     *
+     * - The method caller must be admin or pauser.
+     *
+     */
+    function _requireAuth() internal view override {
+        if (!(msg.sender == _getProxyAdmin() || msg.sender == emergencyPauser)) {
+            revert ErrUnauthorized(msg.sig, RoleAccess.ADMIN);
+        }
+    }
+
+    /**
+     * @dev Returns the total weight.
+     */
+    function _getTotalWeight() internal view virtual returns (uint256);
 }
 
 /**
@@ -1493,331 +1447,380 @@ error ErrEmptyArray();
 error ErrLengthMismatch(bytes4 msgSig);
 
 abstract contract WithdrawalLimitation is GatewayV3 {
-  /// @dev Error of invalid percentage.
-  error ErrInvalidPercentage();
-  /// @dev Error thrown when the high-tier vote weight threshold is `0`.
-  error ErrNullHighTierVoteWeightProvided(bytes4 msgSig);
+    /// @dev Error of invalid percentage.
+    error ErrInvalidPercentage();
+    /// @dev Error thrown when the high-tier vote weight threshold is `0`.
+    error ErrNullHighTierVoteWeightProvided(bytes4 msgSig);
 
-  /// @dev Emitted when the high-tier vote weight threshold is updated
-  event HighTierVoteWeightThresholdUpdated(
-    uint256 indexed nonce, uint256 indexed numerator, uint256 indexed denominator, uint256 previousNumerator, uint256 previousDenominator
-  );
-  /// @dev Emitted when the thresholds for high-tier withdrawals that requires high-tier vote weights are updated
-  event HighTierThresholdsUpdated(address[] tokens, uint256[] thresholds);
-  /// @dev Emitted when the thresholds for locked withdrawals are updated
-  event LockedThresholdsUpdated(address[] tokens, uint256[] thresholds);
-  /// @dev Emitted when the fee percentages to unlock withdraw are updated
-  event UnlockFeePercentagesUpdated(address[] tokens, uint256[] percentages);
-  /// @dev Emitted when the daily limit thresholds are updated
-  event DailyWithdrawalLimitsUpdated(address[] tokens, uint256[] limits);
+    /// @dev Emitted when the high-tier vote weight threshold is updated
+    event HighTierVoteWeightThresholdUpdated(
+        uint256 indexed nonce,
+        uint256 indexed numerator,
+        uint256 indexed denominator,
+        uint256 previousNumerator,
+        uint256 previousDenominator
+    );
+    /// @dev Emitted when the thresholds for high-tier withdrawals that requires high-tier vote weights are updated
+    event HighTierThresholdsUpdated(address[] tokens, uint256[] thresholds);
+    /// @dev Emitted when the thresholds for locked withdrawals are updated
+    event LockedThresholdsUpdated(address[] tokens, uint256[] thresholds);
+    /// @dev Emitted when the fee percentages to unlock withdraw are updated
+    event UnlockFeePercentagesUpdated(address[] tokens, uint256[] percentages);
+    /// @dev Emitted when the daily limit thresholds are updated
+    event DailyWithdrawalLimitsUpdated(address[] tokens, uint256[] limits);
 
-  uint256 public constant _MAX_PERCENTAGE = 1_000_000;
+    uint256 public constant _MAX_PERCENTAGE = 1_000_000;
 
-  uint256 internal _highTierVWNum;
-  uint256 internal _highTierVWDenom;
+    uint256 internal _highTierVWNum;
+    uint256 internal _highTierVWDenom;
 
-  /// @dev Mapping from mainchain token => the amount thresholds for high-tier withdrawals that requires high-tier vote weights
-  mapping(address => uint256) public highTierThreshold;
-  /// @dev Mapping from mainchain token => the amount thresholds to lock withdrawal
-  mapping(address => uint256) public lockedThreshold;
-  /// @dev Mapping from mainchain token => unlock fee percentages for unlocker
-  /// @notice Values 0-1,000,000 map to 0%-100%
-  mapping(address => uint256) public unlockFeePercentages;
-  /// @dev Mapping from mainchain token => daily limit amount for withdrawal
-  mapping(address => uint256) public dailyWithdrawalLimit;
-  /// @dev Mapping from token address => today withdrawal amount
-  mapping(address => uint256) public lastSyncedWithdrawal;
-  /// @dev Mapping from token address => last date synced to record the `lastSyncedWithdrawal`
-  mapping(address => uint256) public lastDateSynced;
+    /// @dev Mapping from mainchain token => the amount thresholds for high-tier withdrawals that requires high-tier vote weights
+    mapping(address => uint256) public highTierThreshold;
+    /// @dev Mapping from mainchain token => the amount thresholds to lock withdrawal
+    mapping(address => uint256) public lockedThreshold;
+    /// @dev Mapping from mainchain token => unlock fee percentages for unlocker
+    /// @notice Values 0-1,000,000 map to 0%-100%
+    mapping(address => uint256) public unlockFeePercentages;
+    /// @dev Mapping from mainchain token => daily limit amount for withdrawal
+    mapping(address => uint256) public dailyWithdrawalLimit;
+    /// @dev Mapping from token address => today withdrawal amount
+    mapping(address => uint256) public lastSyncedWithdrawal;
+    /// @dev Mapping from token address => last date synced to record the `lastSyncedWithdrawal`
+    mapping(address => uint256) public lastDateSynced;
 
-  /**
-   * @dev This empty reserved space is put in place to allow future versions to add new
-   * variables without shifting down storage in the inheritance chain.
-   */
-  uint256[50] private ______gap;
+    /**
+     * @dev This empty reserved space is put in place to allow future versions to add new
+     * variables without shifting down storage in the inheritance chain.
+     */
+    uint256[50] private ______gap;
 
-  /**
-   * @dev Override `GatewayV3-setThreshold`.
-   *
-   * Requirements:
-   * - The high-tier vote weight threshold must equal to or larger than the normal threshold.
-   *
-   */
-  function setThreshold(uint256 num, uint256 denom) external virtual override onlyProxyAdmin {
-    _setThreshold(num, denom);
-    _verifyThresholds();
-  }
-
-  /**
-   * @dev Returns the high-tier vote weight threshold.
-   */
-  function getHighTierVoteWeightThreshold() external view virtual returns (uint256, uint256) {
-    return (_highTierVWNum, _highTierVWDenom);
-  }
-
-  /**
-   * @dev Checks whether the `_voteWeight` passes the high-tier vote weight threshold.
-   */
-  function checkHighTierVoteWeightThreshold(uint256 _voteWeight) external view virtual returns (bool) {
-    return _voteWeight * _highTierVWDenom >= _highTierVWNum * _getTotalWeight();
-  }
-
-  /**
-   * @dev Sets high-tier vote weight threshold and returns the old one.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   * - The high-tier vote weight threshold must equal to or larger than the normal threshold.
-   *
-   * Emits the `HighTierVoteWeightThresholdUpdated` event.
-   *
-   */
-  function setHighTierVoteWeightThreshold(
-    uint256 _numerator,
-    uint256 _denominator
-  ) external virtual onlyProxyAdmin returns (uint256 _previousNum, uint256 _previousDenom) {
-    (_previousNum, _previousDenom) = _setHighTierVoteWeightThreshold(_numerator, _denominator);
-    _verifyThresholds();
-  }
-
-  /**
-   * @dev Sets the thresholds for high-tier withdrawals that requires high-tier vote weights.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   * - The arrays have the same length and its length larger than 0.
-   *
-   * Emits the `HighTierThresholdsUpdated` event.
-   *
-   */
-  function setHighTierThresholds(address[] calldata _tokens, uint256[] calldata _thresholds) external virtual onlyProxyAdmin {
-    if (_tokens.length == 0) revert ErrEmptyArray();
-    _setHighTierThresholds(_tokens, _thresholds);
-  }
-
-  /**
-   * @dev Sets the amount thresholds to lock withdrawal.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   * - The arrays have the same length and its length larger than 0.
-   *
-   * Emits the `LockedThresholdsUpdated` event.
-   *
-   */
-  function setLockedThresholds(address[] calldata _tokens, uint256[] calldata _thresholds) external virtual onlyProxyAdmin {
-    if (_tokens.length == 0) revert ErrEmptyArray();
-    _setLockedThresholds(_tokens, _thresholds);
-  }
-
-  /**
-   * @dev Sets fee percentages to unlock withdrawal.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   * - The arrays have the same length and its length larger than 0.
-   *
-   * Emits the `UnlockFeePercentagesUpdated` event.
-   *
-   */
-  function setUnlockFeePercentages(address[] calldata _tokens, uint256[] calldata _percentages) external virtual onlyProxyAdmin {
-    if (_tokens.length == 0) revert ErrEmptyArray();
-    _setUnlockFeePercentages(_tokens, _percentages);
-  }
-
-  /**
-   * @dev Sets daily limit amounts for the withdrawals.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   * - The arrays have the same length and its length larger than 0.
-   *
-   * Emits the `DailyWithdrawalLimitsUpdated` event.
-   *
-   */
-  function setDailyWithdrawalLimits(address[] calldata _tokens, uint256[] calldata _limits) external virtual onlyProxyAdmin {
-    if (_tokens.length == 0) revert ErrEmptyArray();
-    _setDailyWithdrawalLimits(_tokens, _limits);
-  }
-
-  /**
-   * @dev Checks whether the withdrawal reaches the limitation.
-   */
-  function reachedWithdrawalLimit(address _token, uint256 _quantity) external view virtual returns (bool) {
-    return _reachedWithdrawalLimit(_token, _quantity);
-  }
-
-  /**
-   * @dev Sets high-tier vote weight threshold and returns the old one.
-   *
-   * Emits the `HighTierVoteWeightThresholdUpdated` event.
-   *
-   */
-  function _setHighTierVoteWeightThreshold(uint256 _numerator, uint256 _denominator) internal returns (uint256 _previousNum, uint256 _previousDenom) {
-    if (_numerator > _denominator || _numerator == 0 || _denominator == 0) revert ErrInvalidThreshold(msg.sig);
-
-    _previousNum = _highTierVWNum;
-    _previousDenom = _highTierVWDenom;
-    _highTierVWNum = _numerator;
-    _highTierVWDenom = _denominator;
-
-    unchecked {
-      emit HighTierVoteWeightThresholdUpdated(nonce++, _numerator, _denominator, _previousNum, _previousDenom);
-    }
-  }
-
-  /**
-   * @dev Sets the thresholds for high-tier withdrawals that requires high-tier vote weights.
-   *
-   * Requirements:
-   * - The array lengths are equal.
-   *
-   * Emits the `HighTierThresholdsUpdated` event.
-   *
-   */
-  function _setHighTierThresholds(address[] calldata _tokens, uint256[] calldata _thresholds) internal virtual {
-    if (_tokens.length != _thresholds.length) revert ErrLengthMismatch(msg.sig);
-
-    for (uint256 _i; _i < _tokens.length;) {
-      highTierThreshold[_tokens[_i]] = _thresholds[_i];
-
-      unchecked {
-        ++_i;
-      }
-    }
-    emit HighTierThresholdsUpdated(_tokens, _thresholds);
-  }
-
-  /**
-   * @dev Sets the amount thresholds to lock withdrawal.
-   *
-   * Requirements:
-   * - The array lengths are equal.
-   *
-   * Emits the `LockedThresholdsUpdated` event.
-   *
-   */
-  function _setLockedThresholds(address[] calldata _tokens, uint256[] calldata _thresholds) internal virtual {
-    if (_tokens.length != _thresholds.length) revert ErrLengthMismatch(msg.sig);
-
-    for (uint256 _i; _i < _tokens.length;) {
-      lockedThreshold[_tokens[_i]] = _thresholds[_i];
-
-      unchecked {
-        ++_i;
-      }
-    }
-    emit LockedThresholdsUpdated(_tokens, _thresholds);
-  }
-
-  /**
-   * @dev Sets fee percentages to unlock withdrawal.
-   *
-   * Requirements:
-   * - The array lengths are equal.
-   * - The percentage is equal to or less than 100_000.
-   *
-   * Emits the `UnlockFeePercentagesUpdated` event.
-   *
-   */
-  function _setUnlockFeePercentages(address[] calldata _tokens, uint256[] calldata _percentages) internal virtual {
-    if (_tokens.length != _percentages.length) revert ErrLengthMismatch(msg.sig);
-
-    for (uint256 _i; _i < _tokens.length;) {
-      if (_percentages[_i] > _MAX_PERCENTAGE) revert ErrInvalidPercentage();
-
-      unlockFeePercentages[_tokens[_i]] = _percentages[_i];
-
-      unchecked {
-        ++_i;
-      }
-    }
-    emit UnlockFeePercentagesUpdated(_tokens, _percentages);
-  }
-
-  /**
-   * @dev Sets daily limit amounts for the withdrawals.
-   *
-   * Requirements:
-   * - The array lengths are equal.
-   *
-   * Emits the `DailyWithdrawalLimitsUpdated` event.
-   *
-   */
-  function _setDailyWithdrawalLimits(address[] calldata _tokens, uint256[] calldata _limits) internal virtual {
-    if (_tokens.length != _limits.length) revert ErrLengthMismatch(msg.sig);
-
-    for (uint256 _i; _i < _tokens.length;) {
-      dailyWithdrawalLimit[_tokens[_i]] = _limits[_i];
-
-      unchecked {
-        ++_i;
-      }
-    }
-    emit DailyWithdrawalLimitsUpdated(_tokens, _limits);
-  }
-
-  /**
-   * @dev Checks whether the withdrawal reaches the daily limitation.
-   *
-   * Requirements:
-   * - The daily withdrawal threshold should not apply for locked withdrawals.
-   *
-   */
-  function _reachedWithdrawalLimit(address _token, uint256 _quantity) internal view virtual returns (bool) {
-    if (_lockedWithdrawalRequest(_token, _quantity)) {
-      return false;
+    /**
+     * @dev Override `GatewayV3-setThreshold`.
+     *
+     * Requirements:
+     * - The high-tier vote weight threshold must equal to or larger than the normal threshold.
+     *
+     */
+    function setThreshold(uint256 num, uint256 denom) external virtual override onlyProxyAdmin {
+        _setThreshold(num, denom);
+        _verifyThresholds();
     }
 
-    uint256 _currentDate = block.timestamp / 1 days;
-    if (_currentDate > lastDateSynced[_token]) {
-      return dailyWithdrawalLimit[_token] <= _quantity;
-    } else {
-      return dailyWithdrawalLimit[_token] <= lastSyncedWithdrawal[_token] + _quantity;
+    /**
+     * @dev Returns the high-tier vote weight threshold.
+     */
+    function getHighTierVoteWeightThreshold() external view virtual returns (uint256, uint256) {
+        return (_highTierVWNum, _highTierVWDenom);
     }
-  }
 
-  /**
-   * @dev Record withdrawal token.
-   */
-  function _recordWithdrawal(address _token, uint256 _quantity) internal virtual {
-    uint256 _currentDate = block.timestamp / 1 days;
-    if (_currentDate > lastDateSynced[_token]) {
-      lastDateSynced[_token] = _currentDate;
-      lastSyncedWithdrawal[_token] = _quantity;
-    } else {
-      lastSyncedWithdrawal[_token] += _quantity;
+    /**
+     * @dev Checks whether the `_voteWeight` passes the high-tier vote weight threshold.
+     */
+    function checkHighTierVoteWeightThreshold(uint256 _voteWeight) external view virtual returns (bool) {
+        return _voteWeight * _highTierVWDenom >= _highTierVWNum * _getTotalWeight();
     }
-  }
 
-  /**
-   * @dev Returns whether the withdrawal request is locked or not.
-   */
-  function _lockedWithdrawalRequest(address _token, uint256 _quantity) internal view virtual returns (bool) {
-    return lockedThreshold[_token] <= _quantity;
-  }
+    /**
+     * @dev Sets high-tier vote weight threshold and returns the old one.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     * - The high-tier vote weight threshold must equal to or larger than the normal threshold.
+     *
+     * Emits the `HighTierVoteWeightThresholdUpdated` event.
+     *
+     */
+    function setHighTierVoteWeightThreshold(uint256 _numerator, uint256 _denominator)
+        external
+        virtual
+        onlyProxyAdmin
+        returns (uint256 _previousNum, uint256 _previousDenom)
+    {
+        (_previousNum, _previousDenom) = _setHighTierVoteWeightThreshold(_numerator, _denominator);
+        _verifyThresholds();
+    }
 
-  /**
-   * @dev Computes fee percentage.
-   */
-  function _computeFeePercentage(uint256 _amount, uint256 _percentage) internal view virtual returns (uint256) {
-    return (_amount * _percentage) / _MAX_PERCENTAGE;
-  }
+    /**
+     * @dev Sets the thresholds for high-tier withdrawals that requires high-tier vote weights.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     * - The arrays have the same length and its length larger than 0.
+     *
+     * Emits the `HighTierThresholdsUpdated` event.
+     *
+     */
+    function setHighTierThresholds(address[] calldata _tokens, uint256[] calldata _thresholds)
+        external
+        virtual
+        onlyProxyAdmin
+    {
+        if (_tokens.length == 0) {
+            revert ErrEmptyArray();
+        }
+        _setHighTierThresholds(_tokens, _thresholds);
+    }
 
-  /**
-   * @dev Returns high-tier vote weight.
-   */
-  function _highTierVoteWeight(uint256 _totalWeight) internal view virtual returns (uint256 highTierVW) {
-    highTierVW = (_highTierVWNum * _totalWeight + _highTierVWDenom - 1) / _highTierVWDenom;
-    if (highTierVW == 0) revert ErrNullHighTierVoteWeightProvided(msg.sig);
-  }
+    /**
+     * @dev Sets the amount thresholds to lock withdrawal.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     * - The arrays have the same length and its length larger than 0.
+     *
+     * Emits the `LockedThresholdsUpdated` event.
+     *
+     */
+    function setLockedThresholds(address[] calldata _tokens, uint256[] calldata _thresholds)
+        external
+        virtual
+        onlyProxyAdmin
+    {
+        if (_tokens.length == 0) {
+            revert ErrEmptyArray();
+        }
+        _setLockedThresholds(_tokens, _thresholds);
+    }
 
-  /**
-   * @dev Validates whether the high-tier vote weight threshold is larger than the normal threshold.
-   */
-  function _verifyThresholds() internal view {
-    if (_num * _highTierVWDenom > _highTierVWNum * _denom) revert ErrInvalidThreshold(msg.sig);
-  }
+    /**
+     * @dev Sets fee percentages to unlock withdrawal.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     * - The arrays have the same length and its length larger than 0.
+     *
+     * Emits the `UnlockFeePercentagesUpdated` event.
+     *
+     */
+    function setUnlockFeePercentages(address[] calldata _tokens, uint256[] calldata _percentages)
+        external
+        virtual
+        onlyProxyAdmin
+    {
+        if (_tokens.length == 0) {
+            revert ErrEmptyArray();
+        }
+        _setUnlockFeePercentages(_tokens, _percentages);
+    }
+
+    /**
+     * @dev Sets daily limit amounts for the withdrawals.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     * - The arrays have the same length and its length larger than 0.
+     *
+     * Emits the `DailyWithdrawalLimitsUpdated` event.
+     *
+     */
+    function setDailyWithdrawalLimits(address[] calldata _tokens, uint256[] calldata _limits)
+        external
+        virtual
+        onlyProxyAdmin
+    {
+        if (_tokens.length == 0) {
+            revert ErrEmptyArray();
+        }
+        _setDailyWithdrawalLimits(_tokens, _limits);
+    }
+
+    /**
+     * @dev Checks whether the withdrawal reaches the limitation.
+     */
+    function reachedWithdrawalLimit(address _token, uint256 _quantity) external view virtual returns (bool) {
+        return _reachedWithdrawalLimit(_token, _quantity);
+    }
+
+    /**
+     * @dev Sets high-tier vote weight threshold and returns the old one.
+     *
+     * Emits the `HighTierVoteWeightThresholdUpdated` event.
+     *
+     */
+    function _setHighTierVoteWeightThreshold(uint256 _numerator, uint256 _denominator)
+        internal
+        returns (uint256 _previousNum, uint256 _previousDenom)
+    {
+        if (_numerator > _denominator || _numerator == 0 || _denominator == 0) {
+            revert ErrInvalidThreshold(msg.sig);
+        }
+
+        _previousNum = _highTierVWNum;
+        _previousDenom = _highTierVWDenom;
+        _highTierVWNum = _numerator;
+        _highTierVWDenom = _denominator;
+
+        unchecked {
+            emit HighTierVoteWeightThresholdUpdated(nonce++, _numerator, _denominator, _previousNum, _previousDenom);
+        }
+    }
+
+    /**
+     * @dev Sets the thresholds for high-tier withdrawals that requires high-tier vote weights.
+     *
+     * Requirements:
+     * - The array lengths are equal.
+     *
+     * Emits the `HighTierThresholdsUpdated` event.
+     *
+     */
+    function _setHighTierThresholds(address[] calldata _tokens, uint256[] calldata _thresholds) internal virtual {
+        if (_tokens.length != _thresholds.length) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+
+        for (uint256 _i; _i < _tokens.length;) {
+            highTierThreshold[_tokens[_i]] = _thresholds[_i];
+
+            unchecked {
+                ++_i;
+            }
+        }
+        emit HighTierThresholdsUpdated(_tokens, _thresholds);
+    }
+
+    /**
+     * @dev Sets the amount thresholds to lock withdrawal.
+     *
+     * Requirements:
+     * - The array lengths are equal.
+     *
+     * Emits the `LockedThresholdsUpdated` event.
+     *
+     */
+    function _setLockedThresholds(address[] calldata _tokens, uint256[] calldata _thresholds) internal virtual {
+        if (_tokens.length != _thresholds.length) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+
+        for (uint256 _i; _i < _tokens.length;) {
+            lockedThreshold[_tokens[_i]] = _thresholds[_i];
+
+            unchecked {
+                ++_i;
+            }
+        }
+        emit LockedThresholdsUpdated(_tokens, _thresholds);
+    }
+
+    /**
+     * @dev Sets fee percentages to unlock withdrawal.
+     *
+     * Requirements:
+     * - The array lengths are equal.
+     * - The percentage is equal to or less than 100_000.
+     *
+     * Emits the `UnlockFeePercentagesUpdated` event.
+     *
+     */
+    function _setUnlockFeePercentages(address[] calldata _tokens, uint256[] calldata _percentages) internal virtual {
+        if (_tokens.length != _percentages.length) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+
+        for (uint256 _i; _i < _tokens.length;) {
+            if (_percentages[_i] > _MAX_PERCENTAGE) {
+                revert ErrInvalidPercentage();
+            }
+
+            unlockFeePercentages[_tokens[_i]] = _percentages[_i];
+
+            unchecked {
+                ++_i;
+            }
+        }
+        emit UnlockFeePercentagesUpdated(_tokens, _percentages);
+    }
+
+    /**
+     * @dev Sets daily limit amounts for the withdrawals.
+     *
+     * Requirements:
+     * - The array lengths are equal.
+     *
+     * Emits the `DailyWithdrawalLimitsUpdated` event.
+     *
+     */
+    function _setDailyWithdrawalLimits(address[] calldata _tokens, uint256[] calldata _limits) internal virtual {
+        if (_tokens.length != _limits.length) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+
+        for (uint256 _i; _i < _tokens.length;) {
+            dailyWithdrawalLimit[_tokens[_i]] = _limits[_i];
+
+            unchecked {
+                ++_i;
+            }
+        }
+        emit DailyWithdrawalLimitsUpdated(_tokens, _limits);
+    }
+
+    /**
+     * @dev Checks whether the withdrawal reaches the daily limitation.
+     *
+     * Requirements:
+     * - The daily withdrawal threshold should not apply for locked withdrawals.
+     *
+     */
+    function _reachedWithdrawalLimit(address _token, uint256 _quantity) internal view virtual returns (bool) {
+        if (_lockedWithdrawalRequest(_token, _quantity)) {
+            return false;
+        }
+
+        uint256 _currentDate = block.timestamp / 1 days;
+        if (_currentDate > lastDateSynced[_token]) {
+            return dailyWithdrawalLimit[_token] <= _quantity;
+        } else {
+            return dailyWithdrawalLimit[_token] <= lastSyncedWithdrawal[_token] + _quantity;
+        }
+    }
+
+    /**
+     * @dev Record withdrawal token.
+     */
+    function _recordWithdrawal(address _token, uint256 _quantity) internal virtual {
+        uint256 _currentDate = block.timestamp / 1 days;
+        if (_currentDate > lastDateSynced[_token]) {
+            lastDateSynced[_token] = _currentDate;
+            lastSyncedWithdrawal[_token] = _quantity;
+        } else {
+            lastSyncedWithdrawal[_token] += _quantity;
+        }
+    }
+
+    /**
+     * @dev Returns whether the withdrawal request is locked or not.
+     */
+    function _lockedWithdrawalRequest(address _token, uint256 _quantity) internal view virtual returns (bool) {
+        return lockedThreshold[_token] <= _quantity;
+    }
+
+    /**
+     * @dev Computes fee percentage.
+     */
+    function _computeFeePercentage(uint256 _amount, uint256 _percentage) internal view virtual returns (uint256) {
+        return (_amount * _percentage) / _MAX_PERCENTAGE;
+    }
+
+    /**
+     * @dev Returns high-tier vote weight.
+     */
+    function _highTierVoteWeight(uint256 _totalWeight) internal view virtual returns (uint256 highTierVW) {
+        highTierVW = (_highTierVWNum * _totalWeight + _highTierVWDenom - 1) / _highTierVWDenom;
+        if (highTierVW == 0) {
+            revert ErrNullHighTierVoteWeightProvided(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Validates whether the high-tier vote weight threshold is larger than the normal threshold.
+     */
+    function _verifyThresholds() internal view {
+        if (_num * _highTierVWDenom > _highTierVWNum * _denom) {
+            revert ErrInvalidThreshold(msg.sig);
+        }
+    }
 }
 
 /**
@@ -2810,40 +2813,38 @@ abstract contract ERC1155Receiver is ERC165, IERC1155Receiver {
  * @dev _Available since v3.1._
  */
 contract ERC1155Holder is ERC1155Receiver {
-    function onERC1155Received(
-        address,
-        address,
-        uint256,
-        uint256,
-        bytes memory
-    ) public virtual override returns (bytes4) {
+    function onERC1155Received(address, address, uint256, uint256, bytes memory)
+        public
+        virtual
+        override
+        returns (bytes4)
+    {
         return this.onERC1155Received.selector;
     }
 
-    function onERC1155BatchReceived(
-        address,
-        address,
-        uint256[] memory,
-        uint256[] memory,
-        bytes memory
-    ) public virtual override returns (bytes4) {
+    function onERC1155BatchReceived(address, address, uint256[] memory, uint256[] memory, bytes memory)
+        public
+        virtual
+        override
+        returns (bytes4)
+    {
         return this.onERC1155BatchReceived.selector;
     }
 }
 
 interface SignatureConsumer {
-  struct Signature {
-    uint8 v;
-    bytes32 r;
-    bytes32 s;
-  }
+    struct Signature {
+        uint8 v;
+        bytes32 r;
+        bytes32 s;
+    }
 }
 
 interface MappedTokenConsumer {
-  struct MappedToken {
-    TokenStandard erc;
-    address tokenAddr;
-  }
+    struct MappedToken {
+        TokenStandard erc;
+        address tokenAddr;
+    }
 }
 
 /**
@@ -2941,11 +2942,7 @@ library ECDSA {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address, RecoverError) {
         bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
         uint8 v = uint8((uint256(vs) >> 255) + 27);
         return tryRecover(hash, v, r, s);
@@ -2956,11 +2953,7 @@ library ECDSA {
      *
      * _Available since v4.2._
      */
-    function recover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
         _throwError(error);
         return recovered;
@@ -2972,12 +2965,7 @@ library ECDSA {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address, RecoverError) {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -3007,12 +2995,7 @@ library ECDSA {
      * @dev Overload of {ECDSA-recover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function recover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
         _throwError(error);
         return recovered;
@@ -3059,37 +3042,37 @@ library ECDSA {
 }
 
 struct TokenOwner {
-  address addr;
-  address tokenAddr;
-  uint256 chainId;
+    address addr;
+    address tokenAddr;
+    uint256 chainId;
 }
 
 library LibTokenOwner {
-  // keccak256("TokenOwner(address addr,address tokenAddr,uint256 chainId)");
-  bytes32 public constant OWNER_TYPE_HASH = 0x353bdd8d69b9e3185b3972e08b03845c0c14a21a390215302776a7a34b0e8764;
+    // keccak256("TokenOwner(address addr,address tokenAddr,uint256 chainId)");
+    bytes32 public constant OWNER_TYPE_HASH = 0x353bdd8d69b9e3185b3972e08b03845c0c14a21a390215302776a7a34b0e8764;
 
-  /**
-   * @dev Returns ownership struct hash.
-   */
-  function hash(TokenOwner memory owner) internal pure returns (bytes32 digest) {
-    // keccak256(abi.encode(OWNER_TYPE_HASH, owner.addr, owner.tokenAddr, owner.chainId))
-    assembly ("memory-safe") {
-      let ptr := mload(0x40)
-      mstore(ptr, OWNER_TYPE_HASH)
-      mstore(add(ptr, 0x20), mload(owner)) // owner.addr
-      mstore(add(ptr, 0x40), mload(add(owner, 0x20))) // owner.tokenAddr
-      mstore(add(ptr, 0x60), mload(add(owner, 0x40))) // owner.chainId
-      digest := keccak256(ptr, 0x80)
+    /**
+     * @dev Returns ownership struct hash.
+     */
+    function hash(TokenOwner memory owner) internal pure returns (bytes32 digest) {
+        // keccak256(abi.encode(OWNER_TYPE_HASH, owner.addr, owner.tokenAddr, owner.chainId))
+        assembly ("memory-safe") {
+            let ptr := mload(0x40)
+            mstore(ptr, OWNER_TYPE_HASH)
+            mstore(add(ptr, 0x20), mload(owner)) // owner.addr
+            mstore(add(ptr, 0x40), mload(add(owner, 0x20))) // owner.tokenAddr
+            mstore(add(ptr, 0x60), mload(add(owner, 0x40))) // owner.chainId
+            digest := keccak256(ptr, 0x80)
+        }
     }
-  }
 }
 
 struct TokenInfo {
-  TokenStandard erc;
-  // For ERC20:  the id must be 0 and the quantity is larger than 0.
-  // For ERC721: the quantity must be 0.
-  uint256 id;
-  uint256 quantity;
+    TokenStandard erc;
+    // For ERC20:  the id must be 0 and the quantity is larger than 0.
+    // For ERC721: the quantity must be 0.
+    uint256 id;
+    uint256 quantity;
 }
 
 /// @dev Error indicating that the provided information is invalid.
@@ -3166,11 +3149,7 @@ interface IERC20 {
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
 }
 
 /// @dev Error indicating that an unsupported standard is encountered.
@@ -3186,19 +3165,19 @@ error ErrUnsupportedStandard();
 error ErrTokenCouldNotTransferFrom(TokenInfo tokenInfo, address from, address to, address token);
 
 interface IWETH {
-  event Transfer(address indexed src, address indexed dst, uint wad);
+    event Transfer(address indexed src, address indexed dst, uint256 wad);
 
-  function deposit() external payable;
+    function deposit() external payable;
 
-  function transfer(address dst, uint wad) external returns (bool);
+    function transfer(address dst, uint256 wad) external returns (bool);
 
-  function approve(address guy, uint wad) external returns (bool);
+    function approve(address guy, uint256 wad) external returns (bool);
 
-  function transferFrom(address src, address dst, uint wad) external returns (bool);
+    function transferFrom(address src, address dst, uint256 wad) external returns (bool);
 
-  function withdraw(uint256 _wad) external;
+    function withdraw(uint256 _wad) external;
 
-  function balanceOf(address) external view returns (uint256);
+    function balanceOf(address) external view returns (uint256);
 }
 
 /// @dev Error indicating that the minting of ERC20 tokens has failed.
@@ -3264,12 +3243,7 @@ interface IERC721 is IERC165 {
      *
      * Emits a {Transfer} event.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId,
-        bytes calldata data
-    ) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 
     /**
      * @dev Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
@@ -3285,11 +3259,7 @@ interface IERC721 is IERC165 {
      *
      * Emits a {Transfer} event.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
 
     /**
      * @dev Transfers `tokenId` token from `from` to `to`.
@@ -3305,11 +3275,7 @@ interface IERC721 is IERC165 {
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
+    function transferFrom(address from, address to, uint256 tokenId) external;
 
     /**
      * @dev Gives permission to `to` to transfer `tokenId` token to another account.
@@ -3362,11 +3328,7 @@ interface IERC721 is IERC165 {
  * _Available since v3.1._
  */
 abstract contract ERC1155Burnable is ERC1155 {
-    function burn(
-        address account,
-        uint256 id,
-        uint256 value
-    ) public virtual {
+    function burn(address account, uint256 id, uint256 value) public virtual {
         require(
             account == _msgSender() || isApprovedForAll(account, _msgSender()),
             "ERC1155: caller is not token owner nor approved"
@@ -3375,11 +3337,7 @@ abstract contract ERC1155Burnable is ERC1155 {
         _burn(account, id, value);
     }
 
-    function burnBatch(
-        address account,
-        uint256[] memory ids,
-        uint256[] memory values
-    ) public virtual {
+    function burnBatch(address account, uint256[] memory ids, uint256[] memory values) public virtual {
         require(
             account == _msgSender() || isApprovedForAll(account, _msgSender()),
             "ERC1155: caller is not token owner nor approved"
@@ -3460,12 +3418,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
      *
      * - the caller must have the `MINTER_ROLE`.
      */
-    function mint(
-        address to,
-        uint256 id,
-        uint256 amount,
-        bytes memory data
-    ) public virtual {
+    function mint(address to, uint256 id, uint256 amount, bytes memory data) public virtual {
         require(hasRole(MINTER_ROLE, _msgSender()), "ERC1155PresetMinterPauser: must have minter role to mint");
 
         _mint(to, id, amount, data);
@@ -3474,12 +3427,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
     /**
      * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] variant of {mint}.
      */
-    function mintBatch(
-        address to,
-        uint256[] memory ids,
-        uint256[] memory amounts,
-        bytes memory data
-    ) public virtual {
+    function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data) public virtual {
         require(hasRole(MINTER_ROLE, _msgSender()), "ERC1155PresetMinterPauser: must have minter role to mint");
 
         _mintBatch(to, ids, amounts, data);
@@ -3539,317 +3487,335 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
 }
 
 library LibTokenInfo {
-  /**
-   *
-   *        HASH
-   *
-   */
+    /**
+     *
+     *        HASH
+     *
+     */
 
-  // keccak256("TokenInfo(uint8 erc,uint256 id,uint256 quantity)");
-  bytes32 public constant INFO_TYPE_HASH_SINGLE = 0x1e2b74b2a792d5c0f0b6e59b037fa9d43d84fbb759337f0112fcc15ca414fc8d;
+    // keccak256("TokenInfo(uint8 erc,uint256 id,uint256 quantity)");
+    bytes32 public constant INFO_TYPE_HASH_SINGLE = 0x1e2b74b2a792d5c0f0b6e59b037fa9d43d84fbb759337f0112fcc15ca414fc8d;
 
-  /**
-   * @dev Returns token info struct hash.
-   */
-  function hash(TokenInfo memory self) internal pure returns (bytes32 digest) {
-    // keccak256(abi.encode(INFO_TYPE_HASH_SINGLE, info.erc, info.id, info.quantity))
-    assembly ("memory-safe") {
-      let ptr := mload(0x40)
-      mstore(ptr, INFO_TYPE_HASH_SINGLE)
-      mstore(add(ptr, 0x20), mload(self)) // info.erc
-      mstore(add(ptr, 0x40), mload(add(self, 0x20))) // info.id
-      mstore(add(ptr, 0x60), mload(add(self, 0x40))) // info.quantity
-      digest := keccak256(ptr, 0x80)
-    }
-  }
-
-  /**
-   *
-   *         VALIDATE
-   *
-   */
-
-  /**
-   * @dev Validates the token info.
-   */
-  function validate(TokenInfo memory self) internal pure {
-    if (!(_checkERC20(self) || _checkERC721(self) || _checkERC1155(self))) {
-      revert ErrInvalidInfo();
-    }
-  }
-
-  function _checkERC20(TokenInfo memory self) private pure returns (bool) {
-    return (self.erc == TokenStandard.ERC20 && self.quantity > 0 && self.id == 0);
-  }
-
-  function _checkERC721(TokenInfo memory self) private pure returns (bool) {
-    return (self.erc == TokenStandard.ERC721 && self.quantity == 0);
-  }
-
-  function _checkERC1155(TokenInfo memory self) private pure returns (bool res) {
-    // Only validate the quantity, because id of ERC-1155 can be 0.
-    return (self.erc == TokenStandard.ERC1155 && self.quantity > 0);
-  }
-
-  /**
-   *
-   *       TRANSFER IN/OUT METHOD
-   *
-   */
-
-  /**
-   * @dev Transfer asset in.
-   *
-   * Requirements:
-   * - The `_from` address must approve for the contract using this library.
-   *
-   */
-  function handleAssetIn(TokenInfo memory self, address from, address token) internal {
-    bool success;
-    bytes memory data;
-    if (self.erc == TokenStandard.ERC20) {
-      (success, data) = token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, from, address(this), self.quantity));
-      success = success && (data.length == 0 || abi.decode(data, (bool)));
-    } else if (self.erc == TokenStandard.ERC721) {
-      success = _tryTransferFromERC721(token, from, address(this), self.id);
-    } else if (self.erc == TokenStandard.ERC1155) {
-      success = _tryTransferFromERC1155(token, from, address(this), self.id, self.quantity);
-    } else {
-      revert ErrUnsupportedStandard();
+    /**
+     * @dev Returns token info struct hash.
+     */
+    function hash(TokenInfo memory self) internal pure returns (bytes32 digest) {
+        // keccak256(abi.encode(INFO_TYPE_HASH_SINGLE, info.erc, info.id, info.quantity))
+        assembly ("memory-safe") {
+            let ptr := mload(0x40)
+            mstore(ptr, INFO_TYPE_HASH_SINGLE)
+            mstore(add(ptr, 0x20), mload(self)) // info.erc
+            mstore(add(ptr, 0x40), mload(add(self, 0x20))) // info.id
+            mstore(add(ptr, 0x60), mload(add(self, 0x40))) // info.quantity
+            digest := keccak256(ptr, 0x80)
+        }
     }
 
-    if (!success) revert ErrTokenCouldNotTransferFrom(self, from, address(this), token);
-  }
+    /**
+     *
+     *         VALIDATE
+     *
+     */
 
-  /**
-   * @dev Tries transfer assets out, or mint the assets if cannot transfer.
-   *
-   * @notice Prioritizes transfer native token if the token is wrapped.
-   *
-   */
-  function handleAssetOut(TokenInfo memory self, address payable to, address token, IWETH wrappedNativeToken) internal {
-    if (token == address(wrappedNativeToken)) {
-      // Try sending the native token before transferring the wrapped token
-      if (!to.send(self.quantity)) {
-        wrappedNativeToken.deposit{ value: self.quantity }();
-        _transferTokenOut(self, to, token);
-      }
-
-      return;
+    /**
+     * @dev Validates the token info.
+     */
+    function validate(TokenInfo memory self) internal pure {
+        if (!(_checkERC20(self) || _checkERC721(self) || _checkERC1155(self))) {
+            revert ErrInvalidInfo();
+        }
     }
 
-    if (self.erc == TokenStandard.ERC20) {
-      uint256 balance = IERC20(token).balanceOf(address(this));
-      if (balance < self.quantity) {
-        if (!_tryMintERC20(token, address(this), self.quantity - balance)) revert ErrERC20MintingFailed();
-      }
-
-      _transferTokenOut(self, to, token);
-      return;
+    function _checkERC20(TokenInfo memory self) private pure returns (bool) {
+        return (self.erc == TokenStandard.ERC20 && self.quantity > 0 && self.id == 0);
     }
 
-    if (self.erc == TokenStandard.ERC721) {
-      if (!_tryTransferOutOrMintERC721(token, to, self.id)) {
-        revert ErrERC721MintingFailed();
-      }
-      return;
+    function _checkERC721(TokenInfo memory self) private pure returns (bool) {
+        return (self.erc == TokenStandard.ERC721 && self.quantity == 0);
     }
 
-    if (self.erc == TokenStandard.ERC1155) {
-      if (!_tryTransferOutOrMintERC1155(token, to, self.id, self.quantity)) {
-        revert ErrERC1155MintingFailed();
-      }
-      return;
+    function _checkERC1155(TokenInfo memory self) private pure returns (bool res) {
+        // Only validate the quantity, because id of ERC-1155 can be 0.
+        return (self.erc == TokenStandard.ERC1155 && self.quantity > 0);
     }
 
-    revert ErrUnsupportedStandard();
-  }
+    /**
+     *
+     *       TRANSFER IN/OUT METHOD
+     *
+     */
 
-  /**
-   *
-   *      TRANSFER HELPERS
-   *
-   */
+    /**
+     * @dev Transfer asset in.
+     *
+     * Requirements:
+     * - The `_from` address must approve for the contract using this library.
+     *
+     */
+    function handleAssetIn(TokenInfo memory self, address from, address token) internal {
+        bool success;
+        bytes memory data;
+        if (self.erc == TokenStandard.ERC20) {
+            (success, data) =
+                token.call(abi.encodeWithSelector(IERC20.transferFrom.selector, from, address(this), self.quantity));
+            success = success && (data.length == 0 || abi.decode(data, (bool)));
+        } else if (self.erc == TokenStandard.ERC721) {
+            success = _tryTransferFromERC721(token, from, address(this), self.id);
+        } else if (self.erc == TokenStandard.ERC1155) {
+            success = _tryTransferFromERC1155(token, from, address(this), self.id, self.quantity);
+        } else {
+            revert ErrUnsupportedStandard();
+        }
 
-  /**
-   * @dev Transfer assets from current address to `_to` address.
-   */
-  function _transferTokenOut(TokenInfo memory self, address to, address token) private {
-    bool success;
-    if (self.erc == TokenStandard.ERC20) {
-      success = _tryTransferERC20(token, to, self.quantity);
-    } else if (self.erc == TokenStandard.ERC721) {
-      success = _tryTransferFromERC721(token, address(this), to, self.id);
-    } else {
-      revert ErrUnsupportedStandard();
+        if (!success) {
+            revert ErrTokenCouldNotTransferFrom(self, from, address(this), token);
+        }
     }
 
-    if (!success) revert ErrTokenCouldNotTransfer(self, to, token);
-  }
+    /**
+     * @dev Tries transfer assets out, or mint the assets if cannot transfer.
+     *
+     * @notice Prioritizes transfer native token if the token is wrapped.
+     *
+     */
+    function handleAssetOut(TokenInfo memory self, address payable to, address token, IWETH wrappedNativeToken)
+        internal
+    {
+        if (token == address(wrappedNativeToken)) {
+            // Try sending the native token before transferring the wrapped token
+            if (!to.send(self.quantity)) {
+                wrappedNativeToken.deposit{value: self.quantity}();
+                _transferTokenOut(self, to, token);
+            }
 
-  /**
-   *      TRANSFER ERC-20
-   */
+            return;
+        }
 
-  /**
-   * @dev Transfers ERC20 token and returns the result.
-   */
-  function _tryTransferERC20(address token, address to, uint256 quantity) private returns (bool success) {
-    bytes memory data;
-    (success, data) = token.call(abi.encodeWithSelector(IERC20.transfer.selector, to, quantity));
-    success = success && (data.length == 0 || abi.decode(data, (bool)));
-  }
+        if (self.erc == TokenStandard.ERC20) {
+            uint256 balance = IERC20(token).balanceOf(address(this));
+            if (balance < self.quantity) {
+                if (!_tryMintERC20(token, address(this), self.quantity - balance)) {
+                    revert ErrERC20MintingFailed();
+                }
+            }
 
-  /**
-   * @dev Mints ERC20 token and returns the result.
-   */
-  function _tryMintERC20(address token, address to, uint256 quantity) private returns (bool success) {
-    // bytes4(keccak256("mint(address,uint256)"))
-    (success,) = token.call(abi.encodeWithSelector(0x40c10f19, to, quantity));
-  }
+            _transferTokenOut(self, to, token);
+            return;
+        }
 
-  /**
-   *      TRANSFER ERC-721
-   */
+        if (self.erc == TokenStandard.ERC721) {
+            if (!_tryTransferOutOrMintERC721(token, to, self.id)) {
+                revert ErrERC721MintingFailed();
+            }
+            return;
+        }
 
-  /**
-   * @dev Transfers the ERC721 token out. If the transfer failed, mints the ERC721.
-   * @return success Returns `false` if both transfer and mint are failed.
-   */
-  function _tryTransferOutOrMintERC721(address token, address to, uint256 id) private returns (bool success) {
-    success = _tryTransferFromERC721(token, address(this), to, id);
-    if (!success) {
-      return _tryMintERC721(token, to, id);
+        if (self.erc == TokenStandard.ERC1155) {
+            if (!_tryTransferOutOrMintERC1155(token, to, self.id, self.quantity)) {
+                revert ErrERC1155MintingFailed();
+            }
+            return;
+        }
+
+        revert ErrUnsupportedStandard();
     }
-  }
 
-  /**
-   * @dev Transfers ERC721 token and returns the result.
-   */
-  function _tryTransferFromERC721(address token, address from, address to, uint256 id) private returns (bool success) {
-    (success,) = token.call(abi.encodeWithSelector(IERC721.transferFrom.selector, from, to, id));
-  }
+    /**
+     *
+     *      TRANSFER HELPERS
+     *
+     */
 
-  /**
-   * @dev Mints ERC721 token and returns the result.
-   */
-  function _tryMintERC721(address token, address to, uint256 id) private returns (bool success) {
-    // bytes4(keccak256("mint(address,uint256)"))
-    (success,) = token.call(abi.encodeWithSelector(0x40c10f19, to, id));
-  }
+    /**
+     * @dev Transfer assets from current address to `_to` address.
+     */
+    function _transferTokenOut(TokenInfo memory self, address to, address token) private {
+        bool success;
+        if (self.erc == TokenStandard.ERC20) {
+            success = _tryTransferERC20(token, to, self.quantity);
+        } else if (self.erc == TokenStandard.ERC721) {
+            success = _tryTransferFromERC721(token, address(this), to, self.id);
+        } else {
+            revert ErrUnsupportedStandard();
+        }
 
-  /**
-   *      TRANSFER ERC-1155
-   */
-
-  /**
-   * @dev Transfers the ERC1155 token out. If the transfer failed, mints the ERC11555.
-   * @return success Returns `false` if both transfer and mint are failed.
-   */
-  function _tryTransferOutOrMintERC1155(address token, address to, uint256 id, uint256 amount) private returns (bool success) {
-    success = _tryTransferFromERC1155(token, address(this), to, id, amount);
-    if (!success) {
-      return _tryMintERC1155(token, to, id, amount);
+        if (!success) {
+            revert ErrTokenCouldNotTransfer(self, to, token);
+        }
     }
-  }
 
-  /**
-   * @dev Transfers ERC1155 token and returns the result.
-   */
-  function _tryTransferFromERC1155(address token, address from, address to, uint256 id, uint256 amount) private returns (bool success) {
-    (success,) = token.call(abi.encodeCall(IERC1155.safeTransferFrom, (from, to, id, amount, new bytes(0))));
-  }
+    /**
+     *      TRANSFER ERC-20
+     */
 
-  /**
-   * @dev Mints ERC1155 token and returns the result.
-   */
-  function _tryMintERC1155(address token, address to, uint256 id, uint256 amount) private returns (bool success) {
-    (success,) = token.call(abi.encodeCall(ERC1155PresetMinterPauser.mint, (to, id, amount, new bytes(0))));
-  }
+    /**
+     * @dev Transfers ERC20 token and returns the result.
+     */
+    function _tryTransferERC20(address token, address to, uint256 quantity) private returns (bool success) {
+        bytes memory data;
+        (success, data) = token.call(abi.encodeWithSelector(IERC20.transfer.selector, to, quantity));
+        success = success && (data.length == 0 || abi.decode(data, (bool)));
+    }
+
+    /**
+     * @dev Mints ERC20 token and returns the result.
+     */
+    function _tryMintERC20(address token, address to, uint256 quantity) private returns (bool success) {
+        // bytes4(keccak256("mint(address,uint256)"))
+        (success,) = token.call(abi.encodeWithSelector(0x40c10f19, to, quantity));
+    }
+
+    /**
+     *      TRANSFER ERC-721
+     */
+
+    /**
+     * @dev Transfers the ERC721 token out. If the transfer failed, mints the ERC721.
+     * @return success Returns `false` if both transfer and mint are failed.
+     */
+    function _tryTransferOutOrMintERC721(address token, address to, uint256 id) private returns (bool success) {
+        success = _tryTransferFromERC721(token, address(this), to, id);
+        if (!success) {
+            return _tryMintERC721(token, to, id);
+        }
+    }
+
+    /**
+     * @dev Transfers ERC721 token and returns the result.
+     */
+    function _tryTransferFromERC721(address token, address from, address to, uint256 id)
+        private
+        returns (bool success)
+    {
+        (success,) = token.call(abi.encodeWithSelector(IERC721.transferFrom.selector, from, to, id));
+    }
+
+    /**
+     * @dev Mints ERC721 token and returns the result.
+     */
+    function _tryMintERC721(address token, address to, uint256 id) private returns (bool success) {
+        // bytes4(keccak256("mint(address,uint256)"))
+        (success,) = token.call(abi.encodeWithSelector(0x40c10f19, to, id));
+    }
+
+    /**
+     *      TRANSFER ERC-1155
+     */
+
+    /**
+     * @dev Transfers the ERC1155 token out. If the transfer failed, mints the ERC11555.
+     * @return success Returns `false` if both transfer and mint are failed.
+     */
+    function _tryTransferOutOrMintERC1155(address token, address to, uint256 id, uint256 amount)
+        private
+        returns (bool success)
+    {
+        success = _tryTransferFromERC1155(token, address(this), to, id, amount);
+        if (!success) {
+            return _tryMintERC1155(token, to, id, amount);
+        }
+    }
+
+    /**
+     * @dev Transfers ERC1155 token and returns the result.
+     */
+    function _tryTransferFromERC1155(address token, address from, address to, uint256 id, uint256 amount)
+        private
+        returns (bool success)
+    {
+        (success,) = token.call(abi.encodeCall(IERC1155.safeTransferFrom, (from, to, id, amount, new bytes(0))));
+    }
+
+    /**
+     * @dev Mints ERC1155 token and returns the result.
+     */
+    function _tryMintERC1155(address token, address to, uint256 id, uint256 amount) private returns (bool success) {
+        (success,) = token.call(abi.encodeCall(ERC1155PresetMinterPauser.mint, (to, id, amount, new bytes(0))));
+    }
 }
 
 library Transfer {
-  using ECDSA for bytes32;
-  using LibTokenOwner for TokenOwner;
-  using LibTokenInfo for TokenInfo;
+    using ECDSA for bytes32;
+    using LibTokenOwner for TokenOwner;
+    using LibTokenInfo for TokenInfo;
 
-  enum Kind {
-    Deposit,
-    Withdrawal
-  }
+    enum Kind {
+        Deposit,
+        Withdrawal
+    }
 
-  struct Request {
-    // For deposit request: Recipient address on Ronin network
-    // For withdrawal request: Recipient address on mainchain network
-    address recipientAddr;
-    // Token address to deposit/withdraw
-    // Value 0: native token
-    address tokenAddr;
-    TokenInfo info;
-  }
+    struct Request {
+        // For deposit request: Recipient address on Ronin network
+        // For withdrawal request: Recipient address on mainchain network
+        address recipientAddr;
+        // Token address to deposit/withdraw
+        // Value 0: native token
+        address tokenAddr;
+        TokenInfo info;
+    }
 
-  /**
-   * @dev Converts the transfer request into the deposit receipt.
-   */
-  function into_deposit_receipt(
-    Request memory _request,
-    address _requester,
-    uint256 _id,
-    address _roninTokenAddr,
-    uint256 _roninChainId
-  ) internal view returns (Receipt memory _receipt) {
-    _receipt.id = _id;
-    _receipt.kind = Kind.Deposit;
-    _receipt.mainchain.addr = _requester;
-    _receipt.mainchain.tokenAddr = _request.tokenAddr;
-    _receipt.mainchain.chainId = block.chainid;
-    _receipt.ronin.addr = _request.recipientAddr;
-    _receipt.ronin.tokenAddr = _roninTokenAddr;
-    _receipt.ronin.chainId = _roninChainId;
-    _receipt.info = _request.info;
-  }
+    /**
+     * @dev Converts the transfer request into the deposit receipt.
+     */
+    function into_deposit_receipt(
+        Request memory _request,
+        address _requester,
+        uint256 _id,
+        address _roninTokenAddr,
+        uint256 _roninChainId
+    ) internal view returns (Receipt memory _receipt) {
+        _receipt.id = _id;
+        _receipt.kind = Kind.Deposit;
+        _receipt.mainchain.addr = _requester;
+        _receipt.mainchain.tokenAddr = _request.tokenAddr;
+        _receipt.mainchain.chainId = block.chainid;
+        _receipt.ronin.addr = _request.recipientAddr;
+        _receipt.ronin.tokenAddr = _roninTokenAddr;
+        _receipt.ronin.chainId = _roninChainId;
+        _receipt.info = _request.info;
+    }
 
-  /**
-   * @dev Converts the transfer request into the withdrawal receipt.
-   */
-  function into_withdrawal_receipt(
-    Request memory _request,
-    address _requester,
-    uint256 _id,
-    address _mainchainTokenAddr,
-    uint256 _mainchainId
-  ) internal view returns (Receipt memory _receipt) {
-    _receipt.id = _id;
-    _receipt.kind = Kind.Withdrawal;
-    _receipt.ronin.addr = _requester;
-    _receipt.ronin.tokenAddr = _request.tokenAddr;
-    _receipt.ronin.chainId = block.chainid;
-    _receipt.mainchain.addr = _request.recipientAddr;
-    _receipt.mainchain.tokenAddr = _mainchainTokenAddr;
-    _receipt.mainchain.chainId = _mainchainId;
-    _receipt.info = _request.info;
-  }
+    /**
+     * @dev Converts the transfer request into the withdrawal receipt.
+     */
+    function into_withdrawal_receipt(
+        Request memory _request,
+        address _requester,
+        uint256 _id,
+        address _mainchainTokenAddr,
+        uint256 _mainchainId
+    ) internal view returns (Receipt memory _receipt) {
+        _receipt.id = _id;
+        _receipt.kind = Kind.Withdrawal;
+        _receipt.ronin.addr = _requester;
+        _receipt.ronin.tokenAddr = _request.tokenAddr;
+        _receipt.ronin.chainId = block.chainid;
+        _receipt.mainchain.addr = _request.recipientAddr;
+        _receipt.mainchain.tokenAddr = _mainchainTokenAddr;
+        _receipt.mainchain.chainId = _mainchainId;
+        _receipt.info = _request.info;
+    }
 
-  struct Receipt {
-    uint256 id;
-    Kind kind;
-    TokenOwner mainchain;
-    TokenOwner ronin;
-    TokenInfo info;
-  }
+    struct Receipt {
+        uint256 id;
+        Kind kind;
+        TokenOwner mainchain;
+        TokenOwner ronin;
+        TokenInfo info;
+    }
 
-  // keccak256("Receipt(uint256 id,uint8 kind,TokenOwner mainchain,TokenOwner ronin,TokenInfo info)TokenInfo(uint8 erc,uint256 id,uint256 quantity)TokenOwner(address addr,address tokenAddr,uint256 chainId)");
-  bytes32 public constant TYPE_HASH = 0xb9d1fe7c9deeec5dc90a2f47ff1684239519f2545b2228d3d91fb27df3189eea;
+    // keccak256("Receipt(uint256 id,uint8 kind,TokenOwner mainchain,TokenOwner ronin,TokenInfo info)TokenInfo(uint8 erc,uint256 id,uint256 quantity)TokenOwner(address addr,address tokenAddr,uint256 chainId)");
+    bytes32 public constant TYPE_HASH = 0xb9d1fe7c9deeec5dc90a2f47ff1684239519f2545b2228d3d91fb27df3189eea;
 
-  /**
-   * @dev Returns token info struct hash.
-   */
-  function hash(Receipt memory _receipt) internal pure returns (bytes32 digest) {
-    bytes32 hashedReceiptMainchain = _receipt.mainchain.hash();
-    bytes32 hashedReceiptRonin = _receipt.ronin.hash();
-    bytes32 hashedReceiptInfo = _receipt.info.hash();
+    /**
+     * @dev Returns token info struct hash.
+     */
+    function hash(Receipt memory _receipt) internal pure returns (bytes32 digest) {
+        bytes32 hashedReceiptMainchain = _receipt.mainchain.hash();
+        bytes32 hashedReceiptRonin = _receipt.ronin.hash();
+        bytes32 hashedReceiptInfo = _receipt.info.hash();
 
-    /*
+        /*
      * return
      *   keccak256(
      *     abi.encode(
@@ -3862,276 +3828,282 @@ library Transfer {
      *     )
      *   );
      */
-    assembly {
-      let ptr := mload(0x40)
-      mstore(ptr, TYPE_HASH)
-      mstore(add(ptr, 0x20), mload(_receipt)) // _receipt.id
-      mstore(add(ptr, 0x40), mload(add(_receipt, 0x20))) // _receipt.kind
-      mstore(add(ptr, 0x60), hashedReceiptMainchain)
-      mstore(add(ptr, 0x80), hashedReceiptRonin)
-      mstore(add(ptr, 0xa0), hashedReceiptInfo)
-      digest := keccak256(ptr, 0xc0)
+        assembly {
+            let ptr := mload(0x40)
+            mstore(ptr, TYPE_HASH)
+            mstore(add(ptr, 0x20), mload(_receipt)) // _receipt.id
+            mstore(add(ptr, 0x40), mload(add(_receipt, 0x20))) // _receipt.kind
+            mstore(add(ptr, 0x60), hashedReceiptMainchain)
+            mstore(add(ptr, 0x80), hashedReceiptRonin)
+            mstore(add(ptr, 0xa0), hashedReceiptInfo)
+            digest := keccak256(ptr, 0xc0)
+        }
     }
-  }
 
-  /**
-   * @dev Returns the receipt digest.
-   */
-  function receiptDigest(bytes32 _domainSeparator, bytes32 _receiptHash) internal pure returns (bytes32) {
-    return _domainSeparator.toTypedDataHash(_receiptHash);
-  }
+    /**
+     * @dev Returns the receipt digest.
+     */
+    function receiptDigest(bytes32 _domainSeparator, bytes32 _receiptHash) internal pure returns (bytes32) {
+        return _domainSeparator.toTypedDataHash(_receiptHash);
+    }
 }
 
 interface IMainchainGatewayV3 is SignatureConsumer, MappedTokenConsumer {
-  /**
-   * @dev Error indicating that a query was made for an approved withdrawal.
-   */
-  error ErrQueryForApprovedWithdrawal();
+    /**
+     * @dev Error indicating that a query was made for an approved withdrawal.
+     */
+    error ErrQueryForApprovedWithdrawal();
 
-  /**
-   * @dev Error indicating that the daily withdrawal limit has been reached.
-   */
-  error ErrReachedDailyWithdrawalLimit();
+    /**
+     * @dev Error indicating that the daily withdrawal limit has been reached.
+     */
+    error ErrReachedDailyWithdrawalLimit();
 
-  /**
-   * @dev Error indicating that a query was made for a processed withdrawal.
-   */
-  error ErrQueryForProcessedWithdrawal();
+    /**
+     * @dev Error indicating that a query was made for a processed withdrawal.
+     */
+    error ErrQueryForProcessedWithdrawal();
 
-  /**
-   * @dev Error indicating that a query was made for insufficient vote weight.
-   */
-  error ErrQueryForInsufficientVoteWeight();
+    /**
+     * @dev Error indicating that a query was made for insufficient vote weight.
+     */
+    error ErrQueryForInsufficientVoteWeight();
 
-  /**
-   * @dev Error indicating that the recovered signer from the signature has invalid vote weight.
-   */
-  error ErrInvalidSigner(address signer, uint256 weight, Signature sig);
+    /**
+     * @dev Error indicating that the recovered signer from the signature has invalid vote weight.
+     */
+    error ErrInvalidSigner(address signer, uint256 weight, Signature sig);
 
-  /**
-   * @dev Error indicating that the total weight provided is null.
-   */
-  error ErrNullTotalWeightProvided(bytes4 msgSig);
+    /**
+     * @dev Error indicating that the total weight provided is null.
+     */
+    error ErrNullTotalWeightProvided(bytes4 msgSig);
 
-  /// @dev Emitted when the deposit is requested
-  event DepositRequested(bytes32 receiptHash, Transfer.Receipt receipt);
-  /// @dev Emitted when the assets are withdrawn
-  event Withdrew(bytes32 receiptHash, Transfer.Receipt receipt);
-  /// @dev Emitted when the tokens are mapped
-  event TokenMapped(address[] mainchainTokens, address[] roninTokens, TokenStandard[] standards);
-  /// @dev Emitted when the wrapped native token contract is updated
-  event WrappedNativeTokenContractUpdated(IWETH weth);
-  /// @dev Emitted when the withdrawal is locked
-  event WithdrawalLocked(bytes32 receiptHash, Transfer.Receipt receipt);
-  /// @dev Emitted when the withdrawal is unlocked
-  event WithdrawalUnlocked(bytes32 receiptHash, Transfer.Receipt receipt);
+    /// @dev Emitted when the deposit is requested
+    event DepositRequested(bytes32 receiptHash, Transfer.Receipt receipt);
+    /// @dev Emitted when the assets are withdrawn
+    event Withdrew(bytes32 receiptHash, Transfer.Receipt receipt);
+    /// @dev Emitted when the tokens are mapped
+    event TokenMapped(address[] mainchainTokens, address[] roninTokens, TokenStandard[] standards);
+    /// @dev Emitted when the wrapped native token contract is updated
+    event WrappedNativeTokenContractUpdated(IWETH weth);
+    /// @dev Emitted when the withdrawal is locked
+    event WithdrawalLocked(bytes32 receiptHash, Transfer.Receipt receipt);
+    /// @dev Emitted when the withdrawal is unlocked
+    event WithdrawalUnlocked(bytes32 receiptHash, Transfer.Receipt receipt);
 
-  /**
-   * @dev Returns the WETH address.
-   */
-  function wrappedNativeToken() external view returns (IWETH);
+    /**
+     * @dev Returns the WETH address.
+     */
+    function wrappedNativeToken() external view returns (IWETH);
 
-  /**
-   * @dev Returns the domain separator.
-   */
-  function DOMAIN_SEPARATOR() external view returns (bytes32);
+    /**
+     * @dev Returns the domain separator.
+     */
+    function DOMAIN_SEPARATOR() external view returns (bytes32);
 
-  /**
-   * @dev Returns deposit count.
-   */
-  function depositCount() external view returns (uint256);
+    /**
+     * @dev Returns deposit count.
+     */
+    function depositCount() external view returns (uint256);
 
-  /**
-   * @dev Sets the wrapped native token contract.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   *
-   * Emits the `WrappedNativeTokenContractUpdated` event.
-   *
-   */
-  function setWrappedNativeTokenContract(IWETH _wrappedToken) external;
+    /**
+     * @dev Sets the wrapped native token contract.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     *
+     * Emits the `WrappedNativeTokenContractUpdated` event.
+     *
+     */
+    function setWrappedNativeTokenContract(IWETH _wrappedToken) external;
 
-  /**
-   * @dev Returns whether the withdrawal is locked.
-   */
-  function withdrawalLocked(uint256 withdrawalId) external view returns (bool);
+    /**
+     * @dev Returns whether the withdrawal is locked.
+     */
+    function withdrawalLocked(uint256 withdrawalId) external view returns (bool);
 
-  /**
-   * @dev Returns the withdrawal hash.
-   */
-  function withdrawalHash(uint256 withdrawalId) external view returns (bytes32);
+    /**
+     * @dev Returns the withdrawal hash.
+     */
+    function withdrawalHash(uint256 withdrawalId) external view returns (bytes32);
 
-  /**
-   * @dev Locks the assets and request deposit.
-   */
-  function requestDepositFor(Transfer.Request calldata _request) external payable;
+    /**
+     * @dev Locks the assets and request deposit.
+     */
+    function requestDepositFor(Transfer.Request calldata _request) external payable;
 
-  /**
-   * @dev Withdraws based on the receipt and the validator signatures.
-   * Returns whether the withdrawal is locked.
-   *
-   * Emits the `Withdrew` once the assets are released.
-   *
-   */
-  function submitWithdrawal(Transfer.Receipt memory _receipt, Signature[] memory _signatures) external returns (bool _locked);
+    /**
+     * @dev Withdraws based on the receipt and the validator signatures.
+     * Returns whether the withdrawal is locked.
+     *
+     * Emits the `Withdrew` once the assets are released.
+     *
+     */
+    function submitWithdrawal(Transfer.Receipt memory _receipt, Signature[] memory _signatures)
+        external
+        returns (bool _locked);
 
-  /**
-   * @dev Approves a specific withdrawal.
-   *
-   * Requirements:
-   * - The method caller is a validator.
-   *
-   * Emits the `Withdrew` once the assets are released.
-   *
-   */
-  function unlockWithdrawal(Transfer.Receipt calldata _receipt) external;
+    /**
+     * @dev Approves a specific withdrawal.
+     *
+     * Requirements:
+     * - The method caller is a validator.
+     *
+     * Emits the `Withdrew` once the assets are released.
+     *
+     */
+    function unlockWithdrawal(Transfer.Receipt calldata _receipt) external;
 
-  /**
-   * @dev Maps mainchain tokens to Ronin network.
-   *
-   * Requirement:
-   * - The method caller is admin.
-   * - The arrays have the same length and its length larger than 0.
-   *
-   * Emits the `TokenMapped` event.
-   *
-   */
-  function mapTokens(address[] calldata _mainchainTokens, address[] calldata _roninTokens, TokenStandard[] calldata _standards) external;
+    /**
+     * @dev Maps mainchain tokens to Ronin network.
+     *
+     * Requirement:
+     * - The method caller is admin.
+     * - The arrays have the same length and its length larger than 0.
+     *
+     * Emits the `TokenMapped` event.
+     *
+     */
+    function mapTokens(
+        address[] calldata _mainchainTokens,
+        address[] calldata _roninTokens,
+        TokenStandard[] calldata _standards
+    ) external;
 
-  /**
-   * @dev Maps mainchain tokens to Ronin network and sets thresholds.
-   *
-   * Requirement:
-   * - The method caller is admin.
-   * - The arrays have the same length and its length larger than 0.
-   *
-   * Emits the `TokenMapped` event.
-   *
-   */
-  function mapTokensAndThresholds(
-    address[] calldata _mainchainTokens,
-    address[] calldata _roninTokens,
-    TokenStandard[] calldata _standards,
-    uint256[][4] calldata _thresholds
-  ) external;
+    /**
+     * @dev Maps mainchain tokens to Ronin network and sets thresholds.
+     *
+     * Requirement:
+     * - The method caller is admin.
+     * - The arrays have the same length and its length larger than 0.
+     *
+     * Emits the `TokenMapped` event.
+     *
+     */
+    function mapTokensAndThresholds(
+        address[] calldata _mainchainTokens,
+        address[] calldata _roninTokens,
+        TokenStandard[] calldata _standards,
+        uint256[][4] calldata _thresholds
+    ) external;
 
-  /**
-   * @dev Returns token address on Ronin network.
-   * Note: Reverts for unsupported token.
-   */
-  function getRoninToken(address _mainchainToken) external view returns (MappedToken memory _token);
+    /**
+     * @dev Returns token address on Ronin network.
+     * Note: Reverts for unsupported token.
+     */
+    function getRoninToken(address _mainchainToken) external view returns (MappedToken memory _token);
 }
 
 enum ContractType {
-  UNKNOWN, // 0
-  PAUSE_ENFORCER, // 1
-  BRIDGE, // 2
-  BRIDGE_TRACKING, // 3
-  GOVERNANCE_ADMIN, // 4
-  MAINTENANCE, // 5
-  SLASH_INDICATOR, // 6
-  STAKING_VESTING, // 7
-  VALIDATOR, // 8
-  STAKING, // 9
-  RONIN_TRUSTED_ORGANIZATION, // 10
-  BRIDGE_MANAGER, // 11
-  BRIDGE_SLASH, // 12
-  BRIDGE_REWARD, // 13
-  FAST_FINALITY_TRACKING, // 14
-  PROFILE // 15
+    UNKNOWN, // 0
+    PAUSE_ENFORCER, // 1
+    BRIDGE, // 2
+    BRIDGE_TRACKING, // 3
+    GOVERNANCE_ADMIN, // 4
+    MAINTENANCE, // 5
+    SLASH_INDICATOR, // 6
+    STAKING_VESTING, // 7
+    VALIDATOR, // 8
+    STAKING, // 9
+    RONIN_TRUSTED_ORGANIZATION, // 10
+    BRIDGE_MANAGER, // 11
+    BRIDGE_SLASH, // 12
+    BRIDGE_REWARD, // 13
+    FAST_FINALITY_TRACKING, // 14
+    PROFILE // 15
 
 }
 
 interface IHasContracts {
-  /// @dev Error of invalid role.
-  error ErrContractTypeNotFound(ContractType contractType);
+    /// @dev Error of invalid role.
+    error ErrContractTypeNotFound(ContractType contractType);
 
-  /// @dev Emitted when a contract is updated.
-  event ContractUpdated(ContractType indexed contractType, address indexed addr);
+    /// @dev Emitted when a contract is updated.
+    event ContractUpdated(ContractType indexed contractType, address indexed addr);
 
-  /**
-   * @dev Returns the address of a contract with a specific role.
-   * Throws an error if no contract is set for the specified role.
-   *
-   * @param contractType The role of the contract to retrieve.
-   * @return contract_ The address of the contract with the specified role.
-   */
-  function getContract(ContractType contractType) external view returns (address contract_);
+    /**
+     * @dev Returns the address of a contract with a specific role.
+     * Throws an error if no contract is set for the specified role.
+     *
+     * @param contractType The role of the contract to retrieve.
+     * @return contract_ The address of the contract with the specified role.
+     */
+    function getContract(ContractType contractType) external view returns (address contract_);
 
-  /**
-   * @dev Sets the address of a contract with a specific role.
-   * Emits the event {ContractUpdated}.
-   * @param contractType The role of the contract to set.
-   * @param addr The address of the contract to set.
-   */
-  function setContract(ContractType contractType, address addr) external;
+    /**
+     * @dev Sets the address of a contract with a specific role.
+     * Emits the event {ContractUpdated}.
+     * @param contractType The role of the contract to set.
+     * @param addr The address of the contract to set.
+     */
+    function setContract(ContractType contractType, address addr) external;
 }
 
 library AddressArrayUtils {
-  /**
-   * @dev Error thrown when a duplicated element is detected in an array.
-   * @param msgSig The function signature that invoke the error.
-   */
-  error ErrDuplicated(bytes4 msgSig);
+    /**
+     * @dev Error thrown when a duplicated element is detected in an array.
+     * @param msgSig The function signature that invoke the error.
+     */
+    error ErrDuplicated(bytes4 msgSig);
 
-  /**
-   * @dev Returns whether or not there's a duplicate. Runs in O(n^2).
-   * @param A Array to search
-   * @return Returns true if duplicate, false otherwise
-   */
-  function hasDuplicate(address[] memory A) internal pure returns (bool) {
-    if (A.length == 0) {
-      return false;
-    }
-    unchecked {
-      for (uint256 i = 0; i < A.length - 1; i++) {
-        for (uint256 j = i + 1; j < A.length; j++) {
-          if (A[i] == A[j]) {
-            return true;
-          }
+    /**
+     * @dev Returns whether or not there's a duplicate. Runs in O(n^2).
+     * @param A Array to search
+     * @return Returns true if duplicate, false otherwise
+     */
+    function hasDuplicate(address[] memory A) internal pure returns (bool) {
+        if (A.length == 0) {
+            return false;
         }
-      }
+        unchecked {
+            for (uint256 i = 0; i < A.length - 1; i++) {
+                for (uint256 j = i + 1; j < A.length; j++) {
+                    if (A[i] == A[j]) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
-    return false;
-  }
 
-  /**
-   * @dev Returns whether two arrays of addresses are equal or not.
-   */
-  function isEqual(address[] memory _this, address[] memory _other) internal pure returns (bool yes_) {
-    // Hashing two arrays and compare their hash
-    assembly {
-      let _thisHash := keccak256(add(_this, 32), mul(mload(_this), 32))
-      let _otherHash := keccak256(add(_other, 32), mul(mload(_other), 32))
-      yes_ := eq(_thisHash, _otherHash)
+    /**
+     * @dev Returns whether two arrays of addresses are equal or not.
+     */
+    function isEqual(address[] memory _this, address[] memory _other) internal pure returns (bool yes_) {
+        // Hashing two arrays and compare their hash
+        assembly {
+            let _thisHash := keccak256(add(_this, 32), mul(mload(_this), 32))
+            let _otherHash := keccak256(add(_other, 32), mul(mload(_other), 32))
+            yes_ := eq(_thisHash, _otherHash)
+        }
     }
-  }
 
-  /**
-   * @dev Return the concatenated array from a and b.
-   */
-  function extend(address[] memory a, address[] memory b) internal pure returns (address[] memory c) {
-    uint256 lengthA = a.length;
-    uint256 lengthB = b.length;
-    unchecked {
-      c = new address[](lengthA + lengthB);
+    /**
+     * @dev Return the concatenated array from a and b.
+     */
+    function extend(address[] memory a, address[] memory b) internal pure returns (address[] memory c) {
+        uint256 lengthA = a.length;
+        uint256 lengthB = b.length;
+        unchecked {
+            c = new address[](lengthA + lengthB);
+        }
+        uint256 i;
+        for (; i < lengthA;) {
+            c[i] = a[i];
+            unchecked {
+                ++i;
+            }
+        }
+        for (uint256 j; j < lengthB;) {
+            c[i] = b[j];
+            unchecked {
+                ++i;
+                ++j;
+            }
+        }
     }
-    uint256 i;
-    for (; i < lengthA;) {
-      c[i] = a[i];
-      unchecked {
-        ++i;
-      }
-    }
-    for (uint256 j; j < lengthB;) {
-      c[i] = b[j];
-      unchecked {
-        ++i;
-        ++j;
-      }
-    }
-  }
 }
 
 /**
@@ -4188,12 +4160,8 @@ abstract contract Proxy {
 
             switch result
             // delegatecall returns 0 on error.
-            case 0 {
-                revert(0, returndatasize())
-            }
-            default {
-                return(0, returndatasize())
-            }
+            case 0 { revert(0, returndatasize()) }
+            default { return(0, returndatasize()) }
         }
     }
 
@@ -4320,11 +4288,7 @@ abstract contract ERC1967Upgrade {
      *
      * Emits an {Upgraded} event.
      */
-    function _upgradeToAndCall(
-        address newImplementation,
-        bytes memory data,
-        bool forceCall
-    ) internal {
+    function _upgradeToAndCall(address newImplementation, bytes memory data, bool forceCall) internal {
         _upgradeTo(newImplementation);
         if (data.length > 0 || forceCall) {
             Address.functionDelegateCall(newImplementation, data);
@@ -4336,11 +4300,7 @@ abstract contract ERC1967Upgrade {
      *
      * Emits an {Upgraded} event.
      */
-    function _upgradeToAndCallUUPS(
-        address newImplementation,
-        bytes memory data,
-        bool forceCall
-    ) internal {
+    function _upgradeToAndCallUUPS(address newImplementation, bytes memory data, bool forceCall) internal {
         // Upgrades from old implementations will perform a rollback test. This test requires the new
         // implementation to upgrade back to the old, non-ERC1822 compliant, implementation. Removing
         // this special case will break upgrade paths from old UUPS implementation to new ones.
@@ -4417,8 +4377,7 @@ abstract contract ERC1967Upgrade {
     function _setBeacon(address newBeacon) private {
         require(Address.isContract(newBeacon), "ERC1967: new beacon is not a contract");
         require(
-            Address.isContract(IBeacon(newBeacon).implementation()),
-            "ERC1967: beacon implementation is not a contract"
+            Address.isContract(IBeacon(newBeacon).implementation()), "ERC1967: beacon implementation is not a contract"
         );
         StorageSlot.getAddressSlot(_BEACON_SLOT).value = newBeacon;
     }
@@ -4429,11 +4388,7 @@ abstract contract ERC1967Upgrade {
      *
      * Emits a {BeaconUpgraded} event.
      */
-    function _upgradeBeaconToAndCall(
-        address newBeacon,
-        bytes memory data,
-        bool forceCall
-    ) internal {
+    function _upgradeBeaconToAndCall(address newBeacon, bytes memory data, bool forceCall) internal {
         _setBeacon(newBeacon);
         emit BeaconUpgraded(newBeacon);
         if (data.length > 0 || forceCall) {
@@ -4493,11 +4448,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
      * @dev Initializes an upgradeable proxy managed by `_admin`, backed by the implementation at `_logic`, and
      * optionally initialized with `_data` as explained in {ERC1967Proxy-constructor}.
      */
-    constructor(
-        address _logic,
-        address admin_,
-        bytes memory _data
-    ) payable ERC1967Proxy(_logic, _data) {
+    constructor(address _logic, address admin_, bytes memory _data) payable ERC1967Proxy(_logic, _data) {
         _changeAdmin(admin_);
     }
 
@@ -4586,29 +4537,32 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
 }
 
 contract TransparentUpgradeableProxyV2 is TransparentUpgradeableProxy {
-  constructor(address _logic, address admin_, bytes memory _data) payable TransparentUpgradeableProxy(_logic, admin_, _data) { }
+    constructor(address _logic, address admin_, bytes memory _data)
+        payable
+        TransparentUpgradeableProxy(_logic, admin_, _data)
+    {}
 
-  /**
-   * @dev Calls a function from the current implementation as specified by `_data`, which should be an encoded function call.
-   *
-   * Requirements:
-   * - Only the admin can call this function.
-   *
-   * Note: The proxy admin is not allowed to interact with the proxy logic through the fallback function to avoid
-   * triggering some unexpected logic. This is to allow the administrator to explicitly call the proxy, please consider
-   * reviewing the encoded data `_data` and the method which is called before using this.
-   *
-   */
-  function functionDelegateCall(bytes memory _data) public payable ifAdmin {
-    address _addr = _implementation();
-    assembly {
-      let _result := delegatecall(gas(), _addr, add(_data, 32), mload(_data), 0, 0)
-      returndatacopy(0, 0, returndatasize())
-      switch _result
-      case 0 { revert(0, returndatasize()) }
-      default { return(0, returndatasize()) }
+    /**
+     * @dev Calls a function from the current implementation as specified by `_data`, which should be an encoded function call.
+     *
+     * Requirements:
+     * - Only the admin can call this function.
+     *
+     * Note: The proxy admin is not allowed to interact with the proxy logic through the fallback function to avoid
+     * triggering some unexpected logic. This is to allow the administrator to explicitly call the proxy, please consider
+     * reviewing the encoded data `_data` and the method which is called before using this.
+     *
+     */
+    function functionDelegateCall(bytes memory _data) public payable ifAdmin {
+        address _addr = _implementation();
+        assembly {
+            let _result := delegatecall(gas(), _addr, add(_data, 32), mload(_data), 0, 0)
+            returndatacopy(0, 0, returndatasize())
+            switch _result
+            case 0 { revert(0, returndatasize()) }
+            default { return(0, returndatasize()) }
+        }
     }
-  }
 }
 
 /**
@@ -4619,96 +4573,112 @@ contract TransparentUpgradeableProxyV2 is TransparentUpgradeableProxy {
 error ErrUnsupportedInterface(bytes4 interfaceId, address addr);
 
 abstract contract IdentityGuard {
-  using AddressArrayUtils for address[];
+    using AddressArrayUtils for address[];
 
-  /// @dev value is equal to keccak256(abi.encode())
-  /// @dev see: https://eips.ethereum.org/EIPS/eip-1052
-  bytes32 internal constant CREATED_ACCOUNT_HASH = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
+    /// @dev value is equal to keccak256(abi.encode())
+    /// @dev see: https://eips.ethereum.org/EIPS/eip-1052
+    bytes32 internal constant CREATED_ACCOUNT_HASH = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
 
-  /**
-   * @dev Modifier to restrict functions to only be called by this contract.
-   * @dev Reverts if the caller is not this contract.
-   */
-  modifier onlySelfCall() virtual {
-    _requireSelfCall();
-    _;
-  }
-
-  /**
-   * @dev Modifier to ensure that the elements in the `arr` array are non-duplicates.
-   * It calls the internal `_checkDuplicate` function to perform the duplicate check.
-   *
-   * Requirements:
-   * - The elements in the `arr` array must not contain any duplicates.
-   */
-  modifier nonDuplicate(address[] memory arr) virtual {
-    _requireNonDuplicate(arr);
-    _;
-  }
-
-  /**
-   * @dev Internal method to check the method caller.
-   * @dev Reverts if the method caller is not this contract.
-   */
-  function _requireSelfCall() internal view virtual {
-    if (msg.sender != address(this)) revert ErrOnlySelfCall(msg.sig);
-  }
-
-  /**
-   * @dev Internal function to check if a contract address has code.
-   * @param addr The address of the contract to check.
-   * @dev Throws an error if the contract address has no code.
-   */
-  function _requireHasCode(address addr) internal view {
-    if (addr.code.length == 0) revert ErrZeroCodeContract(addr);
-  }
-
-  /**
-   * @dev Checks if an address is zero and reverts if it is.
-   * @param addr The address to check.
-   */
-  function _requireNonZeroAddress(address addr) internal pure {
-    if (addr == address(0)) revert ErrZeroAddress(msg.sig);
-  }
-
-  /**
-   * @dev Check if arr is empty and revert if it is.
-   * Checks if an array contains any duplicate addresses and reverts if duplicates are found.
-   * @param arr The array of addresses to check.
-   */
-  function _requireNonDuplicate(address[] memory arr) internal pure {
-    if (arr.hasDuplicate()) revert AddressArrayUtils.ErrDuplicated(msg.sig);
-  }
-
-  /**
-   * @dev Internal function to require that the provided address is a created externally owned account (EOA).
-   * This internal function is used to ensure that the provided address is a valid externally owned account (EOA).
-   * It checks the codehash of the address against a predefined constant to confirm that the address is a created EOA.
-   * @notice This method only works with non-state EOA accounts
-   */
-  function _requireCreatedEOA(address addr) internal view {
-    _requireNonZeroAddress(addr);
-    bytes32 codehash = addr.codehash;
-    if (codehash != CREATED_ACCOUNT_HASH) revert ErrAddressIsNotCreatedEOA(addr, codehash);
-  }
-
-  /**
-   * @dev Internal function to require that the specified contract supports the given interface. This method handle in
-   * both case that the callee is either or not the proxy admin of the caller. If the contract does not support the
-   * interface `interfaceId` or EIP165, a revert with the corresponding error message is triggered.
-   *
-   * @param contractAddr The address of the contract to check for interface support.
-   * @param interfaceId The interface ID to check for support.
-   */
-  function _requireSupportsInterface(address contractAddr, bytes4 interfaceId) internal view {
-    bytes memory supportsInterfaceParams = abi.encodeCall(IERC165.supportsInterface, (interfaceId));
-    (bool success, bytes memory returnOrRevertData) = contractAddr.staticcall(supportsInterfaceParams);
-    if (!success) {
-      (success, returnOrRevertData) = contractAddr.staticcall(abi.encodeCall(TransparentUpgradeableProxyV2.functionDelegateCall, (supportsInterfaceParams)));
-      if (!success) revert ErrUnsupportedInterface(interfaceId, contractAddr);
+    /**
+     * @dev Modifier to restrict functions to only be called by this contract.
+     * @dev Reverts if the caller is not this contract.
+     */
+    modifier onlySelfCall() virtual {
+        _requireSelfCall();
+        _;
     }
-    if (!abi.decode(returnOrRevertData, (bool))) revert ErrUnsupportedInterface(interfaceId, contractAddr);
-  }
+
+    /**
+     * @dev Modifier to ensure that the elements in the `arr` array are non-duplicates.
+     * It calls the internal `_checkDuplicate` function to perform the duplicate check.
+     *
+     * Requirements:
+     * - The elements in the `arr` array must not contain any duplicates.
+     */
+    modifier nonDuplicate(address[] memory arr) virtual {
+        _requireNonDuplicate(arr);
+        _;
+    }
+
+    /**
+     * @dev Internal method to check the method caller.
+     * @dev Reverts if the method caller is not this contract.
+     */
+    function _requireSelfCall() internal view virtual {
+        if (msg.sender != address(this)) {
+            revert ErrOnlySelfCall(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Internal function to check if a contract address has code.
+     * @param addr The address of the contract to check.
+     * @dev Throws an error if the contract address has no code.
+     */
+    function _requireHasCode(address addr) internal view {
+        if (addr.code.length == 0) {
+            revert ErrZeroCodeContract(addr);
+        }
+    }
+
+    /**
+     * @dev Checks if an address is zero and reverts if it is.
+     * @param addr The address to check.
+     */
+    function _requireNonZeroAddress(address addr) internal pure {
+        if (addr == address(0)) {
+            revert ErrZeroAddress(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Check if arr is empty and revert if it is.
+     * Checks if an array contains any duplicate addresses and reverts if duplicates are found.
+     * @param arr The array of addresses to check.
+     */
+    function _requireNonDuplicate(address[] memory arr) internal pure {
+        if (arr.hasDuplicate()) {
+            revert AddressArrayUtils.ErrDuplicated(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Internal function to require that the provided address is a created externally owned account (EOA).
+     * This internal function is used to ensure that the provided address is a valid externally owned account (EOA).
+     * It checks the codehash of the address against a predefined constant to confirm that the address is a created EOA.
+     * @notice This method only works with non-state EOA accounts
+     */
+    function _requireCreatedEOA(address addr) internal view {
+        _requireNonZeroAddress(addr);
+        bytes32 codehash = addr.codehash;
+        if (codehash != CREATED_ACCOUNT_HASH) {
+            revert ErrAddressIsNotCreatedEOA(addr, codehash);
+        }
+    }
+
+    /**
+     * @dev Internal function to require that the specified contract supports the given interface. This method handle in
+     * both case that the callee is either or not the proxy admin of the caller. If the contract does not support the
+     * interface `interfaceId` or EIP165, a revert with the corresponding error message is triggered.
+     *
+     * @param contractAddr The address of the contract to check for interface support.
+     * @param interfaceId The interface ID to check for support.
+     */
+    function _requireSupportsInterface(address contractAddr, bytes4 interfaceId) internal view {
+        bytes memory supportsInterfaceParams = abi.encodeCall(IERC165.supportsInterface, (interfaceId));
+        (bool success, bytes memory returnOrRevertData) = contractAddr.staticcall(supportsInterfaceParams);
+        if (!success) {
+            (success, returnOrRevertData) = contractAddr.staticcall(
+                abi.encodeCall(TransparentUpgradeableProxyV2.functionDelegateCall, (supportsInterfaceParams))
+            );
+            if (!success) {
+                revert ErrUnsupportedInterface(interfaceId, contractAddr);
+            }
+        }
+        if (!abi.decode(returnOrRevertData, (bool))) {
+            revert ErrUnsupportedInterface(interfaceId, contractAddr);
+        }
+    }
 }
 
 /**
@@ -4724,292 +4694,294 @@ error ErrUnexpectedInternalCall(bytes4 msgSig, ContractType expectedContractType
  * @dev A contract that provides functionality to manage multiple contracts with different roles.
  */
 abstract contract HasContracts is HasProxyAdmin, IHasContracts, IdentityGuard {
-  /// @dev value is equal to keccak256("@ronin.dpos.collections.HasContracts.slot") - 1
-  bytes32 private constant _STORAGE_SLOT = 0xdea3103d22025c269050bea94c0c84688877f12fa22b7e6d2d5d78a9a49aa1cb;
+    /// @dev value is equal to keccak256("@ronin.dpos.collections.HasContracts.slot") - 1
+    bytes32 private constant _STORAGE_SLOT = 0xdea3103d22025c269050bea94c0c84688877f12fa22b7e6d2d5d78a9a49aa1cb;
 
-  /**
-   * @dev Modifier to restrict access to functions only to contracts with a specific role.
-   * @param contractType The contract type that allowed to call
-   */
-  modifier onlyContract(ContractType contractType) virtual {
-    _requireContract(contractType);
-    _;
-  }
-
-  /**
-   * @inheritdoc IHasContracts
-   */
-  function setContract(ContractType contractType, address addr) external virtual onlyProxyAdmin {
-    _requireHasCode(addr);
-    _setContract(contractType, addr);
-  }
-
-  /**
-   * @inheritdoc IHasContracts
-   */
-  function getContract(ContractType contractType) public view returns (address contract_) {
-    contract_ = _getContractMap()[uint8(contractType)];
-    if (contract_ == address(0)) revert ErrContractTypeNotFound(contractType);
-  }
-
-  /**
-   * @dev Internal function to set the address of a contract with a specific role.
-   * @param contractType The contract type of the contract to set.
-   * @param addr The address of the contract to set.
-   */
-  function _setContract(ContractType contractType, address addr) internal virtual {
-    _getContractMap()[uint8(contractType)] = addr;
-    emit ContractUpdated(contractType, addr);
-  }
-
-  /**
-   * @dev Internal function to access the mapping of contract addresses with roles.
-   * @return contracts_ The mapping of contract addresses with roles.
-   */
-  function _getContractMap() private pure returns (mapping(uint8 => address) storage contracts_) {
-    assembly {
-      contracts_.slot := _STORAGE_SLOT
+    /**
+     * @dev Modifier to restrict access to functions only to contracts with a specific role.
+     * @param contractType The contract type that allowed to call
+     */
+    modifier onlyContract(ContractType contractType) virtual {
+        _requireContract(contractType);
+        _;
     }
-  }
 
-  /**
-   * @dev Internal function to check if the calling contract has a specific role.
-   * @param contractType The contract type that the calling contract must have.
-   * @dev Throws an error if the calling contract does not have the specified role.
-   */
-  function _requireContract(ContractType contractType) private view {
-    if (msg.sender != getContract(contractType)) {
-      revert ErrUnexpectedInternalCall(msg.sig, contractType, msg.sender);
+    /**
+     * @inheritdoc IHasContracts
+     */
+    function setContract(ContractType contractType, address addr) external virtual onlyProxyAdmin {
+        _requireHasCode(addr);
+        _setContract(contractType, addr);
     }
-  }
+
+    /**
+     * @inheritdoc IHasContracts
+     */
+    function getContract(ContractType contractType) public view returns (address contract_) {
+        contract_ = _getContractMap()[uint8(contractType)];
+        if (contract_ == address(0)) {
+            revert ErrContractTypeNotFound(contractType);
+        }
+    }
+
+    /**
+     * @dev Internal function to set the address of a contract with a specific role.
+     * @param contractType The contract type of the contract to set.
+     * @param addr The address of the contract to set.
+     */
+    function _setContract(ContractType contractType, address addr) internal virtual {
+        _getContractMap()[uint8(contractType)] = addr;
+        emit ContractUpdated(contractType, addr);
+    }
+
+    /**
+     * @dev Internal function to access the mapping of contract addresses with roles.
+     * @return contracts_ The mapping of contract addresses with roles.
+     */
+    function _getContractMap() private pure returns (mapping(uint8 => address) storage contracts_) {
+        assembly {
+            contracts_.slot := _STORAGE_SLOT
+        }
+    }
+
+    /**
+     * @dev Internal function to check if the calling contract has a specific role.
+     * @param contractType The contract type that the calling contract must have.
+     * @dev Throws an error if the calling contract does not have the specified role.
+     */
+    function _requireContract(ContractType contractType) private view {
+        if (msg.sender != getContract(contractType)) {
+            revert ErrUnexpectedInternalCall(msg.sig, contractType, msg.sender);
+        }
+    }
 }
 
 interface ICCIPLiquidityContainer {
-  function provideLiquidity(uint64 remoteChainSelector, uint256 amount) external;
+    function provideLiquidity(uint64 remoteChainSelector, uint256 amount) external;
 
-  function provideLiquidity(
-    uint256 amount
-  ) external;
+    function provideLiquidity(uint256 amount) external;
 
-  function provideSiloedLiquidity(uint64 remoteChainSelector, uint256 amount) external;
+    function provideSiloedLiquidity(uint64 remoteChainSelector, uint256 amount) external;
 }
 
 abstract contract AssetMigration is HasProxyAdmin, Pausable, AccessControlEnumerable {
-  /// @dev Error when the token is not whitelisted before
-  error ErrNotWhitelistedToken(address token);
-  /// @dev Error when the native token is whitelisted instead of the wrapped token
-  error ErrWhitelistWrappedTokenInstead();
+    /// @dev Error when the token is not whitelisted before
+    error ErrNotWhitelistedToken(address token);
+    /// @dev Error when the native token is whitelisted instead of the wrapped token
+    error ErrWhitelistWrappedTokenInstead();
 
-  /// @dev The native token indicator address
-  address internal constant _NATIVE_TOKEN_INDICATOR = address(0);
-  /// @dev The migrator role
-  bytes32 internal constant _MIGRATOR_ROLE = keccak256("MIGRATOR_ROLE");
+    /// @dev The native token indicator address
+    address internal constant _NATIVE_TOKEN_INDICATOR = address(0);
+    /// @dev The migrator role
+    bytes32 internal constant _MIGRATOR_ROLE = keccak256("MIGRATOR_ROLE");
 
-  /// @custom:storage-location erc7201:ronin.bridge.AssetMigration
-  struct AssetMigrationStorage {
-    // Whitelisted addresses
-    mapping(address token => WhitelistInfo wlInfo) _wlInfo;
-  }
+    /// @custom:storage-location erc7201:ronin.bridge.AssetMigration
+    struct AssetMigrationStorage {
+        // Whitelisted addresses
+        mapping(address token => WhitelistInfo wlInfo) _wlInfo;
+    }
 
-  struct WhitelistInfo {
-    // CCIP Pool address
-    address _recipient;
-    // Remote chain selector
-    // If zero, will interact `_recipient` via ICCIPLiquidityContainer.provideLiquidity(uint256)
-    uint64 _remoteChainSelector;
-  }
+    struct WhitelistInfo {
+        // CCIP Pool address
+        address _recipient;
+        // Remote chain selector
+        // If zero, will interact `_recipient` via ICCIPLiquidityContainer.provideLiquidity(uint256)
+        uint64 _remoteChainSelector;
+    }
 
-  /// @dev Emitted when recipients are whitelisted.
-  event WhitelistUpdated(address indexed by, address[] tokens, address[] recipients, uint64[] remoteChainSelectors);
+    /// @dev Emitted when recipients are whitelisted.
+    event WhitelistUpdated(address indexed by, address[] tokens, address[] recipients, uint64[] remoteChainSelectors);
 
-  /**
-   * @dev Modifier to check if `a` and `b` have the same length and are not empty.
-   */
-  modifier validInput(uint256[] memory a, uint256[] memory b) {
-    _requireValidInput(a, b);
-    _;
-  }
+    /**
+     * @dev Modifier to check if `a` and `b` have the same length and are not empty.
+     */
+    modifier validInput(uint256[] memory a, uint256[] memory b) {
+        _requireValidInput(a, b);
+        _;
+    }
 
-  /**
-   * @dev Returns the wrapped native token.
-   * - For `MainchainGatewayV3`, it MUST return the WETH token.
-   */
-  function wrappedNativeToken() external view virtual returns (IWETH) {
-    revert("Not implemented");
-  }
+    /**
+     * @dev Returns the wrapped native token.
+     * - For `MainchainGatewayV3`, it MUST return the WETH token.
+     */
+    function wrappedNativeToken() external view virtual returns (IWETH) {
+        revert("Not implemented");
+    }
 
-  /**
-   * @dev Migrates the given tokens to the specified addresses.
-   *
-   * When the token is the native (i.e RON or ETH), it will be wrapped (i.e WRON, WETH).
-   *
-   * Requirements:
-   * - The caller must be the migrator.
-   * - The length of the arrays must be the same.
-   * - The length of the arrays must not be zero.
-   */
-  function migrateERC20(
-    address[] calldata tokens,
-    uint256[] calldata amounts
-  ) external whenNotPaused onlyRole(_MIGRATOR_ROLE) validInput(_toUint256s(tokens), amounts) {
-    uint256 length = amounts.length;
-    IERC20 token;
+    /**
+     * @dev Migrates the given tokens to the specified addresses.
+     *
+     * When the token is the native (i.e RON or ETH), it will be wrapped (i.e WRON, WETH).
+     *
+     * Requirements:
+     * - The caller must be the migrator.
+     * - The length of the arrays must be the same.
+     * - The length of the arrays must not be zero.
+     */
+    function migrateERC20(address[] calldata tokens, uint256[] calldata amounts)
+        external
+        whenNotPaused
+        onlyRole(_MIGRATOR_ROLE)
+        validInput(_toUint256s(tokens), amounts)
+    {
+        uint256 length = amounts.length;
+        IERC20 token;
 
-    for (uint256 i; i < length; ++i) {
-      token = IERC20(tokens[i]);
+        for (uint256 i; i < length; ++i) {
+            token = IERC20(tokens[i]);
 
-      if (address(token) == address(_NATIVE_TOKEN_INDICATOR)) {
-        token = _wrap(amounts[i]);
-      }
+            if (address(token) == address(_NATIVE_TOKEN_INDICATOR)) {
+                token = _wrap(amounts[i]);
+            }
 
-      address recipient = _getRecipient(address(token));
-      uint64 remoteChainSelector = _getRemoteChainSelector(address(token));
+            address recipient = _getRecipient(address(token));
+            uint64 remoteChainSelector = _getRemoteChainSelector(address(token));
 
-      // Approve specific allowance to the Chainlink Pool
-      token.approve(recipient, amounts[i]);
+            // Approve specific allowance to the Chainlink Pool
+            token.approve(recipient, amounts[i]);
 
-      // This should revert if the pool did not accept the tokens
-      if (remoteChainSelector == 0) {
-        ICCIPLiquidityContainer(recipient).provideLiquidity(amounts[i]);
-      } else {
-        try ICCIPLiquidityContainer(recipient).provideSiloedLiquidity(remoteChainSelector, amounts[i]) {
-          // Do nothing
-        } catch {
-          ICCIPLiquidityContainer(recipient).provideLiquidity(remoteChainSelector, amounts[i]);
+            // This should revert if the pool did not accept the tokens
+            if (remoteChainSelector == 0) {
+                ICCIPLiquidityContainer(recipient).provideLiquidity(amounts[i]);
+            } else {
+                try ICCIPLiquidityContainer(recipient).provideSiloedLiquidity(remoteChainSelector, amounts[i]) {
+                    // Do nothing
+                } catch {
+                    ICCIPLiquidityContainer(recipient).provideLiquidity(remoteChainSelector, amounts[i]);
+                }
+            }
         }
-      }
-    }
-  }
-
-  /**
-   * @dev Whitelists the recipients for the given tokens, with targeted remote chain selector.
-   *
-   * Requirements:
-   * - Must go through proposal via `BridgeManager`.
-   * - The length of the arrays must be the same.
-   */
-  function whitelist(address[] calldata tokens, address[] calldata recipients, uint64[] calldata remoteChainSelectors) external whenNotPaused onlyProxyAdmin {
-    _whitelist(tokens, recipients, remoteChainSelectors);
-  }
-
-  /**
-   * @dev Get all whitelisted addresses for the given tokens.
-   */
-  function getWhitelistedAddresses(
-    address[] calldata tokens
-  ) external view returns (address[] memory whitelisteds, uint64[] memory remoteChainSelectors) {
-    AssetMigrationStorage storage $ = _getAssetMigration();
-
-    uint256 length = tokens.length;
-    whitelisteds = new address[](length);
-    remoteChainSelectors = new uint64[](length);
-
-    for (uint256 i; i < length; ++i) {
-      WhitelistInfo storage $wlInfo = $._wlInfo[tokens[i]];
-
-      whitelisteds[i] = $wlInfo._recipient;
-      remoteChainSelectors[i] = $wlInfo._remoteChainSelector;
-    }
-  }
-
-  /**
-   * @dev Returns the pointer of the AssetMigrationStorage struct.
-   */
-  function _getAssetMigration() private pure returns (AssetMigrationStorage storage $) {
-    // value is equal to keccak256(abi.encode(uint256(keccak256("ronin.bridge.AssetMigration")) - 1)) &
-    // ~bytes32(uint256(0xff))
-    bytes32 storageLoc = 0x06e9d321f1aa72738d882c53ba334d30578ba3db2fbd2df66a07059b7abc9900;
-
-    assembly ("memory-safe") {
-      $.slot := storageLoc
-    }
-  }
-
-  /**
-   * @dev Converts the native token to its wrapped version.
-   */
-  function _wrap(
-    uint256 amount
-  ) internal returns (IERC20) {
-    IWETH w = this.wrappedNativeToken();
-    w.deposit{ value: amount }();
-
-    return IERC20(address(w));
-  }
-
-  /**
-   * @dev Sets the whitelist status of the recipients.
-   * This function does not revert when the recipient is already whitelisted or not.
-   * if `recipient` is zero address, it will remove the whitelist status.
-   */
-  function _whitelist(
-    address[] calldata tokens,
-    address[] calldata recipients,
-    uint64[] calldata remoteChainSelectors
-  ) internal validInput(_toUint256s(recipients), _toUint256s(tokens)) validInput(_toUint256s(recipients), _toUint256s(remoteChainSelectors)) {
-    AssetMigrationStorage storage $ = _getAssetMigration();
-    uint256 length = recipients.length;
-
-    for (uint256 i; i < length; ++i) {
-      require(tokens[i] != _NATIVE_TOKEN_INDICATOR, ErrWhitelistWrappedTokenInstead());
-
-      WhitelistInfo storage $wlInfo = $._wlInfo[tokens[i]];
-      $wlInfo._recipient = recipients[i];
-      $wlInfo._remoteChainSelector = remoteChainSelectors[i];
     }
 
-    emit WhitelistUpdated(msg.sender, tokens, recipients, remoteChainSelectors);
-  }
-
-  /**
-   * @dev Throws if the recipient is not whitelisted.
-   * Returns the recipient address.
-   */
-  function _getRecipient(
-    address token
-  ) internal view returns (address recipient) {
-    recipient = _getAssetMigration()._wlInfo[token]._recipient;
-    require(recipient != address(0x0), ErrNotWhitelistedToken(token));
-  }
-
-  /**
-   * @dev Returns the remote chain selector.
-   */
-  function _getRemoteChainSelector(
-    address token
-  ) internal view returns (uint64 remoteChainSelector) {
-    remoteChainSelector = _getAssetMigration()._wlInfo[token]._remoteChainSelector;
-  }
-
-  /**
-   * @dev Throws if `a` and `b` have different lengths or are empty.
-   */
-  function _requireValidInput(uint256[] memory a, uint256[] memory b) internal pure {
-    require(a.length != 0, ErrEmptyArray());
-    require(a.length == b.length, ErrLengthMismatch(msg.sig));
-  }
-
-  /**
-   * @dev Converts the address array to uint256 array.
-   */
-  function _toUint256s(
-    address[] memory a
-  ) internal pure returns (uint256[] memory b) {
-    assembly ("memory-safe") {
-      b := a
+    /**
+     * @dev Whitelists the recipients for the given tokens, with targeted remote chain selector.
+     *
+     * Requirements:
+     * - Must go through proposal via `BridgeManager`.
+     * - The length of the arrays must be the same.
+     */
+    function whitelist(address[] calldata tokens, address[] calldata recipients, uint64[] calldata remoteChainSelectors)
+        external
+        whenNotPaused
+        onlyProxyAdmin
+    {
+        _whitelist(tokens, recipients, remoteChainSelectors);
     }
-  }
 
-  /**
-   * @dev Converts the uint64 array to uint256 array.
-   */
-  function _toUint256s(
-    uint64[] memory a
-  ) internal pure returns (uint256[] memory b) {
-    assembly ("memory-safe") {
-      b := a
+    /**
+     * @dev Get all whitelisted addresses for the given tokens.
+     */
+    function getWhitelistedAddresses(address[] calldata tokens)
+        external
+        view
+        returns (address[] memory whitelisteds, uint64[] memory remoteChainSelectors)
+    {
+        AssetMigrationStorage storage $ = _getAssetMigration();
+
+        uint256 length = tokens.length;
+        whitelisteds = new address[](length);
+        remoteChainSelectors = new uint64[](length);
+
+        for (uint256 i; i < length; ++i) {
+            WhitelistInfo storage $wlInfo = $._wlInfo[tokens[i]];
+
+            whitelisteds[i] = $wlInfo._recipient;
+            remoteChainSelectors[i] = $wlInfo._remoteChainSelector;
+        }
     }
-  }
+
+    /**
+     * @dev Returns the pointer of the AssetMigrationStorage struct.
+     */
+    function _getAssetMigration() private pure returns (AssetMigrationStorage storage $) {
+        // value is equal to keccak256(abi.encode(uint256(keccak256("ronin.bridge.AssetMigration")) - 1)) &
+        // ~bytes32(uint256(0xff))
+        bytes32 storageLoc = 0x06e9d321f1aa72738d882c53ba334d30578ba3db2fbd2df66a07059b7abc9900;
+
+        assembly ("memory-safe") {
+            $.slot := storageLoc
+        }
+    }
+
+    /**
+     * @dev Converts the native token to its wrapped version.
+     */
+    function _wrap(uint256 amount) internal returns (IERC20) {
+        IWETH w = this.wrappedNativeToken();
+        w.deposit{value: amount}();
+
+        return IERC20(address(w));
+    }
+
+    /**
+     * @dev Sets the whitelist status of the recipients.
+     * This function does not revert when the recipient is already whitelisted or not.
+     * if `recipient` is zero address, it will remove the whitelist status.
+     */
+    function _whitelist(
+        address[] calldata tokens,
+        address[] calldata recipients,
+        uint64[] calldata remoteChainSelectors
+    )
+        internal
+        validInput(_toUint256s(recipients), _toUint256s(tokens))
+        validInput(_toUint256s(recipients), _toUint256s(remoteChainSelectors))
+    {
+        AssetMigrationStorage storage $ = _getAssetMigration();
+        uint256 length = recipients.length;
+
+        for (uint256 i; i < length; ++i) {
+            require(tokens[i] != _NATIVE_TOKEN_INDICATOR, ErrWhitelistWrappedTokenInstead());
+
+            WhitelistInfo storage $wlInfo = $._wlInfo[tokens[i]];
+            $wlInfo._recipient = recipients[i];
+            $wlInfo._remoteChainSelector = remoteChainSelectors[i];
+        }
+
+        emit WhitelistUpdated(msg.sender, tokens, recipients, remoteChainSelectors);
+    }
+
+    /**
+     * @dev Throws if the recipient is not whitelisted.
+     * Returns the recipient address.
+     */
+    function _getRecipient(address token) internal view returns (address recipient) {
+        recipient = _getAssetMigration()._wlInfo[token]._recipient;
+        require(recipient != address(0x0), ErrNotWhitelistedToken(token));
+    }
+
+    /**
+     * @dev Returns the remote chain selector.
+     */
+    function _getRemoteChainSelector(address token) internal view returns (uint64 remoteChainSelector) {
+        remoteChainSelector = _getAssetMigration()._wlInfo[token]._remoteChainSelector;
+    }
+
+    /**
+     * @dev Throws if `a` and `b` have different lengths or are empty.
+     */
+    function _requireValidInput(uint256[] memory a, uint256[] memory b) internal pure {
+        require(a.length != 0, ErrEmptyArray());
+        require(a.length == b.length, ErrLengthMismatch(msg.sig));
+    }
+
+    /**
+     * @dev Converts the address array to uint256 array.
+     */
+    function _toUint256s(address[] memory a) internal pure returns (uint256[] memory b) {
+        assembly ("memory-safe") {
+            b := a
+        }
+    }
+
+    /**
+     * @dev Converts the uint64 array to uint256 array.
+     */
+    function _toUint256s(uint64[] memory a) internal pure returns (uint256[] memory b) {
+        assembly ("memory-safe") {
+            b := a
+        }
+    }
 }
 
 /**
@@ -5017,21 +4989,25 @@ abstract contract AssetMigration is HasProxyAdmin, Pausable, AccessControlEnumer
  * @dev Interface for the callback functions to be implemented by the Bridge Manager contract.
  */
 interface IBridgeManagerCallback is IERC165 {
-  /**
-   * @dev Handles the event when bridge operators are added.
-   * @param bridgeOperators The addresses of the bridge operators.
-   * @param addeds The corresponding boolean values indicating whether the operators were added or not.
-   * @return selector The selector of the function being called.
-   */
-  function onBridgeOperatorsAdded(address[] memory bridgeOperators, uint96[] calldata weights, bool[] memory addeds) external returns (bytes4 selector);
+    /**
+     * @dev Handles the event when bridge operators are added.
+     * @param bridgeOperators The addresses of the bridge operators.
+     * @param addeds The corresponding boolean values indicating whether the operators were added or not.
+     * @return selector The selector of the function being called.
+     */
+    function onBridgeOperatorsAdded(address[] memory bridgeOperators, uint96[] calldata weights, bool[] memory addeds)
+        external
+        returns (bytes4 selector);
 
-  /**
-   * @dev Handles the event when bridge operators are removed.
-   * @param bridgeOperators The addresses of the bridge operators.
-   * @param removeds The corresponding boolean values indicating whether the operators were removed or not.
-   * @return selector The selector of the function being called.
-   */
-  function onBridgeOperatorsRemoved(address[] memory bridgeOperators, bool[] memory removeds) external returns (bytes4 selector);
+    /**
+     * @dev Handles the event when bridge operators are removed.
+     * @param bridgeOperators The addresses of the bridge operators.
+     * @param removeds The corresponding boolean values indicating whether the operators were removed or not.
+     * @return selector The selector of the function being called.
+     */
+    function onBridgeOperatorsRemoved(address[] memory bridgeOperators, bool[] memory removeds)
+        external
+        returns (bytes4 selector);
 }
 
 /**
@@ -5074,368 +5050,415 @@ error ErrInvalidRequest();
 error ErrInvalidTokenStandard();
 
 contract MainchainGatewayV3 is
-  WithdrawalLimitation,
-  Initializable,
-  AccessControlEnumerable,
-  ERC1155Holder,
-  IMainchainGatewayV3,
-  HasContracts,
-  AssetMigration,
-  IBridgeManagerCallback
+    WithdrawalLimitation,
+    Initializable,
+    AccessControlEnumerable,
+    ERC1155Holder,
+    IMainchainGatewayV3,
+    HasContracts,
+    AssetMigration,
+    IBridgeManagerCallback
 {
-  using LibTokenInfo for TokenInfo;
-  using Transfer for Transfer.Request;
-  using Transfer for Transfer.Receipt;
+    using LibTokenInfo for TokenInfo;
+    using Transfer for Transfer.Request;
+    using Transfer for Transfer.Receipt;
 
-  /// @dev Withdrawal unlocker role hash
-  bytes32 public constant WITHDRAWAL_UNLOCKER_ROLE = keccak256("WITHDRAWAL_UNLOCKER_ROLE");
+    /// @dev Withdrawal unlocker role hash
+    bytes32 public constant WITHDRAWAL_UNLOCKER_ROLE = keccak256("WITHDRAWAL_UNLOCKER_ROLE");
 
-  /// @dev Wrapped native token address
-  IWETH public override(AssetMigration, IMainchainGatewayV3) wrappedNativeToken;
-  /// @dev Ronin network id
-  uint256 public roninChainId;
-  /// @dev Total deposit
-  uint256 public depositCount;
-  /// @dev Domain separator
-  bytes32 internal _domainSeparator;
-  /// @dev Mapping from mainchain token => token address on Ronin network
-  mapping(address => MappedToken) internal _roninToken;
-  /// @dev Mapping from withdrawal id => withdrawal hash
-  mapping(uint256 => bytes32) public withdrawalHash;
-  /// @dev Mapping from withdrawal id => locked
-  mapping(uint256 => bool) public withdrawalLocked;
+    /// @dev Wrapped native token address
+    IWETH public override(AssetMigration, IMainchainGatewayV3) wrappedNativeToken;
+    /// @dev Ronin network id
+    uint256 public roninChainId;
+    /// @dev Total deposit
+    uint256 public depositCount;
+    /// @dev Domain separator
+    bytes32 internal _domainSeparator;
+    /// @dev Mapping from mainchain token => token address on Ronin network
+    mapping(address => MappedToken) internal _roninToken;
+    /// @dev Mapping from withdrawal id => withdrawal hash
+    mapping(uint256 => bytes32) public withdrawalHash;
+    /// @dev Mapping from withdrawal id => locked
+    mapping(uint256 => bool) public withdrawalLocked;
 
-  /// @custom:deprecated Previously `_bridgeOperatorAddedBlock` (mapping(address => uint256))
-  uint256 private ______deprecatedBridgeOperatorAddedBlock;
-  /// @custom:deprecated Previously `_bridgeOperators` (uint256[])
-  uint256 private ______deprecatedBridgeOperators;
+    /// @custom:deprecated Previously `_bridgeOperatorAddedBlock` (mapping(address => uint256))
+    uint256 private ______deprecatedBridgeOperatorAddedBlock;
+    /// @custom:deprecated Previously `_bridgeOperators` (uint256[])
+    uint256 private ______deprecatedBridgeOperators;
 
-  uint96 internal _totalOperatorWeight;
-  mapping(address operator => uint96 weight) internal _operatorWeight;
-  /// @custom:deprecated Previously `_wethUnwrapper` (address)
-  uint256 private ______deprecatedWethUnwrapper;
+    uint96 internal _totalOperatorWeight;
+    mapping(address operator => uint96 weight) internal _operatorWeight;
+    /// @custom:deprecated Previously `_wethUnwrapper` (address)
+    uint256 private ______deprecatedWethUnwrapper;
 
-  constructor() {
-    _disableInitializers();
-  }
-
-  receive() external payable {
-    _fallback();
-  }
-
-  function initializeV5(
-    address migrator,
-    address newEmergencyPauser,
-    address[] calldata tokens,
-    address[] calldata recipients,
-    uint64[] calldata remoteChainSelectors
-  ) external reinitializer(5) {
-    _grantRole(_MIGRATOR_ROLE, migrator);
-
-    uint8 forbidAllIndicator = type(uint8).max;
-
-    _restrict(this.requestDepositFor.selector, forbidAllIndicator);
-    _restrict(this.submitWithdrawal.selector, forbidAllIndicator);
-
-    if (tokens.length != 0 || recipients.length != 0 || remoteChainSelectors.length != 0) {
-      _whitelist(tokens, recipients, remoteChainSelectors);
-    }
-    emergencyPauser = newEmergencyPauser;
-  }
-
-  /**
-   * @dev Grant or revoke permission to transfer NFTs on behalf of the bridge.
-   * Requirements:
-   * - The method caller is admin or already have migrator role.
-   */
-  function bulkSetApprovalForAll(address[] calldata nfts, address[] calldata operators, bool[] calldata approveds) external {
-    if (msg.sender != _getProxyAdmin()) {
-      _checkRole(_MIGRATOR_ROLE);
-    }
-    if (nfts.length != operators.length || nfts.length != approveds.length) {
-      revert ErrLengthMismatch(msg.sig);
+    constructor() {
+        _disableInitializers();
     }
 
-    for (uint256 i; i < nfts.length; ++i) {
-      IERC721(nfts[i]).setApprovalForAll(operators[i], approveds[i]);
-    }
-  }
-
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function DOMAIN_SEPARATOR() external view virtual returns (bytes32) {
-    return _domainSeparator;
-  }
-
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function setWrappedNativeTokenContract(
-    IWETH _wrappedToken
-  ) external virtual onlyProxyAdmin {
-    _setWrappedNativeTokenContract(_wrappedToken);
-  }
-
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function requestDepositFor(
-    Transfer.Request calldata _request
-  ) external payable virtual whenNotPaused {
-    _requestDepositFor(_request, msg.sender);
-  }
-
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function submitWithdrawal(Transfer.Receipt calldata _receipt, Signature[] calldata _signatures) external virtual whenNotPaused returns (bool _locked) {
-    return _submitWithdrawal(_receipt, _signatures);
-  }
-
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function unlockWithdrawal(
-    Transfer.Receipt calldata receipt
-  ) external onlyRole(WITHDRAWAL_UNLOCKER_ROLE) {
-    bytes32 _receiptHash = receipt.hash();
-    if (withdrawalHash[receipt.id] != receipt.hash()) {
-      revert ErrInvalidReceipt();
-    }
-    if (!withdrawalLocked[receipt.id]) {
-      revert ErrQueryForApprovedWithdrawal();
-    }
-    delete withdrawalLocked[receipt.id];
-    emit WithdrawalUnlocked(_receiptHash, receipt);
-
-    address token = receipt.mainchain.tokenAddr;
-    if (receipt.info.erc == TokenStandard.ERC20) {
-      TokenInfo memory feeInfo = receipt.info;
-      feeInfo.quantity = _computeFeePercentage(receipt.info.quantity, unlockFeePercentages[token]);
-      TokenInfo memory withdrawInfo = receipt.info;
-      withdrawInfo.quantity = receipt.info.quantity - feeInfo.quantity;
-
-      feeInfo.handleAssetOut(payable(msg.sender), token, wrappedNativeToken);
-      withdrawInfo.handleAssetOut(payable(receipt.mainchain.addr), token, wrappedNativeToken);
-    } else {
-      receipt.info.handleAssetOut(payable(receipt.mainchain.addr), token, wrappedNativeToken);
+    receive() external payable {
+        _fallback();
     }
 
-    emit Withdrew(_receiptHash, receipt);
-  }
+    function initializeV5(
+        address migrator,
+        address newEmergencyPauser,
+        address[] calldata tokens,
+        address[] calldata recipients,
+        uint64[] calldata remoteChainSelectors
+    ) external reinitializer(5) {
+        _grantRole(_MIGRATOR_ROLE, migrator);
 
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function mapTokens(address[] calldata _mainchainTokens, address[] calldata _roninTokens, TokenStandard[] calldata _standards) external virtual onlyProxyAdmin {
-    if (_mainchainTokens.length == 0) revert ErrEmptyArray();
-    _mapTokens(_mainchainTokens, _roninTokens, _standards);
-  }
+        uint8 forbidAllIndicator = type(uint8).max;
 
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function mapTokensAndThresholds(
-    address[] calldata _mainchainTokens,
-    address[] calldata _roninTokens,
-    TokenStandard[] calldata _standards,
-    // _thresholds[0]: highTierThreshold
-    // _thresholds[1]: lockedThreshold
-    // _thresholds[2]: unlockFeePercentages
-    // _thresholds[3]: dailyWithdrawalLimit
-    uint256[][4] calldata _thresholds
-  ) external virtual onlyProxyAdmin {
-    if (_mainchainTokens.length == 0) revert ErrEmptyArray();
-    _mapTokens(_mainchainTokens, _roninTokens, _standards);
-    _setHighTierThresholds(_mainchainTokens, _thresholds[0]);
-    _setLockedThresholds(_mainchainTokens, _thresholds[1]);
-    _setUnlockFeePercentages(_mainchainTokens, _thresholds[2]);
-    _setDailyWithdrawalLimits(_mainchainTokens, _thresholds[3]);
-  }
+        _restrict(this.requestDepositFor.selector, forbidAllIndicator);
+        _restrict(this.submitWithdrawal.selector, forbidAllIndicator);
 
-  /**
-   * @inheritdoc IMainchainGatewayV3
-   */
-  function getRoninToken(
-    address mainchainToken
-  ) public view returns (MappedToken memory token) {
-    token = _roninToken[mainchainToken];
-    if (token.tokenAddr == address(0)) revert ErrUnsupportedToken();
-  }
-
-  /**
-   * @dev Maps mainchain tokens to Ronin network.
-   *
-   * Requirement:
-   * - The arrays have the same length.
-   *
-   * Emits the `TokenMapped` event.
-   *
-   */
-  function _mapTokens(address[] calldata mainchainTokens, address[] calldata roninTokens, TokenStandard[] calldata standards) internal virtual {
-    if (!(mainchainTokens.length == roninTokens.length && mainchainTokens.length == standards.length)) revert ErrLengthMismatch(msg.sig);
-
-    for (uint256 i; i < mainchainTokens.length; ++i) {
-      _roninToken[mainchainTokens[i]].tokenAddr = roninTokens[i];
-      _roninToken[mainchainTokens[i]].erc = standards[i];
-    }
-
-    emit TokenMapped(mainchainTokens, roninTokens, standards);
-  }
-
-  /**
-   * @dev Submits withdrawal receipt.
-   *
-   * Requirements:
-   * - The receipt kind is withdrawal.
-   * - The receipt is to withdraw on this chain.
-   * - The receipt is not used to withdraw before.
-   * - The withdrawal is not reached the limit threshold.
-   * - The signer weight total is larger than or equal to the minimum threshold.
-   * - The signature signers are in order.
-   *
-   * Emits the `Withdrew` once the assets are released.
-   *
-   */
-  function _submitWithdrawal(Transfer.Receipt calldata receipt, Signature[] memory signatures) internal virtual returns (bool locked) {
-    uint256 id = receipt.id;
-    uint256 quantity = receipt.info.quantity;
-    address tokenAddr = receipt.mainchain.tokenAddr;
-
-    receipt.info.validate();
-    _requireNotRestricted(receipt.info.erc);
-    if (receipt.kind != Transfer.Kind.Withdrawal) revert ErrInvalidReceiptKind();
-
-    if (receipt.mainchain.chainId != block.chainid) {
-      revert ErrInvalidChainId(msg.sig, receipt.mainchain.chainId, block.chainid);
-    }
-
-    MappedToken memory token = getRoninToken(receipt.mainchain.tokenAddr);
-
-    if (!(token.erc == receipt.info.erc && token.tokenAddr == receipt.ronin.tokenAddr && receipt.ronin.chainId == roninChainId)) {
-      revert ErrInvalidReceipt();
-    }
-
-    if (withdrawalHash[id] != 0) revert ErrQueryForProcessedWithdrawal();
-
-    if (!(receipt.info.erc == TokenStandard.ERC721 || !_reachedWithdrawalLimit(tokenAddr, quantity))) {
-      revert ErrReachedDailyWithdrawalLimit();
-    }
-
-    bytes32 receiptHash = receipt.hash();
-    bytes32 receiptDigest = Transfer.receiptDigest(_domainSeparator, receiptHash);
-
-    uint256 minimumWeight;
-    (minimumWeight, locked) = _computeMinVoteWeight(receipt.info.erc, tokenAddr, quantity);
-
-    {
-      bool passed;
-      address signer;
-      address lastSigner;
-      Signature memory sig;
-      uint256 accumWeight;
-      for (uint256 i; i < signatures.length; i++) {
-        sig = signatures[i];
-        signer = ECDSA.recover({ hash: receiptDigest, v: sig.v, r: sig.r, s: sig.s });
-        if (lastSigner >= signer) revert ErrInvalidOrder(msg.sig);
-
-        lastSigner = signer;
-
-        uint256 w = _getWeight(signer);
-        if (w == 0) revert ErrInvalidSigner(signer, w, sig);
-
-        accumWeight += w;
-        if (accumWeight >= minimumWeight) {
-          passed = true;
-          break;
+        if (tokens.length != 0 || recipients.length != 0 || remoteChainSelectors.length != 0) {
+            _whitelist(tokens, recipients, remoteChainSelectors);
         }
-      }
-
-      if (!passed) revert ErrQueryForInsufficientVoteWeight();
-      withdrawalHash[id] = receiptHash;
+        emergencyPauser = newEmergencyPauser;
     }
 
-    if (locked) {
-      withdrawalLocked[id] = true;
-      emit WithdrawalLocked(receiptHash, receipt);
-      return locked;
+    /**
+     * @dev Grant or revoke permission to transfer NFTs on behalf of the bridge.
+     * Requirements:
+     * - The method caller is admin or already have migrator role.
+     */
+    function bulkSetApprovalForAll(address[] calldata nfts, address[] calldata operators, bool[] calldata approveds)
+        external
+    {
+        if (msg.sender != _getProxyAdmin()) {
+            _checkRole(_MIGRATOR_ROLE);
+        }
+        if (nfts.length != operators.length || nfts.length != approveds.length) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+
+        for (uint256 i; i < nfts.length; ++i) {
+            IERC721(nfts[i]).setApprovalForAll(operators[i], approveds[i]);
+        }
     }
 
-    _recordWithdrawal(tokenAddr, quantity);
-    receipt.info.handleAssetOut(payable(receipt.mainchain.addr), tokenAddr, wrappedNativeToken);
-    emit Withdrew(receiptHash, receipt);
-  }
-
-  /**
-   * @dev Requests deposit made by `_requester` address.
-   *
-   * Requirements:
-   * - The token info is valid.
-   * - The `msg.value` is 0 while depositing ERC20 token.
-   * - The `msg.value` is equal to deposit quantity while depositing native token.
-   *
-   * Emits the `DepositRequested` event.
-   *
-   */
-  function _requestDepositFor(Transfer.Request memory _request, address _requester) internal virtual {
-    MappedToken memory _token;
-    address mainchainWeth = address(wrappedNativeToken);
-
-    _request.info.validate();
-    _requireNotRestricted(_request.info.erc);
-    if (_request.tokenAddr == address(0)) {
-      if (_request.info.quantity != msg.value) revert ErrInvalidRequest();
-
-      _token = getRoninToken(mainchainWeth);
-      if (_token.erc != _request.info.erc) revert ErrInvalidTokenStandard();
-
-      _request.tokenAddr = mainchainWeth;
-    } else {
-      if (msg.value != 0) revert ErrInvalidRequest();
-
-      _token = getRoninToken(_request.tokenAddr);
-      if (_token.erc != _request.info.erc) revert ErrInvalidTokenStandard();
-
-      _request.info.handleAssetIn(_requester, _request.tokenAddr);
-
-      /**
-       * Withdraw if token is WETH
-       *
-       * `IWETH.withdraw` only sends 2300 gas, which might be insufficient when recipient is a proxy, in this case, gateway proxy.
-       * However, the storage accesses of proxy relating variables on Shanghai hardfork are warm-access, only requires additional 100*2 gas. So it should be safe,
-       * no need to go via a mediator of WETH unwrapper.
-       */
-      if (mainchainWeth == _request.tokenAddr) {
-        IWETH(mainchainWeth).withdraw(_request.info.quantity);
-      }
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function DOMAIN_SEPARATOR() external view virtual returns (bytes32) {
+        return _domainSeparator;
     }
 
-    uint256 _depositId = depositCount++;
-    Transfer.Receipt memory _receipt = _request.into_deposit_receipt(_requester, _depositId, _token.tokenAddr, roninChainId);
-
-    emit DepositRequested(_receipt.hash(), _receipt);
-  }
-
-  /**
-   * @dev Returns the minimum vote weight for the token.
-   */
-  function _computeMinVoteWeight(TokenStandard _erc, address _token, uint256 _quantity) internal virtual returns (uint256 _weight, bool _locked) {
-    uint256 _totalWeight = _getTotalWeight();
-    _weight = _minimumVoteWeight(_totalWeight);
-    if (_erc == TokenStandard.ERC20) {
-      if (highTierThreshold[_token] <= _quantity) {
-        _weight = _highTierVoteWeight(_totalWeight);
-      }
-      _locked = _lockedWithdrawalRequest(_token, _quantity);
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function setWrappedNativeTokenContract(IWETH _wrappedToken) external virtual onlyProxyAdmin {
+        _setWrappedNativeTokenContract(_wrappedToken);
     }
-  }
 
-  /**
-   * @dev Update domain separator.
-   */
-  function _updateDomainSeparator() internal {
-    /*
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function requestDepositFor(Transfer.Request calldata _request) external payable virtual whenNotPaused {
+        _requestDepositFor(_request, msg.sender);
+    }
+
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function submitWithdrawal(Transfer.Receipt calldata _receipt, Signature[] calldata _signatures)
+        external
+        virtual
+        whenNotPaused
+        returns (bool _locked)
+    {
+        return _submitWithdrawal(_receipt, _signatures);
+    }
+
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function unlockWithdrawal(Transfer.Receipt calldata receipt) external onlyRole(WITHDRAWAL_UNLOCKER_ROLE) {
+        bytes32 _receiptHash = receipt.hash();
+        if (withdrawalHash[receipt.id] != receipt.hash()) {
+            revert ErrInvalidReceipt();
+        }
+        if (!withdrawalLocked[receipt.id]) {
+            revert ErrQueryForApprovedWithdrawal();
+        }
+        delete withdrawalLocked[receipt.id];
+        emit WithdrawalUnlocked(_receiptHash, receipt);
+
+        address token = receipt.mainchain.tokenAddr;
+        if (receipt.info.erc == TokenStandard.ERC20) {
+            TokenInfo memory feeInfo = receipt.info;
+            feeInfo.quantity = _computeFeePercentage(receipt.info.quantity, unlockFeePercentages[token]);
+            TokenInfo memory withdrawInfo = receipt.info;
+            withdrawInfo.quantity = receipt.info.quantity - feeInfo.quantity;
+
+            feeInfo.handleAssetOut(payable(msg.sender), token, wrappedNativeToken);
+            withdrawInfo.handleAssetOut(payable(receipt.mainchain.addr), token, wrappedNativeToken);
+        } else {
+            receipt.info.handleAssetOut(payable(receipt.mainchain.addr), token, wrappedNativeToken);
+        }
+
+        emit Withdrew(_receiptHash, receipt);
+    }
+
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function mapTokens(
+        address[] calldata _mainchainTokens,
+        address[] calldata _roninTokens,
+        TokenStandard[] calldata _standards
+    ) external virtual onlyProxyAdmin {
+        if (_mainchainTokens.length == 0) {
+            revert ErrEmptyArray();
+        }
+        _mapTokens(_mainchainTokens, _roninTokens, _standards);
+    }
+
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function mapTokensAndThresholds(
+        address[] calldata _mainchainTokens,
+        address[] calldata _roninTokens,
+        TokenStandard[] calldata _standards,
+        // _thresholds[0]: highTierThreshold
+        // _thresholds[1]: lockedThreshold
+        // _thresholds[2]: unlockFeePercentages
+        // _thresholds[3]: dailyWithdrawalLimit
+        uint256[][4] calldata _thresholds
+    ) external virtual onlyProxyAdmin {
+        if (_mainchainTokens.length == 0) {
+            revert ErrEmptyArray();
+        }
+        _mapTokens(_mainchainTokens, _roninTokens, _standards);
+        _setHighTierThresholds(_mainchainTokens, _thresholds[0]);
+        _setLockedThresholds(_mainchainTokens, _thresholds[1]);
+        _setUnlockFeePercentages(_mainchainTokens, _thresholds[2]);
+        _setDailyWithdrawalLimits(_mainchainTokens, _thresholds[3]);
+    }
+
+    /**
+     * @inheritdoc IMainchainGatewayV3
+     */
+    function getRoninToken(address mainchainToken) public view returns (MappedToken memory token) {
+        token = _roninToken[mainchainToken];
+        if (token.tokenAddr == address(0)) {
+            revert ErrUnsupportedToken();
+        }
+    }
+
+    /**
+     * @dev Maps mainchain tokens to Ronin network.
+     *
+     * Requirement:
+     * - The arrays have the same length.
+     *
+     * Emits the `TokenMapped` event.
+     *
+     */
+    function _mapTokens(
+        address[] calldata mainchainTokens,
+        address[] calldata roninTokens,
+        TokenStandard[] calldata standards
+    ) internal virtual {
+        if (!(mainchainTokens.length == roninTokens.length && mainchainTokens.length == standards.length)) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+
+        for (uint256 i; i < mainchainTokens.length; ++i) {
+            _roninToken[mainchainTokens[i]].tokenAddr = roninTokens[i];
+            _roninToken[mainchainTokens[i]].erc = standards[i];
+        }
+
+        emit TokenMapped(mainchainTokens, roninTokens, standards);
+    }
+
+    /**
+     * @dev Submits withdrawal receipt.
+     *
+     * Requirements:
+     * - The receipt kind is withdrawal.
+     * - The receipt is to withdraw on this chain.
+     * - The receipt is not used to withdraw before.
+     * - The withdrawal is not reached the limit threshold.
+     * - The signer weight total is larger than or equal to the minimum threshold.
+     * - The signature signers are in order.
+     *
+     * Emits the `Withdrew` once the assets are released.
+     *
+     */
+    function _submitWithdrawal(Transfer.Receipt calldata receipt, Signature[] memory signatures)
+        internal
+        virtual
+        returns (bool locked)
+    {
+        uint256 id = receipt.id;
+        uint256 quantity = receipt.info.quantity;
+        address tokenAddr = receipt.mainchain.tokenAddr;
+
+        receipt.info.validate();
+        _requireNotRestricted(receipt.info.erc);
+        if (receipt.kind != Transfer.Kind.Withdrawal) {
+            revert ErrInvalidReceiptKind();
+        }
+
+        if (receipt.mainchain.chainId != block.chainid) {
+            revert ErrInvalidChainId(msg.sig, receipt.mainchain.chainId, block.chainid);
+        }
+
+        MappedToken memory token = getRoninToken(receipt.mainchain.tokenAddr);
+
+        if (
+            !(
+                token.erc == receipt.info.erc && token.tokenAddr == receipt.ronin.tokenAddr
+                    && receipt.ronin.chainId == roninChainId
+            )
+        ) {
+            revert ErrInvalidReceipt();
+        }
+
+        if (withdrawalHash[id] != 0) {
+            revert ErrQueryForProcessedWithdrawal();
+        }
+
+        if (!(receipt.info.erc == TokenStandard.ERC721 || !_reachedWithdrawalLimit(tokenAddr, quantity))) {
+            revert ErrReachedDailyWithdrawalLimit();
+        }
+
+        bytes32 receiptHash = receipt.hash();
+        bytes32 receiptDigest = Transfer.receiptDigest(_domainSeparator, receiptHash);
+
+        uint256 minimumWeight;
+        (minimumWeight, locked) = _computeMinVoteWeight(receipt.info.erc, tokenAddr, quantity);
+
+        {
+            bool passed;
+            address signer;
+            address lastSigner;
+            Signature memory sig;
+            uint256 accumWeight;
+            for (uint256 i; i < signatures.length; i++) {
+                sig = signatures[i];
+                signer = ECDSA.recover({hash: receiptDigest, v: sig.v, r: sig.r, s: sig.s});
+                if (lastSigner >= signer) {
+                    revert ErrInvalidOrder(msg.sig);
+                }
+
+                lastSigner = signer;
+
+                uint256 w = _getWeight(signer);
+                if (w == 0) {
+                    revert ErrInvalidSigner(signer, w, sig);
+                }
+
+                accumWeight += w;
+                if (accumWeight >= minimumWeight) {
+                    passed = true;
+                    break;
+                }
+            }
+
+            if (!passed) {
+                revert ErrQueryForInsufficientVoteWeight();
+            }
+            withdrawalHash[id] = receiptHash;
+        }
+
+        if (locked) {
+            withdrawalLocked[id] = true;
+            emit WithdrawalLocked(receiptHash, receipt);
+            return locked;
+        }
+
+        _recordWithdrawal(tokenAddr, quantity);
+        receipt.info.handleAssetOut(payable(receipt.mainchain.addr), tokenAddr, wrappedNativeToken);
+        emit Withdrew(receiptHash, receipt);
+    }
+
+    /**
+     * @dev Requests deposit made by `_requester` address.
+     *
+     * Requirements:
+     * - The token info is valid.
+     * - The `msg.value` is 0 while depositing ERC20 token.
+     * - The `msg.value` is equal to deposit quantity while depositing native token.
+     *
+     * Emits the `DepositRequested` event.
+     *
+     */
+    function _requestDepositFor(Transfer.Request memory _request, address _requester) internal virtual {
+        MappedToken memory _token;
+        address mainchainWeth = address(wrappedNativeToken);
+
+        _request.info.validate();
+        _requireNotRestricted(_request.info.erc);
+        if (_request.tokenAddr == address(0)) {
+            if (_request.info.quantity != msg.value) {
+                revert ErrInvalidRequest();
+            }
+
+            _token = getRoninToken(mainchainWeth);
+            if (_token.erc != _request.info.erc) {
+                revert ErrInvalidTokenStandard();
+            }
+
+            _request.tokenAddr = mainchainWeth;
+        } else {
+            if (msg.value != 0) {
+                revert ErrInvalidRequest();
+            }
+
+            _token = getRoninToken(_request.tokenAddr);
+            if (_token.erc != _request.info.erc) {
+                revert ErrInvalidTokenStandard();
+            }
+
+            _request.info.handleAssetIn(_requester, _request.tokenAddr);
+
+            /**
+             * Withdraw if token is WETH
+             *
+             * `IWETH.withdraw` only sends 2300 gas, which might be insufficient when recipient is a proxy, in this case, gateway proxy.
+             * However, the storage accesses of proxy relating variables on Shanghai hardfork are warm-access, only requires additional 100*2 gas. So it should be safe,
+             * no need to go via a mediator of WETH unwrapper.
+             */
+            if (mainchainWeth == _request.tokenAddr) {
+                IWETH(mainchainWeth).withdraw(_request.info.quantity);
+            }
+        }
+
+        uint256 _depositId = depositCount++;
+        Transfer.Receipt memory _receipt =
+            _request.into_deposit_receipt(_requester, _depositId, _token.tokenAddr, roninChainId);
+
+        emit DepositRequested(_receipt.hash(), _receipt);
+    }
+
+    /**
+     * @dev Returns the minimum vote weight for the token.
+     */
+    function _computeMinVoteWeight(TokenStandard _erc, address _token, uint256 _quantity)
+        internal
+        virtual
+        returns (uint256 _weight, bool _locked)
+    {
+        uint256 _totalWeight = _getTotalWeight();
+        _weight = _minimumVoteWeight(_totalWeight);
+        if (_erc == TokenStandard.ERC20) {
+            if (highTierThreshold[_token] <= _quantity) {
+                _weight = _highTierVoteWeight(_totalWeight);
+            }
+            _locked = _lockedWithdrawalRequest(_token, _quantity);
+        }
+    }
+
+    /**
+     * @dev Update domain separator.
+     */
+    function _updateDomainSeparator() internal {
+        /*
      * _domainSeparator = keccak256(
      *   abi.encode(
      *     keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"),
@@ -5446,116 +5469,127 @@ contract MainchainGatewayV3 is
      *   )
      * );
      */
-    assembly {
-      let ptr := mload(0x40)
-      // keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)")
-      mstore(ptr, 0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f)
-      // keccak256("MainchainGatewayV2")
-      mstore(add(ptr, 0x20), 0x159f52c1e3a2b6a6aad3950adf713516211484e0516dad685ea662a094b7c43b)
-      // keccak256("2")
-      mstore(add(ptr, 0x40), 0xad7c5bef027816a800da1736444fb58a807ef4c9603b7848673f7e3a68eb14a5)
-      mstore(add(ptr, 0x60), chainid())
-      mstore(add(ptr, 0x80), address())
-      sstore(_domainSeparator.slot, keccak256(ptr, 0xa0))
-    }
-  }
-
-  /**
-   * @dev Sets the WETH contract.
-   *
-   * Emits the `WrappedNativeTokenContractUpdated` event.
-   *
-   */
-  function _setWrappedNativeTokenContract(
-    IWETH _wrappedToken
-  ) internal {
-    wrappedNativeToken = _wrappedToken;
-    emit WrappedNativeTokenContractUpdated(_wrappedToken);
-  }
-
-  /**
-   * @dev Receives ETH from WETH or revert if sender is not WETH.
-   */
-  function _fallback() internal virtual {
-    if (msg.sender != address(wrappedNativeToken)) revert ErrInvalidRequest();
-  }
-
-  /**
-   * @inheritdoc GatewayV3
-   */
-  function _getTotalWeight() internal view override returns (uint256 totalWeight) {
-    totalWeight = _totalOperatorWeight;
-    if (totalWeight == 0) revert ErrNullTotalWeightProvided(msg.sig);
-  }
-
-  /**
-   * @dev Returns the weight of an address.
-   */
-  function _getWeight(
-    address addr
-  ) internal view returns (uint256) {
-    return _operatorWeight[addr];
-  }
-
-  ///////////////////////////////////////////////
-  //                CALLBACKS
-  ///////////////////////////////////////////////
-
-  /**
-   * @inheritdoc IBridgeManagerCallback
-   */
-  function onBridgeOperatorsAdded(
-    address[] calldata operators,
-    uint96[] calldata weights,
-    bool[] memory addeds
-  ) external onlyContract(ContractType.BRIDGE_MANAGER) returns (bytes4) {
-    uint256 length = operators.length;
-    if (length != addeds.length || length != weights.length) revert ErrLengthMismatch(msg.sig);
-    if (length == 0) {
-      return IBridgeManagerCallback.onBridgeOperatorsAdded.selector;
-    }
-
-    for (uint256 i; i < length; ++i) {
-      unchecked {
-        if (addeds[i]) {
-          _totalOperatorWeight += weights[i];
-          _operatorWeight[operators[i]] = weights[i];
+        assembly {
+            let ptr := mload(0x40)
+            // keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)")
+            mstore(ptr, 0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f)
+            // keccak256("MainchainGatewayV2")
+            mstore(add(ptr, 0x20), 0x159f52c1e3a2b6a6aad3950adf713516211484e0516dad685ea662a094b7c43b)
+            // keccak256("2")
+            mstore(add(ptr, 0x40), 0xad7c5bef027816a800da1736444fb58a807ef4c9603b7848673f7e3a68eb14a5)
+            mstore(add(ptr, 0x60), chainid())
+            mstore(add(ptr, 0x80), address())
+            sstore(_domainSeparator.slot, keccak256(ptr, 0xa0))
         }
-      }
     }
 
-    return IBridgeManagerCallback.onBridgeOperatorsAdded.selector;
-  }
-
-  /**
-   * @inheritdoc IBridgeManagerCallback
-   */
-  function onBridgeOperatorsRemoved(address[] calldata operators, bool[] calldata removeds) external onlyContract(ContractType.BRIDGE_MANAGER) returns (bytes4) {
-    uint length = operators.length;
-    if (length != removeds.length) revert ErrLengthMismatch(msg.sig);
-    if (length == 0) {
-      return IBridgeManagerCallback.onBridgeOperatorsRemoved.selector;
+    /**
+     * @dev Sets the WETH contract.
+     *
+     * Emits the `WrappedNativeTokenContractUpdated` event.
+     *
+     */
+    function _setWrappedNativeTokenContract(IWETH _wrappedToken) internal {
+        wrappedNativeToken = _wrappedToken;
+        emit WrappedNativeTokenContractUpdated(_wrappedToken);
     }
 
-    uint96 totalRemovingWeight;
-    for (uint i; i < length; ++i) {
-      unchecked {
-        if (removeds[i]) {
-          totalRemovingWeight += _operatorWeight[operators[i]];
-          delete _operatorWeight[operators[i]];
+    /**
+     * @dev Receives ETH from WETH or revert if sender is not WETH.
+     */
+    function _fallback() internal virtual {
+        if (msg.sender != address(wrappedNativeToken)) {
+            revert ErrInvalidRequest();
         }
-      }
     }
 
-    _totalOperatorWeight -= totalRemovingWeight;
+    /**
+     * @inheritdoc GatewayV3
+     */
+    function _getTotalWeight() internal view override returns (uint256 totalWeight) {
+        totalWeight = _totalOperatorWeight;
+        if (totalWeight == 0) {
+            revert ErrNullTotalWeightProvided(msg.sig);
+        }
+    }
 
-    return IBridgeManagerCallback.onBridgeOperatorsRemoved.selector;
-  }
+    /**
+     * @dev Returns the weight of an address.
+     */
+    function _getWeight(address addr) internal view returns (uint256) {
+        return _operatorWeight[addr];
+    }
 
-  function supportsInterface(
-    bytes4 interfaceId
-  ) public view override(AccessControlEnumerable, IERC165, ERC1155Receiver) returns (bool) {
-    return
-      interfaceId == type(IMainchainGatewayV3).interfaceId || interfaceId == type(IBridgeManagerCallback).interfaceId || super.supportsInterface(interfaceId);
-  }
+    ///////////////////////////////////////////////
+    //                CALLBACKS
+    ///////////////////////////////////////////////
+
+    /**
+     * @inheritdoc IBridgeManagerCallback
+     */
+    function onBridgeOperatorsAdded(address[] calldata operators, uint96[] calldata weights, bool[] memory addeds)
+        external
+        onlyContract(ContractType.BRIDGE_MANAGER)
+        returns (bytes4)
+    {
+        uint256 length = operators.length;
+        if (length != addeds.length || length != weights.length) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+        if (length == 0) {
+            return IBridgeManagerCallback.onBridgeOperatorsAdded.selector;
+        }
+
+        for (uint256 i; i < length; ++i) {
+            unchecked {
+                if (addeds[i]) {
+                    _totalOperatorWeight += weights[i];
+                    _operatorWeight[operators[i]] = weights[i];
+                }
+            }
+        }
+
+        return IBridgeManagerCallback.onBridgeOperatorsAdded.selector;
+    }
+
+    /**
+     * @inheritdoc IBridgeManagerCallback
+     */
+    function onBridgeOperatorsRemoved(address[] calldata operators, bool[] calldata removeds)
+        external
+        onlyContract(ContractType.BRIDGE_MANAGER)
+        returns (bytes4)
+    {
+        uint256 length = operators.length;
+        if (length != removeds.length) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+        if (length == 0) {
+            return IBridgeManagerCallback.onBridgeOperatorsRemoved.selector;
+        }
+
+        uint96 totalRemovingWeight;
+        for (uint256 i; i < length; ++i) {
+            unchecked {
+                if (removeds[i]) {
+                    totalRemovingWeight += _operatorWeight[operators[i]];
+                    delete _operatorWeight[operators[i]];
+                }
+            }
+        }
+
+        _totalOperatorWeight -= totalRemovingWeight;
+
+        return IBridgeManagerCallback.onBridgeOperatorsRemoved.selector;
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(AccessControlEnumerable, IERC165, ERC1155Receiver)
+        returns (bool)
+    {
+        return interfaceId == type(IMainchainGatewayV3).interfaceId
+            || interfaceId == type(IBridgeManagerCallback).interfaceId || super.supportsInterface(interfaceId);
+    }
 }

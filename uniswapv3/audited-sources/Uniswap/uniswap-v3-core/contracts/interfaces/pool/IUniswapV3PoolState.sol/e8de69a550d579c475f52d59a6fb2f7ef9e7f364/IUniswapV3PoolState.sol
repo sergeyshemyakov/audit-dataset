@@ -107,10 +107,5 @@ interface IUniswapV3PoolState {
     function observations(uint256 index)
         external
         view
-        returns (
-            uint32 blockTimestamp,
-            int56 tickCumulative,
-            uint160 liquidityCumulative,
-            bool initialized
-        );
+        returns (uint32 blockTimestamp, int56 tickCumulative, uint160 liquidityCumulative, bool initialized);
 }

@@ -11,9 +11,11 @@ import {ScrollOwner} from "./ScrollOwner.sol";
 /// @notice This contract is used to pause and unpause components in Scroll.
 /// @dev The owner of this contract should be `ScrollOwner` contract to allow fine-grained control over the pause and unpause of components.
 contract PauseController is OwnableUpgradeable {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a component is paused.
     /// @param component The component that is paused.
@@ -28,9 +30,11 @@ contract PauseController is OwnableUpgradeable {
     /// @param newPauseCooldownPeriod The new pause cooldown period.
     event UpdatePauseCooldownPeriod(uint256 oldPauseCooldownPeriod, uint256 newPauseCooldownPeriod);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the cooldown period is not passed.
     error ErrorCooldownPeriodNotPassed();
@@ -47,23 +51,29 @@ contract PauseController is OwnableUpgradeable {
     /// @dev Thrown when the execution of `ScrollOwner` contract fails.
     error ErrorExecuteUnpauseFailed();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The role for pause controller in `ScrollOwner` contract.
     bytes32 public constant PAUSE_CONTROLLER_ROLE = keccak256("PAUSE_CONTROLLER_ROLE");
 
-    /***********************
+    /**
+     *
      * Immutable Variables *
-     ***********************/
+     *
+     */
 
     /// @notice The address of the ScrollOwner contract.
     address public immutable SCROLL_OWNER;
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @notice The pause cooldown period. That is the minimum time between two consecutive pauses.
     uint256 public pauseCooldownPeriod;
@@ -71,10 +81,11 @@ contract PauseController is OwnableUpgradeable {
     /// @notice The last unpause time of each component.
     mapping(address => uint256) private lastUnpauseTime;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _scrollOwner) {
         SCROLL_OWNER = _scrollOwner;
 
@@ -87,9 +98,11 @@ contract PauseController is OwnableUpgradeable {
         _updatePauseCooldownPeriod(_pauseCooldownPeriod);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Get the last unpause timestamp of a component.
     /// @param component The component to get the last unpause timestamp.
@@ -98,9 +111,11 @@ contract PauseController is OwnableUpgradeable {
         return lastUnpauseTime[address(component)];
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Pause a component.
     /// @param component The component to pause.
@@ -114,10 +129,7 @@ contract PauseController is OwnableUpgradeable {
         }
 
         ScrollOwner(payable(SCROLL_OWNER)).execute(
-            address(component),
-            0,
-            abi.encodeWithSelector(IPausable.setPause.selector, true),
-            PAUSE_CONTROLLER_ROLE
+            address(component), 0, abi.encodeWithSelector(IPausable.setPause.selector, true), PAUSE_CONTROLLER_ROLE
         );
 
         if (!component.paused()) {
@@ -135,10 +147,7 @@ contract PauseController is OwnableUpgradeable {
         }
 
         ScrollOwner(payable(SCROLL_OWNER)).execute(
-            address(component),
-            0,
-            abi.encodeWithSelector(IPausable.setPause.selector, false),
-            PAUSE_CONTROLLER_ROLE
+            address(component), 0, abi.encodeWithSelector(IPausable.setPause.selector, false), PAUSE_CONTROLLER_ROLE
         );
 
         lastUnpauseTime[address(component)] = block.timestamp;
@@ -156,9 +165,11 @@ contract PauseController is OwnableUpgradeable {
         _updatePauseCooldownPeriod(newPauseCooldownPeriod);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to set the pause cooldown period.
     /// @param newPauseCooldownPeriod The new pause cooldown period.

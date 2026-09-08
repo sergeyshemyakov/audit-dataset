@@ -2,13 +2,15 @@
 
 pragma solidity ^0.8.16;
 
-import {IL1ETHGateway} from "./IL1ETHGateway.sol";
 import {IL1ERC20Gateway} from "./IL1ERC20Gateway.sol";
+import {IL1ETHGateway} from "./IL1ETHGateway.sol";
 
 interface IL1GatewayRouter is IL1ETHGateway, IL1ERC20Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the address of ETH Gateway is updated.
     /// @param oldETHGateway The address of the old ETH Gateway.
@@ -26,31 +28,33 @@ interface IL1GatewayRouter is IL1ETHGateway, IL1ERC20Gateway {
     /// @param newGateway The corresponding address of the new gateway.
     event SetERC20Gateway(address indexed token, address indexed oldGateway, address indexed newGateway);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the corresponding gateway address for given token address.
     /// @param _token The address of token to query.
     function getERC20Gateway(address _token) external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Request ERC20 token transfer from users to gateways.
     /// @param sender The address of sender to request fund.
     /// @param token The address of token to request.
     /// @param amount The amount of token to request.
-    function requestERC20(
-        address sender,
-        address token,
-        uint256 amount
-    ) external returns (uint256);
+    function requestERC20(address sender, address token, uint256 amount) external returns (uint256);
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of ETH gateway contract.
     /// @dev This function should only be called by contract owner.

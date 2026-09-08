@@ -2,39 +2,39 @@
 pragma solidity 0.8.30;
 
 interface IHaveVersion {
-  function getVersion() external view returns (uint256);
+    function getVersion() external view returns (uint256);
 }
 
 interface IRewardDistributor {
-  function claim(address _to, uint256 _amount) external;
-  function recover(address _asset, address _to, uint256 _amount) external;
-  function canonicalRollup() external view returns (address);
+    function claim(address _to, uint256 _amount) external;
+    function recover(address _asset, address _to, uint256 _amount) external;
+    function canonicalRollup() external view returns (address);
 }
 
 interface IRegistry {
-  event CanonicalRollupUpdated(address indexed instance, uint256 indexed version);
-  event RewardDistributorUpdated(address indexed rewardDistributor);
+    event CanonicalRollupUpdated(address indexed instance, uint256 indexed version);
+    event RewardDistributorUpdated(address indexed rewardDistributor);
 
-  function addRollup(IHaveVersion _rollup) external;
-  function updateRewardDistributor(address _rewardDistributor) external;
+    function addRollup(IHaveVersion _rollup) external;
+    function updateRewardDistributor(address _rewardDistributor) external;
 
-  // docs:start:registry_get_canonical_rollup
-  function getCanonicalRollup() external view returns (IHaveVersion);
-  // docs:end:registry_get_canonical_rollup
+    // docs:start:registry_get_canonical_rollup
+    function getCanonicalRollup() external view returns (IHaveVersion);
+    // docs:end:registry_get_canonical_rollup
 
-  // docs:start:registry_get_rollup
-  function getRollup(uint256 _chainId) external view returns (IHaveVersion);
-  // docs:end:registry_get_rollup
+    // docs:start:registry_get_rollup
+    function getRollup(uint256 _chainId) external view returns (IHaveVersion);
+    // docs:end:registry_get_rollup
 
-  // docs:start:registry_number_of_versions
-  function numberOfVersions() external view returns (uint256);
-  // docs:end:registry_number_of_versions
+    // docs:start:registry_number_of_versions
+    function numberOfVersions() external view returns (uint256);
+    // docs:end:registry_number_of_versions
 
-  function getGovernance() external view returns (address);
+    function getGovernance() external view returns (address);
 
-  function getRewardDistributor() external view returns (IRewardDistributor);
+    function getRewardDistributor() external view returns (IRewardDistributor);
 
-  function getVersion(uint256 _index) external view returns (uint256);
+    function getVersion(uint256 _index) external view returns (uint256);
 }
 
 /**
@@ -308,7 +308,9 @@ interface IERC1363 is IERC20, IERC165 {
      * @param data Additional data with no specified format, sent in call to `to`.
      * @return A boolean value indicating whether the operation succeeded unless throwing.
      */
-    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data) external returns (bool);
+    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data)
+        external
+        returns (bool);
 
     /**
      * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
@@ -453,13 +455,9 @@ library SafeERC20 {
      *
      * Reverts if the returned value is other than `true`.
      */
-    function transferFromAndCallRelaxed(
-        IERC1363 token,
-        address from,
-        address to,
-        uint256 value,
-        bytes memory data
-    ) internal {
+    function transferFromAndCallRelaxed(IERC1363 token, address from, address to, uint256 value, bytes memory data)
+        internal
+    {
         if (to.code.length == 0) {
             safeTransferFrom(token, from, to, value);
         } else if (!token.transferFromAndCall(from, to, value, data)) {
@@ -536,112 +534,112 @@ library SafeERC20 {
 }
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 function eqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) == Slot.unwrap(_b);
+    return Slot.unwrap(_a) == Slot.unwrap(_b);
 }
 
 function neqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) != Slot.unwrap(_b);
+    return Slot.unwrap(_a) != Slot.unwrap(_b);
 }
 
 function gteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) >= Slot.unwrap(_b);
+    return Slot.unwrap(_a) >= Slot.unwrap(_b);
 }
 
 function gtSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) > Slot.unwrap(_b);
+    return Slot.unwrap(_a) > Slot.unwrap(_b);
 }
 
 function lteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) <= Slot.unwrap(_b);
+    return Slot.unwrap(_a) <= Slot.unwrap(_b);
 }
 
 function ltSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) < Slot.unwrap(_b);
+    return Slot.unwrap(_a) < Slot.unwrap(_b);
 }
 
 // Slot
 
 function addSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
 }
 
 function subSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
 }
 
 using {
-  eqSlot as ==,
-  neqSlot as !=,
-  gteSlot as >=,
-  gtSlot as >,
-  lteSlot as <=,
-  ltSlot as <,
-  addSlot as +,
-  subSlot as -
+    eqSlot as ==,
+    neqSlot as !=,
+    gteSlot as >=,
+    gtSlot as >,
+    lteSlot as <=,
+    ltSlot as <,
+    addSlot as +,
+    subSlot as -
 } for Slot global;
 
 type Slot is uint256;
@@ -654,77 +652,77 @@ type Slot is uint256;
  * when there are multiple contracts that could have thrown the error.
  */
 library Errors {
-  error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
-  error Governance__GovernanceProposerCannotBeSelf();
-  error Governance__CallerNotSelf(address caller, address self);
-  error Governance__CallerCannotBeSelf();
-  error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
-  error Governance__CannotWithdrawToAddressZero();
-  error Governance__WithdrawalNotInitiated();
-  error Governance__WithdrawalAlreadyClaimed();
-  error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
-  error Governance__ProposalNotActive();
-  error Governance__ProposalNotExecutable();
-  error Governance__CannotCallAsset();
-  error Governance__CallFailed(address target);
-  error Governance__ProposalDoesNotExists(uint256 proposalId);
-  error Governance__ProposalAlreadyDropped();
-  error Governance__ProposalCannotBeDropped();
-  error Governance__DepositNotAllowed();
+    error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
+    error Governance__GovernanceProposerCannotBeSelf();
+    error Governance__CallerNotSelf(address caller, address self);
+    error Governance__CallerCannotBeSelf();
+    error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
+    error Governance__CannotWithdrawToAddressZero();
+    error Governance__WithdrawalNotInitiated();
+    error Governance__WithdrawalAlreadyClaimed();
+    error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
+    error Governance__ProposalNotActive();
+    error Governance__ProposalNotExecutable();
+    error Governance__CannotCallAsset();
+    error Governance__CallFailed(address target);
+    error Governance__ProposalDoesNotExists(uint256 proposalId);
+    error Governance__ProposalAlreadyDropped();
+    error Governance__ProposalCannotBeDropped();
+    error Governance__DepositNotAllowed();
 
-  error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
-  error Governance__CheckpointedUintLib__NotInPast();
+    error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
+    error Governance__CheckpointedUintLib__NotInPast();
 
-  error Governance__ConfigurationLib__InvalidMinimumVotes();
-  error Governance__ConfigurationLib__LockAmountTooSmall();
-  error Governance__ConfigurationLib__LockAmountTooBig();
-  error Governance__ConfigurationLib__QuorumTooSmall();
-  error Governance__ConfigurationLib__QuorumTooBig();
-  error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
-  error Governance__ConfigurationLib__TimeTooSmall(string name);
-  error Governance__ConfigurationLib__TimeTooBig(string name);
+    error Governance__ConfigurationLib__InvalidMinimumVotes();
+    error Governance__ConfigurationLib__LockAmountTooSmall();
+    error Governance__ConfigurationLib__LockAmountTooBig();
+    error Governance__ConfigurationLib__QuorumTooSmall();
+    error Governance__ConfigurationLib__QuorumTooBig();
+    error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
+    error Governance__ConfigurationLib__TimeTooSmall(string name);
+    error Governance__ConfigurationLib__TimeTooBig(string name);
 
-  error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
-  error EmpireBase__InstanceHaveNoCode(address instance);
-  error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
-  error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
-  error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
-  error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
-  error EmpireBase__PayloadCannotBeAddressZero();
-  error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
-  error GovernanceProposer__GSEPayloadInvalid();
+    error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
+    error EmpireBase__InstanceHaveNoCode(address instance);
+    error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
+    error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
+    error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
+    error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
+    error EmpireBase__PayloadCannotBeAddressZero();
+    error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
+    error GovernanceProposer__GSEPayloadInvalid();
 
-  error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
-  error CoinIssuer__InvalidConfiguration();
+    error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
+    error CoinIssuer__InvalidConfiguration();
 
-  error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
-  error Registry__RollupNotRegistered(uint256 version);
-  error Registry__NoRollupsRegistered();
+    error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
+    error Registry__RollupNotRegistered(uint256 version);
+    error Registry__NoRollupsRegistered();
 
-  error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
+    error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
 
-  error GSE__NotRollup(address);
-  error GSE__GovernanceAlreadySet();
-  error GSE__InvalidRollupAddress(address);
-  error GSE__RollupAlreadyRegistered(address);
-  error GSE__NotLatestRollup(address);
-  error GSE__AlreadyRegistered(address, address);
-  error GSE__NothingToExit(address);
-  error GSE__InsufficientBalance(uint256, uint256);
-  error GSE__FailedToRemove(address);
-  error GSE__InstanceDoesNotExist(address);
-  error GSE__NotWithdrawer(address, address);
-  error GSE__OutOfBounds(uint256, uint256);
-  error GSE__FatalError(string);
-  error GSE__InvalidProofOfPossession();
-  error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
-  error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
+    error GSE__NotRollup(address);
+    error GSE__GovernanceAlreadySet();
+    error GSE__InvalidRollupAddress(address);
+    error GSE__RollupAlreadyRegistered(address);
+    error GSE__NotLatestRollup(address);
+    error GSE__AlreadyRegistered(address, address);
+    error GSE__NothingToExit(address);
+    error GSE__InsufficientBalance(uint256, uint256);
+    error GSE__FailedToRemove(address);
+    error GSE__InstanceDoesNotExist(address);
+    error GSE__NotWithdrawer(address, address);
+    error GSE__OutOfBounds(uint256, uint256);
+    error GSE__FatalError(string);
+    error GSE__InvalidProofOfPossession();
+    error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
+    error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
 
-  error Delegation__InsufficientPower(address, uint256, uint256);
+    error Delegation__InsufficientPower(address, uint256, uint256);
 }
 
 /**
@@ -732,49 +730,49 @@ library Errors {
  * @notice This contract is responsible for distributing rewards.
  */
 contract RewardDistributor is IRewardDistributor {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  IERC20 public immutable ASSET;
-  IRegistry public immutable REGISTRY;
+    IERC20 public immutable ASSET;
+    IRegistry public immutable REGISTRY;
 
-  constructor(IERC20 _asset, IRegistry _registry) {
-    ASSET = _asset;
-    REGISTRY = _registry;
-  }
+    constructor(IERC20 _asset, IRegistry _registry) {
+        ASSET = _asset;
+        REGISTRY = _registry;
+    }
 
-  function claim(address _to, uint256 _amount) external override(IRewardDistributor) {
-    require(msg.sender == canonicalRollup(), Errors.RewardDistributor__InvalidCaller(msg.sender, canonicalRollup()));
-    ASSET.safeTransfer(_to, _amount);
-  }
+    function claim(address _to, uint256 _amount) external override(IRewardDistributor) {
+        require(msg.sender == canonicalRollup(), Errors.RewardDistributor__InvalidCaller(msg.sender, canonicalRollup()));
+        ASSET.safeTransfer(_to, _amount);
+    }
 
-  function recover(address _asset, address _to, uint256 _amount) external override(IRewardDistributor) {
-    address owner = Ownable(address(REGISTRY)).owner();
-    require(msg.sender == owner, Errors.RewardDistributor__InvalidCaller(msg.sender, owner));
-    IERC20(_asset).safeTransfer(_to, _amount);
-  }
+    function recover(address _asset, address _to, uint256 _amount) external override(IRewardDistributor) {
+        address owner = Ownable(address(REGISTRY)).owner();
+        require(msg.sender == owner, Errors.RewardDistributor__InvalidCaller(msg.sender, owner));
+        IERC20(_asset).safeTransfer(_to, _amount);
+    }
 
-  function canonicalRollup() public view override(IRewardDistributor) returns (address) {
-    return address(REGISTRY.getCanonicalRollup());
-  }
+    function canonicalRollup() public view override(IRewardDistributor) returns (address) {
+        return address(REGISTRY.getCanonicalRollup());
+    }
 }
 
 struct RegistryStorage {
-  /**
-   * @notice Mapping from version to rollup instance
-   * @dev As implemented today, the version is a truncated hash of identifiers of the rollup instance
-   * See RollupCore.sol for the implementation.
-   * @dev updated when a new rollup instance is added, which becomes the new canonical rollup
-   */
-  mapping(uint256 version => IHaveVersion rollup) versionToRollup;
-  /**
-   * @dev Historical versions of the canonical rollup. The last element is the current canonical rollup.
-   */
-  uint256[] versions;
-  /**
-   * @dev the Registry creates a RewardDistributor in its constructor.
-   * It may be updated by the owner.
-   */
-  IRewardDistributor rewardDistributor;
+    /**
+     * @notice Mapping from version to rollup instance
+     * @dev As implemented today, the version is a truncated hash of identifiers of the rollup instance
+     * See RollupCore.sol for the implementation.
+     * @dev updated when a new rollup instance is added, which becomes the new canonical rollup
+     */
+    mapping(uint256 version => IHaveVersion rollup) versionToRollup;
+    /**
+     * @dev Historical versions of the canonical rollup. The last element is the current canonical rollup.
+     */
+    uint256[] versions;
+    /**
+     * @dev the Registry creates a RewardDistributor in its constructor.
+     * It may be updated by the owner.
+     */
+    IRewardDistributor rewardDistributor;
 }
 
 /**
@@ -786,74 +784,75 @@ struct RegistryStorage {
  * - its block proposers may put forward governance proposals via the GovernanceProposer
  */
 contract Registry is IRegistry, Ownable {
-  RegistryStorage internal $;
+    RegistryStorage internal $;
 
-  /**
-   * @dev The Owner of the registry is intended to be `Governance`.
-   * In this way, only Governance can:
-   * - add new rollup instances
-   * - update the RewardDistributor
-   * In tests, the contracts are deployed with the owner set to the deployer.
-   * Then an initial rollup instance is added, which becomes the canonical rollup.
-   * Then the owner is updated to Governance.
-   */
-  constructor(address _owner, IERC20 _rewardAsset) Ownable(_owner) {
-    $.rewardDistributor = IRewardDistributor(address(new RewardDistributor(_rewardAsset, IRegistry(address(this)))));
-    emit RewardDistributorUpdated(address($.rewardDistributor));
-  }
+    /**
+     * @dev The Owner of the registry is intended to be `Governance`.
+     * In this way, only Governance can:
+     * - add new rollup instances
+     * - update the RewardDistributor
+     * In tests, the contracts are deployed with the owner set to the deployer.
+     * Then an initial rollup instance is added, which becomes the canonical rollup.
+     * Then the owner is updated to Governance.
+     */
+    constructor(address _owner, IERC20 _rewardAsset) Ownable(_owner) {
+        $.rewardDistributor = IRewardDistributor(address(new RewardDistributor(_rewardAsset, IRegistry(address(this)))));
+        emit RewardDistributorUpdated(address($.rewardDistributor));
+    }
 
-  /**
-   * @notice Adds a new rollup instance to the registry, which becomes the new canonical rollup
-   * @param _rollup The rollup instance to add
-   */
-  function addRollup(IHaveVersion _rollup) external override(IRegistry) onlyOwner {
-    uint256 version = _rollup.getVersion();
-    require(
-      address($.versionToRollup[version]) == address(0), Errors.Registry__RollupAlreadyRegistered(address(_rollup))
-    );
-    $.versionToRollup[version] = _rollup;
-    $.versions.push(version);
+    /**
+     * @notice Adds a new rollup instance to the registry, which becomes the new canonical rollup
+     * @param _rollup The rollup instance to add
+     */
+    function addRollup(IHaveVersion _rollup) external override(IRegistry) onlyOwner {
+        uint256 version = _rollup.getVersion();
+        require(
+            address($.versionToRollup[version]) == address(0),
+            Errors.Registry__RollupAlreadyRegistered(address(_rollup))
+        );
+        $.versionToRollup[version] = _rollup;
+        $.versions.push(version);
 
-    emit CanonicalRollupUpdated(address(_rollup), version);
-  }
+        emit CanonicalRollupUpdated(address(_rollup), version);
+    }
 
-  function updateRewardDistributor(address _rewardDistributor) external override(IRegistry) onlyOwner {
-    $.rewardDistributor = IRewardDistributor(_rewardDistributor);
-    emit RewardDistributorUpdated(_rewardDistributor);
-  }
+    function updateRewardDistributor(address _rewardDistributor) external override(IRegistry) onlyOwner {
+        $.rewardDistributor = IRewardDistributor(_rewardDistributor);
+        emit RewardDistributorUpdated(_rewardDistributor);
+    }
 
-  /**
-   * @notice Returns the address of the rollup contract
-   * @return The rollup address
-   */
-  function getCanonicalRollup() external view override(IRegistry) returns (IHaveVersion) {
-    require($.versions.length > 0, Errors.Registry__NoRollupsRegistered());
-    return $.versionToRollup[$.versions[$.versions.length - 1]];
-  }
+    /**
+     * @notice Returns the address of the rollup contract
+     * @return The rollup address
+     */
+    function getCanonicalRollup() external view override(IRegistry) returns (IHaveVersion) {
+        require($.versions.length > 0, Errors.Registry__NoRollupsRegistered());
+        return $.versionToRollup[$.versions[$.versions.length - 1]];
+    }
 
-  function getRollup(uint256 _version) external view override(IRegistry) returns (IHaveVersion) {
-    IHaveVersion rollup = $.versionToRollup[_version];
-    require(address(rollup) != address(0), Errors.Registry__RollupNotRegistered(_version));
-    return rollup;
-  }
+    function getRollup(uint256 _version) external view override(IRegistry) returns (IHaveVersion) {
+        IHaveVersion rollup = $.versionToRollup[_version];
+        require(address(rollup) != address(0), Errors.Registry__RollupNotRegistered(_version));
+        return rollup;
+    }
 
-  function numberOfVersions() external view override(IRegistry) returns (uint256) {
-    return $.versions.length;
-  }
+    function numberOfVersions() external view override(IRegistry) returns (uint256) {
+        return $.versions.length;
+    }
 
-  function getVersion(uint256 _index) external view override(IRegistry) returns (uint256) {
-    return $.versions[_index];
-  }
+    function getVersion(uint256 _index) external view override(IRegistry) returns (uint256) {
+        return $.versions[_index];
+    }
 
-  /**
-   * @notice Returns the address of the governance
-   * @return The governance address
-   */
-  function getGovernance() external view override(IRegistry) returns (address) {
-    return owner();
-  }
+    /**
+     * @notice Returns the address of the governance
+     * @return The governance address
+     */
+    function getGovernance() external view override(IRegistry) returns (address) {
+        return owner();
+    }
 
-  function getRewardDistributor() external view override(IRegistry) returns (IRewardDistributor) {
-    return $.rewardDistributor;
-  }
+    function getRewardDistributor() external view override(IRegistry) returns (IRewardDistributor) {
+        return $.rewardDistributor;
+    }
 }

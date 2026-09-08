@@ -16,26 +16,26 @@ import {ScrollGatewayBase} from "../../libraries/gateway/ScrollGatewayBase.sol";
 /// @dev The ETH are not held in the gateway. The ETH will be sent to the `L2ScrollMessenger` contract.
 /// On finalizing deposit, the Ether will be transfered from `L2ScrollMessenger`, then transfer to recipient.
 contract L2ETHGateway is Initializable, ScrollGatewayBase, IL2ETHGateway {
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Initialize the storage of L2ETHGateway.
     /// @param _counterpart The address of L1ETHGateway in L2.
     /// @param _router The address of L2GatewayRouter.
     /// @param _messenger The address of L2ScrollMessenger.
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) external initializer {
+    function initialize(address _counterpart, address _router, address _messenger) external initializer {
         require(_router != address(0), "zero router address");
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ETHGateway
     function withdrawETH(uint256 _amount, uint256 _gasLimit) external payable override {
@@ -43,33 +43,28 @@ contract L2ETHGateway is Initializable, ScrollGatewayBase, IL2ETHGateway {
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETH(
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETH(address _to, uint256 _amount, uint256 _gasLimit) public payable override {
         _withdraw(_to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETHAndCall(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETHAndCall(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         _withdraw(_to, _amount, _data, _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function finalizeDepositETH(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _data
-    ) external payable override onlyCallByCounterpart {
+    function finalizeDepositETH(address _from, address _to, uint256 _amount, bytes calldata _data)
+        external
+        payable
+        override
+        onlyCallByCounterpart
+    {
         // solhint-disable-next-line avoid-low-level-calls
-        (bool _success, ) = _to.call{value: _amount}("");
+        (bool _success,) = _to.call{value: _amount}("");
         require(_success, "ETH transfer failed");
 
         _doCallback(_to, _data);
@@ -77,16 +72,12 @@ contract L2ETHGateway is Initializable, ScrollGatewayBase, IL2ETHGateway {
         emit FinalizeDepositETH(_from, _to, _amount, _data);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
-
-    function _withdraw(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal nonReentrant {
+     *
+     */
+    function _withdraw(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit) internal nonReentrant {
         require(msg.value > 0, "withdraw zero eth");
 
         // 1. Extract real sender if this call is from L1GatewayRouter.
@@ -95,13 +86,8 @@ contract L2ETHGateway is Initializable, ScrollGatewayBase, IL2ETHGateway {
             (_from, _data) = abi.decode(_data, (address, bytes));
         }
 
-        bytes memory _message = abi.encodeWithSelector(
-            IL1ETHGateway.finalizeWithdrawETH.selector,
-            _from,
-            _to,
-            _amount,
-            _data
-        );
+        bytes memory _message =
+            abi.encodeWithSelector(IL1ETHGateway.finalizeWithdrawETH.selector, _from, _to, _amount, _data);
         IL2ScrollMessenger(messenger).sendMessage{value: msg.value}(counterpart, _amount, _message, _gasLimit);
 
         emit WithdrawETH(_from, _to, _amount, _data);

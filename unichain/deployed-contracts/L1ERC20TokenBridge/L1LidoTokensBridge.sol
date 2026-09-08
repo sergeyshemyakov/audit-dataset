@@ -3,19 +3,27 @@ pragma solidity 0.8.10;
 
 library UnstructuredStorage {
     function getStorageBool(bytes32 position) internal view returns (bool data) {
-        assembly { data := sload(position) }
+        assembly {
+            data := sload(position)
+        }
     }
 
     function getStorageUint256(bytes32 position) internal view returns (uint256 data) {
-        assembly { data := sload(position) }
+        assembly {
+            data := sload(position)
+        }
     }
 
     function setStorageBool(bytes32 position, bool data) internal {
-        assembly { sstore(position, data) }
+        assembly {
+            sstore(position, data)
+        }
     }
 
     function setStorageUint256(bytes32 position, uint256 data) internal {
-        assembly { sstore(position, data) }
+        assembly {
+            sstore(position, data)
+        }
     }
 }
 
@@ -57,13 +65,17 @@ contract Versioned {
 
     /// @dev Sets the contract version to N. Should be called from the initialize() function.
     function _initializeContractVersionTo(uint256 version) internal {
-        if (getContractVersion() != 0) revert NonZeroContractVersionOnInit();
+        if (getContractVersion() != 0) {
+            revert NonZeroContractVersionOnInit();
+        }
         _setContractVersion(version);
     }
 
     /// @dev Updates the contract version. Should be called from a finalizeUpgrade_vN() function.
     function _updateContractVersion(uint256 newVersion) internal {
-        if (newVersion != getContractVersion() + 1) revert InvalidContractVersionIncrement();
+        if (newVersion != getContractVersion() + 1) {
+            revert InvalidContractVersionIncrement();
+        }
         _setContractVersion(newVersion);
     }
 
@@ -74,7 +86,6 @@ contract Versioned {
 }
 
 abstract contract TokenRateAndUpdateTimestampProvider {
-
     /// @notice Non-rebasable token of Core Lido procotol.
     address public immutable WSTETH;
 
@@ -107,9 +118,8 @@ abstract contract TokenRateAndUpdateTimestampProvider {
         rate = IERC20WstETH(WSTETH).getStETHByWstETH(10 ** TOKEN_RATE_DECIMALS);
 
         /// @dev github.com/ethereum/consensus-specs/blob/dev/specs/bellatrix/beacon-chain.md#compute_timestamp_at_slot
-        updateTimestamp = GENESIS_TIME + SECONDS_PER_SLOT * IAccountingOracle(
-            ACCOUNTING_ORACLE
-        ).getLastProcessingRefSlot();
+        updateTimestamp =
+            GENESIS_TIME + SECONDS_PER_SLOT * IAccountingOracle(ACCOUNTING_ORACLE).getLastProcessingRefSlot();
     }
 
     error ErrorZeroAddressWstETH();
@@ -147,13 +157,8 @@ interface IL1ERC20Bridge {
     /// @param data_ Optional data to forward to L2. This data is provided
     ///        solely as a convenience for external contracts. Aside from enforcing a maximum
     ///        length, these contracts provide no guarantees about its content.
-    function depositERC20(
-        address l1Token_,
-        address l2Token_,
-        uint256 amount_,
-        uint32 l2Gas_,
-        bytes calldata data_
-    ) external;
+    function depositERC20(address l1Token_, address l2Token_, uint256 amount_, uint32 l2Gas_, bytes calldata data_)
+        external;
 
     /// @notice deposit an amount of ERC20 to a recipient's balance on L2.
     /// @param l1Token_ Address of the L1 ERC20 we are depositing
@@ -568,18 +573,13 @@ contract BridgingManager is AccessControl {
         bool isWithdrawalsEnabled;
     }
 
-    bytes32 public constant DEPOSITS_ENABLER_ROLE =
-        keccak256("BridgingManager.DEPOSITS_ENABLER_ROLE");
-    bytes32 public constant DEPOSITS_DISABLER_ROLE =
-        keccak256("BridgingManager.DEPOSITS_DISABLER_ROLE");
-    bytes32 public constant WITHDRAWALS_ENABLER_ROLE =
-        keccak256("BridgingManager.WITHDRAWALS_ENABLER_ROLE");
-    bytes32 public constant WITHDRAWALS_DISABLER_ROLE =
-        keccak256("BridgingManager.WITHDRAWALS_DISABLER_ROLE");
+    bytes32 public constant DEPOSITS_ENABLER_ROLE = keccak256("BridgingManager.DEPOSITS_ENABLER_ROLE");
+    bytes32 public constant DEPOSITS_DISABLER_ROLE = keccak256("BridgingManager.DEPOSITS_DISABLER_ROLE");
+    bytes32 public constant WITHDRAWALS_ENABLER_ROLE = keccak256("BridgingManager.WITHDRAWALS_ENABLER_ROLE");
+    bytes32 public constant WITHDRAWALS_DISABLER_ROLE = keccak256("BridgingManager.WITHDRAWALS_DISABLER_ROLE");
 
     /// @dev The location of the slot with State
-    bytes32 private constant STATE_SLOT =
-        keccak256("BridgingManager.bridgingState");
+    bytes32 private constant STATE_SLOT = keccak256("BridgingManager.bridgingState");
 
     /// @notice Initializes the contract to grant DEFAULT_ADMIN_ROLE to the admin_ address
     /// @dev This method might be called only once
@@ -622,11 +622,7 @@ contract BridgingManager is AccessControl {
     }
 
     /// @notice Disables the deposits if they aren't disabled yet
-    function disableDeposits()
-        external
-        whenDepositsEnabled
-        onlyRole(DEPOSITS_DISABLER_ROLE)
-    {
+    function disableDeposits() external whenDepositsEnabled onlyRole(DEPOSITS_DISABLER_ROLE) {
         _loadState().isDepositsEnabled = false;
         emit DepositsDisabled(msg.sender);
     }
@@ -641,11 +637,7 @@ contract BridgingManager is AccessControl {
     }
 
     /// @notice Disables the withdrawals if they aren't disabled yet
-    function disableWithdrawals()
-        external
-        whenWithdrawalsEnabled
-        onlyRole(WITHDRAWALS_DISABLER_ROLE)
-    {
+    function disableWithdrawals() external whenWithdrawalsEnabled onlyRole(WITHDRAWALS_DISABLER_ROLE) {
         _loadState().isWithdrawalsEnabled = false;
         emit WithdrawalsDisabled(msg.sender);
     }
@@ -695,7 +687,6 @@ contract BridgingManager is AccessControl {
 }
 
 contract RebasableAndNonRebasableTokens {
-
     /// @notice Address of the bridged non rebasable token in the L1 chain
     address public immutable L1_TOKEN_NON_REBASABLE;
 
@@ -743,8 +734,12 @@ contract RebasableAndNonRebasableTokens {
     }
 
     function _getL1Token(address l2Token_) internal view returns (address) {
-        if (l2Token_ == L2_TOKEN_NON_REBASABLE) { return L1_TOKEN_NON_REBASABLE; }
-        if (l2Token_ == L2_TOKEN_REBASABLE) { return L1_TOKEN_REBASABLE; }
+        if (l2Token_ == L2_TOKEN_NON_REBASABLE) {
+            return L1_TOKEN_NON_REBASABLE;
+        }
+        if (l2Token_ == L2_TOKEN_REBASABLE) {
+            return L1_TOKEN_REBASABLE;
+        }
         revert ErrorUnsupportedL2Token(l2Token_);
     }
 
@@ -798,11 +793,7 @@ contract CrossDomainEnabled {
     /// @param message_ Data to send to the target (usually calldata to a function with
     ///     `onlyFromCrossDomainAccount()`)
     /// @param gasLimit_ gasLimit for the receipt of the message on the target domain.
-    function sendCrossDomainMessage(
-        address crossDomainTarget_,
-        uint32 gasLimit_,
-        bytes memory message_
-    ) internal {
+    function sendCrossDomainMessage(address crossDomainTarget_, uint32 gasLimit_, bytes memory message_) internal {
         MESSENGER.sendMessage(crossDomainTarget_, message_, gasLimit_);
     }
 
@@ -827,20 +818,11 @@ contract CrossDomainEnabled {
 library SafeERC20 {
     using Address for address;
 
-    function safeTransfer(
-        IERC20 token,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransfer(IERC20 token, address to, uint256 value) internal {
         _callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));
     }
 
-    function safeTransferFrom(
-        IERC20 token,
-        address from,
-        address to,
-        uint256 value
-    ) internal {
+    function safeTransferFrom(IERC20 token, address from, address to, uint256 value) internal {
         _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));
     }
 
@@ -851,11 +833,7 @@ library SafeERC20 {
      * Whenever possible, use {safeIncreaseAllowance} and
      * {safeDecreaseAllowance} instead.
      */
-    function safeApprove(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeApprove(IERC20 token, address spender, uint256 value) internal {
         // safeApprove should only be called when setting an initial allowance,
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
@@ -866,20 +844,12 @@ library SafeERC20 {
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
     }
 
-    function safeIncreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeIncreaseAllowance(IERC20 token, address spender, uint256 value) internal {
         uint256 newAllowance = token.allowance(address(this), spender) + value;
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
-    function safeDecreaseAllowance(
-        IERC20 token,
-        address spender,
-        uint256 value
-    ) internal {
+    function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
         unchecked {
             uint256 oldAllowance = token.allowance(address(this), spender);
             require(oldAllowance >= value, "SafeERC20: decreased allowance below zero");
@@ -961,7 +931,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -993,11 +963,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -1012,11 +981,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -1026,12 +991,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -1055,11 +1018,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -1082,11 +1045,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -1099,11 +1061,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -1123,7 +1085,6 @@ library Address {
 }
 
 library DepositDataCodec {
-
     uint8 internal constant RATE_FIELD_SIZE = 16;
     uint8 internal constant TIMESTAMP_FIELD_SIZE = 5;
 
@@ -1182,12 +1143,10 @@ abstract contract L1ERC20ExtendedTokensBridge is
         address l1TokenRebasable_,
         address l2TokenNonRebasable_,
         address l2TokenRebasable_
-    ) CrossDomainEnabled(messenger_) RebasableAndNonRebasableTokens(
-        l1TokenNonRebasable_,
-        l1TokenRebasable_,
-        l2TokenNonRebasable_,
-        l2TokenRebasable_
-    ) {
+    )
+        CrossDomainEnabled(messenger_)
+        RebasableAndNonRebasableTokens(l1TokenNonRebasable_, l1TokenRebasable_, l2TokenNonRebasable_, l2TokenRebasable_)
+    {
         if (l2TokenBridge_ == address(0)) {
             revert ErrorZeroAddressL2Bridge();
         }
@@ -1200,13 +1159,7 @@ abstract contract L1ERC20ExtendedTokensBridge is
     }
 
     /// @inheritdoc IL1ERC20Bridge
-    function depositERC20(
-        address l1Token_,
-        address l2Token_,
-        uint256 amount_,
-        uint32 l2Gas_,
-        bytes calldata data_
-    )
+    function depositERC20(address l1Token_, address l2Token_, uint256 amount_, uint32 l2Gas_, bytes calldata data_)
         external
         whenDepositsEnabled
         onlySupportedL1L2TokensPair(l1Token_, l2Token_)
@@ -1214,7 +1167,7 @@ abstract contract L1ERC20ExtendedTokensBridge is
         if (Address.isContract(msg.sender)) {
             revert ErrorSenderNotEOA();
         }
-        bytes memory encodedDepositData  = _encodeInputDepositData(data_);
+        bytes memory encodedDepositData = _encodeInputDepositData(data_);
         _depositERC20To(l1Token_, l2Token_, msg.sender, msg.sender, amount_, l2Gas_, encodedDepositData);
         emit ERC20DepositInitiated(l1Token_, l2Token_, msg.sender, msg.sender, amount_, encodedDepositData);
     }
@@ -1227,13 +1180,8 @@ abstract contract L1ERC20ExtendedTokensBridge is
         uint256 amount_,
         uint32 l2Gas_,
         bytes calldata data_
-    )
-        external
-        whenDepositsEnabled
-        onlyNonZeroAccount(to_)
-        onlySupportedL1L2TokensPair(l1Token_, l2Token_)
-    {
-        bytes memory encodedDepositData  = _encodeInputDepositData(data_);
+    ) external whenDepositsEnabled onlyNonZeroAccount(to_) onlySupportedL1L2TokensPair(l1Token_, l2Token_) {
+        bytes memory encodedDepositData = _encodeInputDepositData(data_);
         _depositERC20To(l1Token_, l2Token_, msg.sender, to_, amount_, l2Gas_, encodedDepositData);
         emit ERC20DepositInitiated(l1Token_, l2Token_, msg.sender, to_, amount_, encodedDepositData);
     }
@@ -1252,9 +1200,9 @@ abstract contract L1ERC20ExtendedTokensBridge is
         onlyFromCrossDomainAccount(L2_TOKEN_BRIDGE)
         onlySupportedL1L2TokensPair(l1Token_, l2Token_)
     {
-        uint256 withdrawnL1TokenAmount = (l1Token_ == L1_TOKEN_REBASABLE && amount_ != 0) ?
-            IERC20Wrapper(L1_TOKEN_NON_REBASABLE).unwrap(amount_) :
-            amount_;
+        uint256 withdrawnL1TokenAmount = (l1Token_ == L1_TOKEN_REBASABLE && amount_ != 0)
+            ? IERC20Wrapper(L1_TOKEN_NON_REBASABLE).unwrap(amount_)
+            : amount_;
         IERC20(l1Token_).safeTransfer(to_, withdrawnL1TokenAmount);
         emit ERC20WithdrawalFinalized(l1Token_, l2Token_, from_, to_, withdrawnL1TokenAmount, data_);
     }
@@ -1282,7 +1230,12 @@ abstract contract L1ERC20ExtendedTokensBridge is
 
         bytes memory message = abi.encodeWithSelector(
             IL2ERC20Bridge.finalizeDeposit.selector,
-            l1Token_, l2Token_, from_, to_, nonRebasableAmountToDeposit, encodedDepositData_
+            l1Token_,
+            l2Token_,
+            from_,
+            to_,
+            nonRebasableAmountToDeposit,
+            encodedDepositData_
         );
 
         sendCrossDomainMessage(L2_TOKEN_BRIDGE, l2Gas_, message);
@@ -1293,11 +1246,7 @@ abstract contract L1ERC20ExtendedTokensBridge is
     /// @param from_ Account to pull the deposit from on L1.
     /// @param amount_ Amount of the ERC20 to deposit.
     /// @return Amount of non-rebasable token.
-    function _transferToBridge(
-        address l1Token_,
-        address from_,
-        uint256 amount_
-    ) internal returns (uint256) {
+    function _transferToBridge(address l1Token_, address from_, uint256 amount_) internal returns (uint256) {
         if (amount_ != 0) {
             IERC20(l1Token_).safeTransferFrom(from_, address(this), amount_);
             if (l1Token_ == L1_TOKEN_REBASABLE) {
@@ -1312,24 +1261,21 @@ abstract contract L1ERC20ExtendedTokensBridge is
     ///      Encodes token rate, it's L1 timestamp and optional data.
     /// @param data_ Optional data to forward to L2.
     /// @return encoded data in the 'wired' bytes form.
-    function _encodeInputDepositData(bytes calldata data_) internal view returns (bytes memory)  {
+    function _encodeInputDepositData(bytes calldata data_) internal view returns (bytes memory) {
         (uint256 rate, uint256 timestamp) = _tokenRate();
-        return DepositDataCodec.encodeDepositData(DepositDataCodec.DepositData({
-            rate: uint128(rate),
-            timestamp: uint40(timestamp),
-            data: data_
-        }));
+        return DepositDataCodec.encodeDepositData(
+            DepositDataCodec.DepositData({rate: uint128(rate), timestamp: uint40(timestamp), data: data_})
+        );
     }
 
     /// @notice required to abstact a way token rate is requested.
-    function _tokenRate() virtual internal view returns (uint256 rate_, uint256 updateTimestamp_);
+    function _tokenRate() internal view virtual returns (uint256 rate_, uint256 updateTimestamp_);
 
     error ErrorSenderNotEOA();
     error ErrorZeroAddressL2Bridge();
 }
 
 contract L1LidoTokensBridge is L1ERC20ExtendedTokensBridge, TokenRateAndUpdateTimestampProvider, Versioned {
-
     /// @param messenger_ L1 messenger address being used for cross-chain communications
     /// @param l2TokenBridge_ Address of the corresponding L2 bridge
     /// @param l1TokenNonRebasable_ Address of the bridged token in the L1 chain
@@ -1345,17 +1291,17 @@ contract L1LidoTokensBridge is L1ERC20ExtendedTokensBridge, TokenRateAndUpdateTi
         address l2TokenNonRebasable_,
         address l2TokenRebasable_,
         address accountingOracle_
-    ) L1ERC20ExtendedTokensBridge(
-        messenger_,
-        l2TokenBridge_,
-        l1TokenNonRebasable_,
-        l1TokenRebasable_,
-        l2TokenNonRebasable_,
-        l2TokenRebasable_
-    ) TokenRateAndUpdateTimestampProvider(
-        l1TokenNonRebasable_,
-        accountingOracle_
-    ) {}
+    )
+        L1ERC20ExtendedTokensBridge(
+            messenger_,
+            l2TokenBridge_,
+            l1TokenNonRebasable_,
+            l1TokenRebasable_,
+            l2TokenNonRebasable_,
+            l2TokenRebasable_
+        )
+        TokenRateAndUpdateTimestampProvider(l1TokenNonRebasable_, accountingOracle_)
+    {}
 
     /// @notice Initializes the contract from scratch.
     /// @param admin_ Address of the account to grant the DEFAULT_ADMIN_ROLE
@@ -1372,7 +1318,7 @@ contract L1LidoTokensBridge is L1ERC20ExtendedTokensBridge, TokenRateAndUpdateTi
         _initializeContractVersionTo(2);
     }
 
-    function _tokenRate() override internal view returns (uint256 rate, uint256 updateTimestamp) {
+    function _tokenRate() internal view override returns (uint256 rate, uint256 updateTimestamp) {
         return _getTokenRateAndUpdateTimestamp();
     }
 }

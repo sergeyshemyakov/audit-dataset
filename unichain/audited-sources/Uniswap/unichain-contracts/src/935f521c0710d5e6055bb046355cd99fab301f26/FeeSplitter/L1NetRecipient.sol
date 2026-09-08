@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
-import {INetFeeSplitter} from '../interfaces/FeeSplitter/INetFeeSplitter.sol';
-import {L1Splitter} from './L1Splitter.sol';
+import {INetFeeSplitter} from "../interfaces/FeeSplitter/INetFeeSplitter.sol";
+import {L1Splitter} from "./L1Splitter.sol";
 
 /// @title L1 Net Recipient
 /// @notice Pulls fees from the `NetFeeSplitter` and withdraws them to L1

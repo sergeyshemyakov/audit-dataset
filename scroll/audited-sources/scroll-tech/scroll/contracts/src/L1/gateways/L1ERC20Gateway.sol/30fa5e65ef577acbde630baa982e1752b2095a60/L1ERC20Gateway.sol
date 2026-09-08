@@ -9,8 +9,9 @@ import {IL1ERC20Gateway} from "./IL1ERC20Gateway.sol";
 import {IL1GatewayRouter} from "./IL1GatewayRouter.sol";
 
 import {IL2ERC20Gateway} from "../../L2/gateways/IL2ERC20Gateway.sol";
-import {ScrollGatewayBase} from "../../libraries/gateway/ScrollGatewayBase.sol";
+
 import {IMessageDropCallback} from "../../libraries/callbacks/IMessageDropCallback.sol";
+import {ScrollGatewayBase} from "../../libraries/gateway/ScrollGatewayBase.sol";
 
 /// @title L1ERC20Gateway
 /// @notice The `L1ERC20Gateway` as a base contract for ERC20 gateways in L1.
@@ -18,44 +19,37 @@ import {IMessageDropCallback} from "../../libraries/callbacks/IMessageDropCallba
 abstract contract L1ERC20Gateway is IL1ERC20Gateway, IMessageDropCallback, ScrollGatewayBase {
     using SafeERC20Upgradeable for IERC20Upgradeable;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slots for future usage.
     uint256[50] private __gap;
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20(
-        address _token,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC20(address _token, uint256 _amount, uint256 _gasLimit) external payable override {
         _deposit(_token, msg.sender, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20(
-        address _token,
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC20(address _token, address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         _deposit(_token, _to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20AndCall(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC20AndCall(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        external
+        payable
+        override
+    {
         _deposit(_token, _to, _amount, _data, _gasLimit);
     }
 
@@ -85,10 +79,8 @@ abstract contract L1ERC20Gateway is IL1ERC20Gateway, IMessageDropCallback, Scrol
         require(bytes4(_message[0:4]) == IL2ERC20Gateway.finalizeDepositERC20.selector, "invalid selector");
 
         // decode (token, receiver, amount)
-        (address _token, , address _receiver, , uint256 _amount, ) = abi.decode(
-            _message[4:],
-            (address, address, address, address, uint256, bytes)
-        );
+        (address _token,, address _receiver,, uint256 _amount,) =
+            abi.decode(_message[4:], (address, address, address, address, uint256, bytes));
 
         // do dome check for each custom gateway
         _beforeDropMessage(_token, _receiver, _amount);
@@ -98,9 +90,11 @@ abstract contract L1ERC20Gateway is IL1ERC20Gateway, IMessageDropCallback, Scrol
         emit RefundERC20(_token, _receiver, _amount);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function hook to perform checks and actions before finalizing the withdrawal.
     /// @param _l1Token The address of corresponding L1 token in L1.
@@ -122,27 +116,15 @@ abstract contract L1ERC20Gateway is IL1ERC20Gateway, IMessageDropCallback, Scrol
     /// @param _token The L1 token address.
     /// @param _receiver The recipient address on L1.
     /// @param _amount The amount of token to refund.
-    function _beforeDropMessage(
-        address _token,
-        address _receiver,
-        uint256 _amount
-    ) internal virtual;
+    function _beforeDropMessage(address _token, address _receiver, uint256 _amount) internal virtual;
 
     /// @dev Internal function to transfer ERC20 token to this contract.
     /// @param _token The address of token to transfer.
     /// @param _amount The amount of token to transfer.
     /// @param _data The data passed by caller.
-    function _transferERC20In(
-        address _token,
-        uint256 _amount,
-        bytes memory _data
-    )
+    function _transferERC20In(address _token, uint256 _amount, bytes memory _data)
         internal
-        returns (
-            address,
-            uint256,
-            bytes memory
-        )
+        returns (address, uint256, bytes memory)
     {
         address _from = msg.sender;
         if (router == msg.sender) {
@@ -173,11 +155,7 @@ abstract contract L1ERC20Gateway is IL1ERC20Gateway, IMessageDropCallback, Scrol
     /// @param _amount The amount of token to deposit.
     /// @param _data Optional data to forward to recipient's account.
     /// @param _gasLimit Gas limit required to complete the deposit on L2.
-    function _deposit(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual;
+    function _deposit(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual;
 }

@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import { OptimismPortal } from "src/L1/OptimismPortal.sol";
-import { CrossDomainMessenger } from "src/universal/CrossDomainMessenger.sol";
-import { ISemver } from "src/universal/ISemver.sol";
-import { SuperchainConfig } from "src/L1/SuperchainConfig.sol";
-import { SystemConfig } from "src/L1/SystemConfig.sol";
+import {OptimismPortal} from "src/L1/OptimismPortal.sol";
 
-import { LibFacet } from "src/libraries/LibFacet.sol";
+import {SuperchainConfig} from "src/L1/SuperchainConfig.sol";
+import {SystemConfig} from "src/L1/SystemConfig.sol";
+import {CrossDomainMessenger} from "src/universal/CrossDomainMessenger.sol";
+import {ISemver} from "src/universal/ISemver.sol";
+
+import {LibFacet} from "src/libraries/LibFacet.sol";
 
 /// @custom:proxied
 /// @title L1CrossDomainMessenger
@@ -48,14 +49,11 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ISemver {
         OptimismPortal _portal,
         SystemConfig _systemConfig,
         CrossDomainMessenger _otherMessenger
-    )
-        public
-        initializer
-    {
+    ) public initializer {
         superchainConfig = _superchainConfig;
         portal = _portal;
         systemConfig = _systemConfig;
-        __CrossDomainMessenger_init({ _otherMessenger: _otherMessenger });
+        __CrossDomainMessenger_init({_otherMessenger: _otherMessenger});
     }
 
     /// @inheritdoc CrossDomainMessenger

@@ -2,73 +2,73 @@
 pragma solidity 0.8.30;
 
 interface IBoosterCore {
-  function updateAndGetShares(address _prover) external returns (uint256);
-  function getSharesFor(address _prover) external view returns (uint256);
+    function updateAndGetShares(address _prover) external returns (uint256);
+    function getSharesFor(address _prover) external view returns (uint256);
 }
 
 struct RewardBoostConfig {
-  uint32 increment;
-  uint32 maxScore;
-  uint32 a; // a
-  uint32 minimum; // m
-  uint32 k; // k
+    uint32 increment;
+    uint32 maxScore;
+    uint32 a; // a
+    uint32 minimum; // m
+    uint32 k; // k
 }
 
 function addEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
 }
 
 function subEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
 }
 
 // Epoch
 
 function eqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) == Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) == Epoch.unwrap(_b);
 }
 
 function neqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) != Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) != Epoch.unwrap(_b);
 }
 
 function gteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
 }
 
 function gtEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) > Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) > Epoch.unwrap(_b);
 }
 
 function lteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
 }
 
 function ltEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) < Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) < Epoch.unwrap(_b);
 }
 
 using {
-  addEpoch as +,
-  subEpoch as -,
-  eqEpoch as ==,
-  neqEpoch as !=,
-  gteEpoch as >=,
-  gtEpoch as >,
-  lteEpoch as <=,
-  ltEpoch as <
+    addEpoch as +,
+    subEpoch as -,
+    eqEpoch as ==,
+    neqEpoch as !=,
+    gteEpoch as >=,
+    gtEpoch as >,
+    lteEpoch as <=,
+    ltEpoch as <
 } for Epoch global;
 
 type Epoch is uint256;
 
 struct ActivityScore {
-  Epoch time;
-  uint32 value;
+    Epoch time;
+    uint32 value;
 }
 
 interface IBooster is IBoosterCore {
-  function getConfig() external view returns (RewardBoostConfig memory);
-  function getActivityScore(address _prover) external view returns (ActivityScore memory);
+    function getConfig() external view returns (RewardBoostConfig memory);
+    function getActivityScore(address _prover) external view returns (ActivityScore memory);
 }
 
 /**
@@ -1229,46 +1229,46 @@ library SafeCast {
 }
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
@@ -1276,48 +1276,48 @@ type Timestamp is uint256;
 type CompressedTimestamp is uint32;
 
 function eqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) == Slot.unwrap(_b);
+    return Slot.unwrap(_a) == Slot.unwrap(_b);
 }
 
 function neqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) != Slot.unwrap(_b);
+    return Slot.unwrap(_a) != Slot.unwrap(_b);
 }
 
 function gteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) >= Slot.unwrap(_b);
+    return Slot.unwrap(_a) >= Slot.unwrap(_b);
 }
 
 function gtSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) > Slot.unwrap(_b);
+    return Slot.unwrap(_a) > Slot.unwrap(_b);
 }
 
 function lteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) <= Slot.unwrap(_b);
+    return Slot.unwrap(_a) <= Slot.unwrap(_b);
 }
 
 function ltSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) < Slot.unwrap(_b);
+    return Slot.unwrap(_a) < Slot.unwrap(_b);
 }
 
 // Slot
 
 function addSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
 }
 
 function subSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
 }
 
 using {
-  eqSlot as ==,
-  neqSlot as !=,
-  gteSlot as >=,
-  gtSlot as >,
-  lteSlot as <=,
-  ltSlot as <,
-  addSlot as +,
-  subSlot as -
+    eqSlot as ==,
+    neqSlot as !=,
+    gteSlot as >=,
+    gtSlot as >,
+    lteSlot as <=,
+    ltSlot as <,
+    addSlot as +,
+    subSlot as -
 } for Slot global;
 
 type Slot is uint256;
@@ -1327,53 +1327,53 @@ type CompressedSlot is uint32;
 type CompressedEpoch is uint32;
 
 library CompressedTimeMath {
-  function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
-    return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
-  }
+    function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
+        return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
+    }
 
-  function compress(Slot _slot) internal pure returns (CompressedSlot) {
-    return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
-  }
+    function compress(Slot _slot) internal pure returns (CompressedSlot) {
+        return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
+    }
 
-  function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
-    return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
-  }
+    function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
+        return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
+    }
 
-  function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
-    return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
-  }
+    function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
+        return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
+    }
 
-  function decompress(CompressedSlot _slot) internal pure returns (Slot) {
-    return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
-  }
+    function decompress(CompressedSlot _slot) internal pure returns (Slot) {
+        return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
+    }
 
-  function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
-    return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
-  }
+    function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
+        return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
+    }
 }
 
 interface IValidatorSelectionCore {
-  event EscapeHatchSet(address escapeHatch);
+    event EscapeHatchSet(address escapeHatch);
 
-  function setupEpoch() external;
-  function checkpointRandao() external;
-  function setEscapeHatch(address _escapeHatch) external;
+    function setupEpoch() external;
+    function checkpointRandao() external;
+    function setEscapeHatch(address _escapeHatch) external;
 }
 
 interface IEmperor {
-  // Not view because it might rely on transient storage.
-  // Calls are essentially trusted
-  function getCurrentProposer() external returns (address);
+    // Not view because it might rely on transient storage.
+    // Calls are essentially trusted
+    function getCurrentProposer() external returns (address);
 
-  function getCurrentSlot() external view returns (Slot);
+    function getCurrentSlot() external view returns (Slot);
 }
 
 function addHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
 }
 
 function subHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
 }
 
 using {addHatch as +, subHatch as -} for Hatch global;
@@ -1387,19 +1387,19 @@ using {addHatch as +, subHatch as -} for Hatch global;
 type Hatch is uint256;
 
 interface IEscapeHatchCore {
-  event CandidateJoined(address indexed candidate);
-  event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
-  event CandidateExited(address indexed candidate, uint256 amountReturned);
-  event CandidateSelected(Hatch indexed hatch, address indexed candidate);
-  event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
-  event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
+    event CandidateJoined(address indexed candidate);
+    event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
+    event CandidateExited(address indexed candidate, uint256 amountReturned);
+    event CandidateSelected(Hatch indexed hatch, address indexed candidate);
+    event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
+    event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
 
-  function joinCandidateSet() external;
-  function initiateExit() external;
-  function leaveCandidateSet() external;
-  function selectCandidates() external;
-  function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
-  function validateProofSubmission(Hatch _hatch) external;
+    function joinCandidateSet() external;
+    function initiateExit() external;
+    function leaveCandidateSet() external;
+    function selectCandidates() external;
+    function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
+    function validateProofSubmission(Hatch _hatch) external;
 }
 
 /**
@@ -1413,10 +1413,10 @@ interface IEscapeHatchCore {
  * @param EXITING - The candidate is exiting and waiting for the exit delay to pass
  */
 enum Status {
-  NONE,
-  ACTIVE,
-  PROPOSING,
-  EXITING
+    NONE,
+    ACTIVE,
+    PROPOSING,
+    EXITING
 }
 
 /**
@@ -1425,122 +1425,122 @@ enum Status {
  * @notice Information about an escape hatch candidate
  */
 struct CandidateInfo {
-  Status status;
-  uint96 amount;
-  uint32 exitableAt;
-  uint32 lastCheckpointNumber;
-  bytes32 lastSubmittedArchive;
+    Status status;
+    uint96 amount;
+    uint32 exitableAt;
+    uint32 lastCheckpointNumber;
+    bytes32 lastSubmittedArchive;
 }
 
 interface IEscapeHatch is IEscapeHatchCore {
-  function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
-  function getCurrentHatch() external view returns (Hatch);
-  function getHatch(Epoch _epoch) external view returns (Hatch);
-  function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
-  function getDesignatedProposer(Hatch _hatch) external view returns (address);
-  function isHatchPrepared(Hatch _hatch) external view returns (bool);
-  function isHatchValidated(Hatch _hatch) external view returns (bool);
-  function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
-  function getCandidateCount() external view returns (uint256);
-  function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
-  function getCandidateAtIndex(uint256 _index) external view returns (address);
-  function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
-  function isCandidate(address _candidate) external view returns (bool);
-  function getSetTimestamp(Hatch _hatch) external view returns (uint32);
-  function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
-  function getRollup() external view returns (address);
-  function getBondToken() external view returns (address);
-  function getBondSize() external view returns (uint96);
-  function getWithdrawalTax() external view returns (uint96);
-  function getFailedHatchPunishment() external view returns (uint96);
-  function getFrequency() external view returns (uint256);
-  function getActiveDuration() external view returns (uint256);
-  function getLagInHatches() external view returns (uint256);
-  function getProposingExitDelay() external view returns (uint256);
+    function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
+    function getCurrentHatch() external view returns (Hatch);
+    function getHatch(Epoch _epoch) external view returns (Hatch);
+    function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
+    function getDesignatedProposer(Hatch _hatch) external view returns (address);
+    function isHatchPrepared(Hatch _hatch) external view returns (bool);
+    function isHatchValidated(Hatch _hatch) external view returns (bool);
+    function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
+    function getCandidateCount() external view returns (uint256);
+    function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
+    function getCandidateAtIndex(uint256 _index) external view returns (address);
+    function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
+    function isCandidate(address _candidate) external view returns (bool);
+    function getSetTimestamp(Hatch _hatch) external view returns (uint32);
+    function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
+    function getRollup() external view returns (address);
+    function getBondToken() external view returns (address);
+    function getBondSize() external view returns (uint96);
+    function getWithdrawalTax() external view returns (uint96);
+    function getFailedHatchPunishment() external view returns (uint96);
+    function getFrequency() external view returns (uint256);
+    function getActiveDuration() external view returns (uint256);
+    function getLagInHatches() external view returns (uint256);
+    function getProposingExitDelay() external view returns (uint256);
 }
 
 interface IValidatorSelection is IValidatorSelectionCore, IEmperor {
-  function getProposerAt(Timestamp _ts) external returns (address);
+    function getProposerAt(Timestamp _ts) external returns (address);
 
-  // Non view as uses transient storage
-  function getCurrentEpochCommittee() external returns (address[] memory);
-  function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
-  function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
-  function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
-  function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
+    // Non view as uses transient storage
+    function getCurrentEpochCommittee() external returns (address[] memory);
+    function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
+    function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
+    function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
+    function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
 
-  // Stable
-  function getCurrentEpoch() external view returns (Epoch);
+    // Stable
+    function getCurrentEpoch() external view returns (Epoch);
 
-  // Consider removing below this point
-  function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
-  function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
+    // Consider removing below this point
+    function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
+    function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
 
-  function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
-  function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
-  function getLagInEpochsForValidatorSet() external view returns (uint256);
-  function getLagInEpochsForRandao() external view returns (uint256);
-  function getCurrentSampleSeed() external view returns (uint256);
+    function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
+    function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
+    function getLagInEpochsForValidatorSet() external view returns (uint256);
+    function getLagInEpochsForRandao() external view returns (uint256);
+    function getCurrentSampleSeed() external view returns (uint256);
 
-  function getEpochAt(Timestamp _ts) external view returns (Epoch);
-  function getSlotAt(Timestamp _ts) external view returns (Slot);
-  function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
+    function getEpochAt(Timestamp _ts) external view returns (Epoch);
+    function getSlotAt(Timestamp _ts) external view returns (Slot);
+    function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
 
-  function getGenesisTime() external view returns (Timestamp);
-  function getSlotDuration() external view returns (uint256);
-  function getEpochDuration() external view returns (uint256);
-  function getTargetCommitteeSize() external view returns (uint256);
+    function getGenesisTime() external view returns (Timestamp);
+    function getSlotDuration() external view returns (uint256);
+    function getEpochDuration() external view returns (uint256);
+    function getTargetCommitteeSize() external view returns (uint256);
 
-  function getEscapeHatch() external view returns (IEscapeHatch);
-  function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
+    function getEscapeHatch() external view returns (IEscapeHatch);
+    function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
 }
 
 struct CompressedActivityScore {
-  CompressedEpoch time;
-  uint32 value;
+    CompressedEpoch time;
+    uint32 value;
 }
 
 function addSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
 }
 
 function subSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
 }
 
 function eqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
 }
 
 function neqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
 }
 
 function ltSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
 }
 
 function lteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
 }
 
 function gtSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
 }
 
 function gteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
 }
 
 using {
-  addSlashRound as +,
-  subSlashRound as -,
-  eqSlashRound as ==,
-  neqSlashRound as !=,
-  ltSlashRound as <,
-  lteSlashRound as <=,
-  gtSlashRound as >,
-  gteSlashRound as >=
+    addSlashRound as +,
+    subSlashRound as -,
+    eqSlashRound as ==,
+    neqSlashRound as !=,
+    ltSlashRound as <,
+    lteSlashRound as <=,
+    gtSlashRound as >,
+    gteSlashRound as >=
 } for SlashRound global;
 
 type SlashRound is uint256;
@@ -1556,266 +1556,266 @@ type SlashRound is uint256;
  * src/core/libraries/Errors.sol:Errors errors`
  */
 library Errors {
-  // DEVNET related
-  error DevNet__NoPruningAllowed(); // 0x6984c590
-  error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
+    // DEVNET related
+    error DevNet__NoPruningAllowed(); // 0x6984c590
+    error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
 
-  // Inbox
-  error Inbox__Unauthorized(); // 0xe5336a6b
-  error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
-  error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
-  error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
-  error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
-  error Inbox__MustBuildBeforeConsume(); // 0xc4901999
+    // Inbox
+    error Inbox__Unauthorized(); // 0xe5336a6b
+    error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
+    error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
+    error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
+    error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
+    error Inbox__MustBuildBeforeConsume(); // 0xc4901999
 
-  // Outbox
-  error Outbox__Unauthorized(); // 0x2c9490c2
-  error Outbox__InvalidChainId(); // 0x577ec7c4
-  error Outbox__VersionMismatch(uint256 expected, uint256 actual);
-  error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
-  error Outbox__IncompatibleEntryArguments(
-    bytes32 messageHash,
-    uint64 storedFee,
-    uint64 feePassed,
-    uint32 storedVersion,
-    uint32 versionPassed,
-    uint32 storedDeadline,
-    uint32 deadlinePassed
-  ); // 0x5e789f34
-  error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
-  error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
-  error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
-  error Outbox__PathTooLong();
-  error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
-  error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
+    // Outbox
+    error Outbox__Unauthorized(); // 0x2c9490c2
+    error Outbox__InvalidChainId(); // 0x577ec7c4
+    error Outbox__VersionMismatch(uint256 expected, uint256 actual);
+    error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
+    error Outbox__IncompatibleEntryArguments(
+        bytes32 messageHash,
+        uint64 storedFee,
+        uint64 feePassed,
+        uint32 storedVersion,
+        uint32 versionPassed,
+        uint32 storedDeadline,
+        uint32 deadlinePassed
+    ); // 0x5e789f34
+    error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
+    error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
+    error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
+    error Outbox__PathTooLong();
+    error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
+    error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
 
-  // Rollup
-  error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
-  error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
-  error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
-  error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
-  error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
-  error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
-  error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
-  error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidProof(); // 0xa5b2ba17
-  error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
-  error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
-  error Rollup__InvalidAttestations();
-  error Rollup__AttestationsAreValid();
-  error Rollup__InvalidAttestationIndex();
-  error Rollup__CheckpointAlreadyProven();
-  error Rollup__CheckpointNotInPendingChain();
-  error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
-  error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
-  error Rollup__NoEpochToProve(); // 0xcbaa3951
-  error Rollup__NonSequentialProving(); // 0x1e5be132
-  error Rollup__NothingToPrune(); // 0x850defd3
-  error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
-  error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
-  error Rollup__TimestampTooOld(); // 0x72ed9c81
-  error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
-  error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
-  error Rollup__NonZeroDaFee(); // 0xd9c75f52
-  error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
-  error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
-  error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
-  error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
-  error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
-  error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
-  error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
-  error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error Rollup__ManaLimitExceeded();
-  error Rollup__InvalidFirstEpochProof();
-  error Rollup__InvalidCoinbase();
-  error Rollup__UnavailableTempCheckpointLog(
-    uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
-  );
-  error Rollup__NoBlobsInCheckpoint();
-  error Rollup__CannotInvalidateEscapeHatch();
-  error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
-  error Rollup__FieldElementOutOfRange(bytes32 value);
+    // Rollup
+    error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
+    error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
+    error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
+    error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
+    error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
+    error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
+    error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
+    error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidProof(); // 0xa5b2ba17
+    error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
+    error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
+    error Rollup__InvalidAttestations();
+    error Rollup__AttestationsAreValid();
+    error Rollup__InvalidAttestationIndex();
+    error Rollup__CheckpointAlreadyProven();
+    error Rollup__CheckpointNotInPendingChain();
+    error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
+    error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
+    error Rollup__NoEpochToProve(); // 0xcbaa3951
+    error Rollup__NonSequentialProving(); // 0x1e5be132
+    error Rollup__NothingToPrune(); // 0x850defd3
+    error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
+    error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
+    error Rollup__TimestampTooOld(); // 0x72ed9c81
+    error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
+    error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
+    error Rollup__NonZeroDaFee(); // 0xd9c75f52
+    error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
+    error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
+    error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
+    error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
+    error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
+    error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
+    error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
+    error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error Rollup__ManaLimitExceeded();
+    error Rollup__InvalidFirstEpochProof();
+    error Rollup__InvalidCoinbase();
+    error Rollup__UnavailableTempCheckpointLog(
+        uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
+    );
+    error Rollup__NoBlobsInCheckpoint();
+    error Rollup__CannotInvalidateEscapeHatch();
+    error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
+    error Rollup__FieldElementOutOfRange(bytes32 value);
 
-  // EscapeHatch
-  error EscapeHatch__AlreadyInCandidateSet(address candidate);
-  error EscapeHatch__NotInCandidateSet(address candidate);
-  error EscapeHatch__InvalidStatus(Status expected, Status actual);
-  error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
-  error EscapeHatch__OnlyRollup(address caller, address rollup);
-  error EscapeHatch__NoDesignatedProposer(Hatch hatch);
-  error EscapeHatch__InvalidConfiguration();
-  error EscapeHatch__SetUnstable(Hatch hatch);
-  error EscapeHatch__AlreadyValidated(Hatch hatch);
-  error EscapeHatch__HatchTooEarly(Hatch hatch);
+    // EscapeHatch
+    error EscapeHatch__AlreadyInCandidateSet(address candidate);
+    error EscapeHatch__NotInCandidateSet(address candidate);
+    error EscapeHatch__InvalidStatus(Status expected, Status actual);
+    error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
+    error EscapeHatch__OnlyRollup(address caller, address rollup);
+    error EscapeHatch__NoDesignatedProposer(Hatch hatch);
+    error EscapeHatch__InvalidConfiguration();
+    error EscapeHatch__SetUnstable(Hatch hatch);
+    error EscapeHatch__AlreadyValidated(Hatch hatch);
+    error EscapeHatch__HatchTooEarly(Hatch hatch);
 
-  // ProposedHeaderLib
-  error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
-  error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
+    // ProposedHeaderLib
+    error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
+    error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
 
-  // MerkleLib
-  error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
-  error MerkleLib__InvalidIndexForPathLength();
+    // MerkleLib
+    error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
+    error MerkleLib__InvalidIndexForPathLength();
 
-  // SampleLib
-  error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
-  error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
+    // SampleLib
+    error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
+    error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
 
-  // Sequencer Selection (ValidatorSelection)
-  error ValidatorSelection__EpochNotSetup(); // 0x10816cae
-  error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
-  error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
-  error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
-  error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
-  error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
-  error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
-  error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
-  error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
-  error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
-  error ValidatorSelection__EscapeHatchAlreadySet();
-  error ValidatorSelection__EscapeHatchCannotBeZero();
-  error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
+    // Sequencer Selection (ValidatorSelection)
+    error ValidatorSelection__EpochNotSetup(); // 0x10816cae
+    error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
+    error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
+    error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
+    error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
+    error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
+    error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
+    error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
+    error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
+    error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
+    error ValidatorSelection__EscapeHatchAlreadySet();
+    error ValidatorSelection__EscapeHatchCannotBeZero();
+    error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
 
-  // Staking
-  error Staking__AlreadyQueued(address _attester);
-  error Staking__QueueEmpty();
-  error Staking__DepositOutOfGas();
-  error Staking__AlreadyActive(address attester); // 0x5e206fa4
-  error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
-  error Staking__AlreadyRegistered(address instance, address attester);
-  error Staking__CannotSlashExitedStake(address); // 0x45bf4940
-  error Staking__FailedToRemove(address); // 0xa7d7baab
-  error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
-  error Staking__InvalidRecipient(address); // 0x7e2f7f1c
-  error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
-  error Staking__NoOneToSlash(address); // 0x7e2f7f1c
-  error Staking__NotExiting(address); // 0xef566ee0
-  error Staking__InitiateWithdrawNeeded(address);
-  error Staking__NotSlasher(address, address); // 0x23a6f432
-  error Staking__NotWithdrawer(address, address); // 0x8e668e5d
-  error Staking__NothingToExit(address); // 0xd2aac9b6
-  error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
-  error Staking__WithdrawFailed(address); // 0x377422c1
-  error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
-  error Staking__NotRollup(address); // 0xf5509eb3
-  error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
-  error Staking__InvalidRollupAddress(address); // 0xd876720e
-  error Staking__NotCanonical(address); // 0x6244212e
-  error Staking__InstanceDoesNotExist(address);
-  error Staking__InsufficientPower(uint256, uint256);
-  error Staking__AlreadyExiting(address);
-  error Staking__FatalError(string);
-  error Staking__NotOurProposal(uint256, address, address);
-  error Staking__IncorrectGovProposer(uint256);
-  error Staking__GovernanceAlreadySet();
-  error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
-  error Staking__InvalidStakingQueueConfig();
-  error Staking__InvalidNormalFlushSizeQuotient();
-  error Staking__InvalidMaxQueueFlushSize();
-  error Staking__InvalidBootstrapFlushSize();
-  error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
-  error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
-  error Staking__SlasherProposerNotInitialized(address slasher);
-  error Staking__NoPendingSlasher();
-  error Staking__SlasherNotReady(Timestamp readyAt);
+    // Staking
+    error Staking__AlreadyQueued(address _attester);
+    error Staking__QueueEmpty();
+    error Staking__DepositOutOfGas();
+    error Staking__AlreadyActive(address attester); // 0x5e206fa4
+    error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
+    error Staking__AlreadyRegistered(address instance, address attester);
+    error Staking__CannotSlashExitedStake(address); // 0x45bf4940
+    error Staking__FailedToRemove(address); // 0xa7d7baab
+    error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
+    error Staking__InvalidRecipient(address); // 0x7e2f7f1c
+    error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
+    error Staking__NoOneToSlash(address); // 0x7e2f7f1c
+    error Staking__NotExiting(address); // 0xef566ee0
+    error Staking__InitiateWithdrawNeeded(address);
+    error Staking__NotSlasher(address, address); // 0x23a6f432
+    error Staking__NotWithdrawer(address, address); // 0x8e668e5d
+    error Staking__NothingToExit(address); // 0xd2aac9b6
+    error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
+    error Staking__WithdrawFailed(address); // 0x377422c1
+    error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
+    error Staking__NotRollup(address); // 0xf5509eb3
+    error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
+    error Staking__InvalidRollupAddress(address); // 0xd876720e
+    error Staking__NotCanonical(address); // 0x6244212e
+    error Staking__InstanceDoesNotExist(address);
+    error Staking__InsufficientPower(uint256, uint256);
+    error Staking__AlreadyExiting(address);
+    error Staking__FatalError(string);
+    error Staking__NotOurProposal(uint256, address, address);
+    error Staking__IncorrectGovProposer(uint256);
+    error Staking__GovernanceAlreadySet();
+    error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
+    error Staking__InvalidStakingQueueConfig();
+    error Staking__InvalidNormalFlushSizeQuotient();
+    error Staking__InvalidMaxQueueFlushSize();
+    error Staking__InvalidBootstrapFlushSize();
+    error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
+    error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
+    error Staking__SlasherProposerNotInitialized(address slasher);
+    error Staking__NoPendingSlasher();
+    error Staking__SlasherNotReady(Timestamp readyAt);
 
-  // Fee Juice Portal
-  error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
-  error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
-  error FeeJuicePortal__Unauthorized(); // 0x67e3691e
+    // Fee Juice Portal
+    error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
+    error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
+    error FeeJuicePortal__Unauthorized(); // 0x67e3691e
 
-  // Proof Commitment Escrow
-  error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
-  error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
-  error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
+    // Proof Commitment Escrow
+    error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
+    error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
+    error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
 
-  // FeeLib
-  error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
-  error FeeLib__AlreadyPreheated();
-  error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
-  error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
-  error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
-  error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
-  error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
-  error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
+    // FeeLib
+    error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
+    error FeeLib__AlreadyPreheated();
+    error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
+    error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
+    error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
+    error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
+    error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
+    error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
 
-  // SignatureLib (duplicated)
-  error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
+    // SignatureLib (duplicated)
+    error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
 
-  error AttestationLib__InvalidDataSize(uint256, uint256);
-  error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignersSizeMismatch(uint256, uint256);
-  error AttestationLib__NotASignatureAtIndex(uint256 index);
-  error AttestationLib__NotAnAddressAtIndex(uint256 index);
+    error AttestationLib__InvalidDataSize(uint256, uint256);
+    error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignersSizeMismatch(uint256, uint256);
+    error AttestationLib__NotASignatureAtIndex(uint256 index);
+    error AttestationLib__NotAnAddressAtIndex(uint256 index);
 
-  // RewardBooster
-  error RewardBooster__OnlyRollup(address caller);
-  error RewardBooster__InvalidConfig();
+    // RewardBooster
+    error RewardBooster__OnlyRollup(address caller);
+    error RewardBooster__InvalidConfig();
 
-  error RewardLib__InvalidSequencerBps();
-  error RewardLib__ZeroShares(address prover);
+    error RewardLib__InvalidSequencerBps();
+    error RewardLib__ZeroShares(address prover);
 
-  // SlashingProposer
-  error SlashingProposer__InvalidSignature();
-  error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
-  error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundNotComplete(SlashRound round);
-  error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
-  error SlashingProposer__InvalidCommitteeCommitment();
-  error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
-  error SlashingProposer__QuorumMustBeGreaterThanZero();
-  error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
-  error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
-  error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
-  error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
-  error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
-  error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
-  error SlashingProposer__SlashAmountTooLarge();
-  error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
-  error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
-  error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
-  error SlashingProposer__VotingNotOpen(SlashRound currentRound);
-  error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
-  error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
-  error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
-  error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
-  error SlashingProposer__SlashAmountMustBeGtZero(string info);
+    // SlashingProposer
+    error SlashingProposer__InvalidSignature();
+    error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
+    error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundNotComplete(SlashRound round);
+    error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
+    error SlashingProposer__InvalidCommitteeCommitment();
+    error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
+    error SlashingProposer__QuorumMustBeGreaterThanZero();
+    error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
+    error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
+    error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
+    error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
+    error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
+    error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
+    error SlashingProposer__SlashAmountTooLarge();
+    error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
+    error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
+    error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
+    error SlashingProposer__VotingNotOpen(SlashRound currentRound);
+    error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
+    error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
+    error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
+    error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
+    error SlashingProposer__SlashAmountMustBeGtZero(string info);
 
-  // SlashPayloadLib
-  error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
+    // SlashPayloadLib
+    error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
 
-  // OpenZeppelin dependencies
+    // OpenZeppelin dependencies
 
-  // ECDSA
-  error ECDSAInvalidSignature();
-  error ECDSAInvalidSignatureLength(uint256 length);
-  error ECDSAInvalidSignatureS(bytes32 s);
+    // ECDSA
+    error ECDSAInvalidSignature();
+    error ECDSAInvalidSignatureLength(uint256 length);
+    error ECDSAInvalidSignatureS(bytes32 s);
 
-  // Ownable
-  error OwnableUnauthorizedAccount(address account);
-  error OwnableInvalidOwner(address owner);
+    // Ownable
+    error OwnableUnauthorizedAccount(address account);
+    error OwnableInvalidOwner(address owner);
 
-  // Checkpoints
-  error CheckpointUnorderedInsertion();
+    // Checkpoints
+    error CheckpointUnorderedInsertion();
 
-  // ERC20
-  error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
-  error ERC20InvalidSender(address sender);
-  error ERC20InvalidReceiver(address receiver);
-  error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
-  error ERC20InvalidApprover(address approver);
-  error ERC20InvalidSpender(address spender);
+    // ERC20
+    error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
+    error ERC20InvalidSender(address sender);
+    error ERC20InvalidReceiver(address receiver);
+    error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
+    error ERC20InvalidApprover(address approver);
+    error ERC20InvalidSpender(address spender);
 
-  // SafeCast
-  error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
-  error SafeCastOverflowedIntToUint(int256 value);
-  error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
-  error SafeCastOverflowedUintToInt(uint256 value);
+    // SafeCast
+    error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
+    error SafeCastOverflowedIntToUint(int256 value);
+    error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
+    error SafeCastOverflowedUintToInt(uint256 value);
 }
 
 /**
@@ -1880,6 +1880,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -1888,7 +1889,9 @@ library Math {
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
             uint256 c = a + b;
-            if (c < a) return (false, 0);
+            if (c < a) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1898,7 +1901,9 @@ library Math {
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b > a) return (false, 0);
+            if (b > a) {
+                return (false, 0);
+            }
             return (true, a - b);
         }
     }
@@ -1911,9 +1916,13 @@ library Math {
             // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
             // benefit is lost if 'b' is also tested.
             // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-            if (a == 0) return (true, 0);
+            if (a == 0) {
+                return (true, 0);
+            }
             uint256 c = a * b;
-            if (c / a != b) return (false, 0);
+            if (c / a != b) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1923,7 +1932,9 @@ library Math {
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a / b);
         }
     }
@@ -1933,7 +1944,9 @@ library Math {
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a % b);
         }
     }
@@ -2107,7 +2120,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -2148,7 +2163,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -2200,7 +2217,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -2239,12 +2258,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -2559,132 +2580,138 @@ library Math {
  * @notice  Abstracts the accounting related to rewards boosting from the POV of the rollup.
  */
 contract RewardBooster is IBooster {
-  using SafeCast for uint256;
-  using CompressedTimeMath for Epoch;
-  using CompressedTimeMath for CompressedEpoch;
+    using SafeCast for uint256;
+    using CompressedTimeMath for Epoch;
+    using CompressedTimeMath for CompressedEpoch;
 
-  IValidatorSelection public immutable ROLLUP;
-  uint256 private immutable CONFIG_INCREMENT;
-  uint256 private immutable CONFIG_MAX_SCORE;
-  uint256 private immutable CONFIG_A;
-  uint256 private immutable CONFIG_MINIMUM;
-  uint256 private immutable CONFIG_K;
+    IValidatorSelection public immutable ROLLUP;
+    uint256 private immutable CONFIG_INCREMENT;
+    uint256 private immutable CONFIG_MAX_SCORE;
+    uint256 private immutable CONFIG_A;
+    uint256 private immutable CONFIG_MINIMUM;
+    uint256 private immutable CONFIG_K;
 
-  mapping(address prover => CompressedActivityScore) internal activityScores;
+    mapping(address prover => CompressedActivityScore) internal activityScores;
 
-  modifier onlyRollup() {
-    require(msg.sender == address(ROLLUP), Errors.RewardBooster__OnlyRollup(msg.sender));
-    _;
-  }
-
-  constructor(IValidatorSelection _rollup, RewardBoostConfig memory _config) {
-    // `_toShares` returns either `CONFIG_K` (top of the curve) or `CONFIG_MINIMUM` (anywhere
-    // else). If either is zero, an accepted prover submission can record zero shares, which
-    // RewardLib.handleRewardsAndFees uses as the duplicate-submission sentinel -- the same
-    // prover could then submit again and reward accounting would be silently dropped.
-    // `maxScore == 0` short-circuits every call to the K branch; require it positive so the
-    // curve has a real range. `minimum <= k` keeps the curve monotonic.
-    require(_config.k > 0, Errors.RewardBooster__InvalidConfig());
-    require(_config.minimum > 0, Errors.RewardBooster__InvalidConfig());
-    require(_config.maxScore > 0, Errors.RewardBooster__InvalidConfig());
-    require(_config.minimum <= _config.k, Errors.RewardBooster__InvalidConfig());
-
-    ROLLUP = _rollup;
-
-    CONFIG_INCREMENT = _config.increment;
-    CONFIG_MAX_SCORE = _config.maxScore;
-    CONFIG_A = _config.a;
-    CONFIG_MINIMUM = _config.minimum;
-    CONFIG_K = _config.k;
-  }
-
-  function updateAndGetShares(address _prover) external override(IBoosterCore) onlyRollup returns (uint256) {
-    Epoch currentEpoch = ROLLUP.getCurrentEpoch();
-
-    CompressedActivityScore storage store = activityScores[_prover];
-    ActivityScore memory curr = _activityScoreAt(store, currentEpoch);
-
-    // If the score was already marked active in this epoch, ignore the addition.
-    if (curr.time != store.time.decompress()) {
-      store.value = Math.min(curr.value + CONFIG_INCREMENT, CONFIG_MAX_SCORE).toUint32();
-      store.time = curr.time.compress();
+    modifier onlyRollup() {
+        require(msg.sender == address(ROLLUP), Errors.RewardBooster__OnlyRollup(msg.sender));
+        _;
     }
 
-    return _toShares(store.value);
-  }
+    constructor(IValidatorSelection _rollup, RewardBoostConfig memory _config) {
+        // `_toShares` returns either `CONFIG_K` (top of the curve) or `CONFIG_MINIMUM` (anywhere
+        // else). If either is zero, an accepted prover submission can record zero shares, which
+        // RewardLib.handleRewardsAndFees uses as the duplicate-submission sentinel -- the same
+        // prover could then submit again and reward accounting would be silently dropped.
+        // `maxScore == 0` short-circuits every call to the K branch; require it positive so the
+        // curve has a real range. `minimum <= k` keeps the curve monotonic.
+        require(_config.k > 0, Errors.RewardBooster__InvalidConfig());
+        require(_config.minimum > 0, Errors.RewardBooster__InvalidConfig());
+        require(_config.maxScore > 0, Errors.RewardBooster__InvalidConfig());
+        require(_config.minimum <= _config.k, Errors.RewardBooster__InvalidConfig());
 
-  function getConfig() external view override(IBooster) returns (RewardBoostConfig memory) {
-    return RewardBoostConfig({
-      increment: CONFIG_INCREMENT.toUint32(),
-      maxScore: CONFIG_MAX_SCORE.toUint32(),
-      a: CONFIG_A.toUint32(),
-      minimum: CONFIG_MINIMUM.toUint32(),
-      k: CONFIG_K.toUint32()
-    });
-  }
+        ROLLUP = _rollup;
 
-  function getSharesFor(address _prover) external view override(IBoosterCore) returns (uint256) {
-    return _toShares(getActivityScore(_prover).value);
-  }
-
-  function getActivityScore(address _prover) public view override(IBooster) returns (ActivityScore memory) {
-    return _activityScoreAt(activityScores[_prover], ROLLUP.getCurrentEpoch());
-  }
-
-  function _activityScoreAt(CompressedActivityScore storage _score, Epoch _epoch)
-    internal
-    view
-    returns (ActivityScore memory)
-  {
-    uint256 decrease = (Epoch.unwrap(_epoch) - Epoch.unwrap(_score.time.decompress())) * 1e5;
-    return
-      ActivityScore({value: decrease > uint256(_score.value) ? 0 : _score.value - decrease.toUint32(), time: _epoch});
-  }
-
-  function _toShares(uint256 _value) internal view returns (uint256) {
-    if (_value >= CONFIG_MAX_SCORE) {
-      return CONFIG_K;
-    }
-    uint256 t = (CONFIG_MAX_SCORE - _value);
-    uint256 rhs = CONFIG_A * t * t / 1e10;
-
-    // Sub would move us below 0
-    if (CONFIG_K < rhs) {
-      return CONFIG_MINIMUM;
+        CONFIG_INCREMENT = _config.increment;
+        CONFIG_MAX_SCORE = _config.maxScore;
+        CONFIG_A = _config.a;
+        CONFIG_MINIMUM = _config.minimum;
+        CONFIG_K = _config.k;
     }
 
-    return Math.max(CONFIG_K - rhs, CONFIG_MINIMUM);
-  }
+    function updateAndGetShares(address _prover) external override(IBoosterCore) onlyRollup returns (uint256) {
+        Epoch currentEpoch = ROLLUP.getCurrentEpoch();
+
+        CompressedActivityScore storage store = activityScores[_prover];
+        ActivityScore memory curr = _activityScoreAt(store, currentEpoch);
+
+        // If the score was already marked active in this epoch, ignore the addition.
+        if (curr.time != store.time.decompress()) {
+            store.value = Math.min(curr.value + CONFIG_INCREMENT, CONFIG_MAX_SCORE).toUint32();
+            store.time = curr.time.compress();
+        }
+
+        return _toShares(store.value);
+    }
+
+    function getConfig() external view override(IBooster) returns (RewardBoostConfig memory) {
+        return RewardBoostConfig({
+            increment: CONFIG_INCREMENT.toUint32(),
+            maxScore: CONFIG_MAX_SCORE.toUint32(),
+            a: CONFIG_A.toUint32(),
+            minimum: CONFIG_MINIMUM.toUint32(),
+            k: CONFIG_K.toUint32()
+        });
+    }
+
+    function getSharesFor(address _prover) external view override(IBoosterCore) returns (uint256) {
+        return _toShares(getActivityScore(_prover).value);
+    }
+
+    function getActivityScore(address _prover) public view override(IBooster) returns (ActivityScore memory) {
+        return _activityScoreAt(activityScores[_prover], ROLLUP.getCurrentEpoch());
+    }
+
+    function _activityScoreAt(CompressedActivityScore storage _score, Epoch _epoch)
+        internal
+        view
+        returns (ActivityScore memory)
+    {
+        uint256 decrease = (Epoch.unwrap(_epoch) - Epoch.unwrap(_score.time.decompress())) * 1e5;
+        return ActivityScore({
+            value: decrease > uint256(_score.value) ? 0 : _score.value - decrease.toUint32(),
+            time: _epoch
+        });
+    }
+
+    function _toShares(uint256 _value) internal view returns (uint256) {
+        if (_value >= CONFIG_MAX_SCORE) {
+            return CONFIG_K;
+        }
+        uint256 t = (CONFIG_MAX_SCORE - _value);
+        uint256 rhs = CONFIG_A * t * t / 1e10;
+
+        // Sub would move us below 0
+        if (CONFIG_K < rhs) {
+            return CONFIG_MINIMUM;
+        }
+
+        return Math.max(CONFIG_K - rhs, CONFIG_MINIMUM);
+    }
 }
 
 interface IRewardDistributor {
-  /// @notice Emitted when a funder earmarks ASSET for a specific recipient via `subsidizeAddress`.
-  event Subsidized(address indexed funder, address indexed recipient, uint256 amount);
+    /// @notice Emitted when a funder earmarks ASSET for a specific recipient via `subsidizeAddress`.
+    event Subsidized(address indexed funder, address indexed recipient, uint256 amount);
 
-  /// @notice Emitted whenever `claim` or `recoverFrom` debits the distributor.
-  /// @dev `implicitAmountUsed` is the share drawn from the canonical-rollup implicit pool,
-  ///      `earmarkedAmountUsed` is the share drawn from `from`'s earmarked balance, and the two
-  ///      always sum to `amount`. Lets a log-only indexer reconstruct bucket-by-bucket history
-  ///      without polling storage at every block.
-  event Distributed(
-    address indexed from, address indexed to, uint256 amount, uint256 implicitAmountUsed, uint256 earmarkedAmountUsed
-  );
+    /// @notice Emitted whenever `claim` or `recoverFrom` debits the distributor.
+    /// @dev `implicitAmountUsed` is the share drawn from the canonical-rollup implicit pool,
+    ///      `earmarkedAmountUsed` is the share drawn from `from`'s earmarked balance, and the two
+    ///      always sum to `amount`. Lets a log-only indexer reconstruct bucket-by-bucket history
+    ///      without polling storage at every block.
+    event Distributed(
+        address indexed from,
+        address indexed to,
+        uint256 amount,
+        uint256 implicitAmountUsed,
+        uint256 earmarkedAmountUsed
+    );
 
-  function claim(address _to, uint256 _amount) external;
-  function recoverFrom(address _from, address _to, uint256 _amount) external;
-  function recoverWrongAsset(address _asset, address _to, uint256 _amount) external;
-  function subsidizeAddress(address _recipient, uint256 _amount) external;
-  function canonicalRollup() external view returns (address);
-  function availableTo(address _recipient) external view returns (uint256);
+    function claim(address _to, uint256 _amount) external;
+    function recoverFrom(address _from, address _to, uint256 _amount) external;
+    function recoverWrongAsset(address _asset, address _to, uint256 _amount) external;
+    function subsidizeAddress(address _recipient, uint256 _amount) external;
+    function canonicalRollup() external view returns (address);
+    function availableTo(address _recipient) external view returns (uint256);
 }
 
 type Bps is uint32;
 
 struct RewardConfig {
-  IRewardDistributor rewardDistributor;
-  Bps sequencerBps;
-  IBoosterCore booster;
-  uint96 checkpointReward;
+    IRewardDistributor rewardDistributor;
+    Bps sequencerBps;
+    IBoosterCore booster;
+    uint96 checkpointReward;
 }
 
 /**
@@ -2840,7 +2867,9 @@ interface IERC1363 is IERC20, IERC165 {
      * @param data Additional data with no specified format, sent in call to `to`.
      * @return A boolean value indicating whether the operation succeeded unless throwing.
      */
-    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data) external returns (bool);
+    function transferFromAndCall(address from, address to, uint256 value, bytes calldata data)
+        external
+        returns (bool);
 
     /**
      * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
@@ -2971,13 +3000,9 @@ library SafeERC20 {
      *
      * Reverts if the returned value is other than `true`.
      */
-    function transferFromAndCallRelaxed(
-        IERC1363 token,
-        address from,
-        address to,
-        uint256 value,
-        bytes memory data
-    ) internal {
+    function transferFromAndCallRelaxed(IERC1363 token, address from, address to, uint256 value, bytes memory data)
+        internal
+    {
         if (to.code.length == 0) {
             safeTransferFrom(token, from, to, value);
         } else if (!token.transferFromAndCall(from, to, value, data)) {
@@ -3111,127 +3136,127 @@ library BitMaps {
 }
 
 struct TimeStorage {
-  uint128 genesisTime;
-  uint32 slotDuration; // Number of seconds in a slot
-  uint32 epochDuration; // Number of slots in an epoch
-  /**
-   * @notice Number of epochs after the end of a given epoch that proofs are still accepted. For example, a value of 1
-   * means that after epoch n ends, the proofs must land *before* epoch n+1 ends. A value of 0 would mean that the
-   * proofs for epoch n must land while the epoch is ongoing.
-   */
-  uint32 proofSubmissionEpochs;
+    uint128 genesisTime;
+    uint32 slotDuration; // Number of seconds in a slot
+    uint32 epochDuration; // Number of slots in an epoch
+    /**
+     * @notice Number of epochs after the end of a given epoch that proofs are still accepted. For example, a value of 1
+     * means that after epoch n ends, the proofs must land *before* epoch n+1 ends. A value of 0 would mean that the
+     * proofs for epoch n must land while the epoch is ongoing.
+     */
+    uint32 proofSubmissionEpochs;
 }
 
 library TimeLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  bytes32 private constant TIME_STORAGE_POSITION = keccak256("aztec.time.storage");
+    bytes32 private constant TIME_STORAGE_POSITION = keccak256("aztec.time.storage");
 
-  function initialize(
-    uint256 _genesisTime,
-    uint256 _slotDuration,
-    uint256 _epochDuration,
-    uint256 _proofSubmissionEpochs
-  ) internal {
-    TimeStorage storage store = getStorage();
-    store.genesisTime = _genesisTime.toUint128();
-    store.slotDuration = _slotDuration.toUint32();
-    store.epochDuration = _epochDuration.toUint32();
-    store.proofSubmissionEpochs = _proofSubmissionEpochs.toUint32();
-  }
-
-  function toTimestamp(Slot _a) internal view returns (Timestamp) {
-    TimeStorage storage store = getStorage();
-    return Timestamp.wrap(store.genesisTime) + Timestamp.wrap(Slot.unwrap(_a) * store.slotDuration);
-  }
-
-  function slotFromTimestamp(Timestamp _a) internal view returns (Slot) {
-    TimeStorage storage store = getStorage();
-    return Slot.wrap((Timestamp.unwrap(_a) - store.genesisTime) / store.slotDuration);
-  }
-
-  function toSlots(Epoch _a) internal view returns (Slot) {
-    return Slot.wrap(Epoch.unwrap(_a) * getStorage().epochDuration);
-  }
-
-  function toTimestamp(Epoch _a) internal view returns (Timestamp) {
-    return toTimestamp(toSlots(_a));
-  }
-
-  /**
-   * @notice An epoch deadline is the epoch at which:
-   *         - proofs are no longer accepted
-   *         - which we may prune if no proof has landed
-   *         - rewards may be claimed
-   *
-   * @param _a - The epoch to compute the deadline for
-   *
-   * @return The computed epoch
-   */
-  function toDeadlineEpoch(Epoch _a) internal view returns (Epoch) {
-    TimeStorage storage store = getStorage();
-    // We add one to the proof submission epochs to account for the current epoch.
-    // This is because toSlots will return the first slot of the epoch, and in the event
-    // that proofSubmissionEpochs is 0, we would wait until the end of the current epoch.
-    return _a + Epoch.wrap(store.proofSubmissionEpochs + 1);
-  }
-
-  /**
-   * @notice Calculates the maximum number of checkpoints that can be pruned from the pending chain
-   * @dev The maximum prunable checkpoints is determined by:
-   *      - epochDuration: number of slots in an epoch
-   *      - proofSubmissionEpochs: number of epochs allowed for proof submission
-   *
-   *      The formula is: epochDuration * (proofSubmissionEpochs + 1)
-   *
-   *      The +1 accounts for checkpoints in the current epoch, ensuring they are included
-   *      in the prunable window along with checkpoints from previous epochs within the
-   *      proof submission window.
-   *
-   *      This value is used to:
-   *      1. Size the circular storage buffer (roundaboutSize = maxPrunableCheckpoints + 1)
-   *      2. Determine when checkpoints become stale and can be overwritten
-   *
-   * @return The maximum number of checkpoints that can be pruned.
-   */
-  function maxPrunableCheckpoints() internal view returns (uint256) {
-    TimeStorage storage store = getStorage();
-    return uint256(store.epochDuration) * (uint256(store.proofSubmissionEpochs) + 1);
-  }
-
-  /**
-   * @notice Checks if proofs are being accepted for epoch _a during epoch _b
-   *
-   * @param _a - The epoch that may be accepting proofs
-   * @param _b - The epoch we would like to submit the proof for
-   *
-   * @return True if proofs would be accepted for epoch _a during epoch _b
-   */
-  function isAcceptingProofsAtEpoch(Epoch _a, Epoch _b) internal view returns (bool) {
-    return _b < toDeadlineEpoch(_a);
-  }
-
-  function epochFromTimestamp(Timestamp _a) internal view returns (Epoch) {
-    TimeStorage storage store = getStorage();
-
-    return Epoch.wrap((Timestamp.unwrap(_a) - store.genesisTime) / (store.epochDuration * store.slotDuration));
-  }
-
-  function epochFromSlot(Slot _a) internal view returns (Epoch) {
-    return Epoch.wrap(Slot.unwrap(_a) / getStorage().epochDuration);
-  }
-
-  function getEpochDurationInSeconds() internal view returns (uint256) {
-    TimeStorage storage store = getStorage();
-    return store.epochDuration * store.slotDuration;
-  }
-
-  function getStorage() internal pure returns (TimeStorage storage storageStruct) {
-    bytes32 position = TIME_STORAGE_POSITION;
-    assembly {
-      storageStruct.slot := position
+    function initialize(
+        uint256 _genesisTime,
+        uint256 _slotDuration,
+        uint256 _epochDuration,
+        uint256 _proofSubmissionEpochs
+    ) internal {
+        TimeStorage storage store = getStorage();
+        store.genesisTime = _genesisTime.toUint128();
+        store.slotDuration = _slotDuration.toUint32();
+        store.epochDuration = _epochDuration.toUint32();
+        store.proofSubmissionEpochs = _proofSubmissionEpochs.toUint32();
     }
-  }
+
+    function toTimestamp(Slot _a) internal view returns (Timestamp) {
+        TimeStorage storage store = getStorage();
+        return Timestamp.wrap(store.genesisTime) + Timestamp.wrap(Slot.unwrap(_a) * store.slotDuration);
+    }
+
+    function slotFromTimestamp(Timestamp _a) internal view returns (Slot) {
+        TimeStorage storage store = getStorage();
+        return Slot.wrap((Timestamp.unwrap(_a) - store.genesisTime) / store.slotDuration);
+    }
+
+    function toSlots(Epoch _a) internal view returns (Slot) {
+        return Slot.wrap(Epoch.unwrap(_a) * getStorage().epochDuration);
+    }
+
+    function toTimestamp(Epoch _a) internal view returns (Timestamp) {
+        return toTimestamp(toSlots(_a));
+    }
+
+    /**
+     * @notice An epoch deadline is the epoch at which:
+     *         - proofs are no longer accepted
+     *         - which we may prune if no proof has landed
+     *         - rewards may be claimed
+     *
+     * @param _a - The epoch to compute the deadline for
+     *
+     * @return The computed epoch
+     */
+    function toDeadlineEpoch(Epoch _a) internal view returns (Epoch) {
+        TimeStorage storage store = getStorage();
+        // We add one to the proof submission epochs to account for the current epoch.
+        // This is because toSlots will return the first slot of the epoch, and in the event
+        // that proofSubmissionEpochs is 0, we would wait until the end of the current epoch.
+        return _a + Epoch.wrap(store.proofSubmissionEpochs + 1);
+    }
+
+    /**
+     * @notice Calculates the maximum number of checkpoints that can be pruned from the pending chain
+     * @dev The maximum prunable checkpoints is determined by:
+     *      - epochDuration: number of slots in an epoch
+     *      - proofSubmissionEpochs: number of epochs allowed for proof submission
+     *
+     *      The formula is: epochDuration * (proofSubmissionEpochs + 1)
+     *
+     *      The +1 accounts for checkpoints in the current epoch, ensuring they are included
+     *      in the prunable window along with checkpoints from previous epochs within the
+     *      proof submission window.
+     *
+     *      This value is used to:
+     *      1. Size the circular storage buffer (roundaboutSize = maxPrunableCheckpoints + 1)
+     *      2. Determine when checkpoints become stale and can be overwritten
+     *
+     * @return The maximum number of checkpoints that can be pruned.
+     */
+    function maxPrunableCheckpoints() internal view returns (uint256) {
+        TimeStorage storage store = getStorage();
+        return uint256(store.epochDuration) * (uint256(store.proofSubmissionEpochs) + 1);
+    }
+
+    /**
+     * @notice Checks if proofs are being accepted for epoch _a during epoch _b
+     *
+     * @param _a - The epoch that may be accepting proofs
+     * @param _b - The epoch we would like to submit the proof for
+     *
+     * @return True if proofs would be accepted for epoch _a during epoch _b
+     */
+    function isAcceptingProofsAtEpoch(Epoch _a, Epoch _b) internal view returns (bool) {
+        return _b < toDeadlineEpoch(_a);
+    }
+
+    function epochFromTimestamp(Timestamp _a) internal view returns (Epoch) {
+        TimeStorage storage store = getStorage();
+
+        return Epoch.wrap((Timestamp.unwrap(_a) - store.genesisTime) / (store.epochDuration * store.slotDuration));
+    }
+
+    function epochFromSlot(Slot _a) internal view returns (Epoch) {
+        return Epoch.wrap(Slot.unwrap(_a) / getStorage().epochDuration);
+    }
+
+    function getEpochDurationInSeconds() internal view returns (uint256) {
+        TimeStorage storage store = getStorage();
+        return store.epochDuration * store.slotDuration;
+    }
+
+    function getStorage() internal pure returns (TimeStorage storage storageStruct) {
+        bytes32 position = TIME_STORAGE_POSITION;
+        assembly {
+            storageStruct.slot := position
+        }
+    }
 }
 
 // We are using a type instead of a struct as we don't want to throw away a full 8 bits
@@ -3247,119 +3272,119 @@ library TimeLib {
 type CompressedFeeHeader is uint256;
 
 struct FeeHeader {
-  uint256 excessMana;
-  uint256 manaUsed;
-  uint256 ethPerFeeAsset;
-  uint256 congestionCost;
-  uint256 proverCost;
+    uint256 excessMana;
+    uint256 manaUsed;
+    uint256 ethPerFeeAsset;
+    uint256 congestionCost;
+    uint256 proverCost;
 }
 
 library FeeHeaderLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  uint256 internal constant MASK_32_BITS = 0xFFFFFFFF;
-  uint256 internal constant MASK_48_BITS = 0xFFFFFFFFFFFF;
-  uint256 internal constant MASK_63_BITS = 0x7FFFFFFFFFFFFFFF;
-  uint256 internal constant MASK_64_BITS = 0xFFFFFFFFFFFFFFFF;
+    uint256 internal constant MASK_32_BITS = 0xFFFFFFFF;
+    uint256 internal constant MASK_48_BITS = 0xFFFFFFFFFFFF;
+    uint256 internal constant MASK_63_BITS = 0x7FFFFFFFFFFFFFFF;
+    uint256 internal constant MASK_64_BITS = 0xFFFFFFFFFFFFFFFF;
 
-  function getManaUsed(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
-    return CompressedFeeHeader.unwrap(_compressedFeeHeader) & MASK_32_BITS;
-  }
+    function getManaUsed(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
+        return CompressedFeeHeader.unwrap(_compressedFeeHeader) & MASK_32_BITS;
+    }
 
-  function getExcessMana(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
-    return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 32) & MASK_48_BITS;
-  }
+    function getExcessMana(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
+        return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 32) & MASK_48_BITS;
+    }
 
-  function getEthPerFeeAsset(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
-    return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 80) & MASK_48_BITS;
-  }
+    function getEthPerFeeAsset(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
+        return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 80) & MASK_48_BITS;
+    }
 
-  function getCongestionCost(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
-    return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 128) & MASK_64_BITS;
-  }
+    function getCongestionCost(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
+        return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 128) & MASK_64_BITS;
+    }
 
-  function getProverCost(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
-    // The prover cost is only 63 bits so use mask to remove first bit
-    return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 192) & MASK_63_BITS;
-  }
+    function getProverCost(CompressedFeeHeader _compressedFeeHeader) internal pure returns (uint256) {
+        // The prover cost is only 63 bits so use mask to remove first bit
+        return (CompressedFeeHeader.unwrap(_compressedFeeHeader) >> 192) & MASK_63_BITS;
+    }
 
-  function compress(FeeHeader memory _feeHeader) internal pure returns (CompressedFeeHeader) {
-    uint256 value = 0;
-    value |= uint256(_feeHeader.manaUsed.toUint32());
-    // Cap excessMana to uint48 max to prevent overflow during compression.
-    value |= Math.min(_feeHeader.excessMana, MASK_48_BITS) << 32;
-    value |= uint256(_feeHeader.ethPerFeeAsset.toUint48()) << 80;
-    // Cap congestionCost to uint64 max to prevent overflow during compression.
-    // The uncapped value is still used for fee validation; this only affects storage.
-    value |= Math.min(_feeHeader.congestionCost, MASK_64_BITS) << 128;
-    // Cap proverCost to uint63 max to prevent overflow during compression.
-    value |= Math.min(_feeHeader.proverCost, MASK_63_BITS) << 192;
+    function compress(FeeHeader memory _feeHeader) internal pure returns (CompressedFeeHeader) {
+        uint256 value = 0;
+        value |= uint256(_feeHeader.manaUsed.toUint32());
+        // Cap excessMana to uint48 max to prevent overflow during compression.
+        value |= Math.min(_feeHeader.excessMana, MASK_48_BITS) << 32;
+        value |= uint256(_feeHeader.ethPerFeeAsset.toUint48()) << 80;
+        // Cap congestionCost to uint64 max to prevent overflow during compression.
+        // The uncapped value is still used for fee validation; this only affects storage.
+        value |= Math.min(_feeHeader.congestionCost, MASK_64_BITS) << 128;
+        // Cap proverCost to uint63 max to prevent overflow during compression.
+        value |= Math.min(_feeHeader.proverCost, MASK_63_BITS) << 192;
 
-    // Preheat
-    value |= 1 << 255;
+        // Preheat
+        value |= 1 << 255;
 
-    return CompressedFeeHeader.wrap(value);
-  }
+        return CompressedFeeHeader.wrap(value);
+    }
 
-  function decompress(CompressedFeeHeader _compressedFeeHeader) internal pure returns (FeeHeader memory) {
-    uint256 value = CompressedFeeHeader.unwrap(_compressedFeeHeader);
+    function decompress(CompressedFeeHeader _compressedFeeHeader) internal pure returns (FeeHeader memory) {
+        uint256 value = CompressedFeeHeader.unwrap(_compressedFeeHeader);
 
-    uint256 manaUsed = value & MASK_32_BITS;
-    value >>= 32;
-    uint256 excessMana = value & MASK_48_BITS;
-    value >>= 48;
-    uint256 ethPerFeeAsset = value & MASK_48_BITS;
-    value >>= 48;
-    uint256 congestionCost = value & MASK_64_BITS;
-    value >>= 64;
-    uint256 proverCost = value & MASK_63_BITS;
+        uint256 manaUsed = value & MASK_32_BITS;
+        value >>= 32;
+        uint256 excessMana = value & MASK_48_BITS;
+        value >>= 48;
+        uint256 ethPerFeeAsset = value & MASK_48_BITS;
+        value >>= 48;
+        uint256 congestionCost = value & MASK_64_BITS;
+        value >>= 64;
+        uint256 proverCost = value & MASK_63_BITS;
 
-    return FeeHeader({
-      manaUsed: uint256(manaUsed),
-      excessMana: uint256(excessMana),
-      ethPerFeeAsset: uint256(ethPerFeeAsset),
-      congestionCost: uint256(congestionCost),
-      proverCost: uint256(proverCost)
-    });
-  }
+        return FeeHeader({
+            manaUsed: uint256(manaUsed),
+            excessMana: uint256(excessMana),
+            ethPerFeeAsset: uint256(ethPerFeeAsset),
+            congestionCost: uint256(congestionCost),
+            proverCost: uint256(proverCost)
+        });
+    }
 }
 
 struct SubEpochRewards {
-  uint256 summedShares;
-  mapping(address prover => uint256 shares) shares;
+    uint256 summedShares;
+    mapping(address prover => uint256 shares) shares;
 }
 
 struct EpochRewards {
-  uint128 longestProvenLength;
-  uint128 rewards;
-  mapping(uint256 length => SubEpochRewards) subEpoch;
+    uint128 longestProvenLength;
+    uint128 rewards;
+    mapping(uint256 length => SubEpochRewards) subEpoch;
 }
 
 struct RewardStorage {
-  mapping(address => uint256) sequencerRewards;
-  mapping(Epoch => EpochRewards) epochRewards;
-  mapping(address prover => BitMaps.BitMap claimed) proverClaimed;
-  RewardConfig config;
+    mapping(address => uint256) sequencerRewards;
+    mapping(Epoch => EpochRewards) epochRewards;
+    mapping(address prover => BitMaps.BitMap claimed) proverClaimed;
+    RewardConfig config;
 }
 
 /// @notice The post-deployment-mutable subset of {RewardConfig}.
 /// @dev `rewardDistributor` and `booster` are deliberately *not* in this struct: they are
 ///      set once at construction and immutable thereafter.
 struct MutableRewardConfig {
-  Bps sequencerBps;
-  uint96 checkpointReward;
+    Bps sequencerBps;
+    uint96 checkpointReward;
 }
 
 type CompressedChainTips is uint256;
 
 struct CompressedTempCheckpointLog {
-  bytes32 headerHash;
-  bytes32 blobCommitmentsHash;
-  bytes32 outHash;
-  bytes32 attestationsHash;
-  bytes32 payloadDigest;
-  CompressedSlot slotNumber;
-  CompressedFeeHeader feeHeader;
+    bytes32 headerHash;
+    bytes32 blobCommitmentsHash;
+    bytes32 outHash;
+    bytes32 attestationsHash;
+    bytes32 payloadDigest;
+    CompressedSlot slotNumber;
+    CompressedFeeHeader feeHeader;
 }
 
 /**
@@ -3368,66 +3393,66 @@ struct CompressedTempCheckpointLog {
  * @notice Library that contains data structures used throughout the Aztec protocol
  */
 library DataStructures {
-  // docs:start:l1_actor
-  /**
-   * @notice Actor on L1.
-   * @param actor - The address of the actor
-   * @param chainId - The chainId of the actor
-   */
-  struct L1Actor {
-    address actor;
-    uint256 chainId;
-  }
+    // docs:start:l1_actor
+    /**
+     * @notice Actor on L1.
+     * @param actor - The address of the actor
+     * @param chainId - The chainId of the actor
+     */
+    struct L1Actor {
+        address actor;
+        uint256 chainId;
+    }
 
-  // docs:end:l1_actor
+    // docs:end:l1_actor
 
-  // docs:start:l2_actor
-  /**
-   * @notice Actor on L2.
-   * @param actor - The aztec address of the actor
-   * @param version - Ahe Aztec instance the actor is on
-   */
-  struct L2Actor {
-    bytes32 actor;
-    uint256 version;
-  }
+    // docs:start:l2_actor
+    /**
+     * @notice Actor on L2.
+     * @param actor - The aztec address of the actor
+     * @param version - Ahe Aztec instance the actor is on
+     */
+    struct L2Actor {
+        bytes32 actor;
+        uint256 version;
+    }
 
-  // docs:end:l2_actor
+    // docs:end:l2_actor
 
-  // docs:start:l1_to_l2_msg
-  /**
-   * @notice Struct containing a message from L1 to L2
-   * @param sender - The sender of the message
-   * @param recipient - The recipient of the message
-   * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
-   * @param secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed on
-   * L2).
-   * @param index - Global leaf index on the L1 to L2 messages tree.
-   */
-  struct L1ToL2Msg {
-    L1Actor sender;
-    L2Actor recipient;
-    bytes32 content;
-    bytes32 secretHash;
-    uint256 index;
-  }
+    // docs:start:l1_to_l2_msg
+    /**
+     * @notice Struct containing a message from L1 to L2
+     * @param sender - The sender of the message
+     * @param recipient - The recipient of the message
+     * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
+     * @param secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed on
+     * L2).
+     * @param index - Global leaf index on the L1 to L2 messages tree.
+     */
+    struct L1ToL2Msg {
+        L1Actor sender;
+        L2Actor recipient;
+        bytes32 content;
+        bytes32 secretHash;
+        uint256 index;
+    }
 
-  // docs:end:l1_to_l2_msg
+    // docs:end:l1_to_l2_msg
 
-  // docs:start:l2_to_l1_msg
-  /**
-   * @notice Struct containing a message from L2 to L1
-   * @param sender - The sender of the message
-   * @param recipient - The recipient of the message
-   * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
-   * @dev Not to be confused with L2ToL1Message in Noir circuits
-   */
-  struct L2ToL1Msg {
-    DataStructures.L2Actor sender;
-    DataStructures.L1Actor recipient;
-    bytes32 content;
-  }
-  // docs:end:l2_to_l1_msg
+    // docs:start:l2_to_l1_msg
+    /**
+     * @notice Struct containing a message from L2 to L1
+     * @param sender - The sender of the message
+     * @param recipient - The recipient of the message
+     * @param content - The content of the message (application specific) padded to bytes32 or hashed if larger.
+     * @dev Not to be confused with L2ToL1Message in Noir circuits
+     */
+    struct L2ToL1Msg {
+        DataStructures.L2Actor sender;
+        DataStructures.L1Actor recipient;
+        bytes32 content;
+    }
+    // docs:end:l2_to_l1_msg
 }
 
 /**
@@ -3436,72 +3461,72 @@ library DataStructures {
  * @notice Lives on L1 and is used to pass messages into the rollup from L1.
  */
 interface IInbox {
-  struct InboxState {
-    // Rolling hash of all messages inserted into the inbox.
-    // Used by clients to check for consistency.
-    bytes16 rollingHash;
-    // This value is not used much by the contract, but it is useful for synching the node faster
-    // as it can more easily figure out if it can just skip looking for events for a time period.
-    uint64 totalMessagesInserted;
-    // Number of a tree which is currently being filled
-    uint64 inProgress;
-  }
+    struct InboxState {
+        // Rolling hash of all messages inserted into the inbox.
+        // Used by clients to check for consistency.
+        bytes16 rollingHash;
+        // This value is not used much by the contract, but it is useful for synching the node faster
+        // as it can more easily figure out if it can just skip looking for events for a time period.
+        uint64 totalMessagesInserted;
+        // Number of a tree which is currently being filled
+        uint64 inProgress;
+    }
 
-  /**
-   * @notice Emitted when a message is sent
-   * @param checkpointNumber - The checkpoint number in which the message is included
-   * @param index - The index of the message in the L1 to L2 messages tree
-   * @param hash - The hash of the message
-   * @param rollingHash - The rolling hash of all messages inserted into the inbox
-   */
-  event MessageSent(uint256 indexed checkpointNumber, uint256 index, bytes32 indexed hash, bytes16 rollingHash);
+    /**
+     * @notice Emitted when a message is sent
+     * @param checkpointNumber - The checkpoint number in which the message is included
+     * @param index - The index of the message in the L1 to L2 messages tree
+     * @param hash - The hash of the message
+     * @param rollingHash - The rolling hash of all messages inserted into the inbox
+     */
+    event MessageSent(uint256 indexed checkpointNumber, uint256 index, bytes32 indexed hash, bytes16 rollingHash);
 
-  // docs:start:send_l1_to_l2_message
-  /**
-   * @notice Inserts a new message into the Inbox
-   * @dev Emits `MessageSent` with data for easy access by the sequencer
-   * @param _recipient - The recipient of the message
-   * @param _content - The content of the message (application specific)
-   * @param _secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed
-   * on L2)
-   * @return The key of the message in the set and its leaf index in the tree
-   */
-  function sendL2Message(DataStructures.L2Actor memory _recipient, bytes32 _content, bytes32 _secretHash)
-    external
-    returns (bytes32, uint256);
-  // docs:end:send_l1_to_l2_message
+    // docs:start:send_l1_to_l2_message
+    /**
+     * @notice Inserts a new message into the Inbox
+     * @dev Emits `MessageSent` with data for easy access by the sequencer
+     * @param _recipient - The recipient of the message
+     * @param _content - The content of the message (application specific)
+     * @param _secretHash - The secret hash of the message (make it possible to hide when a specific message is consumed
+     * on L2)
+     * @return The key of the message in the set and its leaf index in the tree
+     */
+    function sendL2Message(DataStructures.L2Actor memory _recipient, bytes32 _content, bytes32 _secretHash)
+        external
+        returns (bytes32, uint256);
+    // docs:end:send_l1_to_l2_message
 
-  // docs:start:consume
-  /**
-   * @notice Consumes the current tree, and starts a new one if needed
-   * @dev Only callable by the rollup contract
-   * @dev In the first iteration we return empty tree root because first checkpoint's messages tree is always
-   * empty because there has to be a 1 checkpoint lag to prevent sequencer DOS attacks
-   *
-   * @param _toConsume - The checkpoint number to consume
-   *
-   * @return The root of the consumed tree
-   */
-  function consume(uint256 _toConsume) external returns (bytes32);
-  // docs:end:consume
+    // docs:start:consume
+    /**
+     * @notice Consumes the current tree, and starts a new one if needed
+     * @dev Only callable by the rollup contract
+     * @dev In the first iteration we return empty tree root because first checkpoint's messages tree is always
+     * empty because there has to be a 1 checkpoint lag to prevent sequencer DOS attacks
+     *
+     * @param _toConsume - The checkpoint number to consume
+     *
+     * @return The root of the consumed tree
+     */
+    function consume(uint256 _toConsume) external returns (bytes32);
+    // docs:end:consume
 
-  function getFeeAssetPortal() external view returns (address);
+    function getFeeAssetPortal() external view returns (address);
 
-  function getRoot(uint256 _checkpointNumber) external view returns (bytes32);
+    function getRoot(uint256 _checkpointNumber) external view returns (bytes32);
 
-  function getState() external view returns (InboxState memory);
+    function getState() external view returns (InboxState memory);
 
-  function getTotalMessagesInserted() external view returns (uint64);
+    function getTotalMessagesInserted() external view returns (uint64);
 
-  function getInProgress() external view returns (uint64);
+    function getInProgress() external view returns (uint64);
 }
 
 function addEthValue(EthValue _a, EthValue _b) pure returns (EthValue) {
-  return EthValue.wrap(EthValue.unwrap(_a) + EthValue.unwrap(_b));
+    return EthValue.wrap(EthValue.unwrap(_a) + EthValue.unwrap(_b));
 }
 
 function subEthValue(EthValue _a, EthValue _b) pure returns (EthValue) {
-  return EthValue.wrap(EthValue.unwrap(_a) - EthValue.unwrap(_b));
+    return EthValue.wrap(EthValue.unwrap(_a) - EthValue.unwrap(_b));
 }
 
 using {addEthValue as +, subEthValue as -} for EthValue global;
@@ -3510,120 +3535,120 @@ using {addEthValue as +, subEthValue as -} for EthValue global;
 type EthValue is uint256;
 
 struct OracleInput {
-  int256 feeAssetPriceModifier;
+    int256 feeAssetPriceModifier;
 }
 
 struct GasFees {
-  uint128 feePerDaGas;
-  uint128 feePerL2Gas;
+    uint128 feePerDaGas;
+    uint128 feePerL2Gas;
 }
 
 struct ProposedHeader {
-  bytes32 lastArchiveRoot;
-  bytes32 blockHeadersHash;
-  bytes32 blobsHash;
-  bytes32 inHash;
-  bytes32 outHash;
-  Slot slotNumber;
-  Timestamp timestamp;
-  address coinbase;
-  bytes32 feeRecipient;
-  GasFees gasFees;
-  uint256 totalManaUsed;
-  uint256 accumulatedFees;
+    bytes32 lastArchiveRoot;
+    bytes32 blockHeadersHash;
+    bytes32 blobsHash;
+    bytes32 inHash;
+    bytes32 outHash;
+    Slot slotNumber;
+    Timestamp timestamp;
+    address coinbase;
+    bytes32 feeRecipient;
+    GasFees gasFees;
+    uint256 totalManaUsed;
+    uint256 accumulatedFees;
 }
 
 struct ProposeArgs {
-  bytes32 archive;
-  OracleInput oracleInput;
-  ProposedHeader header;
+    bytes32 archive;
+    OracleInput oracleInput;
+    ProposedHeader header;
 }
 
 struct CommitteeAttestations {
-  // bitmap of which indices are signatures
-  bytes signatureIndices;
-  // tightly packed signatures and addresses
-  bytes signaturesOrAddresses;
+    // bitmap of which indices are signatures
+    bytes signatureIndices;
+    // tightly packed signatures and addresses
+    bytes signaturesOrAddresses;
 }
 
 // Signature
 struct Signature {
-  uint8 v;
-  bytes32 r;
-  bytes32 s;
+    uint8 v;
+    bytes32 r;
+    bytes32 s;
 }
 
 struct PublicInputArgs {
-  bytes32 previousArchive;
-  bytes32 endArchive;
-  bytes32 outHash;
-  address proverId;
+    bytes32 previousArchive;
+    bytes32 endArchive;
+    bytes32 outHash;
+    address proverId;
 }
 
 struct SubmitEpochRootProofArgs {
-  uint256 start; // inclusive
-  uint256 end; // inclusive
-  PublicInputArgs args;
-  ProposedHeader[] headers; // Must match what was proposed by the committee
-  CommitteeAttestations attestations; // attestations for the last checkpoint in epoch
-  bytes blobInputs;
-  bytes proof;
+    uint256 start; // inclusive
+    uint256 end; // inclusive
+    PublicInputArgs args;
+    ProposedHeader[] headers; // Must match what was proposed by the committee
+    CommitteeAttestations attestations; // attestations for the last checkpoint in epoch
+    bytes blobInputs;
+    bytes proof;
 }
 
 interface IRollupCore {
-  event CheckpointProposed(
-    uint256 indexed checkpointNumber,
-    bytes32 indexed archive,
-    bytes32[] versionedBlobHashes,
-    bytes32 payloadDigest,
-    bytes32 attestationsHash
-  );
-  event L2ProofVerified(uint256 indexed checkpointNumber, address indexed proverId);
-  event CheckpointInvalidated(uint256 indexed checkpointNumber);
-  event RewardConfigUpdated(MutableRewardConfig rewardConfig);
-  event ManaTargetUpdated(uint256 indexed manaTarget);
-  event PrunedPending(uint256 provenCheckpointNumber, uint256 pendingCheckpointNumber);
+    event CheckpointProposed(
+        uint256 indexed checkpointNumber,
+        bytes32 indexed archive,
+        bytes32[] versionedBlobHashes,
+        bytes32 payloadDigest,
+        bytes32 attestationsHash
+    );
+    event L2ProofVerified(uint256 indexed checkpointNumber, address indexed proverId);
+    event CheckpointInvalidated(uint256 indexed checkpointNumber);
+    event RewardConfigUpdated(MutableRewardConfig rewardConfig);
+    event ManaTargetUpdated(uint256 indexed manaTarget);
+    event PrunedPending(uint256 provenCheckpointNumber, uint256 pendingCheckpointNumber);
 
-  function claimSequencerRewards(address _recipient) external returns (uint256);
-  function claimProverRewards(address _recipient, Epoch[] memory _epochs) external returns (uint256);
+    function claimSequencerRewards(address _recipient) external returns (uint256);
+    function claimProverRewards(address _recipient, Epoch[] memory _epochs) external returns (uint256);
 
-  function prune() external;
-  function updateL1GasFeeOracle() external;
+    function prune() external;
+    function updateL1GasFeeOracle() external;
 
-  function setProvingCostPerMana(EthValue _provingCostPerMana) external;
+    function setProvingCostPerMana(EthValue _provingCostPerMana) external;
 
-  function propose(
-    ProposeArgs calldata _args,
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    Signature memory _attestationsAndSignersSignature,
-    bytes calldata _blobInput
-  ) external;
+    function propose(
+        ProposeArgs calldata _args,
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        Signature memory _attestationsAndSignersSignature,
+        bytes calldata _blobInput
+    ) external;
 
-  function submitEpochRootProof(SubmitEpochRootProofArgs calldata _args) external;
+    function submitEpochRootProof(SubmitEpochRootProofArgs calldata _args) external;
 
-  function invalidateBadAttestation(
-    uint256 _checkpointNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee,
-    uint256 _invalidIndex
-  ) external;
+    function invalidateBadAttestation(
+        uint256 _checkpointNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee,
+        uint256 _invalidIndex
+    ) external;
 
-  function invalidateInsufficientAttestations(
-    uint256 _checkpointNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _committee
-  ) external;
+    function invalidateInsufficientAttestations(
+        uint256 _checkpointNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _committee
+    ) external;
 
-  function setRewardConfig(MutableRewardConfig memory _config) external;
-  function updateManaTarget(uint256 _manaTarget) external;
+    function setRewardConfig(MutableRewardConfig memory _config) external;
+    function updateManaTarget(uint256 _manaTarget) external;
 
-  // solhint-disable-next-line func-name-mixedcase
-  function L1_BLOCK_AT_GENESIS() external view returns (uint256);
+    // solhint-disable-next-line func-name-mixedcase
+    function L1_BLOCK_AT_GENESIS() external view returns (uint256);
 }
 
 interface IHaveVersion {
-  function getVersion() external view returns (uint256);
+    function getVersion() external view returns (uint256);
 }
 
 /**
@@ -3631,24 +3656,24 @@ interface IHaveVersion {
  * @param ignoreDA - True will ignore DA check, otherwise checks
  */
 struct CheckpointHeaderValidationFlags {
-  bool ignoreDA;
+    bool ignoreDA;
 }
 
 struct ChainTips {
-  uint256 pending;
-  uint256 proven;
+    uint256 pending;
+    uint256 proven;
 }
 
 struct ManaMinFeeComponents {
-  uint256 congestionCost;
-  uint256 congestionMultiplier;
-  uint256 sequencerCost;
-  uint256 proverCost;
+    uint256 congestionCost;
+    uint256 congestionMultiplier;
+    uint256 sequencerCost;
+    uint256 proverCost;
 }
 
 struct L1FeeData {
-  uint256 baseFee;
-  uint256 blobFee;
+    uint256 baseFee;
+    uint256 blobFee;
 }
 
 /*
@@ -3676,14 +3701,14 @@ type EthPerFeeAssetE12 is uint256;
  * @param slotNumber - This checkpoint's slot
  */
 struct CheckpointLog {
-  bytes32 archive;
-  bytes32 headerHash;
-  bytes32 blobCommitmentsHash;
-  bytes32 outHash;
-  bytes32 attestationsHash;
-  bytes32 payloadDigest;
-  Slot slotNumber;
-  FeeHeader feeHeader;
+    bytes32 archive;
+    bytes32 headerHash;
+    bytes32 blobCommitmentsHash;
+    bytes32 outHash;
+    bytes32 attestationsHash;
+    bytes32 payloadDigest;
+    Slot slotNumber;
+    FeeHeader feeHeader;
 }
 
 // Represents a value denominated in the fee asset (e.g., AZTEC token).
@@ -3700,311 +3725,320 @@ uint256 constant MAX_CHECKPOINTS_PER_EPOCH = 32;
  * and will be consumed by the portal contracts.
  */
 interface IOutbox {
-  event RootAdded(Epoch indexed epoch, uint256 indexed numCheckpointsInEpoch, bytes32 root);
-  event MessageConsumed(
-    Epoch indexed epoch,
-    bytes32 indexed root,
-    bytes32 indexed messageHash,
-    uint256 leafId,
-    uint256 numCheckpointsInEpoch
-  );
+    event RootAdded(Epoch indexed epoch, uint256 indexed numCheckpointsInEpoch, bytes32 root);
+    event MessageConsumed(
+        Epoch indexed epoch,
+        bytes32 indexed root,
+        bytes32 indexed messageHash,
+        uint256 leafId,
+        uint256 numCheckpointsInEpoch
+    );
 
-  // docs:start:outbox_insert
-  /**
-   * @notice Inserts the root of a merkle tree containing all of the L2 to L1 messages in an epoch
-   *         after a proof covering the first `_numCheckpointsInEpoch` checkpoints of that epoch lands.
-   * @dev Only callable by the rollup contract
-   * @dev Emits `RootAdded` upon inserting the root successfully
-   * @dev Successive inserts for the same epoch with larger `_numCheckpointsInEpoch` values do not
-   * disturb earlier entries, so users with witnesses built against an earlier partial proof can still
-   * consume them.
-   * @param _epoch - The epoch in which the L2 to L1 messages reside
-   * @param _numCheckpointsInEpoch - The number of checkpoints the inserting proof covered in this
-   * epoch. Must be in [1, MAX_CHECKPOINTS_PER_EPOCH].
-   * @param _root - The merkle root of the tree where all the L2 to L1 messages are leaves
-   */
-  function insert(Epoch _epoch, uint256 _numCheckpointsInEpoch, bytes32 _root) external;
-  // docs:end:outbox_insert
+    // docs:start:outbox_insert
+    /**
+     * @notice Inserts the root of a merkle tree containing all of the L2 to L1 messages in an epoch
+     *         after a proof covering the first `_numCheckpointsInEpoch` checkpoints of that epoch lands.
+     * @dev Only callable by the rollup contract
+     * @dev Emits `RootAdded` upon inserting the root successfully
+     * @dev Successive inserts for the same epoch with larger `_numCheckpointsInEpoch` values do not
+     * disturb earlier entries, so users with witnesses built against an earlier partial proof can still
+     * consume them.
+     * @param _epoch - The epoch in which the L2 to L1 messages reside
+     * @param _numCheckpointsInEpoch - The number of checkpoints the inserting proof covered in this
+     * epoch. Must be in [1, MAX_CHECKPOINTS_PER_EPOCH].
+     * @param _root - The merkle root of the tree where all the L2 to L1 messages are leaves
+     */
+    function insert(Epoch _epoch, uint256 _numCheckpointsInEpoch, bytes32 _root) external;
+    // docs:end:outbox_insert
 
-  // docs:start:outbox_consume
-  /**
-   * @notice Consumes an entry from the Outbox
-   * @dev Only useable by portals / recipients of messages
-   * @dev Emits `MessageConsumed` when consuming messages
-   * @param _message - The L2 to L1 message
-   * @param _epoch - The epoch that contains the message we want to consume
-   * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root this
-   * consume verifies against. The caller's witness path must have been built against the epoch tree
-   * padded to that number of real checkpoints.
-   * @param _leafIndex - The index at the level in the epoch message tree where the message is located
-   * @param _path - The sibling path used to prove inclusion of the message, the _path length depends
-   * on the location of the L2 to L1 message in the epoch message tree.
-   */
-  function consume(
-    DataStructures.L2ToL1Msg calldata _message,
-    Epoch _epoch,
-    uint256 _numCheckpointsInEpoch,
-    uint256 _leafIndex,
-    bytes32[] calldata _path
-  ) external;
-  // docs:end:outbox_consume
+    // docs:start:outbox_consume
+    /**
+     * @notice Consumes an entry from the Outbox
+     * @dev Only useable by portals / recipients of messages
+     * @dev Emits `MessageConsumed` when consuming messages
+     * @param _message - The L2 to L1 message
+     * @param _epoch - The epoch that contains the message we want to consume
+     * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root this
+     * consume verifies against. The caller's witness path must have been built against the epoch tree
+     * padded to that number of real checkpoints.
+     * @param _leafIndex - The index at the level in the epoch message tree where the message is located
+     * @param _path - The sibling path used to prove inclusion of the message, the _path length depends
+     * on the location of the L2 to L1 message in the epoch message tree.
+     */
+    function consume(
+        DataStructures.L2ToL1Msg calldata _message,
+        Epoch _epoch,
+        uint256 _numCheckpointsInEpoch,
+        uint256 _leafIndex,
+        bytes32[] calldata _path
+    ) external;
+    // docs:end:outbox_consume
 
-  // docs:start:outbox_has_message_been_consumed_at_epoch_and_index
-  /**
-   * @notice Checks to see if an L2 to L1 message in a specific epoch has been consumed
-   * @dev - This function does not throw. Out-of-bounds access is considered valid, but will always return false
-   * @param _epoch - The epoch that contains the message we want to check
-   * @param _leafId - The unique id of the message leaf
-   */
-  function hasMessageBeenConsumedAtEpoch(Epoch _epoch, uint256 _leafId) external view returns (bool);
-  // docs:end:outbox_has_message_been_consumed_at_epoch_and_index
+    // docs:start:outbox_has_message_been_consumed_at_epoch_and_index
+    /**
+     * @notice Checks to see if an L2 to L1 message in a specific epoch has been consumed
+     * @dev - This function does not throw. Out-of-bounds access is considered valid, but will always return false
+     * @param _epoch - The epoch that contains the message we want to check
+     * @param _leafId - The unique id of the message leaf
+     */
+    function hasMessageBeenConsumedAtEpoch(Epoch _epoch, uint256 _leafId) external view returns (bool);
+    // docs:end:outbox_has_message_been_consumed_at_epoch_and_index
 
-  /**
-   * @notice  Fetch the root data for a given epoch and partial-proof depth.
-   *          Returns 0 if no proof has been inserted at that depth.
-   *
-   * @param _epoch - The epoch to fetch the root data for
-   * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root to fetch
-   *
-   * @return bytes32 - The root of the merkle tree containing the L2 to L1 messages
-   */
-  function getRootData(Epoch _epoch, uint256 _numCheckpointsInEpoch) external view returns (bytes32);
+    /**
+     * @notice  Fetch the root data for a given epoch and partial-proof depth.
+     *          Returns 0 if no proof has been inserted at that depth.
+     *
+     * @param _epoch - The epoch to fetch the root data for
+     * @param _numCheckpointsInEpoch - The number of checkpoints in the partial proof whose root to fetch
+     *
+     * @return bytes32 - The root of the merkle tree containing the L2 to L1 messages
+     */
+    function getRootData(Epoch _epoch, uint256 _numCheckpointsInEpoch) external view returns (bytes32);
 
-  /**
-   * @notice  Fetch every root stored for a given epoch. The returned array has
-   *          MAX_CHECKPOINTS_PER_EPOCH entries; slot `i` holds the root for
-   *          `numCheckpointsInEpoch = i + 1`, or zero if no proof of that depth has been inserted.
-   *
-   * @param _epoch - The epoch to fetch the roots for
-   *
-   * @return bytes32[] - The roots stored for this epoch.
-   */
-  function getRoots(Epoch _epoch) external view returns (bytes32[MAX_CHECKPOINTS_PER_EPOCH] memory);
+    /**
+     * @notice  Fetch every root stored for a given epoch. The returned array has
+     *          MAX_CHECKPOINTS_PER_EPOCH entries; slot `i` holds the root for
+     *          `numCheckpointsInEpoch = i + 1`, or zero if no proof of that depth has been inserted.
+     *
+     * @param _epoch - The epoch to fetch the roots for
+     *
+     * @return bytes32[] - The roots stored for this epoch.
+     */
+    function getRoots(Epoch _epoch) external view returns (bytes32[MAX_CHECKPOINTS_PER_EPOCH] memory);
 }
 
 interface IVerifier {
-  function verify(bytes calldata _proof, bytes32[] calldata _publicInputs) external view returns (bool);
+    function verify(bytes calldata _proof, bytes32[] calldata _publicInputs) external view returns (bool);
 }
 
 interface IRollup is IRollupCore, IHaveVersion {
-  function validateHeaderWithAttestations(
-    ProposedHeader calldata _header,
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    Signature memory _attestationsAndSignersSignature,
-    bytes32 _digest,
-    bytes32 _blobsHash,
-    CheckpointHeaderValidationFlags memory _flags
-  ) external;
+    function validateHeaderWithAttestations(
+        ProposedHeader calldata _header,
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        Signature memory _attestationsAndSignersSignature,
+        bytes32 _digest,
+        bytes32 _blobsHash,
+        CheckpointHeaderValidationFlags memory _flags
+    ) external;
 
-  function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) external returns (Slot, uint256);
+    function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) external returns (Slot, uint256);
 
-  function getTips() external view returns (ChainTips memory);
+    function getTips() external view returns (ChainTips memory);
 
-  function status(uint256 _myHeaderCheckpointNumber)
-    external
-    view
-    returns (
-      uint256 provenCheckpointNumber,
-      bytes32 provenArchive,
-      uint256 pendingCheckpointNumber,
-      bytes32 pendingArchive,
-      bytes32 archiveOfMyCheckpoint,
-      Epoch provenEpochNumber
-    );
+    function status(uint256 _myHeaderCheckpointNumber)
+        external
+        view
+        returns (
+            uint256 provenCheckpointNumber,
+            bytes32 provenArchive,
+            uint256 pendingCheckpointNumber,
+            bytes32 pendingArchive,
+            bytes32 archiveOfMyCheckpoint,
+            Epoch provenEpochNumber
+        );
 
-  function getEpochProofPublicInputs(
-    uint256 _start,
-    uint256 _end,
-    PublicInputArgs calldata _args,
-    ProposedHeader[] calldata _headers,
-    bytes calldata _blobPublicInputs
-  ) external view returns (bytes32[] memory);
+    function getEpochProofPublicInputs(
+        uint256 _start,
+        uint256 _end,
+        PublicInputArgs calldata _args,
+        ProposedHeader[] calldata _headers,
+        bytes calldata _blobPublicInputs
+    ) external view returns (bytes32[] memory);
 
-  function validateBlobs(bytes calldata _blobsInputs) external view returns (bytes32[] memory, bytes32, bytes[] memory);
+    function validateBlobs(bytes calldata _blobsInputs)
+        external
+        view
+        returns (bytes32[] memory, bytes32, bytes[] memory);
 
-  function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
-    external
-    view
-    returns (ManaMinFeeComponents memory);
-  function getManaMinFeeAt(Timestamp _timestamp, bool _inFeeAsset) external view returns (uint256);
-  function getL1FeesAt(Timestamp _timestamp) external view returns (L1FeeData memory);
-  function getEthPerFeeAsset() external view returns (EthPerFeeAssetE12);
+    function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
+        external
+        view
+        returns (ManaMinFeeComponents memory);
+    function getManaMinFeeAt(Timestamp _timestamp, bool _inFeeAsset) external view returns (uint256);
+    function getL1FeesAt(Timestamp _timestamp) external view returns (L1FeeData memory);
+    function getEthPerFeeAsset() external view returns (EthPerFeeAssetE12);
 
-  function getEpochForCheckpoint(uint256 _checkpointNumber) external view returns (Epoch);
-  function canPruneAtTime(Timestamp _ts) external view returns (bool);
+    function getEpochForCheckpoint(uint256 _checkpointNumber) external view returns (Epoch);
+    function canPruneAtTime(Timestamp _ts) external view returns (bool);
 
-  function archive() external view returns (bytes32);
-  function archiveAt(uint256 _checkpointNumber) external view returns (bytes32);
-  function getProvenCheckpointNumber() external view returns (uint256);
-  function getPendingCheckpointNumber() external view returns (uint256);
-  function getCheckpoint(uint256 _checkpointNumber) external view returns (CheckpointLog memory);
-  function getFeeHeader(uint256 _checkpointNumber) external view returns (FeeHeader memory);
-  function getBlobCommitmentsHash(uint256 _checkpointNumber) external view returns (bytes32);
-  function getCurrentBlobCommitmentsHash() external view returns (bytes32);
+    function archive() external view returns (bytes32);
+    function archiveAt(uint256 _checkpointNumber) external view returns (bytes32);
+    function getProvenCheckpointNumber() external view returns (uint256);
+    function getPendingCheckpointNumber() external view returns (uint256);
+    function getCheckpoint(uint256 _checkpointNumber) external view returns (CheckpointLog memory);
+    function getFeeHeader(uint256 _checkpointNumber) external view returns (FeeHeader memory);
+    function getBlobCommitmentsHash(uint256 _checkpointNumber) external view returns (bytes32);
+    function getCurrentBlobCommitmentsHash() external view returns (bytes32);
 
-  function getSharesFor(address _prover) external view returns (uint256);
-  function getSequencerRewards(address _sequencer) external view returns (uint256);
-  function getCollectiveProverRewardsForEpoch(Epoch _epoch) external view returns (uint256);
-  function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) external view returns (uint256);
-  function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) external view returns (bool);
-  function getHasClaimed(address _prover, Epoch _epoch) external view returns (bool);
+    function getSharesFor(address _prover) external view returns (uint256);
+    function getSequencerRewards(address _sequencer) external view returns (uint256);
+    function getCollectiveProverRewardsForEpoch(Epoch _epoch) external view returns (uint256);
+    function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) external view returns (uint256);
+    function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) external view returns (bool);
+    function getHasClaimed(address _prover, Epoch _epoch) external view returns (bool);
 
-  function getProofSubmissionEpochs() external view returns (uint256);
-  function getManaTarget() external view returns (uint256);
-  function getManaLimit() external view returns (uint256);
-  function getProvingCostPerManaInEth() external view returns (EthValue);
+    function getProofSubmissionEpochs() external view returns (uint256);
+    function getManaTarget() external view returns (uint256);
+    function getManaLimit() external view returns (uint256);
+    function getProvingCostPerManaInEth() external view returns (EthValue);
 
-  function getProvingCostPerManaInFeeAsset() external view returns (FeeAssetValue);
+    function getProvingCostPerManaInFeeAsset() external view returns (FeeAssetValue);
 
-  function getFeeAsset() external view returns (IERC20);
-  function getFeeAssetPortal() external view returns (IFeeJuicePortal);
-  function getRewardDistributor() external view returns (IRewardDistributor);
-  function getBurnAddress() external view returns (address);
+    function getFeeAsset() external view returns (IERC20);
+    function getFeeAssetPortal() external view returns (IFeeJuicePortal);
+    function getRewardDistributor() external view returns (IRewardDistributor);
+    function getBurnAddress() external view returns (address);
 
-  function getInbox() external view returns (IInbox);
-  function getOutbox() external view returns (IOutbox);
+    function getInbox() external view returns (IInbox);
+    function getOutbox() external view returns (IOutbox);
 
-  function getVkTreeRoot() external view returns (bytes32);
-  function getProtocolContractsHash() external view returns (bytes32);
-  function getEpochProofVerifier() external view returns (IVerifier);
+    function getVkTreeRoot() external view returns (bytes32);
+    function getProtocolContractsHash() external view returns (bytes32);
+    function getEpochProofVerifier() external view returns (IVerifier);
 
-  function getRewardConfig() external view returns (RewardConfig memory);
-  function getCheckpointReward() external view returns (uint256);
+    function getRewardConfig() external view returns (RewardConfig memory);
+    function getCheckpointReward() external view returns (uint256);
 }
 
 interface IFeeJuicePortal {
-  event DepositToAztecPublic(bytes32 indexed to, uint256 amount, bytes32 secretHash, bytes32 key, uint256 index);
-  event FeesDistributed(address indexed to, uint256 amount);
+    event DepositToAztecPublic(bytes32 indexed to, uint256 amount, bytes32 secretHash, bytes32 key, uint256 index);
+    event FeesDistributed(address indexed to, uint256 amount);
 
-  function distributeFees(address _to, uint256 _amount) external;
-  function depositToAztecPublic(bytes32 _to, uint256 _amount, bytes32 _secretHash) external returns (bytes32, uint256);
+    function distributeFees(address _to, uint256 _amount) external;
+    function depositToAztecPublic(bytes32 _to, uint256 _amount, bytes32 _secretHash)
+        external
+        returns (bytes32, uint256);
 
-  // solhint-disable-next-line func-name-mixedcase
-  function UNDERLYING() external view returns (IERC20);
-  // solhint-disable-next-line func-name-mixedcase
-  function L2_TOKEN_ADDRESS() external view returns (bytes32);
-  // solhint-disable-next-line func-name-mixedcase
-  function VERSION() external view returns (uint256);
-  // solhint-disable-next-line func-name-mixedcase
-  function INBOX() external view returns (IInbox);
-  // solhint-disable-next-line func-name-mixedcase
-  function ROLLUP() external view returns (IRollup);
+    // solhint-disable-next-line func-name-mixedcase
+    function UNDERLYING() external view returns (IERC20);
+    // solhint-disable-next-line func-name-mixedcase
+    function L2_TOKEN_ADDRESS() external view returns (bytes32);
+    // solhint-disable-next-line func-name-mixedcase
+    function VERSION() external view returns (uint256);
+    // solhint-disable-next-line func-name-mixedcase
+    function INBOX() external view returns (IInbox);
+    // solhint-disable-next-line func-name-mixedcase
+    function ROLLUP() external view returns (IRollup);
 }
 
 struct RollupConfig {
-  bytes32 vkTreeRoot;
-  bytes32 protocolContractsHash;
-  uint32 version;
-  IERC20 feeAsset;
-  IFeeJuicePortal feeAssetPortal;
-  IVerifier epochProofVerifier;
-  IInbox inbox;
-  IOutbox outbox;
+    bytes32 vkTreeRoot;
+    bytes32 protocolContractsHash;
+    uint32 version;
+    IERC20 feeAsset;
+    IFeeJuicePortal feeAssetPortal;
+    IVerifier epochProofVerifier;
+    IInbox inbox;
+    IOutbox outbox;
 }
 
 struct RollupStore {
-  CompressedChainTips tips; // put first such that the struct slot structure is easy to follow for cheatcodes
-  mapping(uint256 checkpointNumber => bytes32 archive) archives;
-  // The following represents a circular buffer. Key is `checkpointNumber % size`.
-  mapping(uint256 circularIndex => CompressedTempCheckpointLog temp) tempCheckpointLogs;
-  RollupConfig config;
+    CompressedChainTips tips; // put first such that the struct slot structure is easy to follow for cheatcodes
+    mapping(uint256 checkpointNumber => bytes32 archive) archives;
+    // The following represents a circular buffer. Key is `checkpointNumber % size`.
+    mapping(uint256 circularIndex => CompressedTempCheckpointLog temp) tempCheckpointLogs;
+    RollupConfig config;
 }
 
 library ChainTipsLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  uint256 internal constant PENDING_CHECKPOINT_NUMBER_MASK =
-    0xffffffffffffffffffffffffffffffff00000000000000000000000000000000;
-  uint256 internal constant PROVEN_CHECKPOINT_NUMBER_MASK = 0xffffffffffffffffffffffffffffffff;
+    uint256 internal constant PENDING_CHECKPOINT_NUMBER_MASK =
+        0xffffffffffffffffffffffffffffffff00000000000000000000000000000000;
+    uint256 internal constant PROVEN_CHECKPOINT_NUMBER_MASK = 0xffffffffffffffffffffffffffffffff;
 
-  function getPending(CompressedChainTips _compressedChainTips) internal pure returns (uint256) {
-    return CompressedChainTips.unwrap(_compressedChainTips) >> 128;
-  }
+    function getPending(CompressedChainTips _compressedChainTips) internal pure returns (uint256) {
+        return CompressedChainTips.unwrap(_compressedChainTips) >> 128;
+    }
 
-  function getProven(CompressedChainTips _compressedChainTips) internal pure returns (uint256) {
-    return CompressedChainTips.unwrap(_compressedChainTips) & PROVEN_CHECKPOINT_NUMBER_MASK;
-  }
+    function getProven(CompressedChainTips _compressedChainTips) internal pure returns (uint256) {
+        return CompressedChainTips.unwrap(_compressedChainTips) & PROVEN_CHECKPOINT_NUMBER_MASK;
+    }
 
-  function updatePending(CompressedChainTips _compressedChainTips, uint256 _pendingCheckpointNumber)
-    internal
-    pure
-    returns (CompressedChainTips)
-  {
-    uint256 value = CompressedChainTips.unwrap(_compressedChainTips) & ~PENDING_CHECKPOINT_NUMBER_MASK;
-    return CompressedChainTips.wrap(value | (uint256(_pendingCheckpointNumber.toUint128()) << 128));
-  }
+    function updatePending(CompressedChainTips _compressedChainTips, uint256 _pendingCheckpointNumber)
+        internal
+        pure
+        returns (CompressedChainTips)
+    {
+        uint256 value = CompressedChainTips.unwrap(_compressedChainTips) & ~PENDING_CHECKPOINT_NUMBER_MASK;
+        return CompressedChainTips.wrap(value | (uint256(_pendingCheckpointNumber.toUint128()) << 128));
+    }
 
-  function updateProven(CompressedChainTips _compressedChainTips, uint256 _provenCheckpointNumber)
-    internal
-    pure
-    returns (CompressedChainTips)
-  {
-    uint256 value = CompressedChainTips.unwrap(_compressedChainTips) & ~PROVEN_CHECKPOINT_NUMBER_MASK;
-    return CompressedChainTips.wrap(value | _provenCheckpointNumber.toUint128());
-  }
+    function updateProven(CompressedChainTips _compressedChainTips, uint256 _provenCheckpointNumber)
+        internal
+        pure
+        returns (CompressedChainTips)
+    {
+        uint256 value = CompressedChainTips.unwrap(_compressedChainTips) & ~PROVEN_CHECKPOINT_NUMBER_MASK;
+        return CompressedChainTips.wrap(value | _provenCheckpointNumber.toUint128());
+    }
 
-  function compress(ChainTips memory _chainTips) internal pure returns (CompressedChainTips) {
-    // We are doing cast to uint128 but inside a uint256 to not wreck the shifting.
-    uint256 pending = _chainTips.pending.toUint128();
-    uint256 proven = _chainTips.proven.toUint128();
-    return CompressedChainTips.wrap((pending << 128) | proven);
-  }
+    function compress(ChainTips memory _chainTips) internal pure returns (CompressedChainTips) {
+        // We are doing cast to uint128 but inside a uint256 to not wreck the shifting.
+        uint256 pending = _chainTips.pending.toUint128();
+        uint256 proven = _chainTips.proven.toUint128();
+        return CompressedChainTips.wrap((pending << 128) | proven);
+    }
 
-  function decompress(CompressedChainTips _compressedChainTips) internal pure returns (ChainTips memory) {
-    return ChainTips({pending: getPending(_compressedChainTips), proven: getProven(_compressedChainTips)});
-  }
+    function decompress(CompressedChainTips _compressedChainTips) internal pure returns (ChainTips memory) {
+        return ChainTips({pending: getPending(_compressedChainTips), proven: getProven(_compressedChainTips)});
+    }
 }
 
 struct TempCheckpointLog {
-  bytes32 headerHash;
-  bytes32 blobCommitmentsHash;
-  bytes32 outHash;
-  bytes32 attestationsHash;
-  bytes32 payloadDigest;
-  Slot slotNumber;
-  FeeHeader feeHeader;
+    bytes32 headerHash;
+    bytes32 blobCommitmentsHash;
+    bytes32 outHash;
+    bytes32 attestationsHash;
+    bytes32 payloadDigest;
+    Slot slotNumber;
+    FeeHeader feeHeader;
 }
 
 library CompressedTempCheckpointLogLib {
-  using CompressedTimeMath for Slot;
-  using CompressedTimeMath for CompressedSlot;
-  using FeeHeaderLib for FeeHeader;
-  using FeeHeaderLib for CompressedFeeHeader;
+    using CompressedTimeMath for Slot;
+    using CompressedTimeMath for CompressedSlot;
+    using FeeHeaderLib for FeeHeader;
+    using FeeHeaderLib for CompressedFeeHeader;
 
-  function compress(TempCheckpointLog memory _checkpoint) internal pure returns (CompressedTempCheckpointLog memory) {
-    return CompressedTempCheckpointLog({
-      headerHash: _checkpoint.headerHash,
-      blobCommitmentsHash: _checkpoint.blobCommitmentsHash,
-      outHash: _checkpoint.outHash,
-      attestationsHash: _checkpoint.attestationsHash,
-      payloadDigest: _checkpoint.payloadDigest,
-      slotNumber: _checkpoint.slotNumber.compress(),
-      feeHeader: _checkpoint.feeHeader.compress()
-    });
-  }
+    function compress(TempCheckpointLog memory _checkpoint)
+        internal
+        pure
+        returns (CompressedTempCheckpointLog memory)
+    {
+        return CompressedTempCheckpointLog({
+            headerHash: _checkpoint.headerHash,
+            blobCommitmentsHash: _checkpoint.blobCommitmentsHash,
+            outHash: _checkpoint.outHash,
+            attestationsHash: _checkpoint.attestationsHash,
+            payloadDigest: _checkpoint.payloadDigest,
+            slotNumber: _checkpoint.slotNumber.compress(),
+            feeHeader: _checkpoint.feeHeader.compress()
+        });
+    }
 
-  function decompress(CompressedTempCheckpointLog memory _compressedCheckpoint)
-    internal
-    pure
-    returns (TempCheckpointLog memory)
-  {
-    return TempCheckpointLog({
-      headerHash: _compressedCheckpoint.headerHash,
-      blobCommitmentsHash: _compressedCheckpoint.blobCommitmentsHash,
-      outHash: _compressedCheckpoint.outHash,
-      attestationsHash: _compressedCheckpoint.attestationsHash,
-      payloadDigest: _compressedCheckpoint.payloadDigest,
-      slotNumber: _compressedCheckpoint.slotNumber.decompress(),
-      feeHeader: _compressedCheckpoint.feeHeader.decompress()
-    });
-  }
+    function decompress(CompressedTempCheckpointLog memory _compressedCheckpoint)
+        internal
+        pure
+        returns (TempCheckpointLog memory)
+    {
+        return TempCheckpointLog({
+            headerHash: _compressedCheckpoint.headerHash,
+            blobCommitmentsHash: _compressedCheckpoint.blobCommitmentsHash,
+            outHash: _compressedCheckpoint.outHash,
+            attestationsHash: _compressedCheckpoint.attestationsHash,
+            payloadDigest: _compressedCheckpoint.payloadDigest,
+            slotNumber: _compressedCheckpoint.slotNumber.decompress(),
+            feeHeader: _compressedCheckpoint.feeHeader.decompress()
+        });
+    }
 }
 
 struct GenesisState {
-  bytes32 vkTreeRoot;
-  bytes32 protocolContractsHash;
-  bytes32 genesisArchiveRoot;
+    bytes32 vkTreeRoot;
+    bytes32 protocolContractsHash;
+    bytes32 genesisArchiveRoot;
 }
 
 /**
@@ -4013,25 +4047,25 @@ struct GenesisState {
  * @notice Library that contains constants used throughout the Aztec protocol
  */
 library Constants {
-  // Prime field modulus
-  uint256 internal constant P =
-    21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
+    // Prime field modulus
+    uint256 internal constant P =
+        21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
 
-  uint256 internal constant MAX_FIELD_VALUE =
-    21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_616;
-  uint256 internal constant L1_TO_L2_MSG_SUBTREE_HEIGHT = 10;
-  uint256 internal constant MAX_L2_TO_L1_MSGS_PER_TX = 8;
-  uint256 internal constant INITIAL_CHECKPOINT_NUMBER = 1;
-  uint256 internal constant MAX_CHECKPOINTS_PER_EPOCH = 32;
-  uint256 internal constant GENESIS_ARCHIVE_ROOT =
-    10_619_256_997_260_439_436_842_531_499_967_995_403_253_967_496_480_475_679_746_178_797_053_672_406_517;
-  uint256 internal constant EMPTY_EPOCH_OUT_HASH =
-    355_785_372_471_781_095_838_790_036_702_437_931_769_306_153_278_986_832_745_847_530_947_941_691_539;
-  uint256 internal constant FEE_JUICE_ADDRESS = 3;
-  uint256 internal constant BLS12_POINT_COMPRESSED_BYTES = 48;
-  uint256 internal constant ROOT_ROLLUP_PUBLIC_INPUTS_LENGTH = 111;
-  uint256 internal constant NUM_MSGS_PER_BASE_PARITY = 256;
-  uint256 internal constant NUM_BASE_PARITY_PER_ROOT_PARITY = 4;
+    uint256 internal constant MAX_FIELD_VALUE =
+        21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_616;
+    uint256 internal constant L1_TO_L2_MSG_SUBTREE_HEIGHT = 10;
+    uint256 internal constant MAX_L2_TO_L1_MSGS_PER_TX = 8;
+    uint256 internal constant INITIAL_CHECKPOINT_NUMBER = 1;
+    uint256 internal constant MAX_CHECKPOINTS_PER_EPOCH = 32;
+    uint256 internal constant GENESIS_ARCHIVE_ROOT =
+        10_619_256_997_260_439_436_842_531_499_967_995_403_253_967_496_480_475_679_746_178_797_053_672_406_517;
+    uint256 internal constant EMPTY_EPOCH_OUT_HASH =
+        355_785_372_471_781_095_838_790_036_702_437_931_769_306_153_278_986_832_745_847_530_947_941_691_539;
+    uint256 internal constant FEE_JUICE_ADDRESS = 3;
+    uint256 internal constant BLS12_POINT_COMPRESSED_BYTES = 48;
+    uint256 internal constant ROOT_ROLLUP_PUBLIC_INPUTS_LENGTH = 111;
+    uint256 internal constant NUM_MSGS_PER_BASE_PARITY = 256;
+    uint256 internal constant NUM_BASE_PARITY_PER_ROOT_PARITY = 4;
 }
 
 /**
@@ -4042,10 +4076,10 @@ library Constants {
  *      conversion and would brick honest archivers' L1 sync, so such values are rejected at write time.
  */
 library FieldLib {
-  /// @notice Reverts with `Rollup__FieldElementOutOfRange` unless `_value` is a valid field element (`< Constants.P`).
-  function requireValidFieldElement(bytes32 _value) internal pure {
-    require(uint256(_value) < Constants.P, Errors.Rollup__FieldElementOutOfRange(_value));
-  }
+    /// @notice Reverts with `Rollup__FieldElementOutOfRange` unless `_value` is a valid field element (`< Constants.P`).
+    function requireValidFieldElement(bytes32 _value) internal pure {
+        require(uint256(_value) < Constants.P, Errors.Rollup__FieldElementOutOfRange(_value));
+    }
 }
 
 /**
@@ -4111,592 +4145,597 @@ library FieldLib {
  *      and feeHeader (packed fee components). Other fields remain as 32-byte hashes.
  */
 library STFLib {
-  using TimeLib for Slot;
-  using TimeLib for Epoch;
-  using TimeLib for Timestamp;
-  using CompressedTimeMath for CompressedSlot;
-  using ChainTipsLib for CompressedChainTips;
-  using CompressedTempCheckpointLogLib for CompressedTempCheckpointLog;
-  using CompressedTempCheckpointLogLib for TempCheckpointLog;
-  using CompressedTimeMath for Slot;
-  using CompressedTimeMath for CompressedSlot;
-  using FeeHeaderLib for CompressedFeeHeader;
+    using TimeLib for Slot;
+    using TimeLib for Epoch;
+    using TimeLib for Timestamp;
+    using CompressedTimeMath for CompressedSlot;
+    using ChainTipsLib for CompressedChainTips;
+    using CompressedTempCheckpointLogLib for CompressedTempCheckpointLog;
+    using CompressedTempCheckpointLogLib for TempCheckpointLog;
+    using CompressedTimeMath for Slot;
+    using CompressedTimeMath for CompressedSlot;
+    using FeeHeaderLib for CompressedFeeHeader;
 
-  // @note  This is also used in the cheatcodes, so if updating, please also update the cheatcode.
-  bytes32 private constant STF_STORAGE_POSITION = keccak256("aztec.stf.storage");
+    // @note  This is also used in the cheatcodes, so if updating, please also update the cheatcode.
+    bytes32 private constant STF_STORAGE_POSITION = keccak256("aztec.stf.storage");
 
-  /**
-   * @notice Initializes the rollup state with genesis configuration
-   * @dev Sets up the initial state of the rollup including verification keys and the genesis archive root.
-   *      This function should only be called once during rollup deployment.
-   *
-   * @param _genesisState The initial state configuration containing:
-   *        - vkTreeRoot: Root of the verification key tree for circuit verification
-   *        - protocolContractsHash: Root containing protocol contract addresses and configurations
-   *        - genesisArchiveRoot: Initial archive root representing the genesis state
-   */
-  function initialize(GenesisState memory _genesisState) internal {
-    RollupStore storage rollupStore = STFLib.getStorage();
+    /**
+     * @notice Initializes the rollup state with genesis configuration
+     * @dev Sets up the initial state of the rollup including verification keys and the genesis archive root.
+     *      This function should only be called once during rollup deployment.
+     *
+     * @param _genesisState The initial state configuration containing:
+     *        - vkTreeRoot: Root of the verification key tree for circuit verification
+     *        - protocolContractsHash: Root containing protocol contract addresses and configurations
+     *        - genesisArchiveRoot: Initial archive root representing the genesis state
+     */
+    function initialize(GenesisState memory _genesisState) internal {
+        RollupStore storage rollupStore = STFLib.getStorage();
 
-    rollupStore.config.vkTreeRoot = _genesisState.vkTreeRoot;
-    rollupStore.config.protocolContractsHash = _genesisState.protocolContractsHash;
+        rollupStore.config.vkTreeRoot = _genesisState.vkTreeRoot;
+        rollupStore.config.protocolContractsHash = _genesisState.protocolContractsHash;
 
-    // The genesis archive root is decoded as an Fr off chain and propagates into the first header's lastArchiveRoot,
-    // so it must be a valid field element.
-    FieldLib.requireValidFieldElement(_genesisState.genesisArchiveRoot);
-    rollupStore.archives[0] = _genesisState.genesisArchiveRoot;
-  }
-
-  /**
-   * @notice Writes the genesis fee header at checkpoint 0
-   * @dev This sets the initial ethPerFeeAsset value that will be used as the starting point
-   *      for the fee asset price oracle. Must be called during rollup initialization.
-   * @param _initialEthPerFeeAsset The initial ETH per fee asset price (with 1e12 precision)
-   */
-  function writeGenesisFeeHeader(uint256 _initialEthPerFeeAsset) internal {
-    RollupStore storage rollupStore = STFLib.getStorage();
-    // Write to checkpoint 0's slot in the circular buffer
-    rollupStore.tempCheckpointLogs[0] = TempCheckpointLog({
-        headerHash: bytes32(0),
-        blobCommitmentsHash: bytes32(0),
-        outHash: bytes32(0),
-        attestationsHash: bytes32(0),
-        payloadDigest: bytes32(0),
-        slotNumber: Slot.wrap(0),
-        feeHeader: FeeHeader({
-          excessMana: 0, manaUsed: 0, ethPerFeeAsset: _initialEthPerFeeAsset, congestionCost: 0, proverCost: 0
-        })
-      }).compress();
-  }
-
-  /**
-   * @notice Stores a temporary checkpoint log in the circular storage buffer
-   * @dev Compresses and stores checkpoint data at the appropriate index in the circular buffer.
-   *      The storage index is calculated as (pending checkpoint % roundaboutSize) to implement
-   *      the circular storage pattern.
-   *      Don't need to check if storage is stale as always writing to freshest.
-   *
-   * @param _tempCheckpointLog The temporary checkpoint log containing header hash, attestations,
-   *        blob commitments, payload digest, slot number, and fee information
-   */
-  function addTempCheckpointLog(TempCheckpointLog memory _tempCheckpointLog) internal {
-    uint256 checkpointNumber = STFLib.getStorage().tips.getPending();
-    uint256 size = roundaboutSize();
-    getStorage().tempCheckpointLogs[checkpointNumber % size] = _tempCheckpointLog.compress();
-  }
-
-  /**
-   * @notice Removes unproven checkpoints from the pending chain when proof submission window expires
-   * @dev This function implements the pruning mechanism that maintains rollup liveness by removing
-   *      checkpoints that cannot be proven within the configured time window. When called:
-   *
-   *      1. Identifies the gap between pending and proven checkpoint numbers
-   *      2. Resets the pending chain tip to match the last proven checkpoint
-   *      3. Effectively removes all unproven checkpoints from the pending chain
-   *
-   *      The pruning does not delete checkpoint data from storage but makes it inaccessible by
-   *      updating the chain tips.
-   *
-   *      Pruning should only occur when the proof submission window has expired for pending
-   *      checkpoints, which is validated by the calling function (typically through canPruneAtTime).
-   *
-   *      Emits PrunedPending event with the proven and previously pending checkpoint numbers.
-   */
-  function prune() internal {
-    RollupStore storage rollupStore = STFLib.getStorage();
-    CompressedChainTips tips = rollupStore.tips;
-    uint256 pending = tips.getPending();
-
-    // @note  We are not deleting the checkpoints, but we are "winding back" the pendingTip to the last checkpoint that
-    //        was proven.
-    //        We can do because any new checkpoint proposed will overwrite a previous checkpoint in the checkpoint log,
-    //        so no values should "survive".
-    //        People must therefore read the chain using the pendingTip as a boundary.
-    uint256 proven = tips.getProven();
-    rollupStore.tips = tips.updatePending(proven);
-
-    emit IRollupCore.PrunedPending(proven, pending);
-  }
-
-  /**
-   * @notice Calculates the size of the circular storage buffer for temporary checkpoint logs
-   * @dev The roundabout size determines how many checkpoints can be stored in the circular buffer
-   *      before older entries are overwritten. The size is calculated as:
-   *
-   *      roundaboutSize = maxPrunableCheckpoints() + 1
-   *
-   *      Where maxPrunableCheckpoints() = epochDuration * (proofSubmissionEpochs + 1)
-   *
-   *      This ensures that:
-   *      - All checkpoints within the proof submission window remain accessible
-   *      - At least the last proven checkpoint is available as a trusted anchor
-   *
-   * @return The number of slots in the circular storage buffer
-   */
-  function roundaboutSize() internal view returns (uint256) {
-    // Must be ensured to contain at least the last proven checkpoint even after a prune.
-    return TimeLib.maxPrunableCheckpoints() + 1;
-  }
-
-  /**
-   * @notice Returns a storage reference to a compressed temporary checkpoint log
-   * @dev Provides direct access to the compressed checkpoint log in storage without decompression.
-   *      Reverts if the checkpoint number is stale (no longer accessible in circular storage) or if
-   *      the checkpoint have not happened yet.
-   *
-   * @dev A temporary checkpoint log is stale if it can no longer be accessed in the circular storage buffer.
-   *      The staleness is determined by the relationship between the checkpoint number, current pending
-   *      checkpoint, and the buffer size.
-   *
-   *      Example with roundabout size 5 and pending checkpoint 7:
-   *      Circular buffer state: [checkpoint5, checkpoint6, checkpoint7, checkpoint3, checkpoint4]
-   *
-   *      A checkpoint is available if:
-   *      - checkpointNumber <= pending  (it is not in the future)
-   *      - pending < checkpointNumber + size (the override is in the future)
-   *      Together as a span:
-   *      - checkpointNumber <= pending < checkpointNumber + size
-   *
-   *      For example, checkpoint 2 is unavailable since the override has happened:
-   *      - 2 <= 7 (true) && 7 < 2 + 5 (false)
-   *      But checkpoint 3 is available as it in the past, but not overridden yet
-   *      - 3 <= 7 (true) && 7 < 3 + 5 (true)
-   *
-   *      This ensures that only checkpoints within the current "window" of the circular buffer
-   *      are considered valid and accessible.
-   *
-   * @param _checkpointNumber The checkpoint number to get the storage reference for
-   * @return A storage reference to the compressed temporary checkpoint log
-   */
-  function getStorageTempCheckpointLog(uint256 _checkpointNumber)
-    internal
-    view
-    returns (CompressedTempCheckpointLog storage)
-  {
-    uint256 pending = getStorage().tips.getPending();
-    uint256 size = roundaboutSize();
-
-    uint256 upperLimit = _checkpointNumber + size;
-    bool available = _checkpointNumber <= pending && pending < upperLimit;
-    require(available, Errors.Rollup__UnavailableTempCheckpointLog(_checkpointNumber, pending, upperLimit));
-
-    return getStorage().tempCheckpointLogs[_checkpointNumber % size];
-  }
-
-  /**
-   * @notice Retrieves and decompresses a temporary checkpoint log from circular storage
-   * @dev Fetches the compressed checkpoint log from the circular buffer and decompresses it.
-   *      Reverts if the checkpoint number is stale and no longer accessible.
-   * @param _checkpointNumber The checkpoint number to retrieve the log for
-   * @return The decompressed temporary checkpoint log containing all checkpoint metadata
-   */
-  function getTempCheckpointLog(uint256 _checkpointNumber) internal view returns (TempCheckpointLog memory) {
-    return getStorageTempCheckpointLog(_checkpointNumber).decompress();
-  }
-
-  /**
-   * @notice Retrieves the header hash for a specific checkpoint number
-   * @dev Gas-efficient accessor that returns only the header hash without decompressing
-   *      the entire checkpoint log. Reverts if the checkpoint number is stale.
-   * @param _checkpointNumber The checkpoint number to get the header hash for
-   * @return The header hash of the specified checkpoint
-   */
-  function getHeaderHash(uint256 _checkpointNumber) internal view returns (bytes32) {
-    return getStorageTempCheckpointLog(_checkpointNumber).headerHash;
-  }
-
-  /**
-   * @notice Retrieves the compressed fee header for a specific checkpoint number
-   * @dev Returns the fee information including base fee components and mana costs.
-   *      The data remains in compressed format for gas efficiency. Reverts if the checkpoint is stale.
-   * @param _checkpointNumber The checkpoint number to get the fee header for
-   * @return The compressed fee header containing fee-related data
-   */
-  function getFeeHeader(uint256 _checkpointNumber) internal view returns (CompressedFeeHeader) {
-    return getStorageTempCheckpointLog(_checkpointNumber).feeHeader;
-  }
-
-  /**
-   * @notice Retrieves the blob commitments hash for a specific checkpoint number
-   * @dev Returns the hash of all blob commitments for the checkpoint, used for data availability
-   *      verification. Reverts if the checkpoint number is stale.
-   * @param _checkpointNumber The checkpoint number to get the blob commitments hash for
-   * @return The hash of blob commitments for the specified checkpoint
-   */
-  function getBlobCommitmentsHash(uint256 _checkpointNumber) internal view returns (bytes32) {
-    return getStorageTempCheckpointLog(_checkpointNumber).blobCommitmentsHash;
-  }
-
-  /**
-   * @notice Retrieves the slot number for a specific checkpoint number
-   * @dev Returns the decompressed slot number indicating when the checkpoint was proposed.
-   *      Reverts if the checkpoint number is stale.
-   * @param _checkpointNumber The checkpoint number to get the slot number for
-   * @return The slot number when the checkpoint was proposed
-   */
-  function getSlotNumber(uint256 _checkpointNumber) internal view returns (Slot) {
-    return getStorageTempCheckpointLog(_checkpointNumber).slotNumber.decompress();
-  }
-
-  /**
-   * @notice Gets the effective pending checkpoint number based on pruning eligibility
-   * @dev Returns either the pending checkpoint number or proven checkpoint number depending on
-   *      whether pruning is allowed at the given timestamp. This is used to determine
-   *      the effective chain tip for operations that should respect pruning windows.
-   *
-   *      If pruning is allowed: returns proven checkpoint number (chain should be pruned)
-   *      If pruning is not allowed: returns pending checkpoint number (normal operation)
-   * @param _timestamp The timestamp to evaluate pruning eligibility against
-   * @return The effective checkpoint number that should be considered as the chain tip
-   */
-  function getEffectivePendingCheckpointNumber(Timestamp _timestamp) internal view returns (uint256) {
-    RollupStore storage rollupStore = STFLib.getStorage();
-    CompressedChainTips tips = rollupStore.tips;
-    return STFLib.canPruneAtTime(_timestamp) ? tips.getProven() : tips.getPending();
-  }
-
-  /**
-   * @notice Determines which epoch a checkpoint belongs to
-   * @dev Calculates the epoch for a given checkpoint number by retrieving the checkpoint's slot
-   *      and converting it to an epoch. Reverts if the checkpoint number exceeds the pending tip.
-   * @param _checkpointNumber The checkpoint number to get the epoch for
-   * @return The epoch containing the specified checkpoint
-   */
-  function getEpochForCheckpoint(uint256 _checkpointNumber) internal view returns (Epoch) {
-    RollupStore storage rollupStore = STFLib.getStorage();
-    require(
-      _checkpointNumber <= rollupStore.tips.getPending(),
-      Errors.Rollup__InvalidCheckpointNumber(rollupStore.tips.getPending(), _checkpointNumber)
-    );
-    return getSlotNumber(_checkpointNumber).epochFromSlot();
-  }
-
-  /**
-   * @notice Determines if the chain can be pruned at a given timestamp
-   * @dev Checks whether the proof submission window has expired for the oldest pending checkpoints.
-   *      Pruning is allowed when:
-   *
-   *      1. There are unproven checkpoints (pending > proven)
-   *      2. The oldest pending epoch is no longer accepting proofs at the epoch at _ts
-   *
-   *      The proof submission window is defined by the aztecProofSubmissionEpochs configuration,
-   *      which specifies how many epochs after an epoch ends that proofs are still accepted.
-   *
-   *      Example timeline:
-   *      - Checkpoint proposed in epoch N
-   *      - Proof submission window = 1 epochs
-   *      - Proof deadline epoch = N + Proof submission window + 1
-   *          The deadline is the point in time where it is no longer acceptable, (if you touch the line you die)
-   *      - If epoch(_ts) >= epoch N + Proof submission window + 1, pruning is allowed
-   *
-   *      This mechanism ensures rollup liveness by preventing indefinite stalling on unprovable checkpoints (e.g due to
-   *      the committee failing to disseminate the data) while providing sufficient time for proof generation and
-   *      submission.
-   *
-   * @param _ts The current timestamp to check against
-   * @return True if pruning is allowed at the given timestamp, false otherwise
-   */
-  function canPruneAtTime(Timestamp _ts) internal view returns (bool) {
-    RollupStore storage rollupStore = STFLib.getStorage();
-
-    CompressedChainTips tips = rollupStore.tips;
-
-    if (tips.getPending() == tips.getProven()) {
-      return false;
+        // The genesis archive root is decoded as an Fr off chain and propagates into the first header's lastArchiveRoot,
+        // so it must be a valid field element.
+        FieldLib.requireValidFieldElement(_genesisState.genesisArchiveRoot);
+        rollupStore.archives[0] = _genesisState.genesisArchiveRoot;
     }
 
-    Epoch oldestPendingEpoch = getEpochForCheckpoint(tips.getProven() + 1);
-    Epoch currentEpoch = _ts.epochFromTimestamp();
-
-    return !oldestPendingEpoch.isAcceptingProofsAtEpoch(currentEpoch);
-  }
-
-  /**
-   * @notice Retrieves the namespaced storage for the STFLib using EIP-7201 pattern
-   * @dev Uses inline assembly to access storage at a specific slot calculated from the
-   *      keccak256 hash of "aztec.stf.storage". This ensures storage isolation and
-   *      prevents collisions with other contracts or libraries.
-   *
-   *      The storage contains:
-   *      - Chain tips (pending and proven checkpoint numbers)
-   *      - Archives mapping (permanent checkpoint archive storage)
-   *      - TempCheckpointLogs mapping (circular buffer for temporary checkpoint data)
-   *      - Rollup configuration
-   * @return storageStruct A storage pointer to the RollupStore struct
-   */
-  function getStorage() internal pure returns (RollupStore storage storageStruct) {
-    bytes32 position = STF_STORAGE_POSITION;
-    assembly {
-      storageStruct.slot := position
+    /**
+     * @notice Writes the genesis fee header at checkpoint 0
+     * @dev This sets the initial ethPerFeeAsset value that will be used as the starting point
+     *      for the fee asset price oracle. Must be called during rollup initialization.
+     * @param _initialEthPerFeeAsset The initial ETH per fee asset price (with 1e12 precision)
+     */
+    function writeGenesisFeeHeader(uint256 _initialEthPerFeeAsset) internal {
+        RollupStore storage rollupStore = STFLib.getStorage();
+        // Write to checkpoint 0's slot in the circular buffer
+        rollupStore.tempCheckpointLogs[0] = TempCheckpointLog({
+            headerHash: bytes32(0),
+            blobCommitmentsHash: bytes32(0),
+            outHash: bytes32(0),
+            attestationsHash: bytes32(0),
+            payloadDigest: bytes32(0),
+            slotNumber: Slot.wrap(0),
+            feeHeader: FeeHeader({
+                excessMana: 0,
+                manaUsed: 0,
+                ethPerFeeAsset: _initialEthPerFeeAsset,
+                congestionCost: 0,
+                proverCost: 0
+            })
+        }).compress();
     }
-  }
+
+    /**
+     * @notice Stores a temporary checkpoint log in the circular storage buffer
+     * @dev Compresses and stores checkpoint data at the appropriate index in the circular buffer.
+     *      The storage index is calculated as (pending checkpoint % roundaboutSize) to implement
+     *      the circular storage pattern.
+     *      Don't need to check if storage is stale as always writing to freshest.
+     *
+     * @param _tempCheckpointLog The temporary checkpoint log containing header hash, attestations,
+     *        blob commitments, payload digest, slot number, and fee information
+     */
+    function addTempCheckpointLog(TempCheckpointLog memory _tempCheckpointLog) internal {
+        uint256 checkpointNumber = STFLib.getStorage().tips.getPending();
+        uint256 size = roundaboutSize();
+        getStorage().tempCheckpointLogs[checkpointNumber % size] = _tempCheckpointLog.compress();
+    }
+
+    /**
+     * @notice Removes unproven checkpoints from the pending chain when proof submission window expires
+     * @dev This function implements the pruning mechanism that maintains rollup liveness by removing
+     *      checkpoints that cannot be proven within the configured time window. When called:
+     *
+     *      1. Identifies the gap between pending and proven checkpoint numbers
+     *      2. Resets the pending chain tip to match the last proven checkpoint
+     *      3. Effectively removes all unproven checkpoints from the pending chain
+     *
+     *      The pruning does not delete checkpoint data from storage but makes it inaccessible by
+     *      updating the chain tips.
+     *
+     *      Pruning should only occur when the proof submission window has expired for pending
+     *      checkpoints, which is validated by the calling function (typically through canPruneAtTime).
+     *
+     *      Emits PrunedPending event with the proven and previously pending checkpoint numbers.
+     */
+    function prune() internal {
+        RollupStore storage rollupStore = STFLib.getStorage();
+        CompressedChainTips tips = rollupStore.tips;
+        uint256 pending = tips.getPending();
+
+        // @note  We are not deleting the checkpoints, but we are "winding back" the pendingTip to the last checkpoint that
+        //        was proven.
+        //        We can do because any new checkpoint proposed will overwrite a previous checkpoint in the checkpoint log,
+        //        so no values should "survive".
+        //        People must therefore read the chain using the pendingTip as a boundary.
+        uint256 proven = tips.getProven();
+        rollupStore.tips = tips.updatePending(proven);
+
+        emit IRollupCore.PrunedPending(proven, pending);
+    }
+
+    /**
+     * @notice Calculates the size of the circular storage buffer for temporary checkpoint logs
+     * @dev The roundabout size determines how many checkpoints can be stored in the circular buffer
+     *      before older entries are overwritten. The size is calculated as:
+     *
+     *      roundaboutSize = maxPrunableCheckpoints() + 1
+     *
+     *      Where maxPrunableCheckpoints() = epochDuration * (proofSubmissionEpochs + 1)
+     *
+     *      This ensures that:
+     *      - All checkpoints within the proof submission window remain accessible
+     *      - At least the last proven checkpoint is available as a trusted anchor
+     *
+     * @return The number of slots in the circular storage buffer
+     */
+    function roundaboutSize() internal view returns (uint256) {
+        // Must be ensured to contain at least the last proven checkpoint even after a prune.
+        return TimeLib.maxPrunableCheckpoints() + 1;
+    }
+
+    /**
+     * @notice Returns a storage reference to a compressed temporary checkpoint log
+     * @dev Provides direct access to the compressed checkpoint log in storage without decompression.
+     *      Reverts if the checkpoint number is stale (no longer accessible in circular storage) or if
+     *      the checkpoint have not happened yet.
+     *
+     * @dev A temporary checkpoint log is stale if it can no longer be accessed in the circular storage buffer.
+     *      The staleness is determined by the relationship between the checkpoint number, current pending
+     *      checkpoint, and the buffer size.
+     *
+     *      Example with roundabout size 5 and pending checkpoint 7:
+     *      Circular buffer state: [checkpoint5, checkpoint6, checkpoint7, checkpoint3, checkpoint4]
+     *
+     *      A checkpoint is available if:
+     *      - checkpointNumber <= pending  (it is not in the future)
+     *      - pending < checkpointNumber + size (the override is in the future)
+     *      Together as a span:
+     *      - checkpointNumber <= pending < checkpointNumber + size
+     *
+     *      For example, checkpoint 2 is unavailable since the override has happened:
+     *      - 2 <= 7 (true) && 7 < 2 + 5 (false)
+     *      But checkpoint 3 is available as it in the past, but not overridden yet
+     *      - 3 <= 7 (true) && 7 < 3 + 5 (true)
+     *
+     *      This ensures that only checkpoints within the current "window" of the circular buffer
+     *      are considered valid and accessible.
+     *
+     * @param _checkpointNumber The checkpoint number to get the storage reference for
+     * @return A storage reference to the compressed temporary checkpoint log
+     */
+    function getStorageTempCheckpointLog(uint256 _checkpointNumber)
+        internal
+        view
+        returns (CompressedTempCheckpointLog storage)
+    {
+        uint256 pending = getStorage().tips.getPending();
+        uint256 size = roundaboutSize();
+
+        uint256 upperLimit = _checkpointNumber + size;
+        bool available = _checkpointNumber <= pending && pending < upperLimit;
+        require(available, Errors.Rollup__UnavailableTempCheckpointLog(_checkpointNumber, pending, upperLimit));
+
+        return getStorage().tempCheckpointLogs[_checkpointNumber % size];
+    }
+
+    /**
+     * @notice Retrieves and decompresses a temporary checkpoint log from circular storage
+     * @dev Fetches the compressed checkpoint log from the circular buffer and decompresses it.
+     *      Reverts if the checkpoint number is stale and no longer accessible.
+     * @param _checkpointNumber The checkpoint number to retrieve the log for
+     * @return The decompressed temporary checkpoint log containing all checkpoint metadata
+     */
+    function getTempCheckpointLog(uint256 _checkpointNumber) internal view returns (TempCheckpointLog memory) {
+        return getStorageTempCheckpointLog(_checkpointNumber).decompress();
+    }
+
+    /**
+     * @notice Retrieves the header hash for a specific checkpoint number
+     * @dev Gas-efficient accessor that returns only the header hash without decompressing
+     *      the entire checkpoint log. Reverts if the checkpoint number is stale.
+     * @param _checkpointNumber The checkpoint number to get the header hash for
+     * @return The header hash of the specified checkpoint
+     */
+    function getHeaderHash(uint256 _checkpointNumber) internal view returns (bytes32) {
+        return getStorageTempCheckpointLog(_checkpointNumber).headerHash;
+    }
+
+    /**
+     * @notice Retrieves the compressed fee header for a specific checkpoint number
+     * @dev Returns the fee information including base fee components and mana costs.
+     *      The data remains in compressed format for gas efficiency. Reverts if the checkpoint is stale.
+     * @param _checkpointNumber The checkpoint number to get the fee header for
+     * @return The compressed fee header containing fee-related data
+     */
+    function getFeeHeader(uint256 _checkpointNumber) internal view returns (CompressedFeeHeader) {
+        return getStorageTempCheckpointLog(_checkpointNumber).feeHeader;
+    }
+
+    /**
+     * @notice Retrieves the blob commitments hash for a specific checkpoint number
+     * @dev Returns the hash of all blob commitments for the checkpoint, used for data availability
+     *      verification. Reverts if the checkpoint number is stale.
+     * @param _checkpointNumber The checkpoint number to get the blob commitments hash for
+     * @return The hash of blob commitments for the specified checkpoint
+     */
+    function getBlobCommitmentsHash(uint256 _checkpointNumber) internal view returns (bytes32) {
+        return getStorageTempCheckpointLog(_checkpointNumber).blobCommitmentsHash;
+    }
+
+    /**
+     * @notice Retrieves the slot number for a specific checkpoint number
+     * @dev Returns the decompressed slot number indicating when the checkpoint was proposed.
+     *      Reverts if the checkpoint number is stale.
+     * @param _checkpointNumber The checkpoint number to get the slot number for
+     * @return The slot number when the checkpoint was proposed
+     */
+    function getSlotNumber(uint256 _checkpointNumber) internal view returns (Slot) {
+        return getStorageTempCheckpointLog(_checkpointNumber).slotNumber.decompress();
+    }
+
+    /**
+     * @notice Gets the effective pending checkpoint number based on pruning eligibility
+     * @dev Returns either the pending checkpoint number or proven checkpoint number depending on
+     *      whether pruning is allowed at the given timestamp. This is used to determine
+     *      the effective chain tip for operations that should respect pruning windows.
+     *
+     *      If pruning is allowed: returns proven checkpoint number (chain should be pruned)
+     *      If pruning is not allowed: returns pending checkpoint number (normal operation)
+     * @param _timestamp The timestamp to evaluate pruning eligibility against
+     * @return The effective checkpoint number that should be considered as the chain tip
+     */
+    function getEffectivePendingCheckpointNumber(Timestamp _timestamp) internal view returns (uint256) {
+        RollupStore storage rollupStore = STFLib.getStorage();
+        CompressedChainTips tips = rollupStore.tips;
+        return STFLib.canPruneAtTime(_timestamp) ? tips.getProven() : tips.getPending();
+    }
+
+    /**
+     * @notice Determines which epoch a checkpoint belongs to
+     * @dev Calculates the epoch for a given checkpoint number by retrieving the checkpoint's slot
+     *      and converting it to an epoch. Reverts if the checkpoint number exceeds the pending tip.
+     * @param _checkpointNumber The checkpoint number to get the epoch for
+     * @return The epoch containing the specified checkpoint
+     */
+    function getEpochForCheckpoint(uint256 _checkpointNumber) internal view returns (Epoch) {
+        RollupStore storage rollupStore = STFLib.getStorage();
+        require(
+            _checkpointNumber <= rollupStore.tips.getPending(),
+            Errors.Rollup__InvalidCheckpointNumber(rollupStore.tips.getPending(), _checkpointNumber)
+        );
+        return getSlotNumber(_checkpointNumber).epochFromSlot();
+    }
+
+    /**
+     * @notice Determines if the chain can be pruned at a given timestamp
+     * @dev Checks whether the proof submission window has expired for the oldest pending checkpoints.
+     *      Pruning is allowed when:
+     *
+     *      1. There are unproven checkpoints (pending > proven)
+     *      2. The oldest pending epoch is no longer accepting proofs at the epoch at _ts
+     *
+     *      The proof submission window is defined by the aztecProofSubmissionEpochs configuration,
+     *      which specifies how many epochs after an epoch ends that proofs are still accepted.
+     *
+     *      Example timeline:
+     *      - Checkpoint proposed in epoch N
+     *      - Proof submission window = 1 epochs
+     *      - Proof deadline epoch = N + Proof submission window + 1
+     *          The deadline is the point in time where it is no longer acceptable, (if you touch the line you die)
+     *      - If epoch(_ts) >= epoch N + Proof submission window + 1, pruning is allowed
+     *
+     *      This mechanism ensures rollup liveness by preventing indefinite stalling on unprovable checkpoints (e.g due to
+     *      the committee failing to disseminate the data) while providing sufficient time for proof generation and
+     *      submission.
+     *
+     * @param _ts The current timestamp to check against
+     * @return True if pruning is allowed at the given timestamp, false otherwise
+     */
+    function canPruneAtTime(Timestamp _ts) internal view returns (bool) {
+        RollupStore storage rollupStore = STFLib.getStorage();
+
+        CompressedChainTips tips = rollupStore.tips;
+
+        if (tips.getPending() == tips.getProven()) {
+            return false;
+        }
+
+        Epoch oldestPendingEpoch = getEpochForCheckpoint(tips.getProven() + 1);
+        Epoch currentEpoch = _ts.epochFromTimestamp();
+
+        return !oldestPendingEpoch.isAcceptingProofsAtEpoch(currentEpoch);
+    }
+
+    /**
+     * @notice Retrieves the namespaced storage for the STFLib using EIP-7201 pattern
+     * @dev Uses inline assembly to access storage at a specific slot calculated from the
+     *      keccak256 hash of "aztec.stf.storage". This ensures storage isolation and
+     *      prevents collisions with other contracts or libraries.
+     *
+     *      The storage contains:
+     *      - Chain tips (pending and proven checkpoint numbers)
+     *      - Archives mapping (permanent checkpoint archive storage)
+     *      - TempCheckpointLogs mapping (circular buffer for temporary checkpoint data)
+     *      - Rollup configuration
+     * @return storageStruct A storage pointer to the RollupStore struct
+     */
+    function getStorage() internal pure returns (RollupStore storage storageStruct) {
+        bytes32 position = STF_STORAGE_POSITION;
+        assembly {
+            storageStruct.slot := position
+        }
+    }
 }
 
 struct Values {
-  address sequencer;
-  uint256 proverFee;
-  uint256 sequencerFee;
-  uint256 sequencerCheckpointReward;
-  uint256 manaUsed;
+    address sequencer;
+    uint256 proverFee;
+    uint256 sequencerFee;
+    uint256 sequencerCheckpointReward;
+    uint256 manaUsed;
 }
 
 struct Totals {
-  uint256 feesToClaim;
-  uint256 totalBurn;
+    uint256 feesToClaim;
+    uint256 totalBurn;
 }
 
 library BpsLib {
-  function mul(uint256 _a, Bps _b) internal pure returns (uint256) {
-    return _a * uint256(Bps.unwrap(_b)) / 10_000;
-  }
+    function mul(uint256 _a, Bps _b) internal pure returns (uint256) {
+        return _a * uint256(Bps.unwrap(_b)) / 10_000;
+    }
 }
 
 library RewardLib {
-  using SafeERC20 for IERC20;
-  using BitMaps for BitMaps.BitMap;
-  using TimeLib for Timestamp;
-  using TimeLib for Epoch;
-  using FeeHeaderLib for CompressedFeeHeader;
-  using SafeCast for uint256;
+    using SafeERC20 for IERC20;
+    using BitMaps for BitMaps.BitMap;
+    using TimeLib for Timestamp;
+    using TimeLib for Epoch;
+    using FeeHeaderLib for CompressedFeeHeader;
+    using SafeCast for uint256;
 
-  bytes32 private constant REWARD_STORAGE_POSITION = keccak256("aztec.reward.storage");
+    bytes32 private constant REWARD_STORAGE_POSITION = keccak256("aztec.reward.storage");
 
-  // A Cuauhxicalli [kʷaːʍʃiˈkalːi] ("eagle gourd bowl") is a ceremonial Aztec vessel or altar used to hold
-  // offerings,
-  // such as sacrificial hearts, during rituals performed within temples.
-  address public constant BURN_ADDRESS = address(bytes20("CUAUHXICALLI"));
+    // A Cuauhxicalli [kʷaːʍʃiˈkalːi] ("eagle gourd bowl") is a ceremonial Aztec vessel or altar used to hold
+    // offerings,
+    // such as sacrificial hearts, during rituals performed within temples.
+    address public constant BURN_ADDRESS = address(bytes20("CUAUHXICALLI"));
 
-  /// @notice One-shot writer used during rollup construction. Writes every field of
-  ///         {RewardConfig}, including the immutable `rewardDistributor` and `booster`.
-  /// @dev Must only be reachable from the constructor path. Post-deployment updates go through
-  ///      {updateConfig}, which preserves the immutable fields.
-  function initializeConfig(RewardConfig memory _config) internal {
-    require(Bps.unwrap(_config.sequencerBps) <= 10_000, Errors.RewardLib__InvalidSequencerBps());
-    RewardStorage storage rewardStorage = getStorage();
-    rewardStorage.config = _config;
-  }
-
-  /// @notice Owner-gated post-deployment writer. Only updates the mutable subset
-  ///         (`sequencerBps`, `checkpointReward`). The `rewardDistributor` and `booster`
-  ///         addresses MUST NOT be reachable from this path -- they remain whatever was
-  ///         written by {initializeConfig}.
-  function updateConfig(MutableRewardConfig memory _config) internal {
-    require(Bps.unwrap(_config.sequencerBps) <= 10_000, Errors.RewardLib__InvalidSequencerBps());
-    RewardStorage storage rewardStorage = getStorage();
-    rewardStorage.config.sequencerBps = _config.sequencerBps;
-    rewardStorage.config.checkpointReward = _config.checkpointReward;
-  }
-
-  function claimSequencerRewards(address _sequencer) internal returns (uint256) {
-    RewardStorage storage rewardStorage = getStorage();
-    RollupStore storage rollupStore = STFLib.getStorage();
-    uint256 amount = rewardStorage.sequencerRewards[_sequencer];
-
-    if (amount > 0) {
-      rewardStorage.sequencerRewards[_sequencer] = 0;
-      rollupStore.config.feeAsset.safeTransfer(_sequencer, amount);
+    /// @notice One-shot writer used during rollup construction. Writes every field of
+    ///         {RewardConfig}, including the immutable `rewardDistributor` and `booster`.
+    /// @dev Must only be reachable from the constructor path. Post-deployment updates go through
+    ///      {updateConfig}, which preserves the immutable fields.
+    function initializeConfig(RewardConfig memory _config) internal {
+        require(Bps.unwrap(_config.sequencerBps) <= 10_000, Errors.RewardLib__InvalidSequencerBps());
+        RewardStorage storage rewardStorage = getStorage();
+        rewardStorage.config = _config;
     }
 
-    return amount;
-  }
-
-  function claimProverRewards(address _prover, Epoch[] memory _epochs) internal returns (uint256) {
-    Epoch currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
-    RollupStore storage rollupStore = STFLib.getStorage();
-
-    RewardStorage storage rewardStorage = getStorage();
-
-    uint256 accumulatedRewards = 0;
-    for (uint256 i = 0; i < _epochs.length; i++) {
-      require(
-        !_epochs[i].isAcceptingProofsAtEpoch(currentEpoch),
-        Errors.Rollup__NotPastDeadline(_epochs[i].toDeadlineEpoch(), currentEpoch)
-      );
-
-      if (rewardStorage.proverClaimed[_prover].get(Epoch.unwrap(_epochs[i]))) {
-        continue;
-      }
-      rewardStorage.proverClaimed[_prover].set(Epoch.unwrap(_epochs[i]));
-
-      EpochRewards storage e = rewardStorage.epochRewards[_epochs[i]];
-      SubEpochRewards storage se = e.subEpoch[e.longestProvenLength];
-      uint256 shares = se.shares[_prover];
-      if (shares > 0) {
-        accumulatedRewards += (shares * e.rewards / se.summedShares);
-      }
+    /// @notice Owner-gated post-deployment writer. Only updates the mutable subset
+    ///         (`sequencerBps`, `checkpointReward`). The `rewardDistributor` and `booster`
+    ///         addresses MUST NOT be reachable from this path -- they remain whatever was
+    ///         written by {initializeConfig}.
+    function updateConfig(MutableRewardConfig memory _config) internal {
+        require(Bps.unwrap(_config.sequencerBps) <= 10_000, Errors.RewardLib__InvalidSequencerBps());
+        RewardStorage storage rewardStorage = getStorage();
+        rewardStorage.config.sequencerBps = _config.sequencerBps;
+        rewardStorage.config.checkpointReward = _config.checkpointReward;
     }
 
-    if (accumulatedRewards > 0) {
-      rollupStore.config.feeAsset.safeTransfer(_prover, accumulatedRewards);
-    }
+    function claimSequencerRewards(address _sequencer) internal returns (uint256) {
+        RewardStorage storage rewardStorage = getStorage();
+        RollupStore storage rollupStore = STFLib.getStorage();
+        uint256 amount = rewardStorage.sequencerRewards[_sequencer];
 
-    return accumulatedRewards;
-  }
-
-  function handleRewardsAndFees(SubmitEpochRootProofArgs calldata _args, Epoch _endEpoch) internal {
-    RollupStore storage rollupStore = STFLib.getStorage();
-    RewardStorage storage rewardStorage = getStorage();
-
-    uint256 length = _args.end - _args.start + 1;
-    EpochRewards storage $er = rewardStorage.epochRewards[_endEpoch];
-
-    {
-      SubEpochRewards storage $sr = $er.subEpoch[length];
-      address prover = _args.args.proverId;
-
-      require($sr.shares[prover] == 0, Errors.Rollup__ProverHaveAlreadySubmitted(prover, _endEpoch));
-      // Beware that it is possible to get marked active in an epoch even if you did not provide the longest
-      // proof. This is acceptable, as they were actually active. And boosting this way is not the most
-      // efficient way to do it, so this is fine.
-      uint256 shares = rewardStorage.config.booster.updateAndGetShares(prover);
-
-      // The duplicate-submission guard above uses `shares == 0` as the sentinel for "not yet
-      // submitted". A booster that ever returns zero would let the same prover submit again
-      // for the same epoch length, breaking that guard. RewardBooster's constructor rejects
-      // configs that can return zero, but the booster slot is an external pointer; bounce
-      // back if a misbehaving booster ever crosses this layer.
-      require(shares > 0, Errors.RewardLib__ZeroShares(prover));
-
-      $sr.shares[prover] = shares;
-      $sr.summedShares += shares;
-    }
-
-    if (length > $er.longestProvenLength) {
-      Values memory v;
-      Totals memory t;
-
-      {
-        uint256 added = length - $er.longestProvenLength;
-        uint256 checkpointRewardsDesired = added * getCheckpointReward();
-        uint256 checkpointRewardsAvailable = 0;
-
-        if (checkpointRewardsDesired > 0) {
-          // Cache the reward distributor contract
-          IRewardDistributor distributor = rewardStorage.config.rewardDistributor;
-
-          uint256 amountToClaim = Math.min(checkpointRewardsDesired, distributor.availableTo(address(this)));
-
-          if (amountToClaim > 0) {
-            distributor.claim(address(this), amountToClaim);
-            checkpointRewardsAvailable = amountToClaim;
-          }
+        if (amount > 0) {
+            rewardStorage.sequencerRewards[_sequencer] = 0;
+            rollupStore.config.feeAsset.safeTransfer(_sequencer, amount);
         }
 
-        uint256 sequenceCheckpointRewards = BpsLib.mul(checkpointRewardsAvailable, rewardStorage.config.sequencerBps);
-        v.sequencerCheckpointReward = sequenceCheckpointRewards / added;
+        return amount;
+    }
 
-        uint256 dust = sequenceCheckpointRewards - (v.sequencerCheckpointReward * added);
-        uint256 proverCheckpointRewards = checkpointRewardsAvailable - sequenceCheckpointRewards + dust;
-        if (proverCheckpointRewards > 0) {
-          $er.rewards += proverCheckpointRewards.toUint128();
+    function claimProverRewards(address _prover, Epoch[] memory _epochs) internal returns (uint256) {
+        Epoch currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
+        RollupStore storage rollupStore = STFLib.getStorage();
+
+        RewardStorage storage rewardStorage = getStorage();
+
+        uint256 accumulatedRewards = 0;
+        for (uint256 i = 0; i < _epochs.length; i++) {
+            require(
+                !_epochs[i].isAcceptingProofsAtEpoch(currentEpoch),
+                Errors.Rollup__NotPastDeadline(_epochs[i].toDeadlineEpoch(), currentEpoch)
+            );
+
+            if (rewardStorage.proverClaimed[_prover].get(Epoch.unwrap(_epochs[i]))) {
+                continue;
+            }
+            rewardStorage.proverClaimed[_prover].set(Epoch.unwrap(_epochs[i]));
+
+            EpochRewards storage e = rewardStorage.epochRewards[_epochs[i]];
+            SubEpochRewards storage se = e.subEpoch[e.longestProvenLength];
+            uint256 shares = se.shares[_prover];
+            if (shares > 0) {
+                accumulatedRewards += (shares * e.rewards / se.summedShares);
+            }
         }
-      }
 
-      for (uint256 i = $er.longestProvenLength; i < length; i++) {
-        CompressedFeeHeader feeHeader = STFLib.getFeeHeader(_args.start + i);
-
-        v.manaUsed = feeHeader.getManaUsed();
-
-        uint256 fee = _args.headers[i].accumulatedFees;
-        uint256 burn = feeHeader.getCongestionCost() * v.manaUsed;
-
-        t.feesToClaim += fee;
-        t.totalBurn += burn;
-
-        // Compute the proving fee in the fee asset
-        v.proverFee = Math.min(v.manaUsed * feeHeader.getProverCost(), fee - burn);
-        if (v.proverFee > 0) {
-          $er.rewards += v.proverFee.toUint128();
+        if (accumulatedRewards > 0) {
+            rollupStore.config.feeAsset.safeTransfer(_prover, accumulatedRewards);
         }
 
-        v.sequencerFee = fee - burn - v.proverFee;
+        return accumulatedRewards;
+    }
+
+    function handleRewardsAndFees(SubmitEpochRootProofArgs calldata _args, Epoch _endEpoch) internal {
+        RollupStore storage rollupStore = STFLib.getStorage();
+        RewardStorage storage rewardStorage = getStorage();
+
+        uint256 length = _args.end - _args.start + 1;
+        EpochRewards storage $er = rewardStorage.epochRewards[_endEpoch];
 
         {
-          v.sequencer = _args.headers[i].coinbase;
-          uint256 toSequencer = v.sequencerCheckpointReward + v.sequencerFee;
-          if (toSequencer > 0) {
-            rewardStorage.sequencerRewards[v.sequencer] += toSequencer;
-          }
+            SubEpochRewards storage $sr = $er.subEpoch[length];
+            address prover = _args.args.proverId;
+
+            require($sr.shares[prover] == 0, Errors.Rollup__ProverHaveAlreadySubmitted(prover, _endEpoch));
+            // Beware that it is possible to get marked active in an epoch even if you did not provide the longest
+            // proof. This is acceptable, as they were actually active. And boosting this way is not the most
+            // efficient way to do it, so this is fine.
+            uint256 shares = rewardStorage.config.booster.updateAndGetShares(prover);
+
+            // The duplicate-submission guard above uses `shares == 0` as the sentinel for "not yet
+            // submitted". A booster that ever returns zero would let the same prover submit again
+            // for the same epoch length, breaking that guard. RewardBooster's constructor rejects
+            // configs that can return zero, but the booster slot is an external pointer; bounce
+            // back if a misbehaving booster ever crosses this layer.
+            require(shares > 0, Errors.RewardLib__ZeroShares(prover));
+
+            $sr.shares[prover] = shares;
+            $sr.summedShares += shares;
         }
-      }
 
-      $er.longestProvenLength = length.toUint128();
+        if (length > $er.longestProvenLength) {
+            Values memory v;
+            Totals memory t;
 
-      if (t.feesToClaim > 0) {
-        rollupStore.config.feeAssetPortal.distributeFees(address(this), t.feesToClaim);
-      }
+            {
+                uint256 added = length - $er.longestProvenLength;
+                uint256 checkpointRewardsDesired = added * getCheckpointReward();
+                uint256 checkpointRewardsAvailable = 0;
 
-      if (t.totalBurn > 0) {
-        rollupStore.config.feeAsset.safeTransfer(BURN_ADDRESS, t.totalBurn);
-      }
+                if (checkpointRewardsDesired > 0) {
+                    // Cache the reward distributor contract
+                    IRewardDistributor distributor = rewardStorage.config.rewardDistributor;
+
+                    uint256 amountToClaim = Math.min(checkpointRewardsDesired, distributor.availableTo(address(this)));
+
+                    if (amountToClaim > 0) {
+                        distributor.claim(address(this), amountToClaim);
+                        checkpointRewardsAvailable = amountToClaim;
+                    }
+                }
+
+                uint256 sequenceCheckpointRewards =
+                    BpsLib.mul(checkpointRewardsAvailable, rewardStorage.config.sequencerBps);
+                v.sequencerCheckpointReward = sequenceCheckpointRewards / added;
+
+                uint256 dust = sequenceCheckpointRewards - (v.sequencerCheckpointReward * added);
+                uint256 proverCheckpointRewards = checkpointRewardsAvailable - sequenceCheckpointRewards + dust;
+                if (proverCheckpointRewards > 0) {
+                    $er.rewards += proverCheckpointRewards.toUint128();
+                }
+            }
+
+            for (uint256 i = $er.longestProvenLength; i < length; i++) {
+                CompressedFeeHeader feeHeader = STFLib.getFeeHeader(_args.start + i);
+
+                v.manaUsed = feeHeader.getManaUsed();
+
+                uint256 fee = _args.headers[i].accumulatedFees;
+                uint256 burn = feeHeader.getCongestionCost() * v.manaUsed;
+
+                t.feesToClaim += fee;
+                t.totalBurn += burn;
+
+                // Compute the proving fee in the fee asset
+                v.proverFee = Math.min(v.manaUsed * feeHeader.getProverCost(), fee - burn);
+                if (v.proverFee > 0) {
+                    $er.rewards += v.proverFee.toUint128();
+                }
+
+                v.sequencerFee = fee - burn - v.proverFee;
+
+                {
+                    v.sequencer = _args.headers[i].coinbase;
+                    uint256 toSequencer = v.sequencerCheckpointReward + v.sequencerFee;
+                    if (toSequencer > 0) {
+                        rewardStorage.sequencerRewards[v.sequencer] += toSequencer;
+                    }
+                }
+            }
+
+            $er.longestProvenLength = length.toUint128();
+
+            if (t.feesToClaim > 0) {
+                rollupStore.config.feeAssetPortal.distributeFees(address(this), t.feesToClaim);
+            }
+
+            if (t.totalBurn > 0) {
+                rollupStore.config.feeAsset.safeTransfer(BURN_ADDRESS, t.totalBurn);
+            }
+        }
     }
-  }
 
-  function getSharesFor(address _prover) internal view returns (uint256) {
-    return getStorage().config.booster.getSharesFor(_prover);
-  }
-
-  function getSequencerRewards(address _sequencer) internal view returns (uint256) {
-    return getStorage().sequencerRewards[_sequencer];
-  }
-
-  function getCollectiveProverRewardsForEpoch(Epoch _epoch) internal view returns (uint256) {
-    return getStorage().epochRewards[_epoch].rewards;
-  }
-
-  function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) internal view returns (bool) {
-    return getStorage().epochRewards[_epoch].subEpoch[_length].shares[_prover] > 0;
-  }
-
-  function getHasClaimed(address _prover, Epoch _epoch) internal view returns (bool) {
-    return getStorage().proverClaimed[_prover].get(Epoch.unwrap(_epoch));
-  }
-
-  function getCheckpointReward() internal view returns (uint256) {
-    return getStorage().config.checkpointReward;
-  }
-
-  function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) internal view returns (uint256) {
-    RewardStorage storage rewardStorage = getStorage();
-
-    if (rewardStorage.proverClaimed[_prover].get(Epoch.unwrap(_epoch))) {
-      return 0;
+    function getSharesFor(address _prover) internal view returns (uint256) {
+        return getStorage().config.booster.getSharesFor(_prover);
     }
 
-    EpochRewards storage er = rewardStorage.epochRewards[_epoch];
-    SubEpochRewards storage se = er.subEpoch[er.longestProvenLength];
-
-    // Only if prover has shares will he get a reward. Also avoid a 0-div
-    // in case of no shares at all.
-    if (se.shares[_prover] == 0) {
-      return 0;
+    function getSequencerRewards(address _sequencer) internal view returns (uint256) {
+        return getStorage().sequencerRewards[_sequencer];
     }
 
-    return (se.shares[_prover] * er.rewards / se.summedShares);
-  }
-
-  function getStorage() internal pure returns (RewardStorage storage storageStruct) {
-    bytes32 position = REWARD_STORAGE_POSITION;
-    assembly {
-      storageStruct.slot := position
+    function getCollectiveProverRewardsForEpoch(Epoch _epoch) internal view returns (uint256) {
+        return getStorage().epochRewards[_epoch].rewards;
     }
-  }
+
+    function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) internal view returns (bool) {
+        return getStorage().epochRewards[_epoch].subEpoch[_length].shares[_prover] > 0;
+    }
+
+    function getHasClaimed(address _prover, Epoch _epoch) internal view returns (bool) {
+        return getStorage().proverClaimed[_prover].get(Epoch.unwrap(_epoch));
+    }
+
+    function getCheckpointReward() internal view returns (uint256) {
+        return getStorage().config.checkpointReward;
+    }
+
+    function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) internal view returns (uint256) {
+        RewardStorage storage rewardStorage = getStorage();
+
+        if (rewardStorage.proverClaimed[_prover].get(Epoch.unwrap(_epoch))) {
+            return 0;
+        }
+
+        EpochRewards storage er = rewardStorage.epochRewards[_epoch];
+        SubEpochRewards storage se = er.subEpoch[er.longestProvenLength];
+
+        // Only if prover has shares will he get a reward. Also avoid a 0-div
+        // in case of no shares at all.
+        if (se.shares[_prover] == 0) {
+            return 0;
+        }
+
+        return (se.shares[_prover] * er.rewards / se.summedShares);
+    }
+
+    function getStorage() internal pure returns (RewardStorage storage storageStruct) {
+        bytes32 position = REWARD_STORAGE_POSITION;
+        assembly {
+            storageStruct.slot := position
+        }
+    }
 }
 
 struct InterimProposeValues {
-  ProposedHeader header;
-  bytes32[] blobHashes;
-  bytes32 blobsHashesCommitment;
-  bytes[] blobCommitments;
-  bytes32 inHash;
-  bytes32 headerHash;
-  bytes32 attestationsHash;
-  bytes32 payloadDigest;
-  Epoch currentEpoch;
-  bool isFirstCheckpointOfEpoch;
-  bool isEscapeHatch;
-  address escapeHatchProposer;
-  IEscapeHatch escapeHatch;
+    ProposedHeader header;
+    bytes32[] blobHashes;
+    bytes32 blobsHashesCommitment;
+    bytes[] blobCommitments;
+    bytes32 inHash;
+    bytes32 headerHash;
+    bytes32 attestationsHash;
+    bytes32 payloadDigest;
+    Epoch currentEpoch;
+    bool isFirstCheckpointOfEpoch;
+    bool isEscapeHatch;
+    address escapeHatchProposer;
+    IEscapeHatch escapeHatch;
 }
 
 /**
@@ -4766,41 +4805,41 @@ uint256 constant ETH_PER_FEE_ASSET_PRECISION = 1e12;
 
 /// @notice Library for converting between ETH and fee asset values using the price oracle.
 library PriceLib {
-  /**
-   * @notice Converts a fee asset amount to its ETH equivalent.
-   * @dev ethValue = feeAssetAmount * ethPerFeeAsset / precision
-   * @param _feeAssetValue The amount in fee asset units
-   * @param _ethPerFeeAsset The current price (ETH per fee asset with 1e12 precision)
-   * @return The equivalent value in ETH (wei), rounded up
-   */
-  function toEth(FeeAssetValue _feeAssetValue, EthPerFeeAssetE12 _ethPerFeeAsset) internal pure returns (EthValue) {
-    return EthValue.wrap(
-      Math.mulDiv(
-        FeeAssetValue.unwrap(_feeAssetValue),
-        EthPerFeeAssetE12.unwrap(_ethPerFeeAsset),
-        ETH_PER_FEE_ASSET_PRECISION,
-        Math.Rounding.Ceil
-      )
-    );
-  }
+    /**
+     * @notice Converts a fee asset amount to its ETH equivalent.
+     * @dev ethValue = feeAssetAmount * ethPerFeeAsset / precision
+     * @param _feeAssetValue The amount in fee asset units
+     * @param _ethPerFeeAsset The current price (ETH per fee asset with 1e12 precision)
+     * @return The equivalent value in ETH (wei), rounded up
+     */
+    function toEth(FeeAssetValue _feeAssetValue, EthPerFeeAssetE12 _ethPerFeeAsset) internal pure returns (EthValue) {
+        return EthValue.wrap(
+            Math.mulDiv(
+                FeeAssetValue.unwrap(_feeAssetValue),
+                EthPerFeeAssetE12.unwrap(_ethPerFeeAsset),
+                ETH_PER_FEE_ASSET_PRECISION,
+                Math.Rounding.Ceil
+            )
+        );
+    }
 
-  /**
-   * @notice Converts an ETH amount to its fee asset equivalent.
-   * @dev feeAssetAmount = ethValue * precision / ethPerFeeAsset
-   * @param _ethValue The amount in ETH (wei)
-   * @param _ethPerFeeAsset The current price (ETH per fee asset with 1e12 precision)
-   * @return The equivalent value in fee asset units, rounded up
-   */
-  function toFeeAsset(EthValue _ethValue, EthPerFeeAssetE12 _ethPerFeeAsset) internal pure returns (FeeAssetValue) {
-    return FeeAssetValue.wrap(
-      Math.mulDiv(
-        EthValue.unwrap(_ethValue),
-        ETH_PER_FEE_ASSET_PRECISION,
-        EthPerFeeAssetE12.unwrap(_ethPerFeeAsset),
-        Math.Rounding.Ceil
-      )
-    );
-  }
+    /**
+     * @notice Converts an ETH amount to its fee asset equivalent.
+     * @dev feeAssetAmount = ethValue * precision / ethPerFeeAsset
+     * @param _ethValue The amount in ETH (wei)
+     * @param _ethPerFeeAsset The current price (ETH per fee asset with 1e12 precision)
+     * @return The equivalent value in fee asset units, rounded up
+     */
+    function toFeeAsset(EthValue _ethValue, EthPerFeeAssetE12 _ethPerFeeAsset) internal pure returns (FeeAssetValue) {
+        return FeeAssetValue.wrap(
+            Math.mulDiv(
+                EthValue.unwrap(_ethValue),
+                ETH_PER_FEE_ASSET_PRECISION,
+                EthPerFeeAssetE12.unwrap(_ethPerFeeAsset),
+                Math.Rounding.Ceil
+            )
+        );
+    }
 }
 
 // We compress the L1 fee data heavily, capping out at `2**56-1` (7.2057594038E16)
@@ -4809,90 +4848,90 @@ library PriceLib {
 type CompressedL1FeeData is uint112;
 
 library FeeStructsLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  uint256 internal constant MASK_56_BITS = 0xFFFFFFFFFFFFFF;
+    uint256 internal constant MASK_56_BITS = 0xFFFFFFFFFFFFFF;
 
-  function getBlobFee(CompressedL1FeeData _compressedL1FeeData) internal pure returns (uint256) {
-    return CompressedL1FeeData.unwrap(_compressedL1FeeData) & MASK_56_BITS;
-  }
+    function getBlobFee(CompressedL1FeeData _compressedL1FeeData) internal pure returns (uint256) {
+        return CompressedL1FeeData.unwrap(_compressedL1FeeData) & MASK_56_BITS;
+    }
 
-  function getBaseFee(CompressedL1FeeData _compressedL1FeeData) internal pure returns (uint256) {
-    return (CompressedL1FeeData.unwrap(_compressedL1FeeData) >> 56) & MASK_56_BITS;
-  }
+    function getBaseFee(CompressedL1FeeData _compressedL1FeeData) internal pure returns (uint256) {
+        return (CompressedL1FeeData.unwrap(_compressedL1FeeData) >> 56) & MASK_56_BITS;
+    }
 
-  function compress(L1FeeData memory _data) internal pure returns (CompressedL1FeeData) {
-    uint256 value = 0;
-    value |= uint256(_data.blobFee.toUint56()) << 0;
-    value |= uint256(_data.baseFee.toUint56()) << 56;
-    return CompressedL1FeeData.wrap(value.toUint112());
-  }
+    function compress(L1FeeData memory _data) internal pure returns (CompressedL1FeeData) {
+        uint256 value = 0;
+        value |= uint256(_data.blobFee.toUint56()) << 0;
+        value |= uint256(_data.baseFee.toUint56()) << 56;
+        return CompressedL1FeeData.wrap(value.toUint112());
+    }
 
-  function decompress(CompressedL1FeeData _data) internal pure returns (L1FeeData memory) {
-    uint256 value = CompressedL1FeeData.unwrap(_data);
-    uint256 blobFee = value & MASK_56_BITS;
-    uint256 baseFee = (value >> 56) & MASK_56_BITS;
-    return L1FeeData({baseFee: uint256(baseFee), blobFee: uint256(blobFee)});
-  }
+    function decompress(CompressedL1FeeData _data) internal pure returns (L1FeeData memory) {
+        uint256 value = CompressedL1FeeData.unwrap(_data);
+        uint256 blobFee = value & MASK_56_BITS;
+        uint256 baseFee = (value >> 56) & MASK_56_BITS;
+        return L1FeeData({baseFee: uint256(baseFee), blobFee: uint256(blobFee)});
+    }
 }
 
 // 32 bit manaTarget, 128 bit congestionUpdateFraction, 64 bit provingCostPerMana
 type CompressedFeeConfig is uint256;
 
 struct FeeConfig {
-  uint256 manaTarget;
-  uint256 congestionUpdateFraction;
-  EthValue provingCostPerMana;
+    uint256 manaTarget;
+    uint256 congestionUpdateFraction;
+    EthValue provingCostPerMana;
 }
 
 library FeeConfigLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  uint256 private constant MASK_32_BITS = 0xFFFFFFFF;
-  uint256 private constant MASK_64_BITS = 0xFFFFFFFFFFFFFFFF;
-  uint256 private constant MASK_128_BITS = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
+    uint256 private constant MASK_32_BITS = 0xFFFFFFFF;
+    uint256 private constant MASK_64_BITS = 0xFFFFFFFFFFFFFFFF;
+    uint256 private constant MASK_128_BITS = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
 
-  function getManaTarget(CompressedFeeConfig _compressedFeeConfig) internal pure returns (uint256) {
-    return (CompressedFeeConfig.unwrap(_compressedFeeConfig) >> 192) & MASK_32_BITS;
-  }
+    function getManaTarget(CompressedFeeConfig _compressedFeeConfig) internal pure returns (uint256) {
+        return (CompressedFeeConfig.unwrap(_compressedFeeConfig) >> 192) & MASK_32_BITS;
+    }
 
-  function getCongestionUpdateFraction(CompressedFeeConfig _compressedFeeConfig) internal pure returns (uint256) {
-    return (CompressedFeeConfig.unwrap(_compressedFeeConfig) >> 64) & MASK_128_BITS;
-  }
+    function getCongestionUpdateFraction(CompressedFeeConfig _compressedFeeConfig) internal pure returns (uint256) {
+        return (CompressedFeeConfig.unwrap(_compressedFeeConfig) >> 64) & MASK_128_BITS;
+    }
 
-  function getProvingCostPerMana(CompressedFeeConfig _compressedFeeConfig) internal pure returns (EthValue) {
-    return EthValue.wrap(CompressedFeeConfig.unwrap(_compressedFeeConfig) & MASK_64_BITS);
-  }
+    function getProvingCostPerMana(CompressedFeeConfig _compressedFeeConfig) internal pure returns (EthValue) {
+        return EthValue.wrap(CompressedFeeConfig.unwrap(_compressedFeeConfig) & MASK_64_BITS);
+    }
 
-  function compress(FeeConfig memory _config) internal pure returns (CompressedFeeConfig) {
-    uint256 value = 0;
-    value |= uint256(EthValue.unwrap(_config.provingCostPerMana).toUint64());
-    value |= uint256(_config.congestionUpdateFraction.toUint128()) << 64;
-    value |= uint256(_config.manaTarget.toUint32()) << 192;
+    function compress(FeeConfig memory _config) internal pure returns (CompressedFeeConfig) {
+        uint256 value = 0;
+        value |= uint256(EthValue.unwrap(_config.provingCostPerMana).toUint64());
+        value |= uint256(_config.congestionUpdateFraction.toUint128()) << 64;
+        value |= uint256(_config.manaTarget.toUint32()) << 192;
 
-    return CompressedFeeConfig.wrap(value);
-  }
+        return CompressedFeeConfig.wrap(value);
+    }
 
-  function decompress(CompressedFeeConfig _compressedFeeConfig) internal pure returns (FeeConfig memory) {
-    return FeeConfig({
-      provingCostPerMana: getProvingCostPerMana(_compressedFeeConfig),
-      congestionUpdateFraction: getCongestionUpdateFraction(_compressedFeeConfig),
-      manaTarget: getManaTarget(_compressedFeeConfig)
-    });
-  }
+    function decompress(CompressedFeeConfig _compressedFeeConfig) internal pure returns (FeeConfig memory) {
+        return FeeConfig({
+            provingCostPerMana: getProvingCostPerMana(_compressedFeeConfig),
+            congestionUpdateFraction: getCongestionUpdateFraction(_compressedFeeConfig),
+            manaTarget: getManaTarget(_compressedFeeConfig)
+        });
+    }
 }
 
 // (56 + 56) * 2 + 32 = 256
 struct L1GasOracleValues {
-  CompressedL1FeeData pre;
-  CompressedL1FeeData post;
-  CompressedSlot slotOfChange;
+    CompressedL1FeeData pre;
+    CompressedL1FeeData post;
+    CompressedSlot slotOfChange;
 }
 
 struct FeeStore {
-  CompressedFeeConfig config;
-  L1GasOracleValues l1GasOracleValues;
-  uint64 provingCostLastUpdate;
+    CompressedFeeConfig config;
+    L1GasOracleValues l1GasOracleValues;
+    uint64 provingCostLastUpdate;
 }
 
 uint256 constant MIN_PROVING_COST_PER_MANA = 2;
@@ -4940,44 +4979,44 @@ uint256 constant MAGIC_CONGESTION_VALUE_DIVISOR = 1e8;
  * Using sha256 as the hash function since it hits a good balance between gas cost and circuit size.
  */
 library Hash {
-  /**
-   * @notice Computes the sha256 hash of the L1 to L2 message and converts it to a field element
-   * @param _message - The L1 to L2 message to hash
-   * @return The hash of the provided message as a field element
-   */
-  function sha256ToField(DataStructures.L1ToL2Msg memory _message) internal pure returns (bytes32) {
-    return sha256ToField(
-      abi.encode(_message.sender, _message.recipient, _message.content, _message.secretHash, _message.index)
-    );
-  }
+    /**
+     * @notice Computes the sha256 hash of the L1 to L2 message and converts it to a field element
+     * @param _message - The L1 to L2 message to hash
+     * @return The hash of the provided message as a field element
+     */
+    function sha256ToField(DataStructures.L1ToL2Msg memory _message) internal pure returns (bytes32) {
+        return sha256ToField(
+            abi.encode(_message.sender, _message.recipient, _message.content, _message.secretHash, _message.index)
+        );
+    }
 
-  /**
-   * @notice Computes the sha256 hash of the L2 to L1 message and converts it to a field element
-   * @param _message - The L2 to L1 message to hash
-   * @return The hash of the provided message as a field element
-   */
-  function sha256ToField(DataStructures.L2ToL1Msg memory _message) internal pure returns (bytes32) {
-    return sha256ToField(
-      abi.encodePacked(
-        _message.sender.actor,
-        _message.sender.version,
-        _message.recipient.actor,
-        _message.recipient.chainId,
-        _message.content
-      )
-    );
-  }
+    /**
+     * @notice Computes the sha256 hash of the L2 to L1 message and converts it to a field element
+     * @param _message - The L2 to L1 message to hash
+     * @return The hash of the provided message as a field element
+     */
+    function sha256ToField(DataStructures.L2ToL1Msg memory _message) internal pure returns (bytes32) {
+        return sha256ToField(
+            abi.encodePacked(
+                _message.sender.actor,
+                _message.sender.version,
+                _message.recipient.actor,
+                _message.recipient.chainId,
+                _message.content
+            )
+        );
+    }
 
-  /**
-   * @notice Computes the sha256 hash of the provided data and converts it to a field element
-   * @dev Truncating one byte to convert the hash to a field element. We prepend a byte rather than cast
-   * bytes31(bytes32) to match Noir's to_be_bytes.
-   * @param _data - The bytes to hash
-   * @return The hash of the provided data as a field element
-   */
-  function sha256ToField(bytes memory _data) internal pure returns (bytes32) {
-    return bytes32(bytes.concat(new bytes(1), bytes31(sha256(_data))));
-  }
+    /**
+     * @notice Computes the sha256 hash of the provided data and converts it to a field element
+     * @dev Truncating one byte to convert the hash to a field element. We prepend a byte rather than cast
+     * bytes31(bytes32) to match Noir's to_be_bytes.
+     * @param _data - The bytes to hash
+     * @return The hash of the provided data as a field element
+     */
+    function sha256ToField(bytes memory _data) internal pure returns (bytes32) {
+        return bytes32(bytes.concat(new bytes(1), bytes31(sha256(_data))));
+    }
 }
 
 /**
@@ -5008,179 +5047,180 @@ library Hash {
  *      4. calculateBlobHash() computes versioned hashes from commitments following EIP-4844 specification
  */
 library BlobLib {
-  uint256 internal constant VERSIONED_HASH_VERSION_KZG =
-    0x0100000000000000000000000000000000000000000000000000000000000000; // 0x01 << 248 to be used in blobHashCheck
+    uint256 internal constant VERSIONED_HASH_VERSION_KZG =
+        0x0100000000000000000000000000000000000000000000000000000000000000; // 0x01 << 248 to be used in blobHashCheck
 
-  /**
-   * @notice  Get the blob base fee
-   *
-   * @return uint256 - The blob base fee
-   */
-  function getBlobBaseFee() internal view returns (uint256) {
-    return block.blobbasefee;
-  }
-
-  /**
-   * @notice  Get the blob hash
-   *
-   * @return blobHash - The blob hash
-   */
-  function getBlobHash(uint256 _index) internal view returns (bytes32 blobHash) {
-    assembly {
-      blobHash := blobhash(_index)
+    /**
+     * @notice  Get the blob base fee
+     *
+     * @return uint256 - The blob base fee
+     */
+    function getBlobBaseFee() internal view returns (uint256) {
+        return block.blobbasefee;
     }
-  }
 
-  /**
-   * @notice  Validate a checkpoint's blobs and return the blobHashes, the hashed blobHashes, and blob commitments.
-   *
-   *          We assume that the Aztec related blobs will be first in the propose transaction, additional blobs can be
-   *          at the end.
-   *
-   * Input bytes:
-   * input[0] - num blobs in checkpoint
-   * input[1:] - blob commitments (48 bytes * num blobs in checkpoint)
-   * @param _blobsInput - The above bytes to verify our input blob commitments match real blobs
-   * @param _checkBlob - Whether to skip blob related checks. Hardcoded to true (See RollupCore.sol -> checkBlob),
-   * exists only to be overridden in tests.
-   *
-   * Returns for proposal:
-   * @return blobHashes - All of the blob hashes included in this checkpoint, to be emitted in CheckpointProposed event.
-   * @return blobsHashesCommitment - A hash of all blob hashes in this checkpoint, to be included in the checkpoint
-   * header. See comment at the end of this fn for more info.
-   * @return blobCommitments - All of the blob commitments included in this checkpoint, to be stored then validated
-   * against those used in the rollup in epoch proof verification.
-   */
-  function validateBlobs(bytes calldata _blobsInput, bool _checkBlob)
-    internal
-    view
-    returns (bytes32[] memory blobHashes, bytes32 blobsHashesCommitment, bytes[] memory blobCommitments)
-  {
-    // We cannot input the incorrect number of blobs below, as the blobsHash
-    // and epoch proof verification will fail.
-    uint8 numBlobs = uint8(_blobsInput[0]);
-    require(numBlobs > 0, Errors.Rollup__NoBlobsInCheckpoint());
-    blobHashes = new bytes32[](numBlobs);
-    blobCommitments = new bytes[](numBlobs);
-    bytes32 blobHash;
-    // Add 1 for the numBlobs prefix
-    uint256 blobInputStart = 1;
-    for (uint256 i = 0; i < numBlobs; i++) {
-      // Commitments = arrays of bytes48 compressed points
-      blobCommitments[i] =
-        abi.encodePacked(_blobsInput[blobInputStart:blobInputStart + Constants.BLS12_POINT_COMPRESSED_BYTES]);
-      blobInputStart += Constants.BLS12_POINT_COMPRESSED_BYTES;
-
-      bytes32 blobHashCheck = calculateBlobHash(blobCommitments[i]);
-      if (_checkBlob) {
-        blobHash = getBlobHash(i);
-        // The below check ensures that our injected blobCommitments indeed match the real
-        // blobs submitted with this checkpoint. They are then used in the blobCommitmentsHash (see below).
-        require(blobHash == blobHashCheck, Errors.Rollup__InvalidBlobHash(blobHash, blobHashCheck));
-      } else {
-        blobHash = blobHashCheck;
-      }
-      blobHashes[i] = blobHash;
+    /**
+     * @notice  Get the blob hash
+     *
+     * @return blobHash - The blob hash
+     */
+    function getBlobHash(uint256 _index) internal view returns (bytes32 blobHash) {
+        assembly {
+            blobHash := blobhash(_index)
+        }
     }
-    // Hash the EVM blob hashes for the checkpoint header
-    // TODO(#13430): The below blobsHashesCommitment known as blobsHash elsewhere in the code. The name
-    // blobsHashesCommitment is confusingly similar to blobCommitmentsHash
-    // which are different values:
-    // - blobsHash := sha256([blobhash_0, ..., blobhash_m]) = a hash of all blob hashes in a checkpoint with m+1 blobs
-    // inserted into the header, exists so a user can cross check blobs.
-    // - blobCommitmentsHash := sha256( ...sha256(sha256(C_0), C_1) ... C_n) = iteratively calculated hash of all blob
-    // commitments in an epoch with n+1 blobs (see calculateBlobCommitmentsHash()),
-    //   exists so we can validate injected commitments to the rollup circuits correspond to the correct real blobs.
-    // We may be able to combine these values e.g. blobCommitmentsHash := sha256( ...sha256(sha256(blobshash_0),
-    // blobshash_1) ... blobshash_l) for an epoch with l+1 checkpoints.
-    blobsHashesCommitment = Hash.sha256ToField(abi.encodePacked(blobHashes));
-  }
 
-  /**
-   * @notice  Validate a batched blob.
-   * Input bytes:
-   * input[:32]     - versioned_hash - NB for a batched blob, this is simply the versioned hash of the batched
-   * commitment
-   * input[32:64]   - z = poseidon2( ...poseidon2(poseidon2(z_0, z_1), z_2) ... z_n)
-   * input[64:96]   - y = y_0 + gamma * y_1 + gamma^2 * y_2 + ... + gamma^n * y_n
-   * input[96:144]  - commitment C = C_0 + gamma * C_1 + gamma^2 * C_2 + ... + gamma^n * C_n
-   * input[144:192] - proof (a commitment to the quotient polynomial q(X)) = Q_0 + gamma * Q_1 + gamma^2 * Q_2 + ... +
-   * gamma^n * Q_n
-   * @param _blobInput - The above bytes to verify a batched blob
-   *
-   * If this function passes where the values of z, y, and C are valid public inputs to the final epoch root proof, then
-   * we know that the data in each blob of the epoch corresponds to the tx effects of all our proven txs in the epoch.
-   *
-   * The rollup circuits calculate each z_i and y_i as above, so if this function passes but they do not match the
-   * values from the circuit, then proof verification will fail.
-   *
-   * Each commitment C_i is injected into the circuits and their correctness is validated using the blobCommitmentsHash,
-   * as explained below in calculateBlobCommitmentsHash().
-   *
-   */
-  function validateBatchedBlob(bytes calldata _blobInput) internal view returns (bool success) {
-    // Staticcall the point eval precompile https://eips.ethereum.org/EIPS/eip-4844#point-evaluation-precompile :
-    (success,) = address(0x0a).staticcall(_blobInput);
-    require(success, Errors.Rollup__InvalidBlobProof(bytes32(_blobInput[0:32])));
-  }
+    /**
+     * @notice  Validate a checkpoint's blobs and return the blobHashes, the hashed blobHashes, and blob commitments.
+     *
+     *          We assume that the Aztec related blobs will be first in the propose transaction, additional blobs can be
+     *          at the end.
+     *
+     * Input bytes:
+     * input[0] - num blobs in checkpoint
+     * input[1:] - blob commitments (48 bytes * num blobs in checkpoint)
+     * @param _blobsInput - The above bytes to verify our input blob commitments match real blobs
+     * @param _checkBlob - Whether to skip blob related checks. Hardcoded to true (See RollupCore.sol -> checkBlob),
+     * exists only to be overridden in tests.
+     *
+     * Returns for proposal:
+     * @return blobHashes - All of the blob hashes included in this checkpoint, to be emitted in CheckpointProposed event.
+     * @return blobsHashesCommitment - A hash of all blob hashes in this checkpoint, to be included in the checkpoint
+     * header. See comment at the end of this fn for more info.
+     * @return blobCommitments - All of the blob commitments included in this checkpoint, to be stored then validated
+     * against those used in the rollup in epoch proof verification.
+     */
+    function validateBlobs(bytes calldata _blobsInput, bool _checkBlob)
+        internal
+        view
+        returns (bytes32[] memory blobHashes, bytes32 blobsHashesCommitment, bytes[] memory blobCommitments)
+    {
+        // We cannot input the incorrect number of blobs below, as the blobsHash
+        // and epoch proof verification will fail.
+        uint8 numBlobs = uint8(_blobsInput[0]);
+        require(numBlobs > 0, Errors.Rollup__NoBlobsInCheckpoint());
+        blobHashes = new bytes32[](numBlobs);
+        blobCommitments = new bytes[](numBlobs);
+        bytes32 blobHash;
+        // Add 1 for the numBlobs prefix
+        uint256 blobInputStart = 1;
+        for (uint256 i = 0; i < numBlobs; i++) {
+            // Commitments = arrays of bytes48 compressed points
+            blobCommitments[i] =
+                abi.encodePacked(_blobsInput[blobInputStart:blobInputStart + Constants.BLS12_POINT_COMPRESSED_BYTES]);
+            blobInputStart += Constants.BLS12_POINT_COMPRESSED_BYTES;
 
-  /**
-   * @notice  Calculate the current state of the blobCommitmentsHash. Called for each new proposed checkpoint.
-   * @param _previousBlobCommitmentsHash - The previous checkpoint's blobCommitmentsHash.
-   * @param _blobCommitments - The commitments corresponding to this checkpoint's blobs.
-   * @param _isFirstCheckpointOfEpoch - Whether this checkpoint is the first of an epoch (see below).
-   *
-   * The blobCommitmentsHash is an accumulated value calculated in the rollup circuits as:
-   *    blobCommitmentsHash_i := sha256(blobCommitmentsHash_(i - 1), C_i)
-   * for each blob commitment C_i in an epoch. For the first blob in the epoch (i = 0):
-   *    blobCommitmentsHash_i := sha256(C_0)
-   * which is why we require _isFirstCheckpointOfEpoch here.
-   *
-   * Each blob commitment is injected into the rollup circuits and we rely on the L1 contracts to validate
-   * these commitments correspond to real blobs. The input _blobCommitments below come from validateBlobs()
-   * so we know they are valid commitments here.
-   *
-   * We recalculate the same blobCommitmentsHash (which encompasses all claimed blobs in the epoch)
-   * as in the rollup circuits, then use the final value as a public input to the root rollup proof
-   * verification in EpochProofLib.sol.
-   *
-   * If the proof verifies, we know that the injected commitments used in the rollup circuits match
-   * the real commitments to L1 blobs.
-   *
-   */
-  function calculateBlobCommitmentsHash(
-    bytes32 _previousBlobCommitmentsHash,
-    bytes[] memory _blobCommitments,
-    bool _isFirstCheckpointOfEpoch
-  ) internal pure returns (bytes32 currentBlobCommitmentsHash) {
-    uint256 i = 0;
-    currentBlobCommitmentsHash = _previousBlobCommitmentsHash;
-    // If we are at the first checkpoint of an epoch, we reinitialize the blobCommitmentsHash.
-    // Blob commitments are collected and proven per root rollup proof => per epoch.
-    if (_isFirstCheckpointOfEpoch) {
-      // Initialize the blobCommitmentsHash
-      currentBlobCommitmentsHash = Hash.sha256ToField(abi.encodePacked(_blobCommitments[i++]));
+            bytes32 blobHashCheck = calculateBlobHash(blobCommitments[i]);
+            if (_checkBlob) {
+                blobHash = getBlobHash(i);
+                // The below check ensures that our injected blobCommitments indeed match the real
+                // blobs submitted with this checkpoint. They are then used in the blobCommitmentsHash (see below).
+                require(blobHash == blobHashCheck, Errors.Rollup__InvalidBlobHash(blobHash, blobHashCheck));
+            } else {
+                blobHash = blobHashCheck;
+            }
+            blobHashes[i] = blobHash;
+        }
+        // Hash the EVM blob hashes for the checkpoint header
+        // TODO(#13430): The below blobsHashesCommitment known as blobsHash elsewhere in the code. The name
+        // blobsHashesCommitment is confusingly similar to blobCommitmentsHash
+        // which are different values:
+        // - blobsHash := sha256([blobhash_0, ..., blobhash_m]) = a hash of all blob hashes in a checkpoint with m+1 blobs
+        // inserted into the header, exists so a user can cross check blobs.
+        // - blobCommitmentsHash := sha256( ...sha256(sha256(C_0), C_1) ... C_n) = iteratively calculated hash of all blob
+        // commitments in an epoch with n+1 blobs (see calculateBlobCommitmentsHash()),
+        //   exists so we can validate injected commitments to the rollup circuits correspond to the correct real blobs.
+        // We may be able to combine these values e.g. blobCommitmentsHash := sha256( ...sha256(sha256(blobshash_0),
+        // blobshash_1) ... blobshash_l) for an epoch with l+1 checkpoints.
+        blobsHashesCommitment = Hash.sha256ToField(abi.encodePacked(blobHashes));
     }
-    for (i; i < _blobCommitments.length; i++) {
-      currentBlobCommitmentsHash = Hash.sha256ToField(abi.encodePacked(currentBlobCommitmentsHash, _blobCommitments[i]));
-    }
-  }
 
-  /**
-   * @notice  Calculate the expected blob hash given a blob commitment
-   * @dev TODO(#14646): Use kzg_to_versioned_hash & VERSIONED_HASH_VERSION_KZG
-   * Until we use an external kzg_to_versioned_hash(), calculating it here:
-   * EIP-4844 spec blobhash is 32 bytes: [version, ...sha256(commitment)[1:32]]
-   * The version = VERSIONED_HASH_VERSION_KZG, currently 0x01.
-   * @param _blobCommitment - The 48 byte blob commitment
-   * @return bytes32 - The blob hash
-   */
-  function calculateBlobHash(bytes memory _blobCommitment) internal pure returns (bytes32) {
-    return bytes32(
-      (uint256(sha256(_blobCommitment)) & 0x00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
-        | VERSIONED_HASH_VERSION_KZG
-    );
-  }
+    /**
+     * @notice  Validate a batched blob.
+     * Input bytes:
+     * input[:32]     - versioned_hash - NB for a batched blob, this is simply the versioned hash of the batched
+     * commitment
+     * input[32:64]   - z = poseidon2( ...poseidon2(poseidon2(z_0, z_1), z_2) ... z_n)
+     * input[64:96]   - y = y_0 + gamma * y_1 + gamma^2 * y_2 + ... + gamma^n * y_n
+     * input[96:144]  - commitment C = C_0 + gamma * C_1 + gamma^2 * C_2 + ... + gamma^n * C_n
+     * input[144:192] - proof (a commitment to the quotient polynomial q(X)) = Q_0 + gamma * Q_1 + gamma^2 * Q_2 + ... +
+     * gamma^n * Q_n
+     * @param _blobInput - The above bytes to verify a batched blob
+     *
+     * If this function passes where the values of z, y, and C are valid public inputs to the final epoch root proof, then
+     * we know that the data in each blob of the epoch corresponds to the tx effects of all our proven txs in the epoch.
+     *
+     * The rollup circuits calculate each z_i and y_i as above, so if this function passes but they do not match the
+     * values from the circuit, then proof verification will fail.
+     *
+     * Each commitment C_i is injected into the circuits and their correctness is validated using the blobCommitmentsHash,
+     * as explained below in calculateBlobCommitmentsHash().
+     *
+     */
+    function validateBatchedBlob(bytes calldata _blobInput) internal view returns (bool success) {
+        // Staticcall the point eval precompile https://eips.ethereum.org/EIPS/eip-4844#point-evaluation-precompile :
+        (success,) = address(0x0a).staticcall(_blobInput);
+        require(success, Errors.Rollup__InvalidBlobProof(bytes32(_blobInput[0:32])));
+    }
+
+    /**
+     * @notice  Calculate the current state of the blobCommitmentsHash. Called for each new proposed checkpoint.
+     * @param _previousBlobCommitmentsHash - The previous checkpoint's blobCommitmentsHash.
+     * @param _blobCommitments - The commitments corresponding to this checkpoint's blobs.
+     * @param _isFirstCheckpointOfEpoch - Whether this checkpoint is the first of an epoch (see below).
+     *
+     * The blobCommitmentsHash is an accumulated value calculated in the rollup circuits as:
+     *    blobCommitmentsHash_i := sha256(blobCommitmentsHash_(i - 1), C_i)
+     * for each blob commitment C_i in an epoch. For the first blob in the epoch (i = 0):
+     *    blobCommitmentsHash_i := sha256(C_0)
+     * which is why we require _isFirstCheckpointOfEpoch here.
+     *
+     * Each blob commitment is injected into the rollup circuits and we rely on the L1 contracts to validate
+     * these commitments correspond to real blobs. The input _blobCommitments below come from validateBlobs()
+     * so we know they are valid commitments here.
+     *
+     * We recalculate the same blobCommitmentsHash (which encompasses all claimed blobs in the epoch)
+     * as in the rollup circuits, then use the final value as a public input to the root rollup proof
+     * verification in EpochProofLib.sol.
+     *
+     * If the proof verifies, we know that the injected commitments used in the rollup circuits match
+     * the real commitments to L1 blobs.
+     *
+     */
+    function calculateBlobCommitmentsHash(
+        bytes32 _previousBlobCommitmentsHash,
+        bytes[] memory _blobCommitments,
+        bool _isFirstCheckpointOfEpoch
+    ) internal pure returns (bytes32 currentBlobCommitmentsHash) {
+        uint256 i = 0;
+        currentBlobCommitmentsHash = _previousBlobCommitmentsHash;
+        // If we are at the first checkpoint of an epoch, we reinitialize the blobCommitmentsHash.
+        // Blob commitments are collected and proven per root rollup proof => per epoch.
+        if (_isFirstCheckpointOfEpoch) {
+            // Initialize the blobCommitmentsHash
+            currentBlobCommitmentsHash = Hash.sha256ToField(abi.encodePacked(_blobCommitments[i++]));
+        }
+        for (i; i < _blobCommitments.length; i++) {
+            currentBlobCommitmentsHash =
+                Hash.sha256ToField(abi.encodePacked(currentBlobCommitmentsHash, _blobCommitments[i]));
+        }
+    }
+
+    /**
+     * @notice  Calculate the expected blob hash given a blob commitment
+     * @dev TODO(#14646): Use kzg_to_versioned_hash & VERSIONED_HASH_VERSION_KZG
+     * Until we use an external kzg_to_versioned_hash(), calculating it here:
+     * EIP-4844 spec blobhash is 32 bytes: [version, ...sha256(commitment)[1:32]]
+     * The version = VERSIONED_HASH_VERSION_KZG, currently 0x01.
+     * @param _blobCommitment - The 48 byte blob commitment
+     * @return bytes32 - The blob hash
+     */
+    function calculateBlobHash(bytes memory _blobCommitment) internal pure returns (bytes32) {
+        return bytes32(
+            (uint256(sha256(_blobCommitment)) & 0x00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
+                | VERSIONED_HASH_VERSION_KZG
+        );
+    }
 }
 
 /**
@@ -5210,91 +5250,91 @@ library BlobLib {
  *      4. calculateBlobHash() computes versioned hashes from commitments following EIP-4844 specification
  */
 library BlobLib_1 {
-  address public constant VM_ADDRESS = address(uint160(uint256(keccak256("hevm cheat code"))));
-  uint256 internal constant VERSIONED_HASH_VERSION_KZG =
-    0x0100000000000000000000000000000000000000000000000000000000000000; // 0x01 << 248 to be used in blobHashCheck
+    address public constant VM_ADDRESS = address(uint160(uint256(keccak256("hevm cheat code"))));
+    uint256 internal constant VERSIONED_HASH_VERSION_KZG =
+        0x0100000000000000000000000000000000000000000000000000000000000000; // 0x01 << 248 to be used in blobHashCheck
 
-  /**
-   * @notice  Get the blob base fee
-   *
-   * @dev     If we are in a foundry test, we use the cheatcode to get the blob base fee.
-   *          Otherwise, we use the `block.blobbasefee`
-   *
-   * @return uint256 - The blob base fee
-   */
-  function getBlobBaseFee() internal view returns (uint256) {
-    // During forge script broadcasts, the VM cheatcode may not work properly
-    // (e.g., when broadcasting to anvil). In that case, we return a default value of 1
-    // to allow deployment to proceed. This is acceptable for e2e testing purposes.
-    // Lasse approved of this kludge to prevent being unable to deploy non-production
-    // contracts in Forge without this.
-    bool isAnvilTestChain = block.chainid == 31_337;
-    if (isAnvilTestChain && VM_ADDRESS.code.length > 0) {
-      // Use low-level staticcall to handle both reverts and empty returns
-      (bool success, bytes memory data) = VM_ADDRESS.staticcall(abi.encodeWithSignature("getBlobBaseFee()"));
-      if (success && data.length >= 32) {
-        return abi.decode(data, (uint256));
-      }
-      // During broadcast to anvil, the cheatcode returns empty data. Return a sensible default.
-      return 1;
-    }
-    return BlobLib.getBlobBaseFee();
-  }
-
-  /**
-   * @notice  Get the blob hash
-   *
-   * @dev     If we are in a foundry test, we use the cheatcode to get the blob hashes
-   *          Otherwise, we use the `blobhash` function in assembly
-   *
-   *          During forge script broadcasts, the VM cheatcode may not work properly.
-   *          In that case, we return bytes32(0) to allow deployment to proceed.
-   *
-   * @return blobHash - The blob hash
-   */
-  function getBlobHash(uint256 _index) internal view returns (bytes32 blobHash) {
-    // See comment above about anvil broadcasts for reasoning here.
-    bool isAnvilTestChain = block.chainid == 31_337;
-    if (isAnvilTestChain && VM_ADDRESS.code.length > 0) {
-      // Use low-level staticcall to handle both reverts and empty returns
-      (bool success, bytes memory data) = VM_ADDRESS.staticcall(abi.encodeWithSignature("getBlobhashes()"));
-      if (success && data.length >= 32) {
-        bytes32[] memory blobHashes = abi.decode(data, (bytes32[]));
-        if (_index < blobHashes.length) {
-          return blobHashes[_index];
+    /**
+     * @notice  Get the blob base fee
+     *
+     * @dev     If we are in a foundry test, we use the cheatcode to get the blob base fee.
+     *          Otherwise, we use the `block.blobbasefee`
+     *
+     * @return uint256 - The blob base fee
+     */
+    function getBlobBaseFee() internal view returns (uint256) {
+        // During forge script broadcasts, the VM cheatcode may not work properly
+        // (e.g., when broadcasting to anvil). In that case, we return a default value of 1
+        // to allow deployment to proceed. This is acceptable for e2e testing purposes.
+        // Lasse approved of this kludge to prevent being unable to deploy non-production
+        // contracts in Forge without this.
+        bool isAnvilTestChain = block.chainid == 31_337;
+        if (isAnvilTestChain && VM_ADDRESS.code.length > 0) {
+            // Use low-level staticcall to handle both reverts and empty returns
+            (bool success, bytes memory data) = VM_ADDRESS.staticcall(abi.encodeWithSignature("getBlobBaseFee()"));
+            if (success && data.length >= 32) {
+                return abi.decode(data, (uint256));
+            }
+            // During broadcast to anvil, the cheatcode returns empty data. Return a sensible default.
+            return 1;
         }
-      }
-      // During broadcast to anvil, the cheatcode returns empty data or no blob hashes exist
-      return bytes32(0);
+        return BlobLib.getBlobBaseFee();
     }
-    return BlobLib.getBlobHash(_index);
-  }
 
-  function validateBlobs(bytes calldata _blobsInput, bool _checkBlob)
-    internal
-    view
-    returns (bytes32[] memory blobHashes, bytes32 blobsHashesCommitment, bytes[] memory blobCommitments)
-  {
-    return BlobLib.validateBlobs(_blobsInput, _checkBlob);
-  }
+    /**
+     * @notice  Get the blob hash
+     *
+     * @dev     If we are in a foundry test, we use the cheatcode to get the blob hashes
+     *          Otherwise, we use the `blobhash` function in assembly
+     *
+     *          During forge script broadcasts, the VM cheatcode may not work properly.
+     *          In that case, we return bytes32(0) to allow deployment to proceed.
+     *
+     * @return blobHash - The blob hash
+     */
+    function getBlobHash(uint256 _index) internal view returns (bytes32 blobHash) {
+        // See comment above about anvil broadcasts for reasoning here.
+        bool isAnvilTestChain = block.chainid == 31_337;
+        if (isAnvilTestChain && VM_ADDRESS.code.length > 0) {
+            // Use low-level staticcall to handle both reverts and empty returns
+            (bool success, bytes memory data) = VM_ADDRESS.staticcall(abi.encodeWithSignature("getBlobhashes()"));
+            if (success && data.length >= 32) {
+                bytes32[] memory blobHashes = abi.decode(data, (bytes32[]));
+                if (_index < blobHashes.length) {
+                    return blobHashes[_index];
+                }
+            }
+            // During broadcast to anvil, the cheatcode returns empty data or no blob hashes exist
+            return bytes32(0);
+        }
+        return BlobLib.getBlobHash(_index);
+    }
 
-  function validateBatchedBlob(bytes calldata _blobInput) internal view returns (bool success) {
-    return BlobLib.validateBatchedBlob(_blobInput);
-  }
+    function validateBlobs(bytes calldata _blobsInput, bool _checkBlob)
+        internal
+        view
+        returns (bytes32[] memory blobHashes, bytes32 blobsHashesCommitment, bytes[] memory blobCommitments)
+    {
+        return BlobLib.validateBlobs(_blobsInput, _checkBlob);
+    }
 
-  function calculateBlobCommitmentsHash(
-    bytes32 _previousBlobCommitmentsHash,
-    bytes[] memory _blobCommitments,
-    bool _isFirstCheckpointOfEpoch
-  ) internal pure returns (bytes32 currentBlobCommitmentsHash) {
-    return BlobLib.calculateBlobCommitmentsHash(
-      _previousBlobCommitmentsHash, _blobCommitments, _isFirstCheckpointOfEpoch
-    );
-  }
+    function validateBatchedBlob(bytes calldata _blobInput) internal view returns (bool success) {
+        return BlobLib.validateBatchedBlob(_blobInput);
+    }
 
-  function calculateBlobHash(bytes memory _blobCommitment) internal pure returns (bytes32) {
-    return BlobLib.calculateBlobHash(_blobCommitment);
-  }
+    function calculateBlobCommitmentsHash(
+        bytes32 _previousBlobCommitmentsHash,
+        bytes[] memory _blobCommitments,
+        bool _isFirstCheckpointOfEpoch
+    ) internal pure returns (bytes32 currentBlobCommitmentsHash) {
+        return BlobLib.calculateBlobCommitmentsHash(
+            _previousBlobCommitmentsHash, _blobCommitments, _isFirstCheckpointOfEpoch
+        );
+    }
+
+    function calculateBlobHash(bytes memory _blobCommitment) internal pure returns (bytes32) {
+        return BlobLib.calculateBlobHash(_blobCommitment);
+    }
 }
 
 /*
@@ -5331,374 +5371,391 @@ uint256 constant L1_GAS_PER_EPOCH_VERIFIED = 3_600_000;
 uint256 constant MINIMUM_CONGESTION_MULTIPLIER = 1e9;
 
 library FeeLib {
-  using Math for uint256;
-  using SafeCast for int256;
-  using SafeCast for uint256;
-  using SignedMath for int256;
-  using PriceLib for EthValue;
-  using TimeLib for Slot;
-  using TimeLib for Timestamp;
+    using Math for uint256;
+    using SafeCast for int256;
+    using SafeCast for uint256;
+    using SignedMath for int256;
+    using PriceLib for EthValue;
+    using TimeLib for Slot;
+    using TimeLib for Timestamp;
 
-  using FeeHeaderLib for FeeHeader;
-  using FeeHeaderLib for CompressedFeeHeader;
-  using CompressedTimeMath for CompressedSlot;
-  using CompressedTimeMath for Slot;
+    using FeeHeaderLib for FeeHeader;
+    using FeeHeaderLib for CompressedFeeHeader;
+    using CompressedTimeMath for CompressedSlot;
+    using CompressedTimeMath for Slot;
 
-  using FeeStructsLib for L1FeeData;
-  using FeeStructsLib for CompressedL1FeeData;
-  using FeeConfigLib for FeeConfig;
-  using FeeConfigLib for CompressedFeeConfig;
+    using FeeStructsLib for L1FeeData;
+    using FeeStructsLib for CompressedL1FeeData;
+    using FeeConfigLib for FeeConfig;
+    using FeeConfigLib for CompressedFeeConfig;
 
-  Slot internal constant LIFETIME = Slot.wrap(5);
-  Slot internal constant LAG = Slot.wrap(2);
+    Slot internal constant LIFETIME = Slot.wrap(5);
+    Slot internal constant LAG = Slot.wrap(2);
 
-  bytes32 private constant FEE_STORE_POSITION = keccak256("aztec.fee.storage");
+    bytes32 private constant FEE_STORE_POSITION = keccak256("aztec.fee.storage");
 
-  function initialize(uint256 _manaTarget, EthValue _provingCostPerMana, EthPerFeeAssetE12 _initialEthPerFeeAsset)
-    internal
-  {
-    FeeStore storage feeStore = getStorage();
-
-    // Computes and ensures that limit is within sane bounds
-    computeManaLimit(_manaTarget);
-
-    // The rate-limit algebra in updateProvingCostPerMana assumes `current >= 2`; initializing
-    // below the floor would permanently freeze the proving-cost update path.
-    uint256 provingCost = EthValue.unwrap(_provingCostPerMana);
-    require(
-      provingCost >= MIN_PROVING_COST_PER_MANA,
-      Errors.FeeLib__ProvingCostBelowFloor(provingCost, MIN_PROVING_COST_PER_MANA)
-    );
-    // The uint64 cap inside FeeConfigLib.compress is a storage-shape bound, not an economic
-    // bound. Enforce a separate initial ceiling so a deploy cannot strand the rollup at a value
-    // that takes years to drift back to normal operating ranges via the rate-limited updater.
-    require(
-      provingCost <= MAX_INITIAL_PROVING_COST_PER_MANA,
-      Errors.FeeLib__ProvingCostAboveCeiling(provingCost, MAX_INITIAL_PROVING_COST_PER_MANA)
-    );
-
-    // Validate initial ETH per fee asset is within bounds
-    uint256 initialPrice = EthPerFeeAssetE12.unwrap(_initialEthPerFeeAsset);
-    require(
-      initialPrice >= MIN_ETH_PER_FEE_ASSET && initialPrice <= MAX_ETH_PER_FEE_ASSET,
-      Errors.FeeLib__InvalidInitialEthPerFeeAsset(initialPrice, MIN_ETH_PER_FEE_ASSET, MAX_ETH_PER_FEE_ASSET)
-    );
-
-    feeStore.config = FeeConfig({
-        manaTarget: _manaTarget,
-        congestionUpdateFraction: _manaTarget * MAGIC_CONGESTION_VALUE_MULTIPLIER / MAGIC_CONGESTION_VALUE_DIVISOR,
-        provingCostPerMana: _provingCostPerMana
-      }).compress();
-
-    feeStore.l1GasOracleValues = L1GasOracleValues({
-      pre: L1FeeData({baseFee: 1 gwei, blobFee: 1}).compress(),
-      post: L1FeeData({baseFee: block.basefee, blobFee: BlobLib_1.getBlobBaseFee()}).compress(),
-      slotOfChange: LIFETIME.compress()
-    });
-
-    // Write the initial ethPerFeeAsset to checkpoint 0's fee header
-    STFLib.writeGenesisFeeHeader(EthPerFeeAssetE12.unwrap(_initialEthPerFeeAsset));
-  }
-
-  function updateManaTarget(uint256 _manaTarget) internal {
-    // Computes and ensures that limit is within sane bounds
-    computeManaLimit(_manaTarget);
-
-    FeeStore storage feeStore = getStorage();
-
-    FeeConfig memory config = feeStore.config.decompress();
-    config.manaTarget = _manaTarget;
-    config.congestionUpdateFraction = _manaTarget * MAGIC_CONGESTION_VALUE_MULTIPLIER / MAGIC_CONGESTION_VALUE_DIVISOR;
-
-    feeStore.config = config.compress();
-  }
-
-  function updateProvingCostPerMana(EthValue _provingCostPerMana) internal {
-    FeeStore storage feeStore = getStorage();
-    FeeConfig memory config = feeStore.config.decompress();
-
-    uint256 current = EthValue.unwrap(config.provingCostPerMana);
-    uint256 newV = EthValue.unwrap(_provingCostPerMana);
-
-    require(newV >= MIN_PROVING_COST_PER_MANA, Errors.FeeLib__ProvingCostBelowFloor(newV, MIN_PROVING_COST_PER_MANA));
-
-    uint256 nextAllowed = uint256(feeStore.provingCostLastUpdate) + PROVING_COST_UPDATE_INTERVAL;
-    require(
-      feeStore.provingCostLastUpdate == 0 || block.timestamp >= nextAllowed,
-      Errors.FeeLib__ProvingCostCooldown(nextAllowed)
-    );
-
-    require(
-      newV * PROVING_COST_STEP_DEN <= current * PROVING_COST_STEP_NUM
-        && newV * PROVING_COST_STEP_NUM >= current * PROVING_COST_STEP_DEN,
-      Errors.FeeLib__ProvingCostStepExceeded(current, newV)
-    );
-
-    config.provingCostPerMana = _provingCostPerMana;
-    feeStore.config = config.compress();
-    feeStore.provingCostLastUpdate = uint64(block.timestamp);
-  }
-
-  function updateL1GasFeeOracle() internal {
-    Slot slot = Timestamp.wrap(block.timestamp).slotFromTimestamp();
-    // The slot where we find a new queued value acceptable
-    FeeStore storage feeStore = getStorage();
-
-    Slot acceptableSlot = feeStore.l1GasOracleValues.slotOfChange.decompress() + (LIFETIME - LAG);
-
-    if (slot < acceptableSlot) {
-      return;
-    }
-
-    feeStore.l1GasOracleValues = L1GasOracleValues({
-      pre: feeStore.l1GasOracleValues.post,
-      post: L1FeeData({baseFee: block.basefee, blobFee: BlobLib_1.getBlobBaseFee()}).compress(),
-      slotOfChange: (slot + LAG).compress()
-    });
-  }
-
-  function computeFeeHeader(
-    uint256 _checkpointNumber,
-    int256 _feeAssetPriceModifierBps,
-    uint256 _manaUsed,
-    uint256 _congestionCost,
-    uint256 _proverCost
-  ) internal view returns (FeeHeader memory) {
-    require(
-      SignedMath.abs(_feeAssetPriceModifierBps) <= MAX_FEE_ASSET_PRICE_MODIFIER_BPS,
-      Errors.FeeLib__InvalidFeeAssetPriceModifier()
-    );
-    CompressedFeeHeader parentFeeHeader = STFLib.getFeeHeader(_checkpointNumber - 1);
-    return FeeHeader({
-      excessMana: FeeLib.computeExcessMana(parentFeeHeader),
-      ethPerFeeAsset: FeeLib.computeNewEthPerFeeAsset(parentFeeHeader.getEthPerFeeAsset(), _feeAssetPriceModifierBps),
-      manaUsed: _manaUsed,
-      congestionCost: _congestionCost,
-      proverCost: _proverCost
-    });
-  }
-
-  function getL1FeesAt(Timestamp _timestamp) internal view returns (L1FeeData memory) {
-    FeeStore storage feeStore = getStorage();
-    return _timestamp.slotFromTimestamp() < feeStore.l1GasOracleValues.slotOfChange.decompress()
-      ? feeStore.l1GasOracleValues.pre.decompress()
-      : feeStore.l1GasOracleValues.post.decompress();
-  }
-
-  function getManaMinFeeComponentsAt(uint256 _checkpointOfInterest, Timestamp _timestamp, bool _inFeeAsset)
-    internal
-    view
-    returns (ManaMinFeeComponents memory)
-  {
-    FeeStore storage feeStore = getStorage();
-
-    uint256 manaTarget = feeStore.config.getManaTarget();
-
-    EthValue sequencerCostPerMana;
-    EthValue proverCostPerMana;
-    EthValue total;
-
+    function initialize(uint256 _manaTarget, EthValue _provingCostPerMana, EthPerFeeAssetE12 _initialEthPerFeeAsset)
+        internal
     {
-      L1FeeData memory fees = FeeLib.getL1FeesAt(_timestamp);
+        FeeStore storage feeStore = getStorage();
 
-      // Sequencer cost per mana
-      {
-        uint256 ethUsed =
-          (L1_GAS_PER_CHECKPOINT_PROPOSED * fees.baseFee) + (BLOBS_PER_CHECKPOINT * BLOB_GAS_PER_BLOB * fees.blobFee);
+        // Computes and ensures that limit is within sane bounds
+        computeManaLimit(_manaTarget);
 
-        sequencerCostPerMana = EthValue.wrap(Math.mulDiv(ethUsed, 1, manaTarget, Math.Rounding.Ceil));
-      }
+        // The rate-limit algebra in updateProvingCostPerMana assumes `current >= 2`; initializing
+        // below the floor would permanently freeze the proving-cost update path.
+        uint256 provingCost = EthValue.unwrap(_provingCostPerMana);
+        require(
+            provingCost >= MIN_PROVING_COST_PER_MANA,
+            Errors.FeeLib__ProvingCostBelowFloor(provingCost, MIN_PROVING_COST_PER_MANA)
+        );
+        // The uint64 cap inside FeeConfigLib.compress is a storage-shape bound, not an economic
+        // bound. Enforce a separate initial ceiling so a deploy cannot strand the rollup at a value
+        // that takes years to drift back to normal operating ranges via the rate-limited updater.
+        require(
+            provingCost <= MAX_INITIAL_PROVING_COST_PER_MANA,
+            Errors.FeeLib__ProvingCostAboveCeiling(provingCost, MAX_INITIAL_PROVING_COST_PER_MANA)
+        );
 
-      // Prover cost per mana
-      {
-        proverCostPerMana = EthValue.wrap(
+        // Validate initial ETH per fee asset is within bounds
+        uint256 initialPrice = EthPerFeeAssetE12.unwrap(_initialEthPerFeeAsset);
+        require(
+            initialPrice >= MIN_ETH_PER_FEE_ASSET && initialPrice <= MAX_ETH_PER_FEE_ASSET,
+            Errors.FeeLib__InvalidInitialEthPerFeeAsset(initialPrice, MIN_ETH_PER_FEE_ASSET, MAX_ETH_PER_FEE_ASSET)
+        );
+
+        feeStore.config = FeeConfig({
+            manaTarget: _manaTarget,
+            congestionUpdateFraction: _manaTarget * MAGIC_CONGESTION_VALUE_MULTIPLIER / MAGIC_CONGESTION_VALUE_DIVISOR,
+            provingCostPerMana: _provingCostPerMana
+        }).compress();
+
+        feeStore.l1GasOracleValues = L1GasOracleValues({
+            pre: L1FeeData({baseFee: 1 gwei, blobFee: 1}).compress(),
+            post: L1FeeData({baseFee: block.basefee, blobFee: BlobLib_1.getBlobBaseFee()}).compress(),
+            slotOfChange: LIFETIME.compress()
+        });
+
+        // Write the initial ethPerFeeAsset to checkpoint 0's fee header
+        STFLib.writeGenesisFeeHeader(EthPerFeeAssetE12.unwrap(_initialEthPerFeeAsset));
+    }
+
+    function updateManaTarget(uint256 _manaTarget) internal {
+        // Computes and ensures that limit is within sane bounds
+        computeManaLimit(_manaTarget);
+
+        FeeStore storage feeStore = getStorage();
+
+        FeeConfig memory config = feeStore.config.decompress();
+        config.manaTarget = _manaTarget;
+        config.congestionUpdateFraction =
+            _manaTarget * MAGIC_CONGESTION_VALUE_MULTIPLIER / MAGIC_CONGESTION_VALUE_DIVISOR;
+
+        feeStore.config = config.compress();
+    }
+
+    function updateProvingCostPerMana(EthValue _provingCostPerMana) internal {
+        FeeStore storage feeStore = getStorage();
+        FeeConfig memory config = feeStore.config.decompress();
+
+        uint256 current = EthValue.unwrap(config.provingCostPerMana);
+        uint256 newV = EthValue.unwrap(_provingCostPerMana);
+
+        require(
+            newV >= MIN_PROVING_COST_PER_MANA, Errors.FeeLib__ProvingCostBelowFloor(newV, MIN_PROVING_COST_PER_MANA)
+        );
+
+        uint256 nextAllowed = uint256(feeStore.provingCostLastUpdate) + PROVING_COST_UPDATE_INTERVAL;
+        require(
+            feeStore.provingCostLastUpdate == 0 || block.timestamp >= nextAllowed,
+            Errors.FeeLib__ProvingCostCooldown(nextAllowed)
+        );
+
+        require(
+            newV * PROVING_COST_STEP_DEN <= current * PROVING_COST_STEP_NUM
+                && newV * PROVING_COST_STEP_NUM >= current * PROVING_COST_STEP_DEN,
+            Errors.FeeLib__ProvingCostStepExceeded(current, newV)
+        );
+
+        config.provingCostPerMana = _provingCostPerMana;
+        feeStore.config = config.compress();
+        feeStore.provingCostLastUpdate = uint64(block.timestamp);
+    }
+
+    function updateL1GasFeeOracle() internal {
+        Slot slot = Timestamp.wrap(block.timestamp).slotFromTimestamp();
+        // The slot where we find a new queued value acceptable
+        FeeStore storage feeStore = getStorage();
+
+        Slot acceptableSlot = feeStore.l1GasOracleValues.slotOfChange.decompress() + (LIFETIME - LAG);
+
+        if (slot < acceptableSlot) {
+            return;
+        }
+
+        feeStore.l1GasOracleValues = L1GasOracleValues({
+            pre: feeStore.l1GasOracleValues.post,
+            post: L1FeeData({baseFee: block.basefee, blobFee: BlobLib_1.getBlobBaseFee()}).compress(),
+            slotOfChange: (slot + LAG).compress()
+        });
+    }
+
+    function computeFeeHeader(
+        uint256 _checkpointNumber,
+        int256 _feeAssetPriceModifierBps,
+        uint256 _manaUsed,
+        uint256 _congestionCost,
+        uint256 _proverCost
+    ) internal view returns (FeeHeader memory) {
+        require(
+            SignedMath.abs(_feeAssetPriceModifierBps) <= MAX_FEE_ASSET_PRICE_MODIFIER_BPS,
+            Errors.FeeLib__InvalidFeeAssetPriceModifier()
+        );
+        CompressedFeeHeader parentFeeHeader = STFLib.getFeeHeader(_checkpointNumber - 1);
+        return FeeHeader({
+            excessMana: FeeLib.computeExcessMana(parentFeeHeader),
+            ethPerFeeAsset: FeeLib.computeNewEthPerFeeAsset(parentFeeHeader.getEthPerFeeAsset(), _feeAssetPriceModifierBps),
+            manaUsed: _manaUsed,
+            congestionCost: _congestionCost,
+            proverCost: _proverCost
+        });
+    }
+
+    function getL1FeesAt(Timestamp _timestamp) internal view returns (L1FeeData memory) {
+        FeeStore storage feeStore = getStorage();
+        return _timestamp.slotFromTimestamp() < feeStore.l1GasOracleValues.slotOfChange.decompress()
+            ? feeStore.l1GasOracleValues.pre.decompress()
+            : feeStore.l1GasOracleValues.post.decompress();
+    }
+
+    function getManaMinFeeComponentsAt(uint256 _checkpointOfInterest, Timestamp _timestamp, bool _inFeeAsset)
+        internal
+        view
+        returns (ManaMinFeeComponents memory)
+    {
+        FeeStore storage feeStore = getStorage();
+
+        uint256 manaTarget = feeStore.config.getManaTarget();
+
+        EthValue sequencerCostPerMana;
+        EthValue proverCostPerMana;
+        EthValue total;
+
+        {
+            L1FeeData memory fees = FeeLib.getL1FeesAt(_timestamp);
+
+            // Sequencer cost per mana
+            {
+                uint256 ethUsed = (L1_GAS_PER_CHECKPOINT_PROPOSED * fees.baseFee)
+                    + (BLOBS_PER_CHECKPOINT * BLOB_GAS_PER_BLOB * fees.blobFee);
+
+                sequencerCostPerMana = EthValue.wrap(Math.mulDiv(ethUsed, 1, manaTarget, Math.Rounding.Ceil));
+            }
+
+            // Prover cost per mana
+            {
+                proverCostPerMana = EthValue.wrap(
+                    Math.mulDiv(
+                        Math.mulDiv(
+                            L1_GAS_PER_EPOCH_VERIFIED,
+                            fees.baseFee,
+                            TimeLib.getStorage().epochDuration,
+                            Math.Rounding.Ceil
+                        ),
+                        1,
+                        manaTarget,
+                        Math.Rounding.Ceil
+                    )
+                ) + feeStore.config.getProvingCostPerMana();
+            }
+
+            total = sequencerCostPerMana + proverCostPerMana;
+        }
+
+        CompressedFeeHeader parentFeeHeader = STFLib.getFeeHeader(_checkpointOfInterest);
+        uint256 excessMana =
+            FeeLib.clampedAdd(parentFeeHeader.getExcessMana() + parentFeeHeader.getManaUsed(), -int256(manaTarget));
+        uint256 congestionMultiplier_ = congestionMultiplier(excessMana);
+
+        EthValue congestionCost = EthValue.wrap(
             Math.mulDiv(
-              Math.mulDiv(
-                L1_GAS_PER_EPOCH_VERIFIED, fees.baseFee, TimeLib.getStorage().epochDuration, Math.Rounding.Ceil
-              ),
-              1,
-              manaTarget,
-              Math.Rounding.Ceil
+                EthValue.unwrap(total), congestionMultiplier_, MINIMUM_CONGESTION_MULTIPLIER, Math.Rounding.Floor
             )
-          ) + feeStore.config.getProvingCostPerMana();
-      }
+        ) - total;
 
-      total = sequencerCostPerMana + proverCostPerMana;
+        EthPerFeeAssetE12 ethPerFeeAsset = _inFeeAsset
+            ? FeeLib.getEthPerFeeAssetAtCheckpoint(_checkpointOfInterest)
+            : EthPerFeeAssetE12.wrap(ETH_PER_FEE_ASSET_PRECISION);
+
+        return ManaMinFeeComponents({
+            sequencerCost: FeeAssetValue.unwrap(sequencerCostPerMana.toFeeAsset(ethPerFeeAsset)),
+            proverCost: FeeAssetValue.unwrap(proverCostPerMana.toFeeAsset(ethPerFeeAsset)),
+            congestionCost: FeeAssetValue.unwrap(congestionCost.toFeeAsset(ethPerFeeAsset)),
+            congestionMultiplier: congestionMultiplier_
+        });
     }
 
-    CompressedFeeHeader parentFeeHeader = STFLib.getFeeHeader(_checkpointOfInterest);
-    uint256 excessMana =
-      FeeLib.clampedAdd(parentFeeHeader.getExcessMana() + parentFeeHeader.getManaUsed(), -int256(manaTarget));
-    uint256 congestionMultiplier_ = congestionMultiplier(excessMana);
-
-    EthValue congestionCost =
-    EthValue.wrap(
-        Math.mulDiv(EthValue.unwrap(total), congestionMultiplier_, MINIMUM_CONGESTION_MULTIPLIER, Math.Rounding.Floor)
-      ) - total;
-
-    EthPerFeeAssetE12 ethPerFeeAsset = _inFeeAsset
-      ? FeeLib.getEthPerFeeAssetAtCheckpoint(_checkpointOfInterest)
-      : EthPerFeeAssetE12.wrap(ETH_PER_FEE_ASSET_PRECISION);
-
-    return ManaMinFeeComponents({
-      sequencerCost: FeeAssetValue.unwrap(sequencerCostPerMana.toFeeAsset(ethPerFeeAsset)),
-      proverCost: FeeAssetValue.unwrap(proverCostPerMana.toFeeAsset(ethPerFeeAsset)),
-      congestionCost: FeeAssetValue.unwrap(congestionCost.toFeeAsset(ethPerFeeAsset)),
-      congestionMultiplier: congestionMultiplier_
-    });
-  }
-
-  function getManaTarget() internal view returns (uint256) {
-    return getStorage().config.getManaTarget();
-  }
-
-  function getManaLimit() internal view returns (uint256) {
-    FeeStore storage feeStore = getStorage();
-    return computeManaLimit(feeStore.config.getManaTarget());
-  }
-
-  function getProvingCostPerMana() internal view returns (EthValue) {
-    return getStorage().config.getProvingCostPerMana();
-  }
-
-  function getEthPerFeeAssetAtCheckpoint(uint256 _checkpointNumber) internal view returns (EthPerFeeAssetE12) {
-    return EthPerFeeAssetE12.wrap(STFLib.getFeeHeader(_checkpointNumber).getEthPerFeeAsset());
-  }
-
-  function computeExcessMana(CompressedFeeHeader _feeHeader) internal view returns (uint256) {
-    FeeStore storage feeStore = getStorage();
-    return clampedAdd(_feeHeader.getExcessMana() + _feeHeader.getManaUsed(), -int256(feeStore.config.getManaTarget()));
-  }
-
-  function congestionMultiplier(uint256 _numerator) internal view returns (uint256) {
-    FeeStore storage feeStore = getStorage();
-    uint256 denominator = feeStore.config.getCongestionUpdateFraction();
-    // Cap the exponent to prevent overflow in the Taylor series.
-    // At e^100, the multiplier is ~2.69e43 * MINIMUM_CONGESTION_MULTIPLIER, more than enough
-    uint256 cappedNumerator = Math.min(_numerator, denominator * 100);
-    return fakeExponential(MINIMUM_CONGESTION_MULTIPLIER, cappedNumerator, denominator);
-  }
-
-  function computeManaLimit(uint256 _manaTarget) internal pure returns (uint256) {
-    require(_manaTarget > 0, Errors.FeeLib__InvalidManaTarget(1, _manaTarget));
-    uint256 manaLimit = _manaTarget * 2;
-
-    // Ensure that the maximum spent mana can fit in the fee header
-    require(manaLimit <= type(uint32).max, Errors.FeeLib__InvalidManaLimit(type(uint32).max, manaLimit));
-
-    return manaLimit;
-  }
-
-  /**
-   * @notice  Compute new ETH per fee asset price based on percentage modifier
-   * @param _currentPrice The current price (ETH per fee asset with 1e12 precision)
-   * @param _modifierBps The modifier in basis points (-100 to +100 for ±1%)
-   * @return The new price clamped to [MIN_ETH_PER_FEE_ASSET, MAX_ETH_PER_FEE_ASSET]
-   */
-  function computeNewEthPerFeeAsset(uint256 _currentPrice, int256 _modifierBps) internal pure returns (uint256) {
-    uint256 newPrice;
-    if (_modifierBps >= 0) {
-      newPrice = _currentPrice * (10_000 + uint256(_modifierBps)) / 10_000;
-    } else {
-      newPrice = _currentPrice * (10_000 - SignedMath.abs(_modifierBps)) / 10_000;
+    function getManaTarget() internal view returns (uint256) {
+        return getStorage().config.getManaTarget();
     }
 
-    // Clamp to bounds
-    if (newPrice < MIN_ETH_PER_FEE_ASSET) return MIN_ETH_PER_FEE_ASSET;
-    if (newPrice > MAX_ETH_PER_FEE_ASSET) return MAX_ETH_PER_FEE_ASSET;
-    return newPrice;
-  }
-
-  function summedMinFee(ManaMinFeeComponents memory _components) internal pure returns (uint256) {
-    // Cap at uint128 max to ensure the fee can always be represented in the proposal header's
-    // feePerL2Gas field (uint128). Without this cap, extreme congestion or parameter combinations
-    // could produce fees that no valid header can represent, causing a liveness failure.
-    return Math.min(_components.sequencerCost + _components.proverCost + _components.congestionCost, type(uint128).max);
-  }
-
-  function getStorage() internal pure returns (FeeStore storage storageStruct) {
-    bytes32 position = FEE_STORE_POSITION;
-    assembly {
-      storageStruct.slot := position
-    }
-  }
-
-  /**
-   * @notice  Clamps the addition of a signed integer to a uint256
-   *          Useful for running values, whose minimum value will be 0
-   *          but should not throw if going below.
-   * @param _a The base value
-   * @param _b The value to add
-   * @return The clamped value
-   */
-  function clampedAdd(uint256 _a, int256 _b) internal pure returns (uint256) {
-    if (_b >= 0) {
-      return _a + _b.toUint256();
+    function getManaLimit() internal view returns (uint256) {
+        FeeStore storage feeStore = getStorage();
+        return computeManaLimit(feeStore.config.getManaTarget());
     }
 
-    uint256 sub = SignedMath.abs(_b);
-
-    if (_a > sub) {
-      return _a - sub;
+    function getProvingCostPerMana() internal view returns (EthValue) {
+        return getStorage().config.getProvingCostPerMana();
     }
 
-    return 0;
-  }
-
-  /**
-   * @notice An approximation of the exponential function: factor * e ** (numerator / denominator)
-   *
-   *         The function is the same as used in EIP-4844
-   *         https://github.com/ethereum/EIPs/blob/master/EIPS/eip-4844.md
-   *
-   *         Approximated using a taylor series.
-   *         For shorthand below, let `a = factor`, `x = numerator`, `d = denominator`
-   *
-   *         f(x) =  a
-   *              + (a * x) / d
-   *              + (a * x ** 2) / (2 * d ** 2)
-   *              + (a * x ** 3) / (6 * d ** 3)
-   *              + (a * x ** 4) / (24 * d ** 4)
-   *              + (a * x ** 5) / (120 * d ** 5)
-   *              + ...
-   *
-   *         For integer precision purposes, we will multiply by the denominator for intermediary steps and then
-   *         finally do a division by it.
-   *         The notation below might look slightly strange, but it is to try to convey the program flow below.
-   *
-   *         e(x) = (          a * d
-   *                 +         a * d * x / d
-   *                 +       ((a * d * x / d) * x) / (2 * d)
-   *                 +     ((((a * d * x / d) * x) / (2 * d)) * x) / (3 * d)
-   *                 +   ((((((a * d * x / d) * x) / (2 * d)) * x) / (3 * d)) * x) / (4 * d)
-   *                 + ((((((((a * d * x / d) * x) / (2 * d)) * x) / (3 * d)) * x) / (4 * d)) * x) / (5 * d)
-   *                 + ...
-   *                 ) / d
-   *
-   *         The notation might make it a bit of a pain to look at, but f(x) and e(x) are the same.
-   *         Gotta love integer math.
-   *
-   * @dev   Notice that as _numerator grows, the computation will quickly overflow.
-   *        As long as the `_denominator` is fairly small, it won't bring us back down to not overflow
-   *        For our purposes, this is acceptable, as if we have a fee that is so high that it would overflow and throw
-   *        then we would have other problems.
-   *
-   * @param _factor The base value
-   * @param _numerator The numerator
-   * @param _denominator The denominator
-   * @return The approximated value `_factor * e ** (_numerator / _denominator)`
-   */
-  function fakeExponential(uint256 _factor, uint256 _numerator, uint256 _denominator) private pure returns (uint256) {
-    uint256 i = 1;
-    uint256 output = 0;
-    uint256 numeratorAccumulator = _factor * _denominator;
-    while (numeratorAccumulator > 0) {
-      output += numeratorAccumulator;
-      numeratorAccumulator = (numeratorAccumulator * _numerator) / (_denominator * i);
-      i += 1;
+    function getEthPerFeeAssetAtCheckpoint(uint256 _checkpointNumber) internal view returns (EthPerFeeAssetE12) {
+        return EthPerFeeAssetE12.wrap(STFLib.getFeeHeader(_checkpointNumber).getEthPerFeeAsset());
     }
-    return output / _denominator;
-  }
+
+    function computeExcessMana(CompressedFeeHeader _feeHeader) internal view returns (uint256) {
+        FeeStore storage feeStore = getStorage();
+        return
+            clampedAdd(_feeHeader.getExcessMana() + _feeHeader.getManaUsed(), -int256(feeStore.config.getManaTarget()));
+    }
+
+    function congestionMultiplier(uint256 _numerator) internal view returns (uint256) {
+        FeeStore storage feeStore = getStorage();
+        uint256 denominator = feeStore.config.getCongestionUpdateFraction();
+        // Cap the exponent to prevent overflow in the Taylor series.
+        // At e^100, the multiplier is ~2.69e43 * MINIMUM_CONGESTION_MULTIPLIER, more than enough
+        uint256 cappedNumerator = Math.min(_numerator, denominator * 100);
+        return fakeExponential(MINIMUM_CONGESTION_MULTIPLIER, cappedNumerator, denominator);
+    }
+
+    function computeManaLimit(uint256 _manaTarget) internal pure returns (uint256) {
+        require(_manaTarget > 0, Errors.FeeLib__InvalidManaTarget(1, _manaTarget));
+        uint256 manaLimit = _manaTarget * 2;
+
+        // Ensure that the maximum spent mana can fit in the fee header
+        require(manaLimit <= type(uint32).max, Errors.FeeLib__InvalidManaLimit(type(uint32).max, manaLimit));
+
+        return manaLimit;
+    }
+
+    /**
+     * @notice  Compute new ETH per fee asset price based on percentage modifier
+     * @param _currentPrice The current price (ETH per fee asset with 1e12 precision)
+     * @param _modifierBps The modifier in basis points (-100 to +100 for ±1%)
+     * @return The new price clamped to [MIN_ETH_PER_FEE_ASSET, MAX_ETH_PER_FEE_ASSET]
+     */
+    function computeNewEthPerFeeAsset(uint256 _currentPrice, int256 _modifierBps) internal pure returns (uint256) {
+        uint256 newPrice;
+        if (_modifierBps >= 0) {
+            newPrice = _currentPrice * (10_000 + uint256(_modifierBps)) / 10_000;
+        } else {
+            newPrice = _currentPrice * (10_000 - SignedMath.abs(_modifierBps)) / 10_000;
+        }
+
+        // Clamp to bounds
+        if (newPrice < MIN_ETH_PER_FEE_ASSET) {
+            return MIN_ETH_PER_FEE_ASSET;
+        }
+        if (newPrice > MAX_ETH_PER_FEE_ASSET) {
+            return MAX_ETH_PER_FEE_ASSET;
+        }
+        return newPrice;
+    }
+
+    function summedMinFee(ManaMinFeeComponents memory _components) internal pure returns (uint256) {
+        // Cap at uint128 max to ensure the fee can always be represented in the proposal header's
+        // feePerL2Gas field (uint128). Without this cap, extreme congestion or parameter combinations
+        // could produce fees that no valid header can represent, causing a liveness failure.
+        return
+            Math.min(_components.sequencerCost + _components.proverCost + _components.congestionCost, type(uint128).max);
+    }
+
+    function getStorage() internal pure returns (FeeStore storage storageStruct) {
+        bytes32 position = FEE_STORE_POSITION;
+        assembly {
+            storageStruct.slot := position
+        }
+    }
+
+    /**
+     * @notice  Clamps the addition of a signed integer to a uint256
+     *          Useful for running values, whose minimum value will be 0
+     *          but should not throw if going below.
+     * @param _a The base value
+     * @param _b The value to add
+     * @return The clamped value
+     */
+    function clampedAdd(uint256 _a, int256 _b) internal pure returns (uint256) {
+        if (_b >= 0) {
+            return _a + _b.toUint256();
+        }
+
+        uint256 sub = SignedMath.abs(_b);
+
+        if (_a > sub) {
+            return _a - sub;
+        }
+
+        return 0;
+    }
+
+    /**
+     * @notice An approximation of the exponential function: factor * e ** (numerator / denominator)
+     *
+     *         The function is the same as used in EIP-4844
+     *         https://github.com/ethereum/EIPs/blob/master/EIPS/eip-4844.md
+     *
+     *         Approximated using a taylor series.
+     *         For shorthand below, let `a = factor`, `x = numerator`, `d = denominator`
+     *
+     *         f(x) =  a
+     *              + (a * x) / d
+     *              + (a * x ** 2) / (2 * d ** 2)
+     *              + (a * x ** 3) / (6 * d ** 3)
+     *              + (a * x ** 4) / (24 * d ** 4)
+     *              + (a * x ** 5) / (120 * d ** 5)
+     *              + ...
+     *
+     *         For integer precision purposes, we will multiply by the denominator for intermediary steps and then
+     *         finally do a division by it.
+     *         The notation below might look slightly strange, but it is to try to convey the program flow below.
+     *
+     *         e(x) = (          a * d
+     *                 +         a * d * x / d
+     *                 +       ((a * d * x / d) * x) / (2 * d)
+     *                 +     ((((a * d * x / d) * x) / (2 * d)) * x) / (3 * d)
+     *                 +   ((((((a * d * x / d) * x) / (2 * d)) * x) / (3 * d)) * x) / (4 * d)
+     *                 + ((((((((a * d * x / d) * x) / (2 * d)) * x) / (3 * d)) * x) / (4 * d)) * x) / (5 * d)
+     *                 + ...
+     *                 ) / d
+     *
+     *         The notation might make it a bit of a pain to look at, but f(x) and e(x) are the same.
+     *         Gotta love integer math.
+     *
+     * @dev   Notice that as _numerator grows, the computation will quickly overflow.
+     *        As long as the `_denominator` is fairly small, it won't bring us back down to not overflow
+     *        For our purposes, this is acceptable, as if we have a fee that is so high that it would overflow and throw
+     *        then we would have other problems.
+     *
+     * @param _factor The base value
+     * @param _numerator The numerator
+     * @param _denominator The denominator
+     * @return The approximated value `_factor * e ** (_numerator / _denominator)`
+     */
+    function fakeExponential(uint256 _factor, uint256 _numerator, uint256 _denominator)
+        private
+        pure
+        returns (uint256)
+    {
+        uint256 i = 1;
+        uint256 output = 0;
+        uint256 numeratorAccumulator = _factor * _denominator;
+        while (numeratorAccumulator > 0) {
+            output += numeratorAccumulator;
+            numeratorAccumulator = (numeratorAccumulator * _numerator) / (_denominator * i);
+            i += 1;
+        }
+        return output / _denominator;
+    }
 }
 
 /**
@@ -5707,36 +5764,36 @@ library FeeLib {
  * @notice Decoding and validating a proposed checkpoint header
  */
 library ProposedHeaderLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  /**
-   * @notice  Hash the proposed header
-   *
-   * @dev     The hashing here MUST match what is in the checkpoint_header.nr
-   *
-   * @param _header The header to hash
-   *
-   * @return The hash of the header
-   */
-  function hash(ProposedHeader memory _header) internal pure returns (bytes32) {
-    return Hash.sha256ToField(
-      abi.encodePacked(
-        _header.lastArchiveRoot,
-        _header.blockHeadersHash,
-        _header.blobsHash,
-        _header.inHash,
-        _header.outHash,
-        _header.slotNumber,
-        Timestamp.unwrap(_header.timestamp).toUint64(),
-        _header.coinbase,
-        _header.feeRecipient,
-        _header.gasFees.feePerDaGas,
-        _header.gasFees.feePerL2Gas,
-        _header.totalManaUsed,
-        _header.accumulatedFees
-      )
-    );
-  }
+    /**
+     * @notice  Hash the proposed header
+     *
+     * @dev     The hashing here MUST match what is in the checkpoint_header.nr
+     *
+     * @param _header The header to hash
+     *
+     * @return The hash of the header
+     */
+    function hash(ProposedHeader memory _header) internal pure returns (bytes32) {
+        return Hash.sha256ToField(
+            abi.encodePacked(
+                _header.lastArchiveRoot,
+                _header.blockHeadersHash,
+                _header.blobsHash,
+                _header.inHash,
+                _header.outHash,
+                _header.slotNumber,
+                Timestamp.unwrap(_header.timestamp).toUint64(),
+                _header.coinbase,
+                _header.feeRecipient,
+                _header.gasFees.feePerDaGas,
+                _header.gasFees.feePerL2Gas,
+                _header.totalManaUsed,
+                _header.accumulatedFees
+            )
+        );
+    }
 }
 
 /**
@@ -6159,10 +6216,11 @@ library ECDSA {
      * - with https://web3js.readthedocs.io/en/v1.3.4/web3-eth-accounts.html#sign[Web3.js]
      * - with https://docs.ethers.io/v5/api/signer/#Signer-signMessage[ethers]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes memory signature
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes memory signature)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         if (signature.length == 65) {
             bytes32 r;
             bytes32 s;
@@ -6205,11 +6263,11 @@ library ECDSA {
      *
      * See https://eips.ethereum.org/EIPS/eip-2098[ERC-2098 short signatures]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         unchecked {
             bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
             // We do not check for an overflow here since the shift operation results in 0 or 1.
@@ -6231,12 +6289,11 @@ library ECDSA {
      * @dev Overload of {ECDSA-tryRecover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -6288,22 +6345,22 @@ library ECDSA {
 error SignatureLib__InvalidSignature(address, address);
 
 library SignatureLib {
-  /**
-   * @notice Verifies a signature, throws if the signature is invalid or empty
-   *
-   * @param _signature - The signature to verify
-   * @param _signer - The expected signer of the signature
-   * @param _digest - The digest that was signed
-   */
-  function verify(Signature memory _signature, address _signer, bytes32 _digest) internal pure returns (bool) {
-    address recovered = ECDSA.recover(_digest, _signature.v, _signature.r, _signature.s);
-    require(_signer == recovered, SignatureLib__InvalidSignature(_signer, recovered));
-    return true;
-  }
+    /**
+     * @notice Verifies a signature, throws if the signature is invalid or empty
+     *
+     * @param _signature - The signature to verify
+     * @param _signer - The expected signer of the signature
+     * @param _digest - The digest that was signed
+     */
+    function verify(Signature memory _signature, address _signer, bytes32 _digest) internal pure returns (bool) {
+        address recovered = ECDSA.recover(_digest, _signature.v, _signature.r, _signature.s);
+        require(_signer == recovered, SignatureLib__InvalidSignature(_signer, recovered));
+        return true;
+    }
 
-  function isEmpty(Signature memory _signature) internal pure returns (bool) {
-    return _signature.v == 0;
-  }
+    function isEmpty(Signature memory _signature) internal pure returns (bool) {
+        return _signature.v == 0;
+    }
 }
 
 /**
@@ -6336,11 +6393,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint32).max` key set will disable the
      * library.
      */
-    function push(
-        Trace224 storage self,
-        uint32 key,
-        uint224 value
-    ) internal returns (uint224 oldValue, uint224 newValue) {
+    function push(Trace224 storage self, uint32 key, uint224 value)
+        internal
+        returns (uint224 oldValue, uint224 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -6431,11 +6487,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint224 value
-    ) private returns (uint224 oldValue, uint224 newValue) {
+    function _insert(Checkpoint224[] storage self, uint32 key, uint224 value)
+        private
+        returns (uint224 oldValue, uint224 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -6468,12 +6523,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -6492,12 +6546,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -6512,10 +6565,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint224[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint224 storage result) {
+    function _unsafeAccess(Checkpoint224[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint224 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -6539,11 +6593,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint48).max` key set will disable the
      * library.
      */
-    function push(
-        Trace208 storage self,
-        uint48 key,
-        uint208 value
-    ) internal returns (uint208 oldValue, uint208 newValue) {
+    function push(Trace208 storage self, uint48 key, uint208 value)
+        internal
+        returns (uint208 oldValue, uint208 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -6634,11 +6687,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint208 value
-    ) private returns (uint208 oldValue, uint208 newValue) {
+    function _insert(Checkpoint208[] storage self, uint48 key, uint208 value)
+        private
+        returns (uint208 oldValue, uint208 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -6671,12 +6723,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -6695,12 +6746,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -6715,10 +6765,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint208[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint208 storage result) {
+    function _unsafeAccess(Checkpoint208[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint208 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -6742,11 +6793,10 @@ library Checkpoints {
      * IMPORTANT: Never accept `key` as a user input, since an arbitrary `type(uint96).max` key set will disable the
      * library.
      */
-    function push(
-        Trace160 storage self,
-        uint96 key,
-        uint160 value
-    ) internal returns (uint160 oldValue, uint160 newValue) {
+    function push(Trace160 storage self, uint96 key, uint160 value)
+        internal
+        returns (uint160 oldValue, uint160 newValue)
+    {
         return _insert(self._checkpoints, key, value);
     }
 
@@ -6837,11 +6887,10 @@ library Checkpoints {
      * @dev Pushes a (`key`, `value`) pair into an ordered list of checkpoints, either by inserting a new checkpoint,
      * or by updating the last one.
      */
-    function _insert(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint160 value
-    ) private returns (uint160 oldValue, uint160 newValue) {
+    function _insert(Checkpoint160[] storage self, uint96 key, uint160 value)
+        private
+        returns (uint160 oldValue, uint160 newValue)
+    {
         uint256 pos = self.length;
 
         if (pos > 0) {
@@ -6874,12 +6923,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -6898,12 +6946,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -6918,10 +6965,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint160[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint160 storage result) {
+    function _unsafeAccess(Checkpoint160[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint160 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -7258,72 +7306,77 @@ library SlotDerivation {
 }
 
 library CoordinationSignatureLib {
-  bytes32 internal constant DOMAIN_TYPEHASH =
-    keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
-  bytes32 internal constant NAME_HASH = keccak256("Aztec Rollup");
-  bytes32 internal constant VERSION_HASH = keccak256("1");
+    bytes32 internal constant DOMAIN_TYPEHASH =
+        keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
+    bytes32 internal constant NAME_HASH = keccak256("Aztec Rollup");
+    bytes32 internal constant VERSION_HASH = keccak256("1");
 
-  bytes32 internal constant BLOCK_PROPOSAL_TYPEHASH = keccak256("BlockProposal(bytes32 payloadHash)");
-  bytes32 internal constant CHECKPOINT_PROPOSAL_TYPEHASH = keccak256("CheckpointProposal(bytes32 payloadHash)");
-  bytes32 internal constant CHECKPOINT_ATTESTATION_TYPEHASH = keccak256("CheckpointAttestation(bytes32 payloadHash)");
-  bytes32 internal constant ATTESTATIONS_AND_SIGNERS_TYPEHASH =
-    keccak256("AttestationsAndSigners(bytes32 payloadHash)");
+    bytes32 internal constant BLOCK_PROPOSAL_TYPEHASH = keccak256("BlockProposal(bytes32 payloadHash)");
+    bytes32 internal constant CHECKPOINT_PROPOSAL_TYPEHASH = keccak256("CheckpointProposal(bytes32 payloadHash)");
+    bytes32 internal constant CHECKPOINT_ATTESTATION_TYPEHASH = keccak256("CheckpointAttestation(bytes32 payloadHash)");
+    bytes32 internal constant ATTESTATIONS_AND_SIGNERS_TYPEHASH =
+        keccak256("AttestationsAndSigners(bytes32 payloadHash)");
 
-  function domainSeparator() internal view returns (bytes32) {
-    return domainSeparator(address(this));
-  }
+    function domainSeparator() internal view returns (bytes32) {
+        return domainSeparator(address(this));
+    }
 
-  function domainSeparator(address _verifyingContract) internal view returns (bytes32) {
-    return keccak256(abi.encode(DOMAIN_TYPEHASH, NAME_HASH, VERSION_HASH, block.chainid, _verifyingContract));
-  }
+    function domainSeparator(address _verifyingContract) internal view returns (bytes32) {
+        return keccak256(abi.encode(DOMAIN_TYPEHASH, NAME_HASH, VERSION_HASH, block.chainid, _verifyingContract));
+    }
 
-  function toTypedDataHash(bytes32 _structHash) internal view returns (bytes32) {
-    return toTypedDataHash(_structHash, address(this));
-  }
+    function toTypedDataHash(bytes32 _structHash) internal view returns (bytes32) {
+        return toTypedDataHash(_structHash, address(this));
+    }
 
-  function toTypedDataHash(bytes32 _structHash, address _verifyingContract) internal view returns (bytes32) {
-    return keccak256(abi.encodePacked(hex"1901", domainSeparator(_verifyingContract), _structHash));
-  }
+    function toTypedDataHash(bytes32 _structHash, address _verifyingContract) internal view returns (bytes32) {
+        return keccak256(abi.encodePacked(hex"1901", domainSeparator(_verifyingContract), _structHash));
+    }
 
-  function blockProposalDigest(bytes32 _payloadHash) internal view returns (bytes32) {
-    return blockProposalDigest(_payloadHash, address(this));
-  }
+    function blockProposalDigest(bytes32 _payloadHash) internal view returns (bytes32) {
+        return blockProposalDigest(_payloadHash, address(this));
+    }
 
-  function blockProposalDigest(bytes32 _payloadHash, address _verifyingContract) internal view returns (bytes32) {
-    return toTypedDataHash(keccak256(abi.encode(BLOCK_PROPOSAL_TYPEHASH, _payloadHash)), _verifyingContract);
-  }
+    function blockProposalDigest(bytes32 _payloadHash, address _verifyingContract) internal view returns (bytes32) {
+        return toTypedDataHash(keccak256(abi.encode(BLOCK_PROPOSAL_TYPEHASH, _payloadHash)), _verifyingContract);
+    }
 
-  function checkpointProposalDigest(bytes32 _payloadHash) internal view returns (bytes32) {
-    return checkpointProposalDigest(_payloadHash, address(this));
-  }
+    function checkpointProposalDigest(bytes32 _payloadHash) internal view returns (bytes32) {
+        return checkpointProposalDigest(_payloadHash, address(this));
+    }
 
-  function checkpointProposalDigest(bytes32 _payloadHash, address _verifyingContract) internal view returns (bytes32) {
-    return toTypedDataHash(keccak256(abi.encode(CHECKPOINT_PROPOSAL_TYPEHASH, _payloadHash)), _verifyingContract);
-  }
+    function checkpointProposalDigest(bytes32 _payloadHash, address _verifyingContract)
+        internal
+        view
+        returns (bytes32)
+    {
+        return toTypedDataHash(keccak256(abi.encode(CHECKPOINT_PROPOSAL_TYPEHASH, _payloadHash)), _verifyingContract);
+    }
 
-  function checkpointAttestationDigest(bytes32 _payloadHash) internal view returns (bytes32) {
-    return checkpointAttestationDigest(_payloadHash, address(this));
-  }
+    function checkpointAttestationDigest(bytes32 _payloadHash) internal view returns (bytes32) {
+        return checkpointAttestationDigest(_payloadHash, address(this));
+    }
 
-  function checkpointAttestationDigest(bytes32 _payloadHash, address _verifyingContract)
-    internal
-    view
-    returns (bytes32)
-  {
-    return toTypedDataHash(keccak256(abi.encode(CHECKPOINT_ATTESTATION_TYPEHASH, _payloadHash)), _verifyingContract);
-  }
+    function checkpointAttestationDigest(bytes32 _payloadHash, address _verifyingContract)
+        internal
+        view
+        returns (bytes32)
+    {
+        return toTypedDataHash(keccak256(abi.encode(CHECKPOINT_ATTESTATION_TYPEHASH, _payloadHash)), _verifyingContract);
+    }
 
-  function attestationsAndSignersDigest(bytes32 _payloadHash) internal view returns (bytes32) {
-    return attestationsAndSignersDigest(_payloadHash, address(this));
-  }
+    function attestationsAndSignersDigest(bytes32 _payloadHash) internal view returns (bytes32) {
+        return attestationsAndSignersDigest(_payloadHash, address(this));
+    }
 
-  function attestationsAndSignersDigest(bytes32 _payloadHash, address _verifyingContract)
-    internal
-    view
-    returns (bytes32)
-  {
-    return toTypedDataHash(keccak256(abi.encode(ATTESTATIONS_AND_SIGNERS_TYPEHASH, _payloadHash)), _verifyingContract);
-  }
+    function attestationsAndSignersDigest(bytes32 _payloadHash, address _verifyingContract)
+        internal
+        view
+        returns (bytes32)
+    {
+        return
+            toTypedDataHash(keccak256(abi.encode(ATTESTATIONS_AND_SIGNERS_TYPEHASH, _payloadHash)), _verifyingContract);
+    }
 }
 
 uint256 constant SIGNATURE_LENGTH = 65;
@@ -7331,233 +7384,235 @@ uint256 constant SIGNATURE_LENGTH = 65;
 uint256 constant ADDRESS_LENGTH = 20;
 
 library AttestationLib {
-  using SignatureLib for Signature;
+    using SignatureLib for Signature;
 
-  function getAttestationsAndSignersDigest(CommitteeAttestations memory _attestations, address[] memory _signers)
-    internal
-    view
-    returns (bytes32)
-  {
-    return getAttestationsAndSignersDigest(_attestations, _signers, address(this));
-  }
-
-  function getAttestationsAndSignersDigest(
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    address _verifyingContract
-  ) internal view returns (bytes32) {
-    return CoordinationSignatureLib.attestationsAndSignersDigest(
-      keccak256(abi.encode(_attestations, _signers)), _verifyingContract
-    );
-  }
-
-  /**
-   * @notice Checks if the given CommitteeAttestations is empty
-   *          Wll return true if either component is empty as they are needed together.
-   * @param _attestations - The committee attestations
-   * @return True if the committee attestations are empty, false otherwise
-   */
-  function isEmpty(CommitteeAttestations memory _attestations) internal pure returns (bool) {
-    return _attestations.signatureIndices.length == 0 || _attestations.signaturesOrAddresses.length == 0;
-  }
-
-  /**
-   * @notice Checks if the given index in the CommitteeAttestations is a signature
-   * @param _attestations - The committee attestations
-   * @param _index - The index to check
-   * @return True if the index is a signature, false otherwise
-   *
-   * @dev The signatureIndices is a bitmap of which indices are signatures.
-   * The index is a signature if the bit at the index is 1.
-   * The index is an address if the bit at the index is 0.
-   *
-   * See its use over in ValidatorSelectionLib.sol
-   */
-  function isSignature(CommitteeAttestations memory _attestations, uint256 _index) internal pure returns (bool) {
-    uint256 byteIndex = _index / 8;
-    uint256 shift = 7 - (_index % 8);
-    return (uint8(_attestations.signatureIndices[byteIndex]) >> shift) & 1 == 1;
-  }
-
-  /**
-   * @notice Gets the signature at the given index
-   * @param _attestations - The committee attestations
-   * @param _index - The index of the signature to get
-   */
-  function getSignature(CommitteeAttestations memory _attestations, uint256 _index)
-    internal
-    pure
-    returns (Signature memory)
-  {
-    bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
-    require(isSignature(_attestations, _index), Errors.AttestationLib__NotASignatureAtIndex(_index));
-
-    uint256 dataPtr;
-    assembly {
-      // Skip length
-      dataPtr := add(signaturesOrAddresses, 0x20)
+    function getAttestationsAndSignersDigest(CommitteeAttestations memory _attestations, address[] memory _signers)
+        internal
+        view
+        returns (bytes32)
+    {
+        return getAttestationsAndSignersDigest(_attestations, _signers, address(this));
     }
 
-    // Move to the start of the signature
-    for (uint256 i = 0; i < _index; ++i) {
-      dataPtr += isSignature(_attestations, i) ? SIGNATURE_LENGTH : ADDRESS_LENGTH;
+    function getAttestationsAndSignersDigest(
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        address _verifyingContract
+    ) internal view returns (bytes32) {
+        return CoordinationSignatureLib.attestationsAndSignersDigest(
+            keccak256(abi.encode(_attestations, _signers)), _verifyingContract
+        );
     }
 
-    uint8 v;
-    bytes32 r;
-    bytes32 s;
-
-    assembly {
-      v := byte(0, mload(dataPtr))
-      dataPtr := add(dataPtr, 1)
-      r := mload(dataPtr)
-      dataPtr := add(dataPtr, 32)
-      s := mload(dataPtr)
-    }
-    return Signature({v: v, r: r, s: s});
-  }
-
-  /**
-   * @notice Gets the address at the given index
-   * @param _attestations - The committee attestations
-   * @param _index - The index of the address to get
-   */
-  function getAddress(CommitteeAttestations memory _attestations, uint256 _index) internal pure returns (address) {
-    bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
-    require(!isSignature(_attestations, _index), Errors.AttestationLib__NotAnAddressAtIndex(_index));
-
-    uint256 dataPtr;
-    assembly {
-      // Skip length
-      dataPtr := add(signaturesOrAddresses, 0x20)
+    /**
+     * @notice Checks if the given CommitteeAttestations is empty
+     *          Wll return true if either component is empty as they are needed together.
+     * @param _attestations - The committee attestations
+     * @return True if the committee attestations are empty, false otherwise
+     */
+    function isEmpty(CommitteeAttestations memory _attestations) internal pure returns (bool) {
+        return _attestations.signatureIndices.length == 0 || _attestations.signaturesOrAddresses.length == 0;
     }
 
-    // Move to the start of the signature
-    for (uint256 i = 0; i < _index; ++i) {
-      dataPtr += isSignature(_attestations, i) ? SIGNATURE_LENGTH : ADDRESS_LENGTH;
+    /**
+     * @notice Checks if the given index in the CommitteeAttestations is a signature
+     * @param _attestations - The committee attestations
+     * @param _index - The index to check
+     * @return True if the index is a signature, false otherwise
+     *
+     * @dev The signatureIndices is a bitmap of which indices are signatures.
+     * The index is a signature if the bit at the index is 1.
+     * The index is an address if the bit at the index is 0.
+     *
+     * See its use over in ValidatorSelectionLib.sol
+     */
+    function isSignature(CommitteeAttestations memory _attestations, uint256 _index) internal pure returns (bool) {
+        uint256 byteIndex = _index / 8;
+        uint256 shift = 7 - (_index % 8);
+        return (uint8(_attestations.signatureIndices[byteIndex]) >> shift) & 1 == 1;
     }
 
-    address addr;
-    assembly {
-      addr := shr(96, mload(dataPtr))
+    /**
+     * @notice Gets the signature at the given index
+     * @param _attestations - The committee attestations
+     * @param _index - The index of the signature to get
+     */
+    function getSignature(CommitteeAttestations memory _attestations, uint256 _index)
+        internal
+        pure
+        returns (Signature memory)
+    {
+        bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
+        require(isSignature(_attestations, _index), Errors.AttestationLib__NotASignatureAtIndex(_index));
+
+        uint256 dataPtr;
+        assembly {
+            // Skip length
+            dataPtr := add(signaturesOrAddresses, 0x20)
+        }
+
+        // Move to the start of the signature
+        for (uint256 i = 0; i < _index; ++i) {
+            dataPtr += isSignature(_attestations, i) ? SIGNATURE_LENGTH : ADDRESS_LENGTH;
+        }
+
+        uint8 v;
+        bytes32 r;
+        bytes32 s;
+
+        assembly {
+            v := byte(0, mload(dataPtr))
+            dataPtr := add(dataPtr, 1)
+            r := mload(dataPtr)
+            dataPtr := add(dataPtr, 32)
+            s := mload(dataPtr)
+        }
+        return Signature({v: v, r: r, s: s});
     }
 
-    return addr;
-  }
+    /**
+     * @notice Gets the address at the given index
+     * @param _attestations - The committee attestations
+     * @param _index - The index of the address to get
+     */
+    function getAddress(CommitteeAttestations memory _attestations, uint256 _index) internal pure returns (address) {
+        bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
+        require(!isSignature(_attestations, _index), Errors.AttestationLib__NotAnAddressAtIndex(_index));
 
-  /**
-   * Recovers the committee from the addresses in the attestations and signers.
-   *
-   * @custom:reverts SignatureIndicesSizeMismatch if the signature indices have a wrong size
-   * @custom:reverts OutOfBounds throws if reading data beyond the `_attestations`
-   * @custom:reverts SignaturesOrAddressesSizeMismatch if the signatures or addresses object has wrong size
-   *
-   * @param _attestations - The committee attestations
-   * @param _signers The addresses of the committee members that signed the attestations. Provided in order to not have
-   * to recover them from their attestations' signatures (and hence save gas). The addresses of the non-signing
-   * committee members are directly included in the attestations.
-   * @param _length - The number of addresses to return, should match the number of committee members
-   * @return The addresses of the committee members.
-   */
-  function reconstructCommitteeFromSigners(
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    uint256 _length
-  ) internal pure returns (address[] memory) {
-    uint256 bitmapBytes = (_length + 7) / 8; // Round up to nearest byte
-    require(
-      bitmapBytes == _attestations.signatureIndices.length,
-      Errors.AttestationLib__SignatureIndicesSizeMismatch(bitmapBytes, _attestations.signatureIndices.length)
-    );
+        uint256 dataPtr;
+        assembly {
+            // Skip length
+            dataPtr := add(signaturesOrAddresses, 0x20)
+        }
 
-    // To get a ref that we can easily use with the assembly down below.
-    bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
-    address[] memory addresses = new address[](_length);
+        // Move to the start of the signature
+        for (uint256 i = 0; i < _index; ++i) {
+            dataPtr += isSignature(_attestations, i) ? SIGNATURE_LENGTH : ADDRESS_LENGTH;
+        }
 
-    uint256 signersIndex;
-    uint256 dataPtr;
-    uint256 currentByte;
-    uint256 bitMask;
-
-    assembly {
-      // Skip length
-      dataPtr := add(signaturesOrAddresses, 0x20)
-    }
-    uint256 offset = dataPtr;
-
-    for (uint256 i = 0; i < _length; ++i) {
-      // Load new byte every 8 iterations
-      if (i % 8 == 0) {
-        uint256 byteIndex = i / 8;
-        currentByte = uint8(_attestations.signatureIndices[byteIndex]);
-        bitMask = 128; // 0b10000000
-      }
-
-      bool isSignatureFlag = (currentByte & bitMask) != 0;
-      bitMask >>= 1;
-
-      if (isSignatureFlag) {
-        dataPtr += SIGNATURE_LENGTH;
-        addresses[i] = _signers[signersIndex];
-        signersIndex++;
-      } else {
         address addr;
         assembly {
-          addr := shr(96, mload(dataPtr))
-          dataPtr := add(dataPtr, 20)
+            addr := shr(96, mload(dataPtr))
         }
-        addresses[i] = addr;
-      }
+
+        return addr;
     }
 
-    // Ensure that the size of data provided actually matches what we expect
-    uint256 sizeOfSignaturesAndAddresses =
-      (signersIndex * SIGNATURE_LENGTH) + ((_length - signersIndex) * ADDRESS_LENGTH);
-    require(
-      sizeOfSignaturesAndAddresses == _attestations.signaturesOrAddresses.length,
-      Errors.AttestationLib__SignaturesOrAddressesSizeMismatch(
-        sizeOfSignaturesAndAddresses, _attestations.signaturesOrAddresses.length
-      )
-    );
-    require(signersIndex == _signers.length, Errors.AttestationLib__SignersSizeMismatch(signersIndex, _signers.length));
+    /**
+     * Recovers the committee from the addresses in the attestations and signers.
+     *
+     * @custom:reverts SignatureIndicesSizeMismatch if the signature indices have a wrong size
+     * @custom:reverts OutOfBounds throws if reading data beyond the `_attestations`
+     * @custom:reverts SignaturesOrAddressesSizeMismatch if the signatures or addresses object has wrong size
+     *
+     * @param _attestations - The committee attestations
+     * @param _signers The addresses of the committee members that signed the attestations. Provided in order to not have
+     * to recover them from their attestations' signatures (and hence save gas). The addresses of the non-signing
+     * committee members are directly included in the attestations.
+     * @param _length - The number of addresses to return, should match the number of committee members
+     * @return The addresses of the committee members.
+     */
+    function reconstructCommitteeFromSigners(
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        uint256 _length
+    ) internal pure returns (address[] memory) {
+        uint256 bitmapBytes = (_length + 7) / 8; // Round up to nearest byte
+        require(
+            bitmapBytes == _attestations.signatureIndices.length,
+            Errors.AttestationLib__SignatureIndicesSizeMismatch(bitmapBytes, _attestations.signatureIndices.length)
+        );
 
-    // Ensure that the reads were within the boundaries of the data, and that we have read all the data.
-    // This check is an extra precaution. There are two cases, we we would end up with an invalid
-    // read, and both should be covered by the above checks.
-    // 1. If trying to read beyond the expected data, the bitmap must have more ones than signatures,
-    // but this will make the the `sizeOfSignaturesAndAddresses` larger than passed data.
-    // 2. If trying to read less than expected data, the bitmap must have fewer ones than signatures,
-    // but this will make the the `sizeOfSignaturesAndAddresses` smaller than passed data.
-    uint256 upperLimit = offset + _attestations.signaturesOrAddresses.length;
-    require(dataPtr == upperLimit, Errors.AttestationLib__InvalidDataSize(dataPtr - offset, upperLimit - offset));
+        // To get a ref that we can easily use with the assembly down below.
+        bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
+        address[] memory addresses = new address[](_length);
 
-    return addresses;
-  }
+        uint256 signersIndex;
+        uint256 dataPtr;
+        uint256 currentByte;
+        uint256 bitMask;
+
+        assembly {
+            // Skip length
+            dataPtr := add(signaturesOrAddresses, 0x20)
+        }
+        uint256 offset = dataPtr;
+
+        for (uint256 i = 0; i < _length; ++i) {
+            // Load new byte every 8 iterations
+            if (i % 8 == 0) {
+                uint256 byteIndex = i / 8;
+                currentByte = uint8(_attestations.signatureIndices[byteIndex]);
+                bitMask = 128; // 0b10000000
+            }
+
+            bool isSignatureFlag = (currentByte & bitMask) != 0;
+            bitMask >>= 1;
+
+            if (isSignatureFlag) {
+                dataPtr += SIGNATURE_LENGTH;
+                addresses[i] = _signers[signersIndex];
+                signersIndex++;
+            } else {
+                address addr;
+                assembly {
+                    addr := shr(96, mload(dataPtr))
+                    dataPtr := add(dataPtr, 20)
+                }
+                addresses[i] = addr;
+            }
+        }
+
+        // Ensure that the size of data provided actually matches what we expect
+        uint256 sizeOfSignaturesAndAddresses =
+            (signersIndex * SIGNATURE_LENGTH) + ((_length - signersIndex) * ADDRESS_LENGTH);
+        require(
+            sizeOfSignaturesAndAddresses == _attestations.signaturesOrAddresses.length,
+            Errors.AttestationLib__SignaturesOrAddressesSizeMismatch(
+                sizeOfSignaturesAndAddresses, _attestations.signaturesOrAddresses.length
+            )
+        );
+        require(
+            signersIndex == _signers.length, Errors.AttestationLib__SignersSizeMismatch(signersIndex, _signers.length)
+        );
+
+        // Ensure that the reads were within the boundaries of the data, and that we have read all the data.
+        // This check is an extra precaution. There are two cases, we we would end up with an invalid
+        // read, and both should be covered by the above checks.
+        // 1. If trying to read beyond the expected data, the bitmap must have more ones than signatures,
+        // but this will make the the `sizeOfSignaturesAndAddresses` larger than passed data.
+        // 2. If trying to read less than expected data, the bitmap must have fewer ones than signatures,
+        // but this will make the the `sizeOfSignaturesAndAddresses` smaller than passed data.
+        uint256 upperLimit = offset + _attestations.signaturesOrAddresses.length;
+        require(dataPtr == upperLimit, Errors.AttestationLib__InvalidDataSize(dataPtr - offset, upperLimit - offset));
+
+        return addresses;
+    }
 }
 
 struct ValidatorSelectionStorage {
-  // A mapping to snapshots of the validator set
-  mapping(Epoch => bytes32 committeeCommitment) committeeCommitments;
-  // Checkpointed map of epoch -> randao value
-  Checkpoints.Trace224 randaos;
-  // The following 3 uint32s pack into a single slot (12 bytes)
-  uint32 targetCommitteeSize;
-  uint32 lagInEpochsForValidatorSet;
-  uint32 lagInEpochsForRandao;
-  // Checkpointed escape hatch addresses (key = timestamp, value = address as uint160)
-  Checkpoints.Trace160 escapeHatchCheckpoints;
+    // A mapping to snapshots of the validator set
+    mapping(Epoch => bytes32 committeeCommitment) committeeCommitments;
+    // Checkpointed map of epoch -> randao value
+    Checkpoints.Trace224 randaos;
+    // The following 3 uint32s pack into a single slot (12 bytes)
+    uint32 targetCommitteeSize;
+    uint32 lagInEpochsForValidatorSet;
+    uint32 lagInEpochsForRandao;
+    // Checkpointed escape hatch addresses (key = timestamp, value = address as uint160)
+    Checkpoints.Trace160 escapeHatchCheckpoints;
 }
 
 struct G1Point {
-  uint256 x;
-  uint256 y;
+    uint256 x;
+    uint256 y;
 }
 
 struct G2Point {
-  uint256 x0;
-  uint256 x1;
-  uint256 y0;
-  uint256 y1;
+    uint256 x0;
+    uint256 x1;
+    uint256 y0;
+    uint256 y1;
 }
 
 /**
@@ -7565,12 +7620,12 @@ struct G2Point {
  * @dev Used to store validator information in the entry queue before they are processed
  */
 struct DepositArgs {
-  address attester;
-  address withdrawer;
-  G1Point publicKeyInG1;
-  G2Point publicKeyInG2;
-  G1Point proofOfPossession;
-  bool moveWithLatestRollup;
+    address attester;
+    address withdrawer;
+    G1Point publicKeyInG1;
+    G2Point publicKeyInG2;
+    G1Point proofOfPossession;
+    bool moveWithLatestRollup;
 }
 
 /**
@@ -7581,143 +7636,143 @@ struct DepositArgs {
  * @param last Index of the next available slot in the queue (tail)
  */
 struct StakingQueue {
-  mapping(uint256 index => DepositArgs validator) validators;
-  uint128 first;
-  uint128 last;
+    mapping(uint256 index => DepositArgs validator) validators;
+    uint128 first;
+    uint128 last;
 }
 
 library StakingQueueLib {
-  function init(StakingQueue storage self) internal {
-    self.first = 1;
-    self.last = 1;
-  }
+    function init(StakingQueue storage self) internal {
+        self.first = 1;
+        self.last = 1;
+    }
 
-  function enqueue(
-    StakingQueue storage self,
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) internal returns (uint256) {
-    uint128 queueLocation = self.last;
+    function enqueue(
+        StakingQueue storage self,
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) internal returns (uint256) {
+        uint128 queueLocation = self.last;
 
-    self.validators[queueLocation] = DepositArgs({
-      attester: _attester,
-      withdrawer: _withdrawer,
-      publicKeyInG1: _publicKeyInG1,
-      publicKeyInG2: _publicKeyInG2,
-      proofOfPossession: _proofOfPossession,
-      moveWithLatestRollup: _moveWithLatestRollup
-    });
-    self.last = queueLocation + 1;
+        self.validators[queueLocation] = DepositArgs({
+            attester: _attester,
+            withdrawer: _withdrawer,
+            publicKeyInG1: _publicKeyInG1,
+            publicKeyInG2: _publicKeyInG2,
+            proofOfPossession: _proofOfPossession,
+            moveWithLatestRollup: _moveWithLatestRollup
+        });
+        self.last = queueLocation + 1;
 
-    return queueLocation;
-  }
+        return queueLocation;
+    }
 
-  function dequeue(StakingQueue storage self) internal returns (DepositArgs memory validator) {
-    require(self.last > self.first, Errors.Staking__QueueEmpty());
+    function dequeue(StakingQueue storage self) internal returns (DepositArgs memory validator) {
+        require(self.last > self.first, Errors.Staking__QueueEmpty());
 
-    validator = self.validators[self.first];
+        validator = self.validators[self.first];
 
-    self.first += 1;
-  }
+        self.first += 1;
+    }
 
-  function length(StakingQueue storage self) internal view returns (uint256 len) {
-    len = self.last - self.first;
-  }
+    function length(StakingQueue storage self) internal view returns (uint256 len) {
+        len = self.last - self.first;
+    }
 
-  function at(StakingQueue storage self, uint256 index) internal view returns (DepositArgs memory validator) {
-    validator = self.validators[self.first + index];
-  }
+    function at(StakingQueue storage self, uint256 index) internal view returns (DepositArgs memory validator) {
+        validator = self.validators[self.first + index];
+    }
 }
 
 type CompressedBallot is uint256;
 
 struct Ballot {
-  uint256 yea;
-  uint256 nay;
+    uint256 yea;
+    uint256 nay;
 }
 
 library BallotLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  uint256 internal constant YEA_MASK = 0xffffffffffffffffffffffffffffffff00000000000000000000000000000000;
-  uint256 internal constant NAY_MASK = 0xffffffffffffffffffffffffffffffff;
+    uint256 internal constant YEA_MASK = 0xffffffffffffffffffffffffffffffff00000000000000000000000000000000;
+    uint256 internal constant NAY_MASK = 0xffffffffffffffffffffffffffffffff;
 
-  function getYea(CompressedBallot _compressedBallot) internal pure returns (uint256) {
-    return CompressedBallot.unwrap(_compressedBallot) >> 128;
-  }
+    function getYea(CompressedBallot _compressedBallot) internal pure returns (uint256) {
+        return CompressedBallot.unwrap(_compressedBallot) >> 128;
+    }
 
-  function getNay(CompressedBallot _compressedBallot) internal pure returns (uint256) {
-    return CompressedBallot.unwrap(_compressedBallot) & NAY_MASK;
-  }
+    function getNay(CompressedBallot _compressedBallot) internal pure returns (uint256) {
+        return CompressedBallot.unwrap(_compressedBallot) & NAY_MASK;
+    }
 
-  function updateYea(CompressedBallot _compressedBallot, uint256 _yea) internal pure returns (CompressedBallot) {
-    uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~YEA_MASK;
-    return CompressedBallot.wrap(value | (_yea << 128));
-  }
+    function updateYea(CompressedBallot _compressedBallot, uint256 _yea) internal pure returns (CompressedBallot) {
+        uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~YEA_MASK;
+        return CompressedBallot.wrap(value | (_yea << 128));
+    }
 
-  function updateNay(CompressedBallot _compressedBallot, uint256 _nay) internal pure returns (CompressedBallot) {
-    uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~NAY_MASK;
-    return CompressedBallot.wrap(value | _nay);
-  }
+    function updateNay(CompressedBallot _compressedBallot, uint256 _nay) internal pure returns (CompressedBallot) {
+        uint256 value = CompressedBallot.unwrap(_compressedBallot) & ~NAY_MASK;
+        return CompressedBallot.wrap(value | _nay);
+    }
 
-  function addYea(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
-    uint256 currentYea = getYea(_compressedBallot);
-    uint256 newYea = currentYea + _amount;
-    return updateYea(_compressedBallot, newYea.toUint128());
-  }
+    function addYea(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
+        uint256 currentYea = getYea(_compressedBallot);
+        uint256 newYea = currentYea + _amount;
+        return updateYea(_compressedBallot, newYea.toUint128());
+    }
 
-  function addNay(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
-    uint256 currentNay = getNay(_compressedBallot);
-    uint256 newNay = currentNay + _amount;
-    return updateNay(_compressedBallot, newNay.toUint128());
-  }
+    function addNay(CompressedBallot _compressedBallot, uint256 _amount) internal pure returns (CompressedBallot) {
+        uint256 currentNay = getNay(_compressedBallot);
+        uint256 newNay = currentNay + _amount;
+        return updateNay(_compressedBallot, newNay.toUint128());
+    }
 
-  function compress(Ballot memory _ballot) internal pure returns (CompressedBallot) {
-    // We are doing cast to uint128 but inside a uint256 to not wreck the shifting.
-    uint256 yea = _ballot.yea.toUint128();
-    uint256 nay = _ballot.nay.toUint128();
-    return CompressedBallot.wrap((yea << 128) | nay);
-  }
+    function compress(Ballot memory _ballot) internal pure returns (CompressedBallot) {
+        // We are doing cast to uint128 but inside a uint256 to not wreck the shifting.
+        uint256 yea = _ballot.yea.toUint128();
+        uint256 nay = _ballot.nay.toUint128();
+        return CompressedBallot.wrap((yea << 128) | nay);
+    }
 
-  function decompress(CompressedBallot _compressedBallot) internal pure returns (Ballot memory) {
-    return Ballot({yea: getYea(_compressedBallot), nay: getNay(_compressedBallot)});
-  }
+    function decompress(CompressedBallot _compressedBallot) internal pure returns (Ballot memory) {
+        return Ballot({yea: getYea(_compressedBallot), nay: getNay(_compressedBallot)});
+    }
 }
 
 // @notice if this changes, please update the enum in governance.ts
 enum ProposalState {
-  Pending,
-  Active,
-  Queued,
-  Executable,
-  Rejected,
-  Executed,
-  Droppable,
-  Dropped,
-  Expired
+    Pending,
+    Active,
+    Queued,
+    Executable,
+    Rejected,
+    Executed,
+    Droppable,
+    Dropped,
+    Expired
 }
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 /**
@@ -7733,22 +7788,22 @@ interface IPayload {
  * directly instead of storing the entire configuration struct.
  */
 struct CompressedProposal {
-  // Slot 1: Core Identity (256 bits)
-  address proposer; // 160 bits
-  uint96 minimumVotes; // 96 bits - from config
-    // Slot 2: Timing (232 bits used, 24 bits padding)
-  ProposalState cachedState; // 8 bits
-  CompressedTimestamp creation; // 32 bits
-  CompressedTimestamp votingDelay; // 32 bits - from config
-  CompressedTimestamp votingDuration; // 32 bits - from config
-  CompressedTimestamp executionDelay; // 32 bits - from config
-  CompressedTimestamp gracePeriod; // 32 bits - from config
-  uint64 quorum; // 64 bits - from config
-    // Slot 3: Votes (256 bits)
-  CompressedBallot summedBallot; // 256 bits (128 yea + 128 nay)
-    // Slot 4: References (224 bits used, 32 bits padding)
-  IPayload payload; // 160 bits
-  uint64 requiredYeaMargin; // 64 bits - from config
+    // Slot 1: Core Identity (256 bits)
+    address proposer; // 160 bits
+    uint96 minimumVotes; // 96 bits - from config
+        // Slot 2: Timing (232 bits used, 24 bits padding)
+    ProposalState cachedState; // 8 bits
+    CompressedTimestamp creation; // 32 bits
+    CompressedTimestamp votingDelay; // 32 bits - from config
+    CompressedTimestamp votingDuration; // 32 bits - from config
+    CompressedTimestamp executionDelay; // 32 bits - from config
+    CompressedTimestamp gracePeriod; // 32 bits - from config
+    uint64 quorum; // 64 bits - from config
+        // Slot 3: Votes (256 bits)
+    CompressedBallot summedBallot; // 256 bits (128 yea + 128 nay)
+        // Slot 4: References (224 bits used, 32 bits padding)
+    IPayload payload; // 160 bits
+    uint64 requiredYeaMargin; // 64 bits - from config
 }
 
 /**
@@ -7766,168 +7821,168 @@ struct CompressedProposal {
  * ProposeConfig fields are kept together in Slot 2.
  */
 struct CompressedConfiguration {
-  // Slot 1: Timing and percentages - 32*4 + 64*2 = 256 bits
-  CompressedTimestamp votingDelay;
-  CompressedTimestamp votingDuration;
-  CompressedTimestamp executionDelay;
-  CompressedTimestamp gracePeriod;
-  uint64 quorum;
-  uint64 requiredYeaMargin;
-  // Slot 2: Amounts and proposeConfig - 96 + 96 + 32 = 224 bits (32 bits unused)
-  uint96 minimumVotes;
-  uint96 lockAmount;
-  CompressedTimestamp lockDelay;
+    // Slot 1: Timing and percentages - 32*4 + 64*2 = 256 bits
+    CompressedTimestamp votingDelay;
+    CompressedTimestamp votingDuration;
+    CompressedTimestamp executionDelay;
+    CompressedTimestamp gracePeriod;
+    uint64 quorum;
+    uint64 requiredYeaMargin;
+    // Slot 2: Amounts and proposeConfig - 96 + 96 + 32 = 224 bits (32 bits unused)
+    uint96 minimumVotes;
+    uint96 lockAmount;
+    CompressedTimestamp lockDelay;
 }
 
 // Configuration for proposals - same as Configuration but without proposeConfig
 // since proposeConfig is only used for proposeWithLock, not for the proposal itself
 struct ProposalConfiguration {
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 struct Proposal {
-  ProposalConfiguration config;
-  ProposalState cachedState;
-  IPayload payload;
-  address proposer;
-  Timestamp creation;
-  Ballot summedBallot;
+    ProposalConfiguration config;
+    ProposalState cachedState;
+    IPayload payload;
+    address proposer;
+    Timestamp creation;
+    Ballot summedBallot;
 }
 
 library CompressedProposalLib {
-  using SafeCast for uint256;
-  using CompressedTimeMath for Timestamp;
-  using CompressedTimeMath for CompressedTimestamp;
-  using BallotLib for CompressedBallot;
+    using SafeCast for uint256;
+    using CompressedTimeMath for Timestamp;
+    using CompressedTimeMath for CompressedTimestamp;
+    using BallotLib for CompressedBallot;
 
-  /**
-   * @notice Add yea votes to the proposal
-   * @param _compressed Storage pointer to compressed proposal
-   * @param _amount The amount of yea votes to add
-   */
-  function addYea(CompressedProposal storage _compressed, uint256 _amount) internal {
-    _compressed.summedBallot = _compressed.summedBallot.addYea(_amount);
-  }
+    /**
+     * @notice Add yea votes to the proposal
+     * @param _compressed Storage pointer to compressed proposal
+     * @param _amount The amount of yea votes to add
+     */
+    function addYea(CompressedProposal storage _compressed, uint256 _amount) internal {
+        _compressed.summedBallot = _compressed.summedBallot.addYea(_amount);
+    }
 
-  /**
-   * @notice Add nay votes to the proposal
-   * @param _compressed Storage pointer to compressed proposal
-   * @param _amount The amount of nay votes to add
-   */
-  function addNay(CompressedProposal storage _compressed, uint256 _amount) internal {
-    _compressed.summedBallot = _compressed.summedBallot.addNay(_amount);
-  }
+    /**
+     * @notice Add nay votes to the proposal
+     * @param _compressed Storage pointer to compressed proposal
+     * @param _amount The amount of nay votes to add
+     */
+    function addNay(CompressedProposal storage _compressed, uint256 _amount) internal {
+        _compressed.summedBallot = _compressed.summedBallot.addNay(_amount);
+    }
 
-  /**
-   * @notice Get yea and nay votes
-   * @param _compressed Storage pointer to compressed proposal
-   * @return yea The yea votes
-   * @return nay The nay votes
-   */
-  function getVotes(CompressedProposal storage _compressed) internal view returns (uint256 yea, uint256 nay) {
-    yea = _compressed.summedBallot.getYea();
-    nay = _compressed.summedBallot.getNay();
-  }
+    /**
+     * @notice Get yea and nay votes
+     * @param _compressed Storage pointer to compressed proposal
+     * @return yea The yea votes
+     * @return nay The nay votes
+     */
+    function getVotes(CompressedProposal storage _compressed) internal view returns (uint256 yea, uint256 nay) {
+        yea = _compressed.summedBallot.getYea();
+        nay = _compressed.summedBallot.getNay();
+    }
 
-  /**
-   * @notice Create a compressed proposal from uncompressed data and config
-   * @param _proposer The proposal creator
-   * @param _payload The payload to execute
-   * @param _creation The creation timestamp
-   * @param _config The compressed configuration to embed
-   * @return The compressed proposal
-   */
-  function create(address _proposer, IPayload _payload, Timestamp _creation, CompressedConfiguration memory _config)
-    internal
-    pure
-    returns (CompressedProposal memory)
-  {
-    return CompressedProposal({
-      proposer: _proposer,
-      minimumVotes: _config.minimumVotes,
-      cachedState: ProposalState.Pending,
-      creation: _creation.compress(),
-      votingDelay: _config.votingDelay,
-      votingDuration: _config.votingDuration,
-      executionDelay: _config.executionDelay,
-      gracePeriod: _config.gracePeriod,
-      quorum: _config.quorum,
-      summedBallot: CompressedBallot.wrap(0),
-      payload: _payload,
-      requiredYeaMargin: _config.requiredYeaMargin
-    });
-  }
+    /**
+     * @notice Create a compressed proposal from uncompressed data and config
+     * @param _proposer The proposal creator
+     * @param _payload The payload to execute
+     * @param _creation The creation timestamp
+     * @param _config The compressed configuration to embed
+     * @return The compressed proposal
+     */
+    function create(address _proposer, IPayload _payload, Timestamp _creation, CompressedConfiguration memory _config)
+        internal
+        pure
+        returns (CompressedProposal memory)
+    {
+        return CompressedProposal({
+            proposer: _proposer,
+            minimumVotes: _config.minimumVotes,
+            cachedState: ProposalState.Pending,
+            creation: _creation.compress(),
+            votingDelay: _config.votingDelay,
+            votingDuration: _config.votingDuration,
+            executionDelay: _config.executionDelay,
+            gracePeriod: _config.gracePeriod,
+            quorum: _config.quorum,
+            summedBallot: CompressedBallot.wrap(0),
+            payload: _payload,
+            requiredYeaMargin: _config.requiredYeaMargin
+        });
+    }
 
-  /**
-   * @notice Compress an uncompressed Proposal into a CompressedProposal
-   * @param _proposal The uncompressed proposal to compress
-   * @return The compressed proposal
-   */
-  function compress(Proposal memory _proposal) internal pure returns (CompressedProposal memory) {
-    return CompressedProposal({
-      proposer: _proposal.proposer,
-      minimumVotes: _proposal.config.minimumVotes.toUint96(),
-      cachedState: _proposal.cachedState,
-      creation: _proposal.creation.compress(),
-      votingDelay: _proposal.config.votingDelay.compress(),
-      votingDuration: _proposal.config.votingDuration.compress(),
-      executionDelay: _proposal.config.executionDelay.compress(),
-      gracePeriod: _proposal.config.gracePeriod.compress(),
-      quorum: _proposal.config.quorum.toUint64(),
-      summedBallot: BallotLib.compress(_proposal.summedBallot),
-      payload: _proposal.payload,
-      requiredYeaMargin: _proposal.config.requiredYeaMargin.toUint64()
-    });
-  }
+    /**
+     * @notice Compress an uncompressed Proposal into a CompressedProposal
+     * @param _proposal The uncompressed proposal to compress
+     * @return The compressed proposal
+     */
+    function compress(Proposal memory _proposal) internal pure returns (CompressedProposal memory) {
+        return CompressedProposal({
+            proposer: _proposal.proposer,
+            minimumVotes: _proposal.config.minimumVotes.toUint96(),
+            cachedState: _proposal.cachedState,
+            creation: _proposal.creation.compress(),
+            votingDelay: _proposal.config.votingDelay.compress(),
+            votingDuration: _proposal.config.votingDuration.compress(),
+            executionDelay: _proposal.config.executionDelay.compress(),
+            gracePeriod: _proposal.config.gracePeriod.compress(),
+            quorum: _proposal.config.quorum.toUint64(),
+            summedBallot: BallotLib.compress(_proposal.summedBallot),
+            payload: _proposal.payload,
+            requiredYeaMargin: _proposal.config.requiredYeaMargin.toUint64()
+        });
+    }
 
-  /**
-   * @notice Decompress a CompressedProposal into a standard Proposal
-   * @param _compressed The compressed proposal
-   * @return The uncompressed proposal
-   */
-  function decompress(CompressedProposal memory _compressed) internal pure returns (Proposal memory) {
-    return Proposal({
-      config: ProposalConfiguration({
-        votingDelay: _compressed.votingDelay.decompress(),
-        votingDuration: _compressed.votingDuration.decompress(),
-        executionDelay: _compressed.executionDelay.decompress(),
-        gracePeriod: _compressed.gracePeriod.decompress(),
-        quorum: _compressed.quorum,
-        requiredYeaMargin: _compressed.requiredYeaMargin,
-        minimumVotes: _compressed.minimumVotes
-      }),
-      cachedState: _compressed.cachedState,
-      payload: _compressed.payload,
-      proposer: _compressed.proposer,
-      creation: _compressed.creation.decompress(),
-      summedBallot: _compressed.summedBallot.decompress()
-    });
-  }
+    /**
+     * @notice Decompress a CompressedProposal into a standard Proposal
+     * @param _compressed The compressed proposal
+     * @return The uncompressed proposal
+     */
+    function decompress(CompressedProposal memory _compressed) internal pure returns (Proposal memory) {
+        return Proposal({
+            config: ProposalConfiguration({
+                votingDelay: _compressed.votingDelay.decompress(),
+                votingDuration: _compressed.votingDuration.decompress(),
+                executionDelay: _compressed.executionDelay.decompress(),
+                gracePeriod: _compressed.gracePeriod.decompress(),
+                quorum: _compressed.quorum,
+                requiredYeaMargin: _compressed.requiredYeaMargin,
+                minimumVotes: _compressed.minimumVotes
+            }),
+            cachedState: _compressed.cachedState,
+            payload: _compressed.payload,
+            proposer: _compressed.proposer,
+            creation: _compressed.creation.decompress(),
+            summedBallot: _compressed.summedBallot.decompress()
+        });
+    }
 }
 
 enum VoteTabulationReturn {
-  Accepted,
-  Rejected,
-  Invalid
+    Accepted,
+    Rejected,
+    Invalid
 }
 
 enum VoteTabulationInfo {
-  TotalPowerLtMinimum,
-  VotesNeededEqZero,
-  VotesNeededGtTotalPower,
-  VotesCastLtVotesNeeded,
-  YeaLimitEqZero,
-  YeaLimitGtVotesCast,
-  YeaLimitEqVotesCast,
-  YeaVotesEqVotesCast,
-  YeaVotesLeYeaLimit,
-  YeaVotesGtYeaLimit
+    TotalPowerLtMinimum,
+    VotesNeededEqZero,
+    VotesNeededGtTotalPower,
+    VotesCastLtVotesNeeded,
+    YeaLimitEqZero,
+    YeaLimitGtVotesCast,
+    YeaLimitEqVotesCast,
+    YeaVotesEqVotesCast,
+    YeaVotesLeYeaLimit,
+    YeaVotesGtYeaLimit
 }
 
 /**
@@ -7993,106 +8048,106 @@ enum VoteTabulationInfo {
  *          4. Executable: queued end → queued end + gracePeriod
  */
 library ProposalLib {
-  using CompressedTimeMath for CompressedTimestamp;
-  using CompressedProposalLib for CompressedProposal;
-  /**
-   * @notice Tabulate the votes for a proposal.
-   * @dev This function is used to determine if a proposal has met the acceptance criteria.
-   *
-   * @param _self The proposal to tabulate the votes for.
-   * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
-   * @return The vote tabulation result, and additional information.
-   */
+    using CompressedTimeMath for CompressedTimestamp;
+    using CompressedProposalLib for CompressedProposal;
+    /**
+     * @notice Tabulate the votes for a proposal.
+     * @dev This function is used to determine if a proposal has met the acceptance criteria.
+     *
+     * @param _self The proposal to tabulate the votes for.
+     * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
+     * @return The vote tabulation result, and additional information.
+     */
 
-  function voteTabulation(CompressedProposal storage _self, uint256 _totalPower)
-    internal
-    view
-    returns (VoteTabulationReturn, VoteTabulationInfo)
-  {
-    if (_totalPower < _self.minimumVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
-    }
+    function voteTabulation(CompressedProposal storage _self, uint256 _totalPower)
+        internal
+        view
+        returns (VoteTabulationReturn, VoteTabulationInfo)
+    {
+        if (_totalPower < _self.minimumVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
+        }
 
-    uint256 votesNeeded = Math.mulDiv(_totalPower, _self.quorum, 1e18, Math.Rounding.Ceil);
-    if (votesNeeded == 0) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
-    }
-    if (votesNeeded > _totalPower) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
-    }
+        uint256 votesNeeded = Math.mulDiv(_totalPower, _self.quorum, 1e18, Math.Rounding.Ceil);
+        if (votesNeeded == 0) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
+        }
+        if (votesNeeded > _totalPower) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
+        }
 
-    (uint256 yea, uint256 nay) = _self.getVotes();
-    uint256 votesCast = nay + yea;
-    if (votesCast < votesNeeded) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
-    }
+        (uint256 yea, uint256 nay) = _self.getVotes();
+        uint256 votesCast = nay + yea;
+        if (votesCast < votesNeeded) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
+        }
 
-    // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
-    // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
-    // i.e. we cannot require more votes to be yes than total votes.
-    if (yea == votesCast) {
-      return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
-    }
+        // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
+        // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
+        // i.e. we cannot require more votes to be yes than total votes.
+        if (yea == votesCast) {
+            return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
+        }
 
-    uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.requiredYeaMargin, 2);
-    uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
+        uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.requiredYeaMargin, 2);
+        uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
 
-    /*if (requiredApprovalVotes == 0) {
+        /*if (requiredApprovalVotes == 0) {
       // It should be impossible to hit this case as `requiredApprovalVotesFraction` cannot be 0,
       // and due to rounding up, only way to hit this would be if `votesCast = 0`,
       // which is already handled as `votesCast >= votesNeeded` and `votesNeeded > 0`.
       return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitEqZero);
     }*/
-    if (requiredApprovalVotes > votesCast) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        if (requiredApprovalVotes > votesCast) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        }
+
+        // We want to see that there are MORE votes on yea than needed
+        // We explicitly need MORE to ensure we don't "tie".
+        // If we need as many yea as there are votes, we know it is impossible already.
+        // due to the check earlier, that summedBallot.yea == votesCast.
+        if (yea <= requiredApprovalVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+        }
+
+        return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
     }
 
-    // We want to see that there are MORE votes on yea than needed
-    // We explicitly need MORE to ensure we don't "tie".
-    // If we need as many yea as there are votes, we know it is impossible already.
-    // due to the check earlier, that summedBallot.yea == votesCast.
-    if (yea <= requiredApprovalVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+    /**
+     * @notice Get when the pending phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when pending phase ends
+     */
+    function pendingThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return _compressed.creation.decompress() + _compressed.votingDelay.decompress();
     }
 
-    return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
-  }
+    /**
+     * @notice Get when the active phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when active phase ends
+     */
+    function activeThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return pendingThrough(_compressed) + _compressed.votingDuration.decompress();
+    }
 
-  /**
-   * @notice Get when the pending phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when pending phase ends
-   */
-  function pendingThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return _compressed.creation.decompress() + _compressed.votingDelay.decompress();
-  }
+    /**
+     * @notice Get when the queued phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when queued phase ends
+     */
+    function queuedThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return activeThrough(_compressed) + _compressed.executionDelay.decompress();
+    }
 
-  /**
-   * @notice Get when the active phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when active phase ends
-   */
-  function activeThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return pendingThrough(_compressed) + _compressed.votingDuration.decompress();
-  }
-
-  /**
-   * @notice Get when the queued phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when queued phase ends
-   */
-  function queuedThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return activeThrough(_compressed) + _compressed.executionDelay.decompress();
-  }
-
-  /**
-   * @notice Get when the executable phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when executable phase ends
-   */
-  function executableThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return queuedThrough(_compressed) + _compressed.gracePeriod.decompress();
-  }
+    /**
+     * @notice Get when the executable phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when executable phase ends
+     */
+    function executableThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return queuedThrough(_compressed) + _compressed.gracePeriod.decompress();
+    }
 }
 
 /**
@@ -8117,112 +8172,112 @@ library ProposalLib {
  * This can be used to prevent a situation where flushing the queue would exceed the block gas limit.
  */
 struct StakingQueueConfig {
-  uint256 bootstrapValidatorSetSize;
-  uint256 bootstrapFlushSize;
-  uint256 normalFlushSizeMin;
-  uint256 normalFlushSizeQuotient;
-  uint256 maxQueueFlushSize;
+    uint256 bootstrapValidatorSetSize;
+    uint256 bootstrapFlushSize;
+    uint256 normalFlushSizeMin;
+    uint256 normalFlushSizeQuotient;
+    uint256 maxQueueFlushSize;
 }
 
 type CompressedStakingQueueConfig is uint256;
 
 library StakingQueueConfigLib {
-  using SafeCast for uint256;
+    using SafeCast for uint256;
 
-  uint256 private constant MASK_32BIT = 0xFFFFFFFF;
+    uint256 private constant MASK_32BIT = 0xFFFFFFFF;
 
-  function compress(StakingQueueConfig memory _config) internal pure returns (CompressedStakingQueueConfig) {
-    uint256 value = 0;
-    value |= uint256(_config.maxQueueFlushSize.toUint32());
-    value |= uint256(_config.normalFlushSizeQuotient.toUint32()) << 32;
-    value |= uint256(_config.normalFlushSizeMin.toUint32()) << 64;
-    value |= uint256(_config.bootstrapFlushSize.toUint32()) << 96;
-    value |= uint256(_config.bootstrapValidatorSetSize.toUint32()) << 128;
+    function compress(StakingQueueConfig memory _config) internal pure returns (CompressedStakingQueueConfig) {
+        uint256 value = 0;
+        value |= uint256(_config.maxQueueFlushSize.toUint32());
+        value |= uint256(_config.normalFlushSizeQuotient.toUint32()) << 32;
+        value |= uint256(_config.normalFlushSizeMin.toUint32()) << 64;
+        value |= uint256(_config.bootstrapFlushSize.toUint32()) << 96;
+        value |= uint256(_config.bootstrapValidatorSetSize.toUint32()) << 128;
 
-    return CompressedStakingQueueConfig.wrap(value);
-  }
+        return CompressedStakingQueueConfig.wrap(value);
+    }
 
-  function decompress(CompressedStakingQueueConfig _compressedConfig)
-    internal
-    pure
-    returns (StakingQueueConfig memory)
-  {
-    uint256 value = CompressedStakingQueueConfig.unwrap(_compressedConfig);
+    function decompress(CompressedStakingQueueConfig _compressedConfig)
+        internal
+        pure
+        returns (StakingQueueConfig memory)
+    {
+        uint256 value = CompressedStakingQueueConfig.unwrap(_compressedConfig);
 
-    return StakingQueueConfig({
-      bootstrapValidatorSetSize: (value >> 128) & MASK_32BIT,
-      bootstrapFlushSize: (value >> 96) & MASK_32BIT,
-      normalFlushSizeMin: (value >> 64) & MASK_32BIT,
-      normalFlushSizeQuotient: (value >> 32) & MASK_32BIT,
-      maxQueueFlushSize: value & MASK_32BIT
-    });
-  }
+        return StakingQueueConfig({
+            bootstrapValidatorSetSize: (value >> 128) & MASK_32BIT,
+            bootstrapFlushSize: (value >> 96) & MASK_32BIT,
+            normalFlushSizeMin: (value >> 64) & MASK_32BIT,
+            normalFlushSizeQuotient: (value >> 32) & MASK_32BIT,
+            maxQueueFlushSize: value & MASK_32BIT
+        });
+    }
 }
 
 struct ProposeWithLockConfiguration {
-  Timestamp lockDelay;
-  uint256 lockAmount;
+    Timestamp lockDelay;
+    uint256 lockAmount;
 }
 
 struct Configuration {
-  ProposeWithLockConfiguration proposeConfig;
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    ProposeWithLockConfiguration proposeConfig;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 struct Withdrawal {
-  uint256 amount;
-  Timestamp unlocksAt;
-  address recipient;
-  bool claimed;
+    uint256 amount;
+    Timestamp unlocksAt;
+    address recipient;
+    bool claimed;
 }
 
 interface IGovernance {
-  event BeneficiaryAdded(address beneficiary);
-  event FloodGatesOpened();
+    event BeneficiaryAdded(address beneficiary);
+    event FloodGatesOpened();
 
-  event Proposed(uint256 indexed proposalId, address indexed proposal);
-  event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
-  event ProposalExecuted(uint256 indexed proposalId);
-  event ProposalDropped(uint256 indexed proposalId);
-  event GovernanceProposerUpdated(address indexed governanceProposer);
-  event ConfigurationUpdated(Timestamp indexed time);
+    event Proposed(uint256 indexed proposalId, address indexed proposal);
+    event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
+    event ProposalExecuted(uint256 indexed proposalId);
+    event ProposalDropped(uint256 indexed proposalId);
+    event GovernanceProposerUpdated(address indexed governanceProposer);
+    event ConfigurationUpdated(Timestamp indexed time);
 
-  event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
-  event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(uint256 indexed withdrawalId);
+    event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
+    event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(uint256 indexed withdrawalId);
 
-  function addBeneficiary(address _beneficiary) external;
-  function openFloodgates() external;
+    function addBeneficiary(address _beneficiary) external;
+    function openFloodgates() external;
 
-  function updateGovernanceProposer(address _governanceProposer) external;
-  function updateConfiguration(Configuration memory _configuration) external;
-  function deposit(address _onBehalfOf, uint256 _amount) external;
-  function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function propose(IPayload _proposal) external returns (uint256);
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function execute(uint256 _proposalId) external;
-  function dropProposal(uint256 _proposalId) external;
+    function updateGovernanceProposer(address _governanceProposer) external;
+    function updateConfiguration(Configuration memory _configuration) external;
+    function deposit(address _onBehalfOf, uint256 _amount) external;
+    function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function propose(IPayload _proposal) external returns (uint256);
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function execute(uint256 _proposalId) external;
+    function dropProposal(uint256 _proposalId) external;
 
-  function isPermittedInGovernance(address _caller) external view returns (bool);
-  function isAllBeneficiariesAllowed() external view returns (bool);
+    function isPermittedInGovernance(address _caller) external view returns (bool);
+    function isAllBeneficiariesAllowed() external view returns (bool);
 
-  function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
-  function powerNow(address _owner) external view returns (uint256);
-  function totalPowerAt(Timestamp _ts) external view returns (uint256);
-  function totalPowerNow() external view returns (uint256);
-  function getProposalState(uint256 _proposalId) external view returns (ProposalState);
-  function getConfiguration() external view returns (Configuration memory);
-  function getProposal(uint256 _proposalId) external view returns (Proposal memory);
-  function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
-  function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
+    function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
+    function powerNow(address _owner) external view returns (uint256);
+    function totalPowerAt(Timestamp _ts) external view returns (uint256);
+    function totalPowerNow() external view returns (uint256);
+    function getProposalState(uint256 _proposalId) external view returns (ProposalState);
+    function getConfiguration() external view returns (Configuration memory);
+    function getProposal(uint256 _proposalId) external view returns (Proposal memory);
+    function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
+    function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
 }
 
 /**
@@ -8233,80 +8288,80 @@ interface IGovernance {
  * when there are multiple contracts that could have thrown the error.
  */
 library Errors_1 {
-  error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
-  error Governance__GovernanceProposerCannotBeSelf();
-  error Governance__CallerNotSelf(address caller, address self);
-  error Governance__CallerCannotBeSelf();
-  error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
-  error Governance__CannotWithdrawToAddressZero();
-  error Governance__WithdrawalNotInitiated();
-  error Governance__WithdrawalAlreadyClaimed();
-  error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
-  error Governance__ProposalNotActive();
-  error Governance__ProposalNotExecutable();
-  error Governance__CannotCallAsset();
-  error Governance__CallFailed(address target);
-  error Governance__ProposalDoesNotExists(uint256 proposalId);
-  error Governance__ProposalAlreadyDropped();
-  error Governance__ProposalCannotBeDropped();
-  error Governance__DepositNotAllowed();
+    error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
+    error Governance__GovernanceProposerCannotBeSelf();
+    error Governance__CallerNotSelf(address caller, address self);
+    error Governance__CallerCannotBeSelf();
+    error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
+    error Governance__CannotWithdrawToAddressZero();
+    error Governance__WithdrawalNotInitiated();
+    error Governance__WithdrawalAlreadyClaimed();
+    error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
+    error Governance__ProposalNotActive();
+    error Governance__ProposalNotExecutable();
+    error Governance__CannotCallAsset();
+    error Governance__CallFailed(address target);
+    error Governance__ProposalDoesNotExists(uint256 proposalId);
+    error Governance__ProposalAlreadyDropped();
+    error Governance__ProposalCannotBeDropped();
+    error Governance__DepositNotAllowed();
 
-  error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
-  error Governance__CheckpointedUintLib__NotInPast();
+    error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
+    error Governance__CheckpointedUintLib__NotInPast();
 
-  error Governance__ConfigurationLib__InvalidMinimumVotes();
-  error Governance__ConfigurationLib__LockAmountTooSmall();
-  error Governance__ConfigurationLib__LockAmountTooBig();
-  error Governance__ConfigurationLib__QuorumTooSmall();
-  error Governance__ConfigurationLib__QuorumTooBig();
-  error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
-  error Governance__ConfigurationLib__TimeTooSmall(string name);
-  error Governance__ConfigurationLib__TimeTooBig(string name);
+    error Governance__ConfigurationLib__InvalidMinimumVotes();
+    error Governance__ConfigurationLib__LockAmountTooSmall();
+    error Governance__ConfigurationLib__LockAmountTooBig();
+    error Governance__ConfigurationLib__QuorumTooSmall();
+    error Governance__ConfigurationLib__QuorumTooBig();
+    error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
+    error Governance__ConfigurationLib__TimeTooSmall(string name);
+    error Governance__ConfigurationLib__TimeTooBig(string name);
 
-  error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
-  error EmpireBase__InstanceHaveNoCode(address instance);
-  error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
-  error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
-  error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
-  error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
-  error EmpireBase__PayloadCannotBeAddressZero();
-  error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
-  error GovernanceProposer__GSEPayloadInvalid();
+    error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
+    error EmpireBase__InstanceHaveNoCode(address instance);
+    error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
+    error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
+    error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
+    error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
+    error EmpireBase__PayloadCannotBeAddressZero();
+    error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
+    error GovernanceProposer__GSEPayloadInvalid();
 
-  error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
-  error CoinIssuer__InvalidConfiguration();
+    error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
+    error CoinIssuer__InvalidConfiguration();
 
-  error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
-  error Registry__RollupNotRegistered(uint256 version);
-  error Registry__NoRollupsRegistered();
+    error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
+    error Registry__RollupNotRegistered(uint256 version);
+    error Registry__NoRollupsRegistered();
 
-  error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
-  error RewardDistributor__InsufficientAvailable(uint256 requested, uint256 available);
-  error RewardDistributor__ZeroRollup();
-  error RewardDistributor__WrongRecoverMechanism();
+    error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
+    error RewardDistributor__InsufficientAvailable(uint256 requested, uint256 available);
+    error RewardDistributor__ZeroRollup();
+    error RewardDistributor__WrongRecoverMechanism();
 
-  error GSE__NotRollup(address);
-  error GSE__GovernanceAlreadySet();
-  error GSE__InvalidRollupAddress(address);
-  error GSE__RollupAlreadyRegistered(address);
-  error GSE__NotLatestRollup(address);
-  error GSE__AlreadyRegistered(address, address);
-  error GSE__NothingToExit(address);
-  error GSE__InsufficientBalance(uint256, uint256);
-  error GSE__FailedToRemove(address);
-  error GSE__InstanceDoesNotExist(address);
-  error GSE__NotWithdrawer(address, address);
-  error GSE__OutOfBounds(uint256, uint256);
-  error GSE__FatalError(string);
-  error GSE__InvalidProofOfPossession();
-  error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
-  error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
+    error GSE__NotRollup(address);
+    error GSE__GovernanceAlreadySet();
+    error GSE__InvalidRollupAddress(address);
+    error GSE__RollupAlreadyRegistered(address);
+    error GSE__NotLatestRollup(address);
+    error GSE__AlreadyRegistered(address, address);
+    error GSE__NothingToExit(address);
+    error GSE__InsufficientBalance(uint256, uint256);
+    error GSE__FailedToRemove(address);
+    error GSE__InstanceDoesNotExist(address);
+    error GSE__NotWithdrawer(address, address);
+    error GSE__OutOfBounds(uint256, uint256);
+    error GSE__FatalError(string);
+    error GSE__InvalidProofOfPossession();
+    error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
+    error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
 
-  error Delegation__InsufficientPower(address, uint256, uint256);
+    error Delegation__InsufficientPower(address, uint256, uint256);
 }
 
 /**
@@ -8315,72 +8370,74 @@ library Errors_1 {
  *          Provides helper functions to `add` to or `sub` from the current value.
  */
 library CheckpointedUintLib {
-  using Checkpoints for Checkpoints.Trace224;
-  using SafeCast for uint256;
+    using Checkpoints for Checkpoints.Trace224;
+    using SafeCast for uint256;
 
-  /**
-   * @notice  Add `_amount` to the current value
-   *
-   * @dev   The amounts are cast to uint224 before storing such that the (key: value) fits in a single slot
-   *
-   * @param _self - The Trace224 to add to
-   * @param _amount - The amount to add
-   *
-   * @return - The current value and the new value
-   */
-  function add(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
-    uint224 current = _self.latest();
-    if (_amount == 0) {
-      return (current, current);
+    /**
+     * @notice  Add `_amount` to the current value
+     *
+     * @dev   The amounts are cast to uint224 before storing such that the (key: value) fits in a single slot
+     *
+     * @param _self - The Trace224 to add to
+     * @param _amount - The amount to add
+     *
+     * @return - The current value and the new value
+     */
+    function add(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
+        uint224 current = _self.latest();
+        if (_amount == 0) {
+            return (current, current);
+        }
+        uint224 amount = _amount.toUint224();
+        _self.push(block.timestamp.toUint32(), current + amount);
+        return (current, current + amount);
     }
-    uint224 amount = _amount.toUint224();
-    _self.push(block.timestamp.toUint32(), current + amount);
-    return (current, current + amount);
-  }
 
-  /**
-   * @notice  Subtract `_amount` from the current value
-   *
-   * @param _self - The Trace224 to subtract from
-   * @param _amount - The amount to subtract
-   * @return - The current value and the new value
-   */
-  function sub(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
-    uint224 current = _self.latest();
-    if (_amount == 0) {
-      return (current, current);
+    /**
+     * @notice  Subtract `_amount` from the current value
+     *
+     * @param _self - The Trace224 to subtract from
+     * @param _amount - The amount to subtract
+     * @return - The current value and the new value
+     */
+    function sub(Checkpoints.Trace224 storage _self, uint256 _amount) internal returns (uint256, uint256) {
+        uint224 current = _self.latest();
+        if (_amount == 0) {
+            return (current, current);
+        }
+        uint224 amount = _amount.toUint224();
+        require(
+            current >= amount, Errors_1.Governance__CheckpointedUintLib__InsufficientValue(msg.sender, current, amount)
+        );
+        _self.push(block.timestamp.toUint32(), current - amount);
+        return (current, current - amount);
     }
-    uint224 amount = _amount.toUint224();
-    require(current >= amount, Errors_1.Governance__CheckpointedUintLib__InsufficientValue(msg.sender, current, amount));
-    _self.push(block.timestamp.toUint32(), current - amount);
-    return (current, current - amount);
-  }
 
-  /**
-   * @notice  Get the current value
-   *
-   * @param _self - The Trace224 to get the value of
-   * @return - The current value
-   */
-  function valueNow(Checkpoints.Trace224 storage _self) internal view returns (uint256) {
-    return _self.latest();
-  }
+    /**
+     * @notice  Get the current value
+     *
+     * @param _self - The Trace224 to get the value of
+     * @return - The current value
+     */
+    function valueNow(Checkpoints.Trace224 storage _self) internal view returns (uint256) {
+        return _self.latest();
+    }
 
-  /**
-   * @notice  Get the value at a given timestamp
-   *          The timestamp MUST be in the past to guarantee it is stable
-   *
-   * @dev     Uses `upperLookupRecent` instead of just `upperLookup` as it will most
-   *          likely be a recent value when looked up as part of governance.
-   *
-   * @param _self - The Trace224 to get the value of
-   * @param _time - The timestamp to get the value at
-   * @return - The value at the given timestamp
-   */
-  function valueAt(Checkpoints.Trace224 storage _self, Timestamp _time) internal view returns (uint256) {
-    require(_time < Timestamp.wrap(block.timestamp), Errors_1.Governance__CheckpointedUintLib__NotInPast());
-    return _self.upperLookupRecent(Timestamp.unwrap(_time).toUint32());
-  }
+    /**
+     * @notice  Get the value at a given timestamp
+     *          The timestamp MUST be in the past to guarantee it is stable
+     *
+     * @dev     Uses `upperLookupRecent` instead of just `upperLookup` as it will most
+     *          likely be a recent value when looked up as part of governance.
+     *
+     * @param _self - The Trace224 to get the value of
+     * @param _time - The timestamp to get the value at
+     * @return - The value at the given timestamp
+     */
+    function valueAt(Checkpoints.Trace224 storage _self, Timestamp _time) internal view returns (uint256) {
+        require(_time < Timestamp.wrap(block.timestamp), Errors_1.Governance__CheckpointedUintLib__NotInPast());
+        return _self.upperLookupRecent(Timestamp.unwrap(_time).toUint32());
+    }
 }
 
 // NOTE(l2beat): This is an interface, generated from the contract source code.
@@ -8398,66 +8455,66 @@ interface Governance is IGovernance {
 }
 
 interface IGSECore {
-  event Deposit(address indexed instance, address indexed attester, address withdrawer);
+    event Deposit(address indexed instance, address indexed attester, address withdrawer);
 
-  function setGovernance(Governance _governance) external;
-  function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external;
-  function addRollup(address _rollup) external;
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external;
-  function withdraw(address _attester, uint256 _amount) external returns (uint256, bool, uint256);
-  function delegate(address _instance, address _attester, address _delegatee) external;
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function setGovernance(Governance _governance) external;
+    function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external;
+    function addRollup(address _rollup) external;
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external;
+    function withdraw(address _attester, uint256 _amount) external returns (uint256, bool, uint256);
+    function delegate(address _instance, address _attester, address _delegatee) external;
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
 
-  function isRegistered(address _instance, address _attester) external view returns (bool);
-  function isRollupRegistered(address _instance) external view returns (bool);
-  function getLatestRollup() external view returns (address);
-  function getLatestRollupAt(Timestamp _timestamp) external view returns (address);
-  function getGovernance() external view returns (Governance);
+    function isRegistered(address _instance, address _attester) external view returns (bool);
+    function isRollupRegistered(address _instance) external view returns (bool);
+    function getLatestRollup() external view returns (address);
+    function getLatestRollupAt(Timestamp _timestamp) external view returns (address);
+    function getGovernance() external view returns (Governance);
 }
 
 // Struct to store configuration of an attester (checkpoint producer)
 // Keep track of the actor who can initiate and control withdraws for the attester.
 // Keep track of the public key in G1 of BN254 that has registered on the instance
 struct AttesterConfig {
-  G1Point publicKey;
-  address withdrawer;
+    G1Point publicKey;
+    address withdrawer;
 }
 
 interface IGSE is IGSECore {
-  function getRegistrationDigest(G1Point memory _publicKey) external view returns (G1Point memory);
-  function getDelegatee(address _instance, address _attester) external view returns (address);
-  function getVotingPower(address _attester) external view returns (uint256);
-  function getVotingPowerAt(address _attester, Timestamp _timestamp) external view returns (uint256);
+    function getRegistrationDigest(G1Point memory _publicKey) external view returns (G1Point memory);
+    function getDelegatee(address _instance, address _attester) external view returns (address);
+    function getVotingPower(address _attester) external view returns (uint256);
+    function getVotingPowerAt(address _attester, Timestamp _timestamp) external view returns (uint256);
 
-  function getWithdrawer(address _attester) external view returns (address);
-  function balanceOf(address _instance, address _attester) external view returns (uint256);
-  function effectiveBalanceOf(address _instance, address _attester) external view returns (uint256);
-  function supplyOf(address _instance) external view returns (uint256);
-  function totalSupply() external view returns (uint256);
-  function getConfig(address _attester) external view returns (AttesterConfig memory);
-  function getAttesterCountAtTime(address _instance, Timestamp _timestamp) external view returns (uint256);
+    function getWithdrawer(address _attester) external view returns (address);
+    function balanceOf(address _instance, address _attester) external view returns (uint256);
+    function effectiveBalanceOf(address _instance, address _attester) external view returns (uint256);
+    function supplyOf(address _instance) external view returns (uint256);
+    function totalSupply() external view returns (uint256);
+    function getConfig(address _attester) external view returns (AttesterConfig memory);
+    function getAttesterCountAtTime(address _instance, Timestamp _timestamp) external view returns (uint256);
 
-  function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
-    external
-    view
-    returns (address[] memory);
-  function getG1PublicKeysFromAddresses(address[] memory _attesters) external view returns (G1Point[] memory);
-  function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
-    external
-    view
-    returns (address);
-  function getPowerUsed(address _delegatee, uint256 _proposalId) external view returns (uint256);
-  function getBonusInstanceAddress() external view returns (address);
+    function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
+        external
+        view
+        returns (address[] memory);
+    function getG1PublicKeysFromAddresses(address[] memory _attesters) external view returns (G1Point[] memory);
+    function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
+        external
+        view
+        returns (address);
+    function getPowerUsed(address _delegatee, uint256 _proposalId) external view returns (uint256);
+    function getBonusInstanceAddress() external view returns (address);
 }
 
 /**
@@ -8579,13 +8636,13 @@ abstract contract Ownable is Context {
 }
 
 interface IBn254LibWrapper {
-  function proofOfPossession(
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession
-  ) external view returns (bool);
+    function proofOfPossession(
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession
+    ) external view returns (bool);
 
-  function g1ToDigestPoint(G1Point memory pk1) external view returns (G1Point memory);
+    function g1ToDigestPoint(G1Point memory pk1) external view returns (G1Point memory);
 }
 
 /**
@@ -8601,295 +8658,306 @@ interface IBn254LibWrapper {
  * because the Aztec rollup's security is already reliant on BN254.
  */
 library BN254Lib {
-  /**
-   * We use uint256[2] for G1 points and uint256[4] for G2 points.
-   * For G1 points, the expected order is (x, y).
-   * For G2 points, the expected order is (x_imaginary, x_real, y_imaginary, y_real)
-   * Using structs would be more readable, but it would be more expensive to use them, particularly
-   * when aggregating the public keys, since we need to convert to uint256[2] and uint256[4] anyway.
-   */
-  // See bn254_registration.test.ts and BLSKey.t.sol for tests which validate these constants.
-  uint256 public constant BASE_FIELD_ORDER =
-    21_888_242_871_839_275_222_246_405_745_257_275_088_696_311_157_297_823_662_689_037_894_645_226_208_583;
+    /**
+     * We use uint256[2] for G1 points and uint256[4] for G2 points.
+     * For G1 points, the expected order is (x, y).
+     * For G2 points, the expected order is (x_imaginary, x_real, y_imaginary, y_real)
+     * Using structs would be more readable, but it would be more expensive to use them, particularly
+     * when aggregating the public keys, since we need to convert to uint256[2] and uint256[4] anyway.
+     */
+    // See bn254_registration.test.ts and BLSKey.t.sol for tests which validate these constants.
+    uint256 public constant BASE_FIELD_ORDER =
+        21_888_242_871_839_275_222_246_405_745_257_275_088_696_311_157_297_823_662_689_037_894_645_226_208_583;
 
-  uint256 public constant GROUP_ORDER =
-    21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
+    uint256 public constant GROUP_ORDER =
+        21_888_242_871_839_275_222_246_405_745_257_275_088_548_364_400_416_034_343_698_204_186_575_808_495_617;
 
-  bytes32 public constant STAKING_DOMAIN_SEPARATOR = bytes32("AZTEC_BLS_POP_BN254_V1");
+    bytes32 public constant STAKING_DOMAIN_SEPARATOR = bytes32("AZTEC_BLS_POP_BN254_V1");
 
-  error AddPointFail();
-  error MulPointFail();
-  error GammaZero();
-  error SqrtFail();
-  error PairingFail();
-  error NoPointFound();
-  error InfinityNotAllowed();
+    error AddPointFail();
+    error MulPointFail();
+    error GammaZero();
+    error SqrtFail();
+    error PairingFail();
+    error NoPointFound();
+    error InfinityNotAllowed();
 
-  /**
-   * @notice Prove possession of a secret for a point in G1 and G2.
-   *
-   * Ultimately, we want to check:
-   * - That the caller knows the secret key of pk2 (to prevent rogue-key attacks)
-   * - That pk1 and pk2 have the same secret key (as an optimization)
-   *
-   * Registering two public keys is an optimization: It means we can do G1-only operations
-   * at the time of verifying a signature, which is much cheaper than G2 operations.
-   *
-   * In this function, we check:
-   * e(signature + gamma * pk1, -G2) * e(hashToPoint(pk1) + gamma * G1, pk2) == 1
-   *
-   * Which is effectively a check that:
-   * e(signature, G2) == e(hashToPoint(pk1), pk2) // a BLS signature over msg = pk1, to prove knowledge of the sk.
-   * e(pk1, G2) == e(G1, pk2) // a demonstration that pk1 and pk2 have the same sk.
-   *
-   * @param pk1 The G1 point of the BLS public key (x, y coordinates)
-   * @param pk2 The G2 point of the BLS public key (x_1, x_0, y_1, y_0 coordinates)
-   * @param signature The G1 point that acts as a proof of possession of the private keys corresponding to pk1 and pk2
-   */
-  function proofOfPossession(G1Point memory pk1, G2Point memory pk2, G1Point memory signature)
-    internal
-    view
-    returns (bool)
-  {
-    // Ensure that provided points are not infinity
-    require(!isZero(pk1), InfinityNotAllowed());
-    require(!isZero(pk2), InfinityNotAllowed());
-    require(!isZero(signature), InfinityNotAllowed());
+    /**
+     * @notice Prove possession of a secret for a point in G1 and G2.
+     *
+     * Ultimately, we want to check:
+     * - That the caller knows the secret key of pk2 (to prevent rogue-key attacks)
+     * - That pk1 and pk2 have the same secret key (as an optimization)
+     *
+     * Registering two public keys is an optimization: It means we can do G1-only operations
+     * at the time of verifying a signature, which is much cheaper than G2 operations.
+     *
+     * In this function, we check:
+     * e(signature + gamma * pk1, -G2) * e(hashToPoint(pk1) + gamma * G1, pk2) == 1
+     *
+     * Which is effectively a check that:
+     * e(signature, G2) == e(hashToPoint(pk1), pk2) // a BLS signature over msg = pk1, to prove knowledge of the sk.
+     * e(pk1, G2) == e(G1, pk2) // a demonstration that pk1 and pk2 have the same sk.
+     *
+     * @param pk1 The G1 point of the BLS public key (x, y coordinates)
+     * @param pk2 The G2 point of the BLS public key (x_1, x_0, y_1, y_0 coordinates)
+     * @param signature The G1 point that acts as a proof of possession of the private keys corresponding to pk1 and pk2
+     */
+    function proofOfPossession(G1Point memory pk1, G2Point memory pk2, G1Point memory signature)
+        internal
+        view
+        returns (bool)
+    {
+        // Ensure that provided points are not infinity
+        require(!isZero(pk1), InfinityNotAllowed());
+        require(!isZero(pk2), InfinityNotAllowed());
+        require(!isZero(signature), InfinityNotAllowed());
 
-    // Compute the point "digest" of the pk1 that sigma is a signature over
-    G1Point memory pk1DigestPoint = g1ToDigestPoint(pk1);
+        // Compute the point "digest" of the pk1 that sigma is a signature over
+        G1Point memory pk1DigestPoint = g1ToDigestPoint(pk1);
 
-    // Random challenge:
-    // gamma = keccak(pk1, pk2, signature) mod |Fr|
-    uint256 gamma = gammaOf(pk1, pk2, signature);
-    require(gamma != 0, GammaZero());
+        // Random challenge:
+        // gamma = keccak(pk1, pk2, signature) mod |Fr|
+        uint256 gamma = gammaOf(pk1, pk2, signature);
+        require(gamma != 0, GammaZero());
 
-    // Build G1 L = signature + gamma * pk1
-    G1Point memory left = g1Add(signature, g1Mul(pk1, gamma));
+        // Build G1 L = signature + gamma * pk1
+        G1Point memory left = g1Add(signature, g1Mul(pk1, gamma));
 
-    // Build G1 R = pk1DigestPoint + gamma * G1
-    G1Point memory right = g1Add(pk1DigestPoint, g1Mul(g1Generator(), gamma));
+        // Build G1 R = pk1DigestPoint + gamma * G1
+        G1Point memory right = g1Add(pk1DigestPoint, g1Mul(g1Generator(), gamma));
 
-    // Pairing: e(L, -G2) * e(R, pk2) == 1
-    return bn254Pairing(left, g2NegatedGenerator(), right, pk2);
-  }
-
-  /// @notice Convert a G1 point (public key) to the digest point that must be signed to prove possession.
-  /// @dev exposed as public to allow clients not to have implemented the hashToPoint function.
-  function g1ToDigestPoint(G1Point memory pk1) internal view returns (G1Point memory) {
-    bytes memory pk1Bytes = abi.encodePacked(pk1.x, pk1.y);
-    return hashToPoint(STAKING_DOMAIN_SEPARATOR, pk1Bytes);
-  }
-
-  /// @dev Add two points on BN254 G1 (affine coords).
-  ///      Reverts if the inputs are not on‐curve.
-  function g1Add(G1Point memory p1, G1Point memory p2) internal view returns (G1Point memory output) {
-    uint256[4] memory input;
-    input[0] = p1.x;
-    input[1] = p1.y;
-    input[2] = p2.x;
-    input[3] = p2.y;
-
-    bool success;
-    assembly {
-      // call(gas, to, value, in, insize, out, outsize)
-      // STATICCALL is 40 gas vs 700 gas for CALL
-      success := staticcall(
-        sub(gas(), 2000),
-        0x06, // precompile address
-        input,
-        0x80, // input size = 4 × 32 bytes
-        output,
-        0x40 // output size = 2 × 32 bytes
-      )
+        // Pairing: e(L, -G2) * e(R, pk2) == 1
+        return bn254Pairing(left, g2NegatedGenerator(), right, pk2);
     }
 
-    if (!success) revert AddPointFail();
-    return output;
-  }
-
-  /// @dev Multiply a point by a scalar (little‑endian 256‑bit integer).
-  ///      Reverts if the point is not on‐curve or the scalar ≥ p.
-  function g1Mul(G1Point memory p, uint256 s) internal view returns (G1Point memory output) {
-    uint256[3] memory input;
-    input[0] = p.x;
-    input[1] = p.y;
-    input[2] = s;
-
-    bool success;
-    assembly {
-      success := staticcall(
-        sub(gas(), 2000),
-        0x07, // precompile address
-        input,
-        0x60, // input size = 3 × 32 bytes
-        output,
-        0x40 // output size = 2 × 32 bytes
-      )
+    /// @notice Convert a G1 point (public key) to the digest point that must be signed to prove possession.
+    /// @dev exposed as public to allow clients not to have implemented the hashToPoint function.
+    function g1ToDigestPoint(G1Point memory pk1) internal view returns (G1Point memory) {
+        bytes memory pk1Bytes = abi.encodePacked(pk1.x, pk1.y);
+        return hashToPoint(STAKING_DOMAIN_SEPARATOR, pk1Bytes);
     }
-    if (!success) revert MulPointFail();
-    return output;
-  }
 
-  function bn254Pairing(G1Point memory g1a, G2Point memory g2a, G1Point memory g1b, G2Point memory g2b)
-    internal
-    view
-    returns (bool)
-  {
-    uint256[12] memory input;
+    /// @dev Add two points on BN254 G1 (affine coords).
+    ///      Reverts if the inputs are not on‐curve.
+    function g1Add(G1Point memory p1, G1Point memory p2) internal view returns (G1Point memory output) {
+        uint256[4] memory input;
+        input[0] = p1.x;
+        input[1] = p1.y;
+        input[2] = p2.x;
+        input[3] = p2.y;
 
-    input[0] = g1a.x;
-    input[1] = g1a.y;
-    input[2] = g2a.x1;
-    input[3] = g2a.x0;
-    input[4] = g2a.y1;
-    input[5] = g2a.y0;
-
-    input[6] = g1b.x;
-    input[7] = g1b.y;
-    input[8] = g2b.x1;
-    input[9] = g2b.x0;
-    input[10] = g2b.y1;
-    input[11] = g2b.y0;
-
-    uint256[1] memory result;
-    bool didCallSucceed;
-    assembly {
-      didCallSucceed := staticcall(
-        sub(gas(), 2000),
-        8,
-        input,
-        0x180, // input size = 12 * 32 bytes
-        result,
-        0x20 // output size = 32 bytes
-      )
-    }
-    require(didCallSucceed, PairingFail());
-    return result[0] == 1;
-  }
-
-  // The hash to point is based on the "mapToPoint" function in https://www.iacr.org/archive/asiacrypt2001/22480516.pdf
-  function hashToPoint(bytes32 domain, bytes memory message) internal view returns (G1Point memory output) {
-    bool found = false;
-    uint256 attempts = 0;
-    while (true) {
-      uint256 x = uint256(keccak256(abi.encode(domain, message, attempts)));
-      attempts++;
-
-      if (x >= BASE_FIELD_ORDER) {
-        continue;
-      }
-
-      uint256 y = mulmod(x, x, BASE_FIELD_ORDER);
-      y = mulmod(y, x, BASE_FIELD_ORDER);
-      y = addmod(y, 3, BASE_FIELD_ORDER);
-      (y, found) = sqrt(y);
-      if (found) {
-        uint256 y0 = y;
-        uint256 y1 = BASE_FIELD_ORDER - y;
-
-        // Ensure that y1 > y0, flip em if necessary
-        if (y0 > y1) {
-          (y0, y1) = (y1, y0);
+        bool success;
+        assembly {
+            // call(gas, to, value, in, insize, out, outsize)
+            // STATICCALL is 40 gas vs 700 gas for CALL
+            success :=
+                staticcall(
+                    sub(gas(), 2000),
+                    0x06, // precompile address
+                    input,
+                    0x80, // input size = 4 × 32 bytes
+                    output,
+                    0x40 // output size = 2 × 32 bytes
+                )
         }
 
-        uint256 b = uint256(keccak256(abi.encode(domain, message, type(uint256).max)));
-        if (b & 1 == 0) {
-          output = G1Point({x: x, y: y0});
-        } else {
-          output = G1Point({x: x, y: y1});
+        if (!success) {
+            revert AddPointFail();
+        }
+        return output;
+    }
+
+    /// @dev Multiply a point by a scalar (little‑endian 256‑bit integer).
+    ///      Reverts if the point is not on‐curve or the scalar ≥ p.
+    function g1Mul(G1Point memory p, uint256 s) internal view returns (G1Point memory output) {
+        uint256[3] memory input;
+        input[0] = p.x;
+        input[1] = p.y;
+        input[2] = s;
+
+        bool success;
+        assembly {
+            success :=
+                staticcall(
+                    sub(gas(), 2000),
+                    0x07, // precompile address
+                    input,
+                    0x60, // input size = 3 × 32 bytes
+                    output,
+                    0x40 // output size = 2 × 32 bytes
+                )
+        }
+        if (!success) {
+            revert MulPointFail();
+        }
+        return output;
+    }
+
+    function bn254Pairing(G1Point memory g1a, G2Point memory g2a, G1Point memory g1b, G2Point memory g2b)
+        internal
+        view
+        returns (bool)
+    {
+        uint256[12] memory input;
+
+        input[0] = g1a.x;
+        input[1] = g1a.y;
+        input[2] = g2a.x1;
+        input[3] = g2a.x0;
+        input[4] = g2a.y1;
+        input[5] = g2a.y0;
+
+        input[6] = g1b.x;
+        input[7] = g1b.y;
+        input[8] = g2b.x1;
+        input[9] = g2b.x0;
+        input[10] = g2b.y1;
+        input[11] = g2b.y0;
+
+        uint256[1] memory result;
+        bool didCallSucceed;
+        assembly {
+            didCallSucceed :=
+                staticcall(
+                    sub(gas(), 2000),
+                    8,
+                    input,
+                    0x180, // input size = 12 * 32 bytes
+                    result,
+                    0x20 // output size = 32 bytes
+                )
+        }
+        require(didCallSucceed, PairingFail());
+        return result[0] == 1;
+    }
+
+    // The hash to point is based on the "mapToPoint" function in https://www.iacr.org/archive/asiacrypt2001/22480516.pdf
+    function hashToPoint(bytes32 domain, bytes memory message) internal view returns (G1Point memory output) {
+        bool found = false;
+        uint256 attempts = 0;
+        while (true) {
+            uint256 x = uint256(keccak256(abi.encode(domain, message, attempts)));
+            attempts++;
+
+            if (x >= BASE_FIELD_ORDER) {
+                continue;
+            }
+
+            uint256 y = mulmod(x, x, BASE_FIELD_ORDER);
+            y = mulmod(y, x, BASE_FIELD_ORDER);
+            y = addmod(y, 3, BASE_FIELD_ORDER);
+            (y, found) = sqrt(y);
+            if (found) {
+                uint256 y0 = y;
+                uint256 y1 = BASE_FIELD_ORDER - y;
+
+                // Ensure that y1 > y0, flip em if necessary
+                if (y0 > y1) {
+                    (y0, y1) = (y1, y0);
+                }
+
+                uint256 b = uint256(keccak256(abi.encode(domain, message, type(uint256).max)));
+                if (b & 1 == 0) {
+                    output = G1Point({x: x, y: y0});
+                } else {
+                    output = G1Point({x: x, y: y1});
+                }
+
+                break;
+            }
+        }
+        require(found, NoPointFound());
+        return output;
+    }
+
+    function sqrt(uint256 xx) internal view returns (uint256 x, bool hasRoot) {
+        bool callSuccess;
+        assembly {
+            let freeMem := mload(0x40)
+            mstore(freeMem, 0x20)
+            mstore(add(freeMem, 0x20), 0x20)
+            mstore(add(freeMem, 0x40), 0x20)
+            mstore(add(freeMem, 0x60), xx)
+            // (N + 1) / 4 = 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52
+            mstore(add(freeMem, 0x80), 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52)
+            // N = BASE_FIELD_ORDER
+            mstore(add(freeMem, 0xA0), BASE_FIELD_ORDER)
+            callSuccess := staticcall(sub(gas(), 2000), 5, freeMem, 0xC0, freeMem, 0x20)
+            x := mload(freeMem)
+            hasRoot := eq(xx, mulmod(x, x, BASE_FIELD_ORDER))
+        }
+        require(callSuccess, SqrtFail());
+    }
+
+    /// @notice γ = keccak(PK1, PK2, σ_init) mod Fr
+    function gammaOf(G1Point memory pk1, G2Point memory pk2, G1Point memory sigmaInit)
+        internal
+        pure
+        returns (uint256)
+    {
+        return uint256(keccak256(abi.encode(pk1.x, pk1.y, pk2.x0, pk2.x1, pk2.y0, pk2.y1, sigmaInit.x, sigmaInit.y)))
+            % GROUP_ORDER;
+    }
+
+    function g1Negate(G1Point memory p) internal pure returns (G1Point memory) {
+        if (p.x == 0 && p.y == 0) {
+            // Point at infinity remains unchanged
+            return p;
         }
 
-        break;
-      }
-    }
-    require(found, NoPointFound());
-    return output;
-  }
-
-  function sqrt(uint256 xx) internal view returns (uint256 x, bool hasRoot) {
-    bool callSuccess;
-    assembly {
-      let freeMem := mload(0x40)
-      mstore(freeMem, 0x20)
-      mstore(add(freeMem, 0x20), 0x20)
-      mstore(add(freeMem, 0x40), 0x20)
-      mstore(add(freeMem, 0x60), xx)
-      // (N + 1) / 4 = 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52
-      mstore(add(freeMem, 0x80), 0xc19139cb84c680a6e14116da060561765e05aa45a1c72a34f082305b61f3f52)
-      // N = BASE_FIELD_ORDER
-      mstore(add(freeMem, 0xA0), BASE_FIELD_ORDER)
-      callSuccess := staticcall(sub(gas(), 2000), 5, freeMem, 0xC0, freeMem, 0x20)
-      x := mload(freeMem)
-      hasRoot := eq(xx, mulmod(x, x, BASE_FIELD_ORDER))
-    }
-    require(callSuccess, SqrtFail());
-  }
-
-  /// @notice γ = keccak(PK1, PK2, σ_init) mod Fr
-  function gammaOf(G1Point memory pk1, G2Point memory pk2, G1Point memory sigmaInit) internal pure returns (uint256) {
-    return uint256(keccak256(abi.encode(pk1.x, pk1.y, pk2.x0, pk2.x1, pk2.y0, pk2.y1, sigmaInit.x, sigmaInit.y)))
-      % GROUP_ORDER;
-  }
-
-  function g1Negate(G1Point memory p) internal pure returns (G1Point memory) {
-    if (p.x == 0 && p.y == 0) {
-      // Point at infinity remains unchanged
-      return p;
+        // For a point (x, y), its negation is (x, -y mod p)
+        // Since we're working in the field Fp, -y mod p = p - y
+        return G1Point({x: p.x, y: BASE_FIELD_ORDER - p.y});
     }
 
-    // For a point (x, y), its negation is (x, -y mod p)
-    // Since we're working in the field Fp, -y mod p = p - y
-    return G1Point({x: p.x, y: BASE_FIELD_ORDER - p.y});
-  }
+    function g1Zero() internal pure returns (G1Point memory) {
+        return G1Point({x: 0, y: 0});
+    }
 
-  function g1Zero() internal pure returns (G1Point memory) {
-    return G1Point({x: 0, y: 0});
-  }
+    function isZero(G1Point memory p) internal pure returns (bool) {
+        return p.x == 0 && p.y == 0;
+    }
 
-  function isZero(G1Point memory p) internal pure returns (bool) {
-    return p.x == 0 && p.y == 0;
-  }
+    function g1Generator() internal pure returns (G1Point memory) {
+        return G1Point({x: 1, y: 2});
+    }
 
-  function g1Generator() internal pure returns (G1Point memory) {
-    return G1Point({x: 1, y: 2});
-  }
+    function g2Zero() internal pure returns (G2Point memory) {
+        return G2Point({x0: 0, x1: 0, y0: 0, y1: 0});
+    }
 
-  function g2Zero() internal pure returns (G2Point memory) {
-    return G2Point({x0: 0, x1: 0, y0: 0, y1: 0});
-  }
+    function isZero(G2Point memory p) internal pure returns (bool) {
+        return p.x0 == 0 && p.x1 == 0 && p.y0 == 0 && p.y1 == 0;
+    }
 
-  function isZero(G2Point memory p) internal pure returns (bool) {
-    return p.x0 == 0 && p.x1 == 0 && p.y0 == 0 && p.y1 == 0;
-  }
-
-  function g2NegatedGenerator() internal pure returns (G2Point memory) {
-    return G2Point({
-      x0: 10_857_046_999_023_057_135_944_570_762_232_829_481_370_756_359_578_518_086_990_519_993_285_655_852_781,
-      x1: 11_559_732_032_986_387_107_991_004_021_392_285_783_925_812_861_821_192_530_917_403_151_452_391_805_634,
-      y0: 13_392_588_948_715_843_804_641_432_497_768_002_650_278_120_570_034_223_513_918_757_245_338_268_106_653,
-      y1: 17_805_874_995_975_841_540_914_202_342_111_839_520_379_459_829_704_422_454_583_296_818_431_106_115_052
-    });
-  }
+    function g2NegatedGenerator() internal pure returns (G2Point memory) {
+        return G2Point({
+            x0: 10_857_046_999_023_057_135_944_570_762_232_829_481_370_756_359_578_518_086_990_519_993_285_655_852_781,
+            x1: 11_559_732_032_986_387_107_991_004_021_392_285_783_925_812_861_821_192_530_917_403_151_452_391_805_634,
+            y0: 13_392_588_948_715_843_804_641_432_497_768_002_650_278_120_570_034_223_513_918_757_245_338_268_106_653,
+            y1: 17_805_874_995_975_841_540_914_202_342_111_839_520_379_459_829_704_422_454_583_296_818_431_106_115_052
+        });
+    }
 }
 
 contract Bn254LibWrapper is IBn254LibWrapper {
-  function proofOfPossession(
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession
-  ) external view override(IBn254LibWrapper) returns (bool) {
-    return BN254Lib.proofOfPossession(_publicKeyInG1, _publicKeyInG2, _proofOfPossession);
-  }
+    function proofOfPossession(
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession
+    ) external view override(IBn254LibWrapper) returns (bool) {
+        return BN254Lib.proofOfPossession(_publicKeyInG1, _publicKeyInG2, _proofOfPossession);
+    }
 
-  function g1ToDigestPoint(G1Point memory pk1) external view override(IBn254LibWrapper) returns (G1Point memory) {
-    return BN254Lib.g1ToDigestPoint(pk1);
-  }
+    function g1ToDigestPoint(G1Point memory pk1) external view override(IBn254LibWrapper) returns (G1Point memory) {
+        return BN254Lib.g1ToDigestPoint(pk1);
+    }
 }
 
 struct Index {
-  bool exists;
-  uint224 index;
+    bool exists;
+    uint224 index;
 }
 
 /**
@@ -8899,12 +8967,12 @@ struct Index {
  * @param addressToCurrentIndex Mapping of address to its current index in the set
  */
 struct SnapshottedAddressSet {
-  // This size must also be snapshotted
-  Checkpoints.Trace224 size;
-  // For each index, store the timestamped history of addresses
-  mapping(uint256 index => Checkpoints.Trace224) indexToAddressHistory;
-  // For each address, store its current index in the set
-  mapping(address addr => Index index) addressToCurrentIndex;
+    // This size must also be snapshotted
+    Checkpoints.Trace224 size;
+    // For each index, store the timestamped history of addresses
+    mapping(uint256 index => Checkpoints.Trace224) indexToAddressHistory;
+    // For each address, store its current index in the set
+    mapping(address addr => Index index) addressToCurrentIndex;
 }
 
 error AddressSnapshotLib__CannotAddAddressZero();
@@ -8925,526 +8993,531 @@ error AddressSnapshotLib__IndexOutOfBounds(uint256 index, uint256 size);
  * `size`
  */
 library AddressSnapshotLib {
-  using SafeCast for *;
-  using Checkpoints for Checkpoints.Trace224;
+    using SafeCast for *;
+    using Checkpoints for Checkpoints.Trace224;
 
-  /**
-   * @notice Adds a validator to the set
-   * @param _self The storage reference to the set
-   * @param _address The address to add
-   * @return bool True if the address was added, false if it was already present
-   */
-  function add(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
-    require(_address != address(0), AddressSnapshotLib__CannotAddAddressZero());
-    // Prevent against double insertion
-    if (_self.addressToCurrentIndex[_address].exists) {
-      return false;
+    /**
+     * @notice Adds a validator to the set
+     * @param _self The storage reference to the set
+     * @param _address The address to add
+     * @return bool True if the address was added, false if it was already present
+     */
+    function add(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
+        require(_address != address(0), AddressSnapshotLib__CannotAddAddressZero());
+        // Prevent against double insertion
+        if (_self.addressToCurrentIndex[_address].exists) {
+            return false;
+        }
+
+        uint224 index = _self.size.latest();
+        _self.addressToCurrentIndex[_address] = Index({exists: true, index: index});
+
+        uint32 key = block.timestamp.toUint32();
+
+        _self.indexToAddressHistory[index].push(key, uint160(_address).toUint224());
+        _self.size.push(key, (index + 1).toUint224());
+
+        return true;
     }
 
-    uint224 index = _self.size.latest();
-    _self.addressToCurrentIndex[_address] = Index({exists: true, index: index});
+    /**
+     * @notice Removes a address from the set by address
+     *
+     * @param _self The storage reference to the set
+     * @param _address The address of the address to remove
+     * @return bool True if the address was removed, false if it wasn't found
+     */
+    function remove(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
+        Index memory index = _self.addressToCurrentIndex[_address];
+        if (!index.exists) {
+            return false;
+        }
 
-    uint32 key = block.timestamp.toUint32();
-
-    _self.indexToAddressHistory[index].push(key, uint160(_address).toUint224());
-    _self.size.push(key, (index + 1).toUint224());
-
-    return true;
-  }
-
-  /**
-   * @notice Removes a address from the set by address
-   *
-   * @param _self The storage reference to the set
-   * @param _address The address of the address to remove
-   * @return bool True if the address was removed, false if it wasn't found
-   */
-  function remove(SnapshottedAddressSet storage _self, address _address) internal returns (bool) {
-    Index memory index = _self.addressToCurrentIndex[_address];
-    if (!index.exists) {
-      return false;
+        return _remove(_self, index.index, _address);
     }
 
-    return _remove(_self, index.index, _address);
-  }
-
-  /**
-   * @notice Removes a validator from the set by index
-   * @param _self The storage reference to the set
-   * @param _index The index of the validator to remove
-   * @return bool True if the validator was removed, reverts otherwise
-   */
-  function remove(SnapshottedAddressSet storage _self, uint224 _index) internal returns (bool) {
-    address _address = address(_self.indexToAddressHistory[_index].latest().toUint160());
-    return _remove(_self, _index, _address);
-  }
-
-  /**
-   * @notice Removes a validator from the set
-   * @param _self The storage reference to the set
-   * @param _index The index of the validator to remove
-   * @param _address The address to remove
-   * @return bool True if the validator was removed, reverts otherwise
-   */
-  function _remove(SnapshottedAddressSet storage _self, uint224 _index, address _address) internal returns (bool) {
-    uint224 currentSize = _self.size.latest();
-    if (_index >= currentSize) {
-      revert AddressSnapshotLib__IndexOutOfBounds(_index, currentSize);
+    /**
+     * @notice Removes a validator from the set by index
+     * @param _self The storage reference to the set
+     * @param _index The index of the validator to remove
+     * @return bool True if the validator was removed, reverts otherwise
+     */
+    function remove(SnapshottedAddressSet storage _self, uint224 _index) internal returns (bool) {
+        address _address = address(_self.indexToAddressHistory[_index].latest().toUint160());
+        return _remove(_self, _index, _address);
     }
 
-    // Mark the address to remove as not existing
-    _self.addressToCurrentIndex[_address] = Index({exists: false, index: 0});
+    /**
+     * @notice Removes a validator from the set
+     * @param _self The storage reference to the set
+     * @param _index The index of the validator to remove
+     * @param _address The address to remove
+     * @return bool True if the validator was removed, reverts otherwise
+     */
+    function _remove(SnapshottedAddressSet storage _self, uint224 _index, address _address) internal returns (bool) {
+        uint224 currentSize = _self.size.latest();
+        if (_index >= currentSize) {
+            revert AddressSnapshotLib__IndexOutOfBounds(_index, currentSize);
+        }
 
-    // Now we need to update the indexToAddressHistory.
-    // Suppose the current size is 3, and we are removing Bob from index 1, and Charlie is at index 2.
-    // We effectively push Charlie into the snapshot at index 1,
-    // then update Charlie in addressToCurrentIndex to reflect the new index of 1.
+        // Mark the address to remove as not existing
+        _self.addressToCurrentIndex[_address] = Index({exists: false, index: 0});
 
-    uint224 lastIndex = currentSize - 1;
-    uint32 key = block.timestamp.toUint32();
+        // Now we need to update the indexToAddressHistory.
+        // Suppose the current size is 3, and we are removing Bob from index 1, and Charlie is at index 2.
+        // We effectively push Charlie into the snapshot at index 1,
+        // then update Charlie in addressToCurrentIndex to reflect the new index of 1.
 
-    // If not removing the last item, swap the value of the last item into the `_index` to remove
-    if (lastIndex != _index) {
-      address lastValidator = address(_self.indexToAddressHistory[lastIndex].latest().toUint160());
+        uint224 lastIndex = currentSize - 1;
+        uint32 key = block.timestamp.toUint32();
 
-      _self.addressToCurrentIndex[lastValidator] = Index({exists: true, index: _index.toUint224()});
-      _self.indexToAddressHistory[_index].push(key, uint160(lastValidator).toUint224());
+        // If not removing the last item, swap the value of the last item into the `_index` to remove
+        if (lastIndex != _index) {
+            address lastValidator = address(_self.indexToAddressHistory[lastIndex].latest().toUint160());
+
+            _self.addressToCurrentIndex[lastValidator] = Index({exists: true, index: _index.toUint224()});
+            _self.indexToAddressHistory[_index].push(key, uint160(lastValidator).toUint224());
+        }
+
+        // Then "pop" the last index by setting the value to `address(0)`
+        _self.indexToAddressHistory[lastIndex].push(key, uint224(0));
+
+        // Finally, we update the size to reflect the new size of the set.
+        _self.size.push(key, (lastIndex).toUint224());
+        return true;
     }
 
-    // Then "pop" the last index by setting the value to `address(0)`
-    _self.indexToAddressHistory[lastIndex].push(key, uint224(0));
-
-    // Finally, we update the size to reflect the new size of the set.
-    _self.size.push(key, (lastIndex).toUint224());
-    return true;
-  }
-
-  /**
-   * @notice Gets the current address at a specific index at the time right now
-   * @param _self The storage reference to the set
-   * @param _index The index to query
-   * @return address The current address at the given index
-   */
-  function at(SnapshottedAddressSet storage _self, uint256 _index) internal view returns (address) {
-    return getAddressFromIndexAtTimestamp(_self, _index, block.timestamp.toUint32());
-  }
-
-  /**
-   * @notice Gets the address at a specific index and timestamp
-   * @param _self The storage reference to the set
-   * @param _index The index to query
-   * @param _timestamp The timestamp to query
-   * @return address The address at the given index and timestamp
-   */
-  function getAddressFromIndexAtTimestamp(SnapshottedAddressSet storage _self, uint256 _index, uint32 _timestamp)
-    internal
-    view
-    returns (address)
-  {
-    uint256 size = lengthAtTimestamp(_self, _timestamp);
-    require(_index < size, AddressSnapshotLib__IndexOutOfBounds(_index, size));
-
-    // Since the _index is less than the size, we know that the address at _index
-    // exists at/before _timestamp.
-    uint224 addr = _self.indexToAddressHistory[_index].upperLookup(_timestamp);
-    return address(addr.toUint160());
-  }
-
-  /**
-   * @notice Gets the address at a specific index and timestamp
-   *
-   * @dev     The caller MUST have ensure that `_index` < `size`
-   *          at the `_timestamp` provided.
-   * @dev     Primed for recent checkpoints in the address history.
-   *
-   * @param _self The storage reference to the set
-   * @param _index The index to query
-   * @param _timestamp The timestamp to query
-   * @return address The address at the given index and timestamp
-   */
-  function unsafeGetRecentAddressFromIndexAtTimestamp(
-    SnapshottedAddressSet storage _self,
-    uint256 _index,
-    uint32 _timestamp
-  ) internal view returns (address) {
-    uint224 addr = _self.indexToAddressHistory[_index].upperLookupRecent(_timestamp);
-    return address(addr.toUint160());
-  }
-
-  /**
-   * @notice Gets the current size of the set
-   * @param _self The storage reference to the set
-   * @return uint256 The number of addresses in the set
-   */
-  function length(SnapshottedAddressSet storage _self) internal view returns (uint256) {
-    return lengthAtTimestamp(_self, block.timestamp.toUint32());
-  }
-
-  /**
-   * @notice Gets the size of the set at a specific timestamp
-   * @param _self The storage reference to the set
-   * @param _timestamp The timestamp to query
-   * @return uint256 The number of addresses in the set at the given timestamp
-   *
-   * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
-   */
-  function lengthAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp) internal view returns (uint256) {
-    return _self.size.upperLookup(_timestamp);
-  }
-
-  /**
-   * @notice Gets all current addresses in the set
-   *
-   * @dev This function is only used in tests.
-   *
-   * @param _self The storage reference to the set
-   * @return address[] Array of all current addresses in the set
-   */
-  function values(SnapshottedAddressSet storage _self) internal view returns (address[] memory) {
-    return valuesAtTimestamp(_self, block.timestamp.toUint32());
-  }
-
-  /**
-   * @notice Gets all addresses in the set at a specific timestamp
-   *
-   * @dev This function is only used in tests.
-   *
-   * @param _self The storage reference to the set
-   * @param _timestamp The timestamp to query
-   * @return address[] Array of all addresses in the set at the given timestamp
-   *
-   * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
-   *
-   */
-  function valuesAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp)
-    internal
-    view
-    returns (address[] memory)
-  {
-    uint256 size = lengthAtTimestamp(_self, _timestamp);
-    address[] memory vals = new address[](size);
-    for (uint256 i; i < size;) {
-      vals[i] = getAddressFromIndexAtTimestamp(_self, i, _timestamp);
-
-      unchecked {
-        ++i;
-      }
+    /**
+     * @notice Gets the current address at a specific index at the time right now
+     * @param _self The storage reference to the set
+     * @param _index The index to query
+     * @return address The current address at the given index
+     */
+    function at(SnapshottedAddressSet storage _self, uint256 _index) internal view returns (address) {
+        return getAddressFromIndexAtTimestamp(_self, _index, block.timestamp.toUint32());
     }
-    return vals;
-  }
 
-  function contains(SnapshottedAddressSet storage _self, address _address) internal view returns (bool) {
-    return _self.addressToCurrentIndex[_address].exists;
-  }
+    /**
+     * @notice Gets the address at a specific index and timestamp
+     * @param _self The storage reference to the set
+     * @param _index The index to query
+     * @param _timestamp The timestamp to query
+     * @return address The address at the given index and timestamp
+     */
+    function getAddressFromIndexAtTimestamp(SnapshottedAddressSet storage _self, uint256 _index, uint32 _timestamp)
+        internal
+        view
+        returns (address)
+    {
+        uint256 size = lengthAtTimestamp(_self, _timestamp);
+        require(_index < size, AddressSnapshotLib__IndexOutOfBounds(_index, size));
+
+        // Since the _index is less than the size, we know that the address at _index
+        // exists at/before _timestamp.
+        uint224 addr = _self.indexToAddressHistory[_index].upperLookup(_timestamp);
+        return address(addr.toUint160());
+    }
+
+    /**
+     * @notice Gets the address at a specific index and timestamp
+     *
+     * @dev     The caller MUST have ensure that `_index` < `size`
+     *          at the `_timestamp` provided.
+     * @dev     Primed for recent checkpoints in the address history.
+     *
+     * @param _self The storage reference to the set
+     * @param _index The index to query
+     * @param _timestamp The timestamp to query
+     * @return address The address at the given index and timestamp
+     */
+    function unsafeGetRecentAddressFromIndexAtTimestamp(
+        SnapshottedAddressSet storage _self,
+        uint256 _index,
+        uint32 _timestamp
+    ) internal view returns (address) {
+        uint224 addr = _self.indexToAddressHistory[_index].upperLookupRecent(_timestamp);
+        return address(addr.toUint160());
+    }
+
+    /**
+     * @notice Gets the current size of the set
+     * @param _self The storage reference to the set
+     * @return uint256 The number of addresses in the set
+     */
+    function length(SnapshottedAddressSet storage _self) internal view returns (uint256) {
+        return lengthAtTimestamp(_self, block.timestamp.toUint32());
+    }
+
+    /**
+     * @notice Gets the size of the set at a specific timestamp
+     * @param _self The storage reference to the set
+     * @param _timestamp The timestamp to query
+     * @return uint256 The number of addresses in the set at the given timestamp
+     *
+     * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
+     */
+    function lengthAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.size.upperLookup(_timestamp);
+    }
+
+    /**
+     * @notice Gets all current addresses in the set
+     *
+     * @dev This function is only used in tests.
+     *
+     * @param _self The storage reference to the set
+     * @return address[] Array of all current addresses in the set
+     */
+    function values(SnapshottedAddressSet storage _self) internal view returns (address[] memory) {
+        return valuesAtTimestamp(_self, block.timestamp.toUint32());
+    }
+
+    /**
+     * @notice Gets all addresses in the set at a specific timestamp
+     *
+     * @dev This function is only used in tests.
+     *
+     * @param _self The storage reference to the set
+     * @param _timestamp The timestamp to query
+     * @return address[] Array of all addresses in the set at the given timestamp
+     *
+     * @dev Note, the values returned from this function are in flux if the timestamp is in the future.
+     *
+     */
+    function valuesAtTimestamp(SnapshottedAddressSet storage _self, uint32 _timestamp)
+        internal
+        view
+        returns (address[] memory)
+    {
+        uint256 size = lengthAtTimestamp(_self, _timestamp);
+        address[] memory vals = new address[](size);
+        for (uint256 i; i < size;) {
+            vals[i] = getAddressFromIndexAtTimestamp(_self, i, _timestamp);
+
+            unchecked {
+                ++i;
+            }
+        }
+        return vals;
+    }
+
+    function contains(SnapshottedAddressSet storage _self, address _address) internal view returns (bool) {
+        return _self.addressToCurrentIndex[_address].exists;
+    }
 }
 
 // A struct storing balance and delegatee for an attester
 struct DepositPosition {
-  uint256 balance;
-  address delegatee;
+    uint256 balance;
+    address delegatee;
 }
 
 // A struct storing all the positions for an instance along with a supply
 struct DepositLedger {
-  mapping(address attester => DepositPosition position) positions;
-  Checkpoints.Trace224 supply;
+    mapping(address attester => DepositPosition position) positions;
+    Checkpoints.Trace224 supply;
 }
 
 // A struct storing the voting power used for each proposal for a delegatee
 // as well as their checkpointed voting power
 struct VotingAccount {
-  mapping(uint256 proposalId => uint256 powerUsed) powerUsed;
-  Checkpoints.Trace224 votingPower;
+    mapping(uint256 proposalId => uint256 powerUsed) powerUsed;
+    Checkpoints.Trace224 votingPower;
 }
 
 // A struct storing the ledgers for the individual rollup instances, the voting
 // account for delegatees and the total supply.
 struct DepositAndDelegationAccounting {
-  mapping(address instance => DepositLedger ledger) ledgers;
-  mapping(address delegatee => VotingAccount votingAccount) votingAccounts;
-  Checkpoints.Trace224 supply;
+    mapping(address instance => DepositLedger ledger) ledgers;
+    mapping(address delegatee => VotingAccount votingAccount) votingAccounts;
+    Checkpoints.Trace224 supply;
 }
 
 // This library have a lot of overlap with `Votes.sol` from Openzeppelin,
 // It mainly differs as it is a library to allow us having many accountings in the same contract
 // the unit of time and allowing multiple uses of power.
 library DepositDelegationLib {
-  using CheckpointedUintLib for Checkpoints.Trace224;
+    using CheckpointedUintLib for Checkpoints.Trace224;
 
-  event DelegateChanged(address indexed attester, address oldDelegatee, address newDelegatee);
-  event DelegateVotesChanged(address indexed delegatee, uint256 oldValue, uint256 newValue);
+    event DelegateChanged(address indexed attester, address oldDelegatee, address newDelegatee);
+    event DelegateVotesChanged(address indexed delegatee, uint256 oldValue, uint256 newValue);
 
-  /**
-   * @notice Increase the balance of an `_attester` on `_instance` by `_amount`,
-   *         increases the voting power of the delegatee equally.
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to increase the balance of
-   * @param _amount The amount to increase by
-   */
-  function increaseBalance(
-    DepositAndDelegationAccounting storage _self,
-    address _instance,
-    address _attester,
-    uint256 _amount
-  ) internal {
-    if (_amount == 0) {
-      return;
+    /**
+     * @notice Increase the balance of an `_attester` on `_instance` by `_amount`,
+     *         increases the voting power of the delegatee equally.
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to increase the balance of
+     * @param _amount The amount to increase by
+     */
+    function increaseBalance(
+        DepositAndDelegationAccounting storage _self,
+        address _instance,
+        address _attester,
+        uint256 _amount
+    ) internal {
+        if (_amount == 0) {
+            return;
+        }
+
+        DepositLedger storage instance = _self.ledgers[_instance];
+
+        instance.positions[_attester].balance += _amount;
+        moveVotingPower(_self, address(0), instance.positions[_attester].delegatee, _amount);
+
+        instance.supply.add(_amount);
+        _self.supply.add(_amount);
     }
 
-    DepositLedger storage instance = _self.ledgers[_instance];
+    /**
+     * @notice Decrease the balance of an `_attester` on `_instance` by `_amount`,
+     *         decrease the voting power of the delegatee equally
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to decrease the balance of
+     * @param _amount The amount to decrease by
+     */
+    function decreaseBalance(
+        DepositAndDelegationAccounting storage _self,
+        address _instance,
+        address _attester,
+        uint256 _amount
+    ) internal {
+        if (_amount == 0) {
+            return;
+        }
 
-    instance.positions[_attester].balance += _amount;
-    moveVotingPower(_self, address(0), instance.positions[_attester].delegatee, _amount);
+        DepositLedger storage instance = _self.ledgers[_instance];
 
-    instance.supply.add(_amount);
-    _self.supply.add(_amount);
-  }
+        instance.positions[_attester].balance -= _amount;
+        moveVotingPower(_self, instance.positions[_attester].delegatee, address(0), _amount);
 
-  /**
-   * @notice Decrease the balance of an `_attester` on `_instance` by `_amount`,
-   *         decrease the voting power of the delegatee equally
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to decrease the balance of
-   * @param _amount The amount to decrease by
-   */
-  function decreaseBalance(
-    DepositAndDelegationAccounting storage _self,
-    address _instance,
-    address _attester,
-    uint256 _amount
-  ) internal {
-    if (_amount == 0) {
-      return;
+        instance.supply.sub(_amount);
+        _self.supply.sub(_amount);
     }
 
-    DepositLedger storage instance = _self.ledgers[_instance];
+    /**
+     * @notice    Use `_amount` of `_delegatee`'s voting power on `_proposalId`
+     *            The `_delegatee`'s voting power based on the snapshot at `_timestamp`
+     *
+     * @dev       If different timestamps are passed, it can cause mismatch in the amount of
+     *            power that can be voted with, so it is very important that it is stable for
+     *            a given `_proposalId`
+     *
+     * @param _self       - The DelegationDate struct to modify in storage
+     * @param _delegatee  - The delegatee using their power
+     * @param _proposalId - The id to use for accounting
+     * @param _timestamp  - The timestamp for voting power of the specific `_proposalId`
+     * @param _amount     - The amount of power to use
+     */
+    function usePower(
+        DepositAndDelegationAccounting storage _self,
+        address _delegatee,
+        uint256 _proposalId,
+        Timestamp _timestamp,
+        uint256 _amount
+    ) internal {
+        uint256 powerAt = getVotingPowerAt(_self, _delegatee, _timestamp);
+        uint256 powerUsed = getPowerUsed(_self, _delegatee, _proposalId);
 
-    instance.positions[_attester].balance -= _amount;
-    moveVotingPower(_self, instance.positions[_attester].delegatee, address(0), _amount);
+        require(
+            powerAt >= powerUsed + _amount,
+            Errors_1.Delegation__InsufficientPower(_delegatee, powerAt, powerUsed + _amount)
+        );
 
-    instance.supply.sub(_amount);
-    _self.supply.sub(_amount);
-  }
-
-  /**
-   * @notice    Use `_amount` of `_delegatee`'s voting power on `_proposalId`
-   *            The `_delegatee`'s voting power based on the snapshot at `_timestamp`
-   *
-   * @dev       If different timestamps are passed, it can cause mismatch in the amount of
-   *            power that can be voted with, so it is very important that it is stable for
-   *            a given `_proposalId`
-   *
-   * @param _self       - The DelegationDate struct to modify in storage
-   * @param _delegatee  - The delegatee using their power
-   * @param _proposalId - The id to use for accounting
-   * @param _timestamp  - The timestamp for voting power of the specific `_proposalId`
-   * @param _amount     - The amount of power to use
-   */
-  function usePower(
-    DepositAndDelegationAccounting storage _self,
-    address _delegatee,
-    uint256 _proposalId,
-    Timestamp _timestamp,
-    uint256 _amount
-  ) internal {
-    uint256 powerAt = getVotingPowerAt(_self, _delegatee, _timestamp);
-    uint256 powerUsed = getPowerUsed(_self, _delegatee, _proposalId);
-
-    require(
-      powerAt >= powerUsed + _amount, Errors_1.Delegation__InsufficientPower(_delegatee, powerAt, powerUsed + _amount)
-    );
-
-    _self.votingAccounts[_delegatee].powerUsed[_proposalId] += _amount;
-  }
-
-  /**
-   * @notice Delegate the voting power of an `_attester` on a specific `_instance` to a `_delegatee`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance the attester is on
-   * @param _attester The attester to delegate the voting power of
-   * @param _delegatee The delegatee to delegate the voting power to
-   */
-  function delegate(
-    DepositAndDelegationAccounting storage _self,
-    address _instance,
-    address _attester,
-    address _delegatee
-  ) internal {
-    address oldDelegate = getDelegatee(_self, _instance, _attester);
-    if (oldDelegate == _delegatee) {
-      return;
-    }
-    _self.ledgers[_instance].positions[_attester].delegatee = _delegatee;
-    emit DelegateChanged(_attester, oldDelegate, _delegatee);
-
-    moveVotingPower(_self, oldDelegate, _delegatee, getBalanceOf(_self, _instance, _attester));
-  }
-
-  /**
-   * @notice Convenience function to remove delegation from `_attester` at `_instance`
-   *
-   * @dev Similar as calling `delegate` with `_delegatee = address(0)`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to undelegate the voting power of
-   */
-  function undelegate(DepositAndDelegationAccounting storage _self, address _instance, address _attester) internal {
-    delegate(_self, _instance, _attester, address(0));
-  }
-
-  /**
-   * @notice Get the balance of an `_attester` on `_instance`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to get the balance of
-   *
-   * @return The balance of the attester
-   */
-  function getBalanceOf(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.ledgers[_instance].positions[_attester].balance;
-  }
-
-  /**
-   * @notice Get the supply of an `_instance`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _instance The instance to get the supply of
-   *
-   * @return The supply of the instance
-   */
-  function getSupplyOf(DepositAndDelegationAccounting storage _self, address _instance)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.ledgers[_instance].supply.valueNow();
-  }
-
-  /**
-   * @notice Get the total supply of all instances
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   *
-   * @return The total supply of all instances
-   */
-  function getSupply(DepositAndDelegationAccounting storage _self) internal view returns (uint256) {
-    return _self.supply.valueNow();
-  }
-
-  /**
-   * @notice Get the delegatee of an `_attester` on `_instance`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _instance The instance that the attester is on
-   * @param _attester The attester to get the delegatee of
-   *
-   * @return The delegatee of the attester
-   */
-  function getDelegatee(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
-    internal
-    view
-    returns (address)
-  {
-    return _self.ledgers[_instance].positions[_attester].delegatee;
-  }
-
-  /**
-   * @notice Get the voting power of a `_delegatee`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _delegatee The delegatee to get the voting power of
-   *
-   * @return The voting power of the delegatee
-   */
-  function getVotingPower(DepositAndDelegationAccounting storage _self, address _delegatee)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.votingAccounts[_delegatee].votingPower.valueNow();
-  }
-
-  /**
-   * @notice Get the voting power of a `_delegatee` at a specific `_timestamp`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _delegatee The delegatee to get the voting power of
-   * @param _timestamp The timestamp to get the voting power at
-   *
-   * @return The voting power of the delegatee at the specific `_timestamp`
-   */
-  function getVotingPowerAt(DepositAndDelegationAccounting storage _self, address _delegatee, Timestamp _timestamp)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.votingAccounts[_delegatee].votingPower.valueAt(_timestamp);
-  }
-
-  /**
-   * @notice Get the power used by a `_delegatee` on a specific `_proposalId`
-   *
-   * @param _self The DepositAndDelegationAccounting struct to read from
-   * @param _delegatee The delegatee to get the power used by
-   * @param _proposalId The proposal to get the power used on
-   *
-   * @return The voting power used by the `_delegatee` at `_proposalId`
-   */
-  function getPowerUsed(DepositAndDelegationAccounting storage _self, address _delegatee, uint256 _proposalId)
-    internal
-    view
-    returns (uint256)
-  {
-    return _self.votingAccounts[_delegatee].powerUsed[_proposalId];
-  }
-
-  /**
-   * @notice Move `_amount` of voting power from the delegatee of `_from` to the delegatee of `_to`
-   *
-   * @dev If the `_from` is `address(0)` the decrease is skipped, and it is effectively a mint
-   * @dev If the `_to` is `address(0)` the increase is skipped, and it is effectively a burn
-   *
-   * @param _self The DepositAndDelegationAccounting struct to modify in storage
-   * @param _from The address to move the voting power from
-   * @param _to The address to move the voting power to
-   * @param _amount The amount of voting power to move
-   */
-  function moveVotingPower(DepositAndDelegationAccounting storage _self, address _from, address _to, uint256 _amount)
-    private
-  {
-    if (_from == _to || _amount == 0) {
-      return;
+        _self.votingAccounts[_delegatee].powerUsed[_proposalId] += _amount;
     }
 
-    if (_from != address(0)) {
-      (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_from].votingPower.sub(_amount);
-      emit DelegateVotesChanged(_from, oldValue, newValue);
+    /**
+     * @notice Delegate the voting power of an `_attester` on a specific `_instance` to a `_delegatee`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance the attester is on
+     * @param _attester The attester to delegate the voting power of
+     * @param _delegatee The delegatee to delegate the voting power to
+     */
+    function delegate(
+        DepositAndDelegationAccounting storage _self,
+        address _instance,
+        address _attester,
+        address _delegatee
+    ) internal {
+        address oldDelegate = getDelegatee(_self, _instance, _attester);
+        if (oldDelegate == _delegatee) {
+            return;
+        }
+        _self.ledgers[_instance].positions[_attester].delegatee = _delegatee;
+        emit DelegateChanged(_attester, oldDelegate, _delegatee);
+
+        moveVotingPower(_self, oldDelegate, _delegatee, getBalanceOf(_self, _instance, _attester));
     }
 
-    if (_to != address(0)) {
-      (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_to].votingPower.add(_amount);
-      emit DelegateVotesChanged(_to, oldValue, newValue);
+    /**
+     * @notice Convenience function to remove delegation from `_attester` at `_instance`
+     *
+     * @dev Similar as calling `delegate` with `_delegatee = address(0)`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to undelegate the voting power of
+     */
+    function undelegate(DepositAndDelegationAccounting storage _self, address _instance, address _attester) internal {
+        delegate(_self, _instance, _attester, address(0));
     }
-  }
+
+    /**
+     * @notice Get the balance of an `_attester` on `_instance`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to get the balance of
+     *
+     * @return The balance of the attester
+     */
+    function getBalanceOf(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.ledgers[_instance].positions[_attester].balance;
+    }
+
+    /**
+     * @notice Get the supply of an `_instance`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _instance The instance to get the supply of
+     *
+     * @return The supply of the instance
+     */
+    function getSupplyOf(DepositAndDelegationAccounting storage _self, address _instance)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.ledgers[_instance].supply.valueNow();
+    }
+
+    /**
+     * @notice Get the total supply of all instances
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     *
+     * @return The total supply of all instances
+     */
+    function getSupply(DepositAndDelegationAccounting storage _self) internal view returns (uint256) {
+        return _self.supply.valueNow();
+    }
+
+    /**
+     * @notice Get the delegatee of an `_attester` on `_instance`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _instance The instance that the attester is on
+     * @param _attester The attester to get the delegatee of
+     *
+     * @return The delegatee of the attester
+     */
+    function getDelegatee(DepositAndDelegationAccounting storage _self, address _instance, address _attester)
+        internal
+        view
+        returns (address)
+    {
+        return _self.ledgers[_instance].positions[_attester].delegatee;
+    }
+
+    /**
+     * @notice Get the voting power of a `_delegatee`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _delegatee The delegatee to get the voting power of
+     *
+     * @return The voting power of the delegatee
+     */
+    function getVotingPower(DepositAndDelegationAccounting storage _self, address _delegatee)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.votingAccounts[_delegatee].votingPower.valueNow();
+    }
+
+    /**
+     * @notice Get the voting power of a `_delegatee` at a specific `_timestamp`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _delegatee The delegatee to get the voting power of
+     * @param _timestamp The timestamp to get the voting power at
+     *
+     * @return The voting power of the delegatee at the specific `_timestamp`
+     */
+    function getVotingPowerAt(DepositAndDelegationAccounting storage _self, address _delegatee, Timestamp _timestamp)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.votingAccounts[_delegatee].votingPower.valueAt(_timestamp);
+    }
+
+    /**
+     * @notice Get the power used by a `_delegatee` on a specific `_proposalId`
+     *
+     * @param _self The DepositAndDelegationAccounting struct to read from
+     * @param _delegatee The delegatee to get the power used by
+     * @param _proposalId The proposal to get the power used on
+     *
+     * @return The voting power used by the `_delegatee` at `_proposalId`
+     */
+    function getPowerUsed(DepositAndDelegationAccounting storage _self, address _delegatee, uint256 _proposalId)
+        internal
+        view
+        returns (uint256)
+    {
+        return _self.votingAccounts[_delegatee].powerUsed[_proposalId];
+    }
+
+    /**
+     * @notice Move `_amount` of voting power from the delegatee of `_from` to the delegatee of `_to`
+     *
+     * @dev If the `_from` is `address(0)` the decrease is skipped, and it is effectively a mint
+     * @dev If the `_to` is `address(0)` the increase is skipped, and it is effectively a burn
+     *
+     * @param _self The DepositAndDelegationAccounting struct to modify in storage
+     * @param _from The address to move the voting power from
+     * @param _to The address to move the voting power to
+     * @param _amount The amount of voting power to move
+     */
+    function moveVotingPower(DepositAndDelegationAccounting storage _self, address _from, address _to, uint256 _amount)
+        private
+    {
+        if (_from == _to || _amount == 0) {
+            return;
+        }
+
+        if (_from != address(0)) {
+            (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_from].votingPower.sub(_amount);
+            emit DelegateVotesChanged(_from, oldValue, newValue);
+        }
+
+        if (_to != address(0)) {
+            (uint256 oldValue, uint256 newValue) = _self.votingAccounts[_to].votingPower.add(_amount);
+            emit DelegateVotesChanged(_to, oldValue, newValue);
+        }
+    }
 }
 
 // Struct to track the attesters (checkpoint producers) on a particular rollup instance
 // throughout time, along with each attester's current config.
 // Finally a flag to track if the instance exists.
 struct InstanceAttesterRegistry {
-  SnapshottedAddressSet attesters;
-  bool exists;
+    SnapshottedAddressSet attesters;
+    bool exists;
 }
 
 /**
@@ -9476,753 +9549,754 @@ struct InstanceAttesterRegistry {
  * then have the deployer `setGovernance`, and then `transferOwnership` to Governance.
  */
 contract GSECore is IGSECore, Ownable {
-  using AddressSnapshotLib for SnapshottedAddressSet;
-  using SafeCast for uint256;
-  using SafeCast for uint224;
-  using Checkpoints for Checkpoints.Trace224;
-  using DepositDelegationLib for DepositAndDelegationAccounting;
-  using SafeERC20 for IERC20;
+    using AddressSnapshotLib for SnapshottedAddressSet;
+    using SafeCast for uint256;
+    using SafeCast for uint224;
+    using Checkpoints for Checkpoints.Trace224;
+    using DepositDelegationLib for DepositAndDelegationAccounting;
+    using SafeERC20 for IERC20;
 
-  /**
-   * Create a special "bonus" address for use by the latest rollup.
-   * This is a convenience mechanism to allow attesters to always be staked on the latest rollup.
-   *
-   * As far as terminology, the GSE tracks deposits and voting/delegation data for "instances",
-   * and an "instance" is either the address of a "true" rollup contract which was added via `addRollup`,
-   * or (ONLY IN THIS CONTRACT) this special "bonus" address, which has its own accounting.
-   *
-   * NB: in every other context, "instance" refers broadly to a specific instance of an aztec rollup contract
-   * (possibly inclusive of its family of related contracts e.g. Inbox, Outbox, etc.)
-   *
-   * Thus, this bonus address appears in `delegation` and `instances`, and from the perspective of the GSE,
-   * it is an instance (though it can never be in the list of rollups).
-   *
-   * Lower in the code, we use "rollup" if we know we're talking about a rollup (often msg.sender),
-   * and "instance" if we are talking about about either a rollup instance or the bonus instance.
-   *
-   * The latest rollup according to `rollups` may use the attesters and voting power
-   * from the BONUS_INSTANCE_ADDRESS as a "bonus" to their own.
-   *
-   * One invariant of the GSE is that the attesters available to any rollup instance must form a set.
-   * i.e. there must be no duplicates.
-   *
-   * Thus, for the latest rollup, there are two "buckets" of attesters available:
-   * - the attesters that are associated with the rollup's address
-   * - the attesters that are associated with the BONUS_INSTANCE_ADDRESS
-   *
-   * The GSE ensures that:
-   * - each bucket individually is a set
-   * - when you add these two buckets together, it is a set.
-   *
-   * For a rollup that is no longer the latest, the attesters available to it are the attesters that are
-   * associated with the rollup's address. In effect, when a rollup goes from being the latest to not being
-   * the latest, it loses all attesters that were associated with the bonus instance.
-   *
-   * In this way, the "effective" attesters/balance/etc for a rollup (at a point in time) is:
-   * - the rollup's bucket and the bonus bucket if the rollup was the latest at that point in time
-   * - only the rollup's bucket if the rollup was not the latest at that point in time
-   *
-   * Note further, that operations like deposit and withdraw are initiated by a rollup,
-   * but the "affected instance" address will be either the rollup's address or the BONUS_INSTANCE_ADDRESS;
-   * we will typically need to look at both instances to know what to do.
-   *
-   * NB: in a large way, the BONUS_INSTANCE_ADDRESS is the entire point of the GSE,
-   * otherwise the rollups would've managed their own attesters/delegation/etc.
-   */
-  address public constant BONUS_INSTANCE_ADDRESS = address(uint160(uint256(keccak256("bonus-instance"))));
+    /**
+     * Create a special "bonus" address for use by the latest rollup.
+     * This is a convenience mechanism to allow attesters to always be staked on the latest rollup.
+     *
+     * As far as terminology, the GSE tracks deposits and voting/delegation data for "instances",
+     * and an "instance" is either the address of a "true" rollup contract which was added via `addRollup`,
+     * or (ONLY IN THIS CONTRACT) this special "bonus" address, which has its own accounting.
+     *
+     * NB: in every other context, "instance" refers broadly to a specific instance of an aztec rollup contract
+     * (possibly inclusive of its family of related contracts e.g. Inbox, Outbox, etc.)
+     *
+     * Thus, this bonus address appears in `delegation` and `instances`, and from the perspective of the GSE,
+     * it is an instance (though it can never be in the list of rollups).
+     *
+     * Lower in the code, we use "rollup" if we know we're talking about a rollup (often msg.sender),
+     * and "instance" if we are talking about about either a rollup instance or the bonus instance.
+     *
+     * The latest rollup according to `rollups` may use the attesters and voting power
+     * from the BONUS_INSTANCE_ADDRESS as a "bonus" to their own.
+     *
+     * One invariant of the GSE is that the attesters available to any rollup instance must form a set.
+     * i.e. there must be no duplicates.
+     *
+     * Thus, for the latest rollup, there are two "buckets" of attesters available:
+     * - the attesters that are associated with the rollup's address
+     * - the attesters that are associated with the BONUS_INSTANCE_ADDRESS
+     *
+     * The GSE ensures that:
+     * - each bucket individually is a set
+     * - when you add these two buckets together, it is a set.
+     *
+     * For a rollup that is no longer the latest, the attesters available to it are the attesters that are
+     * associated with the rollup's address. In effect, when a rollup goes from being the latest to not being
+     * the latest, it loses all attesters that were associated with the bonus instance.
+     *
+     * In this way, the "effective" attesters/balance/etc for a rollup (at a point in time) is:
+     * - the rollup's bucket and the bonus bucket if the rollup was the latest at that point in time
+     * - only the rollup's bucket if the rollup was not the latest at that point in time
+     *
+     * Note further, that operations like deposit and withdraw are initiated by a rollup,
+     * but the "affected instance" address will be either the rollup's address or the BONUS_INSTANCE_ADDRESS;
+     * we will typically need to look at both instances to know what to do.
+     *
+     * NB: in a large way, the BONUS_INSTANCE_ADDRESS is the entire point of the GSE,
+     * otherwise the rollups would've managed their own attesters/delegation/etc.
+     */
+    address public constant BONUS_INSTANCE_ADDRESS = address(uint160(uint256(keccak256("bonus-instance"))));
 
-  // External wrapper of the BN254 library to more easily allow gas limits.
-  Bn254LibWrapper internal immutable BN254_LIB_WRAPPER = new Bn254LibWrapper();
+    // External wrapper of the BN254 library to more easily allow gas limits.
+    Bn254LibWrapper internal immutable BN254_LIB_WRAPPER = new Bn254LibWrapper();
 
-  // The amount of ASSET needed to add an attester to the set
-  uint256 public immutable ACTIVATION_THRESHOLD;
+    // The amount of ASSET needed to add an attester to the set
+    uint256 public immutable ACTIVATION_THRESHOLD;
 
-  // The amount of ASSET needed to keep an attester in the set, if the attester balance fall below this threshold
-  // the attester will be ejected from the set.
-  uint256 public immutable EJECTION_THRESHOLD;
+    // The amount of ASSET needed to keep an attester in the set, if the attester balance fall below this threshold
+    // the attester will be ejected from the set.
+    uint256 public immutable EJECTION_THRESHOLD;
 
-  // The asset used for sybil resistance and power in governance. Must match the ASSET in `Governance` to work as
-  // intended.
-  IERC20 public immutable ASSET;
+    // The asset used for sybil resistance and power in governance. Must match the ASSET in `Governance` to work as
+    // intended.
+    IERC20 public immutable ASSET;
 
-  // The GSE's history of rollups.
-  Checkpoints.Trace224 internal rollups;
-  // Mapping from instance address to its historical attester information.
-  mapping(address instanceAddress => InstanceAttesterRegistry instance) internal instances;
+    // The GSE's history of rollups.
+    Checkpoints.Trace224 internal rollups;
+    // Mapping from instance address to its historical attester information.
+    mapping(address instanceAddress => InstanceAttesterRegistry instance) internal instances;
 
-  // Global attester information
-  mapping(address attester => AttesterConfig config) internal configOf;
-  // Mapping from the hashed public key in G1 of BN254 to the keys are registered.
-  mapping(bytes32 hashedPK1 => bool isRegistered) public ownedPKs;
+    // Global attester information
+    mapping(address attester => AttesterConfig config) internal configOf;
+    // Mapping from the hashed public key in G1 of BN254 to the keys are registered.
+    mapping(bytes32 hashedPK1 => bool isRegistered) public ownedPKs;
 
-  /**
-   * Contains state for:
-   * checkpointed total supply
-   * instance => {
-   *   checkpointed supply
-   *   attester => { balance, delegatee }
-   * }
-   * delegatee => {
-   *   checkpointed voting power
-   *   proposal ID => { power used }
-   * }
-   */
-  DepositAndDelegationAccounting internal delegation;
-  Governance internal governance;
+    /**
+     * Contains state for:
+     * checkpointed total supply
+     * instance => {
+     *   checkpointed supply
+     *   attester => { balance, delegatee }
+     * }
+     * delegatee => {
+     *   checkpointed voting power
+     *   proposal ID => { power used }
+     * }
+     */
+    DepositAndDelegationAccounting internal delegation;
+    Governance internal governance;
 
-  // Gas limit for proof of possession validation.
-  //
-  // Must exceed the happy path gas consumption to ensure deposits succeed.
-  // Acts as a cap on unhappy path gas usage to prevent excessive consumption.
-  //
-  // - Happy path average: 150K gas
-  // - Buffer for loop: 50K gas
-  // - Buffer for opcode cost changes: 50K gas
-  //
-  // WARNING: If set below happy path requirements, all deposits will fail.
-  // Governance can adjust this value via proposal.
-  uint64 public proofOfPossessionGasLimit = 250_000;
+    // Gas limit for proof of possession validation.
+    //
+    // Must exceed the happy path gas consumption to ensure deposits succeed.
+    // Acts as a cap on unhappy path gas usage to prevent excessive consumption.
+    //
+    // - Happy path average: 150K gas
+    // - Buffer for loop: 50K gas
+    // - Buffer for opcode cost changes: 50K gas
+    //
+    // WARNING: If set below happy path requirements, all deposits will fail.
+    // Governance can adjust this value via proposal.
+    uint64 public proofOfPossessionGasLimit = 250_000;
 
-  /**
-   * @dev enforces that the caller is a registered rollup.
-   */
-  modifier onlyRollup() {
-    require(isRollupRegistered(msg.sender), Errors_1.GSE__NotRollup(msg.sender));
-    _;
-  }
-
-  /**
-   * @param __owner - The owner of the GSE.
-   *                  Initially a deployer to allow adding an initial rollup, then handed over to governance.
-   * @param _asset - The ERC20 token asset used in governance and for sybil resistance.
-   *                 This token is deposited by attesters to gain voting power in governance
-   *                 (ratio of voting power to staked amount is 1:1).
-   * @param _activationThreshold - The amount of asset required to deposit an attester on the rollup.
-   * @param _ejectionThreshold - The minimum amount of asset required to be in the set to be considered an attester.
-   *                        If the balance falls below this threshold, the attester is ejected from the set.
-   */
-  constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
-    Ownable(__owner)
-  {
-    ASSET = _asset;
-    ACTIVATION_THRESHOLD = _activationThreshold;
-    EJECTION_THRESHOLD = _ejectionThreshold;
-    instances[BONUS_INSTANCE_ADDRESS].exists = true;
-  }
-
-  function setGovernance(Governance _governance) external override(IGSECore) onlyOwner {
-    require(address(governance) == address(0), Errors_1.GSE__GovernanceAlreadySet());
-    governance = _governance;
-  }
-
-  function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external override(IGSECore) onlyOwner {
-    proofOfPossessionGasLimit = _proofOfPossessionGasLimit;
-  }
-
-  /**
-   * @notice  Adds another rollup to the instances, which is the new latest rollup.
-   *          Only callable by the owner (usually governance) and only when the rollup is not already in the set
-   *
-   * @dev rollups only have access to the "bonus instance" while they are the most recent rollup.
-   *
-   * @dev The GSE only supports adding rollups, not removing them. If a rollup becomes compromised, governance can
-   * simply add a new rollup and the bonus instance mechanism ensures a smooth transition by allowing the new rollup
-   * to immediately inherit attesters.
-   *
-   * @dev Beware that multiple calls to `addRollup` at the same `block.timestamp` will override each other and only
-   * the last will be in the `rollups`.
-   *
-   * @param _rollup - The address of the rollup to add
-   */
-  function addRollup(address _rollup) external override(IGSECore) onlyOwner {
-    require(_rollup != address(0), Errors_1.GSE__InvalidRollupAddress(_rollup));
-    require(!instances[_rollup].exists, Errors_1.GSE__RollupAlreadyRegistered(_rollup));
-    instances[_rollup].exists = true;
-    rollups.push(block.timestamp.toUint32(), uint224(uint160(_rollup)));
-  }
-
-  /**
-   * @notice Deposits a new attester
-   *
-   * @dev msg.sender must be a registered rollup.
-   *
-   * @dev Transfers ASSET from msg.sender to the GSE, and then into Governance.
-   *
-   * @dev if _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
-   *
-   * @dev An attester configuration is registered globally to avoid BLS troubles when moving stake.
-   *
-   * Suppose the registered rollups are A, then B, then C, so C's effective attesters are
-   * those associated with C and the bonus address.
-   *
-   * Alice may come along now and deposit on A or B, with _moveWithLatestRollup=false in either case.
-   *
-   * For depositing into C, she can deposit *either* with _moveWithLatestRollup = true OR false.
-   * If she deposits with _moveWithLatestRollup = false, then she is associated with C's address.
-   * If she deposits with _moveWithLatestRollup = true, then she is associated with the bonus address.
-   *
-   * Suppose she deposits with _moveWithLatestRollup = true, and a new rollup D is added to the rollups.
-   * Then her stake moves to D, and she is in the effective attesters of D.
-   *
-   * @param _attester     - The attester address on behalf of which the deposit is made.
-   * @param _withdrawer   - Address which the user wish to use to initiate a withdraw for the `_attester` and
-   *                        to update delegation with. The withdrawals are enforced by the rollup to which it is
-   *                        controlled, so it is practically a value for the rollup to use, meaning dishonest rollup
-   *                        can reject withdrawal attempts.
-   * @param _publicKeyInG1 - BLS public key for the attester in G1
-   * @param _publicKeyInG2 - BLS public key for the attester in G2
-   * @param _proofOfPossession - A proof of possessions for the private key corresponding _publicKey in G1 and G2
-   * @param _moveWithLatestRollup - Whether to deposit into the specific instance, or the bonus instance
-   */
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external override(IGSECore) onlyRollup {
-    bool isMsgSenderLatestRollup = getLatestRollup() == msg.sender;
-
-    // If _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
-    if (_moveWithLatestRollup) {
-      require(isMsgSenderLatestRollup, Errors_1.GSE__NotLatestRollup(msg.sender));
+    /**
+     * @dev enforces that the caller is a registered rollup.
+     */
+    modifier onlyRollup() {
+        require(isRollupRegistered(msg.sender), Errors_1.GSE__NotRollup(msg.sender));
+        _;
     }
 
-    // Ensure that we are not already attesting on the rollup
-    require(!isRegistered(msg.sender, _attester), Errors_1.GSE__AlreadyRegistered(msg.sender, _attester));
-
-    // Ensure that if we are the latest rollup, we are not already attesting on the bonus instance.
-    if (isMsgSenderLatestRollup) {
-      require(
-        !isRegistered(BONUS_INSTANCE_ADDRESS, _attester),
-        Errors_1.GSE__AlreadyRegistered(BONUS_INSTANCE_ADDRESS, _attester)
-      );
+    /**
+     * @param __owner - The owner of the GSE.
+     *                  Initially a deployer to allow adding an initial rollup, then handed over to governance.
+     * @param _asset - The ERC20 token asset used in governance and for sybil resistance.
+     *                 This token is deposited by attesters to gain voting power in governance
+     *                 (ratio of voting power to staked amount is 1:1).
+     * @param _activationThreshold - The amount of asset required to deposit an attester on the rollup.
+     * @param _ejectionThreshold - The minimum amount of asset required to be in the set to be considered an attester.
+     *                        If the balance falls below this threshold, the attester is ejected from the set.
+     */
+    constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
+        Ownable(__owner)
+    {
+        ASSET = _asset;
+        ACTIVATION_THRESHOLD = _activationThreshold;
+        EJECTION_THRESHOLD = _ejectionThreshold;
+        instances[BONUS_INSTANCE_ADDRESS].exists = true;
     }
 
-    // Set the recipient instance address, i.e. the one that will receive the attester.
-    // From above, we know that if we are here, and _moveWithLatestRollup is true,
-    // then msg.sender is the latest instance,
-    // but the user is targeting the bonus address.
-    // Otherwise, we use the msg.sender, which we know is a registered rollup
-    // thanks to the modifier.
-    address recipientInstance = _moveWithLatestRollup ? BONUS_INSTANCE_ADDRESS : msg.sender;
-
-    // Add the attester to the instance's checkpointed set of attesters.
-    require(
-      instances[recipientInstance].attesters.add(_attester), Errors_1.GSE__AlreadyRegistered(recipientInstance, _attester)
-    );
-
-    _checkProofOfPossession(_attester, _publicKeyInG1, _publicKeyInG2, _proofOfPossession);
-
-    // This is the ONLY place where we set the configuration for an attester.
-    // This means that their withdrawer and public keys are set once, globally.
-    // If they exit, they must re-deposit with a new key.
-    configOf[_attester] = AttesterConfig({withdrawer: _withdrawer, publicKey: _publicKeyInG1});
-
-    delegation.delegate(recipientInstance, _attester, recipientInstance);
-    delegation.increaseBalance(recipientInstance, _attester, ACTIVATION_THRESHOLD);
-
-    ASSET.safeTransferFrom(msg.sender, address(this), ACTIVATION_THRESHOLD);
-
-    Governance gov = getGovernance();
-    ASSET.approve(address(gov), ACTIVATION_THRESHOLD);
-    gov.deposit(address(this), ACTIVATION_THRESHOLD);
-
-    emit Deposit(recipientInstance, _attester, _withdrawer);
-  }
-
-  /**
-   * @notice  Withdraws at least the amount specified.
-   *          If the leftover balance is less than the minimum deposit, the entire balance is withdrawn.
-   *
-   * @dev     To be used by a rollup to withdraw funds from the GSE. For example if slashing or
-   *          just withdrawing events happen, a rollup can use this function to withdraw the funds.
-   *          It looks in both the rollup instance and the bonus address for the attester.
-   *
-   * @dev     Note that all funds are returned to the rollup, so for slashing the rollup itself must
-   *          address the problem of "what to do" with the funds. And it must look at the returned amount
-   *          withdrawn and the bool.
-   *
-   * @param _attester - The attester to withdraw from.
-   * @param _amount   - The amount of staking asset to withdraw. Has 1:1 ratio with voting power.
-   *
-   * @return The actual amount withdrawn.
-   * @return True if attester is removed from set, false otherwise
-   * @return The id of the withdrawal at the governance
-   */
-  function withdraw(address _attester, uint256 _amount)
-    external
-    override(IGSECore)
-    onlyRollup
-    returns (uint256, bool, uint256)
-  {
-    // We need to figure out where the attester is effectively located
-    // we start by looking at the instance that is withdrawing the attester
-    address withdrawingInstance = msg.sender;
-    InstanceAttesterRegistry storage attesterRegistry = instances[msg.sender];
-    bool foundAttester = attesterRegistry.attesters.contains(_attester);
-
-    // If we haven't found the attester in the rollup instance, and we are latest rollup, go look in the "bonus"
-    // instance.
-    if (
-      !foundAttester && getLatestRollup() == msg.sender
-        && instances[BONUS_INSTANCE_ADDRESS].attesters.contains(_attester)
-    ) {
-      withdrawingInstance = BONUS_INSTANCE_ADDRESS;
-      attesterRegistry = instances[BONUS_INSTANCE_ADDRESS];
-      foundAttester = true;
+    function setGovernance(Governance _governance) external override(IGSECore) onlyOwner {
+        require(address(governance) == address(0), Errors_1.GSE__GovernanceAlreadySet());
+        governance = _governance;
     }
 
-    require(foundAttester, Errors_1.GSE__NothingToExit(_attester));
-
-    uint256 balance = delegation.getBalanceOf(withdrawingInstance, _attester);
-    require(balance >= _amount, Errors_1.GSE__InsufficientBalance(balance, _amount));
-
-    // First assume we are only withdrawing the amount specified.
-    uint256 amountWithdrawn = _amount;
-    // If the balance after withdrawal is less than the ejection threshold,
-    // we will remove the attester from the instance.
-    bool isRemoved = balance - _amount < EJECTION_THRESHOLD;
-
-    // Note that the current implementation of the rollup does not allow for partial withdrawals,
-    // via `initiateWithdraw`, so a "normal" withdrawal will always remove the attester from the instance.
-    // However, if the attester is slashed, we might just reduce the balance.
-    if (isRemoved) {
-      require(attesterRegistry.attesters.remove(_attester), Errors_1.GSE__FailedToRemove(_attester));
-      amountWithdrawn = balance;
-
-      // When removing the user, remove the delegating as well.
-      delegation.undelegate(withdrawingInstance, _attester);
-
-      // NOTE
-      // We intentionally did not remove the attester config.
-      // Attester config is set ONCE when the attester is first seen by the GSE,
-      // and is shared across all instances.
+    function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external override(IGSECore) onlyOwner {
+        proofOfPossessionGasLimit = _proofOfPossessionGasLimit;
     }
 
-    // Decrease the balance of the attester in the instance.
-    // Move voting power from the attester's delegatee to address(0) (unless the delegatee is already address(0))
-    // Reduce the supply of the instance and the total supply.
-    delegation.decreaseBalance(withdrawingInstance, _attester, amountWithdrawn);
-
-    // The withdrawal contains a pending amount that may be claimed using the withdrawal ID when a delay enforced by
-    // the Governance contract has passed.
-    // Note that the rollup is the one that receives the funds when the withdrawal is claimed.
-    uint256 withdrawalId = getGovernance().initiateWithdraw(msg.sender, amountWithdrawn);
-
-    return (amountWithdrawn, isRemoved, withdrawalId);
-  }
-
-  /**
-   * @notice  A helper function to make it easy for users of the GSE to finalize
-   *          a pending exit in the governance.
-   *
-   *          Kept in here since it is already connected to Governance:
-   *          we don't want the rollup to have to deal with links to gov etc.
-   *
-   * @dev     Will be a no operation if the withdrawal is already collected.
-   *
-   * @param _withdrawalId - The id of the withdrawal
-   */
-  function finalizeWithdraw(uint256 _withdrawalId) external override(IGSECore) {
-    Governance gov = getGovernance();
-    if (!gov.getWithdrawal(_withdrawalId).claimed) {
-      gov.finalizeWithdraw(_withdrawalId);
+    /**
+     * @notice  Adds another rollup to the instances, which is the new latest rollup.
+     *          Only callable by the owner (usually governance) and only when the rollup is not already in the set
+     *
+     * @dev rollups only have access to the "bonus instance" while they are the most recent rollup.
+     *
+     * @dev The GSE only supports adding rollups, not removing them. If a rollup becomes compromised, governance can
+     * simply add a new rollup and the bonus instance mechanism ensures a smooth transition by allowing the new rollup
+     * to immediately inherit attesters.
+     *
+     * @dev Beware that multiple calls to `addRollup` at the same `block.timestamp` will override each other and only
+     * the last will be in the `rollups`.
+     *
+     * @param _rollup - The address of the rollup to add
+     */
+    function addRollup(address _rollup) external override(IGSECore) onlyOwner {
+        require(_rollup != address(0), Errors_1.GSE__InvalidRollupAddress(_rollup));
+        require(!instances[_rollup].exists, Errors_1.GSE__RollupAlreadyRegistered(_rollup));
+        instances[_rollup].exists = true;
+        rollups.push(block.timestamp.toUint32(), uint224(uint160(_rollup)));
     }
-  }
 
-  /**
-   * @notice Make a proposal to Governance via `Governance.proposeWithLock`
-   *
-   * @dev It is required to expose this on the GSE, since it is assumed that only the GSE can hold
-   * power in Governance (see the comment at the top of Governance.sol).
-   *
-   * @dev Transfers governance's configured `lockAmount` of ASSET from msg.sender to the GSE,
-   * and then into Governance.
-   *
-   * @dev Immediately creates a withdrawal from Governance for the `lockAmount`.
-   *
-   * @dev The delay until the withdrawal may be finalized is equal to the current `lockDelay` in Governance.
-   *
-   * @param _payload - The IPayload address, which is a contract that contains the proposed actions to be executed by
-   * the governance.
-   * @param _to - The address that will receive the withdrawn funds when the withdrawal is finalized (see
-   * `finalizeWithdraw`)
-   *
-   * @return The id of the proposal
-   */
-  function proposeWithLock(IPayload _payload, address _to) external override(IGSECore) returns (uint256) {
-    Governance gov = getGovernance();
-    uint256 amount = gov.getConfiguration().proposeConfig.lockAmount;
+    /**
+     * @notice Deposits a new attester
+     *
+     * @dev msg.sender must be a registered rollup.
+     *
+     * @dev Transfers ASSET from msg.sender to the GSE, and then into Governance.
+     *
+     * @dev if _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
+     *
+     * @dev An attester configuration is registered globally to avoid BLS troubles when moving stake.
+     *
+     * Suppose the registered rollups are A, then B, then C, so C's effective attesters are
+     * those associated with C and the bonus address.
+     *
+     * Alice may come along now and deposit on A or B, with _moveWithLatestRollup=false in either case.
+     *
+     * For depositing into C, she can deposit *either* with _moveWithLatestRollup = true OR false.
+     * If she deposits with _moveWithLatestRollup = false, then she is associated with C's address.
+     * If she deposits with _moveWithLatestRollup = true, then she is associated with the bonus address.
+     *
+     * Suppose she deposits with _moveWithLatestRollup = true, and a new rollup D is added to the rollups.
+     * Then her stake moves to D, and she is in the effective attesters of D.
+     *
+     * @param _attester     - The attester address on behalf of which the deposit is made.
+     * @param _withdrawer   - Address which the user wish to use to initiate a withdraw for the `_attester` and
+     *                        to update delegation with. The withdrawals are enforced by the rollup to which it is
+     *                        controlled, so it is practically a value for the rollup to use, meaning dishonest rollup
+     *                        can reject withdrawal attempts.
+     * @param _publicKeyInG1 - BLS public key for the attester in G1
+     * @param _publicKeyInG2 - BLS public key for the attester in G2
+     * @param _proofOfPossession - A proof of possessions for the private key corresponding _publicKey in G1 and G2
+     * @param _moveWithLatestRollup - Whether to deposit into the specific instance, or the bonus instance
+     */
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external override(IGSECore) onlyRollup {
+        bool isMsgSenderLatestRollup = getLatestRollup() == msg.sender;
 
-    ASSET.safeTransferFrom(msg.sender, address(this), amount);
-    ASSET.approve(address(gov), amount);
+        // If _moveWithLatestRollup is true, then msg.sender must be the latest rollup.
+        if (_moveWithLatestRollup) {
+            require(isMsgSenderLatestRollup, Errors_1.GSE__NotLatestRollup(msg.sender));
+        }
 
-    gov.deposit(address(this), amount);
+        // Ensure that we are not already attesting on the rollup
+        require(!isRegistered(msg.sender, _attester), Errors_1.GSE__AlreadyRegistered(msg.sender, _attester));
 
-    return gov.proposeWithLock(_payload, _to);
-  }
+        // Ensure that if we are the latest rollup, we are not already attesting on the bonus instance.
+        if (isMsgSenderLatestRollup) {
+            require(
+                !isRegistered(BONUS_INSTANCE_ADDRESS, _attester),
+                Errors_1.GSE__AlreadyRegistered(BONUS_INSTANCE_ADDRESS, _attester)
+            );
+        }
 
-  /**
-   * @notice  Delegates the voting power of `_attester` at `_instance` to `_delegatee`
-   *
-   *          Only callable by the `withdrawer` for the given `_attester` at the given
-   *          `_instance`. This is to ensure that the depositor in poor mans delegation;
-   *          listing another entity as the `attester`, still controls his voting power,
-   *          even if someone else is running the node. Separately, it makes it simpler
-   *          to use cold-storage for more impactful actions.
-   *
-   * @dev The delegatee may use this voting power to vote on proposals in Governance.
-   *
-   * Note that voting power for a delegatee is timestamped. The delegatee must have this
-   * power before a proposal becomes "active" in order to use it.
-   * See `Governance.getProposalState` for more details.
-   *
-   * @param _instance   - The address of the rollup instance (or bonus instance address)
-   *                      to which the `_attester` deposit is pledged.
-   * @param _attester   - The address of the attester to delegate on behalf of
-   * @param _delegatee  - The delegatee that should receive the power
-   */
-  function delegate(address _instance, address _attester, address _delegatee) external override(IGSECore) {
-    require(isRollupRegistered(_instance), Errors_1.GSE__InstanceDoesNotExist(_instance));
-    address withdrawer = configOf[_attester].withdrawer;
-    require(msg.sender == withdrawer, Errors_1.GSE__NotWithdrawer(withdrawer, msg.sender));
-    delegation.delegate(_instance, _attester, _delegatee);
-  }
+        // Set the recipient instance address, i.e. the one that will receive the attester.
+        // From above, we know that if we are here, and _moveWithLatestRollup is true,
+        // then msg.sender is the latest instance,
+        // but the user is targeting the bonus address.
+        // Otherwise, we use the msg.sender, which we know is a registered rollup
+        // thanks to the modifier.
+        address recipientInstance = _moveWithLatestRollup ? BONUS_INSTANCE_ADDRESS : msg.sender;
 
-  /**
-   * @notice  Votes at the governance using the power delegated to `msg.sender`
-   *
-   * @param _proposalId - The id of the proposal in the governance to vote on
-   * @param _amount     - The amount of voting power to use in the vote
-   *                      In the gov, it is possible to do a vote with partial power
-   * @param _support    - True if supporting the proposal, false otherwise.
-   */
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
-    _vote(msg.sender, _proposalId, _amount, _support);
-  }
+        // Add the attester to the instance's checkpointed set of attesters.
+        require(
+            instances[recipientInstance].attesters.add(_attester),
+            Errors_1.GSE__AlreadyRegistered(recipientInstance, _attester)
+        );
 
-  /**
-   * @notice  Votes at the governance using the power delegated to the bonus instance.
-   *          Only callable by the rollup that was the latest rollup at the time of the proposal.
-   *
-   * @param _proposalId - The id of the proposal in the governance to vote on
-   * @param _amount     - The amount of voting power to use in the vote
-   *                      In the gov, it is possible to do a vote with partial power
-   */
-  function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
-    Timestamp ts = _pendingThrough(_proposalId);
-    require(msg.sender == getLatestRollupAt(ts), Errors_1.GSE__NotLatestRollup(msg.sender));
-    _vote(BONUS_INSTANCE_ADDRESS, _proposalId, _amount, _support);
-  }
+        _checkProofOfPossession(_attester, _publicKeyInG1, _publicKeyInG2, _proofOfPossession);
 
-  function isRollupRegistered(address _instance) public view override(IGSECore) returns (bool) {
-    return instances[_instance].exists;
-  }
+        // This is the ONLY place where we set the configuration for an attester.
+        // This means that their withdrawer and public keys are set once, globally.
+        // If they exit, they must re-deposit with a new key.
+        configOf[_attester] = AttesterConfig({withdrawer: _withdrawer, publicKey: _publicKeyInG1});
 
-  /**
-   * @notice  Lookup if the `_attester` is in the `_instance` attester set
-   *
-   * @param _instance   - The instance to look at
-   * @param _attester   - The attester to lookup
-   *
-   * @return  True if the `_attester` is in the set of `_instance`, false otherwise
-   */
-  function isRegistered(address _instance, address _attester) public view override(IGSECore) returns (bool) {
-    return instances[_instance].attesters.contains(_attester);
-  }
+        delegation.delegate(recipientInstance, _attester, recipientInstance);
+        delegation.increaseBalance(recipientInstance, _attester, ACTIVATION_THRESHOLD);
 
-  /**
-   * @notice  Get the address of latest instance
-   *
-   * @return  The address of the latest instance
-   */
-  function getLatestRollup() public view override(IGSECore) returns (address) {
-    return address(rollups.latest().toUint160());
-  }
+        ASSET.safeTransferFrom(msg.sender, address(this), ACTIVATION_THRESHOLD);
 
-  /**
-   * @notice  Get the address of the instance that was latest at time `_timestamp`
-   *
-   * @param _timestamp  - The timestamp to lookup
-   *
-   * @return  The address of the latest instance at the time of lookup
-   */
-  function getLatestRollupAt(Timestamp _timestamp) public view override(IGSECore) returns (address) {
-    return address(rollups.upperLookup(Timestamp.unwrap(_timestamp).toUint32()).toUint160());
-  }
+        Governance gov = getGovernance();
+        ASSET.approve(address(gov), ACTIVATION_THRESHOLD);
+        gov.deposit(address(this), ACTIVATION_THRESHOLD);
 
-  function getGovernance() public view override(IGSECore) returns (Governance) {
-    return governance;
-  }
+        emit Deposit(recipientInstance, _attester, _withdrawer);
+    }
 
-  /**
-   * @notice  Inner logic for the vote
-   *
-   * @dev     Fetches the timestamp where proposal becomes active, and use it for the voting power
-   *          of the `_voter`
-   *
-   * @param _voter      - The voter
-   * @param _proposalId - The proposal to vote on
-   * @param _amount     - The amount of power to use
-   * @param _support    - True to support the proposal, false otherwise
-   */
-  function _vote(address _voter, uint256 _proposalId, uint256 _amount, bool _support) internal {
-    Timestamp ts = _pendingThrough(_proposalId);
-    // Mark the power as spent within our delegation accounting.
-    delegation.usePower(_voter, _proposalId, ts, _amount);
-    // Vote on the proposal
-    getGovernance().vote(_proposalId, _amount, _support);
-  }
+    /**
+     * @notice  Withdraws at least the amount specified.
+     *          If the leftover balance is less than the minimum deposit, the entire balance is withdrawn.
+     *
+     * @dev     To be used by a rollup to withdraw funds from the GSE. For example if slashing or
+     *          just withdrawing events happen, a rollup can use this function to withdraw the funds.
+     *          It looks in both the rollup instance and the bonus address for the attester.
+     *
+     * @dev     Note that all funds are returned to the rollup, so for slashing the rollup itself must
+     *          address the problem of "what to do" with the funds. And it must look at the returned amount
+     *          withdrawn and the bool.
+     *
+     * @param _attester - The attester to withdraw from.
+     * @param _amount   - The amount of staking asset to withdraw. Has 1:1 ratio with voting power.
+     *
+     * @return The actual amount withdrawn.
+     * @return True if attester is removed from set, false otherwise
+     * @return The id of the withdrawal at the governance
+     */
+    function withdraw(address _attester, uint256 _amount)
+        external
+        override(IGSECore)
+        onlyRollup
+        returns (uint256, bool, uint256)
+    {
+        // We need to figure out where the attester is effectively located
+        // we start by looking at the instance that is withdrawing the attester
+        address withdrawingInstance = msg.sender;
+        InstanceAttesterRegistry storage attesterRegistry = instances[msg.sender];
+        bool foundAttester = attesterRegistry.attesters.contains(_attester);
 
-  function _checkProofOfPossession(
-    address _attester,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession
-  ) internal virtual {
-    // Make sure the attester has not registered before
-    G1Point memory previouslyRegisteredPoint = configOf[_attester].publicKey;
-    require(
-      (previouslyRegisteredPoint.x == 0 && previouslyRegisteredPoint.y == 0),
-      Errors_1.GSE__CannotChangePublicKeys(previouslyRegisteredPoint.x, previouslyRegisteredPoint.y)
-    );
+        // If we haven't found the attester in the rollup instance, and we are latest rollup, go look in the "bonus"
+        // instance.
+        if (
+            !foundAttester && getLatestRollup() == msg.sender
+                && instances[BONUS_INSTANCE_ADDRESS].attesters.contains(_attester)
+        ) {
+            withdrawingInstance = BONUS_INSTANCE_ADDRESS;
+            attesterRegistry = instances[BONUS_INSTANCE_ADDRESS];
+            foundAttester = true;
+        }
 
-    // Make sure the incoming point has not been seen before
-    // NOTE: we only need to check for the existence of Pk1, and not also for Pk2,
-    // as the Pk2 will be constrained to have the same underlying secret key as part of the proofOfPossession,
-    // so existence/correctness of Pk2 is implied by existence/correctness of Pk1.
-    bytes32 hashedIncomingPoint = keccak256(abi.encodePacked(_publicKeyInG1.x, _publicKeyInG1.y));
-    require((!ownedPKs[hashedIncomingPoint]), Errors_1.GSE__ProofOfPossessionAlreadySeen(hashedIncomingPoint));
-    ownedPKs[hashedIncomingPoint] = true;
+        require(foundAttester, Errors_1.GSE__NothingToExit(_attester));
 
-    // We validate the proof of possession using an external contract to limit gas potentially "sacrificed"
-    // in case of failure.
-    require(
-      BN254_LIB_WRAPPER.proofOfPossession{
-        gas: proofOfPossessionGasLimit
-      }(_publicKeyInG1, _publicKeyInG2, _proofOfPossession),
-      Errors_1.GSE__InvalidProofOfPossession()
-    );
-  }
+        uint256 balance = delegation.getBalanceOf(withdrawingInstance, _attester);
+        require(balance >= _amount, Errors_1.GSE__InsufficientBalance(balance, _amount));
 
-  function _pendingThrough(uint256 _proposalId) internal view returns (Timestamp) {
-    // Directly compute pendingThrough for memory proposal
-    Proposal memory proposal = getGovernance().getProposal(_proposalId);
-    return proposal.creation + proposal.config.votingDelay;
-  }
+        // First assume we are only withdrawing the amount specified.
+        uint256 amountWithdrawn = _amount;
+        // If the balance after withdrawal is less than the ejection threshold,
+        // we will remove the attester from the instance.
+        bool isRemoved = balance - _amount < EJECTION_THRESHOLD;
+
+        // Note that the current implementation of the rollup does not allow for partial withdrawals,
+        // via `initiateWithdraw`, so a "normal" withdrawal will always remove the attester from the instance.
+        // However, if the attester is slashed, we might just reduce the balance.
+        if (isRemoved) {
+            require(attesterRegistry.attesters.remove(_attester), Errors_1.GSE__FailedToRemove(_attester));
+            amountWithdrawn = balance;
+
+            // When removing the user, remove the delegating as well.
+            delegation.undelegate(withdrawingInstance, _attester);
+
+            // NOTE
+            // We intentionally did not remove the attester config.
+            // Attester config is set ONCE when the attester is first seen by the GSE,
+            // and is shared across all instances.
+        }
+
+        // Decrease the balance of the attester in the instance.
+        // Move voting power from the attester's delegatee to address(0) (unless the delegatee is already address(0))
+        // Reduce the supply of the instance and the total supply.
+        delegation.decreaseBalance(withdrawingInstance, _attester, amountWithdrawn);
+
+        // The withdrawal contains a pending amount that may be claimed using the withdrawal ID when a delay enforced by
+        // the Governance contract has passed.
+        // Note that the rollup is the one that receives the funds when the withdrawal is claimed.
+        uint256 withdrawalId = getGovernance().initiateWithdraw(msg.sender, amountWithdrawn);
+
+        return (amountWithdrawn, isRemoved, withdrawalId);
+    }
+
+    /**
+     * @notice  A helper function to make it easy for users of the GSE to finalize
+     *          a pending exit in the governance.
+     *
+     *          Kept in here since it is already connected to Governance:
+     *          we don't want the rollup to have to deal with links to gov etc.
+     *
+     * @dev     Will be a no operation if the withdrawal is already collected.
+     *
+     * @param _withdrawalId - The id of the withdrawal
+     */
+    function finalizeWithdraw(uint256 _withdrawalId) external override(IGSECore) {
+        Governance gov = getGovernance();
+        if (!gov.getWithdrawal(_withdrawalId).claimed) {
+            gov.finalizeWithdraw(_withdrawalId);
+        }
+    }
+
+    /**
+     * @notice Make a proposal to Governance via `Governance.proposeWithLock`
+     *
+     * @dev It is required to expose this on the GSE, since it is assumed that only the GSE can hold
+     * power in Governance (see the comment at the top of Governance.sol).
+     *
+     * @dev Transfers governance's configured `lockAmount` of ASSET from msg.sender to the GSE,
+     * and then into Governance.
+     *
+     * @dev Immediately creates a withdrawal from Governance for the `lockAmount`.
+     *
+     * @dev The delay until the withdrawal may be finalized is equal to the current `lockDelay` in Governance.
+     *
+     * @param _payload - The IPayload address, which is a contract that contains the proposed actions to be executed by
+     * the governance.
+     * @param _to - The address that will receive the withdrawn funds when the withdrawal is finalized (see
+     * `finalizeWithdraw`)
+     *
+     * @return The id of the proposal
+     */
+    function proposeWithLock(IPayload _payload, address _to) external override(IGSECore) returns (uint256) {
+        Governance gov = getGovernance();
+        uint256 amount = gov.getConfiguration().proposeConfig.lockAmount;
+
+        ASSET.safeTransferFrom(msg.sender, address(this), amount);
+        ASSET.approve(address(gov), amount);
+
+        gov.deposit(address(this), amount);
+
+        return gov.proposeWithLock(_payload, _to);
+    }
+
+    /**
+     * @notice  Delegates the voting power of `_attester` at `_instance` to `_delegatee`
+     *
+     *          Only callable by the `withdrawer` for the given `_attester` at the given
+     *          `_instance`. This is to ensure that the depositor in poor mans delegation;
+     *          listing another entity as the `attester`, still controls his voting power,
+     *          even if someone else is running the node. Separately, it makes it simpler
+     *          to use cold-storage for more impactful actions.
+     *
+     * @dev The delegatee may use this voting power to vote on proposals in Governance.
+     *
+     * Note that voting power for a delegatee is timestamped. The delegatee must have this
+     * power before a proposal becomes "active" in order to use it.
+     * See `Governance.getProposalState` for more details.
+     *
+     * @param _instance   - The address of the rollup instance (or bonus instance address)
+     *                      to which the `_attester` deposit is pledged.
+     * @param _attester   - The address of the attester to delegate on behalf of
+     * @param _delegatee  - The delegatee that should receive the power
+     */
+    function delegate(address _instance, address _attester, address _delegatee) external override(IGSECore) {
+        require(isRollupRegistered(_instance), Errors_1.GSE__InstanceDoesNotExist(_instance));
+        address withdrawer = configOf[_attester].withdrawer;
+        require(msg.sender == withdrawer, Errors_1.GSE__NotWithdrawer(withdrawer, msg.sender));
+        delegation.delegate(_instance, _attester, _delegatee);
+    }
+
+    /**
+     * @notice  Votes at the governance using the power delegated to `msg.sender`
+     *
+     * @param _proposalId - The id of the proposal in the governance to vote on
+     * @param _amount     - The amount of voting power to use in the vote
+     *                      In the gov, it is possible to do a vote with partial power
+     * @param _support    - True if supporting the proposal, false otherwise.
+     */
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
+        _vote(msg.sender, _proposalId, _amount, _support);
+    }
+
+    /**
+     * @notice  Votes at the governance using the power delegated to the bonus instance.
+     *          Only callable by the rollup that was the latest rollup at the time of the proposal.
+     *
+     * @param _proposalId - The id of the proposal in the governance to vote on
+     * @param _amount     - The amount of voting power to use in the vote
+     *                      In the gov, it is possible to do a vote with partial power
+     */
+    function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external override(IGSECore) {
+        Timestamp ts = _pendingThrough(_proposalId);
+        require(msg.sender == getLatestRollupAt(ts), Errors_1.GSE__NotLatestRollup(msg.sender));
+        _vote(BONUS_INSTANCE_ADDRESS, _proposalId, _amount, _support);
+    }
+
+    function isRollupRegistered(address _instance) public view override(IGSECore) returns (bool) {
+        return instances[_instance].exists;
+    }
+
+    /**
+     * @notice  Lookup if the `_attester` is in the `_instance` attester set
+     *
+     * @param _instance   - The instance to look at
+     * @param _attester   - The attester to lookup
+     *
+     * @return  True if the `_attester` is in the set of `_instance`, false otherwise
+     */
+    function isRegistered(address _instance, address _attester) public view override(IGSECore) returns (bool) {
+        return instances[_instance].attesters.contains(_attester);
+    }
+
+    /**
+     * @notice  Get the address of latest instance
+     *
+     * @return  The address of the latest instance
+     */
+    function getLatestRollup() public view override(IGSECore) returns (address) {
+        return address(rollups.latest().toUint160());
+    }
+
+    /**
+     * @notice  Get the address of the instance that was latest at time `_timestamp`
+     *
+     * @param _timestamp  - The timestamp to lookup
+     *
+     * @return  The address of the latest instance at the time of lookup
+     */
+    function getLatestRollupAt(Timestamp _timestamp) public view override(IGSECore) returns (address) {
+        return address(rollups.upperLookup(Timestamp.unwrap(_timestamp).toUint32()).toUint160());
+    }
+
+    function getGovernance() public view override(IGSECore) returns (Governance) {
+        return governance;
+    }
+
+    /**
+     * @notice  Inner logic for the vote
+     *
+     * @dev     Fetches the timestamp where proposal becomes active, and use it for the voting power
+     *          of the `_voter`
+     *
+     * @param _voter      - The voter
+     * @param _proposalId - The proposal to vote on
+     * @param _amount     - The amount of power to use
+     * @param _support    - True to support the proposal, false otherwise
+     */
+    function _vote(address _voter, uint256 _proposalId, uint256 _amount, bool _support) internal {
+        Timestamp ts = _pendingThrough(_proposalId);
+        // Mark the power as spent within our delegation accounting.
+        delegation.usePower(_voter, _proposalId, ts, _amount);
+        // Vote on the proposal
+        getGovernance().vote(_proposalId, _amount, _support);
+    }
+
+    function _checkProofOfPossession(
+        address _attester,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession
+    ) internal virtual {
+        // Make sure the attester has not registered before
+        G1Point memory previouslyRegisteredPoint = configOf[_attester].publicKey;
+        require(
+            (previouslyRegisteredPoint.x == 0 && previouslyRegisteredPoint.y == 0),
+            Errors_1.GSE__CannotChangePublicKeys(previouslyRegisteredPoint.x, previouslyRegisteredPoint.y)
+        );
+
+        // Make sure the incoming point has not been seen before
+        // NOTE: we only need to check for the existence of Pk1, and not also for Pk2,
+        // as the Pk2 will be constrained to have the same underlying secret key as part of the proofOfPossession,
+        // so existence/correctness of Pk2 is implied by existence/correctness of Pk1.
+        bytes32 hashedIncomingPoint = keccak256(abi.encodePacked(_publicKeyInG1.x, _publicKeyInG1.y));
+        require((!ownedPKs[hashedIncomingPoint]), Errors_1.GSE__ProofOfPossessionAlreadySeen(hashedIncomingPoint));
+        ownedPKs[hashedIncomingPoint] = true;
+
+        // We validate the proof of possession using an external contract to limit gas potentially "sacrificed"
+        // in case of failure.
+        require(
+            BN254_LIB_WRAPPER.proofOfPossession{gas: proofOfPossessionGasLimit}(
+                _publicKeyInG1, _publicKeyInG2, _proofOfPossession
+            ),
+            Errors_1.GSE__InvalidProofOfPossession()
+        );
+    }
+
+    function _pendingThrough(uint256 _proposalId) internal view returns (Timestamp) {
+        // Directly compute pendingThrough for memory proposal
+        Proposal memory proposal = getGovernance().getProposal(_proposalId);
+        return proposal.creation + proposal.config.votingDelay;
+    }
 }
 
 contract GSE is IGSE, GSECore {
-  using AddressSnapshotLib for SnapshottedAddressSet;
-  using SafeCast for uint256;
-  using SafeCast for uint224;
-  using Checkpoints for Checkpoints.Trace224;
-  using DepositDelegationLib for DepositAndDelegationAccounting;
+    using AddressSnapshotLib for SnapshottedAddressSet;
+    using SafeCast for uint256;
+    using SafeCast for uint224;
+    using Checkpoints for Checkpoints.Trace224;
+    using DepositDelegationLib for DepositAndDelegationAccounting;
 
-  constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
-    GSECore(__owner, _asset, _activationThreshold, _ejectionThreshold)
-  {}
+    constructor(address __owner, IERC20 _asset, uint256 _activationThreshold, uint256 _ejectionThreshold)
+        GSECore(__owner, _asset, _activationThreshold, _ejectionThreshold)
+    {}
 
-  /**
-   * @notice  Get the registration digest of a public key
-   *          by hashing the the public key to a point on the curve which may subsequently
-   *          be signed by the corresponding private key.
-   *
-   * @param _publicKey - The public key to get the registration digest of
-   *
-   * @return The registration digest of the public key. Sign and submit as a proof of possession.
-   */
-  function getRegistrationDigest(G1Point memory _publicKey) external view override(IGSE) returns (G1Point memory) {
-    return BN254_LIB_WRAPPER.g1ToDigestPoint(_publicKey);
-  }
-
-  function getConfig(address _attester) external view override(IGSE) returns (AttesterConfig memory) {
-    return configOf[_attester];
-  }
-
-  function getWithdrawer(address _attester) external view override(IGSE) returns (address withdrawer) {
-    AttesterConfig memory config = configOf[_attester];
-
-    return config.withdrawer;
-  }
-
-  function balanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
-    return delegation.getBalanceOf(_instance, _attester);
-  }
-
-  /**
-   * @notice  Get the effective balance of the attester at the instance.
-   *
-   *          The effective balance is the balance of the attester at the specific instance or at the bonus if the
-   *          instance is the latest rollup and he was not at the specific. We can do this as an `or` since the
-   *          attester may only be active at one of them.
-   *
-   * @param _instance   - The instance to look at
-   * @param _attester   - The attester to look at
-   *
-   * @return The effective balance of the attester at the instance
-   */
-  function effectiveBalanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
-    uint256 balance = delegation.getBalanceOf(_instance, _attester);
-    if (balance == 0 && getLatestRollup() == _instance) {
-      return delegation.getBalanceOf(BONUS_INSTANCE_ADDRESS, _attester);
-    }
-    return balance;
-  }
-
-  function supplyOf(address _instance) external view override(IGSE) returns (uint256) {
-    return delegation.getSupplyOf(_instance);
-  }
-
-  function totalSupply() external view override(IGSE) returns (uint256) {
-    return delegation.getSupply();
-  }
-
-  function getDelegatee(address _instance, address _attester) external view override(IGSE) returns (address) {
-    return delegation.getDelegatee(_instance, _attester);
-  }
-
-  function getVotingPower(address _delegatee) external view override(IGSE) returns (uint256) {
-    return delegation.getVotingPower(_delegatee);
-  }
-
-  function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
-    external
-    view
-    override(IGSE)
-    returns (address[] memory)
-  {
-    return _getAddressFromIndicesAtTimestamp(_instance, _indices, _timestamp);
-  }
-
-  /**
-   * @notice  Get the G1 public keys of the attesters
-   *
-   * NOTE: this function does NOT check if the attesters are CURRENTLY ACTIVE.
-   *
-   * @param _attesters  - The attesters to lookup
-   *
-   * @return The G1 public keys of the attesters
-   */
-  function getG1PublicKeysFromAddresses(address[] memory _attesters)
-    external
-    view
-    override(IGSE)
-    returns (G1Point[] memory)
-  {
-    G1Point[] memory keys = new G1Point[](_attesters.length);
-    for (uint256 i = 0; i < _attesters.length; i++) {
-      keys[i] = configOf[_attesters[i]].publicKey;
+    /**
+     * @notice  Get the registration digest of a public key
+     *          by hashing the the public key to a point on the curve which may subsequently
+     *          be signed by the corresponding private key.
+     *
+     * @param _publicKey - The public key to get the registration digest of
+     *
+     * @return The registration digest of the public key. Sign and submit as a proof of possession.
+     */
+    function getRegistrationDigest(G1Point memory _publicKey) external view override(IGSE) returns (G1Point memory) {
+        return BN254_LIB_WRAPPER.g1ToDigestPoint(_publicKey);
     }
 
-    return keys;
-  }
-
-  function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
-    external
-    view
-    override(IGSE)
-    returns (address)
-  {
-    uint256[] memory indices = new uint256[](1);
-    indices[0] = _index;
-    return _getAddressFromIndicesAtTimestamp(_instance, indices, _timestamp)[0];
-  }
-
-  function getPowerUsed(address _delegatee, uint256 _proposalId) external view override(IGSE) returns (uint256) {
-    return delegation.getPowerUsed(_delegatee, _proposalId);
-  }
-
-  function getBonusInstanceAddress() external pure override(IGSE) returns (address) {
-    return BONUS_INSTANCE_ADDRESS;
-  }
-
-  function getVotingPowerAt(address _delegatee, Timestamp _timestamp) public view override(IGSE) returns (uint256) {
-    return delegation.getVotingPowerAt(_delegatee, _timestamp);
-  }
-
-  /**
-   * @notice  Get the number of effective attesters at the instance at the time of `_timestamp`
-   *          (including the bonus instance)
-   *
-   * @param _instance   - The instance to look at
-   * @param _timestamp  - The timestamp to lookup
-   *
-   * @return The number of effective attesters at the instance at the time of `_timestamp`
-   */
-  function getAttesterCountAtTime(address _instance, Timestamp _timestamp)
-    public
-    view
-    override(IGSE)
-    returns (uint256)
-  {
-    InstanceAttesterRegistry storage store = instances[_instance];
-    uint32 timestamp = Timestamp.unwrap(_timestamp).toUint32();
-
-    uint256 count = store.attesters.lengthAtTimestamp(timestamp);
-    if (getLatestRollupAt(_timestamp) == _instance) {
-      count += instances[BONUS_INSTANCE_ADDRESS].attesters.lengthAtTimestamp(timestamp);
+    function getConfig(address _attester) external view override(IGSE) returns (AttesterConfig memory) {
+        return configOf[_attester];
     }
 
-    return count;
-  }
+    function getWithdrawer(address _attester) external view override(IGSE) returns (address withdrawer) {
+        AttesterConfig memory config = configOf[_attester];
 
-  /**
-   * @notice  Get the addresses of the attesters at the instance at the time of `_timestamp`
-   *
-   * @dev
-   *
-   * @param _instance   - The instance to look at
-   * @param _indices    - The indices of the attesters to lookup
-   * @param _timestamp  - The timestamp to lookup
-   *
-   * @return The addresses of the attesters at the instance at the time of `_timestamp`
-   */
-  function _getAddressFromIndicesAtTimestamp(address _instance, uint256[] memory _indices, Timestamp _timestamp)
-    internal
-    view
-    returns (address[] memory)
-  {
-    address[] memory attesters = new address[](_indices.length);
-
-    // Note: This function could get called where _instance is the bonus instance.
-    // This is okay, because we know that in this case, `isLatestRollup` will be false.
-    // So we won't double count.
-    InstanceAttesterRegistry storage instanceStore = instances[_instance];
-    InstanceAttesterRegistry storage bonusStore = instances[BONUS_INSTANCE_ADDRESS];
-    bool isLatestRollup = getLatestRollupAt(_timestamp) == _instance;
-
-    uint32 ts = Timestamp.unwrap(_timestamp).toUint32();
-
-    // The effective size of the set will be the size of the instance attesters, plus the size of the bonus attesters
-    // if the instance is the latest rollup. This will effectively work as one long list with [...instance, ...bonus]
-    uint256 storeSize = instanceStore.attesters.lengthAtTimestamp(ts);
-    uint256 canonicalSize = isLatestRollup ? bonusStore.attesters.lengthAtTimestamp(ts) : 0;
-    uint256 totalSize = storeSize + canonicalSize;
-
-    // We loop through the indices, and for each index we get the attester from the instance or bonus instance
-    // depending on value in the collective list [...instance, ...bonus]
-    for (uint256 i = 0; i < _indices.length; i++) {
-      uint256 index = _indices[i];
-      require(index < totalSize, Errors_1.GSE__OutOfBounds(index, totalSize));
-
-      // since we have ensured that the index is not out of bounds, we can use the unsafe function in
-      // `AddressSnapshotLib` to fetch if. We use the `recent` variant as we expect the attesters to
-      // mainly be from recent history when fetched during tx execution.
-
-      if (index < storeSize) {
-        attesters[i] = instanceStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index, ts);
-      } else if (isLatestRollup) {
-        attesters[i] = bonusStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index - storeSize, ts);
-      } else {
-        revert Errors_1.GSE__FatalError("SHOULD NEVER HAPPEN");
-      }
+        return config.withdrawer;
     }
 
-    return attesters;
-  }
+    function balanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
+        return delegation.getBalanceOf(_instance, _attester);
+    }
+
+    /**
+     * @notice  Get the effective balance of the attester at the instance.
+     *
+     *          The effective balance is the balance of the attester at the specific instance or at the bonus if the
+     *          instance is the latest rollup and he was not at the specific. We can do this as an `or` since the
+     *          attester may only be active at one of them.
+     *
+     * @param _instance   - The instance to look at
+     * @param _attester   - The attester to look at
+     *
+     * @return The effective balance of the attester at the instance
+     */
+    function effectiveBalanceOf(address _instance, address _attester) external view override(IGSE) returns (uint256) {
+        uint256 balance = delegation.getBalanceOf(_instance, _attester);
+        if (balance == 0 && getLatestRollup() == _instance) {
+            return delegation.getBalanceOf(BONUS_INSTANCE_ADDRESS, _attester);
+        }
+        return balance;
+    }
+
+    function supplyOf(address _instance) external view override(IGSE) returns (uint256) {
+        return delegation.getSupplyOf(_instance);
+    }
+
+    function totalSupply() external view override(IGSE) returns (uint256) {
+        return delegation.getSupply();
+    }
+
+    function getDelegatee(address _instance, address _attester) external view override(IGSE) returns (address) {
+        return delegation.getDelegatee(_instance, _attester);
+    }
+
+    function getVotingPower(address _delegatee) external view override(IGSE) returns (uint256) {
+        return delegation.getVotingPower(_delegatee);
+    }
+
+    function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
+        external
+        view
+        override(IGSE)
+        returns (address[] memory)
+    {
+        return _getAddressFromIndicesAtTimestamp(_instance, _indices, _timestamp);
+    }
+
+    /**
+     * @notice  Get the G1 public keys of the attesters
+     *
+     * NOTE: this function does NOT check if the attesters are CURRENTLY ACTIVE.
+     *
+     * @param _attesters  - The attesters to lookup
+     *
+     * @return The G1 public keys of the attesters
+     */
+    function getG1PublicKeysFromAddresses(address[] memory _attesters)
+        external
+        view
+        override(IGSE)
+        returns (G1Point[] memory)
+    {
+        G1Point[] memory keys = new G1Point[](_attesters.length);
+        for (uint256 i = 0; i < _attesters.length; i++) {
+            keys[i] = configOf[_attesters[i]].publicKey;
+        }
+
+        return keys;
+    }
+
+    function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
+        external
+        view
+        override(IGSE)
+        returns (address)
+    {
+        uint256[] memory indices = new uint256[](1);
+        indices[0] = _index;
+        return _getAddressFromIndicesAtTimestamp(_instance, indices, _timestamp)[0];
+    }
+
+    function getPowerUsed(address _delegatee, uint256 _proposalId) external view override(IGSE) returns (uint256) {
+        return delegation.getPowerUsed(_delegatee, _proposalId);
+    }
+
+    function getBonusInstanceAddress() external pure override(IGSE) returns (address) {
+        return BONUS_INSTANCE_ADDRESS;
+    }
+
+    function getVotingPowerAt(address _delegatee, Timestamp _timestamp) public view override(IGSE) returns (uint256) {
+        return delegation.getVotingPowerAt(_delegatee, _timestamp);
+    }
+
+    /**
+     * @notice  Get the number of effective attesters at the instance at the time of `_timestamp`
+     *          (including the bonus instance)
+     *
+     * @param _instance   - The instance to look at
+     * @param _timestamp  - The timestamp to lookup
+     *
+     * @return The number of effective attesters at the instance at the time of `_timestamp`
+     */
+    function getAttesterCountAtTime(address _instance, Timestamp _timestamp)
+        public
+        view
+        override(IGSE)
+        returns (uint256)
+    {
+        InstanceAttesterRegistry storage store = instances[_instance];
+        uint32 timestamp = Timestamp.unwrap(_timestamp).toUint32();
+
+        uint256 count = store.attesters.lengthAtTimestamp(timestamp);
+        if (getLatestRollupAt(_timestamp) == _instance) {
+            count += instances[BONUS_INSTANCE_ADDRESS].attesters.lengthAtTimestamp(timestamp);
+        }
+
+        return count;
+    }
+
+    /**
+     * @notice  Get the addresses of the attesters at the instance at the time of `_timestamp`
+     *
+     * @dev
+     *
+     * @param _instance   - The instance to look at
+     * @param _indices    - The indices of the attesters to lookup
+     * @param _timestamp  - The timestamp to lookup
+     *
+     * @return The addresses of the attesters at the instance at the time of `_timestamp`
+     */
+    function _getAddressFromIndicesAtTimestamp(address _instance, uint256[] memory _indices, Timestamp _timestamp)
+        internal
+        view
+        returns (address[] memory)
+    {
+        address[] memory attesters = new address[](_indices.length);
+
+        // Note: This function could get called where _instance is the bonus instance.
+        // This is okay, because we know that in this case, `isLatestRollup` will be false.
+        // So we won't double count.
+        InstanceAttesterRegistry storage instanceStore = instances[_instance];
+        InstanceAttesterRegistry storage bonusStore = instances[BONUS_INSTANCE_ADDRESS];
+        bool isLatestRollup = getLatestRollupAt(_timestamp) == _instance;
+
+        uint32 ts = Timestamp.unwrap(_timestamp).toUint32();
+
+        // The effective size of the set will be the size of the instance attesters, plus the size of the bonus attesters
+        // if the instance is the latest rollup. This will effectively work as one long list with [...instance, ...bonus]
+        uint256 storeSize = instanceStore.attesters.lengthAtTimestamp(ts);
+        uint256 canonicalSize = isLatestRollup ? bonusStore.attesters.lengthAtTimestamp(ts) : 0;
+        uint256 totalSize = storeSize + canonicalSize;
+
+        // We loop through the indices, and for each index we get the attester from the instance or bonus instance
+        // depending on value in the collective list [...instance, ...bonus]
+        for (uint256 i = 0; i < _indices.length; i++) {
+            uint256 index = _indices[i];
+            require(index < totalSize, Errors_1.GSE__OutOfBounds(index, totalSize));
+
+            // since we have ensured that the index is not out of bounds, we can use the unsafe function in
+            // `AddressSnapshotLib` to fetch if. We use the `recent` variant as we expect the attesters to
+            // mainly be from recent history when fetched during tx execution.
+
+            if (index < storeSize) {
+                attesters[i] = instanceStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index, ts);
+            } else if (isLatestRollup) {
+                attesters[i] = bonusStore.attesters.unsafeGetRecentAddressFromIndexAtTimestamp(index - storeSize, ts);
+            } else {
+                revert Errors_1.GSE__FatalError("SHOULD NEVER HAPPEN");
+            }
+        }
+
+        return attesters;
+    }
 }
 
 /**
@@ -10250,44 +10324,44 @@ contract GSE is IGSE, GSECore {
  * @param exists True if this exit record exists, false if not yet created
  */
 struct Exit {
-  uint256 withdrawalId;
-  uint256 amount;
-  Timestamp exitableAt;
-  address recipientOrWithdrawer;
-  bool isRecipient;
-  bool exists;
+    uint256 withdrawalId;
+    uint256 amount;
+    Timestamp exitableAt;
+    address recipientOrWithdrawer;
+    bool isRecipient;
+    bool exists;
 }
 
 struct StakingStorage {
-  IERC20 stakingAsset;
-  address slasher;
-  uint96 localEjectionThreshold;
-  address pendingSlasher;
-  CompressedTimestamp pendingSlasherReadyAt;
-  GSE gse;
-  CompressedTimestamp exitDelay;
-  mapping(address attester => Exit) exits;
-  CompressedStakingQueueConfig queueConfig;
-  StakingQueue entryQueue;
-  CompressedEpoch nextFlushableEpoch;
-  uint32 availableValidatorFlushes;
-  bool isBootstrapped;
-  // Outgoing slasher that finalizeSetSlasher has rotated off the active slot. Retains
-  // authority to call {slash} until `legacySlasherAuthorizedUntil` so that slashing rounds
-  // which already reached quorum before the rotation can still execute after the new
-  // slasher takes over.
-  address legacySlasher;
-  CompressedTimestamp legacySlasherAuthorizedUntil;
+    IERC20 stakingAsset;
+    address slasher;
+    uint96 localEjectionThreshold;
+    address pendingSlasher;
+    CompressedTimestamp pendingSlasherReadyAt;
+    GSE gse;
+    CompressedTimestamp exitDelay;
+    mapping(address attester => Exit) exits;
+    CompressedStakingQueueConfig queueConfig;
+    StakingQueue entryQueue;
+    CompressedEpoch nextFlushableEpoch;
+    uint32 availableValidatorFlushes;
+    bool isBootstrapped;
+    // Outgoing slasher that finalizeSetSlasher has rotated off the active slot. Retains
+    // authority to call {slash} until `legacySlasherAuthorizedUntil` so that slashing rounds
+    // which already reached quorum before the rotation can still execute after the new
+    // slasher takes over.
+    address legacySlasher;
+    CompressedTimestamp legacySlasherAuthorizedUntil;
 }
 
 interface ISlasher {
-  event VetoedPayload(address indexed payload);
-  event SlashingDisabled(uint256 disabledUntil);
+    event VetoedPayload(address indexed payload);
+    event SlashingDisabled(uint256 disabledUntil);
 
-  function slash(IPayload _payload) external returns (bool);
-  function vetoPayload(IPayload _payload) external returns (bool);
-  function setSlashingEnabled(bool _enabled) external;
-  function isSlashingEnabled() external view returns (bool);
+    function slash(IPayload _payload) external returns (bool);
+    function vetoPayload(IPayload _payload) external returns (bool);
+    function setSlashingEnabled(bool _enabled) external;
+    function isSlashingEnabled() external view returns (bool);
 }
 
 // NOTE(l2beat): This is an interface, generated from the contract source code.
@@ -10296,71 +10370,71 @@ interface Slasher is ISlasher {
 }
 
 interface IStakingCore {
-  event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
-  event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
-  event PendingSlasherCancelled(address indexed slasher);
-  event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
-  event ValidatorQueued(address indexed attester, address indexed withdrawer);
-  event Deposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession,
-    uint256 amount
-  );
-  event FailedDeposit(
-    address indexed attester,
-    address indexed withdrawer,
-    G1Point publicKeyInG1,
-    G2Point publicKeyInG2,
-    G1Point proofOfPossession
-  );
-  event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
-  event Slashed(address indexed attester, uint256 amount);
-  event StakingQueueConfigUpdated(StakingQueueConfig config);
+    event SlasherUpdated(address indexed oldSlasher, address indexed newSlasher);
+    event PendingSlasherQueued(address indexed slasher, uint256 readyAt);
+    event PendingSlasherCancelled(address indexed slasher);
+    event LegacySlasherAuthorized(address indexed legacySlasher, uint256 authorizedUntil);
+    event ValidatorQueued(address indexed attester, address indexed withdrawer);
+    event Deposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession,
+        uint256 amount
+    );
+    event FailedDeposit(
+        address indexed attester,
+        address indexed withdrawer,
+        G1Point publicKeyInG1,
+        G2Point publicKeyInG2,
+        G1Point proofOfPossession
+    );
+    event WithdrawInitiated(address indexed attester, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(address indexed attester, address indexed recipient, uint256 amount);
+    event Slashed(address indexed attester, uint256 amount);
+    event StakingQueueConfigUpdated(StakingQueueConfig config);
 
-  function queueSetSlasher(address _slasher) external;
-  function cancelSetSlasher() external;
-  function finalizeSetSlasher() external;
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external;
-  function flushEntryQueue() external;
-  function flushEntryQueue(uint256 _toAdd) external;
-  function initiateWithdraw(address _attester, address _recipient) external returns (bool);
-  function finalizeWithdraw(address _attester) external;
-  function slash(address _attester, uint256 _amount) external returns (bool);
-  function vote(uint256 _proposalId) external;
-  function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
+    function queueSetSlasher(address _slasher) external;
+    function cancelSetSlasher() external;
+    function finalizeSetSlasher() external;
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external;
+    function flushEntryQueue() external;
+    function flushEntryQueue(uint256 _toAdd) external;
+    function initiateWithdraw(address _attester, address _recipient) external returns (bool);
+    function finalizeWithdraw(address _attester) external;
+    function slash(address _attester, uint256 _amount) external returns (bool);
+    function vote(uint256 _proposalId) external;
+    function updateStakingQueueConfig(StakingQueueConfig memory _config) external;
 
-  function getEntryQueueFlushSize() external view returns (uint256);
-  function getActiveAttesterCount() external view returns (uint256);
+    function getEntryQueueFlushSize() external view returns (uint256);
+    function getActiveAttesterCount() external view returns (uint256);
 }
 
 interface IEmpire {
-  event SignalCast(IPayload indexed payload, uint256 indexed round, address indexed signaler);
-  event PayloadSubmittable(IPayload indexed payload, uint256 indexed round);
-  event PayloadSubmitted(IPayload indexed payload, uint256 indexed round);
+    event SignalCast(IPayload indexed payload, uint256 indexed round, address indexed signaler);
+    event PayloadSubmittable(IPayload indexed payload, uint256 indexed round);
+    event PayloadSubmitted(IPayload indexed payload, uint256 indexed round);
 
-  function signal(IPayload _payload) external returns (bool);
-  function signalWithSig(IPayload _payload, Signature memory _sig) external returns (bool);
+    function signal(IPayload _payload) external returns (bool);
+    function signalWithSig(IPayload _payload, Signature memory _sig) external returns (bool);
 
-  function submitRoundWinner(uint256 _roundNumber) external returns (bool);
-  function signalCount(address _instance, uint256 _round, IPayload _payload) external view returns (uint256);
-  function computeRound(Slot _slot) external view returns (uint256);
-  function getInstance() external view returns (address);
+    function submitRoundWinner(uint256 _roundNumber) external returns (bool);
+    function signalCount(address _instance, uint256 _round, IPayload _payload) external view returns (uint256);
+    function computeRound(Slot _slot) external view returns (uint256);
+    function getInstance() external view returns (address);
 }
 
 interface IGovernanceProposer is IEmpire {
-  function getProposalProposer(uint256 _proposalId) external view returns (address);
-  function getGovernance() external view returns (address);
+    function getProposalProposer(uint256 _proposalId) external view returns (address);
+    function getGovernance() external view returns (address);
 }
 
 interface IERC5267 {
@@ -10682,7 +10756,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), HEX_DIGITS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -10782,7 +10858,9 @@ library Strings {
      */
     function parseUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -10801,17 +10879,19 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
+    function tryParseUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         uint256 result = 0;
         for (uint256 i = begin; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 9) return (false, 0);
+            if (chr > 9) {
+                return (false, 0);
+            }
             result *= 10;
             result += chr;
         }
@@ -10839,7 +10919,9 @@ library Strings {
      */
     function parseInt(string memory input, uint256 begin, uint256 end) internal pure returns (int256) {
         (bool success, int256 value) = tryParseInt(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -10861,11 +10943,11 @@ library Strings {
      *
      * NOTE: This function will revert if the absolute value of the result does not fit in a `uint256`.
      */
-    function tryParseInt(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, int256 value) {
+    function tryParseInt(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, int256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // Check presence of a negative sign.
@@ -10880,7 +10962,9 @@ library Strings {
             return (true, negativeSign ? -int256(absValue) : int256(absValue));
         } else if (absSuccess && negativeSign && absValue == ABS_MIN_INT256) {
             return (true, type(int256).min);
-        } else return (false, 0);
+        } else {
+            return (false, 0);
+        }
     }
 
     /**
@@ -10904,7 +10988,9 @@ library Strings {
      */
     function parseHexUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseHexUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -10923,11 +11009,11 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseHexUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
+    function tryParseHexUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // skip 0x prefix if present
@@ -10937,7 +11023,9 @@ library Strings {
         uint256 result = 0;
         for (uint256 i = begin + offset; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 15) return (false, 0);
+            if (chr > 15) {
+                return (false, 0);
+            }
             result *= 16;
             unchecked {
                 // Multiplying by 16 is equivalent to a shift of 4 bits (with additional overflow check).
@@ -10967,7 +11055,9 @@ library Strings {
      */
     function parseAddress(string memory input, uint256 begin, uint256 end) internal pure returns (address) {
         (bool success, address value) = tryParseAddress(input, begin, end);
-        if (!success) revert StringsInvalidAddressFormat();
+        if (!success) {
+            revert StringsInvalidAddressFormat();
+        }
         return value;
     }
 
@@ -10983,11 +11073,11 @@ library Strings {
      * @dev Variant of {parseAddress-string-uint256-uint256} that returns false if the parsing fails because input is not a properly
      * formatted address. See {parseAddress} requirements.
      */
-    function tryParseAddress(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, address value) {
+    function tryParseAddress(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, address value)
+    {
         // check that input is the correct length
         bool hasPrefix = bytes2(_unsafeReadBytesOffset(bytes(input), begin)) == bytes2("0x");
         uint256 expectedLength = 40 + hasPrefix.toUint() * 2;
@@ -11010,10 +11100,15 @@ library Strings {
         // - Case 3: [A-F]
         // - otherwise not supported
         unchecked {
-            if (value > 47 && value < 58) value -= 48;
-            else if (value > 96 && value < 103) value -= 87;
-            else if (value > 64 && value < 71) value -= 55;
-            else return type(uint8).max;
+            if (value > 47 && value < 58) {
+                value -= 48;
+            } else if (value > 96 && value < 103) {
+                value -= 87;
+            } else if (value > 64 && value < 71) {
+                value -= 55;
+            } else {
+                return type(uint8).max;
+            }
         }
 
         return value;
@@ -11088,7 +11183,7 @@ library MessageHashUtils {
      * See {ECDSA-recover}.
      */
     function toDataWithIntendedValidatorHash(address validator, bytes memory data) internal pure returns (bytes32) {
-        return keccak256(abi.encodePacked(hex"19_00", validator, data));
+        return keccak256(abi.encodePacked(hex"1900", validator, data));
     }
 
     /**
@@ -11103,7 +11198,7 @@ library MessageHashUtils {
     function toTypedDataHash(bytes32 domainSeparator, bytes32 structHash) internal pure returns (bytes32 digest) {
         assembly ("memory-safe") {
             let ptr := mload(0x40)
-            mstore(ptr, hex"19_01")
+            mstore(ptr, hex"1901")
             mstore(add(ptr, 0x02), domainSeparator)
             mstore(add(ptr, 0x22), structHash)
             digest := keccak256(ptr, 0x42)
@@ -11264,16 +11359,16 @@ abstract contract EIP712 is IERC5267 {
 }
 
 struct CompressedRoundAccounting {
-  CompressedSlot lastSignalSlot;
-  IPayload payloadWithMostSignals;
-  bool executed;
-  mapping(IPayload payload => uint256 count) signalCount;
+    CompressedSlot lastSignalSlot;
+    IPayload payloadWithMostSignals;
+    bool executed;
+    mapping(IPayload payload => uint256 count) signalCount;
 }
 
 struct RoundAccounting {
-  Slot lastSignalSlot;
-  IPayload payloadWithMostSignals;
-  bool executed;
+    Slot lastSignalSlot;
+    IPayload payloadWithMostSignals;
+    bool executed;
 }
 
 /**
@@ -11347,248 +11442,253 @@ struct RoundAccounting {
  * instance.
  */
 abstract contract EmpireBase is EIP712, IEmpire {
-  using SignatureLib for Signature;
-  using CompressedTimeMath for Slot;
-  using CompressedTimeMath for CompressedSlot;
+    using SignatureLib for Signature;
+    using CompressedTimeMath for Slot;
+    using CompressedTimeMath for CompressedSlot;
 
-  // EIP-712 type hash for the Signal struct
-  bytes32 public constant SIGNAL_TYPEHASH = keccak256("Signal(address payload,uint256 slot,address instance)");
+    // EIP-712 type hash for the Signal struct
+    bytes32 public constant SIGNAL_TYPEHASH = keccak256("Signal(address payload,uint256 slot,address instance)");
 
-  // The number of signals needed for a payload to be considered submittable.
-  uint256 public immutable QUORUM_SIZE;
-  // The number of slots per round.
-  uint256 public immutable ROUND_SIZE;
-  // The number of rounds that a round winner may be submitted for, after it have passed.
-  uint256 public immutable LIFETIME_IN_ROUNDS;
-  // The number of rounds that must elapse before a round winner may be submitted.
-  uint256 public immutable EXECUTION_DELAY_IN_ROUNDS;
+    // The number of signals needed for a payload to be considered submittable.
+    uint256 public immutable QUORUM_SIZE;
+    // The number of slots per round.
+    uint256 public immutable ROUND_SIZE;
+    // The number of rounds that a round winner may be submitted for, after it have passed.
+    uint256 public immutable LIFETIME_IN_ROUNDS;
+    // The number of rounds that must elapse before a round winner may be submitted.
+    uint256 public immutable EXECUTION_DELAY_IN_ROUNDS;
 
-  // Mapping of instance to round number to round accounting.
-  mapping(address instance => mapping(uint256 roundNumber => CompressedRoundAccounting)) internal rounds;
+    // Mapping of instance to round number to round accounting.
+    mapping(address instance => mapping(uint256 roundNumber => CompressedRoundAccounting)) internal rounds;
 
-  constructor(uint256 _quorumSize, uint256 _roundSize, uint256 _lifetimeInRounds, uint256 _executionDelayInRounds)
-    EIP712("EmpireBase", "1")
-  {
-    QUORUM_SIZE = _quorumSize;
-    ROUND_SIZE = _roundSize;
-    LIFETIME_IN_ROUNDS = _lifetimeInRounds;
-    EXECUTION_DELAY_IN_ROUNDS = _executionDelayInRounds;
+    constructor(uint256 _quorumSize, uint256 _roundSize, uint256 _lifetimeInRounds, uint256 _executionDelayInRounds)
+        EIP712("EmpireBase", "1")
+    {
+        QUORUM_SIZE = _quorumSize;
+        ROUND_SIZE = _roundSize;
+        LIFETIME_IN_ROUNDS = _lifetimeInRounds;
+        EXECUTION_DELAY_IN_ROUNDS = _executionDelayInRounds;
 
-    require(QUORUM_SIZE > ROUND_SIZE / 2, Errors_1.EmpireBase__InvalidQuorumAndRoundSize(QUORUM_SIZE, ROUND_SIZE));
-    require(QUORUM_SIZE <= ROUND_SIZE, Errors_1.EmpireBase__QuorumCannotBeLargerThanRoundSize(QUORUM_SIZE, ROUND_SIZE));
+        require(QUORUM_SIZE > ROUND_SIZE / 2, Errors_1.EmpireBase__InvalidQuorumAndRoundSize(QUORUM_SIZE, ROUND_SIZE));
+        require(
+            QUORUM_SIZE <= ROUND_SIZE, Errors_1.EmpireBase__QuorumCannotBeLargerThanRoundSize(QUORUM_SIZE, ROUND_SIZE)
+        );
 
-    require(
-      LIFETIME_IN_ROUNDS > EXECUTION_DELAY_IN_ROUNDS,
-      Errors_1.EmpireBase__InvalidLifetimeAndExecutionDelay(LIFETIME_IN_ROUNDS, EXECUTION_DELAY_IN_ROUNDS)
-    );
-  }
-
-  /**
-   * @notice Signal support for a payload
-   *
-   * @dev this only works if msg.sender is the current signaler
-   *
-   * @param _payload - The address of the IPayload to signal support for
-   *
-   * @return True if executed successfully, false otherwise
-   */
-  function signal(IPayload _payload) external override(IEmpire) returns (bool) {
-    return _internalSignal(_payload, Signature({v: 0, r: bytes32(0), s: bytes32(0)}));
-  }
-
-  /**
-   * @notice Signal support for a payload with a signature from the current signaler
-   *
-   * @param _payload - The payload to signal support for
-   * @param _sig - A signature from the signaler
-   *
-   * @return True if executed successfully, false otherwise
-   */
-  function signalWithSig(IPayload _payload, Signature memory _sig) external override(IEmpire) returns (bool) {
-    return _internalSignal(_payload, _sig);
-  }
-
-  /**
-   * @notice  Submit the round winner to the implementation's `_handleRoundWinner` function
-   *
-   * @dev calls `_handleRoundWinner` on the implementing contract with the winning payload, if applicable.
-   *
-   * @param _roundNumber - The round number to execute
-   *
-   * @return True if executed successfully, false otherwise
-   */
-  function submitRoundWinner(uint256 _roundNumber) external override(IEmpire) returns (bool) {
-    // Need to ensure that the round is not active.
-    address instance = getInstance();
-    require(instance.code.length > 0, Errors_1.EmpireBase__InstanceHaveNoCode(instance));
-
-    IEmperor selection = IEmperor(instance);
-    Slot currentSlot = selection.getCurrentSlot();
-
-    uint256 currentRound = computeRound(currentSlot);
-
-    require(
-      currentRound > _roundNumber + EXECUTION_DELAY_IN_ROUNDS,
-      Errors_1.EmpireBase__RoundTooNew(_roundNumber, currentRound)
-    );
-
-    require(
-      currentRound <= _roundNumber + LIFETIME_IN_ROUNDS, Errors_1.EmpireBase__RoundTooOld(_roundNumber, currentRound)
-    );
-
-    CompressedRoundAccounting storage round = rounds[instance][_roundNumber];
-    require(!round.executed, Errors_1.EmpireBase__PayloadAlreadySubmitted(_roundNumber));
-
-    // If the payload with the most signals is address(0) there are nothing to execute and it is a no-op.
-    // This will be the case if no signals have been cast during a round, or if people have simple signalled
-    // for nothing to happen (the same as not signalling).
-    require(round.payloadWithMostSignals != IPayload(address(0)), Errors_1.EmpireBase__PayloadCannotBeAddressZero());
-    uint256 signalsCast = round.signalCount[round.payloadWithMostSignals];
-    require(signalsCast >= QUORUM_SIZE, Errors_1.EmpireBase__InsufficientSignals(signalsCast, QUORUM_SIZE));
-
-    round.executed = true;
-
-    emit PayloadSubmitted(round.payloadWithMostSignals, _roundNumber);
-
-    require(
-      _handleRoundWinner(round.payloadWithMostSignals),
-      Errors_1.EmpireBase__FailedToSubmitRoundWinner(round.payloadWithMostSignals)
-    );
-    return true;
-  }
-
-  /**
-   * @notice  Fetch the signal count for a specific payload in a specific round on a specific instance
-   *
-   * @param _instance - The address of the instance
-   * @param _round - The round to lookup
-   * @param _payload - The payload to lookup
-   *
-   * @return The number of signals
-   */
-  function signalCount(address _instance, uint256 _round, IPayload _payload)
-    external
-    view
-    override(IEmpire)
-    returns (uint256)
-  {
-    return rounds[_instance][_round].signalCount[_payload];
-  }
-
-  /**
-   * @notice  Computes the round at the current slot
-   *
-   * @return The round number
-   */
-  function getCurrentRound() external view returns (uint256) {
-    IEmperor selection = IEmperor(getInstance());
-    Slot currentSlot = selection.getCurrentSlot();
-    return computeRound(currentSlot);
-  }
-
-  function getRoundData(address _instance, uint256 _round) external view returns (RoundAccounting memory) {
-    CompressedRoundAccounting storage compressedRound = rounds[_instance][_round];
-    return RoundAccounting({
-      lastSignalSlot: compressedRound.lastSignalSlot.decompress(),
-      payloadWithMostSignals: compressedRound.payloadWithMostSignals,
-      executed: compressedRound.executed
-    });
-  }
-
-  /**
-   * @notice Computes the round at the given slot
-   *
-   * @param _slot - The slot to compute round for
-   *
-   * @return The round number
-   */
-  function computeRound(Slot _slot) public view override(IEmpire) returns (uint256) {
-    return Slot.unwrap(_slot) / ROUND_SIZE;
-  }
-
-  function getSignalSignatureDigest(IPayload _payload, Slot _slot) public view returns (bytes32) {
-    return _hashTypedDataV4(keccak256(abi.encode(SIGNAL_TYPEHASH, _payload, _slot, getInstance())));
-  }
-
-  // Virtual functions
-  function getInstance() public view virtual override(IEmpire) returns (address);
-  function _handleRoundWinner(IPayload _payload) internal virtual returns (bool);
-
-  function _internalSignal(IPayload _payload, Signature memory _sig) internal returns (bool) {
-    address instance = getInstance();
-    require(instance.code.length > 0, Errors_1.EmpireBase__InstanceHaveNoCode(instance));
-
-    IEmperor selection = IEmperor(instance);
-    Slot currentSlot = selection.getCurrentSlot();
-
-    uint256 roundNumber = computeRound(currentSlot);
-
-    CompressedRoundAccounting storage round = rounds[instance][roundNumber];
-
-    // Ensure that time have progressed since the last slot. If not, the current proposer might send multiple signals
-    require(currentSlot > round.lastSignalSlot.decompress(), Errors_1.EmpireBase__SignalAlreadyCastForSlot(currentSlot));
-    round.lastSignalSlot = currentSlot.compress();
-
-    address signaler = selection.getCurrentProposer();
-
-    if (_sig.isEmpty()) {
-      require(msg.sender == signaler, Errors_1.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
-    } else {
-      bytes32 digest = getSignalSignatureDigest(_payload, currentSlot);
-
-      // _sig.verify will throw if invalid, it is more my sanity that I am doing this for.
-      require(_sig.verify(signaler, digest), Errors_1.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
+        require(
+            LIFETIME_IN_ROUNDS > EXECUTION_DELAY_IN_ROUNDS,
+            Errors_1.EmpireBase__InvalidLifetimeAndExecutionDelay(LIFETIME_IN_ROUNDS, EXECUTION_DELAY_IN_ROUNDS)
+        );
     }
 
-    round.signalCount[_payload] += 1;
-
-    if (
-      round.payloadWithMostSignals != _payload
-        && round.signalCount[_payload] > round.signalCount[round.payloadWithMostSignals]
-    ) {
-      round.payloadWithMostSignals = _payload;
+    /**
+     * @notice Signal support for a payload
+     *
+     * @dev this only works if msg.sender is the current signaler
+     *
+     * @param _payload - The address of the IPayload to signal support for
+     *
+     * @return True if executed successfully, false otherwise
+     */
+    function signal(IPayload _payload) external override(IEmpire) returns (bool) {
+        return _internalSignal(_payload, Signature({v: 0, r: bytes32(0), s: bytes32(0)}));
     }
 
-    emit SignalCast(_payload, roundNumber, signaler);
-
-    if (round.signalCount[_payload] == QUORUM_SIZE) {
-      emit PayloadSubmittable(_payload, roundNumber);
+    /**
+     * @notice Signal support for a payload with a signature from the current signaler
+     *
+     * @param _payload - The payload to signal support for
+     * @param _sig - A signature from the signaler
+     *
+     * @return True if executed successfully, false otherwise
+     */
+    function signalWithSig(IPayload _payload, Signature memory _sig) external override(IEmpire) returns (bool) {
+        return _internalSignal(_payload, _sig);
     }
 
-    return true;
-  }
+    /**
+     * @notice  Submit the round winner to the implementation's `_handleRoundWinner` function
+     *
+     * @dev calls `_handleRoundWinner` on the implementing contract with the winning payload, if applicable.
+     *
+     * @param _roundNumber - The round number to execute
+     *
+     * @return True if executed successfully, false otherwise
+     */
+    function submitRoundWinner(uint256 _roundNumber) external override(IEmpire) returns (bool) {
+        // Need to ensure that the round is not active.
+        address instance = getInstance();
+        require(instance.code.length > 0, Errors_1.EmpireBase__InstanceHaveNoCode(instance));
+
+        IEmperor selection = IEmperor(instance);
+        Slot currentSlot = selection.getCurrentSlot();
+
+        uint256 currentRound = computeRound(currentSlot);
+
+        require(
+            currentRound > _roundNumber + EXECUTION_DELAY_IN_ROUNDS,
+            Errors_1.EmpireBase__RoundTooNew(_roundNumber, currentRound)
+        );
+
+        require(
+            currentRound <= _roundNumber + LIFETIME_IN_ROUNDS,
+            Errors_1.EmpireBase__RoundTooOld(_roundNumber, currentRound)
+        );
+
+        CompressedRoundAccounting storage round = rounds[instance][_roundNumber];
+        require(!round.executed, Errors_1.EmpireBase__PayloadAlreadySubmitted(_roundNumber));
+
+        // If the payload with the most signals is address(0) there are nothing to execute and it is a no-op.
+        // This will be the case if no signals have been cast during a round, or if people have simple signalled
+        // for nothing to happen (the same as not signalling).
+        require(round.payloadWithMostSignals != IPayload(address(0)), Errors_1.EmpireBase__PayloadCannotBeAddressZero());
+        uint256 signalsCast = round.signalCount[round.payloadWithMostSignals];
+        require(signalsCast >= QUORUM_SIZE, Errors_1.EmpireBase__InsufficientSignals(signalsCast, QUORUM_SIZE));
+
+        round.executed = true;
+
+        emit PayloadSubmitted(round.payloadWithMostSignals, _roundNumber);
+
+        require(
+            _handleRoundWinner(round.payloadWithMostSignals),
+            Errors_1.EmpireBase__FailedToSubmitRoundWinner(round.payloadWithMostSignals)
+        );
+        return true;
+    }
+
+    /**
+     * @notice  Fetch the signal count for a specific payload in a specific round on a specific instance
+     *
+     * @param _instance - The address of the instance
+     * @param _round - The round to lookup
+     * @param _payload - The payload to lookup
+     *
+     * @return The number of signals
+     */
+    function signalCount(address _instance, uint256 _round, IPayload _payload)
+        external
+        view
+        override(IEmpire)
+        returns (uint256)
+    {
+        return rounds[_instance][_round].signalCount[_payload];
+    }
+
+    /**
+     * @notice  Computes the round at the current slot
+     *
+     * @return The round number
+     */
+    function getCurrentRound() external view returns (uint256) {
+        IEmperor selection = IEmperor(getInstance());
+        Slot currentSlot = selection.getCurrentSlot();
+        return computeRound(currentSlot);
+    }
+
+    function getRoundData(address _instance, uint256 _round) external view returns (RoundAccounting memory) {
+        CompressedRoundAccounting storage compressedRound = rounds[_instance][_round];
+        return RoundAccounting({
+            lastSignalSlot: compressedRound.lastSignalSlot.decompress(),
+            payloadWithMostSignals: compressedRound.payloadWithMostSignals,
+            executed: compressedRound.executed
+        });
+    }
+
+    /**
+     * @notice Computes the round at the given slot
+     *
+     * @param _slot - The slot to compute round for
+     *
+     * @return The round number
+     */
+    function computeRound(Slot _slot) public view override(IEmpire) returns (uint256) {
+        return Slot.unwrap(_slot) / ROUND_SIZE;
+    }
+
+    function getSignalSignatureDigest(IPayload _payload, Slot _slot) public view returns (bytes32) {
+        return _hashTypedDataV4(keccak256(abi.encode(SIGNAL_TYPEHASH, _payload, _slot, getInstance())));
+    }
+
+    // Virtual functions
+    function getInstance() public view virtual override(IEmpire) returns (address);
+    function _handleRoundWinner(IPayload _payload) internal virtual returns (bool);
+
+    function _internalSignal(IPayload _payload, Signature memory _sig) internal returns (bool) {
+        address instance = getInstance();
+        require(instance.code.length > 0, Errors_1.EmpireBase__InstanceHaveNoCode(instance));
+
+        IEmperor selection = IEmperor(instance);
+        Slot currentSlot = selection.getCurrentSlot();
+
+        uint256 roundNumber = computeRound(currentSlot);
+
+        CompressedRoundAccounting storage round = rounds[instance][roundNumber];
+
+        // Ensure that time have progressed since the last slot. If not, the current proposer might send multiple signals
+        require(
+            currentSlot > round.lastSignalSlot.decompress(), Errors_1.EmpireBase__SignalAlreadyCastForSlot(currentSlot)
+        );
+        round.lastSignalSlot = currentSlot.compress();
+
+        address signaler = selection.getCurrentProposer();
+
+        if (_sig.isEmpty()) {
+            require(msg.sender == signaler, Errors_1.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
+        } else {
+            bytes32 digest = getSignalSignatureDigest(_payload, currentSlot);
+
+            // _sig.verify will throw if invalid, it is more my sanity that I am doing this for.
+            require(_sig.verify(signaler, digest), Errors_1.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
+        }
+
+        round.signalCount[_payload] += 1;
+
+        if (
+            round.payloadWithMostSignals != _payload
+                && round.signalCount[_payload] > round.signalCount[round.payloadWithMostSignals]
+        ) {
+            round.payloadWithMostSignals = _payload;
+        }
+
+        emit SignalCast(_payload, roundNumber, signaler);
+
+        if (round.signalCount[_payload] == QUORUM_SIZE) {
+            emit PayloadSubmittable(_payload, roundNumber);
+        }
+
+        return true;
+    }
 }
 
 interface IProposerPayload is IPayload {
-  function getOriginalPayload() external view returns (IPayload);
+    function getOriginalPayload() external view returns (IPayload);
 
-  function amIValid() external view returns (bool);
+    function amIValid() external view returns (bool);
 }
 
 interface IRegistry {
-  event CanonicalRollupUpdated(address indexed instance, uint256 indexed version);
-  event RewardDistributorUpdated(address indexed rewardDistributor);
+    event CanonicalRollupUpdated(address indexed instance, uint256 indexed version);
+    event RewardDistributorUpdated(address indexed rewardDistributor);
 
-  function addRollup(IHaveVersion _rollup) external;
-  function updateRewardDistributor(address _rewardDistributor) external;
+    function addRollup(IHaveVersion _rollup) external;
+    function updateRewardDistributor(address _rewardDistributor) external;
 
-  // docs:start:registry_get_canonical_rollup
-  function getCanonicalRollup() external view returns (IHaveVersion);
-  // docs:end:registry_get_canonical_rollup
+    // docs:start:registry_get_canonical_rollup
+    function getCanonicalRollup() external view returns (IHaveVersion);
+    // docs:end:registry_get_canonical_rollup
 
-  // docs:start:registry_get_rollup
-  function getRollup(uint256 _chainId) external view returns (IHaveVersion);
-  // docs:end:registry_get_rollup
+    // docs:start:registry_get_rollup
+    function getRollup(uint256 _chainId) external view returns (IHaveVersion);
+    // docs:end:registry_get_rollup
 
-  // docs:start:registry_number_of_versions
-  function numberOfVersions() external view returns (uint256);
-  // docs:end:registry_number_of_versions
+    // docs:start:registry_number_of_versions
+    function numberOfVersions() external view returns (uint256);
+    // docs:end:registry_number_of_versions
 
-  function getGovernance() external view returns (address);
+    function getGovernance() external view returns (address);
 
-  function getRewardDistributor() external view returns (IRewardDistributor);
+    function getRewardDistributor() external view returns (IRewardDistributor);
 
-  function getVersion(uint256 _index) external view returns (uint256);
+    function getVersion(uint256 _index) external view returns (uint256);
 }
 
 /**
@@ -11618,100 +11718,100 @@ interface IRegistry {
  * - `GSE.proposeWithLock`, which bypasses the GovernanceProposer
  */
 contract GSEPayload is IProposerPayload {
-  IPayload public immutable ORIGINAL;
-  IGSE public immutable GSE;
-  IRegistry public immutable REGISTRY;
+    IPayload public immutable ORIGINAL;
+    IGSE public immutable GSE;
+    IRegistry public immutable REGISTRY;
 
-  constructor(IPayload _originalPayloadProposal, IGSE _gse, IRegistry _registry) {
-    ORIGINAL = _originalPayloadProposal;
-    GSE = _gse;
-    REGISTRY = _registry;
-  }
-
-  function getOriginalPayload() external view override(IProposerPayload) returns (IPayload) {
-    return ORIGINAL;
-  }
-
-  function getURI() external view override(IPayload) returns (string memory) {
-    return ORIGINAL.getURI();
-  }
-
-  /**
-   * @notice called by the Governance contract when executing the proposal.
-   *
-   * Note that this contract simply appends a call to `amIValid` to the original actions.
-   */
-  function getActions() external view override(IPayload) returns (IPayload.Action[] memory) {
-    IPayload.Action[] memory originalActions = ORIGINAL.getActions();
-    IPayload.Action[] memory actions = new IPayload.Action[](originalActions.length + 1);
-
-    for (uint256 i = 0; i < originalActions.length; i++) {
-      actions[i] = originalActions[i];
+    constructor(IPayload _originalPayloadProposal, IGSE _gse, IRegistry _registry) {
+        ORIGINAL = _originalPayloadProposal;
+        GSE = _gse;
+        REGISTRY = _registry;
     }
 
-    actions[originalActions.length] =
-      IPayload.Action({target: address(this), data: abi.encodeWithSelector(GSEPayload.amIValid.selector)});
-
-    return actions;
-  }
-
-  /**
-   * @notice Validates that the proposal maintains governance system integrity by ensuring
-   *         sufficient stake remains on the active rollup after execution.
-   *
-   * The validation passes when EITHER:
-   * 1. The latest rollup (plus bonus instance) has >2/3 of total stake, OR
-   * 2. A Registry/GSE mismatch is detected (fail-open to prevent governance livelock)
-   *
-   * @dev Beware that the >2/3 support means that 1/3 of the stake can be used to reject proposals.
-   *
-   * @dev The "bonus instance" is a special GSE mechanism where attesters automatically
-   *      follow the latest rollup without re-depositing. Their stake counts toward
-   *      the latest rollup's total for this validation.
-   *
-   * @dev LIVELOCK PREVENTION: When canonical != latest, we intentionally return true
-   *      to bypass validation. This mismatch typically indicates the GovernanceProposer
-   *      is still pointing to a stale GSE contract after a rollup upgrade.
-   *
-   *      Why this creates a livelock:
-   *      - The stale GSE tracks an outdated rollup as "latest"
-   *      - The Registry correctly identifies the new rollup as canonical
-   *      - Economic incentives drive attesters to follow the canonical (where rewards are)
-   *      - The stale GSE's "latest" gradually bleeds stake as rational actors exit
-   *      - While theoretically possible to maintain >2/3 stake, it becomes increasingly
-   *        unlikely as only inattentive or non-reward-seeking attesters remain
-   *      - Proposals keep failing validation, creating a probabilistic livelock where
-   *        progress is technically possible but economically improbable
-   *
-   *      By returning true, we provide an escape hatch that allows governance to
-   *      continue functioning despite the misconfiguration, enabling corrective
-   *      proposals to update the GovernanceProposer's GSE reference.
-   *
-   * @dev This function executes as the final action of the proposal (see getActions).
-   *      It either reverts with an error (proposal invalid) or returns true (proposal valid).
-   *      The boolean return value is effectively ceremonial - only the revert matters.
-   *
-   * @return Always returns true if the proposal is valid; reverts otherwise
-   */
-  function amIValid() external view override(IProposerPayload) returns (bool) {
-    address canonicalRollup = address(REGISTRY.getCanonicalRollup());
-    address latestRollup = GSE.getLatestRollup();
-
-    // Bypass validation on mismatch to prevent economically-driven livelock
-    // In theory, >2/3 stake could remain on the stale rollup, but economic
-    // incentives make this highly unlikely
-    if (canonicalRollup != latestRollup) {
-      return true;
+    function getOriginalPayload() external view override(IProposerPayload) returns (IPayload) {
+        return ORIGINAL;
     }
 
-    // Standard validation: ensure >2/3 of stake remains with the latest rollup
-    uint256 totalSupply = GSE.totalSupply();
-    address bonusInstance = GSE.getBonusInstanceAddress();
-    uint256 effectiveSupplyOfLatestRollup = GSE.supplyOf(latestRollup) + GSE.supplyOf(bonusInstance);
+    function getURI() external view override(IPayload) returns (string memory) {
+        return ORIGINAL.getURI();
+    }
 
-    require(effectiveSupplyOfLatestRollup > totalSupply * 2 / 3, Errors_1.GovernanceProposer__GSEPayloadInvalid());
-    return true;
-  }
+    /**
+     * @notice called by the Governance contract when executing the proposal.
+     *
+     * Note that this contract simply appends a call to `amIValid` to the original actions.
+     */
+    function getActions() external view override(IPayload) returns (IPayload.Action[] memory) {
+        IPayload.Action[] memory originalActions = ORIGINAL.getActions();
+        IPayload.Action[] memory actions = new IPayload.Action[](originalActions.length + 1);
+
+        for (uint256 i = 0; i < originalActions.length; i++) {
+            actions[i] = originalActions[i];
+        }
+
+        actions[originalActions.length] =
+            IPayload.Action({target: address(this), data: abi.encodeWithSelector(GSEPayload.amIValid.selector)});
+
+        return actions;
+    }
+
+    /**
+     * @notice Validates that the proposal maintains governance system integrity by ensuring
+     *         sufficient stake remains on the active rollup after execution.
+     *
+     * The validation passes when EITHER:
+     * 1. The latest rollup (plus bonus instance) has >2/3 of total stake, OR
+     * 2. A Registry/GSE mismatch is detected (fail-open to prevent governance livelock)
+     *
+     * @dev Beware that the >2/3 support means that 1/3 of the stake can be used to reject proposals.
+     *
+     * @dev The "bonus instance" is a special GSE mechanism where attesters automatically
+     *      follow the latest rollup without re-depositing. Their stake counts toward
+     *      the latest rollup's total for this validation.
+     *
+     * @dev LIVELOCK PREVENTION: When canonical != latest, we intentionally return true
+     *      to bypass validation. This mismatch typically indicates the GovernanceProposer
+     *      is still pointing to a stale GSE contract after a rollup upgrade.
+     *
+     *      Why this creates a livelock:
+     *      - The stale GSE tracks an outdated rollup as "latest"
+     *      - The Registry correctly identifies the new rollup as canonical
+     *      - Economic incentives drive attesters to follow the canonical (where rewards are)
+     *      - The stale GSE's "latest" gradually bleeds stake as rational actors exit
+     *      - While theoretically possible to maintain >2/3 stake, it becomes increasingly
+     *        unlikely as only inattentive or non-reward-seeking attesters remain
+     *      - Proposals keep failing validation, creating a probabilistic livelock where
+     *        progress is technically possible but economically improbable
+     *
+     *      By returning true, we provide an escape hatch that allows governance to
+     *      continue functioning despite the misconfiguration, enabling corrective
+     *      proposals to update the GovernanceProposer's GSE reference.
+     *
+     * @dev This function executes as the final action of the proposal (see getActions).
+     *      It either reverts with an error (proposal invalid) or returns true (proposal valid).
+     *      The boolean return value is effectively ceremonial - only the revert matters.
+     *
+     * @return Always returns true if the proposal is valid; reverts otherwise
+     */
+    function amIValid() external view override(IProposerPayload) returns (bool) {
+        address canonicalRollup = address(REGISTRY.getCanonicalRollup());
+        address latestRollup = GSE.getLatestRollup();
+
+        // Bypass validation on mismatch to prevent economically-driven livelock
+        // In theory, >2/3 stake could remain on the stale rollup, but economic
+        // incentives make this highly unlikely
+        if (canonicalRollup != latestRollup) {
+            return true;
+        }
+
+        // Standard validation: ensure >2/3 of stake remains with the latest rollup
+        uint256 totalSupply = GSE.totalSupply();
+        address bonusInstance = GSE.getBonusInstanceAddress();
+        uint256 effectiveSupplyOfLatestRollup = GSE.supplyOf(latestRollup) + GSE.supplyOf(bonusInstance);
+
+        require(effectiveSupplyOfLatestRollup > totalSupply * 2 / 3, Errors_1.GovernanceProposer__GSEPayloadInvalid());
+        return true;
+    }
 }
 
 /**
@@ -11725,76 +11825,76 @@ contract GSEPayload is IProposerPayload {
  * a misconfiguration issue (see GSEPayload for more details).
  */
 contract GovernanceProposer is IGovernanceProposer, EmpireBase {
-  IRegistry public immutable REGISTRY;
-  IGSE public immutable GSE;
+    IRegistry public immutable REGISTRY;
+    IGSE public immutable GSE;
 
-  /**
-   * @dev Mapping of proposal ID to the proposer address.
-   * This allows instances to see if they were the proposer of a proposal
-   * after the payload is `propose`ed to Governance.
-   * Instances that *did* propose a proposal are willing to vote on it in Governance.
-   * See `StakingLib.vote` for more details.
-   */
-  mapping(uint256 proposalId => address proposer) internal proposalProposer;
+    /**
+     * @dev Mapping of proposal ID to the proposer address.
+     * This allows instances to see if they were the proposer of a proposal
+     * after the payload is `propose`ed to Governance.
+     * Instances that *did* propose a proposal are willing to vote on it in Governance.
+     * See `StakingLib.vote` for more details.
+     */
+    mapping(uint256 proposalId => address proposer) internal proposalProposer;
 
-  /**
-   * @notice Constructor for the GovernanceProposer contract.
-   *
-   * @dev The _executionDelayInRounds are set to 0, as there already is a delay in the governance contract.
-   *      If this was not the case, the delay could be applied here.
-   *
-   * @param _registry The registry contract address.
-   * @param _gse The GSE contract address.
-   * @param _quorumSize The number of signals needed in a round for a payload to pass.
-   * @param _roundSize The number of signals that can be cast in a round.
-   */
-  constructor(IRegistry _registry, IGSE _gse, uint256 _quorumSize, uint256 _roundSize)
-    EmpireBase(_quorumSize, _roundSize, 5, 0)
-  {
-    REGISTRY = _registry;
-    GSE = _gse;
-  }
+    /**
+     * @notice Constructor for the GovernanceProposer contract.
+     *
+     * @dev The _executionDelayInRounds are set to 0, as there already is a delay in the governance contract.
+     *      If this was not the case, the delay could be applied here.
+     *
+     * @param _registry The registry contract address.
+     * @param _gse The GSE contract address.
+     * @param _quorumSize The number of signals needed in a round for a payload to pass.
+     * @param _roundSize The number of signals that can be cast in a round.
+     */
+    constructor(IRegistry _registry, IGSE _gse, uint256 _quorumSize, uint256 _roundSize)
+        EmpireBase(_quorumSize, _roundSize, 5, 0)
+    {
+        REGISTRY = _registry;
+        GSE = _gse;
+    }
 
-  function getProposalProposer(uint256 _proposalId) external view override(IGovernanceProposer) returns (address) {
-    return proposalProposer[_proposalId];
-  }
+    function getProposalProposer(uint256 _proposalId) external view override(IGovernanceProposer) returns (address) {
+        return proposalProposer[_proposalId];
+    }
 
-  /**
-   * @dev Returns the address of the Governance contract, i.e. the contract at which
-   * we will `propose` a winning proposal.
-   */
-  function getGovernance() public view override(IGovernanceProposer) returns (address) {
-    return REGISTRY.getGovernance();
-  }
+    /**
+     * @dev Returns the address of the Governance contract, i.e. the contract at which
+     * we will `propose` a winning proposal.
+     */
+    function getGovernance() public view override(IGovernanceProposer) returns (address) {
+        return REGISTRY.getGovernance();
+    }
 
-  /**
-   * @dev A hook used by the EmpireBase to determine who is the current checkpoint builder (checkpoint "proposer"),
-   * and thus may signal.
-   *
-   * This contract only respects the canonical rollup.
-   */
-  function getInstance() public view override(EmpireBase, IEmpire) returns (address) {
-    return address(REGISTRY.getCanonicalRollup());
-  }
+    /**
+     * @dev A hook used by the EmpireBase to determine who is the current checkpoint builder (checkpoint "proposer"),
+     * and thus may signal.
+     *
+     * This contract only respects the canonical rollup.
+     */
+    function getInstance() public view override(EmpireBase, IEmpire) returns (address) {
+        return address(REGISTRY.getCanonicalRollup());
+    }
 
-  /**
-   * @dev Called by the EmpireBase contract in `submitRoundWinner`, which asserts that the payload
-   * has enough support to be proposed to Governance.
-   *
-   * Note that it wraps the original payload in a GSEPayload before pushing into the Governance contract.
-   *
-   * This creates additional checks, namely that *after* the original payload is executed,
-   * the canonical rollup (both the instance and the "magical address") has at least 2/3 of the total stake.
-   *
-   * @param _payload The payload to propose to the governance contract.
-   * @return true if the proposal was proposed successfully, reverts otherwise.
-   */
-  function _handleRoundWinner(IPayload _payload) internal override(EmpireBase) returns (bool) {
-    GSEPayload extendedPayload = new GSEPayload(_payload, GSE, REGISTRY);
-    uint256 proposalId = IGovernance(getGovernance()).propose(IPayload(address(extendedPayload)));
-    proposalProposer[proposalId] = getInstance();
-    return true;
-  }
+    /**
+     * @dev Called by the EmpireBase contract in `submitRoundWinner`, which asserts that the payload
+     * has enough support to be proposed to Governance.
+     *
+     * Note that it wraps the original payload in a GSEPayload before pushing into the Governance contract.
+     *
+     * This creates additional checks, namely that *after* the original payload is executed,
+     * the canonical rollup (both the instance and the "magical address") has at least 2/3 of the total stake.
+     *
+     * @param _payload The payload to propose to the governance contract.
+     * @return true if the proposal was proposed successfully, reverts otherwise.
+     */
+    function _handleRoundWinner(IPayload _payload) internal override(EmpireBase) returns (bool) {
+        GSEPayload extendedPayload = new GSEPayload(_payload, GSE, REGISTRY);
+        uint256 proposalId = IGovernance(getGovernance()).propose(IPayload(address(extendedPayload)));
+        proposalProposer[proposalId] = getInstance();
+        return true;
+    }
 }
 
 // None -> Does not exist in our setup
@@ -11803,654 +11903,662 @@ contract GovernanceProposer is IGovernanceProposer, EmpireBase {
 //     hit if slashes and going below the minimum
 // Exiting -> In the process of exiting the system
 enum Status_1 {
-  NONE,
-  VALIDATING,
-  ZOMBIE,
-  EXITING
+    NONE,
+    VALIDATING,
+    ZOMBIE,
+    EXITING
 }
 
 struct AttesterView {
-  Status_1 status;
-  uint256 effectiveBalance;
-  Exit exit;
-  AttesterConfig config;
+    Status_1 status;
+    uint256 effectiveBalance;
+    Exit exit;
+    AttesterConfig config;
 }
 
 library StakingLib {
-  using SafeCast for uint256;
-  using SafeERC20 for IERC20;
-  using StakingQueueLib for StakingQueue;
-  using ProposalLib for Proposal;
-  using StakingQueueConfigLib for CompressedStakingQueueConfig;
-  using StakingQueueConfigLib for StakingQueueConfig;
-  using CompressedTimeMath for CompressedTimestamp;
-  using CompressedTimeMath for Timestamp;
-  using CompressedTimeMath for CompressedEpoch;
-  using CompressedTimeMath for Epoch;
+    using SafeCast for uint256;
+    using SafeERC20 for IERC20;
+    using StakingQueueLib for StakingQueue;
+    using ProposalLib for Proposal;
+    using StakingQueueConfigLib for CompressedStakingQueueConfig;
+    using StakingQueueConfigLib for StakingQueueConfig;
+    using CompressedTimeMath for CompressedTimestamp;
+    using CompressedTimeMath for Timestamp;
+    using CompressedTimeMath for CompressedEpoch;
+    using CompressedTimeMath for Epoch;
 
-  bytes32 private constant STAKING_SLOT = keccak256("aztec.core.staking.storage");
+    bytes32 private constant STAKING_SLOT = keccak256("aztec.core.staking.storage");
 
-  /// @notice Delay between queuing a slasher replacement and being able to finalize it.
-  uint256 internal constant SLASHER_EXECUTION_DELAY = 60 days;
-  /// @notice After {finalizeSetSlasher} swaps the active slasher, the outgoing slasher retains
-  ///         the right to call {slash} for this long. The window is sized to comfortably cover
-  ///         any reasonable SlashingProposer lifetime: at the default config a round's full
-  ///         vote -> execution lifetime fits inside a few hours, so 30 days is generous.
-  ///         Rollups configured with multi-week round lifetimes should raise this -- the value
-  ///         is the only knob bounding how long an in-flight slash can drain through the old
-  ///         proposer after rotation.
-  uint256 internal constant LEGACY_SLASHER_DRAIN_WINDOW = 30 days;
+    /// @notice Delay between queuing a slasher replacement and being able to finalize it.
+    uint256 internal constant SLASHER_EXECUTION_DELAY = 60 days;
+    /// @notice After {finalizeSetSlasher} swaps the active slasher, the outgoing slasher retains
+    ///         the right to call {slash} for this long. The window is sized to comfortably cover
+    ///         any reasonable SlashingProposer lifetime: at the default config a round's full
+    ///         vote -> execution lifetime fits inside a few hours, so 30 days is generous.
+    ///         Rollups configured with multi-week round lifetimes should raise this -- the value
+    ///         is the only knob bounding how long an in-flight slash can drain through the old
+    ///         proposer after rotation.
+    uint256 internal constant LEGACY_SLASHER_DRAIN_WINDOW = 30 days;
 
-  function initialize(
-    IERC20 _stakingAsset,
-    GSE _gse,
-    Timestamp _exitDelay,
-    address _slasher,
-    StakingQueueConfig memory _config,
-    uint256 _localEjectionThreshold
-  ) internal {
-    StakingStorage storage store = getStorage();
-    store.stakingAsset = _stakingAsset;
-    store.gse = _gse;
-    store.exitDelay = _exitDelay.compress();
-    store.slasher = _slasher;
-    store.queueConfig = _config.compress();
-    store.entryQueue.init();
-    store.localEjectionThreshold = _localEjectionThreshold.toUint96();
-  }
-
-  function queueSetSlasher(address _slasher) internal {
-    StakingStorage storage store = getStorage();
-
-    // `Slasher.initializeProposer` is permissionless while `PROPOSER` is unset. Queuing a
-    // not-yet-initialized Slasher would let anyone claim the proposer role during the 60-day
-    // delay and gain arbitrary slash-payload authority once `finalizeSetSlasher` lands. Require
-    // the proposer to already be wired so the queued replacement is not capturable.
-    require(Slasher(_slasher).PROPOSER() != address(0), Errors.Staking__SlasherProposerNotInitialized(_slasher));
-
-    Timestamp readyAt = Timestamp.wrap(block.timestamp + SLASHER_EXECUTION_DELAY);
-    store.pendingSlasher = _slasher;
-    store.pendingSlasherReadyAt = readyAt.compress();
-
-    emit IStakingCore.PendingSlasherQueued(_slasher, Timestamp.unwrap(readyAt));
-  }
-
-  function cancelSetSlasher() internal {
-    StakingStorage storage store = getStorage();
-
-    require(CompressedTimestamp.unwrap(store.pendingSlasherReadyAt) != 0, Errors.Staking__NoPendingSlasher());
-
-    address cancelled = store.pendingSlasher;
-    store.pendingSlasher = address(0);
-    store.pendingSlasherReadyAt = CompressedTimestamp.wrap(0);
-
-    emit IStakingCore.PendingSlasherCancelled(cancelled);
-  }
-
-  function finalizeSetSlasher() internal {
-    StakingStorage storage store = getStorage();
-
-    require(CompressedTimestamp.unwrap(store.pendingSlasherReadyAt) != 0, Errors.Staking__NoPendingSlasher());
-    Timestamp readyAt = store.pendingSlasherReadyAt.decompress();
-    require(Timestamp.wrap(block.timestamp) >= readyAt, Errors.Staking__SlasherNotReady(readyAt));
-
-    address newSlasher = store.pendingSlasher;
-    // Defense in depth against state queued before the queueSetSlasher guard existed, and
-    // against a replacement whose proposer somehow regressed to zero after queueing.
-    require(Slasher(newSlasher).PROPOSER() != address(0), Errors.Staking__SlasherProposerNotInitialized(newSlasher));
-
-    address oldSlasher = store.slasher;
-    // Park the outgoing slasher in the legacy slot with a drain window so quorum-backed rounds
-    // already accumulated on the old SlashingProposer can still execute against the rollup
-    // through the old slasher. Without this, a committee just before a queued slasher takes over
-    // gets a "free round" to do what they like. Any prior legacy auth window is overwritten -- only
-    // one rotation can be in flight at a time, and the most recent rotation defines the
-    // currently-relevant outgoing slasher.
-    Timestamp drainUntil = Timestamp.wrap(block.timestamp + LEGACY_SLASHER_DRAIN_WINDOW);
-    store.legacySlasher = oldSlasher;
-    store.legacySlasherAuthorizedUntil = drainUntil.compress();
-
-    store.slasher = newSlasher;
-    store.pendingSlasher = address(0);
-    store.pendingSlasherReadyAt = CompressedTimestamp.wrap(0);
-
-    emit IStakingCore.SlasherUpdated(oldSlasher, newSlasher);
-    emit IStakingCore.LegacySlasherAuthorized(oldSlasher, Timestamp.unwrap(drainUntil));
-  }
-
-  /**
-   * @notice Vote on a governance proposal with the rollup's voting power
-   * @dev Only votes if:
-   *      1. This rollup is the current canonical instance according to governance proposer
-   *      2. This rollup was canonical when the proposal was created
-   *      3. The proposal was created by the governance proposer
-   * @param _proposalId The ID of the proposal to vote on
-   */
-  function vote(uint256 _proposalId) internal {
-    StakingStorage storage store = getStorage();
-    Governance gov = store.gse.getGovernance();
-
-    GovernanceProposer govProposer = GovernanceProposer(gov.governanceProposer());
-    // We only vote if we are the canonical instance
-    require(address(this) == govProposer.getInstance(), Errors.Staking__NotCanonical(address(this)));
-    address proposalProposer = govProposer.getProposalProposer(_proposalId);
-    // We only vote if we were canonical when the proposal was created
-    require(
-      address(this) == proposalProposer, Errors.Staking__NotOurProposal(_proposalId, address(this), proposalProposer)
-    );
-    // We only vote if the proposal was created by the governance proposer
-    Proposal memory proposal = gov.getProposal(_proposalId);
-    require(proposal.proposer == address(govProposer), Errors.Staking__IncorrectGovProposer(_proposalId));
-
-    Timestamp ts = proposal.creation + proposal.config.votingDelay;
-
-    // Cast votes with all our power
-    uint256 vp = store.gse.getVotingPowerAt(address(this), ts);
-    store.gse.vote(_proposalId, vp, true);
-
-    // If we are the canonical at the time of the proposal we also cast those votes.
-    if (store.gse.getLatestRollupAt(ts) == address(this)) {
-      address bonusInstance = store.gse.getBonusInstanceAddress();
-      vp = store.gse.getVotingPowerAt(bonusInstance, ts);
-      store.gse.voteWithBonus(_proposalId, vp, true);
+    function initialize(
+        IERC20 _stakingAsset,
+        GSE _gse,
+        Timestamp _exitDelay,
+        address _slasher,
+        StakingQueueConfig memory _config,
+        uint256 _localEjectionThreshold
+    ) internal {
+        StakingStorage storage store = getStorage();
+        store.stakingAsset = _stakingAsset;
+        store.gse = _gse;
+        store.exitDelay = _exitDelay.compress();
+        store.slasher = _slasher;
+        store.queueConfig = _config.compress();
+        store.entryQueue.init();
+        store.localEjectionThreshold = _localEjectionThreshold.toUint96();
     }
-  }
 
-  /**
-   * @notice Completes a validator's withdrawal after the exit delay period
-   * @param _attester The address of the validator completing withdrawal
-   * @dev Reverts if the attester has no valid exit request (Staking__NotExiting) or if the exit delay period has not
-   * elapsed (Staking__WithdrawalNotUnlockedYet)
-   */
-  function finalizeWithdraw(address _attester) internal {
-    StakingStorage storage store = getStorage();
-    // We load it into memory to cache it, as we will delete it before we use it.
-    Exit memory exit = store.exits[_attester];
-    require(exit.exists, Errors.Staking__NotExiting(_attester));
-    require(exit.isRecipient, Errors.Staking__InitiateWithdrawNeeded(_attester));
-    require(
-      exit.exitableAt <= Timestamp.wrap(block.timestamp),
-      Errors.Staking__WithdrawalNotUnlockedYet(Timestamp.wrap(block.timestamp), exit.exitableAt)
-    );
+    function queueSetSlasher(address _slasher) internal {
+        StakingStorage storage store = getStorage();
 
-    delete store.exits[_attester];
+        // `Slasher.initializeProposer` is permissionless while `PROPOSER` is unset. Queuing a
+        // not-yet-initialized Slasher would let anyone claim the proposer role during the 60-day
+        // delay and gain arbitrary slash-payload authority once `finalizeSetSlasher` lands. Require
+        // the proposer to already be wired so the queued replacement is not capturable.
+        require(Slasher(_slasher).PROPOSER() != address(0), Errors.Staking__SlasherProposerNotInitialized(_slasher));
 
-    store.gse.finalizeWithdraw(exit.withdrawalId);
-    store.stakingAsset.safeTransfer(exit.recipientOrWithdrawer, exit.amount);
+        Timestamp readyAt = Timestamp.wrap(block.timestamp + SLASHER_EXECUTION_DELAY);
+        store.pendingSlasher = _slasher;
+        store.pendingSlasherReadyAt = readyAt.compress();
 
-    emit IStakingCore.WithdrawFinalized(_attester, exit.recipientOrWithdrawer, exit.amount);
-  }
-
-  function trySlash(address _attester, uint256 _amount) internal returns (bool) {
-    if (!isSlashable(_attester)) {
-      return false;
+        emit IStakingCore.PendingSlasherQueued(_slasher, Timestamp.unwrap(readyAt));
     }
-    slash(_attester, _amount);
-    return true;
-  }
 
-  /**
-   * @notice Slashes a validator's stake as punishment for misbehavior
-   * @dev Only callable by the authorized slasher contract. Handles slashing for both exiting and active validators.
-   *      For exiting validators, reduces their exit amount. For active validators, the balance will be reduced and
-   *      an exit will be created if the remaining stake falls below the ejection threshold.
-   * @param _attester The address of the validator to slash
-   * @param _amount The amount of stake to slash
-   */
-  function slash(address _attester, uint256 _amount) internal {
-    StakingStorage storage store = getStorage();
-    require(_isAuthorizedSlasher(store, msg.sender), Errors.Staking__NotSlasher(store.slasher, msg.sender));
+    function cancelSetSlasher() internal {
+        StakingStorage storage store = getStorage();
 
-    Exit storage exit = store.exits[_attester];
+        require(CompressedTimestamp.unwrap(store.pendingSlasherReadyAt) != 0, Errors.Staking__NoPendingSlasher());
 
-    if (exit.exists) {
-      require(exit.exitableAt > Timestamp.wrap(block.timestamp), Errors.Staking__CannotSlashExitedStake(_attester));
+        address cancelled = store.pendingSlasher;
+        store.pendingSlasher = address(0);
+        store.pendingSlasherReadyAt = CompressedTimestamp.wrap(0);
 
-      // If the slash amount is greater than the exit amount, bound it to the exit amount
-      uint256 slashAmount = Math.min(_amount, exit.amount);
+        emit IStakingCore.PendingSlasherCancelled(cancelled);
+    }
 
-      if (exit.amount == slashAmount) {
-        // If we slash the entire thing, nuke it entirely
+    function finalizeSetSlasher() internal {
+        StakingStorage storage store = getStorage();
+
+        require(CompressedTimestamp.unwrap(store.pendingSlasherReadyAt) != 0, Errors.Staking__NoPendingSlasher());
+        Timestamp readyAt = store.pendingSlasherReadyAt.decompress();
+        require(Timestamp.wrap(block.timestamp) >= readyAt, Errors.Staking__SlasherNotReady(readyAt));
+
+        address newSlasher = store.pendingSlasher;
+        // Defense in depth against state queued before the queueSetSlasher guard existed, and
+        // against a replacement whose proposer somehow regressed to zero after queueing.
+        require(Slasher(newSlasher).PROPOSER() != address(0), Errors.Staking__SlasherProposerNotInitialized(newSlasher));
+
+        address oldSlasher = store.slasher;
+        // Park the outgoing slasher in the legacy slot with a drain window so quorum-backed rounds
+        // already accumulated on the old SlashingProposer can still execute against the rollup
+        // through the old slasher. Without this, a committee just before a queued slasher takes over
+        // gets a "free round" to do what they like. Any prior legacy auth window is overwritten -- only
+        // one rotation can be in flight at a time, and the most recent rotation defines the
+        // currently-relevant outgoing slasher.
+        Timestamp drainUntil = Timestamp.wrap(block.timestamp + LEGACY_SLASHER_DRAIN_WINDOW);
+        store.legacySlasher = oldSlasher;
+        store.legacySlasherAuthorizedUntil = drainUntil.compress();
+
+        store.slasher = newSlasher;
+        store.pendingSlasher = address(0);
+        store.pendingSlasherReadyAt = CompressedTimestamp.wrap(0);
+
+        emit IStakingCore.SlasherUpdated(oldSlasher, newSlasher);
+        emit IStakingCore.LegacySlasherAuthorized(oldSlasher, Timestamp.unwrap(drainUntil));
+    }
+
+    /**
+     * @notice Vote on a governance proposal with the rollup's voting power
+     * @dev Only votes if:
+     *      1. This rollup is the current canonical instance according to governance proposer
+     *      2. This rollup was canonical when the proposal was created
+     *      3. The proposal was created by the governance proposer
+     * @param _proposalId The ID of the proposal to vote on
+     */
+    function vote(uint256 _proposalId) internal {
+        StakingStorage storage store = getStorage();
+        Governance gov = store.gse.getGovernance();
+
+        GovernanceProposer govProposer = GovernanceProposer(gov.governanceProposer());
+        // We only vote if we are the canonical instance
+        require(address(this) == govProposer.getInstance(), Errors.Staking__NotCanonical(address(this)));
+        address proposalProposer = govProposer.getProposalProposer(_proposalId);
+        // We only vote if we were canonical when the proposal was created
+        require(
+            address(this) == proposalProposer,
+            Errors.Staking__NotOurProposal(_proposalId, address(this), proposalProposer)
+        );
+        // We only vote if the proposal was created by the governance proposer
+        Proposal memory proposal = gov.getProposal(_proposalId);
+        require(proposal.proposer == address(govProposer), Errors.Staking__IncorrectGovProposer(_proposalId));
+
+        Timestamp ts = proposal.creation + proposal.config.votingDelay;
+
+        // Cast votes with all our power
+        uint256 vp = store.gse.getVotingPowerAt(address(this), ts);
+        store.gse.vote(_proposalId, vp, true);
+
+        // If we are the canonical at the time of the proposal we also cast those votes.
+        if (store.gse.getLatestRollupAt(ts) == address(this)) {
+            address bonusInstance = store.gse.getBonusInstanceAddress();
+            vp = store.gse.getVotingPowerAt(bonusInstance, ts);
+            store.gse.voteWithBonus(_proposalId, vp, true);
+        }
+    }
+
+    /**
+     * @notice Completes a validator's withdrawal after the exit delay period
+     * @param _attester The address of the validator completing withdrawal
+     * @dev Reverts if the attester has no valid exit request (Staking__NotExiting) or if the exit delay period has not
+     * elapsed (Staking__WithdrawalNotUnlockedYet)
+     */
+    function finalizeWithdraw(address _attester) internal {
+        StakingStorage storage store = getStorage();
+        // We load it into memory to cache it, as we will delete it before we use it.
+        Exit memory exit = store.exits[_attester];
+        require(exit.exists, Errors.Staking__NotExiting(_attester));
+        require(exit.isRecipient, Errors.Staking__InitiateWithdrawNeeded(_attester));
+        require(
+            exit.exitableAt <= Timestamp.wrap(block.timestamp),
+            Errors.Staking__WithdrawalNotUnlockedYet(Timestamp.wrap(block.timestamp), exit.exitableAt)
+        );
+
         delete store.exits[_attester];
-      } else {
-        exit.amount -= slashAmount;
-      }
 
-      emit IStakingCore.Slashed(_attester, slashAmount);
-    } else {
-      // Get the effective balance of the attester
-      uint256 effectiveBalance = store.gse.effectiveBalanceOf(address(this), _attester);
-      require(effectiveBalance > 0, Errors.Staking__NoOneToSlash(_attester));
+        store.gse.finalizeWithdraw(exit.withdrawalId);
+        store.stakingAsset.safeTransfer(exit.recipientOrWithdrawer, exit.amount);
 
-      address withdrawer = store.gse.getWithdrawer(_attester);
+        emit IStakingCore.WithdrawFinalized(_attester, exit.recipientOrWithdrawer, exit.amount);
+    }
 
-      // If the slash amount is greater than the effective balance, bound it to the effective balance
-      uint256 slashAmount = Math.min(_amount, effectiveBalance);
-      // The `localEjectionThreshold` might be stricter (larger) than the global (gse ejection threshold)
-      uint256 toWithdraw =
-        effectiveBalance - slashAmount < store.localEjectionThreshold ? effectiveBalance : slashAmount;
+    function trySlash(address _attester, uint256 _amount) internal returns (bool) {
+        if (!isSlashable(_attester)) {
+            return false;
+        }
+        slash(_attester, _amount);
+        return true;
+    }
 
-      (uint256 amountWithdrawn, bool isRemoved, uint256 withdrawalId) = store.gse.withdraw(_attester, toWithdraw);
+    /**
+     * @notice Slashes a validator's stake as punishment for misbehavior
+     * @dev Only callable by the authorized slasher contract. Handles slashing for both exiting and active validators.
+     *      For exiting validators, reduces their exit amount. For active validators, the balance will be reduced and
+     *      an exit will be created if the remaining stake falls below the ejection threshold.
+     * @param _attester The address of the validator to slash
+     * @param _amount The amount of stake to slash
+     */
+    function slash(address _attester, uint256 _amount) internal {
+        StakingStorage storage store = getStorage();
+        require(_isAuthorizedSlasher(store, msg.sender), Errors.Staking__NotSlasher(store.slasher, msg.sender));
 
-      // The slashed amount remains in the contract permanently, effectively burning those tokens.
-      uint256 toUser = amountWithdrawn - slashAmount;
-      if (isRemoved && toUser > 0) {
-        // Only if we remove the attester AND there is something left will we create an exit
-        store.exits[_attester] = Exit({
-          withdrawalId: withdrawalId,
-          amount: toUser,
-          exitableAt: Timestamp.wrap(block.timestamp) + store.exitDelay.decompress(),
-          recipientOrWithdrawer: withdrawer,
-          isRecipient: false,
-          exists: true
+        Exit storage exit = store.exits[_attester];
+
+        if (exit.exists) {
+            require(
+                exit.exitableAt > Timestamp.wrap(block.timestamp), Errors.Staking__CannotSlashExitedStake(_attester)
+            );
+
+            // If the slash amount is greater than the exit amount, bound it to the exit amount
+            uint256 slashAmount = Math.min(_amount, exit.amount);
+
+            if (exit.amount == slashAmount) {
+                // If we slash the entire thing, nuke it entirely
+                delete store.exits[_attester];
+            } else {
+                exit.amount -= slashAmount;
+            }
+
+            emit IStakingCore.Slashed(_attester, slashAmount);
+        } else {
+            // Get the effective balance of the attester
+            uint256 effectiveBalance = store.gse.effectiveBalanceOf(address(this), _attester);
+            require(effectiveBalance > 0, Errors.Staking__NoOneToSlash(_attester));
+
+            address withdrawer = store.gse.getWithdrawer(_attester);
+
+            // If the slash amount is greater than the effective balance, bound it to the effective balance
+            uint256 slashAmount = Math.min(_amount, effectiveBalance);
+            // The `localEjectionThreshold` might be stricter (larger) than the global (gse ejection threshold)
+            uint256 toWithdraw =
+                effectiveBalance - slashAmount < store.localEjectionThreshold ? effectiveBalance : slashAmount;
+
+            (uint256 amountWithdrawn, bool isRemoved, uint256 withdrawalId) = store.gse.withdraw(_attester, toWithdraw);
+
+            // The slashed amount remains in the contract permanently, effectively burning those tokens.
+            uint256 toUser = amountWithdrawn - slashAmount;
+            if (isRemoved && toUser > 0) {
+                // Only if we remove the attester AND there is something left will we create an exit
+                store.exits[_attester] = Exit({
+                    withdrawalId: withdrawalId,
+                    amount: toUser,
+                    exitableAt: Timestamp.wrap(block.timestamp) + store.exitDelay.decompress(),
+                    recipientOrWithdrawer: withdrawer,
+                    isRecipient: false,
+                    exists: true
+                });
+            }
+
+            emit IStakingCore.Slashed(_attester, slashAmount);
+        }
+    }
+
+    /**
+     * @notice Deposits stake to add a new validator to the entry queue
+     * @dev Transfers stake from the caller and adds the validator to the entry queue.
+     *      The validator must not already be exiting. The attester and withdrawer addresses
+     *      must be non-zero. The stake amount is fixed at the activation threshold.
+     *      The validator will be processed from the queue in a future flushEntryQueue call.
+     *
+     * @param _attester The address that will act as the validator (sign attestations)
+     * @param _withdrawer The address that can withdraw the stake
+     * @param _publicKeyInG1 The G1 point for the BLS public key (used for efficient signature verification in GSE)
+     * @param _publicKeyInG2 The G2 point for the BLS public key (used for BLS aggregation and pairing operations in GSE)
+     * @param _proofOfPossession The proof of possession to show that the keys in G1 and G2 share the same secret key
+     * @param _moveWithLatestRollup Whether to automatically stake on a new rollup instance after an upgrade
+     */
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) internal {
+        require(
+            _attester != address(0) && _withdrawer != address(0), Errors.Staking__InvalidDeposit(_attester, _withdrawer)
+        );
+        StakingStorage storage store = getStorage();
+        // We don't allow deposits, if we are currently exiting.
+        require(!store.exits[_attester].exists, Errors.Staking__AlreadyExiting(_attester));
+        uint256 amount = store.gse.ACTIVATION_THRESHOLD();
+
+        store.stakingAsset.safeTransferFrom(msg.sender, address(this), amount);
+        store.entryQueue.enqueue(
+            _attester, _withdrawer, _publicKeyInG1, _publicKeyInG2, _proofOfPossession, _moveWithLatestRollup
+        );
+        emit IStakingCore.ValidatorQueued(_attester, _withdrawer);
+    }
+
+    function updateAndGetAvailableFlushes() internal returns (uint256) {
+        (uint256 flushes, Epoch currentEpoch, bool shouldUpdateState) = _calculateAvailableFlushes();
+
+        if (shouldUpdateState) {
+            StakingStorage storage store = getStorage();
+            store.nextFlushableEpoch = (currentEpoch + Epoch.wrap(1)).compress();
+            store.availableValidatorFlushes = flushes.toUint32();
+        }
+
+        return flushes;
+    }
+
+    /**
+     * @notice Processes the validator entry queue to add new validators to the active set
+     * @dev Processes up to min(maxAddableValidators, _toAdd) entries from the queue,
+     *      attempting to deposit each validator into the Governance Staking Escrow (GSE).
+     *
+     *      For each validator:
+     *      - Dequeues their entry from the queue
+     *      - Attempts to deposit them into the GSE contract
+     *      - On success: emits Deposit event
+     *      - On failure: refunds their stake and emits FailedDeposit event
+     *
+     *      The function will revert if:
+     *      - A deposit fails due to out of gas (to prevent queue draining attacks)
+     *
+     *      The function approves the GSE contract to spend the total stake amount needed for all deposits,
+     *      then revokes the approval after processing is complete.
+     *      It also updates the available validator flushes
+     *
+     * @param _toAdd - The max number the caller will try to add
+     */
+    function flushEntryQueue(uint256 _toAdd) internal {
+        uint256 maxAddableValidators = updateAndGetAvailableFlushes();
+
+        if (maxAddableValidators == 0) {
+            return;
+        }
+
+        StakingStorage storage store = getStorage();
+
+        uint256 queueLength = store.entryQueue.length();
+        uint256 numToDequeue = Math.min(Math.min(maxAddableValidators, queueLength), _toAdd);
+
+        if (numToDequeue == 0) {
+            return;
+        }
+
+        // Approve the GSE to spend the total stake amount needed for all deposits.
+        uint256 amount = store.gse.ACTIVATION_THRESHOLD();
+        store.stakingAsset.approve(address(store.gse), amount * numToDequeue);
+        uint256 depositCount = 0;
+        for (uint256 i = 0; i < numToDequeue; i++) {
+            DepositArgs memory args = store.entryQueue.dequeue();
+            (bool success, bytes memory data) = address(store.gse).call(
+                abi.encodeWithSelector(
+                    IGSECore.deposit.selector,
+                    args.attester,
+                    args.withdrawer,
+                    args.publicKeyInG1,
+                    args.publicKeyInG2,
+                    args.proofOfPossession,
+                    args.moveWithLatestRollup
+                )
+            );
+            if (success) {
+                depositCount++;
+                emit IStakingCore.Deposit(
+                    args.attester,
+                    args.withdrawer,
+                    args.publicKeyInG1,
+                    args.publicKeyInG2,
+                    args.proofOfPossession,
+                    amount
+                );
+            } else {
+                // If the deposit fails, we need to handle two cases:
+                // 1. Normal failure (data.length > 0): We return the funds to the withdrawer and continue processing
+                //    the queue. This prevents a single failed deposit from blocking the entire queue.
+                // 2. Out of gas failure (data.length == 0): We revert the entire transaction. This prevents an attack
+                //    where someone could drain the queue without making any deposits.
+                //    We can safely assume data.length == 0 means out of gas since we only call trusted GSE contract.
+                require(data.length > 0, Errors.Staking__DepositOutOfGas());
+                store.stakingAsset.safeTransfer(args.withdrawer, amount);
+                emit IStakingCore.FailedDeposit(
+                    args.attester, args.withdrawer, args.publicKeyInG1, args.publicKeyInG2, args.proofOfPossession
+                );
+            }
+        }
+        store.stakingAsset.approve(address(store.gse), 0);
+
+        store.availableValidatorFlushes -= depositCount.toUint32();
+
+        // If we have reached the bootstrap size, mark it as bootstrapped such that we don't re-enter it.
+        if (
+            !store.isBootstrapped
+                && getAttesterCountAtTime(Timestamp.wrap(block.timestamp))
+                    >= store.queueConfig.decompress().bootstrapValidatorSetSize
+        ) {
+            store.isBootstrapped = true;
+        }
+    }
+
+    /**
+     * @notice Initiates withdrawal of a validator's stake
+     * @dev Can be called by the registered withdrawer to start the exit process for a validator.
+     *      Handles two cases:
+     *      1. If an exit already exists (e.g. from slashing):
+     *         - Only allows updating recipient if caller is withdrawer
+     *         - Does not update the exit delay timer
+     *      2. If no exit exists:
+     *         - Requires validator has non-zero balance
+     *         - Only allows registered withdrawer to initiate
+     *         - Withdraws stake from GSE contract
+     *         - Creates new exit with delay timer
+     * @param _attester The validator address to withdraw stake for
+     * @param _recipient The address that will receive the withdrawn stake
+     * @return True if withdrawal was successfully initiated
+     */
+    function initiateWithdraw(address _attester, address _recipient) internal returns (bool) {
+        require(_recipient != address(0), Errors.Staking__InvalidRecipient(_recipient));
+        StakingStorage storage store = getStorage();
+
+        if (store.exits[_attester].exists) {
+            // If there is already an exit, we either started it and should revert
+            // or it is because of a slash and we should update the recipient
+            // Still only if we are the withdrawer
+            // We DO NOT update the exitableAt
+            require(!store.exits[_attester].isRecipient, Errors.Staking__NothingToExit(_attester));
+            require(
+                store.exits[_attester].recipientOrWithdrawer == msg.sender,
+                Errors.Staking__NotWithdrawer(store.exits[_attester].recipientOrWithdrawer, msg.sender)
+            );
+            store.exits[_attester].recipientOrWithdrawer = _recipient;
+            store.exits[_attester].isRecipient = true;
+
+            emit IStakingCore.WithdrawInitiated(_attester, _recipient, store.exits[_attester].amount);
+        } else {
+            uint256 effectiveBalance = store.gse.effectiveBalanceOf(address(this), _attester);
+            require(effectiveBalance > 0, Errors.Staking__NothingToExit(_attester));
+
+            address withdrawer = store.gse.getWithdrawer(_attester);
+            require(msg.sender == withdrawer, Errors.Staking__NotWithdrawer(withdrawer, msg.sender));
+
+            (uint256 actualAmount, bool removed, uint256 withdrawalId) = store.gse.withdraw(_attester, effectiveBalance);
+            require(removed, Errors.Staking__WithdrawFailed(_attester));
+
+            store.exits[_attester] = Exit({
+                withdrawalId: withdrawalId,
+                amount: actualAmount,
+                exitableAt: Timestamp.wrap(block.timestamp) + store.exitDelay.decompress(),
+                recipientOrWithdrawer: _recipient,
+                isRecipient: true,
+                exists: true
+            });
+            emit IStakingCore.WithdrawInitiated(_attester, _recipient, actualAmount);
+        }
+
+        return true;
+    }
+
+    function updateStakingQueueConfig(StakingQueueConfig memory _config) internal {
+        assertValidQueueConfig(_config);
+        getStorage().queueConfig = _config.compress();
+        emit IStakingCore.StakingQueueConfigUpdated(_config);
+    }
+
+    function getNextFlushableEpoch() internal view returns (Epoch) {
+        return getStorage().nextFlushableEpoch.decompress();
+    }
+
+    function getEntryQueueLength() internal view returns (uint256) {
+        return getStorage().entryQueue.length();
+    }
+
+    function isSlashable(address _attester) internal view returns (bool) {
+        StakingStorage storage store = getStorage();
+        Exit storage exit = store.exits[_attester];
+
+        if (exit.exists) {
+            return exit.exitableAt > Timestamp.wrap(block.timestamp);
+        }
+
+        uint256 effectiveBalance = store.gse.effectiveBalanceOf(address(this), _attester);
+        return effectiveBalance > 0;
+    }
+
+    function getAttesterCountAtTime(Timestamp _timestamp) internal view returns (uint256) {
+        return getStorage().gse.getAttesterCountAtTime(address(this), _timestamp);
+    }
+
+    function getAttesterAtIndex(uint256 _index) internal view returns (address) {
+        return getStorage().gse.getAttesterFromIndexAtTime(address(this), _index, Timestamp.wrap(block.timestamp));
+    }
+
+    function getEntryQueueAt(uint256 _index) internal view returns (DepositArgs memory) {
+        return getStorage().entryQueue.at(_index);
+    }
+
+    function getAttesterFromIndexAtTime(uint256 _index, Timestamp _timestamp) internal view returns (address) {
+        return getStorage().gse.getAttesterFromIndexAtTime(address(this), _index, _timestamp);
+    }
+
+    function getAttestersFromIndicesAtTime(Timestamp _timestamp, uint256[] memory _indices)
+        internal
+        view
+        returns (address[] memory)
+    {
+        return getStorage().gse.getAttestersFromIndicesAtTime(address(this), _timestamp, _indices);
+    }
+
+    function getExit(address _attester) internal view returns (Exit memory) {
+        return getStorage().exits[_attester];
+    }
+
+    function getConfig(address _attester) internal view returns (AttesterConfig memory) {
+        return getStorage().gse.getConfig(_attester);
+    }
+
+    function getAttesterView(address _attester) internal view returns (AttesterView memory) {
+        return AttesterView({
+            status: getStatus(_attester),
+            effectiveBalance: getStorage().gse.effectiveBalanceOf(address(this), _attester),
+            exit: getExit(_attester),
+            config: getConfig(_attester)
         });
-      }
-
-      emit IStakingCore.Slashed(_attester, slashAmount);
-    }
-  }
-
-  /**
-   * @notice Deposits stake to add a new validator to the entry queue
-   * @dev Transfers stake from the caller and adds the validator to the entry queue.
-   *      The validator must not already be exiting. The attester and withdrawer addresses
-   *      must be non-zero. The stake amount is fixed at the activation threshold.
-   *      The validator will be processed from the queue in a future flushEntryQueue call.
-   *
-   * @param _attester The address that will act as the validator (sign attestations)
-   * @param _withdrawer The address that can withdraw the stake
-   * @param _publicKeyInG1 The G1 point for the BLS public key (used for efficient signature verification in GSE)
-   * @param _publicKeyInG2 The G2 point for the BLS public key (used for BLS aggregation and pairing operations in GSE)
-   * @param _proofOfPossession The proof of possession to show that the keys in G1 and G2 share the same secret key
-   * @param _moveWithLatestRollup Whether to automatically stake on a new rollup instance after an upgrade
-   */
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) internal {
-    require(
-      _attester != address(0) && _withdrawer != address(0), Errors.Staking__InvalidDeposit(_attester, _withdrawer)
-    );
-    StakingStorage storage store = getStorage();
-    // We don't allow deposits, if we are currently exiting.
-    require(!store.exits[_attester].exists, Errors.Staking__AlreadyExiting(_attester));
-    uint256 amount = store.gse.ACTIVATION_THRESHOLD();
-
-    store.stakingAsset.safeTransferFrom(msg.sender, address(this), amount);
-    store.entryQueue
-      .enqueue(_attester, _withdrawer, _publicKeyInG1, _publicKeyInG2, _proofOfPossession, _moveWithLatestRollup);
-    emit IStakingCore.ValidatorQueued(_attester, _withdrawer);
-  }
-
-  function updateAndGetAvailableFlushes() internal returns (uint256) {
-    (uint256 flushes, Epoch currentEpoch, bool shouldUpdateState) = _calculateAvailableFlushes();
-
-    if (shouldUpdateState) {
-      StakingStorage storage store = getStorage();
-      store.nextFlushableEpoch = (currentEpoch + Epoch.wrap(1)).compress();
-      store.availableValidatorFlushes = flushes.toUint32();
     }
 
-    return flushes;
-  }
+    function getStatus(address _attester) internal view returns (Status_1) {
+        Exit memory exit = getExit(_attester);
+        uint256 effectiveBalance = getStorage().gse.effectiveBalanceOf(address(this), _attester);
 
-  /**
-   * @notice Processes the validator entry queue to add new validators to the active set
-   * @dev Processes up to min(maxAddableValidators, _toAdd) entries from the queue,
-   *      attempting to deposit each validator into the Governance Staking Escrow (GSE).
-   *
-   *      For each validator:
-   *      - Dequeues their entry from the queue
-   *      - Attempts to deposit them into the GSE contract
-   *      - On success: emits Deposit event
-   *      - On failure: refunds their stake and emits FailedDeposit event
-   *
-   *      The function will revert if:
-   *      - A deposit fails due to out of gas (to prevent queue draining attacks)
-   *
-   *      The function approves the GSE contract to spend the total stake amount needed for all deposits,
-   *      then revokes the approval after processing is complete.
-   *      It also updates the available validator flushes
-   *
-   * @param _toAdd - The max number the caller will try to add
-   */
-  function flushEntryQueue(uint256 _toAdd) internal {
-    uint256 maxAddableValidators = updateAndGetAvailableFlushes();
+        Status_1 status;
+        if (exit.exists) {
+            status = exit.isRecipient ? Status_1.EXITING : Status_1.ZOMBIE;
+        } else {
+            status = effectiveBalance > 0 ? Status_1.VALIDATING : Status_1.NONE;
+        }
 
-    if (maxAddableValidators == 0) {
-      return;
+        return status;
     }
 
-    StakingStorage storage store = getStorage();
+    /**
+     * @notice Determines the maximum number of validators that could be flushed from the entry queue if there were
+     * an unlimited number of validators in the queue - this function provides a theoretical limit.
+     * @dev Implements three-phase validator set management to control initial validator onboarding (called floodgates):
+     *      1. Bootstrap phase: When no active validators exist, the queue must grow to the bootstrap validator set size
+     *         constant from config before any validators can be flushed. This creates an initial "floodgate" that
+     *         prevents small numbers of validators from activating before reaching the desired bootstrap size.
+     *      2. Growth phase: Once the bootstrap size is reached, allows a large fixed batch size (bootstrapFlushSize) to
+     *         be flushed at once. This enables the initial large cohort of validators to activate together.
+     *      3. Normal phase: After the initial bootstrap and growth phases, returns a number proportional to the current
+     *         set size for conservative steady-state growth, unless constrained by configuration (`normalFlushSizeMin`).
+     *
+     *      The normal-phase result is clamped to `maxQueueFlushSize` at runtime; the
+     *      bootstrap-phase value is bounded by the same cap at config-acceptance time inside
+     *      {assertValidQueueConfig}, so every phase respects the cap.
+     *
+     *      The motivation for floodgates is that the whole system starts producing checkpoints with what is considered
+     *      a sufficiently decentralized set of validators.
+     *
+     *      Note that Governance has the ability to close the validator set for this instance by setting
+     *      `normalFlushSizeMin` to zero and `normalFlushSizeQuotient` to a very high value. If this is done, this
+     *      function will always return zero and no new validator can enter.
+     *
+     * @param _activeAttesterCount - The number of active attesters
+     * @return - The maximum number of validators that could be flushed from the entry queue.
+     */
+    function getEntryQueueFlushSize(uint256 _activeAttesterCount) internal view returns (uint256) {
+        StakingStorage storage store = getStorage();
+        StakingQueueConfig memory config = store.queueConfig.decompress();
 
-    uint256 queueLength = store.entryQueue.length();
-    uint256 numToDequeue = Math.min(Math.min(maxAddableValidators, queueLength), _toAdd);
+        uint256 queueSize = store.entryQueue.length();
 
-    if (numToDequeue == 0) {
-      return;
-    }
+        // Only if there is bootstrap values configured will we look into bootstrap or growth phases.
+        if (config.bootstrapValidatorSetSize > 0 && !store.isBootstrapped) {
+            // If bootstrap:
+            if (_activeAttesterCount == 0 && queueSize < config.bootstrapValidatorSetSize) {
+                return 0;
+            }
 
-    // Approve the GSE to spend the total stake amount needed for all deposits.
-    uint256 amount = store.gse.ACTIVATION_THRESHOLD();
-    store.stakingAsset.approve(address(store.gse), amount * numToDequeue);
-    uint256 depositCount = 0;
-    for (uint256 i = 0; i < numToDequeue; i++) {
-      DepositArgs memory args = store.entryQueue.dequeue();
-      (bool success, bytes memory data) = address(store.gse)
-        .call(
-          abi.encodeWithSelector(
-            IGSECore.deposit.selector,
-            args.attester,
-            args.withdrawer,
-            args.publicKeyInG1,
-            args.publicKeyInG2,
-            args.proofOfPossession,
-            args.moveWithLatestRollup
-          )
+            // If growth:
+            if (_activeAttesterCount < config.bootstrapValidatorSetSize) {
+                return config.bootstrapFlushSize;
+            }
+        }
+
+        // If normal:
+        return Math.min(
+            Math.max(_activeAttesterCount / config.normalFlushSizeQuotient, config.normalFlushSizeMin),
+            config.maxQueueFlushSize
         );
-      if (success) {
-        depositCount++;
-        emit IStakingCore.Deposit(
-          args.attester, args.withdrawer, args.publicKeyInG1, args.publicKeyInG2, args.proofOfPossession, amount
+    }
+
+    function getAvailableValidatorFlushes() internal view returns (uint256) {
+        (uint256 flushes,,) = _calculateAvailableFlushes();
+        return flushes;
+    }
+
+    function getCachedAvailableValidatorFlushes() internal view returns (uint256) {
+        return getStorage().availableValidatorFlushes;
+    }
+
+    /// @notice Enforces invariants on a {StakingQueueConfig}.
+    ///         - `normalFlushSizeMin > 0`: a zero floor can close the queue on a running rollup.
+    ///         - `normalFlushSizeQuotient > 0`: {getEntryQueueFlushSize} divides by this field.
+    ///         - `maxQueueFlushSize > 0`: a zero cap leaves the normal-phase queue impossible to
+    ///           drain (the `Math.min(..., 0)` clamp pins every flush at zero), trapping queued
+    ///           validator stake.
+    ///         - `bootstrapFlushSize > 0` whenever `bootstrapValidatorSetSize > 0`: a zero
+    ///           bootstrap flush size traps queued validators during bootstrap growth because the
+    ///           bootstrap branch returns `bootstrapFlushSize` directly.
+    ///         - `bootstrapFlushSize <= maxQueueFlushSize`: keeps {getEntryQueueFlushSize}'s
+    ///           bootstrap-phase return inside the same cap that bounds the normal phase, so the
+    ///           cap holds across every phase as documented.
+    /// @param _config The queue config to validate; reverts when any of the above is violated.
+    function assertValidQueueConfig(StakingQueueConfig memory _config) internal pure {
+        require(_config.normalFlushSizeMin > 0, Errors.Staking__InvalidStakingQueueConfig());
+        require(_config.normalFlushSizeQuotient > 0, Errors.Staking__InvalidNormalFlushSizeQuotient());
+        require(_config.maxQueueFlushSize > 0, Errors.Staking__InvalidMaxQueueFlushSize());
+        require(
+            _config.bootstrapValidatorSetSize == 0 || _config.bootstrapFlushSize > 0,
+            Errors.Staking__InvalidBootstrapFlushSize()
         );
-      } else {
-        // If the deposit fails, we need to handle two cases:
-        // 1. Normal failure (data.length > 0): We return the funds to the withdrawer and continue processing
-        //    the queue. This prevents a single failed deposit from blocking the entire queue.
-        // 2. Out of gas failure (data.length == 0): We revert the entire transaction. This prevents an attack
-        //    where someone could drain the queue without making any deposits.
-        //    We can safely assume data.length == 0 means out of gas since we only call trusted GSE contract.
-        require(data.length > 0, Errors.Staking__DepositOutOfGas());
-        store.stakingAsset.safeTransfer(args.withdrawer, amount);
-        emit IStakingCore.FailedDeposit(
-          args.attester, args.withdrawer, args.publicKeyInG1, args.publicKeyInG2, args.proofOfPossession
+        require(
+            _config.bootstrapFlushSize <= _config.maxQueueFlushSize,
+            Errors.Staking__BootstrapFlushSizeAboveMax(_config.bootstrapFlushSize, _config.maxQueueFlushSize)
         );
-      }
-    }
-    store.stakingAsset.approve(address(store.gse), 0);
-
-    store.availableValidatorFlushes -= depositCount.toUint32();
-
-    // If we have reached the bootstrap size, mark it as bootstrapped such that we don't re-enter it.
-    if (
-      !store.isBootstrapped
-        && getAttesterCountAtTime(Timestamp.wrap(block.timestamp))
-          >= store.queueConfig.decompress().bootstrapValidatorSetSize
-    ) {
-      store.isBootstrapped = true;
-    }
-  }
-
-  /**
-   * @notice Initiates withdrawal of a validator's stake
-   * @dev Can be called by the registered withdrawer to start the exit process for a validator.
-   *      Handles two cases:
-   *      1. If an exit already exists (e.g. from slashing):
-   *         - Only allows updating recipient if caller is withdrawer
-   *         - Does not update the exit delay timer
-   *      2. If no exit exists:
-   *         - Requires validator has non-zero balance
-   *         - Only allows registered withdrawer to initiate
-   *         - Withdraws stake from GSE contract
-   *         - Creates new exit with delay timer
-   * @param _attester The validator address to withdraw stake for
-   * @param _recipient The address that will receive the withdrawn stake
-   * @return True if withdrawal was successfully initiated
-   */
-  function initiateWithdraw(address _attester, address _recipient) internal returns (bool) {
-    require(_recipient != address(0), Errors.Staking__InvalidRecipient(_recipient));
-    StakingStorage storage store = getStorage();
-
-    if (store.exits[_attester].exists) {
-      // If there is already an exit, we either started it and should revert
-      // or it is because of a slash and we should update the recipient
-      // Still only if we are the withdrawer
-      // We DO NOT update the exitableAt
-      require(!store.exits[_attester].isRecipient, Errors.Staking__NothingToExit(_attester));
-      require(
-        store.exits[_attester].recipientOrWithdrawer == msg.sender,
-        Errors.Staking__NotWithdrawer(store.exits[_attester].recipientOrWithdrawer, msg.sender)
-      );
-      store.exits[_attester].recipientOrWithdrawer = _recipient;
-      store.exits[_attester].isRecipient = true;
-
-      emit IStakingCore.WithdrawInitiated(_attester, _recipient, store.exits[_attester].amount);
-    } else {
-      uint256 effectiveBalance = store.gse.effectiveBalanceOf(address(this), _attester);
-      require(effectiveBalance > 0, Errors.Staking__NothingToExit(_attester));
-
-      address withdrawer = store.gse.getWithdrawer(_attester);
-      require(msg.sender == withdrawer, Errors.Staking__NotWithdrawer(withdrawer, msg.sender));
-
-      (uint256 actualAmount, bool removed, uint256 withdrawalId) = store.gse.withdraw(_attester, effectiveBalance);
-      require(removed, Errors.Staking__WithdrawFailed(_attester));
-
-      store.exits[_attester] = Exit({
-        withdrawalId: withdrawalId,
-        amount: actualAmount,
-        exitableAt: Timestamp.wrap(block.timestamp) + store.exitDelay.decompress(),
-        recipientOrWithdrawer: _recipient,
-        isRecipient: true,
-        exists: true
-      });
-      emit IStakingCore.WithdrawInitiated(_attester, _recipient, actualAmount);
     }
 
-    return true;
-  }
-
-  function updateStakingQueueConfig(StakingQueueConfig memory _config) internal {
-    assertValidQueueConfig(_config);
-    getStorage().queueConfig = _config.compress();
-    emit IStakingCore.StakingQueueConfigUpdated(_config);
-  }
-
-  function getNextFlushableEpoch() internal view returns (Epoch) {
-    return getStorage().nextFlushableEpoch.decompress();
-  }
-
-  function getEntryQueueLength() internal view returns (uint256) {
-    return getStorage().entryQueue.length();
-  }
-
-  function isSlashable(address _attester) internal view returns (bool) {
-    StakingStorage storage store = getStorage();
-    Exit storage exit = store.exits[_attester];
-
-    if (exit.exists) {
-      return exit.exitableAt > Timestamp.wrap(block.timestamp);
+    function getStorage() internal pure returns (StakingStorage storage storageStruct) {
+        bytes32 position = STAKING_SLOT;
+        assembly {
+            storageStruct.slot := position
+        }
     }
 
-    uint256 effectiveBalance = store.gse.effectiveBalanceOf(address(this), _attester);
-    return effectiveBalance > 0;
-  }
-
-  function getAttesterCountAtTime(Timestamp _timestamp) internal view returns (uint256) {
-    return getStorage().gse.getAttesterCountAtTime(address(this), _timestamp);
-  }
-
-  function getAttesterAtIndex(uint256 _index) internal view returns (address) {
-    return getStorage().gse.getAttesterFromIndexAtTime(address(this), _index, Timestamp.wrap(block.timestamp));
-  }
-
-  function getEntryQueueAt(uint256 _index) internal view returns (DepositArgs memory) {
-    return getStorage().entryQueue.at(_index);
-  }
-
-  function getAttesterFromIndexAtTime(uint256 _index, Timestamp _timestamp) internal view returns (address) {
-    return getStorage().gse.getAttesterFromIndexAtTime(address(this), _index, _timestamp);
-  }
-
-  function getAttestersFromIndicesAtTime(Timestamp _timestamp, uint256[] memory _indices)
-    internal
-    view
-    returns (address[] memory)
-  {
-    return getStorage().gse.getAttestersFromIndicesAtTime(address(this), _timestamp, _indices);
-  }
-
-  function getExit(address _attester) internal view returns (Exit memory) {
-    return getStorage().exits[_attester];
-  }
-
-  function getConfig(address _attester) internal view returns (AttesterConfig memory) {
-    return getStorage().gse.getConfig(_attester);
-  }
-
-  function getAttesterView(address _attester) internal view returns (AttesterView memory) {
-    return AttesterView({
-      status: getStatus(_attester),
-      effectiveBalance: getStorage().gse.effectiveBalanceOf(address(this), _attester),
-      exit: getExit(_attester),
-      config: getConfig(_attester)
-    });
-  }
-
-  function getStatus(address _attester) internal view returns (Status_1) {
-    Exit memory exit = getExit(_attester);
-    uint256 effectiveBalance = getStorage().gse.effectiveBalanceOf(address(this), _attester);
-
-    Status_1 status;
-    if (exit.exists) {
-      status = exit.isRecipient ? Status_1.EXITING : Status_1.ZOMBIE;
-    } else {
-      status = effectiveBalance > 0 ? Status_1.VALIDATING : Status_1.NONE;
+    /// @notice Whether `_caller` can call {slash}.
+    /// @dev The active slasher always qualifies. The legacy slasher qualifies only while its
+    ///      drain window is still open, so quorum-backed rounds queued before a rotation can
+    ///      still execute against the rollup even though the active slasher has moved on.
+    function _isAuthorizedSlasher(StakingStorage storage _store, address _caller) private view returns (bool) {
+        if (_caller == _store.slasher) {
+            return true;
+        }
+        address legacy = _store.legacySlasher;
+        if (legacy == address(0) || _caller != legacy) {
+            return false;
+        }
+        return Timestamp.wrap(block.timestamp) <= _store.legacySlasherAuthorizedUntil.decompress();
     }
 
-    return status;
-  }
+    function _calculateAvailableFlushes()
+        private
+        view
+        returns (uint256 flushes, Epoch currentEpoch, bool shouldUpdateState)
+    {
+        StakingStorage storage store = getStorage();
+        currentEpoch = TimeLib.epochFromTimestamp(Timestamp.wrap(block.timestamp));
 
-  /**
-   * @notice Determines the maximum number of validators that could be flushed from the entry queue if there were
-   * an unlimited number of validators in the queue - this function provides a theoretical limit.
-   * @dev Implements three-phase validator set management to control initial validator onboarding (called floodgates):
-   *      1. Bootstrap phase: When no active validators exist, the queue must grow to the bootstrap validator set size
-   *         constant from config before any validators can be flushed. This creates an initial "floodgate" that
-   *         prevents small numbers of validators from activating before reaching the desired bootstrap size.
-   *      2. Growth phase: Once the bootstrap size is reached, allows a large fixed batch size (bootstrapFlushSize) to
-   *         be flushed at once. This enables the initial large cohort of validators to activate together.
-   *      3. Normal phase: After the initial bootstrap and growth phases, returns a number proportional to the current
-   *         set size for conservative steady-state growth, unless constrained by configuration (`normalFlushSizeMin`).
-   *
-   *      The normal-phase result is clamped to `maxQueueFlushSize` at runtime; the
-   *      bootstrap-phase value is bounded by the same cap at config-acceptance time inside
-   *      {assertValidQueueConfig}, so every phase respects the cap.
-   *
-   *      The motivation for floodgates is that the whole system starts producing checkpoints with what is considered
-   *      a sufficiently decentralized set of validators.
-   *
-   *      Note that Governance has the ability to close the validator set for this instance by setting
-   *      `normalFlushSizeMin` to zero and `normalFlushSizeQuotient` to a very high value. If this is done, this
-   *      function will always return zero and no new validator can enter.
-   *
-   * @param _activeAttesterCount - The number of active attesters
-   * @return - The maximum number of validators that could be flushed from the entry queue.
-   */
-  function getEntryQueueFlushSize(uint256 _activeAttesterCount) internal view returns (uint256) {
-    StakingStorage storage store = getStorage();
-    StakingQueueConfig memory config = store.queueConfig.decompress();
+        if (store.nextFlushableEpoch.decompress() > currentEpoch) {
+            return (store.availableValidatorFlushes, currentEpoch, false);
+        }
 
-    uint256 queueSize = store.entryQueue.length();
+        uint256 activeAttesterCount = getAttesterCountAtTime(Timestamp.wrap(block.timestamp));
+        uint256 newFlushes = getEntryQueueFlushSize(activeAttesterCount);
 
-    // Only if there is bootstrap values configured will we look into bootstrap or growth phases.
-    if (config.bootstrapValidatorSetSize > 0 && !store.isBootstrapped) {
-      // If bootstrap:
-      if (_activeAttesterCount == 0 && queueSize < config.bootstrapValidatorSetSize) {
-        return 0;
-      }
-
-      // If growth:
-      if (_activeAttesterCount < config.bootstrapValidatorSetSize) {
-        return config.bootstrapFlushSize;
-      }
+        return (newFlushes, currentEpoch, true);
     }
-
-    // If normal:
-    return Math.min(
-      Math.max(_activeAttesterCount / config.normalFlushSizeQuotient, config.normalFlushSizeMin),
-      config.maxQueueFlushSize
-    );
-  }
-
-  function getAvailableValidatorFlushes() internal view returns (uint256) {
-    (uint256 flushes,,) = _calculateAvailableFlushes();
-    return flushes;
-  }
-
-  function getCachedAvailableValidatorFlushes() internal view returns (uint256) {
-    return getStorage().availableValidatorFlushes;
-  }
-
-  /// @notice Enforces invariants on a {StakingQueueConfig}.
-  ///         - `normalFlushSizeMin > 0`: a zero floor can close the queue on a running rollup.
-  ///         - `normalFlushSizeQuotient > 0`: {getEntryQueueFlushSize} divides by this field.
-  ///         - `maxQueueFlushSize > 0`: a zero cap leaves the normal-phase queue impossible to
-  ///           drain (the `Math.min(..., 0)` clamp pins every flush at zero), trapping queued
-  ///           validator stake.
-  ///         - `bootstrapFlushSize > 0` whenever `bootstrapValidatorSetSize > 0`: a zero
-  ///           bootstrap flush size traps queued validators during bootstrap growth because the
-  ///           bootstrap branch returns `bootstrapFlushSize` directly.
-  ///         - `bootstrapFlushSize <= maxQueueFlushSize`: keeps {getEntryQueueFlushSize}'s
-  ///           bootstrap-phase return inside the same cap that bounds the normal phase, so the
-  ///           cap holds across every phase as documented.
-  /// @param _config The queue config to validate; reverts when any of the above is violated.
-  function assertValidQueueConfig(StakingQueueConfig memory _config) internal pure {
-    require(_config.normalFlushSizeMin > 0, Errors.Staking__InvalidStakingQueueConfig());
-    require(_config.normalFlushSizeQuotient > 0, Errors.Staking__InvalidNormalFlushSizeQuotient());
-    require(_config.maxQueueFlushSize > 0, Errors.Staking__InvalidMaxQueueFlushSize());
-    require(
-      _config.bootstrapValidatorSetSize == 0 || _config.bootstrapFlushSize > 0,
-      Errors.Staking__InvalidBootstrapFlushSize()
-    );
-    require(
-      _config.bootstrapFlushSize <= _config.maxQueueFlushSize,
-      Errors.Staking__BootstrapFlushSizeAboveMax(_config.bootstrapFlushSize, _config.maxQueueFlushSize)
-    );
-  }
-
-  function getStorage() internal pure returns (StakingStorage storage storageStruct) {
-    bytes32 position = STAKING_SLOT;
-    assembly {
-      storageStruct.slot := position
-    }
-  }
-
-  /// @notice Whether `_caller` can call {slash}.
-  /// @dev The active slasher always qualifies. The legacy slasher qualifies only while its
-  ///      drain window is still open, so quorum-backed rounds queued before a rotation can
-  ///      still execute against the rollup even though the active slasher has moved on.
-  function _isAuthorizedSlasher(StakingStorage storage _store, address _caller) private view returns (bool) {
-    if (_caller == _store.slasher) {
-      return true;
-    }
-    address legacy = _store.legacySlasher;
-    if (legacy == address(0) || _caller != legacy) {
-      return false;
-    }
-    return Timestamp.wrap(block.timestamp) <= _store.legacySlasherAuthorizedUntil.decompress();
-  }
-
-  function _calculateAvailableFlushes()
-    private
-    view
-    returns (uint256 flushes, Epoch currentEpoch, bool shouldUpdateState)
-  {
-    StakingStorage storage store = getStorage();
-    currentEpoch = TimeLib.epochFromTimestamp(Timestamp.wrap(block.timestamp));
-
-    if (store.nextFlushableEpoch.decompress() > currentEpoch) {
-      return (store.availableValidatorFlushes, currentEpoch, false);
-    }
-
-    uint256 activeAttesterCount = getAttesterCountAtTime(Timestamp.wrap(block.timestamp));
-    uint256 newFlushes = getEntryQueueFlushSize(activeAttesterCount);
-
-    return (newFlushes, currentEpoch, true);
-  }
 }
 
 /**
@@ -12459,99 +12567,99 @@ library StakingLib {
  * @notice  A tiny library to draw committee indices using a sample without replacement algorithm.
  */
 library SampleLib {
-  using SlotDerivation for string;
-  using SlotDerivation for bytes32;
-  using TransientSlot for *;
+    using SlotDerivation for string;
+    using SlotDerivation for bytes32;
+    using TransientSlot for *;
 
-  // Namespace for transient storage keys used within this library
-  string private constant OVERRIDE_NAMESPACE = "Aztec.SampleLib.Override";
+    // Namespace for transient storage keys used within this library
+    string private constant OVERRIDE_NAMESPACE = "Aztec.SampleLib.Override";
 
-  /**
-   * Compute Committee
-   *
-   * @param _committeeSize - The size of the committee
-   * @param _indexCount - The total number of indices
-   * @param _seed - The seed to use for shuffling
-   *
-   * @dev assumption, _committeeSize <= _indexCount
-   *
-   * @return indices - The indices of the committee
-   */
-  function computeCommittee(uint256 _committeeSize, uint256 _indexCount, uint256 _seed)
-    internal
-    returns (uint256[] memory)
-  {
-    require(_committeeSize <= _indexCount, Errors.SampleLib__SampleLargerThanIndex(_committeeSize, _indexCount));
+    /**
+     * Compute Committee
+     *
+     * @param _committeeSize - The size of the committee
+     * @param _indexCount - The total number of indices
+     * @param _seed - The seed to use for shuffling
+     *
+     * @dev assumption, _committeeSize <= _indexCount
+     *
+     * @return indices - The indices of the committee
+     */
+    function computeCommittee(uint256 _committeeSize, uint256 _indexCount, uint256 _seed)
+        internal
+        returns (uint256[] memory)
+    {
+        require(_committeeSize <= _indexCount, Errors.SampleLib__SampleLargerThanIndex(_committeeSize, _indexCount));
 
-    if (_committeeSize == 0) {
-      return new uint256[](0);
+        if (_committeeSize == 0) {
+            return new uint256[](0);
+        }
+
+        uint256[] memory sampledIndices = new uint256[](_committeeSize);
+
+        uint256 upperLimit = _indexCount - 1;
+
+        for (uint256 index = 0; index < _committeeSize; index++) {
+            uint256 sampledIndex = computeSampleIndex(index, upperLimit + 1, _seed);
+
+            // Get index, or its swapped override
+            sampledIndices[index] = getValue(sampledIndex);
+            if (upperLimit > 0) {
+                // Swap with the last index
+                setOverrideValue(sampledIndex, getValue(upperLimit));
+                // Decrement the upper limit
+                upperLimit--;
+            }
+        }
+
+        // Clear transient storage.
+        // Note that we are clearing the `sampleIndices` and do not keep track of a separate list of
+        // `sampleIndex` values that were written to. The reasoning is that we only overwrite values for
+        // duplicate cases, so `sampleIndices` is a superset of the `sampleIndex` values that have been drawn
+        // (to account for duplicates). Therefore, clearing `sampleIndices` clears everything.
+        // Due to the cost of `tstore` and `tload` operations, it is cheaper to overwrite all values
+        // rather than checking if there is anything to override.
+        for (uint256 i = 0; i < _committeeSize; i++) {
+            setOverrideValue(sampledIndices[i], 0);
+        }
+
+        return sampledIndices;
     }
 
-    uint256[] memory sampledIndices = new uint256[](_committeeSize);
-
-    uint256 upperLimit = _indexCount - 1;
-
-    for (uint256 index = 0; index < _committeeSize; index++) {
-      uint256 sampledIndex = computeSampleIndex(index, upperLimit + 1, _seed);
-
-      // Get index, or its swapped override
-      sampledIndices[index] = getValue(sampledIndex);
-      if (upperLimit > 0) {
-        // Swap with the last index
-        setOverrideValue(sampledIndex, getValue(upperLimit));
-        // Decrement the upper limit
-        upperLimit--;
-      }
+    function setOverrideValue(uint256 _index, uint256 _value) internal {
+        OVERRIDE_NAMESPACE.erc7201Slot().deriveMapping(_index).asUint256().tstore(_value);
     }
 
-    // Clear transient storage.
-    // Note that we are clearing the `sampleIndices` and do not keep track of a separate list of
-    // `sampleIndex` values that were written to. The reasoning is that we only overwrite values for
-    // duplicate cases, so `sampleIndices` is a superset of the `sampleIndex` values that have been drawn
-    // (to account for duplicates). Therefore, clearing `sampleIndices` clears everything.
-    // Due to the cost of `tstore` and `tload` operations, it is cheaper to overwrite all values
-    // rather than checking if there is anything to override.
-    for (uint256 i = 0; i < _committeeSize; i++) {
-      setOverrideValue(sampledIndices[i], 0);
+    function getValue(uint256 _index) internal view returns (uint256) {
+        uint256 overrideValue = getOverrideValue(_index);
+        if (overrideValue != 0) {
+            return overrideValue;
+        }
+
+        return _index;
     }
 
-    return sampledIndices;
-  }
-
-  function setOverrideValue(uint256 _index, uint256 _value) internal {
-    OVERRIDE_NAMESPACE.erc7201Slot().deriveMapping(_index).asUint256().tstore(_value);
-  }
-
-  function getValue(uint256 _index) internal view returns (uint256) {
-    uint256 overrideValue = getOverrideValue(_index);
-    if (overrideValue != 0) {
-      return overrideValue;
+    function getOverrideValue(uint256 _index) internal view returns (uint256) {
+        return OVERRIDE_NAMESPACE.erc7201Slot().deriveMapping(_index).asUint256().tload();
     }
 
-    return _index;
-  }
+    /**
+     * @notice  Compute the sample index for a given index, seed and index count.
+     *
+     * @param _index - The index to shuffle
+     * @param _indexCount - The total number of indices
+     * @param _seed - The seed to use for shuffling
+     *
+     * @return shuffledIndex - The shuffled index
+     */
+    function computeSampleIndex(uint256 _index, uint256 _indexCount, uint256 _seed) internal pure returns (uint256) {
+        // Cannot modulo by 0 and if 1, then only acceptable value is 0
+        if (_indexCount <= 1) {
+            return 0;
+        }
 
-  function getOverrideValue(uint256 _index) internal view returns (uint256) {
-    return OVERRIDE_NAMESPACE.erc7201Slot().deriveMapping(_index).asUint256().tload();
-  }
-
-  /**
-   * @notice  Compute the sample index for a given index, seed and index count.
-   *
-   * @param _index - The index to shuffle
-   * @param _indexCount - The total number of indices
-   * @param _seed - The seed to use for shuffling
-   *
-   * @return shuffledIndex - The shuffled index
-   */
-  function computeSampleIndex(uint256 _index, uint256 _indexCount, uint256 _seed) internal pure returns (uint256) {
-    // Cannot modulo by 0 and if 1, then only acceptable value is 0
-    if (_indexCount <= 1) {
-      return 0;
+        return uint256(keccak256(abi.encodePacked(_seed, _index))) % _indexCount;
     }
-
-    return uint256(keccak256(abi.encodePacked(_seed, _index))) % _indexCount;
-  }
 }
 
 /**
@@ -12627,644 +12735,650 @@ library SampleLib {
  *        its committee since it's in the future)
  */
 library ValidatorSelectionLib {
-  using EnumerableSet for EnumerableSet.AddressSet;
-  using SignatureLib for Signature;
-  using TimeLib for Timestamp;
-  using TimeLib for Epoch;
-  using TimeLib for Slot;
-  using Checkpoints for Checkpoints.Trace224;
-  using Checkpoints for Checkpoints.Trace160;
-  using SafeCast for *;
-  using TransientSlot for *;
-  using SlotDerivation for string;
-  using SlotDerivation for bytes32;
-  using AttestationLib for CommitteeAttestations;
+    using EnumerableSet for EnumerableSet.AddressSet;
+    using SignatureLib for Signature;
+    using TimeLib for Timestamp;
+    using TimeLib for Epoch;
+    using TimeLib for Slot;
+    using Checkpoints for Checkpoints.Trace224;
+    using Checkpoints for Checkpoints.Trace160;
+    using SafeCast for *;
+    using TransientSlot for *;
+    using SlotDerivation for string;
+    using SlotDerivation for bytes32;
+    using AttestationLib for CommitteeAttestations;
 
-  /**
-   * @dev Stack struct used in verifyAttestations to avoid stack too deep errors
-   *      Used when reconstructing the committee commitment from the attestations
-   * @param index Working index for iteration (unused in current implementation)
-   * @param needed Number of signatures required (2/3 + 1 of committee size)
-   * @param signaturesRecovered Number of valid signatures found
-   * @param reconstructedCommittee Array of committee member addresses reconstructed from attestations
-   */
-  struct VerifyStack {
-    uint256 index;
-    uint256 needed;
-    uint256 signaturesRecovered;
-    address[] reconstructedCommittee;
-  }
-
-  bytes32 private constant VALIDATOR_SELECTION_STORAGE_POSITION = keccak256("aztec.validator_selection.storage");
-  // Namespace for cached proposer computations
-  string private constant PROPOSER_NAMESPACE = "aztec.validator_selection.transient.proposer";
-
-  /**
-   * @notice Initializes the validator selection system with target committee size
-   * @dev It is HIGHLY recommended to use lagInEpochsForValidatorSet > lagInEpochsForRandao, to avoid sequencer bias
-   *      but we allow them being equal because it makes test networks faster to kick off.
-   * @dev Sets up the initial configuration and bootstrap seeds for the first two epochs.
-   *      The first two epochs use maximum seed values for startup.
-   * @param _targetCommitteeSize The desired number of validators in each epoch's committee
-   */
-  function initialize(uint256 _targetCommitteeSize, uint256 _lagInEpochsForValidatorSet, uint256 _lagInEpochsForRandao)
-    internal
-  {
-    require(
-      _lagInEpochsForValidatorSet >= _lagInEpochsForRandao,
-      Errors.ValidatorSelection__InvalidLagInEpochs(_lagInEpochsForValidatorSet, _lagInEpochsForRandao)
-    );
-    ValidatorSelectionStorage storage store = getStorage();
-    store.targetCommitteeSize = _targetCommitteeSize.toUint32();
-    store.lagInEpochsForValidatorSet = _lagInEpochsForValidatorSet.toUint32();
-    store.lagInEpochsForRandao = _lagInEpochsForRandao.toUint32();
-
-    checkpointRandao(Epoch.wrap(0));
-  }
-
-  /**
-   * @notice Sets the escape hatch contract address. One-shot: can only be called once per rollup.
-   * @dev Only callable through RollupCore.setEscapeHatch (owner-gated). Once set, the rollup's
-   *      escape hatch is immutable for the life of the rollup -- there is no replacement path.
-   *      Callers who want no escape hatch should simply never call this function.
-   * @param _escapeHatch The address of the EscapeHatch contract (must be non-zero)
-   */
-  function setEscapeHatch(address _escapeHatch) internal {
-    require(_escapeHatch != address(0), Errors.ValidatorSelection__EscapeHatchCannotBeZero());
-
-    // The registration is one-shot and ungoverned after setup, and an open escape hatch can act
-    // as an alternate proposal route (ProposeLib.propose authorizes the registered escape
-    // hatch's designated proposer during escape-hatch epochs). Pointing at a stranger contract
-    // -- including a hatch wired to a different rollup -- would create a permanent foreign
-    // proposal authority that cannot be replaced. Require the hatch to point back here.
-    address hatchRollup = IEscapeHatch(_escapeHatch).getRollup();
-    require(
-      hatchRollup == address(this), Errors.ValidatorSelection__EscapeHatchRollupMismatch(address(this), hatchRollup)
-    );
-
-    ValidatorSelectionStorage storage store = getStorage();
-    require(store.escapeHatchCheckpoints.length() == 0, Errors.ValidatorSelection__EscapeHatchAlreadySet());
-
-    // Key the checkpoint to the START of the next epoch so the registration never affects
-    // the current epoch. This prevents a same-block action from retroactively classifying
-    // an in-flight epoch as an escape-hatch epoch.
-    Epoch nextEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp() + Epoch.wrap(1);
-    uint96 nextEpochTs = uint96(Timestamp.unwrap(nextEpoch.toTimestamp()));
-    store.escapeHatchCheckpoints.push(nextEpochTs, uint160(_escapeHatch));
-  }
-
-  /**
-   * @notice Performs epoch setup by sampling the committee and setting future seeds
-   * @dev This function handles the epoch transition by:
-   *      1. Retrieving the sample seed for the current epoch
-   *      2. Setting the sample seed for the next epoch (if not already set)
-   *      3. Sampling and storing the committee for the current epoch (if not already done)
-   *
-   *      This setup ensures that each epoch has a stable committee and that future epochs
-   *      have their randomness seeds prepared in advance.
-   * @param _epochNumber The epoch number to set up
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function setupEpoch(Epoch _epochNumber) internal {
-    ValidatorSelectionStorage storage store = getStorage();
-
-    bytes32 committeeCommitment = store.committeeCommitments[_epochNumber];
-    if (committeeCommitment != bytes32(0)) {
-      // We already have the commitment stored for the epoch meaning the epoch has already been setup.
-      return;
+    /**
+     * @dev Stack struct used in verifyAttestations to avoid stack too deep errors
+     *      Used when reconstructing the committee commitment from the attestations
+     * @param index Working index for iteration (unused in current implementation)
+     * @param needed Number of signatures required (2/3 + 1 of committee size)
+     * @param signaturesRecovered Number of valid signatures found
+     * @param reconstructedCommittee Array of committee member addresses reconstructed from attestations
+     */
+    struct VerifyStack {
+        uint256 index;
+        uint256 needed;
+        uint256 signaturesRecovered;
+        address[] reconstructedCommittee;
     }
 
-    //################ Seeds ################
-    // Get the sample seed for this current epoch.
-    uint256 sampleSeed = getSampleSeed(_epochNumber);
+    bytes32 private constant VALIDATOR_SELECTION_STORAGE_POSITION = keccak256("aztec.validator_selection.storage");
+    // Namespace for cached proposer computations
+    string private constant PROPOSER_NAMESPACE = "aztec.validator_selection.transient.proposer";
 
-    // Checkpoint randao for future sampling if required
-    // function handles the case where it is already set
-    checkpointRandao(_epochNumber);
+    /**
+     * @notice Initializes the validator selection system with target committee size
+     * @dev It is HIGHLY recommended to use lagInEpochsForValidatorSet > lagInEpochsForRandao, to avoid sequencer bias
+     *      but we allow them being equal because it makes test networks faster to kick off.
+     * @dev Sets up the initial configuration and bootstrap seeds for the first two epochs.
+     *      The first two epochs use maximum seed values for startup.
+     * @param _targetCommitteeSize The desired number of validators in each epoch's committee
+     */
+    function initialize(
+        uint256 _targetCommitteeSize,
+        uint256 _lagInEpochsForValidatorSet,
+        uint256 _lagInEpochsForRandao
+    ) internal {
+        require(
+            _lagInEpochsForValidatorSet >= _lagInEpochsForRandao,
+            Errors.ValidatorSelection__InvalidLagInEpochs(_lagInEpochsForValidatorSet, _lagInEpochsForRandao)
+        );
+        ValidatorSelectionStorage storage store = getStorage();
+        store.targetCommitteeSize = _targetCommitteeSize.toUint32();
+        store.lagInEpochsForValidatorSet = _lagInEpochsForValidatorSet.toUint32();
+        store.lagInEpochsForRandao = _lagInEpochsForRandao.toUint32();
 
-    //################ Committee ################
-    // If the committee is not set for this epoch, we need to sample it
-    address[] memory committee = sampleValidators(_epochNumber, sampleSeed);
-    store.committeeCommitments[_epochNumber] = computeCommitteeCommitment(committee);
-  }
-
-  /**
-   * @notice Verifies that the checkpoint proposal has been signed by the correct proposer
-   * @dev Validates proposer eligibility and signature for checkpoint proposals by:
-   *      1. Attempting to load cached proposer from transient storage
-   *      2. If not cached, reconstructing committee from attestations and verifying against stored commitment
-   *      3. Computing proposer index using epoch, slot, and sample seed
-   *      4. Verifying the proposer has provided a valid signature in the attestations
-   *
-   *      The attestation is checked by reconstructing the committee commitment from the attestations and signers,
-   *      and then ensuring it matches the stored commitment for the epoch.
-   *
-   *      Uses transient storage caching to avoid recomputation within the same transaction. (This caching mechanism is
-   *      commonly used when a proposer signals in governance and submits a proposal within the same transaction - then
-   *      `getProposerAt` function is called).
-   * @param _slot The slot of the checkpoint being proposed
-   * @param _epochNumber The epoch number of the checkpoint
-   * @param _attestations The committee attestations for the checkpoint proposal
-   * @param _signers The addresses of the committee members that signed the attestations. Provided in order to not have
-   * to recover them from their attestations' signatures (and hence save gas). The addresses of the non-signing
-   * committee members are directly included in the attestations.
-   * @param _digest The digest of the checkpoint being proposed
-   * @param _updateCache Flag to identify that the proposer should be written to transient cache.
-   * @custom:reverts Errors.ValidatorSelection__InvalidCommitteeCommitment if reconstructed committee doesn't match
-   * stored commitment
-   * @custom:reverts Errors.ValidatorSelection__MissingProposerSignature if proposer hasn't signed their attestation
-   * @custom:reverts SignatureLib verification errors if proposer signature is invalid
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function verifyProposer(
-    Slot _slot,
-    Epoch _epochNumber,
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    bytes32 _digest,
-    Signature memory _attestationsAndSignersSignature,
-    bool _updateCache
-  ) internal {
-    uint256 proposerIndex;
-    address proposer;
-
-    {
-      // Load the committee commitment for the epoch
-      (bytes32 committeeCommitment, uint256 committeeSize) = getCommitteeCommitmentAt(_epochNumber);
-
-      // If the rollup is *deployed* with a target committee size of 0, we skip the validation.
-      // Note: This generally only happens in test setups; In production, the target committee is non-zero,
-      // and one can see in `sampleValidators` that we will revert if the target committee size is not met.
-      if (committeeSize == 0) {
-        return;
-      }
-
-      // Reconstruct the committee from the attestations and signers
-      address[] memory committee = _attestations.reconstructCommitteeFromSigners(_signers, committeeSize);
-
-      // Check reconstructed committee commitment matches the expected one for the epoch
-      bytes32 reconstructedCommitment = computeCommitteeCommitment(committee);
-      if (reconstructedCommitment != committeeCommitment) {
-        revert Errors.ValidatorSelection__InvalidCommitteeCommitment(reconstructedCommitment, committeeCommitment);
-      }
-
-      // Get the proposer from the committee based on the epoch, slot, and sample seed
-      uint256 sampleSeed = getSampleSeed(_epochNumber);
-      proposerIndex = computeProposerIndex(_epochNumber, _slot, sampleSeed, committeeSize);
-      proposer = committee[proposerIndex];
+        checkpointRandao(Epoch.wrap(0));
     }
 
-    // We check that the proposer agrees with the proposal by checking that he attested to it. If we fail to get
-    // the proposer's attestation signature or if we fail to verify it, we revert.
-    bool hasProposerSignature = _attestations.isSignature(proposerIndex);
-    if (!hasProposerSignature) {
-      revert Errors.ValidatorSelection__MissingProposerSignature(proposer, proposerIndex);
+    /**
+     * @notice Sets the escape hatch contract address. One-shot: can only be called once per rollup.
+     * @dev Only callable through RollupCore.setEscapeHatch (owner-gated). Once set, the rollup's
+     *      escape hatch is immutable for the life of the rollup -- there is no replacement path.
+     *      Callers who want no escape hatch should simply never call this function.
+     * @param _escapeHatch The address of the EscapeHatch contract (must be non-zero)
+     */
+    function setEscapeHatch(address _escapeHatch) internal {
+        require(_escapeHatch != address(0), Errors.ValidatorSelection__EscapeHatchCannotBeZero());
+
+        // The registration is one-shot and ungoverned after setup, and an open escape hatch can act
+        // as an alternate proposal route (ProposeLib.propose authorizes the registered escape
+        // hatch's designated proposer during escape-hatch epochs). Pointing at a stranger contract
+        // -- including a hatch wired to a different rollup -- would create a permanent foreign
+        // proposal authority that cannot be replaced. Require the hatch to point back here.
+        address hatchRollup = IEscapeHatch(_escapeHatch).getRollup();
+        require(
+            hatchRollup == address(this),
+            Errors.ValidatorSelection__EscapeHatchRollupMismatch(address(this), hatchRollup)
+        );
+
+        ValidatorSelectionStorage storage store = getStorage();
+        require(store.escapeHatchCheckpoints.length() == 0, Errors.ValidatorSelection__EscapeHatchAlreadySet());
+
+        // Key the checkpoint to the START of the next epoch so the registration never affects
+        // the current epoch. This prevents a same-block action from retroactively classifying
+        // an in-flight epoch as an escape-hatch epoch.
+        Epoch nextEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp() + Epoch.wrap(1);
+        uint96 nextEpochTs = uint96(Timestamp.unwrap(nextEpoch.toTimestamp()));
+        store.escapeHatchCheckpoints.push(nextEpochTs, uint160(_escapeHatch));
     }
 
-    // Check if the signature is correct
-    Signature memory signature = _attestations.getSignature(proposerIndex);
-    SignatureLib.verify(signature, proposer, _digest);
+    /**
+     * @notice Performs epoch setup by sampling the committee and setting future seeds
+     * @dev This function handles the epoch transition by:
+     *      1. Retrieving the sample seed for the current epoch
+     *      2. Setting the sample seed for the next epoch (if not already set)
+     *      3. Sampling and storing the committee for the current epoch (if not already done)
+     *
+     *      This setup ensures that each epoch has a stable committee and that future epochs
+     *      have their randomness seeds prepared in advance.
+     * @param _epochNumber The epoch number to set up
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function setupEpoch(Epoch _epochNumber) internal {
+        ValidatorSelectionStorage storage store = getStorage();
 
-    // Check that the proposer have signed the `_attestations|_signers` data such that invalid `_attestations|_signers`
-    // data can be attributed to the `proposer` specifically.
-    bytes32 attestationsAndSignersDigest = _attestations.getAttestationsAndSignersDigest(_signers);
-    SignatureLib.verify(_attestationsAndSignersSignature, proposer, attestationsAndSignersDigest);
-
-    if (_updateCache) {
-      setCachedProposer(_slot, proposer, proposerIndex);
-    }
-  }
-
-  /**
-   * @notice Verifies committee attestations meet the required threshold and signature validity
-   * @dev Performs attestation validation by:
-   *      1. Retrieving stored committee commitment and target committee size
-   *      2. Computing proposer index for signature verification optimization
-   *      3. Extracting and verifying signatures from packed attestation data
-   *      4. Reconstructing committee addresses from signatures and provided addresses
-   *      5. Validating reconstructed committee matches stored commitment
-   *      6. Ensuring at least 2/3 + 1 committee members provided signatures
-   *
-   *      Each committee attestation is either their:
-   *      - Signature (65 bytes: v, r, s) for attestation
-   *      - Address (20 bytes) for non-signing members
-   *
-   *      Note that providing the addresses of non-signing members allows for reconstructing the committee commitment
-   *      directly from calldata.
-   *
-   *      Skips validation entirely if target committee size is 0 (test configurations).
-   * @param _epochNumber The epoch of the checkpoint
-   * @param _attestations The packed signatures and addresses of committee members
-   * @param _digest The digest of the checkpoint that attestations are signed over
-   * @custom:reverts Errors.ValidatorSelection__InsufficientAttestations if less than 2/3 + 1 signatures provided
-   * @custom:reverts Errors.ValidatorSelection__InvalidCommitteeCommitment if reconstructed committee doesn't match
-   * stored commitment
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function verifyAttestations(Epoch _epochNumber, CommitteeAttestations memory _attestations, bytes32 _digest)
-    internal
-  {
-    (bytes32 committeeCommitment, uint256 targetCommitteeSize) = getCommitteeCommitmentAt(_epochNumber);
-
-    // If the rollup is *deployed* with a target committee size of 0, we skip the validation.
-    // Note: This generally only happens in test setups; In production, the target committee is non-zero,
-    // and one can see in `sampleValidators` that we will revert if the target committee size is not met.
-    if (targetCommitteeSize == 0) {
-      return;
-    }
-
-    VerifyStack memory stack = VerifyStack({
-      needed: (targetCommitteeSize << 1) / 3 + 1, // targetCommitteeSize * 2 / 3 + 1, but cheaper
-      index: 0,
-      signaturesRecovered: 0,
-      reconstructedCommittee: new address[](targetCommitteeSize)
-    });
-
-    bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
-    uint256 dataPtr;
-    assembly {
-      dataPtr := add(signaturesOrAddresses, 0x20) // Skip length, cache pointer
-    }
-
-    unchecked {
-      for (uint256 i = 0; i < targetCommitteeSize; ++i) {
-        bool isSignature = _attestations.isSignature(i);
-
-        if (isSignature) {
-          uint8 v;
-          bytes32 r;
-          bytes32 s;
-
-          assembly {
-            v := byte(0, mload(dataPtr))
-            dataPtr := add(dataPtr, 1)
-            r := mload(dataPtr)
-            dataPtr := add(dataPtr, 32)
-            s := mload(dataPtr)
-            dataPtr := add(dataPtr, 32)
-          }
-
-          ++stack.signaturesRecovered;
-          stack.reconstructedCommittee[i] = ECDSA.recover(_digest, v, r, s);
-        } else {
-          address addr;
-          assembly {
-            addr := shr(96, mload(dataPtr))
-            dataPtr := add(dataPtr, 20)
-          }
-          stack.reconstructedCommittee[i] = addr;
+        bytes32 committeeCommitment = store.committeeCommitments[_epochNumber];
+        if (committeeCommitment != bytes32(0)) {
+            // We already have the commitment stored for the epoch meaning the epoch has already been setup.
+            return;
         }
-      }
+
+        //################ Seeds ################
+        // Get the sample seed for this current epoch.
+        uint256 sampleSeed = getSampleSeed(_epochNumber);
+
+        // Checkpoint randao for future sampling if required
+        // function handles the case where it is already set
+        checkpointRandao(_epochNumber);
+
+        //################ Committee ################
+        // If the committee is not set for this epoch, we need to sample it
+        address[] memory committee = sampleValidators(_epochNumber, sampleSeed);
+        store.committeeCommitments[_epochNumber] = computeCommitteeCommitment(committee);
     }
 
-    require(
-      stack.signaturesRecovered >= stack.needed,
-      Errors.ValidatorSelection__InsufficientAttestations(stack.needed, stack.signaturesRecovered)
-    );
+    /**
+     * @notice Verifies that the checkpoint proposal has been signed by the correct proposer
+     * @dev Validates proposer eligibility and signature for checkpoint proposals by:
+     *      1. Attempting to load cached proposer from transient storage
+     *      2. If not cached, reconstructing committee from attestations and verifying against stored commitment
+     *      3. Computing proposer index using epoch, slot, and sample seed
+     *      4. Verifying the proposer has provided a valid signature in the attestations
+     *
+     *      The attestation is checked by reconstructing the committee commitment from the attestations and signers,
+     *      and then ensuring it matches the stored commitment for the epoch.
+     *
+     *      Uses transient storage caching to avoid recomputation within the same transaction. (This caching mechanism is
+     *      commonly used when a proposer signals in governance and submits a proposal within the same transaction - then
+     *      `getProposerAt` function is called).
+     * @param _slot The slot of the checkpoint being proposed
+     * @param _epochNumber The epoch number of the checkpoint
+     * @param _attestations The committee attestations for the checkpoint proposal
+     * @param _signers The addresses of the committee members that signed the attestations. Provided in order to not have
+     * to recover them from their attestations' signatures (and hence save gas). The addresses of the non-signing
+     * committee members are directly included in the attestations.
+     * @param _digest The digest of the checkpoint being proposed
+     * @param _updateCache Flag to identify that the proposer should be written to transient cache.
+     * @custom:reverts Errors.ValidatorSelection__InvalidCommitteeCommitment if reconstructed committee doesn't match
+     * stored commitment
+     * @custom:reverts Errors.ValidatorSelection__MissingProposerSignature if proposer hasn't signed their attestation
+     * @custom:reverts SignatureLib verification errors if proposer signature is invalid
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function verifyProposer(
+        Slot _slot,
+        Epoch _epochNumber,
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        bytes32 _digest,
+        Signature memory _attestationsAndSignersSignature,
+        bool _updateCache
+    ) internal {
+        uint256 proposerIndex;
+        address proposer;
 
-    // Check the committee commitment
-    bytes32 reconstructedCommitment = computeCommitteeCommitment(stack.reconstructedCommittee);
-    if (reconstructedCommitment != committeeCommitment) {
-      revert Errors.ValidatorSelection__InvalidCommitteeCommitment(reconstructedCommitment, committeeCommitment);
-    }
-  }
+        {
+            // Load the committee commitment for the epoch
+            (bytes32 committeeCommitment, uint256 committeeSize) = getCommitteeCommitmentAt(_epochNumber);
 
-  /**
-   * @notice Caches proposer information in transient storage for the current transaction
-   * @dev Uses EIP-1153 transient storage to cache proposer data, avoiding recomputation within the same transaction.
-   *      Packs proposer address (160 bits) and index (96 bits) into a single 32-byte slot for efficiency.
-   * @param _slot The slot to cache the proposer for
-   * @param _proposer The proposer's address
-   * @param _proposerIndex The proposer's index within the committee
-   * @custom:reverts Errors.ValidatorSelection__ProposerIndexTooLarge if proposer index exceeds uint96 max
-   */
-  function setCachedProposer(Slot _slot, address _proposer, uint256 _proposerIndex) internal {
-    require(_proposerIndex <= type(uint96).max, Errors.ValidatorSelection__ProposerIndexTooLarge(_proposerIndex));
-    bytes32 packed = bytes32(uint256(uint160(_proposer))) | (bytes32(_proposerIndex) << 160);
-    PROPOSER_NAMESPACE.erc7201Slot().deriveMapping(Slot.unwrap(_slot)).asBytes32().tstore(packed);
-  }
+            // If the rollup is *deployed* with a target committee size of 0, we skip the validation.
+            // Note: This generally only happens in test setups; In production, the target committee is non-zero,
+            // and one can see in `sampleValidators` that we will revert if the target committee size is not met.
+            if (committeeSize == 0) {
+                return;
+            }
 
-  /**
-   * @notice Gets the proposer for a specific slot, using cache or computing if necessary
-   * @dev First checks transient storage cache, then computes proposer if not cached.
-   *      Computation involves sampling validator indices and selecting based on slot.
-   * @param _slot The slot to get the proposer for
-   * @return proposer The address of the proposer for the slot
-   * @return proposerIndex The index of the proposer within the committee, zero address and index if committee size is
-   * 0 (ie test configuration).
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function getProposerAt(Slot _slot) internal returns (address, uint256) {
-    (address cachedProposer, uint256 cachedProposerIndex) = getCachedProposer(_slot);
-    if (cachedProposer != address(0)) {
-      return (cachedProposer, cachedProposerIndex);
-    }
+            // Reconstruct the committee from the attestations and signers
+            address[] memory committee = _attestations.reconstructCommitteeFromSigners(_signers, committeeSize);
 
-    Epoch epochNumber = _slot.epochFromSlot();
+            // Check reconstructed committee commitment matches the expected one for the epoch
+            bytes32 reconstructedCommitment = computeCommitteeCommitment(committee);
+            if (reconstructedCommitment != committeeCommitment) {
+                revert Errors.ValidatorSelection__InvalidCommitteeCommitment(
+                    reconstructedCommitment, committeeCommitment
+                );
+            }
 
-    uint256 sampleSeed = getSampleSeed(epochNumber);
-    (uint32 ts, uint256[] memory indices) = sampleValidatorsIndices(epochNumber, sampleSeed);
-    uint256 committeeSize = indices.length;
-    if (committeeSize == 0) {
-      return (address(0), 0);
-    }
-    uint256 proposerIndex = computeProposerIndex(epochNumber, _slot, sampleSeed, committeeSize);
-    return (StakingLib.getAttesterFromIndexAtTime(indices[proposerIndex], Timestamp.wrap(ts)), proposerIndex);
-  }
+            // Get the proposer from the committee based on the epoch, slot, and sample seed
+            uint256 sampleSeed = getSampleSeed(_epochNumber);
+            proposerIndex = computeProposerIndex(_epochNumber, _slot, sampleSeed, committeeSize);
+            proposer = committee[proposerIndex];
+        }
 
-  /**
-   * @notice Samples validator addresses for a specific epoch using cryptographic randomness
-   * @dev Samples validator indices first, then resolves to addresses at the appropriate timestamp.
-   *      Only used internally for epoch setup - should never be called for past or distant future epochs.
-   * @param _epoch The epoch to sample validators for
-   * @param _seed The cryptographic seed for sampling randomness
-   * @return The array of validator addresses selected for the committee
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function sampleValidators(Epoch _epoch, uint256 _seed) internal returns (address[] memory) {
-    (uint32 ts, uint256[] memory indices) = sampleValidatorsIndices(_epoch, _seed);
-    return StakingLib.getAttestersFromIndicesAtTime(Timestamp.wrap(ts), indices);
-  }
+        // We check that the proposer agrees with the proposal by checking that he attested to it. If we fail to get
+        // the proposer's attestation signature or if we fail to verify it, we revert.
+        bool hasProposerSignature = _attestations.isSignature(proposerIndex);
+        if (!hasProposerSignature) {
+            revert Errors.ValidatorSelection__MissingProposerSignature(proposer, proposerIndex);
+        }
 
-  /**
-   * @notice Gets the committee addresses for a specific epoch
-   * @dev Retrieves the sample seed for the epoch and uses it to sample the validator committee.
-   *      This function will trigger committee sampling if not already done for the epoch.
-   * @param _epochNumber The epoch to get the committee for
-   * @return The array of committee member addresses for the epoch
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function getCommitteeAt(Epoch _epochNumber) internal returns (address[] memory) {
-    uint256 seed = getSampleSeed(_epochNumber);
-    return sampleValidators(_epochNumber, seed);
-  }
+        // Check if the signature is correct
+        Signature memory signature = _attestations.getSignature(proposerIndex);
+        SignatureLib.verify(signature, proposer, _digest);
 
-  /**
-   * @notice Gets the committee commitment and size for an epoch
-   * @dev Retrieves the stored committee commitment, or computes it if not yet stored.
-   *      The commitment is a keccak256 hash of the committee member addresses array.
-   * @param _epochNumber The epoch to get the committee commitment for
-   * @return committeeCommitment The keccak256 hash of the committee member addresses
-   * @return committeeSize The target committee size (same for all epochs)
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function getCommitteeCommitmentAt(Epoch _epochNumber)
-    internal
-    returns (bytes32 committeeCommitment, uint256 committeeSize)
-  {
-    ValidatorSelectionStorage storage store = getStorage();
+        // Check that the proposer have signed the `_attestations|_signers` data such that invalid `_attestations|_signers`
+        // data can be attributed to the `proposer` specifically.
+        bytes32 attestationsAndSignersDigest = _attestations.getAttestationsAndSignersDigest(_signers);
+        SignatureLib.verify(_attestationsAndSignersSignature, proposer, attestationsAndSignersDigest);
 
-    committeeCommitment = store.committeeCommitments[_epochNumber];
-    if (committeeCommitment == 0) {
-      // This is an edge case that can happen if `setupEpoch` has not been called (see documentation of
-      // `RollupCore.setupEpoch` for details), so we compute the commitment again to guarantee that we get a real value.
-      committeeCommitment = computeCommitteeCommitment(sampleValidators(_epochNumber, getSampleSeed(_epochNumber)));
+        if (_updateCache) {
+            setCachedProposer(_slot, proposer, proposerIndex);
+        }
     }
 
-    return (committeeCommitment, store.targetCommitteeSize);
-  }
+    /**
+     * @notice Verifies committee attestations meet the required threshold and signature validity
+     * @dev Performs attestation validation by:
+     *      1. Retrieving stored committee commitment and target committee size
+     *      2. Computing proposer index for signature verification optimization
+     *      3. Extracting and verifying signatures from packed attestation data
+     *      4. Reconstructing committee addresses from signatures and provided addresses
+     *      5. Validating reconstructed committee matches stored commitment
+     *      6. Ensuring at least 2/3 + 1 committee members provided signatures
+     *
+     *      Each committee attestation is either their:
+     *      - Signature (65 bytes: v, r, s) for attestation
+     *      - Address (20 bytes) for non-signing members
+     *
+     *      Note that providing the addresses of non-signing members allows for reconstructing the committee commitment
+     *      directly from calldata.
+     *
+     *      Skips validation entirely if target committee size is 0 (test configurations).
+     * @param _epochNumber The epoch of the checkpoint
+     * @param _attestations The packed signatures and addresses of committee members
+     * @param _digest The digest of the checkpoint that attestations are signed over
+     * @custom:reverts Errors.ValidatorSelection__InsufficientAttestations if less than 2/3 + 1 signatures provided
+     * @custom:reverts Errors.ValidatorSelection__InvalidCommitteeCommitment if reconstructed committee doesn't match
+     * stored commitment
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function verifyAttestations(Epoch _epochNumber, CommitteeAttestations memory _attestations, bytes32 _digest)
+        internal
+    {
+        (bytes32 committeeCommitment, uint256 targetCommitteeSize) = getCommitteeCommitmentAt(_epochNumber);
 
-  /**
-   * @notice Checkpoints randao value for future usage
-   * @dev Checks if already stored before storing the randao value.
-   * @param _epoch The current epoch
-   */
-  function checkpointRandao(Epoch _epoch) internal {
-    ValidatorSelectionStorage storage store = getStorage();
+        // If the rollup is *deployed* with a target committee size of 0, we skip the validation.
+        // Note: This generally only happens in test setups; In production, the target committee is non-zero,
+        // and one can see in `sampleValidators` that we will revert if the target committee size is not met.
+        if (targetCommitteeSize == 0) {
+            return;
+        }
 
-    // Check if the latest checkpoint is for the next epoch
-    // It should be impossible that zero epoch snapshots exist, as in the genesis state we push the first values
-    // into the store
-    (, uint32 mostRecentTs,) = store.randaos.latestCheckpoint();
-    uint32 ts = Timestamp.unwrap(_epoch.toTimestamp()).toUint32();
+        VerifyStack memory stack = VerifyStack({
+            needed: (targetCommitteeSize << 1) / 3 + 1, // targetCommitteeSize * 2 / 3 + 1, but cheaper
+            index: 0,
+            signaturesRecovered: 0,
+            reconstructedCommittee: new address[](targetCommitteeSize)
+        });
 
-    // If the most recently stored epoch is less than the epoch we are querying, then we need to store randao for
-    // later use. We truncate to save storage costs.
-    if (mostRecentTs < ts) {
-      store.randaos.push(ts, uint224(block.prevrandao));
-    }
-  }
+        bytes memory signaturesOrAddresses = _attestations.signaturesOrAddresses;
+        uint256 dataPtr;
+        assembly {
+            dataPtr := add(signaturesOrAddresses, 0x20) // Skip length, cache pointer
+        }
 
-  /**
-   * @notice Validates if a specific validator can propose a checkpoint at a given time and chain state
-   * @dev Performs comprehensive validation including:
-   *      - Slot timing (must be after the last checkpoint's slot)
-   *      - Archive consistency (must build on current chain tip)
-   *      - Proposer authorization (must be the designated proposer for the slot)
-   * @param _ts The timestamp of the proposed checkpoint
-   * @param _archive The archive root the checkpoint claims to build on
-   * @param _who The address attempting to propose the checkpoint
-   * @return slot The slot number derived from the timestamp
-   * @return checkpointNumber The next checkpoint number that will be assigned
-   * @custom:reverts Errors.Rollup__SlotAlreadyInChain if trying to propose for a past slot
-   * @custom:reverts Errors.Rollup__InvalidArchive if archive doesn't match current chain tip
-   * @custom:reverts Errors.ValidatorSelection__InvalidProposer if _who is not the designated proposer
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) internal returns (Slot, uint256) {
-    Slot slot = _ts.slotFromTimestamp();
-    RollupStore storage rollupStore = STFLib.getStorage();
+        unchecked {
+            for (uint256 i = 0; i < targetCommitteeSize; ++i) {
+                bool isSignature = _attestations.isSignature(i);
 
-    // Pending chain tip
-    uint256 pendingCheckpointNumber = STFLib.getEffectivePendingCheckpointNumber(_ts);
+                if (isSignature) {
+                    uint8 v;
+                    bytes32 r;
+                    bytes32 s;
 
-    Slot lastSlot = STFLib.getSlotNumber(pendingCheckpointNumber);
+                    assembly {
+                        v := byte(0, mload(dataPtr))
+                        dataPtr := add(dataPtr, 1)
+                        r := mload(dataPtr)
+                        dataPtr := add(dataPtr, 32)
+                        s := mload(dataPtr)
+                        dataPtr := add(dataPtr, 32)
+                    }
 
-    require(slot > lastSlot, Errors.Rollup__SlotAlreadyInChain(lastSlot, slot));
+                    ++stack.signaturesRecovered;
+                    stack.reconstructedCommittee[i] = ECDSA.recover(_digest, v, r, s);
+                } else {
+                    address addr;
+                    assembly {
+                        addr := shr(96, mload(dataPtr))
+                        dataPtr := add(dataPtr, 20)
+                    }
+                    stack.reconstructedCommittee[i] = addr;
+                }
+            }
+        }
 
-    // Make sure that the proposer is up to date and on the right chain (ie no reorgs)
-    bytes32 tipArchive = rollupStore.archives[pendingCheckpointNumber];
-    require(tipArchive == _archive, Errors.Rollup__InvalidArchive(tipArchive, _archive));
+        require(
+            stack.signaturesRecovered >= stack.needed,
+            Errors.ValidatorSelection__InsufficientAttestations(stack.needed, stack.signaturesRecovered)
+        );
 
-    (address proposer,) = getProposerAt(slot);
-    require(proposer == _who, Errors.ValidatorSelection__InvalidProposer(proposer, _who));
-
-    return (slot, pendingCheckpointNumber + 1);
-  }
-
-  /**
-   * @notice Retrieves cached proposer information from transient storage
-   * @dev Reads packed proposer data (address + index) from EIP-1153 transient storage.
-   *      Returns zero values if no proposer is cached for the slot.
-   * @param _slot The slot to check for cached proposer
-   * @return proposer The cached proposer address (address(0) if not cached)
-   * @return proposerIndex The cached proposer index (0 if not cached)
-   */
-  function getCachedProposer(Slot _slot) internal view returns (address proposer, uint256 proposerIndex) {
-    bytes32 packed = PROPOSER_NAMESPACE.erc7201Slot().deriveMapping(Slot.unwrap(_slot)).asBytes32().tload();
-    // Extract address from lower 160 bits
-    proposer = address(uint160(uint256(packed)));
-    // Extract uint96 from upper 96 bits
-    proposerIndex = uint256(packed >> 160);
-  }
-
-  /**
-   * @notice Gets the cryptographic sample seed for a stable epoch
-   * @dev Retrieves the randao from the checkpointed randaos mapping using upperLookup.
-   *      Then computes the sample seed using keccak256(epoch, randao)
-   * @param _epoch The epoch to get the sample seed for
-   * @return The sample seed used for validator selection randomness
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function getSampleSeed(Epoch _epoch) internal view returns (uint256) {
-    ValidatorSelectionStorage storage store = getStorage();
-    uint32 ts = stableEpochToRandaoSampleTime(_epoch);
-    return uint256(keccak256(abi.encode(_epoch, store.randaos.upperLookup(ts))));
-  }
-
-  /**
-   * @notice Gets the sampling size (attester count) for a stable epoch
-   * @dev Retrieves the number of attesters at the sampling time for the epoch.
-   * @param _epoch The epoch to get the sampling size for
-   * @return The number of attesters available at the epoch's sampling time
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function getSamplingSize(Epoch _epoch) internal view returns (uint256) {
-    uint32 ts = stableEpochToValidatorSetSampleTime(_epoch);
-    return StakingLib.getAttesterCountAtTime(Timestamp.wrap(ts));
-  }
-
-  function getLagInEpochsForValidatorSet() internal view returns (uint256) {
-    return getStorage().lagInEpochsForValidatorSet;
-  }
-
-  function getLagInEpochsForRandao() internal view returns (uint256) {
-    return getStorage().lagInEpochsForRandao;
-  }
-
-  /**
-   * @notice Gets the current escape hatch contract (latest checkpoint)
-   * @dev Returns the most recently configured escape hatch, or a zero-address IEscapeHatch if none set
-   * @return The escape hatch contract interface
-   */
-  function getEscapeHatch() internal view returns (IEscapeHatch) {
-    return IEscapeHatch(address(getStorage().escapeHatchCheckpoints.latest()));
-  }
-
-  /**
-   * @notice Gets the escape hatch contract that was active at the start of a given epoch
-   * @dev Uses `upperLookupRecent` to find the most recent checkpoint with key <= epoch start timestamp.
-   *      Changes pushed with `block.timestamp` during epoch N take effect for epoch N+1 (since epoch
-   *      N+1's start timestamp > the push timestamp > epoch N's start timestamp), providing implicit
-   *      epoch-boundary activation.
-   * @param _epoch The epoch to look up the escape hatch for
-   * @return The escape hatch contract interface that was active at the start of the epoch
-   */
-  function getEscapeHatchForEpoch(Epoch _epoch) internal view returns (IEscapeHatch) {
-    uint96 ts = uint96(Timestamp.unwrap(TimeLib.toTimestamp(_epoch)));
-    return IEscapeHatch(address(getStorage().escapeHatchCheckpoints.upperLookupRecent(ts)));
-  }
-
-  /**
-   * @notice Gets the validator selection storage struct using EIP-7201 namespaced storage
-   * @dev Uses assembly to access storage at the predetermined slot to avoid collisions.
-   * @return storageStruct The validator selection storage struct
-   */
-  function getStorage() internal pure returns (ValidatorSelectionStorage storage storageStruct) {
-    bytes32 position = VALIDATOR_SELECTION_STORAGE_POSITION;
-    assembly {
-      storageStruct.slot := position
-    }
-  }
-
-  /**
-   * @notice Computes the committee index of the proposer for a specific slot
-   * @dev Uses keccak256 hash of epoch, slot, and seed to deterministically select a committee member.
-   *      The result is modulo committee size to ensure valid index.
-   *      The result being modulo biased is not a problem here as the validators in the committee were chosen randomly
-   *      and are not ordered.
-   * @param _epoch The epoch containing the slot
-   * @param _slot The specific slot to compute proposer for
-   * @param _seed The epoch's sample seed for randomness
-   * @param _size The size of the committee
-   * @return The index (0 to _size-1) of the committee member who should propose for this slot
-   */
-  function computeProposerIndex(Epoch _epoch, Slot _slot, uint256 _seed, uint256 _size)
-    internal
-    pure
-    returns (uint256)
-  {
-    return uint256(keccak256(abi.encode(_epoch, _slot, _seed))) % _size;
-  }
-
-  /**
-   * @notice Samples validator indices for a specific epoch using cryptographic randomness
-   * @dev Determines sample timestamp, gets validator set size, and uses SampleLib to select committee indices.
-   *      Validates that enough validators are available to meet target committee size.
-   * @param _epoch The epoch to sample validators for
-   * @param _seed The cryptographic seed for sampling randomness
-   * @return sampleTime The timestamp used for validator set sampling
-   * @return indices Array of validator indices selected for the committee
-   * @custom:reverts Errors.ValidatorSelection__InsufficientValidatorSetSize if not enough validators available
-   */
-  function sampleValidatorsIndices(Epoch _epoch, uint256 _seed) private returns (uint32, uint256[] memory) {
-    ValidatorSelectionStorage storage store = getStorage();
-    uint32 ts = stableEpochToValidatorSetSampleTime(_epoch);
-    uint256 validatorSetSize = StakingLib.getAttesterCountAtTime(Timestamp.wrap(ts));
-    uint256 targetCommitteeSize = store.targetCommitteeSize;
-
-    require(
-      validatorSetSize >= targetCommitteeSize,
-      Errors.ValidatorSelection__InsufficientValidatorSetSize(validatorSetSize, targetCommitteeSize)
-    );
-
-    if (targetCommitteeSize == 0) {
-      return (ts, new uint256[](0));
+        // Check the committee commitment
+        bytes32 reconstructedCommitment = computeCommitteeCommitment(stack.reconstructedCommittee);
+        if (reconstructedCommitment != committeeCommitment) {
+            revert Errors.ValidatorSelection__InvalidCommitteeCommitment(reconstructedCommitment, committeeCommitment);
+        }
     }
 
-    return (ts, SampleLib.computeCommittee(targetCommitteeSize, validatorSetSize, _seed));
-  }
+    /**
+     * @notice Caches proposer information in transient storage for the current transaction
+     * @dev Uses EIP-1153 transient storage to cache proposer data, avoiding recomputation within the same transaction.
+     *      Packs proposer address (160 bits) and index (96 bits) into a single 32-byte slot for efficiency.
+     * @param _slot The slot to cache the proposer for
+     * @param _proposer The proposer's address
+     * @param _proposerIndex The proposer's index within the committee
+     * @custom:reverts Errors.ValidatorSelection__ProposerIndexTooLarge if proposer index exceeds uint96 max
+     */
+    function setCachedProposer(Slot _slot, address _proposer, uint256 _proposerIndex) internal {
+        require(_proposerIndex <= type(uint96).max, Errors.ValidatorSelection__ProposerIndexTooLarge(_proposerIndex));
+        bytes32 packed = bytes32(uint256(uint160(_proposer))) | (bytes32(_proposerIndex) << 160);
+        PROPOSER_NAMESPACE.erc7201Slot().deriveMapping(Slot.unwrap(_slot)).asBytes32().tstore(packed);
+    }
 
-  /**
-   * @notice Converts a stable epoch number to the timestamp used for validator set sampling
-   * @dev Calculates the sampling timestamp by:
-   *      1. Taking the epoch start timestamp
-   *      2. Subtracting `lagInEpochsForRandao` full epoch duration to ensure stability
-   *
-   *      This ensures validator set sampling uses stable historical data that won't be
-   *      affected by last-minute changes or L1 reorgs during synchronization.
-   *
-   *      We consider an epoch to be stable when its committee cannot change.
-   * @param _epoch The epoch to calculate sampling time for
-   * @return The Unix timestamp (uint32) to use for validator set sampling
-   * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
-   */
-  function stableEpochToRandaoSampleTime(Epoch _epoch) private view returns (uint32) {
-    uint32 sub = getStorage().lagInEpochsForRandao * TimeLib.getEpochDurationInSeconds().toUint32();
-    uint32 ts = Timestamp.unwrap(_epoch.toTimestamp()).toUint32() - sub;
-    require(
-      ts <= block.timestamp,
-      Errors.ValidatorSelection__EpochNotStable(uint256(Epoch.unwrap(_epoch)), uint32(block.timestamp))
-    );
-    return ts;
-  }
+    /**
+     * @notice Gets the proposer for a specific slot, using cache or computing if necessary
+     * @dev First checks transient storage cache, then computes proposer if not cached.
+     *      Computation involves sampling validator indices and selecting based on slot.
+     * @param _slot The slot to get the proposer for
+     * @return proposer The address of the proposer for the slot
+     * @return proposerIndex The index of the proposer within the committee, zero address and index if committee size is
+     * 0 (ie test configuration).
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function getProposerAt(Slot _slot) internal returns (address, uint256) {
+        (address cachedProposer, uint256 cachedProposerIndex) = getCachedProposer(_slot);
+        if (cachedProposer != address(0)) {
+            return (cachedProposer, cachedProposerIndex);
+        }
 
-  function stableEpochToValidatorSetSampleTime(Epoch _epoch) private view returns (uint32) {
-    uint32 sub = getStorage().lagInEpochsForValidatorSet * TimeLib.getEpochDurationInSeconds().toUint32();
-    uint32 ts = Timestamp.unwrap(_epoch.toTimestamp()).toUint32() - sub;
-    require(
-      ts <= block.timestamp,
-      Errors.ValidatorSelection__EpochNotStable(uint256(Epoch.unwrap(_epoch)), uint32(block.timestamp))
-    );
-    return ts;
-  }
+        Epoch epochNumber = _slot.epochFromSlot();
 
-  /**
-   * @notice Computes the keccak256 commitment hash for a committee member array
-   * @dev Creates a cryptographic commitment to the committee composition that can be verified later.
-   *      Used to prevent committee substitution attacks during attestation verification.
-   * @param _committee The array of committee member addresses
-   * @return The keccak256 hash of the ABI-encoded committee array
-   */
-  function computeCommitteeCommitment(address[] memory _committee) private pure returns (bytes32) {
-    return keccak256(abi.encode(_committee));
-  }
+        uint256 sampleSeed = getSampleSeed(epochNumber);
+        (uint32 ts, uint256[] memory indices) = sampleValidatorsIndices(epochNumber, sampleSeed);
+        uint256 committeeSize = indices.length;
+        if (committeeSize == 0) {
+            return (address(0), 0);
+        }
+        uint256 proposerIndex = computeProposerIndex(epochNumber, _slot, sampleSeed, committeeSize);
+        return (StakingLib.getAttesterFromIndexAtTime(indices[proposerIndex], Timestamp.wrap(ts)), proposerIndex);
+    }
+
+    /**
+     * @notice Samples validator addresses for a specific epoch using cryptographic randomness
+     * @dev Samples validator indices first, then resolves to addresses at the appropriate timestamp.
+     *      Only used internally for epoch setup - should never be called for past or distant future epochs.
+     * @param _epoch The epoch to sample validators for
+     * @param _seed The cryptographic seed for sampling randomness
+     * @return The array of validator addresses selected for the committee
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function sampleValidators(Epoch _epoch, uint256 _seed) internal returns (address[] memory) {
+        (uint32 ts, uint256[] memory indices) = sampleValidatorsIndices(_epoch, _seed);
+        return StakingLib.getAttestersFromIndicesAtTime(Timestamp.wrap(ts), indices);
+    }
+
+    /**
+     * @notice Gets the committee addresses for a specific epoch
+     * @dev Retrieves the sample seed for the epoch and uses it to sample the validator committee.
+     *      This function will trigger committee sampling if not already done for the epoch.
+     * @param _epochNumber The epoch to get the committee for
+     * @return The array of committee member addresses for the epoch
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function getCommitteeAt(Epoch _epochNumber) internal returns (address[] memory) {
+        uint256 seed = getSampleSeed(_epochNumber);
+        return sampleValidators(_epochNumber, seed);
+    }
+
+    /**
+     * @notice Gets the committee commitment and size for an epoch
+     * @dev Retrieves the stored committee commitment, or computes it if not yet stored.
+     *      The commitment is a keccak256 hash of the committee member addresses array.
+     * @param _epochNumber The epoch to get the committee commitment for
+     * @return committeeCommitment The keccak256 hash of the committee member addresses
+     * @return committeeSize The target committee size (same for all epochs)
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function getCommitteeCommitmentAt(Epoch _epochNumber)
+        internal
+        returns (bytes32 committeeCommitment, uint256 committeeSize)
+    {
+        ValidatorSelectionStorage storage store = getStorage();
+
+        committeeCommitment = store.committeeCommitments[_epochNumber];
+        if (committeeCommitment == 0) {
+            // This is an edge case that can happen if `setupEpoch` has not been called (see documentation of
+            // `RollupCore.setupEpoch` for details), so we compute the commitment again to guarantee that we get a real value.
+            committeeCommitment =
+                computeCommitteeCommitment(sampleValidators(_epochNumber, getSampleSeed(_epochNumber)));
+        }
+
+        return (committeeCommitment, store.targetCommitteeSize);
+    }
+
+    /**
+     * @notice Checkpoints randao value for future usage
+     * @dev Checks if already stored before storing the randao value.
+     * @param _epoch The current epoch
+     */
+    function checkpointRandao(Epoch _epoch) internal {
+        ValidatorSelectionStorage storage store = getStorage();
+
+        // Check if the latest checkpoint is for the next epoch
+        // It should be impossible that zero epoch snapshots exist, as in the genesis state we push the first values
+        // into the store
+        (, uint32 mostRecentTs,) = store.randaos.latestCheckpoint();
+        uint32 ts = Timestamp.unwrap(_epoch.toTimestamp()).toUint32();
+
+        // If the most recently stored epoch is less than the epoch we are querying, then we need to store randao for
+        // later use. We truncate to save storage costs.
+        if (mostRecentTs < ts) {
+            store.randaos.push(ts, uint224(block.prevrandao));
+        }
+    }
+
+    /**
+     * @notice Validates if a specific validator can propose a checkpoint at a given time and chain state
+     * @dev Performs comprehensive validation including:
+     *      - Slot timing (must be after the last checkpoint's slot)
+     *      - Archive consistency (must build on current chain tip)
+     *      - Proposer authorization (must be the designated proposer for the slot)
+     * @param _ts The timestamp of the proposed checkpoint
+     * @param _archive The archive root the checkpoint claims to build on
+     * @param _who The address attempting to propose the checkpoint
+     * @return slot The slot number derived from the timestamp
+     * @return checkpointNumber The next checkpoint number that will be assigned
+     * @custom:reverts Errors.Rollup__SlotAlreadyInChain if trying to propose for a past slot
+     * @custom:reverts Errors.Rollup__InvalidArchive if archive doesn't match current chain tip
+     * @custom:reverts Errors.ValidatorSelection__InvalidProposer if _who is not the designated proposer
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function canProposeAtTime(Timestamp _ts, bytes32 _archive, address _who) internal returns (Slot, uint256) {
+        Slot slot = _ts.slotFromTimestamp();
+        RollupStore storage rollupStore = STFLib.getStorage();
+
+        // Pending chain tip
+        uint256 pendingCheckpointNumber = STFLib.getEffectivePendingCheckpointNumber(_ts);
+
+        Slot lastSlot = STFLib.getSlotNumber(pendingCheckpointNumber);
+
+        require(slot > lastSlot, Errors.Rollup__SlotAlreadyInChain(lastSlot, slot));
+
+        // Make sure that the proposer is up to date and on the right chain (ie no reorgs)
+        bytes32 tipArchive = rollupStore.archives[pendingCheckpointNumber];
+        require(tipArchive == _archive, Errors.Rollup__InvalidArchive(tipArchive, _archive));
+
+        (address proposer,) = getProposerAt(slot);
+        require(proposer == _who, Errors.ValidatorSelection__InvalidProposer(proposer, _who));
+
+        return (slot, pendingCheckpointNumber + 1);
+    }
+
+    /**
+     * @notice Retrieves cached proposer information from transient storage
+     * @dev Reads packed proposer data (address + index) from EIP-1153 transient storage.
+     *      Returns zero values if no proposer is cached for the slot.
+     * @param _slot The slot to check for cached proposer
+     * @return proposer The cached proposer address (address(0) if not cached)
+     * @return proposerIndex The cached proposer index (0 if not cached)
+     */
+    function getCachedProposer(Slot _slot) internal view returns (address proposer, uint256 proposerIndex) {
+        bytes32 packed = PROPOSER_NAMESPACE.erc7201Slot().deriveMapping(Slot.unwrap(_slot)).asBytes32().tload();
+        // Extract address from lower 160 bits
+        proposer = address(uint160(uint256(packed)));
+        // Extract uint96 from upper 96 bits
+        proposerIndex = uint256(packed >> 160);
+    }
+
+    /**
+     * @notice Gets the cryptographic sample seed for a stable epoch
+     * @dev Retrieves the randao from the checkpointed randaos mapping using upperLookup.
+     *      Then computes the sample seed using keccak256(epoch, randao)
+     * @param _epoch The epoch to get the sample seed for
+     * @return The sample seed used for validator selection randomness
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function getSampleSeed(Epoch _epoch) internal view returns (uint256) {
+        ValidatorSelectionStorage storage store = getStorage();
+        uint32 ts = stableEpochToRandaoSampleTime(_epoch);
+        return uint256(keccak256(abi.encode(_epoch, store.randaos.upperLookup(ts))));
+    }
+
+    /**
+     * @notice Gets the sampling size (attester count) for a stable epoch
+     * @dev Retrieves the number of attesters at the sampling time for the epoch.
+     * @param _epoch The epoch to get the sampling size for
+     * @return The number of attesters available at the epoch's sampling time
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function getSamplingSize(Epoch _epoch) internal view returns (uint256) {
+        uint32 ts = stableEpochToValidatorSetSampleTime(_epoch);
+        return StakingLib.getAttesterCountAtTime(Timestamp.wrap(ts));
+    }
+
+    function getLagInEpochsForValidatorSet() internal view returns (uint256) {
+        return getStorage().lagInEpochsForValidatorSet;
+    }
+
+    function getLagInEpochsForRandao() internal view returns (uint256) {
+        return getStorage().lagInEpochsForRandao;
+    }
+
+    /**
+     * @notice Gets the current escape hatch contract (latest checkpoint)
+     * @dev Returns the most recently configured escape hatch, or a zero-address IEscapeHatch if none set
+     * @return The escape hatch contract interface
+     */
+    function getEscapeHatch() internal view returns (IEscapeHatch) {
+        return IEscapeHatch(address(getStorage().escapeHatchCheckpoints.latest()));
+    }
+
+    /**
+     * @notice Gets the escape hatch contract that was active at the start of a given epoch
+     * @dev Uses `upperLookupRecent` to find the most recent checkpoint with key <= epoch start timestamp.
+     *      Changes pushed with `block.timestamp` during epoch N take effect for epoch N+1 (since epoch
+     *      N+1's start timestamp > the push timestamp > epoch N's start timestamp), providing implicit
+     *      epoch-boundary activation.
+     * @param _epoch The epoch to look up the escape hatch for
+     * @return The escape hatch contract interface that was active at the start of the epoch
+     */
+    function getEscapeHatchForEpoch(Epoch _epoch) internal view returns (IEscapeHatch) {
+        uint96 ts = uint96(Timestamp.unwrap(TimeLib.toTimestamp(_epoch)));
+        return IEscapeHatch(address(getStorage().escapeHatchCheckpoints.upperLookupRecent(ts)));
+    }
+
+    /**
+     * @notice Gets the validator selection storage struct using EIP-7201 namespaced storage
+     * @dev Uses assembly to access storage at the predetermined slot to avoid collisions.
+     * @return storageStruct The validator selection storage struct
+     */
+    function getStorage() internal pure returns (ValidatorSelectionStorage storage storageStruct) {
+        bytes32 position = VALIDATOR_SELECTION_STORAGE_POSITION;
+        assembly {
+            storageStruct.slot := position
+        }
+    }
+
+    /**
+     * @notice Computes the committee index of the proposer for a specific slot
+     * @dev Uses keccak256 hash of epoch, slot, and seed to deterministically select a committee member.
+     *      The result is modulo committee size to ensure valid index.
+     *      The result being modulo biased is not a problem here as the validators in the committee were chosen randomly
+     *      and are not ordered.
+     * @param _epoch The epoch containing the slot
+     * @param _slot The specific slot to compute proposer for
+     * @param _seed The epoch's sample seed for randomness
+     * @param _size The size of the committee
+     * @return The index (0 to _size-1) of the committee member who should propose for this slot
+     */
+    function computeProposerIndex(Epoch _epoch, Slot _slot, uint256 _seed, uint256 _size)
+        internal
+        pure
+        returns (uint256)
+    {
+        return uint256(keccak256(abi.encode(_epoch, _slot, _seed))) % _size;
+    }
+
+    /**
+     * @notice Samples validator indices for a specific epoch using cryptographic randomness
+     * @dev Determines sample timestamp, gets validator set size, and uses SampleLib to select committee indices.
+     *      Validates that enough validators are available to meet target committee size.
+     * @param _epoch The epoch to sample validators for
+     * @param _seed The cryptographic seed for sampling randomness
+     * @return sampleTime The timestamp used for validator set sampling
+     * @return indices Array of validator indices selected for the committee
+     * @custom:reverts Errors.ValidatorSelection__InsufficientValidatorSetSize if not enough validators available
+     */
+    function sampleValidatorsIndices(Epoch _epoch, uint256 _seed) private returns (uint32, uint256[] memory) {
+        ValidatorSelectionStorage storage store = getStorage();
+        uint32 ts = stableEpochToValidatorSetSampleTime(_epoch);
+        uint256 validatorSetSize = StakingLib.getAttesterCountAtTime(Timestamp.wrap(ts));
+        uint256 targetCommitteeSize = store.targetCommitteeSize;
+
+        require(
+            validatorSetSize >= targetCommitteeSize,
+            Errors.ValidatorSelection__InsufficientValidatorSetSize(validatorSetSize, targetCommitteeSize)
+        );
+
+        if (targetCommitteeSize == 0) {
+            return (ts, new uint256[](0));
+        }
+
+        return (ts, SampleLib.computeCommittee(targetCommitteeSize, validatorSetSize, _seed));
+    }
+
+    /**
+     * @notice Converts a stable epoch number to the timestamp used for validator set sampling
+     * @dev Calculates the sampling timestamp by:
+     *      1. Taking the epoch start timestamp
+     *      2. Subtracting `lagInEpochsForRandao` full epoch duration to ensure stability
+     *
+     *      This ensures validator set sampling uses stable historical data that won't be
+     *      affected by last-minute changes or L1 reorgs during synchronization.
+     *
+     *      We consider an epoch to be stable when its committee cannot change.
+     * @param _epoch The epoch to calculate sampling time for
+     * @return The Unix timestamp (uint32) to use for validator set sampling
+     * @custom:reverts Errors.ValidatorSelection__EpochNotStable if the requested epoch is not stable
+     */
+    function stableEpochToRandaoSampleTime(Epoch _epoch) private view returns (uint32) {
+        uint32 sub = getStorage().lagInEpochsForRandao * TimeLib.getEpochDurationInSeconds().toUint32();
+        uint32 ts = Timestamp.unwrap(_epoch.toTimestamp()).toUint32() - sub;
+        require(
+            ts <= block.timestamp,
+            Errors.ValidatorSelection__EpochNotStable(uint256(Epoch.unwrap(_epoch)), uint32(block.timestamp))
+        );
+        return ts;
+    }
+
+    function stableEpochToValidatorSetSampleTime(Epoch _epoch) private view returns (uint32) {
+        uint32 sub = getStorage().lagInEpochsForValidatorSet * TimeLib.getEpochDurationInSeconds().toUint32();
+        uint32 ts = Timestamp.unwrap(_epoch.toTimestamp()).toUint32() - sub;
+        require(
+            ts <= block.timestamp,
+            Errors.ValidatorSelection__EpochNotStable(uint256(Epoch.unwrap(_epoch)), uint32(block.timestamp))
+        );
+        return ts;
+    }
+
+    /**
+     * @notice Computes the keccak256 commitment hash for a committee member array
+     * @dev Creates a cryptographic commitment to the committee composition that can be verified later.
+     *      Used to prevent committee substitution attacks during attestation verification.
+     * @param _committee The array of committee member addresses
+     * @return The keccak256 hash of the ABI-encoded committee array
+     */
+    function computeCommitteeCommitment(address[] memory _committee) private pure returns (bytes32) {
+        return keccak256(abi.encode(_committee));
+    }
 }
 
 struct ProposePayload {
-  bytes32 archive;
-  OracleInput oracleInput;
-  bytes32 headerHash;
+    bytes32 archive;
+    OracleInput oracleInput;
+    bytes32 headerHash;
 }
 
 /**
@@ -13275,11 +13389,11 @@ struct ProposePayload {
  * @param flags - Flags specific to the execution, whether certain checks should be skipped
  */
 struct ValidateHeaderArgs {
-  ProposedHeader header;
-  bytes32 digest;
-  uint256 manaMinFee;
-  bytes32 blobsHashesCommitment;
-  CheckpointHeaderValidationFlags flags;
+    ProposedHeader header;
+    bytes32 digest;
+    uint256 manaMinFee;
+    bytes32 blobsHashesCommitment;
+    CheckpointHeaderValidationFlags flags;
 }
 
 /**
@@ -13326,396 +13440,398 @@ struct ValidateHeaderArgs {
  *      - Blob commitments are validated, to ensure that the values provided correctly match the actual blobs published
  */
 library ProposeLib {
-  using TimeLib for Timestamp;
-  using TimeLib for Slot;
-  using TimeLib for Epoch;
-  using CompressedTimeMath for CompressedSlot;
-  using ChainTipsLib for CompressedChainTips;
+    using TimeLib for Timestamp;
+    using TimeLib for Slot;
+    using TimeLib for Epoch;
+    using CompressedTimeMath for CompressedSlot;
+    using ChainTipsLib for CompressedChainTips;
 
-  /**
-   * @notice  Publishes a new checkpoint to the pending chain.
-   * @dev     Handles a proposed checkpoint, validates it, and updates rollup state adding it to the pending chain.
-   *          Orchestrates blob validation, header validation, proposer verification, fee calculations, and state
-   *          transitions. Automatically prunes unproven checkpoints if the proof submission window has passed.
-   *
-   *          Validations performed:
-   *          - Blob commitments against provided blob data: Errors.Rollup__InvalidBlobHash,
-   *            Errors.Rollup__InvalidBlobProof
-   *          - Checkpoint header validations (see validateHeader function for details)
-   *          - Proposer signature is valid for designated slot proposer:
-   *            Errors.ValidatorSelection__MissingProposerSignature
-   *          - Inbox hash matches expected value: Errors.Rollup__InvalidInHash
-   *          - Archive root is within the scalar field: Errors.Rollup__FieldElementOutOfRange
-   *
-   *          Validations NOT performed:
-   *          - Committee attestations (only proposer signature verified)
-   *          - Transaction validity and state root computation (done at proof submission via a validity proof)
-   *
-   *          State changes:
-   *          - Increment pending checkpoint number
-   *          - Store archive root for the new checkpoint number
-   *          - Store checkpoint metadata in circular storage (TempCheckpointLog)
-   *          - Update L1 gas fee oracle
-   *          - Consume inbox messages
-   *          - Setup epoch for validator selection (first block of the epoch)
-   *
-   * @param _args - The arguments to propose the checkpoint
-   * @param _attestations - Committee attestations in a packed format:
-   *        - Contains an array of length equal to the committee size
-   *        - At position `i`: if committee member `i` attested, contains their signature over the digest;
-   *          if not, contains their address
-   *        - Includes a bitmap indicating whether position `i` contains a signature (true) or address (false)
-   *        - This format allows reconstructing the committee commitment (hash of all committee addresses)
-   *          by either recovering addresses from signatures or using the addresses
-   * @param _signers - Addresses of the signers in the attestations:
-   *        - Must match the addresses that would be recovered from signatures in _attestations
-   *        - Same length as the number of signatures in _attestations
-   *        - Used to verify that the proposer is one of the committee members by allowing cheap reconstruction of the
-   *          commitment
-   *        - Allows computing committee commitment without expensive signature recovery onchain thus saving gas
-   *        - Nodes must validate actual signatures offchain when downloading checkpoints
-   * @param _blobsInput - The bytes to verify our input blob commitments match real blobs:
-   *        - input[:1] - num blobs in checkpoint
-   *        - input[1:] - blob commitments (48 bytes * num blobs in checkpoint)
-   * @param _checkBlob - Whether to skip blob related checks. Hardcoded to true in RollupCore, exists only to be
-   *          overridden in tests
-   */
-  function propose(
-    ProposeArgs calldata _args,
-    CommitteeAttestations memory _attestations,
-    address[] memory _signers,
-    Signature calldata _attestationsAndSignersSignature,
-    bytes calldata _blobsInput,
-    bool _checkBlob
-  ) internal {
-    // Prune unproven checkpoints if the proof submission window has passed
-    if (STFLib.canPruneAtTime(Timestamp.wrap(block.timestamp))) {
-      STFLib.prune();
+    /**
+     * @notice  Publishes a new checkpoint to the pending chain.
+     * @dev     Handles a proposed checkpoint, validates it, and updates rollup state adding it to the pending chain.
+     *          Orchestrates blob validation, header validation, proposer verification, fee calculations, and state
+     *          transitions. Automatically prunes unproven checkpoints if the proof submission window has passed.
+     *
+     *          Validations performed:
+     *          - Blob commitments against provided blob data: Errors.Rollup__InvalidBlobHash,
+     *            Errors.Rollup__InvalidBlobProof
+     *          - Checkpoint header validations (see validateHeader function for details)
+     *          - Proposer signature is valid for designated slot proposer:
+     *            Errors.ValidatorSelection__MissingProposerSignature
+     *          - Inbox hash matches expected value: Errors.Rollup__InvalidInHash
+     *          - Archive root is within the scalar field: Errors.Rollup__FieldElementOutOfRange
+     *
+     *          Validations NOT performed:
+     *          - Committee attestations (only proposer signature verified)
+     *          - Transaction validity and state root computation (done at proof submission via a validity proof)
+     *
+     *          State changes:
+     *          - Increment pending checkpoint number
+     *          - Store archive root for the new checkpoint number
+     *          - Store checkpoint metadata in circular storage (TempCheckpointLog)
+     *          - Update L1 gas fee oracle
+     *          - Consume inbox messages
+     *          - Setup epoch for validator selection (first block of the epoch)
+     *
+     * @param _args - The arguments to propose the checkpoint
+     * @param _attestations - Committee attestations in a packed format:
+     *        - Contains an array of length equal to the committee size
+     *        - At position `i`: if committee member `i` attested, contains their signature over the digest;
+     *          if not, contains their address
+     *        - Includes a bitmap indicating whether position `i` contains a signature (true) or address (false)
+     *        - This format allows reconstructing the committee commitment (hash of all committee addresses)
+     *          by either recovering addresses from signatures or using the addresses
+     * @param _signers - Addresses of the signers in the attestations:
+     *        - Must match the addresses that would be recovered from signatures in _attestations
+     *        - Same length as the number of signatures in _attestations
+     *        - Used to verify that the proposer is one of the committee members by allowing cheap reconstruction of the
+     *          commitment
+     *        - Allows computing committee commitment without expensive signature recovery onchain thus saving gas
+     *        - Nodes must validate actual signatures offchain when downloading checkpoints
+     * @param _blobsInput - The bytes to verify our input blob commitments match real blobs:
+     *        - input[:1] - num blobs in checkpoint
+     *        - input[1:] - blob commitments (48 bytes * num blobs in checkpoint)
+     * @param _checkBlob - Whether to skip blob related checks. Hardcoded to true in RollupCore, exists only to be
+     *          overridden in tests
+     */
+    function propose(
+        ProposeArgs calldata _args,
+        CommitteeAttestations memory _attestations,
+        address[] memory _signers,
+        Signature calldata _attestationsAndSignersSignature,
+        bytes calldata _blobsInput,
+        bool _checkBlob
+    ) internal {
+        // Prune unproven checkpoints if the proof submission window has passed
+        if (STFLib.canPruneAtTime(Timestamp.wrap(block.timestamp))) {
+            STFLib.prune();
+        }
+
+        // Keep intermediate values in memory to avoid stack too deep errors
+        InterimProposeValues memory v;
+
+        FeeLib.updateL1GasFeeOracle();
+
+        // Validate blob commitments against actual blob data and extract hashes
+        // TODO(#13430): The below blobsHashesCommitment known as blobsHash elsewhere in the code. The name is confusingly
+        // similar to blobCommitmentsHash, see comment in BlobLib.sol -> validateBlobs().
+        (v.blobHashes, v.blobsHashesCommitment, v.blobCommitments) = BlobLib_1.validateBlobs(_blobsInput, _checkBlob);
+
+        v.header = _args.header;
+
+        // The new checkpoint archive root is not part of the header, so it is range-checked here rather than in
+        // validateHeader.
+        FieldLib.requireValidFieldElement(_args.archive);
+
+        // Compute header hash for computing the payload digest
+        v.headerHash = ProposedHeaderLib.hash(v.header);
+
+        // Compute current epoch and check escape hatch BEFORE setupEpoch.
+        // Uses epoch-stable lookup so mid-epoch governance changes don't affect current epoch proposals.
+        v.currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
+        v.escapeHatch = ValidatorSelectionLib.getEscapeHatchForEpoch(v.currentEpoch);
+        if (address(v.escapeHatch) != address(0)) {
+            (v.isEscapeHatch, v.escapeHatchProposer) = v.escapeHatch.isHatchOpen(v.currentEpoch);
+        }
+
+        // Setup epoch by sampling the committee for the current epoch and setting the seed for the one after the next.
+        // This is a no-op if the epoch is already set up, so it only gets executed by the first checkpoint of the epoch.
+        // Skip during escape hatch to allow proposals even with insufficient validators for committee formation.
+        if (!v.isEscapeHatch) {
+            ValidatorSelectionLib.setupEpoch(v.currentEpoch);
+        }
+
+        // Calculate mana min fee components for header validation
+        ManaMinFeeComponents memory components = getManaMinFeeComponentsAt(Timestamp.wrap(block.timestamp), true);
+
+        // Create payload digest signed by the committee members
+        v.payloadDigest =
+            digest(ProposePayload({archive: _args.archive, oracleInput: _args.oracleInput, headerHash: v.headerHash}));
+
+        // Validate checkpoint header
+        validateHeader(
+            ValidateHeaderArgs({
+                header: v.header,
+                digest: v.payloadDigest,
+                manaMinFee: FeeLib.summedMinFee(components),
+                blobsHashesCommitment: v.blobsHashesCommitment,
+                flags: CheckpointHeaderValidationFlags({ignoreDA: false})
+            })
+        );
+
+        RollupStore storage rollupStore = STFLib.getStorage();
+
+        if (v.isEscapeHatch) {
+            // During escape hatch, only the designated proposer can propose
+            require(
+                msg.sender == v.escapeHatchProposer,
+                Errors.Rollup__InvalidEscapeHatchProposer(v.escapeHatchProposer, msg.sender)
+            );
+        } else {
+            // Verify that the proposer is the correct one for this slot by checking their signature in the attestations
+            ValidatorSelectionLib.verifyProposer(
+                v.header.slotNumber,
+                v.currentEpoch,
+                _attestations,
+                _signers,
+                v.payloadDigest,
+                _attestationsAndSignersSignature,
+                true
+            );
+        }
+        CompressedChainTips tips = rollupStore.tips;
+
+        // Increment checkpoint number and update chain tips
+        uint256 checkpointNumber = tips.getPending() + 1;
+        tips = tips.updatePending(checkpointNumber);
+
+        // Calculate accumulated blob commitments hash for this checkpoint
+        // Blob commitments are collected and proven per root rollup proof (per epoch),
+        // so we need to know whether we are at the epoch start:
+        v.isFirstCheckpointOfEpoch =
+            v.currentEpoch > STFLib.getEpochForCheckpoint(checkpointNumber - 1) || checkpointNumber == 1;
+        bytes32 blobCommitmentsHash = BlobLib_1.calculateBlobCommitmentsHash(
+            STFLib.getBlobCommitmentsHash(checkpointNumber - 1), v.blobCommitments, v.isFirstCheckpointOfEpoch
+        );
+
+        // Compute fee header for checkpoint metadata
+        FeeHeader memory feeHeader = FeeLib.computeFeeHeader(
+            checkpointNumber,
+            _args.oracleInput.feeAssetPriceModifier,
+            v.header.totalManaUsed,
+            components.congestionCost,
+            components.proverCost
+        );
+
+        // Hash attestations for storage in checkpoint log
+        // Compute attestationsHash from the attestations
+        v.attestationsHash = keccak256(abi.encode(_attestations));
+
+        // Commit state changes: update chain tips and store checkpoint data
+        rollupStore.tips = tips;
+        rollupStore.archives[checkpointNumber] = _args.archive;
+        STFLib.addTempCheckpointLog(
+            TempCheckpointLog({
+                headerHash: v.headerHash,
+                blobCommitmentsHash: blobCommitmentsHash,
+                outHash: v.header.outHash,
+                attestationsHash: v.attestationsHash,
+                payloadDigest: v.payloadDigest,
+                slotNumber: v.header.slotNumber,
+                feeHeader: feeHeader
+            })
+        );
+
+        // Consume pending L1->L2 messages and validate against header commitment
+        // @note  The checkpoint number here will always be >=1 as the genesis checkpoint is at 0
+        v.inHash = rollupStore.config.inbox.consume(checkpointNumber);
+        require(v.header.inHash == v.inHash, Errors.Rollup__InvalidInHash(v.inHash, v.header.inHash));
+
+        {
+            bytes32 archive = _args.archive;
+            if (v.isEscapeHatch) {
+                v.escapeHatch.updateSubmittedArchive(v.escapeHatchProposer, uint128(checkpointNumber), archive);
+            }
+
+            // Emit event for external listeners. Nodes rely on this event to update their state.
+            emit IRollupCore.CheckpointProposed(
+                checkpointNumber, archive, v.blobHashes, v.payloadDigest, v.attestationsHash
+            );
+        }
     }
 
-    // Keep intermediate values in memory to avoid stack too deep errors
-    InterimProposeValues memory v;
+    /**
+     * @notice Validates a proposed checkpoint header against chain state and constraints
+     * @dev Called internally from propose() and externally from RollupCore.validateHeaderWithAttestations()
+     *      for proposers to check header validity before submitting transactions
+     *
+     *      Header validations performed:
+     *      - Fr-encoded header fields are within the scalar field: Errors.Rollup__FieldElementOutOfRange
+     *      - Coinbase address is non-zero: Errors.Rollup__InvalidCoinbase
+     *      - Mana usage within limits: Errors.Rollup__ManaLimitExceeded
+     *      - Builds on correct parent checkpoint (archive root check): Errors.Rollup__InvalidArchive
+     *      - Slot number greater than last checkpoint's slot: Errors.Rollup__SlotAlreadyInChain
+     *      - Slot number matches current timestamp slot: Errors.HeaderLib__InvalidSlotNumber
+     *      - Timestamp matches slot-derived timestamp: Errors.Rollup__InvalidTimestamp
+     *      - Timestamp not in future: Errors.Rollup__TimestampInFuture
+     *      - Blob hashes match commitment (unless DA checks ignored): Errors.Rollup__UnavailableTxs
+     *      - DA fee is zero: Errors.Rollup__NonZeroDaFee
+     *      - L2 gas fee matches computed mana min fee: Errors.Rollup__InvalidManaMinFee
+     *
+     * @param _args Validation arguments including header, digest, mana min fee, and flags
+     */
+    function validateHeader(ValidateHeaderArgs memory _args) internal view {
+        // Check that header fields that map to an Fr are within range.
+        FieldLib.requireValidFieldElement(_args.header.blockHeadersHash);
+        FieldLib.requireValidFieldElement(_args.header.outHash);
+        FieldLib.requireValidFieldElement(_args.header.feeRecipient);
+        FieldLib.requireValidFieldElement(bytes32(_args.header.accumulatedFees));
 
-    FeeLib.updateL1GasFeeOracle();
+        require(_args.header.coinbase != address(0), Errors.Rollup__InvalidCoinbase());
+        require(_args.header.totalManaUsed <= FeeLib.getManaLimit(), Errors.Rollup__ManaLimitExceeded());
 
-    // Validate blob commitments against actual blob data and extract hashes
-    // TODO(#13430): The below blobsHashesCommitment known as blobsHash elsewhere in the code. The name is confusingly
-    // similar to blobCommitmentsHash, see comment in BlobLib.sol -> validateBlobs().
-    (v.blobHashes, v.blobsHashesCommitment, v.blobCommitments) = BlobLib_1.validateBlobs(_blobsInput, _checkBlob);
+        Timestamp currentTime = Timestamp.wrap(block.timestamp);
+        RollupStore storage rollupStore = STFLib.getStorage();
 
-    v.header = _args.header;
+        uint256 pendingCheckpointNumber = STFLib.getEffectivePendingCheckpointNumber(currentTime);
 
-    // The new checkpoint archive root is not part of the header, so it is range-checked here rather than in
-    // validateHeader.
-    FieldLib.requireValidFieldElement(_args.archive);
+        bytes32 tipArchive = rollupStore.archives[pendingCheckpointNumber];
+        require(
+            tipArchive == _args.header.lastArchiveRoot,
+            Errors.Rollup__InvalidArchive(tipArchive, _args.header.lastArchiveRoot)
+        );
 
-    // Compute header hash for computing the payload digest
-    v.headerHash = ProposedHeaderLib.hash(v.header);
+        Slot slot = _args.header.slotNumber;
+        Slot lastSlot = STFLib.getSlotNumber(pendingCheckpointNumber);
+        require(slot > lastSlot, Errors.Rollup__SlotAlreadyInChain(lastSlot, slot));
 
-    // Compute current epoch and check escape hatch BEFORE setupEpoch.
-    // Uses epoch-stable lookup so mid-epoch governance changes don't affect current epoch proposals.
-    v.currentEpoch = Timestamp.wrap(block.timestamp).epochFromTimestamp();
-    v.escapeHatch = ValidatorSelectionLib.getEscapeHatchForEpoch(v.currentEpoch);
-    if (address(v.escapeHatch) != address(0)) {
-      (v.isEscapeHatch, v.escapeHatchProposer) = v.escapeHatch.isHatchOpen(v.currentEpoch);
+        Slot currentSlot = currentTime.slotFromTimestamp();
+        require(slot == currentSlot, Errors.HeaderLib__InvalidSlotNumber(currentSlot, slot));
+
+        Timestamp timestamp = TimeLib.toTimestamp(slot);
+        require(_args.header.timestamp == timestamp, Errors.Rollup__InvalidTimestamp(timestamp, _args.header.timestamp));
+
+        require(timestamp <= currentTime, Errors.Rollup__TimestampInFuture(currentTime, timestamp));
+
+        require(
+            _args.flags.ignoreDA || _args.header.blobsHash == _args.blobsHashesCommitment,
+            Errors.Rollup__UnavailableTxs(_args.header.blobsHash)
+        );
+
+        require(_args.header.gasFees.feePerDaGas == 0, Errors.Rollup__NonZeroDaFee());
+        require(
+            _args.header.gasFees.feePerL2Gas == _args.manaMinFee,
+            Errors.Rollup__InvalidManaMinFee(_args.manaMinFee, _args.header.gasFees.feePerL2Gas)
+        );
     }
 
-    // Setup epoch by sampling the committee for the current epoch and setting the seed for the one after the next.
-    // This is a no-op if the epoch is already set up, so it only gets executed by the first checkpoint of the epoch.
-    // Skip during escape hatch to allow proposals even with insufficient validators for committee formation.
-    if (!v.isEscapeHatch) {
-      ValidatorSelectionLib.setupEpoch(v.currentEpoch);
-    }
-
-    // Calculate mana min fee components for header validation
-    ManaMinFeeComponents memory components = getManaMinFeeComponentsAt(Timestamp.wrap(block.timestamp), true);
-
-    // Create payload digest signed by the committee members
-    v.payloadDigest =
-      digest(ProposePayload({archive: _args.archive, oracleInput: _args.oracleInput, headerHash: v.headerHash}));
-
-    // Validate checkpoint header
-    validateHeader(
-      ValidateHeaderArgs({
-        header: v.header,
-        digest: v.payloadDigest,
-        manaMinFee: FeeLib.summedMinFee(components),
-        blobsHashesCommitment: v.blobsHashesCommitment,
-        flags: CheckpointHeaderValidationFlags({ignoreDA: false})
-      })
-    );
-
-    RollupStore storage rollupStore = STFLib.getStorage();
-
-    if (v.isEscapeHatch) {
-      // During escape hatch, only the designated proposer can propose
-      require(
-        msg.sender == v.escapeHatchProposer,
-        Errors.Rollup__InvalidEscapeHatchProposer(v.escapeHatchProposer, msg.sender)
-      );
-    } else {
-      // Verify that the proposer is the correct one for this slot by checking their signature in the attestations
-      ValidatorSelectionLib.verifyProposer(
-        v.header.slotNumber,
-        v.currentEpoch,
-        _attestations,
-        _signers,
-        v.payloadDigest,
-        _attestationsAndSignersSignature,
-        true
-      );
-    }
-    CompressedChainTips tips = rollupStore.tips;
-
-    // Increment checkpoint number and update chain tips
-    uint256 checkpointNumber = tips.getPending() + 1;
-    tips = tips.updatePending(checkpointNumber);
-
-    // Calculate accumulated blob commitments hash for this checkpoint
-    // Blob commitments are collected and proven per root rollup proof (per epoch),
-    // so we need to know whether we are at the epoch start:
-    v.isFirstCheckpointOfEpoch =
-      v.currentEpoch > STFLib.getEpochForCheckpoint(checkpointNumber - 1) || checkpointNumber == 1;
-    bytes32 blobCommitmentsHash = BlobLib_1.calculateBlobCommitmentsHash(
-      STFLib.getBlobCommitmentsHash(checkpointNumber - 1), v.blobCommitments, v.isFirstCheckpointOfEpoch
-    );
-
-    // Compute fee header for checkpoint metadata
-    FeeHeader memory feeHeader = FeeLib.computeFeeHeader(
-      checkpointNumber,
-      _args.oracleInput.feeAssetPriceModifier,
-      v.header.totalManaUsed,
-      components.congestionCost,
-      components.proverCost
-    );
-
-    // Hash attestations for storage in checkpoint log
-    // Compute attestationsHash from the attestations
-    v.attestationsHash = keccak256(abi.encode(_attestations));
-
-    // Commit state changes: update chain tips and store checkpoint data
-    rollupStore.tips = tips;
-    rollupStore.archives[checkpointNumber] = _args.archive;
-    STFLib.addTempCheckpointLog(
-      TempCheckpointLog({
-        headerHash: v.headerHash,
-        blobCommitmentsHash: blobCommitmentsHash,
-        outHash: v.header.outHash,
-        attestationsHash: v.attestationsHash,
-        payloadDigest: v.payloadDigest,
-        slotNumber: v.header.slotNumber,
-        feeHeader: feeHeader
-      })
-    );
-
-    // Consume pending L1->L2 messages and validate against header commitment
-    // @note  The checkpoint number here will always be >=1 as the genesis checkpoint is at 0
-    v.inHash = rollupStore.config.inbox.consume(checkpointNumber);
-    require(v.header.inHash == v.inHash, Errors.Rollup__InvalidInHash(v.inHash, v.header.inHash));
-
+    /**
+     * @notice  Gets the mana min fee components
+     *          For more context, consult:
+     *          https://github.com/AztecProtocol/engineering-designs/blob/main/in-progress/8757-fees/design.md
+     *
+     * @param _timestamp - The timestamp of the checkpoint
+     * @param _inFeeAsset - Whether to return the fee in the fee asset or ETH
+     *
+     * @return The mana min fee components
+     */
+    function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
+        internal
+        view
+        returns (ManaMinFeeComponents memory)
     {
-      bytes32 archive = _args.archive;
-      if (v.isEscapeHatch) {
-        v.escapeHatch.updateSubmittedArchive(v.escapeHatchProposer, uint128(checkpointNumber), archive);
-      }
-
-      // Emit event for external listeners. Nodes rely on this event to update their state.
-      emit IRollupCore.CheckpointProposed(checkpointNumber, archive, v.blobHashes, v.payloadDigest, v.attestationsHash);
+        uint256 checkpointOfInterest = STFLib.getEffectivePendingCheckpointNumber(_timestamp);
+        return FeeLib.getManaMinFeeComponentsAt(checkpointOfInterest, _timestamp, _inFeeAsset);
     }
-  }
 
-  /**
-   * @notice Validates a proposed checkpoint header against chain state and constraints
-   * @dev Called internally from propose() and externally from RollupCore.validateHeaderWithAttestations()
-   *      for proposers to check header validity before submitting transactions
-   *
-   *      Header validations performed:
-   *      - Fr-encoded header fields are within the scalar field: Errors.Rollup__FieldElementOutOfRange
-   *      - Coinbase address is non-zero: Errors.Rollup__InvalidCoinbase
-   *      - Mana usage within limits: Errors.Rollup__ManaLimitExceeded
-   *      - Builds on correct parent checkpoint (archive root check): Errors.Rollup__InvalidArchive
-   *      - Slot number greater than last checkpoint's slot: Errors.Rollup__SlotAlreadyInChain
-   *      - Slot number matches current timestamp slot: Errors.HeaderLib__InvalidSlotNumber
-   *      - Timestamp matches slot-derived timestamp: Errors.Rollup__InvalidTimestamp
-   *      - Timestamp not in future: Errors.Rollup__TimestampInFuture
-   *      - Blob hashes match commitment (unless DA checks ignored): Errors.Rollup__UnavailableTxs
-   *      - DA fee is zero: Errors.Rollup__NonZeroDaFee
-   *      - L2 gas fee matches computed mana min fee: Errors.Rollup__InvalidManaMinFee
-   *
-   * @param _args Validation arguments including header, digest, mana min fee, and flags
-   */
-  function validateHeader(ValidateHeaderArgs memory _args) internal view {
-    // Check that header fields that map to an Fr are within range.
-    FieldLib.requireValidFieldElement(_args.header.blockHeadersHash);
-    FieldLib.requireValidFieldElement(_args.header.outHash);
-    FieldLib.requireValidFieldElement(_args.header.feeRecipient);
-    FieldLib.requireValidFieldElement(bytes32(_args.header.accumulatedFees));
+    function digest(ProposePayload memory _args) internal view returns (bytes32) {
+        return digest(_args, address(this));
+    }
 
-    require(_args.header.coinbase != address(0), Errors.Rollup__InvalidCoinbase());
-    require(_args.header.totalManaUsed <= FeeLib.getManaLimit(), Errors.Rollup__ManaLimitExceeded());
-
-    Timestamp currentTime = Timestamp.wrap(block.timestamp);
-    RollupStore storage rollupStore = STFLib.getStorage();
-
-    uint256 pendingCheckpointNumber = STFLib.getEffectivePendingCheckpointNumber(currentTime);
-
-    bytes32 tipArchive = rollupStore.archives[pendingCheckpointNumber];
-    require(
-      tipArchive == _args.header.lastArchiveRoot,
-      Errors.Rollup__InvalidArchive(tipArchive, _args.header.lastArchiveRoot)
-    );
-
-    Slot slot = _args.header.slotNumber;
-    Slot lastSlot = STFLib.getSlotNumber(pendingCheckpointNumber);
-    require(slot > lastSlot, Errors.Rollup__SlotAlreadyInChain(lastSlot, slot));
-
-    Slot currentSlot = currentTime.slotFromTimestamp();
-    require(slot == currentSlot, Errors.HeaderLib__InvalidSlotNumber(currentSlot, slot));
-
-    Timestamp timestamp = TimeLib.toTimestamp(slot);
-    require(_args.header.timestamp == timestamp, Errors.Rollup__InvalidTimestamp(timestamp, _args.header.timestamp));
-
-    require(timestamp <= currentTime, Errors.Rollup__TimestampInFuture(currentTime, timestamp));
-
-    require(
-      _args.flags.ignoreDA || _args.header.blobsHash == _args.blobsHashesCommitment,
-      Errors.Rollup__UnavailableTxs(_args.header.blobsHash)
-    );
-
-    require(_args.header.gasFees.feePerDaGas == 0, Errors.Rollup__NonZeroDaFee());
-    require(
-      _args.header.gasFees.feePerL2Gas == _args.manaMinFee,
-      Errors.Rollup__InvalidManaMinFee(_args.manaMinFee, _args.header.gasFees.feePerL2Gas)
-    );
-  }
-
-  /**
-   * @notice  Gets the mana min fee components
-   *          For more context, consult:
-   *          https://github.com/AztecProtocol/engineering-designs/blob/main/in-progress/8757-fees/design.md
-   *
-   * @param _timestamp - The timestamp of the checkpoint
-   * @param _inFeeAsset - Whether to return the fee in the fee asset or ETH
-   *
-   * @return The mana min fee components
-   */
-  function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
-    internal
-    view
-    returns (ManaMinFeeComponents memory)
-  {
-    uint256 checkpointOfInterest = STFLib.getEffectivePendingCheckpointNumber(_timestamp);
-    return FeeLib.getManaMinFeeComponentsAt(checkpointOfInterest, _timestamp, _inFeeAsset);
-  }
-
-  function digest(ProposePayload memory _args) internal view returns (bytes32) {
-    return digest(_args, address(this));
-  }
-
-  function digest(ProposePayload memory _args, address _verifyingContract) internal view returns (bytes32) {
-    return CoordinationSignatureLib.checkpointAttestationDigest(keccak256(abi.encode(_args)), _verifyingContract);
-  }
+    function digest(ProposePayload memory _args, address _verifyingContract) internal view returns (bytes32) {
+        return CoordinationSignatureLib.checkpointAttestationDigest(keccak256(abi.encode(_args)), _verifyingContract);
+    }
 }
 
 library RewardExtLib {
-  function initializeConfig(RewardConfig memory _config) external {
-    RewardLib.initializeConfig(_config);
-  }
+    function initializeConfig(RewardConfig memory _config) external {
+        RewardLib.initializeConfig(_config);
+    }
 
-  function updateConfig(MutableRewardConfig memory _config) external {
-    RewardLib.updateConfig(_config);
-  }
+    function updateConfig(MutableRewardConfig memory _config) external {
+        RewardLib.updateConfig(_config);
+    }
 
-  function claimSequencerRewards(address _sequencer) external returns (uint256) {
-    return RewardLib.claimSequencerRewards(_sequencer);
-  }
+    function claimSequencerRewards(address _sequencer) external returns (uint256) {
+        return RewardLib.claimSequencerRewards(_sequencer);
+    }
 
-  function claimProverRewards(address _prover, Epoch[] memory _epochs) external returns (uint256) {
-    return RewardLib.claimProverRewards(_prover, _epochs);
-  }
+    function claimProverRewards(address _prover, Epoch[] memory _epochs) external returns (uint256) {
+        return RewardLib.claimProverRewards(_prover, _epochs);
+    }
 
-  function deployRewardBooster(RewardBoostConfig memory _config) external returns (IBoosterCore) {
-    RewardBooster booster = new RewardBooster(IValidatorSelection(address(this)), _config);
-    return IBoosterCore(address(booster));
-  }
+    function deployRewardBooster(RewardBoostConfig memory _config) external returns (IBoosterCore) {
+        RewardBooster booster = new RewardBooster(IValidatorSelection(address(this)), _config);
+        return IBoosterCore(address(booster));
+    }
 
-  // View wrappers - delegated from Rollup.sol to avoid inlining RewardLib into Rollup bytecode
+    // View wrappers - delegated from Rollup.sol to avoid inlining RewardLib into Rollup bytecode
 
-  function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) external view returns (uint256) {
-    return RewardLib.getSpecificProverRewardsForEpoch(_epoch, _prover);
-  }
+    function getSpecificProverRewardsForEpoch(Epoch _epoch, address _prover) external view returns (uint256) {
+        return RewardLib.getSpecificProverRewardsForEpoch(_epoch, _prover);
+    }
 
-  function getSharesFor(address _prover) external view returns (uint256) {
-    return RewardLib.getSharesFor(_prover);
-  }
+    function getSharesFor(address _prover) external view returns (uint256) {
+        return RewardLib.getSharesFor(_prover);
+    }
 
-  function getSequencerRewards(address _sequencer) external view returns (uint256) {
-    return RewardLib.getSequencerRewards(_sequencer);
-  }
+    function getSequencerRewards(address _sequencer) external view returns (uint256) {
+        return RewardLib.getSequencerRewards(_sequencer);
+    }
 
-  function getCollectiveProverRewardsForEpoch(Epoch _epoch) external view returns (uint256) {
-    return RewardLib.getCollectiveProverRewardsForEpoch(_epoch);
-  }
+    function getCollectiveProverRewardsForEpoch(Epoch _epoch) external view returns (uint256) {
+        return RewardLib.getCollectiveProverRewardsForEpoch(_epoch);
+    }
 
-  function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) external view returns (bool) {
-    return RewardLib.getHasSubmitted(_epoch, _length, _prover);
-  }
+    function getHasSubmitted(Epoch _epoch, uint256 _length, address _prover) external view returns (bool) {
+        return RewardLib.getHasSubmitted(_epoch, _length, _prover);
+    }
 
-  function getHasClaimed(address _prover, Epoch _epoch) external view returns (bool) {
-    return RewardLib.getHasClaimed(_prover, _epoch);
-  }
+    function getHasClaimed(address _prover, Epoch _epoch) external view returns (bool) {
+        return RewardLib.getHasClaimed(_prover, _epoch);
+    }
 
-  function getCheckpointReward() external view returns (uint256) {
-    return RewardLib.getCheckpointReward();
-  }
+    function getCheckpointReward() external view returns (uint256) {
+        return RewardLib.getCheckpointReward();
+    }
 
-  function getRewardConfig() external view returns (RewardConfig memory) {
-    return RewardLib.getStorage().config;
-  }
+    function getRewardConfig() external view returns (RewardConfig memory) {
+        return RewardLib.getStorage().config;
+    }
 
-  function getRewardDistributor() external view returns (IRewardDistributor) {
-    return RewardLib.getStorage().config.rewardDistributor;
-  }
+    function getRewardDistributor() external view returns (IRewardDistributor) {
+        return RewardLib.getStorage().config.rewardDistributor;
+    }
 
-  // FeeLib/STFLib/ProposeLib view wrappers - overflow from RollupOperationsExtLib
+    // FeeLib/STFLib/ProposeLib view wrappers - overflow from RollupOperationsExtLib
 
-  function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
-    external
-    view
-    returns (ManaMinFeeComponents memory)
-  {
-    return ProposeLib.getManaMinFeeComponentsAt(_timestamp, _inFeeAsset);
-  }
+    function getManaMinFeeComponentsAt(Timestamp _timestamp, bool _inFeeAsset)
+        external
+        view
+        returns (ManaMinFeeComponents memory)
+    {
+        return ProposeLib.getManaMinFeeComponentsAt(_timestamp, _inFeeAsset);
+    }
 
-  function canPruneAtTime(Timestamp _ts) external view returns (bool) {
-    return STFLib.canPruneAtTime(_ts);
-  }
+    function canPruneAtTime(Timestamp _ts) external view returns (bool) {
+        return STFLib.canPruneAtTime(_ts);
+    }
 
-  function getEpochForCheckpoint(uint256 _checkpointNumber) external view returns (Epoch) {
-    return STFLib.getEpochForCheckpoint(_checkpointNumber);
-  }
+    function getEpochForCheckpoint(uint256 _checkpointNumber) external view returns (Epoch) {
+        return STFLib.getEpochForCheckpoint(_checkpointNumber);
+    }
 
-  function getL1FeesAt(Timestamp _timestamp) external view returns (L1FeeData memory) {
-    return FeeLib.getL1FeesAt(_timestamp);
-  }
+    function getL1FeesAt(Timestamp _timestamp) external view returns (L1FeeData memory) {
+        return FeeLib.getL1FeesAt(_timestamp);
+    }
 
-  function getEthPerFeeAssetAtCheckpoint(uint256 _checkpointNumber) external view returns (EthPerFeeAssetE12) {
-    return FeeLib.getEthPerFeeAssetAtCheckpoint(_checkpointNumber);
-  }
+    function getEthPerFeeAssetAtCheckpoint(uint256 _checkpointNumber) external view returns (EthPerFeeAssetE12) {
+        return FeeLib.getEthPerFeeAssetAtCheckpoint(_checkpointNumber);
+    }
 
-  function getProvingCostPerMana() external view returns (EthValue) {
-    return FeeLib.getProvingCostPerMana();
-  }
+    function getProvingCostPerMana() external view returns (EthValue) {
+        return FeeLib.getProvingCostPerMana();
+    }
 
-  function getManaTarget() external view returns (uint256) {
-    return FeeLib.getManaTarget();
-  }
+    function getManaTarget() external view returns (uint256) {
+        return FeeLib.getManaTarget();
+    }
 
-  function getManaLimit() external view returns (uint256) {
-    return FeeLib.getManaLimit();
-  }
+    function getManaLimit() external view returns (uint256) {
+        return FeeLib.getManaLimit();
+    }
 
-  function summedMinFee(ManaMinFeeComponents memory _components) external pure returns (uint256) {
-    return FeeLib.summedMinFee(_components);
-  }
+    function summedMinFee(ManaMinFeeComponents memory _components) external pure returns (uint256) {
+        return FeeLib.summedMinFee(_components);
+    }
 }

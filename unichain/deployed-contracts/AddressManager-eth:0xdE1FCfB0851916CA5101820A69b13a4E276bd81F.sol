@@ -20,7 +20,7 @@ abstract contract Ownable is Context {
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
      */
-    constructor () internal {
+    constructor() internal {
         address msgSender = _msgSender();
         _owner = msgSender;
         emit OwnershipTransferred(address(0), msgSender);
@@ -65,50 +65,37 @@ abstract contract Ownable is Context {
 }
 
 contract Lib_AddressManager is Ownable {
-
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
+    event AddressSet(string indexed _name, address _newAddress, address _oldAddress);
 
-    event AddressSet(
-        string indexed _name,
-        address _newAddress,
-        address _oldAddress
-    );
-
-
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
+    mapping(bytes32 => address) private addresses;
 
-    mapping (bytes32 => address) private addresses;
-
-
-    /********************
+    /**
+     *
      * Public Functions *
-     ********************/
+     *
+     */
 
     /**
      * Changes the address associated with a particular name.
      * @param _name String name to associate an address with.
      * @param _address Address to associate with the name.
      */
-    function setAddress(
-        string memory _name,
-        address _address
-    )
-        external
-        onlyOwner
-    {
+    function setAddress(string memory _name, address _address) external onlyOwner {
         bytes32 nameHash = _getNameHash(_name);
         address oldAddress = addresses[nameHash];
         addresses[nameHash] = _address;
 
-        emit AddressSet(
-            _name,
-            _address,
-            oldAddress
-        );
+        emit AddressSet(_name, _address, oldAddress);
     }
 
     /**
@@ -116,37 +103,22 @@ contract Lib_AddressManager is Ownable {
      * @param _name Name to retrieve an address for.
      * @return Address associated with the given name.
      */
-    function getAddress(
-        string memory _name
-    )
-        external
-        view
-        returns (
-            address
-        )
-    {
+    function getAddress(string memory _name) external view returns (address) {
         return addresses[_getNameHash(_name)];
     }
 
-
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /**
      * Computes the hash of a name.
      * @param _name Name to compute a hash for.
      * @return Hash of the given name.
      */
-    function _getNameHash(
-        string memory _name
-    )
-        internal
-        pure
-        returns (
-            bytes32
-        )
-    {
+    function _getNameHash(string memory _name) internal pure returns (bytes32) {
         return keccak256(abi.encodePacked(_name));
     }
 }

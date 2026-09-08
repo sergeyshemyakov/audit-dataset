@@ -1,14 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import {TreasuryStorage} from "./TreasuryStorage.sol";
+
+import {IStakedUSX} from "./interfaces/IStakedUSX.sol";
+import {IUSX} from "./interfaces/IUSX.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
 import {ERC1967Utils} from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol";
-import {TreasuryStorage} from "./TreasuryStorage.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {IUSX} from "./interfaces/IUSX.sol";
-import {IStakedUSX} from "./interfaces/IStakedUSX.sol";
 
 /// @title TreasuryDiamond
 /// @notice The main contract for the USX Protocol Treasury
@@ -59,8 +60,8 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
         address _insuranceVault
     ) public initializer {
         if (
-            _USDC == address(0) || _USX == address(0) || _sUSX == address(0) || _admin == address(0) || _governance == address(0)
-                || _governanceWarchest == address(0)
+            _USDC == address(0) || _USX == address(0) || _sUSX == address(0) || _admin == address(0)
+                || _governance == address(0) || _governanceWarchest == address(0)
         ) {
             revert ZeroAddress();
         }
@@ -91,11 +92,15 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
     /// @param _facet Address of the facet to add
     /// @param _selectors Array of function selectors to add
     function addFacet(address _facet, bytes4[] calldata _selectors) external onlyGovernance {
-        if (_facet == address(0)) revert ZeroAddress();
+        if (_facet == address(0)) {
+            revert ZeroAddress();
+        }
 
         for (uint256 i = 0; i < _selectors.length; i++) {
             bytes4 selector = _selectors[i];
-            if (facets[selector] != address(0)) revert FacetAlreadyExists();
+            if (facets[selector] != address(0)) {
+                revert FacetAlreadyExists();
+            }
 
             facets[selector] = _facet;
             facetFunctionSelectors[_facet].push(selector);
@@ -144,8 +149,12 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
     /// @param _oldFacet Address of the old facet
     /// @param _newFacet Address of the new facet
     function replaceFacet(address _oldFacet, address _newFacet) external onlyGovernance {
-        if (_newFacet == address(0)) revert ZeroAddress();
-        if (_oldFacet == _newFacet) revert InvalidFacet();
+        if (_newFacet == address(0)) {
+            revert ZeroAddress();
+        }
+        if (_oldFacet == _newFacet) {
+            revert InvalidFacet();
+        }
 
         bytes4[] memory selectors = facetFunctionSelectors[_oldFacet];
 
@@ -172,7 +181,9 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
     /// @notice Set new governance address
     /// @param newGovernance Address of new governance
     function setGovernance(address newGovernance) external onlyGovernance {
-        if (newGovernance == address(0)) revert ZeroAddress();
+        if (newGovernance == address(0)) {
+            revert ZeroAddress();
+        }
 
         TreasuryStorage.TreasuryStorageStruct storage $ = _getStorage();
         address oldGovernance = $.governance;
@@ -184,7 +195,9 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
     /// @notice Set new governance warchest address
     /// @param newGovernanceWarchest Address of new governance warchest
     function setGovernanceWarchest(address newGovernanceWarchest) external onlyGovernance {
-        if (newGovernanceWarchest == address(0)) revert ZeroAddress();
+        if (newGovernanceWarchest == address(0)) {
+            revert ZeroAddress();
+        }
         TreasuryStorage.TreasuryStorageStruct storage $ = _getStorage();
         address oldGovernanceWarchest = $.governanceWarchest;
         $.governanceWarchest = newGovernanceWarchest;
@@ -194,7 +207,9 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
     /// @notice Set new insurance vault address
     /// @param newInsuranceVault Address of new insurance vault
     function setInsuranceVault(address newInsuranceVault) external onlyGovernance {
-        if (newInsuranceVault == address(0)) revert ZeroAddress();
+        if (newInsuranceVault == address(0)) {
+            revert ZeroAddress();
+        }
         TreasuryStorage.TreasuryStorageStruct storage $ = _getStorage();
         address oldInsuranceVault = $.insuranceVault;
         $.insuranceVault = newInsuranceVault;
@@ -204,7 +219,9 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
     /// @notice Set new admin address
     /// @param newAdmin Address of new admin
     function setAdmin(address newAdmin) external onlyAdmin {
-        if (newAdmin == address(0)) revert ZeroAddress();
+        if (newAdmin == address(0)) {
+            revert ZeroAddress();
+        }
         TreasuryStorage.TreasuryStorageStruct storage $ = _getStorage();
         address oldAdmin = $.admin;
         $.admin = newAdmin;
@@ -216,7 +233,9 @@ contract TreasuryDiamond is Initializable, UUPSUpgradeable, ReentrancyGuardUpgra
     /// @dev Fallback function that delegates calls to facets
     fallback() external payable {
         address facet = facets[msg.sig];
-        if (facet == address(0)) revert SelectorNotFound();
+        if (facet == address(0)) {
+            revert SelectorNotFound();
+        }
 
         // Execute external call
         assembly {

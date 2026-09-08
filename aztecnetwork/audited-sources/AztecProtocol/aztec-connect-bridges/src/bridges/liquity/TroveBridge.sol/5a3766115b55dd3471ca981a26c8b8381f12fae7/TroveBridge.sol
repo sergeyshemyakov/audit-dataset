@@ -2,17 +2,19 @@
 // Copyright 2022 Spilsbury Holdings Ltd
 pragma solidity >=0.8.4;
 
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
-import {IDefiBridge} from "../../interfaces/IDefiBridge.sol";
 import {AztecTypes} from "../../aztec/AztecTypes.sol";
+import {IDefiBridge} from "../../interfaces/IDefiBridge.sol";
 import {IRollupProcessor} from "../../interfaces/IRollupProcessor.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 import {IBorrowerOperations} from "./interfaces/IBorrowerOperations.sol";
-import {ITroveManager} from "./interfaces/ITroveManager.sol";
+
 import {ISortedTroves} from "./interfaces/ISortedTroves.sol";
+import {ITroveManager} from "./interfaces/ITroveManager.sol";
 
 /**
  * @title Aztec Connect Bridge for opening and closing Liquity's troves
@@ -91,22 +93,24 @@ contract TroveBridge is ERC20, Ownable, IDefiBridge {
      * @dev Sufficient amount of ETH has to be send so that at least 2000 LUSD gets borrowed. 2000 LUSD is a minimum
      * amount allowed by Liquity.
      */
-    function openTrove(
-        address _upperHint,
-        address _lowerHint,
-        uint256 _maxFee
-    ) external payable onlyOwner {
+    function openTrove(address _upperHint, address _lowerHint, uint256 _maxFee) external payable onlyOwner {
         // Checks whether the trove can be safely opened/reopened
-        if (this.totalSupply() != 0) revert NonZeroTotalSupply();
+        if (this.totalSupply() != 0) {
+            revert NonZeroTotalSupply();
+        }
 
-        if (!IERC20(LUSD).approve(ROLLUP_PROCESSOR, type(uint256).max)) revert ApproveFailed(LUSD);
-        if (!this.approve(ROLLUP_PROCESSOR, type(uint256).max)) revert ApproveFailed(address(this));
+        if (!IERC20(LUSD).approve(ROLLUP_PROCESSOR, type(uint256).max)) {
+            revert ApproveFailed(LUSD);
+        }
+        if (!this.approve(ROLLUP_PROCESSOR, type(uint256).max)) {
+            revert ApproveFailed(address(this));
+        }
 
         uint256 amtToBorrow = computeAmtToBorrow(msg.value);
 
-        (uint256 debtBefore, , , ) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
+        (uint256 debtBefore,,,) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
         BORROWER_OPERATIONS.openTrove{value: msg.value}(_maxFee, amtToBorrow, _upperHint, _lowerHint);
-        (uint256 debtAfter, , , ) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
+        (uint256 debtAfter,,,) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
 
         IERC20(LUSD).transfer(msg.sender, IERC20(LUSD).balanceOf(address(this)));
         // I mint TB token to msg.sender to be able to track collateral ownership. Minted amount equals debt increase.
@@ -139,56 +143,52 @@ contract TroveBridge is ERC20, Ownable, IDefiBridge {
         uint256 interactionNonce,
         uint64 auxData,
         address
-    )
-        external
-        payable
-        returns (
-            uint256 outputValueA,
-            uint256 outputValueB,
-            bool
-        )
-    {
-        if (msg.sender != ROLLUP_PROCESSOR) revert InvalidCaller();
+    ) external payable returns (uint256 outputValueA, uint256 outputValueB, bool) {
+        if (msg.sender != ROLLUP_PROCESSOR) {
+            revert InvalidCaller();
+        }
         Status troveStatus = Status(TROVE_MANAGER.getTroveStatus(address(this)));
 
         address upperHint = SORTED_TROVES.getPrev(address(this));
         address lowerHint = SORTED_TROVES.getNext(address(this));
 
         if (
-            inputAssetA.assetType == AztecTypes.AztecAssetType.ETH &&
-            outputAssetA.erc20Address == address(this) &&
-            outputAssetB.erc20Address == LUSD
+            inputAssetA.assetType == AztecTypes.AztecAssetType.ETH && outputAssetA.erc20Address == address(this)
+                && outputAssetB.erc20Address == LUSD
         ) {
             // Borrowing
-            if (troveStatus != Status.active) revert IncorrectStatus(Status.active, troveStatus);
+            if (troveStatus != Status.active) {
+                revert IncorrectStatus(Status.active, troveStatus);
+            }
             // outputValueA = by how much debt will increase and how much TB to mint
             outputValueB = computeAmtToBorrow(inputValue); // LUSD amount to borrow
 
-            (uint256 debtBefore, , , ) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
+            (uint256 debtBefore,,,) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
             BORROWER_OPERATIONS.adjustTrove{value: inputValue}(auxData, 0, outputValueB, true, upperHint, lowerHint);
-            (uint256 debtAfter, , , ) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
+            (uint256 debtAfter,,,) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
 
             // outputValueA = debt increase = amount of TB to mint
             outputValueA = debtAfter - debtBefore;
             _mint(address(this), outputValueA);
         } else if (
-            inputAssetA.erc20Address == address(this) &&
-            inputAssetB.erc20Address == LUSD &&
-            outputAssetA.assetType == AztecTypes.AztecAssetType.ETH
+            inputAssetA.erc20Address == address(this) && inputAssetB.erc20Address == LUSD
+                && outputAssetA.assetType == AztecTypes.AztecAssetType.ETH
         ) {
             // Repaying
-            if (troveStatus != Status.active) revert IncorrectStatus(Status.active, troveStatus);
-            (, uint256 coll, , ) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
+            if (troveStatus != Status.active) {
+                revert IncorrectStatus(Status.active, troveStatus);
+            }
+            (, uint256 coll,,) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
             outputValueA = (coll * inputValue) / this.totalSupply(); // Amount of collateral to withdraw
             BORROWER_OPERATIONS.adjustTrove(0, outputValueA, inputValue, false, upperHint, lowerHint);
             _burn(address(this), inputValue);
             IRollupProcessor(ROLLUP_PROCESSOR).receiveEthFromBridge{value: outputValueA}(interactionNonce);
-        } else if (
-            inputAssetA.erc20Address == address(this) && outputAssetA.assetType == AztecTypes.AztecAssetType.ETH
-        ) {
+        } else if (inputAssetA.erc20Address == address(this) && outputAssetA.assetType == AztecTypes.AztecAssetType.ETH)
+        {
             // Redeeming
-            if (troveStatus != Status.closedByRedemption)
+            if (troveStatus != Status.closedByRedemption) {
                 revert IncorrectStatus(Status.closedByRedemption, troveStatus);
+            }
             if (!collateralClaimed) {
                 BORROWER_OPERATIONS.claimCollateral();
                 collateralClaimed = true;
@@ -208,15 +208,19 @@ contract TroveBridge is ERC20, Ownable, IDefiBridge {
     function closeTrove() external onlyOwner {
         address payable owner = payable(owner());
         uint256 ownerTBBalance = balanceOf(owner);
-        if (ownerTBBalance != totalSupply()) revert OwnerNotLast();
+        if (ownerTBBalance != totalSupply()) {
+            revert OwnerNotLast();
+        }
 
         _burn(owner, ownerTBBalance);
 
         Status troveStatus = Status(TROVE_MANAGER.getTroveStatus(address(this)));
         if (troveStatus == Status.active) {
-            (uint256 remainingDebt, , , ) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
+            (uint256 remainingDebt,,,) = TROVE_MANAGER.getEntireDebtAndColl(address(this));
             // 200e18 is a part of debt which gets repaid from LUSD_GAS_COMPENSATION.
-            if (!IERC20(LUSD).transferFrom(owner, address(this), remainingDebt - 200e18)) revert TransferFailed();
+            if (!IERC20(LUSD).transferFrom(owner, address(this), remainingDebt - 200e18)) {
+                revert TransferFailed();
+            }
             BORROWER_OPERATIONS.closeTrove();
         } else if (troveStatus == Status.closedByRedemption) {
             if (!collateralClaimed) {
@@ -237,15 +241,7 @@ contract TroveBridge is ERC20, Ownable, IDefiBridge {
         AztecTypes.AztecAsset calldata,
         uint256,
         uint64
-    )
-        external
-        payable
-        returns (
-            uint256,
-            uint256,
-            bool
-        )
-    {
+    ) external payable returns (uint256, uint256, bool) {
         revert AsyncModeDisabled();
     }
 

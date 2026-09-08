@@ -2,22 +2,26 @@
 
 pragma solidity ^0.8.0;
 
-import {IScrollGateway} from "./IScrollGateway.sol";
 import {IScrollMessenger} from "../IScrollMessenger.sol";
 import {IScrollGatewayCallback} from "../callbacks/IScrollGatewayCallback.sol";
+import {IScrollGateway} from "./IScrollGateway.sol";
 
 abstract contract ScrollGatewayBase is IScrollGateway {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.5.0/contracts/security/ReentrancyGuard.sol
     uint256 private constant _NOT_ENTERED = 1;
     uint256 private constant _ENTERED = 2;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @inheritdoc IScrollGateway
     address public override counterpart;
@@ -31,10 +35,11 @@ abstract contract ScrollGatewayBase is IScrollGateway {
     /// @dev The status of for non-reentrant check.
     uint256 private _status;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier nonReentrant() {
         // On the first call to nonReentrant, _notEntered will be true
         require(_status != _ENTERED, "ReentrancyGuard: reentrant call");
@@ -61,15 +66,12 @@ abstract contract ScrollGatewayBase is IScrollGateway {
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    function _initialize(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) internal {
+     *
+     */
+    function _initialize(address _counterpart, address _router, address _messenger) internal {
         require(_counterpart != address(0), "zero counterpart address");
         require(_messenger != address(0), "zero messenger address");
 
@@ -85,9 +87,11 @@ abstract contract ScrollGatewayBase is IScrollGateway {
         _status = _NOT_ENTERED;
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to forward calldata to target contract.
     /// @param _to The address of contract to call.

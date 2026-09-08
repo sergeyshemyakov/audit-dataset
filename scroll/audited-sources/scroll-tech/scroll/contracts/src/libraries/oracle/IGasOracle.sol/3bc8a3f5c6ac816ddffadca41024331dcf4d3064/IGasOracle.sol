@@ -7,10 +7,8 @@ interface IGasOracle {
     /// @param _sender The address of sender who invoke the call.
     /// @param _to The target address to receive the call.
     /// @param _message The message will be passed to the target address.
-    function estimateMessageFee(
-        address _sender,
-        address _to,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external view returns (uint256);
+    function estimateMessageFee(address _sender, address _to, bytes memory _message, uint256 _gasLimit)
+        external
+        view
+        returns (uint256);
 }

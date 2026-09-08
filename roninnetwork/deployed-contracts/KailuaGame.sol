@@ -117,11 +117,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads an immutable arg with type bytes.
-    function _getArgBytes(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (bytes memory arg)
-    {
+    function _getArgBytes(uint256 argOffset, uint256 length) internal pure returns (bytes memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -144,11 +140,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads a uint256 array stored in the immutable args.
-    function _getArgUint256Array(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (uint256[] memory arg)
-    {
+    function _getArgUint256Array(uint256 argOffset, uint256 length) internal pure returns (uint256[] memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -160,11 +152,7 @@ abstract contract Clone {
     }
 
     /// @dev Reads a bytes32 array stored in the immutable args.
-    function _getArgBytes32Array(uint256 argOffset, uint256 length)
-        internal
-        pure
-        returns (bytes32[] memory arg)
-    {
+    function _getArgBytes32Array(uint256 argOffset, uint256 length) internal pure returns (bytes32[] memory arg) {
         uint256 offset = _getImmutableArgsOffset();
         /// @solidity memory-safe-assembly
         assembly {
@@ -662,10 +650,7 @@ library LibPosition {
     /// @param _upperBoundExclusive The exclusive upper depth bound, used to inform where to stop in order
     ///                             to not escape a sub-tree.
     /// @return ancestor_ The highest ancestor of `position` that commits to the same trace index.
-    function traceAncestorBounded(
-        Position _position,
-        uint256 _upperBoundExclusive
-    )
+    function traceAncestorBounded(Position _position, uint256 _upperBoundExclusive)
         internal
         pure
         returns (Position ancestor_)
@@ -758,11 +743,7 @@ library LibClaim {
     /// @param _position The position of `claim`.
     /// @param _challengeIndex The index of the claim being moved against.
     /// @return claimHash_ A hash of abi.encodePacked(claim, position|challengeIndex);
-    function hashClaimPos(
-        Claim _claim,
-        Position _position,
-        uint256 _challengeIndex
-    )
+    function hashClaimPos(Claim _claim, Position _position, uint256 _challengeIndex)
         internal
         pure
         returns (Hash claimHash_)
@@ -863,14 +844,27 @@ library KailuaPayLib {
     /// @notice Transfers ETH from the contract's balance to the recipient
     function pay(uint256 amount, address recipient) internal {
         (bool success,) = recipient.call{value: amount}(hex"");
-        if (!success) revert BondTransferFailed();
+        if (!success) {
+            revert BondTransferFailed();
+        }
     }
 }
 
 // NOTE(l2beat): This is an interface, generated from the contract source code.
 interface KailuaVerifier is ISemver {
-    function faultProofPermitBeneficiary(IKailuaTournament proposalParent, bytes32 proposalSignature) external view returns (address);
-    function verify(address payoutRecipient, bytes32 preconditionHash, bytes32 l1Head, bytes32 agreedL2OutputRoot, bytes32 claimedL2OutputRoot, uint64 claimedL2BlockNumber, bytes calldata encodedSeal) external view;
+    function faultProofPermitBeneficiary(IKailuaTournament proposalParent, bytes32 proposalSignature)
+        external
+        view
+        returns (address);
+    function verify(
+        address payoutRecipient,
+        bytes32 preconditionHash,
+        bytes32 l1Head,
+        bytes32 agreedL2OutputRoot,
+        bytes32 claimedL2OutputRoot,
+        uint64 claimedL2BlockNumber,
+        bytes calldata encodedSeal
+    ) external view;
 }
 
 // lib/optimism/packages/contracts-bedrock/interfaces/universal/IOwnable.sol
@@ -1520,15 +1514,13 @@ interface IPreimageOracle {
         bytes memory _input,
         bytes32[] memory _stateCommitments,
         bool _finalize
-    )
-        external;
+    ) external;
     function challengeFirstLPP(
         address _claimant,
         uint256 _uuid,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengeLPP(
         address _claimant,
         uint256 _uuid,
@@ -1537,8 +1529,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengePeriod() external view returns (uint256 challengePeriod_);
     function getTreeRootLPP(address _owner, uint256 _uuid) external view returns (bytes32 treeRoot_);
     function initLPP(uint256 _uuid, uint32 _partOffset, uint32 _claimedSize) external payable;
@@ -1548,16 +1539,9 @@ interface IPreimageOracle {
         bytes memory _commitment,
         bytes memory _proof,
         uint256 _partOffset
-    )
-        external;
+    ) external;
     function loadKeccak256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
-    function loadLocalData(
-        uint256 _ident,
-        bytes32 _localContext,
-        bytes32 _word,
-        uint256 _size,
-        uint256 _partOffset
-    )
+    function loadLocalData(uint256 _ident, bytes32 _localContext, bytes32 _word, uint256 _size, uint256 _partOffset)
         external
         returns (bytes32 key_);
     function loadPrecompilePreimagePart(
@@ -1565,8 +1549,7 @@ interface IPreimageOracle {
         address _precompile,
         uint64 _requiredGas,
         bytes memory _input
-    )
-        external;
+    ) external;
     function loadSha256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
     function minProposalSize() external view returns (uint256 minProposalSize_);
     function preimageLengths(bytes32) external view returns (uint256);
@@ -1590,8 +1573,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function version() external view returns (string memory);
     function zeroHashes(uint256) external view returns (bytes32);
 
@@ -1629,11 +1611,7 @@ interface IBigStepper {
     /// @param _localContext The local key context for the preimage oracle. Optional, can be set as a constant if the
     ///                      implementation only requires one set of local keys.
     /// @return postState_ The hash of the post state witness after the state transition.
-    function step(
-        bytes calldata _stateData,
-        bytes calldata _proof,
-        bytes32 _localContext
-    )
+    function step(bytes calldata _stateData, bytes calldata _proof, bytes32 _localContext)
         external
         returns (bytes32 postState_);
 
@@ -1762,8 +1740,7 @@ interface ISystemConfig is IProxyAdminOwnedBase {
         Addresses memory _addresses,
         uint256 _l2ChainId,
         ISuperchainConfig _superchainConfig
-    )
-        external;
+    ) external;
     function initVersion() external view returns (uint8);
     function l1CrossDomainMessenger() external view returns (address addr_);
     function l1ERC721Bridge() external view returns (address addr_);
@@ -2046,6 +2023,7 @@ interface IFaultDisputeGame is IDisputeGame {
     error GameNotResolved();
     error ReservedGameType();
     error GamePaused();
+
     event Move(uint256 indexed parentIndex, Claim indexed claim, address indexed claimant);
     event GameClosed(BondDistributionMode bondDistributionMode);
 
@@ -2126,11 +2104,7 @@ library LibGameId {
     /// @param _timestamp The timestamp of the game's creation.
     /// @param _gameProxy The game proxy address.
     /// @return gameId_ The packed GameId.
-    function pack(
-        GameType _gameType,
-        Timestamp _timestamp,
-        address _gameProxy
-    )
+    function pack(GameType _gameType, Timestamp _timestamp, address _gameProxy)
         internal
         pure
         returns (GameId gameId_)
@@ -2193,19 +2167,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     event Initialized(uint8 version);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    function create(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function create(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         payable
         returns (IDisputeGame proxy_);
-    function findLatestGames(
-        GameType _gameType,
-        uint256 _start,
-        uint256 _n
-    )
+    function findLatestGames(GameType _gameType, uint256 _start, uint256 _n)
         external
         view
         returns (GameSearchResult[] memory games_);
@@ -2216,19 +2182,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     function gameCount() external view returns (uint256 gameCount_);
     function gameArgs(GameType) external view returns (bytes memory);
     function gameImpls(GameType) external view returns (IDisputeGame);
-    function games(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function games(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         view
         returns (IDisputeGame proxy_, Timestamp timestamp_);
-    function getGameUUID(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function getGameUUID(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         pure
         returns (Hash uuid_);
@@ -2280,8 +2238,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
         IDisputeGameFactory _disputeGameFactory,
         Proposal memory _startingAnchorRoot,
         GameType _startingRespectedGameType
-    )
-        external;
+    ) external;
     function isGameBlacklisted(IDisputeGame _game) external view returns (bool);
     function isGameProper(IDisputeGame _game) external view returns (bool);
     function isGameRegistered(IDisputeGame _game) external view returns (bool);
@@ -2300,9 +2257,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
     function version() external view returns (string memory);
     function superchainConfig() external view returns (ISuperchainConfig);
 
-    function __constructor__(
-        uint256 _disputeGameFinalityDelaySeconds
-    ) external;
+    function __constructor__(uint256 _disputeGameFinalityDelaySeconds) external;
 }
 
 // lib/optimism/packages/contracts-bedrock/interfaces/L1/IETHLockbox.sol
@@ -2377,13 +2332,7 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
     function anchorStateRegistry() external view returns (IAnchorStateRegistry);
     function ethLockbox() external view returns (IETHLockbox);
     function checkWithdrawal(bytes32 _withdrawalHash, address _proofSubmitter) external view;
-    function depositTransaction(
-        address _to,
-        uint256 _value,
-        uint64 _gasLimit,
-        bool _isCreation,
-        bytes memory _data
-    )
+    function depositTransaction(address _to, uint256 _value, uint64 _gasLimit, bool _isCreation, bytes memory _data)
         external
         payable;
     function disputeGameBlacklist(IDisputeGame _disputeGame) external view returns (bool);
@@ -2392,18 +2341,11 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
     function donateETH() external payable;
     function superchainConfig() external view returns (ISuperchainConfig);
     function finalizeWithdrawalTransaction(Types.WithdrawalTransaction memory _tx) external;
-    function finalizeWithdrawalTransactionExternalProof(
-        Types.WithdrawalTransaction memory _tx,
-        address _proofSubmitter
-    )
+    function finalizeWithdrawalTransactionExternalProof(Types.WithdrawalTransaction memory _tx, address _proofSubmitter)
         external;
     function finalizedWithdrawals(bytes32) external view returns (bool);
     function guardian() external view returns (address);
-    function initialize(
-        ISystemConfig _systemConfig,
-        IAnchorStateRegistry _anchorStateRegistry
-    )
-        external;
+    function initialize(ISystemConfig _systemConfig, IAnchorStateRegistry _anchorStateRegistry) external;
     function initVersion() external view returns (uint8);
     function l2Sender() external view returns (address);
     function minimumGasLimit(uint64 _byteCount) external pure returns (uint64);
@@ -2417,12 +2359,8 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
         uint256 _disputeGameIndex,
         Types.OutputRootProof memory _outputRootProof,
         bytes[] memory _withdrawalProof
-    )
-        external;
-    function provenWithdrawals(
-        bytes32,
-        address
-    )
+    ) external;
+    function provenWithdrawals(bytes32, address)
         external
         view
         returns (IDisputeGame disputeGameProxy, uint64 timestamp);
@@ -2639,7 +2577,9 @@ abstract contract KailuaTournament is IKailuaTournament, Clone, IDisputeGame {
 
     function initializeInternal() internal {
         // INVARIANT: The game must not have already been initialized.
-        if (createdAt.raw() > 0) revert AlreadyInitialized();
+        if (createdAt.raw() > 0) {
+            revert AlreadyInitialized();
+        }
 
         // Allow only the treasury to create new games
         if (gameCreator() != address(KAILUA_TREASURY)) {
@@ -3271,7 +3211,6 @@ error VanguardError(address parentGame);
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
 contract KailuaTreasury is KailuaTournament, IKailuaTreasury {
     /// @notice Semantic version.
     /// @custom:semver 1.2.0
@@ -3297,7 +3236,12 @@ contract KailuaTreasury is KailuaTournament, IKailuaTreasury {
         uint64 _l2BlockNumber
     )
         KailuaTournament(
-            KailuaTreasury(this), _kailuaVerifier, _proposalOutputCount, _outputBlockSpan, _gameType, _optimismPortal
+            KailuaTreasury(this),
+            _kailuaVerifier,
+            _proposalOutputCount,
+            _outputBlockSpan,
+            _gameType,
+            _optimismPortal
         )
     {
         ROOT_CLAIM = _rootClaim;
@@ -3521,7 +3465,9 @@ contract KailuaTreasury is KailuaTournament, IKailuaTreasury {
     }
 
     modifier onlyFactoryOwner() {
-        if (msg.sender != DISPUTE_GAME_FACTORY.owner()) revert NotFactoryOwner();
+        if (msg.sender != DISPUTE_GAME_FACTORY.owner()) {
+            revert NotFactoryOwner();
+        }
         _;
     }
 
@@ -3653,7 +3599,6 @@ error OutOfOrderResolution();
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
 contract KailuaGame is KailuaTournament {
     /// @notice Semantic version.
     /// @custom:semver 1.2.0

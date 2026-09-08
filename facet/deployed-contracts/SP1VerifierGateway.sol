@@ -139,18 +139,10 @@ interface ISP1Verifier {
     /// @param programVKey The verification key for the RISC-V program.
     /// @param publicValues The public values encoded as bytes.
     /// @param proofBytes The proof of the program execution the SP1 zkVM encoded as bytes.
-    function verifyProof(
-        bytes32 programVKey,
-        bytes calldata publicValues,
-        bytes calldata proofBytes
-    ) external view;
+    function verifyProof(bytes32 programVKey, bytes calldata publicValues, bytes calldata proofBytes) external view;
 }
 
-interface ISP1VerifierGateway is
-    ISP1VerifierGatewayEvents,
-    ISP1VerifierGatewayErrors,
-    ISP1Verifier
-{
+interface ISP1VerifierGateway is ISP1VerifierGatewayEvents, ISP1VerifierGatewayErrors, ISP1Verifier {
     /// @notice Mapping of 4-byte verifier selectors to verifier routes.
     /// @dev Only one verifier route can be added for each selector.
     /// @param selector The verifier selector, which is both the first 4 bytes of the VERIFIER_HASH
@@ -181,11 +173,7 @@ contract SP1VerifierGateway is ISP1VerifierGateway, Ownable {
     constructor(address initialOwner) Ownable(initialOwner) {}
 
     /// @inheritdoc ISP1Verifier
-    function verifyProof(
-        bytes32 programVKey,
-        bytes calldata publicValues,
-        bytes calldata proofBytes
-    ) external view {
+    function verifyProof(bytes32 programVKey, bytes calldata publicValues, bytes calldata proofBytes) external view {
         bytes4 selector = bytes4(proofBytes[:4]);
         VerifierRoute memory route = routes[selector];
         if (route.verifier == address(0)) {

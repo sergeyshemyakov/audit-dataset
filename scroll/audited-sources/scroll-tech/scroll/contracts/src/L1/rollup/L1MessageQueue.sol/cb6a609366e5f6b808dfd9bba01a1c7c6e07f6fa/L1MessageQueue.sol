@@ -4,8 +4,8 @@ pragma solidity ^0.8.0;
 
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 import {IL1MessageQueue} from "./IL1MessageQueue.sol";
+import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 
 import {AddressAliasHelper} from "../../libraries/common/AddressAliasHelper.sol";
 
@@ -13,18 +13,22 @@ import {AddressAliasHelper} from "../../libraries/common/AddressAliasHelper.sol"
 /// @notice This contract will hold all L1 to L2 messages.
 /// Each appended message is assigned with a unique and increasing `uint256` index denoting the message nonce.
 contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates gas oracle contract.
     /// @param _oldGasOracle The address of old gas oracle contract.
     /// @param _newGasOracle The address of new gas oracle contract.
     event UpdateGasOracle(address _oldGasOracle, address _newGasOracle);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L1ScrollMessenger contract.
     address public messenger;
@@ -35,10 +39,11 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     /// @notice The list of queued cross domain messages.
     bytes32[] public messageQueue;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     function initialize(address _messenger, address _gasOracle) external initializer {
         OwnableUpgradeable.__Ownable_init();
 
@@ -46,9 +51,11 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
         gasOracle = _gasOracle;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueue
     function nextCrossDomainMessageIndex() external view returns (uint256) {
@@ -61,27 +68,27 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     }
 
     /// @inheritdoc IL1MessageQueue
-    function estimateCrossDomainMessageFee(
-        address _sender,
-        address _target,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external view override returns (uint256) {
+    function estimateCrossDomainMessageFee(address _sender, address _target, bytes memory _message, uint256 _gasLimit)
+        external
+        view
+        override
+        returns (uint256)
+    {
         address _oracle = gasOracle;
-        if (_oracle == address(0)) return 0;
+        if (_oracle == address(0)) {
+            return 0;
+        }
         return IL2GasPriceOracle(_oracle).estimateCrossDomainMessageFee(_sender, _target, _message, _gasLimit);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueue
-    function appendCrossDomainMessage(
-        address _target,
-        uint256 _gasLimit,
-        bytes calldata _data
-    ) external override {
+    function appendCrossDomainMessage(address _target, uint256 _gasLimit, bytes calldata _data) external override {
         require(msg.sender == messenger, "Only callable by the L1ScrollMessenger");
 
         // do address alias to avoid replay attack in L2.
@@ -97,19 +104,15 @@ contract L1MessageQueue is OwnableUpgradeable, IL1MessageQueue {
     }
 
     /// @inheritdoc IL1MessageQueue
-    function appendEnforcedTransaction(
-        address,
-        address,
-        uint256,
-        uint256,
-        bytes calldata
-    ) external override {
+    function appendEnforcedTransaction(address, address, uint256, uint256, bytes calldata) external override {
         // @todo
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of gas oracle.
     /// @dev This function can only called by contract owner.

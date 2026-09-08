@@ -11,31 +11,38 @@ interface IZkEvmVerifier {
 // solhint-disable no-inline-assembly
 
 contract ZkEvmVerifierV1 is IZkEvmVerifier {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when aggregate zk proof verification is failed.
     error VerificationFailed();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of highly optimized plonk verifier contract.
     address public immutable plonkVerifier;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _verifier) {
         plonkVerifier = _verifier;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IZkEvmVerifier
     function verify(bytes calldata aggrProof, bytes32 publicInputHash) external view override {
@@ -49,11 +56,7 @@ contract ZkEvmVerifierV1 is IZkEvmVerifier {
         assembly {
             let p := mload(0x40)
             calldatacopy(p, aggrProof.offset, 0x180)
-            for {
-                let i := 0
-            } lt(i, 0x400) {
-                i := add(i, 0x20)
-            } {
+            for { let i := 0 } lt(i, 0x400) { i := add(i, 0x20) } {
                 mstore(add(p, sub(0x560, i)), and(publicInputHash, 0xff))
                 publicInputHash := shr(8, publicInputHash)
             }

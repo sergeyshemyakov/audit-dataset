@@ -13,13 +13,9 @@ contract Fallback is Ownable {
     /// @param _token The address of token to withdraw, use `address(0)` if withdraw ETH.
     /// @param _amount The amount of token to withdraw.
     /// @param _recipient The address of receiver.
-    function withdraw(
-        address _token,
-        uint256 _amount,
-        address _recipient
-    ) external onlyOwner {
+    function withdraw(address _token, uint256 _amount, address _recipient) external onlyOwner {
         if (_token == address(0)) {
-            (bool _success, ) = _recipient.call{value: _amount}("");
+            (bool _success,) = _recipient.call{value: _amount}("");
             require(_success, "transfer ETH failed");
         } else {
             IERC20(_token).safeTransfer(_recipient, _amount);
@@ -30,7 +26,7 @@ contract Fallback is Ownable {
     /// @param _target The address of contract to call.
     /// @param _data The calldata passed to target contract.
     function execute(address _target, bytes calldata _data) external payable onlyOwner {
-        (bool _success, ) = _target.call{value: msg.value}(_data);
+        (bool _success,) = _target.call{value: msg.value}(_data);
         require(_success, "call failed");
     }
 }

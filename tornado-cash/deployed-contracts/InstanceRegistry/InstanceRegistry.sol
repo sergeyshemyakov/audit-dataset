@@ -8,15 +8,14 @@ pragma experimental ABIEncoderV2;
  * behind a proxy. Since a proxied contract can't have a constructor, it's common to move constructor logic to an
  * external initializer function, usually called `initialize`. It then becomes necessary to protect this initializer
  * function so it can only be called once. The {initializer} modifier provided by this contract will have this effect.
- * 
+ *
  * TIP: To avoid leaving the proxy in an uninitialized state, the initializer function should be called as early as
  * possible by providing the encoded function call as the `_data` argument to {UpgradeableProxy-constructor}.
- * 
+ *
  * CAUTION: When used with inheritance, manual care must be taken to not invoke a parent initializer twice, or to ensure
  * that all initializers are idempotent. This is not verified automatically as constructors are by Solidity.
  */
 abstract contract Initializable {
-
     /**
      * @dev Indicates that the contract has been initialized.
      */
@@ -56,41 +55,43 @@ abstract contract Initializable {
         address self = address(this);
         uint256 cs;
         // solhint-disable-next-line no-inline-assembly
-        assembly { cs := extcodesize(self) }
+        assembly {
+            cs := extcodesize(self)
+        }
         return cs == 0;
     }
 }
 
 interface Resolver {
-  function addr(bytes32 node) external view returns (address);
+    function addr(bytes32 node) external view returns (address);
 }
 
 interface ENS {
-  function resolver(bytes32 node) external view returns (Resolver);
+    function resolver(bytes32 node) external view returns (Resolver);
 }
 
 contract EnsResolve {
-  function resolve(bytes32 node) public view virtual returns (address) {
-    ENS Registry = ENS(
-      getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
-    );
-    return Registry.resolver(node).addr(node);
-  }
-
-  function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
-    result = new address[](domains.length);
-    for (uint256 i = 0; i < domains.length; i++) {
-      result[i] = resolve(domains[i]);
+    function resolve(bytes32 node) public view virtual returns (address) {
+        ENS Registry = ENS(
+            getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
+        );
+        return Registry.resolver(node).addr(node);
     }
-  }
 
-  function getChainId() internal pure returns (uint256) {
-    uint256 chainId;
-    assembly {
-      chainId := chainid()
+    function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
+        result = new address[](domains.length);
+        for (uint256 i = 0; i < domains.length; i++) {
+            result[i] = resolve(domains[i]);
+        }
     }
-    return chainId;
-  }
+
+    function getChainId() internal pure returns (uint256) {
+        uint256 chainId;
+        assembly {
+            chainId := chainid()
+        }
+        return chainId;
+    }
 }
 
 /**
@@ -277,7 +278,9 @@ library Address {
 
         uint256 size;
         // solhint-disable-next-line no-inline-assembly
-        assembly { size := extcodesize(account) }
+        assembly {
+            size := extcodesize(account)
+        }
         return size > 0;
     }
 
@@ -301,7 +304,7 @@ library Address {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{ value: amount }("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -324,7 +327,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-      return functionCall(target, data, "Address: low-level call failed");
+        return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -333,7 +336,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return _functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -358,16 +364,22 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         return _functionCallWithValue(target, data, value, errorMessage);
     }
 
-    function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage) private returns (bytes memory) {
+    function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage)
+        private
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+        (bool success, bytes memory returndata) = target.call{value: weiValue}(data);
         if (success) {
             return returndata;
         } else {
@@ -494,7 +506,8 @@ library SafeERC20 {
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
         // solhint-disable-next-line max-line-length
-        require((value == 0) || (token.allowance(address(this), spender) == 0),
+        require(
+            (value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
@@ -506,7 +519,8 @@ library SafeERC20 {
     }
 
     function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
+        uint256 newAllowance =
+            token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
@@ -522,7 +536,8 @@ library SafeERC20 {
         // the target address contains contract code and also asserts for success in the low-level call.
 
         bytes memory returndata = address(token).functionCall(data, "SafeERC20: low-level call failed");
-        if (returndata.length > 0) { // Return data is optional
+        if (returndata.length > 0) {
+            // Return data is optional
             // solhint-disable-next-line max-line-length
             require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
         }
@@ -530,21 +545,21 @@ library SafeERC20 {
 }
 
 interface ITornadoInstance {
-  function token() external view returns (address);
+    function token() external view returns (address);
 
-  function denomination() external view returns (uint256);
+    function denomination() external view returns (uint256);
 
-  function deposit(bytes32 commitment) external payable;
+    function deposit(bytes32 commitment) external payable;
 
-  function withdraw(
-    bytes calldata proof,
-    bytes32 root,
-    bytes32 nullifierHash,
-    address payable recipient,
-    address payable relayer,
-    uint256 fee,
-    uint256 refund
-  ) external payable;
+    function withdraw(
+        bytes calldata proof,
+        bytes32 root,
+        bytes32 nullifierHash,
+        address payable recipient,
+        address payable relayer,
+        uint256 fee,
+        uint256 refund
+    ) external payable;
 }
 
 /*
@@ -596,9 +611,9 @@ contract ERC20 is Context, IERC20 {
     using SafeMath for uint256;
     using Address for address;
 
-    mapping (address => uint256) private _balances;
+    mapping(address => uint256) private _balances;
 
-    mapping (address => mapping (address => uint256)) private _allowances;
+    mapping(address => mapping(address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
 
@@ -615,7 +630,7 @@ contract ERC20 is Context, IERC20 {
      * All three of these values are immutable: they can only be set once during
      * construction.
      */
-    constructor (string memory name, string memory symbol) public {
+    constructor(string memory name, string memory symbol) public {
         _name = name;
         _symbol = symbol;
         _decimals = 18;
@@ -713,7 +728,11 @@ contract ERC20 is Context, IERC20 {
      */
     function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {
         _transfer(sender, recipient, amount);
-        _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance"));
+        _approve(
+            sender,
+            _msgSender(),
+            _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance")
+        );
         return true;
     }
 
@@ -749,7 +768,11 @@ contract ERC20 is Context, IERC20 {
      * `subtractedValue`.
      */
     function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
-        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero"));
+        _approve(
+            _msgSender(),
+            spender,
+            _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero")
+        );
         return true;
     }
 
@@ -778,7 +801,8 @@ contract ERC20 is Context, IERC20 {
         emit Transfer(sender, recipient, amount);
     }
 
-    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
+    /**
+     * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
      * Emits a {Transfer} event with `from` set to the zero address.
@@ -864,7 +888,7 @@ contract ERC20 is Context, IERC20 {
      *
      * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
      */
-    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual { }
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
 }
 
 /**
@@ -894,7 +918,8 @@ abstract contract ERC20Burnable is Context, ERC20 {
      * `amount`.
      */
     function burnFrom(address account, uint256 amount) public virtual {
-        uint256 decreasedAllowance = allowance(account, _msgSender()).sub(amount, "ERC20: burn amount exceeds allowance");
+        uint256 decreasedAllowance =
+            allowance(account, _msgSender()).sub(amount, "ERC20: burn amount exceeds allowance");
 
         _approve(account, _msgSender(), decreasedAllowance);
         _burn(account, amount);
@@ -910,85 +935,83 @@ abstract contract ERC20Burnable is Context, ERC20 {
  * of the private keys of a given address.
  */
 library ECDSA {
-  /**
-   * @dev Returns the address that signed a hashed message (`hash`) with
-   * `signature`. This address can then be used for verification purposes.
-   *
-   * The `ecrecover` EVM opcode allows for malleable (non-unique) signatures:
-   * this function rejects them by requiring the `s` value to be in the lower
-   * half order, and the `v` value to be either 27 or 28.
-   *
-   * IMPORTANT: `hash` _must_ be the result of a hash operation for the
-   * verification to be secure: it is possible to craft signatures that
-   * recover to arbitrary addresses for non-hashed data. A safe way to ensure
-   * this is by receiving a hash of the original message (which may otherwise
-   * be too long), and then calling {toEthSignedMessageHash} on it.
-   */
-  function recover(bytes32 hash, bytes memory signature) internal pure returns (address) {
-    // Check the signature length
-    if (signature.length != 65) {
-      revert("ECDSA: invalid signature length");
+    /**
+     * @dev Returns the address that signed a hashed message (`hash`) with
+     * `signature`. This address can then be used for verification purposes.
+     *
+     * The `ecrecover` EVM opcode allows for malleable (non-unique) signatures:
+     * this function rejects them by requiring the `s` value to be in the lower
+     * half order, and the `v` value to be either 27 or 28.
+     *
+     * IMPORTANT: `hash` _must_ be the result of a hash operation for the
+     * verification to be secure: it is possible to craft signatures that
+     * recover to arbitrary addresses for non-hashed data. A safe way to ensure
+     * this is by receiving a hash of the original message (which may otherwise
+     * be too long), and then calling {toEthSignedMessageHash} on it.
+     */
+    function recover(bytes32 hash, bytes memory signature) internal pure returns (address) {
+        // Check the signature length
+        if (signature.length != 65) {
+            revert("ECDSA: invalid signature length");
+        }
+
+        // Divide the signature in r, s and v variables
+        bytes32 r;
+        bytes32 s;
+        uint8 v;
+
+        // ecrecover takes the signature parameters, and the only way to get them
+        // currently is to use assembly.
+        // solhint-disable-next-line no-inline-assembly
+        assembly {
+            r := mload(add(signature, 0x20))
+            s := mload(add(signature, 0x40))
+            v := mload(add(signature, 0x41))
+        }
+
+        return recover(hash, v, r, s);
     }
 
-    // Divide the signature in r, s and v variables
-    bytes32 r;
-    bytes32 s;
-    uint8 v;
+    /**
+     * @dev Overload of {ECDSA-recover-bytes32-bytes-} that receives the `v`,
+     * `r` and `s` signature fields separately.
+     */
+    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {
+        // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
+        // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
+        // the valid range for s in (281): 0 < s < secp256k1n ÷ 2 + 1, and for v in (282): v ∈ {27, 28}. Most
+        // signatures from current libraries generate a unique signature with an s-value in the lower half order.
+        //
+        // If your library generates malleable signatures, such as s-values in the upper range, calculate a new s-value
+        // with 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 - s1 and flip v from 27 to 28 or
+        // vice versa. If your library also generates signatures with 0/1 for v instead 27/28, add 27 to v to accept
+        // these malleable signatures as well.
+        require(
+            uint256(s) <= 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0,
+            "ECDSA: invalid signature 's' value"
+        );
+        require(v == 27 || v == 28, "ECDSA: invalid signature 'v' value");
 
-    // ecrecover takes the signature parameters, and the only way to get them
-    // currently is to use assembly.
-    // solhint-disable-next-line no-inline-assembly
-    assembly {
-      r := mload(add(signature, 0x20))
-      s := mload(add(signature, 0x40))
-      v := mload(add(signature, 0x41))
+        // If the signature is valid (and not malleable), return the signer address
+        address signer = ecrecover(hash, v, r, s);
+        require(signer != address(0), "ECDSA: invalid signature");
+
+        return signer;
     }
 
-    return recover(hash, v, r, s);
-  }
-
-  /**
-   * @dev Overload of {ECDSA-recover-bytes32-bytes-} that receives the `v`,
-   * `r` and `s` signature fields separately.
-   */
-  function recover(
-    bytes32 hash,
-    uint8 v,
-    bytes32 r,
-    bytes32 s
-  ) internal pure returns (address) {
-    // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
-    // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
-    // the valid range for s in (281): 0 < s < secp256k1n ÷ 2 + 1, and for v in (282): v ∈ {27, 28}. Most
-    // signatures from current libraries generate a unique signature with an s-value in the lower half order.
-    //
-    // If your library generates malleable signatures, such as s-values in the upper range, calculate a new s-value
-    // with 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 - s1 and flip v from 27 to 28 or
-    // vice versa. If your library also generates signatures with 0/1 for v instead 27/28, add 27 to v to accept
-    // these malleable signatures as well.
-    require(uint256(s) <= 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0, "ECDSA: invalid signature 's' value");
-    require(v == 27 || v == 28, "ECDSA: invalid signature 'v' value");
-
-    // If the signature is valid (and not malleable), return the signer address
-    address signer = ecrecover(hash, v, r, s);
-    require(signer != address(0), "ECDSA: invalid signature");
-
-    return signer;
-  }
-
-  /**
-   * @dev Returns an Ethereum Signed Message, created from a `hash`. This
-   * replicates the behavior of the
-   * https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign[`eth_sign`]
-   * JSON-RPC method.
-   *
-   * See {recover}.
-   */
-  function toEthSignedMessageHash(bytes32 hash) internal pure returns (bytes32) {
-    // 32 is the length in bytes of hash,
-    // enforced by the type signature above
-    return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
-  }
+    /**
+     * @dev Returns an Ethereum Signed Message, created from a `hash`. This
+     * replicates the behavior of the
+     * https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign[`eth_sign`]
+     * JSON-RPC method.
+     *
+     * See {recover}.
+     */
+    function toEthSignedMessageHash(bytes32 hash) internal pure returns (bytes32) {
+        // 32 is the length in bytes of hash,
+        // enforced by the type signature above
+        return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
+    }
 }
 
 /**
@@ -1000,93 +1023,86 @@ library ECDSA {
  * The {permit} signature mechanism conforms to the {IERC2612Permit} interface.
  */
 abstract contract ERC20Permit is ERC20 {
-  mapping(address => uint256) private _nonces;
+    mapping(address => uint256) private _nonces;
 
-  bytes32 private constant _PERMIT_TYPEHASH = keccak256(
-    "Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)"
-  );
+    bytes32 private constant _PERMIT_TYPEHASH =
+        keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
 
-  // Mapping of ChainID to domain separators. This is a very gas efficient way
-  // to not recalculate the domain separator on every call, while still
-  // automatically detecting ChainID changes.
-  mapping(uint256 => bytes32) private _domainSeparators;
+    // Mapping of ChainID to domain separators. This is a very gas efficient way
+    // to not recalculate the domain separator on every call, while still
+    // automatically detecting ChainID changes.
+    mapping(uint256 => bytes32) private _domainSeparators;
 
-  constructor() internal {
-    _updateDomainSeparator();
-  }
-
-  /**
-   * @dev See {IERC2612Permit-permit}.
-   *
-   * If https://eips.ethereum.org/EIPS/eip-1344[ChainID] ever changes, the
-   * EIP712 Domain Separator is automatically recalculated.
-   */
-  function permit(
-    address owner,
-    address spender,
-    uint256 amount,
-    uint256 deadline,
-    uint8 v,
-    bytes32 r,
-    bytes32 s
-  ) public {
-    require(blockTimestamp() <= deadline, "ERC20Permit: expired deadline");
-
-    bytes32 hashStruct = keccak256(abi.encode(_PERMIT_TYPEHASH, owner, spender, amount, _nonces[owner], deadline));
-
-    bytes32 hash = keccak256(abi.encodePacked(uint16(0x1901), _domainSeparator(), hashStruct));
-
-    address signer = ECDSA.recover(hash, v, r, s);
-    require(signer == owner, "ERC20Permit: invalid signature");
-
-    _nonces[owner]++;
-    _approve(owner, spender, amount);
-  }
-
-  /**
-   * @dev See {IERC2612Permit-nonces}.
-   */
-  function nonces(address owner) public view returns (uint256) {
-    return _nonces[owner];
-  }
-
-  function _updateDomainSeparator() private returns (bytes32) {
-    uint256 _chainID = chainID();
-
-    bytes32 newDomainSeparator = keccak256(
-      abi.encode(
-        keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"),
-        keccak256(bytes(name())),
-        keccak256(bytes("1")), // Version
-        _chainID,
-        address(this)
-      )
-    );
-
-    _domainSeparators[_chainID] = newDomainSeparator;
-
-    return newDomainSeparator;
-  }
-
-  // Returns the domain separator, updating it if chainID changes
-  function _domainSeparator() private returns (bytes32) {
-    bytes32 domainSeparator = _domainSeparators[chainID()];
-    if (domainSeparator != 0x00) {
-      return domainSeparator;
-    } else {
-      return _updateDomainSeparator();
+    constructor() internal {
+        _updateDomainSeparator();
     }
-  }
 
-  function chainID() public view virtual returns (uint256 _chainID) {
-    assembly {
-      _chainID := chainid()
+    /**
+     * @dev See {IERC2612Permit-permit}.
+     *
+     * If https://eips.ethereum.org/EIPS/eip-1344[ChainID] ever changes, the
+     * EIP712 Domain Separator is automatically recalculated.
+     */
+    function permit(address owner, address spender, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        public
+    {
+        require(blockTimestamp() <= deadline, "ERC20Permit: expired deadline");
+
+        bytes32 hashStruct = keccak256(abi.encode(_PERMIT_TYPEHASH, owner, spender, amount, _nonces[owner], deadline));
+
+        bytes32 hash = keccak256(abi.encodePacked(uint16(0x1901), _domainSeparator(), hashStruct));
+
+        address signer = ECDSA.recover(hash, v, r, s);
+        require(signer == owner, "ERC20Permit: invalid signature");
+
+        _nonces[owner]++;
+        _approve(owner, spender, amount);
     }
-  }
 
-  function blockTimestamp() public view virtual returns (uint256) {
-    return block.timestamp;
-  }
+    /**
+     * @dev See {IERC2612Permit-nonces}.
+     */
+    function nonces(address owner) public view returns (uint256) {
+        return _nonces[owner];
+    }
+
+    function _updateDomainSeparator() private returns (bytes32) {
+        uint256 _chainID = chainID();
+
+        bytes32 newDomainSeparator = keccak256(
+            abi.encode(
+                keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"),
+                keccak256(bytes(name())),
+                keccak256(bytes("1")), // Version
+                _chainID,
+                address(this)
+            )
+        );
+
+        _domainSeparators[_chainID] = newDomainSeparator;
+
+        return newDomainSeparator;
+    }
+
+    // Returns the domain separator, updating it if chainID changes
+    function _domainSeparator() private returns (bytes32) {
+        bytes32 domainSeparator = _domainSeparators[chainID()];
+        if (domainSeparator != 0x00) {
+            return domainSeparator;
+        } else {
+            return _updateDomainSeparator();
+        }
+    }
+
+    function chainID() public view virtual returns (uint256 _chainID) {
+        assembly {
+            _chainID := chainid()
+        }
+    }
+
+    function blockTimestamp() public view virtual returns (uint256) {
+        return block.timestamp;
+    }
 }
 
 /**
@@ -1114,7 +1130,7 @@ contract Pausable is Context {
     /**
      * @dev Initializes the contract in unpaused state.
      */
-    constructor () internal {
+    constructor() internal {
         _paused = false;
     }
 
@@ -1203,99 +1219,87 @@ library Math {
 }
 
 contract TORN is ERC20("TornadoCash", "TORN"), ERC20Burnable, ERC20Permit, Pausable, EnsResolve {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  uint256 public immutable canUnpauseAfter;
-  address public immutable governance;
-  mapping(address => bool) public allowedTransferee;
+    uint256 public immutable canUnpauseAfter;
+    address public immutable governance;
+    mapping(address => bool) public allowedTransferee;
 
-  event Allowed(address target);
-  event Disallowed(address target);
+    event Allowed(address target);
+    event Disallowed(address target);
 
-  struct Recipient {
-    bytes32 to;
-    uint256 amount;
-  }
-
-  constructor(
-    bytes32 _governance,
-    uint256 _pausePeriod,
-    Recipient[] memory _vestings
-  ) public {
-    address _resolvedGovernance = resolve(_governance);
-    governance = _resolvedGovernance;
-    allowedTransferee[_resolvedGovernance] = true;
-
-    for (uint256 i = 0; i < _vestings.length; i++) {
-      address to = resolve(_vestings[i].to);
-      _mint(to, _vestings[i].amount);
-      allowedTransferee[to] = true;
+    struct Recipient {
+        bytes32 to;
+        uint256 amount;
     }
 
-    canUnpauseAfter = blockTimestamp().add(_pausePeriod);
-    _pause();
-    require(totalSupply() == 10000000 ether, "TORN: incorrect distribution");
-  }
+    constructor(bytes32 _governance, uint256 _pausePeriod, Recipient[] memory _vestings) public {
+        address _resolvedGovernance = resolve(_governance);
+        governance = _resolvedGovernance;
+        allowedTransferee[_resolvedGovernance] = true;
 
-  modifier onlyGovernance() {
-    require(_msgSender() == governance, "TORN: only governance can perform this action");
-    _;
-  }
+        for (uint256 i = 0; i < _vestings.length; i++) {
+            address to = resolve(_vestings[i].to);
+            _mint(to, _vestings[i].amount);
+            allowedTransferee[to] = true;
+        }
 
-  function changeTransferability(bool decision) public onlyGovernance {
-    require(blockTimestamp() > canUnpauseAfter, "TORN: cannot change transferability yet");
-    if (decision) {
-      _unpause();
-    } else {
-      _pause();
+        canUnpauseAfter = blockTimestamp().add(_pausePeriod);
+        _pause();
+        require(totalSupply() == 10000000 ether, "TORN: incorrect distribution");
     }
-  }
 
-  function addToAllowedList(address[] memory target) public onlyGovernance {
-    for (uint256 i = 0; i < target.length; i++) {
-      allowedTransferee[target[i]] = true;
-      emit Allowed(target[i]);
+    modifier onlyGovernance() {
+        require(_msgSender() == governance, "TORN: only governance can perform this action");
+        _;
     }
-  }
 
-  function removeFromAllowedList(address[] memory target) public onlyGovernance {
-    for (uint256 i = 0; i < target.length; i++) {
-      allowedTransferee[target[i]] = false;
-      emit Disallowed(target[i]);
+    function changeTransferability(bool decision) public onlyGovernance {
+        require(blockTimestamp() > canUnpauseAfter, "TORN: cannot change transferability yet");
+        if (decision) {
+            _unpause();
+        } else {
+            _pause();
+        }
     }
-  }
 
-  function _beforeTokenTransfer(
-    address from,
-    address to,
-    uint256 amount
-  ) internal override {
-    super._beforeTokenTransfer(from, to, amount);
-    require(!paused() || allowedTransferee[from] || allowedTransferee[to], "TORN: paused");
-    require(to != address(this), "TORN: invalid recipient");
-  }
-
-  /// @dev Method to claim junk and accidentally sent tokens
-  function rescueTokens(
-    IERC20 _token,
-    address payable _to,
-    uint256 _balance
-  ) external onlyGovernance {
-    require(_to != address(0), "TORN: can not send to zero address");
-
-    if (_token == IERC20(0)) {
-      // for Ether
-      uint256 totalBalance = address(this).balance;
-      uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
-      _to.transfer(balance);
-    } else {
-      // any other erc20
-      uint256 totalBalance = _token.balanceOf(address(this));
-      uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
-      require(balance > 0, "TORN: trying to send 0 balance");
-      _token.safeTransfer(_to, balance);
+    function addToAllowedList(address[] memory target) public onlyGovernance {
+        for (uint256 i = 0; i < target.length; i++) {
+            allowedTransferee[target[i]] = true;
+            emit Allowed(target[i]);
+        }
     }
-  }
+
+    function removeFromAllowedList(address[] memory target) public onlyGovernance {
+        for (uint256 i = 0; i < target.length; i++) {
+            allowedTransferee[target[i]] = false;
+            emit Disallowed(target[i]);
+        }
+    }
+
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal override {
+        super._beforeTokenTransfer(from, to, amount);
+        require(!paused() || allowedTransferee[from] || allowedTransferee[to], "TORN: paused");
+        require(to != address(this), "TORN: invalid recipient");
+    }
+
+    /// @dev Method to claim junk and accidentally sent tokens
+    function rescueTokens(IERC20 _token, address payable _to, uint256 _balance) external onlyGovernance {
+        require(_to != address(0), "TORN: can not send to zero address");
+
+        if (_token == IERC20(0)) {
+            // for Ether
+            uint256 totalBalance = address(this).balance;
+            uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
+            _to.transfer(balance);
+        } else {
+            // any other erc20
+            uint256 totalBalance = _token.balanceOf(address(this));
+            uint256 balance = _balance == 0 ? totalBalance : Math.min(totalBalance, _balance);
+            require(balance > 0, "TORN: trying to send 0 balance");
+            _token.safeTransfer(_to, balance);
+        }
+    }
 }
 
 /*
@@ -1305,50 +1309,48 @@ contract TORN is ERC20("TornadoCash", "TORN"), ERC20Burnable, ERC20Permit, Pausa
  * Original version can be found here https://github.com/JonahGroendal/ens-namehash/
  */
 library ENSNamehash {
-  function namehash(bytes memory domain) internal pure returns (bytes32) {
-    return namehash(domain, 0);
-  }
-
-  function namehash(bytes memory domain, uint256 i) internal pure returns (bytes32) {
-    if (domain.length <= i) return 0x0000000000000000000000000000000000000000000000000000000000000000;
-
-    uint256 len = labelLength(domain, i);
-
-    return keccak256(abi.encodePacked(namehash(domain, i + len + 1), keccak(domain, i, len)));
-  }
-
-  function labelLength(bytes memory domain, uint256 i) private pure returns (uint256) {
-    uint256 len;
-    while (i + len != domain.length && domain[i + len] != 0x2e) {
-      len++;
+    function namehash(bytes memory domain) internal pure returns (bytes32) {
+        return namehash(domain, 0);
     }
-    return len;
-  }
 
-  function keccak(
-    bytes memory data,
-    uint256 offset,
-    uint256 len
-  ) private pure returns (bytes32 ret) {
-    require(offset + len <= data.length);
-    assembly {
-      ret := keccak256(add(add(data, 32), offset), len)
+    function namehash(bytes memory domain, uint256 i) internal pure returns (bytes32) {
+        if (domain.length <= i) {
+            return 0x0000000000000000000000000000000000000000000000000000000000000000;
+        }
+
+        uint256 len = labelLength(domain, i);
+
+        return keccak256(abi.encodePacked(namehash(domain, i + len + 1), keccak(domain, i, len)));
     }
-  }
+
+    function labelLength(bytes memory domain, uint256 i) private pure returns (uint256) {
+        uint256 len;
+        while (i + len != domain.length && domain[i + len] != 0x2e) {
+            len++;
+        }
+        return len;
+    }
+
+    function keccak(bytes memory data, uint256 offset, uint256 len) private pure returns (bytes32 ret) {
+        require(offset + len <= data.length);
+        assembly {
+            ret := keccak256(add(add(data, 32), offset), len)
+        }
+    }
 }
 
 interface IENS {
-  function owner(bytes32 node) external view returns (address);
+    function owner(bytes32 node) external view returns (address);
 }
 
 interface ITornadoVault {
-  function withdrawTorn(address recipient, uint256 amount) external;
+    function withdrawTorn(address recipient, uint256 amount) external;
 }
 
 interface ITornadoGovernance {
-  function lockedBalance(address account) external view returns (uint256);
+    function lockedBalance(address account) external view returns (uint256);
 
-  function userVault() external view returns (ITornadoVault);
+    function userVault() external view returns (ITornadoVault);
 }
 
 /**
@@ -1357,120 +1359,127 @@ interface ITornadoGovernance {
  *         and properly attribute rewards to addresses without security issues.
  * @dev CONTRACT RISKS:
  *      - Relayer staked TORN at risk if contract is compromised.
- * */
+ *
+ */
 contract TornadoStakingRewards is Initializable, EnsResolve {
-  using SafeMath for uint256;
-  using SafeERC20 for IERC20;
+    using SafeMath for uint256;
+    using SafeERC20 for IERC20;
 
-  /// @notice 1e25
-  uint256 public immutable ratioConstant;
-  ITornadoGovernance public immutable Governance;
-  IERC20 public immutable torn;
-  address public immutable relayerRegistry;
+    /// @notice 1e25
+    uint256 public immutable ratioConstant;
+    ITornadoGovernance public immutable Governance;
+    IERC20 public immutable torn;
+    address public immutable relayerRegistry;
 
-  /// @notice the sum torn_burned_i/locked_amount_i*coefficient where i is incremented at each burn
-  uint256 public accumulatedRewardPerTorn;
-  /// @notice notes down accumulatedRewardPerTorn for an address on a lock/unlock/claim
-  mapping(address => uint256) public accumulatedRewardRateOnLastUpdate;
-  /// @notice notes down how much an account may claim
-  mapping(address => uint256) public accumulatedRewards;
+    /// @notice the sum torn_burned_i/locked_amount_i*coefficient where i is incremented at each burn
+    uint256 public accumulatedRewardPerTorn;
+    /// @notice notes down accumulatedRewardPerTorn for an address on a lock/unlock/claim
+    mapping(address => uint256) public accumulatedRewardRateOnLastUpdate;
+    /// @notice notes down how much an account may claim
+    mapping(address => uint256) public accumulatedRewards;
 
-  event RewardsUpdated(address indexed account, uint256 rewards);
-  event RewardsClaimed(address indexed account, uint256 rewardsClaimed);
+    event RewardsUpdated(address indexed account, uint256 rewards);
+    event RewardsClaimed(address indexed account, uint256 rewardsClaimed);
 
-  modifier onlyGovernance() {
-    require(msg.sender == address(Governance), "only governance");
-    _;
-  }
+    modifier onlyGovernance() {
+        require(msg.sender == address(Governance), "only governance");
+        _;
+    }
 
-  constructor(
-    address governanceAddress,
-    address tornAddress,
-    bytes32 _relayerRegistry
-  ) public {
-    Governance = ITornadoGovernance(governanceAddress);
-    torn = IERC20(tornAddress);
-    relayerRegistry = resolve(_relayerRegistry);
-    ratioConstant = IERC20(tornAddress).totalSupply();
-  }
+    constructor(address governanceAddress, address tornAddress, bytes32 _relayerRegistry) public {
+        Governance = ITornadoGovernance(governanceAddress);
+        torn = IERC20(tornAddress);
+        relayerRegistry = resolve(_relayerRegistry);
+        ratioConstant = IERC20(tornAddress).totalSupply();
+    }
 
-  /**
-   * @notice This function should safely send a user his rewards.
-   * @dev IMPORTANT FUNCTION:
-   *      We know that rewards are going to be updated every time someone locks or unlocks
-   *      so we know that this function can't be used to falsely increase the amount of
-   *      lockedTorn by locking in governance and subsequently calling it.
-   *      - set rewards to 0 greedily
-   */
-  function getReward() external {
-    uint256 rewards = _updateReward(msg.sender, Governance.lockedBalance(msg.sender));
-    rewards = rewards.add(accumulatedRewards[msg.sender]);
-    accumulatedRewards[msg.sender] = 0;
-    torn.safeTransfer(msg.sender, rewards);
-    emit RewardsClaimed(msg.sender, rewards);
-  }
+    /**
+     * @notice This function should safely send a user his rewards.
+     * @dev IMPORTANT FUNCTION:
+     *      We know that rewards are going to be updated every time someone locks or unlocks
+     *      so we know that this function can't be used to falsely increase the amount of
+     *      lockedTorn by locking in governance and subsequently calling it.
+     *      - set rewards to 0 greedily
+     */
+    function getReward() external {
+        uint256 rewards = _updateReward(msg.sender, Governance.lockedBalance(msg.sender));
+        rewards = rewards.add(accumulatedRewards[msg.sender]);
+        accumulatedRewards[msg.sender] = 0;
+        torn.safeTransfer(msg.sender, rewards);
+        emit RewardsClaimed(msg.sender, rewards);
+    }
 
-  /**
-   * @notice This function should increment the proper amount of rewards per torn for the contract
-   * @dev IMPORTANT FUNCTION:
-   *      - calculation must not overflow with extreme values
-   *        (amount <= 1e25) * 1e25 / (balance of vault <= 1e25) -> (extreme values)
-   * @param amount amount to add to the rewards
-   */
-  function addBurnRewards(uint256 amount) external {
-    require(msg.sender == address(Governance) || msg.sender == relayerRegistry, "unauthorized");
-    accumulatedRewardPerTorn = accumulatedRewardPerTorn.add(
-      amount.mul(ratioConstant).div(torn.balanceOf(address(Governance.userVault())))
-    );
-  }
+    /**
+     * @notice This function should increment the proper amount of rewards per torn for the contract
+     * @dev IMPORTANT FUNCTION:
+     *      - calculation must not overflow with extreme values
+     *        (amount <= 1e25) * 1e25 / (balance of vault <= 1e25) -> (extreme values)
+     * @param amount amount to add to the rewards
+     */
+    function addBurnRewards(uint256 amount) external {
+        require(msg.sender == address(Governance) || msg.sender == relayerRegistry, "unauthorized");
+        accumulatedRewardPerTorn =
+            accumulatedRewardPerTorn.add(amount.mul(ratioConstant).div(torn.balanceOf(address(Governance.userVault()))));
+    }
 
-  /**
-   * @notice This function should allow governance to properly update the accumulated rewards rate for an account
-   * @param account address of account to update data for
-   * @param amountLockedBeforehand the balance locked beforehand in the governance contract
-   * */
-  function updateRewardsOnLockedBalanceChange(address account, uint256 amountLockedBeforehand) external onlyGovernance {
-    uint256 claimed = _updateReward(account, amountLockedBeforehand);
-    accumulatedRewards[account] = accumulatedRewards[account].add(claimed);
-  }
+    /**
+     * @notice This function should allow governance to properly update the accumulated rewards rate for an account
+     * @param account address of account to update data for
+     * @param amountLockedBeforehand the balance locked beforehand in the governance contract
+     *
+     */
+    function updateRewardsOnLockedBalanceChange(address account, uint256 amountLockedBeforehand)
+        external
+        onlyGovernance
+    {
+        uint256 claimed = _updateReward(account, amountLockedBeforehand);
+        accumulatedRewards[account] = accumulatedRewards[account].add(claimed);
+    }
 
-  /**
-   * @notice This function should allow governance rescue tokens from the staking rewards contract
-   * */
-  function withdrawTorn(uint256 amount) external onlyGovernance {
-    if (amount == type(uint256).max) amount = torn.balanceOf(address(this));
-    torn.safeTransfer(address(Governance), amount);
-  }
+    /**
+     * @notice This function should allow governance rescue tokens from the staking rewards contract
+     *
+     */
+    function withdrawTorn(uint256 amount) external onlyGovernance {
+        if (amount == type(uint256).max) {
+            amount = torn.balanceOf(address(this));
+        }
+        torn.safeTransfer(address(Governance), amount);
+    }
 
-  /**
-   * @notice This function should calculated the proper amount of rewards attributed to user since the last update
-   * @dev IMPORTANT FUNCTION:
-   *      - calculation must not overflow with extreme values
-   *        (accumulatedReward <= 1e25) * (lockedBeforehand <= 1e25) / 1e25
-   *      - result may go to 0, since this implies on 1 TORN locked => accumulatedReward <= 1e7, meaning a very small reward
-   * @param account address of account to calculate rewards for
-   * @param amountLockedBeforehand the balance locked beforehand in the governance contract
-   * @return claimed the rewards attributed to user since the last update
-   */
-  function _updateReward(address account, uint256 amountLockedBeforehand) private returns (uint256 claimed) {
-    if (amountLockedBeforehand != 0)
-      claimed = (accumulatedRewardPerTorn.sub(accumulatedRewardRateOnLastUpdate[account])).mul(amountLockedBeforehand).div(
-        ratioConstant
-      );
-    accumulatedRewardRateOnLastUpdate[account] = accumulatedRewardPerTorn;
-    emit RewardsUpdated(account, claimed);
-  }
+    /**
+     * @notice This function should calculated the proper amount of rewards attributed to user since the last update
+     * @dev IMPORTANT FUNCTION:
+     *      - calculation must not overflow with extreme values
+     *        (accumulatedReward <= 1e25) * (lockedBeforehand <= 1e25) / 1e25
+     *      - result may go to 0, since this implies on 1 TORN locked => accumulatedReward <= 1e7, meaning a very small reward
+     * @param account address of account to calculate rewards for
+     * @param amountLockedBeforehand the balance locked beforehand in the governance contract
+     * @return claimed the rewards attributed to user since the last update
+     */
+    function _updateReward(address account, uint256 amountLockedBeforehand) private returns (uint256 claimed) {
+        if (amountLockedBeforehand != 0) {
+            claimed = (accumulatedRewardPerTorn.sub(accumulatedRewardRateOnLastUpdate[account])).mul(
+                amountLockedBeforehand
+            ).div(ratioConstant);
+        }
+        accumulatedRewardRateOnLastUpdate[account] = accumulatedRewardPerTorn;
+        emit RewardsUpdated(account, claimed);
+    }
 
-  /**
-   * @notice This function should show a user his rewards.
-   * @param account address of account to calculate rewards for
-   */
-  function checkReward(address account) external view returns (uint256 rewards) {
-    uint256 amountLocked = Governance.lockedBalance(account);
-    if (amountLocked != 0)
-      rewards = (accumulatedRewardPerTorn.sub(accumulatedRewardRateOnLastUpdate[account])).mul(amountLocked).div(ratioConstant);
-    rewards = rewards.add(accumulatedRewards[account]);
-  }
+    /**
+     * @notice This function should show a user his rewards.
+     * @param account address of account to calculate rewards for
+     */
+    function checkReward(address account) external view returns (uint256 rewards) {
+        uint256 amountLocked = Governance.lockedBalance(account);
+        if (amountLocked != 0) {
+            rewards = (accumulatedRewardPerTorn.sub(accumulatedRewardRateOnLastUpdate[account])).mul(amountLocked).div(
+                ratioConstant
+            );
+        }
+        rewards = rewards.add(accumulatedRewards[account]);
+    }
 }
 
 /// @title Optimized overflow and underflow safe math operations
@@ -1532,11 +1541,7 @@ interface IUniswapV3Factory {
     /// @param tickSpacing The minimum number of ticks between initialized ticks
     /// @param pool The address of the created pool
     event PoolCreated(
-        address indexed token0,
-        address indexed token1,
-        uint24 indexed fee,
-        int24 tickSpacing,
-        address pool
+        address indexed token0, address indexed token1, uint24 indexed fee, int24 tickSpacing, address pool
     );
 
     /// @notice Emitted when a new fee amount is enabled for pool creation via the factory
@@ -1561,11 +1566,7 @@ interface IUniswapV3Factory {
     /// @param tokenB The contract address of the other token
     /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
     /// @return pool The pool address
-    function getPool(
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) external view returns (address pool);
+    function getPool(address tokenA, address tokenB, uint24 fee) external view returns (address pool);
 
     /// @notice Creates a pool for the given two tokens and fee
     /// @param tokenA One of the two tokens in the desired pool
@@ -1575,11 +1576,7 @@ interface IUniswapV3Factory {
     /// from the fee. The call will revert if the pool already exists, the fee is invalid, or the token arguments
     /// are invalid.
     /// @return pool The address of the newly created pool
-    function createPool(
-        address tokenA,
-        address tokenB,
-        uint24 fee
-    ) external returns (address pool);
+    function createPool(address tokenA, address tokenB, uint24 fee) external returns (address pool);
 
     /// @notice Updates the owner of the factory
     /// @dev Must be called by the current owner
@@ -1594,7 +1591,7 @@ interface IUniswapV3Factory {
 }
 
 interface IERC20Decimals {
-  function decimals() external view returns (uint8);
+    function decimals() external view returns (uint8);
 }
 
 /// @title Pool state that never changes
@@ -1775,11 +1772,7 @@ interface IUniswapV3PoolDerivedState {
     function snapshotCumulativesInside(int24 tickLower, int24 tickUpper)
         external
         view
-        returns (
-            int56 tickCumulativeInside,
-            uint160 secondsPerLiquidityInsideX128,
-            uint32 secondsInside
-        );
+        returns (int56 tickCumulativeInside, uint160 secondsPerLiquidityInsideX128, uint32 secondsInside);
 }
 
 /// @title Permissionless pool actions
@@ -1801,13 +1794,9 @@ interface IUniswapV3PoolActions {
     /// @param data Any data that should be passed through to the callback
     /// @return amount0 The amount of token0 that was paid to mint the given amount of liquidity. Matches the value in the callback
     /// @return amount1 The amount of token1 that was paid to mint the given amount of liquidity. Matches the value in the callback
-    function mint(
-        address recipient,
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount,
-        bytes calldata data
-    ) external returns (uint256 amount0, uint256 amount1);
+    function mint(address recipient, int24 tickLower, int24 tickUpper, uint128 amount, bytes calldata data)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Collects tokens owed to a position
     /// @dev Does not recompute fees earned, which must be done either via mint or burn of any amount of liquidity.
@@ -1837,11 +1826,9 @@ interface IUniswapV3PoolActions {
     /// @param amount How much liquidity to burn
     /// @return amount0 The amount of token0 sent to the recipient
     /// @return amount1 The amount of token1 sent to the recipient
-    function burn(
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount
-    ) external returns (uint256 amount0, uint256 amount1);
+    function burn(int24 tickLower, int24 tickUpper, uint128 amount)
+        external
+        returns (uint256 amount0, uint256 amount1);
 
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
@@ -1869,12 +1856,7 @@ interface IUniswapV3PoolActions {
     /// @param amount0 The amount of token0 to send
     /// @param amount1 The amount of token1 to send
     /// @param data Any data to be passed through to the callback
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 
     /// @notice Increase the maximum number of price and liquidity observations that this pool will store
     /// @dev This method is no-op if the pool already has an observationCardinalityNext greater than or equal to
@@ -1897,11 +1879,9 @@ interface IUniswapV3PoolOwnerActions {
     /// @param amount1Requested The maximum amount of token1 to send, can be 0 to collect fees in only token0
     /// @return amount0 The protocol fee collected in token0
     /// @return amount1 The protocol fee collected in token1
-    function collectProtocol(
-        address recipient,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) external returns (uint128 amount0, uint128 amount1);
+    function collectProtocol(address recipient, uint128 amount0Requested, uint128 amount1Requested)
+        external
+        returns (uint128 amount0, uint128 amount1);
 }
 
 /// @title Events emitted by a pool
@@ -2004,8 +1984,7 @@ interface IUniswapV3PoolEvents {
     /// @param observationCardinalityNextOld The previous value of the next observation cardinality
     /// @param observationCardinalityNextNew The updated value of the next observation cardinality
     event IncreaseObservationCardinalityNext(
-        uint16 observationCardinalityNextOld,
-        uint16 observationCardinalityNextNew
+        uint16 observationCardinalityNextOld, uint16 observationCardinalityNextNew
     );
 
     /// @notice Emitted when the protocol fee is changed by the pool
@@ -2034,9 +2013,7 @@ interface IUniswapV3Pool is
     IUniswapV3PoolActions,
     IUniswapV3PoolOwnerActions,
     IUniswapV3PoolEvents
-{
-
-}
+{}
 
 /// @title Math library for computing sqrt prices from ticks and vice versa
 /// @notice Computes sqrt price for ticks of size 1.0001, i.e. sqrt(1.0001^tick) as fixed point Q64.96 numbers. Supports
@@ -2059,30 +2036,70 @@ library TickMath {
     /// at the given tick
     function getSqrtRatioAtTick(int24 tick) internal pure returns (uint160 sqrtPriceX96) {
         uint256 absTick = tick < 0 ? uint256(-int256(tick)) : uint256(int256(tick));
-        require(absTick <= uint256(int(MAX_TICK)), 'T');
+        require(absTick <= uint256(int256(MAX_TICK)), "T");
 
         uint256 ratio = absTick & 0x1 != 0 ? 0xfffcb933bd6fad37aa2d162d1a594001 : 0x100000000000000000000000000000000;
-        if (absTick & 0x2 != 0) ratio = (ratio * 0xfff97272373d413259a46990580e213a) >> 128;
-        if (absTick & 0x4 != 0) ratio = (ratio * 0xfff2e50f5f656932ef12357cf3c7fdcc) >> 128;
-        if (absTick & 0x8 != 0) ratio = (ratio * 0xffe5caca7e10e4e61c3624eaa0941cd0) >> 128;
-        if (absTick & 0x10 != 0) ratio = (ratio * 0xffcb9843d60f6159c9db58835c926644) >> 128;
-        if (absTick & 0x20 != 0) ratio = (ratio * 0xff973b41fa98c081472e6896dfb254c0) >> 128;
-        if (absTick & 0x40 != 0) ratio = (ratio * 0xff2ea16466c96a3843ec78b326b52861) >> 128;
-        if (absTick & 0x80 != 0) ratio = (ratio * 0xfe5dee046a99a2a811c461f1969c3053) >> 128;
-        if (absTick & 0x100 != 0) ratio = (ratio * 0xfcbe86c7900a88aedcffc83b479aa3a4) >> 128;
-        if (absTick & 0x200 != 0) ratio = (ratio * 0xf987a7253ac413176f2b074cf7815e54) >> 128;
-        if (absTick & 0x400 != 0) ratio = (ratio * 0xf3392b0822b70005940c7a398e4b70f3) >> 128;
-        if (absTick & 0x800 != 0) ratio = (ratio * 0xe7159475a2c29b7443b29c7fa6e889d9) >> 128;
-        if (absTick & 0x1000 != 0) ratio = (ratio * 0xd097f3bdfd2022b8845ad8f792aa5825) >> 128;
-        if (absTick & 0x2000 != 0) ratio = (ratio * 0xa9f746462d870fdf8a65dc1f90e061e5) >> 128;
-        if (absTick & 0x4000 != 0) ratio = (ratio * 0x70d869a156d2a1b890bb3df62baf32f7) >> 128;
-        if (absTick & 0x8000 != 0) ratio = (ratio * 0x31be135f97d08fd981231505542fcfa6) >> 128;
-        if (absTick & 0x10000 != 0) ratio = (ratio * 0x9aa508b5b7a84e1c677de54f3e99bc9) >> 128;
-        if (absTick & 0x20000 != 0) ratio = (ratio * 0x5d6af8dedb81196699c329225ee604) >> 128;
-        if (absTick & 0x40000 != 0) ratio = (ratio * 0x2216e584f5fa1ea926041bedfe98) >> 128;
-        if (absTick & 0x80000 != 0) ratio = (ratio * 0x48a170391f7dc42444e8fa2) >> 128;
+        if (absTick & 0x2 != 0) {
+            ratio = (ratio * 0xfff97272373d413259a46990580e213a) >> 128;
+        }
+        if (absTick & 0x4 != 0) {
+            ratio = (ratio * 0xfff2e50f5f656932ef12357cf3c7fdcc) >> 128;
+        }
+        if (absTick & 0x8 != 0) {
+            ratio = (ratio * 0xffe5caca7e10e4e61c3624eaa0941cd0) >> 128;
+        }
+        if (absTick & 0x10 != 0) {
+            ratio = (ratio * 0xffcb9843d60f6159c9db58835c926644) >> 128;
+        }
+        if (absTick & 0x20 != 0) {
+            ratio = (ratio * 0xff973b41fa98c081472e6896dfb254c0) >> 128;
+        }
+        if (absTick & 0x40 != 0) {
+            ratio = (ratio * 0xff2ea16466c96a3843ec78b326b52861) >> 128;
+        }
+        if (absTick & 0x80 != 0) {
+            ratio = (ratio * 0xfe5dee046a99a2a811c461f1969c3053) >> 128;
+        }
+        if (absTick & 0x100 != 0) {
+            ratio = (ratio * 0xfcbe86c7900a88aedcffc83b479aa3a4) >> 128;
+        }
+        if (absTick & 0x200 != 0) {
+            ratio = (ratio * 0xf987a7253ac413176f2b074cf7815e54) >> 128;
+        }
+        if (absTick & 0x400 != 0) {
+            ratio = (ratio * 0xf3392b0822b70005940c7a398e4b70f3) >> 128;
+        }
+        if (absTick & 0x800 != 0) {
+            ratio = (ratio * 0xe7159475a2c29b7443b29c7fa6e889d9) >> 128;
+        }
+        if (absTick & 0x1000 != 0) {
+            ratio = (ratio * 0xd097f3bdfd2022b8845ad8f792aa5825) >> 128;
+        }
+        if (absTick & 0x2000 != 0) {
+            ratio = (ratio * 0xa9f746462d870fdf8a65dc1f90e061e5) >> 128;
+        }
+        if (absTick & 0x4000 != 0) {
+            ratio = (ratio * 0x70d869a156d2a1b890bb3df62baf32f7) >> 128;
+        }
+        if (absTick & 0x8000 != 0) {
+            ratio = (ratio * 0x31be135f97d08fd981231505542fcfa6) >> 128;
+        }
+        if (absTick & 0x10000 != 0) {
+            ratio = (ratio * 0x9aa508b5b7a84e1c677de54f3e99bc9) >> 128;
+        }
+        if (absTick & 0x20000 != 0) {
+            ratio = (ratio * 0x5d6af8dedb81196699c329225ee604) >> 128;
+        }
+        if (absTick & 0x40000 != 0) {
+            ratio = (ratio * 0x2216e584f5fa1ea926041bedfe98) >> 128;
+        }
+        if (absTick & 0x80000 != 0) {
+            ratio = (ratio * 0x48a170391f7dc42444e8fa2) >> 128;
+        }
 
-        if (tick > 0) ratio = type(uint256).max / ratio;
+        if (tick > 0) {
+            ratio = type(uint256).max / ratio;
+        }
 
         // this divides by 1<<32 rounding up to go from a Q128.128 to a Q128.96.
         // we then downcast because we know the result always fits within 160 bits due to our tick input constraint
@@ -2097,7 +2114,7 @@ library TickMath {
     /// @return tick The greatest tick for which the ratio is less than or equal to the input ratio
     function getTickAtSqrtRatio(uint160 sqrtPriceX96) internal pure returns (int24 tick) {
         // second inequality must be < because the price can never reach the price at the max tick
-        require(sqrtPriceX96 >= MIN_SQRT_RATIO && sqrtPriceX96 < MAX_SQRT_RATIO, 'R');
+        require(sqrtPriceX96 >= MIN_SQRT_RATIO && sqrtPriceX96 < MAX_SQRT_RATIO, "R");
         uint256 ratio = uint256(sqrtPriceX96) << 32;
 
         uint256 r = ratio;
@@ -2143,8 +2160,11 @@ library TickMath {
             msb := or(msb, f)
         }
 
-        if (msb >= 128) r = ratio >> (msb - 127);
-        else r = ratio << (127 - msb);
+        if (msb >= 128) {
+            r = ratio >> (msb - 127);
+        } else {
+            r = ratio << (127 - msb);
+        }
 
         int256 log_2 = (int256(msb) - 128) << 64;
 
@@ -2251,11 +2271,7 @@ library FullMath {
     /// @param denominator The divisor
     /// @return result The 256-bit result
     /// @dev Credit to Remco Bloemen under MIT license https://xn--2-umb.com/21/muldiv
-    function mulDiv(
-        uint256 a,
-        uint256 b,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDiv(uint256 a, uint256 b, uint256 denominator) internal pure returns (uint256 result) {
         // 512-bit multiply [prod1 prod0] = a * b
         // Compute the product mod 2**256 and mod 2**256 - 1
         // then use the Chinese Remainder Theorem to reconstruct
@@ -2350,11 +2366,7 @@ library FullMath {
     /// @param b The multiplier
     /// @param denominator The divisor
     /// @return result The 256-bit result
-    function mulDivRoundingUp(
-        uint256 a,
-        uint256 b,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDivRoundingUp(uint256 a, uint256 b, uint256 denominator) internal pure returns (uint256 result) {
         result = mulDiv(a, b, denominator);
         if (mulmod(a, b, denominator) > 0) {
             require(result < type(uint256).max);
@@ -2371,19 +2383,21 @@ library OracleLibrary {
     /// @param period Number of seconds in the past to start calculating time-weighted average
     /// @return timeWeightedAverageTick The time-weighted average tick from (block.timestamp - period) to block.timestamp
     function consult(address pool, uint32 period) internal view returns (int24 timeWeightedAverageTick) {
-        require(period != 0, 'BP');
+        require(period != 0, "BP");
 
         uint32[] memory secondAgos = new uint32[](2);
         secondAgos[0] = period;
         secondAgos[1] = 0;
 
-        (int56[] memory tickCumulatives, ) = IUniswapV3Pool(pool).observe(secondAgos);
+        (int56[] memory tickCumulatives,) = IUniswapV3Pool(pool).observe(secondAgos);
         int56 tickCumulativesDelta = tickCumulatives[1] - tickCumulatives[0];
 
-        timeWeightedAverageTick = int24(tickCumulativesDelta / int(uint256(period)));
+        timeWeightedAverageTick = int24(tickCumulativesDelta / int256(uint256(period)));
 
         // Always round to negative infinity
-        if (tickCumulativesDelta < 0 && (tickCumulativesDelta % int(uint256(period)) != 0)) timeWeightedAverageTick--;
+        if (tickCumulativesDelta < 0 && (tickCumulativesDelta % int256(uint256(period)) != 0)) {
+            timeWeightedAverageTick--;
+        }
     }
 
     /// @notice Given a tick and a token amount, calculates the amount of token received in exchange
@@ -2392,12 +2406,11 @@ library OracleLibrary {
     /// @param baseToken Address of an ERC20 token contract used as the baseAmount denomination
     /// @param quoteToken Address of an ERC20 token contract used as the quoteAmount denomination
     /// @return quoteAmount Amount of quoteToken received for baseAmount of baseToken
-    function getQuoteAtTick(
-        int24 tick,
-        uint128 baseAmount,
-        address baseToken,
-        address quoteToken
-    ) internal pure returns (uint256 quoteAmount) {
+    function getQuoteAtTick(int24 tick, uint128 baseAmount, address baseToken, address quoteToken)
+        internal
+        pure
+        returns (uint256 quoteAmount)
+    {
         uint160 sqrtRatioX96 = TickMath.getSqrtRatioAtTick(tick);
 
         // Calculate quoteAmount with better precision if it doesn't overflow when multiplied by itself
@@ -2416,246 +2429,236 @@ library OracleLibrary {
 }
 
 library UniswapV3OracleHelper {
-  using LowGasSafeMath for uint256;
+    using LowGasSafeMath for uint256;
 
-  IUniswapV3Factory internal constant UniswapV3Factory = IUniswapV3Factory(0x1F98431c8aD98523631AE4a59f267346ea31F984);
-  address internal constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
-  uint256 internal constant RATIO_DIVIDER = 1e18;
+    IUniswapV3Factory internal constant UniswapV3Factory = IUniswapV3Factory(0x1F98431c8aD98523631AE4a59f267346ea31F984);
+    address internal constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+    uint256 internal constant RATIO_DIVIDER = 1e18;
 
-  /**
-   * @notice This function should return the price of baseToken in quoteToken, as in: quote/base (WETH/TORN)
-   * @dev uses the Uniswap written OracleLibrary "getQuoteAtTick", does not call external libraries,
-   *      uses decimals() for the correct power of 10
-   * @param baseToken token which will be denominated in quote token
-   * @param quoteToken token in which price will be denominated
-   * @param fee the uniswap pool fee, pools have different fees so this is a pool selector for our usecase
-   * @param period the amount of seconds we are going to look into the past for the new token price
-   * @return returns the price of baseToken in quoteToken
-   * */
-  function getPriceOfTokenInToken(
-    address baseToken,
-    address quoteToken,
-    uint24 fee,
-    uint32 period
-  ) internal view returns (uint256) {
-    uint128 base = uint128(10)**uint128(IERC20Decimals(quoteToken).decimals());
-    if (baseToken == quoteToken) return base;
-    else
-      return
-        OracleLibrary.getQuoteAtTick(
-          OracleLibrary.consult(UniswapV3Factory.getPool(baseToken, quoteToken, fee), period),
-          base,
-          baseToken,
-          quoteToken
-        );
-  }
+    /**
+     * @notice This function should return the price of baseToken in quoteToken, as in: quote/base (WETH/TORN)
+     * @dev uses the Uniswap written OracleLibrary "getQuoteAtTick", does not call external libraries,
+     *      uses decimals() for the correct power of 10
+     * @param baseToken token which will be denominated in quote token
+     * @param quoteToken token in which price will be denominated
+     * @param fee the uniswap pool fee, pools have different fees so this is a pool selector for our usecase
+     * @param period the amount of seconds we are going to look into the past for the new token price
+     * @return returns the price of baseToken in quoteToken
+     *
+     */
+    function getPriceOfTokenInToken(address baseToken, address quoteToken, uint24 fee, uint32 period)
+        internal
+        view
+        returns (uint256)
+    {
+        uint128 base = uint128(10) ** uint128(IERC20Decimals(quoteToken).decimals());
+        if (baseToken == quoteToken) {
+            return base;
+        } else {
+            return OracleLibrary.getQuoteAtTick(
+                OracleLibrary.consult(UniswapV3Factory.getPool(baseToken, quoteToken, fee), period),
+                base,
+                baseToken,
+                quoteToken
+            );
+        }
+    }
 
-  /**
-   * @notice This function should return the price of token in WETH
-   * @dev simply feeds WETH in to the above function
-   * @param token token which will be denominated in WETH
-   * @param fee the uniswap pool fee, pools have different fees so this is a pool selector for our usecase
-   * @param period the amount of seconds we are going to look into the past for the new token price
-   * @return returns the price of token in WETH
-   * */
-  function getPriceOfTokenInWETH(
-    address token,
-    uint24 fee,
-    uint32 period
-  ) internal view returns (uint256) {
-    return getPriceOfTokenInToken(token, WETH, fee, period);
-  }
+    /**
+     * @notice This function should return the price of token in WETH
+     * @dev simply feeds WETH in to the above function
+     * @param token token which will be denominated in WETH
+     * @param fee the uniswap pool fee, pools have different fees so this is a pool selector for our usecase
+     * @param period the amount of seconds we are going to look into the past for the new token price
+     * @return returns the price of token in WETH
+     *
+     */
+    function getPriceOfTokenInWETH(address token, uint24 fee, uint32 period) internal view returns (uint256) {
+        return getPriceOfTokenInToken(token, WETH, fee, period);
+    }
 
-  /**
-   * @notice This function should return the price of WETH in token
-   * @dev simply feeds WETH into getPriceOfTokenInToken
-   * @param token token which WETH will be denominated in
-   * @param fee the uniswap pool fee, pools have different fees so this is a pool selector for our usecase
-   * @param period the amount of seconds we are going to look into the past for the new token price
-   * @return returns the price of token in WETH
-   * */
-  function getPriceOfWETHInToken(
-    address token,
-    uint24 fee,
-    uint32 period
-  ) internal view returns (uint256) {
-    return getPriceOfTokenInToken(WETH, token, fee, period);
-  }
+    /**
+     * @notice This function should return the price of WETH in token
+     * @dev simply feeds WETH into getPriceOfTokenInToken
+     * @param token token which WETH will be denominated in
+     * @param fee the uniswap pool fee, pools have different fees so this is a pool selector for our usecase
+     * @param period the amount of seconds we are going to look into the past for the new token price
+     * @return returns the price of token in WETH
+     *
+     */
+    function getPriceOfWETHInToken(address token, uint24 fee, uint32 period) internal view returns (uint256) {
+        return getPriceOfTokenInToken(WETH, token, fee, period);
+    }
 
-  /**
-   * @notice This function returns the price of token[0] in token[1], but more precisely and importantly the price ratio of the tokens in WETH
-   * @dev this is done as to always have good prices due to WETH-token pools mostly always having the most liquidity
-   * @param tokens array of tokens to get ratio for
-   * @param fees the uniswap pool FEES, since these are two independent tokens
-   * @param period the amount of seconds we are going to look into the past for the new token price
-   * @return returns the price of token[0] in token[1]
-   * */
-  function getPriceRatioOfTokens(
-    address[2] memory tokens,
-    uint24[2] memory fees,
-    uint32 period
-  ) internal view returns (uint256) {
-    return
-      getPriceOfTokenInWETH(tokens[0], fees[0], period).mul(RATIO_DIVIDER) / getPriceOfTokenInWETH(tokens[1], fees[1], period);
-  }
+    /**
+     * @notice This function returns the price of token[0] in token[1], but more precisely and importantly the price ratio of the tokens in WETH
+     * @dev this is done as to always have good prices due to WETH-token pools mostly always having the most liquidity
+     * @param tokens array of tokens to get ratio for
+     * @param fees the uniswap pool FEES, since these are two independent tokens
+     * @param period the amount of seconds we are going to look into the past for the new token price
+     * @return returns the price of token[0] in token[1]
+     *
+     */
+    function getPriceRatioOfTokens(address[2] memory tokens, uint24[2] memory fees, uint32 period)
+        internal
+        view
+        returns (uint256)
+    {
+        return getPriceOfTokenInWETH(tokens[0], fees[0], period).mul(RATIO_DIVIDER)
+            / getPriceOfTokenInWETH(tokens[1], fees[1], period);
+    }
 }
 
 /// @dev contract which calculates the fee for each pool
 contract FeeManager is EnsResolve {
-  using SafeMath for uint256;
+    using SafeMath for uint256;
 
-  uint256 public constant PROTOCOL_FEE_DIVIDER = 10000;
-  address public immutable torn;
-  address public immutable governance;
-  InstanceRegistry public immutable registry;
+    uint256 public constant PROTOCOL_FEE_DIVIDER = 10000;
+    address public immutable torn;
+    address public immutable governance;
+    InstanceRegistry public immutable registry;
 
-  uint24 public uniswapTornPoolSwappingFee;
-  uint32 public uniswapTimePeriod;
+    uint24 public uniswapTornPoolSwappingFee;
+    uint32 public uniswapTimePeriod;
 
-  uint24 public updateFeeTimeLimit;
+    uint24 public updateFeeTimeLimit;
 
-  mapping(ITornadoInstance => uint160) public instanceFee;
-  mapping(ITornadoInstance => uint256) public instanceFeeUpdated;
+    mapping(ITornadoInstance => uint160) public instanceFee;
+    mapping(ITornadoInstance => uint256) public instanceFeeUpdated;
 
-  event FeeUpdated(address indexed instance, uint256 newFee);
-  event UniswapTornPoolSwappingFeeChanged(uint24 newFee);
+    event FeeUpdated(address indexed instance, uint256 newFee);
+    event UniswapTornPoolSwappingFeeChanged(uint24 newFee);
 
-  modifier onlyGovernance() {
-    require(msg.sender == governance);
-    _;
-  }
-
-  struct Deviation {
-    address instance;
-    int256 deviation; // in 10**-1 percents, so it can be like -2.3% if the price of TORN declined
-  }
-
-  constructor(
-    address _torn,
-    address _governance,
-    bytes32 _registry
-  ) public {
-    torn = _torn;
-    governance = _governance;
-    registry = InstanceRegistry(resolve(_registry));
-  }
-
-  /**
-   * @notice This function should update the fees of each pool
-   */
-  function updateAllFees() external {
-    updateFees(registry.getAllInstanceAddresses());
-  }
-
-  /**
-   * @notice This function should update the fees for tornado instances
-   *         (here called pools)
-   * @param _instances pool addresses to update fees for
-   * */
-  function updateFees(ITornadoInstance[] memory _instances) public {
-    for (uint256 i = 0; i < _instances.length; i++) {
-      updateFee(_instances[i]);
-    }
-  }
-
-  /**
-   * @notice This function should update the fee of a specific pool
-   * @param _instance address of the pool to update fees for
-   */
-  function updateFee(ITornadoInstance _instance) public {
-    uint160 newFee = calculatePoolFee(_instance);
-    instanceFee[_instance] = newFee;
-    instanceFeeUpdated[_instance] = now;
-    emit FeeUpdated(address(_instance), newFee);
-  }
-
-  /**
-   * @notice This function should return the fee of a specific pool and update it if the time has come
-   * @param _instance address of the pool to get fees for
-   */
-  function instanceFeeWithUpdate(ITornadoInstance _instance) public returns (uint160) {
-    if (now - instanceFeeUpdated[_instance] > updateFeeTimeLimit) {
-      updateFee(_instance);
-    }
-    return instanceFee[_instance];
-  }
-
-  /**
-   * @notice function to update a single fee entry
-   * @param _instance instance for which to update data
-   * @return newFee the new fee pool
-   */
-  function calculatePoolFee(ITornadoInstance _instance) public view returns (uint160) {
-    (bool isERC20, IERC20 token, , uint24 uniswapPoolSwappingFee, uint32 protocolFeePercentage) = registry.instances(_instance);
-    if (protocolFeePercentage == 0) {
-      return 0;
+    modifier onlyGovernance() {
+        require(msg.sender == governance);
+        _;
     }
 
-    token = token == IERC20(0) && !isERC20 ? IERC20(UniswapV3OracleHelper.WETH) : token; // for eth instances
-    uint256 tokenPriceRatio = UniswapV3OracleHelper.getPriceRatioOfTokens(
-      [torn, address(token)],
-      [uniswapTornPoolSwappingFee, uniswapPoolSwappingFee],
-      uniswapTimePeriod
-    );
-    // prettier-ignore
-    return
-      uint160(
-        _instance
-        .denomination()
-        .mul(UniswapV3OracleHelper.RATIO_DIVIDER)
-        .div(tokenPriceRatio)
-        .mul(uint256(protocolFeePercentage))
-        .div(PROTOCOL_FEE_DIVIDER)
-      );
-  }
-
-  /**
-   * @notice function to update the uniswap fee
-   * @param _uniswapTornPoolSwappingFee new uniswap fee
-   */
-  function setUniswapTornPoolSwappingFee(uint24 _uniswapTornPoolSwappingFee) public onlyGovernance {
-    uniswapTornPoolSwappingFee = _uniswapTornPoolSwappingFee;
-    emit UniswapTornPoolSwappingFeeChanged(uniswapTornPoolSwappingFee);
-  }
-
-  /**
-   * @notice This function should allow governance to set a new period for twap measurement
-   * @param newPeriod the new period to use
-   * */
-  function setPeriodForTWAPOracle(uint32 newPeriod) external onlyGovernance {
-    uniswapTimePeriod = newPeriod;
-  }
-
-  /**
-   * @notice This function should allow governance to set a new update fee time limit for instance fee updating
-   * @param newLimit the new time limit to use
-   * */
-  function setUpdateFeeTimeLimit(uint24 newLimit) external onlyGovernance {
-    updateFeeTimeLimit = newLimit;
-  }
-
-  /**
-   * @notice returns fees deviations for each instance, so it can be easily seen what instance requires an update
-   */
-  function feeDeviations() public view returns (Deviation[] memory results) {
-    ITornadoInstance[] memory instances = registry.getAllInstanceAddresses();
-    results = new Deviation[](instances.length);
-
-    for (uint256 i = 0; i < instances.length; i++) {
-      uint256 marketFee = calculatePoolFee(instances[i]);
-      int256 deviation;
-      if (marketFee != 0) {
-        deviation = int256((instanceFee[instances[i]] * 1000) / marketFee) - 1000;
-      }
-
-      results[i] = Deviation({ instance: address(instances[i]), deviation: deviation });
+    struct Deviation {
+        address instance;
+        int256 deviation; // in 10**-1 percents, so it can be like -2.3% if the price of TORN declined
     }
-  }
+
+    constructor(address _torn, address _governance, bytes32 _registry) public {
+        torn = _torn;
+        governance = _governance;
+        registry = InstanceRegistry(resolve(_registry));
+    }
+
+    /**
+     * @notice This function should update the fees of each pool
+     */
+    function updateAllFees() external {
+        updateFees(registry.getAllInstanceAddresses());
+    }
+
+    /**
+     * @notice This function should update the fees for tornado instances
+     *         (here called pools)
+     * @param _instances pool addresses to update fees for
+     *
+     */
+    function updateFees(ITornadoInstance[] memory _instances) public {
+        for (uint256 i = 0; i < _instances.length; i++) {
+            updateFee(_instances[i]);
+        }
+    }
+
+    /**
+     * @notice This function should update the fee of a specific pool
+     * @param _instance address of the pool to update fees for
+     */
+    function updateFee(ITornadoInstance _instance) public {
+        uint160 newFee = calculatePoolFee(_instance);
+        instanceFee[_instance] = newFee;
+        instanceFeeUpdated[_instance] = now;
+        emit FeeUpdated(address(_instance), newFee);
+    }
+
+    /**
+     * @notice This function should return the fee of a specific pool and update it if the time has come
+     * @param _instance address of the pool to get fees for
+     */
+    function instanceFeeWithUpdate(ITornadoInstance _instance) public returns (uint160) {
+        if (now - instanceFeeUpdated[_instance] > updateFeeTimeLimit) {
+            updateFee(_instance);
+        }
+        return instanceFee[_instance];
+    }
+
+    /**
+     * @notice function to update a single fee entry
+     * @param _instance instance for which to update data
+     * @return newFee the new fee pool
+     */
+    function calculatePoolFee(ITornadoInstance _instance) public view returns (uint160) {
+        (bool isERC20, IERC20 token,, uint24 uniswapPoolSwappingFee, uint32 protocolFeePercentage) =
+            registry.instances(_instance);
+        if (protocolFeePercentage == 0) {
+            return 0;
+        }
+
+        token = token == IERC20(0) && !isERC20 ? IERC20(UniswapV3OracleHelper.WETH) : token; // for eth instances
+        uint256 tokenPriceRatio = UniswapV3OracleHelper.getPriceRatioOfTokens(
+            [torn, address(token)], [uniswapTornPoolSwappingFee, uniswapPoolSwappingFee], uniswapTimePeriod
+        );
+        // prettier-ignore
+        return uint160(
+            _instance.denomination().mul(UniswapV3OracleHelper.RATIO_DIVIDER).div(tokenPriceRatio).mul(
+                uint256(protocolFeePercentage)
+            ).div(PROTOCOL_FEE_DIVIDER)
+        );
+    }
+
+    /**
+     * @notice function to update the uniswap fee
+     * @param _uniswapTornPoolSwappingFee new uniswap fee
+     */
+    function setUniswapTornPoolSwappingFee(uint24 _uniswapTornPoolSwappingFee) public onlyGovernance {
+        uniswapTornPoolSwappingFee = _uniswapTornPoolSwappingFee;
+        emit UniswapTornPoolSwappingFeeChanged(uniswapTornPoolSwappingFee);
+    }
+
+    /**
+     * @notice This function should allow governance to set a new period for twap measurement
+     * @param newPeriod the new period to use
+     *
+     */
+    function setPeriodForTWAPOracle(uint32 newPeriod) external onlyGovernance {
+        uniswapTimePeriod = newPeriod;
+    }
+
+    /**
+     * @notice This function should allow governance to set a new update fee time limit for instance fee updating
+     * @param newLimit the new time limit to use
+     *
+     */
+    function setUpdateFeeTimeLimit(uint24 newLimit) external onlyGovernance {
+        updateFeeTimeLimit = newLimit;
+    }
+
+    /**
+     * @notice returns fees deviations for each instance, so it can be easily seen what instance requires an update
+     */
+    function feeDeviations() public view returns (Deviation[] memory results) {
+        ITornadoInstance[] memory instances = registry.getAllInstanceAddresses();
+        results = new Deviation[](instances.length);
+
+        for (uint256 i = 0; i < instances.length; i++) {
+            uint256 marketFee = calculatePoolFee(instances[i]);
+            int256 deviation;
+            if (marketFee != 0) {
+                deviation = int256((instanceFee[instances[i]] * 1000) / marketFee) - 1000;
+            }
+
+            results[i] = Deviation({instance: address(instances[i]), deviation: deviation});
+        }
+    }
 }
 
 struct RelayerState {
-  uint256 balance;
-  bytes32 ensHash;
+    uint256 balance;
+    bytes32 ensHash;
 }
 
 /**
@@ -2670,537 +2673,524 @@ struct RelayerState {
  *      - if setter functions are compromised, relayer metadata would be at risk, including the noted amount of his balance
  *      - if burn function is compromised, relayers run the risk of being unable to handle withdrawals
  *      - the above risk also applies to the nullify balance function
- * */
+ *
+ */
 contract RelayerRegistry is Initializable, EnsResolve {
-  using SafeMath for uint256;
-  using SafeERC20 for TORN;
-  using ENSNamehash for bytes;
+    using SafeMath for uint256;
+    using SafeERC20 for TORN;
+    using ENSNamehash for bytes;
 
-  TORN public immutable torn;
-  address public immutable governance;
-  IENS public immutable ens;
-  TornadoStakingRewards public immutable staking;
-  FeeManager public immutable feeManager;
+    TORN public immutable torn;
+    address public immutable governance;
+    IENS public immutable ens;
+    TornadoStakingRewards public immutable staking;
+    FeeManager public immutable feeManager;
 
-  address public tornadoRouter;
-  uint256 public minStakeAmount;
+    address public tornadoRouter;
+    uint256 public minStakeAmount;
 
-  mapping(address => RelayerState) public relayers;
-  mapping(address => address) public workers;
+    mapping(address => RelayerState) public relayers;
+    mapping(address => address) public workers;
 
-  event RelayerBalanceNullified(address relayer);
-  event WorkerRegistered(address relayer, address worker);
-  event WorkerUnregistered(address relayer, address worker);
-  event StakeAddedToRelayer(address relayer, uint256 amountStakeAdded);
-  event StakeBurned(address relayer, uint256 amountBurned);
-  event MinimumStakeAmount(uint256 minStakeAmount);
-  event RouterRegistered(address tornadoRouter);
-  event RelayerRegistered(bytes32 relayer, string ensName, address relayerAddress, uint256 stakedAmount);
+    event RelayerBalanceNullified(address relayer);
+    event WorkerRegistered(address relayer, address worker);
+    event WorkerUnregistered(address relayer, address worker);
+    event StakeAddedToRelayer(address relayer, uint256 amountStakeAdded);
+    event StakeBurned(address relayer, uint256 amountBurned);
+    event MinimumStakeAmount(uint256 minStakeAmount);
+    event RouterRegistered(address tornadoRouter);
+    event RelayerRegistered(bytes32 relayer, string ensName, address relayerAddress, uint256 stakedAmount);
 
-  modifier onlyGovernance() {
-    require(msg.sender == governance, "only governance");
-    _;
-  }
-
-  modifier onlyTornadoRouter() {
-    require(msg.sender == tornadoRouter, "only proxy");
-    _;
-  }
-
-  modifier onlyRelayer(address sender, address relayer) {
-    require(workers[sender] == relayer, "only relayer");
-    _;
-  }
-
-  constructor(
-    address _torn,
-    address _governance,
-    address _ens,
-    bytes32 _staking,
-    bytes32 _feeManager
-  ) public {
-    torn = TORN(_torn);
-    governance = _governance;
-    ens = IENS(_ens);
-    staking = TornadoStakingRewards(resolve(_staking));
-    feeManager = FeeManager(resolve(_feeManager));
-  }
-
-  /**
-   * @notice initialize function for upgradeability
-   * @dev this contract will be deployed behind a proxy and should not assign values at logic address,
-   *      params left out because self explainable
-   * */
-  function initialize(bytes32 _tornadoRouter) external initializer {
-    tornadoRouter = resolve(_tornadoRouter);
-  }
-
-  /**
-   * @notice This function should register a master address and optionally a set of workeres for a relayer + metadata
-   * @dev Relayer can't steal other relayers workers since they are registered, and a wallet (msg.sender check) can always unregister itself
-   * @param ensName ens name of the relayer
-   * @param stake the initial amount of stake in TORN the relayer is depositing
-   * */
-  function register(
-    string calldata ensName,
-    uint256 stake,
-    address[] calldata workersToRegister
-  ) external {
-    _register(msg.sender, ensName, stake, workersToRegister);
-  }
-
-  /**
-   * @dev Register function equivalent with permit-approval instead of regular approve.
-   * */
-  function registerPermit(
-    string calldata ensName,
-    uint256 stake,
-    address[] calldata workersToRegister,
-    address relayer,
-    uint256 deadline,
-    uint8 v,
-    bytes32 r,
-    bytes32 s
-  ) external {
-    torn.permit(relayer, address(this), stake, deadline, v, r, s);
-    _register(relayer, ensName, stake, workersToRegister);
-  }
-
-  function _register(
-    address relayer,
-    string calldata ensName,
-    uint256 stake,
-    address[] calldata workersToRegister
-  ) internal {
-    bytes32 ensHash = bytes(ensName).namehash();
-    require(relayer == ens.owner(ensHash), "only ens owner");
-    require(workers[relayer] == address(0), "cant register again");
-    RelayerState storage metadata = relayers[relayer];
-
-    require(metadata.ensHash == bytes32(0), "registered already");
-    require(stake >= minStakeAmount, "!min_stake");
-
-    torn.safeTransferFrom(relayer, address(staking), stake);
-    emit StakeAddedToRelayer(relayer, stake);
-
-    metadata.balance = stake;
-    metadata.ensHash = ensHash;
-    workers[relayer] = relayer;
-
-    for (uint256 i = 0; i < workersToRegister.length; i++) {
-      address worker = workersToRegister[i];
-      _registerWorker(relayer, worker);
+    modifier onlyGovernance() {
+        require(msg.sender == governance, "only governance");
+        _;
     }
 
-    emit RelayerRegistered(ensHash, ensName, relayer, stake);
-  }
-
-  /**
-   * @notice This function should allow relayers to register more workeres
-   * @param relayer Relayer which should send message from any worker which is already registered
-   * @param worker Address to register
-   * */
-  function registerWorker(address relayer, address worker) external onlyRelayer(msg.sender, relayer) {
-    _registerWorker(relayer, worker);
-  }
-
-  function _registerWorker(address relayer, address worker) internal {
-    require(workers[worker] == address(0), "can't steal an address");
-    workers[worker] = relayer;
-    emit WorkerRegistered(relayer, worker);
-  }
-
-  /**
-   * @notice This function should allow anybody to unregister an address they own
-   * @dev designed this way as to allow someone to unregister themselves in case a relayer misbehaves
-   *      - this should be followed by an action like burning relayer stake
-   *      - there was an option of allowing the sender to burn relayer stake in case of malicious behaviour, this feature was not included in the end
-   *      - reverts if trying to unregister master, otherwise contract would break. in general, there should be no reason to unregister master at all
-   * */
-  function unregisterWorker(address worker) external {
-    if (worker != msg.sender) require(workers[worker] == msg.sender, "only owner of worker");
-    require(workers[worker] != worker, "cant unregister master");
-    emit WorkerUnregistered(workers[worker], worker);
-    workers[worker] = address(0);
-  }
-
-  /**
-   * @notice This function should allow anybody to stake to a relayer more TORN
-   * @param relayer Relayer main address to stake to
-   * @param stake Stake to be added to relayer
-   * */
-  function stakeToRelayer(address relayer, uint256 stake) external {
-    _stakeToRelayer(msg.sender, relayer, stake);
-  }
-
-  /**
-   * @dev stakeToRelayer function equivalent with permit-approval instead of regular approve.
-   * @param staker address from that stake is paid
-   * */
-  function stakeToRelayerPermit(
-    address relayer,
-    uint256 stake,
-    address staker,
-    uint256 deadline,
-    uint8 v,
-    bytes32 r,
-    bytes32 s
-  ) external {
-    torn.permit(staker, address(this), stake, deadline, v, r, s);
-    _stakeToRelayer(staker, relayer, stake);
-  }
-
-  function _stakeToRelayer(
-    address staker,
-    address relayer,
-    uint256 stake
-  ) internal {
-    require(workers[relayer] == relayer, "!registered");
-    torn.safeTransferFrom(staker, address(staking), stake);
-    relayers[relayer].balance = stake.add(relayers[relayer].balance);
-    emit StakeAddedToRelayer(relayer, stake);
-  }
-
-  /**
-   * @notice This function should burn some relayer stake on withdraw and notify staking of this
-   * @dev IMPORTANT FUNCTION:
-   *      - This should be only called by the tornado proxy
-   *      - Should revert if relayer does not call proxy from valid worker
-   *      - Should not overflow
-   *      - Should underflow and revert (SafeMath) on not enough stake (balance)
-   * @param sender worker to check sender == relayer
-   * @param relayer address of relayer who's stake is being burned
-   * @param pool instance to get fee for
-   * */
-  function burn(
-    address sender,
-    address relayer,
-    ITornadoInstance pool
-  ) external onlyTornadoRouter {
-    address masterAddress = workers[sender];
-    if (masterAddress == address(0)) {
-      require(workers[relayer] == address(0), "Only custom relayer");
-      return;
+    modifier onlyTornadoRouter() {
+        require(msg.sender == tornadoRouter, "only proxy");
+        _;
     }
 
-    require(masterAddress == relayer, "only relayer");
-    uint256 toBurn = feeManager.instanceFeeWithUpdate(pool);
-    relayers[relayer].balance = relayers[relayer].balance.sub(toBurn);
-    staking.addBurnRewards(toBurn);
-    emit StakeBurned(relayer, toBurn);
-  }
+    modifier onlyRelayer(address sender, address relayer) {
+        require(workers[sender] == relayer, "only relayer");
+        _;
+    }
 
-  /**
-   * @notice This function should allow governance to set the minimum stake amount
-   * @param minAmount new minimum stake amount
-   * */
-  function setMinStakeAmount(uint256 minAmount) external onlyGovernance {
-    minStakeAmount = minAmount;
-    emit MinimumStakeAmount(minAmount);
-  }
+    constructor(address _torn, address _governance, address _ens, bytes32 _staking, bytes32 _feeManager) public {
+        torn = TORN(_torn);
+        governance = _governance;
+        ens = IENS(_ens);
+        staking = TornadoStakingRewards(resolve(_staking));
+        feeManager = FeeManager(resolve(_feeManager));
+    }
 
-  /**
-   * @notice This function should allow governance to set a new tornado proxy address
-   * @param tornadoRouterAddress address of the new proxy
-   * */
-  function setTornadoRouter(address tornadoRouterAddress) external onlyGovernance {
-    tornadoRouter = tornadoRouterAddress;
-    emit RouterRegistered(tornadoRouterAddress);
-  }
+    /**
+     * @notice initialize function for upgradeability
+     * @dev this contract will be deployed behind a proxy and should not assign values at logic address,
+     *      params left out because self explainable
+     *
+     */
+    function initialize(bytes32 _tornadoRouter) external initializer {
+        tornadoRouter = resolve(_tornadoRouter);
+    }
 
-  /**
-   * @notice This function should allow governance to nullify a relayers balance
-   * @dev IMPORTANT FUNCTION:
-   *      - Should nullify the balance
-   *      - Adding nullified balance as rewards was refactored to allow for the flexibility of these funds (for gov to operate with them)
-   * @param relayer address of relayer who's balance is to nullify
-   * */
-  function nullifyBalance(address relayer) external onlyGovernance {
-    address masterAddress = workers[relayer];
-    require(relayer == masterAddress, "must be master");
-    relayers[masterAddress].balance = 0;
-    emit RelayerBalanceNullified(relayer);
-  }
+    /**
+     * @notice This function should register a master address and optionally a set of workeres for a relayer + metadata
+     * @dev Relayer can't steal other relayers workers since they are registered, and a wallet (msg.sender check) can always unregister itself
+     * @param ensName ens name of the relayer
+     * @param stake the initial amount of stake in TORN the relayer is depositing
+     *
+     */
+    function register(string calldata ensName, uint256 stake, address[] calldata workersToRegister) external {
+        _register(msg.sender, ensName, stake, workersToRegister);
+    }
 
-  /**
-   * @notice This function should check if a worker is associated with a relayer
-   * @param toResolve address to check
-   * @return true if is associated
-   * */
-  function isRelayer(address toResolve) external view returns (bool) {
-    return workers[toResolve] != address(0);
-  }
+    /**
+     * @dev Register function equivalent with permit-approval instead of regular approve.
+     *
+     */
+    function registerPermit(
+        string calldata ensName,
+        uint256 stake,
+        address[] calldata workersToRegister,
+        address relayer,
+        uint256 deadline,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external {
+        torn.permit(relayer, address(this), stake, deadline, v, r, s);
+        _register(relayer, ensName, stake, workersToRegister);
+    }
 
-  /**
-   * @notice This function should check if a worker is registered to the relayer stated
-   * @param relayer relayer to check
-   * @param toResolve address to check
-   * @return true if registered
-   * */
-  function isRelayerRegistered(address relayer, address toResolve) external view returns (bool) {
-    return workers[toResolve] == relayer;
-  }
+    function _register(address relayer, string calldata ensName, uint256 stake, address[] calldata workersToRegister)
+        internal
+    {
+        bytes32 ensHash = bytes(ensName).namehash();
+        require(relayer == ens.owner(ensHash), "only ens owner");
+        require(workers[relayer] == address(0), "cant register again");
+        RelayerState storage metadata = relayers[relayer];
 
-  /**
-   * @notice This function should get a relayers ensHash
-   * @param relayer address to fetch for
-   * @return relayer's ensHash
-   * */
-  function getRelayerEnsHash(address relayer) external view returns (bytes32) {
-    return relayers[workers[relayer]].ensHash;
-  }
+        require(metadata.ensHash == bytes32(0), "registered already");
+        require(stake >= minStakeAmount, "!min_stake");
 
-  /**
-   * @notice This function should get a relayers balance
-   * @param relayer relayer who's balance is to fetch
-   * @return relayer's balance
-   * */
-  function getRelayerBalance(address relayer) external view returns (uint256) {
-    return relayers[workers[relayer]].balance;
-  }
+        torn.safeTransferFrom(relayer, address(staking), stake);
+        emit StakeAddedToRelayer(relayer, stake);
+
+        metadata.balance = stake;
+        metadata.ensHash = ensHash;
+        workers[relayer] = relayer;
+
+        for (uint256 i = 0; i < workersToRegister.length; i++) {
+            address worker = workersToRegister[i];
+            _registerWorker(relayer, worker);
+        }
+
+        emit RelayerRegistered(ensHash, ensName, relayer, stake);
+    }
+
+    /**
+     * @notice This function should allow relayers to register more workeres
+     * @param relayer Relayer which should send message from any worker which is already registered
+     * @param worker Address to register
+     *
+     */
+    function registerWorker(address relayer, address worker) external onlyRelayer(msg.sender, relayer) {
+        _registerWorker(relayer, worker);
+    }
+
+    function _registerWorker(address relayer, address worker) internal {
+        require(workers[worker] == address(0), "can't steal an address");
+        workers[worker] = relayer;
+        emit WorkerRegistered(relayer, worker);
+    }
+
+    /**
+     * @notice This function should allow anybody to unregister an address they own
+     * @dev designed this way as to allow someone to unregister themselves in case a relayer misbehaves
+     *      - this should be followed by an action like burning relayer stake
+     *      - there was an option of allowing the sender to burn relayer stake in case of malicious behaviour, this feature was not included in the end
+     *      - reverts if trying to unregister master, otherwise contract would break. in general, there should be no reason to unregister master at all
+     *
+     */
+    function unregisterWorker(address worker) external {
+        if (worker != msg.sender) {
+            require(workers[worker] == msg.sender, "only owner of worker");
+        }
+        require(workers[worker] != worker, "cant unregister master");
+        emit WorkerUnregistered(workers[worker], worker);
+        workers[worker] = address(0);
+    }
+
+    /**
+     * @notice This function should allow anybody to stake to a relayer more TORN
+     * @param relayer Relayer main address to stake to
+     * @param stake Stake to be added to relayer
+     *
+     */
+    function stakeToRelayer(address relayer, uint256 stake) external {
+        _stakeToRelayer(msg.sender, relayer, stake);
+    }
+
+    /**
+     * @dev stakeToRelayer function equivalent with permit-approval instead of regular approve.
+     * @param staker address from that stake is paid
+     *
+     */
+    function stakeToRelayerPermit(
+        address relayer,
+        uint256 stake,
+        address staker,
+        uint256 deadline,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external {
+        torn.permit(staker, address(this), stake, deadline, v, r, s);
+        _stakeToRelayer(staker, relayer, stake);
+    }
+
+    function _stakeToRelayer(address staker, address relayer, uint256 stake) internal {
+        require(workers[relayer] == relayer, "!registered");
+        torn.safeTransferFrom(staker, address(staking), stake);
+        relayers[relayer].balance = stake.add(relayers[relayer].balance);
+        emit StakeAddedToRelayer(relayer, stake);
+    }
+
+    /**
+     * @notice This function should burn some relayer stake on withdraw and notify staking of this
+     * @dev IMPORTANT FUNCTION:
+     *      - This should be only called by the tornado proxy
+     *      - Should revert if relayer does not call proxy from valid worker
+     *      - Should not overflow
+     *      - Should underflow and revert (SafeMath) on not enough stake (balance)
+     * @param sender worker to check sender == relayer
+     * @param relayer address of relayer who's stake is being burned
+     * @param pool instance to get fee for
+     *
+     */
+    function burn(address sender, address relayer, ITornadoInstance pool) external onlyTornadoRouter {
+        address masterAddress = workers[sender];
+        if (masterAddress == address(0)) {
+            require(workers[relayer] == address(0), "Only custom relayer");
+            return;
+        }
+
+        require(masterAddress == relayer, "only relayer");
+        uint256 toBurn = feeManager.instanceFeeWithUpdate(pool);
+        relayers[relayer].balance = relayers[relayer].balance.sub(toBurn);
+        staking.addBurnRewards(toBurn);
+        emit StakeBurned(relayer, toBurn);
+    }
+
+    /**
+     * @notice This function should allow governance to set the minimum stake amount
+     * @param minAmount new minimum stake amount
+     *
+     */
+    function setMinStakeAmount(uint256 minAmount) external onlyGovernance {
+        minStakeAmount = minAmount;
+        emit MinimumStakeAmount(minAmount);
+    }
+
+    /**
+     * @notice This function should allow governance to set a new tornado proxy address
+     * @param tornadoRouterAddress address of the new proxy
+     *
+     */
+    function setTornadoRouter(address tornadoRouterAddress) external onlyGovernance {
+        tornadoRouter = tornadoRouterAddress;
+        emit RouterRegistered(tornadoRouterAddress);
+    }
+
+    /**
+     * @notice This function should allow governance to nullify a relayers balance
+     * @dev IMPORTANT FUNCTION:
+     *      - Should nullify the balance
+     *      - Adding nullified balance as rewards was refactored to allow for the flexibility of these funds (for gov to operate with them)
+     * @param relayer address of relayer who's balance is to nullify
+     *
+     */
+    function nullifyBalance(address relayer) external onlyGovernance {
+        address masterAddress = workers[relayer];
+        require(relayer == masterAddress, "must be master");
+        relayers[masterAddress].balance = 0;
+        emit RelayerBalanceNullified(relayer);
+    }
+
+    /**
+     * @notice This function should check if a worker is associated with a relayer
+     * @param toResolve address to check
+     * @return true if is associated
+     *
+     */
+    function isRelayer(address toResolve) external view returns (bool) {
+        return workers[toResolve] != address(0);
+    }
+
+    /**
+     * @notice This function should check if a worker is registered to the relayer stated
+     * @param relayer relayer to check
+     * @param toResolve address to check
+     * @return true if registered
+     *
+     */
+    function isRelayerRegistered(address relayer, address toResolve) external view returns (bool) {
+        return workers[toResolve] == relayer;
+    }
+
+    /**
+     * @notice This function should get a relayers ensHash
+     * @param relayer address to fetch for
+     * @return relayer's ensHash
+     *
+     */
+    function getRelayerEnsHash(address relayer) external view returns (bytes32) {
+        return relayers[workers[relayer]].ensHash;
+    }
+
+    /**
+     * @notice This function should get a relayers balance
+     * @param relayer relayer who's balance is to fetch
+     * @return relayer's balance
+     *
+     */
+    function getRelayerBalance(address relayer) external view returns (uint256) {
+        return relayers[workers[relayer]].balance;
+    }
 }
 
 contract TornadoRouter is EnsResolve {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  event EncryptedNote(address indexed sender, bytes encryptedNote);
+    event EncryptedNote(address indexed sender, bytes encryptedNote);
 
-  address public immutable governance;
-  InstanceRegistry public immutable instanceRegistry;
-  RelayerRegistry public immutable relayerRegistry;
+    address public immutable governance;
+    InstanceRegistry public immutable instanceRegistry;
+    RelayerRegistry public immutable relayerRegistry;
 
-  modifier onlyGovernance() {
-    require(msg.sender == governance, "Not authorized");
-    _;
-  }
-
-  modifier onlyInstanceRegistry() {
-    require(msg.sender == address(instanceRegistry), "Not authorized");
-    _;
-  }
-
-  constructor(
-    address _governance,
-    bytes32 _instanceRegistry,
-    bytes32 _relayerRegistry
-  ) public {
-    governance = _governance;
-    instanceRegistry = InstanceRegistry(resolve(_instanceRegistry));
-    relayerRegistry = RelayerRegistry(resolve(_relayerRegistry));
-  }
-
-  function deposit(
-    ITornadoInstance _tornado,
-    bytes32 _commitment,
-    bytes calldata _encryptedNote
-  ) public payable virtual {
-    (bool isERC20, IERC20 token, InstanceRegistry.InstanceState state, , ) = instanceRegistry.instances(_tornado);
-    require(state != InstanceRegistry.InstanceState.DISABLED, "The instance is not supported");
-
-    if (isERC20) {
-      token.safeTransferFrom(msg.sender, address(this), _tornado.denomination());
+    modifier onlyGovernance() {
+        require(msg.sender == governance, "Not authorized");
+        _;
     }
-    _tornado.deposit{ value: msg.value }(_commitment);
-    emit EncryptedNote(msg.sender, _encryptedNote);
-  }
 
-  function withdraw(
-    ITornadoInstance _tornado,
-    bytes calldata _proof,
-    bytes32 _root,
-    bytes32 _nullifierHash,
-    address payable _recipient,
-    address payable _relayer,
-    uint256 _fee,
-    uint256 _refund
-  ) public payable virtual {
-    (, , InstanceRegistry.InstanceState state, , ) = instanceRegistry.instances(_tornado);
-    require(state != InstanceRegistry.InstanceState.DISABLED, "The instance is not supported");
-    relayerRegistry.burn(msg.sender, _relayer, _tornado);
-
-    _tornado.withdraw{ value: msg.value }(_proof, _root, _nullifierHash, _recipient, _relayer, _fee, _refund);
-  }
-
-  /**
-   * @dev Sets `amount` allowance of `_spender` over the router's (this contract) tokens.
-   */
-  function approveExactToken(
-    IERC20 _token,
-    address _spender,
-    uint256 _amount
-  ) external onlyInstanceRegistry {
-    _token.safeApprove(_spender, _amount);
-  }
-
-  /**
-   * @notice Manually backup encrypted notes
-   */
-  function backupNotes(bytes[] calldata _encryptedNotes) external virtual {
-    for (uint256 i = 0; i < _encryptedNotes.length; i++) {
-      emit EncryptedNote(msg.sender, _encryptedNotes[i]);
+    modifier onlyInstanceRegistry() {
+        require(msg.sender == address(instanceRegistry), "Not authorized");
+        _;
     }
-  }
 
-  /// @dev Method to claim junk and accidentally sent tokens
-  function rescueTokens(
-    IERC20 _token,
-    address payable _to,
-    uint256 _amount
-  ) external virtual onlyGovernance {
-    require(_to != address(0), "TORN: can not send to zero address");
-
-    if (_token == IERC20(0)) {
-      // for Ether
-      uint256 totalBalance = address(this).balance;
-      uint256 balance = Math.min(totalBalance, _amount);
-      _to.transfer(balance);
-    } else {
-      // any other erc20
-      uint256 totalBalance = _token.balanceOf(address(this));
-      uint256 balance = Math.min(totalBalance, _amount);
-      require(balance > 0, "TORN: trying to send 0 balance");
-      _token.safeTransfer(_to, balance);
+    constructor(address _governance, bytes32 _instanceRegistry, bytes32 _relayerRegistry) public {
+        governance = _governance;
+        instanceRegistry = InstanceRegistry(resolve(_instanceRegistry));
+        relayerRegistry = RelayerRegistry(resolve(_relayerRegistry));
     }
-  }
+
+    function deposit(ITornadoInstance _tornado, bytes32 _commitment, bytes calldata _encryptedNote)
+        public
+        payable
+        virtual
+    {
+        (bool isERC20, IERC20 token, InstanceRegistry.InstanceState state,,) = instanceRegistry.instances(_tornado);
+        require(state != InstanceRegistry.InstanceState.DISABLED, "The instance is not supported");
+
+        if (isERC20) {
+            token.safeTransferFrom(msg.sender, address(this), _tornado.denomination());
+        }
+        _tornado.deposit{value: msg.value}(_commitment);
+        emit EncryptedNote(msg.sender, _encryptedNote);
+    }
+
+    function withdraw(
+        ITornadoInstance _tornado,
+        bytes calldata _proof,
+        bytes32 _root,
+        bytes32 _nullifierHash,
+        address payable _recipient,
+        address payable _relayer,
+        uint256 _fee,
+        uint256 _refund
+    ) public payable virtual {
+        (,, InstanceRegistry.InstanceState state,,) = instanceRegistry.instances(_tornado);
+        require(state != InstanceRegistry.InstanceState.DISABLED, "The instance is not supported");
+        relayerRegistry.burn(msg.sender, _relayer, _tornado);
+
+        _tornado.withdraw{value: msg.value}(_proof, _root, _nullifierHash, _recipient, _relayer, _fee, _refund);
+    }
+
+    /**
+     * @dev Sets `amount` allowance of `_spender` over the router's (this contract) tokens.
+     */
+    function approveExactToken(IERC20 _token, address _spender, uint256 _amount) external onlyInstanceRegistry {
+        _token.safeApprove(_spender, _amount);
+    }
+
+    /**
+     * @notice Manually backup encrypted notes
+     */
+    function backupNotes(bytes[] calldata _encryptedNotes) external virtual {
+        for (uint256 i = 0; i < _encryptedNotes.length; i++) {
+            emit EncryptedNote(msg.sender, _encryptedNotes[i]);
+        }
+    }
+
+    /// @dev Method to claim junk and accidentally sent tokens
+    function rescueTokens(IERC20 _token, address payable _to, uint256 _amount) external virtual onlyGovernance {
+        require(_to != address(0), "TORN: can not send to zero address");
+
+        if (_token == IERC20(0)) {
+            // for Ether
+            uint256 totalBalance = address(this).balance;
+            uint256 balance = Math.min(totalBalance, _amount);
+            _to.transfer(balance);
+        } else {
+            // any other erc20
+            uint256 totalBalance = _token.balanceOf(address(this));
+            uint256 balance = Math.min(totalBalance, _amount);
+            require(balance > 0, "TORN: trying to send 0 balance");
+            _token.safeTransfer(_to, balance);
+        }
+    }
 }
 
 contract InstanceRegistry is Initializable, EnsResolve {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  enum InstanceState {
-    DISABLED,
-    ENABLED
-  }
-
-  struct Instance {
-    bool isERC20;
-    IERC20 token;
-    InstanceState state;
-    // the fee of the uniswap pool which will be used to get a TWAP
-    uint24 uniswapPoolSwappingFee;
-    // the fee the protocol takes from relayer, it should be multiplied by PROTOCOL_FEE_DIVIDER from FeeManager.sol
-    uint32 protocolFeePercentage;
-  }
-
-  struct Tornado {
-    ITornadoInstance addr;
-    Instance instance;
-  }
-
-  address public immutable governance;
-  TornadoRouter public router;
-
-  mapping(ITornadoInstance => Instance) public instances;
-  ITornadoInstance[] public instanceIds;
-
-  event InstanceStateUpdated(ITornadoInstance indexed instance, InstanceState state);
-  event RouterRegistered(address tornadoRouter);
-
-  modifier onlyGovernance() {
-    require(msg.sender == governance, "Not authorized");
-    _;
-  }
-
-  constructor(address _governance) public {
-    governance = _governance;
-  }
-
-  function initialize(Tornado[] memory _instances, bytes32 _router) external initializer {
-    router = TornadoRouter(resolve(_router));
-    for (uint256 i = 0; i < _instances.length; i++) {
-      _updateInstance(_instances[i]);
-      instanceIds.push(_instances[i].addr);
-    }
-  }
-
-  /**
-   * @dev Add or update an instance.
-   */
-  function updateInstance(Tornado calldata _tornado) external virtual onlyGovernance {
-    require(_tornado.instance.state != InstanceState.DISABLED, "Use removeInstance() for remove");
-    if (instances[_tornado.addr].state == InstanceState.DISABLED) {
-      instanceIds.push(_tornado.addr);
-    }
-    _updateInstance(_tornado);
-  }
-
-  /**
-   * @dev Remove an instance.
-   * @param _instanceId The instance id in `instanceIds` mapping to remove.
-   */
-  function removeInstance(uint256 _instanceId) external virtual onlyGovernance {
-    ITornadoInstance _instance = instanceIds[_instanceId];
-    (bool isERC20, IERC20 token) = (instances[_instance].isERC20, instances[_instance].token);
-
-    if (isERC20) {
-      uint256 allowance = token.allowance(address(router), address(_instance));
-      if (allowance != 0) {
-        router.approveExactToken(token, address(_instance), 0);
-      }
+    enum InstanceState {
+        DISABLED,
+        ENABLED
     }
 
-    delete instances[_instance];
-    instanceIds[_instanceId] = instanceIds[instanceIds.length - 1];
-    instanceIds.pop();
-    emit InstanceStateUpdated(_instance, InstanceState.DISABLED);
-  }
-
-  /**
-   * @notice This function should allow governance to set a new protocol fee for relayers
-   * @param instance the to update
-   * @param newFee the new fee to use
-   * */
-  function setProtocolFee(ITornadoInstance instance, uint32 newFee) external onlyGovernance {
-    instances[instance].protocolFeePercentage = newFee;
-  }
-
-  /**
-   * @notice This function should allow governance to set a new tornado proxy address
-   * @param routerAddress address of the new proxy
-   * */
-  function setTornadoRouter(address routerAddress) external onlyGovernance {
-    router = TornadoRouter(routerAddress);
-    emit RouterRegistered(routerAddress);
-  }
-
-  function _updateInstance(Tornado memory _tornado) internal virtual {
-    instances[_tornado.addr] = _tornado.instance;
-    if (_tornado.instance.isERC20) {
-      IERC20 token = IERC20(_tornado.addr.token());
-      require(token == _tornado.instance.token, "Incorrect token");
-      uint256 allowance = token.allowance(address(router), address(_tornado.addr));
-
-      if (allowance == 0) {
-        router.approveExactToken(token, address(_tornado.addr), type(uint256).max);
-      }
+    struct Instance {
+        bool isERC20;
+        IERC20 token;
+        InstanceState state;
+        // the fee of the uniswap pool which will be used to get a TWAP
+        uint24 uniswapPoolSwappingFee;
+        // the fee the protocol takes from relayer, it should be multiplied by PROTOCOL_FEE_DIVIDER from FeeManager.sol
+        uint32 protocolFeePercentage;
     }
-    emit InstanceStateUpdated(_tornado.addr, _tornado.instance.state);
-  }
 
-  /**
-   * @dev Returns all instance configs
-   */
-  function getAllInstances() public view returns (Tornado[] memory result) {
-    result = new Tornado[](instanceIds.length);
-    for (uint256 i = 0; i < instanceIds.length; i++) {
-      ITornadoInstance _instance = instanceIds[i];
-      result[i] = Tornado({ addr: _instance, instance: instances[_instance] });
+    struct Tornado {
+        ITornadoInstance addr;
+        Instance instance;
     }
-  }
 
-  /**
-   * @dev Returns all instance addresses
-   */
-  function getAllInstanceAddresses() public view returns (ITornadoInstance[] memory result) {
-    result = new ITornadoInstance[](instanceIds.length);
-    for (uint256 i = 0; i < instanceIds.length; i++) {
-      result[i] = instanceIds[i];
+    address public immutable governance;
+    TornadoRouter public router;
+
+    mapping(ITornadoInstance => Instance) public instances;
+    ITornadoInstance[] public instanceIds;
+
+    event InstanceStateUpdated(ITornadoInstance indexed instance, InstanceState state);
+    event RouterRegistered(address tornadoRouter);
+
+    modifier onlyGovernance() {
+        require(msg.sender == governance, "Not authorized");
+        _;
     }
-  }
 
-  /// @notice get erc20 tornado instance token
-  /// @param instance the interface (contract) key to the instance data
-  function getPoolToken(ITornadoInstance instance) external view returns (address) {
-    return address(instances[instance].token);
-  }
+    constructor(address _governance) public {
+        governance = _governance;
+    }
+
+    function initialize(Tornado[] memory _instances, bytes32 _router) external initializer {
+        router = TornadoRouter(resolve(_router));
+        for (uint256 i = 0; i < _instances.length; i++) {
+            _updateInstance(_instances[i]);
+            instanceIds.push(_instances[i].addr);
+        }
+    }
+
+    /**
+     * @dev Add or update an instance.
+     */
+    function updateInstance(Tornado calldata _tornado) external virtual onlyGovernance {
+        require(_tornado.instance.state != InstanceState.DISABLED, "Use removeInstance() for remove");
+        if (instances[_tornado.addr].state == InstanceState.DISABLED) {
+            instanceIds.push(_tornado.addr);
+        }
+        _updateInstance(_tornado);
+    }
+
+    /**
+     * @dev Remove an instance.
+     * @param _instanceId The instance id in `instanceIds` mapping to remove.
+     */
+    function removeInstance(uint256 _instanceId) external virtual onlyGovernance {
+        ITornadoInstance _instance = instanceIds[_instanceId];
+        (bool isERC20, IERC20 token) = (instances[_instance].isERC20, instances[_instance].token);
+
+        if (isERC20) {
+            uint256 allowance = token.allowance(address(router), address(_instance));
+            if (allowance != 0) {
+                router.approveExactToken(token, address(_instance), 0);
+            }
+        }
+
+        delete instances[_instance];
+        instanceIds[_instanceId] = instanceIds[instanceIds.length - 1];
+        instanceIds.pop();
+        emit InstanceStateUpdated(_instance, InstanceState.DISABLED);
+    }
+
+    /**
+     * @notice This function should allow governance to set a new protocol fee for relayers
+     * @param instance the to update
+     * @param newFee the new fee to use
+     *
+     */
+    function setProtocolFee(ITornadoInstance instance, uint32 newFee) external onlyGovernance {
+        instances[instance].protocolFeePercentage = newFee;
+    }
+
+    /**
+     * @notice This function should allow governance to set a new tornado proxy address
+     * @param routerAddress address of the new proxy
+     *
+     */
+    function setTornadoRouter(address routerAddress) external onlyGovernance {
+        router = TornadoRouter(routerAddress);
+        emit RouterRegistered(routerAddress);
+    }
+
+    function _updateInstance(Tornado memory _tornado) internal virtual {
+        instances[_tornado.addr] = _tornado.instance;
+        if (_tornado.instance.isERC20) {
+            IERC20 token = IERC20(_tornado.addr.token());
+            require(token == _tornado.instance.token, "Incorrect token");
+            uint256 allowance = token.allowance(address(router), address(_tornado.addr));
+
+            if (allowance == 0) {
+                router.approveExactToken(token, address(_tornado.addr), type(uint256).max);
+            }
+        }
+        emit InstanceStateUpdated(_tornado.addr, _tornado.instance.state);
+    }
+
+    /**
+     * @dev Returns all instance configs
+     */
+    function getAllInstances() public view returns (Tornado[] memory result) {
+        result = new Tornado[](instanceIds.length);
+        for (uint256 i = 0; i < instanceIds.length; i++) {
+            ITornadoInstance _instance = instanceIds[i];
+            result[i] = Tornado({addr: _instance, instance: instances[_instance]});
+        }
+    }
+
+    /**
+     * @dev Returns all instance addresses
+     */
+    function getAllInstanceAddresses() public view returns (ITornadoInstance[] memory result) {
+        result = new ITornadoInstance[](instanceIds.length);
+        for (uint256 i = 0; i < instanceIds.length; i++) {
+            result[i] = instanceIds[i];
+        }
+    }
+
+    /// @notice get erc20 tornado instance token
+    /// @param instance the interface (contract) key to the instance data
+    function getPoolToken(ITornadoInstance instance) external view returns (address) {
+        return address(instances[instance].token);
+    }
 }

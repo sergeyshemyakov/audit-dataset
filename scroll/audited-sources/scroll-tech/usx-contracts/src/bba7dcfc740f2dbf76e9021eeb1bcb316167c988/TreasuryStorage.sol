@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {IUSX} from "./interfaces/IUSX.sol";
 import {IStakedUSX} from "./interfaces/IStakedUSX.sol";
+import {IUSX} from "./interfaces/IUSX.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /// @title TreasuryStorage
 /// @notice Contains state for the USX Protocols Treasury contracts
@@ -61,31 +61,41 @@ contract TreasuryStorage {
 
     // Modifier to restrict access to admin functions
     modifier onlyAdmin() {
-        if (msg.sender != _getStorage().admin) revert NotAdmin();
+        if (msg.sender != _getStorage().admin) {
+            revert NotAdmin();
+        }
         _;
     }
 
     // Modifier to restrict access to governance functions
     modifier onlyGovernance() {
-        if (msg.sender != _getStorage().governance) revert NotGovernance();
+        if (msg.sender != _getStorage().governance) {
+            revert NotGovernance();
+        }
         _;
     }
 
     // Modifier to restrict access to asset manager functions
     modifier onlyAllocator() {
-        if (msg.sender != _getStorage().allocator) revert NotAllocator();
+        if (msg.sender != _getStorage().allocator) {
+            revert NotAllocator();
+        }
         _;
     }
 
     // Modifier to restrict access to reporter functions
     modifier onlyReporter() {
-        if (msg.sender != _getStorage().reporter) revert NotReporter();
+        if (msg.sender != _getStorage().reporter) {
+            revert NotReporter();
+        }
         _;
     }
 
     // Modifier to restrict access to treasury functions
     modifier onlyTreasury() {
-        if (msg.sender != address(this)) revert NotTreasury();
+        if (msg.sender != address(this)) {
+            revert NotTreasury();
+        }
         _;
     }
 

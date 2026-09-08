@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {IERC20Metadata} from '@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol';
-import {ERC20Burnable} from '@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol';
-import {ERC20} from '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 
-import {IAccountingToken} from './interfaces/IAccountingToken.sol';
+import {IAccountingToken} from "./interfaces/IAccountingToken.sol";
 
 /**
  * @notice ERC20 token implementation that allow the owner to mint tokens and let anyone burn their own tokens
@@ -17,11 +17,7 @@ contract AccountingToken is IAccountingToken, ERC20Burnable {
     address public immutable OWNER;
     uint8 internal immutable TOKEN_DECIMALS;
 
-    constructor(
-        string memory _name,
-        string memory _symbol,
-        uint8 _decimals
-    ) ERC20(_name, _symbol) {
+    constructor(string memory _name, string memory _symbol, uint8 _decimals) ERC20(_name, _symbol) {
         OWNER = msg.sender;
         TOKEN_DECIMALS = _decimals;
     }
@@ -41,7 +37,7 @@ contract AccountingToken is IAccountingToken, ERC20Burnable {
      * @param amount The amount of tokens to mint
      */
     function mint(address to, uint256 amount) external override(IAccountingToken) {
-        require(OWNER == msg.sender, 'Caller not owner');
+        require(OWNER == msg.sender, "Caller not owner");
         _mint(to, amount);
     }
 

@@ -108,34 +108,90 @@ library Predeploys {
     /// @notice Returns the name of the predeploy at the given address.
     function getName(address _addr) internal pure returns (string memory out_) {
         require(isPredeployNamespace(_addr), "Predeploys: address must be a predeploy");
-        if (_addr == LEGACY_MESSAGE_PASSER) return "LegacyMessagePasser";
-        if (_addr == L1_MESSAGE_SENDER) return "L1MessageSender";
-        if (_addr == DEPLOYER_WHITELIST) return "DeployerWhitelist";
-        if (_addr == WETH) return "WETH";
-        if (_addr == L2_CROSS_DOMAIN_MESSENGER) return "L2CrossDomainMessenger";
-        if (_addr == GAS_PRICE_ORACLE) return "GasPriceOracle";
-        if (_addr == L2_STANDARD_BRIDGE) return "L2StandardBridge";
-        if (_addr == SEQUENCER_FEE_WALLET) return "SequencerFeeVault";
-        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) return "OptimismMintableERC20Factory";
-        if (_addr == L1_BLOCK_NUMBER) return "L1BlockNumber";
-        if (_addr == L2_ERC721_BRIDGE) return "L2ERC721Bridge";
-        if (_addr == L1_BLOCK_ATTRIBUTES) return "L1Block";
-        if (_addr == L2_TO_L1_MESSAGE_PASSER) return "L2ToL1MessagePasser";
-        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) return "OptimismMintableERC721Factory";
-        if (_addr == PROXY_ADMIN) return "ProxyAdmin";
-        if (_addr == BASE_FEE_VAULT) return "BaseFeeVault";
-        if (_addr == L1_FEE_VAULT) return "L1FeeVault";
-        if (_addr == SCHEMA_REGISTRY) return "SchemaRegistry";
-        if (_addr == EAS) return "EAS";
-        if (_addr == GOVERNANCE_TOKEN) return "GovernanceToken";
-        if (_addr == LEGACY_ERC20_ETH) return "LegacyERC20ETH";
-        if (_addr == CROSS_L2_INBOX) return "CrossL2Inbox";
-        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) return "L2ToL2CrossDomainMessenger";
-        if (_addr == SUPERCHAIN_WETH) return "SuperchainWETH";
-        if (_addr == ETH_LIQUIDITY) return "ETHLiquidity";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) return "OptimismSuperchainERC20Factory";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) return "OptimismSuperchainERC20Beacon";
-        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) return "SuperchainTokenBridge";
+        if (_addr == LEGACY_MESSAGE_PASSER) {
+            return "LegacyMessagePasser";
+        }
+        if (_addr == L1_MESSAGE_SENDER) {
+            return "L1MessageSender";
+        }
+        if (_addr == DEPLOYER_WHITELIST) {
+            return "DeployerWhitelist";
+        }
+        if (_addr == WETH) {
+            return "WETH";
+        }
+        if (_addr == L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2CrossDomainMessenger";
+        }
+        if (_addr == GAS_PRICE_ORACLE) {
+            return "GasPriceOracle";
+        }
+        if (_addr == L2_STANDARD_BRIDGE) {
+            return "L2StandardBridge";
+        }
+        if (_addr == SEQUENCER_FEE_WALLET) {
+            return "SequencerFeeVault";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) {
+            return "OptimismMintableERC20Factory";
+        }
+        if (_addr == L1_BLOCK_NUMBER) {
+            return "L1BlockNumber";
+        }
+        if (_addr == L2_ERC721_BRIDGE) {
+            return "L2ERC721Bridge";
+        }
+        if (_addr == L1_BLOCK_ATTRIBUTES) {
+            return "L1Block";
+        }
+        if (_addr == L2_TO_L1_MESSAGE_PASSER) {
+            return "L2ToL1MessagePasser";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) {
+            return "OptimismMintableERC721Factory";
+        }
+        if (_addr == PROXY_ADMIN) {
+            return "ProxyAdmin";
+        }
+        if (_addr == BASE_FEE_VAULT) {
+            return "BaseFeeVault";
+        }
+        if (_addr == L1_FEE_VAULT) {
+            return "L1FeeVault";
+        }
+        if (_addr == SCHEMA_REGISTRY) {
+            return "SchemaRegistry";
+        }
+        if (_addr == EAS) {
+            return "EAS";
+        }
+        if (_addr == GOVERNANCE_TOKEN) {
+            return "GovernanceToken";
+        }
+        if (_addr == LEGACY_ERC20_ETH) {
+            return "LegacyERC20ETH";
+        }
+        if (_addr == CROSS_L2_INBOX) {
+            return "CrossL2Inbox";
+        }
+        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2ToL2CrossDomainMessenger";
+        }
+        if (_addr == SUPERCHAIN_WETH) {
+            return "SuperchainWETH";
+        }
+        if (_addr == ETH_LIQUIDITY) {
+            return "ETHLiquidity";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) {
+            return "OptimismSuperchainERC20Factory";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) {
+            return "OptimismSuperchainERC20Beacon";
+        }
+        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) {
+            return "SuperchainTokenBridge";
+        }
         revert("Predeploys: unnamed predeploy");
     }
 
@@ -403,7 +459,9 @@ contract L1Splitter is IL1Splitter, Ownable2Step {
     /// @inheritdoc IL1Splitter
     function withdraw() public virtual returns (uint256 balance) {
         balance = address(this).balance;
-        if (balance < minWithdrawalAmount) revert InsufficientWithdrawalAmount();
+        if (balance < minWithdrawalAmount) {
+            revert InsufficientWithdrawalAmount();
+        }
         if (block.timestamp < lastDisbursementTime + feeDisbursementInterval) {
             revert DisbursementIntervalNotReached();
         }
@@ -412,7 +470,7 @@ contract L1Splitter is IL1Splitter, Ownable2Step {
 
         address recipient = l1Recipient;
         IL2StandardBridge(Predeploys.L2_STANDARD_BRIDGE).bridgeETHTo{value: balance}(
-            recipient, WITHDRAWAL_MIN_GAS, bytes('')
+            recipient, WITHDRAWAL_MIN_GAS, bytes("")
         );
 
         emit Withdrawal(recipient, balance);
@@ -434,19 +492,25 @@ contract L1Splitter is IL1Splitter, Ownable2Step {
     }
 
     function _updateL1Recipient(address newRecipient) internal {
-        if (newRecipient == address(0)) revert AddressZero();
+        if (newRecipient == address(0)) {
+            revert AddressZero();
+        }
         emit L1RecipientUpdated(l1Recipient, newRecipient);
         l1Recipient = newRecipient;
     }
 
     function _updateFeeDisbursementInterval(uint48 newInterval) internal {
-        if (newInterval < MIN_DISBURSEMENT_INTERVAL) revert MinDisbursementInterval();
+        if (newInterval < MIN_DISBURSEMENT_INTERVAL) {
+            revert MinDisbursementInterval();
+        }
         emit FeeDisbursementIntervalUpdated(feeDisbursementInterval, newInterval);
         feeDisbursementInterval = newInterval;
     }
 
     function _updateMinWithdrawalAmount(uint256 newAmount) internal {
-        if (newAmount < MIN_WITHDRAWAL_AMOUNT) revert MinWithdrawalAmount();
+        if (newAmount < MIN_WITHDRAWAL_AMOUNT) {
+            revert MinWithdrawalAmount();
+        }
         emit MinWithdrawalAmountUpdated(minWithdrawalAmount, newAmount);
         minWithdrawalAmount = newAmount;
     }

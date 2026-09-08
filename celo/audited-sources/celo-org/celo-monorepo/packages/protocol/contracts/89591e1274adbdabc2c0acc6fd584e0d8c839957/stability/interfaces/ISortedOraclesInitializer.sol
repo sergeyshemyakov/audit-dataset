@@ -2,5 +2,5 @@
 pragma solidity >=0.5.13 <0.9.0;
 
 interface ISortedOraclesInitializer {
-  function initialize(uint256) external;
+    function initialize(uint256) external;
 }

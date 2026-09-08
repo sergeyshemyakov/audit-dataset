@@ -2,14 +2,14 @@
 // Copyright 2022 Aztec.
 pragma solidity >=0.8.4;
 
+import {IRollupProcessor} from "../../aztec/interfaces/IRollupProcessor.sol";
 import {ICurvePool} from "../../interfaces/curve/ICurvePool.sol";
 import {ILido} from "../../interfaces/lido/ILido.sol";
 import {IWstETH} from "../../interfaces/lido/IWstETH.sol";
-import {IRollupProcessor} from "../../aztec/interfaces/IRollupProcessor.sol";
 
+import {AztecTypes} from "../../aztec/libraries/AztecTypes.sol";
 import {BridgeBase} from "../base/BridgeBase.sol";
 import {ErrorLib} from "../base/ErrorLib.sol";
-import {AztecTypes} from "../../aztec/libraries/AztecTypes.sol";
 
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
@@ -68,20 +68,10 @@ contract CurveStEthBridge is BridgeBase {
         uint256 _interactionNonce,
         uint64,
         address
-    )
-        external
-        payable
-        override(BridgeBase)
-        onlyRollup
-        returns (
-            uint256 outputValueA,
-            uint256,
-            bool
-        )
-    {
+    ) external payable override(BridgeBase) onlyRollup returns (uint256 outputValueA, uint256, bool) {
         bool isETHInput = _inputAssetA.assetType == AztecTypes.AztecAssetType.ETH;
-        bool isWstETHInput = _inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20 &&
-            _inputAssetA.erc20Address == address(WRAPPED_STETH);
+        bool isWstETHInput = _inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20
+            && _inputAssetA.erc20Address == address(WRAPPED_STETH);
 
         if (!(isETHInput || isWstETHInput)) {
             revert ErrorLib.InvalidInputA();
@@ -104,8 +94,8 @@ contract CurveStEthBridge is BridgeBase {
         returns (uint256 outputValue)
     {
         if (
-            _outputAsset.assetType != AztecTypes.AztecAssetType.ERC20 ||
-            _outputAsset.erc20Address != address(WRAPPED_STETH)
+            _outputAsset.assetType != AztecTypes.AztecAssetType.ERC20
+                || _outputAsset.erc20Address != address(WRAPPED_STETH)
         ) {
             revert ErrorLib.InvalidOutputA();
         }
@@ -124,11 +114,10 @@ contract CurveStEthBridge is BridgeBase {
      * @param _outputAsset The asset that the DeFi interaction specify as output, must be eth
      * @return outputValue The amount of eth received from the interaction
      */
-    function _unwrapETH(
-        uint256 _inputValue,
-        AztecTypes.AztecAsset calldata _outputAsset,
-        uint256 _interactionNonce
-    ) private returns (uint256 outputValue) {
+    function _unwrapETH(uint256 _inputValue, AztecTypes.AztecAsset calldata _outputAsset, uint256 _interactionNonce)
+        private
+        returns (uint256 outputValue)
+    {
         if (_outputAsset.assetType != AztecTypes.AztecAssetType.ETH) {
             revert ErrorLib.InvalidOutputA();
         }

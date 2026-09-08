@@ -11,9 +11,8 @@ library ERC165Checker {
     function supportsERC165(address account) internal view returns (bool) {
         // Any contract that implements ERC165 must explicitly indicate support of
         // InterfaceId_ERC165 and explicitly indicate non-support of InterfaceId_Invalid
-        return
-            _supportsERC165Interface(account, type(IERC165).interfaceId) &&
-            !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
+        return _supportsERC165Interface(account, type(IERC165).interfaceId)
+            && !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
     }
 
     /**
@@ -215,33 +214,87 @@ library Predeploys {
     /// @notice Returns the name of the predeploy at the given address.
     function getName(address _addr) internal pure returns (string memory out_) {
         require(isPredeployNamespace(_addr), "Predeploys: address must be a predeploy");
-        if (_addr == LEGACY_MESSAGE_PASSER) return "LegacyMessagePasser";
-        if (_addr == L1_MESSAGE_SENDER) return "L1MessageSender";
-        if (_addr == DEPLOYER_WHITELIST) return "DeployerWhitelist";
-        if (_addr == WETH) return "WETH";
-        if (_addr == L2_CROSS_DOMAIN_MESSENGER) return "L2CrossDomainMessenger";
-        if (_addr == GAS_PRICE_ORACLE) return "GasPriceOracle";
-        if (_addr == L2_STANDARD_BRIDGE) return "L2StandardBridge";
-        if (_addr == SEQUENCER_FEE_WALLET) return "SequencerFeeVault";
-        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) return "OptimismMintableERC20Factory";
-        if (_addr == L1_BLOCK_NUMBER) return "L1BlockNumber";
-        if (_addr == L2_ERC721_BRIDGE) return "L2ERC721Bridge";
-        if (_addr == L1_BLOCK_ATTRIBUTES) return "L1Block";
-        if (_addr == L2_TO_L1_MESSAGE_PASSER) return "L2ToL1MessagePasser";
-        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) return "OptimismMintableERC721Factory";
-        if (_addr == PROXY_ADMIN) return "ProxyAdmin";
-        if (_addr == BASE_FEE_VAULT) return "BaseFeeVault";
-        if (_addr == L1_FEE_VAULT) return "L1FeeVault";
-        if (_addr == SCHEMA_REGISTRY) return "SchemaRegistry";
-        if (_addr == EAS) return "EAS";
-        if (_addr == GOVERNANCE_TOKEN) return "GovernanceToken";
-        if (_addr == LEGACY_ERC20_ETH) return "LegacyERC20ETH";
-        if (_addr == CROSS_L2_INBOX) return "CrossL2Inbox";
-        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) return "L2ToL2CrossDomainMessenger";
-        if (_addr == SUPERCHAIN_WETH) return "SuperchainWETH";
-        if (_addr == ETH_LIQUIDITY) return "ETHLiquidity";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) return "OptimismSuperchainERC20Factory";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) return "OptimismSuperchainERC20Beacon";
+        if (_addr == LEGACY_MESSAGE_PASSER) {
+            return "LegacyMessagePasser";
+        }
+        if (_addr == L1_MESSAGE_SENDER) {
+            return "L1MessageSender";
+        }
+        if (_addr == DEPLOYER_WHITELIST) {
+            return "DeployerWhitelist";
+        }
+        if (_addr == WETH) {
+            return "WETH";
+        }
+        if (_addr == L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2CrossDomainMessenger";
+        }
+        if (_addr == GAS_PRICE_ORACLE) {
+            return "GasPriceOracle";
+        }
+        if (_addr == L2_STANDARD_BRIDGE) {
+            return "L2StandardBridge";
+        }
+        if (_addr == SEQUENCER_FEE_WALLET) {
+            return "SequencerFeeVault";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) {
+            return "OptimismMintableERC20Factory";
+        }
+        if (_addr == L1_BLOCK_NUMBER) {
+            return "L1BlockNumber";
+        }
+        if (_addr == L2_ERC721_BRIDGE) {
+            return "L2ERC721Bridge";
+        }
+        if (_addr == L1_BLOCK_ATTRIBUTES) {
+            return "L1Block";
+        }
+        if (_addr == L2_TO_L1_MESSAGE_PASSER) {
+            return "L2ToL1MessagePasser";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) {
+            return "OptimismMintableERC721Factory";
+        }
+        if (_addr == PROXY_ADMIN) {
+            return "ProxyAdmin";
+        }
+        if (_addr == BASE_FEE_VAULT) {
+            return "BaseFeeVault";
+        }
+        if (_addr == L1_FEE_VAULT) {
+            return "L1FeeVault";
+        }
+        if (_addr == SCHEMA_REGISTRY) {
+            return "SchemaRegistry";
+        }
+        if (_addr == EAS) {
+            return "EAS";
+        }
+        if (_addr == GOVERNANCE_TOKEN) {
+            return "GovernanceToken";
+        }
+        if (_addr == LEGACY_ERC20_ETH) {
+            return "LegacyERC20ETH";
+        }
+        if (_addr == CROSS_L2_INBOX) {
+            return "CrossL2Inbox";
+        }
+        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2ToL2CrossDomainMessenger";
+        }
+        if (_addr == SUPERCHAIN_WETH) {
+            return "SuperchainWETH";
+        }
+        if (_addr == ETH_LIQUIDITY) {
+            return "ETHLiquidity";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) {
+            return "OptimismSuperchainERC20Factory";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) {
+            return "OptimismSuperchainERC20Beacon";
+        }
         revert("Predeploys: unnamed predeploy");
     }
 
@@ -425,7 +478,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -457,11 +510,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -476,11 +528,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -490,12 +538,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -519,11 +565,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -546,11 +592,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -563,11 +608,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -646,10 +691,7 @@ abstract contract ERC721Bridge is Initializable {
     /// @notice Initializer.
     /// @param _messenger   Contract of the CrossDomainMessenger on this network.
     /// @param _otherBridge Contract of the ERC721 bridge on the other network.
-    function __ERC721Bridge_init(
-        ICrossDomainMessenger _messenger,
-        ERC721Bridge _otherBridge
-    )
+    function __ERC721Bridge_init(ICrossDomainMessenger _messenger, ERC721Bridge _otherBridge)
         internal
         onlyInitializing
     {
@@ -703,9 +745,7 @@ abstract contract ERC721Bridge is Initializable {
         uint256 _tokenId,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        external
-    {
+    ) external {
         // Modifier requiring sender to be EOA. This prevents against a user error that would occur
         // if the sender is a smart contract wallet that has a different address on the remote chain
         // (or doesn't have an address on the remote chain at all). The user would fail to receive
@@ -739,9 +779,7 @@ abstract contract ERC721Bridge is Initializable {
         uint256 _tokenId,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        external
-    {
+    ) external {
         require(_to != address(0), "ERC721Bridge: nft recipient cannot be address(0)");
 
         _initiateBridgeERC721(_localToken, _remoteToken, msg.sender, _to, _tokenId, _minGasLimit, _extraData);
@@ -765,9 +803,7 @@ abstract contract ERC721Bridge is Initializable {
         uint256 _tokenId,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        internal
-        virtual;
+    ) internal virtual;
 }
 
 contract L2ERC721Bridge is ERC721Bridge, ISemver {
@@ -776,7 +812,7 @@ contract L2ERC721Bridge is ERC721Bridge, ISemver {
 
     /// @notice Constructs the L2ERC721Bridge contract.
     constructor() ERC721Bridge() {
-        initialize({ _l1ERC721Bridge: payable(address(0)) });
+        initialize({_l1ERC721Bridge: payable(address(0))});
     }
 
     /// @notice Initializes the contract.
@@ -805,10 +841,7 @@ contract L2ERC721Bridge is ERC721Bridge, ISemver {
         address _to,
         uint256 _tokenId,
         bytes calldata _extraData
-    )
-        external
-        onlyOtherBridge
-    {
+    ) external onlyOtherBridge {
         require(_localToken != address(this), "L2ERC721Bridge: local token cannot be self");
 
         // Note that supportsInterface makes a callback to the _localToken address which is user
@@ -840,10 +873,7 @@ contract L2ERC721Bridge is ERC721Bridge, ISemver {
         uint256 _tokenId,
         uint32 _minGasLimit,
         bytes calldata _extraData
-    )
-        internal
-        override
-    {
+    ) internal override {
         require(_remoteToken != address(0), "L2ERC721Bridge: remote token cannot be address(0)");
 
         // Check that the withdrawal is being initiated by the NFT owner
@@ -868,7 +898,7 @@ contract L2ERC721Bridge is ERC721Bridge, ISemver {
 
         // Send message to L1 bridge
         // slither-disable-next-line reentrancy-events
-        messenger.sendMessage({ _target: address(otherBridge), _message: message, _minGasLimit: _minGasLimit });
+        messenger.sendMessage({_target: address(otherBridge), _message: message, _minGasLimit: _minGasLimit});
 
         // slither-disable-next-line reentrancy-events
         emit ERC721BridgeInitiated(_localToken, remoteToken, _from, _to, _tokenId, _extraData);

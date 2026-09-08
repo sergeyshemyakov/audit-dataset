@@ -70,7 +70,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -102,11 +102,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -121,11 +120,7 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -135,12 +130,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -164,11 +157,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -181,11 +174,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -526,11 +519,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         (, uint16 version) = Encoding.decodeVersionedNonce(_nonce);
         if (version == 0) {
             return hashCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -547,12 +536,7 @@ library Hashing {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Hashed cross domain message.
-    function hashCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function hashCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes32)
@@ -575,11 +559,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(Encoding.encodeCrossDomainMessageV1(_nonce, _sender, _target, _value, _gasLimit, _data));
     }
 
@@ -621,11 +601,7 @@ library Hashing {
         address _sender,
         address _target,
         bytes memory _message
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(abi.encode(_destination, _source, _nonce, _sender, _target, _message));
     }
 
@@ -842,11 +818,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         (, uint16 version) = decodeVersionedNonce(_nonce);
         if (version == 0) {
             return encodeCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -863,12 +835,7 @@ library Encoding {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Encoded cross domain message.
-    function encodeCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function encodeCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes memory)
@@ -892,11 +859,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         // nosemgrep: sol-style-use-abi-encodecall
         return abi.encodeWithSignature(
             "relayMessage(uint256,address,address,uint256,uint256,bytes)",
@@ -955,11 +918,7 @@ library Encoding {
         uint256 _blobBaseFee,
         bytes32 _hash,
         bytes32 _batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesEcotone()"));
         return abi.encodePacked(
             functionSignature,
@@ -999,11 +958,7 @@ library Encoding {
         bytes32 _batcherHash,
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesIsthmus()"));
         return abi.encodePacked(
             functionSignature,
@@ -1047,11 +1002,7 @@ library Encoding {
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant,
         uint16 _daFootprintGasScalar
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesJovian()"));
 
         // Split up the encoding into multiple parts to avoid stack too deep.
@@ -1127,12 +1078,7 @@ library SafeCall {
     /// @param _gas      Amount of gas to pass to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function call(
-        address _target,
-        uint256 _gas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function call(address _target, uint256 _gas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool success_)
     {
@@ -1155,14 +1101,14 @@ library SafeCall {
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, uint256 _value, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata});
     }
 
     /// @notice Perform a low level call without copying any returndata
     /// @param _target   Address to call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata});
     }
 
     /// @notice Helper function to determine if there is sufficient gas remaining within the context
@@ -1204,12 +1150,7 @@ library SafeCall {
     /// @param _minGas   The minimum amount of gas that may be passed to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function callWithMinGas(
-        address _target,
-        uint256 _minGas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function callWithMinGas(address _target, uint256 _minGas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool)
     {
@@ -1340,6 +1281,7 @@ library Math {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -1381,11 +1323,7 @@ library Math {
      * @dev Original credit to Remco Bloemen under MIT license (https://xn--2-umb.com/21/muldiv)
      * with further edits by Uniswap Labs also under MIT license.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 result) {
         unchecked {
             // 512-bit multiply [prod1 prod0] = x * y. Compute the product mod 2^256 and mod 2^256 - 1, then use
             // use the Chinese Remainder Theorem to reconstruct the 512 bit result. The result is stored in two 256
@@ -1466,12 +1404,7 @@ library Math {
     /**
      * @notice Calculates x * y / denominator with full precision, following the selected rounding direction.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator,
-        Rounding rounding
-    ) internal pure returns (uint256) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator, Rounding rounding) internal pure returns (uint256) {
         uint256 result = mulDiv(x, y, denominator);
         if (rounding == Rounding.Up && mulmod(x, y, denominator) > 0) {
             result += 1;
@@ -1702,10 +1635,7 @@ abstract contract CrossDomainMessenger is
         uint256 _value,
         uint256 _minGasLimit,
         bytes calldata _message
-    )
-        external
-        payable
-    {
+    ) external payable {
         // On L1 this function will check the Portal for its paused status.
         // On L2 this function should be a no-op, because paused will always return false.
         require(paused() == false, "CrossDomainMessenger: paused");
@@ -2164,7 +2094,9 @@ abstract contract ReinitializableBase {
     /// @param _initVersion Current initialization version.
     constructor(uint8 _initVersion) {
         // Sanity check, we should never have a zero init version.
-        if (_initVersion == 0) revert ReinitializableBase_ZeroInitVersion();
+        if (_initVersion == 0) {
+            revert ReinitializableBase_ZeroInitVersion();
+        }
         INIT_VERSION = _initVersion;
     }
 
@@ -2391,10 +2323,7 @@ library LibPosition {
     /// @param _upperBoundExclusive The exclusive upper depth bound, used to inform where to stop in order
     ///                             to not escape a sub-tree.
     /// @return ancestor_ The highest ancestor of `position` that commits to the same trace index.
-    function traceAncestorBounded(
-        Position _position,
-        uint256 _upperBoundExclusive
-    )
+    function traceAncestorBounded(Position _position, uint256 _upperBoundExclusive)
         internal
         pure
         returns (Position ancestor_)
@@ -2485,11 +2414,7 @@ library LibClaim {
     /// @param _position The position of `claim`.
     /// @param _challengeIndex The index of the claim being moved against.
     /// @return claimHash_ A hash of abi.encodePacked(claim, position|challengeIndex);
-    function hashClaimPos(
-        Claim _claim,
-        Position _position,
-        uint256 _challengeIndex
-    )
+    function hashClaimPos(Claim _claim, Position _position, uint256 _challengeIndex)
         internal
         pure
         returns (Hash claimHash_)
@@ -3111,15 +3036,13 @@ interface IPreimageOracle {
         bytes memory _input,
         bytes32[] memory _stateCommitments,
         bool _finalize
-    )
-        external;
+    ) external;
     function challengeFirstLPP(
         address _claimant,
         uint256 _uuid,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengeLPP(
         address _claimant,
         uint256 _uuid,
@@ -3128,8 +3051,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengePeriod() external view returns (uint256 challengePeriod_);
     function getTreeRootLPP(address _owner, uint256 _uuid) external view returns (bytes32 treeRoot_);
     function initLPP(uint256 _uuid, uint32 _partOffset, uint32 _claimedSize) external payable;
@@ -3139,16 +3061,9 @@ interface IPreimageOracle {
         bytes memory _commitment,
         bytes memory _proof,
         uint256 _partOffset
-    )
-        external;
+    ) external;
     function loadKeccak256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
-    function loadLocalData(
-        uint256 _ident,
-        bytes32 _localContext,
-        bytes32 _word,
-        uint256 _size,
-        uint256 _partOffset
-    )
+    function loadLocalData(uint256 _ident, bytes32 _localContext, bytes32 _word, uint256 _size, uint256 _partOffset)
         external
         returns (bytes32 key_);
     function loadPrecompilePreimagePart(
@@ -3156,8 +3071,7 @@ interface IPreimageOracle {
         address _precompile,
         uint64 _requiredGas,
         bytes memory _input
-    )
-        external;
+    ) external;
     function loadSha256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
     function minProposalSize() external view returns (uint256 minProposalSize_);
     function preimageLengths(bytes32) external view returns (uint256);
@@ -3181,8 +3095,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function version() external view returns (string memory);
     function zeroHashes(uint256) external view returns (bytes32);
 
@@ -3218,11 +3131,7 @@ interface IBigStepper {
     /// @param _localContext The local key context for the preimage oracle. Optional, can be set as a constant if the
     ///                      implementation only requires one set of local keys.
     /// @return postState_ The hash of the post state witness after the state transition.
-    function step(
-        bytes calldata _stateData,
-        bytes calldata _proof,
-        bytes32 _localContext
-    )
+    function step(bytes calldata _stateData, bytes calldata _proof, bytes32 _localContext)
         external
         returns (bytes32 postState_);
 
@@ -3320,8 +3229,7 @@ interface ISystemConfig is IProxyAdminOwnedBase {
         Addresses memory _addresses,
         uint256 _l2ChainId,
         ISuperchainConfig _superchainConfig
-    )
-        external;
+    ) external;
     function initVersion() external view returns (uint8);
     function l1CrossDomainMessenger() external view returns (address addr_);
     function l1ERC721Bridge() external view returns (address addr_);
@@ -3504,6 +3412,7 @@ interface IFaultDisputeGame is IDisputeGame {
     error GameNotResolved();
     error ReservedGameType();
     error GamePaused();
+
     event Move(uint256 indexed parentIndex, Claim indexed claim, address indexed claimant);
     event GameClosed(BondDistributionMode bondDistributionMode);
 
@@ -3582,11 +3491,7 @@ library LibGameId {
     /// @param _timestamp The timestamp of the game's creation.
     /// @param _gameProxy The game proxy address.
     /// @return gameId_ The packed GameId.
-    function pack(
-        GameType _gameType,
-        Timestamp _timestamp,
-        address _gameProxy
-    )
+    function pack(GameType _gameType, Timestamp _timestamp, address _gameProxy)
         internal
         pure
         returns (GameId gameId_)
@@ -3647,19 +3552,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     event Initialized(uint8 version);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    function create(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function create(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         payable
         returns (IDisputeGame proxy_);
-    function findLatestGames(
-        GameType _gameType,
-        uint256 _start,
-        uint256 _n
-    )
+    function findLatestGames(GameType _gameType, uint256 _start, uint256 _n)
         external
         view
         returns (GameSearchResult[] memory games_);
@@ -3670,19 +3567,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     function gameCount() external view returns (uint256 gameCount_);
     function gameArgs(GameType) external view returns (bytes memory);
     function gameImpls(GameType) external view returns (IDisputeGame);
-    function games(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function games(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         view
         returns (IDisputeGame proxy_, Timestamp timestamp_);
-    function getGameUUID(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function getGameUUID(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         pure
         returns (Hash uuid_);
@@ -3732,8 +3621,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
         IDisputeGameFactory _disputeGameFactory,
         Proposal memory _startingAnchorRoot,
         GameType _startingRespectedGameType
-    )
-        external;
+    ) external;
     function isGameBlacklisted(IDisputeGame _game) external view returns (bool);
     function isGameProper(IDisputeGame _game) external view returns (bool);
     function isGameRegistered(IDisputeGame _game) external view returns (bool);
@@ -3752,9 +3640,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
     function version() external view returns (string memory);
     function superchainConfig() external view returns (ISuperchainConfig);
 
-    function __constructor__(
-        uint256 _disputeGameFinalityDelaySeconds
-    ) external;
+    function __constructor__(uint256 _disputeGameFinalityDelaySeconds) external;
 }
 
 interface IETHLockbox is IProxyAdminOwnedBase, ISemver, IReinitializableBase {
@@ -3825,13 +3711,7 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
     function anchorStateRegistry() external view returns (IAnchorStateRegistry);
     function ethLockbox() external view returns (IETHLockbox);
     function checkWithdrawal(bytes32 _withdrawalHash, address _proofSubmitter) external view;
-    function depositTransaction(
-        address _to,
-        uint256 _value,
-        uint64 _gasLimit,
-        bool _isCreation,
-        bytes memory _data
-    )
+    function depositTransaction(address _to, uint256 _value, uint64 _gasLimit, bool _isCreation, bytes memory _data)
         external
         payable;
     function disputeGameBlacklist(IDisputeGame _disputeGame) external view returns (bool);
@@ -3840,18 +3720,11 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
     function donateETH() external payable;
     function superchainConfig() external view returns (ISuperchainConfig);
     function finalizeWithdrawalTransaction(Types.WithdrawalTransaction memory _tx) external;
-    function finalizeWithdrawalTransactionExternalProof(
-        Types.WithdrawalTransaction memory _tx,
-        address _proofSubmitter
-    )
+    function finalizeWithdrawalTransactionExternalProof(Types.WithdrawalTransaction memory _tx, address _proofSubmitter)
         external;
     function finalizedWithdrawals(bytes32) external view returns (bool);
     function guardian() external view returns (address);
-    function initialize(
-        ISystemConfig _systemConfig,
-        IAnchorStateRegistry _anchorStateRegistry
-    )
-        external;
+    function initialize(ISystemConfig _systemConfig, IAnchorStateRegistry _anchorStateRegistry) external;
     function initVersion() external view returns (uint8);
     function l2Sender() external view returns (address);
     function minimumGasLimit(uint64 _byteCount) external pure returns (uint64);
@@ -3865,12 +3738,8 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
         uint256 _disputeGameIndex,
         Types.OutputRootProof memory _outputRootProof,
         bytes[] memory _withdrawalProof
-    )
-        external;
-    function provenWithdrawals(
-        bytes32,
-        address
-    )
+    ) external;
+    function provenWithdrawals(bytes32, address)
         external
         view
         returns (IDisputeGame disputeGameProxy, uint64 timestamp);
@@ -4008,35 +3877,93 @@ library Predeploys {
     /// @notice Returns the name of the predeploy at the given address.
     function getName(address _addr) internal pure returns (string memory out_) {
         require(isPredeployNamespace(_addr), "Predeploys: address must be a predeploy");
-        if (_addr == LEGACY_MESSAGE_PASSER) return "LegacyMessagePasser";
-        if (_addr == L1_MESSAGE_SENDER) return "L1MessageSender";
-        if (_addr == DEPLOYER_WHITELIST) return "DeployerWhitelist";
-        if (_addr == WETH) return "WETH";
-        if (_addr == L2_CROSS_DOMAIN_MESSENGER) return "L2CrossDomainMessenger";
-        if (_addr == GAS_PRICE_ORACLE) return "GasPriceOracle";
-        if (_addr == L2_STANDARD_BRIDGE) return "L2StandardBridge";
-        if (_addr == SEQUENCER_FEE_WALLET) return "SequencerFeeVault";
-        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) return "OptimismMintableERC20Factory";
-        if (_addr == L1_BLOCK_NUMBER) return "L1BlockNumber";
-        if (_addr == L2_ERC721_BRIDGE) return "L2ERC721Bridge";
-        if (_addr == L1_BLOCK_ATTRIBUTES) return "L1Block";
-        if (_addr == L2_TO_L1_MESSAGE_PASSER) return "L2ToL1MessagePasser";
-        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) return "OptimismMintableERC721Factory";
-        if (_addr == PROXY_ADMIN) return "ProxyAdmin";
-        if (_addr == BASE_FEE_VAULT) return "BaseFeeVault";
-        if (_addr == L1_FEE_VAULT) return "L1FeeVault";
-        if (_addr == OPERATOR_FEE_VAULT) return "OperatorFeeVault";
-        if (_addr == SCHEMA_REGISTRY) return "SchemaRegistry";
-        if (_addr == EAS) return "EAS";
-        if (_addr == GOVERNANCE_TOKEN) return "GovernanceToken";
-        if (_addr == LEGACY_ERC20_ETH) return "LegacyERC20ETH";
-        if (_addr == CROSS_L2_INBOX) return "CrossL2Inbox";
-        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) return "L2ToL2CrossDomainMessenger";
-        if (_addr == SUPERCHAIN_ETH_BRIDGE) return "SuperchainETHBridge";
-        if (_addr == ETH_LIQUIDITY) return "ETHLiquidity";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) return "OptimismSuperchainERC20Factory";
-        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) return "OptimismSuperchainERC20Beacon";
-        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) return "SuperchainTokenBridge";
+        if (_addr == LEGACY_MESSAGE_PASSER) {
+            return "LegacyMessagePasser";
+        }
+        if (_addr == L1_MESSAGE_SENDER) {
+            return "L1MessageSender";
+        }
+        if (_addr == DEPLOYER_WHITELIST) {
+            return "DeployerWhitelist";
+        }
+        if (_addr == WETH) {
+            return "WETH";
+        }
+        if (_addr == L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2CrossDomainMessenger";
+        }
+        if (_addr == GAS_PRICE_ORACLE) {
+            return "GasPriceOracle";
+        }
+        if (_addr == L2_STANDARD_BRIDGE) {
+            return "L2StandardBridge";
+        }
+        if (_addr == SEQUENCER_FEE_WALLET) {
+            return "SequencerFeeVault";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC20_FACTORY) {
+            return "OptimismMintableERC20Factory";
+        }
+        if (_addr == L1_BLOCK_NUMBER) {
+            return "L1BlockNumber";
+        }
+        if (_addr == L2_ERC721_BRIDGE) {
+            return "L2ERC721Bridge";
+        }
+        if (_addr == L1_BLOCK_ATTRIBUTES) {
+            return "L1Block";
+        }
+        if (_addr == L2_TO_L1_MESSAGE_PASSER) {
+            return "L2ToL1MessagePasser";
+        }
+        if (_addr == OPTIMISM_MINTABLE_ERC721_FACTORY) {
+            return "OptimismMintableERC721Factory";
+        }
+        if (_addr == PROXY_ADMIN) {
+            return "ProxyAdmin";
+        }
+        if (_addr == BASE_FEE_VAULT) {
+            return "BaseFeeVault";
+        }
+        if (_addr == L1_FEE_VAULT) {
+            return "L1FeeVault";
+        }
+        if (_addr == OPERATOR_FEE_VAULT) {
+            return "OperatorFeeVault";
+        }
+        if (_addr == SCHEMA_REGISTRY) {
+            return "SchemaRegistry";
+        }
+        if (_addr == EAS) {
+            return "EAS";
+        }
+        if (_addr == GOVERNANCE_TOKEN) {
+            return "GovernanceToken";
+        }
+        if (_addr == LEGACY_ERC20_ETH) {
+            return "LegacyERC20ETH";
+        }
+        if (_addr == CROSS_L2_INBOX) {
+            return "CrossL2Inbox";
+        }
+        if (_addr == L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            return "L2ToL2CrossDomainMessenger";
+        }
+        if (_addr == SUPERCHAIN_ETH_BRIDGE) {
+            return "SuperchainETHBridge";
+        }
+        if (_addr == ETH_LIQUIDITY) {
+            return "ETHLiquidity";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_FACTORY) {
+            return "OptimismSuperchainERC20Factory";
+        }
+        if (_addr == OPTIMISM_SUPERCHAIN_ERC20_BEACON) {
+            return "OptimismSuperchainERC20Beacon";
+        }
+        if (_addr == SUPERCHAIN_TOKEN_BRIDGE) {
+            return "SuperchainTokenBridge";
+        }
         revert("Predeploys: unnamed predeploy");
     }
 
@@ -4046,11 +3973,7 @@ library Predeploys {
     }
 
     /// @notice Returns true if the address is a defined predeploy that is embedded into new OP-Stack chains.
-    function isSupportedPredeploy(
-        address _addr,
-        uint256 _fork,
-        bool _enableCrossL2Inbox
-    )
+    function isSupportedPredeploy(address _addr, uint256 _fork, bool _enableCrossL2Inbox)
         internal
         pure
         returns (bool)
@@ -4124,7 +4047,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ProxyAdminOwnedBase, Re
         // Now perform initialization logic.
         systemConfig = _systemConfig;
         portal = _portal;
-        __CrossDomainMessenger_init({ _otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER) });
+        __CrossDomainMessenger_init({_otherMessenger: CrossDomainMessenger(Predeploys.L2_CROSS_DOMAIN_MESSENGER)});
     }
 
     /// @inheritdoc CrossDomainMessenger
@@ -4148,7 +4071,7 @@ contract L1CrossDomainMessenger is CrossDomainMessenger, ProxyAdminOwnedBase, Re
 
     /// @inheritdoc CrossDomainMessenger
     function _sendMessage(address _to, uint64 _gasLimit, uint256 _value, bytes memory _data) internal override {
-        portal.depositTransaction{ value: _value }({
+        portal.depositTransaction{value: _value}({
             _to: _to,
             _value: _value,
             _gasLimit: _gasLimit,

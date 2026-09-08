@@ -2,5 +2,5 @@
 pragma solidity >=0.5.13 <0.9.0;
 
 interface IEpochManagerEnablerInitializer {
-  function initialize(address registryAddress) external;
+    function initialize(address registryAddress) external;
 }

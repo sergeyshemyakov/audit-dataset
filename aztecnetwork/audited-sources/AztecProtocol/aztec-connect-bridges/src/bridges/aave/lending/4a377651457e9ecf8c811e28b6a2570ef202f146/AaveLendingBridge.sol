@@ -1,29 +1,29 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {SafeMath} from '@openzeppelin/contracts/utils/math/SafeMath.sol';
-import {SafeERC20} from '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
-import {IERC20} from '@openzeppelin/contracts/token/ERC20/IERC20.sol';
-import {IERC20Metadata} from '@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol';
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import {SafeMath} from "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-import {ILendingPoolAddressesProvider} from './../imports/interfaces/ILendingPoolAddressesProvider.sol';
-import {ILendingPool} from './../imports/interfaces/ILendingPool.sol';
-import {IPool} from './../imports/interfaces/IPool.sol';
-import {IScaledBalanceToken} from './../imports/interfaces/IScaledBalanceToken.sol';
-import {IAaveIncentivesController} from './../imports/interfaces/IAaveIncentivesController.sol';
-import {IAccountingToken} from './../imports/interfaces/IAccountingToken.sol';
-import {IWETH9} from './../imports/interfaces/IWETH9.sol';
+import {IAaveIncentivesController} from "./../imports/interfaces/IAaveIncentivesController.sol";
+import {IAccountingToken} from "./../imports/interfaces/IAccountingToken.sol";
+import {ILendingPool} from "./../imports/interfaces/ILendingPool.sol";
+import {ILendingPoolAddressesProvider} from "./../imports/interfaces/ILendingPoolAddressesProvider.sol";
+import {IPool} from "./../imports/interfaces/IPool.sol";
+import {IScaledBalanceToken} from "./../imports/interfaces/IScaledBalanceToken.sol";
+import {IWETH9} from "./../imports/interfaces/IWETH9.sol";
 
-import {DataTypes} from './../imports/libraries/DataTypes.sol';
+import {DataTypes} from "./../imports/libraries/DataTypes.sol";
 
-import {IRollupProcessor} from '../../../interfaces/IRollupProcessor.sol';
-import {IDefiBridge} from '../../../interfaces/IDefiBridge.sol';
-import {AztecTypes} from '../../../aztec/AztecTypes.sol';
+import {AztecTypes} from "../../../aztec/AztecTypes.sol";
+import {IDefiBridge} from "../../../interfaces/IDefiBridge.sol";
+import {IRollupProcessor} from "../../../interfaces/IRollupProcessor.sol";
 
-import {IAaveLendingBridge} from './interfaces/IAaveLendingBridge.sol';
+import {IAaveLendingBridge} from "./interfaces/IAaveLendingBridge.sol";
 
-import {Errors} from './libraries/Errors.sol';
-import {AccountingToken} from './../AccountingToken.sol';
+import {AccountingToken} from "./../AccountingToken.sol";
+import {Errors} from "./libraries/Errors.sol";
 
 /**
  * @notice AaveLendingBridge implementation that allow a configurator to "list" a reserve and then anyone can
@@ -54,11 +54,7 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
     /// Need to be able to receive ETH for WETH unwrapping
     receive() external payable {}
 
-    constructor(
-        address _rollupProcessor,
-        address _addressesProvider,
-        address _configurator
-    ) {
+    constructor(address _rollupProcessor, address _addressesProvider, address _configurator) {
         ROLLUP_PROCESSOR = _rollupProcessor;
         /// @dev addressesProvider is used to fetch pool, used in case Aave governance update pool proxy
         ADDRESSES_PROVIDER = ILendingPoolAddressesProvider(_addressesProvider);
@@ -81,8 +77,8 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
 
         IERC20Metadata aToken = IERC20Metadata(aTokenAddress);
 
-        string memory name = string(abi.encodePacked('ZK-', aToken.name()));
-        string memory symbol = string(abi.encodePacked('ZK-', aToken.symbol()));
+        string memory name = string(abi.encodePacked("ZK-", aToken.name()));
+        string memory symbol = string(abi.encodePacked("ZK-", aToken.symbol()));
 
         address zkAToken = address(new AccountingToken(name, symbol, aToken.decimals()));
 
@@ -116,22 +112,9 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
         uint256 interactionNonce,
         uint64 auxData,
         address rollupBeneficiary
-    )
-        external
-        payable
-        override(IDefiBridge)
-        returns (
-            uint256 outputValueA,
-            uint256 outputValueB,
-            bool isAsync
-        )
-    {
-        (bool enter, address underlyingAddress, address zkATokenAddress, bool isEth) = _sanityConvert(
-            inputAssetA,
-            inputAssetB,
-            outputAssetA,
-            outputAssetB
-        );
+    ) external payable override(IDefiBridge) returns (uint256 outputValueA, uint256 outputValueB, bool isAsync) {
+        (bool enter, address underlyingAddress, address zkATokenAddress, bool isEth) =
+            _sanityConvert(inputAssetA, inputAssetB, outputAssetA, outputAssetB);
 
         if (enter) {
             outputValueA = _enter(underlyingAddress, zkATokenAddress, totalInputValue, isEth);
@@ -148,12 +131,10 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
      * @param amount The amount of underlying asset to deposit
      * @return The amount of zkAToken that was minted by the deposit
      */
-    function _enter(
-        address underlyingAsset,
-        address zkATokenAddress,
-        uint256 amount,
-        bool isEth
-    ) internal returns (uint256) {
+    function _enter(address underlyingAsset, address zkATokenAddress, uint256 amount, bool isEth)
+        internal
+        returns (uint256)
+    {
         /**
          * Interaction flow:
          * 0. If receiving ETH, wrap it such that WETH can be deposited
@@ -163,7 +144,6 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
          * 4. Mint zkATokens equal to scaled amount
          * 5. Approve ROLLUP_PROCESSOR to pull funds
          */
-
         if (isEth) {
             WETH.deposit{value: amount}();
         }
@@ -206,7 +186,6 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
          * 4. Approve underlying asset to be pulled by ROLLUP_PROCESSOR or transfer ETH
          * Exit may fail if insufficient liquidity is available in the Aave pool.
          */
-
         IAccountingToken(zkATokenAddress).burn(scaledAmount);
 
         ILendingPool pool = ILendingPool(ADDRESSES_PROVIDER.getLendingPool());
@@ -236,11 +215,11 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
      * @param beneficiary The address to receive the rewards
      * @return The amount of rewards claimed
      */
-    function claimLiquidityRewards(
-        address incentivesController,
-        address[] calldata assets,
-        address beneficiary
-    ) external onlyConfigurator returns (uint256) {
+    function claimLiquidityRewards(address incentivesController, address[] calldata assets, address beneficiary)
+        external
+        onlyConfigurator
+        returns (uint256)
+    {
         return IAaveIncentivesController(incentivesController).claimRewards(assets, type(uint256).max, beneficiary);
     }
 
@@ -251,17 +230,8 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
         AztecTypes.AztecAsset calldata,
         uint256,
         uint64
-    )
-        external
-        payable
-        override(IDefiBridge)
-        returns (
-            uint256,
-            uint256,
-            bool
-        )
-    {
-        require(false, 'Not implemented');
+    ) external payable override(IDefiBridge) returns (uint256, uint256, bool) {
+        require(false, "Not implemented");
         return (0, 0, false);
     }
 
@@ -283,42 +253,33 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
         AztecTypes.AztecAsset memory inputAssetB,
         AztecTypes.AztecAsset memory outputAssetA,
         AztecTypes.AztecAsset memory outputAssetB
-    )
-        internal
-        view
-        returns (
-            bool,
-            address,
-            address,
-            bool
-        )
-    {
+    ) internal view returns (bool, address, address, bool) {
         require(msg.sender == ROLLUP_PROCESSOR, Errors.INVALID_CALLER);
         require(
-            !(inputAssetA.assetType == AztecTypes.AztecAssetType.ETH &&
-                outputAssetA.assetType == AztecTypes.AztecAssetType.ETH),
+            !(
+                inputAssetA.assetType == AztecTypes.AztecAssetType.ETH
+                    && outputAssetA.assetType == AztecTypes.AztecAssetType.ETH
+            ),
             Errors.INPUT_ASSET_A_AND_OUTPUT_ASSET_A_IS_ETH
         );
         require(
-            inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20 ||
-                inputAssetA.assetType == AztecTypes.AztecAssetType.ETH,
+            inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20
+                || inputAssetA.assetType == AztecTypes.AztecAssetType.ETH,
             Errors.INPUT_ASSET_A_NOT_ERC20_OR_ETH
         );
         require(
-            outputAssetA.assetType == AztecTypes.AztecAssetType.ERC20 ||
-                outputAssetA.assetType == AztecTypes.AztecAssetType.ETH,
+            outputAssetA.assetType == AztecTypes.AztecAssetType.ERC20
+                || outputAssetA.assetType == AztecTypes.AztecAssetType.ETH,
             Errors.OUTPUT_ASSET_A_NOT_ERC20_OR_ETH
         );
         require(inputAssetB.assetType == AztecTypes.AztecAssetType.NOT_USED, Errors.INPUT_ASSET_B_NOT_EMPTY);
         require(outputAssetB.assetType == AztecTypes.AztecAssetType.NOT_USED, Errors.OUTPUT_ASSET_B_NOT_EMPTY);
 
-        address inputAsset = inputAssetA.assetType == AztecTypes.AztecAssetType.ETH
-            ? address(WETH)
-            : inputAssetA.erc20Address;
+        address inputAsset =
+            inputAssetA.assetType == AztecTypes.AztecAssetType.ETH ? address(WETH) : inputAssetA.erc20Address;
 
-        address outputAsset = outputAssetA.assetType == AztecTypes.AztecAssetType.ETH
-            ? address(WETH)
-            : outputAssetA.erc20Address;
+        address outputAsset =
+            outputAssetA.assetType == AztecTypes.AztecAssetType.ETH ? address(WETH) : outputAssetA.erc20Address;
 
         require(inputAsset != address(0), Errors.INPUT_ASSET_INVALID);
         require(outputAsset != address(0), Errors.OUTPUT_ASSET_INVALID);
@@ -336,8 +297,8 @@ contract AaveLendingBridge is IAaveLendingBridge, IDefiBridge {
             zkAToken = zkATokenCandidate;
         }
 
-        bool isEth = inputAssetA.assetType == AztecTypes.AztecAssetType.ETH ||
-            outputAssetA.assetType == AztecTypes.AztecAssetType.ETH;
+        bool isEth = inputAssetA.assetType == AztecTypes.AztecAssetType.ETH
+            || outputAssetA.assetType == AztecTypes.AztecAssetType.ETH;
 
         return (inputAsset == underlying, underlying, zkAToken, isEth);
     }

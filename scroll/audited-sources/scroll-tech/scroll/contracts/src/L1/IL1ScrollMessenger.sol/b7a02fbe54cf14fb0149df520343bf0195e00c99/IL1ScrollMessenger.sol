@@ -5,19 +5,22 @@ pragma solidity ^0.8.16;
 import {IScrollMessenger} from "../libraries/IScrollMessenger.sol";
 
 interface IL1ScrollMessenger is IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the maximum number of times each message can be replayed is updated.
     /// @param oldMaxReplayTimes The old maximum number of times each message can be replayed.
     /// @param newMaxReplayTimes The new maximum number of times each message can be replayed.
     event UpdateMaxReplayTimes(uint256 oldMaxReplayTimes, uint256 newMaxReplayTimes);
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct L2MessageProof {
         // The index of the batch where the message belongs to.
         uint256 batchIndex;
@@ -25,9 +28,11 @@ interface IL1ScrollMessenger is IScrollMessenger {
         bytes merkleProof;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Relay a L2 => L1 message with message proof.
     /// @param from The address of the sender of the message.
@@ -69,11 +74,6 @@ interface IL1ScrollMessenger is IScrollMessenger {
     /// @param value The msg.value passed to the message call.
     /// @param messageNonce The nonce for the message to drop.
     /// @param message The content of the message.
-    function dropMessage(
-        address from,
-        address to,
-        uint256 value,
-        uint256 messageNonce,
-        bytes memory message
-    ) external;
+    function dropMessage(address from, address to, uint256 value, uint256 messageNonce, bytes memory message)
+        external;
 }

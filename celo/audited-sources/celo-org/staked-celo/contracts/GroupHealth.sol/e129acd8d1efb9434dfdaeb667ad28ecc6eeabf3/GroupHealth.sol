@@ -4,8 +4,8 @@ pragma solidity 0.8.11;
 import "@openzeppelin/contracts/utils/math/Math.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-import "./common/UsingRegistryUpgradeable.sol";
 import "./common/UUPSOwnableUpgradeable.sol";
+import "./common/UsingRegistryUpgradeable.sol";
 
 /**
  * @title GroupHealth stores and updates info about validator group health.
@@ -66,16 +66,7 @@ contract GroupHealth is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 0, 0);
     }
 
@@ -124,13 +115,7 @@ contract GroupHealth is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
         uint256 currentNumberOfElectedValidators = numberValidatorsInCurrentSet();
         // check that at least one member is elected.
         for (uint256 i = 0; i < members.length; i++) {
-            if (
-                isGroupMemberElected(
-                    members[i],
-                    membersElectedIndex[i],
-                    currentNumberOfElectedValidators
-                )
-            ) {
+            if (isGroupMemberElected(members[i], membersElectedIndex[i], currentNumberOfElectedValidators)) {
                 isGroupValid[group] = true;
                 emit GroupHealthUpdated(group, true);
                 return;
@@ -143,12 +128,7 @@ contract GroupHealth is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
      * @param index Index of requested validator in the validator set.
      * @return Address of validator at the requested index.
      */
-    function validatorSignerAddressFromCurrentSet(uint256 index)
-        internal
-        view
-        virtual
-        returns (address)
-    {
+    function validatorSignerAddressFromCurrentSet(uint256 index) internal view virtual returns (address) {
         return getElection().validatorSignerAddressFromCurrentSet(index);
     }
 
@@ -167,11 +147,11 @@ contract GroupHealth is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
      * @param currentNumberOfElectedValidators The count of currently elected validators.
      * @return Whether or not the group member is elected.
      */
-    function isGroupMemberElected(
-        address groupMember,
-        uint256 index,
-        uint256 currentNumberOfElectedValidators
-    ) internal view returns (bool) {
+    function isGroupMemberElected(address groupMember, uint256 index, uint256 currentNumberOfElectedValidators)
+        internal
+        view
+        returns (bool)
+    {
         if (index > currentNumberOfElectedValidators) {
             return false;
         }
@@ -222,13 +202,13 @@ contract GroupHealth is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
         }
 
         uint256 slashMultiplier;
-        (members, , , , , slashMultiplier, ) = validators.getValidatorGroup(group);
+        (members,,,,, slashMultiplier,) = validators.getValidatorGroup(group);
         // check if group has no members
         if (members.length == 0) {
             return (false, members);
         }
         // check for recent slash
-        if (slashMultiplier < 10**24) {
+        if (slashMultiplier < 10 ** 24) {
             return (false, members);
         }
 

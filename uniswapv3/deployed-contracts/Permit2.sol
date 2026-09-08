@@ -210,11 +210,17 @@ library SignatureVerification {
                 revert InvalidSignatureLength();
             }
             address signer = ecrecover(hash, v, r, s);
-            if (signer == address(0)) revert InvalidSignature();
-            if (signer != claimedSigner) revert InvalidSigner();
+            if (signer == address(0)) {
+                revert InvalidSignature();
+            }
+            if (signer != claimedSigner) {
+                revert InvalidSigner();
+            }
         } else {
             bytes4 magicValue = IERC1271(claimedSigner).isValidSignature(hash, signature);
-            if (magicValue != IERC1271.isValidSignature.selector) revert InvalidContractSignature();
+            if (magicValue != IERC1271.isValidSignature.selector) {
+                revert InvalidContractSignature();
+            }
         }
     }
 }
@@ -247,12 +253,7 @@ library SafeTransferLib {
                             ERC20 OPERATIONS
     //////////////////////////////////////////////////////////////*/
 
-    function safeTransferFrom(
-        ERC20 token,
-        address from,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransferFrom(ERC20 token, address from, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -266,26 +267,23 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 36), to) // Append the "to" argument.
             mstore(add(freeMemoryPointer, 68), amount) // Append the "amount" argument.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
+                )
         }
 
         require(success, "TRANSFER_FROM_FAILED");
     }
 
-    function safeTransfer(
-        ERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransfer(ERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -298,26 +296,23 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), to) // Append the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+                )
         }
 
         require(success, "TRANSFER_FAILED");
     }
 
-    function safeApprove(
-        ERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeApprove(ERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -330,16 +325,17 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), to) // Append the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+                )
         }
 
         require(success, "APPROVE_FAILED");
@@ -691,8 +687,12 @@ contract SignatureTransfer is ISignatureTransfer, EIP712 {
     ) private {
         uint256 requestedAmount = transferDetails.requestedAmount;
 
-        if (block.timestamp > permit.deadline) revert SignatureExpired(permit.deadline);
-        if (requestedAmount > permit.permitted.amount) revert InvalidAmount(permit.permitted.amount);
+        if (block.timestamp > permit.deadline) {
+            revert SignatureExpired(permit.deadline);
+        }
+        if (requestedAmount > permit.permitted.amount) {
+            revert InvalidAmount(permit.permitted.amount);
+        }
 
         _useUnorderedNonce(owner, permit.nonce);
 
@@ -740,8 +740,12 @@ contract SignatureTransfer is ISignatureTransfer, EIP712 {
     ) private {
         uint256 numPermitted = permit.permitted.length;
 
-        if (block.timestamp > permit.deadline) revert SignatureExpired(permit.deadline);
-        if (numPermitted != transferDetails.length) revert LengthMismatch();
+        if (block.timestamp > permit.deadline) {
+            revert SignatureExpired(permit.deadline);
+        }
+        if (numPermitted != transferDetails.length) {
+            revert LengthMismatch();
+        }
 
         _useUnorderedNonce(owner, permit.nonce);
         signature.verify(_hashTypedData(dataHash), owner);
@@ -751,7 +755,9 @@ contract SignatureTransfer is ISignatureTransfer, EIP712 {
                 TokenPermissions memory permitted = permit.permitted[i];
                 uint256 requestedAmount = transferDetails[i].requestedAmount;
 
-                if (requestedAmount > permitted.amount) revert InvalidAmount(permitted.amount);
+                if (requestedAmount > permitted.amount) {
+                    revert InvalidAmount(permitted.amount);
+                }
 
                 if (requestedAmount != 0) {
                     // allow spender to specify which of the permitted tokens should be transferred
@@ -787,7 +793,9 @@ contract SignatureTransfer is ISignatureTransfer, EIP712 {
         uint256 bit = 1 << bitPos;
         uint256 flipped = nonceBitmap[from][wordPos] ^= bit;
 
-        if (flipped & bit == 0) revert InvalidNonce();
+        if (flipped & bit == 0) {
+            revert InvalidNonce();
+        }
     }
 }
 
@@ -856,7 +864,9 @@ contract AllowanceTransfer is IAllowanceTransfer, EIP712 {
 
     /// @inheritdoc IAllowanceTransfer
     function permit(address owner, PermitSingle memory permitSingle, bytes calldata signature) external {
-        if (block.timestamp > permitSingle.sigDeadline) revert SignatureExpired(permitSingle.sigDeadline);
+        if (block.timestamp > permitSingle.sigDeadline) {
+            revert SignatureExpired(permitSingle.sigDeadline);
+        }
 
         // Verify the signer address from the signature.
         signature.verify(_hashTypedData(permitSingle.hash()), owner);
@@ -866,7 +876,9 @@ contract AllowanceTransfer is IAllowanceTransfer, EIP712 {
 
     /// @inheritdoc IAllowanceTransfer
     function permit(address owner, PermitBatch memory permitBatch, bytes calldata signature) external {
-        if (block.timestamp > permitBatch.sigDeadline) revert SignatureExpired(permitBatch.sigDeadline);
+        if (block.timestamp > permitBatch.sigDeadline) {
+            revert SignatureExpired(permitBatch.sigDeadline);
+        }
 
         // Verify the signer address from the signature.
         signature.verify(_hashTypedData(permitBatch.hash()), owner);
@@ -901,7 +913,9 @@ contract AllowanceTransfer is IAllowanceTransfer, EIP712 {
     function _transfer(address from, address to, uint160 amount, address token) private {
         PackedAllowance storage allowed = allowance[from][token][msg.sender];
 
-        if (block.timestamp > allowed.expiration) revert AllowanceExpired(allowed.expiration);
+        if (block.timestamp > allowed.expiration) {
+            revert AllowanceExpired(allowed.expiration);
+        }
 
         uint256 maxAmount = allowed.amount;
         if (maxAmount != type(uint160).max) {
@@ -938,12 +952,16 @@ contract AllowanceTransfer is IAllowanceTransfer, EIP712 {
     function invalidateNonces(address token, address spender, uint48 newNonce) external {
         uint48 oldNonce = allowance[msg.sender][token][spender].nonce;
 
-        if (newNonce <= oldNonce) revert InvalidNonce();
+        if (newNonce <= oldNonce) {
+            revert InvalidNonce();
+        }
 
         // Limit the amount of nonces that can be invalidated in one transaction.
         unchecked {
             uint48 delta = newNonce - oldNonce;
-            if (delta > type(uint16).max) revert ExcessiveInvalidation();
+            if (delta > type(uint16).max) {
+                revert ExcessiveInvalidation();
+            }
         }
 
         allowance[msg.sender][token][spender].nonce = newNonce;
@@ -960,7 +978,9 @@ contract AllowanceTransfer is IAllowanceTransfer, EIP712 {
         uint48 expiration = details.expiration;
         PackedAllowance storage allowed = allowance[owner][token][spender];
 
-        if (allowed.nonce != nonce) revert InvalidNonce();
+        if (allowed.nonce != nonce) {
+            revert InvalidNonce();
+        }
 
         allowed.updateAll(amount, expiration, nonce);
         emit Permit(owner, token, spender, amount, expiration, nonce);

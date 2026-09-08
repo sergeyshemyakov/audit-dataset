@@ -57,20 +57,15 @@ library RollupVerifier {
         return mulmod(a, fr_invert(b), q_mod);
     }
 
-    function fr_mul_add(
-        uint256 a,
-        uint256 b,
-        uint256 c
-    ) internal pure returns (uint256) {
+    function fr_mul_add(uint256 a, uint256 b, uint256 c) internal pure returns (uint256) {
         return addmod(mulmod(a, b, q_mod), c, q_mod);
     }
 
-    function fr_mul_add_pm(
-        uint256[84] memory m,
-        uint256[] calldata proof,
-        uint256 opcode,
-        uint256 t
-    ) internal pure returns (uint256) {
+    function fr_mul_add_pm(uint256[84] memory m, uint256[] calldata proof, uint256 opcode, uint256 t)
+        internal
+        pure
+        returns (uint256)
+    {
         for (uint256 i = 0; i < 32; i += 2) {
             uint256 a = opcode & 0xff;
             if (a != 0xff) {
@@ -86,12 +81,11 @@ library RollupVerifier {
         return t;
     }
 
-    function fr_mul_add_mt(
-        uint256[84] memory m,
-        uint256 base,
-        uint256 opcode,
-        uint256 t
-    ) internal pure returns (uint256) {
+    function fr_mul_add_mt(uint256[84] memory m, uint256 base, uint256 opcode, uint256 t)
+        internal
+        pure
+        returns (uint256)
+    {
         for (uint256 i = 0; i < 32; i += 1) {
             uint256 a = opcode & 0xff;
             if (a != 0xff) {
@@ -109,24 +103,20 @@ library RollupVerifier {
         v = input;
 
         // swap bytes
-        v =
-            ((v & 0xFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00) >> 8) |
-            ((v & 0x00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF) << 8);
+        v = ((v & 0xFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00) >> 8)
+            | ((v & 0x00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF) << 8);
 
         // swap 2-byte long pairs
-        v =
-            ((v & 0xFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000) >> 16) |
-            ((v & 0x0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF) << 16);
+        v = ((v & 0xFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000) >> 16)
+            | ((v & 0x0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF) << 16);
 
         // swap 4-byte long pairs
-        v =
-            ((v & 0xFFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000) >> 32) |
-            ((v & 0x00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF) << 32);
+        v = ((v & 0xFFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000) >> 32)
+            | ((v & 0x00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF) << 32);
 
         // swap 8-byte long pairs
-        v =
-            ((v & 0xFFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF0000000000000000) >> 64) |
-            ((v & 0x0000000000000000FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF) << 64);
+        v = ((v & 0xFFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF0000000000000000) >> 64)
+            | ((v & 0x0000000000000000FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF) << 64);
 
         // swap 16-byte long pairs
         v = (v >> 128) | (v << 128);
@@ -149,12 +139,7 @@ library RollupVerifier {
         r.y = y;
     }
 
-    function ecc_add(
-        uint256 ax,
-        uint256 ay,
-        uint256 bx,
-        uint256 by
-    ) internal view returns (uint256, uint256) {
+    function ecc_add(uint256 ax, uint256 ay, uint256 bx, uint256 by) internal view returns (uint256, uint256) {
         bool ret = false;
         G1Point memory r;
         uint256[4] memory input_points;
@@ -172,20 +157,11 @@ library RollupVerifier {
         return (r.x, r.y);
     }
 
-    function ecc_sub(
-        uint256 ax,
-        uint256 ay,
-        uint256 bx,
-        uint256 by
-    ) internal view returns (uint256, uint256) {
+    function ecc_sub(uint256 ax, uint256 ay, uint256 bx, uint256 by) internal view returns (uint256, uint256) {
         return ecc_add(ax, ay, bx, p_mod - by);
     }
 
-    function ecc_mul(
-        uint256 px,
-        uint256 py,
-        uint256 s
-    ) internal view returns (uint256, uint256) {
+    function ecc_mul(uint256 px, uint256 py, uint256 s) internal view returns (uint256, uint256) {
         uint256[3] memory input;
         bool ret = false;
         G1Point memory r;
@@ -216,13 +192,11 @@ library RollupVerifier {
         require(ret);
     }
 
-    function ecc_mul_add(
-        uint256 px,
-        uint256 py,
-        uint256 s,
-        uint256 qx,
-        uint256 qy
-    ) internal view returns (uint256, uint256) {
+    function ecc_mul_add(uint256 px, uint256 py, uint256 s, uint256 qx, uint256 qy)
+        internal
+        view
+        returns (uint256, uint256)
+    {
         uint256[5] memory input;
         input[0] = px;
         input[1] = py;
@@ -235,13 +209,11 @@ library RollupVerifier {
         return (input[3], input[4]);
     }
 
-    function ecc_mul_add_pm(
-        uint256[84] memory m,
-        uint256[] calldata proof,
-        uint256 opcode,
-        uint256 t0,
-        uint256 t1
-    ) internal view returns (uint256, uint256) {
+    function ecc_mul_add_pm(uint256[84] memory m, uint256[] calldata proof, uint256 opcode, uint256 t0, uint256 t1)
+        internal
+        view
+        returns (uint256, uint256)
+    {
         uint256[5] memory input;
         input[3] = t0;
         input[4] = t1;
@@ -263,21 +235,12 @@ library RollupVerifier {
         return (input[3], input[4]);
     }
 
-    function update_hash_scalar(
-        uint256 v,
-        uint256[144] memory absorbing,
-        uint256 pos
-    ) internal pure {
+    function update_hash_scalar(uint256 v, uint256[144] memory absorbing, uint256 pos) internal pure {
         absorbing[pos++] = 0x02;
         absorbing[pos++] = v;
     }
 
-    function update_hash_point(
-        uint256 x,
-        uint256 y,
-        uint256[144] memory absorbing,
-        uint256 pos
-    ) internal pure {
+    function update_hash_point(uint256 x, uint256 y, uint256[144] memory absorbing, uint256 pos) internal pure {
         absorbing[pos++] = 0x01;
         absorbing[pos++] = x;
         absorbing[pos++] = y;
@@ -294,9 +257,7 @@ library RollupVerifier {
         assembly {
             success := staticcall(sub(gas(), 2000), 2, absorbing, length, v, 32)
             switch success
-            case 0 {
-                invalid()
-            }
+            case 0 { invalid() }
         }
         assert(success);
     }
@@ -340,12 +301,7 @@ library RollupVerifier {
     function get_wx_wg(uint256[] calldata proof, uint256[6] memory instances)
         internal
         view
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
+        returns (uint256, uint256, uint256, uint256)
     {
         uint256[84] memory m;
         uint256[144] memory absorbing;
@@ -440,34 +396,26 @@ library RollupVerifier {
         t0 = (addmod(m[6], q_mod - 1, q_mod));
         m[14] = (fr_div(m[14], t0));
         m[15] = (mulmod(3495999257316610708652455694658595065970881061159015347599790211259094641512, m[13], q_mod));
-        t0 = (
-            addmod(m[6], q_mod - 14803907026430593724305438564799066516271154714737734572920456128449769927233, q_mod)
-        );
+        t0 =
+            (addmod(m[6], q_mod - 14803907026430593724305438564799066516271154714737734572920456128449769927233, q_mod));
         m[15] = (fr_div(m[15], t0));
         m[16] = (mulmod(12851378806584061886934576302961450669946047974813165594039554733293326536714, m[13], q_mod));
-        t0 = (
-            addmod(m[6], q_mod - 11377606117859914088982205826922132024839443553408109299929510653283289974216, q_mod)
-        );
+        t0 =
+            (addmod(m[6], q_mod - 11377606117859914088982205826922132024839443553408109299929510653283289974216, q_mod));
         m[16] = (fr_div(m[16], t0));
         m[17] = (mulmod(14638077285440018490948843142723135319134576188472316769433007423695824509066, m[13], q_mod));
-        t0 = (
-            addmod(m[6], q_mod - 3693565015985198455139889557180396682968596245011005461846595820698933079918, q_mod)
-        );
+        t0 = (addmod(m[6], q_mod - 3693565015985198455139889557180396682968596245011005461846595820698933079918, q_mod));
         m[17] = (fr_div(m[17], t0));
         m[18] = (mulmod(18027939092386982308810165776478549635922357517986691900813373197616541191289, m[13], q_mod));
-        t0 = (
-            addmod(m[6], q_mod - 17329448237240114492580865744088056414251735686965494637158808787419781175510, q_mod)
-        );
+        t0 =
+            (addmod(m[6], q_mod - 17329448237240114492580865744088056414251735686965494637158808787419781175510, q_mod));
         m[18] = (fr_div(m[18], t0));
         m[19] = (mulmod(912591536032578604421866340844550116335029274442283291811906603256731601654, m[13], q_mod));
-        t0 = (
-            addmod(m[6], q_mod - 6047398202650739717314770882059679662647667807426525133977681644606291529311, q_mod)
-        );
+        t0 = (addmod(m[6], q_mod - 6047398202650739717314770882059679662647667807426525133977681644606291529311, q_mod));
         m[19] = (fr_div(m[19], t0));
         m[20] = (mulmod(17248638560015646562374089181598815896736916575459528793494921668169819478628, m[13], q_mod));
-        t0 = (
-            addmod(m[6], q_mod - 16569469942529664681363945218228869388192121720036659574609237682362097667612, q_mod)
-        );
+        t0 =
+            (addmod(m[6], q_mod - 16569469942529664681363945218228869388192121720036659574609237682362097667612, q_mod));
         m[20] = (fr_div(m[20], t0));
         t0 = (addmod(m[15], m[16], q_mod));
         t0 = (addmod(t0, m[17], q_mod));
@@ -685,9 +633,7 @@ library RollupVerifier {
         t0 = (mulmod(m[55], t0, q_mod));
         m[4] = (mulmod(t0, m[15], q_mod));
         t0 = (fr_mul_add(m[5], 0, m[16]));
-        t0 = (
-            fr_mul_add_mt(m, m[5], 24064768791442479290152634096194013545513974547709823832001394403118888981009, t0)
-        );
+        t0 = (fr_mul_add_mt(m, m[5], 24064768791442479290152634096194013545513974547709823832001394403118888981009, t0));
         t0 = (fr_mul_add_mt(m, m[5], 4704208815882882920750, t0));
         m[2] = (fr_div(t0, m[13]));
         m[3] = (mulmod(m[8], m[8], q_mod));
@@ -726,15 +672,12 @@ library RollupVerifier {
         m[83] = (mulmod(m[82], m[12], q_mod));
         m[12] = (mulmod(m[83], m[12], q_mod));
         t0 = (fr_mul_add(m[79], m[2], m[81]));
-        t0 = (
-            fr_mul_add_pm(m, proof, 28637501128329066231612878461967933875285131620580756137874852300330784214624, t0)
-        );
-        t0 = (
-            fr_mul_add_pm(m, proof, 21474593857386732646168474467085622855647258609351047587832868301163767676495, t0)
-        );
-        t0 = (
-            fr_mul_add_pm(m, proof, 14145600374170319983429588659751245017860232382696106927048396310641433325177, t0)
-        );
+        t0 =
+            (fr_mul_add_pm(m, proof, 28637501128329066231612878461967933875285131620580756137874852300330784214624, t0));
+        t0 =
+            (fr_mul_add_pm(m, proof, 21474593857386732646168474467085622855647258609351047587832868301163767676495, t0));
+        t0 =
+            (fr_mul_add_pm(m, proof, 14145600374170319983429588659751245017860232382696106927048396310641433325177, t0));
         t0 = (fr_mul_add_pm(m, proof, 18446470583433829957, t0));
         t0 = (addmod(t0, proof[66], q_mod));
         m[2] = (addmod(m[20], t0, q_mod));
@@ -758,11 +701,7 @@ library RollupVerifier {
         (t0, t1) = (ecc_mul(proof[143], proof[144], m[5]));
         (t0, t1) = (
             ecc_mul_add_pm(
-                m,
-                proof,
-                10933423423422768024429730621579321771439401845242250760130969989159573132066,
-                t0,
-                t1
+                m, proof, 10933423423422768024429730621579321771439401845242250760130969989159573132066, t0, t1
             )
         );
         (t0, t1) = (ecc_mul_add_pm(m, proof, 1461486238301980199876269201563775120819706402602, t0, t1));

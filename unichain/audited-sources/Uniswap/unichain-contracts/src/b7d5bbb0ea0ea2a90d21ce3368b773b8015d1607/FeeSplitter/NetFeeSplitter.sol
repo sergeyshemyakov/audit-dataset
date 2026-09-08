@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-import {INetFeeSplitter} from '../interfaces/FeeSplitter/INetFeeSplitter.sol';
+import {INetFeeSplitter} from "../interfaces/FeeSplitter/INetFeeSplitter.sol";
 
 /// @title NetFeeSplitter
 /// @notice Splits net fees between multiple recipients. Recipients are managed by admins. Admins can transfer the entire allocation or a portion of it to other recipients.
@@ -18,7 +18,9 @@ contract NetFeeSplitter is INetFeeSplitter {
     constructor(address[] memory initialRecipients, Recipient[] memory recipientData) {
         uint256 totalAllocation;
         uint256 length = initialRecipients.length;
-        if (initialRecipients.length != recipientData.length) revert InvalidRecipients();
+        if (initialRecipients.length != recipientData.length) {
+            revert InvalidRecipients();
+        }
         for (uint256 i = 0; i < length; i++) {
             address recipient = initialRecipients[i];
             bool duplicateRecipient = false;
@@ -26,14 +28,24 @@ contract NetFeeSplitter is INetFeeSplitter {
                 duplicateRecipient := tload(recipient)
                 tstore(recipient, 1)
             }
-            if (duplicateRecipient) revert DuplicateRecipient();
-            if (recipientData[i].admin == address(0)) revert AdminZero();
-            if (recipient == address(0)) revert RecipientZero();
-            if (recipientData[i].allocation == 0) revert AllocationZero();
+            if (duplicateRecipient) {
+                revert DuplicateRecipient();
+            }
+            if (recipientData[i].admin == address(0)) {
+                revert AdminZero();
+            }
+            if (recipient == address(0)) {
+                revert RecipientZero();
+            }
+            if (recipientData[i].allocation == 0) {
+                revert AllocationZero();
+            }
             recipients[recipient] = recipientData[i];
             totalAllocation += recipientData[i].allocation;
         }
-        if (totalAllocation != TOTAL_ALLOCATION) revert InvalidTotalAllocation();
+        if (totalAllocation != TOTAL_ALLOCATION) {
+            revert InvalidTotalAllocation();
+        }
     }
 
     /// @dev Keep track of incoming fees
@@ -43,8 +55,12 @@ contract NetFeeSplitter is INetFeeSplitter {
 
     /// @inheritdoc INetFeeSplitter
     function transfer(address from, address recipient, uint256 allocation) external {
-        if (recipient == address(0)) revert RecipientZero();
-        if (adminOf(from) != msg.sender) revert Unauthorized();
+        if (recipient == address(0)) {
+            revert RecipientZero();
+        }
+        if (adminOf(from) != msg.sender) {
+            revert Unauthorized();
+        }
         if (adminOf(recipient) == address(0)) {
             // recipient does not exist yet, make recipient the admin
             recipients[recipient] = Recipient(recipient, 0);
@@ -52,7 +68,9 @@ contract NetFeeSplitter is INetFeeSplitter {
         _updateFees(from);
         _updateFees(recipient);
 
-        if (balanceOf(from) < allocation) revert InsufficientAllocation();
+        if (balanceOf(from) < allocation) {
+            revert InsufficientAllocation();
+        }
         recipients[from].allocation -= allocation;
         recipients[recipient].allocation += allocation;
         emit TransferAllocation(msg.sender, from, recipient, allocation);
@@ -62,7 +80,9 @@ contract NetFeeSplitter is INetFeeSplitter {
     function transferAdmin(address recipient, address newAdmin) external {
         // TODO: allow newAdmin == address(0)?
         address currentAdmin = adminOf(recipient);
-        if (currentAdmin != msg.sender) revert Unauthorized();
+        if (currentAdmin != msg.sender) {
+            revert Unauthorized();
+        }
         recipients[recipient].admin = newAdmin;
         emit TransferAdmin(recipient, currentAdmin, newAdmin);
     }
@@ -73,8 +93,10 @@ contract NetFeeSplitter is INetFeeSplitter {
         amount = earned[msg.sender];
         if (amount != 0) {
             earned[msg.sender] = 0;
-            (bool success,) = to.call{value: amount}('');
-            if (!success) revert WithdrawalFailed();
+            (bool success,) = to.call{value: amount}("");
+            if (!success) {
+                revert WithdrawalFailed();
+            }
         }
         emit Withdrawn(msg.sender, to, amount);
     }

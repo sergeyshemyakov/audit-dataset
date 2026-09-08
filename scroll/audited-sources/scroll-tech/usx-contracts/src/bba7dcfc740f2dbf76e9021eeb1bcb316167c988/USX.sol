@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {ITreasury} from "./interfaces/ITreasury.sol";
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 
 import {IUSX} from "./interfaces/IUSX.sol";
@@ -47,27 +47,37 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
     /*=========================== Modifiers =========================*/
 
     modifier onlyWhitelisted() {
-        if (!_getStorage().whitelistedUsers[msg.sender]) revert UserNotWhitelisted();
+        if (!_getStorage().whitelistedUsers[msg.sender]) {
+            revert UserNotWhitelisted();
+        }
         _;
     }
 
     modifier notPaused() {
-        if (_getStorage().paused) revert Paused();
+        if (_getStorage().paused) {
+            revert Paused();
+        }
         _;
     }
 
     modifier onlyGovernance() {
-        if (msg.sender != _getStorage().governance) revert NotGovernance();
+        if (msg.sender != _getStorage().governance) {
+            revert NotGovernance();
+        }
         _;
     }
 
     modifier onlyAdmin() {
-        if (msg.sender != _getStorage().admin) revert NotAdmin();
+        if (msg.sender != _getStorage().admin) {
+            revert NotAdmin();
+        }
         _;
     }
 
     modifier onlyTreasury() {
-        if (msg.sender != address(_getStorage().treasury)) revert NotTreasury();
+        if (msg.sender != address(_getStorage().treasury)) {
+            revert NotTreasury();
+        }
         _;
     }
 
@@ -102,11 +112,10 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
 
     /*=========================== Initialization =========================*/
 
-    function initialize(address _USDC, address _treasury, address _governance, address _admin)
-        public
-        initializer
-    {
-        if (_USDC == address(0) || _governance == address(0) || _admin == address(0)) revert ZeroAddress();
+    function initialize(address _USDC, address _treasury, address _governance, address _admin) public initializer {
+        if (_USDC == address(0) || _governance == address(0) || _admin == address(0)) {
+            revert ZeroAddress();
+        }
 
         // Initialize ERC20 and ReentrancyGuard
         __ERC20_init("USX", "USX");
@@ -122,9 +131,13 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
     /// @dev Set the initial Treasury address - can only be called once when treasury is address(0)
     /// @param _treasury Address of the Treasury contract
     function initializeTreasury(address _treasury) external onlyAdmin {
-        if (_treasury == address(0)) revert ZeroAddress();
+        if (_treasury == address(0)) {
+            revert ZeroAddress();
+        }
         USXStorage storage $ = _getStorage();
-        if ($.treasury != ITreasury(address(0))) revert TreasuryAlreadySet();
+        if ($.treasury != ITreasury(address(0))) {
+            revert TreasuryAlreadySet();
+        }
 
         $.treasury = ITreasury(_treasury);
         emit TreasurySet(_treasury);
@@ -138,7 +151,9 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
         USXStorage storage $ = _getStorage();
 
         // Check if the USDC amount is valid
-        if (_amount == 0) revert InvalidUSDCDepositAmount();
+        if (_amount == 0) {
+            revert InvalidUSDCDepositAmount();
+        }
 
         // Update the total matched withdrawal amount based on the latest usdc balance
         _updateTotalMatchedWithdrawalAmount(true);
@@ -175,7 +190,9 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
         // We shall keep the total supple of USX as a multiple of USDC_SCALAR, in case somewhere is
         // using USDC reserve and total supply to calculate the peg. This will always make the peg 1:1.
         // Otherwise, 1 USX will a bit more than 1 USDC when someone redeemed non-multiple amount of USX.
-        if (_USXredeemed == 0 || _USXredeemed % USDC_SCALAR != 0) revert InvalidUSXRedeemAmount();
+        if (_USXredeemed == 0 || _USXredeemed % USDC_SCALAR != 0) {
+            revert InvalidUSXRedeemAmount();
+        }
 
         // Check the USX price to determine how much USDC the user will receive
         // Since USX has 18 decimals and USDC has 6 decimals,
@@ -213,14 +230,18 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
         // their USDC.
 
         // Check if user has outstanding withdrawal requests
-        if ($.outstandingWithdrawalRequests[msg.sender] == 0) revert NoOutstandingWithdrawalRequests();
+        if ($.outstandingWithdrawalRequests[msg.sender] == 0) {
+            revert NoOutstandingWithdrawalRequests();
+        }
 
         // Update the total matched withdrawal amount based on the latest usdc balance
         _updateTotalMatchedWithdrawalAmount(true);
 
         // Revert if contract has no USDC available
         uint256 usdcAvailableForClaim = $.totalMatchedWithdrawalAmount;
-        if (usdcAvailableForClaim == 0) revert InsufficientUSDC();
+        if (usdcAvailableForClaim == 0) {
+            revert InsufficientUSDC();
+        }
 
         uint256 userRequestAmount = $.outstandingWithdrawalRequests[msg.sender];
 
@@ -243,7 +264,9 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
     /// @notice Set new governance address
     /// @param newGovernance Address of new governance
     function setGovernance(address newGovernance) external onlyGovernance {
-        if (newGovernance == address(0)) revert ZeroAddress();
+        if (newGovernance == address(0)) {
+            revert ZeroAddress();
+        }
 
         USXStorage storage $ = _getStorage();
         address oldGovernance = $.governance;
@@ -271,7 +294,9 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
     /// @notice Set new admin address
     /// @param newAdmin Address of new admin
     function setAdmin(address newAdmin) external onlyAdmin {
-        if (newAdmin == address(0)) revert ZeroAddress();
+        if (newAdmin == address(0)) {
+            revert ZeroAddress();
+        }
         USXStorage storage $ = _getStorage();
         address oldAdmin = $.admin;
         $.admin = newAdmin;
@@ -282,7 +307,9 @@ contract USX is ERC20Upgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable, I
     /// @param _user The address to whitelist
     /// @param _isWhitelisted Whether to whitelist the user
     function whitelistUser(address _user, bool _isWhitelisted) public onlyAdmin {
-        if (_user == address(0)) revert ZeroAddress();
+        if (_user == address(0)) {
+            revert ZeroAddress();
+        }
         USXStorage storage $ = _getStorage();
         $.whitelistedUsers[_user] = _isWhitelisted;
         emit WhitelistUpdated(_user, _isWhitelisted);

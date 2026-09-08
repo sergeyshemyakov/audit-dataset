@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
-import {Script, console} from "forge-std/Script.sol";
 import {BlockBuilderPolicy, WorkloadId} from "../src/BlockBuilderPolicy.sol";
 import {FlashtestationRegistry} from "../src/FlashtestationRegistry.sol";
 import {IFlashtestationRegistry} from "../src/interfaces/IFlashtestationRegistry.sol";
-import {DeploymentUtils} from "./utils/DeploymentUtils.sol";
+
 import {StringUtils} from "../src/utils/StringUtils.sol";
+import {DeploymentUtils} from "./utils/DeploymentUtils.sol";
+import {Script, console} from "forge-std/Script.sol";
 
 /// @title ComputeWorkloadIdScript
 /// @notice Script to compute the WorkloadId for a registered TEE using the FlashtestationRegistry and BlockBuilderPolicy

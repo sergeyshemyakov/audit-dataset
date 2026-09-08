@@ -25,19 +25,18 @@ library ZkTrieVerifier {
     ///
     /// Possible attack vector:
     ///   + Malicious users can influence how many levels the proof must go through by predicting addresses
-    ///     (or storage slots) that would branch the Trie until a certain depth. Even though artificially 
+    ///     (or storage slots) that would branch the Trie until a certain depth. Even though artificially
     ///     increasing the proof's depth of a certain account or storage will not cause a DoS scenario, since
     ///     the depth can still reach the maximum depth size in the worst-case scenario, artificially increasing
     ///     the proof's depth will increase the number of iterations the `walkTree` method has to perform in order
     ///     to reach the respective leaf. If protocols that use this verifier limit the gas used on-chain to perform
     ///     such a verification (to a reasonable value), then a malicious user might be able to increase it for a
     ///     particular transaction by reaching a similar hashed key to a certain depth in the Trie.
-    function verifyZkTrieProof(
-        address poseidon,
-        address account,
-        bytes32 storageKey,
-        bytes calldata proof
-    ) internal view returns (bytes32 stateRoot, bytes32 storageValue) {
+    function verifyZkTrieProof(address poseidon, address account, bytes32 storageKey, bytes calldata proof)
+        internal
+        view
+        returns (bytes32 stateRoot, bytes32 storageValue)
+    {
         assembly {
             // reverts with error `msg`.
             // make sure the length of error string <= 32
@@ -47,11 +46,7 @@ library ZkTrieVerifier {
                 mstore(0x04, 0x20) // str.offset
                 mstore(0x44, msg)
                 let msgLen
-                for {
-
-                } msg {
-
-                } {
+                for {} msg {} {
                     msg := shl(8, msg)
                     msgLen := add(msgLen, 1)
                 }
@@ -61,9 +56,7 @@ library ZkTrieVerifier {
             // reverts with `msg` when condition is not matched.
             // make sure the length of error string <= 32
             function require(cond, msg) {
-                if iszero(cond) {
-                    revertWith(msg)
-                }
+                if iszero(cond) { revertWith(msg) }
             }
             // compute poseidon hash of two uint256
             function poseidon_hash(hasher, v0, v1, domain) -> r {
@@ -92,11 +85,7 @@ library ZkTrieVerifier {
                 ptr := add(ptr, 1)
 
                 // treat the leaf node with different logic
-                for {
-                    let depth := 1
-                } lt(depth, nodes) {
-                    depth := add(depth, 1)
-                } {
+                for { let depth := 1 } lt(depth, nodes) { depth := add(depth, 1) } {
                     // must be a parent node with two children
                     let nodeType := byte(0, calldataload(ptr))
                     // 6 <= nodeType && nodeType < 10
@@ -114,21 +103,13 @@ library ZkTrieVerifier {
                     // Otherwise verifies that the hash of the current node
                     // is the same as the previous choosen one.
                     switch depth
-                    case 1 {
-                        rootHash := hash
-                    }
-                    default {
-                        require(eq(hash, expectedHash), "BranchHashMismatch")
-                    }
+                    case 1 { rootHash := hash }
+                    default { require(eq(hash, expectedHash), "BranchHashMismatch") }
 
                     // decide which path to walk based on key
                     switch and(key, 1)
-                    case 0 {
-                        expectedHash := childHashL
-                    }
-                    default {
-                        expectedHash := childHashR
-                    }
+                    case 0 { expectedHash := childHashL }
+                    default { expectedHash := childHashR }
                     key := shr(1, key)
                 }
             }
@@ -139,8 +120,7 @@ library ZkTrieVerifier {
                 calldatacopy(x, ptr, 0x2d)
                 x := keccak256(x, 0x2d)
                 require(
-                    eq(x, 0x950654da67865a81bc70e45f3230f5179f08e29c66184bf746f71050f117b3b8),
-                    "InvalidProofMagicBytes"
+                    eq(x, 0x950654da67865a81bc70e45f3230f5179f08e29c66184bf746f71050f117b3b8), "InvalidProofMagicBytes"
                 )
                 ptr := add(ptr, 0x2d) // skip ProofMagicBytes
             }
@@ -187,12 +167,9 @@ library ZkTrieVerifier {
                     require(eq(shl(96, _account), calldataload(ptr)), "InvalidAccountKeyPreimage")
                     ptr := add(ptr, 0x20) // skip KeyPreimage
                 }
-                case 5 {
-                    ptr := add(ptr, 0x01) // skip NodeType
-                }
-                default {
-                    revertWith("InvalidAccountLeafNodeType")
-                }
+                case 5 { ptr := add(ptr, 0x01) }
+                    // skip NodeType
+                default { revertWith("InvalidAccountLeafNodeType") }
 
                 // compare ProofMagicBytes
                 ptr := checkProofMagicBytes(hasher, ptr)
@@ -211,12 +188,8 @@ library ZkTrieVerifier {
                 // `rootHash=0` and `leafHash=0`. In such case, we don't need to check the value of `rootHash`.
                 // And the value of `leafHash` should be the same as `storageRootHash`.
                 switch rootHash
-                case 0 {
-                    leafHash := storageRootHash
-                }
-                default {
-                    require(eq(rootHash, storageRootHash), "StorageRootMismatch")
-                }
+                case 0 { leafHash := storageRootHash }
+                default { require(eq(rootHash, storageRootHash), "StorageRootMismatch") }
 
                 switch byte(0, calldataload(ptr))
                 case 4 {
@@ -243,9 +216,7 @@ library ZkTrieVerifier {
                     ptr := add(ptr, 0x01) // skip NodeType
                     require(eq(leafHash, 0), "InvalidStorageEmptyLeafNodeHash")
                 }
-                default {
-                    revertWith("InvalidStorageLeafNodeType")
-                }
+                default { revertWith("InvalidStorageLeafNodeType") }
 
                 // compare ProofMagicBytes
                 ptr := checkProofMagicBytes(hasher, ptr)
@@ -264,9 +235,7 @@ library ZkTrieVerifier {
             // in case an attacker crafted a malicous payload
             // and succeeds in the prior verification steps
             // then this should catch any bogus accesses
-            if iszero(eq(ptr, add(proof.offset, proof.length))) {
-                revertWith("ProofLengthMismatch")
-            }
+            if iszero(eq(ptr, add(proof.offset, proof.length))) { revertWith("ProofLengthMismatch") }
         }
     }
 }

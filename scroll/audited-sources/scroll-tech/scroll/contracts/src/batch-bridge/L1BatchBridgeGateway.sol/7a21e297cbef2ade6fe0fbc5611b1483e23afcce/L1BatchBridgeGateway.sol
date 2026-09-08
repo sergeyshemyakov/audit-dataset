@@ -2,16 +2,18 @@
 
 pragma solidity =0.8.24;
 
-import {AccessControlEnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
+import {AccessControlEnumerableUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
-import {SafeERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
+
 import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
+import {SafeERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
 import {AddressUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol";
 
+import {IL1ScrollMessenger} from "../L1/IL1ScrollMessenger.sol";
 import {IL1ERC20Gateway} from "../L1/gateways/IL1ERC20Gateway.sol";
 import {IL1GatewayRouter} from "../L1/gateways/IL1GatewayRouter.sol";
 import {IL1MessageQueue} from "../L1/rollup/IL1MessageQueue.sol";
-import {IL1ScrollMessenger} from "../L1/IL1ScrollMessenger.sol";
 
 import {BatchBridgeCodec} from "./BatchBridgeCodec.sol";
 import {L2BatchBridgeGateway} from "./L2BatchBridgeGateway.sol";
@@ -20,9 +22,11 @@ import {L2BatchBridgeGateway} from "./L2BatchBridgeGateway.sol";
 contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyGuardUpgradeable {
     using SafeERC20Upgradeable for IERC20Upgradeable;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when some user deposited token to this contract.
     /// @param sender The address of token sender.
@@ -31,11 +35,7 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @param amount The amount of token deposited (including fee).
     /// @param fee The amount of fee charged.
     event Deposit(
-        address indexed sender,
-        address indexed token,
-        uint256 indexed batchIndex,
-        uint256 amount,
-        uint256 fee
+        address indexed sender, address indexed token, uint256 indexed batchIndex, uint256 amount, uint256 fee
     );
 
     /// @notice Emitted when a batch deposit is initiated.
@@ -45,9 +45,11 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @param l2Token The address of the corresponding token in L2.
     event BatchDeposit(address indexed caller, address indexed l1Token, uint256 indexed batchIndex, address l2Token);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when caller is not `messenger`.
     error ErrorCallerNotMessenger();
@@ -73,9 +75,11 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @dev Thrown when ETH transfer failed.
     error ErrorTransferETHFailed();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The role for batch deposit keeper.
     bytes32 public constant KEEPER_ROLE = keccak256("KEEPER_ROLE");
@@ -95,9 +99,11 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @notice The address of `L1MessageQueue` contract.
     address public immutable queue;
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     /// @notice The config for batch token bridge.
     /// @dev Compiler will pack this into a single `bytes32`.
@@ -143,9 +149,11 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
         uint64 pendingBatchIndex;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from token address to batch bridge config.
     /// @dev The `address(0)` is used for ETH.
@@ -162,20 +170,17 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @notice The address of fee vault.
     address public feeVault;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @param _counterpart The address of `L2BatchBridgeGateway` contract in L2.
     /// @param _router The address of `L1GatewayRouter` contract in L1.
     /// @param _messenger The address of `L1ScrollMessenger` contract in L1.
     /// @param _queue The address of `L1MessageQueue` contract in L1.
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger,
-        address _queue
-    ) {
+    constructor(address _counterpart, address _router, address _messenger, address _queue) {
         _disableInitializers();
 
         counterpart = _counterpart;
@@ -197,9 +202,11 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Receive refunded ETH from `L1ScrollMessenger`.
     receive() external payable {
@@ -219,7 +226,9 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @param token The address of token.
     /// @param amount The amount of token to deposit. We use type `uint96`, since it is enough for most of the major tokens.
     function depositERC20(address token, uint96 amount) external nonReentrant {
-        if (token == address(0)) revert ErrorIncorrectMethodForETHDeposit();
+        if (token == address(0)) {
+            revert ErrorIncorrectMethodForETHDeposit();
+        }
 
         // common practice to handle fee on transfer token.
         uint256 beforeBalance = IERC20Upgradeable(token).balanceOf(address(this));
@@ -229,9 +238,11 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
         _deposit(token, _msgSender(), amount);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Add or update the batch bridge config for the given token.
     ///
@@ -241,9 +252,8 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @param newConfig The new config.
     function setBatchConfig(address token, BatchConfig calldata newConfig) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (
-            newConfig.maxTxsPerBatch == 0 ||
-            newConfig.maxDelayPerBatch == 0 ||
-            newConfig.feeAmountPerTx > newConfig.minAmountPerTx
+            newConfig.maxTxsPerBatch == 0 || newConfig.maxDelayPerBatch == 0
+                || newConfig.feeAmountPerTx > newConfig.minAmountPerTx
         ) {
             revert ErrorInvalidBatchConfig();
         }
@@ -287,10 +297,7 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
         address l2Token;
         if (token == address(0)) {
             IL1ScrollMessenger(messenger).sendMessage{value: cachedBatchState.amount + depositFee}(
-                counterpart,
-                cachedBatchState.amount,
-                new bytes(0),
-                cachedBatchConfig.safeBridgeGasLimit
+                counterpart, cachedBatchState.amount, new bytes(0), cachedBatchConfig.safeBridgeGasLimit
             );
         } else {
             address gateway = IL1GatewayRouter(router).getERC20Gateway(token);
@@ -298,10 +305,7 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
             IERC20Upgradeable(token).safeApprove(gateway, 0);
             IERC20Upgradeable(token).safeApprove(gateway, cachedBatchState.amount);
             IL1ERC20Gateway(gateway).depositERC20{value: depositFee}(
-                token,
-                counterpart,
-                cachedBatchState.amount,
-                cachedBatchConfig.safeBridgeGasLimit
+                token, counterpart, cachedBatchState.amount, cachedBatchConfig.safeBridgeGasLimit
             );
         }
 
@@ -333,19 +337,17 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to deposit token.
     /// @param token The address of token to deposit.
     /// @param sender The address of token sender.
     /// @param amount The amount of token to deposit.
-    function _deposit(
-        address token,
-        address sender,
-        uint96 amount
-    ) internal {
+    function _deposit(address token, address sender, uint96 amount) internal {
         BatchConfig memory cachedBatchConfig = configs[token];
         TokenState memory cachedTokenState = tokens[token];
         _tryFinalizeCurrentBatch(token, cachedBatchConfig, cachedTokenState);
@@ -395,12 +397,14 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
         }
         BatchState memory cachedBatchState = batches[token][cachedTokenState.currentBatchIndex];
         // return if it is the very first deposit in the current batch
-        if (cachedBatchState.numDeposits == 0) return;
+        if (cachedBatchState.numDeposits == 0) {
+            return;
+        }
 
         // finalize current batchIndex when `maxTxsPerBatch` or `maxDelayPerBatch` reached.
         if (
-            cachedBatchState.numDeposits == cachedBatchConfig.maxTxsPerBatch ||
-            block.timestamp - cachedBatchState.startTime > cachedBatchConfig.maxDelayPerBatch
+            cachedBatchState.numDeposits == cachedBatchConfig.maxTxsPerBatch
+                || block.timestamp - cachedBatchState.startTime > cachedBatchConfig.maxDelayPerBatch
         ) {
             cachedTokenState.currentBatchIndex += 1;
         }
@@ -410,14 +414,12 @@ contract L1BatchBridgeGateway is AccessControlEnumerableUpgradeable, ReentrancyG
     /// @param token The address of token.
     /// @param receiver The address of token receiver.
     /// @param amount The amount of token to transfer.
-    function _transferToken(
-        address token,
-        address receiver,
-        uint256 amount
-    ) private {
+    function _transferToken(address token, address receiver, uint256 amount) private {
         if (token == address(0)) {
-            (bool success, ) = receiver.call{value: amount}("");
-            if (!success) revert ErrorTransferETHFailed();
+            (bool success,) = receiver.call{value: amount}("");
+            if (!success) {
+                revert ErrorTransferETHFailed();
+            }
         } else {
             IERC20Upgradeable(token).safeTransfer(receiver, amount);
         }

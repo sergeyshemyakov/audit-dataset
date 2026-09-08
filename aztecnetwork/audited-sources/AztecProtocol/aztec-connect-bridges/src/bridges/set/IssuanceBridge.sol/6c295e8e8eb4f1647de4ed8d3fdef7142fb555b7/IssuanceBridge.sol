@@ -3,16 +3,17 @@
 pragma solidity >=0.6.10 <=0.8.10;
 pragma experimental ABIEncoderV2;
 
-import { SafeMath } from "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeMath} from "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-import { AztecTypes } from "../../aztec/AztecTypes.sol";
+import {AztecTypes} from "../../aztec/AztecTypes.sol";
 
-import { IDefiBridge } from "../../interfaces/IDefiBridge.sol";
-import { ISetToken } from "./interfaces/ISetToken.sol";
-import { IController } from "./interfaces/IController.sol";
-import { IExchangeIssuance } from "./interfaces/IExchangeIssuance.sol";
-import { IRollupProcessor } from "../../interfaces/IRollupProcessor.sol";
+import {IDefiBridge} from "../../interfaces/IDefiBridge.sol";
+
+import {IRollupProcessor} from "../../interfaces/IRollupProcessor.sol";
+import {IController} from "./interfaces/IController.sol";
+import {IExchangeIssuance} from "./interfaces/IExchangeIssuance.sol";
+import {ISetToken} from "./interfaces/ISetToken.sol";
 
 contract IssuanceBridge is IDefiBridge {
     using SafeMath for uint256;
@@ -22,11 +23,7 @@ contract IssuanceBridge is IDefiBridge {
     IExchangeIssuance exchangeIssuance;
     IController setController; // used to check if address is SetToken
 
-    constructor(
-        address _rollupProcessor,
-        address _exchangeIssuance,
-        address _setController
-    ) public {
+    constructor(address _rollupProcessor, address _exchangeIssuance, address _setController) public {
         rollupProcessor = _rollupProcessor;
         exchangeIssuance = IExchangeIssuance(_exchangeIssuance);
         setController = IController(_setController);
@@ -39,9 +36,8 @@ contract IssuanceBridge is IDefiBridge {
      * @param inputValue     - If ISSUE SET: ETH or ERC20 amount | If REDEEM SET: SetToken amount
      * @return outputValueA  - If ISSUE SET: SetToken amount     | If REDEEM SET: ETH or ERC20 amount
      * @return isAsync a flag to toggle if this bridge interaction will return assets at a later
-            date after some third party contract has interacted with it via finalise()
+     *         date after some third party contract has interacted with it via finalise()
      */
-
     function convert(
         AztecTypes.AztecAsset calldata inputAssetA,
         AztecTypes.AztecAsset calldata,
@@ -50,22 +46,10 @@ contract IssuanceBridge is IDefiBridge {
         uint256 inputValue,
         uint256 interactionNonce,
         uint64,
-        address 
-    )
-        external
-        payable
-        override
-        returns (
-            uint256 outputValueA,
-            uint256,
-            bool isAsync
-        )
-    {
+        address
+    ) external payable override returns (uint256 outputValueA, uint256, bool isAsync) {
         // Only Rollup Processor can call this function
-        require(
-            msg.sender == rollupProcessor,
-            "IssuanceBridge: INVALID_CALLER"
-        );
+        require(msg.sender == rollupProcessor, "IssuanceBridge: INVALID_CALLER");
         require(inputValue > 0, "IssuanceBridge: INVALID_INPUT_VALUE");
 
         isAsync = false;
@@ -78,16 +62,15 @@ contract IssuanceBridge is IDefiBridge {
         // inputAssetA: SetToken
         // outputAssetA ERC20 or ETH
         if (
-            setController.isSet(address(inputAssetA.erc20Address)) &&
-            (outputAssetA.assetType == AztecTypes.AztecAssetType.ETH ||
-                outputAssetA.assetType == AztecTypes.AztecAssetType.ERC20)
+            setController.isSet(address(inputAssetA.erc20Address))
+                && (
+                    outputAssetA.assetType == AztecTypes.AztecAssetType.ETH
+                        || outputAssetA.assetType == AztecTypes.AztecAssetType.ERC20
+                )
         ) {
             // Check that spending of the given SetToken is approved
             require(
-                IERC20(inputAssetA.erc20Address).approve(
-                    address(exchangeIssuance),
-                    inputValue
-                ),
+                IERC20(inputAssetA.erc20Address).approve(address(exchangeIssuance), inputValue),
                 "IssuanceBridge: APPROVE_FAILED"
             );
 
@@ -113,10 +96,7 @@ contract IssuanceBridge is IDefiBridge {
 
                 // approve the transfer of funds back to the rollup contract
                 require(
-                    IERC20(outputAssetA.erc20Address).approve(
-                        rollupProcessor,
-                        outputValueA
-                    ),
+                    IERC20(outputAssetA.erc20Address).approve(rollupProcessor, outputValueA),
                     "IssuanceBridge: APPROVE_FAILED"
                 );
             }
@@ -125,16 +105,13 @@ contract IssuanceBridge is IDefiBridge {
         // inputAssetA: ERC20 (but not SetToken)
         // outputAssetA: SetToken
         else if (
-            inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20 &&
-            !setController.isSet(address(inputAssetA.erc20Address)) &&
-            setController.isSet(address(outputAssetA.erc20Address))
+            inputAssetA.assetType == AztecTypes.AztecAssetType.ERC20
+                && !setController.isSet(address(inputAssetA.erc20Address))
+                && setController.isSet(address(outputAssetA.erc20Address))
         ) {
             // Check that spending of the ERC20 is approved
             require(
-                IERC20(inputAssetA.erc20Address).approve(
-                    address(exchangeIssuance),
-                    inputValue
-                ),
+                IERC20(inputAssetA.erc20Address).approve(address(exchangeIssuance), inputValue),
                 "IssuanceBridge: APPROVE_FAILED"
             );
 
@@ -147,10 +124,7 @@ contract IssuanceBridge is IDefiBridge {
 
             // approve the transfer of funds back to the rollup contract
             require(
-                IERC20(outputAssetA.erc20Address).approve(
-                    rollupProcessor,
-                    outputValueA
-                ),
+                IERC20(outputAssetA.erc20Address).approve(rollupProcessor, outputValueA),
                 "IssuanceBridge: APPROVE_FAILED"
             );
         }
@@ -158,23 +132,18 @@ contract IssuanceBridge is IDefiBridge {
         // inputAssetA: ETH
         // outputAssetA: SetToken
         else if (
-            inputAssetA.assetType == AztecTypes.AztecAssetType.ETH &&
-            setController.isSet(address(outputAssetA.erc20Address))
+            inputAssetA.assetType == AztecTypes.AztecAssetType.ETH
+                && setController.isSet(address(outputAssetA.erc20Address))
         ) {
             // issue SetTokens for a given amount of ETH (=inputValue)
-            outputValueA = exchangeIssuance.issueSetForExactETH{
-                value: inputValue
-            }(
+            outputValueA = exchangeIssuance.issueSetForExactETH{value: inputValue}(
                 ISetToken(address(outputAssetA.erc20Address)),
                 0 // _minSetReceive
             );
 
             // approve the transfer of funds back to the rollup contract
             require(
-                IERC20(outputAssetA.erc20Address).approve(
-                    rollupProcessor,
-                    outputValueA
-                ),
+                IERC20(outputAssetA.erc20Address).approve(rollupProcessor, outputValueA),
                 "IssuanceBridge: APPROVE_FAILED"
             );
         } else {
@@ -182,9 +151,9 @@ contract IssuanceBridge is IDefiBridge {
         }
     }
 
-    // Empty fallback function in order to receive ETH 
+    // Empty fallback function in order to receive ETH
     receive() external payable {}
-    
+
     function finalise(
         AztecTypes.AztecAsset calldata,
         AztecTypes.AztecAsset calldata,

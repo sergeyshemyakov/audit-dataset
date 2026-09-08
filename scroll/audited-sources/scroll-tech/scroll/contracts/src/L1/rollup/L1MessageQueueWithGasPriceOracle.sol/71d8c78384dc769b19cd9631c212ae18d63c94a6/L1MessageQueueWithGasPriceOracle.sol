@@ -10,9 +10,11 @@ import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 import {L1MessageQueue} from "./L1MessageQueue.sol";
 
 contract L1MessageQueueWithGasPriceOracle is L1MessageQueue, IL1MessageQueueWithGasPriceOracle {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The intrinsic gas for transaction.
     uint256 private constant INTRINSIC_GAS_TX = 21000;
@@ -20,9 +22,11 @@ contract L1MessageQueueWithGasPriceOracle is L1MessageQueue, IL1MessageQueueWith
     /// @notice The appropriate intrinsic gas for each byte.
     uint256 private constant APPROPRIATE_INTRINSIC_GAS_PER_BYTE = 16;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The latest known l2 base fee.
     uint256 public l2BaseFee;
@@ -30,20 +34,20 @@ contract L1MessageQueueWithGasPriceOracle is L1MessageQueue, IL1MessageQueueWith
     /// @notice The address of whitelist checker contract.
     address public whitelistChecker;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L1MessageQueueWithGasPriceOracle` implementation contract.
     ///
     /// @param _messenger The address of `L1ScrollMessenger` contract.
     /// @param _scrollChain The address of `ScrollChain` contract.
     /// @param _enforcedTxGateway The address of `EnforcedTxGateway` contract.
-    constructor(
-        address _messenger,
-        address _scrollChain,
-        address _enforcedTxGateway
-    ) L1MessageQueue(_messenger, _scrollChain, _enforcedTxGateway) {}
+    constructor(address _messenger, address _scrollChain, address _enforcedTxGateway)
+        L1MessageQueue(_messenger, _scrollChain, _enforcedTxGateway)
+    {}
 
     /// @notice Initialize the storage of L1MessageQueueWithGasPriceOracle.
     function initializeV2() external reinitializer(2) {
@@ -51,9 +55,11 @@ contract L1MessageQueueWithGasPriceOracle is L1MessageQueue, IL1MessageQueueWith
         whitelistChecker = IL2GasPriceOracle(gasOracle).whitelist();
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueue
     function estimateCrossDomainMessageFee(uint256 _gasLimit)
@@ -78,9 +84,11 @@ contract L1MessageQueueWithGasPriceOracle is L1MessageQueue, IL1MessageQueueWith
         }
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Allows whitelistCheckered caller to modify the l2 base fee.
     /// @param _newL2BaseFee The new l2 base fee.
@@ -95,9 +103,11 @@ contract L1MessageQueueWithGasPriceOracle is L1MessageQueue, IL1MessageQueueWith
         emit UpdateL2BaseFee(_oldL2BaseFee, _newL2BaseFee);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update whitelist checker contract.
     /// @dev This function can only called by contract owner.

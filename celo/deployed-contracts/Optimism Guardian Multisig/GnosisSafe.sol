@@ -46,13 +46,10 @@ interface Enum {
 /// @title Executor - A contract that can execute transactions
 /// @author Richard Meissner - <richard@gnosis.pm>
 contract Executor {
-    function execute(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation,
-        uint256 txGas
-    ) internal returns (bool success) {
+    function execute(address to, uint256 value, bytes memory data, Enum.Operation operation, uint256 txGas)
+        internal
+        returns (bool success)
+    {
         if (operation == Enum.Operation.DelegateCall) {
             // solhint-disable-next-line no-inline-assembly
             assembly {
@@ -83,9 +80,10 @@ contract ModuleManager is SelfAuthorized, Executor {
     function setupModules(address to, bytes memory data) internal {
         require(modules[SENTINEL_MODULES] == address(0), "GS100");
         modules[SENTINEL_MODULES] = SENTINEL_MODULES;
-        if (to != address(0))
+        if (to != address(0)) {
             // Setup has to complete successfully or transaction fails.
             require(execute(to, 0, data, Enum.Operation.DelegateCall, gasleft()), "GS000");
+        }
     }
 
     /// @dev Allows to add a module to the whitelist.
@@ -121,18 +119,20 @@ contract ModuleManager is SelfAuthorized, Executor {
     /// @param value Ether value of module transaction.
     /// @param data Data payload of module transaction.
     /// @param operation Operation type of module transaction.
-    function execTransactionFromModule(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation
-    ) public virtual returns (bool success) {
+    function execTransactionFromModule(address to, uint256 value, bytes memory data, Enum.Operation operation)
+        public
+        virtual
+        returns (bool success)
+    {
         // Only whitelisted modules are allowed.
         require(msg.sender != SENTINEL_MODULES && modules[msg.sender] != address(0), "GS104");
         // Execute transaction without further confirmations.
         success = execute(to, value, data, operation, gasleft());
-        if (success) emit ExecutionFromModuleSuccess(msg.sender);
-        else emit ExecutionFromModuleFailure(msg.sender);
+        if (success) {
+            emit ExecutionFromModuleSuccess(msg.sender);
+        } else {
+            emit ExecutionFromModuleFailure(msg.sender);
+        }
     }
 
     /// @dev Allows a Module to execute a Safe transaction without any further confirmations and return data
@@ -140,12 +140,10 @@ contract ModuleManager is SelfAuthorized, Executor {
     /// @param value Ether value of module transaction.
     /// @param data Data payload of module transaction.
     /// @param operation Operation type of module transaction.
-    function execTransactionFromModuleReturnData(
-        address to,
-        uint256 value,
-        bytes memory data,
-        Enum.Operation operation
-    ) public returns (bool success, bytes memory returnData) {
+    function execTransactionFromModuleReturnData(address to, uint256 value, bytes memory data, Enum.Operation operation)
+        public
+        returns (bool success, bytes memory returnData)
+    {
         success = execTransactionFromModule(to, value, data, operation);
         // solhint-disable-next-line no-inline-assembly
         assembly {
@@ -174,7 +172,11 @@ contract ModuleManager is SelfAuthorized, Executor {
     /// @param pageSize Maximum number of modules that should be returned.
     /// @return array Array of modules.
     /// @return next Start of the next page.
-    function getModulesPaginated(address start, uint256 pageSize) external view returns (address[] memory array, address next) {
+    function getModulesPaginated(address start, uint256 pageSize)
+        external
+        view
+        returns (address[] memory array, address next)
+    {
         // Init array with max page size
         array = new address[](pageSize);
 
@@ -225,7 +227,10 @@ contract OwnerManager is SelfAuthorized {
         for (uint256 i = 0; i < _owners.length; i++) {
             // Owner address cannot be null.
             address owner = _owners[i];
-            require(owner != address(0) && owner != SENTINEL_OWNERS && owner != address(this) && currentOwner != owner, "GS203");
+            require(
+                owner != address(0) && owner != SENTINEL_OWNERS && owner != address(this) && currentOwner != owner,
+                "GS203"
+            );
             // No duplicate owners allowed.
             require(owners[owner] == address(0), "GS204");
             owners[currentOwner] = owner;
@@ -251,7 +256,9 @@ contract OwnerManager is SelfAuthorized {
         ownerCount++;
         emit AddedOwner(owner);
         // Change threshold if threshold was changed.
-        if (threshold != _threshold) changeThreshold(_threshold);
+        if (threshold != _threshold) {
+            changeThreshold(_threshold);
+        }
     }
 
     /// @dev Allows to remove an owner from the Safe and update the threshold at the same time.
@@ -260,11 +267,7 @@ contract OwnerManager is SelfAuthorized {
     /// @param prevOwner Owner that pointed to the owner to be removed in the linked list
     /// @param owner Owner address to be removed.
     /// @param _threshold New threshold.
-    function removeOwner(
-        address prevOwner,
-        address owner,
-        uint256 _threshold
-    ) public authorized {
+    function removeOwner(address prevOwner, address owner, uint256 _threshold) public authorized {
         // Only allow to remove an owner, if threshold can still be reached.
         require(ownerCount - 1 >= _threshold, "GS201");
         // Validate owner address and check that it corresponds to owner index.
@@ -275,7 +278,9 @@ contract OwnerManager is SelfAuthorized {
         ownerCount--;
         emit RemovedOwner(owner);
         // Change threshold if threshold was changed.
-        if (threshold != _threshold) changeThreshold(_threshold);
+        if (threshold != _threshold) {
+            changeThreshold(_threshold);
+        }
     }
 
     /// @dev Allows to swap/replace an owner from the Safe with another address.
@@ -284,11 +289,7 @@ contract OwnerManager is SelfAuthorized {
     /// @param prevOwner Owner that pointed to the owner to be replaced in the linked list
     /// @param oldOwner Owner address to be replaced.
     /// @param newOwner New owner address.
-    function swapOwner(
-        address prevOwner,
-        address oldOwner,
-        address newOwner
-    ) public authorized {
+    function swapOwner(address prevOwner, address oldOwner, address newOwner) public authorized {
         // Owner address cannot be null, the sentinel or the Safe itself.
         require(newOwner != address(0) && newOwner != SENTINEL_OWNERS && newOwner != address(this), "GS203");
         // No duplicate owners allowed.
@@ -351,11 +352,7 @@ contract SignatureDecoder {
     function signatureSplit(bytes memory signatures, uint256 pos)
         internal
         pure
-        returns (
-            uint8 v,
-            bytes32 r,
-            bytes32 s
-        )
+        returns (uint8 v, bytes32 r, bytes32 s)
     {
         // The signature format is a compact form of:
         //   {bytes32 r}{bytes32 s}{uint8 v}
@@ -382,11 +379,7 @@ contract SecuredTokenTransfer {
     /// @param token Token that should be transferred
     /// @param receiver Receiver to whom the token should be transferred
     /// @param amount The amount of tokens that should be transferred
-    function transferToken(
-        address token,
-        address receiver,
-        uint256 amount
-    ) internal returns (bool transferred) {
+    function transferToken(address token, address receiver, uint256 amount) internal returns (bool transferred) {
         // 0xa9059cbb - keccack("transfer(address,uint256)")
         bytes memory data = abi.encodeWithSelector(0xa9059cbb, receiver, amount);
         // solhint-disable-next-line no-inline-assembly
@@ -395,15 +388,9 @@ contract SecuredTokenTransfer {
             // See https://docs.soliditylang.org/en/v0.7.6/internals/layout_in_memory.html#layout-in-memory
             let success := call(sub(gas(), 10000), token, 0, add(data, 0x20), mload(data), 0, 0x20)
             switch returndatasize()
-                case 0 {
-                    transferred := success
-                }
-                case 0x20 {
-                    transferred := iszero(or(iszero(success), iszero(mload(0))))
-                }
-                default {
-                    transferred := 0
-                }
+            case 0 { transferred := success }
+            case 0x20 { transferred := iszero(or(iszero(success), iszero(mload(0)))) }
+            default { transferred := 0 }
         }
     }
 }
@@ -419,7 +406,8 @@ contract FallbackManager is SelfAuthorized {
     event ChangedFallbackHandler(address handler);
 
     // keccak256("fallback_manager.handler.address")
-    bytes32 internal constant FALLBACK_HANDLER_STORAGE_SLOT = 0x6c9a6c4a39284e37ed1cf53d337577d14212a4870fb976a4366c693b939918d5;
+    bytes32 internal constant FALLBACK_HANDLER_STORAGE_SLOT =
+        0x6c9a6c4a39284e37ed1cf53d337577d14212a4870fb976a4366c693b939918d5;
 
     function internalSetFallbackHandler(address handler) internal {
         bytes32 slot = FALLBACK_HANDLER_STORAGE_SLOT;
@@ -444,9 +432,7 @@ contract FallbackManager is SelfAuthorized {
         // solhint-disable-next-line no-inline-assembly
         assembly {
             let handler := sload(slot)
-            if iszero(handler) {
-                return(0, 0)
-            }
+            if iszero(handler) { return(0, 0) }
             calldatacopy(0, 0, calldatasize())
             // The msg.sender address is shifted to the left by 12 bytes to remove the padding
             // Then the address without padding is stored right after the calldata
@@ -454,9 +440,7 @@ contract FallbackManager is SelfAuthorized {
             // Add 20 bytes for the address appended add the end
             let success := call(gas(), handler, 0, 0, add(calldatasize(), 20), 0, 0)
             returndatacopy(0, 0, returndatasize())
-            if iszero(success) {
-                revert(0, returndatasize())
-            }
+            if iszero(success) { revert(0, returndatasize()) }
             return(0, returndatasize())
         }
     }
@@ -512,6 +496,7 @@ contract StorageAccessible {
 contract GuardManager is SelfAuthorized {
     event ChangedGuard(address guard);
     // keccak256("guard_manager.guard.address")
+
     bytes32 internal constant GUARD_STORAGE_SLOT = 0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8;
 
     /// @dev Set a guard that checks transactions before execution
@@ -639,14 +624,17 @@ contract GnosisSafe is
     // keccak256(
     //     "EIP712Domain(uint256 chainId,address verifyingContract)"
     // );
-    bytes32 private constant DOMAIN_SEPARATOR_TYPEHASH = 0x47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a79469218;
+    bytes32 private constant DOMAIN_SEPARATOR_TYPEHASH =
+        0x47e79534a245952e8b16893a336b85a3d9ea9fa8c573f3d803afb92a79469218;
 
     // keccak256(
     //     "SafeTx(address to,uint256 value,bytes data,uint8 operation,uint256 safeTxGas,uint256 baseGas,uint256 gasPrice,address gasToken,address refundReceiver,uint256 nonce)"
     // );
     bytes32 private constant SAFE_TX_TYPEHASH = 0xbb8310d486368db6bd6f849402fdd73ad53d316b5a4b2644ad6efe0f941286d8;
 
-    event SafeSetup(address indexed initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler);
+    event SafeSetup(
+        address indexed initiator, address[] owners, uint256 threshold, address initializer, address fallbackHandler
+    );
     event ApproveHash(bytes32 indexed approvedHash, address indexed owner);
     event SignMsg(bytes32 indexed msgHash);
     event ExecutionFailure(bytes32 txHash, uint256 payment);
@@ -688,7 +676,9 @@ contract GnosisSafe is
     ) external {
         // setupOwners checks if the Threshold is already set, therefore preventing that this method is called twice
         setupOwners(_owners, _threshold);
-        if (fallbackHandler != address(0)) internalSetFallbackHandler(fallbackHandler);
+        if (fallbackHandler != address(0)) {
+            internalSetFallbackHandler(fallbackHandler);
+        }
         // As setupOwners can only be called if the contract has not been initialized we don't need a check for setupModules
         setupModules(to, data);
 
@@ -727,22 +717,21 @@ contract GnosisSafe is
         bytes32 txHash;
         // Use scope here to limit variable lifetime and prevent `stack too deep` errors
         {
-            bytes memory txHashData =
-                encodeTransactionData(
-                    // Transaction info
-                    to,
-                    value,
-                    data,
-                    operation,
-                    safeTxGas,
-                    // Payment info
-                    baseGas,
-                    gasPrice,
-                    gasToken,
-                    refundReceiver,
-                    // Signature info
-                    nonce
-                );
+            bytes memory txHashData = encodeTransactionData(
+                // Transaction info
+                to,
+                value,
+                data,
+                operation,
+                safeTxGas,
+                // Payment info
+                baseGas,
+                gasPrice,
+                gasToken,
+                refundReceiver,
+                // Signature info
+                nonce
+            );
             // Increase nonce and execute transaction.
             nonce++;
             txHash = keccak256(txHashData);
@@ -787,8 +776,11 @@ contract GnosisSafe is
             if (gasPrice > 0) {
                 payment = handlePayment(gasUsed, baseGas, gasPrice, gasToken, refundReceiver);
             }
-            if (success) emit ExecutionSuccess(txHash, payment);
-            else emit ExecutionFailure(txHash, payment);
+            if (success) {
+                emit ExecutionSuccess(txHash, payment);
+            } else {
+                emit ExecutionFailure(txHash, payment);
+            }
         }
         {
             if (guard != address(0)) {
@@ -822,11 +814,7 @@ contract GnosisSafe is
      * @param data That should be signed (this is passed to an external validator contract)
      * @param signatures Signature data that should be verified. Can be ECDSA signature, contract signature (EIP-1271) or approved hash.
      */
-    function checkSignatures(
-        bytes32 dataHash,
-        bytes memory data,
-        bytes memory signatures
-    ) public view {
+    function checkSignatures(bytes32 dataHash, bytes memory data, bytes memory signatures) public view {
         // Load threshold to avoid multiple storage loads
         uint256 _threshold = threshold;
         // Check that a threshold is set
@@ -841,12 +829,10 @@ contract GnosisSafe is
      * @param signatures Signature data that should be verified. Can be ECDSA signature, contract signature (EIP-1271) or approved hash.
      * @param requiredSignatures Amount of required valid signatures.
      */
-    function checkNSignatures(
-        bytes32 dataHash,
-        bytes memory data,
-        bytes memory signatures,
-        uint256 requiredSignatures
-    ) public view {
+    function checkNSignatures(bytes32 dataHash, bytes memory data, bytes memory signatures, uint256 requiredSignatures)
+        public
+        view
+    {
         // Check that the provided signature data is not too short
         require(signatures.length >= requiredSignatures.mul(65), "GS020");
         // There cannot be an owner with address 0.
@@ -886,7 +872,10 @@ contract GnosisSafe is
                     // The signature data for contract signatures is appended to the concatenated signatures and the offset is stored in s
                     contractSignature := add(add(signatures, s), 0x20)
                 }
-                require(ISignatureValidator(currentOwner).isValidSignature(data, contractSignature) == EIP1271_MAGIC_VALUE, "GS024");
+                require(
+                    ISignatureValidator(currentOwner).isValidSignature(data, contractSignature) == EIP1271_MAGIC_VALUE,
+                    "GS024"
+                );
             } else if (v == 1) {
                 // If v is 1 then it is an approved hash
                 // When handling approved hashes the address of the approver is encoded into r
@@ -896,13 +885,17 @@ contract GnosisSafe is
             } else if (v > 30) {
                 // If v > 30 then default va (27,28) has been adjusted for eth_sign flow
                 // To support eth_sign and similar we adjust v and hash the messageHash with the Ethereum message prefix before applying ecrecover
-                currentOwner = ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", dataHash)), v - 4, r, s);
+                currentOwner =
+                    ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", dataHash)), v - 4, r, s);
             } else {
                 // Default is the ecrecover flow with the provided data hash
                 // Use ecrecover with the messageHash for EOA signatures
                 currentOwner = ecrecover(dataHash, v, r, s);
             }
-            require(currentOwner > lastOwner && owners[currentOwner] != address(0) && currentOwner != SENTINEL_OWNERS, "GS026");
+            require(
+                currentOwner > lastOwner && owners[currentOwner] != address(0) && currentOwner != SENTINEL_OWNERS,
+                "GS026"
+            );
             lastOwner = currentOwner;
         }
     }
@@ -916,12 +909,10 @@ contract GnosisSafe is
     /// @param operation Operation type of Safe transaction.
     /// @return Estimate without refunds and overhead fees (base transaction and payload data gas costs).
     /// @notice Deprecated in favor of common/StorageAccessible.sol and will be removed in next version.
-    function requiredTxGas(
-        address to,
-        uint256 value,
-        bytes calldata data,
-        Enum.Operation operation
-    ) external returns (uint256) {
+    function requiredTxGas(address to, uint256 value, bytes calldata data, Enum.Operation operation)
+        external
+        returns (uint256)
+    {
         uint256 startGas = gasleft();
         // We don't provide an error message here, as we use it to return the estimate
         require(execute(to, value, data, operation, gasleft()));
@@ -978,22 +969,21 @@ contract GnosisSafe is
         address refundReceiver,
         uint256 _nonce
     ) public view returns (bytes memory) {
-        bytes32 safeTxHash =
-            keccak256(
-                abi.encode(
-                    SAFE_TX_TYPEHASH,
-                    to,
-                    value,
-                    keccak256(data),
-                    operation,
-                    safeTxGas,
-                    baseGas,
-                    gasPrice,
-                    gasToken,
-                    refundReceiver,
-                    _nonce
-                )
-            );
+        bytes32 safeTxHash = keccak256(
+            abi.encode(
+                SAFE_TX_TYPEHASH,
+                to,
+                value,
+                keccak256(data),
+                operation,
+                safeTxGas,
+                baseGas,
+                gasPrice,
+                gasToken,
+                refundReceiver,
+                _nonce
+            )
+        );
         return abi.encodePacked(bytes1(0x19), bytes1(0x01), domainSeparator(), safeTxHash);
     }
 
@@ -1021,6 +1011,10 @@ contract GnosisSafe is
         address refundReceiver,
         uint256 _nonce
     ) public view returns (bytes32) {
-        return keccak256(encodeTransactionData(to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, _nonce));
+        return keccak256(
+            encodeTransactionData(
+                to, value, data, operation, safeTxGas, baseGas, gasPrice, gasToken, refundReceiver, _nonce
+            )
+        );
     }
 }

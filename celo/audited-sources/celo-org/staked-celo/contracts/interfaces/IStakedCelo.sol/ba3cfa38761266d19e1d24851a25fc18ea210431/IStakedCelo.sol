@@ -10,11 +10,7 @@ interface IStakedCelo {
 
     function transfer(address, uint256) external returns (bool);
 
-    function transferFrom(
-        address,
-        address,
-        uint256
-    ) external returns (bool);
+    function transferFrom(address, address, uint256) external returns (bool);
 
     function balanceOf(address account) external view returns (uint256);
 

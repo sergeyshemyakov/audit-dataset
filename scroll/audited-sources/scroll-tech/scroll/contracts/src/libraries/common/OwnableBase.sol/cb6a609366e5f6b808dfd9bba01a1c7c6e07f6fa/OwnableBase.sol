@@ -3,25 +3,31 @@
 pragma solidity ^0.8.0;
 
 abstract contract OwnableBase {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner is changed by current owner.
     /// @param _oldOwner The address of previous owner.
     /// @param _newOwner The address of new owner.
     event OwnershipTransferred(address indexed _oldOwner, address indexed _newOwner);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of the current owner.
     address public owner;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
+     *
+     */
 
     /// @dev Throws if called by any account other than the owner.
     modifier onlyOwner() {
@@ -29,9 +35,11 @@ abstract contract OwnableBase {
         _;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Leaves the contract without owner. It will not be possible to call
     /// `onlyOwner` functions anymore. Can only be called by the current owner.
@@ -49,9 +57,11 @@ abstract contract OwnableBase {
         _transferOwnership(_newOwner);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Transfers ownership of the contract to a new account (`newOwner`).
     /// Internal function without access restriction.

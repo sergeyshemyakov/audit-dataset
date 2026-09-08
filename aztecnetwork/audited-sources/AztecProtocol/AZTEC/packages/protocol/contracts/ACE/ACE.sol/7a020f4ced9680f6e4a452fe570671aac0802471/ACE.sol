@@ -17,7 +17,8 @@ import "../libs/SafeMath8.sol";
  * @dev ACE validates the AZTEC protocol's family of zero-knowledge proofs, which enables
  *      digital asset builders to construct fungible confidential digital assets according to the AZTEC token standard.
  * Copyright Spilbury Holdings Ltd 2019. All rights reserved.
- **/
+ *
+ */
 contract ACE is IAZTEC, Ownable, NoteRegistry {
     using NoteUtils for bytes;
     using ProofUtils for uint24;
@@ -25,16 +26,11 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
     using SafeMath8 for uint8;
 
     // keccak256 hash of "JoinSplitSignature(uint24 proof,bytes32 noteHash,uint256 challenge,address sender)"
-    bytes32 constant internal JOIN_SPLIT_SIGNATURE_TYPE_HASH =
+    bytes32 internal constant JOIN_SPLIT_SIGNATURE_TYPE_HASH =
         0xf671f176821d4c6f81e66f9704cdf2c5c12d34bd23561179229c9fe7a9e85462;
 
     event SetCommonReferenceString(bytes32[6] _commonReferenceString);
-    event SetProof(
-        uint8 indexed epoch, 
-        uint8 indexed category, 
-        uint8 indexed id, 
-        address validatorAddress
-    );
+    event SetProof(uint8 indexed epoch, uint8 indexed category, uint8 indexed id, address validatorAddress);
     event IncrementLatestEpoch(uint8 newLatestEpoch);
 
     // The commonReferenceString contains one G1 group element and one G2 group element,
@@ -47,41 +43,37 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
 
     // a list of invalidated proof ids, used to blacklist proofs in the case of a vulnerability being discovered
     bool[0x100][0x100][0x10000] public disabledValidators;
-    
+
     // latest proof epoch accepted by this contract
     uint8 public latestEpoch = 1;
 
     // keep track of validated balanced proofs
     mapping(bytes32 => bool) public validatedProofs;
-    
+
     /**
-    * @dev contract constructor. Sets the owner of ACE
-    **/
+     * @dev contract constructor. Sets the owner of ACE
+     *
+     */
     constructor() public Ownable() {}
 
     /**
-    * @dev Mint AZTEC notes
-    *      
-    * @param _proof the AZTEC proof object
-    * @param _proofData the mint proof construction data
-    * @param _proofSender the Ethereum address of the original transaction sender. It is explicitly assumed that
-    *        an asset using ACE supplies this field correctly - if they don't their asset is vulnerable to front-running
-    * Unnamed param is the AZTEC zero-knowledge proof data
-    * @return two `bytes` objects. The first contains the new confidentialTotalSupply note and the second contains the
-    * notes that were created. Returned so that a zkAsset can emit the appropriate events
-    */
-    function mint(
-        uint24 _proof,
-        bytes calldata _proofData,
-        address _proofSender
-    ) external returns (bytes memory) {
-        
+     * @dev Mint AZTEC notes
+     *
+     * @param _proof the AZTEC proof object
+     * @param _proofData the mint proof construction data
+     * @param _proofSender the Ethereum address of the original transaction sender. It is explicitly assumed that
+     *        an asset using ACE supplies this field correctly - if they don't their asset is vulnerable to front-running
+     * Unnamed param is the AZTEC zero-knowledge proof data
+     * @return two `bytes` objects. The first contains the new confidentialTotalSupply note and the second contains the
+     * notes that were created. Returned so that a zkAsset can emit the appropriate events
+     */
+    function mint(uint24 _proof, bytes calldata _proofData, address _proofSender) external returns (bytes memory) {
         Registry storage registry = registries[msg.sender];
         require(registry.flags.active == true, "note registry does not exist for the given address");
         require(registry.flags.canAdjustSupply == true, "this asset is not mintable");
-        
+
         // Check that it's a mintable proof
-        (, uint8 category, ) = _proof.getProofComponents();
+        (, uint8 category,) = _proof.getProofComponents();
 
         require(category == uint8(ProofCategory.MINT), "this is not a mint proof");
 
@@ -89,93 +81,89 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
         require(_proofOutputs.getLength() > 0, "call to validateProof failed");
 
         // Dealing with notes representing totals
-        (bytes memory oldTotal,  // inputNotesTotal
-        bytes memory newTotal, // outputNotesTotal
-        ,
+        (
+            bytes memory oldTotal, // inputNotesTotal
+            bytes memory newTotal, // outputNotesTotal
+            ,
         ) = _proofOutputs.get(0).extractProofOutput();
 
         // Check the previous confidentialTotalSupply, and then assign the new one
-        (, bytes32 oldTotalNoteHash, ) = oldTotal.get(0).extractNote();        
+        (, bytes32 oldTotalNoteHash,) = oldTotal.get(0).extractNote();
 
         require(oldTotalNoteHash == registry.confidentialTotalMinted, "provided total minted note does not match");
-        (, bytes32 newTotalNoteHash, ) = newTotal.get(0).extractNote();
+        (, bytes32 newTotalNoteHash,) = newTotal.get(0).extractNote();
         registry.confidentialTotalMinted = newTotalNoteHash;
 
         // Dealing with minted notes
-        (,
-        bytes memory mintedNotes, // output notes
-        ,
+        (
+            ,
+            bytes memory mintedNotes, // output notes
+            ,
         ) = _proofOutputs.get(1).extractProofOutput();
 
         updateOutputNotes(mintedNotes);
-        return(_proofOutputs);
+        return (_proofOutputs);
     }
 
     /**
-    * @dev Burn AZTEC notes
-    *      
-    * @param _proof the AZTEC proof object
-    * @param _proofData the burn proof construction data
-    * @param _proofSender the Ethereum address of the original transaction sender. It is explicitly assumed that
-    *        an asset using ACE supplies this field correctly - if they don't their asset is vulnerable to front-running
-    * Unnamed param is the AZTEC zero-knowledge proof data
-    * @return two `bytes` objects. The first contains the new confidentialTotalSupply note and the second contains the
-    * notes that were created. Returned so that a zkAsset can emit the appropriate events
-    */
-    function burn(
-        uint24 _proof,
-        bytes calldata _proofData,
-        address _proofSender
-    ) external returns (bytes memory) {
-        
+     * @dev Burn AZTEC notes
+     *
+     * @param _proof the AZTEC proof object
+     * @param _proofData the burn proof construction data
+     * @param _proofSender the Ethereum address of the original transaction sender. It is explicitly assumed that
+     *        an asset using ACE supplies this field correctly - if they don't their asset is vulnerable to front-running
+     * Unnamed param is the AZTEC zero-knowledge proof data
+     * @return two `bytes` objects. The first contains the new confidentialTotalSupply note and the second contains the
+     * notes that were created. Returned so that a zkAsset can emit the appropriate events
+     */
+    function burn(uint24 _proof, bytes calldata _proofData, address _proofSender) external returns (bytes memory) {
         Registry storage registry = registries[msg.sender];
         require(registry.flags.active == true, "note registry does not exist for the given address");
         require(registry.flags.canAdjustSupply == true, "this asset is not burnable");
-        
+
         // Check that it's a burnable proof
-        (, uint8 category, ) = _proof.getProofComponents();
+        (, uint8 category,) = _proof.getProofComponents();
 
         require(category == uint8(ProofCategory.BURN), "this is not a burn proof");
 
         bytes memory _proofOutputs = this.validateProof(_proof, _proofSender, _proofData);
-        
+
         // Dealing with notes representing totals
-        (bytes memory oldTotal, // input notes
-        bytes memory newTotal, // output notes
-        ,
+        (
+            bytes memory oldTotal, // input notes
+            bytes memory newTotal, // output notes
+            ,
         ) = _proofOutputs.get(0).extractProofOutput();
-    
-        (, bytes32 oldTotalNoteHash, ) = oldTotal.get(0).extractNote();        
+
+        (, bytes32 oldTotalNoteHash,) = oldTotal.get(0).extractNote();
         require(oldTotalNoteHash == registry.confidentialTotalBurned, "provided total burned note does not match");
-        (, bytes32 newTotalNoteHash, ) = newTotal.get(0).extractNote();
+        (, bytes32 newTotalNoteHash,) = newTotal.get(0).extractNote();
         registry.confidentialTotalBurned = newTotalNoteHash;
 
         // Dealing with burned notes
-        (,
-        bytes memory burnedNotes,
-        ,) = _proofOutputs.get(1).extractProofOutput();
+        (, bytes memory burnedNotes,,) = _proofOutputs.get(1).extractProofOutput();
 
         // Although they are outputNotes, they are due to be destroyed - need removing from the note registry
         updateInputNotes(burnedNotes);
-        return(_proofOutputs);
+        return (_proofOutputs);
     }
 
     /**
-    * @dev Validate an AZTEC zero-knowledge proof. ACE will issue a validation transaction to the smart contract
-    *      linked to `_proof`. The validator smart contract will have the following interface:
-    *      
-    *      function validate(
-    *          bytes _proofData, 
-    *          address _sender, 
-    *          bytes32[6] _commonReferenceString
-    *      ) public returns (bytes)
-    *
-    * @param _proof the AZTEC proof object
-    * @param _sender the Ethereum address of the original transaction sender. It is explicitly assumed that
-    *        an asset using ACE supplies this field correctly - if they don't their asset is vulnerable to front-running
-    * Unnamed param is the AZTEC zero-knowledge proof data
-    * @return a `bytes proofOutputs` variable formatted according to the Cryptography Engine standard
-    */
+     * @dev Validate an AZTEC zero-knowledge proof. ACE will issue a validation transaction to the smart contract
+     *      linked to `_proof`. The validator smart contract will have the following interface:
+     *
+     *      function validate(
+     *          bytes _proofData,
+     *          address _sender,
+     *          bytes32[6] _commonReferenceString
+     *      ) public returns (bytes)
+     *
+     * @param _proof the AZTEC proof object
+     * @param _sender the Ethereum address of the original transaction sender. It is explicitly assumed that
+     *        an asset using ACE supplies this field correctly - if they don't their asset is vulnerable to front-running
+     * Unnamed param is the AZTEC zero-knowledge proof data
+     * @return a `bytes proofOutputs` variable formatted according to the Cryptography Engine standard
+     */
     function validateProof(uint24 _proof, address _sender, bytes calldata) external returns (bytes memory) {
         require(_proof != 0, "expected the proof to be valid");
         // validate that the provided _proof object maps to a corresponding validator and also that
@@ -207,7 +195,8 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
             let callSize := add(proofDataSize, 0x104)
             switch staticcall(gas, validatorAddress, memPtr, callSize, 0x00, 0x00)
             case 0 {
-                mstore(0x00, 400) revert(0x00, 0x20) // call failed because proof is invalid
+                mstore(0x00, 400)
+                revert(0x00, 0x20) // call failed because proof is invalid
             }
 
             // copy returndata to memory
@@ -231,17 +220,17 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
     }
 
     /**
-    * @dev Clear storage variables set when validating zero-knowledge proofs.
-    *      The only address that can clear data from `validatedProofs` is the address that created the proof.
-    *      Function is designed to utilize [EIP-1283](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1283.md)
-    *      to reduce gas costs. It is highly likely that any storage variables set by `validateProof`
-    *      are only required for the duration of a single transaction.
-    *      E.g. a decentralized exchange validating a swap proof and sending transfer instructions to
-    *      two confidential assets.
-    *      This method allows the calling smart contract to recover most of the gas spent by setting `validatedProofs`
-    * @param _proof the AZTEC proof object
-    * @param _proofHashes dynamic array of proof hashes
-    */
+     * @dev Clear storage variables set when validating zero-knowledge proofs.
+     *      The only address that can clear data from `validatedProofs` is the address that created the proof.
+     *      Function is designed to utilize [EIP-1283](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1283.md)
+     *      to reduce gas costs. It is highly likely that any storage variables set by `validateProof`
+     *      are only required for the duration of a single transaction.
+     *      E.g. a decentralized exchange validating a swap proof and sending transfer instructions to
+     *      two confidential assets.
+     *      This method allows the calling smart contract to recover most of the gas spent by setting `validatedProofs`
+     * @param _proof the AZTEC proof object
+     * @param _proofHashes dynamic array of proof hashes
+     */
     function clearProofByHashes(uint24 _proof, bytes32[] calldata _proofHashes) external {
         uint256 length = _proofHashes.length;
         for (uint256 i = 0; i < length; i += 1) {
@@ -254,10 +243,10 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
     }
 
     /**
-    * @dev Set the common reference string.
-    *      If the trusted setup is re-run, we will need to be able to change the crs
-    * @param _commonReferenceString the new commonReferenceString
-    */
+     * @dev Set the common reference string.
+     *      If the trusted setup is re-run, we will need to be able to change the crs
+     * @param _commonReferenceString the new commonReferenceString
+     */
     function setCommonReferenceString(bytes32[6] memory _commonReferenceString) public {
         require(isOwner(), "only the owner can set the common reference string");
         commonReferenceString = _commonReferenceString;
@@ -265,9 +254,9 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
     }
 
     /**
-    * @dev Forever invalidate the given proof.
-    * @param _proof the AZTEC proof object
-    */
+     * @dev Forever invalidate the given proof.
+     * @param _proof the AZTEC proof object
+     */
     function invalidateProof(uint24 _proof) public {
         require(isOwner(), "only the owner can invalidate a proof");
         (uint8 epoch, uint8 category, uint8 id) = _proof.getProofComponents();
@@ -276,19 +265,15 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
     }
 
     /**
-    * @dev Validate a previously validated AZTEC proof via its hash
-    *      This enables confidential assets to receive transfer instructions from a dApp that
-    *      has already validated an AZTEC proof that satisfies a balancing relationship.
-    * @param _proof the AZTEC proof object
-    * @param _proofHash the hash of the `proofOutput` received by the asset
-    * @param _sender the Ethereum address of the contract issuing the transfer instruction
-    * @return a boolean that signifies whether the corresponding AZTEC proof has been validated
-    */
-    function validateProofByHash(
-        uint24 _proof,
-        bytes32 _proofHash,
-        address _sender
-    ) public view returns (bool) {
+     * @dev Validate a previously validated AZTEC proof via its hash
+     *      This enables confidential assets to receive transfer instructions from a dApp that
+     *      has already validated an AZTEC proof that satisfies a balancing relationship.
+     * @param _proof the AZTEC proof object
+     * @param _proofHash the hash of the `proofOutput` received by the asset
+     * @param _sender the Ethereum address of the contract issuing the transfer instruction
+     * @return a boolean that signifies whether the corresponding AZTEC proof has been validated
+     */
+    function validateProofByHash(uint24 _proof, bytes32 _proofHash, address _sender) public view returns (bool) {
         // We need create a unique encoding of _proof, _proofHash and _sender,
         // and use as a key to access validatedProofs
         // We do this by computing bytes32 validatedProofHash = keccak256(ABI.encode(_proof, _proofHash, _sender))
@@ -308,7 +293,7 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
             // => result of disabledValidators[epoch] is stored in 0x08 * 0x100 = 0x800 storage slots
 
             // To compute the storage slot  disabledValidators[epoch][category][id], we do the following:
-            // 1. get the disabledValidators slot 
+            // 1. get the disabledValidators slot
             // 2. add (epoch * 0x800) to the slot (or epoch << 11)
             // 3. add (category * 0x08) to the slot (or category << 3)
             // 4. add (id / 0x20) to the slot (or id >> 5)
@@ -326,14 +311,8 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
             // to convert to a bit index, we multiply by 8
             // i.e. bit index = shl(3, and(_proof & 0x1f))
             // => result = shr(shl(3, and_proof & 0x1f), value)
-            isValidatorDisabled := 
-                shr(
-                    shl(
-                        0x03,
-                        and(_proof, 0x1f)
-                    ),
-                    sload(add(shr(5, _proof), disabledValidators_slot))
-                )
+            isValidatorDisabled :=
+                shr(shl(0x03, and(_proof, 0x1f)), sload(add(shr(5, _proof), disabledValidators_slot)))
 
             // Next, compute validatedProofHash = keccak256(abi.encode(_proofHash, _proof, _sender))
             // cache free memory pointer - we will overwrite it when computing hash (cheaper than using free memory)
@@ -349,15 +328,12 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
     }
 
     /**
-    * @dev Adds or modifies a proof into the Cryptography Engine.
-    *       This method links a given `_proof` to a smart contract validator.
-    * @param _proof the AZTEC proof object
-    * @param _validatorAddress the address of the smart contract validator
-    */
-    function setProof(
-        uint24 _proof,
-        address _validatorAddress
-    ) public {
+     * @dev Adds or modifies a proof into the Cryptography Engine.
+     *       This method links a given `_proof` to a smart contract validator.
+     * @param _proof the AZTEC proof object
+     * @param _validatorAddress the address of the smart contract validator
+     */
+    function setProof(uint24 _proof, address _validatorAddress) public {
         require(isOwner(), "only the owner can set a proof");
         require(_validatorAddress != address(0x0), "expected the validator address to exist");
         (uint8 epoch, uint8 category, uint8 id) = _proof.getProofComponents();
@@ -377,10 +353,10 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
     }
 
     /**
-    * @dev Returns the common reference string.
-    * We use a custom getter for `commonReferenceString` - the default getter created by making the storage
-    * variable public indexes individual elements of the array, and we want to return the whole array
-    */
+     * @dev Returns the common reference string.
+     * We use a custom getter for `commonReferenceString` - the default getter created by making the storage
+     * variable public indexes individual elements of the array, and we want to return the whole array
+     */
     function getCommonReferenceString() public view returns (bytes32[6] memory) {
         return commonReferenceString;
     }
@@ -390,7 +366,7 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
         bool queryInvalid;
         assembly {
             // To compute the storage key for validatorAddress[epoch][category][id], we do the following:
-            // 1. get the validatorAddress slot 
+            // 1. get the validatorAddress slot
             // 2. add (epoch * 0x10000) to the slot
             // 3. add (category * 0x100) to the slot
             // 4. add (id) to the slot
@@ -417,4 +393,3 @@ contract ACE is IAZTEC, Ownable, NoteRegistry {
         }
     }
 }
-

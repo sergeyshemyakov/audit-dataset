@@ -4,9 +4,9 @@ pragma solidity ^0.8.0;
 
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
+import {RollupVerifier} from "../../libraries/verifier/RollupVerifier.sol";
 import {IL1MessageQueue} from "./IL1MessageQueue.sol";
 import {IScrollChain} from "./IScrollChain.sol";
-import {RollupVerifier} from "../../libraries/verifier/RollupVerifier.sol";
 
 // solhint-disable reason-string
 
@@ -18,18 +18,22 @@ import {RollupVerifier} from "../../libraries/verifier/RollupVerifier.sol";
 ///
 /// @dev the message queue is not used yet, the offline relayer only use events in `L1ScrollMessenger`.
 contract ScrollChain is OwnableUpgradeable, IScrollChain {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates the status of sequencer.
     /// @param account The address of account updated.
     /// @param status The status of the account updated.
     event UpdateSequencer(address indexed account, bool status);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev The maximum number of transaction in on batch.
     uint256 public immutable maxNumTxInBatch;
@@ -40,9 +44,11 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
     /// @notice The chain id of the corresponding layer 2 chain.
     uint256 public immutable layer2ChainId;
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     // subject to change
     struct BatchStored {
@@ -64,9 +70,11 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
         bool finalized;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L1MessageQueue.
     address public messageQueue;
@@ -83,25 +91,23 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
     /// @notice Mapping from batch index to finalized batch hash.
     mapping(uint256 => bytes32) public finalizedBatches;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier OnlySequencer() {
         // @todo In the decentralize mode, it should be only called by a list of validator.
         require(isSequencer[msg.sender], "caller not sequencer");
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        uint256 _chainId,
-        uint256 _maxNumTxInBatch,
-        bytes32 _paddingTxHash
-    ) {
+     *
+     */
+    constructor(uint256 _chainId, uint256 _maxNumTxInBatch, bytes32 _paddingTxHash) {
         layer2ChainId = _chainId;
         maxNumTxInBatch = _maxNumTxInBatch;
         paddingTxHash = _paddingTxHash;
@@ -113,9 +119,11 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
         messageQueue = _messageQueue;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IScrollChain
     function isBatchFinalized(bytes32 _batchHash) external view override returns (bool) {
@@ -131,9 +139,11 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
         return batches[_batchHash].withdrawTrieRoot;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Import layer 2 genesis block
     function importGenesisBatch(Batch memory _genesisBatch) external {
@@ -182,11 +192,11 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
     }
 
     /// @inheritdoc IScrollChain
-    function finalizeBatchWithProof(
-        bytes32 _batchHash,
-        uint256[] memory _proof,
-        uint256[] memory _instances
-    ) external override OnlySequencer {
+    function finalizeBatchWithProof(bytes32 _batchHash, uint256[] memory _proof, uint256[] memory _instances)
+        external
+        override
+        OnlySequencer
+    {
         BatchStored storage _batch = batches[_batchHash];
         require(_batch.newStateRoot != bytes32(0), "No such batch");
         require(!_batch.finalized, "Batch is already finalized");
@@ -212,9 +222,11 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
         emit FinalizeBatch(_batchHash);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the status of sequencer.
     /// @dev This function can only called by contract owner.
@@ -226,9 +238,11 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
         emit UpdateSequencer(_account, _status);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to commit a batch.
     /// @param _batch The batch to commit.
@@ -246,10 +260,8 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
         bytes32 publicInputHash;
         uint64 numTransactionsInBatch;
         uint64 lastBlockTimestamp;
-        (publicInputHash, numTransactionsInBatch, accTotalL1Messages, lastBlockTimestamp) = _computePublicInputHash(
-            accTotalL1Messages,
-            _batch
-        );
+        (publicInputHash, numTransactionsInBatch, accTotalL1Messages, lastBlockTimestamp) =
+            _computePublicInputHash(accTotalL1Messages, _batch);
 
         BatchStored storage _batchInStorage = batches[publicInputHash];
 
@@ -273,12 +285,7 @@ contract ScrollChain is OwnableUpgradeable, IScrollChain {
     function _computePublicInputHash(uint64 accTotalL1Messages, Batch memory batch)
         internal
         view
-        returns (
-            bytes32,
-            uint64,
-            uint64,
-            uint64
-        )
+        returns (bytes32, uint64, uint64, uint64)
     {
         uint256 publicInputsPtr;
         // 1. append prevStateRoot, newStateRoot and withdrawTrieRoot to public inputs

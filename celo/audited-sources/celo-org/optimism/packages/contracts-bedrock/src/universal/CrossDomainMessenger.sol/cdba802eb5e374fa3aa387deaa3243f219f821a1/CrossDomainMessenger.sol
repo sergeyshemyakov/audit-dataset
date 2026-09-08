@@ -2,11 +2,12 @@
 pragma solidity 0.8.15;
 
 // Libraries
-import { Initializable } from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import { SafeCall } from "src/libraries/SafeCall.sol";
-import { Hashing } from "src/libraries/Hashing.sol";
-import { Encoding } from "src/libraries/Encoding.sol";
-import { Constants } from "src/libraries/Constants.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+
+import {Constants} from "src/libraries/Constants.sol";
+import {Encoding} from "src/libraries/Encoding.sol";
+import {Hashing} from "src/libraries/Hashing.sol";
+import {SafeCall} from "src/libraries/SafeCall.sol";
 
 /// @custom:legacy
 /// @title CrossDomainMessengerLegacySpacer0
@@ -216,10 +217,7 @@ abstract contract CrossDomainMessenger is
         uint256 _value,
         uint256 _minGasLimit,
         bytes calldata _message
-    )
-        external
-        payable
-    {
+    ) external payable {
         // On L1 this function will check the Portal for its paused status.
         // On L2 this function should be a no-op, because paused will always return false.
         require(paused() == false, "CrossDomainMessenger: paused");

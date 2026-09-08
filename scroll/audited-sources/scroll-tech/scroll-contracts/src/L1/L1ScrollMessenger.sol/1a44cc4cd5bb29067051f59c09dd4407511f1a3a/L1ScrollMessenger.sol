@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity =0.8.24;
 
-import {IScrollChain} from "./rollup/IScrollChain.sol";
-import {IL1MessageQueueV1} from "./rollup/IL1MessageQueueV1.sol";
-import {IL1MessageQueueV2} from "./rollup/IL1MessageQueueV2.sol";
-import {IL1ScrollMessenger} from "./IL1ScrollMessenger.sol";
-import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
 import {IScrollMessenger} from "../libraries/IScrollMessenger.sol";
 import {ScrollMessengerBase} from "../libraries/ScrollMessengerBase.sol";
+import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
 import {WithdrawTrieVerifier} from "../libraries/verifier/WithdrawTrieVerifier.sol";
+import {IL1ScrollMessenger} from "./IL1ScrollMessenger.sol";
+import {IL1MessageQueueV1} from "./rollup/IL1MessageQueueV1.sol";
+import {IL1MessageQueueV2} from "./rollup/IL1MessageQueueV2.sol";
+import {IScrollChain} from "./rollup/IScrollChain.sol";
 
 import {IMessageDropCallback} from "../libraries/callbacks/IMessageDropCallback.sol";
 
@@ -34,15 +34,18 @@ import {IMessageDropCallback} from "../libraries/callbacks/IMessageDropCallback.
 /// The messages sent through this contract may possibly be skipped in layer 2 due to circuit capacity overflow.
 /// In such case, users can initiate `dropMessage` to claim refunds. But the cross domain relay fee won't be refunded.
 contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
-
+     *
+     */
     error ErrorForbidToCallMessageQueue();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of Rollup contract.
     address public immutable rollup;
@@ -53,10 +56,11 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
     /// @notice The address of L1MessageQueueV2 contract.
     address public immutable messageQueueV2;
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct ReplayState {
         // The number of replayed times.
         uint128 times;
@@ -64,9 +68,11 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         uint128 lastIndex;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from L1 message hash to the timestamp when the message is sent.
     mapping(bytes32 => uint256) public messageSendTimestamp;
@@ -102,16 +108,14 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
     /// avoid such situation.
     mapping(uint256 => uint256) public prevReplayIndex;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        address _counterpart,
-        address _rollup,
-        address _messageQueueV1,
-        address _messageQueueV2
-    ) ScrollMessengerBase(_counterpart) {
+     *
+     */
+    constructor(address _counterpart, address _rollup, address _messageQueueV1, address _messageQueueV2)
+        ScrollMessengerBase(_counterpart)
+    {
         if (_rollup == address(0) || _messageQueueV1 == address(0) || _messageQueueV2 == address(0)) {
             revert ErrorZeroAddress();
         }
@@ -131,12 +135,10 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
     /// @param _feeVault The address of fee vault, which will be used to collect relayer fee.
     /// @param _rollup The address of ScrollChain contract.
     /// @param _messageQueue The address of L1MessageQueue contract.
-    function initialize(
-        address _counterpart,
-        address _feeVault,
-        address _rollup,
-        address _messageQueue
-    ) public initializer {
+    function initialize(address _counterpart, address _feeVault, address _rollup, address _messageQueue)
+        public
+        initializer
+    {
         ScrollMessengerBase.__ScrollMessengerBase_init(_counterpart, _feeVault);
 
         __rollup = _rollup;
@@ -146,17 +148,19 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         emit UpdateMaxReplayTimes(0, 3);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit, _msgSender());
     }
 
@@ -202,7 +206,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         require(_from != xDomainMessageSender, "Invalid message sender");
 
         xDomainMessageSender = _from;
-        (bool success, ) = _to.call{value: _value}(_message);
+        (bool success,) = _to.call{value: _value}(_message);
         // reset value to refund gas.
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
 
@@ -241,7 +245,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         // charge relayer fee
         require(msg.value >= _fee, "Insufficient msg.value for fee");
         if (_fee > 0) {
-            (bool _success, ) = feeVault.call{value: _fee}("");
+            (bool _success,) = feeVault.call{value: _fee}("");
             require(_success, "Failed to deduct the fee");
         }
 
@@ -272,7 +276,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         unchecked {
             uint256 _refund = msg.value - _fee;
             if (_refund > 0) {
-                (bool _success, ) = _refundAddress.call{value: _refund}("");
+                (bool _success,) = _refundAddress.call{value: _refund}("");
                 require(_success, "Failed to refund the fee");
             }
         }
@@ -280,13 +284,12 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
 
     /// @inheritdoc IL1ScrollMessenger
     /// @dev Since we don't skip any messages in `L1MessageQueueV2`, only messages from `L1MessageQueueV1` can be dropped.
-    function dropMessage(
-        address _from,
-        address _to,
-        uint256 _value,
-        uint256 _messageNonce,
-        bytes memory _message
-    ) external override whenNotPaused notInExecution {
+    function dropMessage(address _from, address _to, uint256 _value, uint256 _messageNonce, bytes memory _message)
+        external
+        override
+        whenNotPaused
+        notInExecution
+    {
         // The criteria for dropping a message:
         // 1. The message is a L1 message.
         // 2. The message has not been dropped before.
@@ -309,7 +312,9 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
 
         // check message is finalized
         uint256 _lastIndex = replayStates[_xDomainCalldataHash].lastIndex;
-        if (_lastIndex == 0) _lastIndex = _messageNonce;
+        if (_lastIndex == 0) {
+            _lastIndex = _messageNonce;
+        }
 
         // check message is skipped and drop it.
         // @note If the list is very long, the message may never be dropped.
@@ -317,7 +322,9 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
             // If the `_lastIndex` is from `messageQueueV2`, it will revert in `messageQueueV1.dropCrossDomainMessage`.
             IL1MessageQueueV1(messageQueueV1).dropCrossDomainMessage(_lastIndex);
             _lastIndex = prevReplayIndex[_lastIndex];
-            if (_lastIndex == 0) break;
+            if (_lastIndex == 0) {
+                break;
+            }
             unchecked {
                 _lastIndex = _lastIndex - 1;
             }
@@ -332,9 +339,11 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update max replay times.
     /// @dev This function can only called by contract owner.
@@ -346,17 +355,15 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         emit UpdateMaxReplayTimes(_oldMaxReplayTimes, _newMaxReplayTimes);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
-
-    function _sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit,
-        address _refundAddress
-    ) internal nonReentrant {
+     *
+     */
+    function _sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit, address _refundAddress)
+        internal
+        nonReentrant
+    {
         // compute the actual cross domain message calldata.
         uint256 _messageNonce = IL1MessageQueueV2(messageQueueV2).nextCrossDomainMessageIndex();
         bytes memory _xDomainCalldata = _encodeXDomainCalldata(_msgSender(), _to, _value, _messageNonce, _message);
@@ -365,7 +372,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         uint256 _fee = IL1MessageQueueV2(messageQueueV2).estimateCrossDomainMessageFee(_gasLimit);
         require(msg.value >= _fee + _value, "Insufficient msg.value");
         if (_fee > 0) {
-            (bool _success, ) = feeVault.call{value: _fee}("");
+            (bool _success,) = feeVault.call{value: _fee}("");
             require(_success, "Failed to deduct the fee");
         }
 
@@ -385,7 +392,7 @@ contract L1ScrollMessenger is ScrollMessengerBase, IL1ScrollMessenger {
         unchecked {
             uint256 _refund = msg.value - _fee - _value;
             if (_refund > 0) {
-                (bool _success, ) = _refundAddress.call{value: _refund}("");
+                (bool _success,) = _refundAddress.call{value: _refund}("");
                 require(_success, "Failed to refund the fee");
             }
         }

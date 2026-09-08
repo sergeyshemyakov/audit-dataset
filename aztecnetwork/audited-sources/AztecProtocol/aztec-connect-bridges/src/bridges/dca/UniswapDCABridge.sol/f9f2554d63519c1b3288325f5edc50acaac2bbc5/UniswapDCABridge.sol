@@ -10,16 +10,7 @@ import {ISwapRouter} from "../../interfaces/uniswapv3/ISwapRouter.sol";
 import {BiDCABridge} from "./BiDCABridge.sol";
 
 interface IChainlinkOracle {
-    function latestRoundData()
-        external
-        view
-        returns (
-            uint80,
-            int256,
-            uint256,
-            uint256,
-            uint80
-        );
+    function latestRoundData() external view returns (uint80, int256, uint256, uint256, uint80);
 }
 
 /**
@@ -88,7 +79,7 @@ contract UniswapDCABridge is BiDCABridge {
             // Rounding DOWN ensures that B received / price >= A available
             uint256 price = (bOffer * 1e18) / a;
 
-            (aFlow, bFlow, , ) = _rebalanceAndFill(0, bOffer, price, true);
+            (aFlow, bFlow,,) = _rebalanceAndFill(0, bOffer, price, true);
         }
 
         if (b > 0) {
@@ -106,7 +97,7 @@ contract UniswapDCABridge is BiDCABridge {
             // Rounding UP to ensure that A received * price >= B available
             uint256 price = (b * 1e18 + aOffer - 1) / aOffer;
 
-            (aFlow, bFlow, , ) = _rebalanceAndFill(aOffer, 0, price, true);
+            (aFlow, bFlow,,) = _rebalanceAndFill(aOffer, 0, price, true);
         }
 
         return (aFlow, bFlow);
@@ -118,7 +109,7 @@ contract UniswapDCABridge is BiDCABridge {
      * @return Price
      */
     function getPrice() public virtual override(BiDCABridge) returns (uint256) {
-        (, int256 answer, , uint256 updatedAt, ) = ORACLE.latestRoundData();
+        (, int256 answer,, uint256 updatedAt,) = ORACLE.latestRoundData();
         if (updatedAt + MAX_AGE < block.timestamp) {
             revert("Too old");
         }

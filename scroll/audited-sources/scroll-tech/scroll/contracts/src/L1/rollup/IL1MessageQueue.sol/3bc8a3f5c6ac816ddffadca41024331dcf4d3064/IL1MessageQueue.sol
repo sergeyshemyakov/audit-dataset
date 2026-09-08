@@ -3,9 +3,11 @@
 pragma solidity ^0.8.0;
 
 interface IL1MessageQueue {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new L1 => L2 transaction is appended to the queue.
     /// @param sender The address of account who initiates the transaction.
@@ -15,12 +17,7 @@ interface IL1MessageQueue {
     /// @param gasLimit Gas limit required to complete the message relay on L2.
     /// @param data The calldata of the transaction.
     event QueueTransaction(
-        address indexed sender,
-        address indexed target,
-        uint256 value,
-        uint256 queueIndex,
-        uint256 gasLimit,
-        bytes data
+        address indexed sender, address indexed target, uint256 value, uint256 queueIndex, uint256 gasLimit, bytes data
     );
 
     /// @notice Emitted when some L1 => L2 transactions are included in L1.
@@ -29,9 +26,11 @@ interface IL1MessageQueue {
     /// @param skippedBitmap A bitmap indicates whether a message is skipped.
     event DequeueTransaction(uint256 startIndex, uint256 count, uint256 skippedBitmap);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice The start index of all pending inclusion messages.
     function pendingQueueIndex() external view returns (uint256);
@@ -68,19 +67,17 @@ interface IL1MessageQueue {
         bytes calldata data
     ) external view returns (bytes32);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Append a L1 to L2 message into this contract.
     /// @param target The address of target contract to call in L2.
     /// @param gasLimit The maximum gas should be used for relay this message in L2.
     /// @param data The calldata passed to target contract.
-    function appendCrossDomainMessage(
-        address target,
-        uint256 gasLimit,
-        bytes calldata data
-    ) external;
+    function appendCrossDomainMessage(address target, uint256 gasLimit, bytes calldata data) external;
 
     /// @notice Append an enforced transaction to this contract.
     /// @dev The address of sender should be an EOA.
@@ -105,9 +102,5 @@ interface IL1MessageQueue {
     /// @param startIndex The start index to pop.
     /// @param count The number of messages to pop.
     /// @param skippedBitmap A bitmap indicates whether a message is skipped.
-    function popCrossDomainMessage(
-        uint256 startIndex,
-        uint256 count,
-        uint256 skippedBitmap
-    ) external;
+    function popCrossDomainMessage(uint256 startIndex, uint256 count, uint256 skippedBitmap) external;
 }

@@ -3,9 +3,11 @@
 pragma solidity ^0.8.0;
 
 interface IScrollChain {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new batch is committed.
     /// @param batchHash The hash of the batch.
@@ -21,9 +23,11 @@ interface IScrollChain {
     /// @param withdrawRoot The merkle root in layer2 after this batch.
     event FinalizeBatch(bytes32 indexed batchHash, bytes32 stateRoot, bytes32 withdrawRoot);
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the batch hash of a committed batch.
     /// @param batchIndex The index of the batch.
@@ -41,9 +45,11 @@ interface IScrollChain {
     /// @param batchIndex The index of the batch.
     function isBatchFinalized(uint256 batchIndex) external view returns (bool);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Commit a batch of transactions on layer 1.
     ///

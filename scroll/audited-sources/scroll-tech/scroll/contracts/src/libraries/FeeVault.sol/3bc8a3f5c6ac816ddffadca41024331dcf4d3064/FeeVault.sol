@@ -54,11 +54,7 @@ abstract contract FeeVault is OwnableBase {
     /// @param _owner               The owner of the contract.
     /// @param _recipient           Wallet that will receive the fees on L1.
     /// @param _minWithdrawalAmount Minimum balance before a withdrawal can be triggered.
-    constructor(
-        address _owner,
-        address _recipient,
-        uint256 _minWithdrawalAmount
-    ) {
+    constructor(address _owner, address _recipient, uint256 _minWithdrawalAmount) {
         _transferOwnership(_owner);
 
         minWithdrawAmount = _minWithdrawalAmount;
@@ -73,8 +69,7 @@ abstract contract FeeVault is OwnableBase {
         uint256 value = address(this).balance;
 
         require(
-            value >= minWithdrawAmount,
-            "FeeVault: withdrawal amount must be greater than minimum withdrawal amount"
+            value >= minWithdrawAmount, "FeeVault: withdrawal amount must be greater than minimum withdrawal amount"
         );
 
         unchecked {

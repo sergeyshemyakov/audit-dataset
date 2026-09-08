@@ -110,3 +110,4 @@ Validate JSON syntax, allowed fields/statuses, non-empty descriptions of at most
 
 1. Generate a user-readable overview using `python3 generate_audit_summary.py <project>/audit-summary.json`. Confirm that every report has a description, only relevant reports have source tables, irrelevant reports appear at the bottom, and all report links resolve after the moves.
 2. Fetch audited sources with `python3 fetch_audited_sources.py <project>/audit-summary.json`. The script ignores irrelevant reports. Do not pass `--circuit-path` or `--program-path`; leave those options to the researchers.
+3. Format all fetched .sol sources with `python3 format_sources.py <project>`.

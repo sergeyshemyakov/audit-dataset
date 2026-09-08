@@ -40,11 +40,7 @@ library LibRLP {
     /// `address(uint160(uint256(keccak256(LibRLP.p(deployer).p(nonce).encode()))))`.
     ///
     /// Note: The returned result has dirty upper 96 bits. Please clean if used in assembly.
-    function computeAddress(address deployer, uint256 nonce)
-        internal
-        pure
-        returns (address deployed)
-    {
+    function computeAddress(address deployer, uint256 nonce) internal pure returns (address deployed) {
         /// @solidity memory-safe-assembly
         assembly {
             for {} 1 {} {
@@ -386,31 +382,12 @@ library LibFacet {
     bytes32 constant facetEventSignature = 0x00000000000000000000000000000000000000000000000000000000000face7;
     uint8 constant facetTxType = 0x46;
 
-    function sendFacetTransaction(
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: bytes(''),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: bytes(""), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
-    function sendFacetTransaction(
-        address to,
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: abi.encodePacked(to),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(address to, uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: abi.encodePacked(to), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
     function prepareFacetTransaction(
@@ -448,13 +425,8 @@ library LibFacet {
         bytes memory data,
         bytes memory mineBoost
     ) internal {
-        bytes memory payload = prepareFacetTransaction({
-            to: to,
-            value: value,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: mineBoost
-        });
+        bytes memory payload =
+            prepareFacetTransaction({to: to, value: value, gasLimit: gasLimit, data: data, mineBoost: mineBoost});
 
         assembly {
             log1(add(payload, 32), mload(payload), facetEventSignature)
@@ -469,20 +441,9 @@ contract FacetSafeProxy {
         deployedAddress = address(this);
     }
 
-    function sendFacetTransaction(
-        bytes calldata to,
-        uint256 value,
-        uint256 gasLimit,
-        bytes calldata data
-    ) external {
+    function sendFacetTransaction(bytes calldata to, uint256 value, uint256 gasLimit, bytes calldata data) external {
         require(deployedAddress != address(this), "Only Delegate Call");
 
-        LibFacet.sendFacetTransaction({
-            to: to,
-            value: value,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+        LibFacet.sendFacetTransaction({to: to, value: value, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 }

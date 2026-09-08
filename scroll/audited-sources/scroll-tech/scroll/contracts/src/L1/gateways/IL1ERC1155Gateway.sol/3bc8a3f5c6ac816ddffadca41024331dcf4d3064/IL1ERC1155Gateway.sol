@@ -4,9 +4,11 @@ pragma solidity ^0.8.0;
 
 /// @title The interface for the ERC1155 cross chain gateway in layer 1.
 interface IL1ERC1155Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the ERC1155 NFT is transfered to recipient in layer 1.
     /// @param _l1Token The address of ERC1155 NFT in layer 1.
@@ -72,21 +74,18 @@ interface IL1ERC1155Gateway {
         uint256[] _amounts
     );
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Deposit some ERC1155 NFT to caller's account on layer 2.
     /// @param _token The address of ERC1155 NFT in layer 1.
     /// @param _tokenId The token id to deposit.
     /// @param _amount The amount of token to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function depositERC1155(
-        address _token,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC1155(address _token, uint256 _tokenId, uint256 _amount, uint256 _gasLimit) external payable;
 
     /// @notice Deposit some ERC1155 NFT to a recipient's account on layer 2.
     /// @param _token The address of ERC1155 NFT in layer 1.
@@ -94,13 +93,9 @@ interface IL1ERC1155Gateway {
     /// @param _tokenId The token id to deposit.
     /// @param _amount The amount of token to deposit.
     /// @param _gasLimit Estimated gas limit required to complete the deposit on layer 2.
-    function depositERC1155(
-        address _token,
-        address _to,
-        uint256 _tokenId,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable;
+    function depositERC1155(address _token, address _to, uint256 _tokenId, uint256 _amount, uint256 _gasLimit)
+        external
+        payable;
 
     /// @notice Deposit a list of some ERC1155 NFT to caller's account on layer 2.
     /// @param _token The address of ERC1155 NFT in layer 1.

@@ -2,35 +2,37 @@
 pragma solidity 0.8.23;
 
 interface IBridgeManagerEvents {
-  /**
-   * @dev Emitted when new bridge operators are added.
-   */
-  event BridgeOperatorsAdded(bool[] statuses, uint96[] voteWeights, address[] governors, address[] bridgeOperators);
+    /**
+     * @dev Emitted when new bridge operators are added.
+     */
+    event BridgeOperatorsAdded(bool[] statuses, uint96[] voteWeights, address[] governors, address[] bridgeOperators);
 
-  /**
-   * @dev Emitted when a bridge operator is failed to add.
-   */
-  event BridgeOperatorAddingFailed(address indexed operator);
+    /**
+     * @dev Emitted when a bridge operator is failed to add.
+     */
+    event BridgeOperatorAddingFailed(address indexed operator);
 
-  /**
-   * @dev Emitted when bridge operators are removed.
-   */
-  event BridgeOperatorsRemoved(bool[] statuses, address[] bridgeOperators);
+    /**
+     * @dev Emitted when bridge operators are removed.
+     */
+    event BridgeOperatorsRemoved(bool[] statuses, address[] bridgeOperators);
 
-  /**
-   * @dev Emitted when a bridge operator is failed to remove.
-   */
-  event BridgeOperatorRemovingFailed(address indexed operator);
+    /**
+     * @dev Emitted when a bridge operator is failed to remove.
+     */
+    event BridgeOperatorRemovingFailed(address indexed operator);
 
-  /**
-   * @dev Emitted when a bridge operator is updated.
-   */
-  event BridgeOperatorUpdated(address indexed governor, address indexed fromBridgeOperator, address indexed toBridgeOperator);
+    /**
+     * @dev Emitted when a bridge operator is updated.
+     */
+    event BridgeOperatorUpdated(
+        address indexed governor, address indexed fromBridgeOperator, address indexed toBridgeOperator
+    );
 
-  /**
-   * @dev Emitted when the minimum number of required governors is updated.
-   */
-  event MinRequiredGovernorUpdated(uint min);
+    /**
+     * @dev Emitted when the minimum number of required governors is updated.
+     */
+    event MinRequiredGovernorUpdated(uint256 min);
 }
 
 /**
@@ -38,228 +40,241 @@ interface IBridgeManagerEvents {
  * @dev The interface for managing bridge operators.
  */
 interface IBridgeManager is IBridgeManagerEvents {
-  /// @notice Error indicating that cannot find the querying operator
-  error ErrOperatorNotFound(address operator);
-  /// @notice Error indicating that cannot find the querying governor
-  error ErrGovernorNotFound(address governor);
-  /// @notice Error indicating that the msg.sender is not match the required governor
-  error ErrGovernorNotMatch(address required, address sender);
-  /// @notice Error indicating that the governors list will go below minimum number of required governor.
-  error ErrBelowMinRequiredGovernors();
-  /// @notice Common invalid input error
-  error ErrInvalidInput();
+    /// @notice Error indicating that cannot find the querying operator
+    error ErrOperatorNotFound(address operator);
+    /// @notice Error indicating that cannot find the querying governor
+    error ErrGovernorNotFound(address governor);
+    /// @notice Error indicating that the msg.sender is not match the required governor
+    error ErrGovernorNotMatch(address required, address sender);
+    /// @notice Error indicating that the governors list will go below minimum number of required governor.
+    error ErrBelowMinRequiredGovernors();
+    /// @notice Common invalid input error
+    error ErrInvalidInput();
 
-  /**
-   * @dev The domain separator used for computing hash digests in the contract.
-   */
-  function DOMAIN_SEPARATOR() external view returns (bytes32);
+    /**
+     * @dev The domain separator used for computing hash digests in the contract.
+     */
+    function DOMAIN_SEPARATOR() external view returns (bytes32);
 
-  /**
-   * @dev Returns the total number of bridge operators.
-   * @return The total number of bridge operators.
-   */
-  function totalBridgeOperator() external view returns (uint256);
+    /**
+     * @dev Returns the total number of bridge operators.
+     * @return The total number of bridge operators.
+     */
+    function totalBridgeOperator() external view returns (uint256);
 
-  /**
-   * @dev Checks if the given address is a bridge operator.
-   * @param addr The address to check.
-   * @return A boolean indicating whether the address is a bridge operator.
-   */
-  function isBridgeOperator(address addr) external view returns (bool);
+    /**
+     * @dev Checks if the given address is a bridge operator.
+     * @param addr The address to check.
+     * @return A boolean indicating whether the address is a bridge operator.
+     */
+    function isBridgeOperator(address addr) external view returns (bool);
 
-  /**
-   * @dev Retrieves the full information of all registered bridge operators.
-   *
-   * This external function allows external callers to obtain the full information of all the registered bridge operators.
-   * The returned arrays include the addresses of governors, bridge operators, and their corresponding vote weights.
-   *
-   * @return governors An array of addresses representing the governors of each bridge operator.
-   * @return bridgeOperators An array of addresses representing the registered bridge operators.
-   * @return weights An array of uint256 values representing the vote weights of each bridge operator.
-   *
-   * Note: The length of each array will be the same, and the order of elements corresponds to the same bridge operator.
-   *
-   * Example Usage:
-   * ```
-   * (address[] memory governors, address[] memory bridgeOperators, uint256[] memory weights) = getFullBridgeOperatorInfos();
-   * for (uint256 i = 0; i < bridgeOperators.length; i++) {
-   *     // Access individual information for each bridge operator.
-   *     address governor = governors[i];
-   *     address bridgeOperator = bridgeOperators[i];
-   *     uint256 weight = weights[i];
-   *     // ... (Process or use the information as required) ...
-   * }
-   * ```
-   *
-   */
-  function getFullBridgeOperatorInfos() external view returns (address[] memory governors, address[] memory bridgeOperators, uint96[] memory weights);
+    /**
+     * @dev Retrieves the full information of all registered bridge operators.
+     *
+     * This external function allows external callers to obtain the full information of all the registered bridge operators.
+     * The returned arrays include the addresses of governors, bridge operators, and their corresponding vote weights.
+     *
+     * @return governors An array of addresses representing the governors of each bridge operator.
+     * @return bridgeOperators An array of addresses representing the registered bridge operators.
+     * @return weights An array of uint256 values representing the vote weights of each bridge operator.
+     *
+     * Note: The length of each array will be the same, and the order of elements corresponds to the same bridge operator.
+     *
+     * Example Usage:
+     * ```
+     * (address[] memory governors, address[] memory bridgeOperators, uint256[] memory weights) = getFullBridgeOperatorInfos();
+     * for (uint256 i = 0; i < bridgeOperators.length; i++) {
+     *     // Access individual information for each bridge operator.
+     *     address governor = governors[i];
+     *     address bridgeOperator = bridgeOperators[i];
+     *     uint256 weight = weights[i];
+     *     // ... (Process or use the information as required) ...
+     * }
+     * ```
+     *
+     */
+    function getFullBridgeOperatorInfos()
+        external
+        view
+        returns (address[] memory governors, address[] memory bridgeOperators, uint96[] memory weights);
 
-  /**
-   * @dev Returns total weights of the governor list.
-   */
-  function sumGovernorsWeight(address[] calldata governors) external view returns (uint256 sum);
+    /**
+     * @dev Returns total weights of the governor list.
+     */
+    function sumGovernorsWeight(address[] calldata governors) external view returns (uint256 sum);
 
-  /**
-   * @dev Returns total weights.
-   */
-  function getTotalWeight() external view returns (uint256);
+    /**
+     * @dev Returns total weights.
+     */
+    function getTotalWeight() external view returns (uint256);
 
-  /**
-   * @dev Returns an array of all bridge operators.
-   * @return An array containing the addresses of all bridge operators.
-   */
-  function getBridgeOperators() external view returns (address[] memory);
+    /**
+     * @dev Returns an array of all bridge operators.
+     * @return An array containing the addresses of all bridge operators.
+     */
+    function getBridgeOperators() external view returns (address[] memory);
 
-  /**
-   * @dev Returns the corresponding `operator` of a `governor`.
-   */
-  function getOperatorOf(address governor) external view returns (address operator);
+    /**
+     * @dev Returns the corresponding `operator` of a `governor`.
+     */
+    function getOperatorOf(address governor) external view returns (address operator);
 
-  /**
-   * @dev Returns the corresponding `governor` of a `operator`.
-   */
-  function getGovernorOf(address operator) external view returns (address governor);
+    /**
+     * @dev Returns the corresponding `governor` of a `operator`.
+     */
+    function getGovernorOf(address operator) external view returns (address governor);
 
-  /**
-   * @dev External function to retrieve the vote weight of a specific governor.
-   * @param governor The address of the governor to get the vote weight for.
-   * @return voteWeight The vote weight of the specified governor.
-   */
-  function getGovernorWeight(address governor) external view returns (uint96);
+    /**
+     * @dev External function to retrieve the vote weight of a specific governor.
+     * @param governor The address of the governor to get the vote weight for.
+     * @return voteWeight The vote weight of the specified governor.
+     */
+    function getGovernorWeight(address governor) external view returns (uint96);
 
-  /**
-   * @dev External function to retrieve the vote weight of a specific bridge operator.
-   * @param bridgeOperator The address of the bridge operator to get the vote weight for.
-   * @return weight The vote weight of the specified bridge operator.
-   */
-  function getBridgeOperatorWeight(address bridgeOperator) external view returns (uint96 weight);
+    /**
+     * @dev External function to retrieve the vote weight of a specific bridge operator.
+     * @param bridgeOperator The address of the bridge operator to get the vote weight for.
+     * @return weight The vote weight of the specified bridge operator.
+     */
+    function getBridgeOperatorWeight(address bridgeOperator) external view returns (uint96 weight);
 
-  /**
-   * @dev Returns the weights of a list of governor addresses.
-   */
-  function getGovernorWeights(address[] calldata governors) external view returns (uint96[] memory weights);
+    /**
+     * @dev Returns the weights of a list of governor addresses.
+     */
+    function getGovernorWeights(address[] calldata governors) external view returns (uint96[] memory weights);
 
-  /**
-   * @dev Returns an array of all governors.
-   * @return An array containing the addresses of all governors.
-   */
-  function getGovernors() external view returns (address[] memory);
+    /**
+     * @dev Returns an array of all governors.
+     * @return An array containing the addresses of all governors.
+     */
+    function getGovernors() external view returns (address[] memory);
 
-  /**
-   * @dev Adds multiple bridge operators.
-   * @param governors An array of addresses of hot/cold wallets for bridge operator to update their node address.
-   * @param bridgeOperators An array of addresses representing the bridge operators to add.
-   */
-  function addBridgeOperators(uint96[] calldata voteWeights, address[] calldata governors, address[] calldata bridgeOperators) external;
+    /**
+     * @dev Adds multiple bridge operators.
+     * @param governors An array of addresses of hot/cold wallets for bridge operator to update their node address.
+     * @param bridgeOperators An array of addresses representing the bridge operators to add.
+     */
+    function addBridgeOperators(
+        uint96[] calldata voteWeights,
+        address[] calldata governors,
+        address[] calldata bridgeOperators
+    ) external;
 
-  /**
-   * @dev Removes multiple bridge operators.
-   * @param bridgeOperators An array of addresses representing the bridge operators to remove.
-   */
-  function removeBridgeOperators(address[] calldata bridgeOperators) external;
+    /**
+     * @dev Removes multiple bridge operators.
+     * @param bridgeOperators An array of addresses representing the bridge operators to remove.
+     */
+    function removeBridgeOperators(address[] calldata bridgeOperators) external;
 
-  /**
-   * @dev Self-call to update the minimum required governor.
-   * @param min The minimum number, this must not less than 3.
-   */
-  function setMinRequiredGovernor(uint min) external;
+    /**
+     * @dev Self-call to update the minimum required governor.
+     * @param min The minimum number, this must not less than 3.
+     */
+    function setMinRequiredGovernor(uint256 min) external;
 }
 
 interface IQuorum {
-  /// @dev Emitted when the threshold is updated
-  event ThresholdUpdated(uint256 indexed nonce, uint256 indexed numerator, uint256 indexed denominator, uint256 previousNumerator, uint256 previousDenominator);
+    /// @dev Emitted when the threshold is updated
+    event ThresholdUpdated(
+        uint256 indexed nonce,
+        uint256 indexed numerator,
+        uint256 indexed denominator,
+        uint256 previousNumerator,
+        uint256 previousDenominator
+    );
 
-  /**
-   * @dev Returns the threshold.
-   */
-  function getThreshold() external view returns (uint256 _num, uint256 _denom);
+    /**
+     * @dev Returns the threshold.
+     */
+    function getThreshold() external view returns (uint256 _num, uint256 _denom);
 
-  /**
-   * @dev Checks whether the `_voteWeight` passes the threshold.
-   */
-  function checkThreshold(uint256 _voteWeight) external view returns (bool);
+    /**
+     * @dev Checks whether the `_voteWeight` passes the threshold.
+     */
+    function checkThreshold(uint256 _voteWeight) external view returns (bool);
 
-  /**
-   * @dev Returns the minimum vote weight to pass the threshold.
-   */
-  function minimumVoteWeight() external view returns (uint256);
+    /**
+     * @dev Returns the minimum vote weight to pass the threshold.
+     */
+    function minimumVoteWeight() external view returns (uint256);
 
-  /**
-   * @dev Sets the threshold.
-   *
-   * Requirements:
-   * - The method caller is admin.
-   *
-   * Emits the `ThresholdUpdated` event.
-   *
-   */
-  function setThreshold(uint256 numerator, uint256 denominator) external;
+    /**
+     * @dev Sets the threshold.
+     *
+     * Requirements:
+     * - The method caller is admin.
+     *
+     * Emits the `ThresholdUpdated` event.
+     *
+     */
+    function setThreshold(uint256 numerator, uint256 denominator) external;
 }
 
 library AddressArrayUtils {
-  /**
-   * @dev Error thrown when a duplicated element is detected in an array.
-   * @param msgSig The function signature that invoke the error.
-   */
-  error ErrDuplicated(bytes4 msgSig);
+    /**
+     * @dev Error thrown when a duplicated element is detected in an array.
+     * @param msgSig The function signature that invoke the error.
+     */
+    error ErrDuplicated(bytes4 msgSig);
 
-  /**
-   * @dev Returns whether or not there's a duplicate. Runs in O(n^2).
-   * @param A Array to search
-   * @return Returns true if duplicate, false otherwise
-   */
-  function hasDuplicate(address[] memory A) internal pure returns (bool) {
-    if (A.length == 0) {
-      return false;
-    }
-    unchecked {
-      for (uint256 i = 0; i < A.length - 1; i++) {
-        for (uint256 j = i + 1; j < A.length; j++) {
-          if (A[i] == A[j]) {
-            return true;
-          }
+    /**
+     * @dev Returns whether or not there's a duplicate. Runs in O(n^2).
+     * @param A Array to search
+     * @return Returns true if duplicate, false otherwise
+     */
+    function hasDuplicate(address[] memory A) internal pure returns (bool) {
+        if (A.length == 0) {
+            return false;
         }
-      }
+        unchecked {
+            for (uint256 i = 0; i < A.length - 1; i++) {
+                for (uint256 j = i + 1; j < A.length; j++) {
+                    if (A[i] == A[j]) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
-    return false;
-  }
 
-  /**
-   * @dev Returns whether two arrays of addresses are equal or not.
-   */
-  function isEqual(address[] memory _this, address[] memory _other) internal pure returns (bool yes_) {
-    // Hashing two arrays and compare their hash
-    assembly {
-      let _thisHash := keccak256(add(_this, 32), mul(mload(_this), 32))
-      let _otherHash := keccak256(add(_other, 32), mul(mload(_other), 32))
-      yes_ := eq(_thisHash, _otherHash)
+    /**
+     * @dev Returns whether two arrays of addresses are equal or not.
+     */
+    function isEqual(address[] memory _this, address[] memory _other) internal pure returns (bool yes_) {
+        // Hashing two arrays and compare their hash
+        assembly {
+            let _thisHash := keccak256(add(_this, 32), mul(mload(_this), 32))
+            let _otherHash := keccak256(add(_other, 32), mul(mload(_other), 32))
+            yes_ := eq(_thisHash, _otherHash)
+        }
     }
-  }
 
-  /**
-   * @dev Return the concatenated array from a and b.
-   */
-  function extend(address[] memory a, address[] memory b) internal pure returns (address[] memory c) {
-    uint256 lengthA = a.length;
-    uint256 lengthB = b.length;
-    unchecked {
-      c = new address[](lengthA + lengthB);
+    /**
+     * @dev Return the concatenated array from a and b.
+     */
+    function extend(address[] memory a, address[] memory b) internal pure returns (address[] memory c) {
+        uint256 lengthA = a.length;
+        uint256 lengthB = b.length;
+        unchecked {
+            c = new address[](lengthA + lengthB);
+        }
+        uint256 i;
+        for (; i < lengthA;) {
+            c[i] = a[i];
+            unchecked {
+                ++i;
+            }
+        }
+        for (uint256 j; j < lengthB;) {
+            c[i] = b[j];
+            unchecked {
+                ++i;
+                ++j;
+            }
+        }
     }
-    uint256 i;
-    for (; i < lengthA;) {
-      c[i] = a[i];
-      unchecked {
-        ++i;
-      }
-    }
-    for (uint256 j; j < lengthB;) {
-      c[i] = b[j];
-      unchecked {
-        ++i;
-        ++j;
-      }
-    }
-  }
 }
 
 /**
@@ -337,12 +352,8 @@ abstract contract Proxy {
 
             switch result
             // delegatecall returns 0 on error.
-            case 0 {
-                revert(0, returndatasize())
-            }
-            default {
-                return(0, returndatasize())
-            }
+            case 0 { revert(0, returndatasize()) }
+            default { return(0, returndatasize()) }
         }
     }
 
@@ -528,7 +539,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -560,11 +571,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -579,11 +589,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -593,12 +599,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -622,11 +626,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -649,11 +653,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -666,11 +669,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -771,11 +774,7 @@ abstract contract ERC1967Upgrade {
      *
      * Emits an {Upgraded} event.
      */
-    function _upgradeToAndCall(
-        address newImplementation,
-        bytes memory data,
-        bool forceCall
-    ) internal {
+    function _upgradeToAndCall(address newImplementation, bytes memory data, bool forceCall) internal {
         _upgradeTo(newImplementation);
         if (data.length > 0 || forceCall) {
             Address.functionDelegateCall(newImplementation, data);
@@ -787,11 +786,7 @@ abstract contract ERC1967Upgrade {
      *
      * Emits an {Upgraded} event.
      */
-    function _upgradeToAndCallUUPS(
-        address newImplementation,
-        bytes memory data,
-        bool forceCall
-    ) internal {
+    function _upgradeToAndCallUUPS(address newImplementation, bytes memory data, bool forceCall) internal {
         // Upgrades from old implementations will perform a rollback test. This test requires the new
         // implementation to upgrade back to the old, non-ERC1822 compliant, implementation. Removing
         // this special case will break upgrade paths from old UUPS implementation to new ones.
@@ -868,8 +863,7 @@ abstract contract ERC1967Upgrade {
     function _setBeacon(address newBeacon) private {
         require(Address.isContract(newBeacon), "ERC1967: new beacon is not a contract");
         require(
-            Address.isContract(IBeacon(newBeacon).implementation()),
-            "ERC1967: beacon implementation is not a contract"
+            Address.isContract(IBeacon(newBeacon).implementation()), "ERC1967: beacon implementation is not a contract"
         );
         StorageSlot.getAddressSlot(_BEACON_SLOT).value = newBeacon;
     }
@@ -880,11 +874,7 @@ abstract contract ERC1967Upgrade {
      *
      * Emits a {BeaconUpgraded} event.
      */
-    function _upgradeBeaconToAndCall(
-        address newBeacon,
-        bytes memory data,
-        bool forceCall
-    ) internal {
+    function _upgradeBeaconToAndCall(address newBeacon, bytes memory data, bool forceCall) internal {
         _setBeacon(newBeacon);
         emit BeaconUpgraded(newBeacon);
         if (data.length > 0 || forceCall) {
@@ -944,11 +934,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
      * @dev Initializes an upgradeable proxy managed by `_admin`, backed by the implementation at `_logic`, and
      * optionally initialized with `_data` as explained in {ERC1967Proxy-constructor}.
      */
-    constructor(
-        address _logic,
-        address admin_,
-        bytes memory _data
-    ) payable ERC1967Proxy(_logic, _data) {
+    constructor(address _logic, address admin_, bytes memory _data) payable ERC1967Proxy(_logic, _data) {
         _changeAdmin(admin_);
     }
 
@@ -1037,29 +1023,32 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
 }
 
 contract TransparentUpgradeableProxyV2 is TransparentUpgradeableProxy {
-  constructor(address _logic, address admin_, bytes memory _data) payable TransparentUpgradeableProxy(_logic, admin_, _data) { }
+    constructor(address _logic, address admin_, bytes memory _data)
+        payable
+        TransparentUpgradeableProxy(_logic, admin_, _data)
+    {}
 
-  /**
-   * @dev Calls a function from the current implementation as specified by `_data`, which should be an encoded function call.
-   *
-   * Requirements:
-   * - Only the admin can call this function.
-   *
-   * Note: The proxy admin is not allowed to interact with the proxy logic through the fallback function to avoid
-   * triggering some unexpected logic. This is to allow the administrator to explicitly call the proxy, please consider
-   * reviewing the encoded data `_data` and the method which is called before using this.
-   *
-   */
-  function functionDelegateCall(bytes memory _data) public payable ifAdmin {
-    address _addr = _implementation();
-    assembly {
-      let _result := delegatecall(gas(), _addr, add(_data, 32), mload(_data), 0, 0)
-      returndatacopy(0, 0, returndatasize())
-      switch _result
-      case 0 { revert(0, returndatasize()) }
-      default { return(0, returndatasize()) }
+    /**
+     * @dev Calls a function from the current implementation as specified by `_data`, which should be an encoded function call.
+     *
+     * Requirements:
+     * - Only the admin can call this function.
+     *
+     * Note: The proxy admin is not allowed to interact with the proxy logic through the fallback function to avoid
+     * triggering some unexpected logic. This is to allow the administrator to explicitly call the proxy, please consider
+     * reviewing the encoded data `_data` and the method which is called before using this.
+     *
+     */
+    function functionDelegateCall(bytes memory _data) public payable ifAdmin {
+        address _addr = _implementation();
+        assembly {
+            let _result := delegatecall(gas(), _addr, add(_data, 32), mload(_data), 0, 0)
+            returndatacopy(0, 0, returndatasize())
+            switch _result
+            case 0 { revert(0, returndatasize()) }
+            default { return(0, returndatasize()) }
+        }
     }
-  }
 }
 
 /**
@@ -1070,96 +1059,112 @@ contract TransparentUpgradeableProxyV2 is TransparentUpgradeableProxy {
 error ErrUnsupportedInterface(bytes4 interfaceId, address addr);
 
 abstract contract IdentityGuard {
-  using AddressArrayUtils for address[];
+    using AddressArrayUtils for address[];
 
-  /// @dev value is equal to keccak256(abi.encode())
-  /// @dev see: https://eips.ethereum.org/EIPS/eip-1052
-  bytes32 internal constant CREATED_ACCOUNT_HASH = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
+    /// @dev value is equal to keccak256(abi.encode())
+    /// @dev see: https://eips.ethereum.org/EIPS/eip-1052
+    bytes32 internal constant CREATED_ACCOUNT_HASH = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
 
-  /**
-   * @dev Modifier to restrict functions to only be called by this contract.
-   * @dev Reverts if the caller is not this contract.
-   */
-  modifier onlySelfCall() virtual {
-    _requireSelfCall();
-    _;
-  }
-
-  /**
-   * @dev Modifier to ensure that the elements in the `arr` array are non-duplicates.
-   * It calls the internal `_checkDuplicate` function to perform the duplicate check.
-   *
-   * Requirements:
-   * - The elements in the `arr` array must not contain any duplicates.
-   */
-  modifier nonDuplicate(address[] memory arr) virtual {
-    _requireNonDuplicate(arr);
-    _;
-  }
-
-  /**
-   * @dev Internal method to check the method caller.
-   * @dev Reverts if the method caller is not this contract.
-   */
-  function _requireSelfCall() internal view virtual {
-    if (msg.sender != address(this)) revert ErrOnlySelfCall(msg.sig);
-  }
-
-  /**
-   * @dev Internal function to check if a contract address has code.
-   * @param addr The address of the contract to check.
-   * @dev Throws an error if the contract address has no code.
-   */
-  function _requireHasCode(address addr) internal view {
-    if (addr.code.length == 0) revert ErrZeroCodeContract(addr);
-  }
-
-  /**
-   * @dev Checks if an address is zero and reverts if it is.
-   * @param addr The address to check.
-   */
-  function _requireNonZeroAddress(address addr) internal pure {
-    if (addr == address(0)) revert ErrZeroAddress(msg.sig);
-  }
-
-  /**
-   * @dev Check if arr is empty and revert if it is.
-   * Checks if an array contains any duplicate addresses and reverts if duplicates are found.
-   * @param arr The array of addresses to check.
-   */
-  function _requireNonDuplicate(address[] memory arr) internal pure {
-    if (arr.hasDuplicate()) revert AddressArrayUtils.ErrDuplicated(msg.sig);
-  }
-
-  /**
-   * @dev Internal function to require that the provided address is a created externally owned account (EOA).
-   * This internal function is used to ensure that the provided address is a valid externally owned account (EOA).
-   * It checks the codehash of the address against a predefined constant to confirm that the address is a created EOA.
-   * @notice This method only works with non-state EOA accounts
-   */
-  function _requireCreatedEOA(address addr) internal view {
-    _requireNonZeroAddress(addr);
-    bytes32 codehash = addr.codehash;
-    if (codehash != CREATED_ACCOUNT_HASH) revert ErrAddressIsNotCreatedEOA(addr, codehash);
-  }
-
-  /**
-   * @dev Internal function to require that the specified contract supports the given interface. This method handle in
-   * both case that the callee is either or not the proxy admin of the caller. If the contract does not support the
-   * interface `interfaceId` or EIP165, a revert with the corresponding error message is triggered.
-   *
-   * @param contractAddr The address of the contract to check for interface support.
-   * @param interfaceId The interface ID to check for support.
-   */
-  function _requireSupportsInterface(address contractAddr, bytes4 interfaceId) internal view {
-    bytes memory supportsInterfaceParams = abi.encodeCall(IERC165.supportsInterface, (interfaceId));
-    (bool success, bytes memory returnOrRevertData) = contractAddr.staticcall(supportsInterfaceParams);
-    if (!success) {
-      (success, returnOrRevertData) = contractAddr.staticcall(abi.encodeCall(TransparentUpgradeableProxyV2.functionDelegateCall, (supportsInterfaceParams)));
-      if (!success) revert ErrUnsupportedInterface(interfaceId, contractAddr);
+    /**
+     * @dev Modifier to restrict functions to only be called by this contract.
+     * @dev Reverts if the caller is not this contract.
+     */
+    modifier onlySelfCall() virtual {
+        _requireSelfCall();
+        _;
     }
-    if (!abi.decode(returnOrRevertData, (bool))) revert ErrUnsupportedInterface(interfaceId, contractAddr);
-  }
+
+    /**
+     * @dev Modifier to ensure that the elements in the `arr` array are non-duplicates.
+     * It calls the internal `_checkDuplicate` function to perform the duplicate check.
+     *
+     * Requirements:
+     * - The elements in the `arr` array must not contain any duplicates.
+     */
+    modifier nonDuplicate(address[] memory arr) virtual {
+        _requireNonDuplicate(arr);
+        _;
+    }
+
+    /**
+     * @dev Internal method to check the method caller.
+     * @dev Reverts if the method caller is not this contract.
+     */
+    function _requireSelfCall() internal view virtual {
+        if (msg.sender != address(this)) {
+            revert ErrOnlySelfCall(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Internal function to check if a contract address has code.
+     * @param addr The address of the contract to check.
+     * @dev Throws an error if the contract address has no code.
+     */
+    function _requireHasCode(address addr) internal view {
+        if (addr.code.length == 0) {
+            revert ErrZeroCodeContract(addr);
+        }
+    }
+
+    /**
+     * @dev Checks if an address is zero and reverts if it is.
+     * @param addr The address to check.
+     */
+    function _requireNonZeroAddress(address addr) internal pure {
+        if (addr == address(0)) {
+            revert ErrZeroAddress(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Check if arr is empty and revert if it is.
+     * Checks if an array contains any duplicate addresses and reverts if duplicates are found.
+     * @param arr The array of addresses to check.
+     */
+    function _requireNonDuplicate(address[] memory arr) internal pure {
+        if (arr.hasDuplicate()) {
+            revert AddressArrayUtils.ErrDuplicated(msg.sig);
+        }
+    }
+
+    /**
+     * @dev Internal function to require that the provided address is a created externally owned account (EOA).
+     * This internal function is used to ensure that the provided address is a valid externally owned account (EOA).
+     * It checks the codehash of the address against a predefined constant to confirm that the address is a created EOA.
+     * @notice This method only works with non-state EOA accounts
+     */
+    function _requireCreatedEOA(address addr) internal view {
+        _requireNonZeroAddress(addr);
+        bytes32 codehash = addr.codehash;
+        if (codehash != CREATED_ACCOUNT_HASH) {
+            revert ErrAddressIsNotCreatedEOA(addr, codehash);
+        }
+    }
+
+    /**
+     * @dev Internal function to require that the specified contract supports the given interface. This method handle in
+     * both case that the callee is either or not the proxy admin of the caller. If the contract does not support the
+     * interface `interfaceId` or EIP165, a revert with the corresponding error message is triggered.
+     *
+     * @param contractAddr The address of the contract to check for interface support.
+     * @param interfaceId The interface ID to check for support.
+     */
+    function _requireSupportsInterface(address contractAddr, bytes4 interfaceId) internal view {
+        bytes memory supportsInterfaceParams = abi.encodeCall(IERC165.supportsInterface, (interfaceId));
+        (bool success, bytes memory returnOrRevertData) = contractAddr.staticcall(supportsInterfaceParams);
+        if (!success) {
+            (success, returnOrRevertData) = contractAddr.staticcall(
+                abi.encodeCall(TransparentUpgradeableProxyV2.functionDelegateCall, (supportsInterfaceParams))
+            );
+            if (!success) {
+                revert ErrUnsupportedInterface(interfaceId, contractAddr);
+            }
+        }
+        if (!abi.decode(returnOrRevertData, (bool))) {
+            revert ErrUnsupportedInterface(interfaceId, contractAddr);
+        }
+    }
 }
 
 /**
@@ -1295,17 +1300,17 @@ abstract contract Initializable {
 }
 
 enum RoleAccess {
-  UNKNOWN, // 0
-  ADMIN, // 1
-  COINBASE, // 2
-  GOVERNOR, // 3
-  CANDIDATE_ADMIN, // 4
-  WITHDRAWAL_MIGRATOR, // 5
-  __DEPRECATED_BRIDGE_OPERATOR, // 6
-  BLOCK_PRODUCER, // 7
-  VALIDATOR_CANDIDATE, // 8
-  CONSENSUS, // 9
-  TREASURY // 10
+    UNKNOWN, // 0
+    ADMIN, // 1
+    COINBASE, // 2
+    GOVERNOR, // 3
+    CANDIDATE_ADMIN, // 4
+    WITHDRAWAL_MIGRATOR, // 5
+    __DEPRECATED_BRIDGE_OPERATOR, // 6
+    BLOCK_PRODUCER, // 7
+    VALIDATOR_CANDIDATE, // 8
+    CONSENSUS, // 9
+    TREASURY // 10
 
 }
 
@@ -1317,69 +1322,71 @@ enum RoleAccess {
 error ErrUnauthorized(bytes4 msgSig, RoleAccess expectedRole);
 
 abstract contract HasProxyAdmin {
-  // bytes32(uint256(keccak256("eip1967.proxy.admin")) - 1));
-  bytes32 private constant _ADMIN_SLOT = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
+    // bytes32(uint256(keccak256("eip1967.proxy.admin")) - 1));
+    bytes32 private constant _ADMIN_SLOT = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
 
-  modifier onlyProxyAdmin() {
-    _requireProxyAdmin();
-    _;
-  }
+    modifier onlyProxyAdmin() {
+        _requireProxyAdmin();
+        _;
+    }
 
-  /**
-   * @dev Returns proxy admin.
-   */
-  function _getProxyAdmin() internal view virtual returns (address) {
-    return StorageSlot.getAddressSlot(_ADMIN_SLOT).value;
-  }
+    /**
+     * @dev Returns proxy admin.
+     */
+    function _getProxyAdmin() internal view virtual returns (address) {
+        return StorageSlot.getAddressSlot(_ADMIN_SLOT).value;
+    }
 
-  function _requireProxyAdmin() internal view {
-    if (msg.sender != _getProxyAdmin()) revert ErrUnauthorized(msg.sig, RoleAccess.ADMIN);
-  }
+    function _requireProxyAdmin() internal view {
+        if (msg.sender != _getProxyAdmin()) {
+            revert ErrUnauthorized(msg.sig, RoleAccess.ADMIN);
+        }
+    }
 }
 
 enum ContractType {
-  UNKNOWN, // 0
-  PAUSE_ENFORCER, // 1
-  BRIDGE, // 2
-  BRIDGE_TRACKING, // 3
-  GOVERNANCE_ADMIN, // 4
-  MAINTENANCE, // 5
-  SLASH_INDICATOR, // 6
-  STAKING_VESTING, // 7
-  VALIDATOR, // 8
-  STAKING, // 9
-  RONIN_TRUSTED_ORGANIZATION, // 10
-  BRIDGE_MANAGER, // 11
-  BRIDGE_SLASH, // 12
-  BRIDGE_REWARD, // 13
-  FAST_FINALITY_TRACKING, // 14
-  PROFILE // 15
+    UNKNOWN, // 0
+    PAUSE_ENFORCER, // 1
+    BRIDGE, // 2
+    BRIDGE_TRACKING, // 3
+    GOVERNANCE_ADMIN, // 4
+    MAINTENANCE, // 5
+    SLASH_INDICATOR, // 6
+    STAKING_VESTING, // 7
+    VALIDATOR, // 8
+    STAKING, // 9
+    RONIN_TRUSTED_ORGANIZATION, // 10
+    BRIDGE_MANAGER, // 11
+    BRIDGE_SLASH, // 12
+    BRIDGE_REWARD, // 13
+    FAST_FINALITY_TRACKING, // 14
+    PROFILE // 15
 
 }
 
 interface IHasContracts {
-  /// @dev Error of invalid role.
-  error ErrContractTypeNotFound(ContractType contractType);
+    /// @dev Error of invalid role.
+    error ErrContractTypeNotFound(ContractType contractType);
 
-  /// @dev Emitted when a contract is updated.
-  event ContractUpdated(ContractType indexed contractType, address indexed addr);
+    /// @dev Emitted when a contract is updated.
+    event ContractUpdated(ContractType indexed contractType, address indexed addr);
 
-  /**
-   * @dev Returns the address of a contract with a specific role.
-   * Throws an error if no contract is set for the specified role.
-   *
-   * @param contractType The role of the contract to retrieve.
-   * @return contract_ The address of the contract with the specified role.
-   */
-  function getContract(ContractType contractType) external view returns (address contract_);
+    /**
+     * @dev Returns the address of a contract with a specific role.
+     * Throws an error if no contract is set for the specified role.
+     *
+     * @param contractType The role of the contract to retrieve.
+     * @return contract_ The address of the contract with the specified role.
+     */
+    function getContract(ContractType contractType) external view returns (address contract_);
 
-  /**
-   * @dev Sets the address of a contract with a specific role.
-   * Emits the event {ContractUpdated}.
-   * @param contractType The role of the contract to set.
-   * @param addr The address of the contract to set.
-   */
-  function setContract(ContractType contractType, address addr) external;
+    /**
+     * @dev Sets the address of a contract with a specific role.
+     * Emits the event {ContractUpdated}.
+     * @param contractType The role of the contract to set.
+     * @param addr The address of the contract to set.
+     */
+    function setContract(ContractType contractType, address addr) external;
 }
 
 /**
@@ -1395,64 +1402,66 @@ error ErrUnexpectedInternalCall(bytes4 msgSig, ContractType expectedContractType
  * @dev A contract that provides functionality to manage multiple contracts with different roles.
  */
 abstract contract HasContracts is HasProxyAdmin, IHasContracts, IdentityGuard {
-  /// @dev value is equal to keccak256("@ronin.dpos.collections.HasContracts.slot") - 1
-  bytes32 private constant _STORAGE_SLOT = 0xdea3103d22025c269050bea94c0c84688877f12fa22b7e6d2d5d78a9a49aa1cb;
+    /// @dev value is equal to keccak256("@ronin.dpos.collections.HasContracts.slot") - 1
+    bytes32 private constant _STORAGE_SLOT = 0xdea3103d22025c269050bea94c0c84688877f12fa22b7e6d2d5d78a9a49aa1cb;
 
-  /**
-   * @dev Modifier to restrict access to functions only to contracts with a specific role.
-   * @param contractType The contract type that allowed to call
-   */
-  modifier onlyContract(ContractType contractType) virtual {
-    _requireContract(contractType);
-    _;
-  }
-
-  /**
-   * @inheritdoc IHasContracts
-   */
-  function setContract(ContractType contractType, address addr) external virtual onlyProxyAdmin {
-    _requireHasCode(addr);
-    _setContract(contractType, addr);
-  }
-
-  /**
-   * @inheritdoc IHasContracts
-   */
-  function getContract(ContractType contractType) public view returns (address contract_) {
-    contract_ = _getContractMap()[uint8(contractType)];
-    if (contract_ == address(0)) revert ErrContractTypeNotFound(contractType);
-  }
-
-  /**
-   * @dev Internal function to set the address of a contract with a specific role.
-   * @param contractType The contract type of the contract to set.
-   * @param addr The address of the contract to set.
-   */
-  function _setContract(ContractType contractType, address addr) internal virtual {
-    _getContractMap()[uint8(contractType)] = addr;
-    emit ContractUpdated(contractType, addr);
-  }
-
-  /**
-   * @dev Internal function to access the mapping of contract addresses with roles.
-   * @return contracts_ The mapping of contract addresses with roles.
-   */
-  function _getContractMap() private pure returns (mapping(uint8 => address) storage contracts_) {
-    assembly {
-      contracts_.slot := _STORAGE_SLOT
+    /**
+     * @dev Modifier to restrict access to functions only to contracts with a specific role.
+     * @param contractType The contract type that allowed to call
+     */
+    modifier onlyContract(ContractType contractType) virtual {
+        _requireContract(contractType);
+        _;
     }
-  }
 
-  /**
-   * @dev Internal function to check if the calling contract has a specific role.
-   * @param contractType The contract type that the calling contract must have.
-   * @dev Throws an error if the calling contract does not have the specified role.
-   */
-  function _requireContract(ContractType contractType) private view {
-    if (msg.sender != getContract(contractType)) {
-      revert ErrUnexpectedInternalCall(msg.sig, contractType, msg.sender);
+    /**
+     * @inheritdoc IHasContracts
+     */
+    function setContract(ContractType contractType, address addr) external virtual onlyProxyAdmin {
+        _requireHasCode(addr);
+        _setContract(contractType, addr);
     }
-  }
+
+    /**
+     * @inheritdoc IHasContracts
+     */
+    function getContract(ContractType contractType) public view returns (address contract_) {
+        contract_ = _getContractMap()[uint8(contractType)];
+        if (contract_ == address(0)) {
+            revert ErrContractTypeNotFound(contractType);
+        }
+    }
+
+    /**
+     * @dev Internal function to set the address of a contract with a specific role.
+     * @param contractType The contract type of the contract to set.
+     * @param addr The address of the contract to set.
+     */
+    function _setContract(ContractType contractType, address addr) internal virtual {
+        _getContractMap()[uint8(contractType)] = addr;
+        emit ContractUpdated(contractType, addr);
+    }
+
+    /**
+     * @dev Internal function to access the mapping of contract addresses with roles.
+     * @return contracts_ The mapping of contract addresses with roles.
+     */
+    function _getContractMap() private pure returns (mapping(uint8 => address) storage contracts_) {
+        assembly {
+            contracts_.slot := _STORAGE_SLOT
+        }
+    }
+
+    /**
+     * @dev Internal function to check if the calling contract has a specific role.
+     * @param contractType The contract type that the calling contract must have.
+     * @dev Throws an error if the calling contract does not have the specified role.
+     */
+    function _requireContract(ContractType contractType) private view {
+        if (msg.sender != getContract(contractType)) {
+            revert ErrUnexpectedInternalCall(msg.sig, contractType, msg.sender);
+        }
+    }
 }
 
 /**
@@ -1462,101 +1471,104 @@ abstract contract HasContracts is HasProxyAdmin, IHasContracts, IdentityGuard {
 error ErrInvalidThreshold(bytes4 msgSig);
 
 abstract contract BridgeManagerQuorum is IQuorum, IdentityGuard, Initializable, HasContracts {
-  struct BridgeManagerQuorumStorage {
-    uint256 _nonce;
-    uint256 _numerator;
-    uint256 _denominator;
-  }
-
-  // keccak256(abi.encode(uint256(keccak256("ronin.storage.BridgeManagerQuorumStorage")) - 1)) & ~bytes32(uint256(0xff))
-  bytes32 private constant $$_BridgeManagerQuorumStorage = 0xf3019750f3837257cd40d215c9cc111e92586d2855a1e7e25d959613ed013f00;
-
-  function __BridgeManagerQuorum_init_unchained(uint256 num, uint256 denom) internal onlyInitializing {
-    BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
-    $._nonce = 1;
-
-    _setThreshold(num, denom);
-  }
-
-  function _getBridgeManagerQuorumStorage() private pure returns (BridgeManagerQuorumStorage storage $) {
-    assembly {
-      $.slot := $$_BridgeManagerQuorumStorage
+    struct BridgeManagerQuorumStorage {
+        uint256 _nonce;
+        uint256 _numerator;
+        uint256 _denominator;
     }
-  }
 
-  /**
-   * @inheritdoc IQuorum
-   */
-  function setThreshold(uint256 num, uint256 denom) external override onlyProxyAdmin {
-    _setThreshold(num, denom);
-  }
+    // keccak256(abi.encode(uint256(keccak256("ronin.storage.BridgeManagerQuorumStorage")) - 1)) & ~bytes32(uint256(0xff))
+    bytes32 private constant $$_BridgeManagerQuorumStorage =
+        0xf3019750f3837257cd40d215c9cc111e92586d2855a1e7e25d959613ed013f00;
 
-  /**
-   * @inheritdoc IQuorum
-   */
-  function getThreshold() public view virtual returns (uint256 num, uint256 denom) {
-    BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
-    return ($._numerator, $._denominator);
-  }
+    function __BridgeManagerQuorum_init_unchained(uint256 num, uint256 denom) internal onlyInitializing {
+        BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
+        $._nonce = 1;
 
-  /**
-   * @inheritdoc IQuorum
-   */
-  function checkThreshold(uint256 voteWeight) external view virtual returns (bool) {
-    BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
+        _setThreshold(num, denom);
+    }
 
-    return voteWeight * $._denominator >= $._numerator * _totalWeight();
-  }
+    function _getBridgeManagerQuorumStorage() private pure returns (BridgeManagerQuorumStorage storage $) {
+        assembly {
+            $.slot := $$_BridgeManagerQuorumStorage
+        }
+    }
 
-  /**
-   * @dev Sets threshold and returns the old one.
-   *
-   * Emits the `ThresholdUpdated` event.
-   *
-   */
-  function _setThreshold(uint256 num, uint256 denom) internal virtual {
-    if (num > denom || denom <= 1) revert ErrInvalidThreshold(msg.sig);
+    /**
+     * @inheritdoc IQuorum
+     */
+    function setThreshold(uint256 num, uint256 denom) external override onlyProxyAdmin {
+        _setThreshold(num, denom);
+    }
 
-    BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
+    /**
+     * @inheritdoc IQuorum
+     */
+    function getThreshold() public view virtual returns (uint256 num, uint256 denom) {
+        BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
+        return ($._numerator, $._denominator);
+    }
 
-    uint256 prevNum = $._numerator;
-    uint256 prevDenom = $._denominator;
+    /**
+     * @inheritdoc IQuorum
+     */
+    function checkThreshold(uint256 voteWeight) external view virtual returns (bool) {
+        BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
 
-    $._numerator = num;
-    $._denominator = denom;
+        return voteWeight * $._denominator >= $._numerator * _totalWeight();
+    }
 
-    emit ThresholdUpdated($._nonce++, num, denom, prevNum, prevDenom);
-  }
+    /**
+     * @dev Sets threshold and returns the old one.
+     *
+     * Emits the `ThresholdUpdated` event.
+     *
+     */
+    function _setThreshold(uint256 num, uint256 denom) internal virtual {
+        if (num > denom || denom <= 1) {
+            revert ErrInvalidThreshold(msg.sig);
+        }
 
-  function _totalWeight() internal view virtual returns (uint256);
+        BridgeManagerQuorumStorage storage $ = _getBridgeManagerQuorumStorage();
+
+        uint256 prevNum = $._numerator;
+        uint256 prevDenom = $._denominator;
+
+        $._numerator = num;
+        $._denominator = denom;
+
+        emit ThresholdUpdated($._nonce++, num, denom, prevNum, prevDenom);
+    }
+
+    function _totalWeight() internal view virtual returns (uint256);
 }
 
 interface IBridgeManagerCallbackRegister {
-  error ErrExistOneInternalCallFailed(address sender, bytes4 msgSig, bytes callData);
+    error ErrExistOneInternalCallFailed(address sender, bytes4 msgSig, bytes callData);
 
-  event CallbackRegistered(address, bool);
-  /**
-   * @dev Emitted when the contract notifies multiple registers with statuses and return data.
-   */
-  event Notified(bytes callData, address[] registers, bool[] statuses, bytes[] returnDatas);
+    event CallbackRegistered(address, bool);
+    /**
+     * @dev Emitted when the contract notifies multiple registers with statuses and return data.
+     */
+    event Notified(bytes callData, address[] registers, bool[] statuses, bytes[] returnDatas);
 
-  /**
-   * @dev Retrieves the addresses of registered callbacks.
-   * @return registers An array containing the addresses of registered callbacks.
-   */
-  function getCallbackRegisters() external view returns (address[] memory registers);
+    /**
+     * @dev Retrieves the addresses of registered callbacks.
+     * @return registers An array containing the addresses of registered callbacks.
+     */
+    function getCallbackRegisters() external view returns (address[] memory registers);
 
-  /**
-   * @dev Registers multiple callbacks with the bridge.
-   * @param registers The array of callback addresses to register.
-   */
-  function registerCallbacks(address[] calldata registers) external;
+    /**
+     * @dev Registers multiple callbacks with the bridge.
+     * @param registers The array of callback addresses to register.
+     */
+    function registerCallbacks(address[] calldata registers) external;
 
-  /**
-   * @dev Unregisters multiple callbacks from the bridge.
-   * @param registers The array of callback addresses to unregister.
-   */
-  function unregisterCallbacks(address[] calldata registers) external;
+    /**
+     * @dev Unregisters multiple callbacks from the bridge.
+     * @param registers The array of callback addresses to unregister.
+     */
+    function unregisterCallbacks(address[] calldata registers) external;
 }
 
 /**
@@ -1927,136 +1939,151 @@ library EnumerableSet {
  * @dev Interface for the callback functions to be implemented by the Bridge Manager contract.
  */
 interface IBridgeManagerCallback is IERC165 {
-  /**
-   * @dev Handles the event when bridge operators are added.
-   * @param bridgeOperators The addresses of the bridge operators.
-   * @param addeds The corresponding boolean values indicating whether the operators were added or not.
-   * @return selector The selector of the function being called.
-   */
-  function onBridgeOperatorsAdded(address[] memory bridgeOperators, uint96[] calldata weights, bool[] memory addeds) external returns (bytes4 selector);
+    /**
+     * @dev Handles the event when bridge operators are added.
+     * @param bridgeOperators The addresses of the bridge operators.
+     * @param addeds The corresponding boolean values indicating whether the operators were added or not.
+     * @return selector The selector of the function being called.
+     */
+    function onBridgeOperatorsAdded(address[] memory bridgeOperators, uint96[] calldata weights, bool[] memory addeds)
+        external
+        returns (bytes4 selector);
 
-  /**
-   * @dev Handles the event when bridge operators are removed.
-   * @param bridgeOperators The addresses of the bridge operators.
-   * @param removeds The corresponding boolean values indicating whether the operators were removed or not.
-   * @return selector The selector of the function being called.
-   */
-  function onBridgeOperatorsRemoved(address[] memory bridgeOperators, bool[] memory removeds) external returns (bytes4 selector);
+    /**
+     * @dev Handles the event when bridge operators are removed.
+     * @param bridgeOperators The addresses of the bridge operators.
+     * @param removeds The corresponding boolean values indicating whether the operators were removed or not.
+     * @return selector The selector of the function being called.
+     */
+    function onBridgeOperatorsRemoved(address[] memory bridgeOperators, bool[] memory removeds)
+        external
+        returns (bytes4 selector);
 }
 
 /**
  * @title BridgeManagerCallbackRegister
  * @dev A contract that manages callback registrations and execution for a bridge.
  */
-abstract contract BridgeManagerCallbackRegister is IBridgeManagerCallbackRegister, IdentityGuard, Initializable, HasContracts {
-  using EnumerableSet for EnumerableSet.AddressSet;
+abstract contract BridgeManagerCallbackRegister is
+    IBridgeManagerCallbackRegister,
+    IdentityGuard,
+    Initializable,
+    HasContracts
+{
+    using EnumerableSet for EnumerableSet.AddressSet;
 
-  /**
-   * @dev Storage slot for the address set of callback registers.
-   * @dev Value is equal to keccak256("@ronin.dpos.gateway.BridgeAdmin.callbackRegisters.slot") - 1.
-   */
-  bytes32 private constant CALLBACK_REGISTERS_SLOT = 0x5da136eb38f8d8e354915fc8a767c0dc81d49de5fb65d5477122a82ddd976240;
+    /**
+     * @dev Storage slot for the address set of callback registers.
+     * @dev Value is equal to keccak256("@ronin.dpos.gateway.BridgeAdmin.callbackRegisters.slot") - 1.
+     */
+    bytes32 private constant CALLBACK_REGISTERS_SLOT =
+        0x5da136eb38f8d8e354915fc8a767c0dc81d49de5fb65d5477122a82ddd976240;
 
-  function __BridgeManagerCallbackRegister_init_unchained(address[] memory callbackRegisters) internal onlyInitializing {
-    _registerCallbacks(callbackRegisters);
-  }
-
-  /**
-   * @inheritdoc IBridgeManagerCallbackRegister
-   */
-  function registerCallbacks(address[] calldata registers) external onlyProxyAdmin {
-    _registerCallbacks(registers);
-  }
-
-  /**
-   * @inheritdoc IBridgeManagerCallbackRegister
-   */
-  function unregisterCallbacks(address[] calldata registers) external onlyProxyAdmin nonDuplicate(registers) {
-    EnumerableSet.AddressSet storage _callbackRegisters = _getCallbackRegisters();
-
-    for (uint256 i; i < registers.length; i++) {
-      _callbackRegisters.remove(registers[i]);
-    }
-  }
-
-  /**
-   * @inheritdoc IBridgeManagerCallbackRegister
-   */
-  function getCallbackRegisters() external view returns (address[] memory registers) {
-    registers = _getCallbackRegisters().values();
-  }
-
-  /**
-   * @dev Internal function to register multiple callbacks with the bridge.
-   * @param registers The array of callback addresses to register.
-   */
-  function _registerCallbacks(address[] memory registers) internal nonDuplicate(registers) {
-    EnumerableSet.AddressSet storage _callbackRegisters = _getCallbackRegisters();
-    address register;
-    bool regSuccess;
-
-    for (uint256 i; i < registers.length; i++) {
-      register = registers[i];
-
-      _requireHasCode(register);
-      _requireSupportsInterface(register, type(IBridgeManagerCallback).interfaceId);
-
-      regSuccess = _callbackRegisters.add(register);
-
-      emit CallbackRegistered(register, regSuccess);
-    }
-  }
-
-  /**
-   * @dev Same as {_notifyRegistersUnsafe} but revert when there at least one failed internal call.
-   */
-  function _notifyRegisters(bytes4 callbackFnSig, bytes memory inputs) internal {
-    if (!_notifyRegistersUnsafe(callbackFnSig, inputs)) {
-      revert ErrExistOneInternalCallFailed(msg.sender, callbackFnSig, inputs);
-    }
-  }
-
-  /**
-   * @dev Internal function to notify all registered callbacks with the provided function signature and data.
-   * @param callbackFnSig The function signature of the callback method.
-   * @param inputs The data to pass to the callback method.
-   * @return allSuccess Return true if all internal calls are success
-   */
-  function _notifyRegistersUnsafe(bytes4 callbackFnSig, bytes memory inputs) internal returns (bool allSuccess) {
-    allSuccess = true;
-
-    address[] memory registers = _getCallbackRegisters().values();
-    uint256 length = registers.length;
-    if (length == 0) return allSuccess;
-
-    bool[] memory successes = new bool[](length);
-    bytes[] memory returnDatas = new bytes[](length);
-    bytes memory callData = abi.encodePacked(callbackFnSig, inputs);
-    bytes memory proxyCallData = abi.encodeCall(TransparentUpgradeableProxyV2.functionDelegateCall, (callData));
-
-    for (uint256 i; i < length; i++) {
-      // First, attempt to call normally
-      (successes[i], returnDatas[i]) = registers[i].call(callData);
-
-      // If cannot call normally, attempt to call as the recipient is the proxy, and this caller is its admin.
-      if (!successes[i]) {
-        (successes[i], returnDatas[i]) = registers[i].call(proxyCallData);
-        allSuccess = allSuccess && successes[i];
-      }
+    function __BridgeManagerCallbackRegister_init_unchained(address[] memory callbackRegisters)
+        internal
+        onlyInitializing
+    {
+        _registerCallbacks(callbackRegisters);
     }
 
-    emit Notified(callData, registers, successes, returnDatas);
-  }
-
-  /**
-   * @dev Internal function to retrieve the address set of callback registers.
-   * @return callbackRegisters The storage reference to the callback registers.
-   */
-  function _getCallbackRegisters() internal pure returns (EnumerableSet.AddressSet storage callbackRegisters) {
-    assembly ("memory-safe") {
-      callbackRegisters.slot := CALLBACK_REGISTERS_SLOT
+    /**
+     * @inheritdoc IBridgeManagerCallbackRegister
+     */
+    function registerCallbacks(address[] calldata registers) external onlyProxyAdmin {
+        _registerCallbacks(registers);
     }
-  }
+
+    /**
+     * @inheritdoc IBridgeManagerCallbackRegister
+     */
+    function unregisterCallbacks(address[] calldata registers) external onlyProxyAdmin nonDuplicate(registers) {
+        EnumerableSet.AddressSet storage _callbackRegisters = _getCallbackRegisters();
+
+        for (uint256 i; i < registers.length; i++) {
+            _callbackRegisters.remove(registers[i]);
+        }
+    }
+
+    /**
+     * @inheritdoc IBridgeManagerCallbackRegister
+     */
+    function getCallbackRegisters() external view returns (address[] memory registers) {
+        registers = _getCallbackRegisters().values();
+    }
+
+    /**
+     * @dev Internal function to register multiple callbacks with the bridge.
+     * @param registers The array of callback addresses to register.
+     */
+    function _registerCallbacks(address[] memory registers) internal nonDuplicate(registers) {
+        EnumerableSet.AddressSet storage _callbackRegisters = _getCallbackRegisters();
+        address register;
+        bool regSuccess;
+
+        for (uint256 i; i < registers.length; i++) {
+            register = registers[i];
+
+            _requireHasCode(register);
+            _requireSupportsInterface(register, type(IBridgeManagerCallback).interfaceId);
+
+            regSuccess = _callbackRegisters.add(register);
+
+            emit CallbackRegistered(register, regSuccess);
+        }
+    }
+
+    /**
+     * @dev Same as {_notifyRegistersUnsafe} but revert when there at least one failed internal call.
+     */
+    function _notifyRegisters(bytes4 callbackFnSig, bytes memory inputs) internal {
+        if (!_notifyRegistersUnsafe(callbackFnSig, inputs)) {
+            revert ErrExistOneInternalCallFailed(msg.sender, callbackFnSig, inputs);
+        }
+    }
+
+    /**
+     * @dev Internal function to notify all registered callbacks with the provided function signature and data.
+     * @param callbackFnSig The function signature of the callback method.
+     * @param inputs The data to pass to the callback method.
+     * @return allSuccess Return true if all internal calls are success
+     */
+    function _notifyRegistersUnsafe(bytes4 callbackFnSig, bytes memory inputs) internal returns (bool allSuccess) {
+        allSuccess = true;
+
+        address[] memory registers = _getCallbackRegisters().values();
+        uint256 length = registers.length;
+        if (length == 0) {
+            return allSuccess;
+        }
+
+        bool[] memory successes = new bool[](length);
+        bytes[] memory returnDatas = new bytes[](length);
+        bytes memory callData = abi.encodePacked(callbackFnSig, inputs);
+        bytes memory proxyCallData = abi.encodeCall(TransparentUpgradeableProxyV2.functionDelegateCall, (callData));
+
+        for (uint256 i; i < length; i++) {
+            // First, attempt to call normally
+            (successes[i], returnDatas[i]) = registers[i].call(callData);
+
+            // If cannot call normally, attempt to call as the recipient is the proxy, and this caller is its admin.
+            if (!successes[i]) {
+                (successes[i], returnDatas[i]) = registers[i].call(proxyCallData);
+                allSuccess = allSuccess && successes[i];
+            }
+        }
+
+        emit Notified(callData, registers, successes, returnDatas);
+    }
+
+    /**
+     * @dev Internal function to retrieve the address set of callback registers.
+     * @return callbackRegisters The storage reference to the callback registers.
+     */
+    function _getCallbackRegisters() internal pure returns (EnumerableSet.AddressSet storage callbackRegisters) {
+        assembly ("memory-safe") {
+            callbackRegisters.slot := CALLBACK_REGISTERS_SLOT
+        }
+    }
 }
 
 /**
@@ -2072,445 +2099,489 @@ error ErrLengthMismatch(bytes4 msgSig);
 error ErrInvalidVoteWeight(bytes4 msgSig);
 
 abstract contract BridgeManager is IBridgeManager, BridgeManagerQuorum, BridgeManagerCallbackRegister {
-  using AddressArrayUtils for address[];
+    using AddressArrayUtils for address[];
 
-  struct BridgeManagerStorage {
-    /// @notice List of the governors.
-    /// @dev We do not use EnumerableSet here to maintain identical order of `governors` and `operators`. If `.contains` is needed, use the corresponding weight mapping.
-    address[] _governors;
-    address[] _operators;
-    /// @dev Mapping from address to the governor weight
-    mapping(address governor => uint96 weight) _governorWeight;
-    /// @dev Mapping from address to the operator weight. This must always be identical `_governorWeight`.
-    mapping(address operator => uint96 weight) _operatorWeight;
-    /// @dev Total weight of all governors / operators.
-    uint256 _totalWeight;
-    /// @dev The minimum number of governors that must exist in the contract, to avoid the contract become non-accessible.
-    uint256 _minRequiredGovernor;
-  }
-
-  // keccak256(abi.encode(uint256(keccak256("ronin.storage.BridgeManagerStorageLocation")) - 1)) & ~bytes32(uint256(0xff))
-  bytes32 private constant $$_BridgeManagerStorageLocation = 0xc648703095712c0419b6431ae642c061f0a105ac2d7c3d9604061ef4ebc38300;
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  bytes32 public DOMAIN_SEPARATOR;
-
-  modifier onlyGovernor() virtual {
-    _requireGovernor(msg.sender);
-    _;
-  }
-
-  constructor() {
-    _disableInitializers();
-  }
-
-  function __BridgeManager_init(
-    uint256 num,
-    uint256 denom,
-    uint256 roninChainId,
-    address bridgeContract,
-    address[] memory callbackRegisters,
-    address[] memory bridgeOperators,
-    address[] memory governors,
-    uint96[] memory voteWeights
-  ) internal onlyInitializing {
-    __BridgeManagerQuorum_init_unchained(num, denom);
-    __BridgeManagerCallbackRegister_init_unchained(callbackRegisters);
-    __BridgeManager_init_unchained(roninChainId, bridgeContract, bridgeOperators, governors, voteWeights);
-  }
-
-  function __BridgeManager_init_unchained(
-    uint256 roninChainId,
-    address bridgeContract,
-    address[] memory bridgeOperators,
-    address[] memory governors,
-    uint96[] memory voteWeights
-  ) internal onlyInitializing {
-    _setContract(ContractType.BRIDGE, bridgeContract);
-
-    DOMAIN_SEPARATOR = keccak256(
-      abi.encode(
-        keccak256("EIP712Domain(string name,string version,bytes32 salt)"),
-        keccak256("BridgeManager"), // name hash
-        keccak256("3"), // version hash
-        keccak256(abi.encode("BRIDGE_MANAGER", roninChainId)) // salt
-      )
-    );
-
-    _addBridgeOperators(voteWeights, governors, bridgeOperators);
-    _setMinRequiredGovernor(3);
-  }
-
-  function _getBridgeManagerStorage() private pure returns (BridgeManagerStorage storage $) {
-    assembly {
-      $.slot := $$_BridgeManagerStorageLocation
-    }
-  }
-
-  // ===================== CONFIG ========================
-
-  /**
-   * @inheritdoc IHasContracts
-   */
-  function setContract(ContractType contractType, address addr) external override onlyProxyAdmin {
-    _requireHasCode(addr);
-    _setContract(contractType, addr);
-  }
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function setMinRequiredGovernor(uint min) external override onlyProxyAdmin {
-    _setMinRequiredGovernor(min);
-  }
-
-  function _setMinRequiredGovernor(uint min) internal {
-    if (min < 3) revert ErrInvalidInput();
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-    $._minRequiredGovernor = min;
-    emit MinRequiredGovernorUpdated(min);
-  }
-
-  /**
-   * @dev Internal function to require that the caller has governor role access.
-   */
-  function _requireGovernor(address addr) internal view {
-    if (_getGovernorWeight(addr) == 0) {
-      revert ErrUnauthorized(msg.sig, RoleAccess.GOVERNOR);
-    }
-  }
-
-  // ===================== WEIGHTS METHOD ========================
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getTotalWeight() public view returns (uint256) {
-    return _totalWeight();
-  }
-
-  function _totalWeight() internal view override returns (uint256) {
-    return _getBridgeManagerStorage()._totalWeight;
-  }
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getGovernorWeights(address[] calldata governors) external view returns (uint96[] memory weights) {
-    weights = _getGovernorWeights(governors);
-  }
-
-  /**
-   * @dev Internal function to get the vote weights of a given array of governors.
-   */
-  function _getGovernorWeights(address[] memory governors) internal view returns (uint96[] memory weights) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-    weights = new uint96[](governors.length);
-
-    for (uint256 i; i < governors.length; i++) {
-      weights[i] = $._governorWeight[governors[i]];
-    }
-  }
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getGovernorWeight(address governor) external view returns (uint96 weight) {
-    weight = _getGovernorWeight(governor);
-  }
-
-  /**
-   * @dev Internal function to retrieve the vote weight of a specific governor.
-   */
-  function _getGovernorWeight(address governor) internal view returns (uint96) {
-    return _getBridgeManagerStorage()._governorWeight[governor];
-  }
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function sumGovernorsWeight(address[] calldata governors) external view nonDuplicate(governors) returns (uint256 sum) {
-    sum = _sumGovernorsWeight(governors);
-  }
-
-  /**
-   * @dev Internal function to calculate the sum of vote weights for a given array of governors.
-   * @param governors The non-duplicated input.
-   */
-  function _sumGovernorsWeight(address[] memory governors) internal view nonDuplicate(governors) returns (uint256 sum) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-
-    for (uint256 i; i < governors.length; i++) {
-      sum += $._governorWeight[governors[i]];
-    }
-  }
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getBridgeOperatorWeight(address bridgeOperator) external view returns (uint96 weight) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-
-    return $._operatorWeight[bridgeOperator];
-  }
-
-  /**
-   * @inheritdoc IQuorum
-   */
-  function minimumVoteWeight() public view virtual returns (uint256) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-
-    (uint256 numerator, uint256 denominator) = getThreshold();
-    return (numerator * $._totalWeight + denominator - 1) / denominator;
-  }
-
-  // ===================== MANAGER CRUD ========================
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function addBridgeOperators(uint96[] calldata voteWeights, address[] calldata governors, address[] calldata bridgeOperators) external onlyProxyAdmin {
-    _addBridgeOperators(voteWeights, governors, bridgeOperators);
-  }
-
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function removeBridgeOperators(address[] calldata bridgeOperators) external onlyProxyAdmin {
-    _removeBridgeOperators(bridgeOperators);
-  }
-
-  /**
-   * @dev Internal function to add bridge operators.
-   *
-   * This function adds the specified `bridgeOperators` to the bridge operator set and establishes the associated mappings.
-   *
-   * Requirements:
-   * - The caller must have the necessary permission to add bridge operators.
-   * - The lengths of `voteWeights`, `governors`, and `bridgeOperators` arrays must be equal.
-   *
-   * @return addeds An array of boolean values indicating whether each bridge operator was successfully added.
-   */
-  function _addBridgeOperators(
-    uint96[] memory voteWeights,
-    address[] memory newGovernors,
-    address[] memory newOperators
-  ) internal nonDuplicate(newGovernors.extend(newOperators)) returns (bool[] memory addeds) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-
-    uint256 length = newOperators.length;
-    if (!(length == voteWeights.length && length == newGovernors.length)) revert ErrLengthMismatch(msg.sig);
-    addeds = new bool[](length);
-
-    // simply skip add operations if inputs are empty.
-    if (length == 0) return addeds;
-
-    address iGovernor;
-    address iOperator;
-    uint96 iVoteWeight;
-    uint256 accumulatedWeight;
-
-    for (uint256 i; i < length; i++) {
-      iGovernor = newGovernors[i];
-      iOperator = newOperators[i];
-      iVoteWeight = voteWeights[i];
-
-      // Check non-zero inputs
-      _requireNonZeroAddress(iGovernor);
-      _requireNonZeroAddress(iOperator);
-      if (iVoteWeight == 0) revert ErrInvalidVoteWeight(msg.sig);
-
-      // Check not yet added operators
-      addeds[i] = ($._governorWeight[iGovernor] + $._governorWeight[iOperator] + $._operatorWeight[iOperator] + $._operatorWeight[iGovernor]) == 0;
-
-      // Only add the valid operator
-      if (addeds[i]) {
-        // Add governor to list, update governor weight
-        $._governors.push(iGovernor);
-        $._governorWeight[iGovernor] = iVoteWeight;
-
-        // Add operator to list, update governor weight
-        $._operators.push(iOperator);
-        $._operatorWeight[iOperator] = iVoteWeight;
-
-        accumulatedWeight += iVoteWeight;
-      }
+    struct BridgeManagerStorage {
+        /// @notice List of the governors.
+        /// @dev We do not use EnumerableSet here to maintain identical order of `governors` and `operators`. If `.contains` is needed, use the corresponding weight mapping.
+        address[] _governors;
+        address[] _operators;
+        /// @dev Mapping from address to the governor weight
+        mapping(address governor => uint96 weight) _governorWeight;
+        /// @dev Mapping from address to the operator weight. This must always be identical `_governorWeight`.
+        mapping(address operator => uint96 weight) _operatorWeight;
+        /// @dev Total weight of all governors / operators.
+        uint256 _totalWeight;
+        /// @dev The minimum number of governors that must exist in the contract, to avoid the contract become non-accessible.
+        uint256 _minRequiredGovernor;
     }
 
-    $._totalWeight += accumulatedWeight;
+    // keccak256(abi.encode(uint256(keccak256("ronin.storage.BridgeManagerStorageLocation")) - 1)) & ~bytes32(uint256(0xff))
+    bytes32 private constant $$_BridgeManagerStorageLocation =
+        0xc648703095712c0419b6431ae642c061f0a105ac2d7c3d9604061ef4ebc38300;
 
-    _notifyRegisters(IBridgeManagerCallback.onBridgeOperatorsAdded.selector, abi.encode(newOperators, voteWeights, addeds));
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    bytes32 public DOMAIN_SEPARATOR;
 
-    emit BridgeOperatorsAdded(addeds, voteWeights, newGovernors, newOperators);
-  }
-
-  /**
-   * @dev Internal function to remove bridge operators.
-   *
-   * This function removes the specified `bridgeOperators` from the bridge operator set and related mappings.
-   *
-   * Requirements:
-   * - The caller must have the necessary permission to remove bridge operators.
-   *
-   * @param removingOperators An array of addresses representing the bridge operators to be removed.
-   * @return removeds An array of boolean values indicating whether each bridge operator was successfully removed.
-   */
-  function _removeBridgeOperators(address[] memory removingOperators) internal nonDuplicate(removingOperators) returns (bool[] memory removeds) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-
-    uint256 length = removingOperators.length;
-    removeds = new bool[](length);
-
-    // simply skip remove operations if inputs are empty.
-    if (length == 0) return removeds;
-    if ($._governors.length - length < $._minRequiredGovernor) {
-      revert ErrBelowMinRequiredGovernors();
+    modifier onlyGovernor() virtual {
+        _requireGovernor(msg.sender);
+        _;
     }
 
-    address iGovernor;
-    address iOperator;
-    uint256 accumulatedWeight;
-    uint idx;
-
-    for (uint256 i; i < length; i++) {
-      iOperator = removingOperators[i];
-
-      // Check non-zero inputs
-      (iGovernor, idx) = _getGovernorOf(iOperator);
-      _requireNonZeroAddress(iGovernor);
-      _requireNonZeroAddress(iOperator);
-
-      // Check existing operators
-      removeds[i] = $._governorWeight[iGovernor] > 0 && $._operatorWeight[iOperator] > 0;
-
-      // Only remove the valid operator
-      if (removeds[i]) {
-        uint removingVoteWeight = $._governorWeight[iGovernor];
-
-        // Remove governor from list, update governor weight
-        uint lastIdx = $._governors.length - 1;
-        $._governors[idx] = $._governors[lastIdx];
-        $._governors.pop();
-        delete $._governorWeight[iGovernor];
-
-        // Remove operator from list, update operator weight
-        $._operators[idx] = $._operators[lastIdx];
-        $._operators.pop();
-        delete $._operatorWeight[iOperator];
-
-        accumulatedWeight += removingVoteWeight;
-      }
+    constructor() {
+        _disableInitializers();
     }
 
-    $._totalWeight -= accumulatedWeight;
-
-    _notifyRegisters(IBridgeManagerCallback.onBridgeOperatorsRemoved.selector, abi.encode(removingOperators, removeds));
-
-    emit BridgeOperatorsRemoved(removeds, removingOperators);
-  }
-
-  function _findInArray(address[] storage $_array, address addr) internal view returns (bool found, uint idx) {
-    for (uint i; i < $_array.length; i++) {
-      if (addr == $_array[i]) {
-        return (true, i);
-      }
+    function __BridgeManager_init(
+        uint256 num,
+        uint256 denom,
+        uint256 roninChainId,
+        address bridgeContract,
+        address[] memory callbackRegisters,
+        address[] memory bridgeOperators,
+        address[] memory governors,
+        uint96[] memory voteWeights
+    ) internal onlyInitializing {
+        __BridgeManagerQuorum_init_unchained(num, denom);
+        __BridgeManagerCallbackRegister_init_unchained(callbackRegisters);
+        __BridgeManager_init_unchained(roninChainId, bridgeContract, bridgeOperators, governors, voteWeights);
     }
 
-    return (false, type(uint256).max);
-  }
+    function __BridgeManager_init_unchained(
+        uint256 roninChainId,
+        address bridgeContract,
+        address[] memory bridgeOperators,
+        address[] memory governors,
+        uint96[] memory voteWeights
+    ) internal onlyInitializing {
+        _setContract(ContractType.BRIDGE, bridgeContract);
 
-  // ================= MANAGER VIEW METHODS =============
+        DOMAIN_SEPARATOR = keccak256(
+            abi.encode(
+                keccak256("EIP712Domain(string name,string version,bytes32 salt)"),
+                keccak256("BridgeManager"), // name hash
+                keccak256("3"), // version hash
+                keccak256(abi.encode("BRIDGE_MANAGER", roninChainId)) // salt
+            )
+        );
 
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function totalBridgeOperator() external view returns (uint256) {
-    return _getBridgeManagerStorage()._operators.length;
-  }
+        _addBridgeOperators(voteWeights, governors, bridgeOperators);
+        _setMinRequiredGovernor(3);
+    }
 
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function isBridgeOperator(address addr) external view returns (bool) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
-    return $._operatorWeight[addr] > 0;
-  }
+    function _getBridgeManagerStorage() private pure returns (BridgeManagerStorage storage $) {
+        assembly {
+            $.slot := $$_BridgeManagerStorageLocation
+        }
+    }
 
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getBridgeOperators() external view returns (address[] memory) {
-    return _getBridgeManagerStorage()._operators;
-  }
+    // ===================== CONFIG ========================
 
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getGovernors() external view returns (address[] memory) {
-    return _getBridgeManagerStorage()._governors;
-  }
+    /**
+     * @inheritdoc IHasContracts
+     */
+    function setContract(ContractType contractType, address addr) external override onlyProxyAdmin {
+        _requireHasCode(addr);
+        _setContract(contractType, addr);
+    }
 
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getOperatorOf(address governor) external view returns (address operator) {
-    (bool found, uint idx) = _findInArray(_getBridgeManagerStorage()._governors, governor);
-    if (!found) revert ErrGovernorNotFound(governor);
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function setMinRequiredGovernor(uint256 min) external override onlyProxyAdmin {
+        _setMinRequiredGovernor(min);
+    }
 
-    return _getBridgeManagerStorage()._operators[idx];
-  }
+    function _setMinRequiredGovernor(uint256 min) internal {
+        if (min < 3) {
+            revert ErrInvalidInput();
+        }
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+        $._minRequiredGovernor = min;
+        emit MinRequiredGovernorUpdated(min);
+    }
 
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getGovernorOf(address operator) external view returns (address governor) {
-    (governor,) = _getGovernorOf(operator);
-  }
+    /**
+     * @dev Internal function to require that the caller has governor role access.
+     */
+    function _requireGovernor(address addr) internal view {
+        if (_getGovernorWeight(addr) == 0) {
+            revert ErrUnauthorized(msg.sig, RoleAccess.GOVERNOR);
+        }
+    }
 
-  function _getGovernorOf(address operator) internal view returns (address governor, uint idx) {
-    (bool found, uint foundId) = _findInArray(_getBridgeManagerStorage()._operators, operator);
-    if (!found) revert ErrOperatorNotFound(operator);
+    // ===================== WEIGHTS METHOD ========================
 
-    return (_getBridgeManagerStorage()._governors[foundId], foundId);
-  }
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getTotalWeight() public view returns (uint256) {
+        return _totalWeight();
+    }
 
-  /**
-   * @inheritdoc IBridgeManager
-   */
-  function getFullBridgeOperatorInfos() external view returns (address[] memory governors, address[] memory bridgeOperators, uint96[] memory weights) {
-    BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+    function _totalWeight() internal view override returns (uint256) {
+        return _getBridgeManagerStorage()._totalWeight;
+    }
 
-    governors = $._governors;
-    bridgeOperators = $._operators;
-    weights = _getGovernorWeights(governors);
-  }
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernorWeights(address[] calldata governors) external view returns (uint96[] memory weights) {
+        weights = _getGovernorWeights(governors);
+    }
+
+    /**
+     * @dev Internal function to get the vote weights of a given array of governors.
+     */
+    function _getGovernorWeights(address[] memory governors) internal view returns (uint96[] memory weights) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+        weights = new uint96[](governors.length);
+
+        for (uint256 i; i < governors.length; i++) {
+            weights[i] = $._governorWeight[governors[i]];
+        }
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernorWeight(address governor) external view returns (uint96 weight) {
+        weight = _getGovernorWeight(governor);
+    }
+
+    /**
+     * @dev Internal function to retrieve the vote weight of a specific governor.
+     */
+    function _getGovernorWeight(address governor) internal view returns (uint96) {
+        return _getBridgeManagerStorage()._governorWeight[governor];
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function sumGovernorsWeight(address[] calldata governors)
+        external
+        view
+        nonDuplicate(governors)
+        returns (uint256 sum)
+    {
+        sum = _sumGovernorsWeight(governors);
+    }
+
+    /**
+     * @dev Internal function to calculate the sum of vote weights for a given array of governors.
+     * @param governors The non-duplicated input.
+     */
+    function _sumGovernorsWeight(address[] memory governors)
+        internal
+        view
+        nonDuplicate(governors)
+        returns (uint256 sum)
+    {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        for (uint256 i; i < governors.length; i++) {
+            sum += $._governorWeight[governors[i]];
+        }
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getBridgeOperatorWeight(address bridgeOperator) external view returns (uint96 weight) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        return $._operatorWeight[bridgeOperator];
+    }
+
+    /**
+     * @inheritdoc IQuorum
+     */
+    function minimumVoteWeight() public view virtual returns (uint256) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        (uint256 numerator, uint256 denominator) = getThreshold();
+        return (numerator * $._totalWeight + denominator - 1) / denominator;
+    }
+
+    // ===================== MANAGER CRUD ========================
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function addBridgeOperators(
+        uint96[] calldata voteWeights,
+        address[] calldata governors,
+        address[] calldata bridgeOperators
+    ) external onlyProxyAdmin {
+        _addBridgeOperators(voteWeights, governors, bridgeOperators);
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function removeBridgeOperators(address[] calldata bridgeOperators) external onlyProxyAdmin {
+        _removeBridgeOperators(bridgeOperators);
+    }
+
+    /**
+     * @dev Internal function to add bridge operators.
+     *
+     * This function adds the specified `bridgeOperators` to the bridge operator set and establishes the associated mappings.
+     *
+     * Requirements:
+     * - The caller must have the necessary permission to add bridge operators.
+     * - The lengths of `voteWeights`, `governors`, and `bridgeOperators` arrays must be equal.
+     *
+     * @return addeds An array of boolean values indicating whether each bridge operator was successfully added.
+     */
+    function _addBridgeOperators(
+        uint96[] memory voteWeights,
+        address[] memory newGovernors,
+        address[] memory newOperators
+    ) internal nonDuplicate(newGovernors.extend(newOperators)) returns (bool[] memory addeds) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        uint256 length = newOperators.length;
+        if (!(length == voteWeights.length && length == newGovernors.length)) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+        addeds = new bool[](length);
+
+        // simply skip add operations if inputs are empty.
+        if (length == 0) {
+            return addeds;
+        }
+
+        address iGovernor;
+        address iOperator;
+        uint96 iVoteWeight;
+        uint256 accumulatedWeight;
+
+        for (uint256 i; i < length; i++) {
+            iGovernor = newGovernors[i];
+            iOperator = newOperators[i];
+            iVoteWeight = voteWeights[i];
+
+            // Check non-zero inputs
+            _requireNonZeroAddress(iGovernor);
+            _requireNonZeroAddress(iOperator);
+            if (iVoteWeight == 0) {
+                revert ErrInvalidVoteWeight(msg.sig);
+            }
+
+            // Check not yet added operators
+            addeds[i] = (
+                $._governorWeight[iGovernor] + $._governorWeight[iOperator] + $._operatorWeight[iOperator]
+                    + $._operatorWeight[iGovernor]
+            ) == 0;
+
+            // Only add the valid operator
+            if (addeds[i]) {
+                // Add governor to list, update governor weight
+                $._governors.push(iGovernor);
+                $._governorWeight[iGovernor] = iVoteWeight;
+
+                // Add operator to list, update governor weight
+                $._operators.push(iOperator);
+                $._operatorWeight[iOperator] = iVoteWeight;
+
+                accumulatedWeight += iVoteWeight;
+            }
+        }
+
+        $._totalWeight += accumulatedWeight;
+
+        _notifyRegisters(
+            IBridgeManagerCallback.onBridgeOperatorsAdded.selector, abi.encode(newOperators, voteWeights, addeds)
+        );
+
+        emit BridgeOperatorsAdded(addeds, voteWeights, newGovernors, newOperators);
+    }
+
+    /**
+     * @dev Internal function to remove bridge operators.
+     *
+     * This function removes the specified `bridgeOperators` from the bridge operator set and related mappings.
+     *
+     * Requirements:
+     * - The caller must have the necessary permission to remove bridge operators.
+     *
+     * @param removingOperators An array of addresses representing the bridge operators to be removed.
+     * @return removeds An array of boolean values indicating whether each bridge operator was successfully removed.
+     */
+    function _removeBridgeOperators(address[] memory removingOperators)
+        internal
+        nonDuplicate(removingOperators)
+        returns (bool[] memory removeds)
+    {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        uint256 length = removingOperators.length;
+        removeds = new bool[](length);
+
+        // simply skip remove operations if inputs are empty.
+        if (length == 0) {
+            return removeds;
+        }
+        if ($._governors.length - length < $._minRequiredGovernor) {
+            revert ErrBelowMinRequiredGovernors();
+        }
+
+        address iGovernor;
+        address iOperator;
+        uint256 accumulatedWeight;
+        uint256 idx;
+
+        for (uint256 i; i < length; i++) {
+            iOperator = removingOperators[i];
+
+            // Check non-zero inputs
+            (iGovernor, idx) = _getGovernorOf(iOperator);
+            _requireNonZeroAddress(iGovernor);
+            _requireNonZeroAddress(iOperator);
+
+            // Check existing operators
+            removeds[i] = $._governorWeight[iGovernor] > 0 && $._operatorWeight[iOperator] > 0;
+
+            // Only remove the valid operator
+            if (removeds[i]) {
+                uint256 removingVoteWeight = $._governorWeight[iGovernor];
+
+                // Remove governor from list, update governor weight
+                uint256 lastIdx = $._governors.length - 1;
+                $._governors[idx] = $._governors[lastIdx];
+                $._governors.pop();
+                delete $._governorWeight[iGovernor];
+
+                // Remove operator from list, update operator weight
+                $._operators[idx] = $._operators[lastIdx];
+                $._operators.pop();
+                delete $._operatorWeight[iOperator];
+
+                accumulatedWeight += removingVoteWeight;
+            }
+        }
+
+        $._totalWeight -= accumulatedWeight;
+
+        _notifyRegisters(
+            IBridgeManagerCallback.onBridgeOperatorsRemoved.selector, abi.encode(removingOperators, removeds)
+        );
+
+        emit BridgeOperatorsRemoved(removeds, removingOperators);
+    }
+
+    function _findInArray(address[] storage $_array, address addr) internal view returns (bool found, uint256 idx) {
+        for (uint256 i; i < $_array.length; i++) {
+            if (addr == $_array[i]) {
+                return (true, i);
+            }
+        }
+
+        return (false, type(uint256).max);
+    }
+
+    // ================= MANAGER VIEW METHODS =============
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function totalBridgeOperator() external view returns (uint256) {
+        return _getBridgeManagerStorage()._operators.length;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function isBridgeOperator(address addr) external view returns (bool) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+        return $._operatorWeight[addr] > 0;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getBridgeOperators() external view returns (address[] memory) {
+        return _getBridgeManagerStorage()._operators;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernors() external view returns (address[] memory) {
+        return _getBridgeManagerStorage()._governors;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getOperatorOf(address governor) external view returns (address operator) {
+        (bool found, uint256 idx) = _findInArray(_getBridgeManagerStorage()._governors, governor);
+        if (!found) {
+            revert ErrGovernorNotFound(governor);
+        }
+
+        return _getBridgeManagerStorage()._operators[idx];
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernorOf(address operator) external view returns (address governor) {
+        (governor,) = _getGovernorOf(operator);
+    }
+
+    function _getGovernorOf(address operator) internal view returns (address governor, uint256 idx) {
+        (bool found, uint256 foundId) = _findInArray(_getBridgeManagerStorage()._operators, operator);
+        if (!found) {
+            revert ErrOperatorNotFound(operator);
+        }
+
+        return (_getBridgeManagerStorage()._governors[foundId], foundId);
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getFullBridgeOperatorInfos()
+        external
+        view
+        returns (address[] memory governors, address[] memory bridgeOperators, uint96[] memory weights)
+    {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        governors = $._governors;
+        bridgeOperators = $._operators;
+        weights = _getGovernorWeights(governors);
+    }
 }
 
 interface SignatureConsumer {
-  struct Signature {
-    uint8 v;
-    bytes32 r;
-    bytes32 s;
-  }
+    struct Signature {
+        uint8 v;
+        bytes32 r;
+        bytes32 s;
+    }
 }
 
 interface VoteStatusConsumer {
-  enum VoteStatus {
-    Pending,
-    Approved,
-    Executed,
-    Rejected,
-    Expired
-  }
+    enum VoteStatus {
+        Pending,
+        Approved,
+        Executed,
+        Rejected,
+        Expired
+    }
 }
 
 interface ChainTypeConsumer {
-  enum ChainType {
-    RoninChain,
-    Mainchain
-  }
+    enum ChainType {
+        RoninChain,
+        Mainchain
+    }
 }
 
 /**
@@ -2522,142 +2593,151 @@ interface ChainTypeConsumer {
 error ErrInvalidChainId(bytes4 msgSig, uint256 actual, uint256 expected);
 
 library Proposal {
-  /**
-   * @dev Error thrown when there is insufficient gas to execute a function.
-   */
-  error ErrInsufficientGas(bytes32 proposalHash);
+    /**
+     * @dev Error thrown when there is insufficient gas to execute a function.
+     */
+    error ErrInsufficientGas(bytes32 proposalHash);
 
-  /**
-   * @dev Error thrown when an invalid expiry timestamp is provided.
-   */
-  error ErrInvalidExpiryTimestamp();
+    /**
+     * @dev Error thrown when an invalid expiry timestamp is provided.
+     */
+    error ErrInvalidExpiryTimestamp();
 
-  /**
-   * @dev Error thrown when the proposal reverts when execute the internal call no. `callIndex` with revert message is `revertMsg`.
-   */
-  error ErrLooseProposalInternallyRevert(uint256 callIndex, bytes revertMsg);
+    /**
+     * @dev Error thrown when the proposal reverts when execute the internal call no. `callIndex` with revert message is `revertMsg`.
+     */
+    error ErrLooseProposalInternallyRevert(uint256 callIndex, bytes revertMsg);
 
-  struct ProposalDetail {
-    // Nonce to make sure proposals are executed in order
-    uint256 nonce;
-    // Value 0: all chain should run this proposal
-    // Other values: only specific chain has to execute
-    uint256 chainId;
-    uint256 expiryTimestamp;
-    // The address that execute the proposal after the proposal passes.
-    // Leave this address as address(0) to auto-execute by the last valid vote.
-    address executor;
-    address[] targets;
-    uint256[] values;
-    bytes[] calldatas;
-    uint256[] gasAmounts;
-  }
-
-  // keccak256("ProposalDetail(uint256 nonce,uint256 chainId,uint256 expiryTimestamp,address executor,address[] targets,uint256[] values,bytes[] calldatas,uint256[] gasAmounts)");
-  bytes32 internal constant TYPE_HASH = 0x1b59eeec7c321899dc1e7a5b3d876c9a445dffc6d2f96ba842d7489908fdee12;
-
-  /**
-   * @dev Validates the proposal.
-   */
-  function validate(ProposalDetail memory proposal, uint256 maxExpiryDuration) internal view {
-    if (
-      !(
-        proposal.targets.length > 0 && proposal.targets.length == proposal.values.length && proposal.targets.length == proposal.calldatas.length
-          && proposal.targets.length == proposal.gasAmounts.length
-      )
-    ) {
-      revert ErrLengthMismatch(msg.sig);
+    struct ProposalDetail {
+        // Nonce to make sure proposals are executed in order
+        uint256 nonce;
+        // Value 0: all chain should run this proposal
+        // Other values: only specific chain has to execute
+        uint256 chainId;
+        uint256 expiryTimestamp;
+        // The address that execute the proposal after the proposal passes.
+        // Leave this address as address(0) to auto-execute by the last valid vote.
+        address executor;
+        address[] targets;
+        uint256[] values;
+        bytes[] calldatas;
+        uint256[] gasAmounts;
     }
 
-    if (proposal.expiryTimestamp > block.timestamp + maxExpiryDuration) {
-      revert ErrInvalidExpiryTimestamp();
+    // keccak256("ProposalDetail(uint256 nonce,uint256 chainId,uint256 expiryTimestamp,address executor,address[] targets,uint256[] values,bytes[] calldatas,uint256[] gasAmounts)");
+    bytes32 internal constant TYPE_HASH = 0x1b59eeec7c321899dc1e7a5b3d876c9a445dffc6d2f96ba842d7489908fdee12;
+
+    /**
+     * @dev Validates the proposal.
+     */
+    function validate(ProposalDetail memory proposal, uint256 maxExpiryDuration) internal view {
+        if (
+            !(
+                proposal.targets.length > 0 && proposal.targets.length == proposal.values.length
+                    && proposal.targets.length == proposal.calldatas.length
+                    && proposal.targets.length == proposal.gasAmounts.length
+            )
+        ) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+
+        if (proposal.expiryTimestamp > block.timestamp + maxExpiryDuration) {
+            revert ErrInvalidExpiryTimestamp();
+        }
     }
-  }
 
-  /**
-   * @dev Returns struct hash of the proposal.
-   */
-  function hash(ProposalDetail memory proposal) internal pure returns (bytes32 digest_) {
-    uint256[] memory values = proposal.values;
-    address[] memory targets = proposal.targets;
-    bytes32[] memory calldataHashList = new bytes32[](proposal.calldatas.length);
-    uint256[] memory gasAmounts = proposal.gasAmounts;
+    /**
+     * @dev Returns struct hash of the proposal.
+     */
+    function hash(ProposalDetail memory proposal) internal pure returns (bytes32 digest_) {
+        uint256[] memory values = proposal.values;
+        address[] memory targets = proposal.targets;
+        bytes32[] memory calldataHashList = new bytes32[](proposal.calldatas.length);
+        uint256[] memory gasAmounts = proposal.gasAmounts;
 
-    for (uint256 i; i < calldataHashList.length; ++i) {
-      calldataHashList[i] = keccak256(proposal.calldatas[i]);
+        for (uint256 i; i < calldataHashList.length; ++i) {
+            calldataHashList[i] = keccak256(proposal.calldatas[i]);
+        }
+
+        // return
+        //   keccak256(
+        //     abi.encode(
+        //       TYPE_HASH,
+        //       proposal.nonce,
+        //       proposal.chainId,
+        //       proposal.expiryTimestamp
+        //       proposal.executor
+        //       targetsHash,
+        //       valuesHash,
+        //       calldatasHash,
+        //       gasAmountsHash
+        //     )
+        //   );
+        // /
+        assembly {
+            let ptr := mload(0x40)
+            mstore(ptr, TYPE_HASH)
+            mstore(add(ptr, 0x20), mload(proposal)) // proposal.nonce
+            mstore(add(ptr, 0x40), mload(add(proposal, 0x20))) // proposal.chainId
+            mstore(add(ptr, 0x60), mload(add(proposal, 0x40))) // proposal.expiryTimestamp
+            mstore(add(ptr, 0x80), mload(add(proposal, 0x60))) // proposal.executor
+
+            let arrayHashed
+            arrayHashed := keccak256(add(targets, 32), mul(mload(targets), 32)) // targetsHash
+            mstore(add(ptr, 0xa0), arrayHashed)
+            arrayHashed := keccak256(add(values, 32), mul(mload(values), 32)) // valuesHash
+            mstore(add(ptr, 0xc0), arrayHashed)
+            arrayHashed := keccak256(add(calldataHashList, 32), mul(mload(calldataHashList), 32)) // calldatasHash
+            mstore(add(ptr, 0xe0), arrayHashed)
+            arrayHashed := keccak256(add(gasAmounts, 32), mul(mload(gasAmounts), 32)) // gasAmountsHash
+            mstore(add(ptr, 0x100), arrayHashed)
+            digest_ := keccak256(ptr, 0x120)
+        }
     }
 
-    // return
-    //   keccak256(
-    //     abi.encode(
-    //       TYPE_HASH,
-    //       proposal.nonce,
-    //       proposal.chainId,
-    //       proposal.expiryTimestamp
-    //       proposal.executor
-    //       targetsHash,
-    //       valuesHash,
-    //       calldatasHash,
-    //       gasAmountsHash
-    //     )
-    //   );
-    // /
-    assembly {
-      let ptr := mload(0x40)
-      mstore(ptr, TYPE_HASH)
-      mstore(add(ptr, 0x20), mload(proposal)) // proposal.nonce
-      mstore(add(ptr, 0x40), mload(add(proposal, 0x20))) // proposal.chainId
-      mstore(add(ptr, 0x60), mload(add(proposal, 0x40))) // proposal.expiryTimestamp
-      mstore(add(ptr, 0x80), mload(add(proposal, 0x60))) // proposal.executor
-
-      let arrayHashed
-      arrayHashed := keccak256(add(targets, 32), mul(mload(targets), 32)) // targetsHash
-      mstore(add(ptr, 0xa0), arrayHashed)
-      arrayHashed := keccak256(add(values, 32), mul(mload(values), 32)) // valuesHash
-      mstore(add(ptr, 0xc0), arrayHashed)
-      arrayHashed := keccak256(add(calldataHashList, 32), mul(mload(calldataHashList), 32)) // calldatasHash
-      mstore(add(ptr, 0xe0), arrayHashed)
-      arrayHashed := keccak256(add(gasAmounts, 32), mul(mload(gasAmounts), 32)) // gasAmountsHash
-      mstore(add(ptr, 0x100), arrayHashed)
-      digest_ := keccak256(ptr, 0x120)
+    /**
+     * @dev Returns whether the proposal is auto-executed on the last valid vote.
+     */
+    function isAutoExecute(ProposalDetail memory proposal) internal pure returns (bool) {
+        return proposal.executor == address(0);
     }
-  }
 
-  /**
-   * @dev Returns whether the proposal is auto-executed on the last valid vote.
-   */
-  function isAutoExecute(ProposalDetail memory proposal) internal pure returns (bool) {
-    return proposal.executor == address(0);
-  }
-
-  /**
-   * @dev Returns whether the proposal is executable for the current chain.
-   *
-   * @notice Does not check whether the call result is successful or not. Please use `execute` instead.
-   *
-   */
-  function executable(ProposalDetail memory proposal) internal view returns (bool result) {
-    return proposal.chainId == 0 || proposal.chainId == block.chainid;
-  }
-
-  /**
-   * @dev Executes the proposal.
-   */
-  function execute(ProposalDetail memory proposal) internal returns (bool[] memory successCalls, bytes[] memory returnDatas) {
-    if (!executable(proposal)) revert ErrInvalidChainId(msg.sig, proposal.chainId, block.chainid);
-
-    successCalls = new bool[](proposal.targets.length);
-    returnDatas = new bytes[](proposal.targets.length);
-    for (uint256 i = 0; i < proposal.targets.length; ++i) {
-      if (gasleft() <= proposal.gasAmounts[i]) revert ErrInsufficientGas(hash(proposal));
-
-      (successCalls[i], returnDatas[i]) = proposal.targets[i].call{ value: proposal.values[i], gas: proposal.gasAmounts[i] }(proposal.calldatas[i]);
-
-      if (!successCalls[i]) {
-        revert ErrLooseProposalInternallyRevert(i, returnDatas[i]);
-      }
+    /**
+     * @dev Returns whether the proposal is executable for the current chain.
+     *
+     * @notice Does not check whether the call result is successful or not. Please use `execute` instead.
+     *
+     */
+    function executable(ProposalDetail memory proposal) internal view returns (bool result) {
+        return proposal.chainId == 0 || proposal.chainId == block.chainid;
     }
-  }
+
+    /**
+     * @dev Executes the proposal.
+     */
+    function execute(ProposalDetail memory proposal)
+        internal
+        returns (bool[] memory successCalls, bytes[] memory returnDatas)
+    {
+        if (!executable(proposal)) {
+            revert ErrInvalidChainId(msg.sig, proposal.chainId, block.chainid);
+        }
+
+        successCalls = new bool[](proposal.targets.length);
+        returnDatas = new bytes[](proposal.targets.length);
+        for (uint256 i = 0; i < proposal.targets.length; ++i) {
+            if (gasleft() <= proposal.gasAmounts[i]) {
+                revert ErrInsufficientGas(hash(proposal));
+            }
+
+            (successCalls[i], returnDatas[i]) =
+                proposal.targets[i].call{value: proposal.values[i], gas: proposal.gasAmounts[i]}(proposal.calldatas[i]);
+
+            if (!successCalls[i]) {
+                revert ErrLooseProposalInternallyRevert(i, returnDatas[i]);
+            }
+        }
+    }
 }
 
 /**
@@ -2826,11 +2906,7 @@ library ECDSA {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address, RecoverError) {
         bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
         uint8 v = uint8((uint256(vs) >> 255) + 27);
         return tryRecover(hash, v, r, s);
@@ -2841,11 +2917,7 @@ library ECDSA {
      *
      * _Available since v4.2._
      */
-    function recover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, bytes32 r, bytes32 vs) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, r, vs);
         _throwError(error);
         return recovered;
@@ -2857,12 +2929,7 @@ library ECDSA {
      *
      * _Available since v4.3._
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address, RecoverError) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address, RecoverError) {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -2892,12 +2959,7 @@ library ECDSA {
      * @dev Overload of {ECDSA-recover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function recover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address) {
+    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {
         (address recovered, RecoverError error) = tryRecover(hash, v, r, s);
         _throwError(error);
         return recovered;
@@ -2944,26 +3006,26 @@ library ECDSA {
 }
 
 library Ballot {
-  using ECDSA for bytes32;
+    using ECDSA for bytes32;
 
-  enum VoteType {
-    For,
-    Against
-  }
-
-  // keccak256("Ballot(bytes32 proposalHash,uint8 support)");
-  bytes32 private constant BALLOT_TYPEHASH = 0xd900570327c4c0df8dd6bdd522b7da7e39145dd049d2fd4602276adcd511e3c2;
-
-  function hash(bytes32 _proposalHash, VoteType _support) internal pure returns (bytes32 digest) {
-    // return keccak256(abi.encode(BALLOT_TYPEHASH, _proposalHash, _support));
-    assembly {
-      let ptr := mload(0x40)
-      mstore(ptr, BALLOT_TYPEHASH)
-      mstore(add(ptr, 0x20), _proposalHash)
-      mstore(add(ptr, 0x40), _support)
-      digest := keccak256(ptr, 0x60)
+    enum VoteType {
+        For,
+        Against
     }
-  }
+
+    // keccak256("Ballot(bytes32 proposalHash,uint8 support)");
+    bytes32 private constant BALLOT_TYPEHASH = 0xd900570327c4c0df8dd6bdd522b7da7e39145dd049d2fd4602276adcd511e3c2;
+
+    function hash(bytes32 _proposalHash, VoteType _support) internal pure returns (bytes32 digest) {
+        // return keccak256(abi.encode(BALLOT_TYPEHASH, _proposalHash, _support));
+        assembly {
+            let ptr := mload(0x40)
+            mstore(ptr, BALLOT_TYPEHASH)
+            mstore(add(ptr, 0x20), _proposalHash)
+            mstore(add(ptr, 0x40), _support)
+            digest := keccak256(ptr, 0x60)
+        }
+    }
 }
 
 /**
@@ -3002,327 +3064,354 @@ error ErrProposalNotApproved();
 error ErrInvalidExecutor();
 
 abstract contract CoreGovernance is Initializable, SignatureConsumer, VoteStatusConsumer, ChainTypeConsumer {
-  using Proposal for Proposal.ProposalDetail;
+    using Proposal for Proposal.ProposalDetail;
 
-  /**
-   * @dev Error thrown when attempting to interact with a finalized vote.
-   */
-  error ErrVoteIsFinalized();
+    /**
+     * @dev Error thrown when attempting to interact with a finalized vote.
+     */
+    error ErrVoteIsFinalized();
 
-  /**
-   * @dev Error thrown when the current proposal is not completed.
-   */
-  error ErrCurrentProposalIsNotCompleted();
+    /**
+     * @dev Error thrown when the current proposal is not completed.
+     */
+    error ErrCurrentProposalIsNotCompleted();
 
-  struct ProposalVote {
-    VoteStatus status;
-    bytes32 hash;
-    uint256 againstVoteWeight; // Total weight of against votes
-    uint256 forVoteWeight; // Total weight of for votes
-    address[] forVoteds; // Array of addresses voting for
-    address[] againstVoteds; // Array of addresses voting against
-    uint256 expiryTimestamp;
-    mapping(address => Signature) sig;
-    mapping(address => bool) voted;
-  }
+    struct ProposalVote {
+        VoteStatus status;
+        bytes32 hash;
+        uint256 againstVoteWeight; // Total weight of against votes
+        uint256 forVoteWeight; // Total weight of for votes
+        address[] forVoteds; // Array of addresses voting for
+        address[] againstVoteds; // Array of addresses voting against
+        uint256 expiryTimestamp;
+        mapping(address => Signature) sig;
+        mapping(address => bool) voted;
+    }
 
-  /// @dev Emitted when a proposal is created
-  event ProposalCreated(uint256 indexed chainId, uint256 indexed round, bytes32 indexed proposalHash, Proposal.ProposalDetail proposal, address creator);
-  /// @dev Emitted when the proposal is voted
-  event ProposalVoted(bytes32 indexed proposalHash, address indexed voter, Ballot.VoteType support, uint256 weight);
-  /// @dev Emitted when the proposal is approved
-  event ProposalApproved(bytes32 indexed proposalHash);
-  /// @dev Emitted when the vote is reject
-  event ProposalRejected(bytes32 indexed proposalHash);
-  /// @dev Emitted when the vote is expired
-  event ProposalExpired(bytes32 indexed proposalHash);
-  /// @dev Emitted when the proposal is executed
-  event ProposalExecuted(bytes32 indexed proposalHash, bool[] successCalls, bytes[] returnDatas);
-  /// @dev Emitted when the proposal expiry duration is changed.
-  event ProposalExpiryDurationChanged(uint256 indexed duration);
+    /// @dev Emitted when a proposal is created
+    event ProposalCreated(
+        uint256 indexed chainId,
+        uint256 indexed round,
+        bytes32 indexed proposalHash,
+        Proposal.ProposalDetail proposal,
+        address creator
+    );
+    /// @dev Emitted when the proposal is voted
+    event ProposalVoted(bytes32 indexed proposalHash, address indexed voter, Ballot.VoteType support, uint256 weight);
+    /// @dev Emitted when the proposal is approved
+    event ProposalApproved(bytes32 indexed proposalHash);
+    /// @dev Emitted when the vote is reject
+    event ProposalRejected(bytes32 indexed proposalHash);
+    /// @dev Emitted when the vote is expired
+    event ProposalExpired(bytes32 indexed proposalHash);
+    /// @dev Emitted when the proposal is executed
+    event ProposalExecuted(bytes32 indexed proposalHash, bool[] successCalls, bytes[] returnDatas);
+    /// @dev Emitted when the proposal expiry duration is changed.
+    event ProposalExpiryDurationChanged(uint256 indexed duration);
 
-  /// @dev Mapping from chain id => vote round
-  /// @notice chain id = 0 for global proposal
-  mapping(uint256 => uint256) public round;
-  /// @dev Mapping from chain id => vote round => proposal vote
-  mapping(uint256 => mapping(uint256 => ProposalVote)) public vote;
+    /// @dev Mapping from chain id => vote round
+    /// @notice chain id = 0 for global proposal
+    mapping(uint256 => uint256) public round;
+    /// @dev Mapping from chain id => vote round => proposal vote
+    mapping(uint256 => mapping(uint256 => ProposalVote)) public vote;
 
-  uint256 internal _proposalExpiryDuration;
+    uint256 internal _proposalExpiryDuration;
 
-  function __CoreGovernance_init(uint256 expiryDuration) internal onlyInitializing {
-    __CoreGovernance_init_unchained(expiryDuration);
-  }
+    function __CoreGovernance_init(uint256 expiryDuration) internal onlyInitializing {
+        __CoreGovernance_init_unchained(expiryDuration);
+    }
 
-  function __CoreGovernance_init_unchained(uint256 expiryDuration) internal onlyInitializing {
-    _setProposalExpiryDuration(expiryDuration);
-  }
+    function __CoreGovernance_init_unchained(uint256 expiryDuration) internal onlyInitializing {
+        _setProposalExpiryDuration(expiryDuration);
+    }
 
-  /**
-   * @dev Creates new voting round by calculating the `_round` number of chain `_chainId`.
-   * Increases the `_round` number if the previous one is not expired. Delete the previous proposal
-   * if it is expired and not increase the `_round`.
-   */
-  function _createVotingRound(uint256 _chainId) internal returns (uint256 _round) {
-    _round = round[_chainId];
-    // Skip checking for the first ever round
-    if (_round == 0) {
-      _round = round[_chainId] = 1;
-    } else {
-      ProposalVote storage _latestProposalVote = vote[_chainId][_round];
-      bool _isExpired = _tryDeleteExpiredVotingRound(_latestProposalVote);
-      // Skip increasing round number if the latest round is expired, allow the vote to be overridden
-      if (!_isExpired) {
-        if (_latestProposalVote.status == VoteStatus.Pending) revert ErrCurrentProposalIsNotCompleted();
-        unchecked {
-          _round = ++round[_chainId];
+    /**
+     * @dev Creates new voting round by calculating the `_round` number of chain `_chainId`.
+     * Increases the `_round` number if the previous one is not expired. Delete the previous proposal
+     * if it is expired and not increase the `_round`.
+     */
+    function _createVotingRound(uint256 _chainId) internal returns (uint256 _round) {
+        _round = round[_chainId];
+        // Skip checking for the first ever round
+        if (_round == 0) {
+            _round = round[_chainId] = 1;
+        } else {
+            ProposalVote storage _latestProposalVote = vote[_chainId][_round];
+            bool _isExpired = _tryDeleteExpiredVotingRound(_latestProposalVote);
+            // Skip increasing round number if the latest round is expired, allow the vote to be overridden
+            if (!_isExpired) {
+                if (_latestProposalVote.status == VoteStatus.Pending) {
+                    revert ErrCurrentProposalIsNotCompleted();
+                }
+                unchecked {
+                    _round = ++round[_chainId];
+                }
+            }
         }
-      }
-    }
-  }
-
-  /**
-   * @dev Saves new round voting for the proposal `_proposalHash` of chain `_chainId`.
-   */
-  function _saveVotingRound(ProposalVote storage _vote, bytes32 _proposalHash, uint256 _expiryTimestamp) internal {
-    _vote.hash = _proposalHash;
-    _vote.expiryTimestamp = _expiryTimestamp;
-  }
-
-  /**
-   * @dev Proposes proposal struct.
-   *
-   * Requirements:
-   * - The chain id is not equal to 0.
-   * - The proposal nonce is equal to the new round.
-   *
-   * Emits the `ProposalCreated` event.
-   *
-   */
-  function _proposeProposalStruct(Proposal.ProposalDetail memory proposal, address creator) internal virtual returns (uint256 round_) {
-    uint256 chainId = proposal.chainId;
-    if (chainId == 0) revert ErrInvalidChainId(msg.sig, 0, block.chainid);
-    proposal.validate(_proposalExpiryDuration);
-
-    bytes32 proposalHash = proposal.hash();
-    round_ = _createVotingRound(chainId);
-    _saveVotingRound(vote[chainId][round_], proposalHash, proposal.expiryTimestamp);
-    if (round_ != proposal.nonce) revert ErrInvalidProposalNonce(msg.sig);
-    emit ProposalCreated(chainId, round_, proposalHash, proposal, creator);
-  }
-
-  /**
-   * @dev Casts vote for the proposal with data and returns whether the voting is done.
-   *
-   * Requirements:
-   * - The proposal nonce is equal to the round.
-   * - The vote is not finalized.
-   * - The voter has not voted for the round.
-   *
-   * Emits the `ProposalVoted` event. Emits the `ProposalApproved`, `ProposalExecuted` or `ProposalRejected` once the
-   * proposal is approved, executed or rejected.
-   *
-   */
-  function _castVote(
-    Proposal.ProposalDetail memory proposal,
-    Ballot.VoteType support,
-    uint256 minimumForVoteWeight,
-    uint256 minimumAgainstVoteWeight,
-    address voter,
-    Signature memory signature,
-    uint256 voterWeight
-  ) internal virtual returns (bool done) {
-    uint256 chainId = proposal.chainId;
-    uint256 round_ = proposal.nonce;
-    ProposalVote storage _vote = vote[chainId][round_];
-
-    if (_tryDeleteExpiredVotingRound(_vote)) {
-      return true;
     }
 
-    if (round[proposal.chainId] != round_) revert ErrInvalidProposalNonce(msg.sig);
-    if (_vote.status != VoteStatus.Pending) revert ErrVoteIsFinalized();
-    if (_voted(_vote, voter)) revert ErrAlreadyVoted(voter);
-
-    _vote.voted[voter] = true;
-    // Stores the signature if it is not empty
-    if (signature.r > 0 || signature.s > 0 || signature.v > 0) {
-      _vote.sig[voter] = signature;
-    }
-    emit ProposalVoted(_vote.hash, voter, support, voterWeight);
-
-    uint256 _forVoteWeight;
-    uint256 _againstVoteWeight;
-    if (support == Ballot.VoteType.For) {
-      _vote.forVoteds.push(voter);
-      _forVoteWeight = _vote.forVoteWeight += voterWeight;
-    } else if (support == Ballot.VoteType.Against) {
-      _vote.againstVoteds.push(voter);
-      _againstVoteWeight = _vote.againstVoteWeight += voterWeight;
-    } else {
-      revert ErrUnsupportedVoteType(msg.sig);
+    /**
+     * @dev Saves new round voting for the proposal `_proposalHash` of chain `_chainId`.
+     */
+    function _saveVotingRound(ProposalVote storage _vote, bytes32 _proposalHash, uint256 _expiryTimestamp) internal {
+        _vote.hash = _proposalHash;
+        _vote.expiryTimestamp = _expiryTimestamp;
     }
 
-    if (_forVoteWeight >= minimumForVoteWeight) {
-      done = true;
-      _vote.status = VoteStatus.Approved;
-      emit ProposalApproved(_vote.hash);
-      if (proposal.isAutoExecute()) {
+    /**
+     * @dev Proposes proposal struct.
+     *
+     * Requirements:
+     * - The chain id is not equal to 0.
+     * - The proposal nonce is equal to the new round.
+     *
+     * Emits the `ProposalCreated` event.
+     *
+     */
+    function _proposeProposalStruct(Proposal.ProposalDetail memory proposal, address creator)
+        internal
+        virtual
+        returns (uint256 round_)
+    {
+        uint256 chainId = proposal.chainId;
+        if (chainId == 0) {
+            revert ErrInvalidChainId(msg.sig, 0, block.chainid);
+        }
+        proposal.validate(_proposalExpiryDuration);
+
+        bytes32 proposalHash = proposal.hash();
+        round_ = _createVotingRound(chainId);
+        _saveVotingRound(vote[chainId][round_], proposalHash, proposal.expiryTimestamp);
+        if (round_ != proposal.nonce) {
+            revert ErrInvalidProposalNonce(msg.sig);
+        }
+        emit ProposalCreated(chainId, round_, proposalHash, proposal, creator);
+    }
+
+    /**
+     * @dev Casts vote for the proposal with data and returns whether the voting is done.
+     *
+     * Requirements:
+     * - The proposal nonce is equal to the round.
+     * - The vote is not finalized.
+     * - The voter has not voted for the round.
+     *
+     * Emits the `ProposalVoted` event. Emits the `ProposalApproved`, `ProposalExecuted` or `ProposalRejected` once the
+     * proposal is approved, executed or rejected.
+     *
+     */
+    function _castVote(
+        Proposal.ProposalDetail memory proposal,
+        Ballot.VoteType support,
+        uint256 minimumForVoteWeight,
+        uint256 minimumAgainstVoteWeight,
+        address voter,
+        Signature memory signature,
+        uint256 voterWeight
+    ) internal virtual returns (bool done) {
+        uint256 chainId = proposal.chainId;
+        uint256 round_ = proposal.nonce;
+        ProposalVote storage _vote = vote[chainId][round_];
+
+        if (_tryDeleteExpiredVotingRound(_vote)) {
+            return true;
+        }
+
+        if (round[proposal.chainId] != round_) {
+            revert ErrInvalidProposalNonce(msg.sig);
+        }
+        if (_vote.status != VoteStatus.Pending) {
+            revert ErrVoteIsFinalized();
+        }
+        if (_voted(_vote, voter)) {
+            revert ErrAlreadyVoted(voter);
+        }
+
+        _vote.voted[voter] = true;
+        // Stores the signature if it is not empty
+        if (signature.r > 0 || signature.s > 0 || signature.v > 0) {
+            _vote.sig[voter] = signature;
+        }
+        emit ProposalVoted(_vote.hash, voter, support, voterWeight);
+
+        uint256 _forVoteWeight;
+        uint256 _againstVoteWeight;
+        if (support == Ballot.VoteType.For) {
+            _vote.forVoteds.push(voter);
+            _forVoteWeight = _vote.forVoteWeight += voterWeight;
+        } else if (support == Ballot.VoteType.Against) {
+            _vote.againstVoteds.push(voter);
+            _againstVoteWeight = _vote.againstVoteWeight += voterWeight;
+        } else {
+            revert ErrUnsupportedVoteType(msg.sig);
+        }
+
+        if (_forVoteWeight >= minimumForVoteWeight) {
+            done = true;
+            _vote.status = VoteStatus.Approved;
+            emit ProposalApproved(_vote.hash);
+            if (proposal.isAutoExecute()) {
+                _tryExecute(_vote, proposal);
+            }
+        } else if (_againstVoteWeight >= minimumAgainstVoteWeight) {
+            done = true;
+            _vote.status = VoteStatus.Rejected;
+            emit ProposalRejected(_vote.hash);
+        }
+    }
+
+    /**
+     * @dev The specified executor executes the proposal on an approved proposal.
+     */
+    function _executeWithCaller(Proposal.ProposalDetail memory proposal, address caller) internal {
+        bytes32 proposalHash = proposal.hash();
+        ProposalVote storage _vote = vote[proposal.chainId][proposal.nonce];
+
+        if (_vote.hash != proposalHash) {
+            revert ErrInvalidProposal(proposalHash, _vote.hash);
+        }
+
+        if (_vote.status != VoteStatus.Approved) {
+            revert ErrProposalNotApproved();
+        }
+        if (caller != proposal.executor) {
+            revert ErrInvalidExecutor();
+        }
+
         _tryExecute(_vote, proposal);
-      }
-    } else if (_againstVoteWeight >= minimumAgainstVoteWeight) {
-      done = true;
-      _vote.status = VoteStatus.Rejected;
-      emit ProposalRejected(_vote.hash);
-    }
-  }
-
-  /**
-   * @dev The specified executor executes the proposal on an approved proposal.
-   */
-  function _executeWithCaller(Proposal.ProposalDetail memory proposal, address caller) internal {
-    bytes32 proposalHash = proposal.hash();
-    ProposalVote storage _vote = vote[proposal.chainId][proposal.nonce];
-
-    if (_vote.hash != proposalHash) {
-      revert ErrInvalidProposal(proposalHash, _vote.hash);
     }
 
-    if (_vote.status != VoteStatus.Approved) revert ErrProposalNotApproved();
-    if (caller != proposal.executor) revert ErrInvalidExecutor();
+    /**
+     * @dev When the contract is on Ronin chain, checks whether the proposal is expired and delete it if is expired.
+     *
+     * Emits the event `ProposalExpired` if the vote is expired.
+     *
+     * Note: This function assumes the vote `_proposalVote` is already created, consider verifying the vote's existence
+     * before or it will emit an unexpected event of `ProposalExpired`.
+     */
+    function _tryDeleteExpiredVotingRound(ProposalVote storage proposalVote) internal returns (bool isExpired) {
+        isExpired = _getChainType() == ChainType.RoninChain && proposalVote.status == VoteStatus.Pending
+            && proposalVote.expiryTimestamp <= block.timestamp;
 
-    _tryExecute(_vote, proposal);
-  }
+        if (isExpired) {
+            emit ProposalExpired(proposalVote.hash);
 
-  /**
-   * @dev When the contract is on Ronin chain, checks whether the proposal is expired and delete it if is expired.
-   *
-   * Emits the event `ProposalExpired` if the vote is expired.
-   *
-   * Note: This function assumes the vote `_proposalVote` is already created, consider verifying the vote's existence
-   * before or it will emit an unexpected event of `ProposalExpired`.
-   */
-  function _tryDeleteExpiredVotingRound(ProposalVote storage proposalVote) internal returns (bool isExpired) {
-    isExpired = _getChainType() == ChainType.RoninChain && proposalVote.status == VoteStatus.Pending && proposalVote.expiryTimestamp <= block.timestamp;
+            for (uint256 _i; _i < proposalVote.forVoteds.length;) {
+                delete proposalVote.voted[proposalVote.forVoteds[_i]];
+                delete proposalVote.sig[proposalVote.forVoteds[_i]];
 
-    if (isExpired) {
-      emit ProposalExpired(proposalVote.hash);
+                unchecked {
+                    ++_i;
+                }
+            }
+            for (uint256 _i; _i < proposalVote.againstVoteds.length;) {
+                delete proposalVote.voted[proposalVote.againstVoteds[_i]];
+                delete proposalVote.sig[proposalVote.againstVoteds[_i]];
 
-      for (uint256 _i; _i < proposalVote.forVoteds.length;) {
-        delete proposalVote.voted[proposalVote.forVoteds[_i]];
-        delete proposalVote.sig[proposalVote.forVoteds[_i]];
-
-        unchecked {
-          ++_i;
+                unchecked {
+                    ++_i;
+                }
+            }
+            delete proposalVote.status;
+            delete proposalVote.hash;
+            delete proposalVote.againstVoteWeight;
+            delete proposalVote.forVoteWeight;
+            delete proposalVote.forVoteds;
+            delete proposalVote.againstVoteds;
+            delete proposalVote.expiryTimestamp;
         }
-      }
-      for (uint256 _i; _i < proposalVote.againstVoteds.length;) {
-        delete proposalVote.voted[proposalVote.againstVoteds[_i]];
-        delete proposalVote.sig[proposalVote.againstVoteds[_i]];
+    }
 
-        unchecked {
-          ++_i;
+    /**
+     * @dev Executes the proposal and update the vote status once the proposal is executable.
+     */
+    function _tryExecute(ProposalVote storage vote_, Proposal.ProposalDetail memory proposal) internal {
+        if (proposal.executable()) {
+            vote_.status = VoteStatus.Executed;
+            (bool[] memory _successCalls, bytes[] memory _returnDatas) = proposal.execute();
+            emit ProposalExecuted(vote_.hash, _successCalls, _returnDatas);
         }
-      }
-      delete proposalVote.status;
-      delete proposalVote.hash;
-      delete proposalVote.againstVoteWeight;
-      delete proposalVote.forVoteWeight;
-      delete proposalVote.forVoteds;
-      delete proposalVote.againstVoteds;
-      delete proposalVote.expiryTimestamp;
     }
-  }
 
-  /**
-   * @dev Executes the proposal and update the vote status once the proposal is executable.
-   */
-  function _tryExecute(ProposalVote storage vote_, Proposal.ProposalDetail memory proposal) internal {
-    if (proposal.executable()) {
-      vote_.status = VoteStatus.Executed;
-      (bool[] memory _successCalls, bytes[] memory _returnDatas) = proposal.execute();
-      emit ProposalExecuted(vote_.hash, _successCalls, _returnDatas);
+    /**
+     * @dev Sets the expiry duration for a new proposal.
+     */
+    function _setProposalExpiryDuration(uint256 expiryDuration) internal {
+        _proposalExpiryDuration = expiryDuration;
+        emit ProposalExpiryDurationChanged(expiryDuration);
     }
-  }
 
-  /**
-   * @dev Sets the expiry duration for a new proposal.
-   */
-  function _setProposalExpiryDuration(uint256 expiryDuration) internal {
-    _proposalExpiryDuration = expiryDuration;
-    emit ProposalExpiryDurationChanged(expiryDuration);
-  }
+    /**
+     * @dev Returns whether the voter casted for the proposal.
+     */
+    function _voted(ProposalVote storage vote_, address voter) internal view returns (bool) {
+        return vote_.voted[voter];
+    }
 
-  /**
-   * @dev Returns whether the voter casted for the proposal.
-   */
-  function _voted(ProposalVote storage vote_, address voter) internal view returns (bool) {
-    return vote_.voted[voter];
-  }
+    /**
+     * @dev Returns total weight from validators.
+     */
+    function _getTotalWeight() internal view virtual returns (uint256);
 
-  /**
-   * @dev Returns total weight from validators.
-   */
-  function _getTotalWeight() internal view virtual returns (uint256);
+    /**
+     * @dev Returns minimum vote to pass a proposal.
+     */
+    function _getMinimumVoteWeight() internal view virtual returns (uint256);
 
-  /**
-   * @dev Returns minimum vote to pass a proposal.
-   */
-  function _getMinimumVoteWeight() internal view virtual returns (uint256);
-
-  /**
-   * @dev Returns current context is running on whether Ronin chain or on mainchain.
-   */
-  function _getChainType() internal view virtual returns (ChainType);
+    /**
+     * @dev Returns current context is running on whether Ronin chain or on mainchain.
+     */
+    function _getChainType() internal view virtual returns (ChainType);
 }
 
 library GlobalProposal {
-  /**
-   * @dev Error thrown when attempting to interact with an unsupported target.
-   */
-  error ErrUnsupportedTarget(bytes32 proposalHash, uint256 targetNumber);
+    /**
+     * @dev Error thrown when attempting to interact with an unsupported target.
+     */
+    error ErrUnsupportedTarget(bytes32 proposalHash, uint256 targetNumber);
 
-  enum TargetOption {
-    BridgeManager, // 0
-    GatewayContract, // 1
-    BridgeReward, // 2
-    BridgeSlash, // 3
-    BridgeTracking, // 4
-    PauseEnforcer // 5
+    enum TargetOption {
+        BridgeManager, // 0
+        GatewayContract, // 1
+        BridgeReward, // 2
+        BridgeSlash, // 3
+        BridgeTracking, // 4
+        PauseEnforcer // 5
 
-  }
-
-  struct GlobalProposalDetail {
-    // Nonce to make sure proposals are executed in order
-    uint256 nonce;
-    uint256 expiryTimestamp;
-    address executor;
-    TargetOption[] targetOptions;
-    uint256[] values;
-    bytes[] calldatas;
-    uint256[] gasAmounts;
-  }
-
-  // keccak256("GlobalProposalDetail(uint256 nonce,uint256 expiryTimestamp,address executor,uint8[] targetOptions,uint256[] values,bytes[] calldatas,uint256[] gasAmounts)");
-  bytes32 internal constant TYPE_HASH = 0xde480f0c53a3651c08fbab1dffbc45fe574f31188827fe52cb9035da9fe57e4a;
-
-  /**
-   * @dev Returns struct hash of the proposal.
-   */
-  function hash(GlobalProposalDetail memory self) internal pure returns (bytes32 digest_) {
-    uint256[] memory values = self.values;
-    TargetOption[] memory targets = self.targetOptions;
-    bytes32[] memory calldataHashList = new bytes32[](self.calldatas.length);
-    uint256[] memory gasAmounts = self.gasAmounts;
-
-    for (uint256 i; i < calldataHashList.length;) {
-      calldataHashList[i] = keccak256(self.calldatas[i]);
-
-      unchecked {
-        ++i;
-      }
     }
 
-    /*
+    struct GlobalProposalDetail {
+        // Nonce to make sure proposals are executed in order
+        uint256 nonce;
+        uint256 expiryTimestamp;
+        address executor;
+        TargetOption[] targetOptions;
+        uint256[] values;
+        bytes[] calldatas;
+        uint256[] gasAmounts;
+    }
+
+    // keccak256("GlobalProposalDetail(uint256 nonce,uint256 expiryTimestamp,address executor,uint8[] targetOptions,uint256[] values,bytes[] calldatas,uint256[] gasAmounts)");
+    bytes32 internal constant TYPE_HASH = 0xde480f0c53a3651c08fbab1dffbc45fe574f31188827fe52cb9035da9fe57e4a;
+
+    /**
+     * @dev Returns struct hash of the proposal.
+     */
+    function hash(GlobalProposalDetail memory self) internal pure returns (bytes32 digest_) {
+        uint256[] memory values = self.values;
+        TargetOption[] memory targets = self.targetOptions;
+        bytes32[] memory calldataHashList = new bytes32[](self.calldatas.length);
+        uint256[] memory gasAmounts = self.gasAmounts;
+
+        for (uint256 i; i < calldataHashList.length;) {
+            calldataHashList[i] = keccak256(self.calldatas[i]);
+
+            unchecked {
+                ++i;
+            }
+        }
+
+        /*
      * return
      *   keccak256(
      *     abi.encode(
@@ -3337,44 +3426,48 @@ library GlobalProposal {
      *     )
      *   );
      */
-    assembly {
-      let ptr := mload(0x40)
-      mstore(ptr, TYPE_HASH)
-      mstore(add(ptr, 0x20), mload(self)) // proposal.nonce
-      mstore(add(ptr, 0x40), mload(add(self, 0x20))) // proposal.expiryTimestamp
-      mstore(add(ptr, 0x60), mload(add(self, 0x40))) // proposal.executor
+        assembly {
+            let ptr := mload(0x40)
+            mstore(ptr, TYPE_HASH)
+            mstore(add(ptr, 0x20), mload(self)) // proposal.nonce
+            mstore(add(ptr, 0x40), mload(add(self, 0x20))) // proposal.expiryTimestamp
+            mstore(add(ptr, 0x60), mload(add(self, 0x40))) // proposal.executor
 
-      let arrayHashed
-      arrayHashed := keccak256(add(targets, 32), mul(mload(targets), 32)) // targetsHash
-      mstore(add(ptr, 0x80), arrayHashed)
-      arrayHashed := keccak256(add(values, 32), mul(mload(values), 32)) // valuesHash
-      mstore(add(ptr, 0xa0), arrayHashed)
-      arrayHashed := keccak256(add(calldataHashList, 32), mul(mload(calldataHashList), 32)) // calldatasHash
-      mstore(add(ptr, 0xc0), arrayHashed)
-      arrayHashed := keccak256(add(gasAmounts, 32), mul(mload(gasAmounts), 32)) // gasAmountsHash
-      mstore(add(ptr, 0xe0), arrayHashed)
-      digest_ := keccak256(ptr, 0x100)
+            let arrayHashed
+            arrayHashed := keccak256(add(targets, 32), mul(mload(targets), 32)) // targetsHash
+            mstore(add(ptr, 0x80), arrayHashed)
+            arrayHashed := keccak256(add(values, 32), mul(mload(values), 32)) // valuesHash
+            mstore(add(ptr, 0xa0), arrayHashed)
+            arrayHashed := keccak256(add(calldataHashList, 32), mul(mload(calldataHashList), 32)) // calldatasHash
+            mstore(add(ptr, 0xc0), arrayHashed)
+            arrayHashed := keccak256(add(gasAmounts, 32), mul(mload(gasAmounts), 32)) // gasAmountsHash
+            mstore(add(ptr, 0xe0), arrayHashed)
+            digest_ := keccak256(ptr, 0x100)
+        }
     }
-  }
 
-  /**
-   * @dev Converts into the normal proposal.
-   */
-  function intoProposalDetail(GlobalProposalDetail memory self, address[] memory targets) internal pure returns (Proposal.ProposalDetail memory detail_) {
-    detail_.nonce = self.nonce;
-    detail_.chainId = 0;
-    detail_.expiryTimestamp = self.expiryTimestamp;
-    detail_.executor = self.executor;
+    /**
+     * @dev Converts into the normal proposal.
+     */
+    function intoProposalDetail(GlobalProposalDetail memory self, address[] memory targets)
+        internal
+        pure
+        returns (Proposal.ProposalDetail memory detail_)
+    {
+        detail_.nonce = self.nonce;
+        detail_.chainId = 0;
+        detail_.expiryTimestamp = self.expiryTimestamp;
+        detail_.executor = self.executor;
 
-    detail_.targets = new address[](self.targetOptions.length);
-    detail_.values = self.values;
-    detail_.calldatas = self.calldatas;
-    detail_.gasAmounts = self.gasAmounts;
+        detail_.targets = new address[](self.targetOptions.length);
+        detail_.values = self.values;
+        detail_.calldatas = self.calldatas;
+        detail_.gasAmounts = self.gasAmounts;
 
-    for (uint256 i; i < self.targetOptions.length; ++i) {
-      detail_.targets[i] = targets[i];
+        for (uint256 i; i < self.targetOptions.length; ++i) {
+            detail_.targets[i] = targets[i];
+        }
     }
-  }
 }
 
 /**
@@ -3390,119 +3483,129 @@ error ErrInvalidOrder(bytes4 msgSig);
 error ErrRelayFailed(bytes4 msgSig);
 
 abstract contract CommonGovernanceRelay is CoreGovernance {
-  using Proposal for Proposal.ProposalDetail;
-  using GlobalProposal for GlobalProposal.GlobalProposalDetail;
+    using Proposal for Proposal.ProposalDetail;
+    using GlobalProposal for GlobalProposal.GlobalProposalDetail;
 
-  /**
-   * @dev Relays votes by signatures.
-   *
-   * @notice Does not store the voter signature into storage.
-   *
-   */
-  function _relayVotesBySignatures(
-    Proposal.ProposalDetail memory _proposal,
-    Ballot.VoteType[] calldata _supports,
-    Signature[] calldata _signatures,
-    bytes32 proposalHash
-  ) internal {
-    if (!(_supports.length > 0 && _supports.length == _signatures.length)) revert ErrLengthMismatch(msg.sig);
-
-    bytes32 _forDigest = ECDSA.toTypedDataHash(_proposalDomainSeparator(), Ballot.hash(proposalHash, Ballot.VoteType.For));
-    bytes32 _againstDigest = ECDSA.toTypedDataHash(_proposalDomainSeparator(), Ballot.hash(proposalHash, Ballot.VoteType.Against));
-
-    address[] memory _forVoteSigners = new address[](_signatures.length);
-    address[] memory _againstVoteSigners = new address[](_signatures.length);
-
-    {
-      uint256 _forVoteCount;
-      uint256 _againstVoteCount;
-
-      {
-        address _signer;
-        address _lastSigner;
-        Ballot.VoteType _support;
-        Signature calldata _sig;
-
-        for (uint256 _i; _i < _signatures.length;) {
-          _sig = _signatures[_i];
-          _support = _supports[_i];
-
-          if (_support == Ballot.VoteType.For) {
-            _signer = ECDSA.recover(_forDigest, _sig.v, _sig.r, _sig.s);
-            _forVoteSigners[_forVoteCount++] = _signer;
-          } else if (_support == Ballot.VoteType.Against) {
-            _signer = ECDSA.recover(_againstDigest, _sig.v, _sig.r, _sig.s);
-            _againstVoteSigners[_againstVoteCount++] = _signer;
-          } else {
-            revert ErrUnsupportedVoteType(msg.sig);
-          }
-
-          if (_lastSigner >= _signer) revert ErrInvalidOrder(msg.sig);
-          _lastSigner = _signer;
-
-          unchecked {
-            ++_i;
-          }
+    /**
+     * @dev Relays votes by signatures.
+     *
+     * @notice Does not store the voter signature into storage.
+     *
+     */
+    function _relayVotesBySignatures(
+        Proposal.ProposalDetail memory _proposal,
+        Ballot.VoteType[] calldata _supports,
+        Signature[] calldata _signatures,
+        bytes32 proposalHash
+    ) internal {
+        if (!(_supports.length > 0 && _supports.length == _signatures.length)) {
+            revert ErrLengthMismatch(msg.sig);
         }
-      }
 
-      assembly {
-        mstore(_forVoteSigners, _forVoteCount)
-        mstore(_againstVoteSigners, _againstVoteCount)
-      }
+        bytes32 _forDigest =
+            ECDSA.toTypedDataHash(_proposalDomainSeparator(), Ballot.hash(proposalHash, Ballot.VoteType.For));
+        bytes32 _againstDigest =
+            ECDSA.toTypedDataHash(_proposalDomainSeparator(), Ballot.hash(proposalHash, Ballot.VoteType.Against));
+
+        address[] memory _forVoteSigners = new address[](_signatures.length);
+        address[] memory _againstVoteSigners = new address[](_signatures.length);
+
+        {
+            uint256 _forVoteCount;
+            uint256 _againstVoteCount;
+
+            {
+                address _signer;
+                address _lastSigner;
+                Ballot.VoteType _support;
+                Signature calldata _sig;
+
+                for (uint256 _i; _i < _signatures.length;) {
+                    _sig = _signatures[_i];
+                    _support = _supports[_i];
+
+                    if (_support == Ballot.VoteType.For) {
+                        _signer = ECDSA.recover(_forDigest, _sig.v, _sig.r, _sig.s);
+                        _forVoteSigners[_forVoteCount++] = _signer;
+                    } else if (_support == Ballot.VoteType.Against) {
+                        _signer = ECDSA.recover(_againstDigest, _sig.v, _sig.r, _sig.s);
+                        _againstVoteSigners[_againstVoteCount++] = _signer;
+                    } else {
+                        revert ErrUnsupportedVoteType(msg.sig);
+                    }
+
+                    if (_lastSigner >= _signer) {
+                        revert ErrInvalidOrder(msg.sig);
+                    }
+                    _lastSigner = _signer;
+
+                    unchecked {
+                        ++_i;
+                    }
+                }
+            }
+
+            assembly {
+                mstore(_forVoteSigners, _forVoteCount)
+                mstore(_againstVoteSigners, _againstVoteCount)
+            }
+        }
+
+        ProposalVote storage _vote = vote[_proposal.chainId][_proposal.nonce];
+        uint256 _minimumForVoteWeight = _getMinimumVoteWeight();
+        uint256 _totalForVoteWeight = _sumWeight(_forVoteSigners);
+        if (_totalForVoteWeight >= _minimumForVoteWeight) {
+            if (_totalForVoteWeight == 0) {
+                revert ErrInvalidVoteWeight(msg.sig);
+            }
+            _vote.status = VoteStatus.Approved;
+            emit ProposalApproved(_vote.hash);
+            _tryExecute(_vote, _proposal);
+            return;
+        }
+
+        uint256 _minimumAgainstVoteWeight = _getTotalWeight() - _minimumForVoteWeight + 1;
+        uint256 _totalAgainstVoteWeight = _sumWeight(_againstVoteSigners);
+        if (_totalAgainstVoteWeight >= _minimumAgainstVoteWeight) {
+            if (_totalAgainstVoteWeight == 0) {
+                revert ErrInvalidVoteWeight(msg.sig);
+            }
+            _vote.status = VoteStatus.Rejected;
+            emit ProposalRejected(_vote.hash);
+            return;
+        }
+
+        revert ErrRelayFailed(msg.sig);
     }
 
-    ProposalVote storage _vote = vote[_proposal.chainId][_proposal.nonce];
-    uint256 _minimumForVoteWeight = _getMinimumVoteWeight();
-    uint256 _totalForVoteWeight = _sumWeight(_forVoteSigners);
-    if (_totalForVoteWeight >= _minimumForVoteWeight) {
-      if (_totalForVoteWeight == 0) revert ErrInvalidVoteWeight(msg.sig);
-      _vote.status = VoteStatus.Approved;
-      emit ProposalApproved(_vote.hash);
-      _tryExecute(_vote, _proposal);
-      return;
-    }
+    /**
+     * @dev Returns the weight of the governor list.
+     */
+    function _sumWeight(address[] memory _governors) internal view virtual returns (uint256);
 
-    uint256 _minimumAgainstVoteWeight = _getTotalWeight() - _minimumForVoteWeight + 1;
-    uint256 _totalAgainstVoteWeight = _sumWeight(_againstVoteSigners);
-    if (_totalAgainstVoteWeight >= _minimumAgainstVoteWeight) {
-      if (_totalAgainstVoteWeight == 0) revert ErrInvalidVoteWeight(msg.sig);
-      _vote.status = VoteStatus.Rejected;
-      emit ProposalRejected(_vote.hash);
-      return;
-    }
-
-    revert ErrRelayFailed(msg.sig);
-  }
-
-  /**
-   * @dev Returns the weight of the governor list.
-   */
-  function _sumWeight(address[] memory _governors) internal view virtual returns (uint256);
-
-  function _proposalDomainSeparator() internal view virtual returns (bytes32);
+    function _proposalDomainSeparator() internal view virtual returns (bytes32);
 }
 
 abstract contract GovernanceRelay is CoreGovernance, CommonGovernanceRelay {
-  using Proposal for Proposal.ProposalDetail;
-  using GlobalProposal for GlobalProposal.GlobalProposalDetail;
+    using Proposal for Proposal.ProposalDetail;
+    using GlobalProposal for GlobalProposal.GlobalProposalDetail;
 
-  /**
-   * @dev Relays voted proposal.
-   *
-   * Requirements:
-   * - The relay proposal is finalized.
-   *
-   */
-  function _relayProposal(
-    Proposal.ProposalDetail calldata _proposal,
-    Ballot.VoteType[] calldata _supports,
-    Signature[] calldata _signatures,
-    address _creator
-  ) internal {
-    _proposeProposalStruct(_proposal, _creator);
-    _relayVotesBySignatures(_proposal, _supports, _signatures, _proposal.hash());
-  }
+    /**
+     * @dev Relays voted proposal.
+     *
+     * Requirements:
+     * - The relay proposal is finalized.
+     *
+     */
+    function _relayProposal(
+        Proposal.ProposalDetail calldata _proposal,
+        Ballot.VoteType[] calldata _supports,
+        Signature[] calldata _signatures,
+        address _creator
+    ) internal {
+        _proposeProposalStruct(_proposal, _creator);
+        _relayVotesBySignatures(_proposal, _supports, _signatures, _proposal.hash());
+    }
 }
 
 /**
@@ -3511,165 +3614,196 @@ abstract contract GovernanceRelay is CoreGovernance, CommonGovernanceRelay {
 error ErrInvalidArguments(bytes4 msgSig);
 
 abstract contract GlobalCoreGovernance is CoreGovernance {
-  using Proposal for Proposal.ProposalDetail;
-  using GlobalProposal for GlobalProposal.GlobalProposalDetail;
+    using Proposal for Proposal.ProposalDetail;
+    using GlobalProposal for GlobalProposal.GlobalProposalDetail;
 
-  mapping(GlobalProposal.TargetOption => address) internal _targetOptionsMap;
+    mapping(GlobalProposal.TargetOption => address) internal _targetOptionsMap;
 
-  /// @dev Emitted when a proposal is created
-  event GlobalProposalCreated(
-    uint256 indexed round,
-    bytes32 indexed proposalHash,
-    Proposal.ProposalDetail proposal,
-    bytes32 globalProposalHash,
-    GlobalProposal.GlobalProposalDetail globalProposal,
-    address creator
-  );
+    /// @dev Emitted when a proposal is created
+    event GlobalProposalCreated(
+        uint256 indexed round,
+        bytes32 indexed proposalHash,
+        Proposal.ProposalDetail proposal,
+        bytes32 globalProposalHash,
+        GlobalProposal.GlobalProposalDetail globalProposal,
+        address creator
+    );
 
-  /// @dev Emitted when the target options are updated
-  event TargetOptionUpdated(GlobalProposal.TargetOption indexed targetOption, address indexed addr);
+    /// @dev Emitted when the target options are updated
+    event TargetOptionUpdated(GlobalProposal.TargetOption indexed targetOption, address indexed addr);
 
-  function __GlobalCoreGovernance_init(GlobalProposal.TargetOption[] memory targetOptions, address[] memory addrs) internal onlyInitializing {
-    __GlobalCoreGovernance_init_unchained(targetOptions, addrs);
-  }
-
-  function __GlobalCoreGovernance_init_unchained(GlobalProposal.TargetOption[] memory targetOptions, address[] memory addrs) internal onlyInitializing {
-    _updateTargetOption(GlobalProposal.TargetOption.BridgeManager, address(this));
-    _updateManyTargetOption(targetOptions, addrs);
-  }
-
-  /**
-   * @dev Proposes for a global proposal.
-   *
-   * Emits the `GlobalProposalCreated` event.
-   *
-   */
-  function _proposeGlobal(
-    uint256 expiryTimestamp,
-    GlobalProposal.TargetOption[] calldata targetOptions,
-    address executor,
-    uint256[] memory values,
-    bytes[] memory calldatas,
-    uint256[] memory gasAmounts,
-    address creator
-  ) internal virtual {
-    uint256 round_ = _createVotingRound(0);
-    GlobalProposal.GlobalProposalDetail memory globalProposal =
-      GlobalProposal.GlobalProposalDetail(round_, expiryTimestamp, executor, targetOptions, values, calldatas, gasAmounts);
-    Proposal.ProposalDetail memory proposal = globalProposal.intoProposalDetail(_resolveTargets({ targetOptions: targetOptions, strict: true }));
-    proposal.validate(_proposalExpiryDuration);
-
-    bytes32 proposalHash = proposal.hash();
-    _saveVotingRound(vote[0][round_], proposalHash, expiryTimestamp);
-    emit GlobalProposalCreated(round_, proposalHash, proposal, globalProposal.hash(), globalProposal, creator);
-  }
-
-  /**
-   * @dev Proposes global proposal struct.
-   *
-   * Requirements:
-   * - The proposal nonce is equal to the new round.
-   *
-   * Emits the `GlobalProposalCreated` event.
-   *
-   */
-  function _proposeGlobalStruct(
-    GlobalProposal.GlobalProposalDetail memory globalProposal,
-    address creator
-  ) internal virtual returns (Proposal.ProposalDetail memory proposal) {
-    proposal = globalProposal.intoProposalDetail(_resolveTargets({ targetOptions: globalProposal.targetOptions, strict: true }));
-    proposal.validate(_proposalExpiryDuration);
-
-    bytes32 proposalHash = proposal.hash();
-    uint256 round_ = _createVotingRound(0);
-    _saveVotingRound(vote[0][round_], proposalHash, globalProposal.expiryTimestamp);
-
-    if (round_ != proposal.nonce) revert ErrInvalidProposalNonce(msg.sig);
-    emit GlobalProposalCreated(round_, proposalHash, proposal, globalProposal.hash(), globalProposal, creator);
-  }
-
-  /**
-   * @dev Returns corresponding address of target options. Return address(0) on non-existent target.
-   */
-  function resolveTargets(GlobalProposal.TargetOption[] calldata targetOptions) external view returns (address[] memory targets) {
-    return _resolveTargets({ targetOptions: targetOptions, strict: false });
-  }
-
-  /**
-   * @dev Internal helper of {resolveTargets}.
-   *
-   * @param strict When the param is set to `true`, revert on non-existent target.
-   */
-  function _resolveTargets(GlobalProposal.TargetOption[] memory targetOptions, bool strict) internal view returns (address[] memory targets) {
-    targets = new address[](targetOptions.length);
-
-    for (uint256 i; i < targetOptions.length; ++i) {
-      targets[i] = _targetOptionsMap[targetOptions[i]];
-      if (strict && targets[i] == address(0)) revert ErrInvalidArguments(msg.sig);
+    function __GlobalCoreGovernance_init(GlobalProposal.TargetOption[] memory targetOptions, address[] memory addrs)
+        internal
+        onlyInitializing
+    {
+        __GlobalCoreGovernance_init_unchained(targetOptions, addrs);
     }
-  }
 
-  /**
-   * @dev Updates list of `targetOptions` to `targets`.
-   *
-   * Requirement:
-   * - Only allow self-call through proposal.
-   *
-   */
-  function updateManyTargetOption(GlobalProposal.TargetOption[] memory targetOptions, address[] memory targets) external {
-    // HACK: Cannot reuse the existing library due to too deep stack
-    if (msg.sender != address(this)) revert ErrOnlySelfCall(msg.sig);
-    _updateManyTargetOption(targetOptions, targets);
-  }
-
-  /**
-   * @dev Updates list of `targetOptions` to `targets`.
-   */
-  function _updateManyTargetOption(GlobalProposal.TargetOption[] memory targetOptions, address[] memory targets) internal {
-    for (uint256 i; i < targetOptions.length; ++i) {
-      if (targets[i] == address(this)) revert ErrInvalidArguments(msg.sig);
-      _updateTargetOption(targetOptions[i], targets[i]);
+    function __GlobalCoreGovernance_init_unchained(
+        GlobalProposal.TargetOption[] memory targetOptions,
+        address[] memory addrs
+    ) internal onlyInitializing {
+        _updateTargetOption(GlobalProposal.TargetOption.BridgeManager, address(this));
+        _updateManyTargetOption(targetOptions, addrs);
     }
-  }
 
-  /**
-   * @dev Updates `targetOption` to `target`.
-   *
-   * Requirement:
-   * - Emit a `TargetOptionUpdated` event.
-   */
-  function _updateTargetOption(GlobalProposal.TargetOption targetOption, address target) internal {
-    _targetOptionsMap[targetOption] = target;
-    emit TargetOptionUpdated(targetOption, target);
-  }
+    /**
+     * @dev Proposes for a global proposal.
+     *
+     * Emits the `GlobalProposalCreated` event.
+     *
+     */
+    function _proposeGlobal(
+        uint256 expiryTimestamp,
+        GlobalProposal.TargetOption[] calldata targetOptions,
+        address executor,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        uint256[] memory gasAmounts,
+        address creator
+    ) internal virtual {
+        uint256 round_ = _createVotingRound(0);
+        GlobalProposal.GlobalProposalDetail memory globalProposal = GlobalProposal.GlobalProposalDetail(
+            round_, expiryTimestamp, executor, targetOptions, values, calldatas, gasAmounts
+        );
+        Proposal.ProposalDetail memory proposal =
+            globalProposal.intoProposalDetail(_resolveTargets({targetOptions: targetOptions, strict: true}));
+        proposal.validate(_proposalExpiryDuration);
+
+        bytes32 proposalHash = proposal.hash();
+        _saveVotingRound(vote[0][round_], proposalHash, expiryTimestamp);
+        emit GlobalProposalCreated(round_, proposalHash, proposal, globalProposal.hash(), globalProposal, creator);
+    }
+
+    /**
+     * @dev Proposes global proposal struct.
+     *
+     * Requirements:
+     * - The proposal nonce is equal to the new round.
+     *
+     * Emits the `GlobalProposalCreated` event.
+     *
+     */
+    function _proposeGlobalStruct(GlobalProposal.GlobalProposalDetail memory globalProposal, address creator)
+        internal
+        virtual
+        returns (Proposal.ProposalDetail memory proposal)
+    {
+        proposal = globalProposal.intoProposalDetail(
+            _resolveTargets({targetOptions: globalProposal.targetOptions, strict: true})
+        );
+        proposal.validate(_proposalExpiryDuration);
+
+        bytes32 proposalHash = proposal.hash();
+        uint256 round_ = _createVotingRound(0);
+        _saveVotingRound(vote[0][round_], proposalHash, globalProposal.expiryTimestamp);
+
+        if (round_ != proposal.nonce) {
+            revert ErrInvalidProposalNonce(msg.sig);
+        }
+        emit GlobalProposalCreated(round_, proposalHash, proposal, globalProposal.hash(), globalProposal, creator);
+    }
+
+    /**
+     * @dev Returns corresponding address of target options. Return address(0) on non-existent target.
+     */
+    function resolveTargets(GlobalProposal.TargetOption[] calldata targetOptions)
+        external
+        view
+        returns (address[] memory targets)
+    {
+        return _resolveTargets({targetOptions: targetOptions, strict: false});
+    }
+
+    /**
+     * @dev Internal helper of {resolveTargets}.
+     *
+     * @param strict When the param is set to `true`, revert on non-existent target.
+     */
+    function _resolveTargets(GlobalProposal.TargetOption[] memory targetOptions, bool strict)
+        internal
+        view
+        returns (address[] memory targets)
+    {
+        targets = new address[](targetOptions.length);
+
+        for (uint256 i; i < targetOptions.length; ++i) {
+            targets[i] = _targetOptionsMap[targetOptions[i]];
+            if (strict && targets[i] == address(0)) {
+                revert ErrInvalidArguments(msg.sig);
+            }
+        }
+    }
+
+    /**
+     * @dev Updates list of `targetOptions` to `targets`.
+     *
+     * Requirement:
+     * - Only allow self-call through proposal.
+     *
+     */
+    function updateManyTargetOption(GlobalProposal.TargetOption[] memory targetOptions, address[] memory targets)
+        external
+    {
+        // HACK: Cannot reuse the existing library due to too deep stack
+        if (msg.sender != address(this)) {
+            revert ErrOnlySelfCall(msg.sig);
+        }
+        _updateManyTargetOption(targetOptions, targets);
+    }
+
+    /**
+     * @dev Updates list of `targetOptions` to `targets`.
+     */
+    function _updateManyTargetOption(GlobalProposal.TargetOption[] memory targetOptions, address[] memory targets)
+        internal
+    {
+        for (uint256 i; i < targetOptions.length; ++i) {
+            if (targets[i] == address(this)) {
+                revert ErrInvalidArguments(msg.sig);
+            }
+            _updateTargetOption(targetOptions[i], targets[i]);
+        }
+    }
+
+    /**
+     * @dev Updates `targetOption` to `target`.
+     *
+     * Requirement:
+     * - Emit a `TargetOptionUpdated` event.
+     */
+    function _updateTargetOption(GlobalProposal.TargetOption targetOption, address target) internal {
+        _targetOptionsMap[targetOption] = target;
+        emit TargetOptionUpdated(targetOption, target);
+    }
 }
 
 abstract contract GlobalGovernanceRelay is CommonGovernanceRelay, GlobalCoreGovernance {
-  using GlobalProposal for GlobalProposal.GlobalProposalDetail;
+    using GlobalProposal for GlobalProposal.GlobalProposalDetail;
 
-  /**
-   * @dev Returns whether the voter `_voter` casted vote for the proposal.
-   */
-  function globalProposalRelayed(uint256 _round) external view returns (bool) {
-    return vote[0][_round].status != VoteStatus.Pending;
-  }
+    /**
+     * @dev Returns whether the voter `_voter` casted vote for the proposal.
+     */
+    function globalProposalRelayed(uint256 _round) external view returns (bool) {
+        return vote[0][_round].status != VoteStatus.Pending;
+    }
 
-  /**
-   * @dev Relays voted global proposal.
-   *
-   * Requirements:
-   * - The relay proposal is finalized.
-   *
-   */
-  function _relayGlobalProposal(
-    GlobalProposal.GlobalProposalDetail calldata globalProposal,
-    Ballot.VoteType[] calldata supports_,
-    Signature[] calldata signatures,
-    address creator
-  ) internal {
-    Proposal.ProposalDetail memory _proposal = _proposeGlobalStruct(globalProposal, creator);
-    _relayVotesBySignatures(_proposal, supports_, signatures, globalProposal.hash());
-  }
+    /**
+     * @dev Relays voted global proposal.
+     *
+     * Requirements:
+     * - The relay proposal is finalized.
+     *
+     */
+    function _relayGlobalProposal(
+        GlobalProposal.GlobalProposalDetail calldata globalProposal,
+        Ballot.VoteType[] calldata supports_,
+        Signature[] calldata signatures,
+        address creator
+    ) internal {
+        Proposal.ProposalDetail memory _proposal = _proposeGlobalStruct(globalProposal, creator);
+        _relayVotesBySignatures(_proposal, supports_, signatures, globalProposal.hash());
+    }
 }
 
 /**
@@ -3678,102 +3812,109 @@ abstract contract GlobalGovernanceRelay is CommonGovernanceRelay, GlobalCoreGove
 error ErrNonExecutorCannotRelay(address executor, address caller);
 
 contract MainchainBridgeManager is BridgeManager, GovernanceRelay, GlobalGovernanceRelay {
-  uint256 private constant DEFAULT_EXPIRY_DURATION = 1 << 255;
+    uint256 private constant DEFAULT_EXPIRY_DURATION = 1 << 255;
 
-  function initialize(
-    uint256 num,
-    uint256 denom,
-    uint256 roninChainId,
-    address bridgeContract,
-    address[] memory callbackRegisters,
-    address[] memory bridgeOperators,
-    address[] memory governors,
-    uint96[] memory voteWeights,
-    GlobalProposal.TargetOption[] memory targetOptions,
-    address[] memory targets
-  ) external initializer {
-    __CoreGovernance_init(DEFAULT_EXPIRY_DURATION);
-    __GlobalCoreGovernance_init(targetOptions, targets);
-    __BridgeManager_init(num, denom, roninChainId, bridgeContract, callbackRegisters, bridgeOperators, governors, voteWeights);
-  }
-
-  /**
-   * @dev See `GovernanceRelay-_relayProposal`.
-   *
-   * Requirements:
-   * - The method caller is governor.
-   */
-  function relayProposal(
-    Proposal.ProposalDetail calldata proposal,
-    Ballot.VoteType[] calldata supports_,
-    Signature[] calldata signatures
-  ) external onlyGovernor {
-    _requireExecutor(proposal.executor, msg.sender);
-    _relayProposal(proposal, supports_, signatures, msg.sender);
-  }
-
-  /**
-   * @dev See `GovernanceRelay-_relayGlobalProposal`.
-   *
-   *  Requirements:
-   * - The method caller is governor.
-   */
-  function relayGlobalProposal(
-    GlobalProposal.GlobalProposalDetail calldata globalProposal,
-    Ballot.VoteType[] calldata supports_,
-    Signature[] calldata signatures
-  ) external onlyGovernor {
-    _requireExecutor(globalProposal.executor, msg.sender);
-    _relayGlobalProposal({ globalProposal: globalProposal, supports_: supports_, signatures: signatures, creator: msg.sender });
-  }
-
-  function _requireExecutor(address executor, address caller) internal pure {
-    if (executor != address(0) && caller != executor) {
-      revert ErrNonExecutorCannotRelay(executor, caller);
+    function initialize(
+        uint256 num,
+        uint256 denom,
+        uint256 roninChainId,
+        address bridgeContract,
+        address[] memory callbackRegisters,
+        address[] memory bridgeOperators,
+        address[] memory governors,
+        uint96[] memory voteWeights,
+        GlobalProposal.TargetOption[] memory targetOptions,
+        address[] memory targets
+    ) external initializer {
+        __CoreGovernance_init(DEFAULT_EXPIRY_DURATION);
+        __GlobalCoreGovernance_init(targetOptions, targets);
+        __BridgeManager_init(
+            num, denom, roninChainId, bridgeContract, callbackRegisters, bridgeOperators, governors, voteWeights
+        );
     }
-  }
 
-  /**
-   * @dev Internal function to retrieve the minimum vote weight required for governance actions.
-   * @return minimumVoteWeight The minimum vote weight required for governance actions.
-   */
-  function _getMinimumVoteWeight() internal view override returns (uint256) {
-    return minimumVoteWeight();
-  }
+    /**
+     * @dev See `GovernanceRelay-_relayProposal`.
+     *
+     * Requirements:
+     * - The method caller is governor.
+     */
+    function relayProposal(
+        Proposal.ProposalDetail calldata proposal,
+        Ballot.VoteType[] calldata supports_,
+        Signature[] calldata signatures
+    ) external onlyGovernor {
+        _requireExecutor(proposal.executor, msg.sender);
+        _relayProposal(proposal, supports_, signatures, msg.sender);
+    }
 
-  /**
-   * @dev Returns the expiry duration for a new proposal.
-   */
-  function getProposalExpiryDuration() external view returns (uint256) {
-    return _proposalExpiryDuration;
-  }
+    /**
+     * @dev See `GovernanceRelay-_relayGlobalProposal`.
+     *
+     *  Requirements:
+     * - The method caller is governor.
+     */
+    function relayGlobalProposal(
+        GlobalProposal.GlobalProposalDetail calldata globalProposal,
+        Ballot.VoteType[] calldata supports_,
+        Signature[] calldata signatures
+    ) external onlyGovernor {
+        _requireExecutor(globalProposal.executor, msg.sender);
+        _relayGlobalProposal({
+            globalProposal: globalProposal,
+            supports_: supports_,
+            signatures: signatures,
+            creator: msg.sender
+        });
+    }
 
-  /**
-   * @dev Internal function to retrieve the total weights of all governors.
-   * @return totalWeights The total weights of all governors combined.
-   */
-  function _getTotalWeight() internal view override returns (uint256) {
-    return getTotalWeight();
-  }
+    function _requireExecutor(address executor, address caller) internal pure {
+        if (executor != address(0) && caller != executor) {
+            revert ErrNonExecutorCannotRelay(executor, caller);
+        }
+    }
 
-  /**
-   * @dev Internal function to calculate the sum of weights for a given array of governors.
-   * @param governors An array containing the addresses of governors to calculate the sum of weights.
-   * @return sumWeights The sum of weights for the provided governors.
-   */
-  function _sumWeight(address[] memory governors) internal view override returns (uint256) {
-    return _sumGovernorsWeight(governors);
-  }
+    /**
+     * @dev Internal function to retrieve the minimum vote weight required for governance actions.
+     * @return minimumVoteWeight The minimum vote weight required for governance actions.
+     */
+    function _getMinimumVoteWeight() internal view override returns (uint256) {
+        return minimumVoteWeight();
+    }
 
-  /**
-   * @dev Internal function to retrieve the chain type of the contract.
-   * @return chainType The chain type, indicating the type of the chain the contract operates on (e.g., Mainchain).
-   */
-  function _getChainType() internal pure override returns (ChainType) {
-    return ChainType.Mainchain;
-  }
+    /**
+     * @dev Returns the expiry duration for a new proposal.
+     */
+    function getProposalExpiryDuration() external view returns (uint256) {
+        return _proposalExpiryDuration;
+    }
 
-  function _proposalDomainSeparator() internal view override returns (bytes32) {
-    return DOMAIN_SEPARATOR;
-  }
+    /**
+     * @dev Internal function to retrieve the total weights of all governors.
+     * @return totalWeights The total weights of all governors combined.
+     */
+    function _getTotalWeight() internal view override returns (uint256) {
+        return getTotalWeight();
+    }
+
+    /**
+     * @dev Internal function to calculate the sum of weights for a given array of governors.
+     * @param governors An array containing the addresses of governors to calculate the sum of weights.
+     * @return sumWeights The sum of weights for the provided governors.
+     */
+    function _sumWeight(address[] memory governors) internal view override returns (uint256) {
+        return _sumGovernorsWeight(governors);
+    }
+
+    /**
+     * @dev Internal function to retrieve the chain type of the contract.
+     * @return chainType The chain type, indicating the type of the chain the contract operates on (e.g., Mainchain).
+     */
+    function _getChainType() internal pure override returns (ChainType) {
+        return ChainType.Mainchain;
+    }
+
+    function _proposalDomainSeparator() internal view override returns (bytes32) {
+        return DOMAIN_SEPARATOR;
+    }
 }

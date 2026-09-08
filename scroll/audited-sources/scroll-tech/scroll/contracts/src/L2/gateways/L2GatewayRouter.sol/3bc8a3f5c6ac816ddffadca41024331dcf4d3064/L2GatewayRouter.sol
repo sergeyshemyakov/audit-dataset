@@ -4,12 +4,12 @@ pragma solidity ^0.8.0;
 
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-import {IL2GatewayRouter} from "./IL2GatewayRouter.sol";
-import {IL2ETHGateway} from "./IL2ETHGateway.sol";
-import {IL2ERC20Gateway} from "./IL2ERC20Gateway.sol";
-import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
 import {IL1ETHGateway} from "../../L1/gateways/IL1ETHGateway.sol";
 import {IScrollGateway} from "../../libraries/gateway/IScrollGateway.sol";
+import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
+import {IL2ERC20Gateway} from "./IL2ERC20Gateway.sol";
+import {IL2ETHGateway} from "./IL2ETHGateway.sol";
+import {IL2GatewayRouter} from "./IL2GatewayRouter.sol";
 
 /// @title L2GatewayRouter
 /// @notice The `L2GatewayRouter` is the main entry for withdrawing Ether and ERC20 tokens.
@@ -17,9 +17,11 @@ import {IScrollGateway} from "../../libraries/gateway/IScrollGateway.sol";
 /// @dev One can also use this contract to query L1/L2 token address mapping.
 /// In the future, ERC-721 and ERC-1155 tokens will be added to the router too.
 contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L2ETHGateway.
     address public ethGateway;
@@ -31,10 +33,11 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
     // solhint-disable-next-line var-name-mixedcase
     mapping(address => address) public ERC20Gateway;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     function initialize(address _ethGateway, address _defaultERC20Gateway) external initializer {
         OwnableUpgradeable.__Ownable_init();
 
@@ -50,9 +53,11 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
         }
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function getL2ERC20Address(address) external pure override returns (address) {
@@ -79,37 +84,28 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
         return _gateway;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20(
-        address _token,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC20(address _token, uint256 _amount, uint256 _gasLimit) external payable override {
         withdrawERC20AndCall(_token, msg.sender, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20(
-        address _token,
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawERC20(address _token, address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         withdrawERC20AndCall(_token, _to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function withdrawERC20AndCall(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawERC20AndCall(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         address _gateway = getERC20Gateway(_token);
         require(_gateway != address(0), "no gateway available");
 
@@ -125,21 +121,16 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETH(
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function withdrawETH(address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         withdrawETHAndCall(_to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETHAndCall(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETHAndCall(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         address _gateway = ethGateway;
         require(_gateway != address(0), "eth gateway available");
 
@@ -150,30 +141,25 @@ contract L2GatewayRouter is OwnableUpgradeable, IL2GatewayRouter {
     }
 
     /// @inheritdoc IL2ETHGateway
-    function finalizeDepositETH(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeDepositETH(address, address, uint256, bytes calldata) external payable virtual override {
         revert("should never be called");
     }
 
     /// @inheritdoc IL2ERC20Gateway
-    function finalizeDepositERC20(
-        address,
-        address,
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeDepositERC20(address, address, address, address, uint256, bytes calldata)
+        external
+        payable
+        virtual
+        override
+    {
         revert("should never be called");
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of ETH gateway contract.
     /// @dev This function should only be called by contract owner.

@@ -2,18 +2,20 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import { ERC20Permit } from "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 
 // Libraries
-import { Preinstalls } from "src/libraries/Preinstalls.sol";
+import {Preinstalls} from "src/libraries/Preinstalls.sol";
 
 // Interfaces
-import { IERC165 } from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IOptimismMintableERC20 } from "interfaces/universal/IOptimismMintableERC20.sol";
-import { ILegacyMintableERC20 } from "interfaces/legacy/ILegacyMintableERC20.sol";
-import { AbstractFeeCurrency } from "src/celo/AbstractFeeCurrency.sol";
+import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+
+import {ILegacyMintableERC20} from "interfaces/legacy/ILegacyMintableERC20.sol";
+import {IOptimismMintableERC20} from "interfaces/universal/IOptimismMintableERC20.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
+
+import {AbstractFeeCurrency} from "src/celo/AbstractFeeCurrency.sol";
 
 /// @title OptimismMintableERC20
 /// @notice OptimismMintableERC20 is a standard extension of the base ERC20 token contract designed
@@ -63,13 +65,7 @@ contract OptimismMintableERC20 is ERC20Permit, ISemver, AbstractFeeCurrency {
     /// @param _remoteToken Address of the corresponding L1 token.
     /// @param _name        ERC20 name.
     /// @param _symbol      ERC20 symbol.
-    constructor(
-        address _bridge,
-        address _remoteToken,
-        string memory _name,
-        string memory _symbol,
-        uint8 _decimals
-    )
+    constructor(address _bridge, address _remoteToken, string memory _name, string memory _symbol, uint8 _decimals)
         ERC20(_name, _symbol)
         ERC20Permit(_name)
     {

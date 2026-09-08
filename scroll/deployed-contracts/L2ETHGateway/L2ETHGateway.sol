@@ -62,7 +62,7 @@ library AddressUpgradeable {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -94,11 +94,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -123,12 +122,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         (bool success, bytes memory returndata) = target.call{value: value}(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
@@ -150,11 +147,11 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.staticcall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -175,11 +172,10 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         (bool success, bytes memory returndata) = target.delegatecall(data);
         return verifyCallResultFromTarget(target, success, returndata, errorMessage);
     }
@@ -214,11 +210,11 @@ library AddressUpgradeable {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -496,11 +492,10 @@ abstract contract ReentrancyGuardUpgradeable is Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -606,9 +601,11 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
 }
 
 interface IScrollGateway {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
@@ -622,9 +619,11 @@ interface IScrollGateway {
     /// @dev Thrown when ScrollMessenger is not dropping message.
     error ErrorNotInDropMessageContext();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice The address of corresponding L1/L2 Gateway contract.
     function counterpart() external view returns (address);
@@ -637,9 +636,11 @@ interface IScrollGateway {
 }
 
 interface IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a cross domain message is sent.
     /// @param sender The address of the sender who initiates the message.
@@ -665,35 +666,36 @@ interface IScrollMessenger {
     /// @param messageHash The hash of the message.
     event FailedRelayedMessage(bytes32 indexed messageHash);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given address is `address(0)`.
     error ErrorZeroAddress();
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the sender of a cross domain message.
     function xDomainMessageSender() external view returns (address);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
     /// @param value The amount of ether passed when call target contract.
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit) external payable;
 
     /// @notice Send cross chain message from L1 to L2 or L2 to L1.
     /// @param target The address of account who receive the message.
@@ -701,13 +703,9 @@ interface IScrollMessenger {
     /// @param message The content of the message.
     /// @param gasLimit Gas limit required to complete the message relay on corresponding chain.
     /// @param refundAddress The address of account who will receive the refunded fee.
-    function sendMessage(
-        address target,
-        uint256 value,
-        bytes calldata message,
-        uint256 gasLimit,
-        address refundAddress
-    ) external payable;
+    function sendMessage(address target, uint256 value, bytes calldata message, uint256 gasLimit, address refundAddress)
+        external
+        payable;
 }
 
 library ScrollConstants {
@@ -726,9 +724,11 @@ interface IScrollGatewayCallback {
 /// @title ScrollGatewayBase
 /// @notice The `ScrollGatewayBase` is a base contract for gateway contracts used in both in L1 and L2.
 abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgradeable, IScrollGateway {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @inheritdoc IScrollGateway
     address public immutable override counterpart;
@@ -739,9 +739,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @inheritdoc IScrollGateway
     address public immutable override messenger;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The storage slot used as counterpart gateway contract, which is deprecated now.
     address private __counterpart;
@@ -758,10 +760,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
     /// @dev The storage slots for future usage.
     uint256[46] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier onlyCallByCounterpart() {
         // check caller is messenger
         if (_msgSender() != messenger) {
@@ -788,15 +791,12 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) {
+     *
+     */
+    constructor(address _counterpart, address _router, address _messenger) {
         if (_counterpart == address(0) || _messenger == address(0)) {
             revert ErrorZeroAddress();
         }
@@ -806,18 +806,16 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
         messenger = _messenger;
     }
 
-    function _initialize(
-        address,
-        address,
-        address
-    ) internal {
+    function _initialize(address, address, address) internal {
         ReentrancyGuardUpgradeable.__ReentrancyGuard_init();
         OwnableUpgradeable.__Ownable_init();
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to forward calldata to target contract.
     /// @param _to The address of contract to call.
@@ -830,9 +828,11 @@ abstract contract ScrollGatewayBase is ReentrancyGuardUpgradeable, OwnableUpgrad
 }
 
 interface IL2ETHGateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when someone withdraw ETH from L2 to L1.
     /// @param from The address of sender in L2.
@@ -848,9 +848,11 @@ interface IL2ETHGateway {
     /// @param data The optional calldata passed to recipient in L2.
     event FinalizeDepositETH(address indexed from, address indexed to, uint256 amount, bytes data);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Withdraw ETH to caller's account in L1.
     /// @param amount The amount of ETH to be withdrawn.
@@ -861,23 +863,14 @@ interface IL2ETHGateway {
     /// @param to The address of recipient's account on L1.
     /// @param amount The amount of ETH to be withdrawn.
     /// @param gasLimit Optional, gas limit used to complete the withdraw on L1.
-    function withdrawETH(
-        address to,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawETH(address to, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Withdraw ETH to caller's account in L1.
     /// @param to The address of recipient's account on L1.
     /// @param amount The amount of ETH to be withdrawn.
     /// @param data Optional data to forward to recipient's account.
     /// @param gasLimit Optional, gas limit used to complete the withdraw on L1.
-    function withdrawETHAndCall(
-        address to,
-        uint256 amount,
-        bytes calldata data,
-        uint256 gasLimit
-    ) external payable;
+    function withdrawETHAndCall(address to, uint256 amount, bytes calldata data, uint256 gasLimit) external payable;
 
     /// @notice Complete ETH deposit from L1 to L2 and send fund to recipient's account in L2.
     /// @dev This function should only be called by L2ScrollMessenger.
@@ -886,18 +879,15 @@ interface IL2ETHGateway {
     /// @param _to The address of recipient in L2 to receive ETH.
     /// @param _amount The amount of ETH to deposit.
     /// @param _data Optional data to forward to recipient's account.
-    function finalizeDepositETH(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _data
-    ) external payable;
+    function finalizeDepositETH(address _from, address _to, uint256 _amount, bytes calldata _data) external payable;
 }
 
 interface IL1ETHGateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when ETH is withdrawn from L2 to L1 and transfer to recipient.
     /// @param from The address of sender in L2.
@@ -918,9 +908,11 @@ interface IL1ETHGateway {
     /// @param amount The amount of ETH refunded to receiver.
     event RefundETH(address indexed recipient, uint256 amount);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Deposit ETH to caller's account in L2.
     /// @param amount The amount of ETH to be deposited.
@@ -931,23 +923,14 @@ interface IL1ETHGateway {
     /// @param to The address of recipient's account on L2.
     /// @param amount The amount of ETH to be deposited.
     /// @param gasLimit Gas limit required to complete the deposit on L2.
-    function depositETH(
-        address to,
-        uint256 amount,
-        uint256 gasLimit
-    ) external payable;
+    function depositETH(address to, uint256 amount, uint256 gasLimit) external payable;
 
     /// @notice Deposit ETH to some recipient's account in L2 and call the target contract.
     /// @param to The address of recipient's account on L2.
     /// @param amount The amount of ETH to be deposited.
     /// @param data Optional data to forward to recipient's account.
     /// @param gasLimit Gas limit required to complete the deposit on L2.
-    function depositETHAndCall(
-        address to,
-        uint256 amount,
-        bytes calldata data,
-        uint256 gasLimit
-    ) external payable;
+    function depositETHAndCall(address to, uint256 amount, bytes calldata data, uint256 gasLimit) external payable;
 
     /// @notice Complete ETH withdraw from L2 to L1 and send fund to recipient's account in L1.
     /// @dev This function should only be called by L1ScrollMessenger.
@@ -956,27 +939,26 @@ interface IL1ETHGateway {
     /// @param to The address of recipient in L1 to receive ETH.
     /// @param amount The amount of ETH to withdraw.
     /// @param data Optional data to forward to recipient's account.
-    function finalizeWithdrawETH(
-        address from,
-        address to,
-        uint256 amount,
-        bytes calldata data
-    ) external payable;
+    function finalizeWithdrawETH(address from, address to, uint256 amount, bytes calldata data) external payable;
 }
 
 interface IL2ScrollMessenger is IScrollMessenger {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the maximum number of times each message can fail in L2 is updated.
     /// @param oldMaxFailedExecutionTimes The old maximum number of times each message can fail in L2.
     /// @param newMaxFailedExecutionTimes The new maximum number of times each message can fail in L2.
     event UpdateMaxFailedExecutionTimes(uint256 oldMaxFailedExecutionTimes, uint256 newMaxFailedExecutionTimes);
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice execute L1 => L2 message
     /// @dev Make sure this is only called by privileged accounts.
@@ -985,13 +967,7 @@ interface IL2ScrollMessenger is IScrollMessenger {
     /// @param value The msg.value passed to the message call.
     /// @param nonce The nonce of the message to avoid replay attack.
     /// @param message The content of the message.
-    function relayMessage(
-        address from,
-        address to,
-        uint256 value,
-        uint256 nonce,
-        bytes calldata message
-    ) external;
+    function relayMessage(address from, address to, uint256 value, uint256 nonce, bytes calldata message) external;
 }
 
 /// @title L2ETHGateway
@@ -1000,21 +976,23 @@ interface IL2ScrollMessenger is IScrollMessenger {
 /// @dev The ETH are not held in the gateway. The ETH will be sent to the `L2ScrollMessenger` contract.
 /// On finalizing deposit, the Ether will be transfered from `L2ScrollMessenger`, then transfer to recipient.
 contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `L2ETHGateway` implementation contract.
     ///
     /// @param _counterpart The address of `L1ETHGateway` contract in L1.
     /// @param _router The address of `L1GatewayRouter` contract.
     /// @param _messenger The address of `L1ScrollMessenger` contract.
-    constructor(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) ScrollGatewayBase(_counterpart, _router, _messenger) {
-        if (_router == address(0)) revert ErrorZeroAddress();
+    constructor(address _counterpart, address _router, address _messenger)
+        ScrollGatewayBase(_counterpart, _router, _messenger)
+    {
+        if (_router == address(0)) {
+            revert ErrorZeroAddress();
+        }
 
         _disableInitializers();
     }
@@ -1026,17 +1004,15 @@ contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
     /// @param _counterpart The address of L1ETHGateway in L1.
     /// @param _router The address of L2GatewayRouter in L2.
     /// @param _messenger The address of L2ScrollMessenger in L2.
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) external initializer {
+    function initialize(address _counterpart, address _router, address _messenger) external initializer {
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ETHGateway
     function withdrawETH(uint256 _amount, uint256 _gasLimit) external payable override {
@@ -1044,35 +1020,31 @@ contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETH(
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETH(address _to, uint256 _amount, uint256 _gasLimit) public payable override {
         _withdraw(_to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function withdrawETHAndCall(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function withdrawETHAndCall(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         _withdraw(_to, _amount, _data, _gasLimit);
     }
 
     /// @inheritdoc IL2ETHGateway
-    function finalizeDepositETH(
-        address _from,
-        address _to,
-        uint256 _amount,
-        bytes calldata _data
-    ) external payable override onlyCallByCounterpart nonReentrant {
+    function finalizeDepositETH(address _from, address _to, uint256 _amount, bytes calldata _data)
+        external
+        payable
+        override
+        onlyCallByCounterpart
+        nonReentrant
+    {
         require(msg.value == _amount, "msg.value mismatch");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool _success, ) = _to.call{value: _amount}("");
+        (bool _success,) = _to.call{value: _amount}("");
         require(_success, "ETH transfer failed");
 
         _doCallback(_to, _data);
@@ -1080,21 +1052,22 @@ contract L2ETHGateway is ScrollGatewayBase, IL2ETHGateway {
         emit FinalizeDepositETH(_from, _to, _amount, _data);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev The internal ETH withdraw implementation.
     /// @param _to The address of recipient's account on L1.
     /// @param _amount The amount of ETH to be withdrawn.
     /// @param _data Optional data to forward to recipient's account.
     /// @param _gasLimit Optional gas limit to complete the deposit on L1.
-    function _withdraw(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual nonReentrant {
+    function _withdraw(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        nonReentrant
+    {
         require(msg.value > 0, "withdraw zero eth");
 
         // 1. Extract real sender if this call is from L1GatewayRouter.

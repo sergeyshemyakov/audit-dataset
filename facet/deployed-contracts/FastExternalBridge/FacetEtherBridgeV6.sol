@@ -40,11 +40,7 @@ library LibRLP {
     /// `address(uint160(uint256(keccak256(LibRLP.p(deployer).p(nonce).encode()))))`.
     ///
     /// Note: The returned result has dirty upper 96 bits. Please clean if used in assembly.
-    function computeAddress(address deployer, uint256 nonce)
-        internal
-        pure
-        returns (address deployed)
-    {
+    function computeAddress(address deployer, uint256 nonce) internal pure returns (address deployed) {
         /// @solidity memory-safe-assembly
         assembly {
             for {} 1 {} {
@@ -394,31 +390,12 @@ library LibFacet {
     bytes32 constant facetEventSignature = 0x00000000000000000000000000000000000000000000000000000000000face7;
     uint8 constant facetTxType = 0x46;
 
-    function sendFacetTransaction(
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: bytes(''),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: bytes(""), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
-    function sendFacetTransaction(
-        address to,
-        uint256 gasLimit,
-        bytes memory data
-    ) internal {
-        sendFacetTransaction({
-            to: abi.encodePacked(to),
-            value: 0,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: bytes('')
-        });
+    function sendFacetTransaction(address to, uint256 gasLimit, bytes memory data) internal {
+        sendFacetTransaction({to: abi.encodePacked(to), value: 0, gasLimit: gasLimit, data: data, mineBoost: bytes("")});
     }
 
     function prepareFacetTransaction(
@@ -474,13 +451,8 @@ library LibFacet {
         bytes memory data,
         bytes memory mineBoost
     ) internal {
-        bytes memory payload = prepareFacetTransaction({
-            to: to,
-            value: value,
-            gasLimit: gasLimit,
-            data: data,
-            mineBoost: mineBoost
-        });
+        bytes memory payload =
+            prepareFacetTransaction({to: to, value: value, gasLimit: gasLimit, data: data, mineBoost: mineBoost});
 
         assembly {
             log1(add(payload, 32), mload(payload), facetEventSignature)
@@ -499,13 +471,11 @@ library ERC1967FactoryConstants {
         hex"6080604052600436106100b15760003560e01c8063545e7c611161006957806399a88ec41161004e57806399a88ec41461019d578063a97b90d5146101b0578063db4c545e146101c357600080fd5b8063545e7c61146101775780639623609d1461018a57600080fd5b80633729f9221161009a5780633729f922146101315780634314f120146101445780635414dff01461015757600080fd5b80631acfd02a146100b65780632abbef15146100d8575b600080fd5b3480156100c257600080fd5b506100d66100d1366004610604565b6101e6565b005b3480156100e457600080fd5b506101076100f3366004610637565b30600c908152600091909152602090205490565b60405173ffffffffffffffffffffffffffffffffffffffff90911681526020015b60405180910390f35b61010761013f366004610652565b610237565b6101076101523660046106d7565b61024e565b34801561016357600080fd5b50610107610172366004610738565b610267565b610107610185366004610604565b61029a565b6100d66101983660046106d7565b6102af565b6100d66101ab366004610604565b61035f565b6101076101be366004610751565b610370565b3480156101cf57600080fd5b506101d86103a9565b604051908152602001610128565b30600c52816000526020600c2033815414610209576382b429006000526004601cfd5b81905580827f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f600080a35050565b60006102468484843685610370565b949350505050565b600061025e8585838087876103c2565b95945050505050565b6000806102726103a9565b905060ff600053806035523060601b6001528260155260556000209150600060355250919050565b60006102a88383368461024e565b9392505050565b30600c5283600052336020600c2054146102d1576382b429006000526004601cfd5b6040518381527f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc602082015281836040830137600080836040018334895af1610331573d610327576355299b496000526004601cfd5b3d6000803e3d6000fd5b5082847f5d611f318680d00598bb735d61bacf0c514c6b50e1e5ad30040a4df2b12791c7600080a350505050565b61036c82823660006102af565b5050565b60008360601c33148460601c151761039057632f6348366000526004601cfd5b61039f868686600187876103c2565b9695505050505050565b6000806103b461049c565b608960139091012092915050565b6000806103cd61049c565b90508480156103e757866089601384016000f592506103f3565b6089601383016000f092505b50816104075763301164256000526004601cfd5b8781527f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc602082015282846040830137600080846040018334865af161045a573d6103275763301164256000526004601cfd5b30600c5281600052866020600c20558688837fc95935a66d15e0da5e412aca0ad27ae891d20b2fb91cf3994b6a3bf2b8178082600080a4509695505050505050565b6040513060701c801561054257666052573d6000fd607b8301527f3d356020355560408036111560525736038060403d373d3d355af43d6000803e60748301527f3735a920a3ca505d382bbc545af43d6000803e6052573d6000fd5b3d6000f35b60548301527f14605757363d3d37363d7f360894a13ba1a3210667c828492db98dca3e2076cc60348301523060148301526c607f3d8160093d39f33d3d337382525090565b66604c573d6000fd60758301527f3d3560203555604080361115604c5736038060403d373d3d355af43d6000803e606e8301527f3735a920a3ca505d382bbc545af43d6000803e604c573d6000fd5b3d6000f35b604e8301527f14605157363d3d37363d7f360894a13ba1a3210667c828492db98dca3e2076cc602e83015230600e8301526c60793d8160093d39f33d3d336d82525090565b803573ffffffffffffffffffffffffffffffffffffffff811681146105ff57600080fd5b919050565b6000806040838503121561061757600080fd5b610620836105db565b915061062e602084016105db565b90509250929050565b60006020828403121561064957600080fd5b6102a8826105db565b60008060006060848603121561066757600080fd5b610670846105db565b925061067e602085016105db565b9150604084013590509250925092565b60008083601f8401126106a057600080fd5b50813567ffffffffffffffff8111156106b857600080fd5b6020830191508360208285010111156106d057600080fd5b9250929050565b600080600080606085870312156106ed57600080fd5b6106f6856105db565b9350610704602086016105db565b9250604085013567ffffffffffffffff81111561072057600080fd5b61072c8782880161068e565b95989497509550505050565b60006020828403121561074a57600080fd5b5035919050565b60008060008060006080868803121561076957600080fd5b610772866105db565b9450610780602087016105db565b935060408601359250606086013567ffffffffffffffff8111156107a357600080fd5b6107af8882890161068e565b96999598509396509294939250505056fea26469706673582212200ac7c3ccbc2d311c48bf5465b021542e0e306fe3c462c060ba6a3d2f81ff6c5f64736f6c63430008130033";
 
     /// @dev The initialization code used to deploy the canonical ERC1967Factory.
-    bytes internal constant INITCODE = abi.encodePacked(
-        hex"608060405234801561001057600080fd5b506107f6806100206000396000f3fe", BYTECODE
-    );
+    bytes internal constant INITCODE =
+        abi.encodePacked(hex"608060405234801561001057600080fd5b506107f6806100206000396000f3fe", BYTECODE);
 
     /// @dev For deterministic deployment via 0age's ImmutableCreate2Factory.
-    bytes32 internal constant SALT =
-        0x0000000000000000000000000000000000000000e75e4f228818c80007508f33;
+    bytes32 internal constant SALT = 0x0000000000000000000000000000000000000000e75e4f228818c80007508f33;
 }
 
 library ECDSA {
@@ -517,8 +487,7 @@ library ECDSA {
     uint256 internal constant N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141;
 
     /// @dev `N/2 + 1`. Used for checking the malleability of the signature.
-    uint256 private constant _HALF_N_PLUS_1 =
-        0x7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a1;
+    uint256 private constant _HALF_N_PLUS_1 = 0x7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a1;
 
     /*´:°•.°+.*•´.*:˚.°*.˚•´.°:°•.°•.*•´.*:˚.°*.˚•´.°:°•.°+.*•´.*:*/
     /*                        CUSTOM ERRORS                       */
@@ -562,11 +531,7 @@ library ECDSA {
     }
 
     /// @dev Recovers the signer's address from a message digest `hash`, and the `signature`.
-    function recoverCalldata(bytes32 hash, bytes calldata signature)
-        internal
-        view
-        returns (address result)
-    {
+    function recoverCalldata(bytes32 hash, bytes calldata signature) internal view returns (address result) {
         /// @solidity memory-safe-assembly
         assembly {
             for { let m := mload(0x40) } 1 {
@@ -618,11 +583,7 @@ library ECDSA {
 
     /// @dev Recovers the signer's address from a message digest `hash`,
     /// and the signature defined by `v`, `r`, `s`.
-    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
-        internal
-        view
-        returns (address result)
-    {
+    function recover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal view returns (address result) {
         /// @solidity memory-safe-assembly
         assembly {
             let m := mload(0x40) // Cache the free memory pointer.
@@ -652,11 +613,7 @@ library ECDSA {
     // a zero address (e.g. an uninitialized address variable).
 
     /// @dev Recovers the signer's address from a message digest `hash`, and the `signature`.
-    function tryRecover(bytes32 hash, bytes memory signature)
-        internal
-        view
-        returns (address result)
-    {
+    function tryRecover(bytes32 hash, bytes memory signature) internal view returns (address result) {
         /// @solidity memory-safe-assembly
         assembly {
             for { let m := mload(0x40) } 1 {} {
@@ -684,11 +641,7 @@ library ECDSA {
     }
 
     /// @dev Recovers the signer's address from a message digest `hash`, and the `signature`.
-    function tryRecoverCalldata(bytes32 hash, bytes calldata signature)
-        internal
-        view
-        returns (address result)
-    {
+    function tryRecoverCalldata(bytes32 hash, bytes calldata signature) internal view returns (address result) {
         /// @solidity memory-safe-assembly
         assembly {
             for { let m := mload(0x40) } 1 {} {
@@ -717,11 +670,7 @@ library ECDSA {
 
     /// @dev Recovers the signer's address from a message digest `hash`,
     /// and the EIP-2098 short form signature defined by `r` and `vs`.
-    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs)
-        internal
-        view
-        returns (address result)
-    {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs) internal view returns (address result) {
         /// @solidity memory-safe-assembly
         assembly {
             let m := mload(0x40) // Cache the free memory pointer.
@@ -739,11 +688,7 @@ library ECDSA {
 
     /// @dev Recovers the signer's address from a message digest `hash`,
     /// and the signature defined by `v`, `r`, `s`.
-    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
-        internal
-        view
-        returns (address result)
-    {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) internal view returns (address result) {
         /// @solidity memory-safe-assembly
         assembly {
             let m := mload(0x40) // Cache the free memory pointer.
@@ -849,11 +794,7 @@ library ECDSA {
     }
 
     /// @dev Returns the canonical hash of `signature`.
-    function canonicalHashCalldata(bytes calldata signature)
-        internal
-        pure
-        returns (bytes32 result)
-    {
+    function canonicalHashCalldata(bytes calldata signature) internal pure returns (bytes32 result) {
         // @solidity memory-safe-assembly
         assembly {
             for {} 1 {} {
@@ -964,8 +905,7 @@ library SafeTransferLib {
     uint256 internal constant GAS_STIPEND_NO_GRIEF = 100000;
 
     /// @dev The unique EIP-712 domain domain separator for the DAI token contract.
-    bytes32 internal constant DAI_DOMAIN_SEPARATOR =
-        0xdbb8cf42e1ecb028be3f3dbc922e1d878b963f411dc388ced501601c60f7c6f7;
+    bytes32 internal constant DAI_DOMAIN_SEPARATOR = 0xdbb8cf42e1ecb028be3f3dbc922e1d878b963f411dc388ced501601c60f7c6f7;
 
     /// @dev The address for the WETH9 contract on Ethereum mainnet.
     address internal constant WETH9 = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -1083,10 +1023,7 @@ library SafeTransferLib {
     }
 
     /// @dev Sends `amount` (in wei) ETH to `to`, with a `gasStipend`.
-    function trySafeTransferETH(address to, uint256 amount, uint256 gasStipend)
-        internal
-        returns (bool success)
-    {
+    function trySafeTransferETH(address to, uint256 amount, uint256 gasStipend) internal returns (bool success) {
         /// @solidity memory-safe-assembly
         assembly {
             success := call(gasStipend, to, amount, codesize(), 0x00, codesize(), 0x00)
@@ -1094,10 +1031,7 @@ library SafeTransferLib {
     }
 
     /// @dev Sends all the ETH in the current contract to `to`, with a `gasStipend`.
-    function trySafeTransferAllETH(address to, uint256 gasStipend)
-        internal
-        returns (bool success)
-    {
+    function trySafeTransferAllETH(address to, uint256 gasStipend) internal returns (bool success) {
         /// @solidity memory-safe-assembly
         assembly {
             success := call(gasStipend, to, selfbalance(), codesize(), 0x00, codesize(), 0x00)
@@ -1160,10 +1094,7 @@ library SafeTransferLib {
     /// Reverts upon failure.
     ///
     /// The `from` account must have their entire balance approved for the current contract to manage.
-    function safeTransferAllFrom(address token, address from, address to)
-        internal
-        returns (uint256 amount)
-    {
+    function safeTransferAllFrom(address token, address from, address to) internal returns (uint256 amount) {
         /// @solidity memory-safe-assembly
         assembly {
             let m := mload(0x40) // Cache the free memory pointer.
@@ -1323,9 +1254,7 @@ library SafeTransferLib {
         /// @solidity memory-safe-assembly
         assembly {
             mstore(0x00, 0x18160ddd) // `totalSupply()`.
-            if iszero(
-                and(gt(returndatasize(), 0x1f), staticcall(gas(), token, 0x1c, 0x04, 0x00, 0x20))
-            ) {
+            if iszero(and(gt(returndatasize(), 0x1f), staticcall(gas(), token, 0x1c, 0x04, 0x00, 0x20))) {
                 mstore(0x00, 0x54cd9435) // `TotalSupplyQueryFailed()`.
                 revert(0x1c, 0x04)
             }
@@ -1346,9 +1275,7 @@ library SafeTransferLib {
 
     /// @dev Sends `amount` of ERC20 `token` from `from` to `to` via Permit2.
     /// Reverts upon failure.
-    function permit2TransferFrom(address token, address from, address to, uint256 amount)
-        internal
-    {
+    function permit2TransferFrom(address token, address from, address to, uint256 amount) internal {
         /// @solidity memory-safe-assembly
         assembly {
             let m := mload(0x40)
@@ -1426,7 +1353,9 @@ library SafeTransferLib {
                 break
             }
         }
-        if (!success) simplePermit2(token, owner, spender, amount, deadline, v, r, s);
+        if (!success) {
+            simplePermit2(token, owner, spender, amount, deadline, v, r, s);
+        }
     }
 
     /// @dev Simple permit on the Permit2 contract.
@@ -1670,11 +1599,7 @@ library LibBytes {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from left to right, starting from `from`.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function indexOf(bytes memory subject, bytes memory needle, uint256 from)
-        internal
-        pure
-        returns (uint256 result)
-    {
+    function indexOf(bytes memory subject, bytes memory needle, uint256 from) internal pure returns (uint256 result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := not(0) // Initialize to `NOT_FOUND`.
@@ -1768,11 +1693,7 @@ library LibBytes {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from right to left.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function lastIndexOf(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (uint256)
-    {
+    function lastIndexOf(bytes memory subject, bytes memory needle) internal pure returns (uint256) {
         return lastIndexOf(subject, needle, type(uint256).max);
     }
 
@@ -1782,11 +1703,7 @@ library LibBytes {
     }
 
     /// @dev Returns whether `subject` starts with `needle`.
-    function startsWith(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (bool result)
-    {
+    function startsWith(bytes memory subject, bytes memory needle) internal pure returns (bool result) {
         /// @solidity memory-safe-assembly
         assembly {
             let n := mload(needle)
@@ -1797,11 +1714,7 @@ library LibBytes {
     }
 
     /// @dev Returns whether `subject` ends with `needle`.
-    function endsWith(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (bool result)
-    {
+    function endsWith(bytes memory subject, bytes memory needle) internal pure returns (bool result) {
         /// @solidity memory-safe-assembly
         assembly {
             let n := mload(needle)
@@ -1814,11 +1727,7 @@ library LibBytes {
     }
 
     /// @dev Returns `subject` repeated `times`.
-    function repeat(bytes memory subject, uint256 times)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function repeat(bytes memory subject, uint256 times) internal pure returns (bytes memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let l := mload(subject) // Subject length.
@@ -1846,11 +1755,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject` sliced from `start` to `end` (exclusive).
     /// `start` and `end` are byte offsets.
-    function slice(bytes memory subject, uint256 start, uint256 end)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function slice(bytes memory subject, uint256 start, uint256 end) internal pure returns (bytes memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let l := mload(subject) // Subject length.
@@ -1877,11 +1782,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject` sliced from `start` to the end of the bytes.
     /// `start` is a byte offset.
-    function slice(bytes memory subject, uint256 start)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function slice(bytes memory subject, uint256 start) internal pure returns (bytes memory result) {
         result = slice(subject, start, type(uint256).max);
     }
 
@@ -1903,11 +1804,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject` sliced from `start` to the end of the bytes.
     /// `start` is a byte offset. Faster than Solidity's native slicing.
-    function sliceCalldata(bytes calldata subject, uint256 start)
-        internal
-        pure
-        returns (bytes calldata result)
-    {
+    function sliceCalldata(bytes calldata subject, uint256 start) internal pure returns (bytes calldata result) {
         /// @solidity memory-safe-assembly
         assembly {
             start := xor(start, mul(xor(start, subject.length), lt(subject.length, start)))
@@ -1918,11 +1815,7 @@ library LibBytes {
 
     /// @dev Reduces the size of `subject` to `n`.
     /// If `n` is greater than the size of `subject`, this will be a no-op.
-    function truncate(bytes memory subject, uint256 n)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function truncate(bytes memory subject, uint256 n) internal pure returns (bytes memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := subject
@@ -1932,11 +1825,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject`, with the length reduced to `n`.
     /// If `n` is greater than the size of `subject`, this will be a no-op.
-    function truncatedCalldata(bytes calldata subject, uint256 n)
-        internal
-        pure
-        returns (bytes calldata result)
-    {
+    function truncatedCalldata(bytes calldata subject, uint256 n) internal pure returns (bytes calldata result) {
         /// @solidity memory-safe-assembly
         assembly {
             result.offset := subject.offset
@@ -1946,11 +1835,7 @@ library LibBytes {
 
     /// @dev Returns all the indices of `needle` in `subject`.
     /// The indices are byte offsets.
-    function indicesOf(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (uint256[] memory result)
-    {
+    function indicesOf(bytes memory subject, bytes memory needle) internal pure returns (uint256[] memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let searchLen := mload(needle)
@@ -1993,11 +1878,7 @@ library LibBytes {
     }
 
     /// @dev Returns a arrays of bytess based on the `delimiter` inside of the `subject` bytes.
-    function split(bytes memory subject, bytes memory delimiter)
-        internal
-        pure
-        returns (bytes[] memory result)
-    {
+    function split(bytes memory subject, bytes memory delimiter) internal pure returns (bytes[] memory result) {
         uint256[] memory indices = indicesOf(subject, delimiter);
         /// @solidity memory-safe-assembly
         assembly {
@@ -2155,11 +2036,7 @@ library LibBytes {
 
     /// @dev Returns the word at `offset`, without any bounds checks.
     /// To load an address, you can use `address(bytes20(loadCalldata(a, offset)))`.
-    function loadCalldata(bytes calldata a, uint256 offset)
-        internal
-        pure
-        returns (bytes32 result)
-    {
+    function loadCalldata(bytes calldata a, uint256 offset) internal pure returns (bytes32 result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := calldataload(add(a.offset, offset))
@@ -2272,11 +2149,7 @@ library LibString {
     }
 
     /// @dev Helper to cast `$` to a `BytesStorage`.
-    function bytesStorage(StringStorage storage $)
-        internal
-        pure
-        returns (LibBytes.BytesStorage storage casted)
-    {
+    function bytesStorage(StringStorage storage $) internal pure returns (LibBytes.BytesStorage storage casted) {
         /// @solidity memory-safe-assembly
         assembly {
             casted.slot := $.slot
@@ -2319,7 +2192,9 @@ library LibString {
 
     /// @dev Returns the base 10 decimal representation of `value`.
     function toString(int256 value) internal pure returns (string memory result) {
-        if (value >= 0) return toString(uint256(value));
+        if (value >= 0) {
+            return toString(uint256(value));
+        }
         unchecked {
             result = toString(~uint256(value) + 1);
         }
@@ -2343,11 +2218,7 @@ library LibString {
     /// The output is prefixed with "0x" encoded using 2 hexadecimal digits per byte,
     /// giving a total length of `byteCount * 2 + 2` bytes.
     /// Reverts if `byteCount` is too small for the output to contain all the digits.
-    function toHexString(uint256 value, uint256 byteCount)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toHexString(uint256 value, uint256 byteCount) internal pure returns (string memory result) {
         result = toHexStringNoPrefix(value, byteCount);
         /// @solidity memory-safe-assembly
         assembly {
@@ -2363,11 +2234,7 @@ library LibString {
     /// The output is not prefixed with "0x" and is encoded using 2 hexadecimal digits per byte,
     /// giving a total length of `byteCount * 2` bytes.
     /// Reverts if `byteCount` is too small for the output to contain all the digits.
-    function toHexStringNoPrefix(uint256 value, uint256 byteCount)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toHexStringNoPrefix(uint256 value, uint256 byteCount) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             // We need 0x20 bytes for the trailing zeros padding, `byteCount * 2` bytes
@@ -2438,11 +2305,7 @@ library LibString {
     /// @dev Returns the hexadecimal representation of `value`.
     /// The output excludes leading "0" from the `toHexStringNoPrefix` output.
     /// `0x00: "0", 0x01: "1", 0x12: "12", 0x123: "123"`.
-    function toMinimalHexStringNoPrefix(uint256 value)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toMinimalHexStringNoPrefix(uint256 value) internal pure returns (string memory result) {
         result = toHexStringNoPrefix(value);
         /// @solidity memory-safe-assembly
         assembly {
@@ -2697,11 +2560,7 @@ library LibString {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from left to right, starting from `from`.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function indexOf(string memory subject, string memory needle, uint256 from)
-        internal
-        pure
-        returns (uint256)
-    {
+    function indexOf(string memory subject, string memory needle, uint256 from) internal pure returns (uint256) {
         return LibBytes.indexOf(bytes(subject), bytes(needle), from);
     }
 
@@ -2715,22 +2574,14 @@ library LibString {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from right to left, starting from `from`.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function lastIndexOf(string memory subject, string memory needle, uint256 from)
-        internal
-        pure
-        returns (uint256)
-    {
+    function lastIndexOf(string memory subject, string memory needle, uint256 from) internal pure returns (uint256) {
         return LibBytes.lastIndexOf(bytes(subject), bytes(needle), from);
     }
 
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from right to left.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function lastIndexOf(string memory subject, string memory needle)
-        internal
-        pure
-        returns (uint256)
-    {
+    function lastIndexOf(string memory subject, string memory needle) internal pure returns (uint256) {
         return LibBytes.lastIndexOf(bytes(subject), bytes(needle), type(uint256).max);
     }
 
@@ -2756,11 +2607,7 @@ library LibString {
 
     /// @dev Returns a copy of `subject` sliced from `start` to `end` (exclusive).
     /// `start` and `end` are byte offsets.
-    function slice(string memory subject, uint256 start, uint256 end)
-        internal
-        pure
-        returns (string memory)
-    {
+    function slice(string memory subject, uint256 start, uint256 end) internal pure returns (string memory) {
         return string(LibBytes.slice(bytes(subject), start, end));
     }
 
@@ -2772,20 +2619,12 @@ library LibString {
 
     /// @dev Returns all the indices of `needle` in `subject`.
     /// The indices are byte offsets.
-    function indicesOf(string memory subject, string memory needle)
-        internal
-        pure
-        returns (uint256[] memory)
-    {
+    function indicesOf(string memory subject, string memory needle) internal pure returns (uint256[] memory) {
         return LibBytes.indicesOf(bytes(subject), bytes(needle));
     }
 
     /// @dev Returns a arrays of strings based on the `delimiter` inside of the `subject` string.
-    function split(string memory subject, string memory delimiter)
-        internal
-        pure
-        returns (string[] memory result)
-    {
+    function split(string memory subject, string memory delimiter) internal pure returns (string[] memory result) {
         bytes[] memory a = LibBytes.split(bytes(subject), bytes(delimiter));
         /// @solidity memory-safe-assembly
         assembly {
@@ -2801,11 +2640,7 @@ library LibString {
 
     /// @dev Returns a copy of the string in either lowercase or UPPERCASE.
     /// WARNING! This function is only compatible with 7-bit ASCII strings.
-    function toCase(string memory subject, bool toUpper)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toCase(string memory subject, bool toUpper) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let n := mload(subject)
@@ -2913,11 +2748,7 @@ library LibString {
 
     /// @dev Escapes the string to be used within double-quotes in a JSON.
     /// If `addDoubleQuotes` is true, the result will be enclosed in double-quotes.
-    function escapeJSON(string memory s, bool addDoubleQuotes)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function escapeJSON(string memory s, bool addDoubleQuotes) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := mload(0x40)
@@ -3088,11 +2919,7 @@ library LibString {
     /// @dev Unpacks strings packed using {packTwo}.
     /// Returns the empty strings if `packed` is `bytes32(0)`.
     /// If `packed` is not an output of {packTwo}, the output behavior is undefined.
-    function unpackTwo(bytes32 packed)
-        internal
-        pure
-        returns (string memory resultA, string memory resultB)
-    {
+    function unpackTwo(bytes32 packed) internal pure returns (string memory resultA, string memory resultB) {
         /// @solidity memory-safe-assembly
         assembly {
             resultA := mload(0x40) // Grab the free memory pointer.
@@ -3159,8 +2986,7 @@ abstract contract Initializable {
     /// Bits Layout:
     /// - [0]     `initializing`
     /// - [1..64] `initializedVersion`
-    bytes32 private constant _INITIALIZABLE_SLOT =
-        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffbf601132;
+    bytes32 private constant _INITIALIZABLE_SLOT = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffbf601132;
 
     /*´:°•.°+.*•´.*:˚.°*.˚•´.°:°•.°•.*•´.*:˚.°*.˚•´.°:°•.°+.*•´.*:*/
     /*                         OPERATIONS                         */
@@ -3313,8 +3139,7 @@ abstract contract EIP712 {
     /*.•°:°.´+˚.*°.˚:*.´•*.+°.•°:´*.´•*.•°.•°:°.´:•˚°.*°.˚:*.´+°.•*/
 
     /// @dev `keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)")`.
-    bytes32 internal constant _DOMAIN_TYPEHASH =
-        0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f;
+    bytes32 internal constant _DOMAIN_TYPEHASH = 0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f;
 
     uint256 private immutable _cachedThis;
     uint256 private immutable _cachedChainId;
@@ -3336,10 +3161,11 @@ abstract contract EIP712 {
 
         string memory name;
         string memory version;
-        if (!_domainNameAndVersionMayChange()) (name, version) = _domainNameAndVersion();
+        if (!_domainNameAndVersionMayChange()) {
+            (name, version) = _domainNameAndVersion();
+        }
         bytes32 nameHash = _domainNameAndVersionMayChange() ? bytes32(0) : keccak256(bytes(name));
-        bytes32 versionHash =
-            _domainNameAndVersionMayChange() ? bytes32(0) : keccak256(bytes(version));
+        bytes32 versionHash = _domainNameAndVersionMayChange() ? bytes32(0) : keccak256(bytes(version));
         _cachedNameHash = nameHash;
         _cachedVersionHash = versionHash;
 
@@ -3378,11 +3204,7 @@ abstract contract EIP712 {
     ///
     /// Note: If the returned result may change after the contract has been deployed,
     /// you must override `_domainNameAndVersionMayChange()` to return true.
-    function _domainNameAndVersion()
-        internal
-        view
-        virtual
-        returns (string memory name, string memory version);
+    function _domainNameAndVersion() internal view virtual returns (string memory name, string memory version);
 
     /// @dev Returns if `_domainNameAndVersion()` may change
     /// after the contract has been deployed (i.e. after the constructor).
@@ -3399,7 +3221,9 @@ abstract contract EIP712 {
             separator = _buildDomainSeparator();
         } else {
             separator = _cachedDomainSeparator;
-            if (_cachedDomainSeparatorInvalidated()) separator = _buildDomainSeparator();
+            if (_cachedDomainSeparatorInvalidated()) {
+                separator = _buildDomainSeparator();
+            }
         }
     }
 
@@ -3422,7 +3246,9 @@ abstract contract EIP712 {
             digest = _buildDomainSeparator();
         } else {
             digest = _cachedDomainSeparator;
-            if (_cachedDomainSeparatorInvalidated()) digest = _buildDomainSeparator();
+            if (_cachedDomainSeparatorInvalidated()) {
+                digest = _buildDomainSeparator();
+            }
         }
         /// @solidity memory-safe-assembly
         assembly {
@@ -3520,7 +3346,7 @@ contract FacetEtherBridgeV6 is EIP712, Initializable {
         uint256 blockNumber;
         bytes signature;
     }
-    
+
     struct BridgeStorage {
         mapping(bytes32 => bool) processedWithdraws;
         bool ___depositEnabled;
@@ -3531,30 +3357,30 @@ contract FacetEtherBridgeV6 is EIP712, Initializable {
         uint256 ___cancelBlockNumber;
         uint256 ___withdrawDelay;
     }
-    
+
     function s() internal pure returns (BridgeStorage storage cs) {
         bytes32 position = keccak256("BridgeStorage.contract.storage.v1");
         assembly {
-           cs.slot := position
+            cs.slot := position
         }
     }
-    
+
     modifier onlyAdmin() {
         require(msg.sender == s().adminAddress, "Not admin");
         _;
     }
-    
+
     constructor() {
         _disableInitializers();
     }
-    
+
     function initialize() external initializer {
         require(msg.sender == ERC1967FactoryConstants.ADDRESS, "Not factory");
         require(s().adminAddress == address(0), "Already initialized");
-    
+
         s().adminAddress = 0xb2B01DeCb6cd36E7396b78D3744482627F22C525;
     }
-    
+
     function _hardCodedSignerAddress() internal view returns (address) {
         if (block.chainid == 1) {
             return 0x314d660b083675f415cCAA9c545FeedF377d1006;
@@ -3564,164 +3390,145 @@ contract FacetEtherBridgeV6 is EIP712, Initializable {
             revert("Unsupported chain");
         }
     }
-    
+
     function deposit() public payable {
         require(msg.sender == tx.origin, "Only EOAs can use this bridge");
-        
+
         uint256 amount = msg.value;
         address recipient = msg.sender;
 
-        if (amount == 0) revert InvalidAmount();
-        
-        bytes memory bridgeInData = abi.encodeWithSelector(
-            FacetEtherBridgeMintable.bridgeIn.selector,
-            recipient,
-            amount
-        );
-        
-        LibFacet.sendFacetTransaction({
-            to: _hardCodedDumbContractAddress(),
-            gasLimit: 1_000_000,
-            data: bridgeInData
-        });
+        if (amount == 0) {
+            revert InvalidAmount();
+        }
+
+        bytes memory bridgeInData =
+            abi.encodeWithSelector(FacetEtherBridgeMintable.bridgeIn.selector, recipient, amount);
+
+        LibFacet.sendFacetTransaction({to: _hardCodedDumbContractAddress(), gasLimit: 1_000_000, data: bridgeInData});
     }
-    
-    function bridgeAndCall(
-        address recipient,
-        address dumbContractToCall,
-        bytes calldata functionCalldata,
-        uint64
-    ) external payable {
+
+    function bridgeAndCall(address recipient, address dumbContractToCall, bytes calldata functionCalldata, uint64)
+        external
+        payable
+    {
         require(msg.sender == tx.origin, "Only EOAs can use this bridge");
         uint64 gasLimit = 50_000_000;
 
         uint256 amount = msg.value;
 
-        if (amount == 0) revert InvalidAmount();
-        
+        if (amount == 0) {
+            revert InvalidAmount();
+        }
+
         bytes memory bridgeInData = abi.encodeWithSelector(
-            FacetEtherBridgeMintable.bridgeAndCall.selector,
-            recipient,
-            amount,
-            dumbContractToCall,
-            functionCalldata
+            FacetEtherBridgeMintable.bridgeAndCall.selector, recipient, amount, dumbContractToCall, functionCalldata
         );
-        
-        LibFacet.sendFacetTransaction({
-            to: _hardCodedDumbContractAddress(),
-            gasLimit: gasLimit,
-            data: bridgeInData
-        });
+
+        LibFacet.sendFacetTransaction({to: _hardCodedDumbContractAddress(), gasLimit: gasLimit, data: bridgeInData});
     }
-    
-    function withdraw(
-        WithdrawRequest calldata req
-    ) external {
+
+    function withdraw(WithdrawRequest calldata req) external {
         require(msg.sender == tx.origin, "Only EOAs can use this bridge");
 
-        bytes32 hashedMessage = _hashTypedData(keccak256(abi.encode(
+        bytes32 hashedMessage = _hashTypedData(
             keccak256(
-                "Withdraw(address recipient,address dumbContract,uint256 amount,"
-                "bytes32 withdrawalId,bytes32 blockHash,uint256 blockNumber)"
-            ),
-            req.recipient,
-            _hardCodedDumbContractAddress(),
-            req.amount,
-            req.withdrawalId,
-            req.blockHash,
-            req.blockNumber
-        )));
+                abi.encode(
+                    keccak256(
+                        "Withdraw(address recipient,address dumbContract,uint256 amount,"
+                        "bytes32 withdrawalId,bytes32 blockHash,uint256 blockNumber)"
+                    ),
+                    req.recipient,
+                    _hardCodedDumbContractAddress(),
+                    req.amount,
+                    req.withdrawalId,
+                    req.blockHash,
+                    req.blockNumber
+                )
+            )
+        );
 
         address signer = hashedMessage.recoverCalldata(req.signature);
 
         require(signer == _hardCodedSignerAddress(), "Invalid signature");
         require(!s().processedWithdraws[req.withdrawalId], "Already processed");
-        require(req.blockHash == bytes32(0) || blockhash(req.blockNumber) == req.blockHash, "Invalid block number or hash");
+        require(
+            req.blockHash == bytes32(0) || blockhash(req.blockNumber) == req.blockHash, "Invalid block number or hash"
+        );
 
         s().processedWithdraws[req.withdrawalId] = true;
 
         bytes memory markWithdrawalCompleteData = abi.encodeWithSelector(
-            FacetEtherBridgeMintable.markWithdrawalComplete.selector,
-            req.recipient,
-            req.withdrawalId
+            FacetEtherBridgeMintable.markWithdrawalComplete.selector, req.recipient, req.withdrawalId
         );
-        
+
         LibFacet.sendFacetTransaction({
             to: _hardCodedDumbContractAddress(),
             gasLimit: 1_000_000,
             data: markWithdrawalCompleteData
         });
-        
+
         req.recipient.forceSafeTransferETH(req.amount, SafeTransferLib.GAS_STIPEND_NO_STORAGE_WRITES);
     }
-    
+
     receive() external payable {
         deposit();
     }
-    
+
     function adminMarkComplete(address recipient, bytes32 withdrawalId) external onlyAdmin {
         s().processedWithdraws[withdrawalId] = true;
-        
-        bytes memory markWithdrawalCompleteData = abi.encodeWithSelector(
-            FacetEtherBridgeMintable.markWithdrawalComplete.selector,
-            recipient,
-            withdrawalId
-        );
-        
+
+        bytes memory markWithdrawalCompleteData =
+            abi.encodeWithSelector(FacetEtherBridgeMintable.markWithdrawalComplete.selector, recipient, withdrawalId);
+
         LibFacet.sendFacetTransaction({
             to: _hardCodedDumbContractAddress(),
             gasLimit: 1_000_000,
             data: markWithdrawalCompleteData
         });
     }
-    
+
     function _hardCodedDumbContractAddress() internal pure returns (address) {
         return 0x1673540243E793B0e77C038D4a88448efF524DcE;
     }
-    
+
     function adminWithdraw(address recipient, uint256 amount) external onlyAdmin {
         recipient.forceSafeTransferETH(amount);
     }
-    
+
     function adminWithdrawFCT(address recipient, uint256 amount) external onlyAdmin {
         LibFacet.sendFacetTransaction({
             to: abi.encodePacked(recipient),
             gasLimit: 1_000_000,
             value: amount,
-            data: bytes(''),
-            mineBoost: bytes('')
+            data: bytes(""),
+            mineBoost: bytes("")
         });
     }
-    
+
     /// @notice Accepts ETH value without triggering a deposit to L2.
     function donateETH() external payable {}
-    
+
     function setAdmin(address admin) external onlyAdmin {
         s().adminAddress = admin;
     }
-    
+
     function getSigner() external view returns (address) {
         return _hardCodedSignerAddress();
     }
-    
+
     function getAdmin() external view returns (address) {
         return s().adminAddress;
     }
-    
+
     function getDumbContract() external pure returns (address) {
         return _hardCodedDumbContractAddress();
     }
-    
+
     function processedWithdraws(bytes32 withdrawalId) external view returns (bool) {
         return s().processedWithdraws[withdrawalId];
     }
 
-    function _domainNameAndVersion() 
-        internal
-        pure
-        override
-        returns (string memory name, string memory version)
-    {
+    function _domainNameAndVersion() internal pure override returns (string memory name, string memory version) {
         name = "Facet Ether Bridge";
         version = "1";
     }

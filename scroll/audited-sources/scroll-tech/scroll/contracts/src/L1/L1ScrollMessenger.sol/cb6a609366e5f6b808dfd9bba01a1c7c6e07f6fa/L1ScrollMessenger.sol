@@ -4,13 +4,13 @@ pragma solidity ^0.8.0;
 
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-import {IScrollChain} from "./rollup/IScrollChain.sol";
-import {IL1MessageQueue} from "./rollup/IL1MessageQueue.sol";
-import {IL1ScrollMessenger} from "./IL1ScrollMessenger.sol";
-import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
 import {IScrollMessenger} from "../libraries/IScrollMessenger.sol";
 import {ScrollMessengerBase} from "../libraries/ScrollMessengerBase.sol";
+import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
 import {WithdrawTrieVerifier} from "../libraries/verifier/WithdrawTrieVerifier.sol";
+import {IL1ScrollMessenger} from "./IL1ScrollMessenger.sol";
+import {IL1MessageQueue} from "./rollup/IL1MessageQueue.sol";
+import {IScrollChain} from "./rollup/IScrollChain.sol";
 
 // solhint-disable avoid-low-level-calls
 
@@ -25,9 +25,11 @@ import {WithdrawTrieVerifier} from "../libraries/verifier/WithdrawTrieVerifier.s
 /// @dev All deposited Ether (including `WETH` deposited throng `L1WETHGateway`) will locked in
 /// this contract.
 contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1ScrollMessenger {
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from relay id to relay status.
     mapping(bytes32 => bool) public isL1MessageRelayed;
@@ -48,10 +50,11 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
     /// @dev The status of for non-reentrant check.
     uint256 private _lock_status;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier nonReentrant() {
         // On the first call to nonReentrant, _notEntered will be true
         require(_lock_status != _ENTERED, "ReentrancyGuard: reentrant call");
@@ -66,21 +69,21 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         _lock_status = _NOT_ENTERED;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Initialize the storage of L1ScrollMessenger.
     /// @param _counterpart The address of L2ScrollMessenger contract in L2.
     /// @param _feeVault The address of fee vault, which will be used to collect relayer fee.
     /// @param _rollup The address of ScrollChain contract.
     /// @param _messageQueue The address of L1MessageQueue contract.
-    function initialize(
-        address _counterpart,
-        address _feeVault,
-        address _rollup,
-        address _messageQueue
-    ) public initializer {
+    function initialize(address _counterpart, address _feeVault, address _rollup, address _messageQueue)
+        public
+        initializer
+    {
         PausableUpgradeable.__Pausable_init();
         ScrollMessengerBase._initialize(_counterpart, _feeVault);
 
@@ -91,17 +94,19 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit, tx.origin);
     }
 
@@ -126,8 +131,7 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         L2MessageProof memory _proof
     ) external override whenNotPaused onlyWhitelistedSender(msg.sender) {
         require(
-            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER,
-            "Message is already in execution"
+            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER, "Message is already in execution"
         );
 
         bytes32 _xDomainCalldataHash = keccak256(_encodeXDomainCalldata(_from, _to, _value, _nonce, _message));
@@ -154,7 +158,7 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         require(_from != xDomainMessageSender, "Invalid message sender");
 
         xDomainMessageSender = _from;
-        (bool success, ) = _to.call{value: _value}(_message);
+        (bool success,) = _to.call{value: _value}(_message);
         // reset value to refund gas.
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
 
@@ -182,9 +186,11 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         // @todo
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Pause the contract
     /// @dev This function can only called by contract owner.
@@ -197,17 +203,15 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
-
-    function _sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit,
-        address _refundAddress
-    ) internal nonReentrant {
+     *
+     */
+    function _sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit, address _refundAddress)
+        internal
+        nonReentrant
+    {
         address _messageQueue = messageQueue; // gas saving
         address _counterpart = counterpart; // gas saving
 
@@ -217,14 +221,11 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
 
         // compute and deduct the messaging fee to fee vault.
         uint256 _fee = IL1MessageQueue(_messageQueue).estimateCrossDomainMessageFee(
-            address(this),
-            _counterpart,
-            _xDomainCalldata,
-            _gasLimit
+            address(this), _counterpart, _xDomainCalldata, _gasLimit
         );
         require(msg.value >= _fee + _value, "Insufficient msg.value");
         if (_fee > 0) {
-            (bool _success, ) = feeVault.call{value: _fee}("");
+            (bool _success,) = feeVault.call{value: _fee}("");
             require(_success, "Failed to deduct the fee");
         }
 
@@ -244,7 +245,7 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         unchecked {
             uint256 _refund = msg.value - _fee - _value;
             if (_refund > 0) {
-                (bool _success, ) = _refundAddress.call{value: _refund}("");
+                (bool _success,) = _refundAddress.call{value: _refund}("");
                 require(_success, "Failed to refund the fee");
             }
         }

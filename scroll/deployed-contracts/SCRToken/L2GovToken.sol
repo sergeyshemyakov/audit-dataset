@@ -236,11 +236,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -382,14 +381,13 @@ interface IERC165 {
  * ```
  */
 abstract contract ERC165Upgradeable is Initializable, IERC165 {
-    function __ERC165_init() internal onlyInitializing {
-    }
+    function __ERC165_init() internal onlyInitializing {}
 
-    function __ERC165_init_unchained() internal onlyInitializing {
-    }
+    function __ERC165_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
+
     function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {
         return interfaceId == type(IERC165).interfaceId;
     }
@@ -442,14 +440,14 @@ abstract contract AccessControlUpgradeable is Initializable, ContextUpgradeable,
 
     bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
 
-
     /// @custom:storage-location erc7201:openzeppelin.storage.AccessControl
     struct AccessControlStorage {
         mapping(bytes32 role => RoleData) _roles;
     }
 
     // keccak256(abi.encode(uint256(keccak256("openzeppelin.storage.AccessControl")) - 1)) & ~bytes32(uint256(0xff))
-    bytes32 private constant AccessControlStorageLocation = 0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800;
+    bytes32 private constant AccessControlStorageLocation =
+        0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800;
 
     function _getAccessControlStorage() private pure returns (AccessControlStorage storage $) {
         assembly {
@@ -466,14 +464,13 @@ abstract contract AccessControlUpgradeable is Initializable, ContextUpgradeable,
         _;
     }
 
-    function __AccessControl_init() internal onlyInitializing {
-    }
+    function __AccessControl_init() internal onlyInitializing {}
 
-    function __AccessControl_init_unchained() internal onlyInitializing {
-    }
+    function __AccessControl_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
+
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return interfaceId == type(IAccessControl).interfaceId || super.supportsInterface(interfaceId);
     }
@@ -787,11 +784,8 @@ abstract contract ERC20Upgradeable is Initializable, ContextUpgradeable, IERC20,
     /// @custom:storage-location erc7201:openzeppelin.storage.ERC20
     struct ERC20Storage {
         mapping(address account => uint256) _balances;
-
         mapping(address account => mapping(address spender => uint256)) _allowances;
-
         uint256 _totalSupply;
-
         string _name;
         string _symbol;
     }
@@ -1151,15 +1145,8 @@ interface IERC20Permit {
      *
      * CAUTION: See Security Considerations above.
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external;
 
     /**
      * @dev Returns the current nonce for `owner`. This value must be
@@ -1215,6 +1202,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -1223,7 +1211,9 @@ library Math {
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
             uint256 c = a + b;
-            if (c < a) return (false, 0);
+            if (c < a) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1233,7 +1223,9 @@ library Math {
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
-            if (b > a) return (false, 0);
+            if (b > a) {
+                return (false, 0);
+            }
             return (true, a - b);
         }
     }
@@ -1246,9 +1238,13 @@ library Math {
             // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
             // benefit is lost if 'b' is also tested.
             // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-            if (a == 0) return (true, 0);
+            if (a == 0) {
+                return (true, 0);
+            }
             uint256 c = a * b;
-            if (c / a != b) return (false, 0);
+            if (c / a != b) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1258,7 +1254,9 @@ library Math {
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a / b);
         }
     }
@@ -1268,7 +1266,9 @@ library Math {
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a % b);
         }
     }
@@ -1682,7 +1682,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), HEX_DIGITS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -1794,7 +1796,7 @@ library MessageHashUtils {
      * See {ECDSA-recover}.
      */
     function toDataWithIntendedValidatorHash(address validator, bytes memory data) internal pure returns (bytes32) {
-        return keccak256(abi.encodePacked(hex"19_00", validator, data));
+        return keccak256(abi.encodePacked(hex"1900", validator, data));
     }
 
     /**
@@ -1810,7 +1812,7 @@ library MessageHashUtils {
         /// @solidity memory-safe-assembly
         assembly {
             let ptr := mload(0x40)
-            mstore(ptr, hex"19_01")
+            mstore(ptr, hex"1901")
             mstore(add(ptr, 0x02), domainSeparator)
             mstore(add(ptr, 0x22), structHash)
             digest := keccak256(ptr, 0x42)
@@ -1850,7 +1852,6 @@ abstract contract EIP712Upgradeable is Initializable, IERC5267 {
         bytes32 _hashedName;
         /// @custom:oz-renamed-from _HASHED_VERSION
         bytes32 _hashedVersion;
-
         string _name;
         string _version;
     }
@@ -2043,14 +2044,13 @@ abstract contract NoncesUpgradeable is Initializable {
         }
     }
 
-    function __Nonces_init() internal onlyInitializing {
-    }
+    function __Nonces_init() internal onlyInitializing {}
 
-    function __Nonces_init_unchained() internal onlyInitializing {
-    }
+    function __Nonces_init_unchained() internal onlyInitializing {}
     /**
      * @dev Returns the next unused nonce for an address.
      */
+
     function nonces(address owner) public view virtual returns (uint256) {
         NoncesStorage storage $ = _getNoncesStorage();
         return $._nonces[owner];
@@ -2198,12 +2198,11 @@ library ECDSA {
      * @dev Overload of {ECDSA-tryRecover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address, RecoverError, bytes32) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
+        internal
+        pure
+        returns (address, RecoverError, bytes32)
+    {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -2260,7 +2259,13 @@ library ECDSA {
  * presenting a message signed by the account. By not relying on `{IERC20-approve}`, the token holder account doesn't
  * need to send a transaction, and thus is not required to hold Ether at all.
  */
-abstract contract ERC20PermitUpgradeable is Initializable, ERC20Upgradeable, IERC20Permit, EIP712Upgradeable, NoncesUpgradeable {
+abstract contract ERC20PermitUpgradeable is
+    Initializable,
+    ERC20Upgradeable,
+    IERC20Permit,
+    EIP712Upgradeable,
+    NoncesUpgradeable
+{
     bytes32 private constant PERMIT_TYPEHASH =
         keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
 
@@ -2288,15 +2293,10 @@ abstract contract ERC20PermitUpgradeable is Initializable, ERC20Upgradeable, IER
     /**
      * @inheritdoc IERC20Permit
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public virtual {
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        public
+        virtual
+    {
         if (block.timestamp > deadline) {
             revert ERC2612ExpiredSignature(deadline);
         }
@@ -2343,8 +2343,8 @@ interface IERC6372 {
 }
 
 struct PartialDelegation {
-  address _delegatee;
-  uint96 _numerator;
+    address _delegatee;
+    uint96 _numerator;
 }
 
 /**
@@ -2352,59 +2352,59 @@ struct PartialDelegation {
  * @custom:security-contact security@voteagora.com
  */
 interface IVotesPartialDelegation is IERC6372 {
-  /**
-   * @dev The signature used has expired.
-   */
-  error VotesExpiredSignature(uint256 expiry);
+    /**
+     * @dev The signature used has expired.
+     */
+    error VotesExpiredSignature(uint256 expiry);
 
-  /**
-   * @dev Emitted when an account changes their delegate.
-   */
-  event DelegateChanged(
-    address indexed delegator, PartialDelegation[] oldDelegatees, PartialDelegation[] newDelegatees
-  );
+    /**
+     * @dev Emitted when an account changes their delegate.
+     */
+    event DelegateChanged(
+        address indexed delegator, PartialDelegation[] oldDelegatees, PartialDelegation[] newDelegatees
+    );
 
-  /**
-   * @dev Emitted when a token transfer or delegate change results in changes to a delegate's number of voting units.
-   */
-  event DelegateVotesChanged(address indexed delegate, uint256 previousVotes, uint256 newVotes);
+    /**
+     * @dev Emitted when a token transfer or delegate change results in changes to a delegate's number of voting units.
+     */
+    event DelegateVotesChanged(address indexed delegate, uint256 previousVotes, uint256 newVotes);
 
-  /**
-   * @dev Returns the current amount of votes that `account` has.
-   */
-  function getVotes(address account) external view returns (uint256);
+    /**
+     * @dev Returns the current amount of votes that `account` has.
+     */
+    function getVotes(address account) external view returns (uint256);
 
-  /**
-   * @dev Returns the amount of votes that `account` had at a specific moment in the past. If the `clock()` is
-   * configured to use block numbers, this will return the value at the end of the corresponding block.
-   */
-  function getPastVotes(address account, uint256 timepoint) external view returns (uint256);
+    /**
+     * @dev Returns the amount of votes that `account` had at a specific moment in the past. If the `clock()` is
+     * configured to use block numbers, this will return the value at the end of the corresponding block.
+     */
+    function getPastVotes(address account, uint256 timepoint) external view returns (uint256);
 
-  /**
-   * @dev Returns the total supply of votes available at a specific moment in the past. If the `clock()` is
-   * configured to use block numbers, this will return the value at the end of the corresponding block.
-   *
-   * NOTE: This value is the sum of all available votes, which is not necessarily the sum of all delegated votes.
-   * Votes that have not been delegated are still part of total supply, even though they would not participate in a
-   * vote.
-   */
-  function getPastTotalSupply(uint256 timepoint) external view returns (uint256);
+    /**
+     * @dev Returns the total supply of votes available at a specific moment in the past. If the `clock()` is
+     * configured to use block numbers, this will return the value at the end of the corresponding block.
+     *
+     * NOTE: This value is the sum of all available votes, which is not necessarily the sum of all delegated votes.
+     * Votes that have not been delegated are still part of total supply, even though they would not participate in a
+     * vote.
+     */
+    function getPastTotalSupply(uint256 timepoint) external view returns (uint256);
 
-  /**
-   * @dev Returns the delegate that `account` has chosen.
-   * Removed: This function is incompatible with partial delegation, which allows for multiple delegates per account.
-   */
-  //   function delegates(address account) external view returns (address);
+    /**
+     * @dev Returns the delegate that `account` has chosen.
+     * Removed: This function is incompatible with partial delegation, which allows for multiple delegates per account.
+     */
+    //   function delegates(address account) external view returns (address);
 
-  /**
-   * @dev Delegates votes from the sender to `delegatee`.
-   */
-  function delegate(address delegatee) external;
+    /**
+     * @dev Delegates votes from the sender to `delegatee`.
+     */
+    function delegate(address delegatee) external;
 
-  /**
-   * @dev Delegates votes from signer to `delegatee`.
-   */
-  function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external;
+    /**
+     * @dev Delegates votes from signer to `delegatee`.
+     */
+    function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external;
 }
 
 /**
@@ -2560,12 +2560,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -2584,12 +2583,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint224[] storage self,
-        uint32 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint224[] storage self, uint32 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -2604,10 +2602,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint224[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint224 storage result) {
+    function _unsafeAccess(Checkpoint224[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint224 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -2754,12 +2753,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -2778,12 +2776,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint208[] storage self,
-        uint48 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint208[] storage self, uint48 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -2798,10 +2795,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint208[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint208 storage result) {
+    function _unsafeAccess(Checkpoint208[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint208 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -2948,12 +2946,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _upperBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _upperBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key > key) {
@@ -2972,12 +2969,11 @@ library Checkpoints {
      *
      * WARNING: `high` should not be greater than the array's length.
      */
-    function _lowerBinaryLookup(
-        Checkpoint160[] storage self,
-        uint96 key,
-        uint256 low,
-        uint256 high
-    ) private view returns (uint256) {
+    function _lowerBinaryLookup(Checkpoint160[] storage self, uint96 key, uint256 low, uint256 high)
+        private
+        view
+        returns (uint256)
+    {
         while (low < high) {
             uint256 mid = Math.average(low, high);
             if (_unsafeAccess(self, mid)._key < key) {
@@ -2992,10 +2988,11 @@ library Checkpoints {
     /**
      * @dev Access an element of the array without performing bounds check. The position is assumed to be within bounds.
      */
-    function _unsafeAccess(
-        Checkpoint160[] storage self,
-        uint256 pos
-    ) private pure returns (Checkpoint160 storage result) {
+    function _unsafeAccess(Checkpoint160[] storage self, uint256 pos)
+        private
+        pure
+        returns (Checkpoint160 storage result)
+    {
         assembly {
             mstore(0, self.slot)
             result.slot := add(keccak256(0, 0x20), pos)
@@ -4233,7 +4230,7 @@ library Time {
      * @dev Get the current value.
      */
     function get(Delay self) internal view returns (uint32) {
-        (uint32 delay, , ) = self.getFull();
+        (uint32 delay,,) = self.getFull();
         return delay;
     }
 
@@ -4242,11 +4239,11 @@ library Time {
      * enforce the old delay at the moment of the update. Returns the updated Delay object and the timestamp when the
      * new delay becomes effective.
      */
-    function withUpdate(
-        Delay self,
-        uint32 newValue,
-        uint32 minSetback
-    ) internal view returns (Delay updatedDelay, uint48 effect) {
+    function withUpdate(Delay self, uint32 newValue, uint32 minSetback)
+        internal
+        view
+        returns (Delay updatedDelay, uint48 effect)
+    {
         uint32 value = self.get();
         uint32 setback = uint32(Math.max(minSetback, value > newValue ? value - newValue : 0));
         effect = timestamp() + setback;
@@ -4301,10 +4298,9 @@ library SignatureChecker {
      * change through time. It could return true at block N and false at block N+1 (or the opposite).
      */
     function isValidSignatureNow(address signer, bytes32 hash, bytes memory signature) internal view returns (bool) {
-        (address recovered, ECDSA.RecoverError error, ) = ECDSA.tryRecover(hash, signature);
-        return
-            (error == ECDSA.RecoverError.NoError && recovered == signer) ||
-            isValidERC1271SignatureNow(signer, hash, signature);
+        (address recovered, ECDSA.RecoverError error,) = ECDSA.tryRecover(hash, signature);
+        return (error == ECDSA.RecoverError.NoError && recovered == signer)
+            || isValidERC1271SignatureNow(signer, hash, signature);
     }
 
     /**
@@ -4314,23 +4310,23 @@ library SignatureChecker {
      * NOTE: Unlike ECDSA signatures, contract signatures are revocable, and the outcome of this function can thus
      * change through time. It could return true at block N and false at block N+1 (or the opposite).
      */
-    function isValidERC1271SignatureNow(
-        address signer,
-        bytes32 hash,
-        bytes memory signature
-    ) internal view returns (bool) {
-        (bool success, bytes memory result) = signer.staticcall(
-            abi.encodeCall(IERC1271.isValidSignature, (hash, signature))
+    function isValidERC1271SignatureNow(address signer, bytes32 hash, bytes memory signature)
+        internal
+        view
+        returns (bool)
+    {
+        (bool success, bytes memory result) =
+            signer.staticcall(abi.encodeCall(IERC1271.isValidSignature, (hash, signature)));
+        return (
+            success && result.length >= 32
+                && abi.decode(result, (bytes32)) == bytes32(IERC1271.isValidSignature.selector)
         );
-        return (success &&
-            result.length >= 32 &&
-            abi.decode(result, (bytes32)) == bytes32(IERC1271.isValidSignature.selector));
     }
 }
 
 struct DelegationAdjustment {
-  address _delegatee;
-  uint208 _amount;
+    address _delegatee;
+    uint208 _amount;
 }
 
 /**
@@ -4353,541 +4349,550 @@ struct DelegationAdjustment {
  * @custom:security-contact security@voteagora.com
  */
 abstract contract VotesPartialDelegationUpgradeable is
-  Initializable,
-  ContextUpgradeable,
-  EIP712Upgradeable,
-  NoncesUpgradeable,
-  IVotesPartialDelegation
+    Initializable,
+    ContextUpgradeable,
+    EIP712Upgradeable,
+    NoncesUpgradeable,
+    IVotesPartialDelegation
 {
-  using Checkpoints for Checkpoints.Trace208;
+    using Checkpoints for Checkpoints.Trace208;
 
-  /// @custom:storage-location erc7201:storage.VotesPartialDelegation
-  struct VotesPartialDelegationStorage {
-    mapping(address account => PartialDelegation[]) _delegatees;
-    mapping(address delegatee => Checkpoints.Trace208) _delegateCheckpoints;
-    Checkpoints.Trace208 _totalCheckpoints;
-  }
-
-  enum Op {
-    ADD,
-    SUBTRACT
-  }
-
-  /// @notice Typehash for legacy delegation.
-  /// @custom:legacy
-  bytes32 public constant DELEGATION_TYPEHASH = keccak256("Delegation(address delegatee,uint256 nonce,uint256 expiry)");
-  /// @notice Typehash for partial delegation.
-  bytes32 public constant PARTIAL_DELEGATION_ON_BEHALF_TYPEHASH = keccak256(
-    "PartialDelegationOnBehalf(address delegator,PartialDelegation[] delegations,uint256 nonce,uint256 expiry)PartialDelegation(address delegatee,uint96 numerator)"
-  );
-  /// @notice Typehash for partial delegation.
-  bytes32 public constant PARTIAL_DELEGATION_TYPEHASH =
-    keccak256("PartialDelegation(address delegatee,uint96 numerator)");
-  /// @notice Max # of partial delegations that can be specified in a partial delegation set.
-  uint256 public constant MAX_PARTIAL_DELEGATIONS = 100;
-  /// @notice Denominator of a partial delegation fraction.
-  uint96 public constant DENOMINATOR = 10_000;
-  // keccak256(abi.encode(uint256(keccak256("storage.VotesPartialDelegation")) - 1)) &~bytes32(uint256(0xff))
-  bytes32 private constant VOTES_PARTIAL_DELEGATION_STORAGE_LOCATION =
-    0x60b289dca0c170df62b40d5e0313a4c0e665948cd979375ddb3db607c1b89f00;
-
-  /**
-   * @dev The clock was incorrectly modified.
-   */
-  error ERC6372InconsistentClock();
-
-  /**
-   * @dev Lookup to future votes is not available.
-   */
-  error ERC5805FutureLookup(uint256 timepoint, uint48 clock);
-
-  /// @notice Invalid signature is provided.
-  error InvalidSignature();
-
-  /// @notice Address zero is provided as admin.
-  error InvalidAddressZero();
-
-  /// @notice The number of delegatees exceeds the limit.
-  error PartialDelegationLimitExceeded(uint256 length, uint256 max);
-
-  /// @notice The provided delegatee list is not sorted or contains duplicates.
-  error DuplicateOrUnsortedDelegatees(address delegatee);
-
-  /// @notice The provided numerator is zero.
-  error InvalidNumeratorZero();
-
-  /// @notice The sum of the numerators exceeds the denominator.
-  error NumeratorSumExceedsDenominator(uint256 numerator, uint96 denominator);
-
-  function __VotesPartialDelegation_init() internal onlyInitializing {}
-
-  function __VotesPartialDelegation_init_unchained() internal onlyInitializing {}
-
-  function _getVotesPartialDelegationStorage() private pure returns (VotesPartialDelegationStorage storage $) {
-    assembly {
-      $.slot := VOTES_PARTIAL_DELEGATION_STORAGE_LOCATION
-    }
-  }
-
-  /**
-   * @dev Clock used for flagging checkpoints. Can be overridden to implement timestamp based
-   * checkpoints (and voting), in which case {CLOCK_MODE} should be overridden as well to match.
-   */
-  function clock() public view virtual returns (uint48) {
-    return Time.blockNumber();
-  }
-
-  /**
-   * @dev Machine-readable description of the clock as specified in EIP-6372.
-   */
-  // solhint-disable-next-line func-name-mixedcase
-  function CLOCK_MODE() public view virtual returns (string memory) {
-    // Check that the clock was not modified
-    if (clock() != Time.blockNumber()) {
-      revert ERC6372InconsistentClock();
-    }
-    return "mode=blocknumber&from=default";
-  }
-
-  /**
-   * @dev Returns the current amount of votes that `account` has.
-   */
-  function getVotes(address account) public view virtual returns (uint256) {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    return $._delegateCheckpoints[account].latest();
-  }
-
-  /**
-   * @dev Returns the amount of votes that `account` had at a specific moment in the past. If the `clock()` is
-   * configured to use block numbers, this will return the value at the end of the corresponding block.
-   *
-   * Requirements:
-   *
-   * - `timepoint` must be in the past. If operating using block numbers, the block must be already mined.
-   */
-  function getPastVotes(address account, uint256 timepoint) public view virtual returns (uint256) {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    uint48 currentTimepoint = clock();
-    if (timepoint >= currentTimepoint) {
-      revert ERC5805FutureLookup(timepoint, currentTimepoint);
-    }
-    return $._delegateCheckpoints[account].upperLookupRecent(SafeCast.toUint48(timepoint));
-  }
-
-  /**
-   * @dev Returns the total supply of votes available at a specific moment in the past. If the `clock()` is
-   * configured to use block numbers, this will return the value at the end of the corresponding block.
-   *
-   * NOTE: This value is the sum of all available votes, which is not necessarily the sum of all delegated votes.
-   * Votes that have not been delegated are still part of total supply, even though they would not participate in a
-   * vote.
-   *
-   * Requirements:
-   *
-   * - `timepoint` must be in the past. If operating using block numbers, the block must be already mined.
-   */
-  function getPastTotalSupply(uint256 timepoint) public view virtual returns (uint256) {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    uint48 currentTimepoint = clock();
-    if (timepoint >= currentTimepoint) {
-      revert ERC5805FutureLookup(timepoint, currentTimepoint);
-    }
-    return $._totalCheckpoints.upperLookupRecent(SafeCast.toUint48(timepoint));
-  }
-
-  /**
-   * @dev Returns the current total supply of votes.
-   */
-  function _getTotalSupply() internal view virtual returns (uint256) {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    return $._totalCheckpoints.latest();
-  }
-
-  /**
-   * @notice Returns the delegates that `account` has chosen.
-   * @param account The delegator's address.
-   */
-  function delegates(address account) public view virtual returns (PartialDelegation[] memory) {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    return $._delegatees[account];
-  }
-
-  /**
-   * @notice Delegates 100% of sender's votes to `delegatee`.
-   * @param delegatee The address to delegate votes to.
-   * @custom:legacy
-   */
-  function delegate(address delegatee) public virtual {
-    address account = _msgSender();
-    PartialDelegation[] memory delegations = new PartialDelegation[](1);
-    delegations[0] = PartialDelegation(delegatee, DENOMINATOR);
-    _delegate(account, delegations);
-  }
-
-  /**
-   * @notice Delegates votes from the sender to any number of `PartialDelegation._delegatee`s, up to
-   * `MAX_PARTIAL_DELEGATIONS`. A partial delegation consists of a delegatee and a numerator which will act as a
-   * percentage (i.e. with DENOMINATOR set to 10_000, a numerator of 1_000 will be a 10% delegation). When passing the
-   * partial delegation items to this method, it's required to sort them by delegatee, with no duplicates. Otherwise,
-   * the call will revert. Additionally, the sum of the array's numerators must not exceed DENOMINATOR.
-   * @param _partialDelegations The array of partial delegations to delegate to.
-   * @dev Reverts if the number of partial delegations exceeds `MAX_PARTIAL_DELEGATIONS`.
-   * Reverts if the sum of the numerators in `_partialDelegations` exceeds `DENOMINATOR`.
-   * Reverts if the delegations are not sorted or contain duplicates.
-   * Emits {DelegateChanged} and {DelegateVotesChanged} events.
-   */
-  function delegate(PartialDelegation[] calldata _partialDelegations) public virtual {
-    address account = _msgSender();
-    _delegate(account, _partialDelegations);
-  }
-
-  /**
-   * @notice Delegates 100% of votes from signer to `delegatee`.
-   * @param delegatee The address to delegate votes to.
-   * @param nonce The signer's nonce.
-   * @param expiry The timestamp at which the signature expires.
-   * @param v The recovery byte of the signature.
-   * @param r Half of the ECDSA signature pair.
-   * @param s Half of the ECDSA signature pair.
-   * @custom:legacy
-   */
-  function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s)
-    public
-    virtual
-  {
-    if (block.timestamp > expiry) {
-      revert VotesExpiredSignature(expiry);
-    }
-    address signer =
-      ECDSA.recover(_hashTypedDataV4(keccak256(abi.encode(DELEGATION_TYPEHASH, delegatee, nonce, expiry))), v, r, s);
-    _useCheckedNonce(signer, nonce);
-    PartialDelegation[] memory _partialDelegations = new PartialDelegation[](1);
-    _partialDelegations[0] = PartialDelegation(delegatee, DENOMINATOR);
-    _delegate(signer, _partialDelegations);
-  }
-
-  /**
-   * @notice Delegates votes from signer to any number of `_partialDelegations`, up to `MAX_PARTIAL_DELEGATIONS`. A
-   * partial delegation consists of a delegatee and a numerator which will act as a percentage (i.e. with DENOMINATOR
-   * set to 10_000, a numerator of 1_000 will be a 10% delegation). When passing the partial delegation items to this
-   * method, it's required to sort them by delegatee, with no duplicates. Otherwise, the call will revert. Additionally,
-   * the sum of the array's numerators must not exceed DENOMINATOR.
-   * @param _delegator The signer who is delegating votes.
-   * @param _partialDelegations The array of partial delegations to delegate to.
-   * @param _nonce The signer's nonce.
-   * @param _expiry The timestamp at which the signature expires.
-   * @param _signature The EIP712/ERC1271 signature from the signer.
-   * @dev Reverts if the signature is invalid, expired, or if the number of partial delegations exceeds
-   * `MAX_PARTIAL_DELEGATIONS`.
-   * Reverts if the sum of the numerators in `_partialDelegations` exceeds `DENOMINATOR`.
-   * Reverts if the delegations are not sorted or contain duplicates.
-   * Emits {DelegateChanged} and {DelegateVotesChanged} events.
-   */
-  function delegatePartiallyOnBehalf(
-    address _delegator,
-    PartialDelegation[] memory _partialDelegations,
-    uint256 _nonce,
-    uint256 _expiry,
-    bytes calldata _signature
-  ) public virtual {
-    if (block.timestamp > _expiry) {
-      revert VotesExpiredSignature(_expiry);
-    }
-    uint256 _partialDelegationsLength = _partialDelegations.length;
-    bytes32[] memory _partialDelegationsPayload = new bytes32[](_partialDelegationsLength);
-    for (uint256 i; i < _partialDelegationsLength; i++) {
-      _partialDelegationsPayload[i] = _hash(_partialDelegations[i]);
+    /// @custom:storage-location erc7201:storage.VotesPartialDelegation
+    struct VotesPartialDelegationStorage {
+        mapping(address account => PartialDelegation[]) _delegatees;
+        mapping(address delegatee => Checkpoints.Trace208) _delegateCheckpoints;
+        Checkpoints.Trace208 _totalCheckpoints;
     }
 
-    bool _isValidSignature = SignatureChecker.isValidSignatureNow(
-      _delegator,
-      _hashTypedDataV4(
-        keccak256(
-          abi.encode(
-            PARTIAL_DELEGATION_ON_BEHALF_TYPEHASH,
-            _delegator,
-            keccak256(abi.encodePacked(_partialDelegationsPayload)),
-            _nonce,
-            _expiry
-          )
-        )
-      ),
-      _signature
+    enum Op {
+        ADD,
+        SUBTRACT
+    }
+
+    /// @notice Typehash for legacy delegation.
+    /// @custom:legacy
+    bytes32 public constant DELEGATION_TYPEHASH =
+        keccak256("Delegation(address delegatee,uint256 nonce,uint256 expiry)");
+    /// @notice Typehash for partial delegation.
+    bytes32 public constant PARTIAL_DELEGATION_ON_BEHALF_TYPEHASH = keccak256(
+        "PartialDelegationOnBehalf(address delegator,PartialDelegation[] delegations,uint256 nonce,uint256 expiry)PartialDelegation(address delegatee,uint96 numerator)"
     );
+    /// @notice Typehash for partial delegation.
+    bytes32 public constant PARTIAL_DELEGATION_TYPEHASH =
+        keccak256("PartialDelegation(address delegatee,uint96 numerator)");
+    /// @notice Max # of partial delegations that can be specified in a partial delegation set.
+    uint256 public constant MAX_PARTIAL_DELEGATIONS = 100;
+    /// @notice Denominator of a partial delegation fraction.
+    uint96 public constant DENOMINATOR = 10_000;
+    // keccak256(abi.encode(uint256(keccak256("storage.VotesPartialDelegation")) - 1)) &~bytes32(uint256(0xff))
+    bytes32 private constant VOTES_PARTIAL_DELEGATION_STORAGE_LOCATION =
+        0x60b289dca0c170df62b40d5e0313a4c0e665948cd979375ddb3db607c1b89f00;
 
-    if (!_isValidSignature) {
-      revert InvalidSignature();
-    }
-    _useCheckedNonce(_delegator, _nonce);
-    _delegate(_delegator, _partialDelegations);
-  }
+    /**
+     * @dev The clock was incorrectly modified.
+     */
+    error ERC6372InconsistentClock();
 
-  /**
-   * @dev Allows an address to increment their nonce and therefore invalidate any pending signed
-   * actions.
-   */
-  function invalidateNonce() external {
-    _useNonce(msg.sender);
-  }
+    /**
+     * @dev Lookup to future votes is not available.
+     */
+    error ERC5805FutureLookup(uint256 timepoint, uint48 clock);
 
-  /**
-   * @dev Delegate `_delegator`'s voting units to delegates specified in `_newDelegations`.
-   * Emits events {IVotes-DelegateChanged} and {IVotes-DelegateVotesChanged}.
-   */
-  function _delegate(address _delegator, PartialDelegation[] memory _newDelegations) internal virtual {
-    uint256 _newDelegationsLength = _newDelegations.length;
-    if (_newDelegationsLength > MAX_PARTIAL_DELEGATIONS) {
-      revert PartialDelegationLimitExceeded(_newDelegationsLength, MAX_PARTIAL_DELEGATIONS);
-    }
+    /// @notice Invalid signature is provided.
+    error InvalidSignature();
 
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+    /// @notice Address zero is provided as admin.
+    error InvalidAddressZero();
 
-    // Calculate adjustments for old delegatee set, if it exists.
-    PartialDelegation[] memory _oldDelegations = delegates(_delegator);
-    uint256 _oldDelegateLength = _oldDelegations.length;
-    DelegationAdjustment[] memory _old = new DelegationAdjustment[](_oldDelegateLength);
-    uint256 _delegatorVotes = _getVotingUnits(_delegator);
-    if (_oldDelegateLength > 0) {
-      _old = _calculateWeightDistribution(_oldDelegations, _delegatorVotes);
-    }
+    /// @notice The number of delegatees exceeds the limit.
+    error PartialDelegationLimitExceeded(uint256 length, uint256 max);
 
-    // Calculate adjustments for new delegatee set.
-    DelegationAdjustment[] memory _new = _calculateWeightDistribution(_newDelegations, _delegatorVotes);
+    /// @notice The provided delegatee list is not sorted or contains duplicates.
+    error DuplicateOrUnsortedDelegatees(address delegatee);
 
-    // Now we want a collated list of all delegatee changes, combining the old subtractions with the new additions.
-    // Ideally we'd like to process this only once.
-    _aggregateDelegationAdjustmentsAndCreateCheckpoints(_old, _new);
+    /// @notice The provided numerator is zero.
+    error InvalidNumeratorZero();
 
-    // The rest of this method body replaces in storage the old delegatees with the new ones.
-    // keep track of last delegatee to ensure ordering / uniqueness:
-    address _lastDelegatee;
+    /// @notice The sum of the numerators exceeds the denominator.
+    error NumeratorSumExceedsDenominator(uint256 numerator, uint96 denominator);
 
-    for (uint256 i; i < _newDelegationsLength; i++) {
-      // check sorting and uniqueness
-      if (i == 0 && _newDelegations[i]._delegatee == address(0)) {
-        // zero delegation is allowed if in 0th position
-      } else if (_newDelegations[i]._delegatee <= _lastDelegatee) {
-        revert DuplicateOrUnsortedDelegatees(_newDelegations[i]._delegatee);
-      }
+    function __VotesPartialDelegation_init() internal onlyInitializing {}
 
-      // replace existing delegatees in storage
-      if (i < _oldDelegateLength) {
-        $._delegatees[_delegator][i] = _newDelegations[i];
-      }
-      // or add new delegatees
-      else {
-        $._delegatees[_delegator].push(_newDelegations[i]);
-      }
-      _lastDelegatee = _newDelegations[i]._delegatee;
-    }
-    // remove any remaining old delegatees
-    if (_oldDelegateLength > _newDelegationsLength) {
-      for (uint256 i = _newDelegationsLength; i < _oldDelegateLength; i++) {
-        $._delegatees[_delegator].pop();
-      }
-    }
-    emit DelegateChanged(_delegator, _oldDelegations, _newDelegations);
-  }
+    function __VotesPartialDelegation_init_unchained() internal onlyInitializing {}
 
-  /**
-   * @dev Transfers, mints, or burns voting units. To register a mint, `from` should be zero. To register a burn, `to`
-   * should be zero. Total supply of voting units will be adjusted with mints and burns.
-   */
-  function _transferVotingUnits(address from, address to, uint256 amount) internal virtual {
-    // skip from==to no-op, as the math would require special handling
-    if (from == to) {
-      return;
+    function _getVotesPartialDelegationStorage() private pure returns (VotesPartialDelegationStorage storage $) {
+        assembly {
+            $.slot := VOTES_PARTIAL_DELEGATION_STORAGE_LOCATION
+        }
     }
 
-    // update total supply checkpoints if mint/burn
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    if (from == address(0)) {
-      _push($._totalCheckpoints, _add, SafeCast.toUint208(amount));
-    }
-    if (to == address(0)) {
-      _push($._totalCheckpoints, _subtract, SafeCast.toUint208(amount));
-    }
-
-    // finally, calculate delegatee vote changes and create checkpoints accordingly
-    uint256 _fromLength = $._delegatees[from].length;
-    DelegationAdjustment[] memory _delegationAdjustmentsFrom = new DelegationAdjustment[](_fromLength);
-    // We'll need to adjust the delegatee votes for both "from" and "to" delegatee sets.
-    if (_fromLength > 0) {
-      uint256 _fromVotes = _getVotingUnits(from);
-      DelegationAdjustment[] memory _from = _calculateWeightDistribution($._delegatees[from], _fromVotes + amount);
-      DelegationAdjustment[] memory _fromNew = _calculateWeightDistribution($._delegatees[from], _fromVotes);
-      for (uint256 i; i < _fromLength; i++) {
-        _delegationAdjustmentsFrom[i] = DelegationAdjustment({
-          _delegatee: $._delegatees[from][i]._delegatee,
-          _amount: _from[i]._amount - _fromNew[i]._amount
-        });
-      }
+    /**
+     * @dev Clock used for flagging checkpoints. Can be overridden to implement timestamp based
+     * checkpoints (and voting), in which case {CLOCK_MODE} should be overridden as well to match.
+     */
+    function clock() public view virtual returns (uint48) {
+        return Time.blockNumber();
     }
 
-    uint256 _toLength = $._delegatees[to].length;
-    DelegationAdjustment[] memory _delegationAdjustmentsTo = new DelegationAdjustment[](_toLength);
-    if (_toLength > 0) {
-      uint256 _toVotes = _getVotingUnits(to);
-      DelegationAdjustment[] memory _to = _calculateWeightDistribution($._delegatees[to], _toVotes - amount);
-      DelegationAdjustment[] memory _toNew = _calculateWeightDistribution($._delegatees[to], _toVotes);
+    /**
+     * @dev Machine-readable description of the clock as specified in EIP-6372.
+     */
+    // solhint-disable-next-line func-name-mixedcase
+    function CLOCK_MODE() public view virtual returns (string memory) {
+        // Check that the clock was not modified
+        if (clock() != Time.blockNumber()) {
+            revert ERC6372InconsistentClock();
+        }
+        return "mode=blocknumber&from=default";
+    }
 
-      for (uint256 i; i < _toLength; i++) {
-        _delegationAdjustmentsTo[i] = (
-          DelegationAdjustment({
-            _delegatee: $._delegatees[to][i]._delegatee,
-            _amount: _toNew[i]._amount - _to[i]._amount
-          })
+    /**
+     * @dev Returns the current amount of votes that `account` has.
+     */
+    function getVotes(address account) public view virtual returns (uint256) {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        return $._delegateCheckpoints[account].latest();
+    }
+
+    /**
+     * @dev Returns the amount of votes that `account` had at a specific moment in the past. If the `clock()` is
+     * configured to use block numbers, this will return the value at the end of the corresponding block.
+     *
+     * Requirements:
+     *
+     * - `timepoint` must be in the past. If operating using block numbers, the block must be already mined.
+     */
+    function getPastVotes(address account, uint256 timepoint) public view virtual returns (uint256) {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        uint48 currentTimepoint = clock();
+        if (timepoint >= currentTimepoint) {
+            revert ERC5805FutureLookup(timepoint, currentTimepoint);
+        }
+        return $._delegateCheckpoints[account].upperLookupRecent(SafeCast.toUint48(timepoint));
+    }
+
+    /**
+     * @dev Returns the total supply of votes available at a specific moment in the past. If the `clock()` is
+     * configured to use block numbers, this will return the value at the end of the corresponding block.
+     *
+     * NOTE: This value is the sum of all available votes, which is not necessarily the sum of all delegated votes.
+     * Votes that have not been delegated are still part of total supply, even though they would not participate in a
+     * vote.
+     *
+     * Requirements:
+     *
+     * - `timepoint` must be in the past. If operating using block numbers, the block must be already mined.
+     */
+    function getPastTotalSupply(uint256 timepoint) public view virtual returns (uint256) {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        uint48 currentTimepoint = clock();
+        if (timepoint >= currentTimepoint) {
+            revert ERC5805FutureLookup(timepoint, currentTimepoint);
+        }
+        return $._totalCheckpoints.upperLookupRecent(SafeCast.toUint48(timepoint));
+    }
+
+    /**
+     * @dev Returns the current total supply of votes.
+     */
+    function _getTotalSupply() internal view virtual returns (uint256) {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        return $._totalCheckpoints.latest();
+    }
+
+    /**
+     * @notice Returns the delegates that `account` has chosen.
+     * @param account The delegator's address.
+     */
+    function delegates(address account) public view virtual returns (PartialDelegation[] memory) {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        return $._delegatees[account];
+    }
+
+    /**
+     * @notice Delegates 100% of sender's votes to `delegatee`.
+     * @param delegatee The address to delegate votes to.
+     * @custom:legacy
+     */
+    function delegate(address delegatee) public virtual {
+        address account = _msgSender();
+        PartialDelegation[] memory delegations = new PartialDelegation[](1);
+        delegations[0] = PartialDelegation(delegatee, DENOMINATOR);
+        _delegate(account, delegations);
+    }
+
+    /**
+     * @notice Delegates votes from the sender to any number of `PartialDelegation._delegatee`s, up to
+     * `MAX_PARTIAL_DELEGATIONS`. A partial delegation consists of a delegatee and a numerator which will act as a
+     * percentage (i.e. with DENOMINATOR set to 10_000, a numerator of 1_000 will be a 10% delegation). When passing the
+     * partial delegation items to this method, it's required to sort them by delegatee, with no duplicates. Otherwise,
+     * the call will revert. Additionally, the sum of the array's numerators must not exceed DENOMINATOR.
+     * @param _partialDelegations The array of partial delegations to delegate to.
+     * @dev Reverts if the number of partial delegations exceeds `MAX_PARTIAL_DELEGATIONS`.
+     * Reverts if the sum of the numerators in `_partialDelegations` exceeds `DENOMINATOR`.
+     * Reverts if the delegations are not sorted or contain duplicates.
+     * Emits {DelegateChanged} and {DelegateVotesChanged} events.
+     */
+    function delegate(PartialDelegation[] calldata _partialDelegations) public virtual {
+        address account = _msgSender();
+        _delegate(account, _partialDelegations);
+    }
+
+    /**
+     * @notice Delegates 100% of votes from signer to `delegatee`.
+     * @param delegatee The address to delegate votes to.
+     * @param nonce The signer's nonce.
+     * @param expiry The timestamp at which the signature expires.
+     * @param v The recovery byte of the signature.
+     * @param r Half of the ECDSA signature pair.
+     * @param s Half of the ECDSA signature pair.
+     * @custom:legacy
+     */
+    function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s)
+        public
+        virtual
+    {
+        if (block.timestamp > expiry) {
+            revert VotesExpiredSignature(expiry);
+        }
+        address signer = ECDSA.recover(
+            _hashTypedDataV4(keccak256(abi.encode(DELEGATION_TYPEHASH, delegatee, nonce, expiry))), v, r, s
         );
-      }
+        _useCheckedNonce(signer, nonce);
+        PartialDelegation[] memory _partialDelegations = new PartialDelegation[](1);
+        _partialDelegations[0] = PartialDelegation(delegatee, DENOMINATOR);
+        _delegate(signer, _partialDelegations);
     }
-    _aggregateDelegationAdjustmentsAndCreateCheckpoints(_delegationAdjustmentsFrom, _delegationAdjustmentsTo);
-  }
 
-  /**
-   * @dev Given an old delegation array and a new delegation array, determine which delegations have changed, create new
-   * voting checkpoints, and emit a {DelegateVotesChanged} event. Takes care to avoid duplicates and no-ops.
-   * Assumes both _old and _new are sorted by `DelegationAdjustment._delegatee`.
-   */
-  function _aggregateDelegationAdjustmentsAndCreateCheckpoints(
-    DelegationAdjustment[] memory _old,
-    DelegationAdjustment[] memory _new
-  ) internal {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    // start with ith member of _old and jth member of _new.
-    // If they are the same delegatee, combine them, check if result is 0, and iterate i and j.
-    // If _old[i] > _new[j], add _new[j] to the final array and iterate j. If _new[j] > _old[i], add _old[i] and iterate
-    // i.
-    uint256 i;
-    uint256 j;
-    uint256 _oldLength = _old.length;
-    uint256 _newLength = _new.length;
-    while (i < _oldLength || j < _newLength) {
-      DelegationAdjustment memory _delegationAdjustment;
-      Op _op;
+    /**
+     * @notice Delegates votes from signer to any number of `_partialDelegations`, up to `MAX_PARTIAL_DELEGATIONS`. A
+     * partial delegation consists of a delegatee and a numerator which will act as a percentage (i.e. with DENOMINATOR
+     * set to 10_000, a numerator of 1_000 will be a 10% delegation). When passing the partial delegation items to this
+     * method, it's required to sort them by delegatee, with no duplicates. Otherwise, the call will revert. Additionally,
+     * the sum of the array's numerators must not exceed DENOMINATOR.
+     * @param _delegator The signer who is delegating votes.
+     * @param _partialDelegations The array of partial delegations to delegate to.
+     * @param _nonce The signer's nonce.
+     * @param _expiry The timestamp at which the signature expires.
+     * @param _signature The EIP712/ERC1271 signature from the signer.
+     * @dev Reverts if the signature is invalid, expired, or if the number of partial delegations exceeds
+     * `MAX_PARTIAL_DELEGATIONS`.
+     * Reverts if the sum of the numerators in `_partialDelegations` exceeds `DENOMINATOR`.
+     * Reverts if the delegations are not sorted or contain duplicates.
+     * Emits {DelegateChanged} and {DelegateVotesChanged} events.
+     */
+    function delegatePartiallyOnBehalf(
+        address _delegator,
+        PartialDelegation[] memory _partialDelegations,
+        uint256 _nonce,
+        uint256 _expiry,
+        bytes calldata _signature
+    ) public virtual {
+        if (block.timestamp > _expiry) {
+            revert VotesExpiredSignature(_expiry);
+        }
+        uint256 _partialDelegationsLength = _partialDelegations.length;
+        bytes32[] memory _partialDelegationsPayload = new bytes32[](_partialDelegationsLength);
+        for (uint256 i; i < _partialDelegationsLength; i++) {
+            _partialDelegationsPayload[i] = _hash(_partialDelegations[i]);
+        }
 
-      // same address is present in both arrays
-      if (i < _oldLength && j < _newLength && _old[i]._delegatee == _new[j]._delegatee) {
-        // combine, checkpoint, and iterate
-        _delegationAdjustment._delegatee = _old[i]._delegatee;
-        if (_old[i]._amount != _new[j]._amount) {
-          if (_old[i]._amount > _new[j]._amount) {
-            _op = Op.SUBTRACT;
-            _delegationAdjustment._amount = _old[i]._amount - _new[j]._amount;
-          } else {
-            _op = Op.ADD;
-            _delegationAdjustment._amount = _new[j]._amount - _old[i]._amount;
-          }
-        }
-        i++;
-        j++;
-      } else if (
-        j == _newLength // if we've exhausted the new array, we can just checkpoint the old values
-          || (i != _oldLength && _old[i]._delegatee < _new[j]._delegatee) // or, if the ith old delegatee is next in line
-      ) {
-        // skip if 0...
-        _delegationAdjustment._delegatee = _old[i]._delegatee;
-        if (_old[i]._amount != 0) {
-          _op = Op.SUBTRACT;
-          _delegationAdjustment._amount = _old[i]._amount;
-        }
-        i++;
-      } else {
-        // skip if 0...
-        _delegationAdjustment._delegatee = _new[j]._delegatee;
-        if (_new[j]._amount != 0) {
-          _op = Op.ADD;
-          _delegationAdjustment._amount = _new[j]._amount;
-        }
-        j++;
-      }
-
-      if (_delegationAdjustment._amount != 0 && _delegationAdjustment._delegatee != address(0)) {
-        (uint256 oldValue, uint256 newValue) = _push(
-          $._delegateCheckpoints[_delegationAdjustment._delegatee],
-          _operation(_op),
-          SafeCast.toUint208(_delegationAdjustment._amount)
+        bool _isValidSignature = SignatureChecker.isValidSignatureNow(
+            _delegator,
+            _hashTypedDataV4(
+                keccak256(
+                    abi.encode(
+                        PARTIAL_DELEGATION_ON_BEHALF_TYPEHASH,
+                        _delegator,
+                        keccak256(abi.encodePacked(_partialDelegationsPayload)),
+                        _nonce,
+                        _expiry
+                    )
+                )
+            ),
+            _signature
         );
 
-        emit DelegateVotesChanged(_delegationAdjustment._delegatee, oldValue, newValue);
-      }
+        if (!_isValidSignature) {
+            revert InvalidSignature();
+        }
+        _useCheckedNonce(_delegator, _nonce);
+        _delegate(_delegator, _partialDelegations);
     }
-  }
 
-  /**
-   * @dev Internal helper to calculate vote weights from a list of delegations. It reverts if the sum of the numerators
-   * is greater than DENOMINATOR.
-   */
-  function _calculateWeightDistribution(PartialDelegation[] memory _delegations, uint256 _amount)
-    internal
-    pure
-    returns (DelegationAdjustment[] memory)
-  {
-    uint256 _delegationsLength = _delegations.length;
-    DelegationAdjustment[] memory _delegationAdjustments = new DelegationAdjustment[](_delegationsLength);
-
-    // Keep track of total numerator to ensure it doesn't exceed DENOMINATOR
-    uint256 _totalNumerator;
-
-    // Iterate through partial delegations to calculate vote weight
-    for (uint256 i; i < _delegationsLength; i++) {
-      if (_delegations[i]._numerator == 0) {
-        revert InvalidNumeratorZero();
-      }
-      _delegationAdjustments[i] =
-        DelegationAdjustment(_delegations[i]._delegatee, uint208(_amount * _delegations[i]._numerator / DENOMINATOR));
-      _totalNumerator += _delegations[i]._numerator;
+    /**
+     * @dev Allows an address to increment their nonce and therefore invalidate any pending signed
+     * actions.
+     */
+    function invalidateNonce() external {
+        _useNonce(msg.sender);
     }
-    if (_totalNumerator > DENOMINATOR) {
-      revert NumeratorSumExceedsDenominator(_totalNumerator, DENOMINATOR);
+
+    /**
+     * @dev Delegate `_delegator`'s voting units to delegates specified in `_newDelegations`.
+     * Emits events {IVotes-DelegateChanged} and {IVotes-DelegateVotesChanged}.
+     */
+    function _delegate(address _delegator, PartialDelegation[] memory _newDelegations) internal virtual {
+        uint256 _newDelegationsLength = _newDelegations.length;
+        if (_newDelegationsLength > MAX_PARTIAL_DELEGATIONS) {
+            revert PartialDelegationLimitExceeded(_newDelegationsLength, MAX_PARTIAL_DELEGATIONS);
+        }
+
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+
+        // Calculate adjustments for old delegatee set, if it exists.
+        PartialDelegation[] memory _oldDelegations = delegates(_delegator);
+        uint256 _oldDelegateLength = _oldDelegations.length;
+        DelegationAdjustment[] memory _old = new DelegationAdjustment[](_oldDelegateLength);
+        uint256 _delegatorVotes = _getVotingUnits(_delegator);
+        if (_oldDelegateLength > 0) {
+            _old = _calculateWeightDistribution(_oldDelegations, _delegatorVotes);
+        }
+
+        // Calculate adjustments for new delegatee set.
+        DelegationAdjustment[] memory _new = _calculateWeightDistribution(_newDelegations, _delegatorVotes);
+
+        // Now we want a collated list of all delegatee changes, combining the old subtractions with the new additions.
+        // Ideally we'd like to process this only once.
+        _aggregateDelegationAdjustmentsAndCreateCheckpoints(_old, _new);
+
+        // The rest of this method body replaces in storage the old delegatees with the new ones.
+        // keep track of last delegatee to ensure ordering / uniqueness:
+        address _lastDelegatee;
+
+        for (uint256 i; i < _newDelegationsLength; i++) {
+            // check sorting and uniqueness
+            if (i == 0 && _newDelegations[i]._delegatee == address(0)) {
+                // zero delegation is allowed if in 0th position
+            } else if (_newDelegations[i]._delegatee <= _lastDelegatee) {
+                revert DuplicateOrUnsortedDelegatees(_newDelegations[i]._delegatee);
+            }
+
+            // replace existing delegatees in storage
+            if (i < _oldDelegateLength) {
+                $._delegatees[_delegator][i] = _newDelegations[i];
+            }
+            // or add new delegatees
+            else {
+                $._delegatees[_delegator].push(_newDelegations[i]);
+            }
+            _lastDelegatee = _newDelegations[i]._delegatee;
+        }
+        // remove any remaining old delegatees
+        if (_oldDelegateLength > _newDelegationsLength) {
+            for (uint256 i = _newDelegationsLength; i < _oldDelegateLength; i++) {
+                $._delegatees[_delegator].pop();
+            }
+        }
+        emit DelegateChanged(_delegator, _oldDelegations, _newDelegations);
     }
-    return _delegationAdjustments;
-  }
 
-  /**
-   * @dev Get number of checkpoints for `account`.
-   */
-  function _numCheckpoints(address account) internal view virtual returns (uint32) {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    return SafeCast.toUint32($._delegateCheckpoints[account].length());
-  }
+    /**
+     * @dev Transfers, mints, or burns voting units. To register a mint, `from` should be zero. To register a burn, `to`
+     * should be zero. Total supply of voting units will be adjusted with mints and burns.
+     */
+    function _transferVotingUnits(address from, address to, uint256 amount) internal virtual {
+        // skip from==to no-op, as the math would require special handling
+        if (from == to) {
+            return;
+        }
 
-  /**
-   * @dev Get the `pos`-th checkpoint for `account`.
-   */
-  function _checkpoints(address account, uint32 pos) internal view virtual returns (Checkpoints.Checkpoint208 memory) {
-    VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
-    return $._delegateCheckpoints[account].at(pos);
-  }
+        // update total supply checkpoints if mint/burn
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        if (from == address(0)) {
+            _push($._totalCheckpoints, _add, SafeCast.toUint208(amount));
+        }
+        if (to == address(0)) {
+            _push($._totalCheckpoints, _subtract, SafeCast.toUint208(amount));
+        }
 
-  function _push(
-    Checkpoints.Trace208 storage store,
-    function(uint208, uint208) view returns (uint208) op,
-    uint208 delta
-  ) private returns (uint208, uint208) {
-    return store.push(clock(), op(store.latest(), delta));
-  }
+        // finally, calculate delegatee vote changes and create checkpoints accordingly
+        uint256 _fromLength = $._delegatees[from].length;
+        DelegationAdjustment[] memory _delegationAdjustmentsFrom = new DelegationAdjustment[](_fromLength);
+        // We'll need to adjust the delegatee votes for both "from" and "to" delegatee sets.
+        if (_fromLength > 0) {
+            uint256 _fromVotes = _getVotingUnits(from);
+            DelegationAdjustment[] memory _from = _calculateWeightDistribution($._delegatees[from], _fromVotes + amount);
+            DelegationAdjustment[] memory _fromNew = _calculateWeightDistribution($._delegatees[from], _fromVotes);
+            for (uint256 i; i < _fromLength; i++) {
+                _delegationAdjustmentsFrom[i] = DelegationAdjustment({
+                    _delegatee: $._delegatees[from][i]._delegatee,
+                    _amount: _from[i]._amount - _fromNew[i]._amount
+                });
+            }
+        }
 
-  function _add(uint208 a, uint208 b) private pure returns (uint208) {
-    return a + b;
-  }
+        uint256 _toLength = $._delegatees[to].length;
+        DelegationAdjustment[] memory _delegationAdjustmentsTo = new DelegationAdjustment[](_toLength);
+        if (_toLength > 0) {
+            uint256 _toVotes = _getVotingUnits(to);
+            DelegationAdjustment[] memory _to = _calculateWeightDistribution($._delegatees[to], _toVotes - amount);
+            DelegationAdjustment[] memory _toNew = _calculateWeightDistribution($._delegatees[to], _toVotes);
 
-  function _subtract(uint208 a, uint208 b) private pure returns (uint208) {
-    return a - b;
-  }
+            for (uint256 i; i < _toLength; i++) {
+                _delegationAdjustmentsTo[i] = (
+                    DelegationAdjustment({
+                        _delegatee: $._delegatees[to][i]._delegatee,
+                        _amount: _toNew[i]._amount - _to[i]._amount
+                    })
+                );
+            }
+        }
+        _aggregateDelegationAdjustmentsAndCreateCheckpoints(_delegationAdjustmentsFrom, _delegationAdjustmentsTo);
+    }
 
-  function _operation(Op op) internal pure returns (function(uint208, uint208) view returns (uint208)) {
-    return op == Op.ADD ? _add : _subtract;
-  }
+    /**
+     * @dev Given an old delegation array and a new delegation array, determine which delegations have changed, create new
+     * voting checkpoints, and emit a {DelegateVotesChanged} event. Takes care to avoid duplicates and no-ops.
+     * Assumes both _old and _new are sorted by `DelegationAdjustment._delegatee`.
+     */
+    function _aggregateDelegationAdjustmentsAndCreateCheckpoints(
+        DelegationAdjustment[] memory _old,
+        DelegationAdjustment[] memory _new
+    ) internal {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        // start with ith member of _old and jth member of _new.
+        // If they are the same delegatee, combine them, check if result is 0, and iterate i and j.
+        // If _old[i] > _new[j], add _new[j] to the final array and iterate j. If _new[j] > _old[i], add _old[i] and iterate
+        // i.
+        uint256 i;
+        uint256 j;
+        uint256 _oldLength = _old.length;
+        uint256 _newLength = _new.length;
+        while (i < _oldLength || j < _newLength) {
+            DelegationAdjustment memory _delegationAdjustment;
+            Op _op;
 
-  function _hash(PartialDelegation memory partialDelegation) internal pure returns (bytes32) {
-    return
-      keccak256(abi.encode(PARTIAL_DELEGATION_TYPEHASH, partialDelegation._delegatee, partialDelegation._numerator));
-  }
+            // same address is present in both arrays
+            if (i < _oldLength && j < _newLength && _old[i]._delegatee == _new[j]._delegatee) {
+                // combine, checkpoint, and iterate
+                _delegationAdjustment._delegatee = _old[i]._delegatee;
+                if (_old[i]._amount != _new[j]._amount) {
+                    if (_old[i]._amount > _new[j]._amount) {
+                        _op = Op.SUBTRACT;
+                        _delegationAdjustment._amount = _old[i]._amount - _new[j]._amount;
+                    } else {
+                        _op = Op.ADD;
+                        _delegationAdjustment._amount = _new[j]._amount - _old[i]._amount;
+                    }
+                }
+                i++;
+                j++;
+            } else if (
+                j == _newLength // if we've exhausted the new array, we can just checkpoint the old values
+                    || (i != _oldLength && _old[i]._delegatee < _new[j]._delegatee) // or, if the ith old delegatee is next in line
+            ) {
+                // skip if 0...
+                _delegationAdjustment._delegatee = _old[i]._delegatee;
+                if (_old[i]._amount != 0) {
+                    _op = Op.SUBTRACT;
+                    _delegationAdjustment._amount = _old[i]._amount;
+                }
+                i++;
+            } else {
+                // skip if 0...
+                _delegationAdjustment._delegatee = _new[j]._delegatee;
+                if (_new[j]._amount != 0) {
+                    _op = Op.ADD;
+                    _delegationAdjustment._amount = _new[j]._amount;
+                }
+                j++;
+            }
 
-  /**
-   * @dev Must return the voting units held by an account.
-   */
-  function _getVotingUnits(address) internal view virtual returns (uint256);
+            if (_delegationAdjustment._amount != 0 && _delegationAdjustment._delegatee != address(0)) {
+                (uint256 oldValue, uint256 newValue) = _push(
+                    $._delegateCheckpoints[_delegationAdjustment._delegatee],
+                    _operation(_op),
+                    SafeCast.toUint208(_delegationAdjustment._amount)
+                );
+
+                emit DelegateVotesChanged(_delegationAdjustment._delegatee, oldValue, newValue);
+            }
+        }
+    }
+
+    /**
+     * @dev Internal helper to calculate vote weights from a list of delegations. It reverts if the sum of the numerators
+     * is greater than DENOMINATOR.
+     */
+    function _calculateWeightDistribution(PartialDelegation[] memory _delegations, uint256 _amount)
+        internal
+        pure
+        returns (DelegationAdjustment[] memory)
+    {
+        uint256 _delegationsLength = _delegations.length;
+        DelegationAdjustment[] memory _delegationAdjustments = new DelegationAdjustment[](_delegationsLength);
+
+        // Keep track of total numerator to ensure it doesn't exceed DENOMINATOR
+        uint256 _totalNumerator;
+
+        // Iterate through partial delegations to calculate vote weight
+        for (uint256 i; i < _delegationsLength; i++) {
+            if (_delegations[i]._numerator == 0) {
+                revert InvalidNumeratorZero();
+            }
+            _delegationAdjustments[i] = DelegationAdjustment(
+                _delegations[i]._delegatee, uint208(_amount * _delegations[i]._numerator / DENOMINATOR)
+            );
+            _totalNumerator += _delegations[i]._numerator;
+        }
+        if (_totalNumerator > DENOMINATOR) {
+            revert NumeratorSumExceedsDenominator(_totalNumerator, DENOMINATOR);
+        }
+        return _delegationAdjustments;
+    }
+
+    /**
+     * @dev Get number of checkpoints for `account`.
+     */
+    function _numCheckpoints(address account) internal view virtual returns (uint32) {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        return SafeCast.toUint32($._delegateCheckpoints[account].length());
+    }
+
+    /**
+     * @dev Get the `pos`-th checkpoint for `account`.
+     */
+    function _checkpoints(address account, uint32 pos)
+        internal
+        view
+        virtual
+        returns (Checkpoints.Checkpoint208 memory)
+    {
+        VotesPartialDelegationStorage storage $ = _getVotesPartialDelegationStorage();
+        return $._delegateCheckpoints[account].at(pos);
+    }
+
+    function _push(
+        Checkpoints.Trace208 storage store,
+        function(uint208, uint208) view returns (uint208) op,
+        uint208 delta
+    ) private returns (uint208, uint208) {
+        return store.push(clock(), op(store.latest(), delta));
+    }
+
+    function _add(uint208 a, uint208 b) private pure returns (uint208) {
+        return a + b;
+    }
+
+    function _subtract(uint208 a, uint208 b) private pure returns (uint208) {
+        return a - b;
+    }
+
+    function _operation(Op op) internal pure returns (function(uint208, uint208) view returns (uint208)) {
+        return op == Op.ADD ? _add : _subtract;
+    }
+
+    function _hash(PartialDelegation memory partialDelegation) internal pure returns (bytes32) {
+        return keccak256(
+            abi.encode(PARTIAL_DELEGATION_TYPEHASH, partialDelegation._delegatee, partialDelegation._numerator)
+        );
+    }
+
+    /**
+     * @dev Must return the voting units held by an account.
+     */
+    function _getVotingUnits(address) internal view virtual returns (uint256);
 }
 
 /**
@@ -4904,80 +4909,80 @@ abstract contract VotesPartialDelegationUpgradeable is
  * @custom:security-contact security@voteagora.com
  */
 abstract contract ERC20VotesPartialDelegationUpgradeable is
-  Initializable,
-  ERC20PermitUpgradeable,
-  VotesPartialDelegationUpgradeable
+    Initializable,
+    ERC20PermitUpgradeable,
+    VotesPartialDelegationUpgradeable
 {
-  /**
-   * @dev Total supply cap has been exceeded, introducing a risk of votes overflowing.
-   */
-  error ERC20ExceededSafeSupply(uint256 increasedSupply, uint256 cap);
+    /**
+     * @dev Total supply cap has been exceeded, introducing a risk of votes overflowing.
+     */
+    error ERC20ExceededSafeSupply(uint256 increasedSupply, uint256 cap);
 
-  function __ERC20VotesPartialDelegation_init() internal onlyInitializing {}
+    function __ERC20VotesPartialDelegation_init() internal onlyInitializing {}
 
-  function __ERC20VotesPartialDelegation_init_unchained() internal onlyInitializing {}
-  /**
-   * @dev Maximum token supply. Defaults to `type(uint208).max` (2^208^ - 1).
-   *
-   * This maximum is enforced in {_update}. It limits the total supply of the token, which is otherwise a uint256,
-   * so that checkpoints can be stored in the Trace208 structure used by {{Votes}}. Increasing this value will not
-   * remove the underlying limitation, and will cause {_update} to fail because of a math overflow in
-   * {_transferVotingUnits}. An override could be used to further restrict the total supply (to a lower value) if
-   * additional logic requires it. When resolving override conflicts on this function, the minimum should be
-   * returned.
-   */
+    function __ERC20VotesPartialDelegation_init_unchained() internal onlyInitializing {}
+    /**
+     * @dev Maximum token supply. Defaults to `type(uint208).max` (2^208^ - 1).
+     *
+     * This maximum is enforced in {_update}. It limits the total supply of the token, which is otherwise a uint256,
+     * so that checkpoints can be stored in the Trace208 structure used by {{Votes}}. Increasing this value will not
+     * remove the underlying limitation, and will cause {_update} to fail because of a math overflow in
+     * {_transferVotingUnits}. An override could be used to further restrict the total supply (to a lower value) if
+     * additional logic requires it. When resolving override conflicts on this function, the minimum should be
+     * returned.
+     */
 
-  function _maxSupply() internal view virtual returns (uint256) {
-    return type(uint208).max;
-  }
-
-  /**
-   * @dev Move voting power when tokens are transferred.
-   *
-   * Emits one or more {IVotes-DelegateVotesChanged} events.
-   */
-  function _update(address from, address to, uint256 value) internal virtual override {
-    super._update(from, to, value);
-    if (from == address(0)) {
-      uint256 supply = totalSupply();
-      uint256 cap = _maxSupply();
-      if (supply > cap) {
-        revert ERC20ExceededSafeSupply(supply, cap);
-      }
+    function _maxSupply() internal view virtual returns (uint256) {
+        return type(uint208).max;
     }
-    _transferVotingUnits(from, to, value);
-  }
 
-  /**
-   * @dev Returns the voting units of an `account`.
-   *
-   * WARNING: Overriding this function may compromise the internal vote accounting.
-   * `ERC20Votes` assumes tokens map to voting units 1:1 and this is not easy to change.
-   */
-  function _getVotingUnits(address account) internal view virtual override returns (uint256) {
-    return balanceOf(account);
-  }
+    /**
+     * @dev Move voting power when tokens are transferred.
+     *
+     * Emits one or more {IVotes-DelegateVotesChanged} events.
+     */
+    function _update(address from, address to, uint256 value) internal virtual override {
+        super._update(from, to, value);
+        if (from == address(0)) {
+            uint256 supply = totalSupply();
+            uint256 cap = _maxSupply();
+            if (supply > cap) {
+                revert ERC20ExceededSafeSupply(supply, cap);
+            }
+        }
+        _transferVotingUnits(from, to, value);
+    }
 
-  /**
-   * @dev Get number of checkpoints for `account`.
-   */
-  function numCheckpoints(address account) public view virtual returns (uint32) {
-    return _numCheckpoints(account);
-  }
+    /**
+     * @dev Returns the voting units of an `account`.
+     *
+     * WARNING: Overriding this function may compromise the internal vote accounting.
+     * `ERC20Votes` assumes tokens map to voting units 1:1 and this is not easy to change.
+     */
+    function _getVotingUnits(address account) internal view virtual override returns (uint256) {
+        return balanceOf(account);
+    }
 
-  /**
-   * @dev Get the `pos`-th checkpoint for `account`.
-   */
-  function checkpoints(address account, uint32 pos) public view virtual returns (Checkpoints.Checkpoint208 memory) {
-    return _checkpoints(account, pos);
-  }
+    /**
+     * @dev Get number of checkpoints for `account`.
+     */
+    function numCheckpoints(address account) public view virtual returns (uint32) {
+        return _numCheckpoints(account);
+    }
 
-  /**
-   * @inheritdoc NoncesUpgradeable
-   */
-  function nonces(address owner) public view override(ERC20PermitUpgradeable, NoncesUpgradeable) returns (uint256) {
-    return NoncesUpgradeable.nonces(owner);
-  }
+    /**
+     * @dev Get the `pos`-th checkpoint for `account`.
+     */
+    function checkpoints(address account, uint32 pos) public view virtual returns (Checkpoints.Checkpoint208 memory) {
+        return _checkpoints(account, pos);
+    }
+
+    /**
+     * @inheritdoc NoncesUpgradeable
+     */
+    function nonces(address owner) public view override(ERC20PermitUpgradeable, NoncesUpgradeable) returns (uint256) {
+        return NoncesUpgradeable.nonces(owner);
+    }
 }
 
 /**
@@ -4986,49 +4991,49 @@ abstract contract ERC20VotesPartialDelegationUpgradeable is
  * @custom:security-contact security@voteagora.com
  */
 contract L2GovToken is AccessControlUpgradeable, ERC20VotesPartialDelegationUpgradeable {
-  bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-  bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
+    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+    bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
-  /// @custom:oz-upgrades-unsafe-allow constructor
-  constructor() {
-    _disableInitializers();
-  }
-
-  /**
-   * @notice Initializes the contract with the provided admin and token name/symbol. Should be called during deployment.
-   * @param _admin The admin address.
-   * @param _name The name of the token.
-   * @param _symbol The symbol of the token.
-   * @dev Reverts if the provided admin address is zero.
-   */
-  function initialize(address _admin, string calldata _name, string calldata _symbol) public initializer {
-    __ERC20_init(_name, _symbol);
-    __EIP712_init(_name, "1");
-    __ERC20Permit_init(_name);
-    __AccessControl_init();
-    if (_admin == address(0)) {
-      revert InvalidAddressZero();
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
     }
-    _grantRole(DEFAULT_ADMIN_ROLE, _admin);
-  }
 
-  /**
-   * @notice Mints `_amount` of tokens to `_account`.
-   * @param _account The account to mint tokens to.
-   * @param _amount The amount of tokens to mint.
-   * @dev Reverts if the caller does not have the MINTER_ROLE.
-   */
-  function mint(address _account, uint256 _amount) public onlyRole(MINTER_ROLE) {
-    _mint(_account, _amount);
-  }
+    /**
+     * @notice Initializes the contract with the provided admin and token name/symbol. Should be called during deployment.
+     * @param _admin The admin address.
+     * @param _name The name of the token.
+     * @param _symbol The symbol of the token.
+     * @dev Reverts if the provided admin address is zero.
+     */
+    function initialize(address _admin, string calldata _name, string calldata _symbol) public initializer {
+        __ERC20_init(_name, _symbol);
+        __EIP712_init(_name, "1");
+        __ERC20Permit_init(_name);
+        __AccessControl_init();
+        if (_admin == address(0)) {
+            revert InvalidAddressZero();
+        }
+        _grantRole(DEFAULT_ADMIN_ROLE, _admin);
+    }
 
-  /**
-   * @notice Burns `_value` of tokens from `_account`.
-   * @param _account The account to burn tokens from.
-   * @param _value The amount of tokens to burn.
-   * @dev Reverts if the caller does not have the BURNER_ROLE.
-   */
-  function burn(address _account, uint256 _value) public onlyRole(BURNER_ROLE) {
-    _burn(_account, _value);
-  }
+    /**
+     * @notice Mints `_amount` of tokens to `_account`.
+     * @param _account The account to mint tokens to.
+     * @param _amount The amount of tokens to mint.
+     * @dev Reverts if the caller does not have the MINTER_ROLE.
+     */
+    function mint(address _account, uint256 _amount) public onlyRole(MINTER_ROLE) {
+        _mint(_account, _amount);
+    }
+
+    /**
+     * @notice Burns `_value` of tokens from `_account`.
+     * @param _account The account to burn tokens from.
+     * @param _value The amount of tokens to burn.
+     * @dev Reverts if the caller does not have the BURNER_ROLE.
+     */
+    function burn(address _account, uint256 _value) public onlyRole(BURNER_ROLE) {
+        _burn(_account, _value);
+    }
 }

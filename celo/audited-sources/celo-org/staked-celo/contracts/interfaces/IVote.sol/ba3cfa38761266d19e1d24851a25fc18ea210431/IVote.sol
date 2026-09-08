@@ -2,9 +2,7 @@
 pragma solidity 0.8.11;
 
 interface IVote {
-    function updateHistoryAndReturnLockedStCeloInVoting(address beneficiary)
-        external
-        returns (uint256);
+    function updateHistoryAndReturnLockedStCeloInVoting(address beneficiary) external returns (uint256);
 
     function voteProposal(
         address accountVoter,
@@ -14,18 +12,9 @@ interface IVote {
         uint256 abstainVotes
     )
         external
-        returns (
-            uint256 stCeloUsedForVoting,
-            uint256 totalYesVotes,
-            uint256 totalNoVotes,
-            uint256 totalAbstainVotes
-        );
+        returns (uint256 stCeloUsedForVoting, uint256 totalYesVotes, uint256 totalNoVotes, uint256 totalAbstainVotes);
 
     function revokeVotes(address accountVoter, uint256 proposalId)
         external
-        returns (
-            uint256 totalYesVotes,
-            uint256 totalNoVotes,
-            uint256 totalAbstainVotes
-        );
+        returns (uint256 totalYesVotes, uint256 totalNoVotes, uint256 totalAbstainVotes);
 }

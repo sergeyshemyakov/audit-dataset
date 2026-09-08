@@ -5,25 +5,29 @@ pragma solidity ^0.8.0;
 import {IL1BlockContainer} from "./IL1BlockContainer.sol";
 import {IL1GasPriceOracle} from "./IL1GasPriceOracle.sol";
 
-import {OwnableBase} from "../../libraries/common/OwnableBase.sol";
 import {IWhitelist} from "../../libraries/common/IWhitelist.sol";
+import {OwnableBase} from "../../libraries/common/OwnableBase.sol";
 import {ScrollPredeploy} from "../../libraries/constants/ScrollPredeploy.sol";
 
 /// @title L1BlockContainer
 /// @notice This contract will maintain the list of blocks proposed in L1.
 contract L1BlockContainer is OwnableBase, IL1BlockContainer {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates whitelist contract.
     /// @param _oldWhitelist The address of old whitelist contract.
     /// @param _newWhitelist The address of new whitelist contract.
     event UpdateWhitelist(address _oldWhitelist, address _newWhitelist);
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     /// @dev Compiler will pack this into single `uint256`.
     struct BlockMetadata {
@@ -35,9 +39,11 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
         uint128 baseFee;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of whitelist contract.
     IWhitelist public whitelist;
@@ -54,10 +60,11 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
     /// including timestamp and height.
     mapping(bytes32 => BlockMetadata) public metadata;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _owner) {
         _transferOwnership(_owner);
     }
@@ -78,9 +85,11 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
         emit ImportBlock(_startBlockHash, _startBlockHeight, _startBlockTimestamp, _startBlockBaseFee, _startStateRoot);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1BlockContainer
     function latestBaseFee() external view override returns (uint256) {
@@ -107,22 +116,21 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
         return metadata[_blockHash].timestamp;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1BlockContainer
-    function importBlockHeader(
-        bytes32 _blockHash,
-        bytes calldata _blockHeaderRLP,
-        bool _updateGasPriceOracle
-    ) external {
+    function importBlockHeader(bytes32 _blockHash, bytes calldata _blockHeaderRLP, bool _updateGasPriceOracle)
+        external
+    {
         // @todo remove this when ETH 2.0 signature verification is ready.
         {
             IWhitelist _whitelist = whitelist;
             require(
-                address(_whitelist) == address(0) || _whitelist.isSenderAllowed(msg.sender),
-                "Not whitelisted sender"
+                address(_whitelist) == address(0) || _whitelist.isSenderAllowed(msg.sender), "Not whitelisted sender"
             );
         }
 
@@ -158,11 +166,7 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
                 mstore(0x04, 0x20) // str.offset
                 mstore(0x44, msg)
                 let msgLen
-                for {
-
-                } msg {
-
-                } {
+                for {} msg {} {
                     msg := shl(8, msg)
                     msgLen := add(msgLen, 1)
                 }
@@ -172,9 +176,7 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
             // reverts with `msg` when condition is not matched.
             // make sure the length of error string <= 32
             function require(cond, msg) {
-                if iszero(cond) {
-                    revertWith(msg)
-                }
+                if iszero(cond) { revertWith(msg) }
             }
             // returns the calldata offset of the value and the length in bytes
             // for the RLP encoded data item at `ptr`. used in `decodeFlat`
@@ -205,9 +207,7 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
                     // plus the length in bytes of the length of the string in binary form,
                     // followed by the length of the string, followed by the string.
                     let lengthBytes := sub(b0, 0xb7)
-                    if gt(lengthBytes, 4) {
-                        invalid()
-                    }
+                    if gt(lengthBytes, 4) { invalid() }
 
                     // load the extended length
                     valueOffset := add(ptr, 1)
@@ -228,13 +228,9 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
             {
                 let b0 := byte(0, calldataload(ptr))
                 // the input should be a long list
-                if lt(b0, 0xf8) {
-                    invalid()
-                }
+                if lt(b0, 0xf8) { invalid() }
                 let lengthBytes := sub(b0, 0xf7)
-                if gt(lengthBytes, 32) {
-                    invalid()
-                }
+                if gt(lengthBytes, 32) { invalid() }
                 // load the extended length
                 ptr := add(ptr, 1)
                 headerPayloadLength := calldataload(ptr)
@@ -252,11 +248,7 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
             require(eq(_blockHash, _computedBlockHash), "Block hash mismatch")
 
             // load 16 vaules
-            for {
-                let i := 0
-            } lt(i, 16) {
-                i := add(i, 1)
-            } {
+            for { let i := 0 } lt(i, 16) { i := add(i, 1) } {
                 let len, offset := decodeValue(ptr)
                 // the value we care must have at most 32 bytes
                 if lt(len, 33) {
@@ -298,9 +290,11 @@ contract L1BlockContainer is OwnableBase, IL1BlockContainer {
         }
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update whitelist contract.
     /// @dev This function can only called by contract owner.

@@ -9,9 +9,11 @@ import {IWhitelist} from "../../libraries/common/IWhitelist.sol";
 import {IL2GasPriceOracle} from "./IL2GasPriceOracle.sol";
 
 contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates whitelist contract.
     /// @param _oldWhitelist The address of old whitelist contract.
@@ -30,9 +32,11 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
     /// @param l2BaseFee The current l2 base fee updated.
     event L2BaseFeeUpdated(uint256 l2BaseFee);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev The precision used in the scalar.
     uint256 private constant PRECISION = 1e9;
@@ -45,9 +49,11 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
     ///      x1000 should be enough.
     uint256 private constant MAX_SCALE = 1000 * PRECISION;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The current l1 fee overhead.
     uint256 public overhead;
@@ -61,17 +67,20 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
     /// @notice The address of whitelist contract.
     IWhitelist public whitelist;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     function initialize() external initializer {
         OwnableUpgradeable.__Ownable_init();
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the current l1 base fee.
     function l1BaseFee() public view returns (uint256) {
@@ -79,12 +88,12 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
     }
 
     /// @inheritdoc IL2GasPriceOracle
-    function estimateCrossDomainMessageFee(
-        address,
-        address,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external view override returns (uint256) {
+    function estimateCrossDomainMessageFee(address, address, bytes memory _message, uint256 _gasLimit)
+        external
+        view
+        override
+        returns (uint256)
+    {
         unchecked {
             uint256 _l1GasUsed = getL1GasUsed(_message);
             uint256 _rollupFee = (_l1GasUsed * l1BaseFee() * scalar) / PRECISION;
@@ -115,9 +124,11 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
         }
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Allows the owner to modify the l2 base fee.
     /// @param _l2BaseFee The new l2 base fee.
@@ -129,9 +140,11 @@ contract L2GasPriceOracle is OwnableUpgradeable, IL2GasPriceOracle {
         emit L2BaseFeeUpdated(_l2BaseFee);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Allows the owner to modify the overhead.
     /// @param _overhead New overhead

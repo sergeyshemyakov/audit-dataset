@@ -179,11 +179,11 @@ contract LivenessModule is ISemver {
         if (_newOwnersCount > 0) {
             uint256 newThreshold = getRequiredThreshold(_newOwnersCount);
             // Remove the owner and update the threshold
-            _removeOwnerSafeCall({ _prevOwner: _prevOwner, _owner: _ownerToRemove, _threshold: newThreshold });
+            _removeOwnerSafeCall({_prevOwner: _prevOwner, _owner: _ownerToRemove, _threshold: newThreshold});
         } else {
             // There is only one owner left. The Safe will not allow a safe with no owners, so we will
             // need to swap owners instead.
-            _swapToFallbackOwnerSafeCall({ _prevOwner: _prevOwner, _oldOwner: _ownerToRemove });
+            _swapToFallbackOwnerSafeCall({_prevOwner: _prevOwner, _oldOwner: _ownerToRemove});
         }
     }
 

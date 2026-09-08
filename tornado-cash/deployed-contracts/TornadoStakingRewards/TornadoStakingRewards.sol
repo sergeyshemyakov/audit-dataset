@@ -31,7 +31,9 @@ library Address {
 
         uint256 size;
         // solhint-disable-next-line no-inline-assembly
-        assembly { size := extcodesize(account) }
+        assembly {
+            size := extcodesize(account)
+        }
         return size > 0;
     }
 
@@ -55,7 +57,7 @@ library Address {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{ value: amount }("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -78,7 +80,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-      return functionCall(target, data, "Address: low-level call failed");
+        return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -87,7 +89,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -112,12 +117,15 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.call{ value: value }(data);
+        (bool success, bytes memory returndata) = target.call{value: value}(data);
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
@@ -137,7 +145,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(address target, bytes memory data, string memory errorMessage) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
@@ -161,7 +173,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
@@ -169,7 +184,11 @@ library Address {
         return _verifyCallResult(success, returndata, errorMessage);
     }
 
-    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage) private pure returns(bytes memory) {
+    function _verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        private
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -202,7 +221,6 @@ library Address {
  * that all initializers are idempotent. This is not verified automatically as constructors are by Solidity.
  */
 abstract contract Initializable {
-
     /**
      * @dev Indicates that the contract has been initialized.
      */
@@ -239,35 +257,35 @@ abstract contract Initializable {
 }
 
 interface Resolver {
-  function addr(bytes32 node) external view returns (address);
+    function addr(bytes32 node) external view returns (address);
 }
 
 interface ENS {
-  function resolver(bytes32 node) external view returns (Resolver);
+    function resolver(bytes32 node) external view returns (Resolver);
 }
 
 contract EnsResolve {
-  function resolve(bytes32 node) public view virtual returns (address) {
-    ENS Registry = ENS(
-      getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
-    );
-    return Registry.resolver(node).addr(node);
-  }
-
-  function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
-    result = new address[](domains.length);
-    for (uint256 i = 0; i < domains.length; i++) {
-      result[i] = resolve(domains[i]);
+    function resolve(bytes32 node) public view virtual returns (address) {
+        ENS Registry = ENS(
+            getChainId() == 1 ? 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e : 0x8595bFb0D940DfEDC98943FA8a907091203f25EE
+        );
+        return Registry.resolver(node).addr(node);
     }
-  }
 
-  function getChainId() internal pure returns (uint256) {
-    uint256 chainId;
-    assembly {
-      chainId := chainid()
+    function bulkResolve(bytes32[] memory domains) public view returns (address[] memory result) {
+        result = new address[](domains.length);
+        for (uint256 i = 0; i < domains.length; i++) {
+            result[i] = resolve(domains[i]);
+        }
     }
-    return chainId;
-  }
+
+    function getChainId() internal pure returns (uint256) {
+        uint256 chainId;
+        assembly {
+            chainId := chainid()
+        }
+        return chainId;
+    }
 }
 
 /**
@@ -291,7 +309,9 @@ library SafeMath {
      */
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         uint256 c = a + b;
-        if (c < a) return (false, 0);
+        if (c < a) {
+            return (false, 0);
+        }
         return (true, c);
     }
 
@@ -301,7 +321,9 @@ library SafeMath {
      * _Available since v3.4._
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b > a) return (false, 0);
+        if (b > a) {
+            return (false, 0);
+        }
         return (true, a - b);
     }
 
@@ -314,9 +336,13 @@ library SafeMath {
         // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
         // benefit is lost if 'b' is also tested.
         // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-        if (a == 0) return (true, 0);
+        if (a == 0) {
+            return (true, 0);
+        }
         uint256 c = a * b;
-        if (c / a != b) return (false, 0);
+        if (c / a != b) {
+            return (false, 0);
+        }
         return (true, c);
     }
 
@@ -326,7 +352,9 @@ library SafeMath {
      * _Available since v3.4._
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b == 0) return (false, 0);
+        if (b == 0) {
+            return (false, 0);
+        }
         return (true, a / b);
     }
 
@@ -336,7 +364,9 @@ library SafeMath {
      * _Available since v3.4._
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-        if (b == 0) return (false, 0);
+        if (b == 0) {
+            return (false, 0);
+        }
         return (true, a % b);
     }
 
@@ -382,7 +412,9 @@ library SafeMath {
      * - Multiplication cannot overflow.
      */
     function mul(uint256 a, uint256 b) internal pure returns (uint256) {
-        if (a == 0) return 0;
+        if (a == 0) {
+            return 0;
+        }
         uint256 c = a * b;
         require(c / a == b, "SafeMath: multiplication overflow");
         return c;
@@ -588,7 +620,8 @@ library SafeERC20 {
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
         // solhint-disable-next-line max-line-length
-        require((value == 0) || (token.allowance(address(this), spender) == 0),
+        require(
+            (value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
@@ -600,7 +633,8 @@ library SafeERC20 {
     }
 
     function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
+        uint256 newAllowance =
+            token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
@@ -616,7 +650,8 @@ library SafeERC20 {
         // the target address contains contract code and also asserts for success in the low-level call.
 
         bytes memory returndata = address(token).functionCall(data, "SafeERC20: low-level call failed");
-        if (returndata.length > 0) { // Return data is optional
+        if (returndata.length > 0) {
+            // Return data is optional
             // solhint-disable-next-line max-line-length
             require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
         }
@@ -699,9 +734,8 @@ contract TornadoStakingRewards is Initializable, EnsResolve {
      */
     function addBurnRewards(uint256 amount) external {
         require(msg.sender == address(Governance) || msg.sender == relayerRegistry, "unauthorized");
-        accumulatedRewardPerTorn = accumulatedRewardPerTorn.add(
-            amount.mul(ratioConstant).div(torn.balanceOf(address(Governance.userVault())))
-        );
+        accumulatedRewardPerTorn =
+            accumulatedRewardPerTorn.add(amount.mul(ratioConstant).div(torn.balanceOf(address(Governance.userVault()))));
     }
 
     /**
@@ -738,7 +772,9 @@ contract TornadoStakingRewards is Initializable, EnsResolve {
      *
      */
     function withdrawTorn(uint256 amount) external onlyGovernance {
-        if (amount == type(uint256).max) amount = torn.balanceOf(address(this));
+        if (amount == type(uint256).max) {
+            amount = torn.balanceOf(address(this));
+        }
         torn.safeTransfer(address(Governance), amount);
     }
 
@@ -752,10 +788,7 @@ contract TornadoStakingRewards is Initializable, EnsResolve {
      * @param amountLockedBeforehand the balance locked beforehand in the governance contract
      * @return claimed the rewards attributed to user since the last update
      */
-    function _updateReward(address account, uint256 amountLockedBeforehand)
-        private
-        returns (uint256 claimed)
-    {
+    function _updateReward(address account, uint256 amountLockedBeforehand) private returns (uint256 claimed) {
         if (amountLockedBeforehand != 0) {
             claimed = (accumulatedRewardPerTorn.sub(accumulatedRewardRateOnLastUpdate[account])).mul(
                 amountLockedBeforehand
@@ -772,9 +805,9 @@ contract TornadoStakingRewards is Initializable, EnsResolve {
     function checkReward(address account) external view returns (uint256 rewards) {
         uint256 amountLocked = Governance.lockedBalance(account);
         if (amountLocked != 0) {
-            rewards = (accumulatedRewardPerTorn.sub(accumulatedRewardRateOnLastUpdate[account])).mul(
-                amountLocked
-            ).div(ratioConstant);
+            rewards = (accumulatedRewardPerTorn.sub(accumulatedRewardRateOnLastUpdate[account])).mul(amountLocked).div(
+                ratioConstant
+            );
         }
         rewards = rewards.add(accumulatedRewards[account]);
     }

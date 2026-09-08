@@ -8,9 +8,11 @@ import "./IGasOracle.sol";
 
 /// @title Simple Gas Oracle
 contract SimpleGasOracle is OwnableUpgradeable, IGasOracle {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner update default FeeConfig.
     /// @param _baseFees The amount base fee to pay.
@@ -23,10 +25,11 @@ contract SimpleGasOracle is OwnableUpgradeable, IGasOracle {
     /// @param _feesPerByte The amount fee to pay per message byte.
     event UpdateCustomFeeConfig(address indexed _sender, uint256 _baseFees, uint256 _feesPerByte);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
-
+     *
+     */
     struct FeeConfig {
         uint128 baseFees;
         uint128 feesPerByte;
@@ -41,25 +44,28 @@ contract SimpleGasOracle is OwnableUpgradeable, IGasOracle {
     /// @notice Whether the sender should user custom FeeConfig.
     mapping(address => bool) public hasCustomConfig;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     function initialize() external initializer {
         OwnableUpgradeable.__Ownable_init();
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IGasOracle
-    function estimateMessageFee(
-        address _sender,
-        address,
-        bytes memory _message,
-        uint256
-    ) external view override returns (uint256) {
+    function estimateMessageFee(address _sender, address, bytes memory _message, uint256)
+        external
+        view
+        override
+        returns (uint256)
+    {
         FeeConfig memory _feeConfig;
         if (hasCustomConfig[_sender]) {
             _feeConfig = customFeeConfig[_sender];
@@ -72,9 +78,11 @@ contract SimpleGasOracle is OwnableUpgradeable, IGasOracle {
         }
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update default fee config.
     /// @param _baseFees The amount of baseFees to update.
@@ -89,11 +97,7 @@ contract SimpleGasOracle is OwnableUpgradeable, IGasOracle {
     /// @param _sender The address of sender to update custom FeeConfig.
     /// @param _baseFees The amount of baseFees to update.
     /// @param _feesPerByte The amount of fees per byte to update.
-    function updateCustomFeeConfig(
-        address _sender,
-        uint128 _baseFees,
-        uint128 _feesPerByte
-    ) external onlyOwner {
+    function updateCustomFeeConfig(address _sender, uint128 _baseFees, uint128 _feesPerByte) external onlyOwner {
         customFeeConfig[_sender] = FeeConfig(_baseFees, _feesPerByte);
         hasCustomConfig[_sender] = true;
 

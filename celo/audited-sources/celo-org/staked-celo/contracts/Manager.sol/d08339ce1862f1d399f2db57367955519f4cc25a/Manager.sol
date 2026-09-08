@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity 0.8.11;
 
-import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
+import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-import "./common/UsingRegistryUpgradeable.sol";
 import "./common/UUPSOwnableUpgradeable.sol";
+import "./common/UsingRegistryUpgradeable.sol";
 import "./interfaces/IAccount.sol";
 import "./interfaces/IStakedCelo.sol";
 
@@ -196,10 +196,7 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
             }
         }
 
-        if (
-            activeGroups.length() + deprecatedGroups.length() >=
-            getElection().maxNumGroupsVotedFor()
-        ) {
+        if (activeGroups.length() + deprecatedGroups.length() >= getElection().maxNumGroupsVotedFor()) {
             revert MaxGroupsVotedForReached();
         }
 
@@ -241,15 +238,14 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
             return false;
         }
 
-        (address[] memory members, , , , , uint256 slashMultiplier, ) = validators
-            .getValidatorGroup(group);
+        (address[] memory members,,,,, uint256 slashMultiplier,) = validators.getValidatorGroup(group);
 
         // check if group has no members
         if (members.length == 0) {
             return false;
         }
         // check for recent slash
-        if (slashMultiplier < 10**24) {
+        if (slashMultiplier < 10 ** 24) {
             return false;
         }
         // check that at least one member is elected.
@@ -453,24 +449,16 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
         uint256[] memory deprecatedWithdrawalsPerGroup;
         uint256 numberDeprecatedGroupsWithdrawn;
 
-        (
-            deprecatedGroupsWithdrawn,
-            deprecatedWithdrawalsPerGroup,
-            numberDeprecatedGroupsWithdrawn,
-            withdrawal
-        ) = getDeprecatedGroupsWithdrawalDistribution(withdrawal);
+        (deprecatedGroupsWithdrawn, deprecatedWithdrawalsPerGroup, numberDeprecatedGroupsWithdrawn, withdrawal) =
+            getDeprecatedGroupsWithdrawalDistribution(withdrawal);
 
         address[] memory groupsWithdrawn;
         uint256[] memory withdrawalsPerGroup;
 
         (groupsWithdrawn, withdrawalsPerGroup) = getActiveGroupWithdrawalDistribution(withdrawal);
 
-        address[] memory finalGroups = new address[](
-            groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn
-        );
-        uint256[] memory finalVotes = new uint256[](
-            groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn
-        );
+        address[] memory finalGroups = new address[](groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn);
+        uint256[] memory finalVotes = new uint256[](groupsWithdrawn.length + numberDeprecatedGroupsWithdrawn);
 
         for (uint256 i = 0; i < numberDeprecatedGroupsWithdrawn; i++) {
             finalGroups[i] = deprecatedGroupsWithdrawn[i];
@@ -660,10 +648,7 @@ contract Manager is UUPSOwnableUpgradeable, UsingRegistryUpgradeable {
         for (uint256 i = 1; i < groupsWithVotes.length; i++) {
             uint256 j = i;
             while (j > 0 && groupsWithVotes[j].votes < groupsWithVotes[j - 1].votes) {
-                (groupsWithVotes[j], groupsWithVotes[j - 1]) = (
-                    groupsWithVotes[j - 1],
-                    groupsWithVotes[j]
-                );
+                (groupsWithVotes[j], groupsWithVotes[j - 1]) = (groupsWithVotes[j - 1], groupsWithVotes[j]);
                 j--;
             }
         }

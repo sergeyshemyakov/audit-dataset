@@ -13,22 +13,22 @@ import {SafeERC20} from "@oz/token/ERC20/utils/SafeERC20.sol";
  * @notice This contract is responsible for distributing rewards.
  */
 contract RewardDistributor is IRewardDistributor {
-  using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20;
 
-  IERC20 public immutable ASSET;
-  IRegistry public immutable REGISTRY;
+    IERC20 public immutable ASSET;
+    IRegistry public immutable REGISTRY;
 
-  constructor(IERC20 _asset, IRegistry _registry) {
-    ASSET = _asset;
-    REGISTRY = _registry;
-  }
+    constructor(IERC20 _asset, IRegistry _registry) {
+        ASSET = _asset;
+        REGISTRY = _registry;
+    }
 
-  function claim(address _to, uint256 _amount) external override(IRewardDistributor) {
-    require(msg.sender == canonicalRollup(), Errors.RewardDistributor__InvalidCaller(msg.sender, canonicalRollup()));
-    ASSET.safeTransfer(_to, _amount);
-  }
+    function claim(address _to, uint256 _amount) external override(IRewardDistributor) {
+        require(msg.sender == canonicalRollup(), Errors.RewardDistributor__InvalidCaller(msg.sender, canonicalRollup()));
+        ASSET.safeTransfer(_to, _amount);
+    }
 
-  function canonicalRollup() public view override(IRewardDistributor) returns (address) {
-    return address(REGISTRY.getCanonicalRollup());
-  }
+    function canonicalRollup() public view override(IRewardDistributor) returns (address) {
+        return address(REGISTRY.getCanonicalRollup());
+    }
 }

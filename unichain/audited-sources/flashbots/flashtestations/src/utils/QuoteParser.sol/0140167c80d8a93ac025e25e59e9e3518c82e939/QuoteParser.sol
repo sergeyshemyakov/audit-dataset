@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
-import {TD10ReportBody} from "automata-dcap-attestation/contracts/types/V4Structs.sol";
 import {BytesUtils} from "@automata-network/on-chain-pccs/utils/BytesUtils.sol";
-import {TD_REPORT10_LENGTH, TDX_TEE, HEADER_LENGTH} from "automata-dcap-attestation/contracts/types/Constants.sol";
+import {HEADER_LENGTH, TDX_TEE, TD_REPORT10_LENGTH} from "automata-dcap-attestation/contracts/types/Constants.sol";
+import {TD10ReportBody} from "automata-dcap-attestation/contracts/types/V4Structs.sol";
 
 /**
  * @title QuoteParser

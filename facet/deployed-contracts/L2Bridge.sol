@@ -103,11 +103,7 @@ interface IERC20 {
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
 }
 
 interface IERC20Metadata is IERC20 {
@@ -250,11 +246,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - the caller must have allowance for ``from``'s tokens of at least
      * `amount`.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) public virtual override returns (bool) {
+    function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
         address spender = _msgSender();
         _spendAllowance(from, spender, amount);
         _transfer(from, to, amount);
@@ -318,11 +310,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `to` cannot be the zero address.
      * - `from` must have a balance of at least `amount`.
      */
-    function _transfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {
+    function _transfer(address from, address to, uint256 amount) internal virtual {
         require(from != address(0), "ERC20: transfer from the zero address");
         require(to != address(0), "ERC20: transfer to the zero address");
 
@@ -340,7 +328,8 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         _afterTokenTransfer(from, to, amount);
     }
 
-    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
+    /**
+     * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
      * Emits a {Transfer} event with `from` set to the zero address.
@@ -402,11 +391,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `owner` cannot be the zero address.
      * - `spender` cannot be the zero address.
      */
-    function _approve(
-        address owner,
-        address spender,
-        uint256 amount
-    ) internal virtual {
+    function _approve(address owner, address spender, uint256 amount) internal virtual {
         require(owner != address(0), "ERC20: approve from the zero address");
         require(spender != address(0), "ERC20: approve to the zero address");
 
@@ -422,11 +407,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * Might emit an {Approval} event.
      */
-    function _spendAllowance(
-        address owner,
-        address spender,
-        uint256 amount
-    ) internal virtual {
+    function _spendAllowance(address owner, address spender, uint256 amount) internal virtual {
         uint256 currentAllowance = allowance(owner, spender);
         if (currentAllowance != type(uint256).max) {
             require(currentAllowance >= amount, "ERC20: insufficient allowance");
@@ -450,11 +431,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
      */
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {}
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}
 
     /**
      * @dev Hook that is called after any transfer of tokens. This includes
@@ -470,11 +447,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
      */
-    function _afterTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {}
+    function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual {}
 }
 
 contract L2Bridge is ERC20 {
@@ -494,11 +467,11 @@ contract L2Bridge is ERC20 {
     address public immutable l1Bridge;
     IL2ToL1MessagePasser public constant MESSAGE_PASSER =
         IL2ToL1MessagePasser(0x4200000000000000000000000000000000000016);
-    
+
     /*//////////////////////////////////////////////////////////////
                                STORAGE
     //////////////////////////////////////////////////////////////*/
-    
+
     /**
      * @notice Tracks which deposit nonces have been finalized
      * @dev Prevents replay attacks where the same deposit could be finalized multiple times.
@@ -519,12 +492,16 @@ contract L2Bridge is ERC20 {
      * @dev Ensures only legitimate cross-chain messages from L1 bridge can mint tokens
      */
     modifier onlyL1Bridge() {
-        if (msg.sender != aliasedL1Bridge()) revert UnauthorizedBridge();
+        if (msg.sender != aliasedL1Bridge()) {
+            revert UnauthorizedBridge();
+        }
         _;
     }
 
     constructor(string memory name_, string memory symbol_, address _l1Bridge) ERC20(name_, symbol_) {
-        if (_l1Bridge == address(0)) revert InvalidL1Bridge();
+        if (_l1Bridge == address(0)) {
+            revert InvalidL1Bridge();
+        }
         l1Bridge = _l1Bridge;
     }
 
@@ -539,18 +516,18 @@ contract L2Bridge is ERC20 {
      *      due to FACET block gas limits.
      * @param deposit The deposit transaction containing nonce, recipient, and amount
      */
-    function finalizeDeposit(
-        L1Bridge.DepositTransaction calldata deposit
-    ) external onlyL1Bridge {
+    function finalizeDeposit(L1Bridge.DepositTransaction calldata deposit) external onlyL1Bridge {
         // Check if deposit has already been finalized
-        if (finalizedDeposits[deposit.nonce]) revert DepositAlreadyFinalized();
-        
+        if (finalizedDeposits[deposit.nonce]) {
+            revert DepositAlreadyFinalized();
+        }
+
         // Mark deposit as finalized
         finalizedDeposits[deposit.nonce] = true;
-        
+
         // Mint tokens to recipient
         _mint(deposit.to, deposit.amount);
-        
+
         emit DepositFinalized(deposit.nonce, deposit.to, deposit.amount);
     }
 
@@ -566,7 +543,9 @@ contract L2Bridge is ERC20 {
      * @param amount The amount of wrapped ETH to withdraw (burned on L2, received on L1)
      */
     function initiateWithdrawal(address to, uint256 amount) external {
-        if (amount == 0) revert InvalidWithdrawalAmount();
+        if (amount == 0) {
+            revert InvalidWithdrawalAmount();
+        }
 
         _burn(msg.sender, amount);
 

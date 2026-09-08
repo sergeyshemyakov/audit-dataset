@@ -5,11 +5,11 @@ pragma solidity =0.8.16;
 import {IL2ScrollMessenger} from "./IL2ScrollMessenger.sol";
 import {L2MessageQueue} from "./predeploys/L2MessageQueue.sol";
 
-import {PatriciaMerkleTrieVerifier} from "../libraries/verifier/PatriciaMerkleTrieVerifier.sol";
-import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
-import {AddressAliasHelper} from "../libraries/common/AddressAliasHelper.sol";
 import {IScrollMessenger} from "../libraries/IScrollMessenger.sol";
 import {ScrollMessengerBase} from "../libraries/ScrollMessengerBase.sol";
+import {AddressAliasHelper} from "../libraries/common/AddressAliasHelper.sol";
+import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
+import {PatriciaMerkleTrieVerifier} from "../libraries/verifier/PatriciaMerkleTrieVerifier.sol";
 
 // solhint-disable reason-string
 // solhint-disable not-rely-on-time
@@ -24,16 +24,20 @@ import {ScrollMessengerBase} from "../libraries/ScrollMessengerBase.sol";
 /// @dev It should be a predeployed contract on layer 2 and should hold infinite amount
 /// of Ether (Specifically, `uint256(-1)`), which can be initialized in Genesis Block.
 contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of L2MessageQueue.
     address public immutable messageQueue;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from L2 message hash to the timestamp when the message is sent.
     mapping(bytes32 => uint256) public messageSendTimestamp;
@@ -44,10 +48,11 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
     /// @dev The storage slots used by previous versions of this contract.
     uint256[2] private __used;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _counterpart, address _messageQueue) ScrollMessengerBase(_counterpart) {
         if (_messageQueue == address(0)) {
             revert ErrorZeroAddress();
@@ -62,39 +67,38 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
         ScrollMessengerBase.__ScrollMessengerBase_init(address(0), address(0));
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit);
     }
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes calldata _message,
-        uint256 _gasLimit,
-        address
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes calldata _message, uint256 _gasLimit, address)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit);
     }
 
     /// @inheritdoc IL2ScrollMessenger
-    function relayMessage(
-        address _from,
-        address _to,
-        uint256 _value,
-        uint256 _nonce,
-        bytes memory _message
-    ) external override whenNotPaused {
+    function relayMessage(address _from, address _to, uint256 _value, uint256 _nonce, bytes memory _message)
+        external
+        override
+        whenNotPaused
+    {
         // It is impossible to deploy a contract with the same address, reentrance is prevented in nature.
         require(AddressAliasHelper.undoL1ToL2Alias(_msgSender()) == counterpart, "Caller is not L1ScrollMessenger");
 
@@ -105,21 +109,21 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
         _executeMessage(_from, _to, _value, _message, _xDomainCalldataHash);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to send cross domain message.
     /// @param _to The address of account who receive the message.
     /// @param _value The amount of ether passed when call target contract.
     /// @param _message The content of the message.
     /// @param _gasLimit Optional gas limit to complete the message relay on corresponding chain.
-    function _sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) internal nonReentrant {
+    function _sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        internal
+        nonReentrant
+    {
         require(msg.value == _value, "msg.value mismatch");
 
         uint256 _nonce = L2MessageQueue(messageQueue).nextMessageIndex();
@@ -156,7 +160,7 @@ contract L2ScrollMessenger is ScrollMessengerBase, IL2ScrollMessenger {
 
         xDomainMessageSender = _from;
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, ) = _to.call{value: _value}(_message);
+        (bool success,) = _to.call{value: _value}(_message);
         // reset value to refund gas.
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
 

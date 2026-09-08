@@ -7,19 +7,22 @@ import {IMessageTransmitter} from "../../interfaces/IMessageTransmitter.sol";
 import {ScrollGatewayBase} from "./ScrollGatewayBase.sol";
 
 abstract contract CCTPGatewayBase is ScrollGatewayBase {
-    /*********
+    /**
+     *
      * Enums *
-     *********/
-
+     *
+     */
     enum CCTPMessageStatus {
         None,
         Pending,
         Relayed
     }
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of L1 USDC address.
     address public immutable l1USDC;
@@ -30,9 +33,11 @@ abstract contract CCTPGatewayBase is ScrollGatewayBase {
     /// @notice The destination domain for layer2.
     uint32 public immutable destinationDomain;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of TokenMessenger in local domain.
     address public cctpMessenger;
@@ -46,15 +51,12 @@ abstract contract CCTPGatewayBase is ScrollGatewayBase {
     /// @dev The storage slots for future usage.
     uint256[47] private __gap;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
-    constructor(
-        address _l1USDC,
-        address _l2USDC,
-        uint32 _destinationDomain
-    ) {
+     *
+     */
+    constructor(address _l1USDC, address _l2USDC, uint32 _destinationDomain) {
         l1USDC = _l1USDC;
         l2USDC = _l2USDC;
         destinationDomain = _destinationDomain;
@@ -65,19 +67,17 @@ abstract contract CCTPGatewayBase is ScrollGatewayBase {
         cctpTransmitter = _cctpTransmitter;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Claim USDC that has been cross chained.
     /// @param _nonce The nonce of the message from CCTP.
     /// @param _cctpMessage The message passed to MessageTransmitter contract in CCTP.
     /// @param _cctpSignature The message passed to MessageTransmitter contract in CCTP.
-    function claimUSDC(
-        uint256 _nonce,
-        bytes calldata _cctpMessage,
-        bytes calldata _cctpSignature
-    ) public {
+    function claimUSDC(uint256 _nonce, bytes calldata _cctpMessage, bytes calldata _cctpSignature) public {
         // Check `_nonce` match with `_cctpMessage`.
         // According to the encoding of `_cctpMessage`, the nonce is in bytes 12 to 16.
         // See here: https://github.com/circlefin/evm-cctp-contracts/blob/master/src/messages/Message.sol#L29

@@ -1,9 +1,9 @@
 //SPDX-License-Identifier: LGPL-3.0-only
 pragma solidity 0.8.11;
 
+import "./Managed.sol";
 import "./common/ERC20Upgradeable.sol";
 import "./common/UUPSOwnableUpgradeable.sol";
-import "./Managed.sol";
 import "./interfaces/IAccount.sol";
 import "./interfaces/IStakedCelo.sol";
 
@@ -91,11 +91,7 @@ contract RebasedStakedCelo is ERC20Upgradeable, UUPSOwnableUpgradeable {
      * @param _account The address of the Account contract.
      * @param _owner The address of the contract owner.
      */
-    function initialize(
-        address _stakedCelo,
-        address _account,
-        address _owner
-    ) external initializer {
+    function initialize(address _stakedCelo, address _account, address _owner) external initializer {
         __ERC20_init("Rebased Staked CELO", "rstCELO");
         _transferOwnership(_owner);
         stakedCelo = IStakedCelo(_stakedCelo);
@@ -201,11 +197,7 @@ contract RebasedStakedCelo is ERC20Upgradeable, UUPSOwnableUpgradeable {
      * @param to The address of the receiver.
      * @param amount The amount of rstCELO to transfer.
      */
-    function _transfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal override {
+    function _transfer(address from, address to, uint256 amount) internal override {
         if (from == address(0)) {
             revert NullAddress();
         }
@@ -234,16 +226,7 @@ contract RebasedStakedCelo is ERC20Upgradeable, UUPSOwnableUpgradeable {
      * @return Minor version of the contract.
      * @return Patch version of the contract.
      */
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 1, 0);
     }
 }

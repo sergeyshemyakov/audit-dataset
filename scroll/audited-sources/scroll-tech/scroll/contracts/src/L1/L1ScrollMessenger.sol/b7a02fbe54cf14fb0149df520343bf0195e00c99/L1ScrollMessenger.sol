@@ -4,14 +4,14 @@ pragma solidity =0.8.16;
 
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-import {IScrollChain} from "./rollup/IScrollChain.sol";
-import {IL1MessageQueue} from "./rollup/IL1MessageQueue.sol";
-import {IL1ScrollMessenger} from "./IL1ScrollMessenger.sol";
-import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
 import {IScrollMessenger} from "../libraries/IScrollMessenger.sol";
 import {ScrollMessengerBase} from "../libraries/ScrollMessengerBase.sol";
 import {AddressAliasHelper} from "../libraries/common/AddressAliasHelper.sol";
+import {ScrollConstants} from "../libraries/constants/ScrollConstants.sol";
 import {WithdrawTrieVerifier} from "../libraries/verifier/WithdrawTrieVerifier.sol";
+import {IL1ScrollMessenger} from "./IL1ScrollMessenger.sol";
+import {IL1MessageQueue} from "./rollup/IL1MessageQueue.sol";
+import {IScrollChain} from "./rollup/IScrollChain.sol";
 
 import {IMessageDropCallback} from "../libraries/callbacks/IMessageDropCallback.sol";
 
@@ -29,10 +29,11 @@ import {IMessageDropCallback} from "../libraries/callbacks/IMessageDropCallback.
 /// @dev All deposited Ether (including `WETH` deposited throng `L1WETHGateway`) will locked in
 /// this contract.
 contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1ScrollMessenger {
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
-
+     *
+     */
     struct ReplayState {
         // The number of replayed times.
         uint128 times;
@@ -40,9 +41,11 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         uint128 lastIndex;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from L1 message hash to sent status.
     mapping(bytes32 => bool) public isL1MessageSent;
@@ -78,10 +81,11 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
     /// avoid such situation.
     mapping(uint256 => uint256) public prevReplayIndex;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -91,12 +95,10 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
     /// @param _feeVault The address of fee vault, which will be used to collect relayer fee.
     /// @param _rollup The address of ScrollChain contract.
     /// @param _messageQueue The address of L1MessageQueue contract.
-    function initialize(
-        address _counterpart,
-        address _feeVault,
-        address _rollup,
-        address _messageQueue
-    ) public initializer {
+    function initialize(address _counterpart, address _feeVault, address _rollup, address _messageQueue)
+        public
+        initializer
+    {
         PausableUpgradeable.__Pausable_init();
         ScrollMessengerBase._initialize(_counterpart, _feeVault);
 
@@ -104,17 +106,19 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         messageQueue = _messageQueue;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IScrollMessenger
-    function sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit
-    ) external payable override whenNotPaused {
+    function sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit)
+        external
+        payable
+        override
+        whenNotPaused
+    {
         _sendMessage(_to, _value, _message, _gasLimit, msg.sender);
     }
 
@@ -159,7 +163,7 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         require(_from != xDomainMessageSender, "Invalid message sender");
 
         xDomainMessageSender = _from;
-        (bool success, ) = _to.call{value: _value}(_message);
+        (bool success,) = _to.call{value: _value}(_message);
         // reset value to refund gas.
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
 
@@ -200,7 +204,7 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         // charge relayer fee
         require(msg.value >= _fee, "Insufficient msg.value for fee");
         if (_fee > 0) {
-            (bool _success, ) = feeVault.call{value: _fee}("");
+            (bool _success,) = feeVault.call{value: _fee}("");
             require(_success, "Failed to deduct the fee");
         }
 
@@ -231,20 +235,19 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         unchecked {
             uint256 _refund = msg.value - _fee;
             if (_refund > 0) {
-                (bool _success, ) = _refundAddress.call{value: _refund}("");
+                (bool _success,) = _refundAddress.call{value: _refund}("");
                 require(_success, "Failed to refund the fee");
             }
         }
     }
 
     /// @inheritdoc IL1ScrollMessenger
-    function dropMessage(
-        address _from,
-        address _to,
-        uint256 _value,
-        uint256 _messageNonce,
-        bytes memory _message
-    ) external override whenNotPaused notInExecution {
+    function dropMessage(address _from, address _to, uint256 _value, uint256 _messageNonce, bytes memory _message)
+        external
+        override
+        whenNotPaused
+        notInExecution
+    {
         // The criteria for dropping a message:
         // 1. The message is a L1 message.
         // 2. The message has not been dropped before.
@@ -269,14 +272,18 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
 
         // check message is finalized
         uint256 _lastIndex = replayStates[_xDomainCalldataHash].lastIndex;
-        if (_lastIndex == 0) _lastIndex = _messageNonce;
+        if (_lastIndex == 0) {
+            _lastIndex = _messageNonce;
+        }
 
         // check message is skipped and drop it.
         // @note If the list is very long, the message may never be dropped.
         while (true) {
             IL1MessageQueue(_messageQueue).dropCrossDomainMessage(_lastIndex);
             _lastIndex = prevReplayIndex[_lastIndex];
-            if (_lastIndex == 0) break;
+            if (_lastIndex == 0) {
+                break;
+            }
             unchecked {
                 _lastIndex = _lastIndex - 1;
             }
@@ -291,9 +298,11 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         xDomainMessageSender = ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Pause the contract
     /// @dev This function can only called by contract owner.
@@ -316,17 +325,15 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         emit UpdateMaxReplayTimes(_oldMaxReplayTimes, _newMaxReplayTimes);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
-
-    function _sendMessage(
-        address _to,
-        uint256 _value,
-        bytes memory _message,
-        uint256 _gasLimit,
-        address _refundAddress
-    ) internal nonReentrant {
+     *
+     */
+    function _sendMessage(address _to, uint256 _value, bytes memory _message, uint256 _gasLimit, address _refundAddress)
+        internal
+        nonReentrant
+    {
         address _messageQueue = messageQueue; // gas saving
         address _counterpart = counterpart; // gas saving
 
@@ -338,7 +345,7 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         uint256 _fee = IL1MessageQueue(_messageQueue).estimateCrossDomainMessageFee(_gasLimit);
         require(msg.value >= _fee + _value, "Insufficient msg.value");
         if (_fee > 0) {
-            (bool _success, ) = feeVault.call{value: _fee}("");
+            (bool _success,) = feeVault.call{value: _fee}("");
             require(_success, "Failed to deduct the fee");
         }
 
@@ -358,7 +365,7 @@ contract L1ScrollMessenger is PausableUpgradeable, ScrollMessengerBase, IL1Scrol
         unchecked {
             uint256 _refund = msg.value - _fee - _value;
             if (_refund > 0) {
-                (bool _success, ) = _refundAddress.call{value: _refund}("");
+                (bool _success,) = _refundAddress.call{value: _refund}("");
                 require(_success, "Failed to refund the fee");
             }
         }

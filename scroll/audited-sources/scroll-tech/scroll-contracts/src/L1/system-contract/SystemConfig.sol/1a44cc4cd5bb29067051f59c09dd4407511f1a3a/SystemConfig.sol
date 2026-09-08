@@ -4,9 +4,11 @@ pragma solidity =0.8.24;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract SystemConfig is OwnableUpgradeable {
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     /// @notice Parameters for the message queue.
     /// @param maxGasLimit The maximum gas limit allowed for each L1 message.
@@ -30,9 +32,11 @@ contract SystemConfig is OwnableUpgradeable {
         uint24 maxDelayMessageQueue;
     }
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @notice The parameters for the message queue.
     MessageQueueParameters public messageQueueParameters;
@@ -43,10 +47,11 @@ contract SystemConfig is OwnableUpgradeable {
     /// @dev The address of the current authorized signer.
     address private currentSigner;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor() {
         _disableInitializers();
     }
@@ -65,9 +70,11 @@ contract SystemConfig is OwnableUpgradeable {
         enforcedBatchParameters = _enforcedBatchParameters;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Return the current authorized signer.
     /// @return The authorized signer address.
@@ -75,9 +82,11 @@ contract SystemConfig is OwnableUpgradeable {
         return currentSigner;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the message queue parameters.
     /// @param _params The new message queue parameters.

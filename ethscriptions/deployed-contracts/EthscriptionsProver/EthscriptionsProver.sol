@@ -1523,6 +1523,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -1822,7 +1823,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -1863,7 +1866,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -1915,7 +1920,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -1954,12 +1961,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -2276,10 +2285,11 @@ library Arrays {
      *
      * IMPORTANT: Consider memory side-effects when using custom comparator functions that access memory in an unsafe way.
      */
-    function sort(
-        uint256[] memory array,
-        function(uint256, uint256) pure returns (bool) comp
-    ) internal pure returns (uint256[] memory) {
+    function sort(uint256[] memory array, function(uint256, uint256) pure returns (bool) comp)
+        internal
+        pure
+        returns (uint256[] memory)
+    {
         _quickSort(_begin(array), _end(array), comp);
         return array;
     }
@@ -2305,10 +2315,11 @@ library Arrays {
      *
      * IMPORTANT: Consider memory side-effects when using custom comparator functions that access memory in an unsafe way.
      */
-    function sort(
-        address[] memory array,
-        function(address, address) pure returns (bool) comp
-    ) internal pure returns (address[] memory) {
+    function sort(address[] memory array, function(address, address) pure returns (bool) comp)
+        internal
+        pure
+        returns (address[] memory)
+    {
         sort(_castToUint256Array(array), _castToUint256Comp(comp));
         return array;
     }
@@ -2334,10 +2345,11 @@ library Arrays {
      *
      * IMPORTANT: Consider memory side-effects when using custom comparator functions that access memory in an unsafe way.
      */
-    function sort(
-        bytes32[] memory array,
-        function(bytes32, bytes32) pure returns (bool) comp
-    ) internal pure returns (bytes32[] memory) {
+    function sort(bytes32[] memory array, function(bytes32, bytes32) pure returns (bool) comp)
+        internal
+        pure
+        returns (bytes32[] memory)
+    {
         sort(_castToUint256Array(array), _castToUint256Comp(comp));
         return array;
     }
@@ -2361,7 +2373,9 @@ library Arrays {
      */
     function _quickSort(uint256 begin, uint256 end, function(uint256, uint256) pure returns (bool) comp) private pure {
         unchecked {
-            if (end - begin < 0x40) return;
+            if (end - begin < 0x40) {
+                return;
+            }
 
             // Use first element as pivot
             uint256 pivot = _mload(begin);
@@ -2438,18 +2452,22 @@ library Arrays {
     }
 
     /// @dev Helper: low level cast address comp function to uint256 comp function
-    function _castToUint256Comp(
-        function(address, address) pure returns (bool) input
-    ) private pure returns (function(uint256, uint256) pure returns (bool) output) {
+    function _castToUint256Comp(function(address, address) pure returns (bool) input)
+        private
+        pure
+        returns (function(uint256, uint256) pure returns (bool) output)
+    {
         assembly {
             output := input
         }
     }
 
     /// @dev Helper: low level cast bytes32 comp function to uint256 comp function
-    function _castToUint256Comp(
-        function(bytes32, bytes32) pure returns (bool) input
-    ) private pure returns (function(uint256, uint256) pure returns (bool) output) {
+    function _castToUint256Comp(function(bytes32, bytes32) pure returns (bool) input)
+        private
+        pure
+        returns (function(uint256, uint256) pure returns (bool) output)
+    {
         assembly {
             output := input
         }
@@ -3153,25 +3171,25 @@ library Predeploys {
 
     /// @notice Depositor Account (system address that can make deposits)
     address constant DEPOSITOR_ACCOUNT = 0xDeaDDEaDDeAdDeAdDEAdDEaddeAddEAdDEAd0001;
-    
+
     /// @notice L2ToL1MessagePasser predeploy (for L2->L1 messages)
     address constant L2_TO_L1_MESSAGE_PASSER = 0x4200000000000000000000000000000000000016;
-    
+
     /// @notice ProxyAdmin predeploy (manages all proxy upgrades)
     address constant PROXY_ADMIN = 0x4200000000000000000000000000000000000018;
-    
+
     address constant MultiCall3 = 0xcA11bde05977b3631167028862bE2a173976CA11;
-    
+
     // ============ Ethscriptions System Predeploys ============
     // Using 0x3300… namespace for Ethscriptions contracts
-    
+
     /// @notice Ethscriptions NFT contract
     /// @dev Moved to the 0x3300… namespace to align with other Ethscriptions predeploys
     address constant ETHSCRIPTIONS = 0x3300000000000000000000000000000000000001;
-    
+
     /// @notice ERC20 fixed denomination manager for managed ERC-20 semantics
     address constant ERC20_FIXED_DENOMINATION_MANAGER = 0x3300000000000000000000000000000000000002;
-    
+
     /// @notice EthscriptionsProver for L1 provability
     address constant ETHSCRIPTIONS_PROVER = 0x3300000000000000000000000000000000000003;
 
@@ -3183,9 +3201,9 @@ library Predeploys {
 
     /// @notice ERC721 Ethscriptions collection manager
     address constant ERC721_ETHSCRIPTIONS_COLLECTION_MANAGER = 0x3300000000000000000000000000000000000006;
-    
+
     // ============ Helper Functions ============
-    
+
     /// @notice Returns true if the address is an OP Stack predeploy (0x4200… namespace)
     function isOPPredeployNamespace(address _addr) internal pure returns (bool) {
         return uint160(_addr) >> 11 == uint160(0x4200000000000000000000000000000000000000) >> 11;
@@ -3200,18 +3218,17 @@ library Predeploys {
     function isPredeployNamespace(address _addr) internal pure returns (bool) {
         return isOPPredeployNamespace(_addr) || isEthscriptionsPredeployNamespace(_addr);
     }
-    
+
     /// @notice Converts a predeploy address to its code namespace equivalent
     function predeployToCodeNamespace(address _addr) internal pure returns (address) {
         require(
-            isPredeployNamespace(_addr), 
-            "Predeploys: can only derive code-namespace address for predeploy addresses"
+            isPredeployNamespace(_addr), "Predeploys: can only derive code-namespace address for predeploy addresses"
         );
         return address(
             uint160(uint256(uint160(_addr)) & 0xffff | uint256(uint160(0xc0D3C0d3C0d3C0D3c0d3C0d3c0D3C0d3c0d30000)))
         );
     }
-    
+
     bytes internal constant MultiCall3Code =
         hex"6080604052600436106100f35760003560e01c80634d2301cc1161008a578063a8b0574e11610059578063a8b0574e1461025a578063bce38bd714610275578063c3077fa914610288578063ee82ac5e1461029b57600080fd5b80634d2301cc146101ec57806372425d9d1461022157806382ad56cb1461023457806386d516e81461024757600080fd5b80633408e470116100c65780633408e47014610191578063399542e9146101a45780633e64a696146101c657806342cbb15c146101d957600080fd5b80630f28c97d146100f8578063174dea711461011a578063252dba421461013a57806327e86d6e1461015b575b600080fd5b34801561010457600080fd5b50425b6040519081526020015b60405180910390f35b61012d610128366004610a85565b6102ba565b6040516101119190610bbe565b61014d610148366004610a85565b6104ef565b604051610111929190610bd8565b34801561016757600080fd5b50437fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0140610107565b34801561019d57600080fd5b5046610107565b6101b76101b2366004610c60565b610690565b60405161011193929190610cba565b3480156101d257600080fd5b5048610107565b3480156101e557600080fd5b5043610107565b3480156101f857600080fd5b50610107610207366004610ce2565b73ffffffffffffffffffffffffffffffffffffffff163190565b34801561022d57600080fd5b5044610107565b61012d610242366004610a85565b6106ab565b34801561025357600080fd5b5045610107565b34801561026657600080fd5b50604051418152602001610111565b61012d610283366004610c60565b61085a565b6101b7610296366004610a85565b610a1a565b3480156102a757600080fd5b506101076102b6366004610d18565b4090565b60606000828067ffffffffffffffff8111156102d8576102d8610d31565b60405190808252806020026020018201604052801561031e57816020015b6040805180820190915260008152606060208201528152602001906001900390816102f65790505b5092503660005b8281101561047757600085828151811061034157610341610d60565b6020026020010151905087878381811061035d5761035d610d60565b905060200281019061036f9190610d8f565b6040810135958601959093506103886020850185610ce2565b73ffffffffffffffffffffffffffffffffffffffff16816103ac6060870187610dcd565b6040516103ba929190610e32565b60006040518083038185875af1925050503d80600081146103f7576040519150601f19603f3d011682016040523d82523d6000602084013e6103fc565b606091505b50602080850191909152901515808452908501351761046d577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260846000fd5b5050600101610325565b508234146104e6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f4d756c746963616c6c333a2076616c7565206d69736d6174636800000000000060448201526064015b60405180910390fd5b50505092915050565b436060828067ffffffffffffffff81111561050c5761050c610d31565b60405190808252806020026020018201604052801561053f57816020015b606081526020019060019003908161052a5790505b5091503660005b8281101561068657600087878381811061056257610562610d60565b90506020028101906105749190610e42565b92506105836020840184610ce2565b73ffffffffffffffffffffffffffffffffffffffff166105a66020850185610dcd565b6040516105b4929190610e32565b6000604051808303816000865af19150503d80600081146105f1576040519150601f19603f3d011682016040523d82523d6000602084013e6105f6565b606091505b5086848151811061060957610609610d60565b602090810291909101015290508061067d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b50600101610546565b5050509250929050565b43804060606106a086868661085a565b905093509350939050565b6060818067ffffffffffffffff8111156106c7576106c7610d31565b60405190808252806020026020018201604052801561070d57816020015b6040805180820190915260008152606060208201528152602001906001900390816106e55790505b5091503660005b828110156104e657600084828151811061073057610730610d60565b6020026020010151905086868381811061074c5761074c610d60565b905060200281019061075e9190610e76565b925061076d6020840184610ce2565b73ffffffffffffffffffffffffffffffffffffffff166107906040850185610dcd565b60405161079e929190610e32565b6000604051808303816000865af19150503d80600081146107db576040519150601f19603f3d011682016040523d82523d6000602084013e6107e0565b606091505b506020808401919091529015158083529084013517610851577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260646000fd5b50600101610714565b6060818067ffffffffffffffff81111561087657610876610d31565b6040519080825280602002602001820160405280156108bc57816020015b6040805180820190915260008152606060208201528152602001906001900390816108945790505b5091503660005b82811015610a105760008482815181106108df576108df610d60565b602002602001015190508686838181106108fb576108fb610d60565b905060200281019061090d9190610e42565b925061091c6020840184610ce2565b73ffffffffffffffffffffffffffffffffffffffff1661093f6020850185610dcd565b60405161094d929190610e32565b6000604051808303816000865af19150503d806000811461098a576040519150601f19603f3d011682016040523d82523d6000602084013e61098f565b606091505b506020830152151581528715610a07578051610a07576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b506001016108c3565b5050509392505050565b6000806060610a2b60018686610690565b919790965090945092505050565b60008083601f840112610a4b57600080fd5b50813567ffffffffffffffff811115610a6357600080fd5b6020830191508360208260051b8501011115610a7e57600080fd5b9250929050565b60008060208385031215610a9857600080fd5b823567ffffffffffffffff811115610aaf57600080fd5b610abb85828601610a39565b90969095509350505050565b6000815180845260005b81811015610aed57602081850181015186830182015201610ad1565b81811115610aff576000602083870101525b50601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169290920160200192915050565b600082825180855260208086019550808260051b84010181860160005b84811015610bb1578583037fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe001895281518051151584528401516040858501819052610b9d81860183610ac7565b9a86019a9450505090830190600101610b4f565b5090979650505050505050565b602081526000610bd16020830184610b32565b9392505050565b600060408201848352602060408185015281855180845260608601915060608160051b870101935082870160005b82811015610c52577fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa0888703018452610c40868351610ac7565b95509284019290840190600101610c06565b509398975050505050505050565b600080600060408486031215610c7557600080fd5b83358015158114610c8557600080fd5b9250602084013567ffffffffffffffff811115610ca157600080fd5b610cad86828701610a39565b9497909650939450505050565b838152826020820152606060408201526000610cd96060830184610b32565b95945050505050565b600060208284031215610cf457600080fd5b813573ffffffffffffffffffffffffffffffffffffffff81168114610bd157600080fd5b600060208284031215610d2a57600080fd5b5035919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff81833603018112610dc357600080fd5b9190910192915050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1843603018112610e0257600080fd5b83018035915067ffffffffffffffff821115610e1d57600080fd5b602001915036819003821315610a7e57600080fd5b8183823760009101908152919050565b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc1833603018112610dc357600080fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa1833603018112610dc357600080fdfea2646970667358221220bb2b5c71a328032f97c676ae39a1ec2148d3e5d6f73d95e9b17910152d61f16264736f6c634300080c0033";
 }
@@ -3466,11 +3483,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -3518,14 +3534,13 @@ interface IERC165 {
  * ```
  */
 abstract contract ERC165Upgradeable is Initializable, IERC165 {
-    function __ERC165_init() internal onlyInitializing {
-    }
+    function __ERC165_init() internal onlyInitializing {}
 
-    function __ERC165_init_unchained() internal onlyInitializing {
-    }
+    function __ERC165_init_unchained() internal onlyInitializing {}
     /**
      * @dev See {IERC165-supportsInterface}.
      */
+
     function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {
         return interfaceId == type(IERC165).interfaceId;
     }
@@ -3751,7 +3766,14 @@ interface IERC721Errors {
  * - No burn function (transfer to address(0) instead)
  * - Keeps only core transfer and ownership logic
  */
-abstract contract ERC721EthscriptionsUpgradeable is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC721, IERC721Metadata, IERC721Errors {
+abstract contract ERC721EthscriptionsUpgradeable is
+    Initializable,
+    ContextUpgradeable,
+    ERC165Upgradeable,
+    IERC721,
+    IERC721Metadata,
+    IERC721Errors
+{
     // Errors for enumerable functionality
     error ERC721OutOfBoundsIndex(address owner, uint256 index);
     error ERC721EnumerableForbiddenBatchMint();
@@ -3760,12 +3782,10 @@ abstract contract ERC721EthscriptionsUpgradeable is Initializable, ContextUpgrad
     struct ERC721Storage {
         string _name;
         string _symbol;
-        
         // Token owners (can be address(0) for null-owned tokens)
         mapping(uint256 tokenId => address) _owners;
         // Balance per address (including null address)
         mapping(address owner => uint256) _balances;
-
         // === Ethscriptions-specific storage ===
         // Explicit existence tracking (true = token exists)
         mapping(uint256 tokenId => bool) _existsFlag;
@@ -3789,7 +3809,8 @@ abstract contract ERC721EthscriptionsUpgradeable is Initializable, ContextUpgrad
     }
 
     // keccak256(abi.encode(uint256(keccak256("openzeppelin.storage.ERC721Enumerable")) - 1)) & ~bytes32(uint256(0xff))
-    bytes32 private constant ERC721EnumerableStorageLocation = 0x645e039705490088daad89bae25049a34f4a9072d398537b1ab2425f24cbed00;
+    bytes32 private constant ERC721EnumerableStorageLocation =
+        0x645e039705490088daad89bae25049a34f4a9072d398537b1ab2425f24cbed00;
 
     function _getERC721EnumerableStorage() internal pure returns (ERC721EnumerableStorage storage $) {
         assembly {
@@ -3813,11 +3834,15 @@ abstract contract ERC721EthscriptionsUpgradeable is Initializable, ContextUpgrad
     /**
      * @dev See {IERC165-supportsInterface}.
      */
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165Upgradeable, IERC165) returns (bool) {
-        return
-            interfaceId == type(IERC721).interfaceId ||
-            interfaceId == type(IERC721Metadata).interfaceId ||
-            super.supportsInterface(interfaceId);
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(ERC165Upgradeable, IERC165)
+        returns (bool)
+    {
+        return interfaceId == type(IERC721).interfaceId || interfaceId == type(IERC721Metadata).interfaceId
+            || super.supportsInterface(interfaceId);
     }
 
     /**
@@ -4170,7 +4195,10 @@ interface IERC721Enumerable is IERC721 {
  * @dev Enumerable mixin for Ethscriptions-style collections where token IDs are
  * sequential, start at zero, and tokens are never burned.
  */
-abstract contract ERC721EthscriptionsSequentialEnumerableUpgradeable is ERC721EthscriptionsUpgradeable, IERC721Enumerable {
+abstract contract ERC721EthscriptionsSequentialEnumerableUpgradeable is
+    ERC721EthscriptionsUpgradeable,
+    IERC721Enumerable
+{
     /// @dev Raised when a mint attempts to skip or reuse a token ID.
     error ERC721SequentialEnumerableInvalidTokenId(uint256 expected, uint256 actual);
     /// @dev Raised if a contract attempts to remove a token from supply.
@@ -4182,7 +4210,8 @@ abstract contract ERC721EthscriptionsSequentialEnumerableUpgradeable is ERC721Et
     }
 
     // keccak256(abi.encode(uint256(keccak256("openzeppelin.storage.ERC721SequentialEnumerableStorageLocation")) - 1)) & ~bytes32(uint256(0xff))
-    bytes32 private constant ERC721SequentialEnumerableStorageLocation = 0x154e8d00bf5f00755eebdfa0d432d05cad242742a46a00bbdb15798f33342700;
+    bytes32 private constant ERC721SequentialEnumerableStorageLocation =
+        0x154e8d00bf5f00755eebdfa0d432d05cad242742a46a00bbdb15798f33342700;
 
     function _getERC721SequentialEnumerableStorage()
         private
@@ -4463,11 +4492,7 @@ library LibBytes {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from left to right, starting from `from`.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function indexOf(bytes memory subject, bytes memory needle, uint256 from)
-        internal
-        pure
-        returns (uint256 result)
-    {
+    function indexOf(bytes memory subject, bytes memory needle, uint256 from) internal pure returns (uint256 result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := not(0) // Initialize to `NOT_FOUND`.
@@ -4517,11 +4542,7 @@ library LibBytes {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from left to right, starting from `from`. Optimized for byte needles.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function indexOfByte(bytes memory subject, bytes1 needle, uint256 from)
-        internal
-        pure
-        returns (uint256 result)
-    {
+    function indexOfByte(bytes memory subject, bytes1 needle, uint256 from) internal pure returns (uint256 result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := not(0) // Initialize to `NOT_FOUND`.
@@ -4556,11 +4577,7 @@ library LibBytes {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from left to right. Optimized for byte needles.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function indexOfByte(bytes memory subject, bytes1 needle)
-        internal
-        pure
-        returns (uint256 result)
-    {
+    function indexOfByte(bytes memory subject, bytes1 needle) internal pure returns (uint256 result) {
         return indexOfByte(subject, needle, 0);
     }
 
@@ -4611,11 +4628,7 @@ library LibBytes {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from right to left.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function lastIndexOf(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (uint256)
-    {
+    function lastIndexOf(bytes memory subject, bytes memory needle) internal pure returns (uint256) {
         return lastIndexOf(subject, needle, type(uint256).max);
     }
 
@@ -4625,11 +4638,7 @@ library LibBytes {
     }
 
     /// @dev Returns whether `subject` starts with `needle`.
-    function startsWith(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (bool result)
-    {
+    function startsWith(bytes memory subject, bytes memory needle) internal pure returns (bool result) {
         /// @solidity memory-safe-assembly
         assembly {
             let n := mload(needle)
@@ -4640,11 +4649,7 @@ library LibBytes {
     }
 
     /// @dev Returns whether `subject` ends with `needle`.
-    function endsWith(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (bool result)
-    {
+    function endsWith(bytes memory subject, bytes memory needle) internal pure returns (bool result) {
         /// @solidity memory-safe-assembly
         assembly {
             let n := mload(needle)
@@ -4657,11 +4662,7 @@ library LibBytes {
     }
 
     /// @dev Returns `subject` repeated `times`.
-    function repeat(bytes memory subject, uint256 times)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function repeat(bytes memory subject, uint256 times) internal pure returns (bytes memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let l := mload(subject) // Subject length.
@@ -4689,11 +4690,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject` sliced from `start` to `end` (exclusive).
     /// `start` and `end` are byte offsets.
-    function slice(bytes memory subject, uint256 start, uint256 end)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function slice(bytes memory subject, uint256 start, uint256 end) internal pure returns (bytes memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let l := mload(subject) // Subject length.
@@ -4720,11 +4717,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject` sliced from `start` to the end of the bytes.
     /// `start` is a byte offset.
-    function slice(bytes memory subject, uint256 start)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function slice(bytes memory subject, uint256 start) internal pure returns (bytes memory result) {
         result = slice(subject, start, type(uint256).max);
     }
 
@@ -4746,11 +4739,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject` sliced from `start` to the end of the bytes.
     /// `start` is a byte offset. Faster than Solidity's native slicing.
-    function sliceCalldata(bytes calldata subject, uint256 start)
-        internal
-        pure
-        returns (bytes calldata result)
-    {
+    function sliceCalldata(bytes calldata subject, uint256 start) internal pure returns (bytes calldata result) {
         /// @solidity memory-safe-assembly
         assembly {
             start := xor(start, mul(xor(start, subject.length), lt(subject.length, start)))
@@ -4761,11 +4750,7 @@ library LibBytes {
 
     /// @dev Reduces the size of `subject` to `n`.
     /// If `n` is greater than the size of `subject`, this will be a no-op.
-    function truncate(bytes memory subject, uint256 n)
-        internal
-        pure
-        returns (bytes memory result)
-    {
+    function truncate(bytes memory subject, uint256 n) internal pure returns (bytes memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := subject
@@ -4775,11 +4760,7 @@ library LibBytes {
 
     /// @dev Returns a copy of `subject`, with the length reduced to `n`.
     /// If `n` is greater than the size of `subject`, this will be a no-op.
-    function truncatedCalldata(bytes calldata subject, uint256 n)
-        internal
-        pure
-        returns (bytes calldata result)
-    {
+    function truncatedCalldata(bytes calldata subject, uint256 n) internal pure returns (bytes calldata result) {
         /// @solidity memory-safe-assembly
         assembly {
             result.offset := subject.offset
@@ -4789,11 +4770,7 @@ library LibBytes {
 
     /// @dev Returns all the indices of `needle` in `subject`.
     /// The indices are byte offsets.
-    function indicesOf(bytes memory subject, bytes memory needle)
-        internal
-        pure
-        returns (uint256[] memory result)
-    {
+    function indicesOf(bytes memory subject, bytes memory needle) internal pure returns (uint256[] memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let searchLen := mload(needle)
@@ -4836,11 +4813,7 @@ library LibBytes {
     }
 
     /// @dev Returns an arrays of bytess based on the `delimiter` inside of the `subject` bytes.
-    function split(bytes memory subject, bytes memory delimiter)
-        internal
-        pure
-        returns (bytes[] memory result)
-    {
+    function split(bytes memory subject, bytes memory delimiter) internal pure returns (bytes[] memory result) {
         uint256[] memory indices = indicesOf(subject, delimiter);
         /// @solidity memory-safe-assembly
         assembly {
@@ -5029,11 +5002,7 @@ library LibBytes {
     }
 
     /// @dev Returns the word at `offset`, without any bounds checks.
-    function loadCalldata(bytes calldata a, uint256 offset)
-        internal
-        pure
-        returns (bytes32 result)
-    {
+    function loadCalldata(bytes calldata a, uint256 offset) internal pure returns (bytes32 result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := calldataload(add(a.offset, offset))
@@ -5041,11 +5010,7 @@ library LibBytes {
     }
 
     /// @dev Returns a slice representing a static struct in the calldata. Performs bounds checks.
-    function staticStructInCalldata(bytes calldata a, uint256 offset)
-        internal
-        pure
-        returns (bytes calldata result)
-    {
+    function staticStructInCalldata(bytes calldata a, uint256 offset) internal pure returns (bytes calldata result) {
         /// @solidity memory-safe-assembly
         assembly {
             let l := sub(a.length, 0x20)
@@ -5056,11 +5021,7 @@ library LibBytes {
     }
 
     /// @dev Returns a slice representing a dynamic struct in the calldata. Performs bounds checks.
-    function dynamicStructInCalldata(bytes calldata a, uint256 offset)
-        internal
-        pure
-        returns (bytes calldata result)
-    {
+    function dynamicStructInCalldata(bytes calldata a, uint256 offset) internal pure returns (bytes calldata result) {
         /// @solidity memory-safe-assembly
         assembly {
             let l := sub(a.length, 0x20)
@@ -5072,11 +5033,7 @@ library LibBytes {
     }
 
     /// @dev Returns bytes in calldata. Performs bounds checks.
-    function bytesInCalldata(bytes calldata a, uint256 offset)
-        internal
-        pure
-        returns (bytes calldata result)
-    {
+    function bytesInCalldata(bytes calldata a, uint256 offset) internal pure returns (bytes calldata result) {
         /// @solidity memory-safe-assembly
         assembly {
             let l := sub(a.length, 0x20)
@@ -5245,11 +5202,7 @@ library LibString {
     }
 
     /// @dev Helper to cast `$` to a `BytesStorage`.
-    function bytesStorage(StringStorage storage $)
-        internal
-        pure
-        returns (LibBytes.BytesStorage storage casted)
-    {
+    function bytesStorage(StringStorage storage $) internal pure returns (LibBytes.BytesStorage storage casted) {
         /// @solidity memory-safe-assembly
         assembly {
             casted.slot := $.slot
@@ -5292,7 +5245,9 @@ library LibString {
 
     /// @dev Returns the base 10 decimal representation of `value`.
     function toString(int256 value) internal pure returns (string memory result) {
-        if (value >= 0) return toString(uint256(value));
+        if (value >= 0) {
+            return toString(uint256(value));
+        }
         unchecked {
             result = toString(~uint256(value) + 1);
         }
@@ -5316,11 +5271,7 @@ library LibString {
     /// The output is prefixed with "0x" encoded using 2 hexadecimal digits per byte,
     /// giving a total length of `byteCount * 2 + 2` bytes.
     /// Reverts if `byteCount` is too small for the output to contain all the digits.
-    function toHexString(uint256 value, uint256 byteCount)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toHexString(uint256 value, uint256 byteCount) internal pure returns (string memory result) {
         result = toHexStringNoPrefix(value, byteCount);
         /// @solidity memory-safe-assembly
         assembly {
@@ -5336,11 +5287,7 @@ library LibString {
     /// The output is not prefixed with "0x" and is encoded using 2 hexadecimal digits per byte,
     /// giving a total length of `byteCount * 2` bytes.
     /// Reverts if `byteCount` is too small for the output to contain all the digits.
-    function toHexStringNoPrefix(uint256 value, uint256 byteCount)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toHexStringNoPrefix(uint256 value, uint256 byteCount) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             // We need 0x20 bytes for the trailing zeros padding, `byteCount * 2` bytes
@@ -5411,11 +5358,7 @@ library LibString {
     /// @dev Returns the hexadecimal representation of `value`.
     /// The output excludes leading "0" from the `toHexStringNoPrefix` output.
     /// `0x00: "0", 0x01: "1", 0x12: "12", 0x123: "123"`.
-    function toMinimalHexStringNoPrefix(uint256 value)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toMinimalHexStringNoPrefix(uint256 value) internal pure returns (string memory result) {
         result = toHexStringNoPrefix(value);
         /// @solidity memory-safe-assembly
         assembly {
@@ -5670,11 +5613,7 @@ library LibString {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from left to right, starting from `from`.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function indexOf(string memory subject, string memory needle, uint256 from)
-        internal
-        pure
-        returns (uint256)
-    {
+    function indexOf(string memory subject, string memory needle, uint256 from) internal pure returns (uint256) {
         return LibBytes.indexOf(bytes(subject), bytes(needle), from);
     }
 
@@ -5688,22 +5627,14 @@ library LibString {
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from right to left, starting from `from`.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function lastIndexOf(string memory subject, string memory needle, uint256 from)
-        internal
-        pure
-        returns (uint256)
-    {
+    function lastIndexOf(string memory subject, string memory needle, uint256 from) internal pure returns (uint256) {
         return LibBytes.lastIndexOf(bytes(subject), bytes(needle), from);
     }
 
     /// @dev Returns the byte index of the first location of `needle` in `subject`,
     /// needleing from right to left.
     /// Returns `NOT_FOUND` (i.e. `type(uint256).max`) if the `needle` is not found.
-    function lastIndexOf(string memory subject, string memory needle)
-        internal
-        pure
-        returns (uint256)
-    {
+    function lastIndexOf(string memory subject, string memory needle) internal pure returns (uint256) {
         return LibBytes.lastIndexOf(bytes(subject), bytes(needle), type(uint256).max);
     }
 
@@ -5729,11 +5660,7 @@ library LibString {
 
     /// @dev Returns a copy of `subject` sliced from `start` to `end` (exclusive).
     /// `start` and `end` are byte offsets.
-    function slice(string memory subject, uint256 start, uint256 end)
-        internal
-        pure
-        returns (string memory)
-    {
+    function slice(string memory subject, uint256 start, uint256 end) internal pure returns (string memory) {
         return string(LibBytes.slice(bytes(subject), start, end));
     }
 
@@ -5745,20 +5672,12 @@ library LibString {
 
     /// @dev Returns all the indices of `needle` in `subject`.
     /// The indices are byte offsets.
-    function indicesOf(string memory subject, string memory needle)
-        internal
-        pure
-        returns (uint256[] memory)
-    {
+    function indicesOf(string memory subject, string memory needle) internal pure returns (uint256[] memory) {
         return LibBytes.indicesOf(bytes(subject), bytes(needle));
     }
 
     /// @dev Returns an arrays of strings based on the `delimiter` inside of the `subject` string.
-    function split(string memory subject, string memory delimiter)
-        internal
-        pure
-        returns (string[] memory result)
-    {
+    function split(string memory subject, string memory delimiter) internal pure returns (string[] memory result) {
         bytes[] memory a = LibBytes.split(bytes(subject), bytes(delimiter));
         /// @solidity memory-safe-assembly
         assembly {
@@ -5774,11 +5693,7 @@ library LibString {
 
     /// @dev Returns a copy of the string in either lowercase or UPPERCASE.
     /// WARNING! This function is only compatible with 7-bit ASCII strings.
-    function toCase(string memory subject, bool toUpper)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function toCase(string memory subject, bool toUpper) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let n := mload(subject)
@@ -5886,11 +5801,7 @@ library LibString {
 
     /// @dev Escapes the string to be used within double-quotes in a JSON.
     /// If `addDoubleQuotes` is true, the result will be enclosed in double-quotes.
-    function escapeJSON(string memory s, bool addDoubleQuotes)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function escapeJSON(string memory s, bool addDoubleQuotes) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             result := mload(0x40)
@@ -6067,11 +5978,7 @@ library LibString {
     /// @dev Unpacks strings packed using {packTwo}.
     /// Returns the empty strings if `packed` is `bytes32(0)`.
     /// If `packed` is not an output of {packTwo}, the output behavior is undefined.
-    function unpackTwo(bytes32 packed)
-        internal
-        pure
-        returns (string memory resultA, string memory resultB)
-    {
+    function unpackTwo(bytes32 packed) internal pure returns (string memory resultA, string memory resultB) {
         /// @solidity memory-safe-assembly
         assembly {
             resultA := mload(0x40) // Grab the free memory pointer.
@@ -6123,11 +6030,11 @@ library Constants {
 
     /// @notice The address that represents the system caller responsible for L1 attributes transactions.
     address internal constant DEPOSITOR_ACCOUNT = 0xDeaDDEaDDeAdDeAdDEAdDEaddeAddEAdDEAd0001;
-    
+
     /// @notice Storage slot for Initializable contract's initialized flag
     /// @dev This is the keccak256 of "eip1967.proxy.initialized" - 1
     bytes32 internal constant INITIALIZABLE_STORAGE = 0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00;
-    
+
     uint256 internal constant historicalBackfillApproxDoneAt = 1764024440;
 }
 
@@ -6152,14 +6059,17 @@ library BytePackLib {
     /// @return packed The packed bytes32 value
     function packCalldata(bytes calldata data) internal pure returns (bytes32 packed) {
         uint256 len = data.length;
-        if (len >= 32) revert ContentTooLarge(len);
+        if (len >= 32) {
+            revert ContentTooLarge(len);
+        }
 
         assembly {
             // Pack: tag byte (len+1) | first 31 bytes of data
-            packed := or(
-                shl(248, add(len, 1)),      // Tag in first byte
-                shr(8, calldataload(data.offset))  // Data in remaining 31 bytes
-            )
+            packed :=
+                or(
+                    shl(248, add(len, 1)), // Tag in first byte
+                    shr(8, calldataload(data.offset)) // Data in remaining 31 bytes
+                )
         }
     }
 
@@ -6169,14 +6079,17 @@ library BytePackLib {
     /// @return packed The packed bytes32 value
     function pack(bytes memory data) internal pure returns (bytes32 packed) {
         uint256 len = data.length;
-        if (len >= 32) revert ContentTooLarge(len);
+        if (len >= 32) {
+            revert ContentTooLarge(len);
+        }
 
         assembly {
             // Pack: tag byte (len+1) | first 31 bytes of data
-            packed := or(
-                shl(248, add(len, 1)),      // Tag in first byte
-                shr(8, mload(add(data, 0x20)))  // Data in remaining 31 bytes (skip length prefix)
-            )
+            packed :=
+                or(
+                    shl(248, add(len, 1)), // Tag in first byte
+                    shr(8, mload(add(data, 0x20))) // Data in remaining 31 bytes (skip length prefix)
+                )
         }
     }
 
@@ -6186,7 +6099,9 @@ library BytePackLib {
     /// @return data The unpacked bytes data
     function unpack(bytes32 packed) internal pure returns (bytes memory data) {
         uint256 tag = uint8(uint256(packed >> 248));
-        if (tag == 0 || tag > 32) revert NotPackedData();
+        if (tag == 0 || tag > 32) {
+            revert NotPackedData();
+        }
 
         uint256 len = tag - 1;
         data = new bytes(len);
@@ -6217,7 +6132,9 @@ library BytePackLib {
     /// @return The length of the packed data (0-31)
     function packedLength(bytes32 packed) internal pure returns (uint256) {
         uint256 tag = uint8(uint256(packed >> 248));
-        if (tag == 0 || tag > 32) revert NotPackedData();
+        if (tag == 0 || tag > 32) {
+            revert NotPackedData();
+        }
         return tag - 1;
     }
 }
@@ -6226,8 +6143,6 @@ library BytePackLib {
 /// @notice Modified to support unlimited content size (up to 4GB) using PUSH4
 /// @author Modified from Solady (https://github.com/vectorized/solady/blob/main/src/utils/SSTORE2.sol)
 library SSTORE2Unlimited {
-
-
     /*´:°•.°+.*•´.*:˚.°*.˚•´.°:°•.°•.*•´.*:˚.°*.˚•´.°:°•.°+.*•´.*:*/
     /*                        CUSTOM ERRORS                       */
     /*.•°:°.´+˚.*°.˚:*.´•*.+°.•°:´*.´•*.•°.•°:°.´:•˚°.*°.˚:*.´+°.•*/
@@ -6260,7 +6175,7 @@ library SSTORE2Unlimited {
             // 0x39    |  0x39               | CODECOPY     | 0 (codeSize - codeOffset)                                      //
             // 0xf3    |  0xf3               | RETURN       |                                                                //
             //---------------------------------------------------------------------------------------------------------------//
-            hex"60_0B_59_81_38_03_80_92_59_39_F3", // Returns all code in the contract except for the first 11 (0B in hex) bytes.
+            hex"600B5981380380925939F3", // Returns all code in the contract except for the first 11 (0B in hex) bytes.
             runtimeCode // The bytecode we want the contract to have after deployment.
         );
 
@@ -6277,7 +6192,6 @@ library SSTORE2Unlimited {
         }
     }
 
-
     /*´:°•.°+.*•´.*:˚.°*.˚•´.°:°•.°•.*•´.*:˚.°*.˚•´.°:°•.°+.*•´.*:*/
     /*                         READ LOGIC                         */
     /*.•°:°.´+˚.*°.˚:*.´•*.+°.•°:´*.´•*.•°.•°:°.´:•˚°.*°.˚:*.´+°.•*/
@@ -6291,11 +6205,7 @@ library SSTORE2Unlimited {
     }
 
     /// @dev Reads bytecode from a contract at a specific offset and size.
-    function readBytecode(
-        address pointer,
-        uint256 start,
-        uint256 size
-    ) private view returns (bytes memory data) {
+    function readBytecode(address pointer, uint256 start, uint256 size) private view returns (bytes memory data) {
         /// @solidity memory-safe-assembly
         assembly {
             // Get a pointer to some free memory.
@@ -6320,17 +6230,16 @@ library SSTORE2Unlimited {
 /// @notice Shared library for deduplicated blob storage using inline packing or SSTORE2
 /// @dev Used by both content storage and metadata storage to eliminate code duplication
 library DedupedBlobStore {
-
     /// @notice Store calldata blob with deduplication using keccak256
     /// @dev Uses keccak256 for dedup key, stores either packed (≤31 bytes) or SSTORE2 pointer
     /// @param data The calldata to store
     /// @param store The storage mapping (hash => ref)
     /// @return hash The keccak256 hash of the data (dedup key)
     /// @return ref The storage reference (packed or SSTORE2 pointer)
-    function storeCalldata(
-        bytes calldata data,
-        mapping(bytes32 => bytes32) storage store
-    ) internal returns (bytes32 hash, bytes32 ref) {
+    function storeCalldata(bytes calldata data, mapping(bytes32 => bytes32) storage store)
+        internal
+        returns (bytes32 hash, bytes32 ref)
+    {
         hash = keccak256(data);
 
         // Check if already stored
@@ -6353,10 +6262,10 @@ library DedupedBlobStore {
     /// @param store The storage mapping (hash => ref)
     /// @return hash The keccak256 hash of the data (dedup key)
     /// @return ref The storage reference (packed or SSTORE2 pointer)
-    function storeMemory(
-        bytes memory data,
-        mapping(bytes32 => bytes32) storage store
-    ) internal returns (bytes32 hash, bytes32 ref) {
+    function storeMemory(bytes memory data, mapping(bytes32 => bytes32) storage store)
+        internal
+        returns (bytes32 hash, bytes32 ref)
+    {
         hash = keccak256(data);
 
         // Check if already stored
@@ -6417,10 +6326,7 @@ library DedupedBlobStore {
     /// @param hash The hash key
     /// @param store The storage mapping
     /// @return data The retrieved blob
-    function readByHash(
-        bytes32 hash,
-        mapping(bytes32 => bytes32) storage store
-    ) internal view returns (bytes memory) {
+    function readByHash(bytes32 hash, mapping(bytes32 => bytes32) storage store) internal view returns (bytes memory) {
         bytes32 ref = store[hash];
         return read(ref);
     }
@@ -6468,15 +6374,21 @@ library MetaStoreLib {
     /// @param protocolName Protocol identifier (should already be normalized by Ruby)
     /// @param operation Operation name (should already be normalized by Ruby)
     /// @return blob The encoded metadata blob (empty if all components empty/default)
-    function encode(
-        string memory mimetype,
-        string memory protocolName,
-        string memory operation
-    ) internal pure returns (bytes memory blob) {
+    function encode(string memory mimetype, string memory protocolName, string memory operation)
+        internal
+        pure
+        returns (bytes memory blob)
+    {
         // Validate inputs don't contain separator
-        if (_containsByte(bytes(mimetype), SEPARATOR)) revert InvalidSeparatorInInput();
-        if (_containsByte(bytes(protocolName), SEPARATOR)) revert InvalidSeparatorInInput();
-        if (_containsByte(bytes(operation), SEPARATOR)) revert InvalidSeparatorInInput();
+        if (_containsByte(bytes(mimetype), SEPARATOR)) {
+            revert InvalidSeparatorInInput();
+        }
+        if (_containsByte(bytes(protocolName), SEPARATOR)) {
+            revert InvalidSeparatorInInput();
+        }
+        if (_containsByte(bytes(operation), SEPARATOR)) {
+            revert InvalidSeparatorInInput();
+        }
 
         // Note: normalization (lowercase, trim) is handled by Ruby indexer before submission
 
@@ -6487,7 +6399,7 @@ library MetaStoreLib {
 
         // Special case: empty mimetype + no protocol → empty blob (most common case!)
         if (bytes(mimetype).length == 0 && bytes(protocolName).length == 0 && bytes(operation).length == 0) {
-            return bytes("");  // Will map to EMPTY_REF (bytes32(0))
+            return bytes(""); // Will map to EMPTY_REF (bytes32(0))
         }
 
         // Always encode in same format: mimetype\x1Fprotocol\x1Foperation
@@ -6500,11 +6412,11 @@ library MetaStoreLib {
     /// @return mimetype The MIME type
     /// @return protocolName The protocol identifier (normalized)
     /// @return operation The operation name (normalized)
-    function decode(bytes32 metaRef) internal view returns (
-        string memory mimetype,
-        string memory protocolName,
-        string memory operation
-    ) {
+    function decode(bytes32 metaRef)
+        internal
+        view
+        returns (string memory mimetype, string memory protocolName, string memory operation)
+    {
         bytes[] memory parts = _getParts(metaRef);
         return _partsToStrings(parts);
     }
@@ -6524,10 +6436,7 @@ library MetaStoreLib {
     /// @param metaRef The metadata reference
     /// @return protocolName The protocol identifier (normalized, empty if none)
     /// @return operation The operation name (normalized, empty if none)
-    function getProtocol(bytes32 metaRef) internal view returns (
-        string memory protocolName,
-        string memory operation
-    ) {
+    function getProtocol(bytes32 metaRef) internal view returns (string memory protocolName, string memory operation) {
         bytes[] memory parts = _getParts(metaRef);
 
         // parts[0] = mimetype, parts[1] = protocol, parts[2] = operation
@@ -6536,16 +6445,15 @@ library MetaStoreLib {
         return (protocolName, operation);
     }
 
-
     /// @notice Intern a metadata blob (deduplicate and store)
     /// @dev Lower-level API - most callers should use store() instead
     /// @param blob The encoded metadata blob
     /// @param metaStore Storage mapping for metadata blobs
     /// @return metaRef The metadata reference (bytes32(0), packed, or SSTORE2 pointer)
-    function intern(
-        bytes memory blob,
-        mapping(bytes32 => bytes32) storage metaStore
-    ) internal returns (bytes32 metaRef) {
+    function intern(bytes memory blob, mapping(bytes32 => bytes32) storage metaStore)
+        internal
+        returns (bytes32 metaRef)
+    {
         // Special case: empty blob = EMPTY_REF sentinel
         if (blob.length == 0) {
             return EMPTY_REF;
@@ -6555,7 +6463,6 @@ library MetaStoreLib {
         (, metaRef) = DedupedBlobStore.storeMemory(blob, metaStore);
         return metaRef;
     }
-
 
     // =============================================================
     //                     INTERNAL HELPERS
@@ -6582,9 +6489,9 @@ library MetaStoreLib {
         // Single check for empty blob (text/plain + no protocol case)
         if (blob.length == 0) {
             parts = new bytes[](3);
-            parts[0] = bytes("");  // Empty = text/plain
-            parts[1] = bytes("");  // No protocol
-            parts[2] = bytes("");  // No operation
+            parts[0] = bytes(""); // Empty = text/plain
+            parts[1] = bytes(""); // No protocol
+            parts[2] = bytes(""); // No operation
             return parts;
         }
 
@@ -6597,11 +6504,11 @@ library MetaStoreLib {
     /// @return mimetype The MIME type
     /// @return protocolName The protocol identifier
     /// @return operation The operation name
-    function _partsToStrings(bytes[] memory parts) private pure returns (
-        string memory mimetype,
-        string memory protocolName,
-        string memory operation
-    ) {
+    function _partsToStrings(bytes[] memory parts)
+        private
+        pure
+        returns (string memory mimetype, string memory protocolName, string memory operation)
+    {
         // Extract mimetype (empty = text/plain)
         mimetype = string(parts[0]);
         if (bytes(mimetype).length == 0) {
@@ -6620,26 +6527,28 @@ library MetaStoreLib {
     /// @param subject The blob to split
     /// @param delim The single-byte delimiter
     /// @return out Array with exactly 3 parts (some may be empty)
-    function _splitKeepEmpty(bytes memory subject, bytes1 delim)
-        private
-        pure
-        returns (bytes[] memory out)
-    {
+    function _splitKeepEmpty(bytes memory subject, bytes1 delim) private pure returns (bytes[] memory out) {
         // Find first separator
         uint256 a = subject.indexOfByte(delim, 0);
-        if (a == LibBytes.NOT_FOUND) revert InvalidFormat();
+        if (a == LibBytes.NOT_FOUND) {
+            revert InvalidFormat();
+        }
 
         // Find second separator
         uint256 b = subject.indexOfByte(delim, a + 1);
-        if (b == LibBytes.NOT_FOUND) revert InvalidFormat();
+        if (b == LibBytes.NOT_FOUND) {
+            revert InvalidFormat();
+        }
 
         // Ensure no third separator (enforce format)
-        if (subject.indexOfByte(delim, b + 1) != LibBytes.NOT_FOUND) revert InvalidFormat();
+        if (subject.indexOfByte(delim, b + 1) != LibBytes.NOT_FOUND) {
+            revert InvalidFormat();
+        }
 
         out = new bytes[](3);
-        out[0] = subject.slice(0, a);           // mimetype (may be empty)
-        out[1] = subject.slice(a + 1, b);       // protocol (may be empty)
-        out[2] = subject.slice(b + 1, subject.length);  // operation (may be empty)
+        out[0] = subject.slice(0, a); // mimetype (may be empty)
+        out[1] = subject.slice(a + 1, b); // protocol (may be empty)
+        out[2] = subject.slice(b + 1, subject.length); // operation (may be empty)
     }
 
     /// @notice Check if bytes contains a specific byte
@@ -6665,11 +6574,7 @@ library Base64 {
     /// See: https://datatracker.ietf.org/doc/html/rfc4648
     /// @param fileSafe  Whether to replace '+' with '-' and '/' with '_'.
     /// @param noPadding Whether to strip away the padding.
-    function encode(bytes memory data, bool fileSafe, bool noPadding)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function encode(bytes memory data, bool fileSafe, bool noPadding) internal pure returns (string memory result) {
         /// @solidity memory-safe-assembly
         assembly {
             let dataLength := mload(data)
@@ -6735,11 +6640,7 @@ library Base64 {
 
     /// @dev Encodes `data` using the base64 encoding described in RFC 4648.
     /// Equivalent to `encode(data, fileSafe, false)`.
-    function encode(bytes memory data, bool fileSafe)
-        internal
-        pure
-        returns (string memory result)
-    {
+    function encode(bytes memory data, bool fileSafe) internal pure returns (string memory result) {
         result = encode(data, fileSafe, false);
     }
 
@@ -6844,11 +6745,7 @@ library EthscriptionsRendererLib {
         string memory mimetype,
         string memory protocolName,
         string memory operation
-    )
-        internal
-        view
-        returns (string memory)
-    {
+    ) internal view returns (string memory) {
         // Build in chunks to avoid stack too deep
         string memory part1 = string.concat(
             '[{"trait_type":"Ethscription ID","value":"',
@@ -6875,15 +6772,10 @@ library EthscriptionsRendererLib {
         // Add protocol info if present
         string memory protocolAttrs = "";
         if (bytes(protocolName).length > 0) {
-            protocolAttrs = string.concat(
-                '"},{"trait_type":"Protocol Name","value":"',
-                protocolName.escapeJSON()
-            );
+            protocolAttrs = string.concat('"},{"trait_type":"Protocol Name","value":"', protocolName.escapeJSON());
             if (bytes(operation).length > 0) {
                 protocolAttrs = string.concat(
-                    protocolAttrs,
-                    '"},{"trait_type":"Protocol Operation","value":"',
-                    operation.escapeJSON()
+                    protocolAttrs, '"},{"trait_type":"Protocol Operation","value":"', operation.escapeJSON()
                 );
             }
         }
@@ -6896,7 +6788,7 @@ library EthscriptionsRendererLib {
             uint256(etsc.l2BlockNumber).toString(),
             '},{"trait_type":"Created At","display_type":"date","value":',
             etsc.createdAt.toString(),
-            '}]'
+            "}]"
         );
 
         return string.concat(part1, part2, part3);
@@ -6920,9 +6812,7 @@ library EthscriptionsRendererLib {
             return ("image", mediaUri);
         } else {
             // Non-image content: use animation_url
-            if (mimetype.startsWith("video/") ||
-                mimetype.startsWith("audio/") ||
-                mimetype.eq("text/html")) {
+            if (mimetype.startsWith("video/") || mimetype.startsWith("audio/") || mimetype.eq("text/html")) {
                 // Video, audio, and HTML pass through directly as data URIs
                 mediaUri = constructDataURI(mimetype, content);
             } else {
@@ -6961,7 +6851,7 @@ library EthscriptionsRendererLib {
             etsc.ethscriptionNumber.toString(),
             '","description":"Ethscription #',
             etsc.ethscriptionNumber.toString(),
-            ' created by ',
+            " created by ",
             etsc.creator.toHexString(),
             '","',
             mediaType,
@@ -6969,40 +6859,24 @@ library EthscriptionsRendererLib {
             mediaUri,
             '","attributes":',
             attributes,
-            '}'
+            "}"
         );
 
-        return string.concat(
-            "data:application/json;base64,",
-            Base64.encode(bytes(json))
-        );
+        return string.concat("data:application/json;base64,", Base64.encode(bytes(json)));
     }
 
     /// @notice Construct a base64-encoded data URI
     /// @param mimetype The MIME type
     /// @param content The content bytes
     /// @return The complete data URI
-    function constructDataURI(string memory mimetype, bytes memory content)
-        internal
-        pure
-        returns (string memory)
-    {
-        return string.concat(
-            "data:",
-            mimetype.escapeJSON(),
-            ";base64,",
-            Base64.encode(content)
-        );
+    function constructDataURI(string memory mimetype, bytes memory content) internal pure returns (string memory) {
+        return string.concat("data:", mimetype.escapeJSON(), ";base64,", Base64.encode(content));
     }
 
     /// @notice Wrap an image in SVG for pixel-perfect rendering
     /// @param imageDataUri The image data URI to wrap
     /// @return The SVG markup
-    function wrapImageInSVG(string memory imageDataUri)
-        internal
-        pure
-        returns (string memory)
-    {
+    function wrapImageInSVG(string memory imageDataUri) internal pure returns (string memory) {
         // SVG wrapper that enforces pixelated/nearest-neighbor scaling for pixel art
         return string.concat(
             '<svg width="1200" height="1200" viewBox="0 0 1200 1200" version="1.2" xmlns="http://www.w3.org/2000/svg" style="background-image:url(',
@@ -7042,17 +6916,21 @@ library EthscriptionsRendererLib {
         // Ultra-minimal HTML with inline styles optimized for iframe display
         return string.concat(
             '<!DOCTYPE html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>',
-            '<style>*{box-sizing:border-box;margin:0;padding:0;border:0}body{padding:6dvw;background:#0b0b0c;color:#f5f5f5;font-family:monospace;display:flex;justify-content:center;align-items:center;min-height:100dvh;overflow:hidden}',
-            'pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;line-height:1.4;font-size:14px}</style></head>',
+            "<style>*{box-sizing:border-box;margin:0;padding:0;border:0}body{padding:6dvw;background:#0b0b0c;color:#f5f5f5;font-family:monospace;display:flex;justify-content:center;align-items:center;min-height:100dvh;overflow:hidden}",
+            "pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;line-height:1.4;font-size:14px}</style></head>",
             '<body><pre id="o"></pre><script>',
-            'const p="', encodedPayload, '";',
-            'const m="', mimetype.escapeJSON(), '";',
+            'const p="',
+            encodedPayload,
+            '";',
+            'const m="',
+            mimetype.escapeJSON(),
+            '";',
             'function d(b){try{return decodeURIComponent(atob(b).split("").map(c=>"%"+("00"+c.charCodeAt(0).toString(16)).slice(-2)).join(""))}catch{return null}}',
             'const r=d(p);let t="";',
-            'if(r!==null){t=r;try{const j=JSON.parse(r);t=JSON.stringify(j,null,2)}catch{}}',
+            "if(r!==null){t=r;try{const j=JSON.parse(r);t=JSON.stringify(j,null,2)}catch{}}",
             'else{t="data:"+m+";base64,"+p}',
             'document.getElementById("o").textContent=t||"(empty)";',
-            '</script></body></html>'
+            "</script></body></html>"
         );
     }
 }
@@ -7065,11 +6943,7 @@ interface IProtocolHandler {
     /// @param ethscriptionId The Ethscription ID (L1 tx hash)
     /// @param from The address transferring the Ethscription
     /// @param to The address receiving the Ethscription
-    function onTransfer(
-        bytes32 ethscriptionId,
-        address from,
-        address to
-    ) external;
+    function onTransfer(bytes32 ethscriptionId, address from, address to) external;
 
     /// @notice Returns human-readable protocol name
     /// @return The protocol name (e.g., "erc-20-fixed-denomination", "erc-721-ethscriptions-collection")
@@ -7089,79 +6963,75 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @notice Internal storage struct for ethscriptions (optimized for storage)
     struct EthscriptionStorage {
         // Full slots
-        bytes32 contentUriSha;  // sha256 of content URI (for protocol uniqueness check)
-        bytes32 contentHash;    // keccak256 of content (for deduplication)
+        bytes32 contentUriSha; // sha256 of content URI (for protocol uniqueness check)
+        bytes32 contentHash; // keccak256 of content (for deduplication)
         bytes32 l1BlockHash;
         // Packed slot (32 bytes)
         address creator;
-        uint48  createdAt;
-        uint48  l1BlockNumber;
+        uint48 createdAt;
+        uint48 l1BlockNumber;
         // Metadata reference (replaces dynamic mimetype string)
-        bytes32 metaRef;  // Reference to deduplicated metadata (mimetype, protocol, operation)
+        bytes32 metaRef; // Reference to deduplicated metadata (mimetype, protocol, operation)
         // Packed slot (27 bytes used, 5 free)
         address initialOwner;
-        uint48  ethscriptionNumber;
-        bool    esip6;
+        uint48 ethscriptionNumber;
+        bool esip6;
         // Packed slot (26 bytes used, 6 free)
         address previousOwner;
-        uint48  l2BlockNumber;
+        uint48 l2BlockNumber;
     }
 
     struct ProtocolParams {
-        string protocolName;  // Protocol identifier (e.g., "erc-20-fixed-denomination", "erc-721-ethscriptions-collection", etc.)
-        string operation;     // Operation to perform (e.g., "mint", "deploy", "create_collection", etc.)
-        bytes data;          // ABI-encoded parameters specific to the protocol/operation
+        string protocolName; // Protocol identifier (e.g., "erc-20-fixed-denomination", "erc-721-ethscriptions-collection", etc.)
+        string operation; // Operation to perform (e.g., "mint", "deploy", "create_collection", etc.)
+        bytes data; // ABI-encoded parameters specific to the protocol/operation
     }
 
     struct CreateEthscriptionParams {
         bytes32 ethscriptionId;
-        bytes32 contentUriSha;  // sha256 of content URI (for protocol uniqueness)
+        bytes32 contentUriSha; // sha256 of content URI (for protocol uniqueness)
         address initialOwner;
-        bytes content;           // Raw decoded bytes (not Base64)
+        bytes content; // Raw decoded bytes (not Base64)
         string mimetype;
         bool esip6;
-        ProtocolParams protocolParams;  // Protocol operation data (optional)
+        ProtocolParams protocolParams; // Protocol operation data (optional)
     }
 
     /// @notice Paginated result for batch queries
     struct PaginatedEthscriptionsResponse {
         Ethscription[] items;
-        uint256 total;       // total items available (totalSupply or balanceOf(owner))
-        uint256 start;       // start index used for this page
-        uint256 limit;       // effective limit used for this page (after clamping)
-        uint256 nextStart;   // next page start index (end of this page)
-        bool hasMore;        // true if nextStart < total
+        uint256 total; // total items available (totalSupply or balanceOf(owner))
+        uint256 start; // start index used for this page
+        uint256 limit; // effective limit used for this page (after clamping)
+        uint256 nextStart; // next page start index (end of this page)
+        bool hasMore; // true if nextStart < total
     }
 
     /// @notice Complete denormalized ethscription data for external/off-chain consumption
     /// @dev Includes all EthscriptionStorage fields plus owner and content
     struct Ethscription {
         // Identity
-        bytes32 ethscriptionId;        // L1 tx hash (the key)
-        uint256 ethscriptionNumber;    // Token ID
-
+        bytes32 ethscriptionId; // L1 tx hash (the key)
+        uint256 ethscriptionNumber; // Token ID
         // Core metadata
-        bytes32 contentUriSha;         // sha256 of content URI (protocol)
-        bytes32 contentHash;           // keccak256 of content
-        string  mimetype;
-        bytes   content;               // Full content bytes (empty when includeContent=false)
-
+        bytes32 contentUriSha; // sha256 of content URI (protocol)
+        bytes32 contentHash; // keccak256 of content
+        string mimetype;
+        bytes content; // Full content bytes (empty when includeContent=false)
         // Ownership
-        address currentOwner;          // Current owner from ERC721 storage
+        address currentOwner; // Current owner from ERC721 storage
         address creator;
         address initialOwner;
         address previousOwner;
-
         // Block/time data
         bytes32 l1BlockHash;
         uint256 l1BlockNumber;
         uint256 l2BlockNumber;
         uint256 createdAt;
-
         // Protocol
-        bool    esip6;
-        string  protocolName;          // Protocol identifier (empty if none)
-        string  operation;             // Operation name (empty if none)
+        bool esip6;
+        string protocolName; // Protocol identifier (empty if none)
+        string operation; // Operation name (empty if none)
     }
 
     // =============================================================
@@ -7243,28 +7113,17 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @dev This event matches the Ethscriptions protocol transfer semantics where 'from' is the initiator
     /// For creations, this shows transfer from creator to initial owner (not from address(0))
     event EthscriptionTransferred(
-        bytes32 indexed ethscriptionId,
-        address indexed from,
-        address indexed to,
-        uint256 ethscriptionNumber
+        bytes32 indexed ethscriptionId, address indexed from, address indexed to, uint256 ethscriptionNumber
     );
 
     /// @notice Emitted when a protocol handler is registered
     event ProtocolRegistered(string indexed protocol, address indexed handler);
 
     /// @notice Emitted when a protocol handler operation fails but ethscription continues
-    event ProtocolHandlerFailed(
-        bytes32 indexed ethscriptionId,
-        string protocol,
-        bytes revertData
-    );
+    event ProtocolHandlerFailed(bytes32 indexed ethscriptionId, string protocol, bytes revertData);
 
     /// @notice Emitted when a protocol handler operation succeeds
-    event ProtocolHandlerSuccess(
-        bytes32 indexed ethscriptionId,
-        string protocol,
-        bytes returnData
-    );
+    event ProtocolHandlerSuccess(bytes32 indexed ethscriptionId, string protocol, bytes returnData);
 
     // =============================================================
     //                         MODIFIERS
@@ -7277,13 +7136,23 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     }
 
     /// @notice Resolve and validate an ethscription (by ID) or revert
-    function _getEthscriptionOrRevert(bytes32 ethscriptionId) internal view returns (EthscriptionStorage storage ethscription) {
-        if (!_ethscriptionExists(ethscriptionId)) revert EthscriptionDoesNotExist();
+    function _getEthscriptionOrRevert(bytes32 ethscriptionId)
+        internal
+        view
+        returns (EthscriptionStorage storage ethscription)
+    {
+        if (!_ethscriptionExists(ethscriptionId)) {
+            revert EthscriptionDoesNotExist();
+        }
         ethscription = ethscriptions[ethscriptionId];
     }
 
     /// @notice Resolve and validate an ethscription (by tokenId) or revert
-    function _getEthscriptionOrRevert(uint256 tokenId) internal view returns (EthscriptionStorage storage ethscription) {
+    function _getEthscriptionOrRevert(uint256 tokenId)
+        internal
+        view
+        returns (EthscriptionStorage storage ethscription)
+    {
         bytes32 id = tokenIdToEthscriptionId[tokenId];
         ethscription = _getEthscriptionOrRevert(id);
     }
@@ -7298,9 +7167,15 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @dev Only callable by the depositor address (used during genesis setup)
     /// @dev Protocol names should already be normalized (lowercase) by the caller
     function registerProtocol(string calldata protocol, address handler) external {
-        if (msg.sender != Predeploys.DEPOSITOR_ACCOUNT) revert OnlyDepositor();
-        if (handler == address(0)) revert InvalidHandler();
-        if (protocolHandlers[protocol] != address(0)) revert ProtocolAlreadyRegistered();
+        if (msg.sender != Predeploys.DEPOSITOR_ACCOUNT) {
+            revert OnlyDepositor();
+        }
+        if (handler == address(0)) {
+            revert InvalidHandler();
+        }
+        if (protocolHandlers[protocol] != address(0)) {
+            revert ProtocolAlreadyRegistered();
+        }
 
         protocolHandlers[protocol] = handler;
 
@@ -7314,18 +7189,26 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @notice Create (mint) a new ethscription token
     /// @dev Called via system transaction with msg.sender spoofed as the actual creator
     /// @param params Struct containing all ethscription creation parameters
-    function createEthscription(
-        CreateEthscriptionParams calldata params
-    ) external emitGenesisEvents returns (uint256 tokenId) {
+    function createEthscription(CreateEthscriptionParams calldata params)
+        external
+        emitGenesisEvents
+        returns (uint256 tokenId)
+    {
         address creator = msg.sender;
 
-        if (creator == address(0)) revert InvalidCreator();
-        if (_ethscriptionExists(params.ethscriptionId)) revert EthscriptionAlreadyExists();
-        
+        if (creator == address(0)) {
+            revert InvalidCreator();
+        }
+        if (_ethscriptionExists(params.ethscriptionId)) {
+            revert EthscriptionAlreadyExists();
+        }
+
         bool contentUriAlreadySeen = firstEthscriptionByContentUri[params.contentUriSha] != bytes32(0);
 
         if (contentUriAlreadySeen) {
-            if (!params.esip6) revert DuplicateContentUri();
+            if (!params.esip6) {
+                revert DuplicateContentUri();
+            }
         } else {
             firstEthscriptionByContentUri[params.contentUriSha] = params.ethscriptionId;
         }
@@ -7335,10 +7218,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
 
         // Store metadata (mimetype, protocol, operation)
         bytes32 metaRef = MetaStoreLib.store(
-            params.mimetype,
-            params.protocolParams.protocolName,
-            params.protocolParams.operation,
-            metadataStorage
+            params.mimetype, params.protocolParams.protocolName, params.protocolParams.operation, metadataStorage
         );
 
         ethscriptions[params.ethscriptionId] = EthscriptionStorage({
@@ -7371,12 +7251,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
         }
 
         emit EthscriptionCreated(
-            params.ethscriptionId,
-            creator,
-            params.initialOwner,
-            params.contentUriSha,
-            contentHash,
-            tokenId
+            params.ethscriptionId, creator, params.initialOwner, params.contentUriSha, contentHash, tokenId
         );
 
         // Handle protocol operations (if any)
@@ -7387,10 +7262,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @dev Called via system transaction with msg.sender spoofed as 'from'
     /// @param to The recipient address (can be address(0) for burning)
     /// @param ethscriptionId The ethscription to transfer (used to find token ID)
-    function transferEthscription(
-        address to,
-        bytes32 ethscriptionId
-    ) external {
+    function transferEthscription(address to, bytes32 ethscriptionId) external {
         // Load and validate
         EthscriptionStorage storage ethscription = _getEthscriptionOrRevert(ethscriptionId);
         uint256 tokenId = ethscription.ethscriptionNumber;
@@ -7403,11 +7275,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @param to The recipient address (can be address(0) for burning)
     /// @param ethscriptionId The ethscription to transfer
     /// @param previousOwner The required previous owner for validation
-    function transferEthscriptionForPreviousOwner(
-        address to,
-        bytes32 ethscriptionId,
-        address previousOwner
-    ) external {
+    function transferEthscriptionForPreviousOwner(address to, bytes32 ethscriptionId, address previousOwner) external {
         EthscriptionStorage storage ethscription = _getEthscriptionOrRevert(ethscriptionId);
 
         // Verify the previous owner matches
@@ -7424,13 +7292,15 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @param ethscriptionIds Array of ethscription IDs to transfer
     /// @param to The recipient address (can be address(0) for burning)
     /// @return successCount Number of successful transfers
-    function transferEthscriptions(
-        address to,
-        bytes32[] calldata ethscriptionIds
-    ) external returns (uint256 successCount) {
+    function transferEthscriptions(address to, bytes32[] calldata ethscriptionIds)
+        external
+        returns (uint256 successCount)
+    {
         for (uint256 i = 0; i < ethscriptionIds.length; i++) {
             // Get the ethscription to find its token ID
-            if (!_ethscriptionExists(ethscriptionIds[i])) continue; // Skip non-existent ethscriptions
+            if (!_ethscriptionExists(ethscriptionIds[i])) {
+                continue;
+            } // Skip non-existent ethscriptions
             EthscriptionStorage storage ethscription = ethscriptions[ethscriptionIds[i]];
 
             uint256 tokenId = ethscription.ethscriptionNumber;
@@ -7445,7 +7315,9 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
             // If sender doesn't own the token, just continue to next one
         }
 
-        if (successCount == 0) revert NoSuccessfulTransfers();
+        if (successCount == 0) {
+            revert NoSuccessfulTransfers();
+        }
     }
 
     // =============================================================
@@ -7457,7 +7329,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     function name() public pure override returns (string memory) {
         return "Ethscriptions";
     }
-    
+
     function symbol() public pure override returns (string memory) {
         return "ETHSCRIPTIONS";
     }
@@ -7485,7 +7357,11 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @param ethscriptionId The ethscription ID (L1 tx hash) of the ethscription
     /// @return mediaType Either "image" or "animation_url"
     /// @return mediaUri The data URI for the media
-    function getMediaUri(bytes32 ethscriptionId) external view returns (string memory mediaType, string memory mediaUri) {
+    function getMediaUri(bytes32 ethscriptionId)
+        external
+        view
+        returns (string memory mediaType, string memory mediaUri)
+    {
         EthscriptionStorage storage ethscription = _getEthscriptionOrRevert(ethscriptionId);
         bytes memory content = _getEthscriptionContent(ethscriptionId);
 
@@ -7501,7 +7377,11 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @param ethscriptionId The ethscription ID
     /// @param includeContent Whether to include content bytes
     /// @return complete The complete ethscription data
-    function _buildEthscription(bytes32 ethscriptionId, bool includeContent) internal view returns (Ethscription memory) {
+    function _buildEthscription(bytes32 ethscriptionId, bool includeContent)
+        internal
+        view
+        returns (Ethscription memory)
+    {
         EthscriptionStorage storage ethscription = _getEthscriptionOrRevert(ethscriptionId);
 
         // Decode metadata from reference
@@ -7512,25 +7392,21 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
             // Identity
             ethscriptionId: ethscriptionId,
             ethscriptionNumber: uint256(ethscription.ethscriptionNumber),
-
             // Core metadata
             contentUriSha: ethscription.contentUriSha,
             contentHash: ethscription.contentHash,
             mimetype: mimetype,
             content: includeContent ? _getEthscriptionContent(ethscriptionId) : bytes(""),
-
             // Ownership
             currentOwner: _ownerOf(uint256(ethscription.ethscriptionNumber)),
             creator: ethscription.creator,
             initialOwner: ethscription.initialOwner,
             previousOwner: ethscription.previousOwner,
-
             // Block/time data
             l1BlockHash: ethscription.l1BlockHash,
             l1BlockNumber: uint256(ethscription.l1BlockNumber),
             l2BlockNumber: uint256(ethscription.l2BlockNumber),
             createdAt: uint256(ethscription.createdAt),
-
             // Protocol
             esip6: ethscription.esip6,
             protocolName: protocolName,
@@ -7649,7 +7525,9 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
         uint256 limit,
         bool includeContent
     ) internal view returns (PaginatedEthscriptionsResponse memory page) {
-        if (limit == 0) revert InvalidPaginationLimit();
+        if (limit == 0) {
+            revert InvalidPaginationLimit();
+        }
 
         uint256 totalCount = byOwner ? balanceOf(owner) : totalSupply();
         page.total = totalCount;
@@ -7659,7 +7537,9 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
         uint256 effectiveLimit = limit > maxPerPage ? maxPerPage : limit;
 
         uint256 endExclusive = start >= totalCount ? start : start + effectiveLimit;
-        if (endExclusive > totalCount) endExclusive = totalCount;
+        if (endExclusive > totalCount) {
+            endExclusive = totalCount;
+        }
         uint256 resultsCount = start >= totalCount ? 0 : (endExclusive - start);
 
         Ethscription[] memory items = new Ethscription[](resultsCount);
@@ -7667,7 +7547,9 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
             uint256 tokenId = byOwner ? tokenOfOwnerByIndex(owner, start + index) : (start + index);
             bytes32 id = tokenIdToEthscriptionId[tokenId];
             items[index] = _buildEthscription(id, includeContent);
-            unchecked { ++index; }
+            unchecked {
+                ++index;
+            }
         }
 
         page.items = items;
@@ -7696,7 +7578,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     function exists(bytes32 ethscriptionId) external view returns (bool) {
         return _ethscriptionExists(ethscriptionId);
     }
-    
+
     function exists(uint256 tokenId) external view returns (bool) {
         return _ethscriptionExists(tokenIdToEthscriptionId[tokenId]);
     }
@@ -7722,7 +7604,9 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @dev Reverts if tokenId does not exist
     function getEthscriptionId(uint256 tokenId) external view returns (bytes32) {
         bytes32 id = tokenIdToEthscriptionId[tokenId];
-        if (!_ethscriptionExists(id)) revert TokenDoesNotExist();
+        if (!_ethscriptionExists(id)) {
+            revert TokenDoesNotExist();
+        }
         return id;
     }
 
@@ -7740,7 +7624,11 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @param ethscriptionId The ethscription ID to query
     /// @return protocolName The protocol identifier (empty if none)
     /// @return operation The operation name (empty if none)
-    function getProtocol(bytes32 ethscriptionId) external view returns (string memory protocolName, string memory operation) {
+    function getProtocol(bytes32 ethscriptionId)
+        external
+        view
+        returns (string memory protocolName, string memory operation)
+    {
         EthscriptionStorage storage ethscription = _getEthscriptionOrRevert(ethscriptionId);
         return MetaStoreLib.getProtocol(ethscription.metaRef);
     }
@@ -7750,11 +7638,11 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @return mimetype The MIME type
     /// @return protocolName The protocol identifier (empty if none)
     /// @return operation The operation name (empty if none)
-    function getMetadata(bytes32 ethscriptionId) external view returns (
-        string memory mimetype,
-        string memory protocolName,
-        string memory operation
-    ) {
+    function getMetadata(bytes32 ethscriptionId)
+        external
+        view
+        returns (string memory mimetype, string memory protocolName, string memory operation)
+    {
         EthscriptionStorage storage ethscription = _getEthscriptionOrRevert(ethscriptionId);
         return MetaStoreLib.decode(ethscription.metaRef);
     }
@@ -7820,10 +7708,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @notice Call a protocol handler operation during ethscription creation
     /// @param ethscriptionId The ethscription ID (L1 tx hash)
     /// @param protocolParams The protocol parameters struct
-    function _callProtocolOperation(
-        bytes32 ethscriptionId,
-        ProtocolParams calldata protocolParams
-    ) internal {
+    function _callProtocolOperation(bytes32 ethscriptionId, ProtocolParams calldata protocolParams) internal {
         // Skip if no protocol specified
         if (bytes(protocolParams.protocolName).length == 0) {
             return;
@@ -7838,9 +7723,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
 
         // Encode the function call with operation name
         bytes memory callData = abi.encodeWithSignature(
-            string.concat("op_", protocolParams.operation, "(bytes32,bytes)"),
-            ethscriptionId,
-            protocolParams.data
+            string.concat("op_", protocolParams.operation, "(bytes32,bytes)"), ethscriptionId, protocolParams.data
         );
 
         // Call the handler - failures don't revert ethscription creation
@@ -7857,11 +7740,7 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
     /// @param ethscriptionId The ethscription ID (L1 tx hash)
     /// @param from The address transferring from
     /// @param to The address transferring to
-    function _notifyProtocolTransfer(
-        bytes32 ethscriptionId,
-        address from,
-        address to
-    ) internal {
+    function _notifyProtocolTransfer(bytes32 ethscriptionId, address from, address to) internal {
         // Get protocol from metadata
         EthscriptionStorage storage etsc = ethscriptions[ethscriptionId];
         (string memory protocolName,) = MetaStoreLib.getProtocol(etsc.metaRef);
@@ -7917,20 +7796,14 @@ contract Ethscriptions is ERC721EthscriptionsSequentialEnumerableUpgradeable {
                 emit Transfer(ethscription.creator, address(0), tokenId);
                 // Emit Ethscriptions transfer event for the burn
                 emit EthscriptionTransferred(
-                    ethscriptionId,
-                    ethscription.creator,
-                    address(0),
-                    ethscription.ethscriptionNumber
+                    ethscriptionId, ethscription.creator, address(0), ethscription.ethscriptionNumber
                 );
             } else {
                 // Token was minted directly to initial owner
                 emit Transfer(address(0), ethscription.initialOwner, tokenId);
                 // Emit Ethscriptions transfer event
                 emit EthscriptionTransferred(
-                    ethscriptionId,
-                    ethscription.creator,
-                    ethscription.initialOwner,
-                    ethscription.ethscriptionNumber
+                    ethscriptionId, ethscription.creator, ethscription.initialOwner, ethscription.ethscriptionNumber
                 );
             }
 
@@ -7994,8 +7867,7 @@ contract EthscriptionsProver {
     address constant L1_BLOCK = Predeploys.L1_BLOCK_ATTRIBUTES;
 
     /// @notice L2ToL1MessagePasser predeploy address on OP Stack
-    L2ToL1MessagePasser constant L2_TO_L1_MESSAGE_PASSER =
-        L2ToL1MessagePasser(Predeploys.L2_TO_L1_MESSAGE_PASSER);
+    L2ToL1MessagePasser constant L2_TO_L1_MESSAGE_PASSER = L2ToL1MessagePasser(Predeploys.L2_TO_L1_MESSAGE_PASSER);
 
     /// @notice The Ethscriptions contract (pre-deployed at known address)
     Ethscriptions constant ethscriptions = Ethscriptions(Predeploys.ETHSCRIPTIONS);
@@ -8022,11 +7894,7 @@ contract EthscriptionsProver {
     // =============================================================
 
     /// @notice Emitted when an ethscription data proof is sent to L1
-    event EthscriptionDataProofSent(
-        bytes32 indexed ethscriptionId,
-        uint256 indexed l2BlockNumber,
-        uint256 l2Timestamp
-    );
+    event EthscriptionDataProofSent(bytes32 indexed ethscriptionId, uint256 indexed l2BlockNumber, uint256 l2Timestamp);
 
     // =============================================================
     //                    EXTERNAL FUNCTIONS
@@ -8036,7 +7904,9 @@ contract EthscriptionsProver {
     /// @dev Only callable by the Ethscriptions contract
     /// @param ethscriptionId The ID of the ethscription (L1 tx hash)
     function queueEthscription(bytes32 ethscriptionId) external virtual {
-        if (msg.sender != address(ethscriptions)) revert OnlyEthscriptions();
+        if (msg.sender != address(ethscriptions)) {
+            revert OnlyEthscriptions();
+        }
 
         // Add to the set (deduplicates automatically)
         if (queuedEthscriptions.add(ethscriptionId)) {
@@ -8055,7 +7925,9 @@ contract EthscriptionsProver {
     /// @notice Flush all queued proofs
     /// @dev Only callable by the L1Block contract at the start of each new block
     function flushAllProofs() external {
-        if (msg.sender != L1_BLOCK) revert OnlyL1Block();
+        if (msg.sender != L1_BLOCK) {
+            revert OnlyL1Block();
+        }
 
         uint256 count = queuedEthscriptions.length();
 

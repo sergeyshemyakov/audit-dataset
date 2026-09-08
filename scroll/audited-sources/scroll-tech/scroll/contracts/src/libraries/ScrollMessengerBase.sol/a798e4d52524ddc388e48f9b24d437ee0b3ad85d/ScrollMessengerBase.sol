@@ -6,8 +6,8 @@ import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Own
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 
-import {ScrollConstants} from "./constants/ScrollConstants.sol";
 import {IScrollMessenger} from "./IScrollMessenger.sol";
+import {ScrollConstants} from "./constants/ScrollConstants.sol";
 
 // solhint-disable var-name-mixedcase
 
@@ -17,18 +17,22 @@ abstract contract ScrollMessengerBase is
     ReentrancyGuardUpgradeable,
     IScrollMessenger
 {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates fee vault contract.
     /// @param _oldFeeVault The address of old fee vault contract.
     /// @param _newFeeVault The address of new fee vault contract.
     event UpdateFeeVault(address _oldFeeVault, address _newFeeVault);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice See {IScrollMessenger-xDomainMessageSender}
     address public override xDomainMessageSender;
@@ -42,22 +46,23 @@ abstract contract ScrollMessengerBase is
     /// @dev The storage slots for future usage.
     uint256[47] private __gap;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier notInExecution() {
         require(
-            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER,
-            "Message is already in execution"
+            xDomainMessageSender == ScrollConstants.DEFAULT_XDOMAIN_MESSAGE_SENDER, "Message is already in execution"
         );
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     function __ScrollMessengerBase_init(address _counterpart, address _feeVault) internal onlyInitializing {
         OwnableUpgradeable.__Ownable_init();
         PausableUpgradeable.__Pausable_init();
@@ -75,9 +80,11 @@ abstract contract ScrollMessengerBase is
     // make sure only owner can send ether to messenger to avoid possible user fund loss.
     receive() external payable onlyOwner {}
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update fee vault contract.
     /// @dev This function can only called by contract owner.
@@ -100,9 +107,11 @@ abstract contract ScrollMessengerBase is
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to generate the correct cross domain calldata for a message.
     /// @param _sender Message sender address.
@@ -118,14 +127,8 @@ abstract contract ScrollMessengerBase is
         uint256 _messageNonce,
         bytes memory _message
     ) internal pure returns (bytes memory) {
-        return
-            abi.encodeWithSignature(
-                "relayMessage(address,address,uint256,uint256,bytes)",
-                _sender,
-                _target,
-                _value,
-                _messageNonce,
-                _message
-            );
+        return abi.encodeWithSignature(
+            "relayMessage(address,address,uint256,uint256,bytes)", _sender, _target, _value, _messageNonce, _message
+        );
     }
 }

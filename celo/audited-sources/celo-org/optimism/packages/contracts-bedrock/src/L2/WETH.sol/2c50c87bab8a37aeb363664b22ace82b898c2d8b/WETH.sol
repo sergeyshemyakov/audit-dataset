@@ -2,14 +2,15 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { WETH98 } from "src/universal/WETH98.sol";
+import {WETH98} from "src/universal/WETH98.sol";
 
 // Libraries
-import { Predeploys } from "src/libraries/Predeploys.sol";
+import {Predeploys} from "src/libraries/Predeploys.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IL1Block } from "interfaces/L2/IL1Block.sol";
+
+import {IL1Block} from "interfaces/L2/IL1Block.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @title WETH contract that reads the name and symbol from the L1Block contract.
 ///        Allows for nice rendering of token names for chains using custom gas token.

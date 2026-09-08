@@ -2,21 +2,23 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { WETH98 } from "src/universal/WETH98.sol";
+import {WETH98} from "src/universal/WETH98.sol";
 
 // Libraries
-import { NotCustomGasToken, Unauthorized, ZeroAddress } from "src/libraries/errors/CommonErrors.sol";
-import { Predeploys } from "src/libraries/Predeploys.sol";
-import { Preinstalls } from "src/libraries/Preinstalls.sol";
-import { SafeSend } from "src/universal/SafeSend.sol";
+
+import {Predeploys} from "src/libraries/Predeploys.sol";
+import {Preinstalls} from "src/libraries/Preinstalls.sol";
+import {NotCustomGasToken, Unauthorized, ZeroAddress} from "src/libraries/errors/CommonErrors.sol";
+import {SafeSend} from "src/universal/SafeSend.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IL2ToL2CrossDomainMessenger } from "interfaces/L2/IL2ToL2CrossDomainMessenger.sol";
-import { IL1Block } from "interfaces/L2/IL1Block.sol";
-import { IETHLiquidity } from "interfaces/L2/IETHLiquidity.sol";
-import { IERC7802, IERC165 } from "interfaces/L2/IERC7802.sol";
-import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {IERC165, IERC7802} from "interfaces/L2/IERC7802.sol";
+import {IETHLiquidity} from "interfaces/L2/IETHLiquidity.sol";
+import {IL1Block} from "interfaces/L2/IL1Block.sol";
+import {IL2ToL2CrossDomainMessenger} from "interfaces/L2/IL2ToL2CrossDomainMessenger.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @custom:predeploy 0x4200000000000000000000000000000000000024
@@ -48,19 +50,25 @@ contract SuperchainWETH is WETH98, IERC7802, ISemver {
 
     /// @inheritdoc WETH98
     function deposit() public payable override {
-        if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) revert NotCustomGasToken();
+        if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) {
+            revert NotCustomGasToken();
+        }
         super.deposit();
     }
 
     /// @inheritdoc WETH98
     function withdraw(uint256 _amount) public override {
-        if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) revert NotCustomGasToken();
+        if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) {
+            revert NotCustomGasToken();
+        }
         super.withdraw(_amount);
     }
 
     /// @inheritdoc WETH98
     function allowance(address owner, address spender) public view override returns (uint256) {
-        if (spender == Preinstalls.Permit2) return type(uint256).max;
+        if (spender == Preinstalls.Permit2) {
+            return type(uint256).max;
+        }
         return super.allowance(owner, spender);
     }
 
@@ -84,7 +92,9 @@ contract SuperchainWETH is WETH98, IERC7802, ISemver {
     /// @param _to     Address to mint tokens to.
     /// @param _amount Amount of tokens to mint.
     function crosschainMint(address _to, uint256 _amount) external {
-        if (msg.sender != Predeploys.SUPERCHAIN_TOKEN_BRIDGE) revert Unauthorized();
+        if (msg.sender != Predeploys.SUPERCHAIN_TOKEN_BRIDGE) {
+            revert Unauthorized();
+        }
 
         _mint(_to, _amount);
 
@@ -101,14 +111,16 @@ contract SuperchainWETH is WETH98, IERC7802, ISemver {
     /// @param _from   Address to burn tokens from.
     /// @param _amount Amount of tokens to burn.
     function crosschainBurn(address _from, uint256 _amount) external {
-        if (msg.sender != Predeploys.SUPERCHAIN_TOKEN_BRIDGE) revert Unauthorized();
+        if (msg.sender != Predeploys.SUPERCHAIN_TOKEN_BRIDGE) {
+            revert Unauthorized();
+        }
 
         _burn(_from, _amount);
 
         // Deposit to ETHLiquidity contract.
         if (!IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) {
             // NOTE: 'burn' will soon change to 'deposit'.
-            IETHLiquidity(Predeploys.ETH_LIQUIDITY).burn{ value: _amount }();
+            IETHLiquidity(Predeploys.ETH_LIQUIDITY).burn{value: _amount}();
         }
 
         emit CrosschainBurn(_from, _amount, msg.sender);
@@ -125,14 +137,16 @@ contract SuperchainWETH is WETH98, IERC7802, ISemver {
     /// @param _chainId  Chain ID of the destination chain.
     /// @return msgHash_ Hash of the message sent.
     function sendETH(address _to, uint256 _chainId) external payable returns (bytes32 msgHash_) {
-        if (_to == address(0)) revert ZeroAddress();
+        if (_to == address(0)) {
+            revert ZeroAddress();
+        }
 
         if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) {
             revert NotCustomGasToken();
         }
 
         // NOTE: 'burn' will soon change to 'deposit'.
-        IETHLiquidity(Predeploys.ETH_LIQUIDITY).burn{ value: msg.value }();
+        IETHLiquidity(Predeploys.ETH_LIQUIDITY).burn{value: msg.value}();
 
         msgHash_ = IL2ToL2CrossDomainMessenger(Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER).sendMessage({
             _destination: _chainId,
@@ -148,12 +162,16 @@ contract SuperchainWETH is WETH98, IERC7802, ISemver {
     /// @param _to         Address to relay ETH to.
     /// @param _amount     Amount of ETH to relay.
     function relayETH(address _from, address _to, uint256 _amount) external {
-        if (msg.sender != Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER) revert Unauthorized();
+        if (msg.sender != Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            revert Unauthorized();
+        }
 
         (address crossDomainMessageSender, uint256 source) =
             IL2ToL2CrossDomainMessenger(Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER).crossDomainMessageContext();
 
-        if (crossDomainMessageSender != address(this)) revert InvalidCrossDomainSender();
+        if (crossDomainMessageSender != address(this)) {
+            revert InvalidCrossDomainSender();
+        }
 
         if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) {
             // Since ETH is not the native asset on custom gas token chains, send SuperchainWETH to the recipient.
@@ -163,7 +181,7 @@ contract SuperchainWETH is WETH98, IERC7802, ISemver {
             IETHLiquidity(Predeploys.ETH_LIQUIDITY).mint(_amount);
 
             // This is a forced ETH send to the recipient, the recipient should NOT expect to be called.
-            new SafeSend{ value: _amount }(payable(_to));
+            new SafeSend{value: _amount}(payable(_to));
         }
 
         emit RelayETH(_from, _to, _amount, source);

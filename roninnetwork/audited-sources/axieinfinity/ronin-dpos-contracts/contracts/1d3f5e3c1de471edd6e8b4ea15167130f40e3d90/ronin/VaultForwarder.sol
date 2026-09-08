@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.9;
 
-import "../extensions/forwarder/Forwarder.sol";
 import "../extensions/RONTransferHelper.sol";
+import "../extensions/forwarder/Forwarder.sol";
 
 /**
  * @title A vault contract that keeps RON, and behaves as an EOA account to interact with a target contract.
@@ -13,24 +13,20 @@ import "../extensions/RONTransferHelper.sol";
  * - Others: can top-up RON, cannot execute any other actions.
  */
 contract VaultForwarder is Forwarder, RONTransferHelper {
-  /// @dev Emitted when the admin withdraws all RON from the forwarder contract.
-  event ForwarderRONWithdrawn(address indexed _recipient, uint256 _value);
+    /// @dev Emitted when the admin withdraws all RON from the forwarder contract.
+    event ForwarderRONWithdrawn(address indexed _recipient, uint256 _value);
 
-  constructor(
-    address[] memory _targets,
-    address _admin,
-    address _mod
-  ) Forwarder(_targets, _admin, _mod) {}
+    constructor(address[] memory _targets, address _admin, address _mod) Forwarder(_targets, _admin, _mod) {}
 
-  /**
-   * @dev Withdraws all balance from the transfer to the admin.
-   *
-   * Requirements:
-   * - Only the admin can call this method.
-   */
-  function withdrawAll() external onlyRole(DEFAULT_ADMIN_ROLE) {
-    uint256 _value = address(this).balance;
-    emit ForwarderRONWithdrawn(msg.sender, _value);
-    _transferRON(payable(msg.sender), _value);
-  }
+    /**
+     * @dev Withdraws all balance from the transfer to the admin.
+     *
+     * Requirements:
+     * - Only the admin can call this method.
+     */
+    function withdrawAll() external onlyRole(DEFAULT_ADMIN_ROLE) {
+        uint256 _value = address(this).balance;
+        emit ForwarderRONWithdrawn(msg.sender, _value);
+        _transferRON(payable(msg.sender), _value);
+    }
 }

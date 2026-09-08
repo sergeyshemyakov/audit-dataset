@@ -7,8 +7,9 @@ import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Own
 import {IL2GatewayRouter} from "../../L2/gateways/IL2GatewayRouter.sol";
 import {IScrollGateway} from "../../libraries/gateway/IScrollGateway.sol";
 import {IL1ScrollMessenger} from "../IL1ScrollMessenger.sol";
-import {IL1ETHGateway} from "./IL1ETHGateway.sol";
+
 import {IL1ERC20Gateway} from "./IL1ERC20Gateway.sol";
+import {IL1ETHGateway} from "./IL1ETHGateway.sol";
 import {IL1GatewayRouter} from "./IL1GatewayRouter.sol";
 
 /// @title L1GatewayRouter
@@ -17,9 +18,11 @@ import {IL1GatewayRouter} from "./IL1GatewayRouter.sol";
 /// @dev One can also use this contract to query L1/L2 token address mapping.
 /// In the future, ERC-721 and ERC-1155 tokens will be added to the router too.
 contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L1ETHGateway.
     address public ethGateway;
@@ -33,9 +36,11 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
 
     // @todo: add ERC721/ERC1155 Gateway mapping.
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Initialize the storage of L1GatewayRouter.
     /// @param _ethGateway The address of L1ETHGateway contract.
@@ -56,9 +61,11 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
         }
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
     function getL2ERC20Address(address _l1Address) external view override returns (address) {
@@ -80,37 +87,28 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
         return _gateway;
     }
 
-    /*************************************************
+    /**
+     *
      * Public Mutating Functions from L1ERC20Gateway *
-     *************************************************/
+     *
+     */
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20(
-        address _token,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC20(address _token, uint256 _amount, uint256 _gasLimit) external payable override {
         depositERC20AndCall(_token, msg.sender, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20(
-        address _token,
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositERC20(address _token, address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         depositERC20AndCall(_token, _to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function depositERC20AndCall(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function depositERC20AndCall(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         address _gateway = getERC20Gateway(_token);
         require(_gateway != address(0), "no gateway available");
 
@@ -121,20 +119,20 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     }
 
     /// @inheritdoc IL1ERC20Gateway
-    function finalizeWithdrawERC20(
-        address,
-        address,
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeWithdrawERC20(address, address, address, address, uint256, bytes calldata)
+        external
+        payable
+        virtual
+        override
+    {
         revert("should never be called");
     }
 
-    /***********************************************
+    /**
+     *
      * Public Mutating Functions from L1ETHGateway *
-     ***********************************************/
+     *
+     */
 
     /// @inheritdoc IL1ETHGateway
     function depositETH(uint256 _amount, uint256 _gasLimit) external payable override {
@@ -142,21 +140,16 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     }
 
     /// @inheritdoc IL1ETHGateway
-    function depositETH(
-        address _to,
-        uint256 _amount,
-        uint256 _gasLimit
-    ) external payable override {
+    function depositETH(address _to, uint256 _amount, uint256 _gasLimit) external payable override {
         depositETHAndCall(_to, _amount, new bytes(0), _gasLimit);
     }
 
     /// @inheritdoc IL1ETHGateway
-    function depositETHAndCall(
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) public payable override {
+    function depositETHAndCall(address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        public
+        payable
+        override
+    {
         address _gateway = ethGateway;
         require(_gateway != address(0), "eth gateway available");
 
@@ -167,18 +160,15 @@ contract L1GatewayRouter is OwnableUpgradeable, IL1GatewayRouter {
     }
 
     /// @inheritdoc IL1ETHGateway
-    function finalizeWithdrawETH(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external payable virtual override {
+    function finalizeWithdrawETH(address, address, uint256, bytes calldata) external payable virtual override {
         revert("should never be called");
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Update the address of ETH gateway contract.
     /// @dev This function should only be called by contract owner.

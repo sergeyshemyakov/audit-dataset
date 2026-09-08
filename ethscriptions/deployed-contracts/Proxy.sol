@@ -17,11 +17,11 @@ library Constants {
 
     /// @notice The address that represents the system caller responsible for L1 attributes transactions.
     address internal constant DEPOSITOR_ACCOUNT = 0xDeaDDEaDDeAdDeAdDEAdDEaddeAddEAdDEAd0001;
-    
+
     /// @notice Storage slot for Initializable contract's initialized flag
     /// @dev This is the keccak256 of "eip1967.proxy.initialized" - 1
     bytes32 internal constant INITIALIZABLE_STORAGE = 0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00;
-    
+
     uint256 internal constant historicalBackfillApproxDoneAt = 1762286632;
 }
 
@@ -80,10 +80,7 @@ contract Proxy {
     ///         atomic execution of initialization-based upgrades.
     /// @param _implementation Address of the implementation contract.
     /// @param _data           Calldata to delegatecall the new implementation with.
-    function upgradeToAndCall(
-        address _implementation,
-        bytes calldata _data
-    )
+    function upgradeToAndCall(address _implementation, bytes calldata _data)
         public
         virtual
         proxyCallIfNotAdmin

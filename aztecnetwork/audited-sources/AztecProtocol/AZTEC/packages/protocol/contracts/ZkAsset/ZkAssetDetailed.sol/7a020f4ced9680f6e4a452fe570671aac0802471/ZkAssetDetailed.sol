@@ -4,11 +4,11 @@ import "./ZkAsset.sol";
 
 /**
  * @title ZkAssetDetailed implementation that inherits from ZkAsset
- * @author AZTEC 
+ * @author AZTEC
  * Copyright Spilbury Holdings Ltd 2019. All rights reserved.
- **/
+ *
+ */
 contract ZkAssetDetailed is ZkAsset {
-
     string public name;
     string public symbol;
 
@@ -20,13 +20,7 @@ contract ZkAssetDetailed is ZkAsset {
         bool _canConvert,
         string memory _name,
         string memory _symbol
-    ) public ZkAsset(
-        _aceAddress,
-        _linkedTokenAddress,
-        _scalingFactor,
-        _canAdjustSupply,
-        _canConvert
-    ) {
+    ) public ZkAsset(_aceAddress, _linkedTokenAddress, _scalingFactor, _canAdjustSupply, _canConvert) {
         name = _name;
         symbol = _symbol;
     }

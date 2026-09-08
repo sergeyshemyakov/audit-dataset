@@ -111,12 +111,11 @@ library ECDSA {
      * @dev Overload of {ECDSA-tryRecover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address, RecoverError, bytes32) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
+        internal
+        pure
+        returns (address, RecoverError, bytes32)
+    {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -393,6 +392,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -401,7 +401,9 @@ library Math {
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
             uint256 c = a + b;
-            if (c < a) return (false, 0);
+            if (c < a) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -411,7 +413,9 @@ library Math {
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
-            if (b > a) return (false, 0);
+            if (b > a) {
+                return (false, 0);
+            }
             return (true, a - b);
         }
     }
@@ -424,9 +428,13 @@ library Math {
             // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
             // benefit is lost if 'b' is also tested.
             // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-            if (a == 0) return (true, 0);
+            if (a == 0) {
+                return (true, 0);
+            }
             uint256 c = a * b;
-            if (c / a != b) return (false, 0);
+            if (c / a != b) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -436,7 +444,9 @@ library Math {
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a / b);
         }
     }
@@ -446,7 +456,9 @@ library Math {
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a % b);
         }
     }
@@ -854,7 +866,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), HEX_DIGITS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -959,7 +973,7 @@ library MessageHashUtils {
      * See {ECDSA-recover}.
      */
     function toDataWithIntendedValidatorHash(address validator, bytes memory data) internal pure returns (bytes32) {
-        return keccak256(abi.encodePacked(hex"19_00", validator, data));
+        return keccak256(abi.encodePacked(hex"1900", validator, data));
     }
 
     /**
@@ -975,7 +989,7 @@ library MessageHashUtils {
         /// @solidity memory-safe-assembly
         assembly {
             let ptr := mload(0x40)
-            mstore(ptr, hex"19_01")
+            mstore(ptr, hex"1901")
             mstore(add(ptr, 0x02), domainSeparator)
             mstore(add(ptr, 0x22), structHash)
             digest := keccak256(ptr, 0x42)
@@ -1194,9 +1208,7 @@ contract DeputyPauseModule is ISemver, EIP712 {
         ISuperchainConfig _superchainConfig,
         address _deputy,
         bytes memory _deputySignature
-    )
-        EIP712("DeputyPauseModule", "1")
-    {
+    ) EIP712("DeputyPauseModule", "1") {
         _setDeputy(_deputy, _deputySignature);
         GUARDIAN_SAFE = _guardianSafe;
         FOUNDATION_SAFE = _foundationSafe;

@@ -76,11 +76,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @param withdrawalAmount The amount of CELO requested for withdrawal.
      * @param beneficiary The user for whom the withdrawal amount is intended for.
      */
-    event CeloWithdrawalScheduled(
-        address indexed beneficiary,
-        address indexed group,
-        uint256 withdrawalAmount
-    );
+    event CeloWithdrawalScheduled(address indexed beneficiary, address indexed group, uint256 withdrawalAmount);
 
     /**
      * @notice Emitted when CELO withdrawal kicked off for group. Immediate withdrawals
@@ -90,11 +86,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @param withdrawalAmount The amount of CELO requested for withdrawal.
      * @param beneficiary The user for whom the withdrawal amount is intended for.
      */
-    event CeloWithdrawalStarted(
-        address indexed beneficiary,
-        address indexed group,
-        uint256 withdrawalAmount
-    );
+    event CeloWithdrawalStarted(address indexed beneficiary, address indexed group, uint256 withdrawalAmount);
 
     /**
      * @notice Emitted when a CELO withdrawal completes for `beneficiary`.
@@ -143,10 +135,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @notice Used when `pendingWithdrawalIndex` is too high for the
      * beneficiary's pending withdrawals array.
      */
-    error PendingWithdrawalIndexTooHigh(
-        uint256 pendingWithdrawalIndex,
-        uint256 pendingWithdrawalsLength
-    );
+    error PendingWithdrawalIndexTooHigh(uint256 pendingWithdrawalIndex, uint256 pendingWithdrawalsLength);
 
     /**
      * @notice Used when attempting to schedule more withdrawals
@@ -162,8 +151,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * values do not match the equivalent record in lockedGold.pendingWithdrawals.
      */
     error InconsistentPendingWithdrawalValues(
-        uint256 localPendingWithdrawalValue,
-        uint256 lockedGoldPendingWithdrawalValue
+        uint256 localPendingWithdrawalValue, uint256 lockedGoldPendingWithdrawalValue
     );
 
     /**
@@ -171,8 +159,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * timestamps do not match the equivalent record in lockedGold.pendingWithdrawals.
      */
     error InconsistentPendingWithdrawalTimestamps(
-        uint256 localPendingWithdrawalTimestamp,
-        uint256 lockedGoldPendingWithdrawalTimestamp
+        uint256 localPendingWithdrawalTimestamp, uint256 lockedGoldPendingWithdrawalTimestamp
     );
 
     /// @notice There's no amount of scheduled withdrawal for the given beneficiary and group.
@@ -190,11 +177,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @param _manager The address of the Manager contract.
      * @param _owner The address of the contract owner.
      */
-    function initialize(
-        address _registry,
-        address _manager,
-        address _owner
-    ) external initializer {
+    function initialize(address _registry, address _manager, address _owner) external initializer {
         __UsingRegistry_init(_registry);
         __Managed_init(_manager);
         _transferOwnership(_owner);
@@ -216,11 +199,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @param votes The amount of CELO to schedule for each respective group
      * from `groups`.
      */
-    function scheduleVotes(address[] calldata groups, uint256[] calldata votes)
-        external
-        payable
-        onlyManager
-    {
+    function scheduleVotes(address[] calldata groups, uint256[] calldata votes) external payable onlyManager {
         if (groups.length != votes.length) {
             revert GroupsAndVotesArrayLengthsMismatch();
         }
@@ -244,11 +223,10 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @param beneficiary The account that will receive the CELO once it's withdrawn.
      * from `groups`.
      */
-    function scheduleWithdrawals(
-        address beneficiary,
-        address[] calldata groups,
-        uint256[] calldata withdrawals
-    ) external onlyManager {
+    function scheduleWithdrawals(address beneficiary, address[] calldata groups, uint256[] calldata withdrawals)
+        external
+        onlyManager
+    {
         if (groups.length != withdrawals.length) {
             revert GroupsAndVotesArrayLengthsMismatch();
         }
@@ -373,11 +351,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @param voteGreater Used by Election's `vote`. This is the group that will recieve greater
      * votes than group after the votes are cast, or address(0) if no such group exists.
      */
-    function activateAndVote(
-        address group,
-        address voteLesser,
-        address voteGreater
-    ) external {
+    function activateAndVote(address group, address voteLesser, address voteGreater) external {
         IElection election = getElection();
 
         // The amount of unlocked CELO for group that we want to lock and vote with.
@@ -427,17 +401,13 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
         uint256 localPendingWithdrawalIndex,
         uint256 lockedGoldPendingWithdrawalIndex
     ) external returns (uint256 amount) {
-        (uint256 value, uint256 timestamp) = validatePendingWithdrawalRequest(
-            beneficiary,
-            localPendingWithdrawalIndex,
-            lockedGoldPendingWithdrawalIndex
-        );
+        (uint256 value, uint256 timestamp) =
+            validatePendingWithdrawalRequest(beneficiary, localPendingWithdrawalIndex, lockedGoldPendingWithdrawalIndex);
 
         // Remove the pending withdrawal.
         PendingWithdrawal[] storage localPendingWithdrawals = pendingWithdrawals[beneficiary];
-        localPendingWithdrawals[localPendingWithdrawalIndex] = localPendingWithdrawals[
-            localPendingWithdrawals.length - 1
-        ];
+        localPendingWithdrawals[localPendingWithdrawalIndex] =
+            localPendingWithdrawals[localPendingWithdrawals.length - 1];
         localPendingWithdrawals.pop();
 
         // Process withdrawal.
@@ -468,9 +438,7 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
         // voting locked gold for each group the account is voting for, which is an
         // O(# of groups voted for) operation.
         return
-            address(this).balance +
-            getLockedGold().getAccountTotalLockedGold(address(this)) -
-            totalScheduledWithdrawals;
+            address(this).balance + getLockedGold().getAccountTotalLockedGold(address(this)) - totalScheduledWithdrawals;
     }
 
     /**
@@ -531,10 +499,8 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
      * @return The total amount of CELO directed towards `group`.
      */
     function getCeloForGroup(address group) external view returns (uint256) {
-        return
-            getElection().getTotalVotesForGroupByAccount(group, address(this)) +
-            scheduledVotes[group].toVote -
-            scheduledVotes[group].toWithdraw;
+        return getElection().getTotalVotesForGroupByAccount(group, address(this)) + scheduledVotes[group].toVote
+            - scheduledVotes[group].toWithdraw;
     }
 
     /**
@@ -602,20 +568,13 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
         uint256 index
     ) internal {
         IElection election = getElection();
-        uint256 pendingVotesAmount = election.getPendingVotesForGroupByAccount(
-            group,
-            address(this)
-        );
+        uint256 pendingVotesAmount = election.getPendingVotesForGroupByAccount(group, address(this));
 
         uint256 toRevokeFromPending = Math.min(revokeAmount, pendingVotesAmount);
         if (toRevokeFromPending > 0) {
             if (
                 !election.revokePending(
-                    group,
-                    toRevokeFromPending,
-                    lesserAfterPendingRevoke,
-                    greaterAfterPendingRevoke,
-                    index
+                    group, toRevokeFromPending, lesserAfterPendingRevoke, greaterAfterPendingRevoke, index
                 )
             ) {
                 revert RevokePendingFailed(group, revokeAmount);
@@ -633,15 +592,8 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
             revert InsufficientRevokableVotes(group, revokeAmount);
         }
 
-        if (
-            !election.revokeActive(
-                group,
-                toRevokeFromActive,
-                lesserAfterActiveRevoke,
-                greaterAfterActiveRevoke,
-                index
-            )
-        ) {
+        if (!election.revokeActive(group, toRevokeFromActive, lesserAfterActiveRevoke, greaterAfterActiveRevoke, index))
+        {
             revert RevokeActiveFailed(group, revokeAmount);
         }
     }
@@ -664,48 +616,28 @@ contract Account is UUPSOwnableUpgradeable, UsingRegistryUpgradeable, Managed, I
         uint256 lockedGoldPendingWithdrawalIndex
     ) internal view returns (uint256 value, uint256 timestamp) {
         if (localPendingWithdrawalIndex >= pendingWithdrawals[beneficiary].length) {
-            revert PendingWithdrawalIndexTooHigh(
-                localPendingWithdrawalIndex,
-                pendingWithdrawals[beneficiary].length
-            );
+            revert PendingWithdrawalIndexTooHigh(localPendingWithdrawalIndex, pendingWithdrawals[beneficiary].length);
         }
 
-        (
-            uint256 lockedGoldPendingWithdrawalValue,
-            uint256 lockedGoldPendingWithdrawalTimestamp
-        ) = getLockedGold().getPendingWithdrawal(address(this), lockedGoldPendingWithdrawalIndex);
+        (uint256 lockedGoldPendingWithdrawalValue, uint256 lockedGoldPendingWithdrawalTimestamp) =
+            getLockedGold().getPendingWithdrawal(address(this), lockedGoldPendingWithdrawalIndex);
 
-        PendingWithdrawal memory pendingWithdrawal = pendingWithdrawals[beneficiary][
-            localPendingWithdrawalIndex
-        ];
+        PendingWithdrawal memory pendingWithdrawal = pendingWithdrawals[beneficiary][localPendingWithdrawalIndex];
 
         if (pendingWithdrawal.value != lockedGoldPendingWithdrawalValue) {
-            revert InconsistentPendingWithdrawalValues(
-                pendingWithdrawal.value,
-                lockedGoldPendingWithdrawalValue
-            );
+            revert InconsistentPendingWithdrawalValues(pendingWithdrawal.value, lockedGoldPendingWithdrawalValue);
         }
 
         if (pendingWithdrawal.timestamp != lockedGoldPendingWithdrawalTimestamp) {
             revert InconsistentPendingWithdrawalTimestamps(
-                pendingWithdrawal.timestamp,
-                lockedGoldPendingWithdrawalTimestamp
+                pendingWithdrawal.timestamp, lockedGoldPendingWithdrawalTimestamp
             );
         }
 
         return (pendingWithdrawal.value, pendingWithdrawal.timestamp);
     }
 
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 1, 0);
     }
 }

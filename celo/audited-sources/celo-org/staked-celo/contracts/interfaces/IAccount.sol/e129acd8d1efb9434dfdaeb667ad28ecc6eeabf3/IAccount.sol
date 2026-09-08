@@ -11,19 +11,11 @@ interface IAccount {
         uint256[] calldata toVotess
     ) external;
 
-    function scheduleWithdrawals(
-        address beneficiary,
-        address[] calldata group,
-        uint256[] calldata withdrawals
-    ) external;
+    function scheduleWithdrawals(address beneficiary, address[] calldata group, uint256[] calldata withdrawals)
+        external;
 
-    function votePartially(
-        uint256 proposalId,
-        uint256 index,
-        uint256 yesVotes,
-        uint256 noVotes,
-        uint256 abstainVotes
-    ) external;
+    function votePartially(uint256 proposalId, uint256 index, uint256 yesVotes, uint256 noVotes, uint256 abstainVotes)
+        external;
 
     function getTotalCelo() external view returns (uint256);
 

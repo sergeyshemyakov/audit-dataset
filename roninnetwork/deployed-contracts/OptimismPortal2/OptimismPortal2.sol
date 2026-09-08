@@ -58,7 +58,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -90,11 +90,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -109,11 +108,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -123,12 +118,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -152,11 +145,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -179,11 +172,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -196,11 +188,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -424,21 +416,25 @@ library FixedPointMathLib {
         unchecked {
             // When the result is < 0.5 we return zero. This happens when
             // x <= floor(log(0.5e18) * 1e18) ~ -42e18
-            if (x <= -42139678854452767551) return 0;
+            if (x <= -42139678854452767551) {
+                return 0;
+            }
 
             // When the result is > (2**255 - 1) / 1e18 we can not represent it as an
             // int. This happens when x >= floor(log((2**255 - 1) / 1e18) * 1e18) ~ 135.
-            if (x >= 135305999368893231589) revert("EXP_OVERFLOW");
+            if (x >= 135305999368893231589) {
+                revert("EXP_OVERFLOW");
+            }
 
             // x is now in the range (-42, 136) * 1e18. Convert to (-42, 136) * 2**96
             // for more intermediate precision and a binary basis. This base conversion
             // is a multiplication by 1e18 / 2**96 = 5**18 / 2**78.
-            x = (x << 78) / 5**18;
+            x = (x << 78) / 5 ** 18;
 
             // Reduce range of x to (-½ ln 2, ½ ln 2) * 2**96 by factoring out powers
             // of two such that exp(x) = exp(x') * 2**k, where k is an integer.
             // Solving this gives k = round(x / log(2)) and x' = x - k * log(2).
-            int256 k = ((x << 96) / 54916777467707473351141471128 + 2**95) >> 96;
+            int256 k = ((x << 96) / 54916777467707473351141471128 + 2 ** 95) >> 96;
             x = x - k * 54916777467707473351141471128;
 
             // k is in the range [-61, 195].
@@ -542,38 +538,26 @@ library FixedPointMathLib {
                     LOW LEVEL FIXED POINT OPERATIONS
     //////////////////////////////////////////////////////////////*/
 
-    function mulDivDown(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 z) {
+    function mulDivDown(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 z) {
         assembly {
             // Store x * y in z for now.
             z := mul(x, y)
 
             // Equivalent to require(denominator != 0 && (x == 0 || (x * y) / x == y))
-            if iszero(and(iszero(iszero(denominator)), or(iszero(x), eq(div(z, x), y)))) {
-                revert(0, 0)
-            }
+            if iszero(and(iszero(iszero(denominator)), or(iszero(x), eq(div(z, x), y)))) { revert(0, 0) }
 
             // Divide z by the denominator.
             z := div(z, denominator)
         }
     }
 
-    function mulDivUp(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 z) {
+    function mulDivUp(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 z) {
         assembly {
             // Store x * y in z for now.
             z := mul(x, y)
 
             // Equivalent to require(denominator != 0 && (x == 0 || (x * y) / x == y))
-            if iszero(and(iszero(iszero(denominator)), or(iszero(x), eq(div(z, x), y)))) {
-                revert(0, 0)
-            }
+            if iszero(and(iszero(iszero(denominator)), or(iszero(x), eq(div(z, x), y)))) { revert(0, 0) }
 
             // First, divide z - 1 by the denominator and add 1.
             // We allow z - 1 to underflow if z is 0, because we multiply the
@@ -582,11 +566,7 @@ library FixedPointMathLib {
         }
     }
 
-    function rpow(
-        uint256 x,
-        uint256 n,
-        uint256 scalar
-    ) internal pure returns (uint256 z) {
+    function rpow(uint256 x, uint256 n, uint256 scalar) internal pure returns (uint256 z) {
         assembly {
             switch x
             case 0 {
@@ -623,9 +603,7 @@ library FixedPointMathLib {
                 } {
                     // Revert immediately if x ** 2 would overflow.
                     // Equivalent to iszero(eq(div(xx, x), x)) here.
-                    if shr(128, x) {
-                        revert(0, 0)
-                    }
+                    if shr(128, x) { revert(0, 0) }
 
                     // Store x squared.
                     let xx := mul(x, x)
@@ -634,9 +612,7 @@ library FixedPointMathLib {
                     let xxRound := add(xx, half)
 
                     // Revert if xx + half overflowed.
-                    if lt(xxRound, xx) {
-                        revert(0, 0)
-                    }
+                    if lt(xxRound, xx) { revert(0, 0) }
 
                     // Set x to scaled xxRound.
                     x := div(xxRound, scalar)
@@ -649,18 +625,14 @@ library FixedPointMathLib {
                         // If z * x overflowed:
                         if iszero(eq(div(zx, x), z)) {
                             // Revert if x is non-zero.
-                            if iszero(iszero(x)) {
-                                revert(0, 0)
-                            }
+                            if iszero(iszero(x)) { revert(0, 0) }
                         }
 
                         // Round to the nearest number.
                         let zxRound := add(zx, half)
 
                         // Revert if zx + half overflowed.
-                        if lt(zxRound, zx) {
-                            revert(0, 0)
-                        }
+                        if lt(zxRound, zx) { revert(0, 0) }
 
                         // Return properly scaled zxRound.
                         z := div(zxRound, scalar)
@@ -811,6 +783,7 @@ library Math {
         Down, // Toward negative infinity
         Up, // Toward infinity
         Zero // Toward zero
+
     }
 
     /**
@@ -852,11 +825,7 @@ library Math {
      * @dev Original credit to Remco Bloemen under MIT license (https://xn--2-umb.com/21/muldiv)
      * with further edits by Uniswap Labs also under MIT license.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 result) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 result) {
         unchecked {
             // 512-bit multiply [prod1 prod0] = x * y. Compute the product mod 2^256 and mod 2^256 - 1, then use
             // use the Chinese Remainder Theorem to reconstruct the 512 bit result. The result is stored in two 256
@@ -937,12 +906,7 @@ library Math {
     /**
      * @notice Calculates x * y / denominator with full precision, following the selected rounding direction.
      */
-    function mulDiv(
-        uint256 x,
-        uint256 y,
-        uint256 denominator,
-        Rounding rounding
-    ) internal pure returns (uint256) {
+    function mulDiv(uint256 x, uint256 y, uint256 denominator, Rounding rounding) internal pure returns (uint256) {
         uint256 result = mulDiv(x, y, denominator);
         if (rounding == Rounding.Up && mulmod(x, y, denominator) > 0) {
             result += 1;
@@ -1041,7 +1005,7 @@ library Burn {
     /// @notice Burns a given amount of ETH.
     /// @param _amount Amount of ETH to burn.
     function eth(uint256 _amount) internal {
-        new Burner{ value: _amount }();
+        new Burner{value: _amount}();
     }
 
     /// @notice Burns a given amount of gas.
@@ -1213,7 +1177,7 @@ abstract contract ResourceMetering is Initializable {
     ///         child contract.
     function __ResourceMetering_init() internal onlyInitializing {
         if (params.prevBlockNum == 0) {
-            params = ResourceParams({ prevBaseFee: 1 gwei, prevBoughtGas: 0, prevBlockNum: uint64(block.number) });
+            params = ResourceParams({prevBaseFee: 1 gwei, prevBoughtGas: 0, prevBlockNum: uint64(block.number)});
         }
     }
 }
@@ -1230,7 +1194,9 @@ abstract contract ReinitializableBase {
     /// @param _initVersion Current initialization version.
     constructor(uint8 _initVersion) {
         // Sanity check, we should never have a zero init version.
-        if (_initVersion == 0) revert ReinitializableBase_ZeroInitVersion();
+        if (_initVersion == 0) {
+            revert ReinitializableBase_ZeroInitVersion();
+        }
         INIT_VERSION = _initVersion;
     }
 
@@ -1758,10 +1724,7 @@ library LibPosition {
     /// @param _upperBoundExclusive The exclusive upper depth bound, used to inform where to stop in order
     ///                             to not escape a sub-tree.
     /// @return ancestor_ The highest ancestor of `position` that commits to the same trace index.
-    function traceAncestorBounded(
-        Position _position,
-        uint256 _upperBoundExclusive
-    )
+    function traceAncestorBounded(Position _position, uint256 _upperBoundExclusive)
         internal
         pure
         returns (Position ancestor_)
@@ -1852,11 +1815,7 @@ library LibClaim {
     /// @param _position The position of `claim`.
     /// @param _challengeIndex The index of the claim being moved against.
     /// @return claimHash_ A hash of abi.encodePacked(claim, position|challengeIndex);
-    function hashClaimPos(
-        Claim _claim,
-        Position _position,
-        uint256 _challengeIndex
-    )
+    function hashClaimPos(Claim _claim, Position _position, uint256 _challengeIndex)
         internal
         pure
         returns (Hash claimHash_)
@@ -1995,8 +1954,7 @@ interface ISystemConfig is IProxyAdminOwnedBase {
         Addresses memory _addresses,
         uint256 _l2ChainId,
         ISuperchainConfig _superchainConfig
-    )
-        external;
+    ) external;
     function initVersion() external view returns (uint8);
     function l1CrossDomainMessenger() external view returns (address addr_);
     function l1ERC721Bridge() external view returns (address addr_);
@@ -2627,15 +2585,13 @@ interface IPreimageOracle {
         bytes memory _input,
         bytes32[] memory _stateCommitments,
         bool _finalize
-    )
-        external;
+    ) external;
     function challengeFirstLPP(
         address _claimant,
         uint256 _uuid,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengeLPP(
         address _claimant,
         uint256 _uuid,
@@ -2644,8 +2600,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function challengePeriod() external view returns (uint256 challengePeriod_);
     function getTreeRootLPP(address _owner, uint256 _uuid) external view returns (bytes32 treeRoot_);
     function initLPP(uint256 _uuid, uint32 _partOffset, uint32 _claimedSize) external payable;
@@ -2655,16 +2610,9 @@ interface IPreimageOracle {
         bytes memory _commitment,
         bytes memory _proof,
         uint256 _partOffset
-    )
-        external;
+    ) external;
     function loadKeccak256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
-    function loadLocalData(
-        uint256 _ident,
-        bytes32 _localContext,
-        bytes32 _word,
-        uint256 _size,
-        uint256 _partOffset
-    )
+    function loadLocalData(uint256 _ident, bytes32 _localContext, bytes32 _word, uint256 _size, uint256 _partOffset)
         external
         returns (bytes32 key_);
     function loadPrecompilePreimagePart(
@@ -2672,8 +2620,7 @@ interface IPreimageOracle {
         address _precompile,
         uint64 _requiredGas,
         bytes memory _input
-    )
-        external;
+    ) external;
     function loadSha256PreimagePart(uint256 _partOffset, bytes memory _preimage) external;
     function minProposalSize() external view returns (uint256 minProposalSize_);
     function preimageLengths(bytes32) external view returns (uint256);
@@ -2697,8 +2644,7 @@ interface IPreimageOracle {
         bytes32[] memory _preStateProof,
         Leaf memory _postState,
         bytes32[] memory _postStateProof
-    )
-        external;
+    ) external;
     function version() external view returns (string memory);
     function zeroHashes(uint256) external view returns (bytes32);
 
@@ -2734,11 +2680,7 @@ interface IBigStepper {
     /// @param _localContext The local key context for the preimage oracle. Optional, can be set as a constant if the
     ///                      implementation only requires one set of local keys.
     /// @return postState_ The hash of the post state witness after the state transition.
-    function step(
-        bytes calldata _stateData,
-        bytes calldata _proof,
-        bytes32 _localContext
-    )
+    function step(bytes calldata _stateData, bytes calldata _proof, bytes32 _localContext)
         external
         returns (bytes32 postState_);
 
@@ -2982,6 +2924,7 @@ interface IFaultDisputeGame is IDisputeGame {
     error GameNotResolved();
     error ReservedGameType();
     error GamePaused();
+
     event Move(uint256 indexed parentIndex, Claim indexed claim, address indexed claimant);
     event GameClosed(BondDistributionMode bondDistributionMode);
 
@@ -3069,11 +3012,7 @@ library LibGameId {
     /// @param _timestamp The timestamp of the game's creation.
     /// @param _gameProxy The game proxy address.
     /// @return gameId_ The packed GameId.
-    function pack(
-        GameType _gameType,
-        Timestamp _timestamp,
-        address _gameProxy
-    )
+    function pack(GameType _gameType, Timestamp _timestamp, address _gameProxy)
         internal
         pure
         returns (GameId gameId_)
@@ -3134,19 +3073,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     event Initialized(uint8 version);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    function create(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function create(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         payable
         returns (IDisputeGame proxy_);
-    function findLatestGames(
-        GameType _gameType,
-        uint256 _start,
-        uint256 _n
-    )
+    function findLatestGames(GameType _gameType, uint256 _start, uint256 _n)
         external
         view
         returns (GameSearchResult[] memory games_);
@@ -3157,19 +3088,11 @@ interface IDisputeGameFactory is IProxyAdminOwnedBase, IReinitializableBase {
     function gameCount() external view returns (uint256 gameCount_);
     function gameArgs(GameType) external view returns (bytes memory);
     function gameImpls(GameType) external view returns (IDisputeGame);
-    function games(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function games(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         view
         returns (IDisputeGame proxy_, Timestamp timestamp_);
-    function getGameUUID(
-        GameType _gameType,
-        Claim _rootClaim,
-        bytes memory _extraData
-    )
+    function getGameUUID(GameType _gameType, Claim _rootClaim, bytes memory _extraData)
         external
         pure
         returns (Hash uuid_);
@@ -3211,8 +3134,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
         IDisputeGameFactory _disputeGameFactory,
         Proposal memory _startingAnchorRoot,
         GameType _startingRespectedGameType
-    )
-        external;
+    ) external;
     function isGameBlacklisted(IDisputeGame _game) external view returns (bool);
     function isGameProper(IDisputeGame _game) external view returns (bool);
     function isGameRegistered(IDisputeGame _game) external view returns (bool);
@@ -3231,9 +3153,7 @@ interface IAnchorStateRegistry is IProxyAdminOwnedBase {
     function version() external view returns (string memory);
     function superchainConfig() external view returns (ISuperchainConfig);
 
-    function __constructor__(
-        uint256 _disputeGameFinalityDelaySeconds
-    ) external;
+    function __constructor__(uint256 _disputeGameFinalityDelaySeconds) external;
 }
 
 interface IOptimismPortal2 is IProxyAdminOwnedBase {
@@ -3274,13 +3194,7 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
     function anchorStateRegistry() external view returns (IAnchorStateRegistry);
     function ethLockbox() external view returns (IETHLockbox);
     function checkWithdrawal(bytes32 _withdrawalHash, address _proofSubmitter) external view;
-    function depositTransaction(
-        address _to,
-        uint256 _value,
-        uint64 _gasLimit,
-        bool _isCreation,
-        bytes memory _data
-    )
+    function depositTransaction(address _to, uint256 _value, uint64 _gasLimit, bool _isCreation, bytes memory _data)
         external
         payable;
     function disputeGameBlacklist(IDisputeGame _disputeGame) external view returns (bool);
@@ -3289,10 +3203,7 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
     function donateETH() external payable;
     function superchainConfig() external view returns (ISuperchainConfig);
     function finalizeWithdrawalTransaction(Types.WithdrawalTransaction memory _tx) external;
-    function finalizeWithdrawalTransactionExternalProof(
-        Types.WithdrawalTransaction memory _tx,
-        address _proofSubmitter
-    )
+    function finalizeWithdrawalTransactionExternalProof(Types.WithdrawalTransaction memory _tx, address _proofSubmitter)
         external;
     function finalizedWithdrawals(bytes32) external view returns (bool);
     function guardian() external view returns (address);
@@ -3310,12 +3221,8 @@ interface IOptimismPortal2 is IProxyAdminOwnedBase {
         uint256 _disputeGameIndex,
         Types.OutputRootProof memory _outputRootProof,
         bytes[] memory _withdrawalProof
-    )
-        external;
-    function provenWithdrawals(
-        bytes32,
-        address
-    )
+    ) external;
+    function provenWithdrawals(bytes32, address)
         external
         view
         returns (IDisputeGame disputeGameProxy, uint64 timestamp);
@@ -3563,11 +3470,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         (, uint16 version) = decodeVersionedNonce(_nonce);
         if (version == 0) {
             return encodeCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -3584,12 +3487,7 @@ library Encoding {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Encoded cross domain message.
-    function encodeCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function encodeCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes memory)
@@ -3613,11 +3511,7 @@ library Encoding {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         // nosemgrep: sol-style-use-abi-encodecall
         return abi.encodeWithSignature(
             "relayMessage(uint256,address,address,uint256,uint256,bytes)",
@@ -3676,11 +3570,7 @@ library Encoding {
         uint256 _blobBaseFee,
         bytes32 _hash,
         bytes32 _batcherHash
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesEcotone()"));
         return abi.encodePacked(
             functionSignature,
@@ -3720,11 +3610,7 @@ library Encoding {
         bytes32 _batcherHash,
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesIsthmus()"));
         return abi.encodePacked(
             functionSignature,
@@ -3768,11 +3654,7 @@ library Encoding {
         uint32 _operatorFeeScalar,
         uint64 _operatorFeeConstant,
         uint16 _daFootprintGasScalar
-    )
-        internal
-        pure
-        returns (bytes memory)
-    {
+    ) internal pure returns (bytes memory) {
         bytes4 functionSignature = bytes4(keccak256("setL1BlockValuesJovian()"));
 
         // Split up the encoding into multiple parts to avoid stack too deep.
@@ -3852,11 +3734,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         (, uint16 version) = Encoding.decodeVersionedNonce(_nonce);
         if (version == 0) {
             return hashCrossDomainMessageV0(_target, _sender, _data, _nonce);
@@ -3873,12 +3751,7 @@ library Hashing {
     /// @param _data   Data to send with the message.
     /// @param _nonce  Message nonce.
     /// @return Hashed cross domain message.
-    function hashCrossDomainMessageV0(
-        address _target,
-        address _sender,
-        bytes memory _data,
-        uint256 _nonce
-    )
+    function hashCrossDomainMessageV0(address _target, address _sender, bytes memory _data, uint256 _nonce)
         internal
         pure
         returns (bytes32)
@@ -3901,11 +3774,7 @@ library Hashing {
         uint256 _value,
         uint256 _gasLimit,
         bytes memory _data
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(Encoding.encodeCrossDomainMessageV1(_nonce, _sender, _target, _value, _gasLimit, _data));
     }
 
@@ -3947,11 +3816,7 @@ library Hashing {
         address _sender,
         address _target,
         bytes memory _message
-    )
-        internal
-        pure
-        returns (bytes32)
-    {
+    ) internal pure returns (bytes32) {
         return keccak256(abi.encode(_destination, _source, _nonce, _sender, _target, _message));
     }
 
@@ -4014,14 +3879,16 @@ library RLPReader {
     /// @return out_ Output memory reference.
     function toRLPItem(bytes memory _in) internal pure returns (RLPItem memory out_) {
         // Empty arrays are not RLP items.
-        if (_in.length == 0) revert EmptyItem();
+        if (_in.length == 0) {
+            revert EmptyItem();
+        }
 
         MemoryPointer ptr;
         assembly {
             ptr := add(_in, 32)
         }
 
-        out_ = RLPItem({ length: _in.length, ptr: ptr });
+        out_ = RLPItem({length: _in.length, ptr: ptr});
     }
 
     /// @notice Reads an RLP list value into a list of RLP items.
@@ -4030,9 +3897,13 @@ library RLPReader {
     function readList(RLPItem memory _in) internal pure returns (RLPItem[] memory out_) {
         (uint256 listOffset, uint256 listLength, RLPItemType itemType) = _decodeLength(_in);
 
-        if (itemType != RLPItemType.LIST_ITEM) revert UnexpectedString();
+        if (itemType != RLPItemType.LIST_ITEM) {
+            revert UnexpectedString();
+        }
 
-        if (listOffset + listLength != _in.length) revert InvalidDataRemainder();
+        if (listOffset + listLength != _in.length) {
+            revert InvalidDataRemainder();
+        }
 
         // Solidity in-memory arrays can't be increased in size, but *can* be decreased in size by
         // writing to the length. Since we can't know the number of RLP items without looping over
@@ -4044,7 +3915,7 @@ library RLPReader {
         uint256 offset = listOffset;
         while (offset < _in.length) {
             (uint256 itemOffset, uint256 itemLength,) = _decodeLength(
-                RLPItem({ length: _in.length - offset, ptr: MemoryPointer.wrap(MemoryPointer.unwrap(_in.ptr) + offset) })
+                RLPItem({length: _in.length - offset, ptr: MemoryPointer.wrap(MemoryPointer.unwrap(_in.ptr) + offset)})
             );
 
             // We don't need to check itemCount < out.length explicitly because Solidity already
@@ -4077,9 +3948,13 @@ library RLPReader {
     function readBytes(RLPItem memory _in) internal pure returns (bytes memory out_) {
         (uint256 itemOffset, uint256 itemLength, RLPItemType itemType) = _decodeLength(_in);
 
-        if (itemType != RLPItemType.DATA_ITEM) revert UnexpectedList();
+        if (itemType != RLPItemType.DATA_ITEM) {
+            revert UnexpectedList();
+        }
 
-        if (_in.length != itemOffset + itemLength) revert InvalidDataRemainder();
+        if (_in.length != itemOffset + itemLength) {
+            revert InvalidDataRemainder();
+        }
 
         out_ = _copy(_in.ptr, itemOffset, itemLength);
     }
@@ -4111,7 +3986,9 @@ library RLPReader {
         // Short-circuit if there's nothing to decode, note that we perform this check when
         // the user creates an RLP item via toRLPItem, but it's always possible for them to bypass
         // that function and create an RLP item directly. So we need to check this anyway.
-        if (_in.length == 0) revert EmptyItem();
+        if (_in.length == 0) {
+            revert EmptyItem();
+        }
 
         MemoryPointer ptr = _in.ptr;
         uint256 prefix;
@@ -4128,37 +4005,49 @@ library RLPReader {
             // slither-disable-next-line variable-scope
             uint256 strLen = prefix - 0x80;
 
-            if (_in.length <= strLen) revert ContentLengthMismatch();
+            if (_in.length <= strLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (strLen == 1 && firstByteOfContent < 0x80) revert InvalidHeader();
+            if (strLen == 1 && firstByteOfContent < 0x80) {
+                revert InvalidHeader();
+            }
 
             return (1, strLen, RLPItemType.DATA_ITEM);
         } else if (prefix <= 0xbf) {
             // Long string.
             uint256 lenOfStrLen = prefix - 0xb7;
 
-            if (_in.length <= lenOfStrLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfStrLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (firstByteOfContent == 0x00) revert InvalidHeader();
+            if (firstByteOfContent == 0x00) {
+                revert InvalidHeader();
+            }
 
             uint256 strLen;
             assembly {
                 strLen := shr(sub(256, mul(8, lenOfStrLen)), mload(add(ptr, 1)))
             }
 
-            if (strLen <= 55) revert InvalidHeader();
+            if (strLen <= 55) {
+                revert InvalidHeader();
+            }
 
-            if (_in.length <= lenOfStrLen + strLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfStrLen + strLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1 + lenOfStrLen, strLen, RLPItemType.DATA_ITEM);
         } else if (prefix <= 0xf7) {
@@ -4166,30 +4055,40 @@ library RLPReader {
             // slither-disable-next-line variable-scope
             uint256 listLen = prefix - 0xc0;
 
-            if (_in.length <= listLen) revert ContentLengthMismatch();
+            if (_in.length <= listLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1, listLen, RLPItemType.LIST_ITEM);
         } else {
             // Long list.
             uint256 lenOfListLen = prefix - 0xf7;
 
-            if (_in.length <= lenOfListLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfListLen) {
+                revert ContentLengthMismatch();
+            }
 
             bytes1 firstByteOfContent;
             assembly {
                 firstByteOfContent := and(mload(add(ptr, 1)), shl(248, 0xff))
             }
 
-            if (firstByteOfContent == 0x00) revert InvalidHeader();
+            if (firstByteOfContent == 0x00) {
+                revert InvalidHeader();
+            }
 
             uint256 listLen;
             assembly {
                 listLen := shr(sub(256, mul(8, lenOfListLen)), mload(add(ptr, 1)))
             }
 
-            if (listLen <= 55) revert InvalidHeader();
+            if (listLen <= 55) {
+                revert InvalidHeader();
+            }
 
-            if (_in.length <= lenOfListLen + listLen) revert ContentLengthMismatch();
+            if (_in.length <= lenOfListLen + listLen) {
+                revert ContentLengthMismatch();
+            }
 
             return (1 + lenOfListLen, listLen, RLPItemType.LIST_ITEM);
         }
@@ -4212,7 +4111,7 @@ library RLPReader {
         assembly {
             let dest := add(out_, 32)
             let i := 0
-            for { } lt(i, _length) { i := add(i, 32) } { mstore(add(dest, i), mload(add(src, i))) }
+            for {} lt(i, _length) { i := add(i, 32) } { mstore(add(dest, i), mload(add(src, i))) }
 
             if gt(i, _length) { mstore(add(dest, _length), 0) }
         }
@@ -4404,12 +4303,7 @@ library MerkleTrie {
     /// @param _root  Known root of the Merkle trie. Used to verify that the included proof is
     ///               correctly constructed.
     /// @return valid_ Whether or not the proof is valid.
-    function verifyInclusionProof(
-        bytes memory _key,
-        bytes memory _value,
-        bytes[] memory _proof,
-        bytes32 _root
-    )
+    function verifyInclusionProof(bytes memory _key, bytes memory _value, bytes[] memory _proof, bytes32 _root)
         internal
         pure
         returns (bool valid_)
@@ -4540,7 +4434,7 @@ library MerkleTrie {
         uint256 length = _proof.length;
         proof_ = new TrieNode[](length);
         for (uint256 i = 0; i < length;) {
-            proof_[i] = TrieNode({ encoded: _proof[i], decoded: RLPReader.readList(_proof[i]) });
+            proof_[i] = TrieNode({encoded: _proof[i], decoded: RLPReader.readList(_proof[i])});
             unchecked {
                 ++i;
             }
@@ -4589,12 +4483,7 @@ library SecureMerkleTrie {
     /// @param _root  Known root of the Merkle trie. Used to verify that the included proof is
     ///               correctly constructed.
     /// @return valid_ Whether or not the proof is valid.
-    function verifyInclusionProof(
-        bytes memory _key,
-        bytes memory _value,
-        bytes[] memory _proof,
-        bytes32 _root
-    )
+    function verifyInclusionProof(bytes memory _key, bytes memory _value, bytes[] memory _proof, bytes32 _root)
         internal
         pure
         returns (bool valid_)
@@ -4656,12 +4545,7 @@ library SafeCall {
     /// @param _gas      Amount of gas to pass to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function call(
-        address _target,
-        uint256 _gas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function call(address _target, uint256 _gas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool success_)
     {
@@ -4684,14 +4568,14 @@ library SafeCall {
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, uint256 _value, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: _value, _calldata: _calldata});
     }
 
     /// @notice Perform a low level call without copying any returndata
     /// @param _target   Address to call
     /// @param _calldata Calldata to pass to the call
     function call(address _target, bytes memory _calldata) internal returns (bool success_) {
-        success_ = call({ _target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata });
+        success_ = call({_target: _target, _gas: gasleft(), _value: 0, _calldata: _calldata});
     }
 
     /// @notice Helper function to determine if there is sufficient gas remaining within the context
@@ -4733,12 +4617,7 @@ library SafeCall {
     /// @param _minGas   The minimum amount of gas that may be passed to the call
     /// @param _value    Amount of value to pass to the call
     /// @param _calldata Calldata to pass to the call
-    function callWithMinGas(
-        address _target,
-        uint256 _minGas,
-        uint256 _value,
-        bytes memory _calldata
-    )
+    function callWithMinGas(address _target, uint256 _minGas, uint256 _value, bytes memory _calldata)
         internal
         returns (bool)
     {
@@ -5044,10 +4923,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
     /// @notice Initializer.
     /// @param _systemConfig Address of the SystemConfig.
     /// @param _anchorStateRegistry Address of the AnchorStateRegistry.
-    function initialize(
-        ISystemConfig _systemConfig,
-        IAnchorStateRegistry _anchorStateRegistry
-    )
+    function initialize(ISystemConfig _systemConfig, IAnchorStateRegistry _anchorStateRegistry)
         external
         reinitializer(initVersion())
     {
@@ -5161,9 +5037,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
         uint256 _disputeGameIndex,
         Types.OutputRootProof calldata _outputRootProof,
         bytes[] calldata _withdrawalProof
-    )
-        external
-    {
+    ) external {
         // Cannot prove withdrawal transactions while the system is paused.
         _assertNotPaused();
 
@@ -5174,7 +5048,9 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
 
         // Cannot prove withdrawal with value when custom gas token mode is enabled.
         if (_isUsingCustomGasToken()) {
-            if (_tx.value > 0) revert OptimismPortal_NotAllowedOnCGTMode();
+            if (_tx.value > 0) {
+                revert OptimismPortal_NotAllowedOnCGTMode();
+            }
         }
 
         // Fetch the dispute game proxy from the `DisputeGameFactory` contract.
@@ -5240,7 +5116,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
         // the provenWithdrawals mapping. A given user may re-prove a withdrawalHash multiple
         // times, but each proof will reset the proof timer.
         provenWithdrawals[withdrawalHash][msg.sender] =
-            ProvenWithdrawal({ disputeGameProxy: disputeGameProxy, timestamp: uint64(block.timestamp) });
+            ProvenWithdrawal({disputeGameProxy: disputeGameProxy, timestamp: uint64(block.timestamp)});
 
         // Add the proof submitter to the list of proof submitters for this withdrawal hash.
         proofSubmitters[withdrawalHash].push(msg.sender);
@@ -5259,10 +5135,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
     /// @notice Finalizes a withdrawal transaction, using an external proof submitter.
     /// @param _tx Withdrawal transaction to finalize.
     /// @param _proofSubmitter Address of the proof submitter.
-    function finalizeWithdrawalTransactionExternalProof(
-        Types.WithdrawalTransaction memory _tx,
-        address _proofSubmitter
-    )
+    function finalizeWithdrawalTransactionExternalProof(Types.WithdrawalTransaction memory _tx, address _proofSubmitter)
         public
     {
         // Cannot finalize withdrawal transactions while the system is paused.
@@ -5270,7 +5143,9 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
 
         // Cannot finalize withdrawal with value when custom gas token mode is enabled.
         if (_isUsingCustomGasToken()) {
-            if (_tx.value > 0) revert OptimismPortal_NotAllowedOnCGTMode();
+            if (_tx.value > 0) {
+                revert OptimismPortal_NotAllowedOnCGTMode();
+            }
         }
 
         // Make sure that the l2Sender has not yet been set. The l2Sender is set to a value other
@@ -5296,7 +5171,9 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
 
         // If using ETHLockbox, unlock the ETH from the ETHLockbox.
         if (_isUsingLockbox()) {
-            if (_tx.value > 0) ethLockbox.unlockETH(_tx.value);
+            if (_tx.value > 0) {
+                ethLockbox.unlockETH(_tx.value);
+            }
         }
 
         // Set the l2Sender so contracts know who triggered this withdrawal on L2.
@@ -5322,7 +5199,7 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
         // it'll get stuck here and would need to be moved back via admin action.
         if (_isUsingLockbox()) {
             if (!success && _tx.value > 0) {
-                ethLockbox.lockETH{ value: _tx.value }();
+                ethLockbox.lockETH{value: _tx.value}();
             }
         }
 
@@ -5384,24 +5261,22 @@ contract OptimismPortal2 is Initializable, ResourceMetering, ReinitializableBase
     /// @param _gasLimit   Amount of L2 gas to purchase by burning gas on L1.
     /// @param _isCreation Whether or not the transaction is a contract creation.
     /// @param _data       Data to trigger the recipient with.
-    function depositTransaction(
-        address _to,
-        uint256 _value,
-        uint64 _gasLimit,
-        bool _isCreation,
-        bytes memory _data
-    )
+    function depositTransaction(address _to, uint256 _value, uint64 _gasLimit, bool _isCreation, bytes memory _data)
         public
         payable
         metered(_gasLimit)
     {
         if (_isUsingCustomGasToken()) {
-            if (msg.value > 0) revert OptimismPortal_NotAllowedOnCGTMode();
+            if (msg.value > 0) {
+                revert OptimismPortal_NotAllowedOnCGTMode();
+            }
         }
 
         // If using ETHLockbox, lock the ETH in the ETHLockbox.
         if (_isUsingLockbox()) {
-            if (msg.value > 0) ethLockbox.lockETH{ value: msg.value }();
+            if (msg.value > 0) {
+                ethLockbox.lockETH{value: msg.value}();
+            }
         }
 
         // Just to be safe, make sure that people specify address(0) as the target when doing

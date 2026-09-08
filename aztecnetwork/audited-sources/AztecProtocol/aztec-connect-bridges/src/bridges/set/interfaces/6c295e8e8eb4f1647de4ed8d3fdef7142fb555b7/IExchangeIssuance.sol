@@ -2,8 +2,8 @@
 pragma solidity >=0.6.10 <=0.8.10;
 pragma experimental ABIEncoderV2;
 
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {ISetToken} from "./ISetToken.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 interface IExchangeIssuance {
     // Issues an exact amount of SetTokens using a given amount of ether.
@@ -40,9 +40,7 @@ interface IExchangeIssuance {
 
     // Redeems an exact amount of SetTokens for ETH.
     // The SetToken must be approved by the sender to this contract.
-    function redeemExactSetForETH(
-        ISetToken _setToken,
-        uint256 _amountSetToken,
-        uint256 _minEthOut
-    ) external returns (uint256);
+    function redeemExactSetForETH(ISetToken _setToken, uint256 _amountSetToken, uint256 _minEthOut)
+        external
+        returns (uint256);
 }

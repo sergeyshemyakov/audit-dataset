@@ -2,7 +2,8 @@
 
 pragma solidity 0.8.30;
 
-import {AccessControlEnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/extensions/AccessControlEnumerableUpgradeable.sol";
+import {AccessControlEnumerableUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/access/extensions/AccessControlEnumerableUpgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
@@ -14,27 +15,21 @@ import {IScrollMessengerValidium} from "./IScrollMessengerValidium.sol";
 /// @title PrivateGatewayCloak
 /// @notice A contract for private gateway in cloak
 /// @dev This contract is used to confirm USDC deposits and withdraw USX to scroll.
-contract PrivateGatewayCloak is
-    AccessControlEnumerableUpgradeable,
-    ReentrancyGuardUpgradeable
-{
+contract PrivateGatewayCloak is AccessControlEnumerableUpgradeable, ReentrancyGuardUpgradeable {
     using SafeERC20 for IERC20;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a deposit is confirmed
     /// @param nonce The nonce of the deposit
     /// @param encryptedReceiver The encrypted receiver
     /// @param keyId The ID of the encryption key used to encrypt the receiver
     /// @param amountUSDC The amount of USDC transferred
-    event DepositConfirmed(
-        uint256 nonce,
-        bytes encryptedReceiver,
-        uint256 keyId,
-        uint256 amountUSDC
-    );
+    event DepositConfirmed(uint256 nonce, bytes encryptedReceiver, uint256 keyId, uint256 amountUSDC);
 
     /// @notice Emitted when USX is withdrawn
     /// @param nonce The nonce of the deposit
@@ -57,9 +52,11 @@ contract PrivateGatewayCloak is
     /// @param newRebalancer The new rebalancer
     event RebalancerUpdated(address oldRebalancer, address newRebalancer);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the no USDC balance
     error ErrorNoUSDCBalance();
@@ -82,9 +79,11 @@ contract PrivateGatewayCloak is
     /// @dev Thrown when the caller is not the counterpart gateway
     error ErrorCallerIsNotCounterpartGateway();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The role required to withdraw USX
     bytes32 public constant WITHDRAW_USX_ROLE = keccak256("WITHDRAW_USX_ROLE");
@@ -92,9 +91,11 @@ contract PrivateGatewayCloak is
     /// @notice The role required to rebalance the contract
     bytes32 public constant REBALANCE_ROLE = keccak256("REBALANCE_ROLE");
 
-    /***********************
+    /**
+     *
      * Immutable Variables *
-     ***********************/
+     *
+     */
 
     /// @notice The address of the USDC token
     address public immutable USDC;
@@ -111,9 +112,11 @@ contract PrivateGatewayCloak is
     /// @notice The address of the private gateway in scroll.
     address public immutable counterpart;
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @notice Mapping from hash to confirmed deposits
     mapping(bytes32 => bool) public confirmedDeposits;
@@ -124,9 +127,11 @@ contract PrivateGatewayCloak is
     /// @notice The address of the rebalancer in Scroll.
     address public rebalancer;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @custom:oz-upgrades-unsafe-allow constructor
     /// @dev This constructor is used to initialize the immutable variables
@@ -134,12 +139,7 @@ contract PrivateGatewayCloak is
     /// @param _USX The address of the USX token
     /// @param _erc20Gateway The address of the ERC20 gateway in cloak
     /// @param _counterpart The address of the private gateway in scroll
-    constructor(
-        address _USDC,
-        address _USX,
-        address _erc20Gateway,
-        address _counterpart
-    ) {
+    constructor(address _USDC, address _USX, address _erc20Gateway, address _counterpart) {
         _disableInitializers();
 
         USDC = _USDC;
@@ -161,9 +161,11 @@ contract PrivateGatewayCloak is
         _grantRole(DEFAULT_ADMIN_ROLE, initialAdmin);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Confirms a deposit
     /// @dev The caller must be the messenger and the counterpart gateway in scroll
@@ -171,30 +173,25 @@ contract PrivateGatewayCloak is
     /// @param encryptedReceiver The encrypted receiver
     /// @param keyId The ID of the encryption key used to encrypt the receiver
     /// @param amountUSDC The amount of USDC transferred
-    function confirmDeposit(
-        uint256 nonce,
-        bytes memory encryptedReceiver,
-        uint256 keyId,
-        uint256 amountUSDC
-    ) external nonReentrant {
+    function confirmDeposit(uint256 nonce, bytes memory encryptedReceiver, uint256 keyId, uint256 amountUSDC)
+        external
+        nonReentrant
+    {
         // check if the caller is the messenger
         if (msg.sender != messenger) {
             revert ErrorCallerIsNotMessenger();
         }
 
         // check if the caller is the counterpart gateway in scroll
-        if (
-            counterpart !=
-            IScrollMessengerValidium(messenger).xDomainMessageSender()
-        ) {
+        if (counterpart != IScrollMessengerValidium(messenger).xDomainMessageSender()) {
             revert ErrorCallerIsNotCounterpartGateway();
         }
 
-        bytes32 hash = keccak256(
-            abi.encode(nonce, encryptedReceiver, keyId, amountUSDC)
-        );
+        bytes32 hash = keccak256(abi.encode(nonce, encryptedReceiver, keyId, amountUSDC));
         // just in case, should not happen
-        if (confirmedDeposits[hash]) revert ErrorDepositAlreadyConfirmed();
+        if (confirmedDeposits[hash]) {
+            revert ErrorDepositAlreadyConfirmed();
+        }
 
         confirmedDeposits[hash] = true;
 
@@ -214,9 +211,7 @@ contract PrivateGatewayCloak is
         uint256 amountUSDC,
         address actualReceiver
     ) external onlyRole(WITHDRAW_USX_ROLE) nonReentrant {
-        bytes32 hash = keccak256(
-            abi.encode(nonce, encryptedReceiver, keyId, amountUSDC)
-        );
+        bytes32 hash = keccak256(abi.encode(nonce, encryptedReceiver, keyId, amountUSDC));
         if (!confirmedDeposits[hash]) {
             revert ErrorDepositNotConfirmed();
         }
@@ -230,60 +225,43 @@ contract PrivateGatewayCloak is
 
         // approve just in case
         IERC20(USX).forceApprove(erc20Gateway, amountUSX);
-        IL2ERC20GatewayValidium(erc20Gateway).withdrawERC20(
-            USX,
-            actualReceiver,
-            amountUSX,
-            0
-        );
+        IL2ERC20GatewayValidium(erc20Gateway).withdrawERC20(USX, actualReceiver, amountUSX, 0);
 
-        emit WithdrawUSX(
-            nonce,
-            encryptedReceiver,
-            keyId,
-            amountUSDC,
-            actualReceiver,
-            amountUSX
-        );
+        emit WithdrawUSX(nonce, encryptedReceiver, keyId, amountUSDC, actualReceiver, amountUSX);
     }
 
     /// @notice Rebalances the contract
     /// @dev The caller must have the REBALANCE_ROLE role to rebalance the contract
     function rebalance() external onlyRole(REBALANCE_ROLE) {
         uint256 usdcBalance = IERC20(USDC).balanceOf(address(this));
-        if (usdcBalance == 0) revert ErrorNoUSDCBalance();
-        if (rebalancer == address(0)) revert ErrorRebalancerNotSet();
+        if (usdcBalance == 0) {
+            revert ErrorNoUSDCBalance();
+        }
+        if (rebalancer == address(0)) {
+            revert ErrorRebalancerNotSet();
+        }
 
         // approve just in case
         IERC20(USDC).forceApprove(erc20Gateway, usdcBalance);
-        IL2ERC20GatewayValidium(erc20Gateway).withdrawERC20(
-            USDC,
-            rebalancer,
-            usdcBalance,
-            0
-        );
+        IL2ERC20GatewayValidium(erc20Gateway).withdrawERC20(USDC, rebalancer, usdcBalance, 0);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Updates the address of the rebalancer
     /// @param newRebalancer The address of the new rebalancer
-    function updateRebalancer(
-        address newRebalancer
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function updateRebalancer(address newRebalancer) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _updateRebalancer(newRebalancer);
     }
 
     /// @notice Withdraws tokens from the contract
     /// @param token The address of the token to withdraw
     /// @param amount The amount of tokens to withdraw
-    function withdrawTokens(
-        address token,
-        address receiver,
-        uint256 amount
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function withdrawTokens(address token, address receiver, uint256 amount) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (token == address(0)) {
             Address.sendValue(payable(receiver), amount);
         } else {
@@ -291,10 +269,11 @@ contract PrivateGatewayCloak is
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
-
+     *
+     */
     function _updateRebalancer(address newRebalancer) internal {
         address oldRebalancer = rebalancer;
         rebalancer = newRebalancer;

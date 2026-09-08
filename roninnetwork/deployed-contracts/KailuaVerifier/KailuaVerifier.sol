@@ -222,7 +222,9 @@ library KailuaPayLib {
     /// @notice Transfers ETH from the contract's balance to the recipient
     function pay(uint256 amount, address recipient) internal {
         (bool success,) = recipient.call{value: amount}(hex"");
-        if (!success) revert BondTransferFailed();
+        if (!success) {
+            revert BondTransferFailed();
+        }
     }
 }
 
@@ -381,13 +383,12 @@ contract KailuaVerifier is ISemver {
                 break;
             }
         }
-        return
-            (
-                numExpiredPermits,
-                numDelayedPermits,
-                expiredCollateral,
-                totalPermits - numExpiredPermits - numDelayedPermits
-            );
+        return (
+            numExpiredPermits,
+            numDelayedPermits,
+            expiredCollateral,
+            totalPermits - numExpiredPermits - numDelayedPermits
+        );
     }
 
     /// @notice Returns the collateral required to acquire a fault proof permit

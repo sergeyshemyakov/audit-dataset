@@ -2,12 +2,14 @@
 
 pragma solidity 0.8.30;
 
-import {AccessControlEnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/extensions/AccessControlEnumerableUpgradeable.sol";
+import {AccessControlEnumerableUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/access/extensions/AccessControlEnumerableUpgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
-import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
+import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
 import {IL1ERC20GatewayValidium} from "./IL1ERC20GatewayValidium.sol";
 import {IScrollMessengerValidium} from "./IScrollMessengerValidium.sol";
@@ -17,20 +19,21 @@ import {PrivateGatewayCloak} from "./PrivateGatewayCloak.sol";
 
 /// @title USXRebalancer
 /// @notice A contract for rebalancing USX and USDC.
-contract USXRebalancer is
-    AccessControlEnumerableUpgradeable,
-    ReentrancyGuardUpgradeable
-{
+contract USXRebalancer is AccessControlEnumerableUpgradeable, ReentrancyGuardUpgradeable {
     using EnumerableSet for EnumerableSet.AddressSet;
     using SafeERC20 for IERC20;
 
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the insufficient USDC balance
     error ErrorInsufficientUSDCBalance();
@@ -44,9 +47,11 @@ contract USXRebalancer is
     /// @dev Thrown when the insufficient USX amount
     error ErrorInsufficientUSXAmount();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The role required to rebalance the contract
     bytes32 public constant REBALANCE_ROLE = keccak256("REBALANCE_ROLE");
@@ -54,9 +59,11 @@ contract USXRebalancer is
     /// @notice The gas limit for the deposit operation
     uint256 private constant GAS_LIMIT = 1000000;
 
-    /***********************
+    /**
+     *
      * Immutable Variables *
-     ***********************/
+     *
+     */
 
     /// @notice The address of the USDC token
     address public immutable USDC;
@@ -67,9 +74,11 @@ contract USXRebalancer is
     /// @notice The address of the ERC20 gateway in scroll
     address public immutable erc20Gateway;
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     /// @notice A struct representing an encrypted receiver
     /// @param receiver The encrypted receiver
@@ -79,9 +88,11 @@ contract USXRebalancer is
         uint256 keyId;
     }
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @notice The list of supported swap routers
     EnumerableSet.AddressSet private supportedSwapRouters;
@@ -89,9 +100,11 @@ contract USXRebalancer is
     /// @notice Mapping from swap router to token spender
     mapping(address => address) private spenders;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @custom:oz-upgrades-unsafe-allow constructor
     /// @dev This constructor is used to initialize the immutable variables
@@ -121,35 +134,38 @@ contract USXRebalancer is
     /// @notice Receive function for ETH
     receive() external payable {}
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @notice Returns the supported swap routers
     /// @return swapRouters The supported swap routers
-    function getSupportedSwapRouters()
-        external
-        view
-        returns (address[] memory swapRouters)
-    {
+    function getSupportedSwapRouters() external view returns (address[] memory swapRouters) {
         swapRouters = new address[](supportedSwapRouters.length());
         for (uint256 i = 0; i < supportedSwapRouters.length(); i++) {
             swapRouters[i] = supportedSwapRouters.at(i);
         }
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Rebalances the contract by minting USX with USDC
     /// @param amountUSDC The amount of USDC to mint
-    function rebalanceByMinting(
-        uint256 amountUSDC,
-        EncryptedReceiver memory usxReceiver
-    ) external onlyRole(REBALANCE_ROLE) nonReentrant {
+    function rebalanceByMinting(uint256 amountUSDC, EncryptedReceiver memory usxReceiver)
+        external
+        onlyRole(REBALANCE_ROLE)
+        nonReentrant
+    {
         uint256 usdcBalance = IERC20(USDC).balanceOf(address(this));
-        if (usdcBalance < amountUSDC) revert ErrorInsufficientUSDCBalance();
+        if (usdcBalance < amountUSDC) {
+            revert ErrorInsufficientUSDCBalance();
+        }
 
         // mint USX with USDC
         uint256 minted = IUSX(USX).balanceOf(address(this));
@@ -177,13 +193,17 @@ contract USXRebalancer is
         }
 
         uint256 usdcBalance = IERC20(USDC).balanceOf(address(this));
-        if (usdcBalance < amountUSDC) revert ErrorInsufficientUSDCBalance();
+        if (usdcBalance < amountUSDC) {
+            revert ErrorInsufficientUSDCBalance();
+        }
 
         // swap the token to USX
         uint256 usxBefore = IERC20(USX).balanceOf(address(this));
         IERC20(USDC).forceApprove(spenders[swapRouter], amountUSDC);
-        (bool success, ) = swapRouter.call{value: msg.value}(swapData);
-        if (!success) revert ErrorSwapFailed();
+        (bool success,) = swapRouter.call{value: msg.value}(swapData);
+        if (!success) {
+            revert ErrorSwapFailed();
+        }
         uint256 usxAfter = IERC20(USX).balanceOf(address(this));
         uint256 usxAmount = usxAfter - usxBefore;
         IERC20(USDC).forceApprove(spenders[swapRouter], 0); // remove approval
@@ -195,19 +215,17 @@ contract USXRebalancer is
         _transferUSX(usxAmount, usxReceiver);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Withdraws tokens from the contract
     /// @dev This function is used to withdraw fees or unexpected tokens from the contract.
     /// @param token The address of the token to withdraw
     /// @param amount The amount of tokens to withdraw
-    function withdrawTokens(
-        address token,
-        address receiver,
-        uint256 amount
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function withdrawTokens(address token, address receiver, uint256 amount) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (token == address(0)) {
             Address.sendValue(payable(receiver), amount);
         } else {
@@ -219,11 +237,10 @@ contract USXRebalancer is
     /// @param swapRouter The address of the swap router to update
     /// @param spender The address of the spender to update
     /// @param isSupported Whether the swap router is supported
-    function updateSupportedSwapRouter(
-        address swapRouter,
-        address spender,
-        bool isSupported
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function updateSupportedSwapRouter(address swapRouter, address spender, bool isSupported)
+        external
+        onlyRole(DEFAULT_ADMIN_ROLE)
+    {
         if (isSupported) {
             supportedSwapRouters.add(swapRouter);
             spenders[swapRouter] = spender;
@@ -233,25 +250,20 @@ contract USXRebalancer is
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to transfer USX to the L1 ERC20 gateway validium
     /// @param amountUSX The amount of USX to transfer
     /// @param usxReceiver The encrypted receiver for the USX token
-    function _transferUSX(
-        uint256 amountUSX,
-        EncryptedReceiver memory usxReceiver
-    ) internal {
+    function _transferUSX(uint256 amountUSX, EncryptedReceiver memory usxReceiver) internal {
         // approve and deposit USX to the L1 ERC20 gateway validium
         IERC20(USX).forceApprove(erc20Gateway, amountUSX);
         IL1ERC20GatewayValidium(erc20Gateway).depositERC20(
-            USX,
-            usxReceiver.receiver,
-            amountUSX,
-            GAS_LIMIT,
-            usxReceiver.keyId
+            USX, usxReceiver.receiver, amountUSX, GAS_LIMIT, usxReceiver.keyId
         );
     }
 }

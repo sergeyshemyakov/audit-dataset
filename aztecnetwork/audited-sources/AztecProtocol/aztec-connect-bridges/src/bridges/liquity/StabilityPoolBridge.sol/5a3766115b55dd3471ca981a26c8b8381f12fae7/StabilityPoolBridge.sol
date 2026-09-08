@@ -2,11 +2,11 @@
 // Copyright 2022 Spilsbury Holdings Ltd
 pragma solidity >=0.8.4;
 
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {IDefiBridge} from "../../interfaces/IDefiBridge.sol";
 import {AztecTypes} from "../../aztec/AztecTypes.sol";
+import {IDefiBridge} from "../../interfaces/IDefiBridge.sol";
 import {IWETH} from "../../interfaces/IWETH.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import {IStabilityPool} from "./interfaces/IStabilityPool.sol";
 import {ISwapRouter} from "./interfaces/ISwapRouter.sol";
@@ -67,12 +67,24 @@ contract StabilityPoolBridge is IDefiBridge, ERC20("StabilityPoolBridge", "SPB")
      * efficient.
      */
     function setApprovals() external {
-        if (!this.approve(ROLLUP_PROCESSOR, type(uint256).max)) revert ApproveFailed(address(this));
-        if (!IERC20(LUSD).approve(ROLLUP_PROCESSOR, type(uint256).max)) revert ApproveFailed(LUSD);
-        if (!IERC20(LUSD).approve(address(STABILITY_POOL), type(uint256).max)) revert ApproveFailed(LUSD);
-        if (!IERC20(WETH).approve(address(UNI_ROUTER), type(uint256).max)) revert ApproveFailed(WETH);
-        if (!IERC20(LQTY).approve(address(UNI_ROUTER), type(uint256).max)) revert ApproveFailed(LQTY);
-        if (!IERC20(USDC).approve(address(UNI_ROUTER), type(uint256).max)) revert ApproveFailed(USDC);
+        if (!this.approve(ROLLUP_PROCESSOR, type(uint256).max)) {
+            revert ApproveFailed(address(this));
+        }
+        if (!IERC20(LUSD).approve(ROLLUP_PROCESSOR, type(uint256).max)) {
+            revert ApproveFailed(LUSD);
+        }
+        if (!IERC20(LUSD).approve(address(STABILITY_POOL), type(uint256).max)) {
+            revert ApproveFailed(LUSD);
+        }
+        if (!IERC20(WETH).approve(address(UNI_ROUTER), type(uint256).max)) {
+            revert ApproveFailed(WETH);
+        }
+        if (!IERC20(LQTY).approve(address(UNI_ROUTER), type(uint256).max)) {
+            revert ApproveFailed(LQTY);
+        }
+        if (!IERC20(USDC).approve(address(UNI_ROUTER), type(uint256).max)) {
+            revert ApproveFailed(USDC);
+        }
     }
 
     /**
@@ -101,17 +113,10 @@ contract StabilityPoolBridge is IDefiBridge, ERC20("StabilityPoolBridge", "SPB")
         uint256,
         uint64,
         address
-    )
-        external
-        payable
-        override
-        returns (
-            uint256 outputValueA,
-            uint256,
-            bool
-        )
-    {
-        if (msg.sender != ROLLUP_PROCESSOR) revert InvalidCaller();
+    ) external payable override returns (uint256 outputValueA, uint256, bool) {
+        if (msg.sender != ROLLUP_PROCESSOR) {
+            revert InvalidCaller();
+        }
 
         if (inputAssetA.erc20Address == LUSD && outputAssetA.erc20Address == address(this)) {
             // Deposit
@@ -154,16 +159,7 @@ contract StabilityPoolBridge is IDefiBridge, ERC20("StabilityPoolBridge", "SPB")
         AztecTypes.AztecAsset calldata,
         uint256,
         uint64
-    )
-        external
-        payable
-        override
-        returns (
-            uint256,
-            uint256,
-            bool
-        )
-    {
+    ) external payable override returns (uint256, uint256, bool) {
         revert AsyncModeDisabled();
     }
 

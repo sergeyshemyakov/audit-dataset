@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import { ISemver } from "interfaces/universal/ISemver.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 interface ISuperchainETHBridge is ISemver {
     error Unauthorized();

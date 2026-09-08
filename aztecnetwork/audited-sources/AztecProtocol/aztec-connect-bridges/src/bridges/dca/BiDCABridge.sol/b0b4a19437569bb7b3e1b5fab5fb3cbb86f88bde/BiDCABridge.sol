@@ -6,9 +6,10 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 import {IRollupProcessor} from "../../aztec/interfaces/IRollupProcessor.sol";
+
+import {AztecTypes} from "../../aztec/libraries/AztecTypes.sol";
 import {BridgeBase} from "../base/BridgeBase.sol";
 import {ErrorLib} from "../base/ErrorLib.sol";
-import {AztecTypes} from "../../aztec/libraries/AztecTypes.sol";
 
 import {IWETH} from "../../interfaces/IWETH.sol";
 
@@ -148,13 +149,9 @@ abstract contract BiDCABridge is BridgeBase {
      * @param _tickSize The time-span that each tick covers in seconds
      * @dev Smaller _tickSizes will increase looping and gas costs
      */
-    constructor(
-        address _rollupProcessor,
-        address _assetA,
-        address _assetB,
-        uint256 _tickSize,
-        uint256 _fee
-    ) BridgeBase(_rollupProcessor) {
+    constructor(address _rollupProcessor, address _assetA, address _assetB, uint256 _tickSize, uint256 _fee)
+        BridgeBase(_rollupProcessor)
+    {
         ASSET_A = IERC20(_assetA);
         ASSET_B = IERC20(_assetB);
         TICK_SIZE = _tickSize;
@@ -213,12 +210,8 @@ abstract contract BiDCABridge is BridgeBase {
      * @return flowA The flow of asset A from the bridge POV, e.g., >0 = buying of tokens, <0 = selling tokens
      * @return flowB The flow of asset B from the bridge POV, e.g., >0 = buying of tokens, <0 = selling tokens
      */
-    function rebalanceAndFill(
-        uint256 _offerA,
-        uint256 _offerB,
-        uint256 _upperTick
-    ) public returns (int256, int256) {
-        (int256 flowA, int256 flowB, , ) = _rebalanceAndFill(_offerA, _offerB, getPrice(), _upperTick, false);
+    function rebalanceAndFill(uint256 _offerA, uint256 _offerB, uint256 _upperTick) public returns (int256, int256) {
+        (int256 flowA, int256 flowB,,) = _rebalanceAndFill(_offerA, _offerB, getPrice(), _upperTick, false);
         if (flowA > 0) {
             ASSET_A.safeTransferFrom(msg.sender, address(this), uint256(flowA));
         } else if (flowA < 0) {
@@ -252,17 +245,7 @@ abstract contract BiDCABridge is BridgeBase {
         uint256 _interactionNonce,
         uint64 _numTicks,
         address
-    )
-        external
-        payable
-        override(BridgeBase)
-        onlyRollup
-        returns (
-            uint256,
-            uint256,
-            bool
-        )
-    {
+    ) external payable override(BridgeBase) onlyRollup returns (uint256, uint256, bool) {
         address inputAssetAddress = _inputAssetA.erc20Address;
         address outputAssetAddress = _outputAssetA.erc20Address;
 
@@ -310,11 +293,7 @@ abstract contract BiDCABridge is BridgeBase {
         virtual
         override(BridgeBase)
         onlyRollup
-        returns (
-            uint256 outputValueA,
-            uint256,
-            bool interactionComplete
-        )
+        returns (uint256 outputValueA, uint256, bool interactionComplete)
     {
         uint256 accumulated;
         (accumulated, interactionComplete) = getAccumulated(_interactionNonce);
@@ -364,11 +343,7 @@ abstract contract BiDCABridge is BridgeBase {
      * @param _priceAToB The price of A tokens in B
      * @param _roundUp Flag to round up, if true rounding up, otherwise rounding down
      */
-    function denominateAssetAInB(
-        uint256 _amount,
-        uint256 _priceAToB,
-        bool _roundUp
-    ) public pure returns (uint256) {
+    function denominateAssetAInB(uint256 _amount, uint256 _priceAToB, bool _roundUp) public pure returns (uint256) {
         if (_roundUp) {
             return (_amount * _priceAToB + 1e18 - 1) / 1e18;
         }
@@ -381,11 +356,7 @@ abstract contract BiDCABridge is BridgeBase {
      * @param _priceAToB The price of A tokens in B
      * @param _roundUp Flag to round up, if true rounding up, otherwise rounding down
      */
-    function denominateAssetBInA(
-        uint256 _amount,
-        uint256 _priceAToB,
-        bool _roundUp
-    ) public pure returns (uint256) {
+    function denominateAssetBInA(uint256 _amount, uint256 _priceAToB, bool _roundUp) public pure returns (uint256) {
         if (_roundUp) {
             return (_amount * 1e18 + _priceAToB - 1) / _priceAToB;
         }
@@ -469,12 +440,7 @@ abstract contract BiDCABridge is BridgeBase {
      * @param _ticks The number of ticks that the position span
      * @param _aToB A flag that is true if input asset is assetA and false otherwise.
      */
-    function _deposit(
-        uint256 _nonce,
-        uint256 _amount,
-        uint256 _ticks,
-        bool _aToB
-    ) internal {
+    function _deposit(uint256 _nonce, uint256 _amount, uint256 _ticks, bool _aToB) internal {
         uint256 nextTick = _nextTick(block.timestamp);
         if (_aToB && earliestTickWithAvailableA == 0) {
             earliestTickWithAvailableA = nextTick.toU32();
@@ -494,12 +460,8 @@ abstract contract BiDCABridge is BridgeBase {
                 ticks[i].availableB += tickAmount.toU120();
             }
         }
-        dcas[_nonce] = DCA({
-            amount: _amount.toU128(),
-            start: nextTick.toU32(),
-            end: (nextTick + _ticks).toU32(),
-            aToB: _aToB
-        });
+        dcas[_nonce] =
+            DCA({amount: _amount.toU128(), start: nextTick.toU32(), end: (nextTick + _ticks).toU32(), aToB: _aToB});
     }
 
     /**
@@ -516,20 +478,9 @@ abstract contract BiDCABridge is BridgeBase {
      * @return availableA The amount of asset A that is available after the rebalancing
      * @return availableB The amount of asset B that is available after the rebalancing
      */
-    function _rebalanceAndFill(
-        uint256 _offerA,
-        uint256 _offerB,
-        uint256 _currentPrice,
-        uint256 _upperTick,
-        bool _self
-    )
+    function _rebalanceAndFill(uint256 _offerA, uint256 _offerB, uint256 _currentPrice, uint256 _upperTick, bool _self)
         internal
-        returns (
-            int256,
-            int256,
-            uint256,
-            uint256
-        )
+        returns (int256, int256, uint256, uint256)
     {
         RebalanceValues memory vars;
         vars.currentPrice = _currentPrice;
@@ -604,11 +555,7 @@ abstract contract BiDCABridge is BridgeBase {
      * @dev Heavily uses that internal functions are passing reference to memory structures
      *
      */
-    function _rebalanceTickInternally(
-        RebalanceValues memory _vars,
-        Tick memory _tick,
-        uint256 _tickId
-    ) internal view {
+    function _rebalanceTickInternally(RebalanceValues memory _vars, Tick memory _tick, uint256 _tickId) internal view {
         // Only perform internal rebalance if we have both assets available, otherwise nothing to rebalance
         if (_tick.availableA > 0 && _tick.availableB > 0) {
             uint256 price = _tick.priceOfAInB;
@@ -618,8 +565,8 @@ abstract contract BiDCABridge is BridgeBase {
                 _vars.lastUsedPrice = price;
                 _vars.lastUsedPriceTime = _tick.priceTime;
             } else {
-                int256 slope = (int256(_vars.currentPrice) - int256(_vars.lastUsedPrice)) /
-                    int256(block.timestamp - _vars.lastUsedPriceTime);
+                int256 slope = (int256(_vars.currentPrice) - int256(_vars.lastUsedPrice))
+                    / int256(block.timestamp - _vars.lastUsedPriceTime);
                 // lastUsedPriceTime will always be an earlier tick than this.
                 uint256 dt = _tickId * TICK_SIZE + TICK_SIZE / 2 - _vars.lastUsedPriceTime;
                 int256 _price = int256(_vars.lastUsedPrice) + slope * int256(dt);
@@ -672,11 +619,7 @@ abstract contract BiDCABridge is BridgeBase {
      * @dev Heavily uses that internal functions are passing reference to memory structures
      * @param _self True if buying from "self" false otherwise.
      */
-    function _useAOffer(
-        RebalanceValues memory _vars,
-        Tick memory _tick,
-        bool _self
-    ) internal pure {
+    function _useAOffer(RebalanceValues memory _vars, Tick memory _tick, bool _self) internal pure {
         if (_vars.offerAInB > 0 && _tick.availableB > 0) {
             uint128 amountBSold = _vars.offerAInB.toU128();
             // We cannot buy more than available
@@ -701,11 +644,7 @@ abstract contract BiDCABridge is BridgeBase {
      * @dev Heavily uses that internal functions are passing reference to memory structures
      * @param _self True if buying from "self" false otherwise.
      */
-    function _useBOffer(
-        RebalanceValues memory _vars,
-        Tick memory _tick,
-        bool _self
-    ) internal pure {
+    function _useBOffer(RebalanceValues memory _vars, Tick memory _tick, bool _self) internal pure {
         if (_vars.offerBInA > 0 && _tick.availableA > 0) {
             // Buying Asset A using Asset B
             uint128 amountASold = _vars.offerBInA.toU128();

@@ -325,20 +325,20 @@ type Currency is address;
 /// @title Token Jar Interface
 /// @notice The interface for releasing assets from the contract
 interface ITokenJar {
-  /// @notice Thrown when an unauthorized address attempts to call a restricted function
-  error Unauthorized();
+    /// @notice Thrown when an unauthorized address attempts to call a restricted function
+    error Unauthorized();
 
-  /// @return Address of the current IReleaser
-  /// @dev The releaser has exclusive access to the `release()` function
-  function releaser() external view returns (address);
+    /// @return Address of the current IReleaser
+    /// @dev The releaser has exclusive access to the `release()` function
+    function releaser() external view returns (address);
 
-  /// @notice Set the address of the IReleaser contract
-  /// @dev only callabe by `owner`
-  function setReleaser(address _releaser) external;
+    /// @notice Set the address of the IReleaser contract
+    /// @dev only callabe by `owner`
+    function setReleaser(address _releaser) external;
 
-  /// @notice Release assets to a specified recipient
-  /// @dev only callable by `releaser`
-  function release(Currency[] calldata assets, address recipient) external;
+    /// @notice Release assets to a specified recipient
+    /// @dev only callable by `releaser`
+    function release(Currency[] calldata assets, address recipient) external;
 }
 
 /// @title TokenJar
@@ -347,35 +347,37 @@ interface ITokenJar {
 ///      Stored fees can be released by an authorized releaser contract.
 /// @custom:security-contact security@uniswap.org
 contract TokenJar is Owned, ITokenJar {
-  /// @inheritdoc ITokenJar
-  address public releaser;
+    /// @inheritdoc ITokenJar
+    address public releaser;
 
-  /// @notice Ensures only the releaser can call the release function
-  modifier onlyReleaser() {
-    require(msg.sender == releaser, Unauthorized());
-    _;
-  }
-
-  /// @dev creates an token jar where the deployer is the initial owner
-  /// during deployment, the deployer SHOULD set the releaser address and
-  /// transfer ownership
-  constructor() Owned(msg.sender) {}
-
-  /// @inheritdoc ITokenJar
-  function release(Currency[] calldata assets, address recipient) external onlyReleaser {
-    Currency asset;
-    uint256 amount;
-    for (uint256 i; i < assets.length; i++) {
-      asset = assets[i];
-      amount = asset.balanceOfSelf();
-      if (amount > 0) asset.transfer(recipient, amount);
+    /// @notice Ensures only the releaser can call the release function
+    modifier onlyReleaser() {
+        require(msg.sender == releaser, Unauthorized());
+        _;
     }
-  }
 
-  /// @inheritdoc ITokenJar
-  function setReleaser(address _releaser) external onlyOwner {
-    releaser = _releaser;
-  }
+    /// @dev creates an token jar where the deployer is the initial owner
+    /// during deployment, the deployer SHOULD set the releaser address and
+    /// transfer ownership
+    constructor() Owned(msg.sender) {}
 
-  receive() external payable {}
+    /// @inheritdoc ITokenJar
+    function release(Currency[] calldata assets, address recipient) external onlyReleaser {
+        Currency asset;
+        uint256 amount;
+        for (uint256 i; i < assets.length; i++) {
+            asset = assets[i];
+            amount = asset.balanceOfSelf();
+            if (amount > 0) {
+                asset.transfer(recipient, amount);
+            }
+        }
+    }
+
+    /// @inheritdoc ITokenJar
+    function setReleaser(address _releaser) external onlyOwner {
+        releaser = _releaser;
+    }
+
+    receive() external payable {}
 }

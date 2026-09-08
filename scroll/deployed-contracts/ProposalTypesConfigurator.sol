@@ -122,12 +122,7 @@ abstract contract IGovernor is IERC165 {
      * `params` are additional encoded parameters. Their intepepretation also depends on the voting module used.
      */
     event VoteCastWithParams(
-        address indexed voter,
-        uint256 proposalId,
-        uint8 support,
-        uint256 weight,
-        string reason,
-        bytes params
+        address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason, bytes params
     );
 
     /**
@@ -237,11 +232,11 @@ abstract contract IGovernor is IERC165 {
      * @notice module:reputation
      * @dev Voting power of an `account` at a specific `blockNumber` given additional encoded parameters.
      */
-    function getVotesWithParams(
-        address account,
-        uint256 blockNumber,
-        bytes memory params
-    ) public view virtual returns (uint256);
+    function getVotesWithParams(address account, uint256 blockNumber, bytes memory params)
+        public
+        view
+        virtual
+        returns (uint256);
 
     /**
      * @notice module:voting
@@ -289,36 +284,30 @@ abstract contract IGovernor is IERC165 {
      *
      * Emits a {VoteCast} event.
      */
-    function castVoteWithReason(
-        uint256 proposalId,
-        uint8 support,
-        string calldata reason
-    ) public virtual returns (uint256 balance);
+    function castVoteWithReason(uint256 proposalId, uint8 support, string calldata reason)
+        public
+        virtual
+        returns (uint256 balance);
 
     /**
      * @dev Cast a vote with a reason and additional encoded parameters
      *
      * Emits a {VoteCast} or {VoteCastWithParams} event depending on the length of params.
      */
-    function castVoteWithReasonAndParams(
-        uint256 proposalId,
-        uint8 support,
-        string calldata reason,
-        bytes memory params
-    ) public virtual returns (uint256 balance);
+    function castVoteWithReasonAndParams(uint256 proposalId, uint8 support, string calldata reason, bytes memory params)
+        public
+        virtual
+        returns (uint256 balance);
 
     /**
      * @dev Cast a vote using the user's cryptographic signature.
      *
      * Emits a {VoteCast} event.
      */
-    function castVoteBySig(
-        uint256 proposalId,
-        uint8 support,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) public virtual returns (uint256 balance);
+    function castVoteBySig(uint256 proposalId, uint8 support, uint8 v, bytes32 r, bytes32 s)
+        public
+        virtual
+        returns (uint256 balance);
 
     /**
      * @dev Cast a vote with a reason and additional encoded parameters using the user's cryptographic signature.
@@ -384,14 +373,7 @@ interface IVotesUpgradeable {
     /**
      * @dev Delegates votes from signer to `delegatee`.
      */
-    function delegateBySig(
-        address delegatee,
-        uint256 nonce,
-        uint256 expiry,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
+    function delegateBySig(address delegatee, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external;
 }
 
 abstract contract IAgoraGovernor is IGovernor {
@@ -450,7 +432,9 @@ contract ProposalTypesConfigurator is IProposalTypesConfigurator {
      * @param _proposalTypesInit Array of ProposalType structs to initialize the contract with.
      */
     function initialize(address _governor, ProposalType[] calldata _proposalTypesInit) external {
-        if (address(governor) != address(0)) revert AlreadyInit();
+        if (address(governor) != address(0)) {
+            revert AlreadyInit();
+        }
         governor = IAgoraGovernor(_governor);
         for (uint8 i = 0; i < _proposalTypesInit.length; i++) {
             _setProposalType(
@@ -497,7 +481,9 @@ contract ProposalTypesConfigurator is IProposalTypesConfigurator {
         string calldata name,
         address module
     ) internal {
-        if (quorum > PERCENT_DIVISOR) revert InvalidQuorum();
+        if (quorum > PERCENT_DIVISOR) {
+            revert InvalidQuorum();
+        }
         if (approvalThreshold > PERCENT_DIVISOR) {
             revert InvalidApprovalThreshold();
         }

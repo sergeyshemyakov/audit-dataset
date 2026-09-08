@@ -12,10 +12,7 @@ import {IAssetManager} from "../interfaces/IAssetManager.sol";
 /// @notice Handles the allocation of USDC between the treasury and the Asset Manager
 /// @dev Facet for TreasuryDiamond contract
 
-contract AssetManagerAllocatorFacet is
-    TreasuryStorage,
-    ReentrancyGuardUpgradeable
-{
+contract AssetManagerAllocatorFacet is TreasuryStorage, ReentrancyGuardUpgradeable {
     using SafeERC20 for IERC20;
 
     /*=========================== Public Functions =========================*/
@@ -32,7 +29,9 @@ contract AssetManagerAllocatorFacet is
     /// @notice Sets the current Asset Manager for the protocol
     /// @param _assetManager The address of the new Asset Manager
     function setAssetManager(address _assetManager) external onlyGovernance {
-        if (_assetManager == address(0)) revert ZeroAddress();
+        if (_assetManager == address(0)) {
+            revert ZeroAddress();
+        }
         TreasuryStorage.TreasuryStorageStruct storage $ = _getStorage();
         address oldAssetManager = $.assetManager;
         if (oldAssetManager != address(0)) {
@@ -56,7 +55,9 @@ contract AssetManagerAllocatorFacet is
     /// @notice Sets the current Allocator for the protocol
     /// @param _allocator The address of the new Allocator
     function setAllocator(address _allocator) external onlyAdmin {
-        if (_allocator == address(0)) revert ZeroAddress();
+        if (_allocator == address(0)) {
+            revert ZeroAddress();
+        }
         TreasuryStorage.TreasuryStorageStruct storage $ = _getStorage();
         address oldAllocator = $.allocator;
         $.allocator = _allocator;

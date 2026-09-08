@@ -76,17 +76,9 @@ interface IERC20 {
 }
 
 abstract contract AbstractFiatTokenV1 is IERC20 {
-    function _approve(
-        address owner,
-        address spender,
-        uint256 value
-    ) internal virtual;
+    function _approve(address owner, address spender, uint256 value) internal virtual;
 
-    function _transfer(
-        address from,
-        address to,
-        uint256 value
-    ) internal virtual;
+    function _transfer(address from, address to, uint256 value) internal virtual;
 }
 
 /**
@@ -144,10 +136,7 @@ contract Ownable {
      * @param newOwner The address to transfer ownership to.
      */
     function transferOwnership(address newOwner) external onlyOwner {
-        require(
-            newOwner != address(0),
-            "Ownable: new owner is the zero address"
-        );
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
         emit OwnershipTransferred(_owner, newOwner);
         setOwner(newOwner);
     }
@@ -210,10 +199,7 @@ contract Pausable is Ownable {
      * @dev update the pauser role
      */
     function updatePauser(address _newPauser) external onlyOwner {
-        require(
-            _newPauser != address(0),
-            "Pausable: new pauser is the zero address"
-        );
+        require(_newPauser != address(0), "Pausable: new pauser is the zero address");
         pauser = _newPauser;
         emit PauserChanged(pauser);
     }
@@ -235,10 +221,7 @@ contract Blacklistable is Ownable {
      * @dev Throws if called by any account other than the blacklister
      */
     modifier onlyBlacklister() {
-        require(
-            msg.sender == blacklister,
-            "Blacklistable: caller is not the blacklister"
-        );
+        require(msg.sender == blacklister, "Blacklistable: caller is not the blacklister");
         _;
     }
 
@@ -247,10 +230,7 @@ contract Blacklistable is Ownable {
      * @param _account The address to check
      */
     modifier notBlacklisted(address _account) {
-        require(
-            !blacklisted[_account],
-            "Blacklistable: account is blacklisted"
-        );
+        require(!blacklisted[_account], "Blacklistable: account is blacklisted");
         _;
     }
 
@@ -281,10 +261,7 @@ contract Blacklistable is Ownable {
     }
 
     function updateBlacklister(address _newBlacklister) external onlyOwner {
-        require(
-            _newBlacklister != address(0),
-            "Blacklistable: new blacklister is the zero address"
-        );
+        require(_newBlacklister != address(0), "Blacklistable: new blacklister is the zero address");
         blacklister = _newBlacklister;
         emit BlacklisterChanged(blacklister);
     }
@@ -483,22 +460,10 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
         address newOwner
     ) public {
         require(!initialized, "FiatToken: contract is already initialized");
-        require(
-            newMasterMinter != address(0),
-            "FiatToken: new masterMinter is the zero address"
-        );
-        require(
-            newPauser != address(0),
-            "FiatToken: new pauser is the zero address"
-        );
-        require(
-            newBlacklister != address(0),
-            "FiatToken: new blacklister is the zero address"
-        );
-        require(
-            newOwner != address(0),
-            "FiatToken: new owner is the zero address"
-        );
+        require(newMasterMinter != address(0), "FiatToken: new masterMinter is the zero address");
+        require(newPauser != address(0), "FiatToken: new pauser is the zero address");
+        require(newBlacklister != address(0), "FiatToken: new blacklister is the zero address");
+        require(newOwner != address(0), "FiatToken: new owner is the zero address");
 
         name = tokenName;
         symbol = tokenSymbol;
@@ -538,10 +503,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
         require(_amount > 0, "FiatToken: mint amount not greater than 0");
 
         uint256 mintingAllowedAmount = minterAllowed[msg.sender];
-        require(
-            _amount <= mintingAllowedAmount,
-            "FiatToken: mint amount exceeds minterAllowance"
-        );
+        require(_amount <= mintingAllowedAmount, "FiatToken: mint amount exceeds minterAllowance");
 
         totalSupply_ = totalSupply_.add(_amount);
         balances[_to] = balances[_to].add(_amount);
@@ -555,10 +517,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * @dev Throws if called by any account other than the masterMinter
      */
     modifier onlyMasterMinter() {
-        require(
-            msg.sender == masterMinter,
-            "FiatToken: caller is not the masterMinter"
-        );
+        require(msg.sender == masterMinter, "FiatToken: caller is not the masterMinter");
         _;
     }
 
@@ -585,19 +544,14 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * @param spender   Spender's address
      * @return Allowance amount
      */
-    function allowance(address owner, address spender)
-        external
-        override
-        view
-        returns (uint256)
-    {
+    function allowance(address owner, address spender) external view override returns (uint256) {
         return allowed[owner][spender];
     }
 
     /**
      * @dev Get totalSupply of token
      */
-    function totalSupply() external override view returns (uint256) {
+    function totalSupply() external view override returns (uint256) {
         return totalSupply_;
     }
 
@@ -605,12 +559,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * @dev Get token balance of an account
      * @param account address The account
      */
-    function balanceOf(address account)
-        external
-        override
-        view
-        returns (uint256)
-    {
+    function balanceOf(address account) external view override returns (uint256) {
         return balances[account];
     }
 
@@ -639,11 +588,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * @param spender   Spender's address
      * @param value     Allowance amount
      */
-    function _approve(
-        address owner,
-        address spender,
-        uint256 value
-    ) internal override {
+    function _approve(address owner, address spender, uint256 value) internal override {
         require(owner != address(0), "ERC20: approve from the zero address");
         require(spender != address(0), "ERC20: approve to the zero address");
         allowed[owner][spender] = value;
@@ -657,11 +602,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * @param value Transfer amount
      * @return True if successful
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 value
-    )
+    function transferFrom(address from, address to, uint256 value)
         external
         override
         whenNotPaused
@@ -670,10 +611,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
         notBlacklisted(to)
         returns (bool)
     {
-        require(
-            value <= allowed[from][msg.sender],
-            "ERC20: transfer amount exceeds allowance"
-        );
+        require(value <= allowed[from][msg.sender], "ERC20: transfer amount exceeds allowance");
         _transfer(from, to, value);
         allowed[from][msg.sender] = allowed[from][msg.sender].sub(value);
         return true;
@@ -703,17 +641,10 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * @param to    Payee's address
      * @param value Transfer amount
      */
-    function _transfer(
-        address from,
-        address to,
-        uint256 value
-    ) internal override {
+    function _transfer(address from, address to, uint256 value) internal override {
         require(from != address(0), "ERC20: transfer from the zero address");
         require(to != address(0), "ERC20: transfer to the zero address");
-        require(
-            value <= balances[from],
-            "ERC20: transfer amount exceeds balance"
-        );
+        require(value <= balances[from], "ERC20: transfer amount exceeds balance");
 
         balances[from] = balances[from].sub(value);
         balances[to] = balances[to].add(value);
@@ -743,11 +674,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * @param minter The address of the minter to remove
      * @return True if the operation was successful.
      */
-    function removeMinter(address minter)
-        external
-        onlyMasterMinter
-        returns (bool)
-    {
+    function removeMinter(address minter) external onlyMasterMinter returns (bool) {
         minters[minter] = false;
         minterAllowed[minter] = 0;
         emit MinterRemoved(minter);
@@ -760,12 +687,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
      * amount is less than or equal to the minter's account balance
      * @param _amount uint256 the amount of tokens to be burned
      */
-    function burn(uint256 _amount)
-        external
-        whenNotPaused
-        onlyMinters
-        notBlacklisted(msg.sender)
-    {
+    function burn(uint256 _amount) external whenNotPaused onlyMinters notBlacklisted(msg.sender) {
         uint256 balance = balances[msg.sender];
         require(_amount > 0, "FiatToken: burn amount not greater than 0");
         require(balance >= _amount, "FiatToken: burn amount exceeds balance");
@@ -777,10 +699,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
     }
 
     function updateMasterMinter(address _newMasterMinter) external onlyOwner {
-        require(
-            _newMasterMinter != address(0),
-            "FiatToken: new masterMinter is the zero address"
-        );
+        require(_newMasterMinter != address(0), "FiatToken: new masterMinter is the zero address");
         masterMinter = _newMasterMinter;
         emit MasterMinterChanged(masterMinter);
     }
@@ -814,7 +733,9 @@ library Address {
         bytes32 codehash;
         bytes32 accountHash = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
         // solhint-disable-next-line no-inline-assembly
-        assembly { codehash := extcodehash(account) }
+        assembly {
+            codehash := extcodehash(account)
+        }
         return (codehash != accountHash && codehash != 0x0);
     }
 
@@ -838,7 +759,7 @@ library Address {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{ value: amount }("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -861,7 +782,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-      return functionCall(target, data, "Address: low-level call failed");
+        return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -870,7 +791,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return _functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -895,16 +819,22 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         return _functionCallWithValue(target, data, value, errorMessage);
     }
 
-    function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage) private returns (bytes memory) {
+    function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage)
+        private
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
+        (bool success, bytes memory returndata) = target.call{value: weiValue}(data);
         if (success) {
             return returndata;
         } else {
@@ -957,7 +887,8 @@ library SafeERC20 {
         // or when resetting it to zero. To increase and decrease it, use
         // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
         // solhint-disable-next-line max-line-length
-        require((value == 0) || (token.allowance(address(this), spender) == 0),
+        require(
+            (value == 0) || (token.allowance(address(this), spender) == 0),
             "SafeERC20: approve from non-zero to non-zero allowance"
         );
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));
@@ -969,7 +900,8 @@ library SafeERC20 {
     }
 
     function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
-        uint256 newAllowance = token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
+        uint256 newAllowance =
+            token.allowance(address(this), spender).sub(value, "SafeERC20: decreased allowance below zero");
         _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));
     }
 
@@ -985,7 +917,8 @@ library SafeERC20 {
         // the target address contains contract code and also asserts for success in the low-level call.
 
         bytes memory returndata = address(token).functionCall(data, "SafeERC20: low-level call failed");
-        if (returndata.length > 0) { // Return data is optional
+        if (returndata.length > 0) {
+            // Return data is optional
             // solhint-disable-next-line max-line-length
             require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
         }
@@ -1021,11 +954,7 @@ contract Rescuable is Ownable {
      * @param to        Recipient address
      * @param amount    Amount to withdraw
      */
-    function rescueERC20(
-        IERC20 tokenContract,
-        address to,
-        uint256 amount
-    ) external onlyRescuer {
+    function rescueERC20(IERC20 tokenContract, address to, uint256 amount) external onlyRescuer {
         tokenContract.safeTransfer(to, amount);
     }
 
@@ -1034,10 +963,7 @@ contract Rescuable is Ownable {
      * @param newRescuer New rescuer's address
      */
     function updateRescuer(address newRescuer) external onlyOwner {
-        require(
-            newRescuer != address(0),
-            "Rescuable: new rescuer is the zero address"
-        );
+        require(newRescuer != address(0), "Rescuable: new rescuer is the zero address");
         _rescuer = newRescuer;
         emit RescuerChanged(newRescuer);
     }
@@ -1047,22 +973,12 @@ contract Rescuable is Ownable {
  * @title FiatTokenV1_1
  * @dev ERC20 Token backed by fiat reserves
  */
-contract FiatTokenV1_1 is FiatTokenV1, Rescuable {
-
-}
+contract FiatTokenV1_1 is FiatTokenV1, Rescuable {}
 
 abstract contract AbstractFiatTokenV2 is AbstractFiatTokenV1 {
-    function _increaseAllowance(
-        address owner,
-        address spender,
-        uint256 increment
-    ) internal virtual;
+    function _increaseAllowance(address owner, address spender, uint256 increment) internal virtual;
 
-    function _decreaseAllowance(
-        address owner,
-        address spender,
-        uint256 decrement
-    ) internal virtual;
+    function _decreaseAllowance(address owner, address spender, uint256 decrement) internal virtual;
 }
 
 /**
@@ -1090,12 +1006,7 @@ library ECRecover {
      * @param s         s of the signature
      * @return Signer address
      */
-    function recover(
-        bytes32 digest,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address) {
+    function recover(bytes32 digest, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (281): 0 < s < secp256k1n ÷ 2 + 1, and for v in (282): v ∈ {27, 28}. Most
@@ -1105,10 +1016,7 @@ library ECRecover {
         // with 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 - s1 and flip v from 27 to 28 or
         // vice versa. If your library also generates signatures with 0/1 for v instead 27/28, add 27 to v to accept
         // these malleable signatures as well.
-        if (
-            uint256(s) >
-            0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0
-        ) {
+        if (uint256(s) > 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0) {
             revert("ECRecover: invalid signature 's' value");
         }
 
@@ -1135,26 +1043,21 @@ library EIP712 {
      * @param version   Contract version
      * @return Domain separator
      */
-    function makeDomainSeparator(string memory name, string memory version)
-        internal
-        view
-        returns (bytes32)
-    {
+    function makeDomainSeparator(string memory name, string memory version) internal view returns (bytes32) {
         uint256 chainId;
         assembly {
             chainId := chainid()
         }
-        return
-            keccak256(
-                abi.encode(
-                    // keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)")
-                    0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f,
-                    keccak256(bytes(name)),
-                    keccak256(bytes(version)),
-                    chainId,
-                    address(this)
-                )
-            );
+        return keccak256(
+            abi.encode(
+                // keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)")
+                0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f,
+                keccak256(bytes(name)),
+                keccak256(bytes(version)),
+                chainId,
+                address(this)
+            )
+        );
     }
 
     /**
@@ -1166,20 +1069,12 @@ library EIP712 {
      * @param typeHashAndData   Type hash concatenated with data
      * @return Signer's address
      */
-    function recover(
-        bytes32 domainSeparator,
-        uint8 v,
-        bytes32 r,
-        bytes32 s,
-        bytes memory typeHashAndData
-    ) internal pure returns (address) {
-        bytes32 digest = keccak256(
-            abi.encodePacked(
-                "\x19\x01",
-                domainSeparator,
-                keccak256(typeHashAndData)
-            )
-        );
+    function recover(bytes32 domainSeparator, uint8 v, bytes32 r, bytes32 s, bytes memory typeHashAndData)
+        internal
+        pure
+        returns (address)
+    {
+        bytes32 digest = keccak256(abi.encodePacked("\x19\x01", domainSeparator, keccak256(typeHashAndData)));
         return ECRecover.recover(digest, v, r, s);
     }
 }
@@ -1192,16 +1087,16 @@ library EIP712 {
  */
 abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
     // keccak256("TransferWithAuthorization(address from,address to,uint256 value,uint256 validAfter,uint256 validBefore,bytes32 nonce)")
-    bytes32
-        public constant TRANSFER_WITH_AUTHORIZATION_TYPEHASH = 0x7c7c6cdb67a18743f49ec6fa9b35f50d52ed05cbed4cc592e13b44501c1a2267;
+    bytes32 public constant TRANSFER_WITH_AUTHORIZATION_TYPEHASH =
+        0x7c7c6cdb67a18743f49ec6fa9b35f50d52ed05cbed4cc592e13b44501c1a2267;
 
     // keccak256("ReceiveWithAuthorization(address from,address to,uint256 value,uint256 validAfter,uint256 validBefore,bytes32 nonce)")
-    bytes32
-        public constant RECEIVE_WITH_AUTHORIZATION_TYPEHASH = 0xd099cc98ef71107a616c4f0f941f04c322d8e254fe26b3c6668db87aae413de8;
+    bytes32 public constant RECEIVE_WITH_AUTHORIZATION_TYPEHASH =
+        0xd099cc98ef71107a616c4f0f941f04c322d8e254fe26b3c6668db87aae413de8;
 
     // keccak256("CancelAuthorization(address authorizer,bytes32 nonce)")
-    bytes32
-        public constant CANCEL_AUTHORIZATION_TYPEHASH = 0x158b0a9edf7a828aad02f63cd515c68ef2f50ba807396f6d12842833a1597429;
+    bytes32 public constant CANCEL_AUTHORIZATION_TYPEHASH =
+        0x158b0a9edf7a828aad02f63cd515c68ef2f50ba807396f6d12842833a1597429;
 
     /**
      * @dev authorizer address => nonce => bool (true if nonce is used)
@@ -1209,10 +1104,7 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
     mapping(address => mapping(bytes32 => bool)) private _authorizationStates;
 
     event AuthorizationUsed(address indexed authorizer, bytes32 indexed nonce);
-    event AuthorizationCanceled(
-        address indexed authorizer,
-        bytes32 indexed nonce
-    );
+    event AuthorizationCanceled(address indexed authorizer, bytes32 indexed nonce);
 
     /**
      * @notice Returns the state of an authorization
@@ -1222,11 +1114,7 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
      * @param nonce         Nonce of the authorization
      * @return True if the nonce is used
      */
-    function authorizationState(address authorizer, bytes32 nonce)
-        external
-        view
-        returns (bool)
-    {
+    function authorizationState(address authorizer, bytes32 nonce) external view returns (bool) {
         return _authorizationStates[authorizer][nonce];
     }
 
@@ -1255,19 +1143,9 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
     ) internal {
         _requireValidAuthorization(from, nonce, validAfter, validBefore);
 
-        bytes memory data = abi.encode(
-            TRANSFER_WITH_AUTHORIZATION_TYPEHASH,
-            from,
-            to,
-            value,
-            validAfter,
-            validBefore,
-            nonce
-        );
-        require(
-            EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == from,
-            "FiatTokenV2: invalid signature"
-        );
+        bytes memory data =
+            abi.encode(TRANSFER_WITH_AUTHORIZATION_TYPEHASH, from, to, value, validAfter, validBefore, nonce);
+        require(EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == from, "FiatTokenV2: invalid signature");
 
         _markAuthorizationAsUsed(from, nonce);
         _transfer(from, to, value);
@@ -1301,19 +1179,9 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
         require(to == msg.sender, "FiatTokenV2: caller must be the payee");
         _requireValidAuthorization(from, nonce, validAfter, validBefore);
 
-        bytes memory data = abi.encode(
-            RECEIVE_WITH_AUTHORIZATION_TYPEHASH,
-            from,
-            to,
-            value,
-            validAfter,
-            validBefore,
-            nonce
-        );
-        require(
-            EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == from,
-            "FiatTokenV2: invalid signature"
-        );
+        bytes memory data =
+            abi.encode(RECEIVE_WITH_AUTHORIZATION_TYPEHASH, from, to, value, validAfter, validBefore, nonce);
+        require(EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == from, "FiatTokenV2: invalid signature");
 
         _markAuthorizationAsUsed(from, nonce);
         _transfer(from, to, value);
@@ -1327,24 +1195,11 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
      * @param r             r of the signature
      * @param s             s of the signature
      */
-    function _cancelAuthorization(
-        address authorizer,
-        bytes32 nonce,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal {
+    function _cancelAuthorization(address authorizer, bytes32 nonce, uint8 v, bytes32 r, bytes32 s) internal {
         _requireUnusedAuthorization(authorizer, nonce);
 
-        bytes memory data = abi.encode(
-            CANCEL_AUTHORIZATION_TYPEHASH,
-            authorizer,
-            nonce
-        );
-        require(
-            EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == authorizer,
-            "FiatTokenV2: invalid signature"
-        );
+        bytes memory data = abi.encode(CANCEL_AUTHORIZATION_TYPEHASH, authorizer, nonce);
+        require(EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == authorizer, "FiatTokenV2: invalid signature");
 
         _authorizationStates[authorizer][nonce] = true;
         emit AuthorizationCanceled(authorizer, nonce);
@@ -1355,14 +1210,8 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
      * @param authorizer    Authorizer's address
      * @param nonce         Nonce of the authorization
      */
-    function _requireUnusedAuthorization(address authorizer, bytes32 nonce)
-        private
-        view
-    {
-        require(
-            !_authorizationStates[authorizer][nonce],
-            "FiatTokenV2: authorization is used or canceled"
-        );
+    function _requireUnusedAuthorization(address authorizer, bytes32 nonce) private view {
+        require(!_authorizationStates[authorizer][nonce], "FiatTokenV2: authorization is used or canceled");
     }
 
     /**
@@ -1372,16 +1221,11 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
      * @param validAfter    The time after which this is valid (unix time)
      * @param validBefore   The time before which this is valid (unix time)
      */
-    function _requireValidAuthorization(
-        address authorizer,
-        bytes32 nonce,
-        uint256 validAfter,
-        uint256 validBefore
-    ) private view {
-        require(
-            now > validAfter,
-            "FiatTokenV2: authorization is not yet valid"
-        );
+    function _requireValidAuthorization(address authorizer, bytes32 nonce, uint256 validAfter, uint256 validBefore)
+        private
+        view
+    {
+        require(now > validAfter, "FiatTokenV2: authorization is not yet valid");
         require(now < validBefore, "FiatTokenV2: authorization is expired");
         _requireUnusedAuthorization(authorizer, nonce);
     }
@@ -1391,9 +1235,7 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
      * @param authorizer    Authorizer's address
      * @param nonce         Nonce of the authorization
      */
-    function _markAuthorizationAsUsed(address authorizer, bytes32 nonce)
-        private
-    {
+    function _markAuthorizationAsUsed(address authorizer, bytes32 nonce) private {
         _authorizationStates[authorizer][nonce] = true;
         emit AuthorizationUsed(authorizer, nonce);
     }
@@ -1405,8 +1247,7 @@ abstract contract EIP3009 is AbstractFiatTokenV2, EIP712Domain {
  */
 abstract contract EIP2612 is AbstractFiatTokenV2, EIP712Domain {
     // keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)")
-    bytes32
-        public constant PERMIT_TYPEHASH = 0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
+    bytes32 public constant PERMIT_TYPEHASH = 0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
 
     mapping(address => uint256) private _permitNonces;
 
@@ -1429,29 +1270,13 @@ abstract contract EIP2612 is AbstractFiatTokenV2, EIP712Domain {
      * @param r         r of the signature
      * @param s         s of the signature
      */
-    function _permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal {
+    function _permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        internal
+    {
         require(deadline >= now, "FiatTokenV2: permit is expired");
 
-        bytes memory data = abi.encode(
-            PERMIT_TYPEHASH,
-            owner,
-            spender,
-            value,
-            _permitNonces[owner]++,
-            deadline
-        );
-        require(
-            EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == owner,
-            "EIP2612: invalid signature"
-        );
+        bytes memory data = abi.encode(PERMIT_TYPEHASH, owner, spender, value, _permitNonces[owner]++, deadline);
+        require(EIP712.recover(DOMAIN_SEPARATOR, v, r, s, data) == owner, "EIP2612: invalid signature");
 
         _approve(owner, spender, value);
     }
@@ -1533,17 +1358,7 @@ contract FiatTokenV2 is FiatTokenV1_1, EIP3009, EIP2612 {
         bytes32 r,
         bytes32 s
     ) external whenNotPaused notBlacklisted(from) notBlacklisted(to) {
-        _transferWithAuthorization(
-            from,
-            to,
-            value,
-            validAfter,
-            validBefore,
-            nonce,
-            v,
-            r,
-            s
-        );
+        _transferWithAuthorization(from, to, value, validAfter, validBefore, nonce, v, r, s);
     }
 
     /**
@@ -1571,17 +1386,7 @@ contract FiatTokenV2 is FiatTokenV1_1, EIP3009, EIP2612 {
         bytes32 r,
         bytes32 s
     ) external whenNotPaused notBlacklisted(from) notBlacklisted(to) {
-        _receiveWithAuthorization(
-            from,
-            to,
-            value,
-            validAfter,
-            validBefore,
-            nonce,
-            v,
-            r,
-            s
-        );
+        _receiveWithAuthorization(from, to, value, validAfter, validBefore, nonce, v, r, s);
     }
 
     /**
@@ -1593,13 +1398,10 @@ contract FiatTokenV2 is FiatTokenV1_1, EIP3009, EIP2612 {
      * @param r             r of the signature
      * @param s             s of the signature
      */
-    function cancelAuthorization(
-        address authorizer,
-        bytes32 nonce,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external whenNotPaused {
+    function cancelAuthorization(address authorizer, bytes32 nonce, uint8 v, bytes32 r, bytes32 s)
+        external
+        whenNotPaused
+    {
         _cancelAuthorization(authorizer, nonce, v, r, s);
     }
 
@@ -1613,15 +1415,12 @@ contract FiatTokenV2 is FiatTokenV1_1, EIP3009, EIP2612 {
      * @param r           r of the signature
      * @param s           s of the signature
      */
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external whenNotPaused notBlacklisted(owner) notBlacklisted(spender) {
+    function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+        external
+        whenNotPaused
+        notBlacklisted(owner)
+        notBlacklisted(spender)
+    {
         _permit(owner, spender, value, deadline, v, r, s);
     }
 
@@ -1631,11 +1430,7 @@ contract FiatTokenV2 is FiatTokenV1_1, EIP3009, EIP2612 {
      * @param spender   Spender's address
      * @param increment Amount of increase
      */
-    function _increaseAllowance(
-        address owner,
-        address spender,
-        uint256 increment
-    ) internal override {
+    function _increaseAllowance(address owner, address spender, uint256 increment) internal override {
         _approve(owner, spender, allowed[owner][spender].add(increment));
     }
 
@@ -1645,19 +1440,8 @@ contract FiatTokenV2 is FiatTokenV1_1, EIP3009, EIP2612 {
      * @param spender   Spender's address
      * @param decrement Amount of decrease
      */
-    function _decreaseAllowance(
-        address owner,
-        address spender,
-        uint256 decrement
-    ) internal override {
-        _approve(
-            owner,
-            spender,
-            allowed[owner][spender].sub(
-                decrement,
-                "ERC20: decreased allowance below zero"
-            )
-        );
+    function _decreaseAllowance(address owner, address spender, uint256 decrement) internal override {
+        _approve(owner, spender, allowed[owner][spender].sub(decrement, "ERC20: decreased allowance below zero"));
     }
 }
 

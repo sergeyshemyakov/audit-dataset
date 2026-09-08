@@ -1,7 +1,7 @@
 pragma solidity >=0.5.0 <0.6.0;
 
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 import "../interfaces/IAZTEC.sol";
 import "../libs/NoteUtils.sol";
@@ -11,27 +11,28 @@ import "../libs/ProofUtils.sol";
  * @title NoteRegistry contract which contains the storage variables that define the set of valid
  * AZTEC notes for a particular address
  * @author AZTEC
- * @dev The NoteRegistry defines the state of valid AZTEC notes. It enacts instructions to update the 
- * state, given to it by the ACE and only the note registry owner can enact a state update.  
+ * @dev The NoteRegistry defines the state of valid AZTEC notes. It enacts instructions to update the
+ * state, given to it by the ACE and only the note registry owner can enact a state update.
  * Copyright Spilbury Holdings Ltd 2019. All rights reserved.
- **/
+ *
+ */
 contract NoteRegistry is IAZTEC {
     using NoteUtils for bytes;
     using SafeMath for uint256;
     using ProofUtils for uint24;
 
     /**
-    * Note struct. This is the data that we store when we log AZTEC notes inside a NoteRegistry
-    *
-    * Data structured so that the entire struct fits in 1 storage word.
-    *
-    * @notice Yul is used to pack and unpack Note structs in storage for efficiency reasons,
-    *   see `NoteRegistry.updateInputNotes` and `NoteRegistry.updateOutputNotes` for more details
-    **/
+     * Note struct. This is the data that we store when we log AZTEC notes inside a NoteRegistry
+     *
+     * Data structured so that the entire struct fits in 1 storage word.
+     *
+     * @notice Yul is used to pack and unpack Note structs in storage for efficiency reasons,
+     *   see `NoteRegistry.updateInputNotes` and `NoteRegistry.updateOutputNotes` for more details
+     *
+     */
     struct Note {
         // `status` uses the IAZTEC.NoteStatus enum to track the lifecycle of a note.
         uint8 status;
-
         // `createdOn` logs the timestamp of the block that created this note. There are a few
         // use cases that require measuring the age of a note, (e.g. interest rate computations).
         // These lifetime are relevant on timescales of days/months, the 900-ish seconds that a miner
@@ -39,11 +40,9 @@ contract NoteRegistry is IAZTEC {
         // We store `createdOn` in 5 bytes of data - just in case this contract is still around in 2038 :)
         // This kicks the 'year 2038' problem down the road by about 400 years
         uint40 createdOn;
-
         // `destroyedOn` logs the timestamp of the block that destroys this note in a transaction.
         // Default value is 0x0000000000 for notes that have not been spent.
         uint40 destroyedOn;
-
         // The owner of the note
         address owner;
     }
@@ -72,34 +71,34 @@ contract NoteRegistry is IAZTEC {
     mapping(bytes32 => bool) public validatedProofs;
 
     /**
-    * @dev Call transferFrom on a linked ERC20 token. Used in cases where the ACE's mint
-    * function is called but the token balance of the note registry in question is
-    * insufficient
-    *
-    * @param _value the value to be transferred
-    */
+     * @dev Call transferFrom on a linked ERC20 token. Used in cases where the ACE's mint
+     * function is called but the token balance of the note registry in question is
+     * insufficient
+     *
+     * @param _value the value to be transferred
+     */
     function supplementTokens(uint256 _value) external {
         Registry storage registry = registries[msg.sender];
         require(registry.flags.active == true, "note registry does not exist for the given address");
         require(registry.flags.canConvert == true, "note registry does not have conversion rights");
-        
+
         // Only scenario where supplementTokens() should be called is when a mint/burn operation has been executed
         require(registry.flags.canAdjustSupply == true, "note registry does not have mint and burn rights");
-        
+
         registry.linkedToken.transferFrom(msg.sender, address(this), _value.mul(registry.scalingFactor));
 
         registry.totalSupply = registry.totalSupply.add(_value);
     }
 
     /**
-    * @dev Query the ACE for a previously validated proof
-    * @notice This is a virtual function, that must be overwritten by the contract that inherits from NoteRegistr
-    *
-    * @param _proof - unique identifier for the proof in question and being validated
-    * @param _proofHash - keccak256 hash of a bytes proofOutput argument. Used to identify the proof in question
-    * @param _sender - address of the entity that originally validated the proof
-    * @return boolean - true if the proof has previously been validated, false if not
-    */
+     * @dev Query the ACE for a previously validated proof
+     * @notice This is a virtual function, that must be overwritten by the contract that inherits from NoteRegistr
+     *
+     * @param _proof - unique identifier for the proof in question and being validated
+     * @param _proofHash - keccak256 hash of a bytes proofOutput argument. Used to identify the proof in question
+     * @param _sender - address of the entity that originally validated the proof
+     * @return boolean - true if the proof has previously been validated, false if not
+     */
     function validateProofByHash(uint24 _proof, bytes32 _proofHash, address _sender) public view returns (bool);
 
     function createNoteRegistry(
@@ -119,44 +118,31 @@ contract NoteRegistry is IAZTEC {
             confidentialTotalMinted: ZERO_VALUE_NOTE_HASH,
             confidentialTotalBurned: ZERO_VALUE_NOTE_HASH,
             supplementTotal: 0,
-            flags: Flags({
-                active: true,
-                canAdjustSupply: _canAdjustSupply,
-                canConvert: _canConvert
-            })
+            flags: Flags({active: true, canAdjustSupply: _canAdjustSupply, canConvert: _canConvert})
         });
         registries[msg.sender] = registry;
     }
 
     /**
-    * @dev Update the state of the note registry according to transfer instructions issued by a 
-    * zero-knowledge proof
-    *
-    * @param _proof - unique identifier for a proof
-    * @param _proofOutput - transfer instructions issued by a zero-knowledge proof
-    * @param _proofSender - address of the entity sending the proof
-    */
-    function updateNoteRegistry(
-        uint24 _proof,
-        bytes memory _proofOutput,
-        address _proofSender
-    ) public {
+     * @dev Update the state of the note registry according to transfer instructions issued by a
+     * zero-knowledge proof
+     *
+     * @param _proof - unique identifier for a proof
+     * @param _proofOutput - transfer instructions issued by a zero-knowledge proof
+     * @param _proofSender - address of the entity sending the proof
+     */
+    function updateNoteRegistry(uint24 _proof, bytes memory _proofOutput, address _proofSender) public {
         Registry storage registry = registries[msg.sender];
         Flags memory flags = registry.flags;
         require(flags.active == true, "note registry does not exist for the given address");
         bytes32 proofHash = keccak256(_proofOutput);
-        require(
-            validateProofByHash(_proof, proofHash, _proofSender) == true,
-            "ACE has not validated a matching proof"
-        );
-        
+        require(validateProofByHash(_proof, proofHash, _proofSender) == true, "ACE has not validated a matching proof");
+
         // clear record of valid proof - stops re-entrancy attacks and saves some gas
         validatedProofs[proofHash] = false;
-        
-        (bytes memory inputNotes,
-        bytes memory outputNotes,
-        address publicOwner,
-        int256 publicValue) = _proofOutput.extractProofOutput();
+
+        (bytes memory inputNotes, bytes memory outputNotes, address publicOwner, int256 publicValue) =
+            _proofOutput.extractProofOutput();
 
         updateInputNotes(inputNotes);
         updateOutputNotes(outputNotes);
@@ -170,16 +156,12 @@ contract NoteRegistry is IAZTEC {
             if (publicValue < 0) {
                 uint256 publicApprovals = registry.publicApprovals[publicOwner][proofHash];
                 registry.totalSupply = registry.totalSupply.add(uint256(-publicValue));
-                require(
-                    publicApprovals >= uint256(-publicValue),
-                    "public owner has not validated a transfer of tokens"
-                );
+                require(publicApprovals >= uint256(-publicValue), "public owner has not validated a transfer of tokens");
                 // TODO: redundant step
                 registry.publicApprovals[publicOwner][proofHash] = publicApprovals.sub(uint256(-publicValue));
                 registry.linkedToken.transferFrom(
-                    publicOwner,
-                    address(this),
-                    uint256(-publicValue).mul(registry.scalingFactor));
+                    publicOwner, address(this), uint256(-publicValue).mul(registry.scalingFactor)
+                );
             } else {
                 registry.totalSupply = registry.totalSupply.sub(uint256(publicValue));
                 registry.linkedToken.transfer(publicOwner, uint256(publicValue).mul(registry.scalingFactor));
@@ -187,9 +169,9 @@ contract NoteRegistry is IAZTEC {
         }
     }
 
-    /** 
-    * @dev This should be called from an asset contract.
-    */
+    /**
+     * @dev This should be called from an asset contract.
+     */
     function publicApprove(address _registryOwner, bytes32 _proofHash, uint256 _value) public {
         Registry storage registry = registries[_registryOwner];
         require(registry.flags.active == true, "note registry does not exist");
@@ -201,24 +183,28 @@ contract NoteRegistry is IAZTEC {
      *
      * @param _owner - address of the registry owner in question
      * @return linkedTokenAddress - public ERC20 token that is linked to the NoteRegistry. This is used to
-     * transfer public value into and out of the system     
+     * transfer public value into and out of the system
      * @return scalingFactor - defines how many ERC20 tokens are represented by one AZTEC note
      * @return totalSupply - TODO
      * @return confidentialTotalMinted - keccak256 hash of the note representing the total minted supply
      * @return confidentialTotalBurned - keccak256 hash of the note representing the total burned supply
-     * @return canConvert - flag set by the owner to decide whether the registry has public to private, and 
+     * @return canConvert - flag set by the owner to decide whether the registry has public to private, and
      * vice versa, conversion privilege
-     * @return canAdjustSupply - determines whether the registry has minting and burning privileges 
+     * @return canAdjustSupply - determines whether the registry has minting and burning privileges
      */
-    function getRegistry(address _owner) public view returns (
-        address linkedToken,
-        uint256 scalingFactor,
-        uint256 totalSupply,
-        bytes32 confidentialTotalMinted,
-        bytes32 confidentialTotalBurned,
-        bool canConvert,
-        bool canAdjustSupply
-    ) {
+    function getRegistry(address _owner)
+        public
+        view
+        returns (
+            address linkedToken,
+            uint256 scalingFactor,
+            uint256 totalSupply,
+            bytes32 confidentialTotalMinted,
+            bytes32 confidentialTotalBurned,
+            bool canConvert,
+            bool canAdjustSupply
+        )
+    {
         require(registries[_owner].flags.active == true, "expected registry to be created");
         Registry memory registry = registries[_owner];
         return (
@@ -243,14 +229,13 @@ contract NoteRegistry is IAZTEC {
      * @return destroyedOn - time the note was destroyed
      * @return noteOwner - address of the note owner
      */
-    function getNote(address _registryOwner, bytes32 _noteHash) public view returns (
-        uint8 status,
-        uint40 createdOn,
-        uint40 destroyedOn,
-        address noteOwner
-    ) {
+    function getNote(address _registryOwner, bytes32 _noteHash)
+        public
+        view
+        returns (uint8 status, uint40 createdOn, uint40 destroyedOn, address noteOwner)
+    {
         require(
-            registries[_registryOwner].notes[_noteHash].status != uint8(NoteStatus.DOES_NOT_EXIST), 
+            registries[_registryOwner].notes[_noteHash].status != uint8(NoteStatus.DOES_NOT_EXIST),
             "expected note to exist"
         );
         // Load out a note for a given registry owner. Struct unpacking is done in Yul to improve efficiency
@@ -317,10 +302,7 @@ contract NoteRegistry is IAZTEC {
                         // `status` occupies byte index 1, `destroyedOn` occupies byte indices 6 - 11.
                         // We create bit mask with a NOT opcode to reduce contract bytecode size.
                         // We then perform logical AND with the bit mask to zero out relevant bits
-                        and(
-                            note,
-                            not(0xffffffffff0000000000ff)
-                        ),
+                        and(note, not(0xffffffffff0000000000ff)),
                         // Now that we have zeroed out storage locations of `status` and `destroyedOn`, update them
                         or(
                             // Create 5-byte timestamp and shift into byte positions 6-11 with a bit shift

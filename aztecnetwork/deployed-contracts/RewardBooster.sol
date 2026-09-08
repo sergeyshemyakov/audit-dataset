@@ -2,73 +2,73 @@
 pragma solidity 0.8.30;
 
 interface IBoosterCore {
-  function updateAndGetShares(address _prover) external returns (uint256);
-  function getSharesFor(address _prover) external view returns (uint256);
+    function updateAndGetShares(address _prover) external returns (uint256);
+    function getSharesFor(address _prover) external view returns (uint256);
 }
 
 struct RewardBoostConfig {
-  uint32 increment;
-  uint32 maxScore;
-  uint32 a; // a
-  uint32 minimum; // m
-  uint32 k; // k
+    uint32 increment;
+    uint32 maxScore;
+    uint32 a; // a
+    uint32 minimum; // m
+    uint32 k; // k
 }
 
 function addEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
 }
 
 function subEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
 }
 
 // Epoch
 
 function eqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) == Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) == Epoch.unwrap(_b);
 }
 
 function neqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) != Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) != Epoch.unwrap(_b);
 }
 
 function gteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
 }
 
 function gtEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) > Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) > Epoch.unwrap(_b);
 }
 
 function lteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
 }
 
 function ltEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) < Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) < Epoch.unwrap(_b);
 }
 
 using {
-  addEpoch as +,
-  subEpoch as -,
-  eqEpoch as ==,
-  neqEpoch as !=,
-  gteEpoch as >=,
-  gtEpoch as >,
-  lteEpoch as <=,
-  ltEpoch as <
+    addEpoch as +,
+    subEpoch as -,
+    eqEpoch as ==,
+    neqEpoch as !=,
+    gteEpoch as >=,
+    gtEpoch as >,
+    lteEpoch as <=,
+    ltEpoch as <
 } for Epoch global;
 
 type Epoch is uint256;
 
 struct ActivityScore {
-  Epoch time;
-  uint32 value;
+    Epoch time;
+    uint32 value;
 }
 
 interface IBooster is IBoosterCore {
-  function getConfig() external view returns (RewardBoostConfig memory);
-  function getActivityScore(address _prover) external view returns (ActivityScore memory);
+    function getConfig() external view returns (RewardBoostConfig memory);
+    function getActivityScore(address _prover) external view returns (ActivityScore memory);
 }
 
 /**
@@ -1229,46 +1229,46 @@ library SafeCast {
 }
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
@@ -1276,48 +1276,48 @@ type Timestamp is uint256;
 type CompressedTimestamp is uint32;
 
 function eqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) == Slot.unwrap(_b);
+    return Slot.unwrap(_a) == Slot.unwrap(_b);
 }
 
 function neqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) != Slot.unwrap(_b);
+    return Slot.unwrap(_a) != Slot.unwrap(_b);
 }
 
 function gteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) >= Slot.unwrap(_b);
+    return Slot.unwrap(_a) >= Slot.unwrap(_b);
 }
 
 function gtSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) > Slot.unwrap(_b);
+    return Slot.unwrap(_a) > Slot.unwrap(_b);
 }
 
 function lteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) <= Slot.unwrap(_b);
+    return Slot.unwrap(_a) <= Slot.unwrap(_b);
 }
 
 function ltSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) < Slot.unwrap(_b);
+    return Slot.unwrap(_a) < Slot.unwrap(_b);
 }
 
 // Slot
 
 function addSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
 }
 
 function subSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
 }
 
 using {
-  eqSlot as ==,
-  neqSlot as !=,
-  gteSlot as >=,
-  gtSlot as >,
-  lteSlot as <=,
-  ltSlot as <,
-  addSlot as +,
-  subSlot as -
+    eqSlot as ==,
+    neqSlot as !=,
+    gteSlot as >=,
+    gtSlot as >,
+    lteSlot as <=,
+    ltSlot as <,
+    addSlot as +,
+    subSlot as -
 } for Slot global;
 
 type Slot is uint256;
@@ -1327,53 +1327,53 @@ type CompressedSlot is uint32;
 type CompressedEpoch is uint32;
 
 library CompressedTimeMath {
-  function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
-    return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
-  }
+    function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
+        return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
+    }
 
-  function compress(Slot _slot) internal pure returns (CompressedSlot) {
-    return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
-  }
+    function compress(Slot _slot) internal pure returns (CompressedSlot) {
+        return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
+    }
 
-  function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
-    return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
-  }
+    function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
+        return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
+    }
 
-  function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
-    return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
-  }
+    function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
+        return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
+    }
 
-  function decompress(CompressedSlot _slot) internal pure returns (Slot) {
-    return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
-  }
+    function decompress(CompressedSlot _slot) internal pure returns (Slot) {
+        return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
+    }
 
-  function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
-    return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
-  }
+    function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
+        return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
+    }
 }
 
 interface IValidatorSelectionCore {
-  event EscapeHatchSet(address escapeHatch);
+    event EscapeHatchSet(address escapeHatch);
 
-  function setupEpoch() external;
-  function checkpointRandao() external;
-  function setEscapeHatch(address _escapeHatch) external;
+    function setupEpoch() external;
+    function checkpointRandao() external;
+    function setEscapeHatch(address _escapeHatch) external;
 }
 
 interface IEmperor {
-  // Not view because it might rely on transient storage.
-  // Calls are essentially trusted
-  function getCurrentProposer() external returns (address);
+    // Not view because it might rely on transient storage.
+    // Calls are essentially trusted
+    function getCurrentProposer() external returns (address);
 
-  function getCurrentSlot() external view returns (Slot);
+    function getCurrentSlot() external view returns (Slot);
 }
 
 function addHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
 }
 
 function subHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
 }
 
 using {addHatch as +, subHatch as -} for Hatch global;
@@ -1387,19 +1387,19 @@ using {addHatch as +, subHatch as -} for Hatch global;
 type Hatch is uint256;
 
 interface IEscapeHatchCore {
-  event CandidateJoined(address indexed candidate);
-  event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
-  event CandidateExited(address indexed candidate, uint256 amountReturned);
-  event CandidateSelected(Hatch indexed hatch, address indexed candidate);
-  event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
-  event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
+    event CandidateJoined(address indexed candidate);
+    event CandidateExitInitiated(address indexed candidate, uint256 exitableAt);
+    event CandidateExited(address indexed candidate, uint256 amountReturned);
+    event CandidateSelected(Hatch indexed hatch, address indexed candidate);
+    event ArchiveUpdated(address indexed proposer, uint128 checkpointNumber, bytes32 archive);
+    event ProofValidated(Hatch indexed hatch, address indexed proposer, bool success, uint256 punishment);
 
-  function joinCandidateSet() external;
-  function initiateExit() external;
-  function leaveCandidateSet() external;
-  function selectCandidates() external;
-  function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
-  function validateProofSubmission(Hatch _hatch) external;
+    function joinCandidateSet() external;
+    function initiateExit() external;
+    function leaveCandidateSet() external;
+    function selectCandidates() external;
+    function updateSubmittedArchive(address _proposer, uint128 _checkpointNumber, bytes32 _archive) external;
+    function validateProofSubmission(Hatch _hatch) external;
 }
 
 /**
@@ -1413,10 +1413,10 @@ interface IEscapeHatchCore {
  * @param EXITING - The candidate is exiting and waiting for the exit delay to pass
  */
 enum Status {
-  NONE,
-  ACTIVE,
-  PROPOSING,
-  EXITING
+    NONE,
+    ACTIVE,
+    PROPOSING,
+    EXITING
 }
 
 /**
@@ -1425,122 +1425,122 @@ enum Status {
  * @notice Information about an escape hatch candidate
  */
 struct CandidateInfo {
-  Status status;
-  uint96 amount;
-  uint32 exitableAt;
-  uint32 lastCheckpointNumber;
-  bytes32 lastSubmittedArchive;
+    Status status;
+    uint96 amount;
+    uint32 exitableAt;
+    uint32 lastCheckpointNumber;
+    bytes32 lastSubmittedArchive;
 }
 
 interface IEscapeHatch is IEscapeHatchCore {
-  function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
-  function getCurrentHatch() external view returns (Hatch);
-  function getHatch(Epoch _epoch) external view returns (Hatch);
-  function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
-  function getDesignatedProposer(Hatch _hatch) external view returns (address);
-  function isHatchPrepared(Hatch _hatch) external view returns (bool);
-  function isHatchValidated(Hatch _hatch) external view returns (bool);
-  function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
-  function getCandidateCount() external view returns (uint256);
-  function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
-  function getCandidateAtIndex(uint256 _index) external view returns (address);
-  function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
-  function isCandidate(address _candidate) external view returns (bool);
-  function getSetTimestamp(Hatch _hatch) external view returns (uint32);
-  function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
-  function getRollup() external view returns (address);
-  function getBondToken() external view returns (address);
-  function getBondSize() external view returns (uint96);
-  function getWithdrawalTax() external view returns (uint96);
-  function getFailedHatchPunishment() external view returns (uint96);
-  function getFrequency() external view returns (uint256);
-  function getActiveDuration() external view returns (uint256);
-  function getLagInHatches() external view returns (uint256);
-  function getProposingExitDelay() external view returns (uint256);
+    function isHatchOpen(Epoch _epoch) external view returns (bool isOpen, address proposer);
+    function getCurrentHatch() external view returns (Hatch);
+    function getHatch(Epoch _epoch) external view returns (Hatch);
+    function getFirstEpoch(Hatch _hatch) external view returns (Epoch);
+    function getDesignatedProposer(Hatch _hatch) external view returns (address);
+    function isHatchPrepared(Hatch _hatch) external view returns (bool);
+    function isHatchValidated(Hatch _hatch) external view returns (bool);
+    function getCandidateInfo(address _candidate) external view returns (CandidateInfo memory);
+    function getCandidateCount() external view returns (uint256);
+    function getCandidateCountForHatch(Hatch _hatch) external view returns (uint256);
+    function getCandidateAtIndex(uint256 _index) external view returns (address);
+    function getCandidateAtIndexForHatch(uint256 _index, Hatch _hatch) external view returns (address);
+    function isCandidate(address _candidate) external view returns (bool);
+    function getSetTimestamp(Hatch _hatch) external view returns (uint32);
+    function getSeedTimestamp(Hatch _hatch) external view returns (uint32);
+    function getRollup() external view returns (address);
+    function getBondToken() external view returns (address);
+    function getBondSize() external view returns (uint96);
+    function getWithdrawalTax() external view returns (uint96);
+    function getFailedHatchPunishment() external view returns (uint96);
+    function getFrequency() external view returns (uint256);
+    function getActiveDuration() external view returns (uint256);
+    function getLagInHatches() external view returns (uint256);
+    function getProposingExitDelay() external view returns (uint256);
 }
 
 interface IValidatorSelection is IValidatorSelectionCore, IEmperor {
-  function getProposerAt(Timestamp _ts) external returns (address);
+    function getProposerAt(Timestamp _ts) external returns (address);
 
-  // Non view as uses transient storage
-  function getCurrentEpochCommittee() external returns (address[] memory);
-  function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
-  function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
-  function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
-  function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
+    // Non view as uses transient storage
+    function getCurrentEpochCommittee() external returns (address[] memory);
+    function getCommitteeAt(Timestamp _ts) external returns (address[] memory);
+    function getCommitteeCommitmentAt(Timestamp _ts) external returns (bytes32, uint256);
+    function getEpochCommittee(Epoch _epoch) external returns (address[] memory);
+    function getEpochCommitteeCommitment(Epoch _epoch) external returns (bytes32, uint256);
 
-  // Stable
-  function getCurrentEpoch() external view returns (Epoch);
+    // Stable
+    function getCurrentEpoch() external view returns (Epoch);
 
-  // Consider removing below this point
-  function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
-  function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
+    // Consider removing below this point
+    function getTimestampForSlot(Slot _slotNumber) external view returns (Timestamp);
+    function getTimestampForEpoch(Epoch _epoch) external view returns (Timestamp);
 
-  function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
-  function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
-  function getLagInEpochsForValidatorSet() external view returns (uint256);
-  function getLagInEpochsForRandao() external view returns (uint256);
-  function getCurrentSampleSeed() external view returns (uint256);
+    function getSampleSeedAt(Timestamp _ts) external view returns (uint256);
+    function getSamplingSizeAt(Timestamp _ts) external view returns (uint256);
+    function getLagInEpochsForValidatorSet() external view returns (uint256);
+    function getLagInEpochsForRandao() external view returns (uint256);
+    function getCurrentSampleSeed() external view returns (uint256);
 
-  function getEpochAt(Timestamp _ts) external view returns (Epoch);
-  function getSlotAt(Timestamp _ts) external view returns (Slot);
-  function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
+    function getEpochAt(Timestamp _ts) external view returns (Epoch);
+    function getSlotAt(Timestamp _ts) external view returns (Slot);
+    function getEpochAtSlot(Slot _slotNumber) external view returns (Epoch);
 
-  function getGenesisTime() external view returns (Timestamp);
-  function getSlotDuration() external view returns (uint256);
-  function getEpochDuration() external view returns (uint256);
-  function getTargetCommitteeSize() external view returns (uint256);
+    function getGenesisTime() external view returns (Timestamp);
+    function getSlotDuration() external view returns (uint256);
+    function getEpochDuration() external view returns (uint256);
+    function getTargetCommitteeSize() external view returns (uint256);
 
-  function getEscapeHatch() external view returns (IEscapeHatch);
-  function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
+    function getEscapeHatch() external view returns (IEscapeHatch);
+    function getEscapeHatchForEpoch(Epoch _epoch) external view returns (IEscapeHatch);
 }
 
 struct CompressedActivityScore {
-  CompressedEpoch time;
-  uint32 value;
+    CompressedEpoch time;
+    uint32 value;
 }
 
 function addSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) + SlashRound.unwrap(_b));
 }
 
 function subSlashRound(SlashRound _a, SlashRound _b) pure returns (SlashRound) {
-  return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
+    return SlashRound.wrap(SlashRound.unwrap(_a) - SlashRound.unwrap(_b));
 }
 
 function eqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) == SlashRound.unwrap(_b);
 }
 
 function neqSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) != SlashRound.unwrap(_b);
 }
 
 function ltSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) < SlashRound.unwrap(_b);
 }
 
 function lteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) <= SlashRound.unwrap(_b);
 }
 
 function gtSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) > SlashRound.unwrap(_b);
 }
 
 function gteSlashRound(SlashRound _a, SlashRound _b) pure returns (bool) {
-  return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
+    return SlashRound.unwrap(_a) >= SlashRound.unwrap(_b);
 }
 
 using {
-  addSlashRound as +,
-  subSlashRound as -,
-  eqSlashRound as ==,
-  neqSlashRound as !=,
-  ltSlashRound as <,
-  lteSlashRound as <=,
-  gtSlashRound as >,
-  gteSlashRound as >=
+    addSlashRound as +,
+    subSlashRound as -,
+    eqSlashRound as ==,
+    neqSlashRound as !=,
+    ltSlashRound as <,
+    lteSlashRound as <=,
+    gtSlashRound as >,
+    gteSlashRound as >=
 } for SlashRound global;
 
 type SlashRound is uint256;
@@ -1556,266 +1556,266 @@ type SlashRound is uint256;
  * src/core/libraries/Errors.sol:Errors errors`
  */
 library Errors {
-  // DEVNET related
-  error DevNet__NoPruningAllowed(); // 0x6984c590
-  error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
+    // DEVNET related
+    error DevNet__NoPruningAllowed(); // 0x6984c590
+    error DevNet__InvalidProposer(address expected, address actual); // 0x11e6e6f7
 
-  // Inbox
-  error Inbox__Unauthorized(); // 0xe5336a6b
-  error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
-  error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
-  error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
-  error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
-  error Inbox__MustBuildBeforeConsume(); // 0xc4901999
+    // Inbox
+    error Inbox__Unauthorized(); // 0xe5336a6b
+    error Inbox__ActorTooLarge(bytes32 actor); // 0xa776a06e
+    error Inbox__VersionMismatch(uint256 expected, uint256 actual); // 0x47452014
+    error Inbox__ContentTooLarge(bytes32 content); // 0x47452014
+    error Inbox__SecretHashTooLarge(bytes32 secretHash); // 0xecde7e2c
+    error Inbox__MustBuildBeforeConsume(); // 0xc4901999
 
-  // Outbox
-  error Outbox__Unauthorized(); // 0x2c9490c2
-  error Outbox__InvalidChainId(); // 0x577ec7c4
-  error Outbox__VersionMismatch(uint256 expected, uint256 actual);
-  error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
-  error Outbox__IncompatibleEntryArguments(
-    bytes32 messageHash,
-    uint64 storedFee,
-    uint64 feePassed,
-    uint32 storedVersion,
-    uint32 versionPassed,
-    uint32 storedDeadline,
-    uint32 deadlinePassed
-  ); // 0x5e789f34
-  error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
-  error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
-  error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
-  error Outbox__PathTooLong();
-  error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
-  error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
+    // Outbox
+    error Outbox__Unauthorized(); // 0x2c9490c2
+    error Outbox__InvalidChainId(); // 0x577ec7c4
+    error Outbox__VersionMismatch(uint256 expected, uint256 actual);
+    error Outbox__NothingToConsume(bytes32 messageHash); // 0xfb4fb506
+    error Outbox__IncompatibleEntryArguments(
+        bytes32 messageHash,
+        uint64 storedFee,
+        uint64 feePassed,
+        uint32 storedVersion,
+        uint32 versionPassed,
+        uint32 storedDeadline,
+        uint32 deadlinePassed
+    ); // 0x5e789f34
+    error Outbox__InvalidRecipient(address expected, address actual); // 0x57aad581
+    error Outbox__AlreadyNullified(Epoch epoch, uint256 leafIndex); // 0xfd71c2d4
+    error Outbox__NothingToConsumeAtEpoch(Epoch epoch); // 0x5e3d32ce
+    error Outbox__PathTooLong();
+    error Outbox__LeafIndexOutOfBounds(uint256 leafIndex, uint256 pathLength);
+    error Outbox__InvalidNumCheckpointsInEpoch(uint256 numCheckpointsInEpoch);
 
-  // Rollup
-  error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
-  error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
-  error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
-  error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
-  error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
-  error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
-  error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
-  error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
-  error Rollup__InvalidProof(); // 0xa5b2ba17
-  error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
-  error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
-  error Rollup__InvalidAttestations();
-  error Rollup__AttestationsAreValid();
-  error Rollup__InvalidAttestationIndex();
-  error Rollup__CheckpointAlreadyProven();
-  error Rollup__CheckpointNotInPendingChain();
-  error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
-  error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
-  error Rollup__NoEpochToProve(); // 0xcbaa3951
-  error Rollup__NonSequentialProving(); // 0x1e5be132
-  error Rollup__NothingToPrune(); // 0x850defd3
-  error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
-  error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
-  error Rollup__TimestampTooOld(); // 0x72ed9c81
-  error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
-  error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
-  error Rollup__NonZeroDaFee(); // 0xd9c75f52
-  error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
-  error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
-  error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
-  error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
-  error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
-  error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
-  error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
-  error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
-  error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error Rollup__ManaLimitExceeded();
-  error Rollup__InvalidFirstEpochProof();
-  error Rollup__InvalidCoinbase();
-  error Rollup__UnavailableTempCheckpointLog(
-    uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
-  );
-  error Rollup__NoBlobsInCheckpoint();
-  error Rollup__CannotInvalidateEscapeHatch();
-  error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
-  error Rollup__FieldElementOutOfRange(bytes32 value);
+    // Rollup
+    error Rollup__InsufficientBondAmount(uint256 minimum, uint256 provided); // 0xa165f276
+    error Rollup__InsufficientFundsInEscrow(uint256 required, uint256 available); // 0xa165f276
+    error Rollup__InvalidArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidCheckpointHeader(bytes32 expected, bytes32 actual);
+    error Rollup__InvalidCheckpointHeaderCount(uint256 expected, uint256 actual);
+    error Rollup__InvalidCheckpointNumber(uint256 expected, uint256 actual); // 0xd1ba9bfa
+    error Rollup__InvalidInHash(bytes32 expected, bytes32 actual); // 0xcd6f4233
+    error Rollup__InvalidOutHash(bytes32 expected, bytes32 actual); // 0x8eb39062
+    error Rollup__InvalidPreviousArchive(bytes32 expected, bytes32 actual); // 0xb682a40e
+    error Rollup__InvalidProof(); // 0xa5b2ba17
+    error Rollup__InvalidProposedArchive(bytes32 expected, bytes32 actual); // 0x32532e73
+    error Rollup__InvalidTimestamp(Timestamp expected, Timestamp actual); // 0x3132e895
+    error Rollup__InvalidAttestations();
+    error Rollup__AttestationsAreValid();
+    error Rollup__InvalidAttestationIndex();
+    error Rollup__CheckpointAlreadyProven();
+    error Rollup__CheckpointNotInPendingChain();
+    error Rollup__InvalidBlobHash(bytes32 expected, bytes32 actual); // 0x13031e6a
+    error Rollup__InvalidBlobProof(bytes32 blobHash); // 0x5ca17bef
+    error Rollup__NoEpochToProve(); // 0xcbaa3951
+    error Rollup__NonSequentialProving(); // 0x1e5be132
+    error Rollup__NothingToPrune(); // 0x850defd3
+    error Rollup__SlotAlreadyInChain(Slot lastSlot, Slot proposedSlot); // 0x83510bd0
+    error Rollup__TimestampInFuture(Timestamp max, Timestamp actual); // 0x89f30690
+    error Rollup__TimestampTooOld(); // 0x72ed9c81
+    error Rollup__TryingToProveNonExistingCheckpoint(); // 0xdd65748c
+    error Rollup__UnavailableTxs(bytes32 txsHash); // 0x414906c3
+    error Rollup__NonZeroDaFee(); // 0xd9c75f52
+    error Rollup__InvalidBasisPointFee(uint256 basisPointFee); // 0x4292d136
+    error Rollup__InvalidManaMinFee(uint256 expected, uint256 actual); // 0x73b6d896
+    error Rollup__StartAndEndNotSameEpoch(Epoch start, Epoch end); // 0xb64ec33e
+    error Rollup__StartIsNotFirstCheckpointOfEpoch(); // 0x19ceb206
+    error Rollup__StartIsNotBuildingOnProven(); // 0x4a59f42e
+    error Rollup__TooManyCheckpointsInEpoch(uint256 expected, uint256 actual); // 0xdf838503
+    error Rollup__NotPastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__PastDeadline(Epoch deadline, Epoch currentEpoch);
+    error Rollup__ProverHaveAlreadySubmitted(address prover, Epoch epoch);
+    error Rollup__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error Rollup__ManaLimitExceeded();
+    error Rollup__InvalidFirstEpochProof();
+    error Rollup__InvalidCoinbase();
+    error Rollup__UnavailableTempCheckpointLog(
+        uint256 checkpointNumber, uint256 pendingCheckpointNumber, uint256 upperLimit
+    );
+    error Rollup__NoBlobsInCheckpoint();
+    error Rollup__CannotInvalidateEscapeHatch();
+    error Rollup__InvalidEscapeHatchProposer(address expected, address actual);
+    error Rollup__FieldElementOutOfRange(bytes32 value);
 
-  // EscapeHatch
-  error EscapeHatch__AlreadyInCandidateSet(address candidate);
-  error EscapeHatch__NotInCandidateSet(address candidate);
-  error EscapeHatch__InvalidStatus(Status expected, Status actual);
-  error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
-  error EscapeHatch__OnlyRollup(address caller, address rollup);
-  error EscapeHatch__NoDesignatedProposer(Hatch hatch);
-  error EscapeHatch__InvalidConfiguration();
-  error EscapeHatch__SetUnstable(Hatch hatch);
-  error EscapeHatch__AlreadyValidated(Hatch hatch);
-  error EscapeHatch__HatchTooEarly(Hatch hatch);
+    // EscapeHatch
+    error EscapeHatch__AlreadyInCandidateSet(address candidate);
+    error EscapeHatch__NotInCandidateSet(address candidate);
+    error EscapeHatch__InvalidStatus(Status expected, Status actual);
+    error EscapeHatch__NotExitableYet(uint256 exitableAt, uint256 currentTime);
+    error EscapeHatch__OnlyRollup(address caller, address rollup);
+    error EscapeHatch__NoDesignatedProposer(Hatch hatch);
+    error EscapeHatch__InvalidConfiguration();
+    error EscapeHatch__SetUnstable(Hatch hatch);
+    error EscapeHatch__AlreadyValidated(Hatch hatch);
+    error EscapeHatch__HatchTooEarly(Hatch hatch);
 
-  // ProposedHeaderLib
-  error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
-  error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
+    // ProposedHeaderLib
+    error HeaderLib__InvalidHeaderSize(uint256 expected, uint256 actual); // 0xf3ccb247
+    error HeaderLib__InvalidSlotNumber(Slot expected, Slot actual); // 0x09ba91ff
 
-  // MerkleLib
-  error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
-  error MerkleLib__InvalidIndexForPathLength();
+    // MerkleLib
+    error MerkleLib__InvalidRoot(bytes32 expected, bytes32 actual, bytes32 leaf, uint256 leafIndex); // 0x5f216bf1
+    error MerkleLib__InvalidIndexForPathLength();
 
-  // SampleLib
-  error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
-  error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
+    // SampleLib
+    error SampleLib__IndexOutOfBounds(uint256 requested, uint256 bound); // 0xa12fc559
+    error SampleLib__SampleLargerThanIndex(uint256 sample, uint256 index); // 0xa11b0f79
 
-  // Sequencer Selection (ValidatorSelection)
-  error ValidatorSelection__EpochNotSetup(); // 0x10816cae
-  error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
-  error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
-  error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
-  error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
-  error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
-  error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
-  error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
-  error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
-  error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
-  error ValidatorSelection__EscapeHatchAlreadySet();
-  error ValidatorSelection__EscapeHatchCannotBeZero();
-  error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
+    // Sequencer Selection (ValidatorSelection)
+    error ValidatorSelection__EpochNotSetup(); // 0x10816cae
+    error ValidatorSelection__InvalidProposer(address expected, address actual); // 0xa8843a68
+    error ValidatorSelection__MissingProposerSignature(address proposer, uint256 index);
+    error ValidatorSelection__InvalidDeposit(address attester, address proposer); // 0x533169bd
+    error ValidatorSelection__InsufficientAttestations(uint256 minimumNeeded, uint256 provided); // 0xaf47297f
+    error ValidatorSelection__InvalidCommitteeCommitment(bytes32 reconstructed, bytes32 expected); // 0xca8d5954
+    error ValidatorSelection__InsufficientValidatorSetSize(uint256 actual, uint256 expected); // 0xf4f28e99
+    error ValidatorSelection__ProposerIndexTooLarge(uint256 index);
+    error ValidatorSelection__EpochNotStable(uint256 queriedEpoch, uint32 currentTimestamp);
+    error ValidatorSelection__InvalidLagInEpochs(uint256 lagInEpochsForValidatorSet, uint256 lagInEpochsForRandao);
+    error ValidatorSelection__EscapeHatchAlreadySet();
+    error ValidatorSelection__EscapeHatchCannotBeZero();
+    error ValidatorSelection__EscapeHatchRollupMismatch(address expected, address actual);
 
-  // Staking
-  error Staking__AlreadyQueued(address _attester);
-  error Staking__QueueEmpty();
-  error Staking__DepositOutOfGas();
-  error Staking__AlreadyActive(address attester); // 0x5e206fa4
-  error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
-  error Staking__AlreadyRegistered(address instance, address attester);
-  error Staking__CannotSlashExitedStake(address); // 0x45bf4940
-  error Staking__FailedToRemove(address); // 0xa7d7baab
-  error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
-  error Staking__InvalidRecipient(address); // 0x7e2f7f1c
-  error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
-  error Staking__NoOneToSlash(address); // 0x7e2f7f1c
-  error Staking__NotExiting(address); // 0xef566ee0
-  error Staking__InitiateWithdrawNeeded(address);
-  error Staking__NotSlasher(address, address); // 0x23a6f432
-  error Staking__NotWithdrawer(address, address); // 0x8e668e5d
-  error Staking__NothingToExit(address); // 0xd2aac9b6
-  error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
-  error Staking__WithdrawFailed(address); // 0x377422c1
-  error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
-  error Staking__NotRollup(address); // 0xf5509eb3
-  error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
-  error Staking__InvalidRollupAddress(address); // 0xd876720e
-  error Staking__NotCanonical(address); // 0x6244212e
-  error Staking__InstanceDoesNotExist(address);
-  error Staking__InsufficientPower(uint256, uint256);
-  error Staking__AlreadyExiting(address);
-  error Staking__FatalError(string);
-  error Staking__NotOurProposal(uint256, address, address);
-  error Staking__IncorrectGovProposer(uint256);
-  error Staking__GovernanceAlreadySet();
-  error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
-  error Staking__InvalidStakingQueueConfig();
-  error Staking__InvalidNormalFlushSizeQuotient();
-  error Staking__InvalidMaxQueueFlushSize();
-  error Staking__InvalidBootstrapFlushSize();
-  error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
-  error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
-  error Staking__SlasherProposerNotInitialized(address slasher);
-  error Staking__NoPendingSlasher();
-  error Staking__SlasherNotReady(Timestamp readyAt);
+    // Staking
+    error Staking__AlreadyQueued(address _attester);
+    error Staking__QueueEmpty();
+    error Staking__DepositOutOfGas();
+    error Staking__AlreadyActive(address attester); // 0x5e206fa4
+    error Staking__QueueAlreadyFlushed(Epoch epoch); // 0x21148c78
+    error Staking__AlreadyRegistered(address instance, address attester);
+    error Staking__CannotSlashExitedStake(address); // 0x45bf4940
+    error Staking__FailedToRemove(address); // 0xa7d7baab
+    error Staking__InvalidDeposit(address attester, address proposer); // 0xf33fe8c6
+    error Staking__InvalidRecipient(address); // 0x7e2f7f1c
+    error Staking__InsufficientStake(uint256, uint256); // 0x903aee24
+    error Staking__NoOneToSlash(address); // 0x7e2f7f1c
+    error Staking__NotExiting(address); // 0xef566ee0
+    error Staking__InitiateWithdrawNeeded(address);
+    error Staking__NotSlasher(address, address); // 0x23a6f432
+    error Staking__NotWithdrawer(address, address); // 0x8e668e5d
+    error Staking__NothingToExit(address); // 0xd2aac9b6
+    error Staking__WithdrawalNotUnlockedYet(Timestamp, Timestamp); // 0x88e1826c
+    error Staking__WithdrawFailed(address); // 0x377422c1
+    error Staking__OutOfBounds(uint256, uint256); // 0x4bea6597
+    error Staking__NotRollup(address); // 0xf5509eb3
+    error Staking__RollupAlreadyRegistered(address); // 0x108a39c8
+    error Staking__InvalidRollupAddress(address); // 0xd876720e
+    error Staking__NotCanonical(address); // 0x6244212e
+    error Staking__InstanceDoesNotExist(address);
+    error Staking__InsufficientPower(uint256, uint256);
+    error Staking__AlreadyExiting(address);
+    error Staking__FatalError(string);
+    error Staking__NotOurProposal(uint256, address, address);
+    error Staking__IncorrectGovProposer(uint256);
+    error Staking__GovernanceAlreadySet();
+    error Staking__InsufficientBootstrapValidators(uint256 queueSize, uint256 bootstrapFlushSize);
+    error Staking__InvalidStakingQueueConfig();
+    error Staking__InvalidNormalFlushSizeQuotient();
+    error Staking__InvalidMaxQueueFlushSize();
+    error Staking__InvalidBootstrapFlushSize();
+    error Staking__BootstrapFlushSizeAboveMax(uint256 bootstrapFlushSize, uint256 maxQueueFlushSize);
+    error Staking__ExitDelayAboveSlasherDelay(uint256 exitDelaySeconds, uint256 slasherExecutionDelay);
+    error Staking__SlasherProposerNotInitialized(address slasher);
+    error Staking__NoPendingSlasher();
+    error Staking__SlasherNotReady(Timestamp readyAt);
 
-  // Fee Juice Portal
-  error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
-  error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
-  error FeeJuicePortal__Unauthorized(); // 0x67e3691e
+    // Fee Juice Portal
+    error FeeJuicePortal__AlreadyInitialized(); // 0xc7a172fe
+    error FeeJuicePortal__InvalidInitialization(); // 0xfd9b3208
+    error FeeJuicePortal__Unauthorized(); // 0x67e3691e
 
-  // Proof Commitment Escrow
-  error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
-  error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
-  error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
+    // Proof Commitment Escrow
+    error ProofCommitmentEscrow__InsufficientBalance(uint256 balance, uint256 requested); // 0x09b8b789
+    error ProofCommitmentEscrow__NotOwner(address caller); // 0x2ac332c1
+    error ProofCommitmentEscrow__WithdrawRequestNotReady(uint256 current, Timestamp readyAt); // 0xb32ab8a7
 
-  // FeeLib
-  error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
-  error FeeLib__AlreadyPreheated();
-  error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
-  error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
-  error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
-  error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
-  error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
-  error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
-  error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
+    // FeeLib
+    error FeeLib__InvalidFeeAssetPriceModifier(); // 0xf2fb32ad
+    error FeeLib__AlreadyPreheated();
+    error FeeLib__InvalidManaTarget(uint256 minimum, uint256 provided);
+    error FeeLib__InvalidManaLimit(uint256 maximum, uint256 provided);
+    error FeeLib__InvalidInitialEthPerFeeAsset(uint256 provided, uint256 minimum, uint256 maximum);
+    error FeeLib__ProvingCostBelowFloor(uint256 provided, uint256 minimum);
+    error FeeLib__ProvingCostAboveCeiling(uint256 provided, uint256 maximum);
+    error FeeLib__ProvingCostCooldown(uint256 nextAllowed);
+    error FeeLib__ProvingCostStepExceeded(uint256 current, uint256 requested);
 
-  // SignatureLib (duplicated)
-  error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
+    // SignatureLib (duplicated)
+    error SignatureLib__InvalidSignature(address, address); // 0xd9cbae6c
 
-  error AttestationLib__InvalidDataSize(uint256, uint256);
-  error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
-  error AttestationLib__SignersSizeMismatch(uint256, uint256);
-  error AttestationLib__NotASignatureAtIndex(uint256 index);
-  error AttestationLib__NotAnAddressAtIndex(uint256 index);
+    error AttestationLib__InvalidDataSize(uint256, uint256);
+    error AttestationLib__SignatureIndicesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignaturesOrAddressesSizeMismatch(uint256, uint256);
+    error AttestationLib__SignersSizeMismatch(uint256, uint256);
+    error AttestationLib__NotASignatureAtIndex(uint256 index);
+    error AttestationLib__NotAnAddressAtIndex(uint256 index);
 
-  // RewardBooster
-  error RewardBooster__OnlyRollup(address caller);
-  error RewardBooster__InvalidConfig();
+    // RewardBooster
+    error RewardBooster__OnlyRollup(address caller);
+    error RewardBooster__InvalidConfig();
 
-  error RewardLib__InvalidSequencerBps();
-  error RewardLib__ZeroShares(address prover);
+    error RewardLib__InvalidSequencerBps();
+    error RewardLib__ZeroShares(address prover);
 
-  // SlashingProposer
-  error SlashingProposer__InvalidSignature();
-  error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
-  error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
-  error SlashingProposer__RoundNotComplete(SlashRound round);
-  error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
-  error SlashingProposer__InvalidCommitteeCommitment();
-  error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
-  error SlashingProposer__QuorumMustBeGreaterThanZero();
-  error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
-  error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
-  error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
-  error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
-  error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
-  error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
-  error SlashingProposer__SlashAmountTooLarge();
-  error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
-  error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
-  error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
-  error SlashingProposer__VotingNotOpen(SlashRound currentRound);
-  error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
-  error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
-  error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
-  error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
-  error SlashingProposer__SlashAmountMustBeGtZero(string info);
+    // SlashingProposer
+    error SlashingProposer__InvalidSignature();
+    error SlashingProposer__InvalidVoteLength(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundAlreadyExecuted(SlashRound round);
+    error SlashingProposer__InvalidNumberOfCommittees(uint256 expected, uint256 actual);
+    error SlashingProposer__RoundNotComplete(SlashRound round);
+    error SlashingProposer__InvalidCommitteeSize(uint256 expected, uint256 actual);
+    error SlashingProposer__InvalidCommitteeCommitment();
+    error SlashingProposer__InvalidQuorumAndRoundSize(uint256 quorum, uint256 roundSize);
+    error SlashingProposer__QuorumMustBeGreaterThanZero();
+    error SlashingProposer__InvalidSlashAmounts(uint256[3] slashAmounts);
+    error SlashingProposer__LifetimeMustBeGreaterThanExecutionDelay(uint256 lifetime, uint256 executionDelay);
+    error SlashingProposer__LifetimeMustBeLessThanRoundabout(uint256 lifetime, uint256 roundabout);
+    error SlashingProposer__RoundSizeInEpochsMustBeGreaterThanZero(uint256 roundSizeInEpochs);
+    error SlashingProposer__RoundSizeTooLarge(uint256 roundSize, uint256 maxRoundSize);
+    error SlashingProposer__CommitteeSizeMustBeGreaterThanZero(uint256 committeeSize);
+    error SlashingProposer__SlashAmountTooLarge();
+    error SlashingProposer__VoteAlreadyCastInCurrentSlot(Slot slot);
+    error SlashingProposer__RoundOutOfRange(SlashRound round, SlashRound currentRound);
+    error SlashingProposer__RoundSizeMustBeMultipleOfEpochDuration(uint256 roundSize, uint256 epochDuration);
+    error SlashingProposer__VotingNotOpen(SlashRound currentRound);
+    error SlashingProposer__SlashOffsetMustBeGreaterThanZero(uint256 slashOffset);
+    error SlashingProposer__InvalidEpochIndex(uint256 epochIndex, uint256 roundSizeInEpochs);
+    error SlashingProposer__VoteSizeTooBig(uint256 voteSize, uint256 maxSize);
+    error SlashingProposer__VotesMustBeMultipleOf4(uint256 votes);
+    error SlashingProposer__SlashAmountMustBeGtZero(string info);
 
-  // SlashPayloadLib
-  error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
+    // SlashPayloadLib
+    error SlashPayload_ArraySizeMismatch(uint256 expected, uint256 actual);
 
-  // OpenZeppelin dependencies
+    // OpenZeppelin dependencies
 
-  // ECDSA
-  error ECDSAInvalidSignature();
-  error ECDSAInvalidSignatureLength(uint256 length);
-  error ECDSAInvalidSignatureS(bytes32 s);
+    // ECDSA
+    error ECDSAInvalidSignature();
+    error ECDSAInvalidSignatureLength(uint256 length);
+    error ECDSAInvalidSignatureS(bytes32 s);
 
-  // Ownable
-  error OwnableUnauthorizedAccount(address account);
-  error OwnableInvalidOwner(address owner);
+    // Ownable
+    error OwnableUnauthorizedAccount(address account);
+    error OwnableInvalidOwner(address owner);
 
-  // Checkpoints
-  error CheckpointUnorderedInsertion();
+    // Checkpoints
+    error CheckpointUnorderedInsertion();
 
-  // ERC20
-  error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
-  error ERC20InvalidSender(address sender);
-  error ERC20InvalidReceiver(address receiver);
-  error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
-  error ERC20InvalidApprover(address approver);
-  error ERC20InvalidSpender(address spender);
+    // ERC20
+    error ERC20InsufficientBalance(address sender, uint256 balance, uint256 needed);
+    error ERC20InvalidSender(address sender);
+    error ERC20InvalidReceiver(address receiver);
+    error ERC20InsufficientAllowance(address spender, uint256 allowance, uint256 needed);
+    error ERC20InvalidApprover(address approver);
+    error ERC20InvalidSpender(address spender);
 
-  // SafeCast
-  error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
-  error SafeCastOverflowedIntToUint(int256 value);
-  error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
-  error SafeCastOverflowedUintToInt(uint256 value);
+    // SafeCast
+    error SafeCastOverflowedUintDowncast(uint8 bits, uint256 value);
+    error SafeCastOverflowedIntToUint(int256 value);
+    error SafeCastOverflowedIntDowncast(uint8 bits, int256 value);
+    error SafeCastOverflowedUintToInt(uint256 value);
 }
 
 /**
@@ -1880,6 +1880,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -1888,7 +1889,9 @@ library Math {
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
             uint256 c = a + b;
-            if (c < a) return (false, 0);
+            if (c < a) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1898,7 +1901,9 @@ library Math {
      */
     function trySub(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b > a) return (false, 0);
+            if (b > a) {
+                return (false, 0);
+            }
             return (true, a - b);
         }
     }
@@ -1911,9 +1916,13 @@ library Math {
             // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
             // benefit is lost if 'b' is also tested.
             // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-            if (a == 0) return (true, 0);
+            if (a == 0) {
+                return (true, 0);
+            }
             uint256 c = a * b;
-            if (c / a != b) return (false, 0);
+            if (c / a != b) {
+                return (false, 0);
+            }
             return (true, c);
         }
     }
@@ -1923,7 +1932,9 @@ library Math {
      */
     function tryDiv(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a / b);
         }
     }
@@ -1933,7 +1944,9 @@ library Math {
      */
     function tryMod(uint256 a, uint256 b) internal pure returns (bool success, uint256 result) {
         unchecked {
-            if (b == 0) return (false, 0);
+            if (b == 0) {
+                return (false, 0);
+            }
             return (true, a % b);
         }
     }
@@ -2107,7 +2120,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -2148,7 +2163,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -2200,7 +2217,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -2239,12 +2258,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -2559,100 +2580,102 @@ library Math {
  * @notice  Abstracts the accounting related to rewards boosting from the POV of the rollup.
  */
 contract RewardBooster is IBooster {
-  using SafeCast for uint256;
-  using CompressedTimeMath for Epoch;
-  using CompressedTimeMath for CompressedEpoch;
+    using SafeCast for uint256;
+    using CompressedTimeMath for Epoch;
+    using CompressedTimeMath for CompressedEpoch;
 
-  IValidatorSelection public immutable ROLLUP;
-  uint256 private immutable CONFIG_INCREMENT;
-  uint256 private immutable CONFIG_MAX_SCORE;
-  uint256 private immutable CONFIG_A;
-  uint256 private immutable CONFIG_MINIMUM;
-  uint256 private immutable CONFIG_K;
+    IValidatorSelection public immutable ROLLUP;
+    uint256 private immutable CONFIG_INCREMENT;
+    uint256 private immutable CONFIG_MAX_SCORE;
+    uint256 private immutable CONFIG_A;
+    uint256 private immutable CONFIG_MINIMUM;
+    uint256 private immutable CONFIG_K;
 
-  mapping(address prover => CompressedActivityScore) internal activityScores;
+    mapping(address prover => CompressedActivityScore) internal activityScores;
 
-  modifier onlyRollup() {
-    require(msg.sender == address(ROLLUP), Errors.RewardBooster__OnlyRollup(msg.sender));
-    _;
-  }
-
-  constructor(IValidatorSelection _rollup, RewardBoostConfig memory _config) {
-    // `_toShares` returns either `CONFIG_K` (top of the curve) or `CONFIG_MINIMUM` (anywhere
-    // else). If either is zero, an accepted prover submission can record zero shares, which
-    // RewardLib.handleRewardsAndFees uses as the duplicate-submission sentinel -- the same
-    // prover could then submit again and reward accounting would be silently dropped.
-    // `maxScore == 0` short-circuits every call to the K branch; require it positive so the
-    // curve has a real range. `minimum <= k` keeps the curve monotonic.
-    require(_config.k > 0, Errors.RewardBooster__InvalidConfig());
-    require(_config.minimum > 0, Errors.RewardBooster__InvalidConfig());
-    require(_config.maxScore > 0, Errors.RewardBooster__InvalidConfig());
-    require(_config.minimum <= _config.k, Errors.RewardBooster__InvalidConfig());
-
-    ROLLUP = _rollup;
-
-    CONFIG_INCREMENT = _config.increment;
-    CONFIG_MAX_SCORE = _config.maxScore;
-    CONFIG_A = _config.a;
-    CONFIG_MINIMUM = _config.minimum;
-    CONFIG_K = _config.k;
-  }
-
-  function updateAndGetShares(address _prover) external override(IBoosterCore) onlyRollup returns (uint256) {
-    Epoch currentEpoch = ROLLUP.getCurrentEpoch();
-
-    CompressedActivityScore storage store = activityScores[_prover];
-    ActivityScore memory curr = _activityScoreAt(store, currentEpoch);
-
-    // If the score was already marked active in this epoch, ignore the addition.
-    if (curr.time != store.time.decompress()) {
-      store.value = Math.min(curr.value + CONFIG_INCREMENT, CONFIG_MAX_SCORE).toUint32();
-      store.time = curr.time.compress();
+    modifier onlyRollup() {
+        require(msg.sender == address(ROLLUP), Errors.RewardBooster__OnlyRollup(msg.sender));
+        _;
     }
 
-    return _toShares(store.value);
-  }
+    constructor(IValidatorSelection _rollup, RewardBoostConfig memory _config) {
+        // `_toShares` returns either `CONFIG_K` (top of the curve) or `CONFIG_MINIMUM` (anywhere
+        // else). If either is zero, an accepted prover submission can record zero shares, which
+        // RewardLib.handleRewardsAndFees uses as the duplicate-submission sentinel -- the same
+        // prover could then submit again and reward accounting would be silently dropped.
+        // `maxScore == 0` short-circuits every call to the K branch; require it positive so the
+        // curve has a real range. `minimum <= k` keeps the curve monotonic.
+        require(_config.k > 0, Errors.RewardBooster__InvalidConfig());
+        require(_config.minimum > 0, Errors.RewardBooster__InvalidConfig());
+        require(_config.maxScore > 0, Errors.RewardBooster__InvalidConfig());
+        require(_config.minimum <= _config.k, Errors.RewardBooster__InvalidConfig());
 
-  function getConfig() external view override(IBooster) returns (RewardBoostConfig memory) {
-    return RewardBoostConfig({
-      increment: CONFIG_INCREMENT.toUint32(),
-      maxScore: CONFIG_MAX_SCORE.toUint32(),
-      a: CONFIG_A.toUint32(),
-      minimum: CONFIG_MINIMUM.toUint32(),
-      k: CONFIG_K.toUint32()
-    });
-  }
+        ROLLUP = _rollup;
 
-  function getSharesFor(address _prover) external view override(IBoosterCore) returns (uint256) {
-    return _toShares(getActivityScore(_prover).value);
-  }
-
-  function getActivityScore(address _prover) public view override(IBooster) returns (ActivityScore memory) {
-    return _activityScoreAt(activityScores[_prover], ROLLUP.getCurrentEpoch());
-  }
-
-  function _activityScoreAt(CompressedActivityScore storage _score, Epoch _epoch)
-    internal
-    view
-    returns (ActivityScore memory)
-  {
-    uint256 decrease = (Epoch.unwrap(_epoch) - Epoch.unwrap(_score.time.decompress())) * 1e5;
-    return
-      ActivityScore({value: decrease > uint256(_score.value) ? 0 : _score.value - decrease.toUint32(), time: _epoch});
-  }
-
-  function _toShares(uint256 _value) internal view returns (uint256) {
-    if (_value >= CONFIG_MAX_SCORE) {
-      return CONFIG_K;
-    }
-    uint256 t = (CONFIG_MAX_SCORE - _value);
-    uint256 rhs = CONFIG_A * t * t / 1e10;
-
-    // Sub would move us below 0
-    if (CONFIG_K < rhs) {
-      return CONFIG_MINIMUM;
+        CONFIG_INCREMENT = _config.increment;
+        CONFIG_MAX_SCORE = _config.maxScore;
+        CONFIG_A = _config.a;
+        CONFIG_MINIMUM = _config.minimum;
+        CONFIG_K = _config.k;
     }
 
-    return Math.max(CONFIG_K - rhs, CONFIG_MINIMUM);
-  }
+    function updateAndGetShares(address _prover) external override(IBoosterCore) onlyRollup returns (uint256) {
+        Epoch currentEpoch = ROLLUP.getCurrentEpoch();
+
+        CompressedActivityScore storage store = activityScores[_prover];
+        ActivityScore memory curr = _activityScoreAt(store, currentEpoch);
+
+        // If the score was already marked active in this epoch, ignore the addition.
+        if (curr.time != store.time.decompress()) {
+            store.value = Math.min(curr.value + CONFIG_INCREMENT, CONFIG_MAX_SCORE).toUint32();
+            store.time = curr.time.compress();
+        }
+
+        return _toShares(store.value);
+    }
+
+    function getConfig() external view override(IBooster) returns (RewardBoostConfig memory) {
+        return RewardBoostConfig({
+            increment: CONFIG_INCREMENT.toUint32(),
+            maxScore: CONFIG_MAX_SCORE.toUint32(),
+            a: CONFIG_A.toUint32(),
+            minimum: CONFIG_MINIMUM.toUint32(),
+            k: CONFIG_K.toUint32()
+        });
+    }
+
+    function getSharesFor(address _prover) external view override(IBoosterCore) returns (uint256) {
+        return _toShares(getActivityScore(_prover).value);
+    }
+
+    function getActivityScore(address _prover) public view override(IBooster) returns (ActivityScore memory) {
+        return _activityScoreAt(activityScores[_prover], ROLLUP.getCurrentEpoch());
+    }
+
+    function _activityScoreAt(CompressedActivityScore storage _score, Epoch _epoch)
+        internal
+        view
+        returns (ActivityScore memory)
+    {
+        uint256 decrease = (Epoch.unwrap(_epoch) - Epoch.unwrap(_score.time.decompress())) * 1e5;
+        return ActivityScore({
+            value: decrease > uint256(_score.value) ? 0 : _score.value - decrease.toUint32(),
+            time: _epoch
+        });
+    }
+
+    function _toShares(uint256 _value) internal view returns (uint256) {
+        if (_value >= CONFIG_MAX_SCORE) {
+            return CONFIG_K;
+        }
+        uint256 t = (CONFIG_MAX_SCORE - _value);
+        uint256 rhs = CONFIG_A * t * t / 1e10;
+
+        // Sub would move us below 0
+        if (CONFIG_K < rhs) {
+            return CONFIG_MINIMUM;
+        }
+
+        return Math.max(CONFIG_K - rhs, CONFIG_MINIMUM);
+    }
 }

@@ -2,16 +2,17 @@
 
 pragma solidity ^0.8.9;
 
-import "./ISlashDoubleSign.sol";
-import "./ISlashBridgeVoting.sol";
-import "./ISlashBridgeOperator.sol";
-import "./ISlashUnavailability.sol";
 import "./ICreditScore.sol";
+import "./ISlashBridgeOperator.sol";
+import "./ISlashBridgeVoting.sol";
+import "./ISlashDoubleSign.sol";
+
+import "./ISlashUnavailability.sol";
 
 interface ISlashIndicator is
-  ISlashDoubleSign,
-  ISlashBridgeVoting,
-  ISlashBridgeOperator,
-  ISlashUnavailability,
-  ICreditScore
+    ISlashDoubleSign,
+    ISlashBridgeVoting,
+    ISlashBridgeOperator,
+    ISlashUnavailability,
+    ICreditScore
 {}

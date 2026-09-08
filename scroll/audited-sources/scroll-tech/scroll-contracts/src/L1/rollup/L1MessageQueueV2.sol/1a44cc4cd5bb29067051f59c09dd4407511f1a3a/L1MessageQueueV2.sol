@@ -20,9 +20,11 @@ import {SystemConfig} from "../system-contract/SystemConfig.sol";
 /// @dev Each appended message is assigned a unique and increasing `uint256` index.
 /// @dev For each message we store its enqueue timestamp and a rolling hash of all messages.
 contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when caller is not `L1ScrollMessenger`.
     error ErrorCallerIsNotMessenger();
@@ -45,9 +47,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @dev Thrown when the given gas limit is lower than the intrinsic gas.
     error ErrorGasLimitBelowIntrinsicGas();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The intrinsic gas for transaction.
     uint256 private constant INTRINSIC_GAS_TX = 21000;
@@ -57,9 +61,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
 
     uint256 private constant PRECISION = 1e18;
 
-    /***********************
+    /**
+     *
      * Immutable Variables *
-     ***********************/
+     *
+     */
 
     /// @notice The address of `L1ScrollMessenger`.
     address public immutable messenger;
@@ -76,9 +82,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @notice The address of `SystemConfig`.
     address public immutable systemConfig;
 
-    /*********************
+    /**
+     *
      * Storage Variables *
-     *********************/
+     *
+     */
 
     /// @dev The list of queued cross-domain messages. The encoding for `bytes32` is
     /// ```text
@@ -104,9 +112,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @dev The storage slots reserved for future usage.
     uint256[46] private __gap;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for the `L1MessageQueueV2` implementation contract.
     ///
@@ -141,9 +151,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         nextUnfinalizedQueueIndex = _nextCrossDomainMessageIndex;
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueueV2
     function getFirstUnfinalizedMessageEnqueueTime() external view returns (uint256 timestamp) {
@@ -155,7 +167,7 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
 
     /// @inheritdoc IL1MessageQueueV2
     function getMessageRollingHash(uint256 queueIndex) external view returns (bytes32 hash) {
-        (hash, ) = _loadAndDecodeRollingHash(queueIndex);
+        (hash,) = _loadAndDecodeRollingHash(queueIndex);
     }
 
     /// @inheritdoc IL1MessageQueueV2
@@ -210,11 +222,7 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
                     len := 1
                     leave
                 }
-                for {
-
-                } gt(v, 0) {
-
-                } {
+                for {} gt(v, 0) {} {
                     len := add(len, 1)
                     v := shr(8, v)
                 }
@@ -320,17 +328,17 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         return hash;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL1MessageQueueV2
-    function appendCrossDomainMessage(
-        address _target,
-        uint256 _gasLimit,
-        bytes calldata _data
-    ) external {
-        if (_msgSender() != messenger) revert ErrorCallerIsNotMessenger();
+    function appendCrossDomainMessage(address _target, uint256 _gasLimit, bytes calldata _data) external {
+        if (_msgSender() != messenger) {
+            revert ErrorCallerIsNotMessenger();
+        }
 
         // validate gas limit
         _validateGasLimit(_gasLimit, _data);
@@ -347,7 +355,9 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         uint256 _gasLimit,
         bytes calldata _data
     ) external {
-        if (_msgSender() != enforcedTxGateway) revert ErrorCallerIsNotEnforcedTxGateway();
+        if (_msgSender() != enforcedTxGateway) {
+            revert ErrorCallerIsNotEnforcedTxGateway();
+        }
 
         // validate gas limit
         _validateGasLimit(_gasLimit, _data);
@@ -358,12 +368,20 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
 
     /// @inheritdoc IL1MessageQueueV2
     function finalizePoppedCrossDomainMessage(uint256 _nextUnfinalizedQueueIndex) external {
-        if (_msgSender() != scrollChain) revert ErrorCallerIsNotScrollChain();
+        if (_msgSender() != scrollChain) {
+            revert ErrorCallerIsNotScrollChain();
+        }
 
         uint256 cachedNextUnfinalizedQueueIndex = nextUnfinalizedQueueIndex;
-        if (_nextUnfinalizedQueueIndex == cachedNextUnfinalizedQueueIndex) return;
-        if (_nextUnfinalizedQueueIndex < cachedNextUnfinalizedQueueIndex) revert ErrorFinalizedIndexTooSmall();
-        if (_nextUnfinalizedQueueIndex > nextCrossDomainMessageIndex) revert ErrorFinalizedIndexTooLarge();
+        if (_nextUnfinalizedQueueIndex == cachedNextUnfinalizedQueueIndex) {
+            return;
+        }
+        if (_nextUnfinalizedQueueIndex < cachedNextUnfinalizedQueueIndex) {
+            revert ErrorFinalizedIndexTooSmall();
+        }
+        if (_nextUnfinalizedQueueIndex > nextCrossDomainMessageIndex) {
+            revert ErrorFinalizedIndexTooLarge();
+        }
 
         nextUnfinalizedQueueIndex = _nextUnfinalizedQueueIndex;
         unchecked {
@@ -371,9 +389,11 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to queue a L1 => L2 cross-domain transaction.
     /// @param _sender The address of the sender account on L2.
@@ -392,7 +412,7 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
         uint256 _queueIndex = nextCrossDomainMessageIndex;
         bytes32 _hash = computeTransactionHash(_sender, _queueIndex, _value, _target, _gasLimit, _data);
         unchecked {
-            (bytes32 _rollingHash, ) = _loadAndDecodeRollingHash(_queueIndex - 1);
+            (bytes32 _rollingHash,) = _loadAndDecodeRollingHash(_queueIndex - 1);
             _rollingHash = _efficientHash(_rollingHash, _hash);
             messageRollingHashes[_queueIndex] = _encodeRollingHash(_rollingHash, block.timestamp);
             nextCrossDomainMessageIndex = _queueIndex + 1;
@@ -405,11 +425,15 @@ contract L1MessageQueueV2 is OwnableUpgradeable, IL1MessageQueueV2 {
     /// @param _gasLimit The value of given gas limit.
     /// @param _calldata The calldata for this message.
     function _validateGasLimit(uint256 _gasLimit, bytes calldata _calldata) internal view {
-        (uint256 maxGasLimit, , ) = SystemConfig(systemConfig).messageQueueParameters();
-        if (_gasLimit > maxGasLimit) revert ErrorGasLimitExceeded();
+        (uint256 maxGasLimit,,) = SystemConfig(systemConfig).messageQueueParameters();
+        if (_gasLimit > maxGasLimit) {
+            revert ErrorGasLimitExceeded();
+        }
         // check if the gas limit is above intrinsic gas
         uint256 intrinsicGas = calculateIntrinsicGasFee(_calldata);
-        if (_gasLimit < intrinsicGas) revert ErrorGasLimitBelowIntrinsicGas();
+        if (_gasLimit < intrinsicGas) {
+            revert ErrorGasLimitBelowIntrinsicGas();
+        }
     }
 
     /// @dev Internal function to load the rolling hash and enqueue timestamp from storage.

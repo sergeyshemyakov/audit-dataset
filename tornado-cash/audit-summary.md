@@ -8,6 +8,7 @@ Commit dates use Git committer timestamps.
 - Report: [TornadoCash_circuit_audit_ABDK.md](<reports/TornadoCash_circuit_audit_ABDK.md>)
 - Auditor: ABDK Consulting
 - Date: 2019-11-25
+- Description: Review of the Tornado Cash circom circuit set (Withdraw, MerkleTree/MerkleTreeChecker, Selector and supporting templates) against the circom documentation and the Tornado spec. No major issues were found, only mostly non-optimal template patterns.
 
 ### Repository: <a href="https://github.com/peppersec/tornado-mixer"><code>peppersec/tornado-mixer</code></a>
 
@@ -24,6 +25,7 @@ Commit dates use Git committer timestamps.
 - Report: [TornadoCash_contract_audit_ABDK.md](<reports/TornadoCash_contract_audit_ABDK.md>)
 - Auditor: ABDK Consulting
 - Date: 2019-11-19
+- Description: Audit of the Tornado Cash on-chain Solidity contract set in the peppersec/tornado-mixer repository, including ERC20Mixer, the mixer core, Merkle tree and hasher contracts. No critical issues were found and all other significant issues were fixed.
 
 ### Repository: <a href="https://github.com/peppersec/tornado-mixer"><code>peppersec/tornado-mixer</code></a>
 
@@ -39,6 +41,7 @@ Commit dates use Git committer timestamps.
 - Report: [TornadoCash_cryptographic_review_ABDK.md](<reports/TornadoCash_cryptographic_review_ABDK.md>)
 - Auditor: ABDK Consulting
 - Date: 2019-11-29
+- Description: Cryptographic review of the Tornado Cash zero-knowledge mixer protocol and its implementation: the deposit/withdraw scheme, Pedersen and MiMC hashing, the Merkle tree construction, and the zkSNARK statement, together with the circomlib primitives they rely on.
 
 ### Repository: <a href="https://github.com/peppersec/tornado-mixer"><code>peppersec/tornado-mixer</code></a>
 
@@ -52,21 +55,81 @@ Commit dates use Git committer timestamps.
 | --- | --- | --- |
 | <a href="https://github.com/iden3/circomlib/tree/master/circuits"><code>master</code></a> (mutable branch) | — | <code>circuits/</code> (recursive directory)<br><code>src/mimcsponge_gencontract.js</code> |
 
-## Tornado pool audit
+## Tornado Farm Smart Contracts and Circuits. Audit
+
+- Report: [ABDK - Tornado Cash Anonymity Mining First Audit.md](<reports/ABDK - Tornado Cash Anonymity Mining First Audit.md>)
+- Auditor: ABDK Consulting
+- Date: 2020-09-01
+- Description: First ABDK audit of the Tornado Cash anonymity mining (Farm) smart contract and its Reward circuit, delivered as private files with Farm.sol published as a gist. A critical circuit issue permitting a reward-value underflow was found, together with moderate and minor contract issues.
+
+### Repository: <a href="https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"><code>AleksandraZv/farm-sol-gist</code></a>
+
+| Revision | Commit date | Audited files or directories |
+| --- | --- | --- |
+| <a href="https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6/051df72c9b1203e7ab7308a4452105036ad46bfb"><code>051df72c9b1203e7ab7308a4452105036ad46bfb</code></a> | August 29, 2020 | <code>Farm.sol</code> |
+
+### Repository: <a href="https://github.com/tornadocash/tornado-anonymity-mining"><code>tornadocash/tornado-anonymity-mining</code></a>
+
+| Revision | Commit date | Audited files or directories |
+| --- | --- | --- |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"><code>audit</code></a> (unresolved tag) | — | <code>circuits/Reward.circom</code> |
+
+## Tornado Farm Smart Contracts and Circuits. Final Audit
+
+- Report: [ABDK - Tornado Cash Anonymity Mining Final Audit.md](<reports/ABDK - Tornado Cash Anonymity Mining Final Audit.md>)
+- Auditor: ABDK Consulting
+- Date: 2020-09-15
+- Description: Final ABDK audit of the Tornado Cash anonymity mining Farm contract and Reward circuit, comparing the audited release tag with the fixed version. The major circuit underflow issue was resolved by explicit range checks, and the remaining issues were judged to have no security impact.
+
+### Repository: <a href="https://github.com/tornadocash/tornado-anonymity-mining"><code>tornadocash/tornado-anonymity-mining</code></a>
+
+| Revision | Commit date | Audited files or directories |
+| --- | --- | --- |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"><code>audit</code></a> (unresolved tag) | — | <code>contracts/Farm.sol</code><br><code>circuits/Reward.circom</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/audit-fixed"><code>audit-fixed</code></a> (mutable branch) | — | <code>contracts/Farm.sol</code><br><code>circuits/Reward.circom</code> |
+
+## Tornado Cash Anonymity Mining Audit
+
+- Report: [Zeropool - Tornado Cash Anonymity Mining.md](<reports/Zeropool - Tornado Cash Anonymity Mining.md>)
+- Auditor: Igor Gulamov (ZeroPool)
+- Date: 2020-10-15
+- Description: Independent ZeroPool audit of the Tornado Cash anonymity mining smart contracts and zkSNARK circuits at commit 820bd83, excluding the generated verifiers and MerkleTree.circom. No critical issues were found; two major issues were reported, one fixed and one accepted as governance-controlled.
+
+### Repository: <a href="https://github.com/tornadocash/tornado-anonymity-mining"><code>tornadocash/tornado-anonymity-mining</code></a>
+
+| Revision | Commit date | Audited files or directories |
+| --- | --- | --- |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/circuits"><code>820bd83254f3264cebaf255869641ebc33288dc3</code></a> | September 21, 2020 | <code>circuits/</code> (recursive directory)<br><code>circuits/MerkleTree.circom</code> (explicitly not audited)<br><code>circuits/MerkleTreeUpdater.circom</code><br><code>circuits/Withdraw.circom</code><br><code>contracts/</code> (recursive directory)<br><code>contracts/IVerifier.sol</code> (explicitly not audited)<br><code>contracts/RewardVerifier.sol</code> (explicitly not audited)<br><code>contracts/TreeUpdateVerifier.sol</code> (explicitly not audited)<br><code>contracts/WithdrawVerifier.sol</code> (explicitly not audited)<br><code>contracts/Miner.sol</code><br><code>contracts/RewardSwap.sol</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/7487ac8b09dcfc78ecc166cff5208435010cec8e/circuits/MerkleTreeUpdater.circom"><code>7487ac8b09dcfc78ecc166cff5208435010cec8e</code></a> | October 12, 2020 | <code>circuits/MerkleTreeUpdater.circom</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/c8865315c50f3a0cabdd4110a6c45ceba4d4b809/contracts/Miner.sol"><code>c8865315c50f3a0cabdd4110a6c45ceba4d4b809</code></a> | October 12, 2020 | <code>contracts/Miner.sol</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/e0008b3ed46dbf127b452d1d086235f0fe2dfcb8/contracts/Miner.sol"><code>e0008b3ed46dbf127b452d1d086235f0fe2dfcb8</code></a> | October 12, 2020 | <code>contracts/Miner.sol</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/49ce4e9375509c3bc866d32fbf6345361a85b9a0/contracts/Miner.sol"><code>49ce4e9375509c3bc866d32fbf6345361a85b9a0</code></a> | October 13, 2020 | <code>contracts/Miner.sol</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/459fa79321b1b48eefc3cb85f82733528d5e56d3/circuits/Withdraw.circom"><code>459fa79321b1b48eefc3cb85f82733528d5e56d3</code></a> | October 14, 2020 | <code>circuits/Withdraw.circom</code> |
+
+## Tornado Smart Contract Audit Conclusion
+
+- Report: [ABDK - Tornado Cash Anonymity Mining Recheck.md](<reports/ABDK - Tornado Cash Anonymity Mining Recheck.md>)
+- Auditor: ABDK Consulting
+- Date: 2020-12-22
+- Description: ABDK re-review of the changed Tornado Cash anonymity mining Solidity contracts at commit 9ec05a6, covering the miner, tornado trees, reward swap, proxy, Merkle tree utilities and interfaces. Three major issues were reported, in IHasher.sol and TornadoTrees.sol.
+
+### Repository: <a href="https://github.com/tornadocash/tornado-anonymity-mining"><code>tornadocash/tornado-anonymity-mining</code></a>
+
+| Revision | Commit date | Audited files or directories |
+| --- | --- | --- |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/9ec05a681d9699a11733b3163dd44a1e90abc345/contracts/interfaces/IHasher.sol"><code>9ec05a681d9699a11733b3163dd44a1e90abc345</code></a> | November 2, 2020 | <code>contracts/interfaces/IHasher.sol</code><br><code>contracts/interfaces/IRewardSwap.sol</code><br><code>contracts/interfaces/IVerifier.sol</code><br><code>contracts/interfaces/ITornado.sol</code><br><code>contracts/Miner.sol</code><br><code>contracts/TornadoTrees.sol</code><br><code>contracts/utils/MerkleTreeWithHistory.sol</code><br><code>contracts/TornadoProxy.sol</code><br><code>contracts/RewardSwap.sol</code><br><code>contracts/utils/OwnableMerkleTree.sol</code> |
+
+## Irrelevant reports
+
+### Tornado pool audit
 
 - Report: [Zeropool-Tornado.pool-audit.md](<reports/Zeropool-Tornado.pool-audit.md>)
 - Auditor: Igor Gulamov (Zeropool)
 - Date: 2021-08-01
+- Description: Independent audit of the tornado-pool zkSNARK circuits (merkleTree.circom, transaction.circom) and Solidity contracts, including the pull request adding OVM support. No critical or major issues were found.
 
-### Repository: <a href="https://github.com/tornadocash/tornado-pool"><code>tornadocash/tornado-pool</code></a>
+### Frontend Security Audit Report: Tornado Cash
 
-| Revision | Commit date | Audited files or directories |
-| --- | --- | --- |
-| <a href="https://github.com/tornadocash/tornado-pool/tree/a976b9b383d5b7110a1d513a21953d3c317377a2/circuits"><code>a976b9b383d5b7110a1d513a21953d3c317377a2</code></a> | July 7, 2021 | <code>circuits/</code> (recursive directory)<br><code>contracts/</code> (recursive directory) |
-| <a href="https://github.com/tornadocash/tornado-pool/commit/75419e5cff407f3cf12541f1c9eb1caf8842ce10"><code>75419e5cff407f3cf12541f1c9eb1caf8842ce10</code></a> | August 13, 2021 | <code>circuits/</code> (recursive directory) |
-| <a href="https://github.com/tornadocash/tornado-pool/commit/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9"><code>f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9</code></a> | August 13, 2021 | <code>circuits/</code> (recursive directory) |
-| <a href="https://github.com/tornadocash/tornado-pool/commit/476668d250c8c421d6be14663b2f1126a01f1933"><code>476668d250c8c421d6be14663b2f1126a01f1933</code></a> | August 13, 2021 | <code>contracts/</code> (recursive directory) |
-| <a href="https://github.com/tornadocash/tornado-pool/commit/042be187d10d331024ab9fa371b8284c449fa77e"><code>042be187d10d331024ab9fa371b8284c449fa77e</code></a> | August 16, 2021 | <code>circuits/</code> (recursive directory)<br><code>contracts/</code> (recursive directory) |
-| <a href="https://github.com/tornadocash/tornado-pool/commit/dd5623629a77e9b0101e8310fc2b10568c129302"><code>dd5623629a77e9b0101e8310fc2b10568c129302</code></a> | August 19, 2021 | <code>circuits/</code> (recursive directory) |
-| <a href="https://github.com/tornadocash/tornado-pool/tree/9931fdebefa6de3a0e4f8884406f593b354d3ddf/circuits"><code>9931fdebefa6de3a0e4f8884406f593b354d3ddf</code></a> | August 19, 2021 | <code>circuits/</code> (recursive directory)<br><code>contracts/</code> (recursive directory) |
-| <a href="https://github.com/tornadocash/tornado-pool/tree/b085ab398eaeefff98771f5dad893cb804d98e70/circuits"><code>b085ab398eaeefff98771f5dad893cb804d98e70</code></a> | August 25, 2021 | <code>circuits/</code> (recursive directory)<br><code>contracts/</code> (recursive directory) |
+- Report: [irrelevant/Decurity - Tornado Cash Classic dApp.md](<reports/irrelevant/Decurity - Tornado Cash Classic dApp.md>)
+- Auditor: Decurity
+- Description: Frontend security audit of the Tornado Cash Classic UI dApp hosted on IPFS, covering client-side hijacking, CSP and header configuration, and related web weaknesses. No onchain contract or circuit code was in scope.

@@ -2,15 +2,17 @@
 pragma solidity 0.8.15;
 
 // Libraries
-import { NotCustomGasToken, Unauthorized, ZeroAddress } from "src/libraries/errors/CommonErrors.sol";
-import { Predeploys } from "src/libraries/Predeploys.sol";
-import { SafeSend } from "src/universal/SafeSend.sol";
+
+import {Predeploys} from "src/libraries/Predeploys.sol";
+import {NotCustomGasToken, Unauthorized, ZeroAddress} from "src/libraries/errors/CommonErrors.sol";
+import {SafeSend} from "src/universal/SafeSend.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IL2ToL2CrossDomainMessenger } from "interfaces/L2/IL2ToL2CrossDomainMessenger.sol";
-import { IL1Block } from "interfaces/L2/IL1Block.sol";
-import { IETHLiquidity } from "interfaces/L2/IETHLiquidity.sol";
+
+import {IETHLiquidity} from "interfaces/L2/IETHLiquidity.sol";
+import {IL1Block} from "interfaces/L2/IL1Block.sol";
+import {IL2ToL2CrossDomainMessenger} from "interfaces/L2/IL2ToL2CrossDomainMessenger.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @custom:predeploy 0x4200000000000000000000000000000000000024
@@ -44,14 +46,16 @@ contract SuperchainETHBridge is ISemver {
     /// @param _chainId  Chain ID of the destination chain.
     /// @return msgHash_ Hash of the message sent.
     function sendETH(address _to, uint256 _chainId) external payable returns (bytes32 msgHash_) {
-        if (_to == address(0)) revert ZeroAddress();
+        if (_to == address(0)) {
+            revert ZeroAddress();
+        }
 
         if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) {
             revert NotCustomGasToken();
         }
 
         // NOTE: 'burn' will soon change to 'deposit'.
-        IETHLiquidity(Predeploys.ETH_LIQUIDITY).burn{ value: msg.value }();
+        IETHLiquidity(Predeploys.ETH_LIQUIDITY).burn{value: msg.value}();
 
         msgHash_ = IL2ToL2CrossDomainMessenger(Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER).sendMessage({
             _destination: _chainId,
@@ -67,12 +71,16 @@ contract SuperchainETHBridge is ISemver {
     /// @param _to         Address to relay ETH to.
     /// @param _amount     Amount of ETH to relay.
     function relayETH(address _from, address _to, uint256 _amount) external {
-        if (msg.sender != Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER) revert Unauthorized();
+        if (msg.sender != Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER) {
+            revert Unauthorized();
+        }
 
         (address crossDomainMessageSender, uint256 source) =
             IL2ToL2CrossDomainMessenger(Predeploys.L2_TO_L2_CROSS_DOMAIN_MESSENGER).crossDomainMessageContext();
 
-        if (crossDomainMessageSender != address(this)) revert InvalidCrossDomainSender();
+        if (crossDomainMessageSender != address(this)) {
+            revert InvalidCrossDomainSender();
+        }
 
         if (IL1Block(Predeploys.L1_BLOCK_ATTRIBUTES).isCustomGasToken()) {
             revert NotCustomGasToken();
@@ -82,7 +90,7 @@ contract SuperchainETHBridge is ISemver {
         IETHLiquidity(Predeploys.ETH_LIQUIDITY).mint(_amount);
 
         // This is a forced ETH send to the recipient, the recipient should NOT expect to be called.
-        new SafeSend{ value: _amount }(payable(_to));
+        new SafeSend{value: _amount}(payable(_to));
 
         emit RelayETH(_from, _to, _amount, source);
     }

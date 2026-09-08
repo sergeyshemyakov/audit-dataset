@@ -68,11 +68,7 @@ library MIPS64Instructions {
     /// @return insn_ The current 32-bit instruction at the pc.
     /// @return opcode_ The opcode value parsed from insn_.
     /// @return fun_ The function value parsed from insn_.
-    function getInstructionDetails(
-        uint64 _pc,
-        bytes32 _memRoot,
-        uint256 _insnProofOffset
-    )
+    function getInstructionDetails(uint64 _pc, bytes32 _memRoot, uint256 _insnProofOffset)
         internal
         pure
         returns (uint32 insn_, uint32 opcode_, uint32 fun_)
@@ -656,10 +652,7 @@ library MIPS64Instructions {
         uint32 _insn,
         uint64 _rtReg,
         uint64 _rs
-    )
-        internal
-        pure
-    {
+    ) internal pure {
         unchecked {
             bool shouldBranch = false;
 
@@ -733,10 +726,7 @@ library MIPS64Instructions {
         uint64 _rs,
         uint64 _rt,
         uint64 _storeReg
-    )
-        internal
-        pure
-    {
+    ) internal pure {
         unchecked {
             uint64 val = 0;
 
@@ -876,10 +866,7 @@ library MIPS64Instructions {
         uint64 _storeReg,
         uint64 _val,
         bool _conditional
-    )
-        internal
-        pure
-    {
+    ) internal pure {
         unchecked {
             // The destination register must be valid.
             require(_storeReg < 32, "MIPS64: valid register");
@@ -900,12 +887,7 @@ library MIPS64Instructions {
     /// @param _memWord The full word to select a subword from.
     /// @param _byteLength The size of the subword.
     /// @param _signExtend Whether to sign extend the selected subwrod.
-    function selectSubWord(
-        uint64 _vaddr,
-        uint64 _memWord,
-        uint64 _byteLength,
-        bool _signExtend
-    )
+    function selectSubWord(uint64 _vaddr, uint64 _memWord, uint64 _byteLength, bool _signExtend)
         internal
         pure
         returns (uint64 retval_)
@@ -924,12 +906,7 @@ library MIPS64Instructions {
     /// @param _memWord The full word to update.
     /// @param _byteLength The size of the subword.
     /// @param _value The subword that updates _memWord.
-    function updateSubWord(
-        uint64 _vaddr,
-        uint64 _memWord,
-        uint64 _byteLength,
-        uint64 _value
-    )
+    function updateSubWord(uint64 _vaddr, uint64 _memWord, uint64 _byteLength, uint64 _value)
         internal
         pure
         returns (uint64 word_)
@@ -940,10 +917,7 @@ library MIPS64Instructions {
         return subWordValue << bitOffset | (~memUpdateMask) & _memWord;
     }
 
-    function calculateSubWordMaskAndOffset(
-        uint64 _vaddr,
-        uint64 _byteLength
-    )
+    function calculateSubWordMaskAndOffset(uint64 _vaddr, uint64 _byteLength)
         internal
         pure
         returns (uint64 dataMask_, uint64 bitOffset_, uint64 bitLength_)
@@ -992,11 +966,7 @@ library MIPS64Memory {
     /// @param _proofOffset The offset of the memory proof in calldata.
     /// @return out_ The hashed MIPS state.
     ///         valid_ Whether the proof is valid.
-    function readMemUnchecked(
-        bytes32 _memRoot,
-        uint64 _addr,
-        uint256 _proofOffset
-    )
+    function readMemUnchecked(bytes32 _memRoot, uint64 _addr, uint256 _proofOffset)
         internal
         pure
         returns (uint64 out_, bool valid_)
@@ -1394,11 +1364,7 @@ library MIPS64Syscalls {
     /// @return v0_ The address of the new mapping or error code on error
     /// @return v1_ 0 if there is no error, non-zero on error
     /// @return newHeap_ The new value for the heap, may be unchanged
-    function handleSysMmap(
-        uint64 _a0,
-        uint64 _a1,
-        uint64 _heap
-    )
+    function handleSysMmap(uint64 _a0, uint64 _a1, uint64 _heap)
         internal
         pure
         returns (uint64 v0_, uint64 v1_, uint64 newHeap_)
@@ -1620,12 +1586,7 @@ library MIPS64Syscalls {
         }
     }
 
-    function handleSyscallUpdates(
-        st.CpuScalars memory _cpu,
-        uint64[32] memory _registers,
-        uint64 _v0,
-        uint64 _v1
-    )
+    function handleSyscallUpdates(st.CpuScalars memory _cpu, uint64[32] memory _registers, uint64 _v0, uint64 _v1)
         internal
         pure
     {
@@ -1775,11 +1736,7 @@ contract MIPS64 is ISemver {
     /// @param _localContext The local key context for the preimage oracle. Optional, can be set as a constant
     ///                      if the caller only requires one set of local keys.
     /// @return postState_ The hash of the post state witness after the state transition.
-    function step(
-        bytes calldata _stateData,
-        bytes calldata _proof,
-        bytes32 _localContext
-    )
+    function step(bytes calldata _stateData, bytes calldata _proof, bytes32 _localContext)
         public
         returns (bytes32 postState_)
     {
@@ -1799,11 +1756,7 @@ contract MIPS64 is ISemver {
         }
     }
 
-    function doStep(
-        bytes calldata _stateData,
-        bytes calldata _proof,
-        bytes32 _localContext
-    )
+    function doStep(bytes calldata _stateData, bytes calldata _proof, bytes32 _localContext)
         internal
         returns (bytes32)
     {
@@ -1953,12 +1906,7 @@ contract MIPS64 is ISemver {
         _state.llOwnerThread = 0;
     }
 
-    function handleRMWOps(
-        State memory _state,
-        ThreadState memory _thread,
-        uint32 _insn,
-        uint32 _opcode
-    )
+    function handleRMWOps(State memory _state, ThreadState memory _thread, uint32 _insn, uint32 _opcode)
         internal
         returns (bytes32)
     {
@@ -2018,12 +1966,7 @@ contract MIPS64 is ISemver {
     /// @param _vaddr The virtual address of the the subword.
     /// @param _byteLength The size of the subword.
     /// @param _signExtend Whether to sign extend the selected subwrod.
-    function loadSubWord(
-        State memory _state,
-        uint64 _vaddr,
-        uint64 _byteLength,
-        bool _signExtend
-    )
+    function loadSubWord(State memory _state, uint64 _vaddr, uint64 _byteLength, bool _signExtend)
         internal
         pure
         returns (uint64 val_)
@@ -2301,11 +2244,7 @@ contract MIPS64 is ISemver {
         }
     }
 
-    function syscallGetRandom(
-        State memory _state,
-        uint64 _a0,
-        uint64 _a1
-    )
+    function syscallGetRandom(State memory _state, uint64 _a0, uint64 _a1)
         internal
         pure
         returns (uint64 v0_, uint64 v1_, bytes32 memRoot_)
@@ -2361,10 +2300,7 @@ contract MIPS64 is ISemver {
         return outputState();
     }
 
-    function execSysRead(
-        State memory _state,
-        sys.SysReadParams memory _args
-    )
+    function execSysRead(State memory _state, sys.SysReadParams memory _args)
         internal
         view
         returns (uint64 v0_, uint64 v1_)
@@ -2462,10 +2398,7 @@ contract MIPS64 is ISemver {
 
     /// @notice Preempts the current thread for another and updates the VM state.
     ///         It reads the inner thread root from calldata to update the current thread stack root.
-    function preemptThread(
-        State memory _state,
-        ThreadState memory _thread
-    )
+    function preemptThread(State memory _state, ThreadState memory _thread)
         internal
         pure
         returns (bool changedDirections_)
@@ -2562,7 +2495,7 @@ contract MIPS64 is ISemver {
     }
 
     function getCpuScalars(ThreadState memory _tc) internal pure returns (st.CpuScalars memory cpu_) {
-        cpu_ = st.CpuScalars({ pc: _tc.pc, nextPC: _tc.nextPC, lo: _tc.lo, hi: _tc.hi });
+        cpu_ = st.CpuScalars({pc: _tc.pc, nextPC: _tc.nextPC, lo: _tc.lo, hi: _tc.hi});
     }
 
     function setStateCpuScalars(ThreadState memory _tc, st.CpuScalars memory _cpu) internal pure {

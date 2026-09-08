@@ -1,7 +1,7 @@
 pragma solidity >=0.5.0 <0.6.0;
 
-import "./JoinSplitABIEncoder.sol";
 import "../../../interfaces/JoinSplitInterface.sol";
+import "./JoinSplitABIEncoder.sol";
 
 /**
  * @title Library to validate AZTEC zero-knowledge proofs
@@ -17,7 +17,8 @@ import "../../../interfaces/JoinSplitInterface.sol";
  * Our full vision of the protocol includes confidential cross-asset interactions via our
  * family of AZTEC zero-knowledge proofs
  * and the AZTEC token standard, stay tuned for updates!
- **/
+ *
+ */
 contract JoinSplit is LibEIP712 {
     /**
      * @dev AZTEC will take any transaction sent to it and attempt to validate a zero knowledge proof.
@@ -27,7 +28,8 @@ contract JoinSplit is LibEIP712 {
      * 260,700 gas + (124,500 * number of input notes) + (167,600 * number of output notes).
      * For a basic 'joinSplit' with 2 inputs and 2 outputs = 844,900 gas.
      * AZTEC is written in YUL to enable manual memory management and for other efficiency savings.
-     **/
+     *
+     */
 
     // solhint-disable payable-fallback
     function() external {
@@ -74,7 +76,10 @@ contract JoinSplit is LibEIP712 {
                 let challenge := mod(calldataload(0x144), gen_order)
 
                 // validate m <= n
-                if gt(m, n) { mstore(0x00, 404) revert(0x00, 0x20) }
+                if gt(m, n) {
+                    mstore(0x00, 404)
+                    revert(0x00, 0x20)
+                }
 
                 // recover k_{public} and calculate k_{public}
                 let kn := calldataload(sub(add(notes, mul(calldataload(notes), 0xc0)), 0xa0))
@@ -96,7 +101,6 @@ contract JoinSplit is LibEIP712 {
                 // We use the AZTEC protocol pairing optimization to reduce the number of pairing comparisons to 1,
                 //  which adds some minor alterations
                 for { let i := 0 } lt(i, n) { i := add(i, 0x01) } {
-
                     // Get the calldata index of this note
                     let noteIndex := add(add(notes, 0x20), mul(i, 0xc0))
 
@@ -123,7 +127,7 @@ contract JoinSplit is LibEIP712 {
                     let c := challenge
 
                     // We don't transmit kBar_{n-1} in the proof to save space, instead we derive it from the
-                    // homomorphic sum condition: \sum_{i=0}^{m-1}\bar{k}_i = \sum_{i=m}^{n-1}\bar{k}_i + k_{public}c, 
+                    // homomorphic sum condition: \sum_{i=0}^{m-1}\bar{k}_i = \sum_{i=m}^{n-1}\bar{k}_i + k_{public}c,
                     // We can recover \bar{k}_{n-1}.
                     // If m=n then \bar{k}_{n-1} = \sum_{i=0}^{n-1}\bar{k}_i + k_{public}
                     // else \bar{k}_{n-1} = \sum_{i=0}^{m-1}\bar{k}_i - \sum_{i=m}^{n-1}\bar{k}_i - k_{public}
@@ -134,9 +138,7 @@ contract JoinSplit is LibEIP712 {
 
                         // if all notes are input notes, invert k
                         switch eq(m, n)
-                        case 1 {
-                            k := sub(gen_order, k)
-                        }
+                        case 1 { k := sub(gen_order, k) }
                     }
 
                     // Check this commitment is well formed...
@@ -146,7 +148,6 @@ contract JoinSplit is LibEIP712 {
                     // Set k = kx_j, a = ax_j, c = cx_j, where j = i - (m+1)
                     switch gt(add(i, 0x01), m)
                     case 1 {
-
                         // before we update k, update kn = \sum_{i=0}^{m-1}k_i - \sum_{i=m}^{n-1}k_i
                         kn := addmod(kn, sub(gen_order, k), gen_order)
                         let x := mload(0x00)
@@ -158,11 +159,10 @@ contract JoinSplit is LibEIP712 {
                         mstore(0x00, keccak256(0x00, 0x20))
                     }
                     case 0 {
-
                         // nothing to do here except update kn = \sum_{i=0}^{m-1}k_i - \sum_{i=m}^{n-1}k_i
                         kn := addmod(kn, k, gen_order)
                     }
-                
+
                     // Calculate the G1 element \gamma_i^{k}h^{a}\sigma_i^{-c} = B_i
                     // Memory map:
                     // 0x20: \gamma_iX
@@ -176,7 +176,7 @@ contract JoinSplit is LibEIP712 {
                     // 0x120: -c
                     calldatacopy(0xe0, add(noteIndex, 0x80), 0x40)
                     calldatacopy(0x20, add(noteIndex, 0x40), 0x40)
-                    mstore(0x120, sub(gen_order, c)) 
+                    mstore(0x120, sub(gen_order, c))
                     mstore(0x60, k)
                     mstore(0xc0, a)
 
@@ -207,8 +207,7 @@ contract JoinSplit is LibEIP712 {
                         mstore(0x280, mload(0x40))
                         mstore(0x1e0, mload(0xe0))
                         mstore(
-                            0x200,
-                            sub(0x30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd47, mload(0x100))
+                            0x200, sub(0x30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd47, mload(0x100))
                         )
                     }
 
@@ -218,16 +217,17 @@ contract JoinSplit is LibEIP712 {
                     if gt(i, m) {
                         mstore(0x60, c)
 
-                        result := and(
-                            result,
+                        result :=
                             and(
+                                result,
                                 and(
-                                    staticcall(gas, 6, 0x1a0, 0x80, 0x1e0, 0x40),
-                                    staticcall(gas, 6, 0x220, 0x80, 0x260, 0x40)
-                                ),
-                                staticcall(gas, 7, 0x20, 0x60, 0x220, 0x40)
+                                    and(
+                                        staticcall(gas, 6, 0x1a0, 0x80, 0x1e0, 0x40),
+                                        staticcall(gas, 6, 0x220, 0x80, 0x260, 0x40)
+                                    ),
+                                    staticcall(gas, 7, 0x20, 0x60, 0x220, 0x40)
+                                )
                             )
-                        )
                         /* result := and(result, staticcall(gas, 7, 0x20, 0x60, 0x220, 0x40))
 
                         // \gamma_i^{cx} now at 0x220:0x260, \gamma_{acc} is at 0x260:0x2a0
@@ -238,7 +238,10 @@ contract JoinSplit is LibEIP712 {
                     }
 
                     // throw transaction if any calls to precompiled contracts failed
-                    if iszero(result) { mstore(0x00, 400) revert(0x00, 0x20) }
+                    if iszero(result) {
+                        mstore(0x00, 400)
+                        revert(0x00, 0x20)
+                    }
                     b := add(b, 0x40) // increase B pointer by 2 words
                 }
 
@@ -246,16 +249,13 @@ contract JoinSplit is LibEIP712 {
                 // a JoinSplit transaction. We can inductively assume that all input notes
                 // are well-formed AZTEC commitments and do not need to validate the implicit range proof
                 // This is not the case for any output commitments, so if (m < n) call validatePairing()
-                if lt(m, n) {
-                    validatePairing(0x84)
-                }
+                if lt(m, n) { validatePairing(0x84) }
 
                 // We now have the note commitments and the calculated blinding factors in a block of memory
                 // starting at 0x2a0, of size (b - 0x2a0).
                 // Hash this block to reconstruct the initial challenge and validate that they match
                 let expected := mod(keccak256(0x2a0, sub(b, 0x2a0)), gen_order)
                 if iszero(eq(expected, challenge)) {
-
                     // No! Bad! No soup for you!
                     mstore(0x00, 404)
                     revert(0x00, 0x20)
@@ -265,11 +265,12 @@ contract JoinSplit is LibEIP712 {
                 // so that we can call `ABIEncoder.encodeAndExit`
             }
 
-            /**        
+            /**
              * @dev evaluate if e(P1, t2) . e(P2, g2) == 0.
              * @notice we don't hard-code t2 so that contracts that call this library can use
              * different trusted setups.
-             **/
+             *
+             */
             function validatePairing(t2) {
                 let field_order := 0x30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd47
                 let t2_x_1 := calldataload(t2)
@@ -278,16 +279,19 @@ contract JoinSplit is LibEIP712 {
                 let t2_y_2 := calldataload(add(t2, 0x60))
 
                 // check provided setup pubkey is not zero or g2
-                if or(or(or(or(or(or(or(
-                    iszero(t2_x_1),
-                    iszero(t2_x_2)),
-                    iszero(t2_y_1)),
-                    iszero(t2_y_2)),
-                    eq(t2_x_1, 0x1800deef121f1e76426a00665e5c4479674322d4f75edadd46debd5cd992f6ed)),
-                    eq(t2_x_2, 0x198e9393920d483a7260bfb731fb5d25f1aa493335a9e71297e485b7aef312c2)),
-                    eq(t2_y_1, 0x12c85ea5db8c6deb4aab71808dcb408fe3d1e7690c43d37b4ce6cc0166fa7daa)),
-                    eq(t2_y_2, 0x90689d0585ff075ec9e99ad690c3395bc4b313370b38ef355acdadcd122975b))
-                {
+                if or(
+                    or(
+                        or(
+                            or(
+                                or(or(or(iszero(t2_x_1), iszero(t2_x_2)), iszero(t2_y_1)), iszero(t2_y_2)),
+                                eq(t2_x_1, 0x1800deef121f1e76426a00665e5c4479674322d4f75edadd46debd5cd992f6ed)
+                            ),
+                            eq(t2_x_2, 0x198e9393920d483a7260bfb731fb5d25f1aa493335a9e71297e485b7aef312c2)
+                        ),
+                        eq(t2_y_1, 0x12c85ea5db8c6deb4aab71808dcb408fe3d1e7690c43d37b4ce6cc0166fa7daa)
+                    ),
+                    eq(t2_y_2, 0x90689d0585ff075ec9e99ad690c3395bc4b313370b38ef355acdadcd122975b)
+                ) {
                     mstore(0x00, 400)
                     revert(0x00, 0x20)
                 }
@@ -323,7 +327,8 @@ contract JoinSplit is LibEIP712 {
              * and that signatures 'k' and 'a' are modulo the order of the curve.
              * Transaction will throw if this is not the case.
              * @param note the calldata loation of the note
-             **/
+             *
+             */
             function validateCommitment(note, k, a) {
                 let gen_order := 0x30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000001
                 let field_order := 0x30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd47
@@ -334,32 +339,24 @@ contract JoinSplit is LibEIP712 {
                 if iszero(
                     and(
                         and(
-                        and(
-                            eq(mod(a, gen_order), a), // a is modulo generator order?
-                            gt(a, 1)                  // can't be 0 or 1 either!
-                        ),
-                        and(
-                            eq(mod(k, gen_order), k), // k is modulo generator order?
-                            gt(k, 1)                  // and not 0 or 1
-                        )
-                        ),
-                        and(
-                        eq( // y^2 ?= x^3 + 3
-                            addmod(
-                                mulmod(mulmod(sigmaX, sigmaX, field_order), sigmaX, field_order),
-                                3,
-                                field_order
+                            and(
+                                eq(mod(a, gen_order), a), // a is modulo generator order?
+                                gt(a, 1) // can't be 0 or 1 either!
                             ),
-                            mulmod(sigmaY, sigmaY, field_order)
+                            and(
+                                eq(mod(k, gen_order), k), // k is modulo generator order?
+                                gt(k, 1) // and not 0 or 1
+                            )
                         ),
-                        eq( // y^2 ?= x^3 + 3
-                            addmod(
-                                mulmod(mulmod(gammaX, gammaX, field_order), gammaX, field_order),
-                                3,
-                                field_order
+                        and(
+                            eq( // y^2 ?= x^3 + 3
+                                addmod(mulmod(mulmod(sigmaX, sigmaX, field_order), sigmaX, field_order), 3, field_order),
+                                mulmod(sigmaY, sigmaY, field_order)
                             ),
-                            mulmod(gammaY, gammaY, field_order)
-                        )
+                            eq( // y^2 ?= x^3 + 3
+                                addmod(mulmod(mulmod(gammaX, gammaX, field_order), gammaX, field_order), 3, field_order),
+                                mulmod(gammaY, gammaY, field_order)
+                            )
                         )
                     )
                 ) {
@@ -376,16 +373,17 @@ contract JoinSplit is LibEIP712 {
              * into a single multi-exponentiation for the purposes of validating the bilinear pairing relationships.
              * @param notes calldata location notes
              * @param n number of notes
-             **/
+             *
+             */
             function hashCommitments(notes, n) {
                 for { let i := 0 } lt(i, n) { i := add(i, 0x01) } {
-                let index := add(add(notes, mul(i, 0xc0)), 0x60)
-                calldatacopy(add(0x320, mul(i, 0x80)), index, 0x80)
+                    let index := add(add(notes, mul(i, 0xc0)), 0x60)
+                    calldatacopy(add(0x320, mul(i, 0x80)), index, 0x80)
                 }
                 mstore(0x00, keccak256(0x320, mul(n, 0x80)))
             }
         }
-    
+
         // if we've reached here, we've validated the join split transaction and haven't thrown an error.
         // Encode the output according to the ACE standard and exit.
         JoinSplitABIEncoder.encodeAndExit(domainHash);

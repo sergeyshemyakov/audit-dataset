@@ -3,8 +3,8 @@ pragma solidity 0.8.11;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 
-import "./common/UUPSOwnableUpgradeable.sol";
 import "./Managed.sol";
+import "./common/UUPSOwnableUpgradeable.sol";
 
 /**
  * @title An ERC-20 token that is a fungible and transferrable representation
@@ -47,16 +47,7 @@ contract StakedCelo is ERC20Upgradeable, UUPSOwnableUpgradeable, Managed {
         _burn(from, amount);
     }
 
-    function getVersionNumber()
-        external
-        pure
-        returns (
-            uint256,
-            uint256,
-            uint256,
-            uint256
-        )
-    {
+    function getVersionNumber() external pure returns (uint256, uint256, uint256, uint256) {
         return (1, 1, 1, 0);
     }
 }

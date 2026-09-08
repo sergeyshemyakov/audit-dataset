@@ -2,18 +2,20 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 // Libraries
-import { Storage } from "src/libraries/Storage.sol";
-import { Constants } from "src/libraries/Constants.sol";
-import { GasPayingToken, IGasToken } from "src/libraries/GasPayingToken.sol";
+
+import {Constants} from "src/libraries/Constants.sol";
+import {GasPayingToken, IGasToken} from "src/libraries/GasPayingToken.sol";
+import {Storage} from "src/libraries/Storage.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IOptimismPortal2 } from "interfaces/L1/IOptimismPortal2.sol";
-import { IResourceMetering } from "interfaces/L1/IResourceMetering.sol";
+
+import {IOptimismPortal2} from "interfaces/L1/IOptimismPortal2.sol";
+import {IResourceMetering} from "interfaces/L1/IResourceMetering.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 /// @custom:proxied true
 /// @title SystemConfig
@@ -172,16 +174,13 @@ contract SystemConfig is OwnableUpgradeable, ISemver, IGasToken {
         IResourceMetering.ResourceConfig memory _config,
         address _batchInbox,
         SystemConfig.Addresses memory _addresses
-    )
-        public
-        initializer
-    {
+    ) public initializer {
         __Ownable_init();
         transferOwnership(_owner);
 
         // These are set in ascending order of their UpdateTypes.
         _setBatcherHash(_batcherHash);
-        _setGasConfigEcotone({ _basefeeScalar: _basefeeScalar, _blobbasefeeScalar: _blobbasefeeScalar });
+        _setGasConfigEcotone({_basefeeScalar: _basefeeScalar, _blobbasefeeScalar: _blobbasefeeScalar});
         _setGasLimit(_gasLimit);
 
         Storage.setAddress(UNSAFE_BLOCK_SIGNER_SLOT, _unsafeBlockSigner);
@@ -308,7 +307,6 @@ contract SystemConfig is OwnableUpgradeable, ISemver, IGasToken {
     /// @param _token Address of the gas paying token.
     function _setGasPayingToken(address _token) internal virtual {
         if (_token != address(0) && _token != Constants.ETHER && !isCustomGasToken()) {
-
             require(
                 ERC20(_token).decimals() == GAS_PAYING_TOKEN_DECIMALS, "SystemConfig: bad decimals of gas paying token"
             );
@@ -316,7 +314,7 @@ contract SystemConfig is OwnableUpgradeable, ISemver, IGasToken {
             bytes32 symbol = GasPayingToken.sanitize(ERC20(_token).symbol());
 
             // Set the gas paying token in storage and in the OptimismPortal.
-            GasPayingToken.set({ _token: _token, _decimals: GAS_PAYING_TOKEN_DECIMALS, _name: name, _symbol: symbol });
+            GasPayingToken.set({_token: _token, _decimals: GAS_PAYING_TOKEN_DECIMALS, _name: name, _symbol: symbol});
             IOptimismPortal2(payable(optimismPortal())).setGasPayingToken({
                 _token: _token,
                 _decimals: GAS_PAYING_TOKEN_DECIMALS,

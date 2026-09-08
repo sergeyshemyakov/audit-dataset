@@ -2,13 +2,15 @@
 
 pragma solidity ^0.8.0;
 
-import {IL2ETHGateway} from "./IL2ETHGateway.sol";
 import {IL2ERC20Gateway} from "./IL2ERC20Gateway.sol";
+import {IL2ETHGateway} from "./IL2ETHGateway.sol";
 
 interface IL2GatewayRouter is IL2ETHGateway, IL2ERC20Gateway {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when the address of ETH Gateway is updated.
     /// @param ethGateway The address of new ETH Gateway.

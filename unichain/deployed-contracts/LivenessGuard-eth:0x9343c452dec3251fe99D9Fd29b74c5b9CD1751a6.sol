@@ -14,10 +14,7 @@ library SafeSigners {
     /// @return v_ Recovery ID or Safe signature type.
     /// @return r_ Output value r of the signature.
     /// @return s_ Output value s of the signature.
-    function signatureSplit(
-        bytes memory _signatures,
-        uint256 _pos
-    )
+    function signatureSplit(bytes memory _signatures, uint256 _pos)
         internal
         pure
         returns (uint8 v_, bytes32 r_, bytes32 s_)
@@ -40,11 +37,7 @@ library SafeSigners {
     ///         It has been modified by removing all signature _validation_ code. We trust the Safe to properly validate
     ///         the signatures.
     ///         This method therefore simply extracts the addresses from the signatures.
-    function getNSigners(
-        bytes32 _dataHash,
-        bytes memory _signatures,
-        uint256 _requiredSignatures
-    )
+    function getNSigners(bytes32 _dataHash, bytes memory _signatures, uint256 _requiredSignatures)
         internal
         pure
         returns (address[] memory owners_)
@@ -445,9 +438,8 @@ interface Guard is IERC165 {
 
 abstract contract BaseGuard is Guard {
     function supportsInterface(bytes4 interfaceId) external view virtual override returns (bool) {
-        return
-            interfaceId == type(Guard).interfaceId || // 0xe6d7a83a
-            interfaceId == type(IERC165).interfaceId; // 0x01ffc9a7
+        return interfaceId == type(Guard).interfaceId // 0xe6d7a83a
+            || interfaceId == type(IERC165).interfaceId; // 0x01ffc9a7
     }
 }
 
@@ -519,9 +511,7 @@ contract LivenessGuard is ISemver, BaseGuard {
         address payable _refundReceiver,
         bytes memory _signatures,
         address _msgSender
-    )
-        external
-    {
+    ) external {
         _msgSender; // silence unused variable warning
         _requireOnlySafe();
 
@@ -549,7 +539,7 @@ contract LivenessGuard is ISemver, BaseGuard {
 
         uint256 threshold = SAFE.getThreshold();
         address[] memory signers =
-            SafeSigners.getNSigners({ _dataHash: txHash, _signatures: _signatures, _requiredSignatures: threshold });
+            SafeSigners.getNSigners({_dataHash: txHash, _signatures: _signatures, _requiredSignatures: threshold});
 
         for (uint256 i = 0; i < signers.length; i++) {
             lastLive[signers[i]] = block.timestamp;

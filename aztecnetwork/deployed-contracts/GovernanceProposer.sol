@@ -2,95 +2,95 @@
 pragma solidity 0.8.30;
 
 interface IPayload {
-  struct Action {
-    address target;
-    bytes data;
-  }
+    struct Action {
+        address target;
+        bytes data;
+    }
 
-  /**
-   * @notice  A URI that can be used to refer to where a non-coder human readable description
-   *          of the payload can be found.
-   *
-   * @dev     Not used in the contracts, so could be any string really
-   *
-   * @return - Ideally a useful URI for the payload description
-   */
-  function getURI() external view returns (string memory);
+    /**
+     * @notice  A URI that can be used to refer to where a non-coder human readable description
+     *          of the payload can be found.
+     *
+     * @dev     Not used in the contracts, so could be any string really
+     *
+     * @return - Ideally a useful URI for the payload description
+     */
+    function getURI() external view returns (string memory);
 
-  function getActions() external view returns (Action[] memory);
+    function getActions() external view returns (Action[] memory);
 }
 
 // Signature
 struct Signature {
-  uint8 v;
-  bytes32 r;
-  bytes32 s;
+    uint8 v;
+    bytes32 r;
+    bytes32 s;
 }
 
 function eqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) == Slot.unwrap(_b);
+    return Slot.unwrap(_a) == Slot.unwrap(_b);
 }
 
 function neqSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) != Slot.unwrap(_b);
+    return Slot.unwrap(_a) != Slot.unwrap(_b);
 }
 
 function gteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) >= Slot.unwrap(_b);
+    return Slot.unwrap(_a) >= Slot.unwrap(_b);
 }
 
 function gtSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) > Slot.unwrap(_b);
+    return Slot.unwrap(_a) > Slot.unwrap(_b);
 }
 
 function lteSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) <= Slot.unwrap(_b);
+    return Slot.unwrap(_a) <= Slot.unwrap(_b);
 }
 
 function ltSlot(Slot _a, Slot _b) pure returns (bool) {
-  return Slot.unwrap(_a) < Slot.unwrap(_b);
+    return Slot.unwrap(_a) < Slot.unwrap(_b);
 }
 
 // Slot
 
 function addSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) + Slot.unwrap(_b));
 }
 
 function subSlot(Slot _a, Slot _b) pure returns (Slot) {
-  return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
+    return Slot.wrap(Slot.unwrap(_a) - Slot.unwrap(_b));
 }
 
 using {
-  eqSlot as ==,
-  neqSlot as !=,
-  gteSlot as >=,
-  gtSlot as >,
-  lteSlot as <=,
-  ltSlot as <,
-  addSlot as +,
-  subSlot as -
+    eqSlot as ==,
+    neqSlot as !=,
+    gteSlot as >=,
+    gtSlot as >,
+    lteSlot as <=,
+    ltSlot as <,
+    addSlot as +,
+    subSlot as -
 } for Slot global;
 
 type Slot is uint256;
 
 interface IEmpire {
-  event SignalCast(IPayload indexed payload, uint256 indexed round, address indexed signaler);
-  event PayloadSubmittable(IPayload indexed payload, uint256 indexed round);
-  event PayloadSubmitted(IPayload indexed payload, uint256 indexed round);
+    event SignalCast(IPayload indexed payload, uint256 indexed round, address indexed signaler);
+    event PayloadSubmittable(IPayload indexed payload, uint256 indexed round);
+    event PayloadSubmitted(IPayload indexed payload, uint256 indexed round);
 
-  function signal(IPayload _payload) external returns (bool);
-  function signalWithSig(IPayload _payload, Signature memory _sig) external returns (bool);
+    function signal(IPayload _payload) external returns (bool);
+    function signalWithSig(IPayload _payload, Signature memory _sig) external returns (bool);
 
-  function submitRoundWinner(uint256 _roundNumber) external returns (bool);
-  function signalCount(address _instance, uint256 _round, IPayload _payload) external view returns (uint256);
-  function computeRound(Slot _slot) external view returns (uint256);
-  function getInstance() external view returns (address);
+    function submitRoundWinner(uint256 _roundNumber) external returns (bool);
+    function signalCount(address _instance, uint256 _round, IPayload _payload) external view returns (uint256);
+    function computeRound(Slot _slot) external view returns (uint256);
+    function getInstance() external view returns (address);
 }
 
 interface IGovernanceProposer is IEmpire {
-  function getProposalProposer(uint256 _proposalId) external view returns (address);
-  function getGovernance() external view returns (address);
+    function getProposalProposer(uint256 _proposalId) external view returns (address);
+    function getGovernance() external view returns (address);
 }
 
 interface IERC5267 {
@@ -1590,6 +1590,7 @@ library Math {
         Ceil, // Toward positive infinity
         Trunc, // Toward zero
         Expand // Away from zero
+
     }
 
     /**
@@ -1889,7 +1890,9 @@ library Math {
      */
     function invMod(uint256 a, uint256 n) internal pure returns (uint256) {
         unchecked {
-            if (n == 0) return 0;
+            if (n == 0) {
+                return 0;
+            }
 
             // The inverse modulo is calculated using the Extended Euclidean Algorithm (iterative version)
             // Used to compute integers x and y such that: ax + ny = gcd(a, n).
@@ -1930,7 +1933,9 @@ library Math {
                 );
             }
 
-            if (gcd != 1) return 0; // No inverse exists.
+            if (gcd != 1) {
+                return 0;
+            } // No inverse exists.
             return ternary(x < 0, n - uint256(-x), uint256(x)); // Wrap the result if it's negative.
         }
     }
@@ -1982,7 +1987,9 @@ library Math {
      * of a revert, but the result may be incorrectly interpreted as 0.
      */
     function tryModExp(uint256 b, uint256 e, uint256 m) internal view returns (bool success, uint256 result) {
-        if (m == 0) return (false, 0);
+        if (m == 0) {
+            return (false, 0);
+        }
         assembly ("memory-safe") {
             let ptr := mload(0x40)
             // | Offset    | Content    | Content (Hex)                                                      |
@@ -2021,12 +2028,14 @@ library Math {
     /**
      * @dev Variant of {tryModExp} that supports inputs of arbitrary length.
      */
-    function tryModExp(
-        bytes memory b,
-        bytes memory e,
-        bytes memory m
-    ) internal view returns (bool success, bytes memory result) {
-        if (_zeroBytes(m)) return (false, new bytes(0));
+    function tryModExp(bytes memory b, bytes memory e, bytes memory m)
+        internal
+        view
+        returns (bool success, bytes memory result)
+    {
+        if (_zeroBytes(m)) {
+            return (false, new bytes(0));
+        }
 
         uint256 mLen = m.length;
 
@@ -2393,14 +2402,13 @@ library Strings {
 
     bytes16 private constant HEX_DIGITS = "0123456789abcdef";
     uint8 private constant ADDRESS_LENGTH = 20;
-    uint256 private constant SPECIAL_CHARS_LOOKUP =
-        (1 << 0x08) | // backspace
-            (1 << 0x09) | // tab
-            (1 << 0x0a) | // newline
-            (1 << 0x0c) | // form feed
-            (1 << 0x0d) | // carriage return
-            (1 << 0x22) | // double quote
-            (1 << 0x5c); // backslash
+    uint256 private constant SPECIAL_CHARS_LOOKUP = (1 << 0x08) // backspace
+        | (1 << 0x09) // tab
+        | (1 << 0x0a) // newline
+        | (1 << 0x0c) // form feed
+        | (1 << 0x0d) // carriage return
+        | (1 << 0x22) // double quote
+        | (1 << 0x5c); // backslash
 
     /**
      * @dev The `value` string doesn't fit in the specified `length`.
@@ -2434,7 +2442,9 @@ library Strings {
                     mstore8(ptr, byte(mod(value, 10), HEX_DIGITS))
                 }
                 value /= 10;
-                if (value == 0) break;
+                if (value == 0) {
+                    break;
+                }
             }
             return buffer;
         }
@@ -2534,7 +2544,9 @@ library Strings {
      */
     function parseUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -2553,12 +2565,14 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
-        if (end > bytes(input).length || begin > end) return (false, 0);
+    function tryParseUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, 0);
+        }
         return _tryParseUintUncheckedBounds(input, begin, end);
     }
 
@@ -2566,17 +2580,19 @@ library Strings {
      * @dev Implementation of {tryParseUint-string-uint256-uint256} that does not check bounds. Caller should make sure that
      * `begin <= end <= input.length`. Other inputs would result in undefined behavior.
      */
-    function _tryParseUintUncheckedBounds(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) private pure returns (bool success, uint256 value) {
+    function _tryParseUintUncheckedBounds(string memory input, uint256 begin, uint256 end)
+        private
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         uint256 result = 0;
         for (uint256 i = begin; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 9) return (false, 0);
+            if (chr > 9) {
+                return (false, 0);
+            }
             result *= 10;
             result += chr;
         }
@@ -2604,7 +2620,9 @@ library Strings {
      */
     function parseInt(string memory input, uint256 begin, uint256 end) internal pure returns (int256) {
         (bool success, int256 value) = tryParseInt(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -2626,12 +2644,14 @@ library Strings {
      *
      * NOTE: This function will revert if the absolute value of the result does not fit in a `uint256`.
      */
-    function tryParseInt(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, int256 value) {
-        if (end > bytes(input).length || begin > end) return (false, 0);
+    function tryParseInt(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, int256 value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, 0);
+        }
         return _tryParseIntUncheckedBounds(input, begin, end);
     }
 
@@ -2639,11 +2659,11 @@ library Strings {
      * @dev Implementation of {tryParseInt-string-uint256-uint256} that does not check bounds. Caller should make sure that
      * `begin <= end <= input.length`. Other inputs would result in undefined behavior.
      */
-    function _tryParseIntUncheckedBounds(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) private pure returns (bool success, int256 value) {
+    function _tryParseIntUncheckedBounds(string memory input, uint256 begin, uint256 end)
+        private
+        pure
+        returns (bool success, int256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // Check presence of a negative sign.
@@ -2658,7 +2678,9 @@ library Strings {
             return (true, negativeSign ? -int256(absValue) : int256(absValue));
         } else if (absSuccess && negativeSign && absValue == ABS_MIN_INT256) {
             return (true, type(int256).min);
-        } else return (false, 0);
+        } else {
+            return (false, 0);
+        }
     }
 
     /**
@@ -2682,7 +2704,9 @@ library Strings {
      */
     function parseHexUint(string memory input, uint256 begin, uint256 end) internal pure returns (uint256) {
         (bool success, uint256 value) = tryParseHexUint(input, begin, end);
-        if (!success) revert StringsInvalidChar();
+        if (!success) {
+            revert StringsInvalidChar();
+        }
         return value;
     }
 
@@ -2701,12 +2725,14 @@ library Strings {
      *
      * NOTE: This function will revert if the result does not fit in a `uint256`.
      */
-    function tryParseHexUint(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, uint256 value) {
-        if (end > bytes(input).length || begin > end) return (false, 0);
+    function tryParseHexUint(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, uint256 value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, 0);
+        }
         return _tryParseHexUintUncheckedBounds(input, begin, end);
     }
 
@@ -2714,11 +2740,11 @@ library Strings {
      * @dev Implementation of {tryParseHexUint-string-uint256-uint256} that does not check bounds. Caller should make sure that
      * `begin <= end <= input.length`. Other inputs would result in undefined behavior.
      */
-    function _tryParseHexUintUncheckedBounds(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) private pure returns (bool success, uint256 value) {
+    function _tryParseHexUintUncheckedBounds(string memory input, uint256 begin, uint256 end)
+        private
+        pure
+        returns (bool success, uint256 value)
+    {
         bytes memory buffer = bytes(input);
 
         // skip 0x prefix if present
@@ -2728,7 +2754,9 @@ library Strings {
         uint256 result = 0;
         for (uint256 i = begin + offset; i < end; ++i) {
             uint8 chr = _tryParseChr(bytes1(_unsafeReadBytesOffset(buffer, i)));
-            if (chr > 15) return (false, 0);
+            if (chr > 15) {
+                return (false, 0);
+            }
             result *= 16;
             unchecked {
                 // Multiplying by 16 is equivalent to a shift of 4 bits (with additional overflow check).
@@ -2758,7 +2786,9 @@ library Strings {
      */
     function parseAddress(string memory input, uint256 begin, uint256 end) internal pure returns (address) {
         (bool success, address value) = tryParseAddress(input, begin, end);
-        if (!success) revert StringsInvalidAddressFormat();
+        if (!success) {
+            revert StringsInvalidAddressFormat();
+        }
         return value;
     }
 
@@ -2774,12 +2804,14 @@ library Strings {
      * @dev Variant of {parseAddress-string-uint256-uint256} that returns false if the parsing fails because input is not a properly
      * formatted address. See {parseAddress-string-uint256-uint256} requirements.
      */
-    function tryParseAddress(
-        string memory input,
-        uint256 begin,
-        uint256 end
-    ) internal pure returns (bool success, address value) {
-        if (end > bytes(input).length || begin > end) return (false, address(0));
+    function tryParseAddress(string memory input, uint256 begin, uint256 end)
+        internal
+        pure
+        returns (bool success, address value)
+    {
+        if (end > bytes(input).length || begin > end) {
+            return (false, address(0));
+        }
 
         bool hasPrefix = (end > begin + 1) && bytes2(_unsafeReadBytesOffset(bytes(input), begin)) == bytes2("0x"); // don't do out-of-bound (possibly unsafe) read if sub-string is empty
         uint256 expectedLength = 40 + hasPrefix.toUint() * 2;
@@ -2803,10 +2835,15 @@ library Strings {
         // - Case 3: [A-F]
         // - otherwise not supported
         unchecked {
-            if (value > 47 && value < 58) value -= 48;
-            else if (value > 96 && value < 103) value -= 87;
-            else if (value > 64 && value < 71) value -= 55;
-            else return type(uint8).max;
+            if (value > 47 && value < 58) {
+                value -= 48;
+            } else if (value > 96 && value < 103) {
+                value -= 87;
+            } else if (value > 64 && value < 71) {
+                value -= 55;
+            } else {
+                return type(uint8).max;
+            }
         }
 
         return value;
@@ -2830,13 +2867,19 @@ library Strings {
             bytes1 char = bytes1(_unsafeReadBytesOffset(buffer, i));
             if (((SPECIAL_CHARS_LOOKUP & (1 << uint8(char))) != 0)) {
                 output[outputLength++] = "\\";
-                if (char == 0x08) output[outputLength++] = "b";
-                else if (char == 0x09) output[outputLength++] = "t";
-                else if (char == 0x0a) output[outputLength++] = "n";
-                else if (char == 0x0c) output[outputLength++] = "f";
-                else if (char == 0x0d) output[outputLength++] = "r";
-                else if (char == 0x5c) output[outputLength++] = "\\";
-                else if (char == 0x22) {
+                if (char == 0x08) {
+                    output[outputLength++] = "b";
+                } else if (char == 0x09) {
+                    output[outputLength++] = "t";
+                } else if (char == 0x0a) {
+                    output[outputLength++] = "n";
+                } else if (char == 0x0c) {
+                    output[outputLength++] = "f";
+                } else if (char == 0x0d) {
+                    output[outputLength++] = "r";
+                } else if (char == 0x5c) {
+                    output[outputLength++] = "\\";
+                } else if (char == 0x22) {
                     // solhint-disable-next-line quotes
                     output[outputLength++] = '"';
                 }
@@ -2922,18 +2965,19 @@ library MessageHashUtils {
      * See {ECDSA-recover}.
      */
     function toDataWithIntendedValidatorHash(address validator, bytes memory data) internal pure returns (bytes32) {
-        return keccak256(abi.encodePacked(hex"19_00", validator, data));
+        return keccak256(abi.encodePacked(hex"1900", validator, data));
     }
 
     /**
      * @dev Variant of {toDataWithIntendedValidatorHash-address-bytes} optimized for cases where `data` is a bytes32.
      */
-    function toDataWithIntendedValidatorHash(
-        address validator,
-        bytes32 messageHash
-    ) internal pure returns (bytes32 digest) {
+    function toDataWithIntendedValidatorHash(address validator, bytes32 messageHash)
+        internal
+        pure
+        returns (bytes32 digest)
+    {
         assembly ("memory-safe") {
-            mstore(0x00, hex"19_00")
+            mstore(0x00, hex"1900")
             mstore(0x02, shl(96, validator))
             mstore(0x16, messageHash)
             digest := keccak256(0x00, 0x36)
@@ -2952,7 +2996,7 @@ library MessageHashUtils {
     function toTypedDataHash(bytes32 domainSeparator, bytes32 structHash) internal pure returns (bytes32 digest) {
         assembly ("memory-safe") {
             let ptr := mload(0x40)
-            mstore(ptr, hex"19_01")
+            mstore(ptr, hex"1901")
             mstore(add(ptr, 0x02), domainSeparator)
             mstore(add(ptr, 0x22), structHash)
             digest := keccak256(ptr, 0x42)
@@ -3164,10 +3208,11 @@ library ECDSA {
      * - with https://web3js.readthedocs.io/en/v1.3.4/web3-eth-accounts.html#sign[Web3.js]
      * - with https://docs.ethers.io/v5/api/signer/#Signer-signMessage[ethers]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes memory signature
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes memory signature)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         if (signature.length == 65) {
             bytes32 r;
             bytes32 s;
@@ -3210,11 +3255,11 @@ library ECDSA {
      *
      * See https://eips.ethereum.org/EIPS/eip-2098[ERC-2098 short signatures]
      */
-    function tryRecover(
-        bytes32 hash,
-        bytes32 r,
-        bytes32 vs
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, bytes32 r, bytes32 vs)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         unchecked {
             bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
             // We do not check for an overflow here since the shift operation results in 0 or 1.
@@ -3236,12 +3281,11 @@ library ECDSA {
      * @dev Overload of {ECDSA-tryRecover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
-    function tryRecover(
-        bytes32 hash,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) internal pure returns (address recovered, RecoverError err, bytes32 errArg) {
+    function tryRecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s)
+        internal
+        pure
+        returns (address recovered, RecoverError err, bytes32 errArg)
+    {
         // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature
         // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines
         // the valid range for s in (301): 0 < s < secp256k1n ÷ 2 + 1, and for v in (302): v ∈ {27, 28}. Most
@@ -3293,65 +3337,65 @@ library ECDSA {
 error SignatureLib__InvalidSignature(address, address);
 
 library SignatureLib {
-  /**
-   * @notice Verifies a signature, throws if the signature is invalid or empty
-   *
-   * @param _signature - The signature to verify
-   * @param _signer - The expected signer of the signature
-   * @param _digest - The digest that was signed
-   */
-  function verify(Signature memory _signature, address _signer, bytes32 _digest) internal pure returns (bool) {
-    address recovered = ECDSA.recover(_digest, _signature.v, _signature.r, _signature.s);
-    require(_signer == recovered, SignatureLib__InvalidSignature(_signer, recovered));
-    return true;
-  }
+    /**
+     * @notice Verifies a signature, throws if the signature is invalid or empty
+     *
+     * @param _signature - The signature to verify
+     * @param _signer - The expected signer of the signature
+     * @param _digest - The digest that was signed
+     */
+    function verify(Signature memory _signature, address _signer, bytes32 _digest) internal pure returns (bool) {
+        address recovered = ECDSA.recover(_digest, _signature.v, _signature.r, _signature.s);
+        require(_signer == recovered, SignatureLib__InvalidSignature(_signer, recovered));
+        return true;
+    }
 
-  function isEmpty(Signature memory _signature) internal pure returns (bool) {
-    return _signature.v == 0;
-  }
+    function isEmpty(Signature memory _signature) internal pure returns (bool) {
+        return _signature.v == 0;
+    }
 }
 
 function addTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) + Timestamp.unwrap(_b));
 }
 
 function subTimestamp(Timestamp _a, Timestamp _b) pure returns (Timestamp) {
-  return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
+    return Timestamp.wrap(Timestamp.unwrap(_a) - Timestamp.unwrap(_b));
 }
 
 function ltTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) < Timestamp.unwrap(_b);
 }
 
 function gtTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) > Timestamp.unwrap(_b);
 }
 
 function lteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) <= Timestamp.unwrap(_b);
 }
 
 function gteTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) >= Timestamp.unwrap(_b);
 }
 
 function neqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) != Timestamp.unwrap(_b);
 }
 
 function eqTimestamp(Timestamp _a, Timestamp _b) pure returns (bool) {
-  return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
+    return Timestamp.unwrap(_a) == Timestamp.unwrap(_b);
 }
 
 using {
-  addTimestamp as +,
-  subTimestamp as -,
-  ltTimestamp as <,
-  gtTimestamp as >,
-  lteTimestamp as <=,
-  gteTimestamp as >=,
-  neqTimestamp as !=,
-  eqTimestamp as ==
+    addTimestamp as +,
+    subTimestamp as -,
+    ltTimestamp as <,
+    gtTimestamp as >,
+    lteTimestamp as <=,
+    gteTimestamp as >=,
+    neqTimestamp as !=,
+    eqTimestamp as ==
 } for Timestamp global;
 
 type Timestamp is uint256;
@@ -3361,48 +3405,48 @@ type CompressedTimestamp is uint32;
 type CompressedSlot is uint32;
 
 function addEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) + Epoch.unwrap(_b));
 }
 
 function subEpoch(Epoch _a, Epoch _b) pure returns (Epoch) {
-  return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
+    return Epoch.wrap(Epoch.unwrap(_a) - Epoch.unwrap(_b));
 }
 
 // Epoch
 
 function eqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) == Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) == Epoch.unwrap(_b);
 }
 
 function neqEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) != Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) != Epoch.unwrap(_b);
 }
 
 function gteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) >= Epoch.unwrap(_b);
 }
 
 function gtEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) > Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) > Epoch.unwrap(_b);
 }
 
 function lteEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) <= Epoch.unwrap(_b);
 }
 
 function ltEpoch(Epoch _a, Epoch _b) pure returns (bool) {
-  return Epoch.unwrap(_a) < Epoch.unwrap(_b);
+    return Epoch.unwrap(_a) < Epoch.unwrap(_b);
 }
 
 using {
-  addEpoch as +,
-  subEpoch as -,
-  eqEpoch as ==,
-  neqEpoch as !=,
-  gteEpoch as >=,
-  gtEpoch as >,
-  lteEpoch as <=,
-  ltEpoch as <
+    addEpoch as +,
+    subEpoch as -,
+    eqEpoch as ==,
+    neqEpoch as !=,
+    gteEpoch as >=,
+    gtEpoch as >,
+    lteEpoch as <=,
+    ltEpoch as <
 } for Epoch global;
 
 type Epoch is uint256;
@@ -3410,36 +3454,36 @@ type Epoch is uint256;
 type CompressedEpoch is uint32;
 
 library CompressedTimeMath {
-  function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
-    return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
-  }
+    function compress(Timestamp _timestamp) internal pure returns (CompressedTimestamp) {
+        return CompressedTimestamp.wrap(SafeCast.toUint32(Timestamp.unwrap(_timestamp)));
+    }
 
-  function compress(Slot _slot) internal pure returns (CompressedSlot) {
-    return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
-  }
+    function compress(Slot _slot) internal pure returns (CompressedSlot) {
+        return CompressedSlot.wrap(SafeCast.toUint32(Slot.unwrap(_slot)));
+    }
 
-  function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
-    return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
-  }
+    function compress(Epoch _epoch) internal pure returns (CompressedEpoch) {
+        return CompressedEpoch.wrap(SafeCast.toUint32(Epoch.unwrap(_epoch)));
+    }
 
-  function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
-    return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
-  }
+    function decompress(CompressedTimestamp _ts) internal pure returns (Timestamp) {
+        return Timestamp.wrap(uint256(CompressedTimestamp.unwrap(_ts)));
+    }
 
-  function decompress(CompressedSlot _slot) internal pure returns (Slot) {
-    return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
-  }
+    function decompress(CompressedSlot _slot) internal pure returns (Slot) {
+        return Slot.wrap(uint256(CompressedSlot.unwrap(_slot)));
+    }
 
-  function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
-    return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
-  }
+    function decompress(CompressedEpoch _epoch) internal pure returns (Epoch) {
+        return Epoch.wrap(uint256(CompressedEpoch.unwrap(_epoch)));
+    }
 }
 
 struct CompressedRoundAccounting {
-  CompressedSlot lastSignalSlot;
-  IPayload payloadWithMostSignals;
-  bool executed;
-  mapping(IPayload payload => uint256 count) signalCount;
+    CompressedSlot lastSignalSlot;
+    IPayload payloadWithMostSignals;
+    bool executed;
+    mapping(IPayload payload => uint256 count) signalCount;
 }
 
 /**
@@ -3450,91 +3494,91 @@ struct CompressedRoundAccounting {
  * when there are multiple contracts that could have thrown the error.
  */
 library Errors {
-  error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
-  error Governance__GovernanceProposerCannotBeSelf();
-  error Governance__CallerNotSelf(address caller, address self);
-  error Governance__CallerCannotBeSelf();
-  error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
-  error Governance__CannotWithdrawToAddressZero();
-  error Governance__WithdrawalNotInitiated();
-  error Governance__WithdrawalAlreadyClaimed();
-  error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
-  error Governance__ProposalNotActive();
-  error Governance__ProposalNotExecutable();
-  error Governance__CannotCallAsset();
-  error Governance__CallFailed(address target);
-  error Governance__ProposalDoesNotExists(uint256 proposalId);
-  error Governance__ProposalAlreadyDropped();
-  error Governance__ProposalCannotBeDropped();
-  error Governance__DepositNotAllowed();
+    error Governance__CallerNotGovernanceProposer(address caller, address governanceProposer);
+    error Governance__GovernanceProposerCannotBeSelf();
+    error Governance__CallerNotSelf(address caller, address self);
+    error Governance__CallerCannotBeSelf();
+    error Governance__InsufficientPower(address voter, uint256 have, uint256 required);
+    error Governance__CannotWithdrawToAddressZero();
+    error Governance__WithdrawalNotInitiated();
+    error Governance__WithdrawalAlreadyClaimed();
+    error Governance__WithdrawalNotUnlockedYet(Timestamp currentTime, Timestamp unlocksAt);
+    error Governance__ProposalNotActive();
+    error Governance__ProposalNotExecutable();
+    error Governance__CannotCallAsset();
+    error Governance__CallFailed(address target);
+    error Governance__ProposalDoesNotExists(uint256 proposalId);
+    error Governance__ProposalAlreadyDropped();
+    error Governance__ProposalCannotBeDropped();
+    error Governance__DepositNotAllowed();
 
-  error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
-  error Governance__CheckpointedUintLib__NotInPast();
+    error Governance__CheckpointedUintLib__InsufficientValue(address owner, uint256 have, uint256 required);
+    error Governance__CheckpointedUintLib__NotInPast();
 
-  error Governance__ConfigurationLib__InvalidMinimumVotes();
-  error Governance__ConfigurationLib__LockAmountTooSmall();
-  error Governance__ConfigurationLib__LockAmountTooBig();
-  error Governance__ConfigurationLib__QuorumTooSmall();
-  error Governance__ConfigurationLib__QuorumTooBig();
-  error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
-  error Governance__ConfigurationLib__TimeTooSmall(string name);
-  error Governance__ConfigurationLib__TimeTooBig(string name);
+    error Governance__ConfigurationLib__InvalidMinimumVotes();
+    error Governance__ConfigurationLib__LockAmountTooSmall();
+    error Governance__ConfigurationLib__LockAmountTooBig();
+    error Governance__ConfigurationLib__QuorumTooSmall();
+    error Governance__ConfigurationLib__QuorumTooBig();
+    error Governance__ConfigurationLib__RequiredYeaMarginTooBig();
+    error Governance__ConfigurationLib__TimeTooSmall(string name);
+    error Governance__ConfigurationLib__TimeTooBig(string name);
 
-  error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
-  error EmpireBase__InstanceHaveNoCode(address instance);
-  error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
-  error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
-  error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
-  error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
-  error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
-  error EmpireBase__PayloadCannotBeAddressZero();
-  error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
-  error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
-  error GovernanceProposer__GSEPayloadInvalid();
+    error EmpireBase__FailedToSubmitRoundWinner(IPayload payload);
+    error EmpireBase__InstanceHaveNoCode(address instance);
+    error EmpireBase__InsufficientSignals(uint256 signalsCast, uint256 signalsNeeded);
+    error EmpireBase__InvalidQuorumAndRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__QuorumCannotBeLargerThanRoundSize(uint256 quorumSize, uint256 roundSize);
+    error EmpireBase__InvalidLifetimeAndExecutionDelay(uint256 lifetimeInRounds, uint256 executionDelayInRounds);
+    error EmpireBase__OnlyProposerCanSignal(address caller, address proposer);
+    error EmpireBase__PayloadAlreadySubmitted(uint256 roundNumber);
+    error EmpireBase__PayloadCannotBeAddressZero();
+    error EmpireBase__RoundTooOld(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__RoundTooNew(uint256 roundNumber, uint256 currentRoundNumber);
+    error EmpireBase__SignalAlreadyCastForSlot(Slot slot);
+    error GovernanceProposer__GSEPayloadInvalid();
 
-  error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
-  error CoinIssuer__InvalidConfiguration();
+    error CoinIssuer__InsufficientMintAvailable(uint256 available, uint256 needed); // 0xa1cc8799
+    error CoinIssuer__InvalidConfiguration();
 
-  error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
-  error Registry__RollupNotRegistered(uint256 version);
-  error Registry__NoRollupsRegistered();
+    error Registry__RollupAlreadyRegistered(address rollup); // 0x3c34eabf
+    error Registry__RollupNotRegistered(uint256 version);
+    error Registry__NoRollupsRegistered();
 
-  error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
+    error RewardDistributor__InvalidCaller(address caller, address canonical); // 0xb95e39f6
 
-  error GSE__NotRollup(address);
-  error GSE__GovernanceAlreadySet();
-  error GSE__InvalidRollupAddress(address);
-  error GSE__RollupAlreadyRegistered(address);
-  error GSE__NotLatestRollup(address);
-  error GSE__AlreadyRegistered(address, address);
-  error GSE__NothingToExit(address);
-  error GSE__InsufficientBalance(uint256, uint256);
-  error GSE__FailedToRemove(address);
-  error GSE__InstanceDoesNotExist(address);
-  error GSE__NotWithdrawer(address, address);
-  error GSE__OutOfBounds(uint256, uint256);
-  error GSE__FatalError(string);
-  error GSE__InvalidProofOfPossession();
-  error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
-  error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
+    error GSE__NotRollup(address);
+    error GSE__GovernanceAlreadySet();
+    error GSE__InvalidRollupAddress(address);
+    error GSE__RollupAlreadyRegistered(address);
+    error GSE__NotLatestRollup(address);
+    error GSE__AlreadyRegistered(address, address);
+    error GSE__NothingToExit(address);
+    error GSE__InsufficientBalance(uint256, uint256);
+    error GSE__FailedToRemove(address);
+    error GSE__InstanceDoesNotExist(address);
+    error GSE__NotWithdrawer(address, address);
+    error GSE__OutOfBounds(uint256, uint256);
+    error GSE__FatalError(string);
+    error GSE__InvalidProofOfPossession();
+    error GSE__CannotChangePublicKeys(uint256 existingPk1x, uint256 existingPk1y);
+    error GSE__ProofOfPossessionAlreadySeen(bytes32 hashedPK1);
 
-  error Delegation__InsufficientPower(address, uint256, uint256);
+    error Delegation__InsufficientPower(address, uint256, uint256);
 }
 
 interface IEmperor {
-  // Not view because it might rely on transient storage.
-  // Calls are essentially trusted
-  function getCurrentProposer() external returns (address);
+    // Not view because it might rely on transient storage.
+    // Calls are essentially trusted
+    function getCurrentProposer() external returns (address);
 
-  function getCurrentSlot() external view returns (Slot);
+    function getCurrentSlot() external view returns (Slot);
 }
 
 struct RoundAccounting {
-  Slot lastSignalSlot;
-  IPayload payloadWithMostSignals;
-  bool executed;
+    Slot lastSignalSlot;
+    IPayload payloadWithMostSignals;
+    bool executed;
 }
 
 /**
@@ -3618,327 +3662,332 @@ struct RoundAccounting {
  * instance.
  */
 abstract contract EmpireBase is EIP712, IEmpire {
-  using SignatureLib for Signature;
-  using CompressedTimeMath for Slot;
-  using CompressedTimeMath for CompressedSlot;
+    using SignatureLib for Signature;
+    using CompressedTimeMath for Slot;
+    using CompressedTimeMath for CompressedSlot;
 
-  // EIP-712 type hash for the Signal struct
-  bytes32 public constant SIGNAL_TYPEHASH = keccak256("Signal(address payload,uint256 slot,address instance)");
+    // EIP-712 type hash for the Signal struct
+    bytes32 public constant SIGNAL_TYPEHASH = keccak256("Signal(address payload,uint256 slot,address instance)");
 
-  // The number of signals needed for a payload to be considered submittable.
-  uint256 public immutable QUORUM_SIZE;
-  // The number of slots per round.
-  uint256 public immutable ROUND_SIZE;
-  // The number of rounds that a round winner may be submitted for, after it have passed.
-  uint256 public immutable LIFETIME_IN_ROUNDS;
-  // The number of rounds that must elapse before a round winner may be submitted.
-  uint256 public immutable EXECUTION_DELAY_IN_ROUNDS;
+    // The number of signals needed for a payload to be considered submittable.
+    uint256 public immutable QUORUM_SIZE;
+    // The number of slots per round.
+    uint256 public immutable ROUND_SIZE;
+    // The number of rounds that a round winner may be submitted for, after it have passed.
+    uint256 public immutable LIFETIME_IN_ROUNDS;
+    // The number of rounds that must elapse before a round winner may be submitted.
+    uint256 public immutable EXECUTION_DELAY_IN_ROUNDS;
 
-  // Mapping of instance to round number to round accounting.
-  mapping(address instance => mapping(uint256 roundNumber => CompressedRoundAccounting)) internal rounds;
+    // Mapping of instance to round number to round accounting.
+    mapping(address instance => mapping(uint256 roundNumber => CompressedRoundAccounting)) internal rounds;
 
-  constructor(uint256 _quorumSize, uint256 _roundSize, uint256 _lifetimeInRounds, uint256 _executionDelayInRounds)
-    EIP712("EmpireBase", "1")
-  {
-    QUORUM_SIZE = _quorumSize;
-    ROUND_SIZE = _roundSize;
-    LIFETIME_IN_ROUNDS = _lifetimeInRounds;
-    EXECUTION_DELAY_IN_ROUNDS = _executionDelayInRounds;
+    constructor(uint256 _quorumSize, uint256 _roundSize, uint256 _lifetimeInRounds, uint256 _executionDelayInRounds)
+        EIP712("EmpireBase", "1")
+    {
+        QUORUM_SIZE = _quorumSize;
+        ROUND_SIZE = _roundSize;
+        LIFETIME_IN_ROUNDS = _lifetimeInRounds;
+        EXECUTION_DELAY_IN_ROUNDS = _executionDelayInRounds;
 
-    require(QUORUM_SIZE > ROUND_SIZE / 2, Errors.EmpireBase__InvalidQuorumAndRoundSize(QUORUM_SIZE, ROUND_SIZE));
-    require(QUORUM_SIZE <= ROUND_SIZE, Errors.EmpireBase__QuorumCannotBeLargerThanRoundSize(QUORUM_SIZE, ROUND_SIZE));
+        require(QUORUM_SIZE > ROUND_SIZE / 2, Errors.EmpireBase__InvalidQuorumAndRoundSize(QUORUM_SIZE, ROUND_SIZE));
+        require(
+            QUORUM_SIZE <= ROUND_SIZE, Errors.EmpireBase__QuorumCannotBeLargerThanRoundSize(QUORUM_SIZE, ROUND_SIZE)
+        );
 
-    require(
-      LIFETIME_IN_ROUNDS > EXECUTION_DELAY_IN_ROUNDS,
-      Errors.EmpireBase__InvalidLifetimeAndExecutionDelay(LIFETIME_IN_ROUNDS, EXECUTION_DELAY_IN_ROUNDS)
-    );
-  }
-
-  /**
-   * @notice	Signal support for a payload
-   *
-   * @dev this only works if msg.sender is the current signaler
-   *
-   * @param _payload - The address of the IPayload to signal support for
-   *
-   * @return True if executed successfully, false otherwise
-   */
-  function signal(IPayload _payload) external override(IEmpire) returns (bool) {
-    return _internalSignal(_payload, Signature({v: 0, r: bytes32(0), s: bytes32(0)}));
-  }
-
-  /**
-   * @notice	Signal support for a payload with a signature from the current signaler
-   *
-   * @param _payload - The payload to signal support for
-   * @param _sig - A signature from the signaler
-   *
-   * @return True if executed successfully, false otherwise
-   */
-  function signalWithSig(IPayload _payload, Signature memory _sig) external override(IEmpire) returns (bool) {
-    return _internalSignal(_payload, _sig);
-  }
-
-  /**
-   * @notice  Submit the round winner to the implementation's `_handleRoundWinner` function
-   *
-   * @dev calls `_handleRoundWinner` on the implementing contract with the winning payload, if applicable.
-   *
-   * @param _roundNumber - The round number to execute
-   *
-   * @return True if executed successfully, false otherwise
-   */
-  function submitRoundWinner(uint256 _roundNumber) external override(IEmpire) returns (bool) {
-    // Need to ensure that the round is not active.
-    address instance = getInstance();
-    require(instance.code.length > 0, Errors.EmpireBase__InstanceHaveNoCode(instance));
-
-    IEmperor selection = IEmperor(instance);
-    Slot currentSlot = selection.getCurrentSlot();
-
-    uint256 currentRound = computeRound(currentSlot);
-
-    require(
-      currentRound > _roundNumber + EXECUTION_DELAY_IN_ROUNDS,
-      Errors.EmpireBase__RoundTooNew(_roundNumber, currentRound)
-    );
-
-    require(
-      currentRound <= _roundNumber + LIFETIME_IN_ROUNDS, Errors.EmpireBase__RoundTooOld(_roundNumber, currentRound)
-    );
-
-    CompressedRoundAccounting storage round = rounds[instance][_roundNumber];
-    require(!round.executed, Errors.EmpireBase__PayloadAlreadySubmitted(_roundNumber));
-
-    // If the payload with the most signals is address(0) there are nothing to execute and it is a no-op.
-    // This will be the case if no signals have been cast during a round, or if people have simple signalled
-    // for nothing to happen (the same as not signalling).
-    require(round.payloadWithMostSignals != IPayload(address(0)), Errors.EmpireBase__PayloadCannotBeAddressZero());
-    uint256 signalsCast = round.signalCount[round.payloadWithMostSignals];
-    require(signalsCast >= QUORUM_SIZE, Errors.EmpireBase__InsufficientSignals(signalsCast, QUORUM_SIZE));
-
-    round.executed = true;
-
-    emit PayloadSubmitted(round.payloadWithMostSignals, _roundNumber);
-
-    require(
-      _handleRoundWinner(round.payloadWithMostSignals),
-      Errors.EmpireBase__FailedToSubmitRoundWinner(round.payloadWithMostSignals)
-    );
-    return true;
-  }
-
-  /**
-   * @notice  Fetch the signal count for a specific payload in a specific round on a specific instance
-   *
-   * @param _instance - The address of the instance
-   * @param _round - The round to lookup
-   * @param _payload - The payload to lookup
-   *
-   * @return The number of signals
-   */
-  function signalCount(address _instance, uint256 _round, IPayload _payload)
-    external
-    view
-    override(IEmpire)
-    returns (uint256)
-  {
-    return rounds[_instance][_round].signalCount[_payload];
-  }
-
-  /**
-   * @notice  Computes the round at the current slot
-   *
-   * @return The round number
-   */
-  function getCurrentRound() external view returns (uint256) {
-    IEmperor selection = IEmperor(getInstance());
-    Slot currentSlot = selection.getCurrentSlot();
-    return computeRound(currentSlot);
-  }
-
-  function getRoundData(address _instance, uint256 _round) external view returns (RoundAccounting memory) {
-    CompressedRoundAccounting storage compressedRound = rounds[_instance][_round];
-    return RoundAccounting({
-      lastSignalSlot: compressedRound.lastSignalSlot.decompress(),
-      payloadWithMostSignals: compressedRound.payloadWithMostSignals,
-      executed: compressedRound.executed
-    });
-  }
-
-  /**
-   * @notice Computes the round at the given slot
-   *
-   * @param _slot - The slot to compute round for
-   *
-   * @return The round number
-   */
-  function computeRound(Slot _slot) public view override(IEmpire) returns (uint256) {
-    return Slot.unwrap(_slot) / ROUND_SIZE;
-  }
-
-  function getSignalSignatureDigest(IPayload _payload, Slot _slot) public view returns (bytes32) {
-    return _hashTypedDataV4(keccak256(abi.encode(SIGNAL_TYPEHASH, _payload, _slot, getInstance())));
-  }
-
-  // Virtual functions
-  function getInstance() public view virtual override(IEmpire) returns (address);
-  function _handleRoundWinner(IPayload _payload) internal virtual returns (bool);
-
-  function _internalSignal(IPayload _payload, Signature memory _sig) internal returns (bool) {
-    address instance = getInstance();
-    require(instance.code.length > 0, Errors.EmpireBase__InstanceHaveNoCode(instance));
-
-    IEmperor selection = IEmperor(instance);
-    Slot currentSlot = selection.getCurrentSlot();
-
-    uint256 roundNumber = computeRound(currentSlot);
-
-    CompressedRoundAccounting storage round = rounds[instance][roundNumber];
-
-    // Ensure that time have progressed since the last slot. If not, the current proposer might send multiple signals
-    require(currentSlot > round.lastSignalSlot.decompress(), Errors.EmpireBase__SignalAlreadyCastForSlot(currentSlot));
-    round.lastSignalSlot = currentSlot.compress();
-
-    address signaler = selection.getCurrentProposer();
-
-    if (_sig.isEmpty()) {
-      require(msg.sender == signaler, Errors.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
-    } else {
-      bytes32 digest = getSignalSignatureDigest(_payload, currentSlot);
-
-      // _sig.verify will throw if invalid, it is more my sanity that I am doing this for.
-      require(_sig.verify(signaler, digest), Errors.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
+        require(
+            LIFETIME_IN_ROUNDS > EXECUTION_DELAY_IN_ROUNDS,
+            Errors.EmpireBase__InvalidLifetimeAndExecutionDelay(LIFETIME_IN_ROUNDS, EXECUTION_DELAY_IN_ROUNDS)
+        );
     }
 
-    round.signalCount[_payload] += 1;
-
-    if (
-      round.payloadWithMostSignals != _payload
-        && round.signalCount[_payload] > round.signalCount[round.payloadWithMostSignals]
-    ) {
-      round.payloadWithMostSignals = _payload;
+    /**
+     * @notice	Signal support for a payload
+     *
+     * @dev this only works if msg.sender is the current signaler
+     *
+     * @param _payload - The address of the IPayload to signal support for
+     *
+     * @return True if executed successfully, false otherwise
+     */
+    function signal(IPayload _payload) external override(IEmpire) returns (bool) {
+        return _internalSignal(_payload, Signature({v: 0, r: bytes32(0), s: bytes32(0)}));
     }
 
-    emit SignalCast(_payload, roundNumber, signaler);
-
-    if (round.signalCount[_payload] == QUORUM_SIZE) {
-      emit PayloadSubmittable(_payload, roundNumber);
+    /**
+     * @notice	Signal support for a payload with a signature from the current signaler
+     *
+     * @param _payload - The payload to signal support for
+     * @param _sig - A signature from the signaler
+     *
+     * @return True if executed successfully, false otherwise
+     */
+    function signalWithSig(IPayload _payload, Signature memory _sig) external override(IEmpire) returns (bool) {
+        return _internalSignal(_payload, _sig);
     }
 
-    return true;
-  }
+    /**
+     * @notice  Submit the round winner to the implementation's `_handleRoundWinner` function
+     *
+     * @dev calls `_handleRoundWinner` on the implementing contract with the winning payload, if applicable.
+     *
+     * @param _roundNumber - The round number to execute
+     *
+     * @return True if executed successfully, false otherwise
+     */
+    function submitRoundWinner(uint256 _roundNumber) external override(IEmpire) returns (bool) {
+        // Need to ensure that the round is not active.
+        address instance = getInstance();
+        require(instance.code.length > 0, Errors.EmpireBase__InstanceHaveNoCode(instance));
+
+        IEmperor selection = IEmperor(instance);
+        Slot currentSlot = selection.getCurrentSlot();
+
+        uint256 currentRound = computeRound(currentSlot);
+
+        require(
+            currentRound > _roundNumber + EXECUTION_DELAY_IN_ROUNDS,
+            Errors.EmpireBase__RoundTooNew(_roundNumber, currentRound)
+        );
+
+        require(
+            currentRound <= _roundNumber + LIFETIME_IN_ROUNDS,
+            Errors.EmpireBase__RoundTooOld(_roundNumber, currentRound)
+        );
+
+        CompressedRoundAccounting storage round = rounds[instance][_roundNumber];
+        require(!round.executed, Errors.EmpireBase__PayloadAlreadySubmitted(_roundNumber));
+
+        // If the payload with the most signals is address(0) there are nothing to execute and it is a no-op.
+        // This will be the case if no signals have been cast during a round, or if people have simple signalled
+        // for nothing to happen (the same as not signalling).
+        require(round.payloadWithMostSignals != IPayload(address(0)), Errors.EmpireBase__PayloadCannotBeAddressZero());
+        uint256 signalsCast = round.signalCount[round.payloadWithMostSignals];
+        require(signalsCast >= QUORUM_SIZE, Errors.EmpireBase__InsufficientSignals(signalsCast, QUORUM_SIZE));
+
+        round.executed = true;
+
+        emit PayloadSubmitted(round.payloadWithMostSignals, _roundNumber);
+
+        require(
+            _handleRoundWinner(round.payloadWithMostSignals),
+            Errors.EmpireBase__FailedToSubmitRoundWinner(round.payloadWithMostSignals)
+        );
+        return true;
+    }
+
+    /**
+     * @notice  Fetch the signal count for a specific payload in a specific round on a specific instance
+     *
+     * @param _instance - The address of the instance
+     * @param _round - The round to lookup
+     * @param _payload - The payload to lookup
+     *
+     * @return The number of signals
+     */
+    function signalCount(address _instance, uint256 _round, IPayload _payload)
+        external
+        view
+        override(IEmpire)
+        returns (uint256)
+    {
+        return rounds[_instance][_round].signalCount[_payload];
+    }
+
+    /**
+     * @notice  Computes the round at the current slot
+     *
+     * @return The round number
+     */
+    function getCurrentRound() external view returns (uint256) {
+        IEmperor selection = IEmperor(getInstance());
+        Slot currentSlot = selection.getCurrentSlot();
+        return computeRound(currentSlot);
+    }
+
+    function getRoundData(address _instance, uint256 _round) external view returns (RoundAccounting memory) {
+        CompressedRoundAccounting storage compressedRound = rounds[_instance][_round];
+        return RoundAccounting({
+            lastSignalSlot: compressedRound.lastSignalSlot.decompress(),
+            payloadWithMostSignals: compressedRound.payloadWithMostSignals,
+            executed: compressedRound.executed
+        });
+    }
+
+    /**
+     * @notice Computes the round at the given slot
+     *
+     * @param _slot - The slot to compute round for
+     *
+     * @return The round number
+     */
+    function computeRound(Slot _slot) public view override(IEmpire) returns (uint256) {
+        return Slot.unwrap(_slot) / ROUND_SIZE;
+    }
+
+    function getSignalSignatureDigest(IPayload _payload, Slot _slot) public view returns (bytes32) {
+        return _hashTypedDataV4(keccak256(abi.encode(SIGNAL_TYPEHASH, _payload, _slot, getInstance())));
+    }
+
+    // Virtual functions
+    function getInstance() public view virtual override(IEmpire) returns (address);
+    function _handleRoundWinner(IPayload _payload) internal virtual returns (bool);
+
+    function _internalSignal(IPayload _payload, Signature memory _sig) internal returns (bool) {
+        address instance = getInstance();
+        require(instance.code.length > 0, Errors.EmpireBase__InstanceHaveNoCode(instance));
+
+        IEmperor selection = IEmperor(instance);
+        Slot currentSlot = selection.getCurrentSlot();
+
+        uint256 roundNumber = computeRound(currentSlot);
+
+        CompressedRoundAccounting storage round = rounds[instance][roundNumber];
+
+        // Ensure that time have progressed since the last slot. If not, the current proposer might send multiple signals
+        require(
+            currentSlot > round.lastSignalSlot.decompress(), Errors.EmpireBase__SignalAlreadyCastForSlot(currentSlot)
+        );
+        round.lastSignalSlot = currentSlot.compress();
+
+        address signaler = selection.getCurrentProposer();
+
+        if (_sig.isEmpty()) {
+            require(msg.sender == signaler, Errors.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
+        } else {
+            bytes32 digest = getSignalSignatureDigest(_payload, currentSlot);
+
+            // _sig.verify will throw if invalid, it is more my sanity that I am doing this for.
+            require(_sig.verify(signaler, digest), Errors.EmpireBase__OnlyProposerCanSignal(msg.sender, signaler));
+        }
+
+        round.signalCount[_payload] += 1;
+
+        if (
+            round.payloadWithMostSignals != _payload
+                && round.signalCount[_payload] > round.signalCount[round.payloadWithMostSignals]
+        ) {
+            round.payloadWithMostSignals = _payload;
+        }
+
+        emit SignalCast(_payload, roundNumber, signaler);
+
+        if (round.signalCount[_payload] == QUORUM_SIZE) {
+            emit PayloadSubmittable(_payload, roundNumber);
+        }
+
+        return true;
+    }
 }
 
 interface IProposerPayload is IPayload {
-  function getOriginalPayload() external view returns (IPayload);
+    function getOriginalPayload() external view returns (IPayload);
 
-  function amIValid() external view returns (bool);
+    function amIValid() external view returns (bool);
 }
 
 struct ProposeWithLockConfiguration {
-  Timestamp lockDelay;
-  uint256 lockAmount;
+    Timestamp lockDelay;
+    uint256 lockAmount;
 }
 
 struct Configuration {
-  ProposeWithLockConfiguration proposeConfig;
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    ProposeWithLockConfiguration proposeConfig;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 // @notice if this changes, please update the enum in governance.ts
 enum ProposalState {
-  Pending,
-  Active,
-  Queued,
-  Executable,
-  Rejected,
-  Executed,
-  Droppable,
-  Dropped,
-  Expired
+    Pending,
+    Active,
+    Queued,
+    Executable,
+    Rejected,
+    Executed,
+    Droppable,
+    Dropped,
+    Expired
 }
 
 // Configuration for proposals - same as Configuration but without proposeConfig
 // since proposeConfig is only used for proposeWithLock, not for the proposal itself
 struct ProposalConfiguration {
-  Timestamp votingDelay;
-  Timestamp votingDuration;
-  Timestamp executionDelay;
-  Timestamp gracePeriod;
-  uint256 quorum;
-  uint256 requiredYeaMargin;
-  uint256 minimumVotes;
+    Timestamp votingDelay;
+    Timestamp votingDuration;
+    Timestamp executionDelay;
+    Timestamp gracePeriod;
+    uint256 quorum;
+    uint256 requiredYeaMargin;
+    uint256 minimumVotes;
 }
 
 struct Ballot {
-  uint256 yea;
-  uint256 nay;
+    uint256 yea;
+    uint256 nay;
 }
 
 struct Proposal {
-  ProposalConfiguration config;
-  ProposalState cachedState;
-  IPayload payload;
-  address proposer;
-  Timestamp creation;
-  Ballot summedBallot;
+    ProposalConfiguration config;
+    ProposalState cachedState;
+    IPayload payload;
+    address proposer;
+    Timestamp creation;
+    Ballot summedBallot;
 }
 
 struct Withdrawal {
-  uint256 amount;
-  Timestamp unlocksAt;
-  address recipient;
-  bool claimed;
+    uint256 amount;
+    Timestamp unlocksAt;
+    address recipient;
+    bool claimed;
 }
 
 interface IGovernance {
-  event BeneficiaryAdded(address beneficiary);
-  event FloodGatesOpened();
+    event BeneficiaryAdded(address beneficiary);
+    event FloodGatesOpened();
 
-  event Proposed(uint256 indexed proposalId, address indexed proposal);
-  event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
-  event ProposalExecuted(uint256 indexed proposalId);
-  event ProposalDropped(uint256 indexed proposalId);
-  event GovernanceProposerUpdated(address indexed governanceProposer);
-  event ConfigurationUpdated(Timestamp indexed time);
+    event Proposed(uint256 indexed proposalId, address indexed proposal);
+    event VoteCast(uint256 indexed proposalId, address indexed voter, bool support, uint256 amount);
+    event ProposalExecuted(uint256 indexed proposalId);
+    event ProposalDropped(uint256 indexed proposalId);
+    event GovernanceProposerUpdated(address indexed governanceProposer);
+    event ConfigurationUpdated(Timestamp indexed time);
 
-  event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
-  event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
-  event WithdrawFinalized(uint256 indexed withdrawalId);
+    event Deposit(address indexed depositor, address indexed onBehalfOf, uint256 amount);
+    event WithdrawInitiated(uint256 indexed withdrawalId, address indexed recipient, uint256 amount);
+    event WithdrawFinalized(uint256 indexed withdrawalId);
 
-  function addBeneficiary(address _beneficiary) external;
-  function openFloodgates() external;
+    function addBeneficiary(address _beneficiary) external;
+    function openFloodgates() external;
 
-  function updateGovernanceProposer(address _governanceProposer) external;
-  function updateConfiguration(Configuration memory _configuration) external;
-  function deposit(address _onBehalfOf, uint256 _amount) external;
-  function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function propose(IPayload _proposal) external returns (uint256);
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function execute(uint256 _proposalId) external;
-  function dropProposal(uint256 _proposalId) external;
+    function updateGovernanceProposer(address _governanceProposer) external;
+    function updateConfiguration(Configuration memory _configuration) external;
+    function deposit(address _onBehalfOf, uint256 _amount) external;
+    function initiateWithdraw(address _to, uint256 _amount) external returns (uint256);
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function propose(IPayload _proposal) external returns (uint256);
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function execute(uint256 _proposalId) external;
+    function dropProposal(uint256 _proposalId) external;
 
-  function isPermittedInGovernance(address _caller) external view returns (bool);
-  function isAllBeneficiariesAllowed() external view returns (bool);
+    function isPermittedInGovernance(address _caller) external view returns (bool);
+    function isAllBeneficiariesAllowed() external view returns (bool);
 
-  function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
-  function powerNow(address _owner) external view returns (uint256);
-  function totalPowerAt(Timestamp _ts) external view returns (uint256);
-  function totalPowerNow() external view returns (uint256);
-  function getProposalState(uint256 _proposalId) external view returns (ProposalState);
-  function getConfiguration() external view returns (Configuration memory);
-  function getProposal(uint256 _proposalId) external view returns (Proposal memory);
-  function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
-  function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
+    function powerAt(address _owner, Timestamp _ts) external view returns (uint256);
+    function powerNow(address _owner) external view returns (uint256);
+    function totalPowerAt(Timestamp _ts) external view returns (uint256);
+    function totalPowerNow() external view returns (uint256);
+    function getProposalState(uint256 _proposalId) external view returns (ProposalState);
+    function getConfiguration() external view returns (Configuration memory);
+    function getProposal(uint256 _proposalId) external view returns (Proposal memory);
+    function getWithdrawal(uint256 _withdrawalId) external view returns (Withdrawal memory);
+    function getBallot(uint256 _proposalId, address _user) external view returns (Ballot memory);
 }
 
 // NOTE(l2beat): This is an interface, generated from the contract source code.
@@ -3947,114 +3996,114 @@ interface Governance is IGovernance {
 }
 
 struct G1Point {
-  uint256 x;
-  uint256 y;
+    uint256 x;
+    uint256 y;
 }
 
 struct G2Point {
-  uint256 x0;
-  uint256 x1;
-  uint256 y0;
-  uint256 y1;
+    uint256 x0;
+    uint256 x1;
+    uint256 y0;
+    uint256 y1;
 }
 
 interface IGSECore {
-  event Deposit(address indexed instance, address indexed attester, address withdrawer);
+    event Deposit(address indexed instance, address indexed attester, address withdrawer);
 
-  function setGovernance(Governance _governance) external;
-  function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external;
-  function addRollup(address _rollup) external;
-  function deposit(
-    address _attester,
-    address _withdrawer,
-    G1Point memory _publicKeyInG1,
-    G2Point memory _publicKeyInG2,
-    G1Point memory _proofOfPossession,
-    bool _moveWithLatestRollup
-  ) external;
-  function withdraw(address _attester, uint256 _amount) external returns (uint256, bool, uint256);
-  function delegate(address _instance, address _attester, address _delegatee) external;
-  function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external;
-  function finalizeWithdraw(uint256 _withdrawalId) external;
-  function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
+    function setGovernance(Governance _governance) external;
+    function setProofOfPossessionGasLimit(uint64 _proofOfPossessionGasLimit) external;
+    function addRollup(address _rollup) external;
+    function deposit(
+        address _attester,
+        address _withdrawer,
+        G1Point memory _publicKeyInG1,
+        G2Point memory _publicKeyInG2,
+        G1Point memory _proofOfPossession,
+        bool _moveWithLatestRollup
+    ) external;
+    function withdraw(address _attester, uint256 _amount) external returns (uint256, bool, uint256);
+    function delegate(address _instance, address _attester, address _delegatee) external;
+    function vote(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function voteWithBonus(uint256 _proposalId, uint256 _amount, bool _support) external;
+    function finalizeWithdraw(uint256 _withdrawalId) external;
+    function proposeWithLock(IPayload _proposal, address _to) external returns (uint256);
 
-  function isRegistered(address _instance, address _attester) external view returns (bool);
-  function isRollupRegistered(address _instance) external view returns (bool);
-  function getLatestRollup() external view returns (address);
-  function getLatestRollupAt(Timestamp _timestamp) external view returns (address);
-  function getGovernance() external view returns (Governance);
+    function isRegistered(address _instance, address _attester) external view returns (bool);
+    function isRollupRegistered(address _instance) external view returns (bool);
+    function getLatestRollup() external view returns (address);
+    function getLatestRollupAt(Timestamp _timestamp) external view returns (address);
+    function getGovernance() external view returns (Governance);
 }
 
 // Struct to store configuration of an attester (block producer)
 // Keep track of the actor who can initiate and control withdraws for the attester.
 // Keep track of the public key in G1 of BN254 that has registered on the instance
 struct AttesterConfig {
-  G1Point publicKey;
-  address withdrawer;
+    G1Point publicKey;
+    address withdrawer;
 }
 
 interface IGSE is IGSECore {
-  function getRegistrationDigest(G1Point memory _publicKey) external view returns (G1Point memory);
-  function getDelegatee(address _instance, address _attester) external view returns (address);
-  function getVotingPower(address _attester) external view returns (uint256);
-  function getVotingPowerAt(address _attester, Timestamp _timestamp) external view returns (uint256);
+    function getRegistrationDigest(G1Point memory _publicKey) external view returns (G1Point memory);
+    function getDelegatee(address _instance, address _attester) external view returns (address);
+    function getVotingPower(address _attester) external view returns (uint256);
+    function getVotingPowerAt(address _attester, Timestamp _timestamp) external view returns (uint256);
 
-  function getWithdrawer(address _attester) external view returns (address);
-  function balanceOf(address _instance, address _attester) external view returns (uint256);
-  function effectiveBalanceOf(address _instance, address _attester) external view returns (uint256);
-  function supplyOf(address _instance) external view returns (uint256);
-  function totalSupply() external view returns (uint256);
-  function getConfig(address _attester) external view returns (AttesterConfig memory);
-  function getAttesterCountAtTime(address _instance, Timestamp _timestamp) external view returns (uint256);
+    function getWithdrawer(address _attester) external view returns (address);
+    function balanceOf(address _instance, address _attester) external view returns (uint256);
+    function effectiveBalanceOf(address _instance, address _attester) external view returns (uint256);
+    function supplyOf(address _instance) external view returns (uint256);
+    function totalSupply() external view returns (uint256);
+    function getConfig(address _attester) external view returns (AttesterConfig memory);
+    function getAttesterCountAtTime(address _instance, Timestamp _timestamp) external view returns (uint256);
 
-  function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
-    external
-    view
-    returns (address[] memory);
-  function getG1PublicKeysFromAddresses(address[] memory _attesters) external view returns (G1Point[] memory);
-  function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
-    external
-    view
-    returns (address);
-  function getPowerUsed(address _delegatee, uint256 _proposalId) external view returns (uint256);
-  function getBonusInstanceAddress() external view returns (address);
+    function getAttestersFromIndicesAtTime(address _instance, Timestamp _timestamp, uint256[] memory _indices)
+        external
+        view
+        returns (address[] memory);
+    function getG1PublicKeysFromAddresses(address[] memory _attesters) external view returns (G1Point[] memory);
+    function getAttesterFromIndexAtTime(address _instance, uint256 _index, Timestamp _timestamp)
+        external
+        view
+        returns (address);
+    function getPowerUsed(address _delegatee, uint256 _proposalId) external view returns (uint256);
+    function getBonusInstanceAddress() external view returns (address);
 }
 
 interface IHaveVersion {
-  function getVersion() external view returns (uint256);
+    function getVersion() external view returns (uint256);
 }
 
 interface IRewardDistributor {
-  function claim(address _to, uint256 _amount) external;
-  function recover(address _asset, address _to, uint256 _amount) external;
-  function canonicalRollup() external view returns (address);
+    function claim(address _to, uint256 _amount) external;
+    function recover(address _asset, address _to, uint256 _amount) external;
+    function canonicalRollup() external view returns (address);
 }
 
 interface IRegistry {
-  event CanonicalRollupUpdated(address indexed instance, uint256 indexed version);
-  event RewardDistributorUpdated(address indexed rewardDistributor);
+    event CanonicalRollupUpdated(address indexed instance, uint256 indexed version);
+    event RewardDistributorUpdated(address indexed rewardDistributor);
 
-  function addRollup(IHaveVersion _rollup) external;
-  function updateRewardDistributor(address _rewardDistributor) external;
+    function addRollup(IHaveVersion _rollup) external;
+    function updateRewardDistributor(address _rewardDistributor) external;
 
-  // docs:start:registry_get_canonical_rollup
-  function getCanonicalRollup() external view returns (IHaveVersion);
-  // docs:end:registry_get_canonical_rollup
+    // docs:start:registry_get_canonical_rollup
+    function getCanonicalRollup() external view returns (IHaveVersion);
+    // docs:end:registry_get_canonical_rollup
 
-  // docs:start:registry_get_rollup
-  function getRollup(uint256 _chainId) external view returns (IHaveVersion);
-  // docs:end:registry_get_rollup
+    // docs:start:registry_get_rollup
+    function getRollup(uint256 _chainId) external view returns (IHaveVersion);
+    // docs:end:registry_get_rollup
 
-  // docs:start:registry_number_of_versions
-  function numberOfVersions() external view returns (uint256);
-  // docs:end:registry_number_of_versions
+    // docs:start:registry_number_of_versions
+    function numberOfVersions() external view returns (uint256);
+    // docs:end:registry_number_of_versions
 
-  function getGovernance() external view returns (address);
+    function getGovernance() external view returns (address);
 
-  function getRewardDistributor() external view returns (IRewardDistributor);
+    function getRewardDistributor() external view returns (IRewardDistributor);
 
-  function getVersion(uint256 _index) external view returns (uint256);
+    function getVersion(uint256 _index) external view returns (uint256);
 }
 
 /**
@@ -4084,100 +4133,100 @@ interface IRegistry {
  * - `GSE.proposeWithLock`, which bypasses the GovernanceProposer
  */
 contract GSEPayload is IProposerPayload {
-  IPayload public immutable ORIGINAL;
-  IGSE public immutable GSE;
-  IRegistry public immutable REGISTRY;
+    IPayload public immutable ORIGINAL;
+    IGSE public immutable GSE;
+    IRegistry public immutable REGISTRY;
 
-  constructor(IPayload _originalPayloadProposal, IGSE _gse, IRegistry _registry) {
-    ORIGINAL = _originalPayloadProposal;
-    GSE = _gse;
-    REGISTRY = _registry;
-  }
-
-  function getOriginalPayload() external view override(IProposerPayload) returns (IPayload) {
-    return ORIGINAL;
-  }
-
-  function getURI() external view override(IPayload) returns (string memory) {
-    return ORIGINAL.getURI();
-  }
-
-  /**
-   * @notice called by the Governance contract when executing the proposal.
-   *
-   * Note that this contract simply appends a call to `amIValid` to the original actions.
-   */
-  function getActions() external view override(IPayload) returns (IPayload.Action[] memory) {
-    IPayload.Action[] memory originalActions = ORIGINAL.getActions();
-    IPayload.Action[] memory actions = new IPayload.Action[](originalActions.length + 1);
-
-    for (uint256 i = 0; i < originalActions.length; i++) {
-      actions[i] = originalActions[i];
+    constructor(IPayload _originalPayloadProposal, IGSE _gse, IRegistry _registry) {
+        ORIGINAL = _originalPayloadProposal;
+        GSE = _gse;
+        REGISTRY = _registry;
     }
 
-    actions[originalActions.length] =
-      IPayload.Action({target: address(this), data: abi.encodeWithSelector(GSEPayload.amIValid.selector)});
-
-    return actions;
-  }
-
-  /**
-   * @notice Validates that the proposal maintains governance system integrity by ensuring
-   *         sufficient stake remains on the active rollup after execution.
-   *
-   * The validation passes when EITHER:
-   * 1. The latest rollup (plus bonus instance) has >2/3 of total stake, OR
-   * 2. A Registry/GSE mismatch is detected (fail-open to prevent governance livelock)
-   *
-   * @dev Beware that the >2/3 support means that 1/3 of the stake can be used to reject proposals.
-   *
-   * @dev The "bonus instance" is a special GSE mechanism where attesters automatically
-   *      follow the latest rollup without re-depositing. Their stake counts toward
-   *      the latest rollup's total for this validation.
-   *
-   * @dev LIVELOCK PREVENTION: When canonical != latest, we intentionally return true
-   *      to bypass validation. This mismatch typically indicates the GovernanceProposer
-   *      is still pointing to a stale GSE contract after a rollup upgrade.
-   *
-   *      Why this creates a livelock:
-   *      - The stale GSE tracks an outdated rollup as "latest"
-   *      - The Registry correctly identifies the new rollup as canonical
-   *      - Economic incentives drive attesters to follow the canonical (where rewards are)
-   *      - The stale GSE's "latest" gradually bleeds stake as rational actors exit
-   *      - While theoretically possible to maintain >2/3 stake, it becomes increasingly
-   *        unlikely as only inattentive or non-reward-seeking attesters remain
-   *      - Proposals keep failing validation, creating a probabilistic livelock where
-   *        progress is technically possible but economically improbable
-   *
-   *      By returning true, we provide an escape hatch that allows governance to
-   *      continue functioning despite the misconfiguration, enabling corrective
-   *      proposals to update the GovernanceProposer's GSE reference.
-   *
-   * @dev This function executes as the final action of the proposal (see getActions).
-   *      It either reverts with an error (proposal invalid) or returns true (proposal valid).
-   *      The boolean return value is effectively ceremonial - only the revert matters.
-   *
-   * @return Always returns true if the proposal is valid; reverts otherwise
-   */
-  function amIValid() external view override(IProposerPayload) returns (bool) {
-    address canonicalRollup = address(REGISTRY.getCanonicalRollup());
-    address latestRollup = GSE.getLatestRollup();
-
-    // Bypass validation on mismatch to prevent economically-driven livelock
-    // In theory, >2/3 stake could remain on the stale rollup, but economic
-    // incentives make this highly unlikely
-    if (canonicalRollup != latestRollup) {
-      return true;
+    function getOriginalPayload() external view override(IProposerPayload) returns (IPayload) {
+        return ORIGINAL;
     }
 
-    // Standard validation: ensure >2/3 of stake remains with the latest rollup
-    uint256 totalSupply = GSE.totalSupply();
-    address bonusInstance = GSE.getBonusInstanceAddress();
-    uint256 effectiveSupplyOfLatestRollup = GSE.supplyOf(latestRollup) + GSE.supplyOf(bonusInstance);
+    function getURI() external view override(IPayload) returns (string memory) {
+        return ORIGINAL.getURI();
+    }
 
-    require(effectiveSupplyOfLatestRollup > totalSupply * 2 / 3, Errors.GovernanceProposer__GSEPayloadInvalid());
-    return true;
-  }
+    /**
+     * @notice called by the Governance contract when executing the proposal.
+     *
+     * Note that this contract simply appends a call to `amIValid` to the original actions.
+     */
+    function getActions() external view override(IPayload) returns (IPayload.Action[] memory) {
+        IPayload.Action[] memory originalActions = ORIGINAL.getActions();
+        IPayload.Action[] memory actions = new IPayload.Action[](originalActions.length + 1);
+
+        for (uint256 i = 0; i < originalActions.length; i++) {
+            actions[i] = originalActions[i];
+        }
+
+        actions[originalActions.length] =
+            IPayload.Action({target: address(this), data: abi.encodeWithSelector(GSEPayload.amIValid.selector)});
+
+        return actions;
+    }
+
+    /**
+     * @notice Validates that the proposal maintains governance system integrity by ensuring
+     *         sufficient stake remains on the active rollup after execution.
+     *
+     * The validation passes when EITHER:
+     * 1. The latest rollup (plus bonus instance) has >2/3 of total stake, OR
+     * 2. A Registry/GSE mismatch is detected (fail-open to prevent governance livelock)
+     *
+     * @dev Beware that the >2/3 support means that 1/3 of the stake can be used to reject proposals.
+     *
+     * @dev The "bonus instance" is a special GSE mechanism where attesters automatically
+     *      follow the latest rollup without re-depositing. Their stake counts toward
+     *      the latest rollup's total for this validation.
+     *
+     * @dev LIVELOCK PREVENTION: When canonical != latest, we intentionally return true
+     *      to bypass validation. This mismatch typically indicates the GovernanceProposer
+     *      is still pointing to a stale GSE contract after a rollup upgrade.
+     *
+     *      Why this creates a livelock:
+     *      - The stale GSE tracks an outdated rollup as "latest"
+     *      - The Registry correctly identifies the new rollup as canonical
+     *      - Economic incentives drive attesters to follow the canonical (where rewards are)
+     *      - The stale GSE's "latest" gradually bleeds stake as rational actors exit
+     *      - While theoretically possible to maintain >2/3 stake, it becomes increasingly
+     *        unlikely as only inattentive or non-reward-seeking attesters remain
+     *      - Proposals keep failing validation, creating a probabilistic livelock where
+     *        progress is technically possible but economically improbable
+     *
+     *      By returning true, we provide an escape hatch that allows governance to
+     *      continue functioning despite the misconfiguration, enabling corrective
+     *      proposals to update the GovernanceProposer's GSE reference.
+     *
+     * @dev This function executes as the final action of the proposal (see getActions).
+     *      It either reverts with an error (proposal invalid) or returns true (proposal valid).
+     *      The boolean return value is effectively ceremonial - only the revert matters.
+     *
+     * @return Always returns true if the proposal is valid; reverts otherwise
+     */
+    function amIValid() external view override(IProposerPayload) returns (bool) {
+        address canonicalRollup = address(REGISTRY.getCanonicalRollup());
+        address latestRollup = GSE.getLatestRollup();
+
+        // Bypass validation on mismatch to prevent economically-driven livelock
+        // In theory, >2/3 stake could remain on the stale rollup, but economic
+        // incentives make this highly unlikely
+        if (canonicalRollup != latestRollup) {
+            return true;
+        }
+
+        // Standard validation: ensure >2/3 of stake remains with the latest rollup
+        uint256 totalSupply = GSE.totalSupply();
+        address bonusInstance = GSE.getBonusInstanceAddress();
+        uint256 effectiveSupplyOfLatestRollup = GSE.supplyOf(latestRollup) + GSE.supplyOf(bonusInstance);
+
+        require(effectiveSupplyOfLatestRollup > totalSupply * 2 / 3, Errors.GovernanceProposer__GSEPayloadInvalid());
+        return true;
+    }
 }
 
 /**
@@ -4191,74 +4240,74 @@ contract GSEPayload is IProposerPayload {
  * a misconfiguration issue (see GSEPayload for more details).
  */
 contract GovernanceProposer is IGovernanceProposer, EmpireBase {
-  IRegistry public immutable REGISTRY;
-  IGSE public immutable GSE;
+    IRegistry public immutable REGISTRY;
+    IGSE public immutable GSE;
 
-  /**
-   * @dev Mapping of proposal ID to the proposer address.
-   * This allows instances to see if they were the proposer of a proposal
-   * after the payload is `propose`ed to Governance.
-   * Instances that *did* propose a proposal are willing to vote on it in Governance.
-   * See `StakingLib.vote` for more details.
-   */
-  mapping(uint256 proposalId => address proposer) internal proposalProposer;
+    /**
+     * @dev Mapping of proposal ID to the proposer address.
+     * This allows instances to see if they were the proposer of a proposal
+     * after the payload is `propose`ed to Governance.
+     * Instances that *did* propose a proposal are willing to vote on it in Governance.
+     * See `StakingLib.vote` for more details.
+     */
+    mapping(uint256 proposalId => address proposer) internal proposalProposer;
 
-  /**
-   * @notice Constructor for the GovernanceProposer contract.
-   *
-   * @dev The _executionDelayInRounds are set to 0, as there already is a delay in the governance contract.
-   *      If this was not the case, the delay could be applied here.
-   *
-   * @param _registry The registry contract address.
-   * @param _gse The GSE contract address.
-   * @param _quorumSize The number of signals needed in a round for a payload to pass.
-   * @param _roundSize The number of signals that can be cast in a round.
-   */
-  constructor(IRegistry _registry, IGSE _gse, uint256 _quorumSize, uint256 _roundSize)
-    EmpireBase(_quorumSize, _roundSize, 5, 0)
-  {
-    REGISTRY = _registry;
-    GSE = _gse;
-  }
+    /**
+     * @notice Constructor for the GovernanceProposer contract.
+     *
+     * @dev The _executionDelayInRounds are set to 0, as there already is a delay in the governance contract.
+     *      If this was not the case, the delay could be applied here.
+     *
+     * @param _registry The registry contract address.
+     * @param _gse The GSE contract address.
+     * @param _quorumSize The number of signals needed in a round for a payload to pass.
+     * @param _roundSize The number of signals that can be cast in a round.
+     */
+    constructor(IRegistry _registry, IGSE _gse, uint256 _quorumSize, uint256 _roundSize)
+        EmpireBase(_quorumSize, _roundSize, 5, 0)
+    {
+        REGISTRY = _registry;
+        GSE = _gse;
+    }
 
-  function getProposalProposer(uint256 _proposalId) external view override(IGovernanceProposer) returns (address) {
-    return proposalProposer[_proposalId];
-  }
+    function getProposalProposer(uint256 _proposalId) external view override(IGovernanceProposer) returns (address) {
+        return proposalProposer[_proposalId];
+    }
 
-  /**
-   * @dev Returns the address of the Governance contract, i.e. the contract at which
-   * we will `propose` a winning proposal.
-   */
-  function getGovernance() public view override(IGovernanceProposer) returns (address) {
-    return REGISTRY.getGovernance();
-  }
+    /**
+     * @dev Returns the address of the Governance contract, i.e. the contract at which
+     * we will `propose` a winning proposal.
+     */
+    function getGovernance() public view override(IGovernanceProposer) returns (address) {
+        return REGISTRY.getGovernance();
+    }
 
-  /**
-   * @dev A hook used by the EmpireBase to determine who is the current block builder (block "proposer"),
-   * and thus may signal.
-   *
-   * This contract only respects the canonical rollup.
-   */
-  function getInstance() public view override(EmpireBase, IEmpire) returns (address) {
-    return address(REGISTRY.getCanonicalRollup());
-  }
+    /**
+     * @dev A hook used by the EmpireBase to determine who is the current block builder (block "proposer"),
+     * and thus may signal.
+     *
+     * This contract only respects the canonical rollup.
+     */
+    function getInstance() public view override(EmpireBase, IEmpire) returns (address) {
+        return address(REGISTRY.getCanonicalRollup());
+    }
 
-  /**
-   * @dev Called by the EmpireBase contract in `submitRoundWinner`, which asserts that the payload
-   * has enough support to be proposed to Governance.
-   *
-   * Note that it wraps the original payload in a GSEPayload before pushing into the Governance contract.
-   *
-   * This creates additional checks, namely that *after* the original payload is executed,
-   * the canonical rollup (both the instance and the "magical address") has at least 2/3 of the total stake.
-   *
-   * @param _payload The payload to propose to the governance contract.
-   * @return true if the proposal was proposed successfully, reverts otherwise.
-   */
-  function _handleRoundWinner(IPayload _payload) internal override(EmpireBase) returns (bool) {
-    GSEPayload extendedPayload = new GSEPayload(_payload, GSE, REGISTRY);
-    uint256 proposalId = IGovernance(getGovernance()).propose(IPayload(address(extendedPayload)));
-    proposalProposer[proposalId] = getInstance();
-    return true;
-  }
+    /**
+     * @dev Called by the EmpireBase contract in `submitRoundWinner`, which asserts that the payload
+     * has enough support to be proposed to Governance.
+     *
+     * Note that it wraps the original payload in a GSEPayload before pushing into the Governance contract.
+     *
+     * This creates additional checks, namely that *after* the original payload is executed,
+     * the canonical rollup (both the instance and the "magical address") has at least 2/3 of the total stake.
+     *
+     * @param _payload The payload to propose to the governance contract.
+     * @return true if the proposal was proposed successfully, reverts otherwise.
+     */
+    function _handleRoundWinner(IPayload _payload) internal override(EmpireBase) returns (bool) {
+        GSEPayload extendedPayload = new GSEPayload(_payload, GSE, REGISTRY);
+        uint256 proposalId = IGovernance(getGovernance()).propose(IPayload(address(extendedPayload)));
+        proposalProposer[proposalId] = getInstance();
+        return true;
+    }
 }

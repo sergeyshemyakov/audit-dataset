@@ -3,27 +3,27 @@
 pragma solidity >=0.8.27;
 
 import {CompressedProposal, CompressedProposalLib} from "@aztec/governance/libraries/compressed-data/Proposal.sol";
-import {CompressedTimestamp, CompressedTimeMath} from "@aztec/shared/libraries/CompressedTimeMath.sol";
+import {CompressedTimeMath, CompressedTimestamp} from "@aztec/shared/libraries/CompressedTimeMath.sol";
 import {Timestamp} from "@aztec/shared/libraries/TimeMath.sol";
 import {Math} from "@oz/utils/math/Math.sol";
 
 enum VoteTabulationReturn {
-  Accepted,
-  Rejected,
-  Invalid
+    Accepted,
+    Rejected,
+    Invalid
 }
 
 enum VoteTabulationInfo {
-  TotalPowerLtMinimum,
-  VotesNeededEqZero,
-  VotesNeededGtTotalPower,
-  VotesCastLtVotesNeeded,
-  YeaLimitEqZero,
-  YeaLimitGtVotesCast,
-  YeaLimitEqVotesCast,
-  YeaVotesEqVotesCast,
-  YeaVotesLeYeaLimit,
-  YeaVotesGtYeaLimit
+    TotalPowerLtMinimum,
+    VotesNeededEqZero,
+    VotesNeededGtTotalPower,
+    VotesCastLtVotesNeeded,
+    YeaLimitEqZero,
+    YeaLimitGtVotesCast,
+    YeaLimitEqVotesCast,
+    YeaVotesEqVotesCast,
+    YeaVotesLeYeaLimit,
+    YeaVotesGtYeaLimit
 }
 
 /**
@@ -89,104 +89,104 @@ enum VoteTabulationInfo {
  *          4. Executable: queued end → queued end + gracePeriod
  */
 library ProposalLib {
-  using CompressedTimeMath for CompressedTimestamp;
-  using CompressedProposalLib for CompressedProposal;
-  /**
-   * @notice Tabulate the votes for a proposal.
-   * @dev This function is used to determine if a proposal has met the acceptance criteria.
-   *
-   * @param _self The proposal to tabulate the votes for.
-   * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
-   * @return The vote tabulation result, and additional information.
-   */
+    using CompressedTimeMath for CompressedTimestamp;
+    using CompressedProposalLib for CompressedProposal;
+    /**
+     * @notice Tabulate the votes for a proposal.
+     * @dev This function is used to determine if a proposal has met the acceptance criteria.
+     *
+     * @param _self The proposal to tabulate the votes for.
+     * @param _totalPower The total power (in Governance) at proposal.pendingThrough().
+     * @return The vote tabulation result, and additional information.
+     */
 
-  function voteTabulation(CompressedProposal storage _self, uint256 _totalPower)
-    internal
-    view
-    returns (VoteTabulationReturn, VoteTabulationInfo)
-  {
-    if (_totalPower < _self.minimumVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
-    }
+    function voteTabulation(CompressedProposal storage _self, uint256 _totalPower)
+        internal
+        view
+        returns (VoteTabulationReturn, VoteTabulationInfo)
+    {
+        if (_totalPower < _self.minimumVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.TotalPowerLtMinimum);
+        }
 
-    uint256 votesNeeded = Math.mulDiv(_totalPower, _self.quorum, 1e18, Math.Rounding.Ceil);
-    if (votesNeeded == 0) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
-    }
-    if (votesNeeded > _totalPower) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
-    }
+        uint256 votesNeeded = Math.mulDiv(_totalPower, _self.quorum, 1e18, Math.Rounding.Ceil);
+        if (votesNeeded == 0) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededEqZero);
+        }
+        if (votesNeeded > _totalPower) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.VotesNeededGtTotalPower);
+        }
 
-    (uint256 yea, uint256 nay) = _self.getVotes();
-    uint256 votesCast = nay + yea;
-    if (votesCast < votesNeeded) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
-    }
+        (uint256 yea, uint256 nay) = _self.getVotes();
+        uint256 votesCast = nay + yea;
+        if (votesCast < votesNeeded) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.VotesCastLtVotesNeeded);
+        }
 
-    // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
-    // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
-    // i.e. we cannot require more votes to be yes than total votes.
-    if (yea == votesCast) {
-      return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
-    }
+        // Edge case where all the votes are yea, no need to compute requiredApprovalVotes.
+        // ConfigurationLib enforces that requiredYeaMargin is <= 1e18,
+        // i.e. we cannot require more votes to be yes than total votes.
+        if (yea == votesCast) {
+            return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesEqVotesCast);
+        }
 
-    uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.requiredYeaMargin, 2);
-    uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
+        uint256 requiredApprovalVotesFraction = Math.ceilDiv(1e18 + _self.requiredYeaMargin, 2);
+        uint256 requiredApprovalVotes = Math.mulDiv(votesCast, requiredApprovalVotesFraction, 1e18, Math.Rounding.Ceil);
 
-    /*if (requiredApprovalVotes == 0) {
+        /*if (requiredApprovalVotes == 0) {
       // It should be impossible to hit this case as `requiredApprovalVotesFraction` cannot be 0,
       // and due to rounding up, only way to hit this would be if `votesCast = 0`,
       // which is already handled as `votesCast >= votesNeeded` and `votesNeeded > 0`.
       return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitEqZero);
     }*/
-    if (requiredApprovalVotes > votesCast) {
-      return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        if (requiredApprovalVotes > votesCast) {
+            return (VoteTabulationReturn.Invalid, VoteTabulationInfo.YeaLimitGtVotesCast);
+        }
+
+        // We want to see that there are MORE votes on yea than needed
+        // We explicitly need MORE to ensure we don't "tie".
+        // If we need as many yea as there are votes, we know it is impossible already.
+        // due to the check earlier, that summedBallot.yea == votesCast.
+        if (yea <= requiredApprovalVotes) {
+            return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+        }
+
+        return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
     }
 
-    // We want to see that there are MORE votes on yea than needed
-    // We explicitly need MORE to ensure we don't "tie".
-    // If we need as many yea as there are votes, we know it is impossible already.
-    // due to the check earlier, that summedBallot.yea == votesCast.
-    if (yea <= requiredApprovalVotes) {
-      return (VoteTabulationReturn.Rejected, VoteTabulationInfo.YeaVotesLeYeaLimit);
+    /**
+     * @notice Get when the pending phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when pending phase ends
+     */
+    function pendingThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return _compressed.creation.decompress() + _compressed.votingDelay.decompress();
     }
 
-    return (VoteTabulationReturn.Accepted, VoteTabulationInfo.YeaVotesGtYeaLimit);
-  }
+    /**
+     * @notice Get when the active phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when active phase ends
+     */
+    function activeThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return pendingThrough(_compressed) + _compressed.votingDuration.decompress();
+    }
 
-  /**
-   * @notice Get when the pending phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when pending phase ends
-   */
-  function pendingThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return _compressed.creation.decompress() + _compressed.votingDelay.decompress();
-  }
+    /**
+     * @notice Get when the queued phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when queued phase ends
+     */
+    function queuedThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return activeThrough(_compressed) + _compressed.executionDelay.decompress();
+    }
 
-  /**
-   * @notice Get when the active phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when active phase ends
-   */
-  function activeThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return pendingThrough(_compressed) + _compressed.votingDuration.decompress();
-  }
-
-  /**
-   * @notice Get when the queued phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when queued phase ends
-   */
-  function queuedThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return activeThrough(_compressed) + _compressed.executionDelay.decompress();
-  }
-
-  /**
-   * @notice Get when the executable phase ends
-   * @param _compressed Storage pointer to compressed proposal
-   * @return The timestamp when executable phase ends
-   */
-  function executableThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
-    return queuedThrough(_compressed) + _compressed.gracePeriod.decompress();
-  }
+    /**
+     * @notice Get when the executable phase ends
+     * @param _compressed Storage pointer to compressed proposal
+     * @return The timestamp when executable phase ends
+     */
+    function executableThrough(CompressedProposal storage _compressed) internal view returns (Timestamp) {
+        return queuedThrough(_compressed) + _compressed.gracePeriod.decompress();
+    }
 }

@@ -10,41 +10,41 @@ interface ERC20 {
 /// @title Resource Manager Interface
 /// @notice The interface for managing the resource token and its threshold value
 interface IResourceManager {
-  /// @notice Thrown when an unauthorized address attempts to call a restricted function
-  error Unauthorized();
+    /// @notice Thrown when an unauthorized address attempts to call a restricted function
+    error Unauthorized();
 
-  /// @notice The resource token required by parent IReleaser
-  function RESOURCE() external view returns (ERC20);
+    /// @notice The resource token required by parent IReleaser
+    function RESOURCE() external view returns (ERC20);
 
-  /// @notice The recipient of the `RESOURCE` tokens
-  function RESOURCE_RECIPIENT() external view returns (address);
+    /// @notice The recipient of the `RESOURCE` tokens
+    function RESOURCE_RECIPIENT() external view returns (address);
 
-  /// @notice The minimum threshold of `RESOURCE` tokens required to perform a release
-  function threshold() external view returns (uint256);
+    /// @notice The minimum threshold of `RESOURCE` tokens required to perform a release
+    function threshold() external view returns (uint256);
 
-  /// @notice The address authorized to set the `threshold` value
-  function thresholdSetter() external view returns (address);
+    /// @notice The address authorized to set the `threshold` value
+    function thresholdSetter() external view returns (address);
 
-  /// @notice Set the address authorized to set the `threshold` value
-  /// @dev only callable by `owner`
-  function setThresholdSetter(address newThresholdSetter) external;
+    /// @notice Set the address authorized to set the `threshold` value
+    /// @dev only callable by `owner`
+    function setThresholdSetter(address newThresholdSetter) external;
 
-  /// @notice Set the minimum threshold of `RESOURCE` tokens required to perform a release
-  /// @dev only callable by `thresholdSetter`
-  /// the `thresholdSetter` should take explicit care when updating the threshold
-  /// * lowering the threshold may create instantaneous value leakage
-  /// * front-running a release with an increased threshold may cause economic loss
-  /// to the releaser/searcher
-  function setThreshold(uint256 newThreshold) external;
+    /// @notice Set the minimum threshold of `RESOURCE` tokens required to perform a release
+    /// @dev only callable by `thresholdSetter`
+    /// the `thresholdSetter` should take explicit care when updating the threshold
+    /// * lowering the threshold may create instantaneous value leakage
+    /// * front-running a release with an increased threshold may cause economic loss
+    /// to the releaser/searcher
+    function setThreshold(uint256 newThreshold) external;
 }
 
 /// @title Nonce Interface
 interface INonce {
-  /// @notice Thrown when a user-provided nonce is not equal to the contract's nonce
-  error InvalidNonce();
+    /// @notice Thrown when a user-provided nonce is not equal to the contract's nonce
+    error InvalidNonce();
 
-  /// @return The contract's nonce
-  function nonce() external view returns (uint256);
+    /// @return The contract's nonce
+    function nonce() external view returns (uint256);
 }
 
 function greaterThan(Currency currency, Currency other) pure returns (bool) {
@@ -329,37 +329,37 @@ type Currency is address;
 /// @title Token Jar Interface
 /// @notice The interface for releasing assets from the contract
 interface ITokenJar {
-  /// @notice Thrown when an unauthorized address attempts to call a restricted function
-  error Unauthorized();
+    /// @notice Thrown when an unauthorized address attempts to call a restricted function
+    error Unauthorized();
 
-  /// @return Address of the current IReleaser
-  /// @dev The releaser has exclusive access to the `release()` function
-  function releaser() external view returns (address);
+    /// @return Address of the current IReleaser
+    /// @dev The releaser has exclusive access to the `release()` function
+    function releaser() external view returns (address);
 
-  /// @notice Set the address of the IReleaser contract
-  /// @dev only callabe by `owner`
-  function setReleaser(address _releaser) external;
+    /// @notice Set the address of the IReleaser contract
+    /// @dev only callabe by `owner`
+    function setReleaser(address _releaser) external;
 
-  /// @notice Release assets to a specified recipient
-  /// @dev only callable by `releaser`
-  function release(Currency[] calldata assets, address recipient) external;
+    /// @notice Release assets to a specified recipient
+    /// @dev only callable by `releaser`
+    function release(Currency[] calldata assets, address recipient) external;
 }
 
 interface IReleaser is IResourceManager, INonce {
-  /// @notice Thrown when attempting to release too many assets at once
-  error TooManyAssets();
+    /// @notice Thrown when attempting to release too many assets at once
+    error TooManyAssets();
 
-  event Released(uint256 indexed nonce, address indexed recipient, Currency[] assets);
+    event Released(uint256 indexed nonce, address indexed recipient, Currency[] assets);
 
-  /// @return Address of the Token Jar contract that will release the assets
-  function TOKEN_JAR() external view returns (ITokenJar);
+    /// @return Address of the Token Jar contract that will release the assets
+    function TOKEN_JAR() external view returns (ITokenJar);
 
-  /// @notice Releases assets to a specified recipient if the resource threshold is met
-  /// @param _nonce The nonce for the release, must equal to the contract nonce otherwise revert
-  /// @param assets The list of assets (addresses) to release, which may have length limits
-  /// Native tokens (Ether) are represented as the zero address
-  /// @param recipient The address to receive the released assets, paid out by Token Jar
-  function release(uint256 _nonce, Currency[] calldata assets, address recipient) external;
+    /// @notice Releases assets to a specified recipient if the resource threshold is met
+    /// @param _nonce The nonce for the release, must equal to the contract nonce otherwise revert
+    /// @param assets The list of assets (addresses) to release, which may have length limits
+    /// Native tokens (Ether) are represented as the zero address
+    /// @param recipient The address to receive the released assets, paid out by Token Jar
+    function release(uint256 _nonce, Currency[] calldata assets, address recipient) external;
 }
 
 /// @notice Simple single owner authorization mixin.
@@ -408,42 +408,40 @@ abstract contract Owned {
 /// @notice A contract that holds immutable state for the resource token and the resource recipient
 /// address. It also maintains logic for managing the threshold of the resource token.
 abstract contract ResourceManager is IResourceManager, Owned {
-  /// @inheritdoc IResourceManager
-  uint256 public threshold;
+    /// @inheritdoc IResourceManager
+    uint256 public threshold;
 
-  /// @inheritdoc IResourceManager
-  address public thresholdSetter;
+    /// @inheritdoc IResourceManager
+    address public thresholdSetter;
 
-  /// @inheritdoc IResourceManager
-  ERC20 public immutable RESOURCE;
+    /// @inheritdoc IResourceManager
+    ERC20 public immutable RESOURCE;
 
-  /// @inheritdoc IResourceManager
-  address public immutable RESOURCE_RECIPIENT;
+    /// @inheritdoc IResourceManager
+    address public immutable RESOURCE_RECIPIENT;
 
-  /// @notice Ensures only the threshold setter can call the setThreshold function
-  modifier onlyThresholdSetter() {
-    require(msg.sender == thresholdSetter, Unauthorized());
-    _;
-  }
+    /// @notice Ensures only the threshold setter can call the setThreshold function
+    modifier onlyThresholdSetter() {
+        require(msg.sender == thresholdSetter, Unauthorized());
+        _;
+    }
 
-  /// @dev At construction the thresholdSetter defaults to 0 and its on the owner to set.
-  constructor(address _resource, uint256 _threshold, address _owner, address _recipient)
-    Owned(_owner)
-  {
-    RESOURCE = ERC20(_resource);
-    RESOURCE_RECIPIENT = _recipient;
-    threshold = _threshold;
-  }
+    /// @dev At construction the thresholdSetter defaults to 0 and its on the owner to set.
+    constructor(address _resource, uint256 _threshold, address _owner, address _recipient) Owned(_owner) {
+        RESOURCE = ERC20(_resource);
+        RESOURCE_RECIPIENT = _recipient;
+        threshold = _threshold;
+    }
 
-  /// @inheritdoc IResourceManager
-  function setThresholdSetter(address _thresholdSetter) external onlyOwner {
-    thresholdSetter = _thresholdSetter;
-  }
+    /// @inheritdoc IResourceManager
+    function setThresholdSetter(address _thresholdSetter) external onlyOwner {
+        thresholdSetter = _thresholdSetter;
+    }
 
-  /// @inheritdoc IResourceManager
-  function setThreshold(uint256 _threshold) external onlyThresholdSetter {
-    threshold = _threshold;
-  }
+    /// @inheritdoc IResourceManager
+    function setThreshold(uint256 _threshold) external onlyThresholdSetter {
+        threshold = _threshold;
+    }
 }
 
 /// @title Nonce
@@ -451,23 +449,23 @@ abstract contract ResourceManager is IResourceManager, Owned {
 /// @dev Implements sequential nonce validation to prevent front-running and ensure searchers
 ///      can guarantee their transaction order when claiming available tokens
 abstract contract Nonce is INonce {
-  /// @inheritdoc INonce
-  uint256 public nonce;
+    /// @inheritdoc INonce
+    uint256 public nonce;
 
-  /// @notice Validates and increments the nonce for transaction ordering protection
-  /// @dev Ensures transactions are processed in the expected order, preventing front-running
-  ///      when searchers submit burns to claim available tokens. The nonce guarantees that
-  ///      if a searcher sees tokens available at a specific nonce, they can claim them
-  ///      without another transaction landing first. Reverts with InvalidNonce if the
-  ///      provided nonce doesn't match the current contract nonce.
-  /// @param _nonce The expected current nonce value
-  modifier handleNonce(uint256 _nonce) {
-    require(_nonce == nonce, InvalidNonce());
-    unchecked {
-      ++nonce;
+    /// @notice Validates and increments the nonce for transaction ordering protection
+    /// @dev Ensures transactions are processed in the expected order, preventing front-running
+    ///      when searchers submit burns to claim available tokens. The nonce guarantees that
+    ///      if a searcher sees tokens available at a specific nonce, they can claim them
+    ///      without another transaction landing first. Reverts with InvalidNonce if the
+    ///      provided nonce doesn't match the current contract nonce.
+    /// @param _nonce The expected current nonce value
+    modifier handleNonce(uint256 _nonce) {
+        require(_nonce == nonce, InvalidNonce());
+        unchecked {
+            ++nonce;
+        }
+        _;
     }
-    _;
-  }
 }
 
 /// @notice Safe ETH and ERC20 transfer library that gracefully handles missing return values.
@@ -494,12 +492,7 @@ library SafeTransferLib {
                             ERC20 OPERATIONS
     //////////////////////////////////////////////////////////////*/
 
-    function safeTransferFrom(
-        ERC20 token,
-        address from,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransferFrom(ERC20 token, address from, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -520,18 +513,14 @@ library SafeTransferLib {
             // Set success to whether the call reverted, if not we check it either
             // returned exactly 1 (can't just be non-zero data), or had no return data and token has code.
             if and(iszero(and(eq(mload(0), 1), gt(returndatasize(), 31))), success) {
-                success := iszero(or(iszero(extcodesize(token)), returndatasize())) 
+                success := iszero(or(iszero(extcodesize(token)), returndatasize()))
             }
         }
 
         require(success, "TRANSFER_FROM_FAILED");
     }
 
-    function safeTransfer(
-        ERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransfer(ERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -551,18 +540,14 @@ library SafeTransferLib {
             // Set success to whether the call reverted, if not we check it either
             // returned exactly 1 (can't just be non-zero data), or had no return data and token has code.
             if and(iszero(and(eq(mload(0), 1), gt(returndatasize(), 31))), success) {
-                success := iszero(or(iszero(extcodesize(token)), returndatasize())) 
+                success := iszero(or(iszero(extcodesize(token)), returndatasize()))
             }
         }
 
         require(success, "TRANSFER_FAILED");
     }
 
-    function safeApprove(
-        ERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeApprove(ERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -582,7 +567,7 @@ library SafeTransferLib {
             // Set success to whether the call reverted, if not we check it either
             // returned exactly 1 (can't just be non-zero data), or had no return data and token has code.
             if and(iszero(and(eq(mload(0), 1), gt(returndatasize(), 31))), success) {
-                success := iszero(or(iszero(extcodesize(token)), returndatasize())) 
+                success := iszero(or(iszero(extcodesize(token)), returndatasize()))
             }
         }
 
@@ -603,49 +588,46 @@ library SafeTransferLib {
 /// versions may consider dynamic thresholds or other MEV minimizing auction techniques
 /// @custom:security-contact security@uniswap.org
 abstract contract ExchangeReleaser is IReleaser, ResourceManager, Nonce {
-  using SafeTransferLib for ERC20;
+    using SafeTransferLib for ERC20;
 
-  /// @notice Maximum number of different assets that can be released in a single call
-  uint256 public constant MAX_RELEASE_LENGTH = 20;
+    /// @notice Maximum number of different assets that can be released in a single call
+    uint256 public constant MAX_RELEASE_LENGTH = 20;
 
-  /// @inheritdoc IReleaser
-  ITokenJar public immutable TOKEN_JAR;
+    /// @inheritdoc IReleaser
+    ITokenJar public immutable TOKEN_JAR;
 
-  /// @notice Creates a new ExchangeReleaser instance
-  /// @param _resource The address of the resource token that must be transferred
-  /// @param _threshold The minimum amount of resource tokens that must be transferred
-  /// @param _tokenJar The address of the TokenJar contract holding the assets
-  /// @param _recipient The address that will receive the resource tokens
-  constructor(address _resource, uint256 _threshold, address _tokenJar, address _recipient)
-    ResourceManager(_resource, _threshold, msg.sender, _recipient)
-  {
-    TOKEN_JAR = ITokenJar(payable(_tokenJar));
-  }
+    /// @notice Creates a new ExchangeReleaser instance
+    /// @param _resource The address of the resource token that must be transferred
+    /// @param _threshold The minimum amount of resource tokens that must be transferred
+    /// @param _tokenJar The address of the TokenJar contract holding the assets
+    /// @param _recipient The address that will receive the resource tokens
+    constructor(address _resource, uint256 _threshold, address _tokenJar, address _recipient)
+        ResourceManager(_resource, _threshold, msg.sender, _recipient)
+    {
+        TOKEN_JAR = ITokenJar(payable(_tokenJar));
+    }
 
-  /// @inheritdoc IReleaser
-  function release(uint256 _nonce, Currency[] calldata assets, address recipient)
-    external
-    handleNonce(_nonce)
-  {
-    require(assets.length <= MAX_RELEASE_LENGTH, TooManyAssets());
-    RESOURCE.safeTransferFrom(msg.sender, RESOURCE_RECIPIENT, threshold);
-    TOKEN_JAR.release(assets, recipient);
-    emit Released(_nonce, recipient, assets);
+    /// @inheritdoc IReleaser
+    function release(uint256 _nonce, Currency[] calldata assets, address recipient) external handleNonce(_nonce) {
+        require(assets.length <= MAX_RELEASE_LENGTH, TooManyAssets());
+        RESOURCE.safeTransferFrom(msg.sender, RESOURCE_RECIPIENT, threshold);
+        TOKEN_JAR.release(assets, recipient);
+        emit Released(_nonce, recipient, assets);
 
-    _afterRelease(assets, recipient);
-  }
+        _afterRelease(assets, recipient);
+    }
 
-  /// @notice Internal function to handle any post transfer actions
-  /// e.g. bridge calls or notifications
-  function _afterRelease(Currency[] calldata assets, address recipient) internal virtual {
-    // by default do nothing after release
-  }
+    /// @notice Internal function to handle any post transfer actions
+    /// e.g. bridge calls or notifications
+    function _afterRelease(Currency[] calldata assets, address recipient) internal virtual {
+        // by default do nothing after release
+    }
 }
 
 /// @title Firepit
 /// @notice An ExchangeReleaser with recipient set to the burn address address(0xdead)
 contract Firepit is ExchangeReleaser {
-  constructor(address _resource, uint256 _threshold, address _tokenJar)
-    ExchangeReleaser(_resource, _threshold, _tokenJar, address(0xdead))
-  {}
+    constructor(address _resource, uint256 _threshold, address _tokenJar)
+        ExchangeReleaser(_resource, _threshold, _tokenJar, address(0xdead))
+    {}
 }

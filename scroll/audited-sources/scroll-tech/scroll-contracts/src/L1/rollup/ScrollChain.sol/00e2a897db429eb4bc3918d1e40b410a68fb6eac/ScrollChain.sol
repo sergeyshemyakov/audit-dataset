@@ -5,14 +5,14 @@ pragma solidity =0.8.24;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-import {IL1MessageQueueV1} from "./IL1MessageQueueV1.sol";
-import {IL1MessageQueueV2} from "./IL1MessageQueueV2.sol";
-import {IScrollChain} from "./IScrollChain.sol";
 import {BatchHeaderV0Codec} from "../../libraries/codec/BatchHeaderV0Codec.sol";
 import {BatchHeaderV1Codec} from "../../libraries/codec/BatchHeaderV1Codec.sol";
 import {BatchHeaderV3Codec} from "../../libraries/codec/BatchHeaderV3Codec.sol";
 import {BatchHeaderV7Codec} from "../../libraries/codec/BatchHeaderV7Codec.sol";
 import {IRollupVerifier} from "../../libraries/verifier/IRollupVerifier.sol";
+import {IL1MessageQueueV1} from "./IL1MessageQueueV1.sol";
+import {IL1MessageQueueV2} from "./IL1MessageQueueV2.sol";
+import {IScrollChain} from "./IScrollChain.sol";
 
 import {SystemConfig} from "../system-contract/SystemConfig.sol";
 
@@ -22,9 +22,11 @@ import {SystemConfig} from "../system-contract/SystemConfig.sol";
 /// @title ScrollChain
 /// @notice This contract maintains data for the Scroll rollup.
 contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when the given account is not EOA account.
     error ErrorAccountIsNotEOA();
@@ -87,9 +89,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @dev This is checked so that indexers that need to decode calldata continue to work.
     error ErrorTopLevelCallRequired();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @dev offsets in miscData.flags
     uint256 private constant V1_MESSAGES_FINALIZED_OFFSET = 0;
@@ -110,9 +114,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @notice The address of `SystemConfig`.
     address public immutable systemConfig;
 
-    /***********
+    /**
+     *
      * Structs *
-     ***********/
+     *
+     */
 
     /// @param lastCommittedBatchIndex The index of the last committed batch.
     /// @param lastFinalizedBatchIndex The index of the last finalized batch.
@@ -129,9 +135,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         uint88 reserved;
     }
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @dev The maximum number of transactions allowed in each chunk.
     /// @custom:deprecated This is no longer used.
@@ -176,35 +184,46 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @notice The misc data of ScrollChain.
     ScrollChainMiscData public miscData;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier OnlySequencer() {
         // @note In the decentralized mode, it should be only called by a list of validator.
-        if (!isSequencer[_msgSender()]) revert ErrorCallerIsNotSequencer();
+        if (!isSequencer[_msgSender()]) {
+            revert ErrorCallerIsNotSequencer();
+        }
         _;
     }
 
     modifier OnlyProver() {
-        if (!isProver[_msgSender()]) revert ErrorCallerIsNotProver();
+        if (!isProver[_msgSender()]) {
+            revert ErrorCallerIsNotProver();
+        }
         _;
     }
 
     modifier whenEnforcedBatchNotEnabled() {
-        if (isEnforcedModeEnabled()) revert ErrorInEnforcedBatchMode();
+        if (isEnforcedModeEnabled()) {
+            revert ErrorInEnforcedBatchMode();
+        }
         _;
     }
 
     modifier OnlyTopLevelCall() {
         // disallow contract accounts and delegated EOAs
-        if (msg.sender.code.length != 0) revert ErrorTopLevelCallRequired();
+        if (msg.sender.code.length != 0) {
+            revert ErrorTopLevelCallRequired();
+        }
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @notice Constructor for `ScrollChain` implementation contract.
     ///
@@ -221,10 +240,8 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         address _systemConfig
     ) {
         if (
-            _messageQueueV1 == address(0) ||
-            _messageQueueV2 == address(0) ||
-            _verifier == address(0) ||
-            _systemConfig == address(0)
+            _messageQueueV1 == address(0) || _messageQueueV2 == address(0) || _verifier == address(0)
+                || _systemConfig == address(0)
         ) {
             revert ErrorZeroAddress();
         }
@@ -245,11 +262,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @param _messageQueue The address of `L1MessageQueue` contract.
     /// @param _verifier The address of zkevm verifier contract.
     /// @param _maxNumTxInChunk The maximum number of transactions allowed in each chunk.
-    function initialize(
-        address _messageQueue,
-        address _verifier,
-        uint256 _maxNumTxInChunk
-    ) external initializer {
+    function initialize(address _messageQueue, address _verifier, uint256 _maxNumTxInChunk) external initializer {
         OwnableUpgradeable.__Ownable_init();
 
         __maxNumTxInChunk = _maxNumTxInChunk;
@@ -283,9 +296,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         });
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IScrollChain
     function isBatchFinalized(uint256 _batchIndex) external view override returns (bool) {
@@ -302,32 +317,42 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         return _decodeBoolFromFlag(miscData.flags, ENFORCED_MODE_OFFSET);
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Import layer 2 genesis block
     /// @param _batchHeader The header of the genesis batch.
     /// @param _stateRoot The state root of the genesis block.
     function importGenesisBatch(bytes calldata _batchHeader, bytes32 _stateRoot) external {
         // check genesis batch header length
-        if (_stateRoot == bytes32(0)) revert ErrorStateRootIsZero();
+        if (_stateRoot == bytes32(0)) {
+            revert ErrorStateRootIsZero();
+        }
 
         // check whether the genesis batch is imported
-        if (finalizedStateRoots[0] != bytes32(0)) revert ErrorGenesisBatchImported();
+        if (finalizedStateRoots[0] != bytes32(0)) {
+            revert ErrorGenesisBatchImported();
+        }
 
-        (uint256 memPtr, bytes32 _batchHash, , ) = _loadBatchHeader(_batchHeader, 0);
+        (uint256 memPtr, bytes32 _batchHash,,) = _loadBatchHeader(_batchHeader, 0);
 
         // check all fields except `dataHash` and `lastBlockHash` are zero
         unchecked {
-            uint256 sum = BatchHeaderV0Codec.getVersion(memPtr) +
-                BatchHeaderV0Codec.getBatchIndex(memPtr) +
-                BatchHeaderV0Codec.getL1MessagePopped(memPtr) +
-                BatchHeaderV0Codec.getTotalL1MessagePopped(memPtr);
-            if (sum != 0) revert ErrorGenesisBatchHasNonZeroField();
+            uint256 sum = BatchHeaderV0Codec.getVersion(memPtr) + BatchHeaderV0Codec.getBatchIndex(memPtr)
+                + BatchHeaderV0Codec.getL1MessagePopped(memPtr) + BatchHeaderV0Codec.getTotalL1MessagePopped(memPtr);
+            if (sum != 0) {
+                revert ErrorGenesisBatchHasNonZeroField();
+            }
         }
-        if (BatchHeaderV0Codec.getDataHash(memPtr) == bytes32(0)) revert ErrorGenesisDataHashIsZero();
-        if (BatchHeaderV0Codec.getParentBatchHash(memPtr) != bytes32(0)) revert ErrorGenesisParentBatchHashIsNonZero();
+        if (BatchHeaderV0Codec.getDataHash(memPtr) == bytes32(0)) {
+            revert ErrorGenesisDataHashIsZero();
+        }
+        if (BatchHeaderV0Codec.getParentBatchHash(memPtr) != bytes32(0)) {
+            revert ErrorGenesisParentBatchHashIsNonZero();
+        }
 
         committedBatches[0] = _batchHash;
         finalizedStateRoots[0] = _stateRoot;
@@ -337,11 +362,13 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     }
 
     /// @inheritdoc IScrollChain
-    function commitBatches(
-        uint8 version,
-        bytes32 parentBatchHash,
-        bytes32 lastBatchHash
-    ) external override OnlySequencer whenNotPaused whenEnforcedBatchNotEnabled {
+    function commitBatches(uint8 version, bytes32 parentBatchHash, bytes32 lastBatchHash)
+        external
+        override
+        OnlySequencer
+        whenNotPaused
+        whenEnforcedBatchNotEnabled
+    {
         _commitBatchesFromV7(version, parentBatchHash, lastBatchHash, false);
     }
 
@@ -351,16 +378,22 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @dev During commit batch we only store the last batch hash into storage. As a result, we cannot revert intermediate batches.
     function revertBatch(bytes calldata batchHeader) external onlyOwner {
         uint256 lastBatchIndex = miscData.lastCommittedBatchIndex;
-        (uint256 batchPtr, , uint256 startBatchIndex, ) = _loadBatchHeader(batchHeader, lastBatchIndex);
+        (uint256 batchPtr,, uint256 startBatchIndex,) = _loadBatchHeader(batchHeader, lastBatchIndex);
         // only revert v7 batches
-        if (BatchHeaderV0Codec.getVersion(batchPtr) < 7) revert ErrorIncorrectBatchVersion();
+        if (BatchHeaderV0Codec.getVersion(batchPtr) < 7) {
+            revert ErrorIncorrectBatchVersion();
+        }
         // check finalization
-        if (startBatchIndex < miscData.lastFinalizedBatchIndex) revert ErrorRevertFinalizedBatch();
+        if (startBatchIndex < miscData.lastFinalizedBatchIndex) {
+            revert ErrorRevertFinalizedBatch();
+        }
 
         // actual revert
         for (uint256 i = lastBatchIndex; i > startBatchIndex; --i) {
             bytes32 hash = committedBatches[i];
-            if (hash != bytes32(0)) delete committedBatches[i];
+            if (hash != bytes32(0)) {
+                delete committedBatches[i];
+            }
         }
         emit RevertBatch(startBatchIndex + 1, lastBatchIndex);
 
@@ -380,8 +413,8 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         bool isV1MessageFinalized = _decodeBoolFromFlag(flags, V1_MESSAGES_FINALIZED_OFFSET);
         if (!isV1MessageFinalized) {
             if (
-                IL1MessageQueueV1(messageQueueV1).nextUnfinalizedQueueIndex() !=
-                IL1MessageQueueV2(messageQueueV2).firstCrossDomainMessageIndex()
+                IL1MessageQueueV1(messageQueueV1).nextUnfinalizedQueueIndex()
+                    != IL1MessageQueueV2(messageQueueV2).firstCrossDomainMessageIndex()
             ) {
                 revert ErrorNotAllV1MessagesAreFinalized();
             }
@@ -393,20 +426,19 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
 
     /// @inheritdoc IScrollChain
     /// @dev We only consider batch version >= 7 here.
-    function commitAndFinalizeBatch(
-        uint8 version,
-        bytes32 parentBatchHash,
-        FinalizeStruct calldata finalizeStruct
-    ) external OnlyTopLevelCall {
+    function commitAndFinalizeBatch(uint8 version, bytes32 parentBatchHash, FinalizeStruct calldata finalizeStruct)
+        external
+        OnlyTopLevelCall
+    {
         ScrollChainMiscData memory cachedMiscData = miscData;
         if (!isEnforcedModeEnabled()) {
-            (uint256 maxDelayEnterEnforcedMode, uint256 maxDelayMessageQueue) = SystemConfig(systemConfig)
-                .enforcedBatchParameters();
-            uint256 firstUnfinalizedMessageTime = IL1MessageQueueV2(messageQueueV2)
-                .getFirstUnfinalizedMessageEnqueueTime();
+            (uint256 maxDelayEnterEnforcedMode, uint256 maxDelayMessageQueue) =
+                SystemConfig(systemConfig).enforcedBatchParameters();
+            uint256 firstUnfinalizedMessageTime =
+                IL1MessageQueueV2(messageQueueV2).getFirstUnfinalizedMessageEnqueueTime();
             if (
-                firstUnfinalizedMessageTime + maxDelayMessageQueue < block.timestamp ||
-                cachedMiscData.lastFinalizeTimestamp + maxDelayEnterEnforcedMode < block.timestamp
+                firstUnfinalizedMessageTime + maxDelayMessageQueue < block.timestamp
+                    || cachedMiscData.lastFinalizeTimestamp + maxDelayEnterEnforcedMode < block.timestamp
             ) {
                 if (cachedMiscData.lastFinalizedBatchIndex < cachedMiscData.lastCommittedBatchIndex) {
                     // be careful with the gas costs, maybe should call revertBatch first.
@@ -416,12 +448,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
                         --i
                     ) {
                         bytes32 hash = committedBatches[i];
-                        if (hash != bytes32(0)) delete committedBatches[i];
+                        if (hash != bytes32(0)) {
+                            delete committedBatches[i];
+                        }
                     }
-                    emit RevertBatch(
-                        cachedMiscData.lastFinalizedBatchIndex + 1,
-                        cachedMiscData.lastCommittedBatchIndex
-                    );
+                    emit RevertBatch(cachedMiscData.lastFinalizedBatchIndex + 1, cachedMiscData.lastCommittedBatchIndex);
                 }
                 // explicitly enable enforced batch mode
                 cachedMiscData.flags = uint8(_insertBoolToFlag(cachedMiscData.flags, ENFORCED_MODE_OFFSET, true));
@@ -447,16 +478,20 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         );
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Add an account to the sequencer list.
     /// @param _account The address of account to add.
     function addSequencer(address _account) external onlyOwner {
         // @note Currently many external services rely on EOA sequencer to decode metadata directly from tx.calldata.
         // So we explicitly make sure the account is EOA.
-        if (_account.code.length > 0) revert ErrorAccountIsNotEOA();
+        if (_account.code.length > 0) {
+            revert ErrorAccountIsNotEOA();
+        }
 
         isSequencer[_account] = true;
 
@@ -476,7 +511,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     function addProver(address _account) external onlyOwner {
         // @note Currently many external services rely on EOA prover to decode metadata directly from tx.calldata.
         // So we explicitly make sure the account is EOA.
-        if (_account.code.length > 0) revert ErrorAccountIsNotEOA();
+        if (_account.code.length > 0) {
+            revert ErrorAccountIsNotEOA();
+        }
         isProver[_account] = true;
 
         emit UpdateProver(_account, true);
@@ -506,9 +543,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         emit UpdateEnforcedBatchMode(false, miscData.lastCommittedBatchIndex);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Caller should make sure bit is smaller than 256.
     function _decodeBoolFromFlag(uint256 flag, uint256 bit) internal pure returns (bool) {
@@ -516,11 +555,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     }
 
     /// @dev Caller should make sure bit is smaller than 256.
-    function _insertBoolToFlag(
-        uint256 flag,
-        uint256 bit,
-        bool value
-    ) internal pure returns (uint256) {
+    function _insertBoolToFlag(uint256 flag, uint256 bit, bool value) internal pure returns (uint256) {
         flag = flag ^ (flag & (1 << bit)); // reset value at bit
         if (value) {
             flag |= (1 << bit);
@@ -540,19 +575,21 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             uint256 prevBatchIndex
         )
     {
-        if (postStateRoot == bytes32(0)) revert ErrorStateRootIsZero();
+        if (postStateRoot == bytes32(0)) {
+            revert ErrorStateRootIsZero();
+        }
 
         ScrollChainMiscData memory cachedMiscData = miscData;
         uint256 batchPtr;
         // compute pending batch hash and verify
-        (batchPtr, batchHash, batchIndex, totalL1MessagesPoppedOverall) = _loadBatchHeader(
-            batchHeader,
-            cachedMiscData.lastCommittedBatchIndex
-        );
+        (batchPtr, batchHash, batchIndex, totalL1MessagesPoppedOverall) =
+            _loadBatchHeader(batchHeader, cachedMiscData.lastCommittedBatchIndex);
 
         // make sure don't finalize batch multiple times
         prevBatchIndex = cachedMiscData.lastFinalizedBatchIndex;
-        if (batchIndex <= prevBatchIndex) revert ErrorBatchIsAlreadyVerified();
+        if (batchIndex <= prevBatchIndex) {
+            revert ErrorBatchIsAlreadyVerified();
+        }
 
         version = BatchHeaderV0Codec.getVersion(batchPtr);
     }
@@ -594,23 +631,24 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @param parentBatchHash The hash of parent batch.
     /// @param lastBatchHash The hash of the last committed batch after this call.
     /// @param onlyOne If true, we will only process the first blob.
-    function _commitBatchesFromV7(
-        uint8 version,
-        bytes32 parentBatchHash,
-        bytes32 lastBatchHash,
-        bool onlyOne
-    ) internal {
+    function _commitBatchesFromV7(uint8 version, bytes32 parentBatchHash, bytes32 lastBatchHash, bool onlyOne)
+        internal
+    {
         if (version < 7) {
             // only accept version >= 7
             revert ErrorIncorrectBatchVersion();
         }
 
         uint256 lastCommittedBatchIndex = miscData.lastCommittedBatchIndex;
-        if (parentBatchHash != committedBatches[lastCommittedBatchIndex]) revert ErrorIncorrectBatchHash();
-        for (uint256 i = 0; ; i++) {
+        if (parentBatchHash != committedBatches[lastCommittedBatchIndex]) {
+            revert ErrorIncorrectBatchHash();
+        }
+        for (uint256 i = 0;; i++) {
             bytes32 blobVersionedHash = _getBlobVersionedHash(i);
             if (blobVersionedHash == bytes32(0)) {
-                if (i == 0) revert ErrorBatchIsEmpty();
+                if (i == 0) {
+                    revert ErrorBatchIsEmpty();
+                }
                 break;
             }
 
@@ -621,13 +659,13 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             BatchHeaderV0Codec.storeBatchIndex(batchPtr, lastCommittedBatchIndex);
             BatchHeaderV7Codec.storeParentBatchHash(batchPtr, parentBatchHash);
             BatchHeaderV7Codec.storeBlobVersionedHash(batchPtr, blobVersionedHash);
-            bytes32 batchHash = BatchHeaderV0Codec.computeBatchHash(
-                batchPtr,
-                BatchHeaderV7Codec.BATCH_HEADER_FIXED_LENGTH
-            );
+            bytes32 batchHash =
+                BatchHeaderV0Codec.computeBatchHash(batchPtr, BatchHeaderV7Codec.BATCH_HEADER_FIXED_LENGTH);
             emit CommitBatch(lastCommittedBatchIndex, batchHash);
             parentBatchHash = batchHash;
-            if (onlyOne) break;
+            if (onlyOne) {
+                break;
+            }
         }
 
         // Make sure that the batch hash matches the one computed by the batch committer off-chain.
@@ -657,10 +695,8 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         bytes calldata aggrProof
     ) internal {
         // actions before verification
-        (uint256 version, bytes32 batchHash, uint256 batchIndex, , uint256 prevBatchIndex) = _beforeFinalizeBatch(
-            batchHeader,
-            postStateRoot
-        );
+        (uint256 version, bytes32 batchHash, uint256 batchIndex,, uint256 prevBatchIndex) =
+            _beforeFinalizeBatch(batchHeader, postStateRoot);
 
         // L1 message hashes are chained,
         // this hash commits to the whole queue up to and including `totalL1MessagesPoppedOverall-1`
@@ -699,12 +735,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         internal
         view
         virtual
-        returns (
-            uint256 batchPtr,
-            bytes32 _batchHash,
-            uint256 _batchIndex,
-            uint256 _totalL1MessagesPoppedOverall
-        )
+        returns (uint256 batchPtr, bytes32 _batchHash, uint256 _batchIndex, uint256 _totalL1MessagesPoppedOverall)
     {
         // load version from batch header, it is always the first byte.
         uint256 version;
@@ -732,7 +763,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             _totalL1MessagesPoppedOverall = BatchHeaderV0Codec.getTotalL1MessagePopped(batchPtr);
         }
 
-        if (_batchIndex > _lastCommittedBatchIndex) revert ErrorBatchNotCommitted();
+        if (_batchIndex > _lastCommittedBatchIndex) {
+            revert ErrorBatchNotCommitted();
+        }
 
         // only check when genesis is imported
         if (committedBatches[_batchIndex] != _batchHash && finalizedStateRoots[0] != bytes32(0)) {

@@ -1,11 +1,18 @@
 pragma solidity ^0.7.4;
+
 import "../ResolverBase.sol";
 
 abstract contract StealthKeyResolver is ResolverBase {
-    bytes4 constant private STEALTH_KEY_INTERFACE_ID = 0x69a76591;
+    bytes4 private constant STEALTH_KEY_INTERFACE_ID = 0x69a76591;
 
     /// @dev Event emitted when a user updates their resolver stealth keys
-    event StealthKeyChanged(bytes32 indexed node, uint256 spendingPubKeyPrefix, uint256 spendingPubKey, uint256 viewingPubKeyPrefix, uint256 viewingPubKey);
+    event StealthKeyChanged(
+        bytes32 indexed node,
+        uint256 spendingPubKeyPrefix,
+        uint256 spendingPubKey,
+        uint256 viewingPubKeyPrefix,
+        uint256 viewingPubKey
+    );
 
     /**
      * @dev Mapping used to store two secp256k1 curve public keys useful for
@@ -34,10 +41,16 @@ abstract contract StealthKeyResolver is ResolverBase {
      * @param viewingPubKeyPrefix Prefix of the viewing public key (2 or 3)
      * @param viewingPubKey The public key to use for encryption
      */
-    function setStealthKeys(bytes32 node, uint256 spendingPubKeyPrefix, uint256 spendingPubKey, uint256 viewingPubKeyPrefix, uint256 viewingPubKey) external authorised(node) {
+    function setStealthKeys(
+        bytes32 node,
+        uint256 spendingPubKeyPrefix,
+        uint256 spendingPubKey,
+        uint256 viewingPubKeyPrefix,
+        uint256 viewingPubKey
+    ) external authorised(node) {
         require(
-            (spendingPubKeyPrefix == 2 || spendingPubKeyPrefix == 3) &&
-            (viewingPubKeyPrefix == 2 || viewingPubKeyPrefix == 3),
+            (spendingPubKeyPrefix == 2 || spendingPubKeyPrefix == 3)
+                && (viewingPubKeyPrefix == 2 || viewingPubKeyPrefix == 3),
             "StealthKeyResolver: Invalid Prefix"
         );
 
@@ -63,7 +76,16 @@ abstract contract StealthKeyResolver is ResolverBase {
      * @return viewingPubKeyPrefix Prefix of the viewing public key (2 or 3)
      * @return viewingPubKey The public key to use for encryption
      */
-    function stealthKeys(bytes32 node) external view returns (uint256 spendingPubKeyPrefix, uint256 spendingPubKey, uint256 viewingPubKeyPrefix, uint256 viewingPubKey) {
+    function stealthKeys(bytes32 node)
+        external
+        view
+        returns (
+            uint256 spendingPubKeyPrefix,
+            uint256 spendingPubKey,
+            uint256 viewingPubKeyPrefix,
+            uint256 viewingPubKey
+        )
+    {
         if (_stealthKeys[node][0] != 0) {
             spendingPubKeyPrefix = 2;
             spendingPubKey = _stealthKeys[node][0];
@@ -83,7 +105,7 @@ abstract contract StealthKeyResolver is ResolverBase {
         return (spendingPubKeyPrefix, spendingPubKey, viewingPubKeyPrefix, viewingPubKey);
     }
 
-    function supportsInterface(bytes4 interfaceID) public virtual override pure returns(bool) {
+    function supportsInterface(bytes4 interfaceID) public pure virtual override returns (bool) {
         return interfaceID == STEALTH_KEY_INTERFACE_ID || super.supportsInterface(interfaceID);
     }
 }

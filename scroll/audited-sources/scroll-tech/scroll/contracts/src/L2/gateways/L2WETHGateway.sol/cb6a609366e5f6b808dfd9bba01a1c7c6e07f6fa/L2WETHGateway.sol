@@ -6,11 +6,11 @@ import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.s
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-import {IL2ERC20Gateway, L2ERC20Gateway} from "./L2ERC20Gateway.sol";
-import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
-import {IWETH} from "../../interfaces/IWETH.sol";
 import {IL1ERC20Gateway} from "../../L1/gateways/IL1ERC20Gateway.sol";
-import {ScrollGatewayBase, IScrollGateway} from "../../libraries/gateway/ScrollGatewayBase.sol";
+import {IWETH} from "../../interfaces/IWETH.sol";
+import {IScrollGateway, ScrollGatewayBase} from "../../libraries/gateway/ScrollGatewayBase.sol";
+import {IL2ScrollMessenger} from "../IL2ScrollMessenger.sol";
+import {IL2ERC20Gateway, L2ERC20Gateway} from "./L2ERC20Gateway.sol";
 
 /// @title L2WETHGateway
 /// @notice The `L2WETHGateway` contract is used to withdraw `WETH` token in layer 2 and
@@ -22,9 +22,11 @@ import {ScrollGatewayBase, IScrollGateway} from "../../libraries/gateway/ScrollG
 contract L2WETHGateway is Initializable, ScrollGatewayBase, L2ERC20Gateway {
     using SafeERC20 for IERC20;
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of L1 WETH address.
     address public immutable l1WETH;
@@ -34,20 +36,17 @@ contract L2WETHGateway is Initializable, ScrollGatewayBase, L2ERC20Gateway {
     // solhint-disable-next-line var-name-mixedcase
     address public immutable WETH;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _WETH, address _l1WETH) {
         WETH = _WETH;
         l1WETH = _l1WETH;
     }
 
-    function initialize(
-        address _counterpart,
-        address _router,
-        address _messenger
-    ) external initializer {
+    function initialize(address _counterpart, address _router, address _messenger) external initializer {
         require(_router != address(0), "zero router address");
         ScrollGatewayBase._initialize(_counterpart, _router, _messenger);
     }
@@ -56,9 +55,11 @@ contract L2WETHGateway is Initializable, ScrollGatewayBase, L2ERC20Gateway {
         require(msg.sender == WETH, "only WETH");
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function getL1ERC20Address(address) external view override returns (address) {
@@ -70,9 +71,11 @@ contract L2WETHGateway is Initializable, ScrollGatewayBase, L2ERC20Gateway {
         return WETH;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @inheritdoc IL2ERC20Gateway
     function finalizeDepositERC20(
@@ -95,18 +98,18 @@ contract L2WETHGateway is Initializable, ScrollGatewayBase, L2ERC20Gateway {
         emit FinalizeDepositERC20(_l1Token, _l2Token, _from, _to, _amount, _data);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @inheritdoc L2ERC20Gateway
-    function _withdraw(
-        address _token,
-        address _to,
-        uint256 _amount,
-        bytes memory _data,
-        uint256 _gasLimit
-    ) internal virtual override {
+    function _withdraw(address _token, address _to, uint256 _amount, bytes memory _data, uint256 _gasLimit)
+        internal
+        virtual
+        override
+    {
         require(_amount > 0, "withdraw zero amount");
         require(_token == WETH, "only WETH is allowed");
 
@@ -123,22 +126,11 @@ contract L2WETHGateway is Initializable, ScrollGatewayBase, L2ERC20Gateway {
         // 3. Generate message passed to L2StandardERC20Gateway.
         address _l1WETH = l1WETH;
         bytes memory _message = abi.encodeWithSelector(
-            IL1ERC20Gateway.finalizeWithdrawERC20.selector,
-            _l1WETH,
-            _token,
-            _from,
-            _to,
-            _amount,
-            _data
+            IL1ERC20Gateway.finalizeWithdrawERC20.selector, _l1WETH, _token, _from, _to, _amount, _data
         );
 
         // 4. Send message to L1ScrollMessenger.
-        IL2ScrollMessenger(messenger).sendMessage{value: _amount + msg.value}(
-            counterpart,
-            _amount,
-            _message,
-            _gasLimit
-        );
+        IL2ScrollMessenger(messenger).sendMessage{value: _amount + msg.value}(counterpart, _amount, _message, _gasLimit);
 
         emit WithdrawERC20(_l1WETH, _token, _from, _to, _amount, _data);
     }

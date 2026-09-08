@@ -2,42 +2,47 @@
 pragma solidity 0.8.15;
 
 // Contracts
-import { OPContractsManagerStandardValidator } from "src/L1/OPContractsManagerStandardValidator.sol";
+import {OPContractsManagerStandardValidator} from "src/L1/OPContractsManagerStandardValidator.sol";
 
 // Libraries
-import { Blueprint } from "src/libraries/Blueprint.sol";
-import { Constants } from "src/libraries/Constants.sol";
-import { Bytes } from "src/libraries/Bytes.sol";
-import { Claim, Duration, GameType, Hash, GameTypes, Proposal } from "src/dispute/lib/Types.sol";
-import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
-import { SemverComp } from "src/libraries/SemverComp.sol";
-import { Features } from "src/libraries/Features.sol";
-import { DevFeatures } from "src/libraries/DevFeatures.sol";
+
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
+import {Claim, Duration, GameType, GameTypes, Hash, Proposal} from "src/dispute/lib/Types.sol";
+import {Blueprint} from "src/libraries/Blueprint.sol";
+import {Bytes} from "src/libraries/Bytes.sol";
+import {Constants} from "src/libraries/Constants.sol";
+
+import {DevFeatures} from "src/libraries/DevFeatures.sol";
+import {Features} from "src/libraries/Features.sol";
+import {SemverComp} from "src/libraries/SemverComp.sol";
 
 // Interfaces
-import { ISemver } from "interfaces/universal/ISemver.sol";
-import { IResourceMetering } from "interfaces/L1/IResourceMetering.sol";
-import { IBigStepper } from "interfaces/dispute/IBigStepper.sol";
-import { IDelayedWETH } from "interfaces/dispute/IDelayedWETH.sol";
-import { IAnchorStateRegistry } from "interfaces/dispute/IAnchorStateRegistry.sol";
-import { IDisputeGame } from "interfaces/dispute/IDisputeGame.sol";
-import { IAddressManager } from "interfaces/legacy/IAddressManager.sol";
-import { IProxyAdmin } from "interfaces/universal/IProxyAdmin.sol";
-import { IDisputeGameFactory } from "interfaces/dispute/IDisputeGameFactory.sol";
-import { IFaultDisputeGame } from "interfaces/dispute/IFaultDisputeGame.sol";
-import { IPermissionedDisputeGame } from "interfaces/dispute/IPermissionedDisputeGame.sol";
-import { ISuperFaultDisputeGame } from "interfaces/dispute/ISuperFaultDisputeGame.sol";
-import { ISuperPermissionedDisputeGame } from "interfaces/dispute/ISuperPermissionedDisputeGame.sol";
-import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
-import { IProtocolVersions } from "interfaces/L1/IProtocolVersions.sol";
-import { IOptimismPortal2 as IOptimismPortal } from "interfaces/L1/IOptimismPortal2.sol";
-import { IOptimismPortalInterop } from "interfaces/L1/IOptimismPortalInterop.sol";
-import { ISystemConfig } from "interfaces/L1/ISystemConfig.sol";
-import { IL1CrossDomainMessenger } from "interfaces/L1/IL1CrossDomainMessenger.sol";
-import { IL1ERC721Bridge } from "interfaces/L1/IL1ERC721Bridge.sol";
-import { IL1StandardBridge } from "interfaces/L1/IL1StandardBridge.sol";
-import { IOptimismMintableERC20Factory } from "interfaces/universal/IOptimismMintableERC20Factory.sol";
-import { IETHLockbox } from "interfaces/L1/IETHLockbox.sol";
+
+import {IETHLockbox} from "interfaces/L1/IETHLockbox.sol";
+import {IL1CrossDomainMessenger} from "interfaces/L1/IL1CrossDomainMessenger.sol";
+import {IL1ERC721Bridge} from "interfaces/L1/IL1ERC721Bridge.sol";
+import {IL1StandardBridge} from "interfaces/L1/IL1StandardBridge.sol";
+import {IOptimismPortal2 as IOptimismPortal} from "interfaces/L1/IOptimismPortal2.sol";
+import {IOptimismPortalInterop} from "interfaces/L1/IOptimismPortalInterop.sol";
+import {IProtocolVersions} from "interfaces/L1/IProtocolVersions.sol";
+import {IResourceMetering} from "interfaces/L1/IResourceMetering.sol";
+import {ISuperchainConfig} from "interfaces/L1/ISuperchainConfig.sol";
+
+import {ISystemConfig} from "interfaces/L1/ISystemConfig.sol";
+import {IAnchorStateRegistry} from "interfaces/dispute/IAnchorStateRegistry.sol";
+import {IBigStepper} from "interfaces/dispute/IBigStepper.sol";
+import {IDelayedWETH} from "interfaces/dispute/IDelayedWETH.sol";
+import {IDisputeGame} from "interfaces/dispute/IDisputeGame.sol";
+import {IDisputeGameFactory} from "interfaces/dispute/IDisputeGameFactory.sol";
+import {IFaultDisputeGame} from "interfaces/dispute/IFaultDisputeGame.sol";
+import {IPermissionedDisputeGame} from "interfaces/dispute/IPermissionedDisputeGame.sol";
+import {ISuperFaultDisputeGame} from "interfaces/dispute/ISuperFaultDisputeGame.sol";
+import {ISuperPermissionedDisputeGame} from "interfaces/dispute/ISuperPermissionedDisputeGame.sol";
+import {IAddressManager} from "interfaces/legacy/IAddressManager.sol";
+
+import {IOptimismMintableERC20Factory} from "interfaces/universal/IOptimismMintableERC20Factory.sol";
+import {IProxyAdmin} from "interfaces/universal/IProxyAdmin.sol";
+import {ISemver} from "interfaces/universal/ISemver.sol";
 
 contract OPContractsManagerContractsContainer {
     /// @notice Addresses of the Blueprint contracts.
@@ -168,11 +173,7 @@ abstract contract OPContractsManagerBase {
     /// Including the contract name ensures that the resultant address from CREATE2 is unique
     /// across our smart contract system. For example, we deploy multiple proxy contracts
     /// with the same bytecode from this contract, so they each require a unique salt for determinism.
-    function computeSalt(
-        uint256 _l2ChainId,
-        string memory _saltMixer,
-        string memory _contractName
-    )
+    function computeSalt(uint256 _l2ChainId, string memory _saltMixer, string memory _contractName)
         internal
         pure
         returns (bytes32)
@@ -200,22 +201,14 @@ abstract contract OPContractsManagerBase {
         IProxyAdmin _proxyAdmin,
         string memory _saltMixer,
         string memory _contractName
-    )
-        internal
-        returns (address)
-    {
+    ) internal returns (address) {
         bytes32 salt = computeSalt(_l2ChainId, _saltMixer, _contractName);
         return Blueprint.deployFrom(getBlueprints().proxy, salt, abi.encode(_proxyAdmin));
     }
 
     /// @notice Makes an internal call to the target to initialize the proxy with the specified data.
     /// First performs safety checks to ensure the target, implementation, and proxy admin are valid.
-    function upgradeToAndCall(
-        IProxyAdmin _proxyAdmin,
-        address _target,
-        address _implementation,
-        bytes memory _data
-    )
+    function upgradeToAndCall(IProxyAdmin _proxyAdmin, address _target, address _implementation, bytes memory _data)
         internal
     {
         assertValidContractAddress(_implementation);
@@ -224,7 +217,9 @@ abstract contract OPContractsManagerBase {
     }
 
     function assertValidContractAddress(address _who) public view {
-        if (_who.code.length == 0) revert OPContractsManager.AddressHasNoCode(_who);
+        if (_who.code.length == 0) {
+            revert OPContractsManager.AddressHasNoCode(_who);
+        }
     }
 
     function encodePermissionlessFDGConstructor(IFaultDisputeGame.GameConstructorParams memory _params)
@@ -241,12 +236,7 @@ abstract contract OPContractsManagerBase {
         IFaultDisputeGame.GameConstructorParams memory _params,
         address _proposer,
         address _challenger
-    )
-        internal
-        view
-        virtual
-        returns (bytes memory)
-    {
+    ) internal view virtual returns (bytes memory) {
         bytes memory dataWithSelector =
             abi.encodeCall(IPermissionedDisputeGame.__constructor__, (_params, _proposer, _challenger));
         return Bytes.slice(dataWithSelector, 4);
@@ -266,22 +256,14 @@ abstract contract OPContractsManagerBase {
         ISuperFaultDisputeGame.GameConstructorParams memory _params,
         address _proposer,
         address _challenger
-    )
-        internal
-        view
-        virtual
-        returns (bytes memory)
-    {
+    ) internal view virtual returns (bytes memory) {
         bytes memory dataWithSelector =
             abi.encodeCall(ISuperPermissionedDisputeGame.__constructor__, (_params, _proposer, _challenger));
         return Bytes.slice(dataWithSelector, 4);
     }
 
     /// @notice Returns the implementation contract address for a given game type.
-    function getGameImplementation(
-        IDisputeGameFactory _disputeGameFactory,
-        GameType _gameType
-    )
+    function getGameImplementation(IDisputeGameFactory _disputeGameFactory, GameType _gameType)
         internal
         view
         returns (IDisputeGame)
@@ -385,7 +367,7 @@ contract OPContractsManagerGameTypeAdder is OPContractsManagerBase {
 
     /// @notice Constructor to initialize the immutable thisOPCM variable and contract addresses
     /// @param _contractsContainer The blueprint contract addresses and implementation contract addresses
-    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) { }
+    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) {}
 
     /// @notice Deploys a new dispute game and installs it into the DisputeGameFactory. Inputted
     ///         game configs must be added in ascending GameType order.
@@ -397,7 +379,9 @@ contract OPContractsManagerGameTypeAdder is OPContractsManagerBase {
         returns (OPContractsManager.AddGameOutput[] memory)
     {
         // Ensure we have at least one game config to add.
-        if (_gameConfigs.length == 0) revert OPContractsManager.InvalidGameConfigs();
+        if (_gameConfigs.length == 0) {
+            revert OPContractsManager.InvalidGameConfigs();
+        }
 
         // We'll have one output per game config.
         OPContractsManager.AddGameOutput[] memory outputs = new OPContractsManager.AddGameOutput[](_gameConfigs.length);
@@ -415,7 +399,9 @@ contract OPContractsManagerGameTypeAdder is OPContractsManagerBase {
             int256 gameTypeInt = int256(uint256(gameConfig.disputeGameType.raw()));
 
             // Ensure that the game configs are added in ascending order, and not duplicated.
-            if (lastGameConfig >= gameTypeInt) revert OPContractsManager.InvalidGameConfigs();
+            if (lastGameConfig >= gameTypeInt) {
+                revert OPContractsManager.InvalidGameConfigs();
+            }
             lastGameConfig = gameTypeInt;
 
             // Grab the L2 chain ID from the SystemConfig.
@@ -655,7 +641,7 @@ contract OPContractsManagerUpgrader is OPContractsManagerBase {
     error OPContractsManagerUpgrader_SuperchainConfigAlreadyUpToDate();
 
     /// @param _contractsContainer The OPContractsManagerContractsContainer to use.
-    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) { }
+    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) {}
 
     /// @notice Upgrades a set of chains to the latest implementation contracts
     /// @param _opChainConfigs Array of OpChain structs, one per chain to upgrade
@@ -755,7 +741,7 @@ contract OPContractsManagerUpgrader is OPContractsManagerBase {
                             (
                                 _opChainConfigs[i].systemConfigProxy,
                                 dgf,
-                                Proposal({ root: root, l2SequenceNumber: l2BlockNumber }),
+                                Proposal({root: root, l2SequenceNumber: l2BlockNumber}),
                                 respectedGameType
                             )
                         )
@@ -980,9 +966,7 @@ contract OPContractsManagerUpgrader is OPContractsManagerBase {
         IAnchorStateRegistry _newAnchorStateRegistryProxy,
         GameType _gameType,
         OPContractsManager.OpChainConfig memory _opChainConfig
-    )
-        internal
-    {
+    ) internal {
         OPContractsManager.Blueprints memory bps = getBlueprints();
         OPContractsManager.Implementations memory impls = getImplementations();
 
@@ -1044,7 +1028,7 @@ contract OPContractsManagerDeployer is OPContractsManagerBase {
     /// @param deployOutput ABI-encoded output of the deployment.
     event Deployed(uint256 indexed l2ChainId, address indexed deployer, bytes deployOutput);
 
-    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) { }
+    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) {}
 
     /// @notice Deploys a new OP Stack chain.
     /// @param _input The deploy input parameters for the deployment.
@@ -1055,11 +1039,7 @@ contract OPContractsManagerDeployer is OPContractsManagerBase {
         OPContractsManager.DeployInput calldata _input,
         ISuperchainConfig _superchainConfig,
         address _deployer
-    )
-        external
-        virtual
-        returns (OPContractsManager.DeployOutput memory)
-    {
+    ) external virtual returns (OPContractsManager.DeployOutput memory) {
         assertValidInputs(_input);
         OPContractsManager.DeployOutput memory output;
         OPContractsManager.Blueprints memory blueprint = getBlueprints();
@@ -1309,7 +1289,9 @@ contract OPContractsManagerDeployer is OPContractsManagerBase {
     /// @notice Verifies that all inputs are valid and reverts if any are invalid.
     /// Typically the proxy admin owner is expected to have code, but this is not enforced here.
     function assertValidInputs(OPContractsManager.DeployInput calldata _input) internal view {
-        if (_input.l2ChainId == 0 || _input.l2ChainId == block.chainid) revert OPContractsManager.InvalidChainId();
+        if (_input.l2ChainId == 0 || _input.l2ChainId == block.chainid) {
+            revert OPContractsManager.InvalidChainId();
+        }
 
         if (_input.roles.opChainProxyAdminOwner == address(0)) {
             revert OPContractsManager.InvalidRoleAddress("opChainProxyAdminOwner");
@@ -1317,15 +1299,25 @@ contract OPContractsManagerDeployer is OPContractsManagerBase {
         if (_input.roles.systemConfigOwner == address(0)) {
             revert OPContractsManager.InvalidRoleAddress("systemConfigOwner");
         }
-        if (_input.roles.batcher == address(0)) revert OPContractsManager.InvalidRoleAddress("batcher");
+        if (_input.roles.batcher == address(0)) {
+            revert OPContractsManager.InvalidRoleAddress("batcher");
+        }
         if (_input.roles.unsafeBlockSigner == address(0)) {
             revert OPContractsManager.InvalidRoleAddress("unsafeBlockSigner");
         }
-        if (_input.roles.proposer == address(0)) revert OPContractsManager.InvalidRoleAddress("proposer");
-        if (_input.roles.challenger == address(0)) revert OPContractsManager.InvalidRoleAddress("challenger");
+        if (_input.roles.proposer == address(0)) {
+            revert OPContractsManager.InvalidRoleAddress("proposer");
+        }
+        if (_input.roles.challenger == address(0)) {
+            revert OPContractsManager.InvalidRoleAddress("challenger");
+        }
 
-        if (_input.startingAnchorRoot.length == 0) revert OPContractsManager.InvalidStartingAnchorRoot();
-        if (bytes32(_input.startingAnchorRoot) == bytes32(0)) revert OPContractsManager.InvalidStartingAnchorRoot();
+        if (_input.startingAnchorRoot.length == 0) {
+            revert OPContractsManager.InvalidStartingAnchorRoot();
+        }
+        if (bytes32(_input.startingAnchorRoot) == bytes32(0)) {
+            revert OPContractsManager.InvalidStartingAnchorRoot();
+        }
     }
 
     /// @notice Transfers ownership
@@ -1374,12 +1366,7 @@ contract OPContractsManagerDeployer is OPContractsManagerBase {
     function encodeETHLockboxInitializer(
         OPContractsManager.DeployOutput memory _output,
         IOptimismPortal[] memory _portals
-    )
-        internal
-        view
-        virtual
-        returns (bytes memory)
-    {
+    ) internal view virtual returns (bytes memory) {
         return abi.encodeCall(IETHLockbox.initialize, (_output.systemConfigProxy, _portals));
     }
 
@@ -1388,12 +1375,7 @@ contract OPContractsManagerDeployer is OPContractsManagerBase {
         OPContractsManager.DeployInput memory _input,
         OPContractsManager.DeployOutput memory _output,
         ISuperchainConfig _superchainConfig
-    )
-        internal
-        view
-        virtual
-        returns (bytes memory)
-    {
+    ) internal view virtual returns (bytes memory) {
         (IResourceMetering.ResourceConfig memory referenceResourceConfig, ISystemConfig.Addresses memory opChainAddrs) =
             defaultSystemConfigParams(_input, _output);
 
@@ -1457,12 +1439,7 @@ contract OPContractsManagerDeployer is OPContractsManagerBase {
     function encodeAnchorStateRegistryInitializer(
         OPContractsManager.DeployInput memory _input,
         OPContractsManager.DeployOutput memory _output
-    )
-        internal
-        view
-        virtual
-        returns (bytes memory)
-    {
+    ) internal view virtual returns (bytes memory) {
         Proposal memory startingAnchorRoot = abi.decode(_input.startingAnchorRoot, (Proposal));
         return abi.encodeCall(
             IAnchorStateRegistry.initialize,
@@ -1522,7 +1499,7 @@ contract OPContractsManagerInteropMigrator is OPContractsManagerBase {
     }
 
     /// @param _contractsContainer Container of blueprints and implementations.
-    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) { }
+    constructor(OPContractsManagerContractsContainer _contractsContainer) OPContractsManagerBase(_contractsContainer) {}
 
     /// @notice Migrates one or more OP Stack chains to use the Super Root dispute games and shared
     ///         dispute game contracts.
@@ -2004,10 +1981,7 @@ contract OPContractsManager is ISemver {
     }
 
     /// @notice Validates the configuration of the L1 contracts.
-    function validate(
-        OPContractsManagerStandardValidator.ValidationInput memory _input,
-        bool _allowFailure
-    )
+    function validate(OPContractsManagerStandardValidator.ValidationInput memory _input, bool _allowFailure)
         public
         view
         returns (string memory)
@@ -2021,11 +1995,7 @@ contract OPContractsManager is ISemver {
         OPContractsManagerStandardValidator.ValidationInput memory _input,
         bool _allowFailure,
         OPContractsManagerStandardValidator.ValidationOverrides memory _overrides
-    )
-        public
-        view
-        returns (string memory)
-    {
+    ) public view returns (string memory) {
         return opcmStandardValidator.validateWithOverrides(_input, _allowFailure, _overrides);
     }
 
@@ -2041,7 +2011,9 @@ contract OPContractsManager is ISemver {
     /// @dev This function is intended to be called via DELEGATECALL from the Upgrade Controller Safe.
     /// @dev This function requires that each chain's superchainConfig is already upgraded.
     function upgrade(OpChainConfig[] memory _opChainConfigs) external virtual {
-        if (address(this) == address(thisOPCM)) revert OnlyDelegatecall();
+        if (address(this) == address(thisOPCM)) {
+            revert OnlyDelegatecall();
+        }
 
         bytes memory data = abi.encodeCall(OPContractsManagerUpgrader.upgrade, (_opChainConfigs));
         _performDelegateCall(address(opcmUpgrader), data);
@@ -2053,7 +2025,9 @@ contract OPContractsManager is ISemver {
     /// @dev This function is intended to be called via DELEGATECALL from the Upgrade Controller Safe.
     /// @dev This function will revert if the SuperchainConfig is already at or above the target version.
     function upgradeSuperchainConfig(ISuperchainConfig _superchainConfig, IProxyAdmin _superchainProxyAdmin) external {
-        if (address(this) == address(thisOPCM)) revert OnlyDelegatecall();
+        if (address(this) == address(thisOPCM)) {
+            revert OnlyDelegatecall();
+        }
 
         bytes memory data = abi.encodeCall(
             OPContractsManagerUpgrader.upgradeSuperchainConfig, (_superchainConfig, _superchainProxyAdmin)
@@ -2064,7 +2038,9 @@ contract OPContractsManager is ISemver {
     /// @notice addGameType deploys a new dispute game and links it to the DisputeGameFactory. The inputted _gameConfigs
     /// must be added in ascending GameType order.
     function addGameType(AddGameInput[] memory _gameConfigs) public virtual returns (AddGameOutput[] memory) {
-        if (address(this) == address(thisOPCM)) revert OnlyDelegatecall();
+        if (address(this) == address(thisOPCM)) {
+            revert OnlyDelegatecall();
+        }
 
         bytes memory data = abi.encodeCall(OPContractsManagerGameTypeAdder.addGameType, (_gameConfigs));
 
@@ -2075,7 +2051,9 @@ contract OPContractsManager is ISemver {
     /// @notice Updates the prestate hash for a new game type while keeping all other parameters the same
     /// @param _prestateUpdateInputs The new prestate hash to use
     function updatePrestate(OpChainConfig[] memory _prestateUpdateInputs) public {
-        if (address(this) == address(thisOPCM)) revert OnlyDelegatecall();
+        if (address(this) == address(thisOPCM)) {
+            revert OnlyDelegatecall();
+        }
 
         bytes memory data = abi.encodeCall(OPContractsManagerGameTypeAdder.updatePrestate, (_prestateUpdateInputs));
 
@@ -2085,7 +2063,9 @@ contract OPContractsManager is ISemver {
     /// @notice Migrates the Optimism contracts to the latest version.
     /// @param _input Input parameters for the migration.
     function migrate(OPContractsManagerInteropMigrator.MigrateInput calldata _input) external virtual {
-        if (address(this) == address(thisOPCM)) revert OnlyDelegatecall();
+        if (address(this) == address(thisOPCM)) {
+            revert OnlyDelegatecall();
+        }
 
         bytes memory data = abi.encodeCall(OPContractsManagerInteropMigrator.migrate, (_input));
         _performDelegateCall(address(opcmInteropMigrator), data);

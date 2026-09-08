@@ -2,11 +2,7 @@
 pragma solidity ^0.8.11;
 
 interface IValidators {
-    function registerValidator(
-        bytes calldata,
-        bytes calldata,
-        bytes calldata
-    ) external returns (bool);
+    function registerValidator(bytes calldata, bytes calldata, bytes calldata) external returns (bool);
 
     function deregisterValidator(uint256) external returns (bool);
 
@@ -22,19 +18,11 @@ interface IValidators {
 
     function addMember(address) external returns (bool);
 
-    function addFirstMember(
-        address,
-        address,
-        address
-    ) external returns (bool);
+    function addFirstMember(address, address, address) external returns (bool);
 
     function removeMember(address) external returns (bool);
 
-    function reorderMember(
-        address,
-        address,
-        address
-    ) external returns (bool);
+    function reorderMember(address, address, address) external returns (bool);
 
     function updateCommission() external;
 
@@ -67,12 +55,7 @@ interface IValidators {
     function getMembershipHistory(address)
         external
         view
-        returns (
-            uint256[] memory,
-            address[] memory,
-            uint256,
-            uint256
-        );
+        returns (uint256[] memory, address[] memory, uint256, uint256);
 
     function calculateEpochScore(uint256) external view returns (uint256);
 
@@ -87,58 +70,29 @@ interface IValidators {
     function getValidator(address account)
         external
         view
-        returns (
-            bytes memory,
-            bytes memory,
-            address,
-            uint256,
-            address
-        );
+        returns (bytes memory, bytes memory, address, uint256, address);
 
     function getValidatorGroup(address)
         external
         view
-        returns (
-            address[] memory,
-            uint256,
-            uint256,
-            uint256,
-            uint256[] memory,
-            uint256,
-            uint256
-        );
+        returns (address[] memory, uint256, uint256, uint256, uint256[] memory, uint256, uint256);
 
     function getGroupNumMembers(address) external view returns (uint256);
 
     function getTopGroupValidators(address, uint256) external view returns (address[] memory);
 
-    function getGroupsNumMembers(address[] calldata accounts)
-        external
-        view
-        returns (uint256[] memory);
+    function getGroupsNumMembers(address[] calldata accounts) external view returns (uint256[] memory);
 
     function getNumRegisteredValidators() external view returns (uint256);
 
-    function groupMembershipInEpoch(
-        address,
-        uint256,
-        uint256
-    ) external view returns (address);
+    function groupMembershipInEpoch(address, uint256, uint256) external view returns (address);
 
     // only registered contract
-    function updateEcdsaPublicKey(
-        address,
-        address,
-        bytes calldata
-    ) external returns (bool);
+    function updateEcdsaPublicKey(address, address, bytes calldata) external returns (bool);
 
-    function updatePublicKeys(
-        address,
-        address,
-        bytes calldata,
-        bytes calldata,
-        bytes calldata
-    ) external returns (bool);
+    function updatePublicKeys(address, address, bytes calldata, bytes calldata, bytes calldata)
+        external
+        returns (bool);
 
     function getValidatorLockedGoldRequirements() external view returns (uint256, uint256);
 

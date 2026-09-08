@@ -72,25 +72,31 @@ abstract contract AppendOnlyMerkleTree {
 }
 
 abstract contract OwnableBase {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner is changed by current owner.
     /// @param _oldOwner The address of previous owner.
     /// @param _newOwner The address of new owner.
     event OwnershipTransferred(address indexed _oldOwner, address indexed _newOwner);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of the current owner.
     address public owner;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
+     *
+     */
 
     /// @dev Throws if called by any account other than the owner.
     modifier onlyOwner() {
@@ -98,9 +104,11 @@ abstract contract OwnableBase {
         _;
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Leaves the contract without owner. It will not be possible to call
     /// `onlyOwner` functions anymore. Can only be called by the current owner.
@@ -118,9 +126,11 @@ abstract contract OwnableBase {
         _transferOwnership(_newOwner);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Transfers ownership of the contract to a new account (`newOwner`).
     /// Internal function without access restriction.
@@ -138,26 +148,31 @@ abstract contract OwnableBase {
 /// _verifyStorageProof function, which verifies the existence of the transaction hash in this
 /// contract's `sentMessages` mapping.
 contract L2MessageQueue is AppendOnlyMerkleTree, OwnableBase {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when a new message is added to the merkle tree.
     /// @param index The index of the corresponding message.
     /// @param messageHash The hash of the corresponding message.
     event AppendMessage(uint256 index, bytes32 messageHash);
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The address of L2ScrollMessenger contract.
     address public messenger;
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(address _owner) {
         _transferOwnership(_owner);
     }
@@ -173,9 +188,11 @@ contract L2MessageQueue is AppendOnlyMerkleTree, OwnableBase {
         messenger = _messenger;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice record the message to merkle tree and compute the new root.
     /// @param _messageHash The hash of the new added message.

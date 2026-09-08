@@ -2,7 +2,8 @@
 
 pragma solidity =0.8.24;
 
-import {AccessControlEnumerableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
+import {AccessControlEnumerableUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
 import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 
 import {IL2ScrollMessenger} from "../L2/IL2ScrollMessenger.sol";
@@ -10,9 +11,11 @@ import {BatchBridgeCodec} from "./BatchBridgeCodec.sol";
 
 /// @title L2BatchBridgeGateway
 contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when token mapping for ERC20 token is updated.
     /// @param l2Token The address of corresponding ERC20 token in layer 2.
@@ -39,9 +42,11 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
     /// @param amount The amount of token to distribute.
     event DistributeFailed(address indexed l2Token, uint256 indexed batchIndex, address receiver, uint256 amount);
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown when caller is not `messenger`.
     error ErrorCallerNotMessenger();
@@ -61,9 +66,11 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
     /// @dev Thrown when distributing the same batch.
     error ErrorBatchDistributed();
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The role for batch deposit keeper.
     bytes32 public constant KEEPER_ROLE = keccak256("KEEPER_ROLE");
@@ -77,9 +84,11 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
     /// @notice The address of corresponding `L2ScrollMessenger` contract.
     address public immutable messenger;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice Mapping from l2 token address to l1 token address.
     mapping(address => address) public tokenMapping;
@@ -93,10 +102,11 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
     /// @notice Mapping from batch hash to the distribute status.
     mapping(bytes32 => bool) public isDistributed;
 
-    /*************
+    /**
+     *
      * Modifiers *
-     *************/
-
+     *
+     */
     modifier onlyMessenger() {
         if (_msgSender() != messenger) {
             revert ErrorCallerNotMessenger();
@@ -104,9 +114,11 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @param _counterpart The address of `L1BatchBridgeGateway` contract in L1.
     /// @param _messenger The address of `L2ScrollMessenger` contract in L2.
@@ -127,9 +139,11 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Receive batch bridged ETH from `L2ScrollMessenger`.
     receive() external payable onlyMessenger {
@@ -141,12 +155,10 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
     /// @param l2Token The address of the token in L2.
     /// @param batchIndex The index of this batch bridge.
     /// @param hash The hash of this batch.
-    function finalizeBatchDeposit(
-        address l1Token,
-        address l2Token,
-        uint256 batchIndex,
-        bytes32 hash
-    ) external onlyMessenger {
+    function finalizeBatchDeposit(address l1Token, address l2Token, uint256 batchIndex, bytes32 hash)
+        external
+        onlyMessenger
+    {
         if (counterpart != IL2ScrollMessenger(messenger).xDomainMessageSender()) {
             revert ErrorMessageSenderNotCounterpart();
         }
@@ -166,16 +178,20 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
         emit FinalizeBatchDeposit(l1Token, l2Token, batchIndex);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Withdraw distribution failed tokens.
     /// @param token The address of token to withdraw.
     /// @param receiver The address of token receiver.
     function withdrawFailedAmount(address token, address receiver) external onlyRole(DEFAULT_ADMIN_ROLE) {
         uint256 amount = failedAmount[token];
-        if (amount == 0) revert ErrorNoFailedDistribution();
+        if (amount == 0) {
+            revert ErrorNoFailedDistribution();
+        }
         failedAmount[token] = 0;
 
         _transferToken(token, receiver, amount);
@@ -185,11 +201,7 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
     /// @param l2Token The address of L2 token.
     /// @param batchIndex The index of batch to distribute.
     /// @param nodes The list of encoded L1 deposits.
-    function distribute(
-        address l2Token,
-        uint64 batchIndex,
-        bytes32[] memory nodes
-    ) external onlyRole(KEEPER_ROLE) {
+    function distribute(address l2Token, uint64 batchIndex, bytes32[] memory nodes) external onlyRole(KEEPER_ROLE) {
         address l1Token = tokenMapping[l2Token];
         bytes32 hash = BatchBridgeCodec.encodeInitialNode(l1Token, batchIndex);
         for (uint256 i = 0; i < nodes.length; i++) {
@@ -216,23 +228,21 @@ contract L2BatchBridgeGateway is AccessControlEnumerableUpgradeable {
         emit BatchDistribute(l1Token, l2Token, batchIndex);
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to transfer token, including ETH.
     /// @param token The address of token.
     /// @param receiver The address of token receiver.
     /// @param amount The amount of token to transfer.
     /// @return success Whether the transfer is successful.
-    function _transferToken(
-        address token,
-        address receiver,
-        uint256 amount
-    ) private returns (bool success) {
+    function _transferToken(address token, address receiver, uint256 amount) private returns (bool success) {
         if (token == address(0)) {
             // We add gas limit here to avoid DDOS from malicious receiver.
-            (success, ) = receiver.call{value: amount, gas: SAFE_ETH_TRANSFER_GAS_LIMIT}("");
+            (success,) = receiver.call{value: amount, gas: SAFE_ETH_TRANSFER_GAS_LIMIT}("");
         } else {
             // We perform a low level call here, to bypass Solidity's return data size checking mechanism.
             // Normally, the token is selected that the call would not revert unless out of gas.

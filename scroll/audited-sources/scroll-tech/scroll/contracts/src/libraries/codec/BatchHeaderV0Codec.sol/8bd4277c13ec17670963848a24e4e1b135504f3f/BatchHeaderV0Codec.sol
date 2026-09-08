@@ -31,7 +31,9 @@ library BatchHeaderV0Codec {
     /// @return length The length in bytes of the batch header.
     function loadAndValidate(bytes calldata _batchHeader) internal pure returns (uint256 batchPtr, uint256 length) {
         length = _batchHeader.length;
-        if (length < BATCH_HEADER_FIXED_LENGTH) revert ErrorBatchHeaderLengthTooSmall();
+        if (length < BATCH_HEADER_FIXED_LENGTH) {
+            revert ErrorBatchHeaderLengthTooSmall();
+        }
 
         // copy batch header to memory.
         assembly {
@@ -190,9 +192,7 @@ library BatchHeaderV0Codec {
     function storeSkippedBitmap(uint256 batchPtr, bytes calldata _skippedL1MessageBitmap) internal pure {
         assembly {
             calldatacopy(
-                add(batchPtr, BATCH_HEADER_FIXED_LENGTH),
-                _skippedL1MessageBitmap.offset,
-                _skippedL1MessageBitmap.length
+                add(batchPtr, BATCH_HEADER_FIXED_LENGTH), _skippedL1MessageBitmap.offset, _skippedL1MessageBitmap.length
             )
         }
     }

@@ -19,7 +19,7 @@ library SafeCast {
     /// @notice Cast a uint256 to a int256, revert on overflow
     /// @return z The downcasted integer, now type int256
     function toInt256(uint256 y) internal pure returns (int256 z) {
-        require(y < 2**255);
+        require(y < 2 ** 255);
         z = int256(y);
     }
 }

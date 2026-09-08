@@ -44,10 +44,14 @@ library ChunkCodecV1 {
         _numBlocks = getNumBlocks(chunkPtr);
 
         // should contain at least one block
-        if (_numBlocks == 0) revert ErrorNoBlockInChunk();
+        if (_numBlocks == 0) {
+            revert ErrorNoBlockInChunk();
+        }
 
         // should contain the number of the blocks and block contexts
-        if (_length != 1 + _numBlocks * BLOCK_CONTEXT_LENGTH) revert ErrorIncorrectChunkLength();
+        if (_length != 1 + _numBlocks * BLOCK_CONTEXT_LENGTH) {
+            revert ErrorIncorrectChunkLength();
+        }
     }
 
     /// @notice Return the number of blocks in current chunk.
@@ -62,11 +66,7 @@ library ChunkCodecV1 {
     /// @param dstPtr The destination memory offset to store the block context.
     /// @param index The index of block context to copy.
     /// @return uint256 The new destination memory offset after copy.
-    function copyBlockContext(
-        uint256 chunkPtr,
-        uint256 dstPtr,
-        uint256 index
-    ) internal pure returns (uint256) {
+    function copyBlockContext(uint256 chunkPtr, uint256 dstPtr, uint256 index) internal pure returns (uint256) {
         return ChunkCodecV0.copyBlockContext(chunkPtr, dstPtr, index);
     }
 

@@ -16,10 +16,7 @@ interface ILockedGold {
 
     function getSlashingWhitelist() external view returns (bytes32[] memory);
 
-    function getPendingWithdrawals(address)
-        external
-        view
-        returns (uint256[] memory, uint256[] memory);
+    function getPendingWithdrawals(address) external view returns (uint256[] memory, uint256[] memory);
 
     function getTotalPendingWithdrawals(address) external view returns (uint256);
 

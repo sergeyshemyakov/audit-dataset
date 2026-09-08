@@ -2,12 +2,12 @@
 pragma solidity >=0.5.13 <0.9.0;
 
 interface ICeloUnreleasedTreasury {
-  /**
-   * @notice Releases the Celo to the specified address.
-   * @param to The address to release the amount to.
-   * @param amount The amount to release.
-   */
-  function release(address to, uint256 amount) external;
+    /**
+     * @notice Releases the Celo to the specified address.
+     * @param to The address to release the amount to.
+     * @param amount The amount to release.
+     */
+    function release(address to, uint256 amount) external;
 
-  function getRemainingBalanceToRelease() external view returns (uint256);
+    function getRemainingBalanceToRelease() external view returns (uint256);
 }

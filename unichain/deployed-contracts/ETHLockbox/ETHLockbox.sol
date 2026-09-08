@@ -19,7 +19,9 @@ abstract contract ReinitializableBase {
     /// @param _initVersion Current initialization version.
     constructor(uint8 _initVersion) {
         // Sanity check, we should never have a zero init version.
-        if (_initVersion == 0) revert ReinitializableBase_ZeroInitVersion();
+        if (_initVersion == 0) {
+            revert ReinitializableBase_ZeroInitVersion();
+        }
         INIT_VERSION = _initVersion;
     }
 
@@ -84,7 +86,7 @@ library Address {
     function sendValue(address payable recipient, uint256 amount) internal {
         require(address(this).balance >= amount, "Address: insufficient balance");
 
-        (bool success, ) = recipient.call{value: amount}("");
+        (bool success,) = recipient.call{value: amount}("");
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
@@ -116,11 +118,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
@@ -135,11 +136,7 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
@@ -149,12 +146,10 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(address(this).balance >= value, "Address: insufficient balance for call");
         require(isContract(target), "Address: call to non-contract");
 
@@ -178,11 +173,11 @@ library Address {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
+    function functionStaticCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        view
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
@@ -205,11 +200,10 @@ library Address {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
+    function functionDelegateCall(address target, bytes memory data, string memory errorMessage)
+        internal
+        returns (bytes memory)
+    {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
@@ -222,11 +216,11 @@ library Address {
      *
      * _Available since v4.3._
      */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
+    function verifyCallResult(bool success, bytes memory returndata, string memory errorMessage)
+        internal
+        pure
+        returns (bytes memory)
+    {
         if (success) {
             return returndata;
         } else {
@@ -615,10 +609,7 @@ contract ETHLockbox is ProxyAdminOwnedBase, Initializable, ReinitializableBase, 
     ///      contracts will point to the same pause identifier (the lockbox itself). Therefore, it
     ///      doesn't matter which SystemConfig is used here as long as it belongs to one of the
     ///      chains that share the lockbox.
-    function initialize(
-        ISystemConfig _systemConfig,
-        IOptimismPortal[] calldata _portals
-    )
+    function initialize(ISystemConfig _systemConfig, IOptimismPortal[] calldata _portals)
         external
         reinitializer(initVersion())
     {
@@ -657,7 +648,9 @@ contract ETHLockbox is ProxyAdminOwnedBase, Initializable, ReinitializableBase, 
     function receiveLiquidity() external payable {
         // Check that the sender is authorized to trigger this function.
         IETHLockbox sender = IETHLockbox(payable(msg.sender));
-        if (!authorizedLockboxes[sender]) revert ETHLockbox_Unauthorized();
+        if (!authorizedLockboxes[sender]) {
+            revert ETHLockbox_Unauthorized();
+        }
 
         // Emit the event.
         emit LiquidityReceived(sender, msg.value);
@@ -668,7 +661,9 @@ contract ETHLockbox is ProxyAdminOwnedBase, Initializable, ReinitializableBase, 
     function lockETH() external payable {
         // Check that the sender is authorized to trigger this function.
         IOptimismPortal sender = IOptimismPortal(payable(msg.sender));
-        if (!authorizedPortals[sender]) revert ETHLockbox_Unauthorized();
+        if (!authorizedPortals[sender]) {
+            revert ETHLockbox_Unauthorized();
+        }
 
         // Emit the event.
         emit ETHLocked(sender, msg.value);
@@ -680,14 +675,20 @@ contract ETHLockbox is ProxyAdminOwnedBase, Initializable, ReinitializableBase, 
     /// @param _value The amount of ETH to unlock.
     function unlockETH(uint256 _value) external {
         // Unlocks are blocked when paused, locks are not.
-        if (paused()) revert ETHLockbox_Paused();
+        if (paused()) {
+            revert ETHLockbox_Paused();
+        }
 
         // Check that the sender is authorized to trigger this function.
         IOptimismPortal sender = IOptimismPortal(payable(msg.sender));
-        if (!authorizedPortals[sender]) revert ETHLockbox_Unauthorized();
+        if (!authorizedPortals[sender]) {
+            revert ETHLockbox_Unauthorized();
+        }
 
         // Check that we have enough balance to process the unlock.
-        if (_value > address(this).balance) revert ETHLockbox_InsufficientBalance();
+        if (_value > address(this).balance) {
+            revert ETHLockbox_InsufficientBalance();
+        }
 
         // Check that the sender is not executing a withdrawal transaction.
         if (sender.l2Sender() != Constants.DEFAULT_L2_SENDER) {
@@ -695,7 +696,7 @@ contract ETHLockbox is ProxyAdminOwnedBase, Initializable, ReinitializableBase, 
         }
 
         // Using donateETH to avoid triggering a deposit.
-        sender.donateETH{ value: _value }();
+        sender.donateETH{value: _value}();
 
         // Emit the event.
         emit ETHUnlocked(sender, _value);
@@ -733,7 +734,7 @@ contract ETHLockbox is ProxyAdminOwnedBase, Initializable, ReinitializableBase, 
 
         // Receive the liquidity.
         uint256 balance = address(this).balance;
-        IETHLockbox(_lockbox).receiveLiquidity{ value: balance }();
+        IETHLockbox(_lockbox).receiveLiquidity{value: balance}();
 
         // Emit the event.
         emit LiquidityMigrated(_lockbox, balance);
@@ -746,7 +747,9 @@ contract ETHLockbox is ProxyAdminOwnedBase, Initializable, ReinitializableBase, 
         _assertSharedProxyAdminOwner(address(_portal));
 
         // Check that the portal has the same superchain config.
-        if (_portal.superchainConfig() != superchainConfig()) revert ETHLockbox_DifferentSuperchainConfig();
+        if (_portal.superchainConfig() != superchainConfig()) {
+            revert ETHLockbox_DifferentSuperchainConfig();
+        }
 
         // Authorize the portal.
         authorizedPortals[_portal] = true;

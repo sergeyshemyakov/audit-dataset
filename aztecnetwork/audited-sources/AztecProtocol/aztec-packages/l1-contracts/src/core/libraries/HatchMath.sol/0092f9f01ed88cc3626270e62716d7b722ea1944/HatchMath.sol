@@ -11,11 +11,11 @@ pragma solidity >=0.8.27;
 type Hatch is uint256;
 
 function addHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) + Hatch.unwrap(_b));
 }
 
 function subHatch(Hatch _a, Hatch _b) pure returns (Hatch) {
-  return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
+    return Hatch.wrap(Hatch.unwrap(_a) - Hatch.unwrap(_b));
 }
 
 using {addHatch as +, subHatch as -} for Hatch global;

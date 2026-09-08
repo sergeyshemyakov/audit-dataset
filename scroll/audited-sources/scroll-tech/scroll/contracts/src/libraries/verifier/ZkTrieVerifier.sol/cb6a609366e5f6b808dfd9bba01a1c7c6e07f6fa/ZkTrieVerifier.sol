@@ -24,12 +24,11 @@ library ZkTrieVerifier {
     /// |        1 byte        |      ...      |        1 byte        |      ...      |
     /// | account proof length | account proof | storage proof length | storage proof |
     /// ```
-    function verifyZkTrieProof(
-        address poseidon,
-        address account,
-        bytes32 storageKey,
-        bytes calldata proof
-    ) internal view returns (bytes32 stateRoot, bytes32 storageValue) {
+    function verifyZkTrieProof(address poseidon, address account, bytes32 storageKey, bytes calldata proof)
+        internal
+        view
+        returns (bytes32 stateRoot, bytes32 storageValue)
+    {
         assembly {
             // reverts with error `msg`.
             // make sure the length of error string <= 32
@@ -39,11 +38,7 @@ library ZkTrieVerifier {
                 mstore(0x04, 0x20) // str.offset
                 mstore(0x44, msg)
                 let msgLen
-                for {
-
-                } msg {
-
-                } {
+                for {} msg {} {
                     msg := shl(8, msg)
                     msgLen := add(msgLen, 1)
                 }
@@ -53,9 +48,7 @@ library ZkTrieVerifier {
             // reverts with `msg` when condition is not matched.
             // make sure the length of error string <= 32
             function require(cond, msg) {
-                if iszero(cond) {
-                    revertWith(msg)
-                }
+                if iszero(cond) { revertWith(msg) }
             }
             // compute poseidon hash of two uint256
             function poseidon_hash(hasher, v0, v1) -> r {
@@ -83,11 +76,7 @@ library ZkTrieVerifier {
                 ptr := add(ptr, 1)
 
                 // treat the leaf node with different logic
-                for {
-                    let depth := 1
-                } lt(depth, nodes) {
-                    depth := add(depth, 1)
-                } {
+                for { let depth := 1 } lt(depth, nodes) { depth := add(depth, 1) } {
                     // must be a parent node with two children
                     let nodeType := byte(0, calldataload(ptr))
                     ptr := add(ptr, 1)
@@ -104,21 +93,13 @@ library ZkTrieVerifier {
                     // Otherwise verifies that the hash of the current node
                     // is the same as the previous choosen one.
                     switch depth
-                    case 1 {
-                        rootHash := hash
-                    }
-                    default {
-                        require(eq(hash, expectedHash), "Hash mismatch")
-                    }
+                    case 1 { rootHash := hash }
+                    default { require(eq(hash, expectedHash), "Hash mismatch") }
 
                     // decide which path to walk based on key
                     switch and(key, 1)
-                    case 0 {
-                        expectedHash := childHashL
-                    }
-                    default {
-                        expectedHash := childHashR
-                    }
+                    case 0 { expectedHash := childHashL }
+                    default { expectedHash := childHashR }
                     key := shr(1, key)
                 }
             }
@@ -129,8 +110,7 @@ library ZkTrieVerifier {
                 calldatacopy(x, ptr, 0x2d)
                 x := keccak256(x, 0x2d)
                 require(
-                    eq(x, 0x950654da67865a81bc70e45f3230f5179f08e29c66184bf746f71050f117b3b8),
-                    "Invalid ProofMagicBytes"
+                    eq(x, 0x950654da67865a81bc70e45f3230f5179f08e29c66184bf746f71050f117b3b8), "Invalid ProofMagicBytes"
                 )
                 ptr := add(ptr, 0x2d) // skip ProofMagicBytes
             }
@@ -239,9 +219,7 @@ library ZkTrieVerifier {
                     ptr := add(ptr, 0x01) // skip NodeType
                     require(eq(leafHash, 0), "Invalid empty node hash")
                 }
-                default {
-                    revertWith("Invalid leaf node")
-                }
+                default { revertWith("Invalid leaf node") }
 
                 // compare ProofMagicBytes
                 ptr := checkProofMagicBytes(poseidon, ptr)
@@ -251,9 +229,7 @@ library ZkTrieVerifier {
             // in case an attacker crafted a malicous payload
             // and succeeds in the prior verification steps
             // then this should catch any bogus accesses
-            if iszero(eq(ptr, add(proof.offset, proof.length))) {
-                revertWith("Proof length mismatch")
-            }
+            if iszero(eq(ptr, add(proof.offset, proof.length))) { revertWith("Proof length mismatch") }
         }
     }
 }

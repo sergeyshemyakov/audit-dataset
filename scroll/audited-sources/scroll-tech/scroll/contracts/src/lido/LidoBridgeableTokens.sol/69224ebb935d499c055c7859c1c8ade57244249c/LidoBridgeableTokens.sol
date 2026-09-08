@@ -3,9 +3,11 @@
 pragma solidity =0.8.16;
 
 abstract contract LidoBridgeableTokens {
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The address of bridged token in L1 chain.
     address public immutable l1Token;
@@ -13,9 +15,11 @@ abstract contract LidoBridgeableTokens {
     /// @notice The address of the token minted on the L2 chain when token bridged.
     address public immutable l2Token;
 
-    /**********
+    /**
+     *
      * Errors *
-     **********/
+     *
+     */
 
     /// @dev Thrown the given `l1Token` is not supported.
     error ErrorUnsupportedL1Token();
@@ -29,9 +33,11 @@ abstract contract LidoBridgeableTokens {
     /// @dev Thrown the `msg.value` is not zero.
     error ErrorNonZeroMsgValue();
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
+     *
+     */
 
     /// @dev Validates that passed `_l1Token` is supported by the bridge
     modifier onlySupportedL1Token(address _l1Token) {
@@ -57,9 +63,11 @@ abstract contract LidoBridgeableTokens {
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
+     *
+     */
 
     /// @param _l1Token The address of the bridged token in the L1 chain
     /// @param _l2Token The address of the token minted on the L2 chain when token bridged

@@ -5,11 +5,11 @@ pragma solidity =0.8.16;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-import {IL1MessageQueue} from "./IL1MessageQueue.sol";
-import {IScrollChain} from "./IScrollChain.sol";
 import {BatchHeaderV0Codec} from "../../libraries/codec/BatchHeaderV0Codec.sol";
 import {ChunkCodec} from "../../libraries/codec/ChunkCodec.sol";
 import {IRollupVerifier} from "../../libraries/verifier/IRollupVerifier.sol";
+import {IL1MessageQueue} from "./IL1MessageQueue.sol";
+import {IScrollChain} from "./IScrollChain.sol";
 
 // solhint-disable no-inline-assembly
 // solhint-disable reason-string
@@ -17,9 +17,11 @@ import {IRollupVerifier} from "../../libraries/verifier/IRollupVerifier.sol";
 /// @title ScrollChain
 /// @notice This contract maintains data for the Scroll rollup.
 contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
-    /**********
+    /**
+     *
      * Events *
-     **********/
+     *
+     */
 
     /// @notice Emitted when owner updates the status of sequencer.
     /// @param account The address of account updated.
@@ -41,16 +43,20 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @param newMaxNumL2TxInChunk The new value of `maxNumL2TxInChunk`.
     event UpdateMaxNumL2TxInChunk(uint256 oldMaxNumL2TxInChunk, uint256 newMaxNumL2TxInChunk);
 
-    /*************
+    /**
+     *
      * Constants *
-     *************/
+     *
+     */
 
     /// @notice The chain id of the corresponding layer 2 chain.
     uint64 public immutable layer2ChainId;
 
-    /*************
+    /**
+     *
      * Variables *
-     *************/
+     *
+     */
 
     /// @notice The maximum number of transactions allowed in each chunk.
     uint256 public maxNumL2TxInChunk;
@@ -79,10 +85,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
     /// @inheritdoc IScrollChain
     mapping(uint256 => bytes32) public override withdrawRoots;
 
-    /**********************
+    /**
+     *
      * Function Modifiers *
-     **********************/
-
+     *
+     */
     modifier OnlySequencer() {
         // @note In the decentralized mode, it should be only called by a list of validator.
         require(isSequencer[msg.sender], "caller not sequencer");
@@ -94,21 +101,18 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         _;
     }
 
-    /***************
+    /**
+     *
      * Constructor *
-     ***************/
-
+     *
+     */
     constructor(uint64 _chainId) {
         _disableInitializers();
 
         layer2ChainId = _chainId;
     }
 
-    function initialize(
-        address _messageQueue,
-        address _verifier,
-        uint256 _maxNumL2TxInChunk
-    ) public initializer {
+    function initialize(address _messageQueue, address _verifier, uint256 _maxNumL2TxInChunk) public initializer {
         OwnableUpgradeable.__Ownable_init();
 
         messageQueue = _messageQueue;
@@ -119,18 +123,22 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         emit UpdateMaxNumL2TxInChunk(0, _maxNumL2TxInChunk);
     }
 
-    /*************************
+    /**
+     *
      * Public View Functions *
-     *************************/
+     *
+     */
 
     /// @inheritdoc IScrollChain
     function isBatchFinalized(uint256 _batchIndex) external view override returns (bool) {
         return _batchIndex <= lastFinalizedBatchIndex;
     }
 
-    /*****************************
+    /**
+     *
      * Public Mutating Functions *
-     *****************************/
+     *
+     */
 
     /// @notice Import layer 2 genesis block
     function importGenesisBatch(bytes calldata _batchHeader, bytes32 _stateRoot) external {
@@ -144,10 +152,8 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
 
         // check all fields except `dataHash` and `lastBlockHash` are zero
         unchecked {
-            uint256 sum = BatchHeaderV0Codec.version(memPtr) +
-                BatchHeaderV0Codec.batchIndex(memPtr) +
-                BatchHeaderV0Codec.l1MessagePopped(memPtr) +
-                BatchHeaderV0Codec.totalL1MessagePopped(memPtr);
+            uint256 sum = BatchHeaderV0Codec.version(memPtr) + BatchHeaderV0Codec.batchIndex(memPtr)
+                + BatchHeaderV0Codec.l1MessagePopped(memPtr) + BatchHeaderV0Codec.totalL1MessagePopped(memPtr);
             require(sum == 0, "not all fields are zero");
         }
         require(BatchHeaderV0Codec.dataHash(memPtr) != bytes32(0), "zero data hash");
@@ -281,7 +287,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
             }
 
             _batchHash = committedBatches[_batchIndex];
-            if (_batchHash == bytes32(0)) break;
+            if (_batchHash == bytes32(0)) {
+                break;
+            }
         }
     }
 
@@ -310,9 +318,8 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         require(finalizedStateRoots[_batchIndex] == bytes32(0), "batch already verified");
 
         // compute public input hash
-        bytes32 _publicInputHash = keccak256(
-            abi.encodePacked(layer2ChainId, _prevStateRoot, _postStateRoot, _withdrawRoot, _dataHash)
-        );
+        bytes32 _publicInputHash =
+            keccak256(abi.encodePacked(layer2ChainId, _prevStateRoot, _postStateRoot, _withdrawRoot, _dataHash));
 
         // verify batch
         IRollupVerifier(verifier).verifyAggregateProof(_batchIndex, _aggrProof, _publicInputHash);
@@ -352,9 +359,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         emit FinalizeBatch(_batchIndex, _batchHash, _postStateRoot, _withdrawRoot);
     }
 
-    /************************
+    /**
+     *
      * Restricted Functions *
-     ************************/
+     *
+     */
 
     /// @notice Add an account to the sequencer list.
     /// @param _account The address of account to add.
@@ -416,9 +425,11 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         }
     }
 
-    /**********************
+    /**
+     *
      * Internal Functions *
-     **********************/
+     *
+     */
 
     /// @dev Internal function to load batch header from calldata to memory.
     /// @param _batchHeader The batch header in calldata.
@@ -514,8 +525,7 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
 
         // check the number of L2 transactions in the chunk
         require(
-            _totalTransactionsInChunk - _totalNumL1MessagesInChunk <= maxNumL2TxInChunk,
-            "too many L2 txs in one chunk"
+            _totalTransactionsInChunk - _totalNumL1MessagesInChunk <= maxNumL2TxInChunk, "too many L2 txs in one chunk"
         );
 
         // check chunk has correct length
@@ -544,7 +554,9 @@ contract ScrollChain is OwnableUpgradeable, PausableUpgradeable, IScrollChain {
         uint256 _totalL1MessagesPoppedOverall,
         bytes calldata _skippedL1MessageBitmap
     ) internal view returns (uint256) {
-        if (_numL1Messages == 0) return _ptr;
+        if (_numL1Messages == 0) {
+            return _ptr;
+        }
         IL1MessageQueue _messageQueue = IL1MessageQueue(messageQueue);
 
         unchecked {

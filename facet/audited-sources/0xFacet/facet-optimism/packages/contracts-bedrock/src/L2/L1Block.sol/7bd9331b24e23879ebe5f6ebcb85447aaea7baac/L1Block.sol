@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import { ISemver } from "src/universal/ISemver.sol";
-import { Constants } from "src/libraries/Constants.sol";
-import { GasPayingToken, IGasToken } from "src/libraries/GasPayingToken.sol";
+import {Constants} from "src/libraries/Constants.sol";
+import {GasPayingToken, IGasToken} from "src/libraries/GasPayingToken.sol";
 import "src/libraries/L1BlockErrors.sol";
+import {ISemver} from "src/universal/ISemver.sol";
 
 /// @custom:proxied
 /// @custom:predeploy 0x4200000000000000000000000000000000000015
@@ -56,9 +56,9 @@ contract L1Block is ISemver, IGasToken {
 
     /// @notice The latest L1 blob base fee.
     uint256 public blobBaseFee;
-    
+
     uint128 public fctMintRate;
-    
+
     uint128 public fctMintPeriodL1DataGas;
 
     /// @custom:semver 1.4.1-beta.1
@@ -110,9 +110,7 @@ contract L1Block is ISemver, IGasToken {
         bytes32 _batcherHash,
         uint256 _l1FeeOverhead,
         uint256 _l1FeeScalar
-    )
-        external
-    {
+    ) external {
         require(msg.sender == DEPOSITOR_ACCOUNT(), "L1Block: only the depositor account can set L1 block values");
 
         number = _number;
@@ -162,10 +160,12 @@ contract L1Block is ISemver, IGasToken {
     ///         depositor account. This function is not called on every L2 block but instead
     ///         only called by specially crafted L1 deposit transactions.
     function setGasPayingToken(address _token, uint8 _decimals, bytes32 _name, bytes32 _symbol) external {
-        if (msg.sender != DEPOSITOR_ACCOUNT()) revert NotDepositor();
+        if (msg.sender != DEPOSITOR_ACCOUNT()) {
+            revert NotDepositor();
+        }
 
-        GasPayingToken.set({ _token: _token, _decimals: _decimals, _name: _name, _symbol: _symbol });
+        GasPayingToken.set({_token: _token, _decimals: _decimals, _name: _name, _symbol: _symbol});
 
-        emit GasPayingTokenSet({ token: _token, decimals: _decimals, name: _name, symbol: _symbol });
+        emit GasPayingTokenSet({token: _token, decimals: _decimals, name: _name, symbol: _symbol});
     }
 }
