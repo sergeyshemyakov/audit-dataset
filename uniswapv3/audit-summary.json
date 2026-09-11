@@ -3,159 +3,23 @@
   "project": "uniswapv3",
   "reports": [
     {
-      "id": "trail-of-bits-uniswap-v3-core-2021-03-12",
+      "id": "trailofbits-uniswap-v3-core-2021-03",
       "report_file": "audit.md",
       "title": "Uniswap V3 Core Security Assessment",
-      "description": "Security assessment of the Uniswap V3 core contracts and whitepaper at commit 99223f3, covering the arithmetic libraries, the factory, and the pool's initialization, mint, burn, flash, and swap logic. Manual review was combined with Echidna, Manticore, and Slither testing.",
+      "description": "Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues (free swaps/token draining via an incorrect balance comparison, and missing contract existence check in TransferHelper).",
       "isRelevant": true,
       "auditor": "Trail of Bits",
       "report_date": "2021-03-12",
       "repositories": [
         {
-          "id": "Uniswap/uniswap-v3-core",
-          "url": "https://github.com/Uniswap/uniswap-v3-core"
+          "id": "Uniswap/v3-core",
+          "url": "https://github.com/Uniswap/v3-core"
         }
       ],
       "scopes": [
         {
-          "repository": "Uniswap/uniswap-v3-core",
+          "repository": "Uniswap/v3-core",
           "paths": {
-            "contracts/libraries/BitMath.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/BitMath.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/FullMath.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/FullMath.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/UnsafeMath.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/UnsafeMath.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/SafeCast.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SafeCast.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/LowGasSafeMath.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LowGasSafeMath.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/LiquidityMath.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LiquidityMath.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/Tick.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Tick.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/Position.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Position.sol"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
             "contracts/NoDelegateCall.sol": {
               "path_kind": "file",
               "versions": [
@@ -164,12 +28,13 @@
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
                     "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/NoDelegateCall.sol"
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/NoDelegateCall.sol"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
+                  "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
                 }
               ]
             },
@@ -181,12 +46,31 @@
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
                     "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Factory.sol"
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Factory.sol"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
+                  "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/UniswapV3Pool.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Pool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file (manual review, unit tests, Echidna end-to-end properties)",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
                 }
               ]
             },
@@ -198,16 +82,17 @@
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
                     "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3PoolDeployer.sol"
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3PoolDeployer.sol"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "security assessment",
+                  "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
                 }
               ]
             },
-            "contracts/libraries/TransferHelper.sol": {
+            "contracts/libraries/BitMath.sol": {
               "path_kind": "file",
               "versions": [
                 {
@@ -215,12 +100,210 @@
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
                     "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TransferHelper.sol"
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/BitMath.sol"
                   },
-                  "status": "audited_with_major_findings",
-                  "review_phase": "security assessment",
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 1,
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/FullMath.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/FullMath.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/LiquidityMath.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LiquidityMath.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/LowGasSafeMath.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LowGasSafeMath.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/Oracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Oracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "brief review limited to cardinality-increase monotonicity; other Oracle functions not explored",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/Position.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Position.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/SafeCast.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SafeCast.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/SecondsOutside.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SecondsOutside.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "review of bit-shift/wordPos math and cross/clear functions; secondsInside not explored",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/SqrtPriceMath.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SqrtPriceMath.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "manual review of getAmount0/1Delta and getNextSqrtPriceFromInput/Output; getNextSqrtPriceFromAmount0RoundingUp/1RoundingDown not checked",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/SwapMath.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SwapMath.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "review of computeSwapStep for all exactIn/zeroForOne cases and rounding; final feeAmount computation not explored",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/Tick.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Tick.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/TickBitmap.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickBitmap.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "manual review of position/flip logic and Echidna testing; nextInitializedTickWithinOneWord not explored",
+                  "major_findings": 0,
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -233,16 +316,17 @@
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
                     "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickMath.sol"
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickMath.sol"
                   },
                   "status": "partially_audited_without_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "conversion behavior and tests; assembly in getTickAtSqrtRatio was not explored",
-                  "major_findings": 0
+                  "review_phase": "initial audit",
+                  "coverage": "manual review of tick/price conversions and Echidna testing; assembly inside getTickAtSqrtRatio not explored",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "High"
                 }
               ]
             },
-            "contracts/libraries/TickBitmap.sol": {
+            "contracts/libraries/TransferHelper.sol": {
               "path_kind": "file",
               "versions": [
                 {
@@ -250,97 +334,30 @@
                     "kind": "commit",
                     "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
                     "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickBitmap.sol"
-                  },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "bitmap conversion and update behavior; nextInitializedTickWithinOneWord was not explored",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/SqrtPriceMath.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SqrtPriceMath.sol"
-                  },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "selected delta and next-price functions; two internal next-price implementations were not manually checked",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/SwapMath.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SwapMath.sol"
-                  },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "computeSwapStep review excluding the final feeAmount determination",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/Oracle.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Oracle.sol"
-                  },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "cardinality-increase behavior only; other Oracle functions were not explored",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/libraries/SecondsOutside.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SecondsOutside.sol"
-                  },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "security assessment",
-                  "coverage": "bitwise position, cross, and clear behavior; secondsInside was not explored",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/UniswapV3Pool.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
-                    "timestamp": "2021-03-01T20:06:25Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Pool.sol"
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TransferHelper.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "security assessment",
+                  "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/libraries/UnsafeMath.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+                    "timestamp": "2021-03-01T20:06:25Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/UnsafeMath.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -350,24 +367,24 @@
       ]
     },
     {
-      "id": "abdk-uniswap-v3-core-2021-03-23",
+      "id": "abdk-uniswap-v3-core-2021-03",
       "report_file": "audit-2.md",
-      "title": "Uniswap Review",
-      "description": "Line-by-line review of the Uniswap V3 core contracts, interfaces, and math libraries at commit e8de69a5. The audit focused on arithmetic and protocol-logic correctness and reported no critical bugs.",
+      "title": "ABDK Consulting Smart Contract Audit: Uniswap V3",
+      "description": "ABDK Consulting code review of the Uniswap V3 core contracts, libraries and interfaces at tag v1.0.0-beta.3 of uniswap-v3-core, with fixes tracked to specific pull requests and commits. 159 findings were reported, none Major or Critical; two Moderate issues (one FullMath overflow, fixed) and the rest Minor.",
       "isRelevant": true,
       "auditor": "ABDK Consulting",
       "report_date": "2021-03-23",
       "repositories": [
         {
-          "id": "Uniswap/uniswap-v3-core",
-          "url": "https://github.com/Uniswap/uniswap-v3-core"
+          "id": "Uniswap/v3-core",
+          "url": "https://github.com/Uniswap/v3-core"
         }
       ],
       "scopes": [
         {
-          "repository": "Uniswap/uniswap-v3-core",
+          "repository": "Uniswap/v3-core",
           "paths": {
-            "contracts/interfaces/callback/IUniswapV3FlashCallback.sol": {
+            "contracts/NoDelegateCall.sol": {
               "path_kind": "file",
               "versions": [
                 {
@@ -376,16 +393,17 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/NoDelegateCall.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
-            "contracts/interfaces/callback/IUniswapV3MintCallback.sol": {
+            "contracts/UniswapV3Factory.sol": {
               "path_kind": "file",
               "versions": [
                 {
@@ -394,16 +412,17 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/UniswapV3Factory.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
-            "contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
+            "contracts/UniswapV3Pool.sol": {
               "path_kind": "file",
               "versions": [
                 {
@@ -412,16 +431,17 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/UniswapV3Pool.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
-            "contracts/interfaces/pool/IUniswapV3PoolActions.sol": {
+            "contracts/UniswapV3PoolDeployer.sol": {
               "path_kind": "file",
               "versions": [
                 {
@@ -430,102 +450,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/UniswapV3PoolDeployer.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/interfaces/pool/IUniswapV3PoolEvents.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/interfaces/pool/IUniswapV3PoolState.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -538,12 +469,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IERC20Minimal.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -556,11 +488,25 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IUniswapV3Factory.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c3e2b3c938f50892b413422901cdac99a27c43a2",
+                    "timestamp": "2021-03-22T16:17:48Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/c3e2b3c938f50892b413422901cdac99a27c43a2/contracts/interfaces/IUniswapV3Factory.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -574,12 +520,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IUniswapV3Pool.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -592,11 +539,261 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IUniswapV3PoolDeployer.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/IUniswapV3PoolDeployer.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/callback/IUniswapV3FlashCallback.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/callback/IUniswapV3FlashCallback.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/callback/IUniswapV3FlashCallback.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/callback/IUniswapV3MintCallback.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/callback/IUniswapV3MintCallback.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/callback/IUniswapV3MintCallback.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/interfaces/pool/IUniswapV3PoolActions.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolActions.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/pool/IUniswapV3PoolActions.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/interfaces/pool/IUniswapV3PoolEvents.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolEvents.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
+                    "timestamp": "2021-03-16T19:28:04Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/7445e61f17a7c1233bcabcdc920f0473793f6d78/contracts/interfaces/pool/IUniswapV3PoolEvents.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "client-reported fix for Minor findings; auditor status left as Info (not marked verified)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolImmutables.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/interfaces/pool/IUniswapV3PoolState.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v1.0.0-beta.3",
+                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                    "timestamp": "2021-02-23T16:37:26Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolState.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/pool/IUniswapV3PoolState.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -610,12 +807,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/BitMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -628,12 +826,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/FixedPoint128.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -646,12 +845,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/FixedPoint96.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -664,11 +864,25 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/FullMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fc783807986595e33cdfc6ac82479535a42b955b",
+                    "timestamp": "2021-03-05T07:18:03Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/fc783807986595e33cdfc6ac82479535a42b955b/contracts/libraries/FullMath.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -682,12 +896,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/LiquidityMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -700,12 +915,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/LowGasSafeMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -718,11 +934,25 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/Oracle.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/Oracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -736,12 +966,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/Position.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -754,12 +985,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SafeCast.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -772,11 +1004,25 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SecondsOutside.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/SecondsOutside.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -790,11 +1036,38 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SqrtPriceMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
+                    "timestamp": "2021-03-16T19:28:04Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/7445e61f17a7c1233bcabcdc920f0473793f6d78/contracts/libraries/SqrtPriceMath.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "client-reported fix for Minor findings; auditor status left as Info (not marked verified)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/SqrtPriceMath.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
                   "major_findings": 0
                 }
               ]
@@ -808,11 +1081,25 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SwapMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
+                    "timestamp": "2021-03-16T19:28:04Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/7445e61f17a7c1233bcabcdc920f0473793f6d78/contracts/libraries/SwapMath.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "client-reported fix for Minor findings; auditor status left as Info (not marked verified)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -826,11 +1113,25 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/Tick.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/Tick.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -844,12 +1145,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/TickBitmap.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -862,11 +1164,25 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/TickMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
+                    "timestamp": "2021-03-22T19:11:50Z",
+                    "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/TickMath.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
+                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                   "major_findings": 0
                 }
               ]
@@ -880,12 +1196,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/TransferHelper.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             },
@@ -898,84 +1215,13 @@
                     "tag": "v1.0.0-beta.3",
                     "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
                     "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
+                    "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/UnsafeMath.sol"
                   },
                   "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/NoDelegateCall.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/UniswapV3Factory.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/UniswapV3Pool.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
-                }
-              ]
-            },
-            "contracts/UniswapV3PoolDeployer.sol": {
-              "path_kind": "file",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.0.0-beta.3",
-                    "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                    "timestamp": "2021-02-23T16:37:26Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-core/tree/v1.0.0-beta.3"
-                  },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
                 }
               ]
             }
@@ -984,22 +1230,22 @@
       ]
     },
     {
-      "id": "abdk-uniswap-v3-periphery-part-1-2021-04-26",
+      "id": "abdk-uniswap-v3-periphery-part1-2021-04",
       "report_file": "audit-3.md",
-      "title": "Uniswap V3 Peripheral Part 1 Review",
-      "description": "Line-by-line review of the Uniswap V3 periphery contracts NonfungiblePositionManager and SwapRouter, together with a follow-up review of the fixes. Two critical bugs and one major flaw were reported and later fixed.",
+      "title": "ABDK Consulting Smart Contract Audit: Uniswap V3 Peripheral, Part 1",
+      "description": "ABDK Consulting review of the Uniswap V3 periphery contracts NonfungiblePositionManager.sol and SwapRouter.sol in uniswap-v3-periphery, with fixes applied in two named periphery commits. Two Critical findings (SwapRouter exact-input payer bug and NonfungiblePositionManager liquidity theft via unchecked decreaseLiquidity) were fixed, and one Major finding remained open.",
       "isRelevant": true,
       "auditor": "ABDK Consulting",
-      "report_date": "2021-04-26",
+      "report_date": "2021-05-04",
       "repositories": [
         {
-          "id": "Uniswap/uniswap-v3-periphery",
-          "url": "https://github.com/Uniswap/uniswap-v3-periphery"
+          "id": "Uniswap/v3-periphery",
+          "url": "https://github.com/Uniswap/v3-periphery"
         }
       ],
       "scopes": [
         {
-          "repository": "Uniswap/uniswap-v3-periphery",
+          "repository": "Uniswap/v3-periphery",
           "paths": {
             "contracts/NonfungiblePositionManager.sol": {
               "path_kind": "file",
@@ -1009,7 +1255,7 @@
                     "kind": "commit",
                     "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
                     "timestamp": "2021-04-12T14:15:39Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/8ad273f45cd42e04b5f8f15b6f4da57827122273"
+                    "url": "https://github.com/Uniswap/v3-periphery/blob/8ad273f45cd42e04b5f8f15b6f4da57827122273/contracts/NonfungiblePositionManager.sol"
                   },
                   "status": "audited_with_major_findings",
                   "review_phase": "initial audit",
@@ -1022,14 +1268,13 @@
                     "kind": "commit",
                     "commit": "987842552ede76d428e60116672fb0ff67fe551e",
                     "timestamp": "2021-04-14T20:55:55Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/987842552ede76d428e60116672fb0ff67fe551e"
+                    "url": "https://github.com/Uniswap/v3-periphery/blob/987842552ede76d428e60116672fb0ff67fe551e/contracts/NonfungiblePositionManager.sol"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "remediation review",
-                  "coverage": "review of the reported fixes reflected in report version 1.1",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fix for the Critical decreaseLiquidity finding; the Major missing-token-existence-check finding remains open",
                   "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
-                  "major_findings": 1,
-                  "highest_reported_finding_severity": "Major"
+                  "major_findings": 1
                 }
               ]
             },
@@ -1041,7 +1286,7 @@
                     "kind": "commit",
                     "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
                     "timestamp": "2021-04-12T14:15:39Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/8ad273f45cd42e04b5f8f15b6f4da57827122273"
+                    "url": "https://github.com/Uniswap/v3-periphery/blob/8ad273f45cd42e04b5f8f15b6f4da57827122273/contracts/SwapRouter.sol"
                   },
                   "status": "audited_with_major_findings",
                   "review_phase": "initial audit",
@@ -1054,11 +1299,11 @@
                     "kind": "commit",
                     "commit": "2353765fe799b987ac5236971398fcb0be2bc5c0",
                     "timestamp": "2021-04-14T16:40:17Z",
-                    "url": "https://github.com/Uniswap/uniswap-v3-periphery/commit/2353765fe799b987ac5236971398fcb0be2bc5c0"
+                    "url": "https://github.com/Uniswap/v3-periphery/blob/2353765fe799b987ac5236971398fcb0be2bc5c0/contracts/SwapRouter.sol"
                   },
                   "status": "partially_audited_without_major_findings",
-                  "review_phase": "remediation review",
-                  "coverage": "review of the reported fixes reflected in report version 1.1",
+                  "review_phase": "fix review",
+                  "coverage": "verification of the fix for the Critical exact-input payer finding",
                   "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
                   "major_findings": 0
                 }

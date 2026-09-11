@@ -1,0 +1,2560 @@
+{
+  "schema_version": "1.2.0",
+  "project": "lighter",
+  "reports": [
+    {
+      "id": "zksecurity-zklighter-circuits-2024-01",
+      "report_file": "irrelevant/zkSecurity - zkLighter Circuits 2024.md",
+      "title": "Audit of Lighter's zkLighter Circuits",
+      "description": "zkSecurity review of the original gnark-based zkLighter main and exit-hatch circuits and the GKR-based MiMC hash, performed on extracted code shared in an unnamed private repository with no commit or file paths stated. The audited gnark circuits were later replaced by the Plonky2 prover and were never published, so no accessible repository path or revision can be identified.",
+      "isRelevant": false,
+      "auditor": "zkSecurity",
+      "report_date": "2024-01-22",
+      "repositories": [],
+      "scopes": []
+    },
+    {
+      "id": "zksecurity-lighter-block-circuits-2025-08",
+      "report_file": "zkSecurity - Lighter Block Circuits.md",
+      "title": "Audit of Lighter's Block Circuits",
+      "description": "zkSecurity review of Lighter's Plonky2 prover circuits: all top-level circuits in circuit/src, the types and transactions modules and the unsafe_big bigint gadget, covering block pre-execution, transaction processing, matching and liquidation logic. The report states no commit; the audited revision is taken from the diff base named in the follow-up Block and Delta report.",
+      "isRelevant": true,
+      "auditor": "zkSecurity",
+      "report_date": "2025-08-04",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-prover",
+          "url": "https://github.com/elliottech/lighter-prover"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-prover",
+          "paths": {
+            "circuit/src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4876a50",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/4876a50/circuit/src"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Top-level circuit files directly in circuit/src (block, block pre-execution, block tx, block tx chain, tx_constraints, matching engine); subdirectories only where listed separately. Findings #00 (tx_constraints.rs) and #01 (block_tx_constraints.rs) are High and reported as acknowledged and fixed without a fix commit. The report states no commit; 4876a50 is the diff base named by the follow-up Block and Delta report for the changes made since this engagement, and is not served by the public repository.",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "circuit/src/types": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4876a50",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/4876a50/circuit/src/types"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "All circuits in circuit/src/types. Only Informational finding #07 (register_stack.rs). The report states no commit; 4876a50 is the diff base named by the follow-up Block and Delta report for the changes made since this engagement, and is not served by the public repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "circuit/src/transactions": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4876a50",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/4876a50/circuit/src/transactions"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "All circuits in circuit/src/transactions. Findings #03 and #05 are Low, #08 Informational; all reported as fixed without a fix commit. The report states no commit; 4876a50 is the diff base named by the follow-up Block and Delta report for the changes made since this engagement, and is not served by the public repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "circuit/src/bigint/unsafe_big/mod.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4876a50",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/4876a50/circuit/src/bigint/unsafe_big/mod.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Low-level unsafe bigint circuit; finding #02 (Medium) in uint/u16/split.rs is outside this file. The report states no commit; 4876a50 is the diff base named by the follow-up Block and Delta report for the changes made since this engagement, and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zksecurity-lighter-block-and-delta-2025-09",
+      "report_file": "zkSecurity - Lighter Block and Delta Layers.md",
+      "title": "Audit of Lighter's Block and Delta Layers",
+      "description": "zkSecurity follow-up review of the Plonky2 prover covering the changes between commits 4876a50 and b119f03 (account delta tree feature) and the delta, recursion, bigint, hints and comparison modules of circuit/src. Fixes for the High findings were verified in commits b99c425, 6c75178 and 7f9fdc9 of the lighter-prover repository; the wrapper layer was explicitly deferred.",
+      "isRelevant": true,
+      "auditor": "zkSecurity",
+      "report_date": "2025-09-08",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-prover",
+          "url": "https://github.com/elliottech/lighter-prover"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-prover",
+          "paths": {
+            "circuit/src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "4876a50",
+                    "start_timestamp": null,
+                    "end_commit": "b119f03",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/compare/4876a50...b119f03"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Changes introduced between 4876a50 and b119f03, primarily the account delta tree feature (account tree moved under validium, metadata tree removed, account public data tree and per-batch delta tree). Finding #02 (High) in types/account_delta/position_delta.rs. Both abbreviated commits are stated by the report and are not served by the public repository.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/circuit/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of #02 (PositionDeltaTarget::hash second-preimage resistance).",
+                  "follows": "b119f03",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/delta": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b119f03",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b119f03/circuit/src/delta"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Delta layer (report path src/delta). Only Informational finding #0a. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "circuit/src/recursion": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b119f03",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b119f03/circuit/src/recursion"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Recursion layer (report path src/recursion): cyclic aggregator producing segments. The wrapper circuit in this directory was explicitly deferred, see wrapper_circuit.rs. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/bigint": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b119f03",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b119f03/circuit/src/bigint"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Bigint module (report path src/bigint). Findings #00 (div_rem.rs) and #01 (comparison.rs) are High; #03, #04, #06, #07, #08 are Low. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/circuit/src/bigint"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of #00, #01, #03, #04, #06, #07 and #08. Fix commits are listed in the order given by the report; their relative order could not be verified on GitHub.",
+                  "follows": "b119f03",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6c75178492c6c936706d0c61d7e80b5539f43e24",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/6c75178492c6c936706d0c61d7e80b5539f43e24/circuit/src/bigint"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Additional remediation of #00 (div_rem). Fix commits are listed in the order given by the report; their relative order could not be verified on GitHub.",
+                  "follows": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7f9fdc9439d47a0cb1beef6e2879e8a47b5a77e8",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/7f9fdc9439d47a0cb1beef6e2879e8a47b5a77e8/circuit/src/bigint"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Additional remediation of #00 (div_rem). Fix commits are listed in the order given by the report; their relative order could not be verified on GitHub.",
+                  "follows": "6c75178492c6c936706d0c61d7e80b5539f43e24",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/hints": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b119f03",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b119f03/circuit/src/hints"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Hints module (report path src/hints). Finding #00 (High) affects hints/mod.rs div_rem and conditional_div_rem; #05 is Low. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/circuit/src/hints"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of #00 and #05. Fix commits are listed in the order given by the report; their relative order could not be verified on GitHub.",
+                  "follows": "b119f03",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6c75178492c6c936706d0c61d7e80b5539f43e24",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/6c75178492c6c936706d0c61d7e80b5539f43e24/circuit/src/hints"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Additional remediation of #00 (div_rem). Fix commits are listed in the order given by the report; their relative order could not be verified on GitHub.",
+                  "follows": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7f9fdc9439d47a0cb1beef6e2879e8a47b5a77e8",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/7f9fdc9439d47a0cb1beef6e2879e8a47b5a77e8/circuit/src/hints"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Additional remediation of #00 (div_rem). Fix commits are listed in the order given by the report; their relative order could not be verified on GitHub.",
+                  "follows": "6c75178492c6c936706d0c61d7e80b5539f43e24",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/comparison": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b119f03",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b119f03/circuit/src/comparison"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Comparison module (report path src/comparison). Only Informational finding #09 (dead code). Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "circuit/src/recursion/wrapper_circuit.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b119f03",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b119f03/circuit/src/recursion/wrapper_circuit.rs"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Wrapper layer explicitly deferred to a future audit because its updates were still in progress. File path taken from the subsequent Wrapper Circuits report. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/blob": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b119f03",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b119f03/circuit/src/blob"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Wrapper layer blob circuits explicitly deferred to a future audit. Directory taken from the subsequent Wrapper Circuits report. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zksecurity-lighter-wrapper-circuits-2025-10",
+      "report_file": "zkSecurity - Lighter Wrapper Circuits.md",
+      "title": "Audit of Lighter's Wrapper Circuits",
+      "description": "zkSecurity review of the Plonky2 wrapper layer at commit 0028b73 of lighter-prover: WrapperInnerCircuit, WrapperOuterCircuit and WrapperCircuit in recursion/wrapper_circuit.rs and the blob evaluation circuit, bitstream gate and blob polynomial in src/blob. The BLS12-381 code and the Gnark outer circuit were explicitly not covered.",
+      "isRelevant": true,
+      "auditor": "zkSecurity",
+      "report_date": "2025-10-10",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-prover",
+          "url": "https://github.com/elliottech/lighter-prover"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-prover",
+          "paths": {
+            "circuit/src/recursion/wrapper_circuit.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90/circuit/src/recursion/wrapper_circuit.rs"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "WrapperInnerCircuit, WrapperOuterCircuit and WrapperCircuit. Findings #00 and #01 are High, #02 Low, #03 Informational; fixes applied by the developers without a stated commit. BLS12-381 code and the Gnark outer circuit were explicitly not covered. Commit is stated by the report and is not served by the public repository.",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "circuit/src/blob/blob_constraints.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90/circuit/src/blob/blob_constraints.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "BlobEvaluationCircuit. Commit is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/blob/evaluate_bitstream.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90/circuit/src/blob/evaluate_bitstream.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "EvaluateBitstreamGate. Commit is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/blob/blob_polynomial.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90/circuit/src/blob/blob_polynomial.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "BlobPolynomialTarget. The report names the file both blob_polynomials.rs and blob_polynomial.rs; the public repository uses blob_polynomial.rs. Commit is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "snark": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90/snark"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Gnark outer circuit explicitly not covered by this engagement. Directory location taken from the public repository layout. Commit is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zksecurity-lighter-exit-hatch-2025-11",
+      "report_file": "zkSecurity - Lighter Exit Hatch.md",
+      "title": "Audit of Lighter's Exit Hatch",
+      "description": "zkSecurity review of the desert exit (escape hatch) Plonky2 circuits in desertexit/circuits at commit b99c425 of lighter-prover, together with its witness generator and minor changes to the main transaction circuits. Fixes for the High and Medium findings are stated as commit f6818da on the spot branch.",
+      "isRelevant": true,
+      "auditor": "zkSecurity",
+      "report_date": "2025-11-05",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-prover",
+          "url": "https://github.com/elliottech/lighter-prover"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-prover",
+          "paths": {
+            "desertexit/circuits/src/inner_circuit.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/desertexit/circuits/src/inner_circuit.rs"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Core exit-claim validation and TAV computation. Finding #00 (High, negative TAV bypass); #02 (Low) overflow scenarios acknowledged. Commit b99c425 is stated by the report and is not served by the public repository.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6818da",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/f6818da/desertexit/circuits/src/inner_circuit.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of #00 (TAV clamping). Fix commit f6818da (abbreviated, spot branch) as stated by the report; not served by the public repository.",
+                  "follows": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "desertexit/circuits/src/outer_circuit.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/desertexit/circuits/src/outer_circuit.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Proof wrapping layer for recursive verification. Commit b99c425 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "desertexit/circuits/src/pubdata_account.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/desertexit/circuits/src/pubdata_account.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Account pubdata structures. Finding #01 (Medium, unauthenticated master_account_index). Commit b99c425 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6818da",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/f6818da/desertexit/circuits/src/pubdata_account.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of #01 (exit commitment uses authenticated l1_address). Fix commit f6818da (abbreviated, spot branch) as stated by the report; not served by the public repository.",
+                  "follows": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "desertexit/circuits/src/pubdata_market.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/desertexit/circuits/src/pubdata_market.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Market pubdata structures. Finding #02 (Low) overflow scenarios acknowledged. Commit b99c425 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "desertexit/circuits/src/deserializers.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/desertexit/circuits/src/deserializers.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Blob data deserialization. Commit b99c425 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "desertexit/witness/utils.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/desertexit/witness/utils.go"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Witness generator reviewed alongside the circuit; findings #02 (Low) and #03 (Informational) reference it. Commit b99c425 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6818da",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/f6818da/desertexit/witness/utils.go"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of #03 (unsigned limb assembly). Fix commit f6818da (abbreviated, spot branch) as stated by the report; not served by the public repository.",
+                  "follows": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/tree/b99c425b8c0868501e65e78fd16aaf16bbe0ea2b/circuit/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Minor changes to the main transaction circuits only: zero quote calculation in liquidation and deleverage, exclusion of frozen markets from margin requirements, delta circuit sign packing, removal of the deleverager health check, frozen public pool transfer restrictions, zero public key, the try_sub_biguint refactor and the quote_multiplier migration to the public market hash. Commit b99c425 is stated by the report and is not served by the public repository.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zksecurity-lighter-spot-market-circuits-2025-11",
+      "report_file": "zkSecurity - Lighter Spot Market Circuits.md",
+      "title": "Audit of Lighter's Spot Market Circuits and Multi-Asset Support",
+      "description": "zkSecurity two-phase review of the Plonky2 prover changes introducing spot markets and multi-asset support: Phase 1 at commit 11c3735 covered the delta circuit, asset management, deposit, withdraw and transfer transactions and supporting types, and Phase 2 at commit b31b173 covered the matching engine, order, market and liquidation transactions plus fixes for Phase 1 findings. Remaining fixes are stated as commit f6818da on the spot branch.",
+      "isRelevant": true,
+      "auditor": "zkSecurity",
+      "report_date": "2025-11-24",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-prover",
+          "url": "https://github.com/elliottech/lighter-prover"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-prover",
+          "paths": {
+            "circuit/src/delta/delta_constraints.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/delta/delta_constraints.rs"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Finding #01 (High, missing asset index range validation) and #05 (Informational). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/delta/delta_constraints.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "phase 2 fix review",
+                  "coverage": "Phase 2 review including fixes for Phase 1 findings. Remediation of #01 and #05. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "follows": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/delta/account_delta_full_leaf.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/delta/account_delta_full_leaf.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/delta/utils.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/delta/utils.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l1_register_asset.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/transactions/l1_register_asset.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Finding #04 (Low). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l1_register_asset.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "phase 2 fix review",
+                  "coverage": "Phase 2 review including fixes for Phase 1 findings. Remediation of #04. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "follows": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l1_update_asset.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/transactions/l1_update_asset.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Findings #03 (Medium) and #04 (Low). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l1_update_asset.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "phase 2 fix review",
+                  "coverage": "Phase 2 review including fixes for Phase 1 findings. Remediation of #03 and #04. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "follows": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l1_deposit.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/transactions/l1_deposit.rs"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Finding #00 (High, PERPS route lacks USDC check). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l1_deposit.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "phase 2 fix review",
+                  "coverage": "Phase 2 review including fixes for Phase 1 findings. Remediation of #00. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "follows": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6818da",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/f6818da/circuit/src/transactions/l1_deposit.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Refinement of the #00 fix (margin_mode check). Fix commit f6818da (abbreviated, spot branch) as stated by the report; not served by the public repository.",
+                  "follows": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l1_withdraw.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/transactions/l1_withdraw.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l2_withdraw.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/transactions/l2_withdraw.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l2_transfer.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/transactions/l2_transfer.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/types/account_asset.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/types/account_asset.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/types/asset.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/types/asset.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/types/constants.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/types/constants.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/tx_constraints.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/11c373555dd56478ddf7c9fbae27c2c2c4052665/circuit/src/tx_constraints.rs"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "phase 1 audit",
+                  "coverage": "Phase 1 review of the multi-asset infrastructure. Finding #01 (High, missing asset index range validation). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/tx_constraints.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "phase 2 fix review",
+                  "coverage": "Phase 2 review including fixes for Phase 1 findings. Listed in Phase 2 transaction-state scope; remediation of #01. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "follows": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/matching_engine.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/matching_engine.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/apply_trade.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/apply_trade.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l1_create_order.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l1_create_order.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l2_create_order.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l2_create_order.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l2_cancel_order.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l2_cancel_order.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l2_modify_order.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l2_modify_order.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/internal_create_order.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/internal_create_order.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/internal_cancel_order.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/internal_cancel_order.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/internal_claim_order.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/internal_claim_order.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l1_create_market.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l1_create_market.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/l1_update_market.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/l1_update_market.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/types/market.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/types/market.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/internal_liquidate_position.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/internal_liquidate_position.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/internal_deleverage.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/internal_deleverage.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/transactions/internal_exit_position.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/transactions/internal_exit_position.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/types/tx_state.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/types/tx_state.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Finding #02 (Medium, inverted maximum quote amount check). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6818da",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/f6818da/circuit/src/types/tx_state.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of #02. Fix commit f6818da (abbreviated, spot branch) as stated by the report; not served by the public repository.",
+                  "follows": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuit/src/types/transfer.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-prover/blob/b31b173ced2df143a7289b21df9020bfc664f3f6/circuit/src/types/transfer.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "phase 2 audit",
+                  "coverage": "Phase 2 review of order-related transactions and market management. Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "nethermind-nm-0560-lighter-core-2025-09",
+      "report_file": "Nethermind - Lighter Core.md",
+      "title": "NM-0560 Lighter Security Review",
+      "description": "Nethermind Security review of the zkLighter L1 rollup contracts (ZkLighter, AdditionalZkLighter, governance, proxy and upgrade gatekeeper, libraries and interfaces) in elliottech/lighter-contracts from initial commit 8144649 to final commit 0ddf2bf. One Critical finding in the desert-mode deposit cancellation and one Medium finding were reported and fixed or mitigated.",
+      "isRelevant": true,
+      "auditor": "Nethermind Security",
+      "report_date": "2025-09-21",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-contracts",
+          "url": "https://github.com/elliottech/lighter-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-contracts",
+          "paths": {
+            "contracts/DeployFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/DeployFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/DeployFactory.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/AdditionalZkLighter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/AdditionalZkLighter.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review. Finding 6.1 (Critical, inconsistent hash padding bricks cancelOutstandingDepositsForDesertMode); 6.2 (Medium) also touches this file; 6.3 (Info). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6cd7c8f66d2f719e6162f6b31f552f77c1efefeb",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/6cd7c8f66d2f719e6162f6b31f552f77c1efefeb/contracts/AdditionalZkLighter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of 6.1 (Critical). Order relative to commit 2545988 as listed in the report. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "25459881a7ac452a24794a6dd3ed90bf9b953df3",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/25459881a7ac452a24794a6dd3ed90bf9b953df3/contracts/AdditionalZkLighter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of 6.3 (Info, array length check). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "6cd7c8f66d2f719e6162f6b31f552f77c1efefeb",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/AdditionalZkLighter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "25459881a7ac452a24794a6dd3ed90bf9b953df3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Config.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/Config.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/Config.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Governance.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/Governance.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Best-practice finding 6.6 (two-step role transfer, acknowledged). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/Governance.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ZkLighter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/ZkLighter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review. Finding 6.2 (Medium, deposit DoS of address setters). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f4df0ed",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/f4df0ed/contracts/ZkLighter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Mitigation of 6.2 together with the final commit 0ddf2bf. Abbreviated commit as stated by the report. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/ZkLighter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "f4df0ed",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Storage.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/Storage.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/Storage.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/UpgradeableMaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/UpgradeableMaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review. Findings 6.4 (Info, fixed) and 6.5 (Info, notice period hardcoded to zero, acknowledged). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5a8745f76b3c23dbd1579f27d641c4c050b94a75",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/5a8745f76b3c23dbd1579f27d641c4c050b94a75/contracts/UpgradeableMaster.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of 6.4 (revert reason). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/UpgradeableMaster.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "5a8745f76b3c23dbd1579f27d641c4c050b94a75",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/Ownable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/proxy/Ownable.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Best-practice finding 6.6 (two-step role transfer, acknowledged). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/proxy/Ownable.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/IUpgradeable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/proxy/IUpgradeable.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/proxy/IUpgradeable.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/Proxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/proxy/Proxy.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/proxy/Proxy.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/UpgradeGatekeeper.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/proxy/UpgradeGatekeeper.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/proxy/UpgradeGatekeeper.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/IUpgradeEvents.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/proxy/IUpgradeEvents.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/proxy/IUpgradeEvents.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/lib/Bytes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/lib/Bytes.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/lib/Bytes.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/lib/TxTypes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/lib/TxTypes.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/lib/TxTypes.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IEvents.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/interfaces/IEvents.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/interfaces/IEvents.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IDesertVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/interfaces/IDesertVerifier.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/interfaces/IDesertVerifier.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IZkLighterDesertMode.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/interfaces/IZkLighterDesertMode.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/interfaces/IZkLighterDesertMode.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IGovernance.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/interfaces/IGovernance.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/interfaces/IGovernance.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IZkLighterVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/interfaces/IZkLighterVerifier.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/interfaces/IZkLighterVerifier.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IZkLighter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/8144649002307657bdb6d9dd5b78906aea736f00/contracts/interfaces/IZkLighter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the audited files table. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+                    "timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/blob/0ddf2bfc9ead2c2c98ca04085315304ad0865dbc/contracts/interfaces/IZkLighter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the review after all fixes and mitigations. Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
+                  "follows": "8144649002307657bdb6d9dd5b78906aea736f00",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "nethermind-nm-0620-zklighter-bridge-2025-09",
+      "report_file": "irrelevant/Nethermind - Lighter EVM Deposit Bridge.md",
+      "title": "NM-0620 zkLighter Bridge Security Review",
+      "description": "Nethermind Security review of the zkLighter CCTP-based cross-chain USDC deposit bridge contracts (TokenBurnerSystemV2, EphemeralTokenBurnerV2, FastCCTPV2) at commits 522de47 to 7d6b776 of the private elliottech/lighter-bridge-contracts repository, reporting five Informational findings. The repository is inaccessible and the deposit relayer contracts are not part of the L1 rollup contracts tracked for Lighter.",
+      "isRelevant": false,
+      "auditor": "Nethermind Security",
+      "report_date": "2025-09-22",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-bridge-contracts",
+          "url": "https://github.com/elliottech/lighter-bridge-contracts"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "zellic-lighter-evm-spot-contracts-2026-01",
+      "report_file": "Zellic - Lighter EVM Spot Contract Security Assessment.md",
+      "title": "Lighter (EVM) Smart Contract Security Assessment (spot markets and multi-asset)",
+      "description": "Zellic differential review of the zkLighter L1 contracts in elliottech/lighter-contracts for the changes between commits 5cbd2d23 and e6890b14 introducing spot markets and multi-asset support, covering ZkLighter, AdditionalZkLighter, storage, config and library files. Two Medium, one Low and one Informational finding were reported and acknowledged; project-wide finding 3.2 (Medium, insufficient test coverage) is not tied to a file.",
+      "isRelevant": true,
+      "auditor": "Zellic",
+      "report_date": "2026-01-21",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-contracts",
+          "url": "https://github.com/elliottech/lighter-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-contracts",
+          "paths": {
+            "contracts/ZkLighter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "5cbd2d23",
+                    "start_timestamp": null,
+                    "end_commit": "e6890b14a340321be161fb99d980c71c348541dc",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Findings 3.3 (Low, default asset config migration) and 3.4 (Informational); all acknowledged. Differential review of the changes between 5cbd2d23 and e6890b14 only; commits are stated by the report and are not served by the public lighter-contracts repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "contracts/AdditionalZkLighter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "5cbd2d23",
+                    "start_timestamp": null,
+                    "end_commit": "e6890b14a340321be161fb99d980c71c348541dc",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Findings 3.1 (Medium, L1 createOrder rejects spot-market indexes) and 3.4 (Informational); acknowledged, no fix commit. Differential review of the changes between 5cbd2d23 and e6890b14 only; commits are stated by the report and are not served by the public lighter-contracts repository.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/lib/Bytes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "5cbd2d23",
+                    "start_timestamp": null,
+                    "end_commit": "e6890b14a340321be161fb99d980c71c348541dc",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 5cbd2d23 and e6890b14 only; commits are stated by the report and are not served by the public lighter-contracts repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/lib/TxTypes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "5cbd2d23",
+                    "start_timestamp": null,
+                    "end_commit": "e6890b14a340321be161fb99d980c71c348541dc",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 5cbd2d23 and e6890b14 only; commits are stated by the report and are not served by the public lighter-contracts repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ExtendableStorage.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "5cbd2d23",
+                    "start_timestamp": null,
+                    "end_commit": "e6890b14a340321be161fb99d980c71c348541dc",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 5cbd2d23 and e6890b14 only; commits are stated by the report and are not served by the public lighter-contracts repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Config.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "5cbd2d23",
+                    "start_timestamp": null,
+                    "end_commit": "e6890b14a340321be161fb99d980c71c348541dc",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 5cbd2d23 and e6890b14 only; commits are stated by the report and are not served by the public lighter-contracts repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Storage.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "5cbd2d23",
+                    "start_timestamp": null,
+                    "end_commit": "e6890b14a340321be161fb99d980c71c348541dc",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 5cbd2d23 and e6890b14 only; commits are stated by the report and are not served by the public lighter-contracts repository.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zellic-lighter-evm-migration-2026-06",
+      "report_file": "Zellic - Lighter EVM Migration Security Assessment.md",
+      "title": "Lighter (EVM) Smart Contract Security Assessment (migration patch)",
+      "description": "Zellic differential review of the zkLighter L1 contract refactor between commits 6edc3ff and c768c3e of the private elliottech/lighter-contracts-internal repository, which moved user-facing functions into the new L1CoreMessaging and L1InteropManager contracts and changed ZkLighter to an upgrade-only installation. Three Informational findings were reported and acknowledged; the repository is private but the contracts are the core L1 rollup contracts mirrored in the public lighter-contracts repository.",
+      "isRelevant": true,
+      "auditor": "Zellic",
+      "report_date": "2026-06-11",
+      "repositories": [
+        {
+          "id": "elliottech/lighter-contracts-internal",
+          "url": "https://github.com/elliottech/lighter-contracts-internal"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "elliottech/lighter-contracts-internal",
+          "paths": {
+            "contracts/AdditionalZkLighter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Refactored to delegate user-facing functions to L1CoreMessaging; executeL1Call trust assumptions discussed. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Config.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Constants.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "New file defining LIGHTER_CORE_SYSTEM_ADDR. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/DeployFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Unchanged since the initial commit; confirmed not used for production deployment. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/DesertVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Generated verifier artifact. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ExtendableStorage.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Governance.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interop/L1InteropManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "New contract. Findings 3.1 and 3.2 (Informational, acknowledged). Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "contracts/interop/TokenInteropLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "New library. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/lib/Bytes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/lib/TxTypes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messaging/L1CoreMessaging.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "New contract handling priority request enqueueing. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/Ownable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/Proxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/UpgradeGatekeeper.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Finding 3.3 (Informational, duplicate managed contracts; acknowledged). Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "contracts/Storage.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/UpgradeableMaster.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ZkLighter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Refactored: initialize removed, upgrade-only installation, coreMessaging added. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ZkLighterStateRootUpgradeVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Generated verifier artifact. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ZkLighterVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Generated verifier artifact. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tests": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "6edc3ff22099fc98501ebc618bbc19468c7fec07",
+                    "start_timestamp": null,
+                    "end_commit": "c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+                    "end_timestamp": null,
+                    "url": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "contracts/tests/*.sol explicitly excluded from the scope. Differential review of the changes between 6edc3ff and c768c3e in the private elliottech/lighter-contracts-internal repository, which is not accessible; the public lighter-contracts repository mirrors these contracts without the audited history.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

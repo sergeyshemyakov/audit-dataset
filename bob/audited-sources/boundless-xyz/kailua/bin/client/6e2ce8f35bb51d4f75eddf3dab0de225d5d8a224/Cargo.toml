@@ -1,0 +1,41 @@
+[package]
+name = "kailua-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow.workspace = true
+async-trait.workspace = true
+bincode.workspace = true
+bytemuck.workspace = true
+c-kzg.workspace = true
+clap.workspace = true
+rkyv.workspace = true
+serde.workspace = true
+sha2.workspace = true
+tracing.workspace = true
+tokio.workspace = true
+
+alloy = { workspace = true, features = ["full", "kzg"] }
+alloy-primitives = { workspace = true, features = ["map-hashbrown"] }
+op-alloy-protocol.workspace = true
+
+kailua-build.workspace = true
+kailua-common.workspace = true
+kailua-contracts.workspace = true
+
+kona-derive.workspace = true
+kona-host.workspace = true
+kona-preimage.workspace = true
+kona-proof.workspace = true
+kona-std-fpvm.workspace = true
+
+bonsai-sdk.workspace = true
+boundless-market.workspace = true
+risc0-ethereum-contracts.workspace = true
+risc0-zkvm.workspace = true
+
+[features]
+prove = [
+    "risc0-zkvm/prove"
+]

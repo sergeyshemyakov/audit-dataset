@@ -5,8 +5,8 @@
     {
       "id": "cantina-unichain-contracts-2024-10",
       "report_file": "Cantina - Unichain contracts Security Review 2024-10-16.md",
-      "title": "Unichain contracts Security Review (Cantina Managed, Oct 3-7 2024)",
-      "description": "Cantina Managed security review of the Unichain onchain fee-splitting and staking contracts (FeeSplitter, NetFeeSplitter, L1Splitter, L2StakeManager, RewardDistributor). Initial review of the unichain-contracts repository.",
+      "title": "Unichain contracts Security Review (October 2024)",
+      "description": "Cantina Managed review of the Unichain fee-splitting and staking contracts (FeeSplitter, NetFeeSplitter, L1Splitter, L2StakeManager, RewardDistributor) in the unichain-contracts repository. Initial review conducted October 3-7, 2024 with fix verification of the reported issues.",
       "isRelevant": true,
       "auditor": "Cantina",
       "report_date": "2024-10-16",
@@ -28,13 +28,65 @@
                     "kind": "commit",
                     "commit": "b7d5bbb0ea0ea2a90d21ce3368b773b8015d1607",
                     "timestamp": "2024-10-03T00:45:18Z",
-                    "url": "https://github.com/Uniswap/unichain-contracts/tree/b7d5bbb0ea0ea2a90d21ce3368b773b8015d1607/src"
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/b7d5bbb0ea0ea2a90d21ce3368b773b8015d1607"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Report scopes the whole unichain-contracts repository at the commit (cantina-forks mirror); all findings reference src/FeeSplitter/FeeSplitter.sol, NetFeeSplitter.sol and L1Splitter.sol. One High finding (NetFeeSplitter).",
+                  "review_phase": "initial_audit",
+                  "coverage": "Full review of all contracts under src (FeeSplitter, NetFeeSplitter, L1Splitter, L2StakeManager, RewardDistributor and interfaces) at the audited commit.",
                   "major_findings": 1,
                   "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5992d6d32779a2daa4cad458c42d5fd4cfaafe16",
+                    "timestamp": "2024-10-07T23:27:28Z",
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/5992d6d32779a2daa4cad458c42d5fd4cfaafe16"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of src/FeeSplitter/NetFeeSplitter.sol only (High 3.1.1 and Medium 3.2.1: admin cannot be set to zero address).",
+                  "follows": "b7d5bbb0ea0ea2a90d21ce3368b773b8015d1607",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9aec08780500f4cd5c233c76dccbb3f1be7fb9b5",
+                    "timestamp": "2024-10-07T23:28:28Z",
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/9aec08780500f4cd5c233c76dccbb3f1be7fb9b5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of src/FeeSplitter/FeeSplitter.sol only (Medium 3.2.2: transient lock reset after vault withdrawals).",
+                  "follows": "5992d6d32779a2daa4cad458c42d5fd4cfaafe16",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9dffca7ec2e8fe0591950331ff4715153770d99",
+                    "timestamp": "2024-10-07T23:31:15Z",
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/d9dffca7ec2e8fe0591950331ff4715153770d99"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of src/FeeSplitter/NetFeeSplitter.sol only (Informational 3.5.1 variable rename).",
+                  "follows": "9aec08780500f4cd5c233c76dccbb3f1be7fb9b5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4a9abf7220b56fba31ccb857c35c742ab89b0247",
+                    "timestamp": "2024-10-10T12:55:40Z",
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/4a9abf7220b56fba31ccb857c35c742ab89b0247"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of src/FeeSplitter/FeeSplitter.sol only (Gas 3.4.1 early return when no fees collected).",
+                  "follows": "d9dffca7ec2e8fe0591950331ff4715153770d99",
+                  "major_findings": 0
                 }
               ]
             }
@@ -45,8 +97,8 @@
     {
       "id": "cantina-unichain-contracts-2024-11",
       "report_file": "Cantina - Unichain contracts Security Review 2024-11-05.md",
-      "title": "Unichain contracts Security Review (Cantina Managed, Oct 31-Nov 2 2024)",
-      "description": "Follow-up Cantina Managed security review of the same Unichain fee-splitting and staking contracts at a later revision of the unichain-contracts repository. Re-checks the code after the changes that followed the October 2024 review.",
+      "title": "Unichain contracts Security Review (November 2024)",
+      "description": "Follow-up Cantina Managed review of the Unichain fee-splitting and staking contracts at a later revision of the unichain-contracts repository, conducted October 31 to November 2, 2024. Re-examines the code after the changes that followed the October 2024 review, with fix verification.",
       "isRelevant": true,
       "auditor": "Cantina",
       "report_date": "2024-11-05",
@@ -68,13 +120,39 @@
                     "kind": "commit",
                     "commit": "935f521c0710d5e6055bb046355cd99fab301f26",
                     "timestamp": "2024-10-29T23:13:27Z",
-                    "url": "https://github.com/Uniswap/unichain-contracts/tree/935f521c0710d5e6055bb046355cd99fab301f26/src"
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/935f521c0710d5e6055bb046355cd99fab301f26"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "follow-up review",
-                  "coverage": "Report scopes the whole unichain-contracts repository at the commit (cantina-forks mirror), a later revision than the October review; findings reference src/FeeSplitter/L1Splitter.sol and NetFeeSplitter.sol. Only Low/Gas/Informational findings.",
+                  "review_phase": "re_audit",
+                  "coverage": "Full follow-up review of all contracts under src (FeeSplitter, NetFeeSplitter, L1Splitter, L1NetRecipient, L2StakeManager, RewardDistributor and interfaces) at the audited commit.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fb9024ae9d58cf7bc4a43f01cec0f0f78196a82a",
+                    "timestamp": "2024-11-01T13:27:04Z",
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/fb9024ae9d58cf7bc4a43f01cec0f0f78196a82a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of src/FeeSplitter/NetFeeSplitter.sol only (Gas 3.2.1 early revert on insufficient allocation).",
+                  "follows": "935f521c0710d5e6055bb046355cd99fab301f26",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d7db41e68e73bc7e58bfff9cae6f4e8f695030da",
+                    "timestamp": "2024-11-01T13:28:26Z",
+                    "url": "https://github.com/Uniswap/unichain-contracts/commit/d7db41e68e73bc7e58bfff9cae6f4e8f695030da"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of src/FeeSplitter/NetFeeSplitter.sol and src/interfaces/FeeSplitter/INetFeeSplitter.sol only (Informational 3.3.1 rename newAdmin to newSetter).",
+                  "follows": "fb9024ae9d58cf7bc4a43f01cec0f0f78196a82a",
+                  "major_findings": 0
                 }
               ]
             }
@@ -83,26 +161,10 @@
       ]
     },
     {
-      "id": "nethermind-rollup-boost-2025-06",
-      "report_file": "irrelevant/Nethermind - NM-0411-0491 Security Review Rollup Boost.md",
-      "title": "Security Review Report NM-0411-0491 Rollup Boost",
-      "description": "Security review of Rollup Boost, the Rust sidecar service that lets external block builders construct blocks for OP Stack sequencers. The entire scope is the offchain rollup-boost node software; no onchain contracts or circuits are covered.",
-      "isRelevant": false,
-      "auditor": "Nethermind Security",
-      "report_date": "2025-06-09",
-      "repositories": [
-        {
-          "id": "flashbots/rollup-boost",
-          "url": "https://github.com/flashbots/rollup-boost"
-        }
-      ],
-      "scopes": []
-    },
-    {
       "id": "openzeppelin-flashtestations-2025-08",
       "report_file": "OpenZeppelin - Uniswap Flashtestations Audit.md",
       "title": "Uniswap Flashtestations Audit",
-      "description": "Two-phase OpenZeppelin audit of the onchain Flashtestations TEE attestation contracts (FlashtestationRegistry, BlockBuilderPolicy, QuoteParser and interfaces) together with their deployment and interaction scripts. These contracts verify Intel TDX attestations used for Unichain block building.",
+      "description": "Two-phase OpenZeppelin audit (August 6-11, 2025) of the onchain Flashtestations TEE attestation contracts (FlashtestationRegistry, BlockBuilderPolicy, QuoteParser and interfaces) plus their deployment and interaction scripts. These contracts verify Intel TDX attestations of the block builders used by Unichain.",
       "isRelevant": true,
       "auditor": "OpenZeppelin",
       "report_date": "2026-06-26",
@@ -124,25 +186,169 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/BlockBuilderPolicy.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
                 {
                   "revision": {
                     "kind": "commit",
+                    "commit": "38e19c2432171e445a54acc4f2bd72db233ccd1e",
+                    "timestamp": "2025-08-15T14:15:19Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/38e19c2432171e445a54acc4f2bd72db233ccd1e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Medium finding: arbitrary version check bypass in block builder proof verification (PR #26).",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/BlockBuilderPolicy.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
-                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
+                  "follows": "38e19c2432171e445a54acc4f2bd72db233ccd1e",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "aab77b266824fef2cf7b72a2cea8507027e02e12",
+                    "timestamp": "2025-08-18T19:36:46Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/aab77b266824fef2cf7b72a2cea8507027e02e12"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing zero-address checks (PR #27).",
+                  "follows": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f95ce2cbfcdcf53137eaea3c2a93d04cab4b08cc",
+                    "timestamp": "2025-08-18T20:18:04Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/f95ce2cbfcdcf53137eaea3c2a93d04cab4b08cc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: no checks on sourceLocators array (PR #29).",
+                  "follows": "aab77b266824fef2cf7b72a2cea8507027e02e12",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b389e66e49285152b7f3627ca493ef8faee6bfce",
+                    "timestamp": "2025-08-19T14:58:02Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/b389e66e49285152b7f3627ca493ef8faee6bfce"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: variable shadowing in _cachedIsAllowedPolicy (PR #24).",
+                  "follows": "f95ce2cbfcdcf53137eaea3c2a93d04cab4b08cc",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1e253768a12490a8b9fb8491c03de2fbb82e9f70",
+                    "timestamp": "2025-08-19T14:58:02Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/1e253768a12490a8b9fb8491c03de2fbb82e9f70"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: redundant unwrapping of workloadId (PR #24).",
+                  "follows": "b389e66e49285152b7f3627ca493ef8faee6bfce",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c78ac251e81d845c502f89c6c246cd6d10e41da2",
+                    "timestamp": "2025-08-19T16:07:58Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/c78ac251e81d845c502f89c6c246cd6d10e41da2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: domain separator not public (PR #32).",
+                  "follows": "1e253768a12490a8b9fb8491c03de2fbb82e9f70",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fdfef228f0434a5fe99e17af99e0f607dbd6979c",
+                    "timestamp": "2025-08-19T16:17:23Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/fdfef228f0434a5fe99e17af99e0f607dbd6979c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: incomplete docstring (PR #33).",
+                  "follows": "c78ac251e81d845c502f89c6c246cd6d10e41da2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "210a86170ecfa67ad093c57ec7ffa072db446ba5",
+                    "timestamp": "2025-08-20T00:49:33Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/210a86170ecfa67ad093c57ec7ffa072db446ba5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational notes: missing docstrings and redundant getter (PR #34).",
+                  "follows": "fdfef228f0434a5fe99e17af99e0f607dbd6979c",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4cd46034d6d7dde62ad00013a18e61dfad34cbac",
+                    "timestamp": "2025-08-20T00:56:56Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/4cd46034d6d7dde62ad00013a18e61dfad34cbac"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: missing named parameters in mappings (PR #35).",
+                  "follows": "210a86170ecfa67ad093c57ec7ffa072db446ba5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ad43c904c81e4d44c524ea9c76f4e7cfaa026395",
+                    "timestamp": "2025-08-20T01:20:37Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/ad43c904c81e4d44c524ea9c76f4e7cfaa026395"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: unnecessary data field in event emission (PR #38).",
+                  "follows": "4cd46034d6d7dde62ad00013a18e61dfad34cbac",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2371bae9faf5fafceeac8091785a7f86e0ac8f7",
+                    "timestamp": "2025-08-22T18:45:13Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/a2371bae9faf5fafceeac8091785a7f86e0ac8f7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: use ReentrancyGuardTransientUpgradeable, follow-up (PR #43).",
+                  "follows": "ad43c904c81e4d44c524ea9c76f4e7cfaa026395",
                   "major_findings": 0
                 }
               ]
@@ -155,25 +361,221 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/FlashtestationRegistry.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
                 {
                   "revision": {
                     "kind": "commit",
+                    "commit": "5b0370dda239b5fd88ff7fa7940915f092e5530b",
+                    "timestamp": "2025-08-14T17:59:45Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/5b0370dda239b5fd88ff7fa7940915f092e5530b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Medium finding: fee incompatibility with attestation contract (PR #25).",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/FlashtestationRegistry.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
-                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
+                  "follows": "5b0370dda239b5fd88ff7fa7940915f092e5530b",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "aab77b266824fef2cf7b72a2cea8507027e02e12",
+                    "timestamp": "2025-08-18T19:36:46Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/aab77b266824fef2cf7b72a2cea8507027e02e12"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing zero-address checks (PR #27).",
+                  "follows": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c719a4e13c1bda118830f445dd6825b702964ebe",
+                    "timestamp": "2025-08-18T20:04:31Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/c719a4e13c1bda118830f445dd6825b702964ebe"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing reentrancy guard in invalidateAttestation (PR #28).",
+                  "follows": "aab77b266824fef2cf7b72a2cea8507027e02e12",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5dd4305ef8741a3db5174a93ad9ecac2c2a8c9e5",
+                    "timestamp": "2025-08-18T20:42:45Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/5dd4305ef8741a3db5174a93ad9ecac2c2a8c9e5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing EIP-712 deadline protection, partially resolved (PR #30).",
+                  "follows": "c719a4e13c1bda118830f445dd6825b702964ebe",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6b7e14fb0d25c3d1eddba9a0c6a4235af56ed063",
+                    "timestamp": "2025-08-19T14:52:15Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/6b7e14fb0d25c3d1eddba9a0c6a4235af56ed063"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing nonce signature invalidation (PR #31).",
+                  "follows": "5dd4305ef8741a3db5174a93ad9ecac2c2a8c9e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5a7fb4aab06c4a5f3bc14cda75139ca19cc4d858",
+                    "timestamp": "2025-08-19T14:58:02Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/5a7fb4aab06c4a5f3bc14cda75139ca19cc4d858"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: use stored quoteHash in checkPreviousRegistration (PR #24).",
+                  "follows": "6b7e14fb0d25c3d1eddba9a0c6a4235af56ed063",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c78ac251e81d845c502f89c6c246cd6d10e41da2",
+                    "timestamp": "2025-08-19T16:07:58Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/c78ac251e81d845c502f89c6c246cd6d10e41da2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: domain separator not public (PR #32).",
+                  "follows": "5a7fb4aab06c4a5f3bc14cda75139ca19cc4d858",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fdfef228f0434a5fe99e17af99e0f607dbd6979c",
+                    "timestamp": "2025-08-19T16:17:23Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/fdfef228f0434a5fe99e17af99e0f607dbd6979c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: incomplete docstring (PR #33).",
+                  "follows": "c78ac251e81d845c502f89c6c246cd6d10e41da2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "210a86170ecfa67ad093c57ec7ffa072db446ba5",
+                    "timestamp": "2025-08-20T00:49:33Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/210a86170ecfa67ad093c57ec7ffa072db446ba5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational notes: missing docstrings and redundant getter (PR #34).",
+                  "follows": "fdfef228f0434a5fe99e17af99e0f607dbd6979c",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4cd46034d6d7dde62ad00013a18e61dfad34cbac",
+                    "timestamp": "2025-08-20T00:56:56Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/4cd46034d6d7dde62ad00013a18e61dfad34cbac"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: missing named parameters in mappings (PR #35).",
+                  "follows": "210a86170ecfa67ad093c57ec7ffa072db446ba5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6dace7ae3b7e6a994b3096ad92398d1bda0d78f6",
+                    "timestamp": "2025-08-20T01:07:53Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/6dace7ae3b7e6a994b3096ad92398d1bda0d78f6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: use ReentrancyGuardTransientUpgradeable (PR #36).",
+                  "follows": "4cd46034d6d7dde62ad00013a18e61dfad34cbac",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3ad9547634d1792fe6276d8a9796568798456389",
+                    "timestamp": "2025-08-20T01:15:29Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/3ad9547634d1792fe6276d8a9796568798456389"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: doRegister parameter naming (PR #37).",
+                  "follows": "6dace7ae3b7e6a994b3096ad92398d1bda0d78f6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2e33699dd1dfff29239c4769b653417eb47219fc",
+                    "timestamp": "2025-08-20T01:41:58Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/2e33699dd1dfff29239c4769b653417eb47219fc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: custom errors in require statements (PR #40).",
+                  "follows": "3ad9547634d1792fe6276d8a9796568798456389",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18fc01d102bbd76096e5edfef4040b596570bf99",
+                    "timestamp": "2025-08-22T18:40:45Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/18fc01d102bbd76096e5edfef4040b596570bf99"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: nonce signature invalidation optimization (PR #42).",
+                  "follows": "2e33699dd1dfff29239c4769b653417eb47219fc",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2371bae9faf5fafceeac8091785a7f86e0ac8f7",
+                    "timestamp": "2025-08-22T18:45:13Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/a2371bae9faf5fafceeac8091785a7f86e0ac8f7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: use ReentrancyGuardTransientUpgradeable, follow-up (PR #43).",
+                  "follows": "18fc01d102bbd76096e5edfef4040b596570bf99",
                   "major_findings": 0
                 }
               ]
@@ -186,11 +588,11 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/utils/QuoteParser.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
@@ -199,12 +601,26 @@
                     "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/utils/QuoteParser.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
                   "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2e33699dd1dfff29239c4769b653417eb47219fc",
+                    "timestamp": "2025-08-20T01:41:58Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/2e33699dd1dfff29239c4769b653417eb47219fc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: custom errors in require statements (PR #40).",
+                  "follows": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                   "major_findings": 0
                 }
               ]
@@ -217,25 +633,52 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/interfaces/IAttestation.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
                 {
                   "revision": {
                     "kind": "commit",
+                    "commit": "5b0370dda239b5fd88ff7fa7940915f092e5530b",
+                    "timestamp": "2025-08-14T17:59:45Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/5b0370dda239b5fd88ff7fa7940915f092e5530b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Medium finding: fee incompatibility with attestation contract (PR #25).",
+                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/interfaces/IAttestation.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
-                  "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
+                  "follows": "5b0370dda239b5fd88ff7fa7940915f092e5530b",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fdfef228f0434a5fe99e17af99e0f607dbd6979c",
+                    "timestamp": "2025-08-19T16:17:23Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/fdfef228f0434a5fe99e17af99e0f607dbd6979c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: incomplete docstring (PR #33).",
+                  "follows": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                   "major_findings": 0
                 }
               ]
@@ -248,11 +691,11 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/src/interfaces/IFlashtestationRegistry.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
@@ -261,12 +704,91 @@
                     "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/src/interfaces/IFlashtestationRegistry.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
                   "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "aab77b266824fef2cf7b72a2cea8507027e02e12",
+                    "timestamp": "2025-08-18T19:36:46Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/aab77b266824fef2cf7b72a2cea8507027e02e12"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing zero-address checks (PR #27).",
+                  "follows": "0140167c80d8a93ac025e25e59e9e3518c82e939",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5dd4305ef8741a3db5174a93ad9ecac2c2a8c9e5",
+                    "timestamp": "2025-08-18T20:42:45Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/5dd4305ef8741a3db5174a93ad9ecac2c2a8c9e5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing EIP-712 deadline protection, partially resolved (PR #30).",
+                  "follows": "aab77b266824fef2cf7b72a2cea8507027e02e12",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6b7e14fb0d25c3d1eddba9a0c6a4235af56ed063",
+                    "timestamp": "2025-08-19T14:52:15Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/6b7e14fb0d25c3d1eddba9a0c6a4235af56ed063"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of Low finding: missing nonce signature invalidation (PR #31).",
+                  "follows": "5dd4305ef8741a3db5174a93ad9ecac2c2a8c9e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "210a86170ecfa67ad093c57ec7ffa072db446ba5",
+                    "timestamp": "2025-08-20T00:49:33Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/210a86170ecfa67ad093c57ec7ffa072db446ba5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational notes: missing docstrings and redundant getter (PR #34).",
+                  "follows": "6b7e14fb0d25c3d1eddba9a0c6a4235af56ed063",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3ad9547634d1792fe6276d8a9796568798456389",
+                    "timestamp": "2025-08-20T01:15:29Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/3ad9547634d1792fe6276d8a9796568798456389"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: doRegister parameter naming (PR #37).",
+                  "follows": "210a86170ecfa67ad093c57ec7ffa072db446ba5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b921c243f374f04d326885dfffc6c7569428042e",
+                    "timestamp": "2025-08-21T15:19:49Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/b921c243f374f04d326885dfffc6c7569428042e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational note: lack of indexed event parameters (PR #41).",
+                  "follows": "3ad9547634d1792fe6276d8a9796568798456389",
                   "major_findings": 0
                 }
               ]
@@ -279,11 +801,11 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/script/BlockBuilderPolicy.s.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
@@ -292,13 +814,14 @@
                     "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/script/BlockBuilderPolicy.s.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
                   "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
                 }
               ]
             },
@@ -310,11 +833,11 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/script/FlashtestationRegistry.s.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
@@ -323,13 +846,14 @@
                     "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/script/FlashtestationRegistry.s.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
                   "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
-                  "major_findings": 0
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
                 }
               ]
             },
@@ -341,11 +865,11 @@
                     "kind": "commit",
                     "commit": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
                     "timestamp": "2025-07-31T20:16:40Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/9ce1371d0a079396d49c1aa7876cf9b0075629e8/script/Interactions.s.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/9ce1371d0a079396d49c1aa7876cf9b0075629e8"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (phase 1)",
-                  "coverage": "Full file review; file listed in scope of both phases. Highest severity Medium.",
+                  "review_phase": "initial_audit",
+                  "coverage": "Phase 1 full review of the file.",
                   "major_findings": 0,
                   "highest_reported_finding_severity": "Medium"
                 },
@@ -354,12 +878,26 @@
                     "kind": "commit",
                     "commit": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                     "timestamp": "2025-08-15T20:59:35Z",
-                    "url": "https://github.com/flashbots/flashtestations/blob/0140167c80d8a93ac025e25e59e9e3518c82e939/script/Interactions.s.sol"
+                    "url": "https://github.com/flashbots/flashtestations/commit/0140167c80d8a93ac025e25e59e9e3518c82e939"
                   },
                   "status": "audited_with_no_major_findings",
-                  "review_phase": "phase 2 review (gas optimization additions, PR #24)",
-                  "coverage": "Review of gas optimization additions at the PR #24 commit identified by the report; file listed in scope of both phases.",
+                  "review_phase": "re_audit",
+                  "coverage": "Phase 2 review of the file including the gas optimization additions of PR #24.",
                   "follows": "9ce1371d0a079396d49c1aa7876cf9b0075629e8",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "210a86170ecfa67ad093c57ec7ffa072db446ba5",
+                    "timestamp": "2025-08-20T00:49:33Z",
+                    "url": "https://github.com/flashbots/flashtestations/commit/210a86170ecfa67ad093c57ec7ffa072db446ba5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix_review",
+                  "coverage": "Fix review of informational notes: missing docstrings and redundant getter (PR #34).",
+                  "follows": "0140167c80d8a93ac025e25e59e9e3518c82e939",
                   "major_findings": 0
                 }
               ]
@@ -367,6 +905,22 @@
           }
         }
       ]
+    },
+    {
+      "id": "nethermind-rollup-boost-2025-06",
+      "report_file": "irrelevant/Nethermind - NM-0411-0491 Security Review Rollup Boost.md",
+      "title": "NM-0411-0491 Security Review Rollup Boost",
+      "description": "Nethermind security review of Rollup Boost, the Rust sidecar service that lets external block builders construct blocks for OP Stack sequencers. The entire scope is offchain node software (flashbots/rollup-boost); no onchain contracts or circuits are covered.",
+      "isRelevant": false,
+      "auditor": "Nethermind",
+      "report_date": "2025-06-09",
+      "repositories": [
+        {
+          "id": "flashbots/rollup-boost",
+          "url": "https://github.com/flashbots/rollup-boost"
+        }
+      ],
+      "scopes": []
     }
   ]
 }

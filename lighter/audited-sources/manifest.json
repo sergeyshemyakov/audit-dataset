@@ -1,0 +1,1004 @@
+{
+  "schema_version": "1.0.0",
+  "project": "lighter",
+  "audit_summary": "../audit-summary.json",
+  "sources": [],
+  "skipped": [
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/AdditionalZkLighter.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Config.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/ExtendableStorage.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Storage.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/ZkLighter.sol",
+      "revision_kind": "commit",
+      "revision": "f4df0ed",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/ZkLighter.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/lib/Bytes.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/lib/TxTypes.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts/compare/5cbd2d23...e6890b14a340321be161fb99d980c71c348541dc",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/AdditionalZkLighter.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/Config.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/Constants.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/DeployFactory.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/DesertVerifier.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/ExtendableStorage.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/Governance.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/Storage.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/UpgradeableMaster.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/ZkLighter.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/ZkLighterStateRootUpgradeVerifier.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/ZkLighterVerifier.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/interop/L1InteropManager.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/interop/TokenInteropLib.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/lib/Bytes.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/lib/TxTypes.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/messaging/L1CoreMessaging.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/proxy/Ownable.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/proxy/Proxy.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/proxy/UpgradeGatekeeper.sol",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-contracts-internal",
+      "source_path": "contracts/tests",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-contracts-internal/compare/6edc3ff22099fc98501ebc618bbc19468c7fec07...c768c3eb49f4fc031a7d4b03b50bf37a9e4a69f3",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src",
+      "revision_kind": "commit",
+      "revision": "4876a50",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src",
+      "revision_kind": "commit_range",
+      "revision": "https://github.com/elliottech/lighter-prover/compare/4876a50...b119f03",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/bigint",
+      "revision_kind": "commit",
+      "revision": "b119f03",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/bigint/unsafe_big/mod.rs",
+      "revision_kind": "commit",
+      "revision": "4876a50",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/blob",
+      "revision_kind": "commit",
+      "revision": "b119f03",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/comparison",
+      "revision_kind": "commit",
+      "revision": "b119f03",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/delta",
+      "revision_kind": "commit",
+      "revision": "b119f03",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/hints",
+      "revision_kind": "commit",
+      "revision": "b119f03",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/recursion",
+      "revision_kind": "commit",
+      "revision": "b119f03",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/recursion/wrapper_circuit.rs",
+      "revision_kind": "commit",
+      "revision": "b119f03",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions",
+      "revision_kind": "commit",
+      "revision": "4876a50",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_deposit.rs",
+      "revision_kind": "commit",
+      "revision": "f6818da",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types",
+      "revision_kind": "commit",
+      "revision": "4876a50",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types/tx_state.rs",
+      "revision_kind": "commit",
+      "revision": "f6818da",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/circuits/src/inner_circuit.rs",
+      "revision_kind": "commit",
+      "revision": "f6818da",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/circuits/src/pubdata_account.rs",
+      "revision_kind": "commit",
+      "revision": "f6818da",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/witness/utils.go",
+      "revision_kind": "commit",
+      "revision": "f6818da",
+      "reason": "commit is not a full 40- or 64-hex object id"
+    }
+  ],
+  "unavailable": [
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/AdditionalZkLighter.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Config.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/DeployFactory.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Governance.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Storage.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/UpgradeableMaster.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/ZkLighter.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IDesertVerifier.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IEvents.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IGovernance.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IZkLighter.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IZkLighterDesertMode.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IZkLighterVerifier.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/lib/Bytes.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/lib/TxTypes.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/IUpgradeEvents.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/IUpgradeable.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/Ownable.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/Proxy.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/UpgradeGatekeeper.sol",
+      "path_kind": "file",
+      "commit": "0ddf2bfc9ead2c2c98ca04085315304ad0865dbc",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/AdditionalZkLighter.sol",
+      "path_kind": "file",
+      "commit": "25459881a7ac452a24794a6dd3ed90bf9b953df3",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/UpgradeableMaster.sol",
+      "path_kind": "file",
+      "commit": "5a8745f76b3c23dbd1579f27d641c4c050b94a75",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/AdditionalZkLighter.sol",
+      "path_kind": "file",
+      "commit": "6cd7c8f66d2f719e6162f6b31f552f77c1efefeb",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/AdditionalZkLighter.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Config.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/DeployFactory.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Governance.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/Storage.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/UpgradeableMaster.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/ZkLighter.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IDesertVerifier.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IEvents.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IGovernance.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IZkLighter.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IZkLighterDesertMode.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/interfaces/IZkLighterVerifier.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/lib/Bytes.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/lib/TxTypes.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/IUpgradeEvents.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/IUpgradeable.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/Ownable.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/Proxy.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-contracts",
+      "source_path": "contracts/proxy/UpgradeGatekeeper.sol",
+      "path_kind": "file",
+      "commit": "8144649002307657bdb6d9dd5b78906aea736f00",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/blob/blob_constraints.rs",
+      "path_kind": "file",
+      "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/blob/blob_polynomial.rs",
+      "path_kind": "file",
+      "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/blob/evaluate_bitstream.rs",
+      "path_kind": "file",
+      "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/recursion/wrapper_circuit.rs",
+      "path_kind": "file",
+      "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "snark",
+      "path_kind": "directory_recursive",
+      "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/delta/account_delta_full_leaf.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/delta/delta_constraints.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/delta/utils.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_deposit.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_register_asset.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_update_asset.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_withdraw.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l2_transfer.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l2_withdraw.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/tx_constraints.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types/account_asset.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types/asset.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types/constants.rs",
+      "path_kind": "file",
+      "commit": "11c373555dd56478ddf7c9fbae27c2c2c4052665",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/bigint",
+      "path_kind": "directory_recursive",
+      "commit": "6c75178492c6c936706d0c61d7e80b5539f43e24",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/hints",
+      "path_kind": "directory_recursive",
+      "commit": "6c75178492c6c936706d0c61d7e80b5539f43e24",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/bigint",
+      "path_kind": "directory_recursive",
+      "commit": "7f9fdc9439d47a0cb1beef6e2879e8a47b5a77e8",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/hints",
+      "path_kind": "directory_recursive",
+      "commit": "7f9fdc9439d47a0cb1beef6e2879e8a47b5a77e8",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/apply_trade.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/delta/delta_constraints.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/matching_engine.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/internal_cancel_order.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/internal_claim_order.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/internal_create_order.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/internal_deleverage.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/internal_exit_position.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/internal_liquidate_position.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_create_market.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_create_order.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_deposit.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_register_asset.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_update_asset.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l1_update_market.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l2_cancel_order.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l2_create_order.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/transactions/l2_modify_order.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/tx_constraints.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types/market.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types/transfer.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/types/tx_state.rs",
+      "path_kind": "file",
+      "commit": "b31b173ced2df143a7289b21df9020bfc664f3f6",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src",
+      "path_kind": "directory_recursive",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/bigint",
+      "path_kind": "directory_recursive",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "circuit/src/hints",
+      "path_kind": "directory_recursive",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/circuits/src/deserializers.rs",
+      "path_kind": "file",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/circuits/src/inner_circuit.rs",
+      "path_kind": "file",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/circuits/src/outer_circuit.rs",
+      "path_kind": "file",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/circuits/src/pubdata_account.rs",
+      "path_kind": "file",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/circuits/src/pubdata_market.rs",
+      "path_kind": "file",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    },
+    {
+      "repository": "elliottech/lighter-prover",
+      "source_path": "desertexit/witness/utils.go",
+      "path_kind": "file",
+      "commit": "b99c425b8c0868501e65e78fd16aaf16bbe0ea2b",
+      "reason": "commit could not be fetched"
+    }
+  ]
+}

@@ -3,4 +3,8 @@ __pycache__
 
 :memory:.ses
 
+# deployed sources do not belong to this repo
+deployed-contracts/
+deployed.json
+
 # projects that are still not reviewed

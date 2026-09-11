@@ -1,0 +1,2135 @@
+{
+  "schema_version": "1.2.0",
+  "project": "bob",
+  "reports": [
+    {
+      "id": "cure53-bob-usdc-bridge-library-2024-04",
+      "report_file": "Cure53 - BOB Modified USDC Bridge Library (WP1).md",
+      "title": "Review-Report BOB modified USDC bridge library 04.2024 (BOB-02-WP1)",
+      "description": "Cure53 cryptography review and source code audit of BOB's modified USDC bridge library (L1/L2 USDC bridges, shared UsdcBridge base, UsdcManager and helpers) submitted as PR #1 to the bob-collective/optimism fork. One High front-running finding and one Low finding, both fixed during the assessment and verified by Cure53.",
+      "isRelevant": true,
+      "auditor": "Cure53",
+      "report_date": "2024-04-30",
+      "repositories": [
+        {
+          "id": "bob-collective/optimism",
+          "url": "https://github.com/bob-collective/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "bob-collective/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/L1/L1UsdcBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                    "timestamp": "2024-04-11T11:04:42Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/a80a28610962d361cf1c8b67c3f513d0ffb1f792/packages/contracts-bedrock/src/L1/L1UsdcBridge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. BOB-02-001 (High): initialize() can be front-run to take over a directly deployed bridge.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fafad42472901497645e03953672489c2d41b3ab",
+                    "timestamp": "2024-04-17T16:06:39Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/fafad42472901497645e03953672489c2d41b3ab/packages/contracts-bedrock/src/L1/L1UsdcBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of BOB-02-001: initializers disabled on the implementation (init only through proxy); fix verified by Cure53 during the assessment.",
+                  "follows": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2UsdcBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                    "timestamp": "2024-04-11T11:04:42Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/a80a28610962d361cf1c8b67c3f513d0ffb1f792/packages/contracts-bedrock/src/L2/L2UsdcBridge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. BOB-02-001 (High) affects this bridge as well.",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fafad42472901497645e03953672489c2d41b3ab",
+                    "timestamp": "2024-04-17T16:06:39Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/fafad42472901497645e03953672489c2d41b3ab/packages/contracts-bedrock/src/L2/L2UsdcBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of BOB-02-001 through the inherited UsdcBridge base (this file itself is unchanged by the fix commit); fix verified by Cure53.",
+                  "follows": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/UsdcBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                    "timestamp": "2024-04-11T11:04:42Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/a80a28610962d361cf1c8b67c3f513d0ffb1f792/packages/contracts-bedrock/src/universal/UsdcBridge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. BOB-02-001 (High): __UsdcBridge_init reachable through unprotected initialize().",
+                  "major_findings": 1,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fafad42472901497645e03953672489c2d41b3ab",
+                    "timestamp": "2024-04-17T16:06:39Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/fafad42472901497645e03953672489c2d41b3ab/packages/contracts-bedrock/src/universal/UsdcBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of BOB-02-001: _disableInitializers added to the constructor; fix verified by Cure53.",
+                  "follows": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/UsdcManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                    "timestamp": "2024-04-11T11:04:42Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/a80a28610962d361cf1c8b67c3f513d0ffb1f792/packages/contracts-bedrock/src/L2/UsdcManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. Only BOB-02-002 (Low): missing zero-address check in transferUSDCRoles.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2f7f05f827f1cd4d07ad3f8c10255077f469e79f",
+                    "timestamp": "2024-04-15T18:32:39Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/2f7f05f827f1cd4d07ad3f8c10255077f469e79f/packages/contracts-bedrock/src/L2/UsdcManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of BOB-02-002: zero owner address rejected; fix verified by Cure53.",
+                  "follows": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/IPartialUsdc.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                    "timestamp": "2024-04-11T11:04:42Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/a80a28610962d361cf1c8b67c3f513d0ffb1f792/packages/contracts-bedrock/src/L1/IPartialUsdc.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. No findings reported for this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Pausable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a80a28610962d361cf1c8b67c3f513d0ffb1f792",
+                    "timestamp": "2024-04-11T11:04:42Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/a80a28610962d361cf1c8b67c3f513d0ffb1f792/packages/contracts-bedrock/src/libraries/Pausable.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. No findings reported for this file.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pashov-bob-usdc-bridge-2024-04",
+      "report_file": "Pashov - BOB USDC Bridge (Apr 2024).md",
+      "title": "BOB USDC Bridge Security Review",
+      "description": "Pashov Audit Group time-boxed review of the USDC bridge contracts (IPartialUsdc, L1UsdcBridge, L2UsdcBridge, UsdcBridge, Pausable, UsdcManager) in the bob-collective/optimism fork at commit 4c27e88, with fixes reviewed at c9648be. A single Low finding on Bridged USDC Standard compliance was resolved.",
+      "isRelevant": true,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2024-04-22",
+      "repositories": [
+        {
+          "id": "bob-collective/optimism",
+          "url": "https://github.com/bob-collective/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "bob-collective/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/L1/L1UsdcBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056",
+                    "timestamp": "2024-04-18T09:23:15Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056/packages/contracts-bedrock/src/L1/L1UsdcBridge.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed contract at review commit 4c27e88 of bob-collective/optimism. Only L-01 (Low): burnLockedUSDC burns the whole balance instead of the bridged supply.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c9648bed367881438e782bf9e7de9dc70fa50a29",
+                    "timestamp": "2024-04-22T17:50:20Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/c9648bed367881438e782bf9e7de9dc70fa50a29/packages/contracts-bedrock/src/L1/L1UsdcBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Fixes review commit stated by the report: L-01 resolved (burn only bridged USDC).",
+                  "follows": "4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2UsdcBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056",
+                    "timestamp": "2024-04-18T09:23:15Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056/packages/contracts-bedrock/src/L2/L2UsdcBridge.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed contract at review commit 4c27e88 of bob-collective/optimism. No findings reported for this file; the fixes review commit c9648be changes only L1UsdcBridge.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/UsdcBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056",
+                    "timestamp": "2024-04-18T09:23:15Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056/packages/contracts-bedrock/src/universal/UsdcBridge.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed contract at review commit 4c27e88 of bob-collective/optimism. No findings reported for this file; the fixes review commit c9648be changes only L1UsdcBridge.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/UsdcManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056",
+                    "timestamp": "2024-04-18T09:23:15Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056/packages/contracts-bedrock/src/L2/UsdcManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed contract at review commit 4c27e88 of bob-collective/optimism. No findings reported for this file; the fixes review commit c9648be changes only L1UsdcBridge.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/IPartialUsdc.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056",
+                    "timestamp": "2024-04-18T09:23:15Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056/packages/contracts-bedrock/src/L1/IPartialUsdc.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed contract at review commit 4c27e88 of bob-collective/optimism. No findings reported for this file; the fixes review commit c9648be changes only L1UsdcBridge.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Pausable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056",
+                    "timestamp": "2024-04-18T09:23:15Z",
+                    "url": "https://github.com/bob-collective/optimism/tree/4c27e88204aaa8dc531b3ff1fdd5b4e8ec85d056/packages/contracts-bedrock/src/libraries/Pausable.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed contract at review commit 4c27e88 of bob-collective/optimism. No findings reported for this file; the fixes review commit c9648be changes only L1UsdcBridge.sol.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "common-prefix-fusionlock-2024-03",
+      "report_file": "Common Prefix - FusionLock.md",
+      "title": "BOB FusionLock Smart Contract Audit",
+      "description": "Common Prefix audit of the FusionLock.sol deposit-and-bridge contract for BOB's Fusion Season One campaign at commit afe34d5 of bob-collective/fusion-lock, including a compatibility check of the announced token list against the Optimism bridge. Two Low and four Informational findings, all resolved in the listed fix commits.",
+      "isRelevant": true,
+      "auditor": "Common Prefix",
+      "report_date": "2024-03-29",
+      "repositories": [
+        {
+          "id": "bob-collective/fusion-lock",
+          "url": "https://github.com/bob-collective/fusion-lock"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "bob-collective/fusion-lock",
+          "paths": {
+            "src/FusionLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "afe34d57ff6ad61cd9593755b36c5250e53159f5",
+                    "timestamp": "2024-03-29T11:07:26Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/afe34d57ff6ad61cd9593755b36c5250e53159f5/src/FusionLock.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of FusionLock.sol. Highest severity Low (LOW-1 token/bridge compatibility, LOW-2 tokens returned by the bridge stuck).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6f5489e6a443d591c0d882eb5779d260bf39ce35",
+                    "timestamp": "2024-03-29T11:07:39Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/6f5489e6a443d591c0d882eb5779d260bf39ce35/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of LOW-2 (recover tokens returned by a failed bridge or sent directly), first commit.",
+                  "follows": "afe34d57ff6ad61cd9593755b36c5250e53159f5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5dced5f0330e953314b5406b5a9828f24caf9cab",
+                    "timestamp": "2024-03-29T11:07:43Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/5dced5f0330e953314b5406b5a9828f24caf9cab/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of INFO-1 (redundant ETH allow-list check).",
+                  "follows": "6f5489e6a443d591c0d882eb5779d260bf39ce35",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ba0b987cf5b5828e8ac729199d7177268d8e1fe8",
+                    "timestamp": "2024-03-29T11:07:46Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/ba0b987cf5b5828e8ac729199d7177268d8e1fe8/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of INFO-2 (call instead of transfer).",
+                  "follows": "5dced5f0330e953314b5406b5a9828f24caf9cab",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0885622b0e55d4d5000e7a13f2373366340d93e6",
+                    "timestamp": "2024-03-29T11:07:49Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/0885622b0e55d4d5000e7a13f2373366340d93e6/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of INFO-3 (duplicate pause modifiers).",
+                  "follows": "ba0b987cf5b5828e8ac729199d7177268d8e1fe8",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dc7a8460ba0aa687c962561d337308d4e7873093",
+                    "timestamp": "2024-03-29T11:07:53Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/dc7a8460ba0aa687c962561d337308d4e7873093/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of INFO-4 (single storage read).",
+                  "follows": "0885622b0e55d4d5000e7a13f2373366340d93e6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "455416c3184585790f8bdcb66336e47fd96efed5",
+                    "timestamp": "2024-03-29T11:08:11Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/455416c3184585790f8bdcb66336e47fd96efed5/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of LOW-1 (per-token bridge address override).",
+                  "follows": "dc7a8460ba0aa687c962561d337308d4e7873093",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9af92bd48f01b1f5a8e068e1d7900be3f37674d0",
+                    "timestamp": "2024-03-29T11:08:26Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/9af92bd48f01b1f5a8e068e1d7900be3f37674d0/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Remediation of LOW-2, second commit (totalDeposits accounting in saveToken).",
+                  "follows": "455416c3184585790f8bdcb66336e47fd96efed5",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ottersec-fusionlock-2024-03",
+      "report_file": "OtterSec - FusionLock.md",
+      "title": "Bob Collective Security Assessment (fusion-lock)",
+      "description": "OtterSec assessment of the fusion-lock program (FusionLock.sol) at commit e4f25ee of bob-collective/fusion-lock, conducted March 18-22, 2024. Two informational findings (bridge-address override flexibility, gas-limit documentation) were reported and patched in da35903 and 2db42bb.",
+      "isRelevant": true,
+      "auditor": "OtterSec",
+      "report_date": "2024-03-30",
+      "repositories": [
+        {
+          "id": "bob-collective/fusion-lock",
+          "url": "https://github.com/bob-collective/fusion-lock"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "bob-collective/fusion-lock",
+          "paths": {
+            "src/FusionLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4f25ee6302839deb30d5a96721a64610d36598c",
+                    "timestamp": "2024-03-29T11:07:36Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/e4f25ee6302839deb30d5a96721a64610d36598c/src/FusionLock.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of FusionLock.sol. Only two Informational findings (OS-BOB-SUG-00, OS-BOB-SUG-01).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "da359031f013b34f6504fc6462db9f78fd76ba57",
+                    "timestamp": "2024-03-29T11:08:32Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/da359031f013b34f6504fc6462db9f78fd76ba57/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Patch for OS-BOB-SUG-00 (l1BridgeAddressOverride changeable after the withdrawal period).",
+                  "follows": "e4f25ee6302839deb30d5a96721a64610d36598c",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2db42bbe4545f8524ea7a1ad939ea38c1cc4aad7",
+                    "timestamp": "2024-03-29T11:08:36Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/2db42bbe4545f8524ea7a1ad939ea38c1cc4aad7/src/FusionLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Patch for OS-BOB-SUG-01 (minGasLimit comment clarification).",
+                  "follows": "da359031f013b34f6504fc6462db9f78fd76ba57",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trail-of-bits-fusionlock-2024-04",
+      "report_file": "Trail of Bits - FusionLock.md",
+      "title": "BOB FusionLock Security Assessment (Summary Report)",
+      "description": "Trail of Bits two engineer-day review of the FusionLock contract at commit f65b5c5 of bob-collective/fusion-lock, covering deposit locking, L1 withdrawal and bridging to BOB L2 with static and dynamic testing. Three data-validation findings (one Low, two Informational); bridging attack scenarios were explicitly not examined in depth.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2024-04-03",
+      "repositories": [
+        {
+          "id": "bob-collective/fusion-lock",
+          "url": "https://github.com/bob-collective/fusion-lock"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "bob-collective/fusion-lock",
+          "paths": {
+            "src/FusionLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f65b5c58d495a80cafceab6bfa046b0d10fd90e1",
+                    "timestamp": "2024-03-29T11:08:42Z",
+                    "url": "https://github.com/bob-collective/fusion-lock/tree/f65b5c58d495a80cafceab6bfa046b0d10fd90e1/src/FusionLock.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of FusionLock.sol including basic Optimism bridge integration; detailed bridging attack vectors were not reviewed. Highest severity Low (missing two-step ownership transfer). No fix commits stated.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "veridise-kailua-2025-02",
+      "report_file": "Veridise - Kailua Security Audit (Feb 2025).md",
+      "title": "Veridise Auditing Report for Kailua Protocol (February 2025)",
+      "description": "Veridise three-week assessment of RISC Zero's Kailua fault-proof framework (smart contracts, off-chain CLI/client/host components and zkVM guest program) at commit 6e2ce8f, which BOB uses as its dispute game. Six Critical and seven High findings were reported; all but one were confirmed fixed in the stated commits and PR #21, with Kona and Zeth dependencies out of scope.",
+      "isRelevant": true,
+      "auditor": "Veridise",
+      "report_date": "2025-02-18",
+      "repositories": [
+        {
+          "id": "boundless-xyz/kailua",
+          "url": "https://github.com/boundless-xyz/kailua"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "boundless-xyz/kailua",
+          "paths": {
+            "crates/contracts/foundry/src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/crates/contracts/foundry/src"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). Report scopes the contracts folder (stated as crates/common/contracts/src, located at crates/contracts/foundry/src in the repository) excluding vendor. Critical V-KLA-VUL-001/002/003/004/006 and High V-KLA-VUL-007 in KailuaTournament.sol, KailuaLib.sol and KailuaTreasury.sol. The report records the fix for VUL-001 at f402ec3 (documentation-only commit) and for VUL-006 at 871eb34 (touches only crates/common/src/client.rs).",
+                  "major_findings": 6,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                    "timestamp": "2025-01-27T09:44:48Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/5586e1dcad820ba6673c3d80a1cdb2878309d5af/crates/contracts/foundry/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit for V-KLA-VUL-002, 003, 017 and 021 (multi-block validity/fault proving, PR #19).",
+                  "follows": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "27dec82b67de1051df9258b36f8366ebf308e5bf",
+                    "timestamp": "2025-02-06T07:42:16Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/27dec82b67de1051df9258b36f8366ebf308e5bf/crates/contracts/foundry/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit for V-KLA-VUL-004 (contract nits).",
+                  "follows": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/vendor": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/crates/contracts/foundry/src/vendor"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Vendored OP Stack and RISC Zero imports; explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/crates/common/src"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). Full review of crates/common/src. Critical V-KLA-VUL-005 (client.rs, addressed and partially verified) and High V-KLA-VUL-013 (blobs.rs); Medium V-KLA-VUL-016 and Low V-KLA-VUL-017 also here.",
+                  "major_findings": 2,
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                    "timestamp": "2025-01-27T09:44:48Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/5586e1dcad820ba6673c3d80a1cdb2878309d5af/crates/common/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit for V-KLA-VUL-013 (blobs.rs) among others.",
+                  "follows": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "871eb34c508c3f3c5b52c7a2acc68e6000cf1aa8",
+                    "timestamp": "2025-02-06T08:27:52Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/871eb34c508c3f3c5b52c7a2acc68e6000cf1aa8/crates/common/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit for V-KLA-VUL-005 and 016 (client.rs); VUL-005 marked addressed and partially verified.",
+                  "follows": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bd76b761856c836736042364eca9b924235dedfa",
+                    "timestamp": "2025-02-06T09:33:02Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/bd76b761856c836736042364eca9b924235dedfa/crates/common/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit for V-KLA-VUL-007-related config hash fields (config.rs).",
+                  "follows": "871eb34c508c3f3c5b52c7a2acc68e6000cf1aa8",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00fccf3cbcd0c303df972c0986bd6d541ba2897f",
+                    "timestamp": "2025-02-14T14:47:53Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/00fccf3cbcd0c303df972c0986bd6d541ba2897f/crates/common/src"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Head of PR #21 cited as confirmed fix for V-KLA-VUL-014, 018 and 020 (touches blobs.rs, oracle, witness.rs).",
+                  "follows": "bd76b761856c836736042364eca9b924235dedfa",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bin/cli": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/bin/cli"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). All files of bin/cli except bench.rs, fast_track.rs, fault.rs and the providers/ folder (listed separately as not audited). High V-KLA-VUL-008/009/011/012 (db/mod.rs) and V-KLA-VUL-010 (propose.rs); Medium V-KLA-VUL-014/015 in validate.rs, proposer/validator.",
+                  "major_findings": 5,
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                    "timestamp": "2025-01-27T09:44:48Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/5586e1dcad820ba6673c3d80a1cdb2878309d5af/bin/cli"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit for V-KLA-VUL-008, 009, 010 and 012 (PR #19).",
+                  "follows": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f1c7e4211cfe728b8390eebe748c72cf4eda152b",
+                    "timestamp": "2025-02-06T08:56:16Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/f1c7e4211cfe728b8390eebe748c72cf4eda152b/bin/cli"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit for V-KLA-VUL-011 (skipped parent, db/mod.rs).",
+                  "follows": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00fccf3cbcd0c303df972c0986bd6d541ba2897f",
+                    "timestamp": "2025-02-14T14:47:53Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/00fccf3cbcd0c303df972c0986bd6d541ba2897f/bin/cli"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Head of PR #21 cited as confirmed fix for V-KLA-VUL-014, 018 and 020 (config.rs, validate.rs, db/treasury.rs).",
+                  "follows": "f1c7e4211cfe728b8390eebe748c72cf4eda152b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bin/cli/src/bench.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/bin/cli/src/bench.rs"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Explicitly excluded from the bin/cli scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bin/cli/src/fast_track.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/bin/cli/src/fast_track.rs"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Explicitly excluded from the bin/cli scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bin/cli/src/fault.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/bin/cli/src/fault.rs"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Explicitly excluded from the bin/cli scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bin/cli/src/providers": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/bin/cli/src/providers"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Explicitly excluded from the bin/cli scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bin/client": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/bin/client"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). Full review of bin/client (off-chain proving client). No Major/Critical findings located here; Warning V-KLA-VUL-022 (fetching blobs) reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                    "timestamp": "2025-01-27T09:44:48Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/5586e1dcad820ba6673c3d80a1cdb2878309d5af/bin/client"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit (PR #19) restructuring bin/client.",
+                  "follows": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00fccf3cbcd0c303df972c0986bd6d541ba2897f",
+                    "timestamp": "2025-02-14T14:47:53Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/00fccf3cbcd0c303df972c0986bd6d541ba2897f/bin/client"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Head of PR #21 cited as confirmed fix for Warning V-KLA-VUL-018/020 (proving/witgen changes).",
+                  "follows": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bin/host": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/bin/host"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). Full review of bin/host. No Major/Critical findings; Warning V-KLA-VUL-022 in host/src/lib.rs.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                    "timestamp": "2025-01-27T09:44:48Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/5586e1dcad820ba6673c3d80a1cdb2878309d5af/bin/host"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit (PR #19) touching bin/host.",
+                  "follows": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "build/risczero/fpvm/src/main.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/build/risczero/fpvm/src/main.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). zkVM guest entry point; in scope, no findings located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                    "timestamp": "2025-01-27T09:44:48Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/5586e1dcad820ba6673c3d80a1cdb2878309d5af/build/risczero/fpvm/src/main.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix commit (PR #19) touching the guest program.",
+                  "follows": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00fccf3cbcd0c303df972c0986bd6d541ba2897f",
+                    "timestamp": "2025-02-14T14:47:53Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/00fccf3cbcd0c303df972c0986bd6d541ba2897f/build/risczero/fpvm/src/main.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Head of PR #21 (witness capacity change) touching the guest program.",
+                  "follows": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "build/risczero/src/lib.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224",
+                    "timestamp": "2025-01-06T12:46:04Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/build/risczero/src/lib.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). In scope; no findings located here and no stated fix commit touches this file.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "veridise-kailua-2025-05",
+      "report_file": "Veridise - Kailua Security Audit (May 2025).md",
+      "title": "Veridise Auditing Report for Kailua Protocol (May 2025)",
+      "description": "Veridise second review of Kailua, limited to the four Solidity contracts in crates/contracts/foundry/src at commit 7eb9869 after the first-audit fixes and the new validity-proof functionality; off-chain components and vendor code were out of scope. Two Medium, one Low, two Warning and one Informational findings, all fixed in PRs #43-#46.",
+      "isRelevant": true,
+      "auditor": "Veridise",
+      "report_date": "2025-05-22",
+      "repositories": [
+        {
+          "id": "boundless-xyz/kailua",
+          "url": "https://github.com/boundless-xyz/kailua"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "boundless-xyz/kailua",
+          "paths": {
+            "crates/contracts/foundry/src/KailuaTournament.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                    "timestamp": "2025-04-30T06:47:45Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/7eb9869641f9eb957d692cc99bec8755d65fe5cc/crates/contracts/foundry/src/KailuaTournament.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise contracts-only review of Kailua on commit 7eb9869 (then risc0/kailua). Medium V-KLA-VUL-001/002, Low V-KLA-VUL-003 and Warning V-KLA-VUL-004 located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c11ab5409504ea4e9ddeb120838be2c8c41a12d5",
+                    "timestamp": "2025-05-15T11:36:44Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/c11ab5409504ea4e9ddeb120838be2c8c41a12d5/crates/contracts/foundry/src/KailuaTournament.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-002 (PR #43): prevent elimination after resolution. Fix commits live on separate fix PR branches and are ordered chronologically.",
+                  "follows": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dbfd8d47c12cb820ed07a67194bc541f62bdbec9",
+                    "timestamp": "2025-05-19T08:31:53Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/dbfd8d47c12cb820ed07a67194bc541f62bdbec9/crates/contracts/foundry/src/KailuaTournament.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-004 (PR #44): no tournament state updates after resolution.",
+                  "follows": "c11ab5409504ea4e9ddeb120838be2c8c41a12d5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d41694c43fd4a9c0095edb83161d0dbd21a318ad",
+                    "timestamp": "2025-05-19T08:44:01Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/d41694c43fd4a9c0095edb83161d0dbd21a318ad/crates/contracts/foundry/src/KailuaTournament.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-005/006 (PR #45): cleanup of unused errors and docs.",
+                  "follows": "dbfd8d47c12cb820ed07a67194bc541f62bdbec9",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/KailuaLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                    "timestamp": "2025-04-30T06:47:45Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/7eb9869641f9eb957d692cc99bec8755d65fe5cc/crates/contracts/foundry/src/KailuaLib.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise contracts-only review of Kailua on commit 7eb9869 (then risc0/kailua). No Major/Critical findings; only maintainability items (V-KLA-VUL-005/006).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d41694c43fd4a9c0095edb83161d0dbd21a318ad",
+                    "timestamp": "2025-05-19T08:44:01Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/d41694c43fd4a9c0095edb83161d0dbd21a318ad/crates/contracts/foundry/src/KailuaLib.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-005/006 (PR #45).",
+                  "follows": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/KailuaTreasury.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                    "timestamp": "2025-04-30T06:47:45Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/7eb9869641f9eb957d692cc99bec8755d65fe5cc/crates/contracts/foundry/src/KailuaTreasury.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise contracts-only review of Kailua on commit 7eb9869 (then risc0/kailua). No Major/Critical findings; V-KLA-VUL-001/003 bond-loss fixes (PR #46) and maintainability items apply here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d41694c43fd4a9c0095edb83161d0dbd21a318ad",
+                    "timestamp": "2025-05-19T08:44:01Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/d41694c43fd4a9c0095edb83161d0dbd21a318ad/crates/contracts/foundry/src/KailuaTreasury.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-005/006 (PR #45). Fix commits live on separate fix PR branches and are ordered chronologically.",
+                  "follows": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4b7aae99c2b9a05340de4b99fad76fba3faca29",
+                    "timestamp": "2025-05-19T12:21:59Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/e4b7aae99c2b9a05340de4b99fad76fba3faca29/crates/contracts/foundry/src/KailuaTreasury.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Head of PR #46, confirmed fix for V-KLA-VUL-001 and 003: relaxed withdrawal restrictions on uneliminated players.",
+                  "follows": "d41694c43fd4a9c0095edb83161d0dbd21a318ad",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/KailuaGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                    "timestamp": "2025-04-30T06:47:45Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/7eb9869641f9eb957d692cc99bec8755d65fe5cc/crates/contracts/foundry/src/KailuaGame.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise contracts-only review of Kailua on commit 7eb9869 (then risc0/kailua). No findings located in this file; no stated fix commit touches it.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/vendor": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7eb9869641f9eb957d692cc99bec8755d65fe5cc",
+                    "timestamp": "2025-04-30T06:47:45Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/7eb9869641f9eb957d692cc99bec8755d65fe5cc/crates/contracts/foundry/src/vendor"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "excluded",
+                  "coverage": "Imported vendor code, explicitly out of scope.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "veridise-kailua-2025-06",
+      "report_file": "Veridise - Kailua Security Audit (Jun 2025).md",
+      "title": "Veridise Auditing Report for Kailua Protocol (June 2025)",
+      "description": "Veridise third review of Kailua, covering only the off-chain zkVM application files (derivation, execution, precondition, journal and proof stitching under crates/common/src and the RISC Zero guest program) at commit 52c5999; smart contracts and node software were excluded. One Medium, three Warning and two Informational findings, all fixed in PRs #50-#55.",
+      "isRelevant": true,
+      "auditor": "Veridise",
+      "report_date": "2025-06-16",
+      "repositories": [
+        {
+          "id": "boundless-xyz/kailua",
+          "url": "https://github.com/boundless-xyz/kailua"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "boundless-xyz/kailua",
+          "paths": {
+            "build/risczero/build.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/build/risczero/build.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. No findings located here. Warning V-KLA-VUL-003 fixed via Cargo profile (PR #54, 00f5505) without source changes.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "build/risczero/fpvm/src/main.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/build/risczero/fpvm/src/main.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. zkVM guest entry point; no findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/lib.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/lib.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/blobs.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/blobs.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. Warning V-KLA-VUL-002 and Info V-KLA-VUL-006 touch this file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6cee44cdab11b8e0c2ce9dd5a167d81df35dbb0",
+                    "timestamp": "2025-06-13T07:24:01Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/f6cee44cdab11b8e0c2ce9dd5a167d81df35dbb0/crates/common/src/blobs.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-002 (PR #51): documented and checked assumptions. Fix commits live on separate fix PR branches and are ordered chronologically.",
+                  "follows": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb77d326688811877fd881765e1044c24c37e354",
+                    "timestamp": "2025-06-13T09:43:34Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/eb77d326688811877fd881765e1044c24c37e354/crates/common/src/blobs.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-006 (PR #53): typos, docs, dependency cleanup.",
+                  "follows": "f6cee44cdab11b8e0c2ce9dd5a167d81df35dbb0",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/config.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/config.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/executor.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/executor.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. Info V-KLA-VUL-006 touches this file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb77d326688811877fd881765e1044c24c37e354",
+                    "timestamp": "2025-06-13T09:43:34Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/eb77d326688811877fd881765e1044c24c37e354/crates/common/src/executor.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-006 (PR #53).",
+                  "follows": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/journal.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/journal.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. Info V-KLA-VUL-005 (overloaded precondition hash) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0724bb7bebc51172e0904ed3b1a8d4ff2719a42b",
+                    "timestamp": "2025-06-13T07:51:53Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/0724bb7bebc51172e0904ed3b1a8d4ff2719a42b/crates/common/src/journal.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-005 (PR #52): documented precondition hash cases.",
+                  "follows": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/kona.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/kona.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/precondition.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/precondition.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. Warning V-KLA-VUL-002 touches this file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6cee44cdab11b8e0c2ce9dd5a167d81df35dbb0",
+                    "timestamp": "2025-06-13T07:24:01Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/f6cee44cdab11b8e0c2ce9dd5a167d81df35dbb0/crates/common/src/precondition.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-002 (PR #51).",
+                  "follows": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/client/core.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/client/core.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. Medium V-KLA-VUL-001 (premature proposals can block legitimate proposals) located in run_core_client().",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "49440bfb1368eb708236b6b88543c6e664eb71d9",
+                    "timestamp": "2025-06-12T09:56:39Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/49440bfb1368eb708236b6b88543c6e664eb71d9/crates/common/src/client/core.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Report cites PR #50 through commit 49440bf as the confirmed fix for V-KLA-VUL-001 (PROPOSAL_TIME_GAP deprecation); PR #50 changes this file.",
+                  "follows": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/client/stateless.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/client/stateless.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/common/src/client/stitching.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                    "timestamp": "2025-05-27T09:07:09Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/52c59998a0e8828747de5c724e3b8a5c7979b683/crates/common/src/client/stitching.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua zkVM proving application on commit 52c5999 (then risc0/kailua); Kona dependency out of scope. Warning V-KLA-VUL-004 (execution results not validated) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bfaae6a270f7ebd4b200b03cdb83800cad41ed0a",
+                    "timestamp": "2025-06-13T12:47:15Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/bfaae6a270f7ebd4b200b03cdb83800cad41ed0a/crates/common/src/client/stitching.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-004 (PR #55): check extra execution result fields.",
+                  "follows": "52c59998a0e8828747de5c724e3b8a5c7979b683",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "veridise-kailua-2025-10",
+      "report_file": "Veridise - Kailua Security Audit (Oct 2025).md",
+      "title": "Veridise Auditing Report for Kailua (October 2025)",
+      "description": "Veridise fourth review of Kailua for Boundless, limited to thirteen files of the stateless Optimism client crate (crates/kona) and the zkVM guest at commit 2414297, focusing on whether the new pause/resume derivation could compose incorrect proofs. Two Medium and one Warning findings, all fixed.",
+      "isRelevant": true,
+      "auditor": "Veridise",
+      "report_date": "2025-11-04",
+      "repositories": [
+        {
+          "id": "boundless-xyz/kailua",
+          "url": "https://github.com/boundless-xyz/kailua"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "boundless-xyz/kailua",
+          "paths": {
+            "build/risczero/kona/src/main.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/build/risczero/kona/src/main.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. zkVM guest entry point; no findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/blobs.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/blobs.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/config.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/config.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. Medium V-KLA-VUL-001 (incomplete L1 config hash preimage) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a4d3d6b1852a83b61f7243df562c0eb15fedbd43",
+                    "timestamp": "2025-10-28T13:36:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/a4d3d6b1852a83b61f7243df562c0eb15fedbd43/crates/kona/src/config.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-001 (Kona v1.1.6 update, PR #99).",
+                  "follows": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b0964471a3003e9172a5a081d1a5a1457a83bc9d",
+                    "timestamp": "2025-11-03T13:42:02Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/b0964471a3003e9172a5a081d1a5a1457a83bc9d/crates/kona/src/config.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for Warning V-KLA-VUL-003 (maintainability).",
+                  "follows": "a4d3d6b1852a83b61f7243df562c0eb15fedbd43",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/executor.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/executor.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/journal.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/journal.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. Warning V-KLA-VUL-003 touches this file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b0964471a3003e9172a5a081d1a5a1457a83bc9d",
+                    "timestamp": "2025-11-03T13:42:02Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/b0964471a3003e9172a5a081d1a5a1457a83bc9d/crates/kona/src/journal.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-003 (maintainability).",
+                  "follows": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/lib.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/lib.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/witness.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/witness.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/client/core.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/client/core.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. Warning V-KLA-VUL-003 touches this file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b0964471a3003e9172a5a081d1a5a1457a83bc9d",
+                    "timestamp": "2025-11-03T13:42:02Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/b0964471a3003e9172a5a081d1a5a1457a83bc9d/crates/kona/src/client/core.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-003 (maintainability).",
+                  "follows": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/client/stateless.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/client/stateless.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/client/stitching.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/client/stitching.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. Medium V-KLA-VUL-002 (execution trace precondition hash in execution-only stitching) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3f71fb4235c88bf346a26f4f9b66410f258b59ca",
+                    "timestamp": "2025-10-31T13:16:26Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/3f71fb4235c88bf346a26f4f9b66410f258b59ca/crates/kona/src/client/stitching.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-002 (PR #101): execution-only boot info stitching denied.",
+                  "follows": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b0964471a3003e9172a5a081d1a5a1457a83bc9d",
+                    "timestamp": "2025-11-03T13:42:02Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/b0964471a3003e9172a5a081d1a5a1457a83bc9d/crates/kona/src/client/stitching.rs"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for Warning V-KLA-VUL-003 (maintainability).",
+                  "follows": "3f71fb4235c88bf346a26f4f9b66410f258b59ca",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/oracle/local.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/oracle/local.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/oracle/mod.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/oracle/mod.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/kona/src/precondition/mod.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2414297a5f9feb98365ef6d88634bcd181a1934b",
+                    "timestamp": "2025-10-21T05:51:11Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/2414297a5f9feb98365ef6d88634bcd181a1934b/crates/kona/src/precondition/mod.rs"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Veridise review of the Kailua stateless Optimism client (crates/kona) on commit 2414297 of boundless-xyz/kailua, focused on the new pause/resume derivation and proof stitching. No findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "veridise-kailua-2026-02",
+      "report_file": "Veridise - Kailua Security Audit (Feb 2026).md",
+      "title": "Veridise Auditing Report for Kailua (February 2026)",
+      "description": "Veridise one-week review for Boundless of the changes to five Kailua Solidity contracts since commit 7eb9869, at commit ccf2771, introducing the fault-proof permit system. Three Low findings were fixed in PRs #127-#128; three Warnings were acknowledged or partially fixed.",
+      "isRelevant": true,
+      "auditor": "Veridise",
+      "report_date": "2026-03-06",
+      "repositories": [
+        {
+          "id": "boundless-xyz/kailua",
+          "url": "https://github.com/boundless-xyz/kailua"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "boundless-xyz/kailua",
+          "paths": {
+            "crates/contracts/foundry/src/KailuaVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                    "timestamp": "2026-02-06T13:05:10Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/ccf2771857721a9cda5f7943ed7ef1d236c20bbd/crates/contracts/foundry/src/KailuaVerifier.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Veridise review on commit ccf2771 of boundless-xyz/kailua limited to the changes made to this file since commit 7eb9869 (fault proof permit system and its integration). Low V-KLA-VUL-001/002/003 (permit front-running and reward dilution) fixed here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "895939cd1acaca3e902a2e6d22d95d3416e2b474",
+                    "timestamp": "2026-03-04T10:32:14Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/895939cd1acaca3e902a2e6d22d95d3416e2b474/crates/contracts/foundry/src/KailuaVerifier.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Confirmed fix for V-KLA-VUL-001/002/003 (PR #127): delayed permit activations.",
+                  "follows": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/KailuaGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                    "timestamp": "2026-02-06T13:05:10Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/ccf2771857721a9cda5f7943ed7ef1d236c20bbd/crates/contracts/foundry/src/KailuaGame.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Veridise review on commit ccf2771 of boundless-xyz/kailua limited to the changes made to this file since commit 7eb9869 (fault proof permit system and its integration). Warning V-KLA-VUL-005 (maintainability) partially fixed here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "04cb174bebbe305082b8746b1542e0db3cd352fc",
+                    "timestamp": "2026-03-04T11:05:25Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/04cb174bebbe305082b8746b1542e0db3cd352fc/crates/contracts/foundry/src/KailuaGame.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Partial fix for V-KLA-VUL-005 (PR #128): function mutability updates.",
+                  "follows": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/KailuaLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                    "timestamp": "2026-02-06T13:05:10Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/ccf2771857721a9cda5f7943ed7ef1d236c20bbd/crates/contracts/foundry/src/KailuaLib.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Veridise review on commit ccf2771 of boundless-xyz/kailua limited to the changes made to this file since commit 7eb9869 (fault proof permit system and its integration). Warning V-KLA-VUL-005 (maintainability) partially fixed here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Warning"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "04cb174bebbe305082b8746b1542e0db3cd352fc",
+                    "timestamp": "2026-03-04T11:05:25Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/04cb174bebbe305082b8746b1542e0db3cd352fc/crates/contracts/foundry/src/KailuaLib.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Partial fix for V-KLA-VUL-005 (PR #128): function mutability updates.",
+                  "follows": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/KailuaTournament.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                    "timestamp": "2026-02-06T13:05:10Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/ccf2771857721a9cda5f7943ed7ef1d236c20bbd/crates/contracts/foundry/src/KailuaTournament.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Veridise review on commit ccf2771 of boundless-xyz/kailua limited to the changes made to this file since commit 7eb9869 (fault proof permit system and its integration). No fixed findings located here; Warnings V-KLA-VUL-004/006 (locked bonds) acknowledged without fix.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/contracts/foundry/src/KailuaTreasury.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ccf2771857721a9cda5f7943ed7ef1d236c20bbd",
+                    "timestamp": "2026-02-06T13:05:10Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/ccf2771857721a9cda5f7943ed7ef1d236c20bbd/crates/contracts/foundry/src/KailuaTreasury.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Veridise review on commit ccf2771 of boundless-xyz/kailua limited to the changes made to this file since commit 7eb9869 (fault proof permit system and its integration). No fixed findings located here; Warnings V-KLA-VUL-004/006 (locked bonds) acknowledged without fix.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cure53-bob-onramp-wp2-2024-04",
+      "report_file": "irrelevant/Cure53 - BOB Onramp Smart Contract (WP2).md",
+      "title": "Review-Report BOB Onramp Smart Contracts 04.2024 (BOB-02-WP2)",
+      "description": "Cure53 review of the BOB Onramp Solidity contracts (Onramp, OnrampFactory) and the associated Rust relayer/API codebase at commit 297eeb1 of the private bob-collective/bob-onramp repository; one Medium and three Low findings. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Cure53",
+      "report_date": "2024-04-30",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-onramp",
+          "url": "https://github.com/bob-collective/bob-onramp"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "common-prefix-bob-onramp-2024-04",
+      "report_file": "irrelevant/Common Prefix - BOB Onramp Smart Contract.md",
+      "title": "BOB On-ramp Smart Contracts Audit",
+      "description": "Common Prefix audit of OnRamp.sol and OnRampFactory.sol at commit 297eeb1 of the private bob-collective/bob-onramp repository; one Medium and four Low findings, all resolved. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Common Prefix",
+      "report_date": "2024-04-22",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-onramp",
+          "url": "https://github.com/bob-collective/bob-onramp"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-onramp-2024-04",
+      "report_file": "irrelevant/Pashov - BOB Onramp (Apr 2024).md",
+      "title": "BOB Onramp Security Review",
+      "description": "Pashov Audit Group review of OnrampFactory and Onramp at commit 9bf1966 (fixes 403389e) of the private bob-collective/bob-onramp repository; five Medium and five Low findings. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2024-04-22",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-onramp",
+          "url": "https://github.com/bob-collective/bob-onramp"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-gateway-v2-2024-08",
+      "report_file": "irrelevant/Pashov - BOB Gateway V2 (Aug 2024).md",
+      "title": "BOB Security Review (Gateway V2)",
+      "description": "Pashov Audit Group review of the BOB Gateway V2 contracts (Gateway, GatewayRegistry, OnrampV1, swappers and interfaces) at commit 1511179 (fixes 36b5dec) of the private bob-collective/bob-gateway repository; seven Low findings. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2024-08-12",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-gateway",
+          "url": "https://github.com/bob-collective/bob-gateway"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-gateway-v3-2024-09",
+      "report_file": "irrelevant/Pashov - BOB Gateway V3 (Sep 2024).md",
+      "title": "BOB Gateway Security Review (V3)",
+      "description": "Pashov Audit Group review of Gateway, GatewayRegistry, GatewayRegistryV2 and the Bedrock, Pell, Segment, Shoebill and Solv strategies at commit c26afe6 (fixes 86c81ac) of the private bob-collective/bob-gateway repository; six Low findings. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2024-09-07",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-gateway",
+          "url": "https://github.com/bob-collective/bob-gateway"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-gateway-offramp-registry-2025-03",
+      "report_file": "irrelevant/Pashov - BOB Gateway Offramp Registry (Mar 2025).md",
+      "title": "BOB Gateway Security Review (Offramp Registry)",
+      "description": "Pashov Audit Group review of OfframpRegistry and CommonStructs at commit b668688 (fixes 5e6f457) of the private bob-collective/bob-gateway repository; one Medium and seven Low findings. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2025-03-20",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-gateway",
+          "url": "https://github.com/bob-collective/bob-gateway"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-gateway-offramp-solver-2025-08",
+      "report_file": "irrelevant/Pashov - BOB Gateway Offramp Solver (Aug 2025).md",
+      "title": "BOB Gateway Security Review (Offramp Solver)",
+      "description": "Pashov Audit Group review of the off-chain Rust offramp solver (api_client, app, error, main, models, scan_and_process_orders, utils) at commit 6ad820b (fixes 4622efb) of the private bob-collective/bob-gateway repository; one High, one Medium and two Low findings. Scope is off-chain backend code in a private repository.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2025-08-30",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-gateway",
+          "url": "https://github.com/bob-collective/bob-gateway"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-token-2025-02",
+      "report_file": "irrelevant/Pashov - BOB Token (Feb 2025).md",
+      "title": "BOB Token Security Review",
+      "description": "Pashov Audit Group review of the upgradeable BobToken ERC-20 at commit 8f31e53 (fixes 8d80ac7) of the private bob-collective/bob-token repository; one Low finding. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2025-02-06",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-token",
+          "url": "https://github.com/bob-collective/bob-token"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-token-v2-2025-10",
+      "report_file": "irrelevant/Pashov - BOB Token V2 (Oct 2025).md",
+      "title": "BOB Token Security Review (V2)",
+      "description": "Pashov Audit Group review of BobTokenV2.sol and BobTokenV2Upgrade.sol at commit ba519a0 of the private bob-collective/bob-token repository; two Low findings acknowledged. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2025-10-21",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-token",
+          "url": "https://github.com/bob-collective/bob-token"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-staking-2025-03",
+      "report_file": "irrelevant/Pashov - BOB Staking (Mar 2025).md",
+      "title": "BOB Staking Security Review (March 2025)",
+      "description": "Pashov Audit Group review of BonusWrapper, UnbondableStake and helper libraries at commit ab1b12f (fixes f1d9998) of the private bob-collective/bob-staking repository; two Medium and four Low findings. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2025-03-07",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-staking",
+          "url": "https://github.com/bob-collective/bob-staking"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "pashov-bob-staking-2025-10",
+      "report_file": "irrelevant/Pashov - BOB Staking (Oct 2025).md",
+      "title": "BOB Staking Security Review (October 2025)",
+      "description": "Pashov Audit Group review of BobStaking.sol and BonusWrapper.sol at commit 73158d3 (fixes 44842c6) of the private bob-collective/bob-staking repository; two Critical, two High, three Medium and thirteen Low findings. The repository is private and none of the stated commits are reachable on GitHub, so no audited source can be fetched.",
+      "isRelevant": false,
+      "auditor": "Pashov Audit Group",
+      "report_date": "2025-10-21",
+      "repositories": [
+        {
+          "id": "bob-collective/bob-staking",
+          "url": "https://github.com/bob-collective/bob-staking"
+        }
+      ],
+      "scopes": []
+    }
+  ]
+}
