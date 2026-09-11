@@ -1,0 +1,121 @@
+use std::fmt::Debug;
+
+use itertools::Itertools;
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
+use slop_commit::{TensorCs, TensorCsOpening};
+use slop_symmetric::{CryptographicHasher, PseudoCompressionFunction};
+use slop_tensor::Tensor;
+use thiserror::Error;
+
+/// An interfacr defining a Merkle tree.
+pub trait MerkleTreeConfig: 'static + Clone + Send + Sync {
+    type Data: 'static + Clone + Send + Sync + Serialize + DeserializeOwned;
+    type Digest: 'static
+        + Debug
+        + Clone
+        + Send
+        + Sync
+        + PartialEq
+        + Eq
+        + Serialize
+        + DeserializeOwned;
+    type Hasher: CryptographicHasher<Self::Data, Self::Digest> + Send + Sync + Clone;
+    type Compressor: PseudoCompressionFunction<Self::Digest, 2> + Send + Sync + Clone;
+}
+
+pub trait DefaultMerkleTreeConfig: MerkleTreeConfig {
+    fn default_hasher_and_compressor() -> (Self::Hasher, Self::Compressor);
+}
+
+/// A merkle tree Tensor commitment scheme.
+///
+/// A tensor commitment scheme based on merkleizing the committed tensors at a given dimension,
+/// which the prover is free to choose.
+#[derive(Debug, Clone, Copy)]
+pub struct MerkleTreeTcs<M: MerkleTreeConfig> {
+    pub hasher: M::Hasher,
+    pub compressor: M::Compressor,
+}
+
+#[derive(Debug, Clone, Copy, Error)]
+pub enum MerkleTreeTcsError {
+    #[error("root mismatch")]
+    RootMismatch,
+    #[error("proof has incorrect shape")]
+    IncorrectShape,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MerkleTreeTcsProof<T> {
+    pub paths: Tensor<T>,
+}
+
+impl<M: DefaultMerkleTreeConfig> Default for MerkleTreeTcs<M> {
+    #[inline]
+    fn default() -> Self {
+        let (hasher, compressor) = M::default_hasher_and_compressor();
+        Self { hasher, compressor }
+    }
+}
+
+impl<M: MerkleTreeConfig> TensorCs for MerkleTreeTcs<M> {
+    type Data = M::Data;
+    type Commitment = M::Digest;
+    type Proof = MerkleTreeTcsProof<M::Digest>;
+    type VerifierError = MerkleTreeTcsError;
+
+    fn verify_tensor_openings(
+        &self,
+        commit: &Self::Commitment,
+        indices: &[usize],
+        opening: &TensorCsOpening<Self>,
+        expected_path_len: usize,
+    ) -> Result<(), Self::VerifierError> {
+        if opening.proof.paths.dimensions.sizes().len() != 2
+            || opening.values.dimensions.sizes().len() != 2
+        {
+            return Err(Self::VerifierError::IncorrectShape);
+        }
+        if indices.len() != opening.proof.paths.dimensions.sizes()[0] {
+            return Err(Self::VerifierError::IncorrectShape);
+        }
+        if indices.len() != opening.values.dimensions.sizes()[0] {
+            return Err(Self::VerifierError::IncorrectShape);
+        }
+        if indices.is_empty() {
+            return Ok(());
+        }
+        let expected_value_len = opening.values.get(0).unwrap().as_slice().len();
+        for (i, (index, path)) in indices.iter().zip_eq(opening.proof.paths.split()).enumerate() {
+            // Collect the lead slices of the claimed values.
+            let claimed_values_slices = opening.values.get(i).unwrap().as_slice();
+            if claimed_values_slices.len() != expected_value_len {
+                return Err(Self::VerifierError::IncorrectShape);
+            }
+
+            let path = path.as_slice();
+
+            // Iterate the path and compute the root.
+            let digest = self.hasher.hash_iter_slices(vec![claimed_values_slices]);
+
+            let mut root = digest;
+            let mut index = *index;
+
+            if path.len() != expected_path_len {
+                return Err(Self::VerifierError::IncorrectShape);
+            }
+
+            for sibling in path.iter().cloned() {
+                let (left, right) = if index & 1 == 0 { (root, sibling) } else { (sibling, root) };
+                root = self.compressor.compress([left, right]);
+                index >>= 1;
+            }
+
+            if root != *commit {
+                return Err(Self::VerifierError::RootMismatch);
+            }
+        }
+
+        Ok(())
+    }
+}
