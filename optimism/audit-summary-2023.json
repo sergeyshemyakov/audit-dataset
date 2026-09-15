@@ -1,0 +1,3466 @@
+{
+  "schema_version": "1.4.0",
+  "project": "optimism",
+  "reports": [
+    {
+      "id": "trailofbits-ovm-rollup-2020-10",
+      "report_file": "2020_10-Rollup-TrailOfBits.md",
+      "title": "Optimism Security Assessment (OVM contracts, October 2020)",
+      "description": "Trail of Bits whitebox assessment of the OVM Solidity contracts in the contracts-v2 repository, focused on the Merkle/RLP/trie libraries, OVM_SafetyChecker, the Canonical Transaction Chain, State Commitment Chain, Fraud Verifier and State Transitioner, plus access controls and arithmetic. The execution manager, bond manager, L2 precompiles, compiler fork and offchain components were out of scope.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2020-10-30",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/contracts-v2",
+          "url": "https://github.com/ethereum-optimism/contracts-v2"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/contracts-v2",
+          "paths": {
+            "contracts/optimistic-ethereum/libraries/utils/Lib_MerkleUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-OVM-008"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/rlp/Lib_RLPReader.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/rlp/Lib_RLPWriter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/trie/Lib_MerkleTrie.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/trie/Lib_SecureMerkleTrie.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/resolver/Lib_AddressManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Reviewed as part of the access-control component; not listed as a primary target.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-OVM-002"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Reviewed as a dependency of the chain contracts (code-quality notes only). The Lib_TimeboundRingBuffer.sol named by TOB-OVM-010 does not exist at this commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review plus Echidna property test of isBytecodeSafe.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-OVM-001"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/chain/OVM_CanonicalTransactionChain.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "TOB-OVM-007",
+                    "TOB-OVM-17",
+                    "TOB-OVM-019"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/chain/OVM_StateCommitmentChain.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna. TOB-OVM-003 also names OVM_BaseChain.sol, which does not exist at this commit.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "TOB-OVM-003",
+                    "TOB-OVM-007",
+                    "TOB-OVM-008"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/verification/OVM_FraudVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "TOB-OVM-008",
+                    "TOB-OVM-014"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitioner.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review with Slither and Echidna at the assessed commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitionerFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Reviewed as a dependency of the fraud verifier (TOB-OVM-013, Low).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/bridge/OVM_BaseCrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Message passing contracts reviewed (findings TOB-OVM-005/006/011/012, all below High).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/bridge/OVM_L1CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Message passing contracts reviewed (findings TOB-OVM-005/006/011/012, all below High).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/bridge/OVM_L2CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Message passing contracts reviewed (findings TOB-OVM-005/006/011/012, all below High).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/execution/OVM_ExecutionManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly out of scope: the execution manager and its dependencies.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/execution/OVM_StateManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly out of scope: the execution manager and its dependencies.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly out of scope: the bond manager and its dependencies.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/precompiles": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f6f5f3a63bc99b4e9ab26b51db7206d22213c406",
+                    "timestamp": "2020-10-20T20:46:24Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly out of scope: the L2 precompiled contracts.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "dapphub-ecdsa-wallet-2020-11",
+      "report_file": "2020_11-Dapphub-ECDSA_Wallet.md",
+      "title": "Optimism Audit Report: ECDSA Wallet",
+      "description": "dapp.org review of the OVM ECDSA smart-wallet contracts OVM_ECDSAContractAccount and OVM_ProxyEOA in contracts-v2, validating authentication, EOA-equivalence, upgrade-consent and non-brickability properties with a dapptools test suite. Several High findings were located in the byte/RLP utility libraries reached through the wallet code, and per-finding fix commits are listed.",
+      "isRelevant": true,
+      "auditor": "dapp.org",
+      "report_date": "2021-01-12",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/contracts-v2",
+          "url": "https://github.com/ethereum-optimism/contracts-v2"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/contracts-v2",
+          "paths": {
+            "contracts/optimistic-ethereum/OVM/accounts/OVM_ECDSAContractAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                    "timestamp": "2020-11-18T00:08:33Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/bb3539bbd10c15a72a46cf4fb8d2472ef68f6322"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the contract against the four stated security properties.",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "B01",
+                    "B02",
+                    "B03",
+                    "B04",
+                    "B05",
+                    "B06"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0aa6e3a6380480355efe2afccc064bbd52d0be77",
+                    "timestamp": "2020-11-30T15:42:08Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/0aa6e3a6380480355efe2afccc064bbd52d0be77"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for B01 (chainId check).",
+                  "follows": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                  "major_findings": 5,
+                  "finding_ids": [
+                    "B02",
+                    "B03",
+                    "B04",
+                    "B05",
+                    "B06"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6a4d48ae185b7ea984bdac84e08f0b4da3e5e5cc",
+                    "timestamp": "2020-12-02T20:07:10Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/6a4d48ae185b7ea984bdac84e08f0b4da3e5e5cc"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for B02 and B05 (gas forwarding and gas-limit arithmetic).",
+                  "follows": "0aa6e3a6380480355efe2afccc064bbd52d0be77",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "B03",
+                    "B04",
+                    "B06"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "46e2f65cf6cc33fc78adf399d9ab059d4de759e3",
+                    "timestamp": "2020-12-11T00:25:12Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/46e2f65cf6cc33fc78adf399d9ab059d4de759e3"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for B06 (failed gas transfer). B03 and B04 were not addressed.",
+                  "follows": "6a4d48ae185b7ea984bdac84e08f0b4da3e5e5cc",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "B03",
+                    "B04"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/accounts/OVM_ProxyEOA.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                    "timestamp": "2020-11-18T00:08:33Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/bb3539bbd10c15a72a46cf4fb8d2472ef68f6322"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the proxy contract against the stated security properties.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/utils/Lib_Bytes32Utils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                    "timestamp": "2020-11-18T00:08:33Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/bb3539bbd10c15a72a46cf4fb8d2472ef68f6322"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Library reached through the wallet code; not a nominal scope file but B07 is located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "B07"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "244424f14a9d3f4023d68d01b1ed0074d05efcb4",
+                    "timestamp": "2020-12-02T20:05:54Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/244424f14a9d3f4023d68d01b1ed0074d05efcb4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for B07 (fromAddress casting).",
+                  "follows": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/utils/Lib_BytesUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                    "timestamp": "2020-11-18T00:08:33Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/bb3539bbd10c15a72a46cf4fb8d2472ef68f6322"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Library reached through the wallet code; not a nominal scope file but B08 and B10 are located here.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "B08",
+                    "B10"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6712904754728a0bd195bc654d977bafa6ae8fbe",
+                    "timestamp": "2020-11-30T17:53:02Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/6712904754728a0bd195bc654d977bafa6ae8fbe"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for B08 (slice input validation overflow).",
+                  "follows": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "B10"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ca84d456898b1a9aa3c7330d7833794e79aa0ef5",
+                    "timestamp": "2021-01-08T01:41:36Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/ca84d456898b1a9aa3c7330d7833794e79aa0ef5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for B10 (slice memory corruption), from pull request 171.",
+                  "follows": "6712904754728a0bd195bc654d977bafa6ae8fbe",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/rlp/Lib_RLPWriter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                    "timestamp": "2020-11-18T00:08:33Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/bb3539bbd10c15a72a46cf4fb8d2472ef68f6322"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Library reached through the wallet code; not a nominal scope file but B09 is located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "B09"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "96baeba3feabdac09c9d9dd121c31bc2d2b63e7e",
+                    "timestamp": "2020-12-03T02:44:11Z",
+                    "url": "https://github.com/ethereum-optimism/contracts-v2/commit/96baeba3feabdac09c9d9dd121c31bc2d2b63e7e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for B09 (writeAddress memory corruption).",
+                  "follows": "bb3539bbd10c15a72a46cf4fb8d2472ef68f6322",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-ovm-rollup-2021-03",
+      "report_file": "2021_03-OVM_and_Rollup-OpenZeppelin.md",
+      "title": "OpenZeppelin OVM and Rollup Audit (March-May 2021)",
+      "description": "Seven-week OpenZeppelin audit of the OVM Solidity contracts under contracts/optimistic-ethereum/OVM and contracts/optimistic-ethereum/libraries across two commits (the archived contracts repository and a personal fork), excluding the bond manager, safety checker, ERC1820 registry and deployer whitelist. A later update section records per-finding fixes in the archived repository and the optimism monorepo.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "ethereum-optimism/contracts",
+          "url": "https://github.com/ethereum-optimism/contracts"
+        },
+        {
+          "id": "ben-chain/contracts-v2",
+          "url": "https://github.com/ben-chain/contracts-v2"
+        },
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/contracts",
+          "paths": {
+            "contracts/optimistic-ethereum/OVM": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18e128343731b9bde23812ce932e24d81440b6b7",
+                    "timestamp": "2021-03-15T05:52:18Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of all Solidity files in the directory except the explicitly excluded files listed separately. Findings are attributed to both audited commits unless the report states they were fixed in the second one.",
+                  "major_findings": 8,
+                  "finding_ids": [
+                    "C01",
+                    "C03",
+                    "C04",
+                    "H01",
+                    "H02",
+                    "H03",
+                    "H04",
+                    "H05"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18e128343731b9bde23812ce932e24d81440b6b7",
+                    "timestamp": "2021-03-15T05:52:18Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of all Solidity files in the directory except the explicitly excluded files listed separately. Findings are attributed to both audited commits unless the report states they were fixed in the second one.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "C02",
+                    "C04"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18e128343731b9bde23812ce932e24d81440b6b7",
+                    "timestamp": "2021-03-15T05:52:18Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18e128343731b9bde23812ce932e24d81440b6b7",
+                    "timestamp": "2021-03-15T05:52:18Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/precompiles/ERC1820Registry.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18e128343731b9bde23812ce932e24d81440b6b7",
+                    "timestamp": "2021-03-15T05:52:18Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/precompiles/OVM_DeployerWhitelist.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18e128343731b9bde23812ce932e24d81440b6b7",
+                    "timestamp": "2021-03-15T05:52:18Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18e128343731b9bde23812ce932e24d81440b6b7",
+                    "timestamp": "2021-03-15T05:52:18Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Originally in scope but deprecated during the audit; the report states no full security assessment was conducted.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/execution/OVM_ExecutionManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eeb9f71fe0d99cb3147a9eca135e1650c8fad6ba",
+                    "timestamp": "2021-04-06T19:41:55Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/eeb9f71fe0d99cb3147a9eca135e1650c8fad6ba"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 366 of the archived repository, fixing C01.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitioner.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8da1c24bb08b8a10b56747add78c414e58ebadf4",
+                    "timestamp": "2021-04-07T01:52:35Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/8da1c24bb08b8a10b56747add78c414e58ebadf4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit of pull request 361 of the archived repository, fixing H01.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "ben-chain/contracts-v2",
+          "paths": {
+            "contracts/optimistic-ethereum/OVM": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a935e276f5620b40802b52721e3474232e458f72",
+                    "timestamp": "2021-04-12T01:08:09Z",
+                    "url": "https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Second audited commit (last 3 weeks). Same directory scope and exclusions as the first commit; C01 and H01 fixes from the archived repository are contained in this commit, L02/L04/N01 are fixed here per the report.",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "C03",
+                    "C04",
+                    "H02",
+                    "H03",
+                    "H04",
+                    "H05"
+                  ],
+                  "highest_reported_finding_severity": "Critical",
+                  "follows": "18e128343731b9bde23812ce932e24d81440b6b7"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a935e276f5620b40802b52721e3474232e458f72",
+                    "timestamp": "2021-04-12T01:08:09Z",
+                    "url": "https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Second audited commit (last 3 weeks). Same directory scope and exclusions as the first commit; C01 and H01 fixes from the archived repository are contained in this commit, L02/L04/N01 are fixed here per the report.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "C02",
+                    "C04"
+                  ],
+                  "highest_reported_finding_severity": "Critical",
+                  "follows": "18e128343731b9bde23812ce932e24d81440b6b7"
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a935e276f5620b40802b52721e3474232e458f72",
+                    "timestamp": "2021-04-12T01:08:09Z",
+                    "url": "https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a935e276f5620b40802b52721e3474232e458f72",
+                    "timestamp": "2021-04-12T01:08:09Z",
+                    "url": "https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/predeploys/ERC1820Registry.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a935e276f5620b40802b52721e3474232e458f72",
+                    "timestamp": "2021-04-12T01:08:09Z",
+                    "url": "https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/OVM/predeploys/OVM_DeployerWhitelist.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a935e276f5620b40802b52721e3474232e458f72",
+                    "timestamp": "2021-04-12T01:08:09Z",
+                    "url": "https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Explicitly excluded from scope.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a935e276f5620b40802b52721e3474232e458f72",
+                    "timestamp": "2021-04-12T01:08:09Z",
+                    "url": "https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Originally in scope but deprecated during the audit; the report states no full security assessment was conducted.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts/contracts/optimistic-ethereum/libraries/trie/Lib_MerkleTrie.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ae1ac05d7032422a71caf25d16f6e548df5b8d7f",
+                    "timestamp": "2021-05-04T18:59:49Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/ae1ac05d7032422a71caf25d16f6e548df5b8d7f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Monorepo commit of pull request 747 fixing C02.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/optimistic-ethereum/OVM/execution/OVM_ExecutionManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2346c291797813f99b32e1d92f26c33a6d55d2d",
+                    "timestamp": "2021-10-12T19:37:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/a2346c291797813f99b32e1d92f26c33a6d55d2d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit of pull request 1366 fixing C03, H05 and M05 (nuisance gas refactor).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/optimistic-ethereum/OVM/chain/OVM_CanonicalTransactionChain.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "aafb141bf798c657e8e0193e718068bed9211ebf",
+                    "timestamp": "2021-06-24T14:20:41Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/aafb141bf798c657e8e0193e718068bed9211ebf"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 1155 fixing C04 (queue origin spoofing).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/optimistic-ethereum/OVM/bridge/tokens/OVM_L1ERC20Gateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ce8071bc5ead86b75d5995111597bcdc4dc34385",
+                    "timestamp": "2021-06-11T20:55:37Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/ce8071bc5ead86b75d5995111597bcdc4dc34385"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit of pull request 988 fixing H02 (unhandled transfer failures).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/optimistic-ethereum/OVM/accounts/OVM_ECDSAContractAccount.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4a5bb28203dc6460b6e7ddaff3cd89e45a6b4d54",
+                    "timestamp": "2021-06-08T23:46:28Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/4a5bb28203dc6460b6e7ddaff3cd89e45a6b4d54"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 1029 fixing H03 (fees sent to the sequencer fee wallet).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/optimistic-ethereum/OVM/predeploys/OVM_SequencerEntrypoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "293a386efb8aa574eb53767a3f09cda928a09095",
+                    "timestamp": "2021-05-10T21:03:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/293a386efb8aa574eb53767a3f09cda928a09095"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit of pull request 603 fixing M04 for OVM_SequencerEntrypoint; OVM_ProxySequencerEntrypoint was removed in pull request 549.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-safetychecker-2021-03",
+      "report_file": "2021_03-SafetyChecker-ConsenSysDiligence.md",
+      "title": "Optimism SafetyChecker (ConsenSys Diligence)",
+      "description": "Two-person-week differential fuzzing engagement comparing OVM_SafetyChecker.isBytecodeSafe against a custom Go reference implementation, with an informal specification of safe OVM bytecode and forward-looking recommendations. No divergences or vulnerability findings were reported.",
+      "isRelevant": true,
+      "auditor": "ConsenSys Diligence",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "ethereum-optimism/contracts",
+          "url": "https://github.com/ethereum-optimism/contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/contracts",
+          "paths": {
+            "contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "606577457191973b46034602f46ddcc130a5c0ac",
+                    "timestamp": "2021-03-12T00:39:36Z",
+                    "url": "https://github.com/ethereum-optimism/contracts/commit/606577457191973b46034602f46ddcc130a5c0ac"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Differential fuzzing of isBytecodeSafe only (100% code coverage reported); not a general security review of the file.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-bedrock-bridge-2022-05",
+      "report_file": "2022_05-Bedrock_Contracts-Zeppelin.md",
+      "title": "Optimism Bridge Audit (OpenZeppelin, May 2022)",
+      "description": "OpenZeppelin audit of the new Bedrock L1/L2 bridge and messaging contracts (OptimismPortal, L2OutputOracle, cross-domain messengers, standard bridges, L2ToL1MessagePasser, mintable tokens) in the optimistic-specs repository, reviewed across three successive commits during a rewrite. Offchain components and L2 nodes were assumed to work as documented.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2022-05-16",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimistic-specs",
+          "url": "https://github.com/ethereum-optimism/optimistic-specs"
+        },
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimistic-specs",
+          "paths": {
+            "packages/contracts/contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0c054885a6fd2011503784464da1e94997251fe3",
+                    "timestamp": "2022-04-30T00:17:29Z",
+                    "url": "https://github.com/ethereum-optimism/optimistic-specs/commit/0c054885a6fd2011503784464da1e94997251fe3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "All production contracts reviewed for the majority of the audit. Findings are reported against the later commits; issues no longer relevant after the rewrite were disregarded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e2da9e21f449f5f5868a539d67dfd23f4d913f16",
+                    "timestamp": "2022-05-11T21:28:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimistic-specs/commit/e2da9e21f449f5f5868a539d67dfd23f4d913f16"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Rewritten production contracts reviewed in the last days of the audit; new functionality absent from the original scope was not exhaustively reviewed. C-01 (L2StandardBridge/StandardBridge) and H-01 (OptimismPortal) are located here.",
+                  "follows": "0c054885a6fd2011503784464da1e94997251fe3",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "C-01",
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8cbaf02ed6a7ecbad1b86e5ea1781566031ff694",
+                    "timestamp": "2022-05-16T22:29:31Z",
+                    "url": "https://github.com/ethereum-optimism/optimistic-specs/commit/8cbaf02ed6a7ecbad1b86e5ea1781566031ff694"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Two further days completing the review of the new version; C-01, H-01 and N-07 verified fixed, H-02 (StandardBridge token refunds) found at this commit.",
+                  "follows": "e2da9e21f449f5f5868a539d67dfd23f4d913f16",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-02"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-opnode-fix-review-2022-07",
+      "report_file": "2022_05-OpNode-TrailOfBits.md",
+      "title": "Optimism: Rollup Node and Execution Engine - Fix Review",
+      "description": "Trail of Bits fix review of the twelve findings from its April 2022 audit of the Bedrock rollup node (optimistic-specs, Go and Solidity) and the reference execution engine (reference-optimistic-geth). Solidity findings target the L1 deposit/withdrawal contracts and the L1Block predeploy; the remaining findings target Go code and specifications.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2022-07-07",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimistic-specs",
+          "url": "https://github.com/ethereum-optimism/optimistic-specs"
+        },
+        {
+          "id": "ethereum-optimism/reference-optimistic-geth",
+          "url": "https://github.com/ethereum-optimism/reference-optimistic-geth"
+        },
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimistic-specs",
+          "paths": {
+            "packages/contracts/contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "05136a32b9828b595dde47f767218dec53f19aa4",
+                    "timestamp": "2022-04-11T22:38:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimistic-specs/commit/05136a32b9828b595dde47f767218dec53f19aa4"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Original audit target (whole repository, Golang and Solidity); High findings located in Solidity: TOB-OPT-1 (WithdrawalsRelay), TOB-OPT-3 (DepositFeed), TOB-OPT-6 (L1Block). TOB-OPT-5 (High) is in the Go node only.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "TOB-OPT-1",
+                    "TOB-OPT-3",
+                    "TOB-OPT-6"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e398ba7aaa1872188f371de517df9649330a03cd",
+                    "timestamp": "2022-04-18T17:20:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimistic-specs/commit/e398ba7aaa1872188f371de517df9649330a03cd"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 378 fixing TOB-OPT-1 (reentrancy in WithdrawalsRelay).",
+                  "follows": "05136a32b9828b595dde47f767218dec53f19aa4",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "TOB-OPT-3",
+                    "TOB-OPT-6"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bbefaa80b59c6b3ecd0e18d0862e859be9f92aa9",
+                    "timestamp": "2022-04-26T18:00:40Z",
+                    "url": "https://github.com/ethereum-optimism/optimistic-specs/commit/bbefaa80b59c6b3ecd0e18d0862e859be9f92aa9"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 383 fixing TOB-OPT-3 (DepositFeed gasLimit type). TOB-OPT-6 was resolved in op-node code (pull request 386) without contract changes.",
+                  "follows": "e398ba7aaa1872188f371de517df9649330a03cd",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-OPT-6"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sigmaprime-bedrock-golang-2022-10",
+      "report_file": "irrelevant/2022_08-Bedrock_GoLang-SigmaPrime.md",
+      "title": "Optimism Bedrock Security Assessment Report (Sigma Prime)",
+      "description": "Time-boxed Sigma Prime review of the Golang implementation of the Bedrock rollup node (op-node) and reference-optimistic-geth, with a retest. The scope is limited to offchain node and client software.",
+      "isRelevant": false,
+      "auditor": "Sigma Prime",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        },
+        {
+          "id": "ethereum-optimism/reference-optimistic-geth",
+          "url": "https://github.com/ethereum-optimism/reference-optimistic-geth"
+        },
+        {
+          "id": "ethereum-optimism/op-geth",
+          "url": "https://github.com/ethereum-optimism/op-geth"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-bedrock-periphery-2022-09",
+      "report_file": "2022_09-Bedrock_and_Periphery-Zeppelin.md",
+      "title": "Optimism Bedrock and Periphery Audit (OpenZeppelin)",
+      "description": "OpenZeppelin audit of nineteen listed Solidity files in the optimism monorepo covering the Bedrock L1/L2 messengers, bridges, portal, output oracle, proxies and the periphery ERC721 bridges; no Critical or High issues were found. Fixes were reviewed in the separate optimism-audit-fixes repository, which is not publicly accessible.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2022-09-02",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        },
+        {
+          "id": "ethereum-optimism/optimism-audit-fixes",
+          "url": "https://github.com/ethereum-optimism/optimism-audit-fixes"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts/contracts/chugsplash/L1ChugSplashProxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/libraries/bridge/CrossDomainEnabled.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/libraries/constants/Lib_PredeployAddresses.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/OptimismPortal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/ResourceMetering.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Hashing.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/Proxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/ProxyAdmin.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/Semver.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-periphery/contracts/L1/L1ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-periphery/contracts/L2/L2ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93d3bd411a8ae75702539ac9c5fe00bad21d4104",
+                    "timestamp": "2022-07-21T16:50:18Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the listed file at the audited commit. Fix commits live in the inaccessible optimism-audit-fixes repository and are not recorded.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spearbit-drippie-2022-10",
+      "report_file": "2022_10-Drippie-Spearbit.md",
+      "title": "Optimism Drippie Security Review",
+      "description": "Spearbit manual review plus Mythril of the Drippie automated contract-interaction system (Drippie, drip checks, AssetReceiver, Transactor) in the optimism monorepo's contracts-periphery package. No Critical or High issues; fixes were reviewed in pull requests 3280 and 3567.",
+      "isRelevant": true,
+      "auditor": "Spearbit",
+      "report_date": "2022-10-03",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-periphery/contracts/universal/drippie": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2a7be367634f147736f960eb2f38a77291cdfcad",
+                    "timestamp": "2022-07-29T22:27:35Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2a7be367634f147736f960eb2f38a77291cdfcad"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of Drippie.sol, IDripCheck.sol and the dripchecks.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb2c55681306c5ee495378184fb9a0e97a99fc1a",
+                    "timestamp": "2022-09-19T10:33:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/eb2c55681306c5ee495378184fb9a0e97a99fc1a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 3280 (Spearbit audit fixes, Medium 5.1.1 and lower findings).",
+                  "follows": "2a7be367634f147736f960eb2f38a77291cdfcad",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b17f3c93b6fb00827c4b87573682c499415fc8e6",
+                    "timestamp": "2022-09-26T16:00:34Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b17f3c93b6fb00827c4b87573682c499415fc8e6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 3567 (drip check version bumps, 5.2.1).",
+                  "follows": "eb2c55681306c5ee495378184fb9a0e97a99fc1a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-periphery/contracts/universal/AssetReceiver.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2a7be367634f147736f960eb2f38a77291cdfcad",
+                    "timestamp": "2022-07-29T22:27:35Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2a7be367634f147736f960eb2f38a77291cdfcad"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review (inherited by Drippie).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb2c55681306c5ee495378184fb9a0e97a99fc1a",
+                    "timestamp": "2022-09-19T10:33:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/eb2c55681306c5ee495378184fb9a0e97a99fc1a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 3280 (Spearbit audit fixes).",
+                  "follows": "2a7be367634f147736f960eb2f38a77291cdfcad",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-periphery/contracts/universal/Transactor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2a7be367634f147736f960eb2f38a77291cdfcad",
+                    "timestamp": "2022-07-29T22:27:35Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2a7be367634f147736f960eb2f38a77291cdfcad"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review (inherited by AssetReceiver).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb2c55681306c5ee495378184fb9a0e97a99fc1a",
+                    "timestamp": "2022-09-19T10:33:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/eb2c55681306c5ee495378184fb9a0e97a99fc1a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 3280 (Spearbit audit fixes).",
+                  "follows": "2a7be367634f147736f960eb2f38a77291cdfcad",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-invariant-testing-2022-11",
+      "report_file": "2022_11-Invariant_Testing-TrailOfBits.md",
+      "title": "Optimism Security Assessment (testing strategy and invariants, November 2022)",
+      "description": "Trail of Bits review of Optimism's testing strategy: documentation of invariants and Echidna property tests for Bedrock contracts (OptimismPortal, ResourceMetering, L2OutputOracle and libraries) plus Go fuzz/unit tests for op-node, op-e2e and op-geth. One Undetermined-severity finding; the Go components are offchain.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2022-11-10",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        },
+        {
+          "id": "ethereum-optimism/reference-optimistic-geth",
+          "url": "https://github.com/ethereum-optimism/reference-optimistic-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/contracts/L1/OptimismPortal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31d35b67755479645dd150e7cc8c6710f0b4a56",
+                    "timestamp": "2022-08-17T20:25:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Invariant documentation and Echidna property tests only; not a manual security review. Several documented properties are marked Not Tested.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/ResourceMetering.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31d35b67755479645dd150e7cc8c6710f0b4a56",
+                    "timestamp": "2022-08-17T20:25:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Invariant documentation and Echidna property tests only; not a manual security review. Several documented properties are marked Not Tested.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31d35b67755479645dd150e7cc8c6710f0b4a56",
+                    "timestamp": "2022-08-17T20:25:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Invariant documentation and Echidna property tests only; not a manual security review. Several documented properties are marked Not Tested.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Burn.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31d35b67755479645dd150e7cc8c6710f0b4a56",
+                    "timestamp": "2022-08-17T20:25:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Invariant documentation and Echidna property tests only; not a manual security review. Several documented properties are marked Not Tested.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Encoding.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31d35b67755479645dd150e7cc8c6710f0b4a56",
+                    "timestamp": "2022-08-17T20:25:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Invariant documentation and Echidna property tests only; not a manual security review. Several documented properties are marked Not Tested.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Hashing.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31d35b67755479645dd150e7cc8c6710f0b4a56",
+                    "timestamp": "2022-08-17T20:25:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Invariant documentation and Echidna property tests only; not a manual security review. Several documented properties are marked Not Tested.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/vendor/AddressAliasHelper.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b31d35b67755479645dd150e7cc8c6710f0b4a56",
+                    "timestamp": "2022-08-17T20:25:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Invariant documentation and Echidna property tests only; not a manual security review. Several documented properties are marked Not Tested.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "runtimeverification-deposittransaction-2022-12",
+      "report_file": "2022_12-DepositTransaction-RuntimeVerification.md",
+      "title": "Formal Verification Report: OptimismPortal.depositTransaction",
+      "description": "Runtime Verification pilot using KEVM-Foundry to prove that OptimismPortal.depositTransaction always emits the correct event except under enumerated invalid invocations, excluding the metered modifier. The report names no repository, commit or file path, so no source coverage can be pinned.",
+      "isRelevant": true,
+      "auditor": "Runtime Verification",
+      "report_date": "2022-12-23",
+      "repositories": [],
+      "scopes": []
+    },
+    {
+      "id": "trailofbits-bedrock-updates-2023-01",
+      "report_file": "2023_01-Bedrock_Updates-TrailOfBits.md",
+      "title": "Optimism: SystemConfig and Withdrawal Updates - Security Assessment",
+      "description": "Trail of Bits review of the L1 SystemConfig contract and the two-step withdrawal workflow of OptimismPortal, together with the related op-node config parsing and op-geth L1 cost logic. Late commits changing ResourceMetering, L2ToL1MessagePasser, L2OutputOracle, MerkleTrie and two portal pull requests were reviewed in isolation, and the single High finding was verified fixed.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2023-01-18",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        },
+        {
+          "id": "ethereum-optimism/op-geth",
+          "url": "https://github.com/ethereum-optimism/op-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/contracts/L1/SystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d",
+                    "timestamp": "2022-11-11T02:03:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review focused on access control and configuration-update workflow of SystemConfig.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/OptimismPortal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d",
+                    "timestamp": "2022-11-11T02:03:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review focused on proveWithdrawalTransaction and finalizeWithdrawalTransaction.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-OPTCW-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f468e58ef9554501d0821008c98b233411e19915",
+                    "timestamp": "2022-11-22T23:23:27Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/f468e58ef9554501d0821008c98b233411e19915"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 4057; TOB-OPTCW-1 verified resolved on December 13, 2022.",
+                  "follows": "1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5bb91e5166849f205ed045a3a1fb459b2d40cc5d",
+                    "timestamp": "2022-12-08T21:35:27Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5bb91e5166849f205ed045a3a1fb459b2d40cc5d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 4329 (portal gas amount update), Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "follows": "f468e58ef9554501d0821008c98b233411e19915",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2bd5143fa28d3faf7cbc7c89f9356935122f7f80",
+                    "timestamp": "2022-12-09T14:56:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2bd5143fa28d3faf7cbc7c89f9356935122f7f80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 4337 (portal gas estimation logic), Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "follows": "5bb91e5166849f205ed045a3a1fb459b2d40cc5d",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/ResourceMetering.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d",
+                    "timestamp": "2022-11-11T02:03:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Reviewed for the MINIMUM_GAS_LIMIT bound in the context of the portal workflow.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ee96ff8585699b054c95c6ff4a2411ee9fedcc87",
+                    "timestamp": "2022-12-05T20:29:29Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/ee96ff8585699b054c95c6ff4a2411ee9fedcc87"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "follows": "1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ee96ff8585699b054c95c6ff4a2411ee9fedcc87",
+                    "timestamp": "2022-12-05T20:29:29Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/ee96ff8585699b054c95c6ff4a2411ee9fedcc87"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ee96ff8585699b054c95c6ff4a2411ee9fedcc87",
+                    "timestamp": "2022-12-05T20:29:29Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/ee96ff8585699b054c95c6ff4a2411ee9fedcc87"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/trie/MerkleTrie.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "991120f6d2009b4a96580d7db3021694439c63f5",
+                    "timestamp": "2022-11-29T19:00:53Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/991120f6d2009b4a96580d7db3021694439c63f5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Refactored MerkleTrie library; Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5bb91e5166849f205ed045a3a1fb459b2d40cc5d",
+                    "timestamp": "2022-12-08T21:35:27Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5bb91e5166849f205ed045a3a1fb459b2d40cc5d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Head of pull request 4329, Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2bd5143fa28d3faf7cbc7c89f9356935122f7f80",
+                    "timestamp": "2022-12-09T14:56:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2bd5143fa28d3faf7cbc7c89f9356935122f7f80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Head of pull request 4337, Late-delivered commit reviewed for its changes only; the report states the team lacked time to evaluate them in the context of the larger system.",
+                  "follows": "5bb91e5166849f205ed045a3a1fb459b2d40cc5d",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sherlock-bedrock-2023-03",
+      "report_file": "2023_03-Bedrock-Sherlock.md",
+      "title": "Sherlock Security Review for Optimism (Bedrock)",
+      "description": "Public Sherlock contest on the Bedrock release covering the L1 contracts, L2 predeploys, op-node and op-geth at a fixed monorepo commit, with three High findings in OptimismPortal withdrawal finalization. No fix-review commit is given; op-node and op-geth are offchain and not recorded as source coverage.",
+      "isRelevant": true,
+      "auditor": "Sherlock",
+      "report_date": "2023-03-03",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        },
+        {
+          "id": "ethereum-optimism/op-geth",
+          "url": "https://github.com/ethereum-optimism/op-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/contracts/L1": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3f4b3c328153a8aa03611158b6984d624b17c1d9",
+                    "timestamp": "2023-01-12T22:02:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/3f4b3c328153a8aa03611158b6984d624b17c1d9"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope directory. H-1, H-2 and H-3 are located in OptimismPortal.sol (H-3 also in universal/CrossDomainMessenger.sol, outside the listed scope directories).",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "H-1",
+                    "H-2",
+                    "H-3"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3f4b3c328153a8aa03611158b6984d624b17c1d9",
+                    "timestamp": "2023-01-12T22:02:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/3f4b3c328153a8aa03611158b6984d624b17c1d9"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope directory (L2 predeploys); no High findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zachobront-agora-governor-v5-2023-05",
+      "report_file": "2023_05-Governor-ZachObront.md",
+      "title": "Agora Audit Report - Optimism Governor & Approval Voting Module",
+      "description": "Independent review by Zach Obront of Agora's Optimism Governor V5 upgrade and the new Approval Voting Module in the voteagora/optimism-gov repository. Two High findings; fixes were verified per commit and pull request 10 was reviewed after completion.",
+      "isRelevant": true,
+      "auditor": "Zach Obront",
+      "report_date": "2023-05-12",
+      "repositories": [
+        {
+          "id": "voteagora/optimism-gov",
+          "url": "https://github.com/voteagora/optimism-gov"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "voteagora/optimism-gov",
+          "paths": {
+            "src/OptimismGovernorV5.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "35f441738bd7864bd37949a40842486bc0ac51b0",
+                    "timestamp": "2023-05-09T22:21:11Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/35f441738bd7864bd37949a40842486bc0ac51b0"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6aa306ea5df526bd49e88073daa0da27c5b56e5e",
+                    "timestamp": "2023-06-21T17:32:10Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/6aa306ea5df526bd49e88073daa0da27c5b56e5e"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for L-01 (initialize removed).",
+                  "follows": "35f441738bd7864bd37949a40842486bc0ac51b0",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cf1a0ded961f6c617642bb00ed14e3ca87a7a715",
+                    "timestamp": "2023-06-21T17:49:45Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/cf1a0ded961f6c617642bb00ed14e3ca87a7a715"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for G-02.",
+                  "follows": "6aa306ea5df526bd49e88073daa0da27c5b56e5e",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "20e645198d10646c6923e8a9caafb05e536d8fe3",
+                    "timestamp": "2023-06-21T18:44:45Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/20e645198d10646c6923e8a9caafb05e536d8fe3"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for M-01 (proposal frontrunning).",
+                  "follows": "cf1a0ded961f6c617642bb00ed14e3ca87a7a715",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1152881afcb6272a29e80b0cb17914007a68cd27",
+                    "timestamp": "2023-06-22T09:33:59Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/1152881afcb6272a29e80b0cb17914007a68cd27"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for M-02 (voting module allowlist).",
+                  "follows": "20e645198d10646c6923e8a9caafb05e536d8fe3",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "41d5fd3f460a9fbe3298b967c360795a67de5cfe",
+                    "timestamp": "2023-06-23T15:36:36Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/41d5fd3f460a9fbe3298b967c360795a67de5cfe"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for H-01 (governor keeps regular voting logic, module only for success/execution params).",
+                  "follows": "1152881afcb6272a29e80b0cb17914007a68cd27",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74b6df0e9ef73c565518535ad02aa2481e4604c4",
+                    "timestamp": "2023-06-27T15:35:37Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/74b6df0e9ef73c565518535ad02aa2481e4604c4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 10 (audit fixes) reviewed after completion of the fixes. M-03 remains acknowledged.",
+                  "follows": "41d5fd3f460a9fbe3298b967c360795a67de5cfe",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/modules/ApprovalVotingModule.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "35f441738bd7864bd37949a40842486bc0ac51b0",
+                    "timestamp": "2023-05-09T22:21:11Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/35f441738bd7864bd37949a40842486bc0ac51b0"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "H-01",
+                    "H-02"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "39880bd56c99a83b5df3fafbc3c6d35f104a1cda",
+                    "timestamp": "2023-05-11T12:30:23Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/39880bd56c99a83b5df3fafbc3c6d35f104a1cda"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for H-02 (budget cap for approve/permit transfers).",
+                  "follows": "35f441738bd7864bd37949a40842486bc0ac51b0",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "20e645198d10646c6923e8a9caafb05e536d8fe3",
+                    "timestamp": "2023-06-21T18:44:45Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/20e645198d10646c6923e8a9caafb05e536d8fe3"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for M-01.",
+                  "follows": "39880bd56c99a83b5df3fafbc3c6d35f104a1cda",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a89a51559f3b116c60703b2acb2c48bf51121692",
+                    "timestamp": "2023-06-21T18:47:00Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/a89a51559f3b116c60703b2acb2c48bf51121692"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for G-01.",
+                  "follows": "20e645198d10646c6923e8a9caafb05e536d8fe3",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "41d5fd3f460a9fbe3298b967c360795a67de5cfe",
+                    "timestamp": "2023-06-23T15:36:36Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/41d5fd3f460a9fbe3298b967c360795a67de5cfe"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for H-01.",
+                  "follows": "a89a51559f3b116c60703b2acb2c48bf51121692",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74b6df0e9ef73c565518535ad02aa2481e4604c4",
+                    "timestamp": "2023-06-27T15:35:37Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/74b6df0e9ef73c565518535ad02aa2481e4604c4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 10 (audit fixes) reviewed after completion of the fixes.",
+                  "follows": "41d5fd3f460a9fbe3298b967c360795a67de5cfe",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/modules/VotingModule.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "35f441738bd7864bd37949a40842486bc0ac51b0",
+                    "timestamp": "2023-05-09T22:21:11Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/35f441738bd7864bd37949a40842486bc0ac51b0"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "20e645198d10646c6923e8a9caafb05e536d8fe3",
+                    "timestamp": "2023-06-21T18:44:45Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/20e645198d10646c6923e8a9caafb05e536d8fe3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for M-01.",
+                  "follows": "35f441738bd7864bd37949a40842486bc0ac51b0",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "41d5fd3f460a9fbe3298b967c360795a67de5cfe",
+                    "timestamp": "2023-06-23T15:36:36Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/41d5fd3f460a9fbe3298b967c360795a67de5cfe"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for H-01.",
+                  "follows": "20e645198d10646c6923e8a9caafb05e536d8fe3",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74b6df0e9ef73c565518535ad02aa2481e4604c4",
+                    "timestamp": "2023-06-27T15:35:37Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/74b6df0e9ef73c565518535ad02aa2481e4604c4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 10 (audit fixes) reviewed after completion of the fixes.",
+                  "follows": "41d5fd3f460a9fbe3298b967c360795a67de5cfe",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "code4rena-base-2023-08",
+      "report_file": "2023_08-OP-Stack-Base-Code4rena.md",
+      "title": "BASE Findings & Analysis Report (Code4rena)",
+      "description": "Code4rena competitive audit of the BASE (OP Stack Bedrock) system: fourteen Solidity contracts plus op-node and op-geth, frozen at the optimism monorepo commit named by the contest repository. Zero High or Medium findings; only the top QA and gas reports are reproduced.",
+      "isRelevant": true,
+      "auditor": "Code4rena",
+      "report_date": "2023-08-10",
+      "repositories": [
+        {
+          "id": "code-423n4/2023-05-base",
+          "url": "https://github.com/code-423n4/2023-05-base"
+        },
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        },
+        {
+          "id": "ethereum-optimism/op-geth",
+          "url": "https://github.com/ethereum-optimism/op-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/contracts/deployment/SystemDictator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/OptimismPortal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/SystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/GasPriceOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L1Block.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/SequencerFeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/OptimismMintableERC20Factory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/ProxyAdmin.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59",
+                    "timestamp": "2023-05-15T22:36:46Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the fourteen contest-scope contracts; commit taken from the contest repository's code-freeze declaration (the report itself prints no hash).",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-agora-governor-v6-2023-11",
+      "report_file": "2023_11-Governor-OpenZeppelin.md",
+      "title": "Agora Optimism Governance Audit (OpenZeppelin)",
+      "description": "OpenZeppelin audit of Agora's Optimism Governance V6 upgrade: OptimismGovernorV6, ProposalTypesConfigurator, VotableSupplyOracle and AlligatorOP_V5, with per-finding resolutions in pull request 16. No Critical or High issues; the report prints no repository URL, so the voteagora/optimism-gov repository was identified from the matching commit and pull request.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2023-11-22",
+      "repositories": [
+        {
+          "id": "voteagora/optimism-gov",
+          "url": "https://github.com/voteagora/optimism-gov"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "voteagora/optimism-gov",
+          "paths": {
+            "src/OptimismGovernorV6.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                    "timestamp": "2023-10-07T12:14:49Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/a22052d3957b4c963d57f78b52c12f9f8609a720"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review at the audited commit (V5 governor and modified OpenZeppelin contracts assumed correct).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                    "timestamp": "2023-11-02T00:32:36Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/0b40e397d688cfe33d297b52ccbf89b069f65ad6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-01.",
+                  "follows": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "acba358f94ea230eb43e59580ec657b25072a917",
+                    "timestamp": "2023-11-02T00:48:22Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/acba358f94ea230eb43e59580ec657b25072a917"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-04.",
+                  "follows": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1507cf306788b0c9bf727db0bb0e8e9c1b579f4f",
+                    "timestamp": "2023-11-02T00:56:27Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/1507cf306788b0c9bf727db0bb0e8e9c1b579f4f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-05.",
+                  "follows": "acba358f94ea230eb43e59580ec657b25072a917",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb8280162b922e6db78ffeac232a94dd09da243f",
+                    "timestamp": "2023-11-02T00:58:41Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/bb8280162b922e6db78ffeac232a94dd09da243f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-03.",
+                  "follows": "1507cf306788b0c9bf727db0bb0e8e9c1b579f4f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d3b72305a6a7ffbc1851870174163a9608ff25d9",
+                    "timestamp": "2023-11-02T01:04:28Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/d3b72305a6a7ffbc1851870174163a9608ff25d9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-10.",
+                  "follows": "bb8280162b922e6db78ffeac232a94dd09da243f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9b58c4c666163538e7cc41d7d6291bcb6ec71301",
+                    "timestamp": "2023-11-02T01:07:52Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/9b58c4c666163538e7cc41d7d6291bcb6ec71301"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-13.",
+                  "follows": "d3b72305a6a7ffbc1851870174163a9608ff25d9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "698f5f6d8c16efe8138535e57d8dd4410147da44",
+                    "timestamp": "2023-11-02T01:10:09Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/698f5f6d8c16efe8138535e57d8dd4410147da44"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-17.",
+                  "follows": "9b58c4c666163538e7cc41d7d6291bcb6ec71301",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "03ce19455abdd95e7008d573207199797a6b54d8",
+                    "timestamp": "2023-11-02T01:20:22Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/03ce19455abdd95e7008d573207199797a6b54d8"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-19.",
+                  "follows": "698f5f6d8c16efe8138535e57d8dd4410147da44",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bd69f93d95e5063ab02bdf24fd40045f476b1f6f",
+                    "timestamp": "2023-11-05T12:48:02Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/bd69f93d95e5063ab02bdf24fd40045f476b1f6f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-05 (second commit).",
+                  "follows": "03ce19455abdd95e7008d573207199797a6b54d8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/ProposalTypesConfigurator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                    "timestamp": "2023-10-07T12:14:49Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/a22052d3957b4c963d57f78b52c12f9f8609a720"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review at the audited commit (V5 governor and modified OpenZeppelin contracts assumed correct).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                    "timestamp": "2023-11-02T00:32:36Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/0b40e397d688cfe33d297b52ccbf89b069f65ad6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-01.",
+                  "follows": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f07004c64673ebcd17369a313c13499b794558cc",
+                    "timestamp": "2023-11-02T01:05:57Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/f07004c64673ebcd17369a313c13499b794558cc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-12.",
+                  "follows": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9b58c4c666163538e7cc41d7d6291bcb6ec71301",
+                    "timestamp": "2023-11-02T01:07:52Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/9b58c4c666163538e7cc41d7d6291bcb6ec71301"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-13.",
+                  "follows": "f07004c64673ebcd17369a313c13499b794558cc",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/VotableSupplyOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                    "timestamp": "2023-10-07T12:14:49Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/a22052d3957b4c963d57f78b52c12f9f8609a720"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review at the audited commit (V5 governor and modified OpenZeppelin contracts assumed correct).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                    "timestamp": "2023-11-02T00:32:36Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/0b40e397d688cfe33d297b52ccbf89b069f65ad6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-01.",
+                  "follows": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7bd01b6a34c698a13768b30d0f9b3da0156c7e04",
+                    "timestamp": "2023-11-02T01:27:03Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/7bd01b6a34c698a13768b30d0f9b3da0156c7e04"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-21.",
+                  "follows": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/alligator/AlligatorOP_V5.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                    "timestamp": "2023-10-07T12:14:49Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/a22052d3957b4c963d57f78b52c12f9f8609a720"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review at the audited commit (V5 governor and modified OpenZeppelin contracts assumed correct).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "422928946c8df15c44cff17e3225b983b5707383",
+                    "timestamp": "2023-11-02T00:24:58Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/422928946c8df15c44cff17e3225b983b5707383"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving M-01.",
+                  "follows": "a22052d3957b4c963d57f78b52c12f9f8609a720",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                    "timestamp": "2023-11-02T00:32:36Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/0b40e397d688cfe33d297b52ccbf89b069f65ad6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-01.",
+                  "follows": "422928946c8df15c44cff17e3225b983b5707383",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "383292a0b708661a398f594f05baf4ab540122b9",
+                    "timestamp": "2023-11-02T00:42:58Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/383292a0b708661a398f594f05baf4ab540122b9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving L-03.",
+                  "follows": "0b40e397d688cfe33d297b52ccbf89b069f65ad6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bc48b7ebac6e294181ca4baf81c4848cb75063e0",
+                    "timestamp": "2023-11-02T00:59:26Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/bc48b7ebac6e294181ca4baf81c4848cb75063e0"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-05 and N-06.",
+                  "follows": "383292a0b708661a398f594f05baf4ab540122b9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b137b4d019cf1161e0d91f27c64da38895d99c8a",
+                    "timestamp": "2023-11-02T01:00:16Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/b137b4d019cf1161e0d91f27c64da38895d99c8a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-02 and N-07.",
+                  "follows": "bc48b7ebac6e294181ca4baf81c4848cb75063e0",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d3b72305a6a7ffbc1851870174163a9608ff25d9",
+                    "timestamp": "2023-11-02T01:04:28Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/d3b72305a6a7ffbc1851870174163a9608ff25d9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-10.",
+                  "follows": "b137b4d019cf1161e0d91f27c64da38895d99c8a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4ea04626d0cf94dbbbb81d97219777f338cdc8f7",
+                    "timestamp": "2023-11-02T01:21:47Z",
+                    "url": "https://github.com/voteagora/optimism-gov/commit/4ea04626d0cf94dbbbb81d97219777f338cdc8f7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Pull request 16 commit resolving N-20.",
+                  "follows": "d3b72305a6a7ffbc1851870174163a9608ff25d9",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trust-superchainconfig-upgrade-2024-01",
+      "report_file": "2023_12_SuperchainConfigUpgrade_Trust.md",
+      "title": "Smart Contract Audit: Optimism Bedrock upgrade (Trust Security)",
+      "description": "Trust Security diff-based review of eight Bedrock L1 and universal bridging contracts changed since the Sherlock contest commit, chiefly the SuperchainConfig pause integration, gas-issue mitigations, storage-layout safety and reentrancy changes. One High finding, verified fixed in the mitigation review.",
+      "isRelevant": true,
+      "auditor": "Trust Security",
+      "report_date": "2024-01-11",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/L1/SuperchainConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d03df252b3c5eb0735781f3f498cb4b102be3544",
+                    "timestamp": "2024-01-08T18:43:11Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d03df252b3c5eb0735781f3f498cb4b102be3544"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 8864 (L2Sender reinitialization fix for TRST-H-1).",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d03df252b3c5eb0735781f3f498cb4b102be3544",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/L1StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OptimismPortal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4e5415107384f21d687a9aeb5ca40e9a97270250",
+                    "timestamp": "2023-12-15T20:18:17Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/4e5415107384f21d687a9aeb5ca40e9a97270250"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 8639 fixing TRST-L-2 (resource params only set on first initialization).",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d03df252b3c5eb0735781f3f498cb4b102be3544",
+                    "timestamp": "2024-01-08T18:43:11Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d03df252b3c5eb0735781f3f498cb4b102be3544"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 8864 (added reentrancy protection for TRST-H-1).",
+                  "follows": "4e5415107384f21d687a9aeb5ca40e9a97270250",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d03df252b3c5eb0735781f3f498cb4b102be3544",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TRST-H-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d03df252b3c5eb0735781f3f498cb4b102be3544",
+                    "timestamp": "2024-01-08T18:43:11Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d03df252b3c5eb0735781f3f498cb4b102be3544"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 8864 fixing TRST-H-1 (xDomainMsgSender no longer reset on reinitialization; successfulMessages assertion).",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d03df252b3c5eb0735781f3f498cb4b102be3544",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                    "timestamp": "2023-12-07T09:00:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of all changes to this file since the Sherlock contest commit 9b9f78c6613c6ee53b93ca43c71bb74479f4b975, with attention to gas mitigations, storage layout, reentrancy and SuperchainConfig pause integration.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b56fee40f96c798174115c375f41c3d2ff9d40",
+                    "timestamp": "2024-01-08T19:01:54Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation review commit named by the report.",
+                  "follows": "d1651bb22645ebd41ac4bb2ab4786f9a56fc1003",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

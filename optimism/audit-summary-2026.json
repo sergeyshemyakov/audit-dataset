@@ -1,0 +1,2479 @@
+{
+  "schema_version": "1.4.0",
+  "project": "optimism",
+  "reports": [
+    {
+      "id": "cantina-u18-2026-01",
+      "report_file": "2026_01-U18-Cantina.md",
+      "title": "Optimism PBC U18 Security Review (Cantina)",
+      "description": "Cantina Managed review of the Optimism U18 upgrade at commit 87d406db, covering the contracts-bedrock dispute (DisputeGameFactory creator pattern, V2/Super/zk games), L1 (OPCM, portal, SystemConfig, FeesDepositor), L2 fee vault/splitter/CGT predeploys, libraries and Safe modules. No Critical, High or Medium issues were found; 4 Low, 1 Gas and 2 Informational findings, all acknowledged.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2026-01-12",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report. Low-risk findings 3.1.1, 3.1.2, 3.1.3 and informational 3.3.1 locate in this file; all acknowledged.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/lib/Errors.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/lib/LibGameArgs.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report. Informational finding 3.3.2 locates in this file; acknowledged.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/lib/Types.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/v2/FaultDisputeGameV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/v2/PermissionedDisputeGameV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/zk/AccessManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/zk/ISP1Verifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/zk/OPSuccinctFaultDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/FeesDepositor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OPContractsManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OptimismPortal2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/SystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/BaseFeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/FeeSplitter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/FeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report. Low-risk finding 3.1.4 (withdrawals to the zero address) locates in this file; acknowledged.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L1Block.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L1BlockCGT.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L1FeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L1Withdrawer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2ToL1MessagePasserCGT.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/LiquidityController.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/NativeAssetLiquidity.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/OperatorFeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/SequencerFeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Constants.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/DevFeatures.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Features.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Predeploys.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/safe/DeputyPauseModule.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/safe/LivenessGuard.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/safe/LivenessModule.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/safe/LivenessModule2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/safe/SaferSafes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/safe/TimelockGuard.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87d406db86907833f75d5c8fb26ade3dcb85eb41",
+                    "timestamp": "2025-11-24T03:04:45Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the U18 upgrade scope at commit 87d406db (Nov 26 - Dec 3, 2025). No Critical, High or Medium findings in the report. Gas-optimization finding 3.2.1 locates in this file; acknowledged.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Gas Optimization"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-kona-2026-03",
+      "report_file": "2026_03-Kona-Cantina.md",
+      "title": "Coinbase: Kona Security Review",
+      "description": "Cantina Managed review (Jan 19 - Feb 9, 2026) of the kona Rust fault-proof program at op-rs/kona commit 86910c91, covering the derivation pipeline (kona-derive), proof crates (driver, executor, mpt, preimage, proof, proof-interop, std-fpvm) and the FPVM EVM precompiles. Found 2 Critical and 1 High issue (all fixed) plus 2 Medium, 32 Low and 18 Informational (acknowledged).",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2026-03-28",
+      "repositories": [
+        {
+          "id": "op-rs/kona",
+          "url": "https://github.com/op-rs/kona"
+        },
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "op-rs/kona",
+          "paths": {
+            "bin/client/src/fpvm_evm": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). FPVM EVM factory and accelerated precompiles; finding 3.4.32 (Low) located in precompiles/provider.rs.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "crates/proof/driver": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). Proof driver, cursor and pipeline; Low findings 3.4.10, 3.4.11, 3.4.19 and Informational 3.5.10 located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "crates/proof/executor": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). kona-executor block builder; Low finding 3.4.2 (util.rs) and Informational 3.5.18 (builder/core.rs) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "crates/proof/mpt": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). Merkle Patricia trie crate; Informational finding 3.5.2 (node.rs) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "crates/proof/preimage": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). Preimage oracle key/hint types; Informational finding 3.5.12 (key.rs) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "crates/proof/proof": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). kona-proof crate (boot info, sync start, caching oracle, L1/L2 providers, pipeline). Critical finding 3.1.2 is located in src/sync.rs (TipCursor initialized with zero output root); Medium 3.3.2 (l1/pipeline.rs), Low 3.4.17, 3.4.21 and Informational 3.5.9 also located here. 3.1.2 fixed in ethereum-optimism/optimism PR 19775 (see that repository's scope).",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "3.1.2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "crates/proof/proof-interop": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). Interop proof crate (pre-state, consolidation, boot); Low findings 3.4.3, 3.4.4, 3.4.5, 3.4.7 and Informational 3.5.3, 3.5.4, 3.5.5 located here, all acknowledged as interop is not planned to be supported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "crates/proof/std-fpvm": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). FPVM std I/O and syscall layer (mips64, riscv64); Informational finding 3.5.6 (channel.rs) located here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "crates/proof/std-fpvm-proc": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). Procedural macro crate for the FPVM entrypoint; no findings located here.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/protocol/derive": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Directory listed in full in the report's scope tree (all files beneath it) for the Cantina review of kona at 86910c91 (Jan 19 - Feb 9, 2026). kona-derive derivation pipeline (stages, sources, traversal, attributes). Medium findings 3.3.1 and 3.3.2 (pipeline/core.rs, stages/l1_retrieval.rs) and numerous Low/Informational findings located here; no Critical/High.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "bin/client/src/single.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Not listed in the report's scope tree, but the report locates a finding in this file; coverage considered limited to the reviewed logic. Critical finding 3.1.1 (faulty trace extension check) and Low 3.4.8 located here. Fixed in ethereum-optimism/optimism PR 19775 (rust/kona/bin/client/src/single.rs).",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "3.1.1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "crates/protocol/protocol/src/batch/reader.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Not listed in the report's scope tree, but the report locates a finding in this file; coverage considered limited to the reviewed logic. High finding 3.2.1 (zlib one-shot decompression / no truncation at MAX_RLP_BYTES_PER_CHANNEL) and Low 3.4.14, 3.4.15 located here. Report says fixed in private PR optimism-private#455; public PR ethereum-optimism/optimism#19775 also modifies rust/kona/crates/protocol/protocol/src/batch/reader.rs.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "3.2.1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "crates/protocol/protocol/src/brotli.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Not listed in the report's scope tree, but the report locates a finding in this file; coverage considered limited to the reviewed logic. High finding 3.2.1 (brotli streaming decompression size check errors) located here. Report says fixed in private PR optimism-private#455; public PR ethereum-optimism/optimism#19775 also modifies rust/kona/crates/protocol/protocol/src/brotli.rs.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "3.2.1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "rust/kona/bin/client/src/single.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c390d771c65d783503f82fb76fb0b1d8628c605b",
+                    "timestamp": "2026-03-26T17:10:19Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/c390d771c65d783503f82fb76fb0b1d8628c605b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review only: head commit of PR 19775 'fix(kona/proof): several fixes to kona-proof.' (merged 2026-03-26) in the optimism monorepo, where kona now lives under rust/kona. Cantina verified the fix for Critical 3.1.1. Same file as op-rs/kona bin/client/src/single.rs at 86910c91; different repository so no follows link.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "rust/kona/crates/proof/proof/src/sync.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c390d771c65d783503f82fb76fb0b1d8628c605b",
+                    "timestamp": "2026-03-26T17:10:19Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/c390d771c65d783503f82fb76fb0b1d8628c605b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review only: head commit of PR 19775 'fix(kona/proof): several fixes to kona-proof.' (merged 2026-03-26) in the optimism monorepo, where kona now lives under rust/kona. Cantina verified the fix for Critical 3.1.2. Same file as op-rs/kona crates/proof/proof/src/sync.rs at 86910c91; different repository so no follows link.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "rust/kona/crates/protocol/protocol/src/batch/reader.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c390d771c65d783503f82fb76fb0b1d8628c605b",
+                    "timestamp": "2026-03-26T17:10:19Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/c390d771c65d783503f82fb76fb0b1d8628c605b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review only: head commit of PR 19775 'fix(kona/proof): several fixes to kona-proof.' (merged 2026-03-26) in the optimism monorepo, where kona now lives under rust/kona. Cantina verified the fix for High 3.2.1 (report cites private PR 455; this public PR also changes the file). Same file as op-rs/kona crates/protocol/protocol/src/batch/reader.rs at 86910c91; different repository so no follows link.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "rust/kona/crates/protocol/protocol/src/brotli.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c390d771c65d783503f82fb76fb0b1d8628c605b",
+                    "timestamp": "2026-03-26T17:10:19Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/c390d771c65d783503f82fb76fb0b1d8628c605b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review only: head commit of PR 19775 'fix(kona/proof): several fixes to kona-proof.' (merged 2026-03-26) in the optimism monorepo, where kona now lives under rust/kona. Cantina verified the fix for High 3.2.1 (report cites private PR 455; this public PR also changes the file). Same file as op-rs/kona crates/protocol/protocol/src/brotli.rs at 86910c91; different repository so no follows link.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-policyenginestaking-2026-03",
+      "report_file": "2026_03-PolicyEngineStaking-Cantina.md",
+      "title": "Optimism: PolicyEngine Staking Contract Security Review (Cantina)",
+      "description": "Cantina Managed review of the PolicyEngineStaking contract, its interface and deployment script in contracts-bedrock at commit 60679313, followed by a holistic fix review at commit 13c74c6d. No Critical, High or Medium issues; 1 Low and 9 Informational findings, 9 fixed and 1 acknowledged.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2026-03-27",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/periphery/staking/PolicyEngineStaking.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "606793132710967158a8888d26702241f794fca1",
+                    "timestamp": "2026-02-24T14:06:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/606793132710967158a8888d26702241f794fca1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the PolicyEngineStaking contract at commit 60679313 (Feb 24-27, 2026). No Critical, High or Medium findings; Low finding 3.1.1 (pause bypass via allowlist mutation) and informational 3.2.1-3.2.9 locate in this file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "13c74c6d0855caf59b575ccf5fbf74ffe104cb4f",
+                    "timestamp": "2026-03-16T20:46:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/13c74c6d0855caf59b575ccf5fbf74ffe104cb4f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Holistic fix review at commit 13c74c6d: fixes for 3.1.1 (docs, commit 2ab8b9f4), 3.2.6 (commit 7630603), 3.2.7 (two-step ownership, commit 564fc9a) and 3.2.9 (commit 6f008ae, all in PR #19449) verified; 3.2.8 acknowledged. Report states all findings were addressed and no new vulnerabilities were identified.",
+                  "follows": "606793132710967158a8888d26702241f794fca1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/periphery/staking/IPolicyEngineStaking.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "606793132710967158a8888d26702241f794fca1",
+                    "timestamp": "2026-02-24T14:06:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/606793132710967158a8888d26702241f794fca1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the PolicyEngineStaking interface at commit 60679313. No findings locate in this file.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "13c74c6d0855caf59b575ccf5fbf74ffe104cb4f",
+                    "timestamp": "2026-03-16T20:46:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/13c74c6d0855caf59b575ccf5fbf74ffe104cb4f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Holistic fix review at commit 13c74c6d; interface changed with the two-step ownership fix (3.2.7). No findings.",
+                  "follows": "606793132710967158a8888d26702241f794fca1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/scripts/deploy/DeployPolicyEngineStaking.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "606793132710967158a8888d26702241f794fca1",
+                    "timestamp": "2026-02-24T14:06:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/606793132710967158a8888d26702241f794fca1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the PolicyEngineStaking deployment script at commit 60679313 as listed in scope. No findings locate in this file.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "13c74c6d0855caf59b575ccf5fbf74ffe104cb4f",
+                    "timestamp": "2026-03-16T20:46:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/13c74c6d0855caf59b575ccf5fbf74ffe104cb4f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Holistic fix review at commit 13c74c6d; file unchanged from the initial commit. No findings.",
+                  "follows": "606793132710967158a8888d26702241f794fca1",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-u19-2026-05",
+      "report_file": "2026_05-U19-Cantina.md",
+      "title": "Optimism: Upgrade 19 Security Review (Cantina)",
+      "description": "Cantina Managed review of the Optimism Upgrade 19 contracts-bedrock changes at commit 7cbcb58f, covering OPCMv2 / validator utilities, L2ContractsManager, FeeVault, dispute and portal contracts. No Critical or High issues; 3 Medium, 10 Low and 3 Informational findings, none reported as fixed.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2026-05-23",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/L2/L2ContractsManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Medium finding 3.1.1 (X Layer LiquidityController minters dropped by L2CM) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Medium finding 3.1.2 (v5 initializer guard checked only on the proxy) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/FeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Medium finding 3.1.3 (separate recipient/withdrawalNetwork setters) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Low findings 3.2.1, 3.2.3, 3.2.5, 3.2.6, 3.2.7 and 3.2.9 (missing validator assertions) locate here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrationValidator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Low finding 3.2.2 (assertValidSharedLockbox systemConfig check) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/MIPS64.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Low finding 3.2.3 (ORACLE not asserted by assertValidMipsVm) references this file. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/SystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Low finding 3.2.4 (renounceOwnership blocks OPCM upgrades) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Low finding 3.2.8 and informational 3.3.3 (omitted SystemConfig checks) locate here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Low finding 3.2.9 (ownership hand-off assertions) references this file. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/PermissionedDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Low finding 3.2.10 (challengeRootL2Block not permissioned) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Informational finding 3.3.1 (non-atomic respected game type / retirement cutover) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OptimismPortal2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Cantina review of the Upgrade 19 contracts at commit 7cbcb58f (May 4-15, 2026); the report declares no file list, this file is recorded because findings locate in it. Informational finding 3.3.2 (no chain-ID check for non-super game roots) locates here. No Critical or High findings; no fixes are reported.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-interop-l2-rereview-2026-06",
+      "report_file": "2026_06-Interop-L2-Contracts.md",
+      "title": "Optimism L2 Interop Re-review (Cantina Managed)",
+      "description": "Cantina Managed re-review of the OP Stack L2 interop predeploys (CrossL2Inbox, L2ToL2CrossDomainMessenger, SuperchainETHBridge, ETHLiquidity) and their supporting libraries (Hashing, TransientContext, SafeSend) at commit fa9974a2. The review found 4 Low and 25 Informational issues and no Critical, High or Medium findings; several documentation/code fixes were verified.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2026-06-18",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/L2/CrossL2Inbox.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                    "timestamp": "2026-05-29T21:06:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/fa9974a2cd38d9e7633a12f9024d52f41de55f86"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Full re-review of the L2 interop contract at commit fa9974a2 (Jun 1-3, 2026). No Critical/High/Medium findings in the report. Informational findings 3.2.2, 3.2.4, 3.2.5, 3.2.7, 3.2.24 and 3.2.25 locate here (3.2.24/3.2.25 fixed in the specs repository, PR ethereum-optimism/specs#916).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/ETHLiquidity.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                    "timestamp": "2026-05-29T21:06:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/fa9974a2cd38d9e7633a12f9024d52f41de55f86"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Full re-review of the L2 interop contract at commit fa9974a2 (Jun 1-3, 2026). No Critical/High/Medium findings in the report. Informational findings 3.2.12 and 3.2.21 locate here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6a580e4a59272ffe4e85ad7eb7f2687253f58c73",
+                    "timestamp": "2026-06-09T16:04:13Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/6a580e4a59272ffe4e85ad7eb7f2687253f58c73"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 6a580e4 (finding 3.2.20, ETHLiquidity invariant test), which also touches this file; verified by Cantina. Only the fix diff is covered.",
+                  "follows": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2ToL2CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                    "timestamp": "2026-05-29T21:06:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/fa9974a2cd38d9e7633a12f9024d52f41de55f86"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Full re-review of the L2 interop contract at commit fa9974a2 (Jun 1-3, 2026). No Critical/High/Medium findings in the report. Low findings 3.1.2, 3.1.3 (fixed by documentation), 3.1.4 and Informational findings 3.2.1, 3.2.9, 3.2.13, 3.2.17, 3.2.19, 3.2.22, 3.2.23 locate here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "53d21dd996c833017824e1fdcc9da439ffe9c228",
+                    "timestamp": "2026-06-09T15:16:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/53d21dd996c833017824e1fdcc9da439ffe9c228"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 53d21dd (finding 3.2.22, stale legacy messenger documentation removed); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c5029b3809b6b67d54b15c9f368dd29fe93122a",
+                    "timestamp": "2026-06-09T15:39:07Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2c5029b3809b6b67d54b15c9f368dd29fe93122a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 2c5029b (finding 3.2.23, redeclared errors removed); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "53d21dd996c833017824e1fdcc9da439ffe9c228",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "da3c4f4941050fa5678d137f4c2399b84ab2b7dc",
+                    "timestamp": "2026-06-09T16:24:37Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/da3c4f4941050fa5678d137f4c2399b84ab2b7dc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit da3c4f4 (finding 3.1.3, documentation that relaying to a no-code target permanently consumes the message); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "2c5029b3809b6b67d54b15c9f368dd29fe93122a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                    "timestamp": "2026-05-29T21:06:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/fa9974a2cd38d9e7633a12f9024d52f41de55f86"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Full re-review of the L2 interop contract at commit fa9974a2 (Jun 1-3, 2026). No Critical/High/Medium findings in the report. Low finding 3.1.1 and Informational findings 3.2.3 and 3.2.18 locate here (all acknowledged).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Hashing.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                    "timestamp": "2026-05-29T21:06:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/fa9974a2cd38d9e7633a12f9024d52f41de55f86"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Full re-review of the L2 interop contract at commit fa9974a2 (Jun 1-3, 2026). No Critical/High/Medium findings in the report. Informational finding 3.2.15 locates here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/TransientContext.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                    "timestamp": "2026-05-29T21:06:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/fa9974a2cd38d9e7633a12f9024d52f41de55f86"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Full re-review of the L2 interop contract at commit fa9974a2 (Jun 1-3, 2026). No Critical/High/Medium findings in the report. Informational findings 3.2.8, 3.2.10, 3.2.11 and 3.2.14 locate here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/SafeSend.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                    "timestamp": "2026-05-29T21:06:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/fa9974a2cd38d9e7633a12f9024d52f41de55f86"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "re-audit",
+                  "coverage": "Full re-review of the L2 interop contract at commit fa9974a2 (Jun 1-3, 2026). No Critical/High/Medium findings in the report. Informational findings 3.2.6 and 3.2.16 locate here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9d7f24dd7115c178652e78302d7a2bb3d6643176",
+                    "timestamp": "2026-06-09T16:09:41Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/9d7f24dd7115c178652e78302d7a2bb3d6643176"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 9d7f24d (finding 3.2.16, documentation of prefunded address value injection); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "fa9974a2cd38d9e7633a12f9024d52f41de55f86",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3bf3026e96e8bacc154bdabcd48afc90f47a606a",
+                    "timestamp": "2026-06-09T16:16:08Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/3bf3026e96e8bacc154bdabcd48afc90f47a606a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 3bf3026 (finding 3.2.6, documentation warning about self-recipient value burn); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "9d7f24dd7115c178652e78302d7a2bb3d6643176",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-opcmv2-2026-06",
+      "report_file": "2026_06-OPCMv2-Cantina.md",
+      "title": "Optimism OPCMv2 Security Review (Cantina)",
+      "description": "Cantina Managed review of the OPCMv2 contracts in contracts-bedrock (OPContractsManagerV2, Migrator, Utils, UtilsCaller, Container and the VerifyOPCM script) at commit a00b3972, with fix verification of PRs #19271, #19272, #19281, #19285, #20289 and #20371. No Critical or High issues; 1 Medium, 6 Low and 15 Informational findings, 21 fixed and 1 acknowledged.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2026-06-08",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/scripts/deploy/VerifyOPCM.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                    "timestamp": "2026-02-06T09:46:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the OPCMv2 scope at commit a00b3972 (Feb 8-18, 2026). Informational findings 3.3.1, 3.3.3 and 3.3.4 locate in this file; no Critical, High, Medium or Low findings.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5161204097d10ff8888d4e793506b0db818c7517",
+                    "timestamp": "2026-03-03T21:02:28Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5161204097d10ff8888d4e793506b0db818c7517"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 5161204 (merge of PR #19271) cited by the report for 3.3.1 (NatSpec added); verified.",
+                  "follows": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6",
+                    "timestamp": "2026-03-05T15:25:41Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19272 head cited for 3.3.4 (_findChar removed; report text says PR 19792 but links PR 19272); verified.",
+                  "follows": "5161204097d10ff8888d4e793506b0db818c7517",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "56ee47e5f515425dfcb9e42c4f08b7b4d15e1469",
+                    "timestamp": "2026-03-05T16:02:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/56ee47e5f515425dfcb9e42c4f08b7b4d15e1469"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 56ee47e (merge of PR #19272) cited by the report for 3.3.3 (runSingle now executes setUp); verified.",
+                  "follows": "f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                    "timestamp": "2026-02-06T09:46:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the OPCMv2 scope at commit a00b3972 (Feb 8-18, 2026). Medium finding 3.1.1 (SystemConfig not re-initialized with migrated DelayedWETH), Low findings 3.2.2, 3.2.4, 3.2.5 and informational 3.3.5, 3.3.6, 3.3.8, 3.3.9, 3.3.10, 3.3.14 locate in this file. No Critical or High findings.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8d80aac5355b80563ad2636155d593d6448f3c87",
+                    "timestamp": "2026-02-22T20:39:01Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/8d80aac5355b80563ad2636155d593d6448f3c87"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19271 head: documentation fixes for 3.2.5, 3.3.6, 3.3.9 and 3.3.10 verified.",
+                  "follows": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8083ebcb4c149e094841ae1369285158ebc643c2",
+                    "timestamp": "2026-02-23T19:52:33Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/8083ebcb4c149e094841ae1369285158ebc643c2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19285 head: 3.3.14 (migrate() requires the interop dev feature) fixed.",
+                  "follows": "8d80aac5355b80563ad2636155d593d6448f3c87",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "56ee47e5f515425dfcb9e42c4f08b7b4d15e1469",
+                    "timestamp": "2026-03-05T16:02:26Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/56ee47e5f515425dfcb9e42c4f08b7b4d15e1469"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 56ee47e (merge of PR #19272) cited by the report for 3.3.8 (correct AddressManager passed); verified.",
+                  "follows": "8083ebcb4c149e094841ae1369285158ebc643c2",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b78ae8c48bbd721c9c28d6c97ad25346a5aa3bf0",
+                    "timestamp": "2026-03-05T22:44:53Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b78ae8c48bbd721c9c28d6c97ad25346a5aa3bf0"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19281 head: 3.1.1 (existing DelayedWETH reused), 3.2.2 and 3.2.4 (documented), 3.3.5 verified.",
+                  "follows": "56ee47e5f515425dfcb9e42c4f08b7b4d15e1469",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                    "timestamp": "2026-02-06T09:46:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the OPCMv2 scope at commit a00b3972 (Feb 8-18, 2026). Medium finding 3.1.1 references this file; Low findings 3.2.1 (acknowledged), 3.2.3, 3.2.6 and informational 3.3.2, 3.3.7, 3.3.13 locate here. No Critical or High findings.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8d80aac5355b80563ad2636155d593d6448f3c87",
+                    "timestamp": "2026-02-22T20:39:01Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/8d80aac5355b80563ad2636155d593d6448f3c87"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19271 head: 3.3.2 (guardian pause blocking interop upgrades documented) verified.",
+                  "follows": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6",
+                    "timestamp": "2026-03-05T15:25:41Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19272 head: 3.2.3 (startingRespectedGameType validated), 3.2.6 (onlyDelegateCall on upgrade/migrate) and 3.3.7 (duplicate upgrade instructions revert) verified.",
+                  "follows": "8d80aac5355b80563ad2636155d593d6448f3c87",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b78ae8c48bbd721c9c28d6c97ad25346a5aa3bf0",
+                    "timestamp": "2026-03-05T22:44:53Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/b78ae8c48bbd721c9c28d6c97ad25346a5aa3bf0"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19281 head: 3.1.1 remediation (DelayedWETH from chainSystemConfigs[0] reused) verified. 3.2.1 remains acknowledged; 3.3.13 addressed by review rules in PR #19273 (no contract change).",
+                  "follows": "f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                    "timestamp": "2026-02-06T09:46:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the OPCMv2 scope at commit a00b3972 (Feb 8-18, 2026). Low finding 3.2.4 references this file; informational 3.3.11 and 3.3.15 locate here. No Critical or High findings.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6",
+                    "timestamp": "2026-03-05T15:25:41Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #19272 head: 3.3.11 (loadBytes reverts for codeless addresses) verified.",
+                  "follows": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "992bc6b06465107bee15c1e2df27836d0f2e4651",
+                    "timestamp": "2026-04-23T18:26:10Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/992bc6b06465107bee15c1e2df27836d0f2e4651"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #20289 head: 3.3.15 (Initializable upgrade limitations documented) verified.",
+                  "follows": "f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5c28b3d432b1491267534c211286ce3483cea445",
+                    "timestamp": "2026-04-27T20:54:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5c28b3d432b1491267534c211286ce3483cea445"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of PR #20371 head: 3.3.15 follow-up (OZ v5 Initializable rejected in OPCM) verified.",
+                  "follows": "992bc6b06465107bee15c1e2df27836d0f2e4651",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtilsCaller.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                    "timestamp": "2026-02-06T09:46:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the OPCMv2 scope at commit a00b3972 (Feb 8-18, 2026). No findings locate in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerContainer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a00b39720a3f61276d2fa3991abfb672c9dd35ce",
+                    "timestamp": "2026-02-06T09:46:02Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file as listed in the OPCMv2 scope at commit a00b3972 (Feb 8-18, 2026). No findings locate in this file.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-upgrade20-2026-08",
+      "report_file": "2026_08-U20-Cantina.md",
+      "title": "Optimism Upgrade 20 Security Review (Cantina Managed)",
+      "description": "Cantina Managed review of the Upgrade 20 (super-roots) L1 contract changes at commit 7799a246, covering the super fault dispute games, OPContractsManagerV2 and its validator/utility contracts, OptimismPortal2, SystemConfig, SuperchainConfig and related interfaces and libraries. The review found 6 Low and 8 Informational issues and no Critical, High or Medium findings; four Low fixes were verified.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2026-08-20",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/interfaces/dispute/ISuperFaultDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/dispute/ISuperPermissionedDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerMigrationValidator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerMigrator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/L1/opcm/IStandardValidatorUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/lib/LibGameArgs.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/lib/Types.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OptimismPortal2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/SuperchainConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerContainer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtilsCaller.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Constants.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/Features.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/SafeSend.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. No findings located in this file.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerContainer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. Informational finding 3.2.2 locates here (acknowledged).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. Low finding 3.1.5 and Informational finding 3.2.4 locate here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "44eb9547baef1331df04b826a15ca0e05ddedc1f",
+                    "timestamp": "2026-08-13T11:30:32Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/44eb9547baef1331df04b826a15ca0e05ddedc1f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 44eb954 (finding 3.1.5, initialize now rejects nonzero msg.value); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "7799a2464f23b4e19abd5e29843545f960e677be",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. Low findings 3.1.3 and 3.1.6 locate here; the fix for 3.1.2 also touches this file.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cba37e86e44a6bc4fb414da62f2bb1d5b906502a",
+                    "timestamp": "2026-08-12T23:09:58Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/cba37e86e44a6bc4fb414da62f2bb1d5b906502a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit cba37e8 (finding 3.1.3, SystemConfig.l2ChainId bound to the validated super-game domain); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "7799a2464f23b4e19abd5e29843545f960e677be",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "283bb456cf5b17f407f8f72826820d3852d966fe",
+                    "timestamp": "2026-08-13T00:26:55Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/283bb456cf5b17f407f8f72826820d3852d966fe"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 283bb45 (finding 3.1.2, registered SUPER_PERMISSIONED implementation identity check, SPDG-150); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "cba37e86e44a6bc4fb414da62f2bb1d5b906502a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ef695a353f8fd71ad03220a7b9e20f05d5c1715f",
+                    "timestamp": "2026-08-13T03:04:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/ef695a353f8fd71ad03220a7b9e20f05d5c1715f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit ef695a3 (finding 3.1.6, AnchorStateRegistry bound to the Portal's registry); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "283bb456cf5b17f407f8f72826820d3852d966fe",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/SystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. Informational finding 3.2.7 locates here (fixed by documentation in commit 630e797, docs only).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. Low findings 3.1.1, 3.1.4, 3.1.5 and Informational findings 3.2.1, 3.2.3, 3.2.5, 3.2.6 locate here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. Low finding 3.1.2 locates here.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "283bb456cf5b17f407f8f72826820d3852d966fe",
+                    "timestamp": "2026-08-13T00:26:55Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/283bb456cf5b17f407f8f72826820d3852d966fe"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit 283bb45 (finding 3.1.2, registered implementation identity check); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "7799a2464f23b4e19abd5e29843545f960e677be",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ef695a353f8fd71ad03220a7b9e20f05d5c1715f",
+                    "timestamp": "2026-08-13T03:04:23Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/ef695a353f8fd71ad03220a7b9e20f05d5c1715f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of commit ef695a3 (finding 3.1.6, AnchorStateRegistry binding); verified by Cantina. Only the fix diff is covered.",
+                  "follows": "283bb456cf5b17f407f8f72826820d3852d966fe",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/DevFeatures.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7799a2464f23b4e19abd5e29843545f960e677be",
+                    "timestamp": "2026-07-31T01:27:36Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Upgrade 20 review of the file at commit 7799a246 (Aug 6-12, 2026). No Critical/High/Medium findings in the report. Informational finding 3.2.8 locates here (acknowledged).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

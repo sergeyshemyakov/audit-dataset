@@ -104,6 +104,10 @@
       "url": "https://github.com/axiom-crypto/snark-verifier",
       "fork_of": "privacy-ethereum/snark-verifier"
     },
+    "ben-chain/contracts-v2": {
+      "url": "https://github.com/ben-chain/contracts-v2",
+      "fork_of": "ethereum-optimism/contracts"
+    },
     "bob-collective/bob-gateway": {
       "url": "https://github.com/bob-collective/bob-gateway"
     },
@@ -135,6 +139,9 @@
     "cantina-forks/aztec-uniswap-twap-monorepo": {
       "url": "https://github.com/cantina-forks/aztec-uniswap-twap-monorepo"
     },
+    "cantina-forks/optimism": {
+      "url": "https://github.com/cantina-forks/optimism"
+    },
     "celo-org/celo-monorepo": {
       "url": "https://github.com/celo-org/celo-monorepo"
     },
@@ -149,8 +156,18 @@
     "celo-org/staked-celo": {
       "url": "https://github.com/celo-org/staked-celo"
     },
+    "code-423n4/2023-05-base": {
+      "url": "https://github.com/code-423n4/2023-05-base"
+    },
+    "code-423n4/2024-07-optimism": {
+      "url": "https://github.com/code-423n4/2024-07-optimism"
+    },
     "code-423n4/2025-09-succinct": {
       "url": "https://github.com/code-423n4/2025-09-succinct"
+    },
+    "defi-wonderland/optimism": {
+      "url": "https://github.com/defi-wonderland/optimism",
+      "fork_of": "ethereum-optimism/optimism"
     },
     "elliottech/lighter-bridge-contracts": {
       "url": "https://github.com/elliottech/lighter-bridge-contracts"
@@ -170,11 +187,29 @@
     "eth-infinitism/account-abstraction": {
       "url": "https://github.com/eth-infinitism/account-abstraction"
     },
+    "ethereum-optimism/contracts": {
+      "url": "https://github.com/ethereum-optimism/contracts"
+    },
+    "ethereum-optimism/contracts-v2": {
+      "url": "https://github.com/ethereum-optimism/contracts-v2"
+    },
     "ethereum-optimism/op-geth": {
       "url": "https://github.com/ethereum-optimism/op-geth"
     },
     "ethereum-optimism/optimism": {
       "url": "https://github.com/ethereum-optimism/optimism"
+    },
+    "ethereum-optimism/optimism-audit-fixes": {
+      "url": "https://github.com/ethereum-optimism/optimism-audit-fixes"
+    },
+    "ethereum-optimism/optimistic-specs": {
+      "url": "https://github.com/ethereum-optimism/optimistic-specs"
+    },
+    "ethereum-optimism/reference-optimistic-geth": {
+      "url": "https://github.com/ethereum-optimism/reference-optimistic-geth"
+    },
+    "ethereum-optimism/superchain-ops": {
+      "url": "https://github.com/ethereum-optimism/superchain-ops"
     },
     "ethereum/ERCs": {
       "url": "https://github.com/ethereum/ERCs"
@@ -210,6 +245,9 @@
     "lidofinance/governance-crosschain-bridges": {
       "url": "https://github.com/lidofinance/governance-crosschain-bridges",
       "fork_of": "aave/governance-crosschain-bridges"
+    },
+    "op-rs/kona": {
+      "url": "https://github.com/op-rs/kona"
     },
     "openintentsframework/broadcaster": {
       "url": "https://github.com/openintentsframework/broadcaster"
@@ -291,6 +329,9 @@
     "scroll-tech/zkvm-prover": {
       "url": "https://github.com/scroll-tech/zkvm-prover"
     },
+    "sherlock-audit/2024-02-optimism-2024": {
+      "url": "https://github.com/sherlock-audit/2024-02-optimism-2024"
+    },
     "sherlock-audit/2026-01-aztec-network-jan-14th": {
       "url": "https://github.com/sherlock-audit/2026-01-aztec-network-jan-14th"
     },
@@ -314,6 +355,12 @@
     },
     "tornadocash/tornado-pool": {
       "url": "https://github.com/tornadocash/tornado-pool"
+    },
+    "voteagora/optimism-gov": {
+      "url": "https://github.com/voteagora/optimism-gov"
+    },
+    "voteagora/optimism-governor": {
+      "url": "https://github.com/voteagora/optimism-governor"
     }
   }
 }

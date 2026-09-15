@@ -1,0 +1,782 @@
+{
+  "schema_version": "1.4.0",
+  "project": "optimism",
+  "reports": [
+    {
+      "id": "cantina-mcp-l1-2024-02",
+      "report_file": "2024_02-MCP_L1-Cantina.md",
+      "title": "Optimism Cycle 19 Security Review (Cantina, MCP L1)",
+      "description": "Cantina Managed review of the MCP L1 (multi-chain prep) upgrade that moves L1 contract immutables into storage and adds initializer parameters, covering the affected contracts-bedrock Solidity contracts and the op-chain-ops upgrade tooling in Go. No Critical, High or Medium issues; the report declares no explicit file list.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2024-02-15",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the MCP L1 (multi-chain prep) upgrade changes; the report declares no file list, this file is recorded because findings locate in it.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/SystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the MCP L1 (multi-chain prep) upgrade changes; the report declares no file list, this file is recorded because findings locate in it.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/OptimismPortal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the MCP L1 (multi-chain prep) upgrade changes; the report declares no file list, this file is recorded because findings locate in it.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the MCP L1 (multi-chain prep) upgrade changes; the report declares no file list, this file is recorded because findings locate in it.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the MCP L1 (multi-chain prep) upgrade changes; the report declares no file list, this file is recorded because findings locate in it.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/FeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the MCP L1 (multi-chain prep) upgrade changes; the report declares no file list, this file is recorded because findings locate in it.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the MCP L1 (multi-chain prep) upgrade changes; the report declares no file list, this file is recorded because findings locate in it.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sherlock-fault-proofs-2024-06",
+      "report_file": "2024_05-FaultProofs-Sherlock.md",
+      "title": "Sherlock Security Review for Optimism (Fault Proofs)",
+      "description": "Public Sherlock contest on the fault proof system's L1 contracts (OptimismPortal2, DisputeGameFactory, FaultDisputeGame, DelayedWETH, WETH98) at a fixed monorepo commit, with four Medium and no High findings. FaultDisputeGame resolution logic was explicitly excluded from the contest scope.",
+      "isRelevant": true,
+      "auditor": "Sherlock",
+      "report_date": "2024-06-07",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        },
+        {
+          "id": "sherlock-audit/2024-02-optimism-2024",
+          "url": "https://github.com/sherlock-audit/2024-02-optimism-2024"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/L1/OptimismPortal2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5137f3b74c6ebcac4f0f5a118b0f4909df03aec6",
+                    "timestamp": "2024-03-26T19:46:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5137f3b74c6ebcac4f0f5a118b0f4909df03aec6"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file per the contest repository README (the report itself delegates the file list there). Fix pull requests 10152, 10438, 10149 and 10520 are recorded by Sherlock admins but were not reviewed by the auditors.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5137f3b74c6ebcac4f0f5a118b0f4909df03aec6",
+                    "timestamp": "2024-03-26T19:46:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5137f3b74c6ebcac4f0f5a118b0f4909df03aec6"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file per the contest repository README (the report itself delegates the file list there). Fix pull requests 10152, 10438, 10149 and 10520 are recorded by Sherlock admins but were not reviewed by the auditors.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5137f3b74c6ebcac4f0f5a118b0f4909df03aec6",
+                    "timestamp": "2024-03-26T19:46:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5137f3b74c6ebcac4f0f5a118b0f4909df03aec6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file, but the game resolution logic was explicitly out of scope (participants were told to assume the game can resolve incorrectly). Contest scope file per the contest repository README (the report itself delegates the file list there). Fix pull requests 10152, 10438, 10149 and 10520 are recorded by Sherlock admins but were not reviewed by the auditors.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/weth/DelayedWETH.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5137f3b74c6ebcac4f0f5a118b0f4909df03aec6",
+                    "timestamp": "2024-03-26T19:46:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5137f3b74c6ebcac4f0f5a118b0f4909df03aec6"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file per the contest repository README (the report itself delegates the file list there). Fix pull requests 10152, 10438, 10149 and 10520 are recorded by Sherlock admins but were not reviewed by the auditors.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/weth/WETH98.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5137f3b74c6ebcac4f0f5a118b0f4909df03aec6",
+                    "timestamp": "2024-03-26T19:46:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/5137f3b74c6ebcac4f0f5a118b0f4909df03aec6"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file per the contest repository README (the report itself delegates the file list there). Fix pull requests 10152, 10438, 10149 and 10520 are recorded by Sherlock admins but were not reviewed by the auditors.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-safe-extensions-2024-06",
+      "report_file": "2024_05_SafeLivenessExtensions-Cantina.md",
+      "title": "Optimism Safe Extensions Competition (Cantina)",
+      "description": "Cantina competition on the Security Council Safe extensions LivenessGuard and LivenessModule in contracts-bedrock, reporting six Medium findings out of 143 submissions and no Critical or High issues. The report prints no commit; the revision comes from the single GitHub permalink in the report.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2024-06-06",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/Safe/LivenessGuard.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "48393a6a1ea32efac65bb3ce6617cf101ad88225",
+                    "timestamp": "2024-05-10T05:04:52Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/48393a6a1ea32efac65bb3ce6617cf101ad88225"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Competition on the Security Council Safe extensions; the report prints no commit, this revision is the only GitHub permalink it contains (finding 3.1.5). Only Medium findings are reproduced.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/Safe/LivenessModule.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "48393a6a1ea32efac65bb3ce6617cf101ad88225",
+                    "timestamp": "2024-05-10T05:04:52Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/48393a6a1ea32efac65bb3ce6617cf101ad88225"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Competition on the Security Council Safe extensions; the report prints no commit, this revision is the only GitHub permalink it contains (finding 3.1.5). Only Medium findings are reproduced.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "code4rena-superchain-2024-08",
+      "report_file": "2024_08-Superchain-Code4rena.md",
+      "title": "Optimism Superchain Findings & Analysis Report (Code4rena)",
+      "description": "Code4rena contest on the fault proof contracts (FaultDisputeGame, DisputeGameFactory, MIPS, PreimageOracle and libraries) hosted in the contest mirror repository, yielding five High and eleven Medium findings with no fix review. The file list and pinned commit come from the contest repository, which the report names as the code under review.",
+      "isRelevant": true,
+      "auditor": "Code4rena",
+      "report_date": "2024-08-16",
+      "repositories": [
+        {
+          "id": "code-423n4/2024-07-optimism",
+          "url": "https://github.com/code-423n4/2024-07-optimism"
+        },
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "code-423n4/2024-07-optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "70556044e5e080930f686c4e5acde420104bb2c4",
+                    "timestamp": "2024-07-17T15:00:40Z",
+                    "url": "https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file (six contracts, 1847 SLOC per the contest README); code links in the report pin this commit of the mirror repository. H-02 spans the FaultDisputeGame clock extension and the PreimageOracle challenge period.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "H-01",
+                    "H-02"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "70556044e5e080930f686c4e5acde420104bb2c4",
+                    "timestamp": "2024-07-17T15:00:40Z",
+                    "url": "https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file (six contracts, 1847 SLOC per the contest README); code links in the report pin this commit of the mirror repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/MIPS.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "70556044e5e080930f686c4e5acde420104bb2c4",
+                    "timestamp": "2024-07-17T15:00:40Z",
+                    "url": "https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file (six contracts, 1847 SLOC per the contest README); code links in the report pin this commit of the mirror repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/PreimageOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "70556044e5e080930f686c4e5acde420104bb2c4",
+                    "timestamp": "2024-07-17T15:00:40Z",
+                    "url": "https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file (six contracts, 1847 SLOC per the contest README); code links in the report pin this commit of the mirror repository. H-02 spans the FaultDisputeGame clock extension and the PreimageOracle challenge period.",
+                  "major_findings": 4,
+                  "finding_ids": [
+                    "H-02",
+                    "H-03",
+                    "H-04",
+                    "H-05"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/PreimageKeyLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "70556044e5e080930f686c4e5acde420104bb2c4",
+                    "timestamp": "2024-07-17T15:00:40Z",
+                    "url": "https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file (six contracts, 1847 SLOC per the contest README); code links in the report pin this commit of the mirror repository.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/libraries/CannonTypes.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "70556044e5e080930f686c4e5acde420104bb2c4",
+                    "timestamp": "2024-07-17T15:00:40Z",
+                    "url": "https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Contest scope file (six contracts, 1847 SLOC per the contest README); code links in the report pin this commit of the mirror repository.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-fault-proofs-mips-2024-08",
+      "report_file": "2024_08_Fault-Proofs-MIPS_Cantina.md",
+      "title": "Base fault proofs mips Security Review (Cantina)",
+      "description": "Cantina Managed review, commissioned by Base, of the Cannon onchain MIPS single-step verifier MIPS.sol and its MIPSInstructions library at a fixed optimism monorepo commit, with one Critical and one High finding in MIPS.sol. All client responses are acknowledgements and no fix commit is given.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2024-08-14",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/cannon/MIPS.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71b93116738ee98c9f8713b1a5dfe626ce06c1b2",
+                    "timestamp": "2024-06-17T00:12:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/71b93116738ee98c9f8713b1a5dfe626ce06c1b2"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the onchain MIPS VM. 3.1.1 (Critical, mmap allocation overflow) and 3.2.1 (High, lack of deallocation) are acknowledged and unfixed at this commit.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "3.1.1",
+                    "3.2.1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/libraries/MIPSInstructions.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71b93116738ee98c9f8713b1a5dfe626ce06c1b2",
+                    "timestamp": "2024-06-17T00:12:56Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/71b93116738ee98c9f8713b1a5dfe626ce06c1b2"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the instruction library (Medium and lower findings only).",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spearbit-fault-proofs-no-mips-2024-08",
+      "report_file": "2024_08_Fault-Proofs-No-MIPS_Spearbit.md",
+      "title": "Base Fault Proofs no MIPS Security Review (Spearbit)",
+      "description": "Spearbit review, commissioned by Base, of the Optimism fault-proof dispute contracts (FaultDisputeGame, DisputeGameFactory, AnchorStateRegistry, dispute libraries, PreimageOracle) at a fixed monorepo commit, explicitly excluding MIPS. Four Medium and no Critical or High findings; no fix review.",
+      "isRelevant": true,
+      "auditor": "Spearbit",
+      "report_date": "2024-08-14",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/dispute": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1f7081798ce2d49b8643514663d10681cb853a3d",
+                    "timestamp": "2024-06-03T17:23:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/1f7081798ce2d49b8643514663d10681cb853a3d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the dispute protocol contracts; the report declares no file list, MIPS is excluded by title. No Critical or High findings, all issues acknowledged.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/PreimageOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1f7081798ce2d49b8643514663d10681cb853a3d",
+                    "timestamp": "2024-06-03T17:23:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/1f7081798ce2d49b8643514663d10681cb853a3d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the dispute protocol contracts; the report declares no file list, MIPS is excluded by title. No Critical or High findings, all issues acknowledged.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/PreimageKeyLib.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1f7081798ce2d49b8643514663d10681cb853a3d",
+                    "timestamp": "2024-06-03T17:23:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/1f7081798ce2d49b8643514663d10681cb853a3d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the dispute protocol contracts; the report declares no file list, MIPS is excluded by title. No Critical or High findings, all issues acknowledged.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/MIPS.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1f7081798ce2d49b8643514663d10681cb853a3d",
+                    "timestamp": "2024-06-03T17:23:30Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/1f7081798ce2d49b8643514663d10681cb853a3d"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "Excluded from this review (\"no MIPS\").",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "3docsecurity-cannon-fgetfd-2024-10",
+      "report_file": "2024_10-Cannon-FGETFD-3DocSecurity.md",
+      "title": "Audit Report - OP Cannon (3DOC Security, F_GETFD)",
+      "description": "Two-day 3DOC Security review of pull request 12050 adding F_GETFD syscall support to the Cannon MIPS VM in both the Go implementation and the onchain MIPS, MIPS2 and MIPSSyscalls contracts. No findings; the single reported item was withdrawn as a false positive.",
+      "isRelevant": true,
+      "auditor": "3DOC Security",
+      "report_date": "2024-10-03",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/cannon/MIPS.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "32a6e3d3bc56ffe2f258a706cea0175600b9aa0e",
+                    "timestamp": "2024-09-30T08:28:05Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/32a6e3d3bc56ffe2f258a706cea0175600b9aa0e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of pull request 12050 (F_GETFD syscall support and VM version bump); head commit of the pull request. No findings.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/MIPS2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "32a6e3d3bc56ffe2f258a706cea0175600b9aa0e",
+                    "timestamp": "2024-09-30T08:28:05Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/32a6e3d3bc56ffe2f258a706cea0175600b9aa0e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of pull request 12050 (F_GETFD syscall support and VM version bump); head commit of the pull request. No findings.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/cannon/libraries/MIPSSyscalls.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "32a6e3d3bc56ffe2f258a706cea0175600b9aa0e",
+                    "timestamp": "2024-09-30T08:28:05Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/32a6e3d3bc56ffe2f258a706cea0175600b9aa0e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Diff review of pull request 12050 (F_GETFD syscall support and VM version bump); head commit of the pull request. No findings.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "milotruck-deputypausemodule-2025-01",
+      "report_file": "2024_12-DPM-MiloTruck.md",
+      "title": "Optimism DeputyPauseModule (MiloTruck)",
+      "description": "Two-day independent review by MiloTruck of the DeputyPauseModule Safe module for signature-based emergency pauses, followed by verification of the mitigation commit and pull request 13594. Three Low and two Informational findings, none Critical or High.",
+      "isRelevant": true,
+      "auditor": "MiloTruck",
+      "report_date": "2025-01-07",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/safe/DeputyPauseModule.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2f17e6b67c61de5d8073d556272796d201bc740b",
+                    "timestamp": "2024-12-16T20:41:44Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2f17e6b67c61de5d8073d556272796d201bc740b"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the module (single-contract review; all findings locate here).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4851c96c25e1ad251d111a4f80b3395c73d7d0b2",
+                    "timestamp": null,
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/4851c96c25e1ad251d111a4f80b3395c73d7d0b2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Mitigation hash named by the report; GitHub no longer serves this commit.",
+                  "follows": "2f17e6b67c61de5d8073d556272796d201bc740b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "abda59bcdeb1c829a83e3ffdfec747a5465aecc8",
+                    "timestamp": "2025-01-09T15:59:20Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/abda59bcdeb1c829a83e3ffdfec747a5465aecc8"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of pull request 13594 fixing L-2 and I-1, verified by the auditor.",
+                  "follows": "4851c96c25e1ad251d111a4f80b3395c73d7d0b2",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "radiantlabs-deputypausemodule-2024-12",
+      "report_file": "2024_12-DPM-RadiantLabs.md",
+      "title": "DeputyPauseModule Security Review (Radiant Labs)",
+      "description": "Two-day Radiant Labs manual review of the DeputyPauseModule contract against its design document and specification invariants. Two Low and two Informational findings, none Critical or High; no fix review.",
+      "isRelevant": true,
+      "auditor": "Radiant Labs",
+      "report_date": "2024-12-28",
+      "repositories": [
+        {
+          "id": "ethereum-optimism/optimism",
+          "url": "https://github.com/ethereum-optimism/optimism"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ethereum-optimism/optimism",
+          "paths": {
+            "packages/contracts-bedrock/src/safe/DeputyPauseModule.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2f17e6b67c61de5d8073d556272796d201bc740b",
+                    "timestamp": "2024-12-16T20:41:44Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/2f17e6b67c61de5d8073d556272796d201bc740b"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full manual review of the single in-scope contract.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
