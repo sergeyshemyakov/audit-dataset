@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "lighter",
   "reports": [
     {
@@ -45,6 +45,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Top-level circuit files directly in circuit/src (block, block pre-execution, block tx, block tx chain, tx_constraints, matching engine); subdirectories only where listed separately. Findings #00 (tx_constraints.rs) and #01 (block_tx_constraints.rs) are High and reported as acknowledged and fixed without a fix commit. The report states no commit; 4876a50 is the diff base named by the follow-up Block and Delta report for the changes made since this engagement, and is not served by the public repository.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "#00",
+                    "#01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -140,6 +144,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Changes introduced between 4876a50 and b119f03, primarily the account delta tree feature (account tree moved under validium, metadata tree removed, account public data tree and per-batch delta tree). Finding #02 (High) in types/account_delta/position_delta.rs. Both abbreviated commits are stated by the report and are not served by the public repository.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "#02"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -206,6 +213,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Bigint module (report path src/bigint). Findings #00 (div_rem.rs) and #01 (comparison.rs) are High; #03, #04, #06, #07, #08 are Low. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "#00",
+                    "#01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -263,6 +274,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Hints module (report path src/hints). Finding #00 (High) affects hints/mod.rs div_rem and conditional_div_rem; #05 is Low. Abbreviated commit b119f03 is stated by the report and is not served by the public repository.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "#00"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -394,6 +408,10 @@
                   "review_phase": "initial audit",
                   "coverage": "WrapperInnerCircuit, WrapperOuterCircuit and WrapperCircuit. Findings #00 and #01 are High, #02 Low, #03 Informational; fixes applied by the developers without a stated commit. BLS12-381 code and the Gnark outer circuit were explicitly not covered. Commit is stated by the report and is not served by the public repository.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "#00",
+                    "#01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -502,6 +520,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Core exit-claim validation and TAV computation. Finding #00 (High, negative TAV bypass); #02 (Low) overflow scenarios acknowledged. Commit b99c425 is stated by the report and is not served by the public repository.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "#00"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -686,6 +707,9 @@
                   "review_phase": "phase 1 audit",
                   "coverage": "Phase 1 review of the multi-asset infrastructure. Finding #01 (High, missing asset index range validation) and #05 (Informational). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "#01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -813,6 +837,9 @@
                   "review_phase": "phase 1 audit",
                   "coverage": "Phase 1 review of the multi-asset infrastructure. Finding #00 (High, PERPS route lacks USDC check). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "#00"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -959,6 +986,9 @@
                   "review_phase": "phase 1 audit",
                   "coverage": "Phase 1 review of the multi-asset infrastructure. Finding #01 (High, missing asset index range validation). Commits are stated by the report and are not served by the public repository; file paths resolved against the public lighter-prover layout.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "#01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1345,6 +1375,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review. Finding 6.1 (Critical, inconsistent hash padding bricks cancelOutstandingDepositsForDesertMode); 6.2 (Medium) also touches this file; 6.3 (Info). Commits are stated by the report and are not served by the public lighter-contracts repository, whose history starts from a December 2025 snapshot.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "6.1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {

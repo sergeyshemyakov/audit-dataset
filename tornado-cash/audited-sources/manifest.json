@@ -1,8 +1,26 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project": "tornado-cash",
   "audit_summary": "../audit-summary.json",
   "sources": [
+    {
+      "repository": "gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6",
+      "repository_url": "https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6",
+      "source_path": "Farm.sol",
+      "path_kind": "file",
+      "commit": "051df72c9b1203e7ab7308a4452105036ad46bfb",
+      "files": [
+        {
+          "file": "gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6/Farm.sol/051df72c9b1203e7ab7308a4452105036ad46bfb/Farm.sol",
+          "git_object": "080338f95cf3290d10cbd95429b86105e31e190c",
+          "git_mode": "100644",
+          "sha256": "de7ff070d19b3e4b1faaab88a88e29a74022db231a5be543810b08ede4584bd5",
+          "units": [
+            "Farm"
+          ]
+        }
+      ]
+    },
     {
       "repository": "peppersec/tornado-mixer",
       "repository_url": "https://github.com/peppersec/tornado-mixer",
@@ -14,7 +32,10 @@
           "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/0484408e82e8f1eebd081186cb11189aa0e9b57f/merkleTree.circom",
           "git_object": "f7ffbb6758e3f607f7f580a1c7033c7dc2b7be7a",
           "git_mode": "100644",
-          "sha256": "8b1222c24aa6bf8b0f59e9e1de38775b3b4d4afbccfcc3c3d073a898719da739"
+          "sha256": "8b1222c24aa6bf8b0f59e9e1de38775b3b4d4afbccfcc3c3d073a898719da739",
+          "units": [
+            "merkleTree.circom"
+          ]
         }
       ]
     },
@@ -29,7 +50,10 @@
           "file": "peppersec/tornado-mixer/circuits/withdraw.circom/0484408e82e8f1eebd081186cb11189aa0e9b57f/withdraw.circom",
           "git_object": "cc1448de8493ef111a6d81842fde79e67641d27a",
           "git_mode": "100644",
-          "sha256": "23af8497024f168941bc5d7a076d2bfbc7d5f2d4959e906f41dc01e07c8ef283"
+          "sha256": "23af8497024f168941bc5d7a076d2bfbc7d5f2d4959e906f41dc01e07c8ef283",
+          "units": [
+            "withdraw.circom"
+          ]
         }
       ]
     },
@@ -44,7 +68,10 @@
           "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/ERC20Mixer.sol",
           "git_object": "5941f0e96361a6f42968250b71236a952affef9c",
           "git_mode": "100644",
-          "sha256": "d6a46b9bed6489c2e9c887d2cdfaa9d567de28724a322da5c2c526a375429de6"
+          "sha256": "191019c4402d7f777dba780b5e37e45c70fbb21b2d342128fae13ed55dc5a6ae",
+          "units": [
+            "ERC20Mixer"
+          ]
         }
       ]
     },
@@ -59,7 +86,10 @@
           "file": "peppersec/tornado-mixer/contracts/ETHMixer.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/ETHMixer.sol",
           "git_object": "44ebc603e5f8f6528ea1b7c5044f1d3afc86b78b",
           "git_mode": "100644",
-          "sha256": "c8ec7a7a7b7563e0e0a41dd0b4d4c227c495caf3807410115987752b31a35679"
+          "sha256": "30280a10b7f9a64b5c81b90e7e75005044519e501d2f43109ea45ac6064bdfa1",
+          "units": [
+            "ETHMixer"
+          ]
         }
       ]
     },
@@ -74,7 +104,11 @@
           "file": "peppersec/tornado-mixer/contracts/MerkleTreeWithHistory.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/MerkleTreeWithHistory.sol",
           "git_object": "9d2f18939932f368c022af1c1fc5a66925b19a73",
           "git_mode": "100644",
-          "sha256": "295959a544447e3fbe82d404c3ca6f59b830bcf88a1190ab8a60b936fb50224f"
+          "sha256": "1fbac99d165fdf6d4274879372a4d6872c49464aadaaf97fbfa57e8116e801e5",
+          "units": [
+            "Hasher",
+            "MerkleTreeWithHistory"
+          ]
         }
       ]
     },
@@ -89,7 +123,11 @@
           "file": "peppersec/tornado-mixer/contracts/Mixer.sol/0484408e82e8f1eebd081186cb11189aa0e9b57f/Mixer.sol",
           "git_object": "4a5b9efbb78ccea4028d6860fc56855ca0e12823",
           "git_mode": "100644",
-          "sha256": "a01bcaa659feff00606c37495b048a97f5a13fde951c37a1a081f554683b7706"
+          "sha256": "cef2a48b432a9ced4c2672ac7e630634080c6294cba24ee34336e15af979bb86",
+          "units": [
+            "IVerifier",
+            "Mixer"
+          ]
         }
       ]
     },
@@ -104,7 +142,10 @@
           "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/07168f9816a6a78767f53aab25624bd1d739a66d/merkleTree.circom",
           "git_object": "a8b232832f638564caf310491131046b3d757405",
           "git_mode": "100644",
-          "sha256": "ee7d927bc391e108dd2fbb035d485408670f3d929d1feddbd04771b3eae66111"
+          "sha256": "ee7d927bc391e108dd2fbb035d485408670f3d929d1feddbd04771b3eae66111",
+          "units": [
+            "merkleTree.circom"
+          ]
         }
       ]
     },
@@ -119,7 +160,10 @@
           "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/7193655e4940476269426b80da40bc9a099598e4/merkleTree.circom",
           "git_object": "0d8560583040f2d3fd960cd820b88fc4693146f5",
           "git_mode": "100644",
-          "sha256": "f446e879242f399dc1c4c124f79926a07a7fc76d81e56d1209040f7103951179"
+          "sha256": "f446e879242f399dc1c4c124f79926a07a7fc76d81e56d1209040f7103951179",
+          "units": [
+            "merkleTree.circom"
+          ]
         }
       ]
     },
@@ -134,7 +178,10 @@
           "file": "peppersec/tornado-mixer/circuits/withdraw.circom/7193655e4940476269426b80da40bc9a099598e4/withdraw.circom",
           "git_object": "e060f4f250e11c75bde14bea888ea9631bf865ea",
           "git_mode": "100644",
-          "sha256": "8613960c963a65f624474c3715608558c6b82381df2b12594159d97349650de9"
+          "sha256": "8613960c963a65f624474c3715608558c6b82381df2b12594159d97349650de9",
+          "units": [
+            "withdraw.circom"
+          ]
         }
       ]
     },
@@ -149,7 +196,10 @@
           "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/83c9ba72969ff3dfd6b66acec5134666f8fdf283/ERC20Mixer.sol",
           "git_object": "3dd1cd5672df66681c8f0c16c9f4141a3b37cb8b",
           "git_mode": "100644",
-          "sha256": "3fa8522225c8a148ec0a68c295f8f043b20bc77fb0a05d30087d9994794b39b9"
+          "sha256": "4c973ea5b91163bc869de9115b4939c1cd7c5e6a2dd93b838308064b7bcddd62",
+          "units": [
+            "ERC20Mixer"
+          ]
         }
       ]
     },
@@ -164,7 +214,10 @@
           "file": "peppersec/tornado-mixer/circuits/withdraw.circom/9efab84e65d923410ce4418794a5ca2ddcd74f37/withdraw.circom",
           "git_object": "36a467418a3ad744b76803034b7365e3d1eaccd5",
           "git_mode": "100644",
-          "sha256": "65174751f3f397a5adc16e34f5f72c3911909046e94741ab4f1e7c7922e48672"
+          "sha256": "65174751f3f397a5adc16e34f5f72c3911909046e94741ab4f1e7c7922e48672",
+          "units": [
+            "withdraw.circom"
+          ]
         }
       ]
     },
@@ -179,7 +232,10 @@
           "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/c00e5532994f03f8bc61f147259bc5d353a0d2c9/ERC20Mixer.sol",
           "git_object": "2e99231565e4e9ccb86c97ae00b0bb683c727287",
           "git_mode": "100644",
-          "sha256": "432c07bbbd61a234e5ad87280edf8c7331db837d993dff5b06d5c0bea102687a"
+          "sha256": "d3b626d34ffc725f4ae57134062ba742fb8b50c93ba6397117be8f71c48129cb",
+          "units": [
+            "ERC20Mixer"
+          ]
         }
       ]
     },
@@ -194,7 +250,10 @@
           "file": "peppersec/tornado-mixer/contracts/ERC20Mixer.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/ERC20Mixer.sol",
           "git_object": "795d1c901e2bee2b6da5bd77a59eb5ec35b2fa2e",
           "git_mode": "100644",
-          "sha256": "d892a7e95e4d905c3ff7b0ded5a81698dd19c57a3f9b156a1416b8a8dc976eb9"
+          "sha256": "730a6a71a987f52cdfe132408bfe73ba51319eff9659b608f951d50eb932c7e4",
+          "units": [
+            "ERC20Mixer"
+          ]
         }
       ]
     },
@@ -209,7 +268,10 @@
           "file": "peppersec/tornado-mixer/contracts/ETHMixer.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/ETHMixer.sol",
           "git_object": "2996b5e4e3f93958dae26a9c2a4dfb44adfca790",
           "git_mode": "100644",
-          "sha256": "3d7dad083e377c9cde2ad2b67926a320bb6492468dca3d27d01234f9d373fb02"
+          "sha256": "014c4926dff5336acb42700171c92e54e7a85047719ec14a9a1083893fc41b1d",
+          "units": [
+            "ETHMixer"
+          ]
         }
       ]
     },
@@ -224,7 +286,11 @@
           "file": "peppersec/tornado-mixer/contracts/MerkleTreeWithHistory.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/MerkleTreeWithHistory.sol",
           "git_object": "f264cd023384be95cd273cc5ab62b99036734656",
           "git_mode": "100644",
-          "sha256": "d6030aa205bc68ce77d11301d8fa8a5e3b41f62251c8d7054db0225537b33e5d"
+          "sha256": "aa4872514793b13e35e4d6e3200c08854d937a67c33ff523c50ecd288c6a2146",
+          "units": [
+            "Hasher",
+            "MerkleTreeWithHistory"
+          ]
         }
       ]
     },
@@ -239,7 +305,11 @@
           "file": "peppersec/tornado-mixer/contracts/Mixer.sol/d0e312eb808797a4f20a81fda2224185a3f914b4/Mixer.sol",
           "git_object": "a17f827946148bb3254f1ebe97bd26d79aa2e3ed",
           "git_mode": "100644",
-          "sha256": "3f19961422b0af0c1df63e85b04fad0cbefee4aee9f8c5e1b7fb7059ccad9b25"
+          "sha256": "666b0075de84a673d71019b214c6cd2fda8cd0dbafab521ba975db0fd1737eb7",
+          "units": [
+            "IVerifier",
+            "Mixer"
+          ]
         }
       ]
     },
@@ -254,7 +324,10 @@
           "file": "peppersec/tornado-mixer/circuits/merkleTree.circom/f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371/merkleTree.circom",
           "git_object": "bfd6016e36a4c4394e0898c023aae6cd8667598d",
           "git_mode": "100644",
-          "sha256": "53d6eeefe414d11f7322f5345b6e36e700d6e588124f200760df253bd6b8011e"
+          "sha256": "53d6eeefe414d11f7322f5345b6e36e700d6e588124f200760df253bd6b8011e",
+          "units": [
+            "merkleTree.circom"
+          ]
         }
       ]
     },
@@ -269,485 +342,616 @@
           "file": "peppersec/tornado-mixer/circuits/withdraw.circom/f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371/withdraw.circom",
           "git_object": "a4c4848df7fc525f61fe294c8fb78e53f81f13dc",
           "git_mode": "100644",
-          "sha256": "9bb04a018bc2ee96580b15a6e7ff3da40f46884de8b1b2b41e2ee38bb33c2047"
+          "sha256": "9bb04a018bc2ee96580b15a6e7ff3da40f46884de8b1b2b41e2ee38bb33c2047",
+          "units": [
+            "withdraw.circom"
+          ]
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/Withdraw.circom",
+      "path_kind": "file",
+      "commit": "459fa79321b1b48eefc3cb85f82733528d5e56d3",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/circuits/Withdraw.circom/459fa79321b1b48eefc3cb85f82733528d5e56d3/Withdraw.circom",
+          "git_object": "a55b7bb40f931ff4712e55957c43adbfad18640d",
+          "git_mode": "100644",
+          "sha256": "7033760c705db07a1a57fa2f22613cad39bf0200ebb32e01c1a77be5aeb745bb",
+          "units": [
+            "Withdraw.circom"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/Miner.sol",
+      "path_kind": "file",
+      "commit": "49ce4e9375509c3bc866d32fbf6345361a85b9a0",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/Miner.sol/49ce4e9375509c3bc866d32fbf6345361a85b9a0/Miner.sol",
+          "git_object": "6acd0d47221d0dc1d107950bd45aeef138bf16a2",
+          "git_mode": "100644",
+          "sha256": "2736e795ba0643d8da9a55f569fb3d0ae1a212e39d53f4a3cd20c1cb5a263f25",
+          "units": [
+            "Miner"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/MerkleTreeUpdater.circom",
+      "path_kind": "file",
+      "commit": "7487ac8b09dcfc78ecc166cff5208435010cec8e",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/circuits/MerkleTreeUpdater.circom/7487ac8b09dcfc78ecc166cff5208435010cec8e/MerkleTreeUpdater.circom",
+          "git_object": "89415b19d154b876db054322d6784877c5736d5b",
+          "git_mode": "100644",
+          "sha256": "83bc15cd6d1e307f1ea7d4a04d24f077c74fa79f143e546c9441fa96f766d55e",
+          "units": [
+            "MerkleTreeUpdater.circom"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
       "source_path": "circuits",
       "path_kind": "directory_recursive",
-      "commit": "042be187d10d331024ab9fa371b8284c449fa77e",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
       "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/merkleTree.circom",
-          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "file": "tornadocash/tornado-anonymity-mining/circuits/820bd83254f3264cebaf255869641ebc33288dc3/MerkleTree.circom",
+          "git_object": "45c48c8f55ec193f8d7944ea9da0d9df332b3702",
           "git_mode": "100644",
-          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
+          "sha256": "049751414daa72a30fe787af4c7ac32dbb116aa2fea7512f388398c665a60b87",
+          "units": [
+            "MerkleTree.circom"
+          ]
         },
         {
-          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/transaction.circom",
-          "git_object": "20095900fae174fbb8459cfd26bcf08915303dee",
+          "file": "tornadocash/tornado-anonymity-mining/circuits/820bd83254f3264cebaf255869641ebc33288dc3/MerkleTreeUpdater.circom",
+          "git_object": "8c05a5a2951a8c0bf9791b2a382c3b69955b5de7",
           "git_mode": "100644",
-          "sha256": "2f20b0ce526d54d9d60ecb1ce85d9699444f09d8a826fa39590b9360ff0ed816"
+          "sha256": "a36b1e8001c7dcf49efd11c711a2018966e3e32d288d7265b0b4fd7e184c681b",
+          "units": [
+            "MerkleTreeUpdater.circom"
+          ]
         },
         {
-          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/transaction16.circom",
-          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "file": "tornadocash/tornado-anonymity-mining/circuits/820bd83254f3264cebaf255869641ebc33288dc3/Reward.circom",
+          "git_object": "6c6329747c7c582bd417a253aad79bf4269f6074",
           "git_mode": "100644",
-          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
+          "sha256": "8fc8473abca7956dd083631962c3eb6a424adb0e5cdd7fb954d5431412e7addb",
+          "units": [
+            "Reward.circom"
+          ]
         },
         {
-          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/transaction2.circom",
-          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "file": "tornadocash/tornado-anonymity-mining/circuits/820bd83254f3264cebaf255869641ebc33288dc3/TreeUpdate.circom",
+          "git_object": "40fdecf698c1a4c18f5dcddd81ba760940cac016",
           "git_mode": "100644",
-          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
+          "sha256": "693a81dbfad2f6268498b7e6622c73fc7b42c271530903fabe58b459debd5e5e",
+          "units": [
+            "TreeUpdate.circom"
+          ]
         },
         {
-          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/treeUpdater.circom",
-          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
+          "file": "tornadocash/tornado-anonymity-mining/circuits/820bd83254f3264cebaf255869641ebc33288dc3/Utils.circom",
+          "git_object": "1ceb5b0e8d1baa5aa2d6bc9cd43a57373d8377e9",
           "git_mode": "100644",
-          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
+          "sha256": "11d3215c2288b01f5808cc7545031ba59b23393acb7818c565966abf44263cc3",
+          "units": [
+            "Utils.circom"
+          ]
         },
         {
-          "file": "tornadocash/tornado-pool/circuits/042be187d10d331024ab9fa371b8284c449fa77e/utils.circom",
-          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "file": "tornadocash/tornado-anonymity-mining/circuits/820bd83254f3264cebaf255869641ebc33288dc3/Withdraw.circom",
+          "git_object": "229b96984849b3309ddbfa25a11531b00706704e",
           "git_mode": "100644",
-          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+          "sha256": "e81bb920a25eeaa4384e32bd070472ff3724607ea785001f9284bf4a6acbd2ce",
+          "units": [
+            "Withdraw.circom"
+          ]
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "contracts",
-      "path_kind": "directory_recursive",
-      "commit": "042be187d10d331024ab9fa371b8284c449fa77e",
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/MerkleTree.circom",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
       "files": [
         {
-          "file": "tornadocash/tornado-pool/contracts/042be187d10d331024ab9fa371b8284c449fa77e/TornadoPool.sol",
-          "git_object": "9f7bf8ca361429b600d358ab78dd6a477a8fad9a",
+          "file": "tornadocash/tornado-anonymity-mining/circuits/MerkleTree.circom/820bd83254f3264cebaf255869641ebc33288dc3/MerkleTree.circom",
+          "git_object": "45c48c8f55ec193f8d7944ea9da0d9df332b3702",
           "git_mode": "100644",
-          "sha256": "51be09a9bbae1752adacd23e1362a1ad5a527e9994979e7ee35301c4d473d832"
+          "sha256": "049751414daa72a30fe787af4c7ac32dbb116aa2fea7512f388398c665a60b87",
+          "units": [
+            "MerkleTree.circom"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/MerkleTreeUpdater.circom",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/circuits/MerkleTreeUpdater.circom/820bd83254f3264cebaf255869641ebc33288dc3/MerkleTreeUpdater.circom",
+          "git_object": "8c05a5a2951a8c0bf9791b2a382c3b69955b5de7",
+          "git_mode": "100644",
+          "sha256": "a36b1e8001c7dcf49efd11c711a2018966e3e32d288d7265b0b4fd7e184c681b",
+          "units": [
+            "MerkleTreeUpdater.circom"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/Withdraw.circom",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/circuits/Withdraw.circom/820bd83254f3264cebaf255869641ebc33288dc3/Withdraw.circom",
+          "git_object": "229b96984849b3309ddbfa25a11531b00706704e",
+          "git_mode": "100644",
+          "sha256": "e81bb920a25eeaa4384e32bd070472ff3724607ea785001f9284bf4a6acbd2ce",
+          "units": [
+            "Withdraw.circom"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts",
+      "path_kind": "directory_recursive",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/Echoer.sol",
+          "git_object": "44d397b4ce42c2e8d3deee5e8034445025d3d1df",
+          "git_mode": "100644",
+          "sha256": "5afb9139d511ce6315e2a75e9ad0f232237893f91f79b371e3de2b3b316b2472",
+          "units": [
+            "Echoer"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/IMiner.sol",
+          "git_object": "7526a6766c12b60ad01a31f8a6e5fa24bd10a063",
+          "git_mode": "100644",
+          "sha256": "2edc1a81ee72794e6e9f3e4d856cfef13f48fabc5426fc4b529ae578ca6deaa3",
+          "units": [
+            "IMiner"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/IRewardSwap.sol",
+          "git_object": "5635f0852addb66ea692f7b3b0ee9f8283a549aa",
+          "git_mode": "100644",
+          "sha256": "af6addfb7e15bb372ce4f7a9effaf4c09cf9d9dfdc7a3a5961954015b9c9f9a0",
+          "units": [
+            "IRewardSwap"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/ITornado.sol",
+          "git_object": "88a46f63039d124eb9a886af82a9e2483a173e40",
+          "git_mode": "100644",
+          "sha256": "6405196680a63ea724664d36a9573c29bf3e13bc415d1eec884b9e4aa656bab8",
+          "units": [
+            "ITornado"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/IVerifier.sol",
+          "git_object": "7197d720341eefb17fb03e42fe4915e3929b1539",
+          "git_mode": "100644",
+          "sha256": "5ab8132748afef3e4838799f9356bbc6d4773b45c85b34741556b1b3f542ac82",
+          "units": [
+            "IVerifier"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/Math.sol",
+          "git_object": "c80d5c0a5cfd8f88adf58a53cf02347790b8ee19",
+          "git_mode": "100644",
+          "sha256": "ef8457f0ee1a4d798d4e33685219c5769d7ebe569f5cf56f2b1d67c1529e3ac7",
+          "units": [
+            "Math"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/Miner.sol",
+          "git_object": "6f0e206e5313b89a39f86621666641524ac45063",
+          "git_mode": "100644",
+          "sha256": "dc7cc16cc234e0174beca087bbb62715ad8b36f6a2c5d97a0e412e7ba6fa8904",
+          "units": [
+            "Miner"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/RewardSwap.sol",
+          "git_object": "00867a62b672936965eb1ea8c663bbe46163da10",
+          "git_mode": "100644",
+          "sha256": "74dd1f47f85a60559b4109b9d919a00b3c7d71cfe628e15f1e4707e216a98926",
+          "units": [
+            "RewardSwap"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/mocks/RewardSwapMock.sol",
+          "git_object": "7b8c87008b68b8900c00aee67c34647210a19f87",
+          "git_mode": "100644",
+          "sha256": "777cbcce0819254f30bebe59719a8683fbef27bb944d12e42ab7e5bbf467b712",
+          "units": [
+            "RewardSwapMock"
+          ]
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/mocks/TORN.sol",
+          "git_object": "4dabb1bfd85bd447ba5c6551bd022d282af2add7",
+          "git_mode": "100644",
+          "sha256": "4539ee8ad325d9e7e3cc70a6c12384fa01f17a7a9001639bd637591a377da045",
+          "units": []
         }
       ],
       "omitted_files": [
         {
-          "file": "tornadocash/tornado-pool/contracts/042be187d10d331024ab9fa371b8284c449fa77e/Verifier16.sol",
-          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/RewardVerifier.sol",
+          "git_object": "839ac05c9a2aadd311a984faaa686836ba70376a",
           "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit 042be187d10d331024ab9fa371b8284c449fa77e"
+          "reason": "symlink target is missing at 'build/circuits/RewardVerifier.sol' in commit 820bd83254f3264cebaf255869641ebc33288dc3"
         },
         {
-          "file": "tornadocash/tornado-pool/contracts/042be187d10d331024ab9fa371b8284c449fa77e/Verifier2.sol",
-          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/TreeUpdateVerifier.sol",
+          "git_object": "93e8058e2deae2e0309e082b5bf84e3e43ebb6bb",
           "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit 042be187d10d331024ab9fa371b8284c449fa77e"
+          "reason": "symlink target is missing at 'build/circuits/TreeUpdateVerifier.sol' in commit 820bd83254f3264cebaf255869641ebc33288dc3"
+        },
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/820bd83254f3264cebaf255869641ebc33288dc3/WithdrawVerifier.sol",
+          "git_object": "feffdedf0803fd0c55bc5b001e459eddd7c80147",
+          "git_mode": "120000",
+          "reason": "symlink target is missing at 'build/circuits/WithdrawVerifier.sol' in commit 820bd83254f3264cebaf255869641ebc33288dc3"
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "contracts",
-      "path_kind": "directory_recursive",
-      "commit": "476668d250c8c421d6be14663b2f1126a01f1933",
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/IVerifier.sol",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
       "files": [
         {
-          "file": "tornadocash/tornado-pool/contracts/476668d250c8c421d6be14663b2f1126a01f1933/TornadoPool.sol",
-          "git_object": "1f9f16405c783cec5430de9c2f4ce26337c7d003",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/IVerifier.sol/820bd83254f3264cebaf255869641ebc33288dc3/IVerifier.sol",
+          "git_object": "7197d720341eefb17fb03e42fe4915e3929b1539",
           "git_mode": "100644",
-          "sha256": "0105819ce90c35dfcb5f4d03c8ec76348b98008e687c80ba8929d15dd754fd25"
+          "sha256": "5ab8132748afef3e4838799f9356bbc6d4773b45c85b34741556b1b3f542ac82",
+          "units": [
+            "IVerifier"
+          ]
         }
-      ],
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/Miner.sol",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/Miner.sol/820bd83254f3264cebaf255869641ebc33288dc3/Miner.sol",
+          "git_object": "6f0e206e5313b89a39f86621666641524ac45063",
+          "git_mode": "100644",
+          "sha256": "dc7cc16cc234e0174beca087bbb62715ad8b36f6a2c5d97a0e412e7ba6fa8904",
+          "units": [
+            "Miner"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/RewardSwap.sol",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/RewardSwap.sol/820bd83254f3264cebaf255869641ebc33288dc3/RewardSwap.sol",
+          "git_object": "00867a62b672936965eb1ea8c663bbe46163da10",
+          "git_mode": "100644",
+          "sha256": "74dd1f47f85a60559b4109b9d919a00b3c7d71cfe628e15f1e4707e216a98926",
+          "units": [
+            "RewardSwap"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/RewardVerifier.sol",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [],
       "omitted_files": [
         {
-          "file": "tornadocash/tornado-pool/contracts/476668d250c8c421d6be14663b2f1126a01f1933/Verifier16.sol",
-          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/RewardVerifier.sol/820bd83254f3264cebaf255869641ebc33288dc3/RewardVerifier.sol",
+          "git_object": "839ac05c9a2aadd311a984faaa686836ba70376a",
           "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit 476668d250c8c421d6be14663b2f1126a01f1933"
-        },
-        {
-          "file": "tornadocash/tornado-pool/contracts/476668d250c8c421d6be14663b2f1126a01f1933/Verifier2.sol",
-          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
-          "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit 476668d250c8c421d6be14663b2f1126a01f1933"
+          "reason": "symlink target is missing at 'build/circuits/RewardVerifier.sol' in commit 820bd83254f3264cebaf255869641ebc33288dc3"
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "circuits",
-      "path_kind": "directory_recursive",
-      "commit": "75419e5cff407f3cf12541f1c9eb1caf8842ce10",
-      "files": [
-        {
-          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/merkleTree.circom",
-          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
-          "git_mode": "100644",
-          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/transaction.circom",
-          "git_object": "45b59c6c4406375894d20ed4f81e34ab827df807",
-          "git_mode": "100644",
-          "sha256": "7ae19abaf3fc32929b141d67d4d1e9dfe0969d610a792154282c5e0898d74494"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/transaction16.circom",
-          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
-          "git_mode": "100644",
-          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/transaction2.circom",
-          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
-          "git_mode": "100644",
-          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/treeUpdater.circom",
-          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
-          "git_mode": "100644",
-          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/75419e5cff407f3cf12541f1c9eb1caf8842ce10/utils.circom",
-          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
-          "git_mode": "100644",
-          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "circuits",
-      "path_kind": "directory_recursive",
-      "commit": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
-      "files": [
-        {
-          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/merkleTree.circom",
-          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
-          "git_mode": "100644",
-          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/transaction.circom",
-          "git_object": "db4499c176aed4d0c89b0e1c36e035a06d31f5b1",
-          "git_mode": "100644",
-          "sha256": "ad46fcc5d41695ce9ac7a474b8b5d1049092cb45d807c92bd3438b6225a200d4"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/transaction16.circom",
-          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
-          "git_mode": "100644",
-          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/transaction2.circom",
-          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
-          "git_mode": "100644",
-          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/treeUpdater.circom",
-          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
-          "git_mode": "100644",
-          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/9931fdebefa6de3a0e4f8884406f593b354d3ddf/utils.circom",
-          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
-          "git_mode": "100644",
-          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "contracts",
-      "path_kind": "directory_recursive",
-      "commit": "9931fdebefa6de3a0e4f8884406f593b354d3ddf",
-      "files": [
-        {
-          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/CrossChainUpgradeableProxy.sol",
-          "git_object": "07c8cc2f66b7031f6f8c680f5a678667128c66f6",
-          "git_mode": "100644",
-          "sha256": "3e58371718986da7a516a161bf2f117beb3fac50b3e6b969d40cb00d5f7c3da2"
-        },
-        {
-          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/Mocks/MockOVM_CrossDomainMessenger.sol",
-          "git_object": "f8ec03cf06a4b0a2f7916bc764d22d026f907d2c",
-          "git_mode": "100644",
-          "sha256": "ae8e17c70169c1790d0eba9a0bf9fc57796352b232033b13af059abe4c96bfe1"
-        },
-        {
-          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/TornadoPool.sol",
-          "git_object": "98946f4d889c6c5ac90a171a0a082c52182ed12e",
-          "git_mode": "100644",
-          "sha256": "9875211ae7646942997316c31bf103197870e4e2e45abc7758bfbec94cdae990"
-        }
-      ],
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/TreeUpdateVerifier.sol",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [],
       "omitted_files": [
         {
-          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/Verifier16.sol",
-          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/TreeUpdateVerifier.sol/820bd83254f3264cebaf255869641ebc33288dc3/TreeUpdateVerifier.sol",
+          "git_object": "93e8058e2deae2e0309e082b5bf84e3e43ebb6bb",
           "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit 9931fdebefa6de3a0e4f8884406f593b354d3ddf"
-        },
-        {
-          "file": "tornadocash/tornado-pool/contracts/9931fdebefa6de3a0e4f8884406f593b354d3ddf/Verifier2.sol",
-          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
-          "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit 9931fdebefa6de3a0e4f8884406f593b354d3ddf"
+          "reason": "symlink target is missing at 'build/circuits/TreeUpdateVerifier.sol' in commit 820bd83254f3264cebaf255869641ebc33288dc3"
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "circuits",
-      "path_kind": "directory_recursive",
-      "commit": "a976b9b383d5b7110a1d513a21953d3c317377a2",
-      "files": [
-        {
-          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/merkleTree.circom",
-          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
-          "git_mode": "100644",
-          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/transaction.circom",
-          "git_object": "29b9486c8b5b90792879cd56989638d32fbd732c",
-          "git_mode": "100644",
-          "sha256": "bb71a970b818abd678a394507af2eaa3a3ad12ab4857c982bc1fa56512541206"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/transaction16.circom",
-          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
-          "git_mode": "100644",
-          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/transaction2.circom",
-          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
-          "git_mode": "100644",
-          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/treeUpdater.circom",
-          "git_object": "e09a0b28f5c6cb36a15fb89be92b4bb3e995cc59",
-          "git_mode": "100644",
-          "sha256": "c719af43f8be1c64dbfdf36a0c74edeca865a7d262388ac9a7fb4fb989f9c889"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/a976b9b383d5b7110a1d513a21953d3c317377a2/utils.circom",
-          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
-          "git_mode": "100644",
-          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "contracts",
-      "path_kind": "directory_recursive",
-      "commit": "a976b9b383d5b7110a1d513a21953d3c317377a2",
-      "files": [
-        {
-          "file": "tornadocash/tornado-pool/contracts/a976b9b383d5b7110a1d513a21953d3c317377a2/TornadoPool.sol",
-          "git_object": "09681030ab917cd3d2fb0ffc9444ce55a156ef65",
-          "git_mode": "100644",
-          "sha256": "6d6d55209bb3a91514dcea745678f0ede16422760cd5d030d214ec7916d9b129"
-        }
-      ],
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/WithdrawVerifier.sol",
+      "path_kind": "file",
+      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "files": [],
       "omitted_files": [
         {
-          "file": "tornadocash/tornado-pool/contracts/a976b9b383d5b7110a1d513a21953d3c317377a2/Verifier16.sol",
-          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/WithdrawVerifier.sol/820bd83254f3264cebaf255869641ebc33288dc3/WithdrawVerifier.sol",
+          "git_object": "feffdedf0803fd0c55bc5b001e459eddd7c80147",
           "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit a976b9b383d5b7110a1d513a21953d3c317377a2"
-        },
-        {
-          "file": "tornadocash/tornado-pool/contracts/a976b9b383d5b7110a1d513a21953d3c317377a2/Verifier2.sol",
-          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
-          "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit a976b9b383d5b7110a1d513a21953d3c317377a2"
+          "reason": "symlink target is missing at 'build/circuits/WithdrawVerifier.sol' in commit 820bd83254f3264cebaf255869641ebc33288dc3"
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "circuits",
-      "path_kind": "directory_recursive",
-      "commit": "b085ab398eaeefff98771f5dad893cb804d98e70",
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/Miner.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
       "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/merkleProof.circom",
-          "git_object": "5c31b83e97e038f13dcd71e4e10cf5230efcb310",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/Miner.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/Miner.sol",
+          "git_object": "dcc1566e492d3b3bf2e174007273165165834e6e",
           "git_mode": "100644",
-          "sha256": "24ce881ab2276ada2afb4bc4f5cee61c2cce6a38f3affeaf61d78f09b8dfb87f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/merkleTree.circom",
-          "git_object": "fafb746dfbced15b53ba928cf9e4b4f7efa5004d",
-          "git_mode": "100644",
-          "sha256": "681b0891e6d04242607f7643b998d8041ebcabf0b17d465b2c237cde18d576f3"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/transaction.circom",
-          "git_object": "24f7c80d1d0b60a940c8ff2850b31620ea7dccd5",
-          "git_mode": "100644",
-          "sha256": "f4f3a4020709dbb5ed67bc56c758af2a95236bebb8f0cf6b770025a9d56f3f59"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/transaction16.circom",
-          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
-          "git_mode": "100644",
-          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/transaction2.circom",
-          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
-          "git_mode": "100644",
-          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/treeUpdater.circom",
-          "git_object": "63de03190cdc425bd76d6eccfee6a60a907038e7",
-          "git_mode": "100644",
-          "sha256": "3d44984a2c5cc9c6b2300dbd26397b92caf91d3eacb6bd69dd134259a41f9fa9"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/b085ab398eaeefff98771f5dad893cb804d98e70/utils.circom",
-          "git_object": "a32ccfb611dc68e2720f8f638c118a98fcbe5866",
-          "git_mode": "100644",
-          "sha256": "24bfe439758e864037cd28ecde1c4280873b0d9e560b1f5bbc06070e954f2486"
+          "sha256": "fb77d3552b7b6e5c64a204207f764ab167c8e240c6e4ba55e88de381b5a2366c",
+          "units": [
+            "Miner"
+          ]
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "contracts",
-      "path_kind": "directory_recursive",
-      "commit": "b085ab398eaeefff98771f5dad893cb804d98e70",
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/RewardSwap.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
       "files": [
         {
-          "file": "tornadocash/tornado-pool/contracts/b085ab398eaeefff98771f5dad893cb804d98e70/TornadoPool.sol",
-          "git_object": "7377ccfac7c13071d11acdbd7728d0f702dcce4c",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/RewardSwap.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/RewardSwap.sol",
+          "git_object": "c718a326cc4eafc3b644c4db4515ac126bdf93a7",
           "git_mode": "100644",
-          "sha256": "a77e2253021c7cf0e2eb26b960a7f05ce852e5c72c80c3a8ea9579b87d95fa35"
-        }
-      ],
-      "omitted_files": [
-        {
-          "file": "tornadocash/tornado-pool/contracts/b085ab398eaeefff98771f5dad893cb804d98e70/Verifier16.sol",
-          "git_object": "8c5020b0ea715f3dbc1aa329d99450a7a35b5d46",
-          "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier16.sol' in commit b085ab398eaeefff98771f5dad893cb804d98e70"
-        },
-        {
-          "file": "tornadocash/tornado-pool/contracts/b085ab398eaeefff98771f5dad893cb804d98e70/Verifier2.sol",
-          "git_object": "54f1602d3481b39c4191ba618ff2105b1ca9735d",
-          "git_mode": "120000",
-          "reason": "symlink target is missing at 'artifacts/circuits/Verifier2.sol' in commit b085ab398eaeefff98771f5dad893cb804d98e70"
+          "sha256": "a0d15fc357719146872eb2ec34fb99e9edfa2969b602f6fe24a064c60d3390c8",
+          "units": [
+            "RewardSwap"
+          ]
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "circuits",
-      "path_kind": "directory_recursive",
-      "commit": "dd5623629a77e9b0101e8310fc2b10568c129302",
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/TornadoProxy.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
       "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/merkleTree.circom",
-          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/TornadoProxy.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/TornadoProxy.sol",
+          "git_object": "0d9d47d61dae2de0d685d5ff029dac52c742f323",
           "git_mode": "100644",
-          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/transaction.circom",
-          "git_object": "2b16caacb73dd8608563ceb8d49ddb74d40f658f",
-          "git_mode": "100644",
-          "sha256": "612bdc5b850968ccb39a11edc1fc3592da09561c6ea00563690e81b8d64c3af9"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/transaction16.circom",
-          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
-          "git_mode": "100644",
-          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/transaction2.circom",
-          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
-          "git_mode": "100644",
-          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/treeUpdater.circom",
-          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
-          "git_mode": "100644",
-          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
-        },
-        {
-          "file": "tornadocash/tornado-pool/circuits/dd5623629a77e9b0101e8310fc2b10568c129302/utils.circom",
-          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
-          "git_mode": "100644",
-          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+          "sha256": "3381d2d1f5f222c7e2e992971e8bbe818ab74e2b138f4494f7197b66f1e52529",
+          "units": [
+            "TornadoProxy"
+          ]
         }
       ]
     },
     {
-      "repository": "tornadocash/tornado-pool",
-      "repository_url": "https://github.com/tornadocash/tornado-pool",
-      "source_path": "circuits",
-      "path_kind": "directory_recursive",
-      "commit": "f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9",
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/TornadoTrees.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
       "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/merkleTree.circom",
-          "git_object": "302c0d78ca108d43334a6ee3023762ba5a211c35",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/TornadoTrees.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/TornadoTrees.sol",
+          "git_object": "1a9822ddc144da7af1ad6e2427511b4339421ef9",
           "git_mode": "100644",
-          "sha256": "6c47cfdfa800db7983e8a17373cc9c235c95f6f77215bf6f0a9b638f1c4eca8a"
-        },
+          "sha256": "4fbcd600f012402d7d137a0cddb057a604248a1f69f2d2fc3d1ddcdf0b323cb7",
+          "units": [
+            "TornadoTrees"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/interfaces/IHasher.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+      "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/transaction.circom",
-          "git_object": "bbd47d0b65299c5fafaa263318605d2ebe7b262d",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/interfaces/IHasher.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/IHasher.sol",
+          "git_object": "58fb65d5fe484dd62c7a6539ab21f69d9359d523",
           "git_mode": "100644",
-          "sha256": "77a9fd669ffaeaee7e8a04c8e4d6f343ce8f5d972f2863849d124dafc9f86618"
-        },
+          "sha256": "c0ee14e56ce4e6998ea4a348e3c6d64018e306ac790dd42952c7c08c2a9d1e84",
+          "units": [
+            "IHasher"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/interfaces/IRewardSwap.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+      "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/transaction16.circom",
-          "git_object": "afe3fca69fe7097c53dd63fbf40596253fa46d14",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/interfaces/IRewardSwap.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/IRewardSwap.sol",
+          "git_object": "73d7e990361e37158fb8e4bbd954c533e8896ac7",
           "git_mode": "100644",
-          "sha256": "551f8ab70c0c593e29c5ca76951031d5afafa333ab653ac7e0283cedcb6bca01"
-        },
+          "sha256": "855a8ee00ad185c640f7161e4a10ba0e4cd2598c1f2aac5d104ff9c30c4c8948",
+          "units": [
+            "IRewardSwap"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/interfaces/ITornado.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+      "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/transaction2.circom",
-          "git_object": "693dbb69b87954f56168af7dc29b46169d2c1cc9",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/interfaces/ITornado.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/ITornado.sol",
+          "git_object": "88a46f63039d124eb9a886af82a9e2483a173e40",
           "git_mode": "100644",
-          "sha256": "40e2d1af62eaebabbd76ec88dd0386eb9e259a0324b9f52de7970c4cb2dfc20f"
-        },
+          "sha256": "6405196680a63ea724664d36a9573c29bf3e13bc415d1eec884b9e4aa656bab8",
+          "units": [
+            "ITornado"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/interfaces/IVerifier.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+      "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/treeUpdater.circom",
-          "git_object": "c77ae7a95e051844dd04ef2edd7ee06c4f5b3022",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/interfaces/IVerifier.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/IVerifier.sol",
+          "git_object": "f73cf80c0818d215c2ccecc09556481b7982580d",
           "git_mode": "100644",
-          "sha256": "bb909bde5746d59bf29a04384cf8653ede1621c059c018b19d837be249944f4f"
-        },
+          "sha256": "d83fdfe4a76d2c32016359b31e0ee056ef42d43145d11a5b5e7bc1466a09eb34",
+          "units": [
+            "IVerifier"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/utils/MerkleTreeWithHistory.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+      "files": [
         {
-          "file": "tornadocash/tornado-pool/circuits/f99eb4bd1ed70f1bb40d7d16d0ca28db753b92e9/utils.circom",
-          "git_object": "d7ce7df67b352571ed1ceda913483da67cb6515e",
+          "file": "tornadocash/tornado-anonymity-mining/contracts/utils/MerkleTreeWithHistory.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/MerkleTreeWithHistory.sol",
+          "git_object": "e1e3579d2e45f395deaed3d75a5d893a1e4f7d52",
           "git_mode": "100644",
-          "sha256": "8f70217e6e6b6782ac3c2f4fc308c3fa550890f236289a15c14c39ec9ef7ccfb"
+          "sha256": "f76b939f6b61c0a58438758d270c6cd905560bfa8bb3d755d54f25122b59ea15",
+          "units": [
+            "MerkleTreeWithHistory"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/utils/OwnableMerkleTree.sol",
+      "path_kind": "file",
+      "commit": "9ec05a681d9699a11733b3163dd44a1e90abc345",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/utils/OwnableMerkleTree.sol/9ec05a681d9699a11733b3163dd44a1e90abc345/OwnableMerkleTree.sol",
+          "git_object": "d2b0b6dcad943f94891a7fce5c9db51957236059",
+          "git_mode": "100644",
+          "sha256": "8a98074fa9810ddeb67af055725be28b14c51b6420c964c9738e74ec7df8d42e",
+          "units": [
+            "OwnableMerkleTree"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/Miner.sol",
+      "path_kind": "file",
+      "commit": "c8865315c50f3a0cabdd4110a6c45ceba4d4b809",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/Miner.sol/c8865315c50f3a0cabdd4110a6c45ceba4d4b809/Miner.sol",
+          "git_object": "4e6537ca79fe9dd007bd06ba4bd78aeee25a91f7",
+          "git_mode": "100644",
+          "sha256": "9e5cbab05df709e7ba67fafe0a358334befa33a0a982352770925820060b4c0a",
+          "units": [
+            "Miner"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/Miner.sol",
+      "path_kind": "file",
+      "commit": "e0008b3ed46dbf127b452d1d086235f0fe2dfcb8",
+      "files": [
+        {
+          "file": "tornadocash/tornado-anonymity-mining/contracts/Miner.sol/e0008b3ed46dbf127b452d1d086235f0fe2dfcb8/Miner.sol",
+          "git_object": "d6520bb90c35b41d611fbd78f49754d8405f52b1",
+          "git_mode": "100644",
+          "sha256": "b1f9f40b2eb2e009c43e6c8cd330fb7062dcfdf147f33a302c726204a1a9afd0",
+          "units": [
+            "Miner"
+          ]
         }
       ]
     }
@@ -780,6 +984,35 @@
       "revision_kind": "branch",
       "revision": "master",
       "reason": "revision is not a commit"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/Reward.circom",
+      "revision_kind": "branch",
+      "revision": "audit-fixed",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/Reward.circom",
+      "revision_kind": "tag",
+      "revision": "audit",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/Farm.sol",
+      "revision_kind": "branch",
+      "revision": "audit-fixed",
+      "reason": "revision is not a commit"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "contracts/Farm.sol",
+      "revision_kind": "tag",
+      "revision": "audit",
+      "reason": "revision is not a commit"
     }
-  ]
+  ],
+  "unavailable": []
 }

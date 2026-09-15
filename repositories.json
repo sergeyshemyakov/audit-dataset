@@ -1,0 +1,319 @@
+{
+  "schema_version": "1.0.0",
+  "repositories": {
+    "0xFacet/facet-geth": {
+      "url": "https://github.com/0xFacet/facet-geth",
+      "fork_of": "ethereum-optimism/op-geth"
+    },
+    "0xFacet/facet-node": {
+      "url": "https://github.com/0xFacet/facet-node"
+    },
+    "0xFacet/facet-optimism": {
+      "url": "https://github.com/0xFacet/facet-optimism",
+      "fork_of": "ethereum-optimism/optimism"
+    },
+    "0xFacet/zk-fault-proofs": {
+      "url": "https://github.com/0xFacet/zk-fault-proofs",
+      "fork_of": "succinctlabs/op-succinct"
+    },
+    "0xbow-io/privacy-pools-core": {
+      "url": "https://github.com/0xbow-io/privacy-pools-core"
+    },
+    "0xbow-io/privacy-pools-website": {
+      "url": "https://github.com/0xbow-io/privacy-pools-website"
+    },
+    "5afe/CandideWalletContracts": {
+      "url": "https://github.com/5afe/CandideWalletContracts",
+      "fork_of": "candidelabs/candide-contracts"
+    },
+    "AztecProtocol/AZTEC": {
+      "url": "https://github.com/AztecProtocol/AZTEC"
+    },
+    "AztecProtocol/Setup": {
+      "url": "https://github.com/AztecProtocol/Setup"
+    },
+    "AztecProtocol/aztec-connect-bridges": {
+      "url": "https://github.com/AztecProtocol/aztec-connect-bridges"
+    },
+    "AztecProtocol/aztec-packages": {
+      "url": "https://github.com/AztecProtocol/aztec-packages"
+    },
+    "AztecProtocol/aztec2-internal": {
+      "url": "https://github.com/AztecProtocol/aztec2-internal"
+    },
+    "AztecProtocol/barretenberg": {
+      "url": "https://github.com/AztecProtocol/barretenberg"
+    },
+    "AztecProtocol/ignition-monorepo": {
+      "url": "https://github.com/AztecProtocol/ignition-monorepo"
+    },
+    "AztecProtocol/teegeeee": {
+      "url": "https://github.com/AztecProtocol/teegeeee"
+    },
+    "AztecProtocol/uniswap-token-launcher": {
+      "url": "https://github.com/AztecProtocol/uniswap-token-launcher"
+    },
+    "Certora/openzeppelin-contracts": {
+      "url": "https://github.com/Certora/openzeppelin-contracts",
+      "fork_of": "OpenZeppelin/openzeppelin-contracts"
+    },
+    "OpenZeppelin/openzeppelin-contracts": {
+      "url": "https://github.com/OpenZeppelin/openzeppelin-contracts"
+    },
+    "ProofOfInnocence/privacy-pools-v1": {
+      "url": "https://github.com/ProofOfInnocence/privacy-pools-v1"
+    },
+    "Rari-Capital/solmate": {
+      "url": "https://github.com/Rari-Capital/solmate.git"
+    },
+    "ScopeLift/ens-resolvers": {
+      "url": "https://github.com/ScopeLift/ens-resolvers",
+      "fork_of": "ensdomains/resolvers"
+    },
+    "ScopeLift/umbra-protocol": {
+      "url": "https://github.com/ScopeLift/umbra-protocol"
+    },
+    "Uniswap/unichain-contracts": {
+      "url": "https://github.com/Uniswap/unichain-contracts"
+    },
+    "Uniswap/v3-core": {
+      "url": "https://github.com/Uniswap/v3-core"
+    },
+    "Uniswap/v3-periphery": {
+      "url": "https://github.com/Uniswap/v3-periphery"
+    },
+    "Vectorized/solady": {
+      "url": "https://github.com/Vectorized/solady"
+    },
+    "aave/governance-crosschain-bridges": {
+      "url": "https://github.com/aave/governance-crosschain-bridges"
+    },
+    "axieinfinity/ronin": {
+      "url": "https://github.com/axieinfinity/ronin"
+    },
+    "axieinfinity/ronin-dpos-contracts": {
+      "url": "https://github.com/axieinfinity/ronin-dpos-contracts"
+    },
+    "axieinfinity/ronin-smart-contracts": {
+      "url": "https://github.com/axieinfinity/ronin-smart-contracts"
+    },
+    "axiom-crypto/halo2-lib": {
+      "url": "https://github.com/axiom-crypto/halo2-lib"
+    },
+    "axiom-crypto/snark-verifier": {
+      "url": "https://github.com/axiom-crypto/snark-verifier",
+      "fork_of": "privacy-ethereum/snark-verifier"
+    },
+    "bob-collective/bob-gateway": {
+      "url": "https://github.com/bob-collective/bob-gateway"
+    },
+    "bob-collective/bob-onramp": {
+      "url": "https://github.com/bob-collective/bob-onramp"
+    },
+    "bob-collective/bob-staking": {
+      "url": "https://github.com/bob-collective/bob-staking"
+    },
+    "bob-collective/bob-token": {
+      "url": "https://github.com/bob-collective/bob-token"
+    },
+    "bob-collective/fusion-lock": {
+      "url": "https://github.com/bob-collective/fusion-lock"
+    },
+    "bob-collective/optimism": {
+      "url": "https://github.com/bob-collective/optimism",
+      "fork_of": "ethereum-optimism/optimism"
+    },
+    "boundless-xyz/kailua": {
+      "url": "https://github.com/boundless-xyz/kailua"
+    },
+    "candidelabs/candide-contracts": {
+      "url": "https://github.com/candidelabs/candide-contracts"
+    },
+    "cantina-forks/aztec-teegee": {
+      "url": "https://github.com/cantina-forks/aztec-teegee"
+    },
+    "cantina-forks/aztec-uniswap-twap-monorepo": {
+      "url": "https://github.com/cantina-forks/aztec-uniswap-twap-monorepo"
+    },
+    "celo-org/celo-monorepo": {
+      "url": "https://github.com/celo-org/celo-monorepo"
+    },
+    "celo-org/op-geth": {
+      "url": "https://github.com/celo-org/op-geth",
+      "fork_of": "ethereum-optimism/op-geth"
+    },
+    "celo-org/optimism": {
+      "url": "https://github.com/celo-org/optimism",
+      "fork_of": "ethereum-optimism/optimism"
+    },
+    "celo-org/staked-celo": {
+      "url": "https://github.com/celo-org/staked-celo"
+    },
+    "code-423n4/2025-09-succinct": {
+      "url": "https://github.com/code-423n4/2025-09-succinct"
+    },
+    "elliottech/lighter-bridge-contracts": {
+      "url": "https://github.com/elliottech/lighter-bridge-contracts"
+    },
+    "elliottech/lighter-contracts": {
+      "url": "https://github.com/elliottech/lighter-contracts"
+    },
+    "elliottech/lighter-contracts-internal": {
+      "url": "https://github.com/elliottech/lighter-contracts-internal"
+    },
+    "elliottech/lighter-prover": {
+      "url": "https://github.com/elliottech/lighter-prover"
+    },
+    "ensdomains/resolvers": {
+      "url": "https://github.com/ensdomains/resolvers"
+    },
+    "eth-infinitism/account-abstraction": {
+      "url": "https://github.com/eth-infinitism/account-abstraction"
+    },
+    "ethereum-optimism/op-geth": {
+      "url": "https://github.com/ethereum-optimism/op-geth"
+    },
+    "ethereum-optimism/optimism": {
+      "url": "https://github.com/ethereum-optimism/optimism"
+    },
+    "ethereum/ERCs": {
+      "url": "https://github.com/ethereum/ERCs"
+    },
+    "ethereum/go-ethereum": {
+      "url": "https://github.com/ethereum/go-ethereum"
+    },
+    "flashbots/flashtestations": {
+      "url": "https://github.com/flashbots/flashtestations"
+    },
+    "flashbots/rollup-boost": {
+      "url": "https://github.com/flashbots/rollup-boost"
+    },
+    "gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6": {
+      "url": "https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"
+    },
+    "gnosis/zodiac": {
+      "url": "https://github.com/gnosis/zodiac"
+    },
+    "gnosis/zodiac-modifier-delay": {
+      "url": "https://github.com/gnosis/zodiac-modifier-delay"
+    },
+    "gnosis/zodiac-modifier-roles": {
+      "url": "https://github.com/gnosis/zodiac-modifier-roles"
+    },
+    "hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac": {
+      "url": "https://github.com/hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac",
+      "fork_of": "safe-fndn/safe-modules"
+    },
+    "iden3/circomlib": {
+      "url": "https://github.com/iden3/circomlib"
+    },
+    "lidofinance/governance-crosschain-bridges": {
+      "url": "https://github.com/lidofinance/governance-crosschain-bridges",
+      "fork_of": "aave/governance-crosschain-bridges"
+    },
+    "openintentsframework/broadcaster": {
+      "url": "https://github.com/openintentsframework/broadcaster"
+    },
+    "openintentsframework/oif-contracts": {
+      "url": "https://github.com/openintentsframework/oif-contracts"
+    },
+    "peppersec/tornado-mixer": {
+      "url": "https://github.com/peppersec/tornado-mixer"
+    },
+    "privacy-ethereum/snark-verifier": {
+      "url": "https://github.com/privacy-ethereum/snark-verifier"
+    },
+    "privacy-ethereum/zkevm-circuits": {
+      "url": "https://github.com/privacy-ethereum/zkevm-circuits"
+    },
+    "ronin-chain/bridge-contract": {
+      "url": "https://github.com/ronin-chain/bridge-contract"
+    },
+    "ronin-chain/katana-operation-contracts": {
+      "url": "https://github.com/ronin-chain/katana-operation-contracts"
+    },
+    "ronin-chain/katana-v3-contracts": {
+      "url": "https://github.com/ronin-chain/katana-v3-contracts"
+    },
+    "safe-fndn/safe-modules": {
+      "url": "https://github.com/safe-fndn/safe-modules"
+    },
+    "safe-fndn/safe-smart-account": {
+      "url": "https://github.com/safe-fndn/safe-smart-account"
+    },
+    "scroll-tech/go-ethereum": {
+      "url": "https://github.com/scroll-tech/go-ethereum",
+      "fork_of": "ethereum/go-ethereum"
+    },
+    "scroll-tech/governance-crosschain-bridges": {
+      "url": "https://github.com/scroll-tech/governance-crosschain-bridges",
+      "fork_of": "lidofinance/governance-crosschain-bridges"
+    },
+    "scroll-tech/halo2-lib": {
+      "url": "https://github.com/scroll-tech/halo2-lib",
+      "fork_of": "axiom-crypto/halo2-lib"
+    },
+    "scroll-tech/misc-precompiled-circuit": {
+      "url": "https://github.com/scroll-tech/misc-precompiled-circuit"
+    },
+    "scroll-tech/mpt-circuit": {
+      "url": "https://github.com/scroll-tech/mpt-circuit"
+    },
+    "scroll-tech/poseidon-circuit": {
+      "url": "https://github.com/scroll-tech/poseidon-circuit"
+    },
+    "scroll-tech/scroll": {
+      "url": "https://github.com/scroll-tech/scroll"
+    },
+    "scroll-tech/scroll-contracts": {
+      "url": "https://github.com/scroll-tech/scroll-contracts"
+    },
+    "scroll-tech/scroll-revm": {
+      "url": "https://github.com/scroll-tech/scroll-revm"
+    },
+    "scroll-tech/snark-verifier": {
+      "url": "https://github.com/scroll-tech/snark-verifier",
+      "fork_of": "axiom-crypto/snark-verifier"
+    },
+    "scroll-tech/stateless-block-verifier": {
+      "url": "https://github.com/scroll-tech/stateless-block-verifier"
+    },
+    "scroll-tech/usx-contracts": {
+      "url": "https://github.com/scroll-tech/usx-contracts"
+    },
+    "scroll-tech/zkevm-circuits": {
+      "url": "https://github.com/scroll-tech/zkevm-circuits",
+      "fork_of": "privacy-ethereum/zkevm-circuits"
+    },
+    "scroll-tech/zktrie": {
+      "url": "https://github.com/scroll-tech/zktrie"
+    },
+    "scroll-tech/zkvm-prover": {
+      "url": "https://github.com/scroll-tech/zkvm-prover"
+    },
+    "sherlock-audit/2026-01-aztec-network-jan-14th": {
+      "url": "https://github.com/sherlock-audit/2026-01-aztec-network-jan-14th"
+    },
+    "succinctlabs/op-succinct": {
+      "url": "https://github.com/succinctlabs/op-succinct"
+    },
+    "succinctlabs/sp1": {
+      "url": "https://github.com/succinctlabs/sp1"
+    },
+    "succinctlabs/sp1-contracts": {
+      "url": "https://github.com/succinctlabs/sp1-contracts"
+    },
+    "succinctlabs/sp1-tee": {
+      "url": "https://github.com/succinctlabs/sp1-tee"
+    },
+    "tornadocash/tornado-anonymity-mining": {
+      "url": "https://github.com/tornadocash/tornado-anonymity-mining"
+    },
+    "tornadocash/tornado-classic-ui": {
+      "url": "https://github.com/tornadocash/tornado-classic-ui"
+    },
+    "tornadocash/tornado-pool": {
+      "url": "https://github.com/tornadocash/tornado-pool"
+    }
+  }
+}

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Format deployed and audited Solidity sources with one shared forge fmt config."""
+"""Format audited Solidity sources with one shared forge fmt config.
+
+The config is also exported as ``foundry.toml`` at the dataset root so that
+consumers (l2beat audit-diff) format deployed sources with identical rules.
+"""
 
 from __future__ import annotations
 
@@ -12,8 +16,11 @@ import tempfile
 from pathlib import Path
 
 
-# Directories inside a project whose Solidity sources are formatted in place.
-SOURCE_DIRS = ("deployed-contracts", "audited-sources")
+# Directories inside a collection whose Solidity sources are formatted in place.
+SOURCE_DIRS = ("audited-sources",)
+
+# The shared config is exported here for consumers that format deployed sources.
+EXPORTED_CONFIG_NAME = "foundry.toml"
 
 # Every forge fmt key is pinned so that the result does not depend on the
 # installed forge version's defaults, on any foundry.toml vendored inside an
@@ -51,17 +58,17 @@ CHUNK_SIZE = 200
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Reformat every Solidity file under a project's deployed-contracts and "
-            "audited-sources directories with a single shared forge fmt config, so "
-            "that deployed-vs-audited diffs show code changes instead of style "
-            "differences."
+            "Reformat every Solidity file under a collection's audited-sources "
+            "directory with a single shared forge fmt config, exported to "
+            "foundry.toml at the dataset root so that deployed sources can be "
+            "formatted identically by consumers."
         )
     )
     parser.add_argument(
         "projects",
         nargs="*",
         metavar="PROJECT",
-        help="project directory name, e.g. tornado-cash; may be repeated",
+        help="collection name, e.g. tornado-cash or _libs/safe; may be repeated",
     )
     parser.add_argument(
         "--all",
@@ -97,14 +104,27 @@ def parse_args() -> argparse.Namespace:
 
 
 def discover_projects(dataset_root: Path) -> list[str]:
-    projects = [
-        path.name
-        for path in dataset_root.iterdir()
-        if path.is_dir()
-        and not path.name.startswith(".")
-        and any((path / name).is_dir() for name in SOURCE_DIRS)
-    ]
-    return sorted(projects)
+    """Collections with audited sources: top-level projects and ``_libs/<vendor>``."""
+    projects: list[str] = []
+    for path in sorted(dataset_root.iterdir()):
+        if not path.is_dir() or path.name.startswith("."):
+            continue
+        if any((path / name).is_dir() for name in SOURCE_DIRS):
+            projects.append(path.name)
+        elif path.name == "_libs":
+            for vendor in sorted(path.iterdir()):
+                if vendor.is_dir() and any((vendor / name).is_dir() for name in SOURCE_DIRS):
+                    projects.append(f"_libs/{vendor.name}")
+    return projects
+
+
+def export_config(dataset_root: Path, config: str) -> bool:
+    """Write the shared config to ``<root>/foundry.toml``; True when it changed."""
+    target = dataset_root / EXPORTED_CONFIG_NAME
+    if target.is_file() and target.read_text() == config:
+        return False
+    target.write_text(config)
+    return True
 
 
 def collect_sources(project_dir: Path) -> list[Path]:
@@ -168,6 +188,8 @@ def format_project(
 ) -> tuple[int, list[Path], list[Path]]:
     """Format one project, returning the file count plus changed and failed paths."""
     project_dir = dataset_root / project
+    if not project_dir.is_dir() and (dataset_root / "_libs" / project).is_dir():
+        project_dir = dataset_root / "_libs" / project
     if not project_dir.is_dir():
         raise RuntimeError(f"project directory not found: {project_dir}")
 
@@ -237,9 +259,11 @@ def main() -> int:
             print(f"error: {error}", file=sys.stderr)
             return 1
 
-    # The config lives in a throwaway root so that forge never picks up a
-    # foundry.toml vendored inside an audited repository, and so that running
-    # the script leaves no config file behind in the dataset.
+    if args.config is None and export_config(dataset_root, config):
+        print(f"exported fmt config to {dataset_root / EXPORTED_CONFIG_NAME}")
+
+    # forge is pointed at a throwaway root so that it never picks up a
+    # foundry.toml vendored inside an audited repository.
     with tempfile.TemporaryDirectory(prefix="audit-dataset-fmt-") as temp_dir:
         root = Path(temp_dir)
         (root / "foundry.toml").write_text(config)

@@ -21,13 +21,13 @@ Prioritize this vendor: `Ownable` appears in 55 dataset flattened files across n
 
 ## Gnosis / Safe / Zodiac
 
-Upstreams: [Safe core](https://github.com/safe-global/safe-smart-account), [Safe modules](https://github.com/safe-global/safe-modules), [legacy MultiSigWallet](https://github.com/gnosis/MultiSigWallet), and [Zodiac](https://github.com/gnosis/zodiac). Local reports: [gnosis/reports](gnosis/reports).
+Upstreams: [Safe core](https://github.com/safe-global/safe-smart-account), [Safe modules](https://github.com/safe-global/safe-modules), [legacy MultiSigWallet](https://github.com/gnosis/MultiSigWallet), and [Zodiac](https://github.com/gnosis/zodiac). Local reports: [safe/reports](safe/reports).
 
 Candidates: `GnosisSafe`, `GnosisSafeL2`, `Safe`, `SafeL2`, proxy/factory contracts, `OwnerManager`, `ModuleManager`, `GuardManager`, fallback managers/handlers, `MultiSend`, `MultiSendCallOnly`, signature decoding and storage-access utilities. Separate candidates are legacy `MultiSigWallet`/daily-limit variants; Safe allowance, ERC-4337, passkey and recovery modules; and Zodiac `Module`, `Modifier`, `Guard`, `Roles` and `Delay` infrastructure.
 
 Collected Safe core evidence spans the early Alexey review, v1.0-era audit/verification, v1.1.0, v1.1.1, v1.2.0, initial/final v1.3.0 reviews, later Certora/Nethermind v1.3.0 reviews, v1.4.0, v1.4.1 library contracts, and v1.5.0 Ackee/Certora reports. Also collected are the versioned Safe-module reports, three Zodiac infrastructure reports, four dedicated [Roles v2/v2.1](https://github.com/gnosis/zodiac-modifier-roles/tree/main/packages/evm/docs) reports, and the [Delay module's September 2021 report](https://github.com/gnosis/zodiac-modifier-delay/tree/main/audits). The original OpenZeppelin legacy multisig audit is HTML. See the [report index](REPORTS.md) for module versions and individual reports.
 
-`GnosisSafe` appears in seven dataset projects and 176 L2BEAT project directories; `Safe` appears in five and 69 respectively. These counts overlap. Core Safe audits do not cover arbitrary enabled modules, guards or handlers. The publisher's [v1.4.0 notes](gnosis/provenance/safe-index__docs__audit_1_4_0.md) explicitly describe a post-audit fix; retain that distinction when comparing revisions. “Certora” does not always mean formal verification: the 2026 v1.3.0 report is a manual security assessment.
+`GnosisSafe` appears in seven dataset projects and 176 L2BEAT project directories; `Safe` appears in five and 69 respectively. These counts overlap. Core Safe audits do not cover arbitrary enabled modules, guards or handlers. The publisher's [v1.4.0 notes](safe/provenance/safe-index__docs__audit_1_4_0.md) explicitly describe a post-audit fix; retain that distinction when comparing revisions. “Certora” does not always mean formal verification: the 2026 v1.3.0 report is a manual security assessment.
 
 ## Solady
 

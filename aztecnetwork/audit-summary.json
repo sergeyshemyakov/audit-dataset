@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "aztecnetwork",
   "reports": [
     {
@@ -85,6 +85,9 @@
                   "review_phase": "initial smart contract audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.3"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -173,6 +176,9 @@
                   "review_phase": "initial smart contract audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.2"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -328,6 +334,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -342,11 +351,10 @@
                     "timestamp": "2022-04-07T14:43:08Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/d5aca13d4d0a17b21eeddf77f49f4c6613461fb0/src/test/lido/Lido.t.sol"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 1,
-                  "highest_reported_finding_severity": "Major"
+                  "major_findings": 0
                 }
               ]
             }
@@ -623,11 +631,10 @@
                     "timestamp": "2022-05-31T09:01:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/5a3766115b55dd3471ca981a26c8b8381f12fae7/src/bridges/liquity/interfaces"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full directory",
-                  "major_findings": 3,
-                  "highest_reported_finding_severity": "Critical"
+                  "major_findings": 0
                 }
               ]
             },
@@ -641,11 +648,10 @@
                     "timestamp": "2022-05-31T09:01:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/5a3766115b55dd3471ca981a26c8b8381f12fae7/src/bridges/liquity/StakingBridge.sol"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 3,
-                  "highest_reported_finding_severity": "Critical"
+                  "major_findings": 0
                 }
               ]
             },
@@ -663,6 +669,11 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "1",
+                    "2",
+                    "3"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -677,11 +688,10 @@
                     "timestamp": "2022-05-31T09:01:24Z",
                     "url": "https://github.com/AztecProtocol/aztec-connect-bridges/blob/5a3766115b55dd3471ca981a26c8b8381f12fae7/src/bridges/liquity/StabilityPoolBridge.sol"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "audited_with_no_major_findings",
                   "review_phase": "initial audit",
                   "coverage": "full file",
-                  "major_findings": 3,
-                  "highest_reported_finding_severity": "Critical"
+                  "major_findings": 0
                 }
               ]
             }
@@ -974,6 +984,9 @@
                   "review_phase": "re-audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -1027,6 +1040,11 @@
                   "review_phase": "initial_audit",
                   "coverage": "Line-by-line review of the bigfield module (bigfield.hpp, bigfield_impl.hpp); test and fuzzer files in the directory are not discussed",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "01",
+                    "02",
+                    "03"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1063,6 +1081,9 @@
                   "review_phase": "initial_audit",
                   "coverage": "Only the cached partial non-native field multiplication deduplication path (process_non_native_field_multiplications / deduplicate) reviewed as part of finding 00; file not in declared scope",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "00"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1103,6 +1124,11 @@
                   "review_phase": "initial_audit",
                   "coverage": "Thoroughly reviewed only: constructors, operator=, get_value, get_maximum_value, add_to_lower_limb, operator+/-/*, sum, operator==, reduction_check, self_reduce, unsafe_evaluate_multiply_add (HasPlookup branch), compute_quotient_remainder_values, compute_maximum_quotient_value, get_quotient_reduction_info; rest reviewed lightly",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "3.1",
+                    "3.4",
+                    "3.7"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -1121,6 +1147,10 @@
                   "review_phase": "initial_audit",
                   "coverage": "Entire file reviewed thoroughly",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "3.5",
+                    "3.6"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -1156,6 +1186,10 @@
                   "review_phase": "initial_audit",
                   "coverage": "Only evaluate_non_native_field_multiplication examined (findings 3.2/3.3 on overflow/underflow); report states this function was otherwise out of scope",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "3.2",
+                    "3.3"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -1214,6 +1248,11 @@
                   "review_phase": "initial_audit",
                   "coverage": "Full review of bigfield implementation (constructors, pow, unsafe_evaluate_multiply_add/square_add, assert_* methods); report gives no explicit per-file scope list",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "3.1.1",
+                    "3.1.2",
+                    "3.2.1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -2935,6 +2974,10 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "3.1.1",
+                    "3.1.2"
+                  ],
                   "highest_reported_finding_severity": "Critical Risk"
                 },
                 {
@@ -3621,6 +3664,9 @@
                   "review_phase": "security review",
                   "coverage": "repository-level review of aztec-packages rollup contracts; report declares no per-file scope, file identified from finding contexts; Critical double-consume via unbounded leafIndex in MerkleLib.verifyMembership",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.1.1"
+                  ],
                   "highest_reported_finding_severity": "Critical Risk"
                 },
                 {
@@ -3709,6 +3755,9 @@
                   "review_phase": "security review",
                   "coverage": "repository-level review of aztec-packages rollup contracts; report declares no per-file scope, file identified from finding contexts; High bootstrap-bypass finding acknowledged, not fixed",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.2.1"
+                  ],
                   "highest_reported_finding_severity": "High Risk"
                 },
                 {
@@ -3740,6 +3789,9 @@
                   "review_phase": "security review",
                   "coverage": "repository-level review of aztec-packages rollup contracts; report declares no per-file scope, file identified from finding contexts",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.2.2"
+                  ],
                   "highest_reported_finding_severity": "High Risk"
                 },
                 {
@@ -4984,6 +5036,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5908,6 +5963,9 @@
                   "review_phase": "security review",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.1.1"
+                  ],
                   "highest_reported_finding_severity": "High Risk"
                 },
                 {
@@ -6374,6 +6432,9 @@
                   "review_phase": "security review",
                   "coverage": "commit that introduced the empty-epoch skip, analyzed as the origin of the High malformed-committee finding",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "4.1.1"
+                  ],
                   "highest_reported_finding_severity": "High Risk"
                 },
                 {
@@ -6388,6 +6449,9 @@
                   "coverage": "not in the declared scope list; slashing execution path reviewed in passing, High malformed-committee finding reported",
                   "follows": "b7605403131acbe86dbbc97be1e741f733c61f5e",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "4.1.1"
+                  ],
                   "highest_reported_finding_severity": "High Risk"
                 },
                 {

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "SP1",
   "reports": [
     {
@@ -12,13 +12,13 @@
       "report_date": null,
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "prover/src/verify.rs": {
               "path_kind": "file",
@@ -51,13 +51,13 @@
       "report_date": null,
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "recursion/core/src/cpu": {
               "path_kind": "directory_recursive",
@@ -73,6 +73,10 @@
                   "review_phase": "Fix review (PR #789: findings 4, 5, 6)",
                   "coverage": "Only the AIR constraints inside the eval() functions of the chips in this folder were audited; trace generation, columns layout and runtime code were not in scope.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "7",
+                    "10"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -164,6 +168,9 @@
                   "review_phase": "Fix review (PR #747: partial fix of finding 1)",
                   "coverage": "Only the AIR constraints inside the eval() functions of the chips in this folder were audited; trace generation, columns layout and runtime code were not in scope.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -178,6 +185,9 @@
                   "coverage": "Only the AIR constraints inside the eval() functions of the chips in this folder were audited; trace generation, columns layout and runtime code were not in scope.",
                   "follows": "1b9c8c943a18eda0ca2122c90012d8af3ba57f66",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -192,6 +202,9 @@
                   "coverage": "Only the AIR constraints inside the eval() functions of the chips in this folder were audited; trace generation, columns layout and runtime code were not in scope.",
                   "follows": "0f0a010d11c8473a03169146628990347f694856",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -317,6 +330,9 @@
                   "review_phase": "Fix review (PR #789: finding 2)",
                   "coverage": "Whole folder listed in scope without restriction.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "11"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -378,17 +394,17 @@
       "report_date": "2024-07-18",
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         },
         {
-          "id": "sp1-contracts",
+          "id": "succinctlabs/sp1-contracts",
           "url": "https://github.com/succinctlabs/sp1-contracts"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "recursion/compiler": {
               "path_kind": "directory_recursive",
@@ -434,6 +450,10 @@
                   "review_phase": "Re-audit of recursion circuits (June 03 - June 17, 2024)",
                   "coverage": "Manual review of the recursive STARK verifier programs (core, compress, deferred, root verifiers, challenger, FRI) focusing on the diff since commits b6eac88, ab103ee and 02c6ea6, checking input validation, constraints and public-value commitments, and consistency with the non-recursive verifier and Plonky3 FRI. High findings V-SP1-VUL-001 (machine/{core,compress,deferred,root}.rs) and V-SP1-VUL-002 (challenger.rs); Medium V-SP1-VUL-006.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "V-SP1-VUL-001",
+                    "V-SP1-VUL-002"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -448,6 +468,9 @@
                   "coverage": "Confirmed fix of V-SP1-VUL-001 (shard index taken from public values) in src/machine/{core,compress,deferred,root}.rs only; V-SP1-VUL-002 in challenger.rs still open at this commit.",
                   "follows": "10495837c72f046aaccc81b81dc3c9055e3bf3a2",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "V-SP1-VUL-002"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -475,6 +498,10 @@
                   "coverage": "Review of the additional changes to the recursive verifiers (executable vs non-executable shards, sharded memory) since commit 1049583. High findings V-SP1-VUL-004 (machine/compress.rs and machine/core.rs) and V-SP1-VUL-005 (machine/compress.rs), both marked Fixed by the report.",
                   "follows": "45919d88dac2c88c0d4113b7a0a4e0b50598c99f",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "V-SP1-VUL-004",
+                    "V-SP1-VUL-005"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -489,6 +516,9 @@
                   "coverage": "Confirmed fix of V-SP1-VUL-005 (is_zero initialised to one) in src/machine/compress.rs only; the report marks V-SP1-VUL-004 as Fixed but gives no fix commit, and the code at this commit still compares only the first deferred-digest element, so it is counted as outstanding here.",
                   "follows": "6e968e371791d657b1bb3929eab54a4f66365051",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "V-SP1-VUL-004"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -555,6 +585,9 @@
                   "review_phase": "Review of Solidity verifier generation (July 05 - July 06, 2024)",
                   "coverage": "Review of the Build() function that generates the Solidity verifier and selects the SRS, performed together with the sp1-contracts review. High finding V-SP1-VUL-003 (unsafe SRS chosen when the data directory path contains \"dev\") acknowledged but not fixed.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "V-SP1-VUL-003"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -562,7 +595,7 @@
           }
         },
         {
-          "repository": "sp1-contracts",
+          "repository": "succinctlabs/sp1-contracts",
           "paths": {
             "contracts/src": {
               "path_kind": "directory_recursive",
@@ -596,13 +629,13 @@
       "report_date": "2024-07-19",
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "core/src/memory/global.rs": {
               "path_kind": "file",
@@ -1559,13 +1592,13 @@
       "report_date": null,
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "crates/recursion/circuit-v2/src/stark.rs": {
               "path_kind": "file",
@@ -2148,13 +2181,13 @@
       "report_date": "2024-12-04",
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "crates/core/executor": {
               "path_kind": "directory_recursive",
@@ -2206,13 +2239,13 @@
       "report_date": null,
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {}
         }
       ]
@@ -2227,13 +2260,13 @@
       "report_date": "2025-03-28",
       "repositories": [
         {
-          "id": "sp1-tee",
+          "id": "succinctlabs/sp1-tee",
           "url": "https://github.com/succinctlabs/sp1-tee"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1-tee",
+          "repository": "succinctlabs/sp1-tee",
           "paths": {
             "contracts/src/SP1TeeVerifier.sol": {
               "path_kind": "file",
@@ -2368,17 +2401,17 @@
       "report_date": null,
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         },
         {
-          "id": "code4rena-2025-09-succinct",
+          "id": "code-423n4/2025-09-succinct",
           "url": "https://github.com/code-423n4/2025-09-succinct"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "crates/core/executor/src/record.rs": {
               "path_kind": "file",
@@ -6001,6 +6034,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "Whole file listed in scope.txt of the Code4rena competitive audit (242 in-scope Rust/Go files).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -11444,13 +11480,13 @@
       "report_date": "2025-12-23",
       "repositories": [
         {
-          "id": "sp1",
+          "id": "succinctlabs/sp1",
           "url": "https://github.com/succinctlabs/sp1"
         }
       ],
       "scopes": [
         {
-          "repository": "sp1",
+          "repository": "succinctlabs/sp1",
           "paths": {
             "crates/hypercube/src/verifier/shard.rs": {
               "path_kind": "file",
@@ -11479,6 +11515,12 @@
                   "coverage": "Whole file reviewed as the top-level verifier. Critical Findings 3.1/3.2 (chips not observed by the challenger) and High Findings 3.5/3.6 (prover-triggered panics) are counted here; 3.9 (Impact Medium), 3.3, 3.20, 3.25-3.28 not counted.",
                   "follows": "24e3ebaaf2396f24abc41e187b8e05818f27a59c",
                   "major_findings": 4,
+                  "finding_ids": [
+                    "3.1",
+                    "3.2",
+                    "3.5",
+                    "3.6"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11493,6 +11535,12 @@
                   "coverage": "Fix for Finding 3.9 (only the expected number of public values is accepted). Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "353904f13ff3dcbdb169d3c9e130d1c823f167c9",
                   "major_findings": 4,
+                  "finding_ids": [
+                    "3.1",
+                    "3.2",
+                    "3.5",
+                    "3.6"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11507,6 +11555,12 @@
                   "coverage": "Fix for Finding 3.20 (chip constraint degree bound enforced; change may live in crates/hypercube/src/chip.rs). Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "368eec5ed74344e52032bc06347705c6ebd7328b",
                   "major_findings": 4,
+                  "finding_ids": [
+                    "3.1",
+                    "3.2",
+                    "3.5",
+                    "3.6"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11521,6 +11575,12 @@
                   "coverage": "Fix for Finding 3.28 (removes zerocheck_eq_vals). Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "53da5ad3d520d39ed615223180821b93df9886e3",
                   "major_findings": 4,
+                  "finding_ids": [
+                    "3.1",
+                    "3.2",
+                    "3.5",
+                    "3.6"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11535,6 +11595,10 @@
                   "coverage": "Fix for High Findings 3.5 and 3.6 and Informational 3.26/3.27 (shard_chips handling); Critical Findings 3.1/3.2 still open.",
                   "follows": "67dddbb62557fc7ce70c7899db48c07ee1ea2e48",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "3.1",
+                    "3.2"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11549,6 +11613,10 @@
                   "coverage": "Partial fix for Critical Findings 3.1/3.2: challenger observes the used chip names, but chip constraint/interaction definitions are still not bound, so both findings remain counted. Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "bf7d5463395eae254d9966349024f92453f8fe30",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "3.1",
+                    "3.2"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -11888,6 +11956,9 @@
                   "review_phase": "Initial audit (post-refactor scope)",
                   "coverage": "Whole file reviewed. High Finding 3.7 (verifier panic via FRI opening shape) counted; 3.13 and 3.34 are Low/Informational; pre-refactor Finding 4.6 (Low) is fixed in this commit.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.7"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -11954,6 +12025,9 @@
                   "review_phase": "Initial audit (post-refactor scope)",
                   "coverage": "Whole file reviewed. Critical Finding 3.4 (rounds not bound) counted; 3.10, 3.11, 3.12 have Medium impact and 3.14, 3.17, 3.19, 3.24, 3.29, 3.31, 3.37 Low/Informational; pre-refactor High Finding 4.2 is fixed in this commit.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11968,6 +12042,9 @@
                   "coverage": "Fix for Finding 3.31 (unused max_log_row_count removed).",
                   "follows": "353904f13ff3dcbdb169d3c9e130d1c823f167c9",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11982,6 +12059,9 @@
                   "coverage": "Fix for Findings 3.12 and 3.17 (range checks before from_canonical_usize). Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "41ff5b096a9aaede4906d21b9853c17ece986d00",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -11996,6 +12076,9 @@
                   "coverage": "First of four commits fixing Critical Finding 3.4. Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "7389c2192d0e71638ef703ce5123b0f73571f20c",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -12010,6 +12093,9 @@
                   "coverage": "Second of four commits fixing Critical Finding 3.4. Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "0a09ba994dcd48b1fc4a8ec32ec6ecec89204896",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -12024,6 +12110,9 @@
                   "coverage": "Third of four commits fixing Critical Finding 3.4. Fix commit is not served by GitHub (hash kept verbatim from the report); its position in this chain is unverified.",
                   "follows": "7310e655b7df2ce432ef22876eb149b8031dd315",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -12200,6 +12289,9 @@
                   "review_phase": "Initial audit (post-refactor scope)",
                   "coverage": "Only the JaggedEvalConfig implementation (JaggedEvalSumcheckConfig::jagged_evaluation) reviewed; the prover in this file is excluded. High Finding 3.8 (completeness) counted; 3.10 has Medium impact, 3.30/3.33 Informational.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.8"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -12214,6 +12306,9 @@
                   "coverage": "Fix for Finding 3.30 (dimension() instead of len()).",
                   "follows": "353904f13ff3dcbdb169d3c9e130d1c823f167c9",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.8"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -12228,6 +12323,9 @@
                   "coverage": "Fix for Finding 3.33 (branching_program_evals removed), first commit.",
                   "follows": "b4de67dbb92bb62665654147906dddf96e000614",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.8"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -12362,6 +12460,9 @@
                   "review_phase": "Initial audit (pre-refactor scope)",
                   "coverage": "Pre-refactor slop repository layout; the report itemizes the scope only for the post-refactor commit and this path is the pre-refactor location of an itemized file. Initial review period (from 2025-08-18) started on this commit; on 2025-09-30 the audit switched to the refactored commit 353904f1 and the report attributes all Section 3 findings to that commit only, so coverage of this pre-refactor revision is incomplete. High Finding 4.1 (panic on empty univariate_polys) counted.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "4.1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -12528,6 +12629,9 @@
                   "review_phase": "Initial audit (pre-refactor scope)",
                   "coverage": "Pre-refactor slop repository layout; the report itemizes the scope only for the post-refactor commit and this path is the pre-refactor location of an itemized file. Initial review period (from 2025-08-18) started on this commit; on 2025-09-30 the audit switched to the refactored commit 353904f1 and the report attributes all Section 3 findings to that commit only, so coverage of this pre-refactor revision is incomplete. High Finding 4.2 (padding manipulation breaks binding) counted; fixed by the refactor in 353904f1.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "4.2"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -12542,6 +12646,9 @@
                   "coverage": "Touched by the fix of Finding 4.1 (sumcheck zero-variable case); Finding 4.2 still open.",
                   "follows": "6b785e8f7a2658f1a622cc4ede3912a1db2c10f7",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "4.2"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -12594,6 +12701,9 @@
                   "review_phase": "Initial audit (pre-refactor scope)",
                   "coverage": "Not in the itemized post-refactor scope; reviewed at the pre-refactor commit at least to the extent of High Finding 4.3 (double drop in Buffer::pop), which is counted.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "4.3"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {

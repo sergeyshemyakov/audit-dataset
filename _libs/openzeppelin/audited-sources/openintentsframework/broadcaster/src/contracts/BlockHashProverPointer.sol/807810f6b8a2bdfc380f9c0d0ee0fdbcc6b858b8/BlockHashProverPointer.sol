@@ -1,0 +1,56 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.27;
+
+import {IBlockHashProver} from "./interfaces/IBlockHashProver.sol";
+import {IBlockHashProverPointer} from "./interfaces/IBlockHashProverPointer.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {StorageSlot} from "@openzeppelin/contracts/utils/StorageSlot.sol";
+
+bytes32 constant BLOCK_HASH_PROVER_POINTER_SLOT = bytes32(uint256(keccak256("eip7888.pointer.slot")) - 1);
+
+contract BlockHashProverPointer is IBlockHashProverPointer, Ownable {
+    address internal _implementationAddress;
+
+    error NonIncreasingVersion(uint256 newVersion, uint256 oldVersion);
+    error InvalidImplementationAddress();
+
+    constructor(address _initialOwner) Ownable(_initialOwner) {}
+
+    function implementationAddress() public view returns (address) {
+        return _implementationAddress;
+    }
+
+    /// @notice Return the code hash of the latest version of the prover.
+    function implementationCodeHash() public view returns (bytes32 codeHash) {
+        codeHash = StorageSlot.getBytes32Slot(BLOCK_HASH_PROVER_POINTER_SLOT).value;
+    }
+
+    function setImplementationAddress(address _newImplementationAddress) external onlyOwner {
+        if (_newImplementationAddress == address(0)) {
+            revert InvalidImplementationAddress();
+        }
+
+        (bool success, bytes memory returnData) =
+            _newImplementationAddress.staticcall(abi.encodeWithSelector(IBlockHashProver.version.selector));
+        if (!success || returnData.length != 32) {
+            revert InvalidImplementationAddress();
+        }
+
+        uint256 newVersion = abi.decode(returnData, (uint256));
+
+        address currentImplementationAddress = implementationAddress();
+        if (currentImplementationAddress != address(0)) {
+            uint256 oldVersion = IBlockHashProver(currentImplementationAddress).version();
+            if (newVersion <= oldVersion) {
+                revert NonIncreasingVersion(newVersion, oldVersion);
+            }
+        }
+
+        _implementationAddress = _newImplementationAddress;
+        _setCodeHash(_newImplementationAddress.codehash);
+    }
+
+    function _setCodeHash(bytes32 _codeHash) internal {
+        StorageSlot.getBytes32Slot(BLOCK_HASH_PROVER_POINTER_SLOT).value = _codeHash;
+    }
+}

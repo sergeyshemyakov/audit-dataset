@@ -1,6 +1,6 @@
 ---
 name: audit-extract
-description: Classify project audit reports for L2BEAT relevance and extract a strict audit-summary.json for relevant reports, preserving exact repository paths, revisions, coverage, major findings, and remediation lineage.
+description: Classify project audit reports for L2BEAT relevance and extract a strict audit-summary.json for relevant reports, preserving exact repository paths, revisions, coverage, major findings with their report finding identifiers, and remediation lineage.
 ---
 
 # Audit Summary Extraction
@@ -55,6 +55,7 @@ type Version = {
   coverage: string;
   follows?: string; // identifier of the preceding listed revision
   major_findings: number; // non-negative integer
+  finding_ids?: string[]; // required iff major_findings > 0; exactly major_findings entries, see "Major finding identifiers"
   highest_reported_finding_severity?: string;
 };
 
@@ -79,15 +80,32 @@ type Report = {
 };
 
 type AuditSummary = {
-  schema_version: "1.2.0";
+  schema_version: "1.4.0";
   project: string;
   reports: Report[];
 };
 ```
 
+Repository ids are canonical and derived from the repository URL by `normalize.py`: GitHub repositories are `owner/repo` exactly as GitHub spells them (no `.git` suffix), GitHub gists are `gist/<owner>/<id>`, other hosts are `<host>/<path>`. Run `python3 normalize.py <url>` to print the id for a URL. Every `scopes[].repository` must equal one of the report's `repositories[].id`. Do not record repository lineage (forks) in the summary; `update_repositories.py` derives it into the root `repositories.json`.
+
+For a project that forks another codebase (for example an OP stack fork), scope only what the report scopes. Never expand a fork's audit to upstream files: the consumer resolves upstream coverage through the repository registry.
+
 Every report must have `description` and `isRelevant`. An irrelevant report must have `scopes: []`; do not extract its repository paths, revisions, coverage, or findings. `repositories` may contain repositories that are directly identified while classifying the report, including an inaccessible private repository, but do not investigate the report further merely to populate that array.
 
-`major_findings` counts findings labeled **Major or Critical** (or equivalent) by the report. Do not count Medium/Moderate, Low, Informational, or optimization findings. A vulnerable version gets the count; a verified remediated version gets zero unless it has another Major/Critical finding.
+## Major finding identifiers
+
+`major_findings` counts findings labeled **Major or Critical** (or equivalent, such as High/Critical) by the report. Do not count Medium/Moderate, Low, Informational, or optimization findings. A vulnerable version gets the count; a verified remediated version gets zero unless it has another Major/Critical finding. Count per path: a finding belongs to a path only when the report locates it in that file or directory (through its location/target field, code references, or description). Never copy a report-wide total onto every scoped path, and do not attribute a finding to test files, interfaces, or sibling contracts that the report does not name for it.
+
+Every version with `major_findings > 0` must carry `finding_ids`: the identifiers of exactly those Major/Critical findings that are open in that revision of that path. Downstream consumers use them to name a specific finding when the vulnerable revision turns out to be deployed onchain. The array is omitted entirely (never empty) when `major_findings` is `0`.
+
+Write each identifier exactly as the report prints it, so that searching the report for the string locates the finding:
+
+1. If the report assigns explicit identifiers (`H-01`, `C01`, `TOB-SCROLL-13`, `CLAB-21`, `V-KLA-VUL-006`, `CVF-7`, `#00`, `GLOBAL-01`, an Immunefi submission number such as `37251`), copy the identifier verbatim. Drop only surrounding markdown, brackets (`[H01]` becomes `H01`), and trailing punctuation.
+2. If findings have no explicit identifier but are numbered through their headings or the summary table (for example `### 3.1.1 Missing access control` or `## 7. [High] ...`), use that number (`3.1.1`, `7`).
+3. If the report gives findings neither an identifier nor a number, or numbering restarts per section so that numbers are not unique within the report, use the finding title verbatim as printed in its heading.
+4. A finding that remains open across several versions of a path (for example a High carried into a fix-review revision, or one marked only "partially resolved") repeats its identifier in every version where it is still open and disappears from the version that remediates it. A finding that the report locates in several paths is listed under every one of those paths.
+
+Order identifiers as they appear in the report. `finding_ids` holds identifiers only: no titles (unless the title is the identifier), severities, statuses, or descriptions; `coverage` may still mention them in prose.
 
 Derive status mechanically: full coverage plus zero/nonzero `major_findings` gives `audited_with_no_major_findings`/`audited_with_major_findings`; limited coverage gives the corresponding `partially_audited_*` status. Use `not_audited` only when the report explicitly excludes or leaves that version unreviewed, and set its `major_findings` to `0` because no audit finding is established.
 
@@ -107,17 +125,21 @@ Derive status mechanically: full coverage plus zero/nonzero `major_findings` giv
 
 ## Do not extract
 
-- Finding titles, descriptions, recommendations, proofs of concept, or per-finding details.
+- Finding titles, descriptions, recommendations, proofs of concept, or per-finding details, beyond the identifiers required in `finding_ids`.
 - Counts or details for findings below Major/Critical severity.
 - Report evidence, line citations, version notes, relationship prose inside versions, scope notes, or scope-precision fields.
 - Team biographies, methodology boilerplate, person-days, disclaimers, severity explanations, or general protocol descriptions.
 - Files merely referenced as dependencies, examples, or context unless the report explicitly audits them.
 - Deployment addresses, production bytecode, or guesses about which audited version is deployed.
 
-Validate JSON syntax, allowed fields/statuses, non-empty descriptions of at most two sentences, boolean `isRelevant`, empty scopes for every irrelevant report, integer `major_findings`, one entry per recursively discovered Markdown report, report paths that match their final locations, full-length commit hashes where known, an ISO 8601 UTC `timestamp` (or `start_timestamp`/`end_timestamp`) on every revision that is `null` only when the commit is `null` or unavailable on GitHub, and chronological version ancestry.
+Validate JSON syntax, canonical repository ids (`python3 normalize.py --migrate <project> --check`), allowed fields/statuses, non-empty descriptions of at most two sentences, boolean `isRelevant`, empty scopes for every irrelevant report, integer `major_findings`, `finding_ids` present with exactly `major_findings` unique entries on every version with `major_findings > 0` and absent otherwise, one entry per recursively discovered Markdown report, report paths that match their final locations, full-length commit hashes where known, an ISO 8601 UTC `timestamp` (or `start_timestamp`/`end_timestamp`) on every revision that is `null` only when the commit is `null` or unavailable on GitHub, and chronological version ancestry.
 
 # After writing the final audit-summary.json
 
-1. Generate a user-readable overview using `python3 generate_audit_summary.py <project>/audit-summary.json`. The script renders commit dates from the stored revision timestamps and warns about commits without one. Confirm that every report has a description, only relevant reports have source tables, irrelevant reports appear at the bottom, the commit dates are populated, and all report links resolve after the moves.
-2. Fetch audited sources with `python3 fetch_audited_sources.py <project>/audit-summary.json`. The script ignores irrelevant reports. Do not pass `--circuit-path` or `--program-path`; leave those options to the researchers.
-3. Format all fetched .sol sources with `python3 format_sources.py <project>`.
+Run `python3 pipeline.py <project>`. It executes, in order:
+
+1. `generate_audit_summary.py <project>/audit-summary.json`: validates the schema and the canonical repository ids and renders `audit-summary.md`. Confirm that every report has a description, only relevant reports have source tables, irrelevant reports appear at the bottom, the commit dates are populated, and all report links resolve after the moves.
+2. `fetch_audited_sources.py <project>/audit-summary.json`: fetches every pinned source of relevant reports into `<project>/audited-sources`.
+3. `format_sources.py <project>`: formats the fetched Solidity files with the shared forge fmt config.
+4. `index_sources.py <project>`: records the declared unit names and post-format hashes of every fetched file in `manifest.json`.
+5. `update_repositories.py`: refreshes the root `repositories.json` registry (requires the authenticated GitHub CLI; pass `--no-lookup` to `pipeline.py` to skip the GitHub lineage lookups).

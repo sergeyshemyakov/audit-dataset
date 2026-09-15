@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "uniswapv3",
   "reports": [
     {
@@ -70,6 +70,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file (manual review, unit tests, Echidna end-to-end properties)",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-UNI-005"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -340,6 +343,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-UNI-009"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1261,6 +1267,10 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "CVF-26",
+                    "CVF-24"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -1274,7 +1284,10 @@
                   "review_phase": "fix review",
                   "coverage": "verification of the fix for the Critical decreaseLiquidity finding; the Major missing-token-existence-check finding remains open",
                   "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
-                  "major_findings": 1
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "CVF-24"
+                  ]
                 }
               ]
             },
@@ -1292,6 +1305,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "CVF-7"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {

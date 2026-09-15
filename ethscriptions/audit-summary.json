@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "ethscriptions",
   "reports": [
     {
@@ -500,6 +500,9 @@
                   "review_phase": "primary review",
                   "coverage": "full file; the report scopes the whole facet-geth repository ('Geth') at this commit and the single Critical finding (panic in the newly added precompile) is in this file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.1"
+                  ],
                   "highest_reported_finding_severity": "critical"
                 },
                 {

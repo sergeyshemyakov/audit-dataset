@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "roninnetwork",
   "reports": [
     {
@@ -817,6 +817,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -831,6 +834,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -849,6 +855,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -863,6 +872,9 @@
                   "coverage": "Fix review of GLOBAL-03 storage gap added in PR #23 commit 43140674.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -877,6 +889,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "431406749aa480fe427b8d163788a77e685db2ac",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -942,6 +957,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -956,6 +974,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -974,6 +995,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -988,6 +1012,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -1006,6 +1033,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1020,6 +1050,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -1038,6 +1071,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1052,6 +1088,9 @@
                   "coverage": "Fix review of GLOBAL-03 storage gap added in PR #23 commit 43140674.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1066,6 +1105,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "431406749aa480fe427b8d163788a77e685db2ac",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -1084,6 +1126,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "GLOBAL-01",
+                    "GLOBAL-04"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1099,6 +1145,10 @@
                   "coverage": "Fix review of GAC-01 and GAC-02 resolved in PR #23; the cited PR commit 43140674 does not touch this file and the PR of the removed ronin-smart-contracts-v2 repository could not be resolved.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "GLOBAL-01",
+                    "GLOBAL-04"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1113,6 +1163,10 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "#23",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "GLOBAL-01",
+                    "GLOBAL-04"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -1163,6 +1217,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1177,6 +1234,9 @@
                   "coverage": "Fix review of BMC-01 (immutable variable) in PR #22 commit 8e13e0bc.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1191,6 +1251,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "8e13e0bc4aac7ccb23ce6cb8fe5199f158e61dfa",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -1331,6 +1394,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit abe18fe7 (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1345,6 +1411,9 @@
                   "coverage": "Fix review of GLOBAL-03 storage gap added in PR #23 commit 43140674.",
                   "follows": "abe18fe7c333657297fa29409025dbb54852d204",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -1359,6 +1428,9 @@
                   "coverage": "Second audited commit 90dad8af listed by the report; acknowledged Major centralization/governance-delay findings remain open.",
                   "follows": "431406749aa480fe427b8d163788a77e685db2ac",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "GLOBAL-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -2023,6 +2095,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of the Ronin DPoS Contracts at the initial commit (DPoS Smart Contracts-1 High in CoinbaseExecution.sol).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "DPoS Smart Contracts-1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -2055,6 +2130,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (DPoS Smart Contracts-1 High, -2 Medium, -3 Medium).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "DPoS Smart Contracts-1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -2911,6 +2989,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at the first audited commit 1d3f5e3c (report lists file with SHA256).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "CEU-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -8248,6 +8329,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of the directory; CRITICAL finding 2.2.1 in MainchainGatewayV3.sol (requestDepositForBatch msg.value) reported Open.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "2.2.1"
+                  ],
                   "highest_reported_finding_severity": "CRITICAL"
                 }
               ]
@@ -8283,6 +8367,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review as part of src/mainchain; CRITICAL finding 2.2.1 (requestDepositForBatch msg.value) reported Open.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "2.2.1"
+                  ],
                   "highest_reported_finding_severity": "CRITICAL"
                 },
                 {
@@ -8297,6 +8384,9 @@
                   "coverage": "Only the PR #58 withdrawal-hardening diff was reviewed (head commit); the CRITICAL finding 2.2.1 is not addressed by this PR.",
                   "follows": "df1d80e48fa1e0854133775eb94aa5bdb64a2a47",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "2.2.1"
+                  ],
                   "highest_reported_finding_severity": "CRITICAL"
                 }
               ]

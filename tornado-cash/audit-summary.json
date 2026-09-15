@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "tornado-cash",
   "reports": [
     {
@@ -256,7 +256,10 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "highest_reported_finding_severity": "major",
-                  "major_findings": 1
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "4.2"
+                  ]
                 },
                 {
                   "revision": {
@@ -425,7 +428,7 @@
       "report_date": "2020-09-01",
       "repositories": [
         {
-          "id": "AleksandraZv/farm-sol-gist",
+          "id": "gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6",
           "url": "https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"
         },
         {
@@ -435,7 +438,7 @@
       ],
       "scopes": [
         {
-          "repository": "AleksandraZv/farm-sol-gist",
+          "repository": "gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6",
           "paths": {
             "Farm.sol": {
               "path_kind": "file",
@@ -475,6 +478,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -551,6 +557,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.1"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -704,6 +713,10 @@
                   "review_phase": "initial audit",
                   "coverage": "all contracts except IVerifier.sol and the generated verifier contracts",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "Major Miner.sol#L296-L309",
+                    "Major RewardSwap.sol#L88"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -790,6 +803,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "Major Miner.sol#L296-L309"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -804,6 +820,9 @@
                   "coverage": "fix for the reported minor issue only",
                   "follows": "820bd83254f3264cebaf255869641ebc33288dc3",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "Major Miner.sol#L296-L309"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -848,6 +867,9 @@
                   "review_phase": "initial audit",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "Major RewardSwap.sol#L88"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -888,6 +910,9 @@
                   "review_phase": "recheck of changed contracts",
                   "coverage": "full file",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "CVF-4"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -978,6 +1003,10 @@
                   "review_phase": "recheck of changed contracts",
                   "coverage": "full file",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "CVF-31",
+                    "CVF-32"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]

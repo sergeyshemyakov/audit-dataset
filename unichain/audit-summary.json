@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "unichain",
   "reports": [
     {
@@ -34,6 +34,9 @@
                   "review_phase": "initial_audit",
                   "coverage": "Full review of all contracts under src (FeeSplitter, NetFeeSplitter, L1Splitter, L2StakeManager, RewardDistributor and interfaces) at the audited commit.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.1.1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {

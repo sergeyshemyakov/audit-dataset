@@ -14,6 +14,9 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 
+from normalize import SUMMARY_SCHEMA_VERSION, validate_summary_ids
+
+
 class SummaryError(RuntimeError):
     """The input cannot be rendered as an audit summary."""
 
@@ -60,6 +63,14 @@ def read_summary(path: Path) -> dict[str, Any]:
         raise SummaryError(f"could not read {path}: {error}") from error
     if not isinstance(value, dict) or not isinstance(value.get("reports"), list):
         raise SummaryError("summary must be an object containing a reports array")
+    if value.get("schema_version") != SUMMARY_SCHEMA_VERSION:
+        raise SummaryError(
+            f"schema_version must be {SUMMARY_SCHEMA_VERSION!r}, "
+            f"got {value.get('schema_version')!r}; run normalize.py --migrate"
+        )
+    problems = validate_summary_ids(value)
+    if problems:
+        raise SummaryError("; ".join(problems))
     return value
 
 

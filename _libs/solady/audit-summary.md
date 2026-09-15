@@ -10,7 +10,7 @@ Commit dates use Git committer timestamps (UTC).
 - Date: 2023-06-02
 - Description: Security review by Ackee Blockchain, funded by RockawayX, of a selection of Solady token contracts (ERC20, ERC721, ERC1155) and utility libraries (SafeTransferLib, ERC1967Factory, SignatureCheckerLib, MerkleProofLib, EIP712) using manual review and differential fuzzing. Revision 1.1 is a fix review of the reported findings.
 
-### Repository: <a href="https://github.com/Vectorized/solady"><code>solady</code></a>
+### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ Commit dates use Git committer timestamps (UTC).
 - Date: 2023-07-08
 - Description: Independent security review of the Solady ERC721 token contract by shung as part of the OpenSense Operation Solwaifu community audit initiative, covering the custom storage layout, manual memory operations, and inline assembly. No significant issues were found; the reported Low and Informational items were addressed with documentation.
 
-### Repository: <a href="https://github.com/Vectorized/solady"><code>solady</code></a>
+### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ Commit dates use Git committer timestamps (UTC).
 - Date: 2023-09-14
 - Description: Crowdfunded Cantina public goods security review of Solady targeting ERC1967Factory, ERC20, ERC721, ERC1155, LibClone, MerkleProofLib, SignatureCheckerLib and ECDSA. Fixes were applied in follow-up pull requests and confirmed by the reviewers.
 
-### Repository: <a href="https://github.com/Vectorized/solady"><code>solady</code></a>
+### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ Commit dates use Git committer timestamps (UTC).
 - Date: 2024-07-31
 - Description: Mathematical correctness proof by xuwinnie of the cbrt and cbrtWad functions in FixedPointMathLib, showing that the initial guess and iterative refinement return the exact integer cube root. No findings are reported.
 
-### Repository: <a href="https://github.com/Vectorized/solady"><code>solady</code></a>
+### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -74,7 +74,7 @@ Commit dates use Git committer timestamps (UTC).
 - Date: 2025-01-22
 - Description: Spearbit security review of the Solady library commissioned by Coinbase, conducted over 40 days on a single repository commit and reporting 55 issues across the accounts, tokens and utils modules. Fixes were applied in follow-up pull requests and verified by Spearbit.
 
-### Repository: <a href="https://github.com/Vectorized/solady"><code>solady</code></a>
+### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "Solady",
   "reports": [
     {
@@ -12,13 +12,13 @@
       "report_date": "2023-06-02",
       "repositories": [
         {
-          "id": "solady",
+          "id": "Vectorized/solady",
           "url": "https://github.com/Vectorized/solady"
         }
       ],
       "scopes": [
         {
-          "repository": "solady",
+          "repository": "Vectorized/solady",
           "paths": {
             "src/tokens/ERC20.sol": {
               "path_kind": "file",
@@ -96,6 +96,9 @@
                   "review_phase": "Revision 1.0 (initial audit)",
                   "coverage": "Full manual review with differential fuzzing of the explicitly scoped file.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -268,13 +271,13 @@
       "report_date": "2023-07-08",
       "repositories": [
         {
-          "id": "solady",
+          "id": "Vectorized/solady",
           "url": "https://github.com/Vectorized/solady"
         }
       ],
       "scopes": [
         {
-          "repository": "solady",
+          "repository": "Vectorized/solady",
           "paths": {
             "src/tokens/ERC721.sol": {
               "path_kind": "file",
@@ -321,13 +324,13 @@
       "report_date": "2023-09-14",
       "repositories": [
         {
-          "id": "solady",
+          "id": "Vectorized/solady",
           "url": "https://github.com/Vectorized/solady"
         }
       ],
       "scopes": [
         {
-          "repository": "solady",
+          "repository": "Vectorized/solady",
           "paths": {
             "src/utils/ERC1967Factory.sol": {
               "path_kind": "file",
@@ -467,6 +470,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "Full review of the explicitly scoped file.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "4.1.1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -617,13 +623,13 @@
       "report_date": "2024-07-31",
       "repositories": [
         {
-          "id": "solady",
+          "id": "Vectorized/solady",
           "url": "https://github.com/Vectorized/solady"
         }
       ],
       "scopes": [
         {
-          "repository": "solady",
+          "repository": "Vectorized/solady",
           "paths": {
             "src/utils/FixedPointMathLib.sol": {
               "path_kind": "file",
@@ -656,13 +662,13 @@
       "report_date": "2025-01-22",
       "repositories": [
         {
-          "id": "solady",
+          "id": "Vectorized/solady",
           "url": "https://github.com/Vectorized/solady"
         }
       ],
       "scopes": [
         {
-          "repository": "solady",
+          "repository": "Vectorized/solady",
           "paths": {
             "src/accounts/ERC4337.sol": {
               "path_kind": "file",
@@ -797,6 +803,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "5.2.2"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -885,6 +894,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "5.1.2"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -960,6 +972,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "5.2.1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1177,6 +1192,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "5.2.3"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1265,6 +1283,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "5.2.1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1309,6 +1330,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "5.2.1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1322,7 +1346,10 @@
                   "review_phase": "Remediation review",
                   "coverage": "Review of the fix for findings 5.4.3, 5.5.6 (PR 1225), verified by Spearbit; not a full re-audit.",
                   "follows": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
-                  "major_findings": 1
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "5.2.1"
+                  ]
                 },
                 {
                   "revision": {
@@ -1521,6 +1548,9 @@
                   "review_phase": "Initial audit",
                   "coverage": "File referenced by the report's findings; the report states a review of the Solady repository at this commit without a file-level scope list, so full-file coverage is not established.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "5.1.1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "bob",
   "reports": [
     {
@@ -34,6 +34,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. BOB-02-001 (High): initialize() can be front-run to take over a directly deployed bridge.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "BOB-02-001"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -65,6 +68,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. BOB-02-001 (High) affects this bridge as well.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "BOB-02-001"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -96,6 +102,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of the modified USDC bridge library as submitted in bob-collective/optimism PR #1; the report lists PR commits 2ba5514, 12996ea and a80a286, of which a80a286 is the latest and is recorded here. BOB-02-001 (High): __UsdcBridge_init reachable through unprotected initialize().",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "BOB-02-001"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -589,6 +598,14 @@
                   "review_phase": "initial audit",
                   "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). Report scopes the contracts folder (stated as crates/common/contracts/src, located at crates/contracts/foundry/src in the repository) excluding vendor. Critical V-KLA-VUL-001/002/003/004/006 and High V-KLA-VUL-007 in KailuaTournament.sol, KailuaLib.sol and KailuaTreasury.sol. The report records the fix for VUL-001 at f402ec3 (documentation-only commit) and for VUL-006 at 871eb34 (touches only crates/common/src/client.rs).",
                   "major_findings": 6,
+                  "finding_ids": [
+                    "V-KLA-VUL-001",
+                    "V-KLA-VUL-002",
+                    "V-KLA-VUL-003",
+                    "V-KLA-VUL-004",
+                    "V-KLA-VUL-006",
+                    "V-KLA-VUL-007"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -650,6 +667,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). Full review of crates/common/src. Critical V-KLA-VUL-005 (client.rs, addressed and partially verified) and High V-KLA-VUL-013 (blobs.rs); Medium V-KLA-VUL-016 and Low V-KLA-VUL-017 also here.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "V-KLA-VUL-005",
+                    "V-KLA-VUL-013"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -720,6 +741,13 @@
                   "review_phase": "initial audit",
                   "coverage": "Veridise review of Kailua on commit 6e2ce8f (then risc0/kailua). All files of bin/cli except bench.rs, fast_track.rs, fault.rs and the providers/ folder (listed separately as not audited). High V-KLA-VUL-008/009/011/012 (db/mod.rs) and V-KLA-VUL-010 (propose.rs); Medium V-KLA-VUL-014/015 in validate.rs, proposer/validator.",
                   "major_findings": 5,
+                  "finding_ids": [
+                    "V-KLA-VUL-008",
+                    "V-KLA-VUL-009",
+                    "V-KLA-VUL-010",
+                    "V-KLA-VUL-011",
+                    "V-KLA-VUL-012"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {

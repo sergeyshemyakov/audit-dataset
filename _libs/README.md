@@ -9,7 +9,7 @@ Collected **91 audit/security documents: 81 PDFs, six HTML reports, and four nat
 | Code vendor / family | Report documents |
 | --- | ---: |
 | [OpenZeppelin](openzeppelin/reports) | 16 |
-| [Gnosis / Safe / Zodiac](gnosis/reports) | 41 |
+| [Gnosis / Safe / Zodiac](safe/reports) | 41 |
 | [Solady](solady/reports) | 5 |
 | [Solmate](solmate/reports) | 1 |
 | [Uniswap](uniswap/reports) | 16 |
@@ -18,10 +18,10 @@ Collected **91 audit/security documents: 81 PDFs, six HTML reports, and four nat
 | [PRBMath](prb-math/reports) | 2 |
 | [Chiru Labs / ERC721A](chiru-labs/reports) | 2 |
 
-Reports are grouped by **the vendor of the code**, not the auditor: for example, OpenZeppelin's audit of Compound belongs under `compound/`. `gnosis/` includes Gnosis Safe, the renamed Safe project, and Gnosis Guild's Zodiac infrastructure.
+Reports are grouped by **the vendor of the code**, not the auditor: for example, OpenZeppelin's audit of Compound belongs under `compound/`. `safe/` includes Gnosis Safe, the renamed Safe project, and Gnosis Guild's Zodiac infrastructure. The directory is named `safe` rather than `gnosis` because L2BEAT uses `gnosis` for Gnosis Chain.
 
 ```text
-libs/
+_libs/
   <vendor>/
     reports/       Original PDF, Markdown, and HTML reports
     provenance/    Selected original publisher audit indexes and scope notes
@@ -35,7 +35,7 @@ libs/
 
 The collection includes conventional audits, audit competitions, formal verification, one mathematical proof, and a bug-disclosure article. These are distinguished in the manifest and report index. Initial/final editions and reports covering the same engagement are retained; document counts are not independent-audit counts. Drafts are explicitly labelled, including cases where the PDF cover says “Draft” but its filename does not.
 
-For your pipeline, treat `libs/<vendor>` as the project directory. PDFs and the four originally published Markdown reports are under `reports/`. Native HTML reports need conversion to Markdown before the existing extraction step; they have been preserved as HTML rather than presented as extracted audit data. `provenance/` files are supporting indexes, not reports; their original relative links resolve in the upstream repository shown in the manifest.
+For the pipeline, `_libs/<vendor>` is an ordinary collection: the same layout and scripts as a project directory. The grouping is organizational only; consumers decide how library evidence is ranked. PDFs and the four originally published Markdown reports are under `reports/`. Native HTML reports need conversion to Markdown before the existing extraction step; they have been preserved as HTML rather than presented as extracted audit data. `provenance/` files are supporting indexes, not reports; their original relative links resolve in the upstream repository shown in the manifest.
 
 ## Using this evidence for coverage
 

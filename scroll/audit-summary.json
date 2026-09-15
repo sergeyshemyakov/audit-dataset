@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "scroll",
   "reports": [
     {
@@ -77,6 +77,9 @@
                   "review_phase": "fix commit",
                   "coverage": "Remediation of 1.5 (Low, overflow formula). 1.4 (Critical, missing range checks) still open at this commit. Initial audited revision is not stated in the report; only remediation commits are listed.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -1166,6 +1169,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-05 and H-06 (High) reported.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-05",
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1180,6 +1187,9 @@
                   "coverage": "PR #605 fix of H-05 (refund address defaults to msg.sender); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1229,6 +1239,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-05 and H-06 (High) affect this gateway.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-05",
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1243,6 +1257,9 @@
                   "coverage": "PR #605 fix of H-05 (refund address defaults to msg.sender); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1261,6 +1278,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-05 and H-06 (High) affect this gateway.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-05",
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1275,6 +1296,9 @@
                   "coverage": "PR #605 fix of H-05 (refund address defaults to msg.sender); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1293,6 +1317,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-05 and H-06 (High) affect this gateway.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-05",
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1307,6 +1335,9 @@
                   "coverage": "PR #605 fix of H-05 (refund address defaults to msg.sender); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1325,6 +1356,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-05 and H-06 (High) affect this gateway.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-05",
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1339,6 +1374,9 @@
                   "coverage": "PR #605 fix of H-05 (refund address defaults to msg.sender); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1357,6 +1395,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-05 and H-06 (High) affect this gateway.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-05",
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1371,6 +1413,9 @@
                   "coverage": "PR #605 fix of H-05 (refund address defaults to msg.sender); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1389,6 +1434,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-06 (High, unresolved) and M-02 (storage gap) reported.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1403,6 +1451,9 @@
                   "coverage": "PR #618 fix of M-02 (storage gap added); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1438,6 +1489,11 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-05, H-06 and H-07 (High) reported.",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "H-05",
+                    "H-06",
+                    "H-07"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1452,6 +1508,10 @@
                   "coverage": "PR #605 fix of H-05; H-06 and H-07 still open at this commit. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-06",
+                    "H-07"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1466,6 +1526,9 @@
                   "coverage": "PR #606 fix of H-07 (token metadata); H-06 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "76d4230571da5909499ace4c7bc90ad31a721325",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-06"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -1548,6 +1611,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-02 (High) reported.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-02"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1596,6 +1662,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-01 and H-04 (High) reported.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-01",
+                    "H-04"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1610,6 +1680,10 @@
                   "coverage": "PR #517 fix of client-reported CR-01 (chain ID added to proof public input); H-01 and H-04 still open at this commit. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-01",
+                    "H-04"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1624,6 +1698,9 @@
                   "coverage": "PR #546 fix of H-01 (chunk hash memory corruption); H-04 still open. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "55f5857aebf1ae0453d3f45a71fb9c4125877e93",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-04"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1638,6 +1715,9 @@
                   "coverage": "PR #558 partial fix of H-04 (_withdrawRoot parameter removed; importGenesisBatch still callable by anyone, counted as open). Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "9606c61f5e70d46fae9e4024b574790bc14ff671",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-04"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1652,6 +1732,9 @@
                   "coverage": "PR #624 fix of L-08 (batch events extended); H-04 partially resolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "b82dab5da35b863c2c95f892d9b3dc05d7cfc147",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-04"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -1666,6 +1749,9 @@
                   "coverage": "PR #634 fix of L-01 (batch reverting); H-04 partially resolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "7e8bf3a7c49c4aa355a3060c3e11020e505badc8",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-04"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -2281,6 +2367,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-03 (High) reported.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-03"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -2824,6 +2913,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-01 (High) and M-05 (Medium, unresolved) reported.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3023,6 +3115,15 @@
                   "review_phase": "fix commit",
                   "coverage": "Remediation of 1.4 (Critical, LtChip range checks). Seven other Critical/High RLP findings (1.2, 1.5-1.9, 1.30) still open at this commit. Initial audited revision is not stated in the report; only remediation commits are listed.",
                   "major_findings": 7,
+                  "finding_ids": [
+                    "1.2",
+                    "1.5",
+                    "1.6",
+                    "1.7",
+                    "1.8",
+                    "1.9",
+                    "1.30"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3054,6 +3155,14 @@
                   "review_phase": "fix commit",
                   "coverage": "Remediation of 1.12 (Critical, sv_address consistency) on branch fix/tx-audit-wave (PR #618). 1.4, 1.11, 1.14, 1.15, 1.28, 1.29 still open. Initial audited revision is not stated in the report; only remediation commits are listed.",
                   "major_findings": 6,
+                  "finding_ids": [
+                    "1.4",
+                    "1.11",
+                    "1.14",
+                    "1.15",
+                    "1.28",
+                    "1.29"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3068,6 +3177,13 @@
                   "coverage": "Remediation of 1.4 (Critical, LtChip/Comparator range checks). 1.11, 1.14, 1.15, 1.28, 1.29 still open. Chronologically later than 2565e254 but not its direct git descendant (that fix branch was merged separately).",
                   "follows": "2565e254fc7d42184aaade3d8ee144fdc79fdd10",
                   "major_findings": 5,
+                  "finding_ids": [
+                    "1.11",
+                    "1.14",
+                    "1.15",
+                    "1.28",
+                    "1.29"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3172,6 +3288,11 @@
                   "review_phase": "fix commit",
                   "coverage": "Remediation of 1.24 (High, configure_nonce). 1.18, 1.21, 1.22 still open. Initial audited revision is not stated in the report; only remediation commits are listed.",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "1.18",
+                    "1.21",
+                    "1.22"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3186,6 +3307,10 @@
                   "coverage": "Remediation of 1.22 (Critical, configure_empty_storage hash equality). 1.18, 1.21 still open.",
                   "follows": "9aeff02e4d86e9bbecd0e420ebd3ed13a824e094",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "1.18",
+                    "1.21"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3200,6 +3325,10 @@
                   "coverage": "Remediation of 1.25 (Low, conflicting constraints in configure_code_size). 1.18, 1.21 still open.",
                   "follows": "3ab166a4a62329ec42d44cd63fc9563ff29dea4e",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "1.18",
+                    "1.21"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3214,6 +3343,10 @@
                   "coverage": "Remediation of 1.27 (Informational, constraint name typo). 1.18, 1.21 still open.",
                   "follows": "004fcddb53a86a62ba94f1f7fe8c04b315f23779",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "1.18",
+                    "1.21"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3228,6 +3361,9 @@
                   "coverage": "Remediation of 1.21 (High, configure_balance sibling constraint). 1.18 still open.",
                   "follows": "f9ff6bb56b45da3ad219e4e01c283bedd478ef14",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1.18"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3242,6 +3378,9 @@
                   "coverage": "Remediation of 1.23 (Medium, padding rows); the fix lands in src/mpt.rs and src/gadgets/is_zero.rs rather than this file. 1.18 still open.",
                   "follows": "ef64eb52548946a0dd7f0ee83ce71ed8d460c405",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "1.18"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3356,6 +3495,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-01 and H-02 (High) reported, both acknowledged and unresolved.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-01",
+                    "H-02"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -3404,6 +3547,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; H-01 and H-02 (High) reported, both acknowledged and unresolved.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-01",
+                    "H-02"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3418,6 +3565,10 @@
                   "coverage": "PR #851 fix of L-09 (comments); H-01 and H-02 remain unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H-01",
+                    "H-02"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -3818,6 +3969,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3832,6 +3986,9 @@
                   "coverage": "PR #673 partial fix of N-05 (indexed event parameters). Note: commit timestamp (2023-07-25T16:30Z) precedes the audited commit and is on a diverged branch. H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -3852,6 +4009,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3866,6 +4026,9 @@
                   "coverage": "PR #673 partial fix of N-05 (indexed event parameters). Note: commit timestamp (2023-07-25T16:30Z) precedes the audited commit and is on a diverged branch. H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -3886,6 +4049,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3900,6 +4066,9 @@
                   "coverage": "PR #673 partial fix of N-05 (indexed event parameters). Note: commit timestamp (2023-07-25T16:30Z) precedes the audited commit and is on a diverged branch. H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -3920,6 +4089,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3934,6 +4106,9 @@
                   "coverage": "PR #698 fix of L-04 (consistent reentrancy guard usage). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3948,6 +4123,9 @@
                   "coverage": "PR #874 fix of N-06 (coding style). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "a798e4d52524ddc388e48f9b24d437ee0b3ad85d",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -3968,6 +4146,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3982,6 +4163,9 @@
                   "coverage": "PR #698 fix of L-04 (consistent reentrancy guard usage). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3996,6 +4180,9 @@
                   "coverage": "PR #875 fix of N-07 (function visibility). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "a798e4d52524ddc388e48f9b24d437ee0b3ad85d",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -4061,6 +4248,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4075,6 +4265,9 @@
                   "coverage": "PR #698 fix of L-04 (consistent reentrancy guard usage). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -4095,6 +4288,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4109,6 +4305,9 @@
                   "coverage": "PR #698 fix of L-04 (consistent reentrancy guard usage). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -4270,6 +4469,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved. M-01, M-02, M-05 and L-10 also reported.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4284,6 +4486,9 @@
                   "coverage": "PR #673 partial fix of N-05 (indexed event parameters). Note: commit timestamp (2023-07-25T16:30Z) precedes the audited commit and is on a diverged branch. H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4298,6 +4503,9 @@
                   "coverage": "PR #698 fix of L-04 (consistent reentrancy guard usage). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4312,6 +4520,9 @@
                   "coverage": "PR #698 partial fix of N-15 (unused imports removed). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "a798e4d52524ddc388e48f9b24d437ee0b3ad85d",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4326,6 +4537,9 @@
                   "coverage": "PR #840 partial fix of M-01 (replay limits). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3e21edb752a57dad0c50feb1dfb8b86eda6465c8",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4340,6 +4554,9 @@
                   "coverage": "PR #852 fix of L-10 (maxReplayTimes initialized). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "0d7d73ff1a6e463d58efe2073d1dbd590f5da0f1",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -4360,6 +4577,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4374,6 +4594,9 @@
                   "coverage": "PR #673 partial fix of N-05 (indexed event parameters). Note: commit timestamp (2023-07-25T16:30Z) precedes the audited commit and is on a diverged branch. H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4388,6 +4611,9 @@
                   "coverage": "PR #698 partial fix of N-15 (unused imports removed). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -4408,6 +4634,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4422,6 +4651,9 @@
                   "coverage": "PR #673 partial fix of N-05 (indexed event parameters). Note: commit timestamp (2023-07-25T16:30Z) precedes the audited commit and is on a diverged branch. H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4436,6 +4668,9 @@
                   "coverage": "PR #698 partial fix of N-15 (unused imports removed). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -4456,6 +4691,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4470,6 +4708,9 @@
                   "coverage": "PR #698 fix of L-04 (consistent reentrancy guard usage). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -4554,6 +4795,9 @@
                   "review_phase": "diff audit",
                   "coverage": "Diff review only (changes between 3bc8a3f and 2eb458c). H-01 (Lack of Refunds, High) acknowledged, not resolved. M-01 and L-08 also reported.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4568,6 +4812,9 @@
                   "coverage": "PR #673 partial fix of N-05 (indexed event parameters). Note: commit timestamp (2023-07-25T16:30Z) precedes the audited commit and is on a diverged branch. H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4582,6 +4829,9 @@
                   "coverage": "PR #698 fix of L-04 (consistent reentrancy guard usage). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4596,6 +4846,9 @@
                   "coverage": "PR #698 partial fix of N-15 (unused imports removed). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "a798e4d52524ddc388e48f9b24d437ee0b3ad85d",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4610,6 +4863,9 @@
                   "coverage": "PR #840 partial fix of M-01 (replay limits). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "3e21edb752a57dad0c50feb1dfb8b86eda6465c8",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -4624,6 +4880,9 @@
                   "coverage": "PR #850 fix of L-08 (redundant replay logic removed). H-01 remains unresolved. Only the fix was reviewed in context; develop branch changed between audit start and fix review.",
                   "follows": "0d7d73ff1a6e463d58efe2073d1dbd590f5da0f1",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -5207,6 +5466,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Manual review of the MPT circuit utilities (gadgets, constraint builder) and the update-checking circuit mpt_update.rs against the specification (branch v0.4); TOB-SCROLL2-6 and TOB-SCROLL2-9 (High).",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "TOB-SCROLL2-6",
+                    "TOB-SCROLL2-9"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -5225,6 +5488,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL2-6 (High), TOB-SCROLL2-4/-10 (Informational).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL2-6"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5256,6 +5522,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Ancestor commit cited by TOB-SCROLL2-9 (figure 9.2) for the unconstrained BinaryColumn::configure.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL2-9"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5270,6 +5539,9 @@
                   "coverage": "Full file review at the audit target; TOB-SCROLL2-9 (High).",
                   "follows": "2e216c2d30d35a459f933a58b8002fe817abb1b4",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL2-9"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5416,6 +5688,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Reviewed as part of the word-addressable memory optimization refactoring; TOB-SCROLL2-8 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL2-8"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5469,6 +5744,11 @@
                   "review_phase": "initial audit",
                   "coverage": "Full manual review of the Go Merkle tree implementation (proof generation/verification, node hashing, domain separation) with coverage tooling, fuzzing and randomized tests; High findings TOB-ZKTRIE-1, -5 and -16 touch this directory.",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "TOB-ZKTRIE-1",
+                    "TOB-ZKTRIE-5",
+                    "TOB-ZKTRIE-16"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5483,6 +5763,9 @@
                   "coverage": "Fix review of PR #11 only: TOB-ZKTRIE-1, -4 and -5 verified resolved; TOB-ZKTRIE-16 (trie/zk_trie_database.go) still open at this snapshot and Medium findings TOB-ZKTRIE-2/-10 unaddressed.",
                   "follows": "90179c19281670f41c54bd80ab01e4d64c860521",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ZKTRIE-16"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -5501,6 +5784,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of the hash, byte32 and util helpers (coverage tooling run on this folder); High finding TOB-ZKTRIE-5 targets types/util.go.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ZKTRIE-5"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5532,6 +5818,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full manual review of the cgo-exported Go bindings and cgo.Handle management; High finding TOB-ZKTRIE-16.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ZKTRIE-16"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5581,6 +5870,11 @@
                   "review_phase": "initial audit",
                   "coverage": "Full manual review of the Rust bindings (unsafe code, FFI data handling, public API); High findings TOB-ZKTRIE-16, -18 and -19.",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "TOB-ZKTRIE-16",
+                    "TOB-ZKTRIE-18",
+                    "TOB-ZKTRIE-19"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5595,6 +5889,9 @@
                   "coverage": "Fix review of PR #14 only: checked usize-to-c_int casts (TOB-ZKTRIE-19) verified; TOB-ZKTRIE-18 still open at this snapshot.",
                   "follows": "90179c19281670f41c54bd80ab01e4d64c860521",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ZKTRIE-18"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -5609,6 +5906,9 @@
                   "coverage": "Fix review of PR #13 only: TOB-ZKTRIE-18 partially resolved (slice length now checked; 32-bit int overflow edge case remains).",
                   "follows": "1b901da1c279017b98ffc72ba43585a1bd89b5e9",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ZKTRIE-18"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -6232,6 +6532,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (Rate Limiter pull request #712) at the audited commit; H-01 (rate-limiter DoS) reported, resolved operationally by removing the updateTotalLimit delay in the ScrollOwner configuration (pull request #838) rather than by contract changes.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -6338,6 +6641,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (Rate Limiter pull request #712) at the audited commit; H-01 (rate-limiter DoS) reported, resolved operationally by removing the updateTotalLimit delay in the ScrollOwner configuration (pull request #838) rather than by contract changes.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -6644,6 +6950,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full manual review of the aggregator crate (aggregator/src and README specification) with focus on soundness of the aggregation/compression scheme; TOB-SCROLL3-10 (High) plus Low/Informational findings.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL3-10"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -6658,6 +6967,9 @@
                   "coverage": "Fix review only: TOB-SCROLL3-4 resolved (Boolean constraints on chunk_is_valid_cells in aggregator/src/core.rs). TOB-SCROLL3-10 not yet fixed at this commit. PR head commit (squash-merged into develop).",
                   "follows": "e40ab9e8e78fd362c50fcd0277db79a1c9a98e60",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL3-10"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -6946,6 +7258,16 @@
                   "review_phase": "initial audit",
                   "coverage": "Full manual review of the EVM circuit: math gadgets, utilities, constraint builder and all opcode execution gadgets, including RW-table lookups; 8 High findings (TOB-SCROLL-1, -2, -3, -7, -9, -12, -13, -14).",
                   "major_findings": 8,
+                  "finding_ids": [
+                    "TOB-SCROLL-1",
+                    "TOB-SCROLL-2",
+                    "TOB-SCROLL-3",
+                    "TOB-SCROLL-7",
+                    "TOB-SCROLL-9",
+                    "TOB-SCROLL-12",
+                    "TOB-SCROLL-13",
+                    "TOB-SCROLL-14"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -7112,6 +7434,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-1 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7143,6 +7468,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-2 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-2"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7174,6 +7502,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-3 (High) (report target line lists rlp.rs, but the finding and fix concern blockhash.rs).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-3"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7205,6 +7536,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-7 and TOB-SCROLL-12 (High).",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "TOB-SCROLL-7",
+                    "TOB-SCROLL-12"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7219,6 +7554,9 @@
                   "coverage": "Fix of TOB-SCROLL-7 verified (PR #512); TOB-SCROLL-12 still open.",
                   "follows": "e8bcb23e1f303bd6e0dc52924b0ed85710b8a016",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-12"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7311,6 +7649,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-9 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-9"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7497,6 +7838,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-13 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-13"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7511,6 +7855,9 @@
                   "coverage": "Opcode constraint added for TOB-SCROLL-13 (PR #633); REVERT reversion still unconstrained.",
                   "follows": "e8bcb23e1f303bd6e0dc52924b0ed85710b8a016",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-13"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7525,6 +7872,9 @@
                   "coverage": "REVERT reversion constraints for TOB-SCROLL-13 (PR #736); finding remains partially resolved (RETURN reversion not determined).",
                   "follows": "f2e223139eb376dd6715a65950c2760af173b3e8",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-13"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -7543,6 +7893,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-13 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-13"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7574,6 +7927,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-13 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-13"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7605,6 +7961,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-13 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-13"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7636,6 +7995,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-14 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-14"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7667,6 +8029,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; TOB-SCROLL-14 (High).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCROLL-14"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -8478,6 +8843,9 @@
                   "review_phase": "initial audit (diff)",
                   "coverage": "Diff audit of pull request #1011 (bridge gas optimizations) at its reviewed commit; changes outside the pull request were out of scope. H-01: ETH deposits routed directly to L1ScrollMessenger can get stuck because the router lacks an onDropMessage hook.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -9574,6 +9942,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of blob/challenge-digest logic; TOB-SCRL-BLOB-2 (High, weak Fiat-Shamir: KZG commitment missing from challenge preimage) and TOB-SCRL-BLOB-3/-6 (Informational).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCRL-BLOB-2"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -10090,6 +10461,9 @@
                   "review_phase": "diff audit (PR #1209)",
                   "coverage": "Only the circuit changes introduced by pull request 1209 (EIP-5656 MCOPY) were reviewed, for soundness and completeness. One Critical underconstrained source-address issue was reported in ErrorOOGMemoryCopyGadget.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.3"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -10121,6 +10495,9 @@
                   "review_phase": "diff audit (PR #1233)",
                   "coverage": "Only the circuit changes introduced by pull request 1233 (EIP-1153 transient storage, TLOAD and TSTORE) were reviewed, for soundness and completeness. One Critical missing step-transition constraint for end_tx was reported in require_step_state_transition.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.4"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -10182,6 +10559,9 @@
                   "review_phase": "diff audit (PR #1255)",
                   "coverage": "Only the circuit changes introduced by pull request 1255 (copy circuit support for overlapping copy ranges) were reviewed, for soundness and completeness. One Critical missing rw-counter constraint was reported in constrain_rw_counter.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.1"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -10213,6 +10593,9 @@
                   "review_phase": "diff audit (PR #1233)",
                   "coverage": "Reviewed only for the state-circuit constraints required by the rw-table tag introduced by pull request 1233 (AccountTransientStorage); the TxReceipt tag was out of scope. One Critical missing-constraint issue was reported. The report pins no separate revision for the state circuit, so the pull request head commit is used.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "3.2"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -10291,6 +10674,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Manual soundness/correctness review of the batch circuit; TOB-SCREUC-1 (src/main.rs) and TOB-SCREUC-2 (src/builder/v3.rs) are High.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "TOB-SCREUC-1",
+                    "TOB-SCREUC-2"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -10322,6 +10709,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Manual soundness/correctness review of the bundle circuit; TOB-SCREUC-1 (src/main.rs) is High; TOB-SCREUC-4 (src/circuit.rs) Informational.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCREUC-1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -10336,6 +10726,9 @@
                   "coverage": "Fix of TOB-SCREUC-4 (BundleInfo prev_state_root) in src/circuit.rs only; TOB-SCREUC-1 still open at this commit.",
                   "follows": "da9c824e9a0751bd5482d00910a187e86350beee",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCREUC-1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -10367,6 +10760,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Shared circuit types reviewed with the aggregation circuits; TOB-SCREUC-1 (src/lib.rs verify_proofs/validate_aggregated_pi) is High.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-SCREUC-1"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -11083,7 +11479,7 @@
     {
       "id": "scroll-internal-feynman-upgrade-audit",
       "report_file": "scroll-internal-feynman-upgrade-audit.md",
-      "title": "Scroll-revm & zkVM Guest Program Changes \u2014 Security Assessment",
+      "title": "Scroll-revm & zkVM Guest Program Changes — Security Assessment",
       "description": "Scroll's internal security assessment of the two codebases implementing the Feynman upgrade: the scroll-revm crate and the zkVM guest program precompile changes in stateless-block-verifier, both at frozen commits. Nine informational code-hygiene and refactoring findings were reported.",
       "isRelevant": true,
       "auditor": "Scroll (internal)",
@@ -11150,7 +11546,7 @@
     {
       "id": "scroll-internal-galileo-upgrade-audit",
       "report_file": "scroll-internal-galileo-upgrade-audit.md",
-      "title": "Galileo \u2014 Scroll-revm & Stateless Block Verifier \u2014 Security Assessment",
+      "title": "Galileo — Scroll-revm & Stateless Block Verifier — Security Assessment",
       "description": "Scroll's internal security assessment of the Galileo upgrade: the stateless-block-verifier workspace that forms the zkVM guest program and the scroll-revm crate, both at the Galileo commits. Eight informational findings were reported and no higher-severity issues.",
       "isRelevant": true,
       "auditor": "Scroll (internal)",
@@ -11246,6 +11642,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full review of all Solidity files under src/cloak (src/cloak/**/*.sol): PrivateGatewayCloak, PrivateGatewayScroll, USXRebalancer and the validium gateway and messenger interfaces. One Critical and one High impact finding were reported.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "3.1",
+                    "3.2"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {

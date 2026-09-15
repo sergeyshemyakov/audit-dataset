@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "privacy-pools",
   "reports": [
     {
@@ -34,6 +34,12 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (initial commit).",
                   "major_findings": 4,
+                  "finding_ids": [
+                    "C-03",
+                    "C-04",
+                    "C-10",
+                    "M-02"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -48,6 +54,11 @@
                   "coverage": "Final audited commit; C-03, C-10 and M-02 remain acknowledged and unfixed.",
                   "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "C-03",
+                    "C-10",
+                    "M-02"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -66,6 +77,11 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (initial commit).",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "C-10",
+                    "M-03",
+                    "M-04"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -80,6 +96,11 @@
                   "coverage": "Final audited commit; C-10, M-03 and M-04 remain acknowledged and unfixed.",
                   "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "C-10",
+                    "M-03",
+                    "M-04"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -98,6 +119,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (initial commit).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C-10"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -112,6 +136,9 @@
                   "coverage": "Final audited commit; C-10 remains acknowledged (fix deferred to a new major version).",
                   "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C-10"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -130,6 +157,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (initial commit).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C-03"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -144,6 +174,9 @@
                   "coverage": "Final audited commit; C-03 remains acknowledged and unfixed.",
                   "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C-03"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -162,6 +195,17 @@
                   "review_phase": "initial audit",
                   "coverage": "Full circuit review (initial commit).",
                   "major_findings": 9,
+                  "finding_ids": [
+                    "C-01",
+                    "C-02",
+                    "C-04",
+                    "C-05",
+                    "C-06",
+                    "C-07",
+                    "C-08",
+                    "C-09",
+                    "M-01"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -176,6 +220,9 @@
                   "coverage": "Final audited commit; C-01 and M-01 fixed, C-05 remains acknowledged, other criticals classified as no issue.",
                   "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C-05"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -514,6 +561,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (initial commit).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "M-01"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -558,6 +608,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review (initial commit).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "M-02"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 },
                 {
@@ -572,6 +625,9 @@
                   "coverage": "Final audited commit; M-02 remains acknowledged.",
                   "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "M-02"
+                  ],
                   "highest_reported_finding_severity": "Major"
                 }
               ]
@@ -819,6 +875,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review at audit commit; AW-H-01 (High) reported as unmitigated.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "AW-H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]

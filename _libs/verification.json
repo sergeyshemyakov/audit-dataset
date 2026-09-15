@@ -12,9 +12,9 @@
     "Uniswap/v4-core": "46c6834698c48bc4a463a86d8420f4eb1d7f3b75",
     "Vectorized/solady": "2afba69bf67b78dd4abeadcc696052b3a6f71499",
     "eth-infinitism/account-abstraction": "1c6b669d0eea734e09a87e095ba15e076151718a",
-    "gnosis/zodiac": "89352c4f05d4b223b9c555ca963a787fd930da2d",
-    "gnosis/zodiac-modifier-delay": "221382ead4022eba81b7d311c54b76889f8b4e15",
-    "gnosis/zodiac-modifier-roles": "820e5bc975d1817bdd4bc4a95226f553f7b67b68",
+    "safe/zodiac": "89352c4f05d4b223b9c555ca963a787fd930da2d",
+    "safe/zodiac-modifier-delay": "221382ead4022eba81b7d311c54b76889f8b4e15",
+    "safe/zodiac-modifier-roles": "820e5bc975d1817bdd4bc4a95226f553f7b67b68",
     "safe-global/safe-modules": "9e5f3d0701c4bd5d5fa4ce8ff7d5206f2ccc4acc",
     "safe-global/safe-smart-account": "d9996a336705f1d87b8b93814b1031c9b8cb9ad7",
     "trailofbits/publications": "5c04ba235d84bbda140fa2d8be95c630bcd0b4ea",
@@ -57,187 +57,187 @@
       "extractable_text_characters": 100502
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Gnosis_Safe_Audit_Report.pdf",
+      "file": "safe/reports/safe-core__docs__Gnosis_Safe_Audit_Report.pdf",
       "pages": 7,
       "extractable_text_characters": 19305
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_1_0.pdf",
+      "file": "safe/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_1_0.pdf",
       "pages": 5,
       "extractable_text_characters": 6399
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_1_1.pdf",
+      "file": "safe/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_1_1.pdf",
       "pages": 7,
       "extractable_text_characters": 9355
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_2_0.pdf",
+      "file": "safe/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_2_0.pdf",
       "pages": 3,
       "extractable_text_characters": 1727
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_3_0_Final.pdf",
+      "file": "safe/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_3_0_Final.pdf",
       "pages": 3,
       "extractable_text_characters": 590
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_3_0_Initial.pdf",
+      "file": "safe/reports/safe-core__docs__Gnosis_Safe_Audit_Report_1_3_0_Initial.pdf",
       "pages": 3,
       "extractable_text_characters": 1449
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Safe_Audit_Report_1_3_0_Certora.pdf",
+      "file": "safe/reports/safe-core__docs__Safe_Audit_Report_1_3_0_Certora.pdf",
       "pages": 20,
       "extractable_text_characters": 30668
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Safe_Audit_Report_1_3_0_Nethermind.pdf",
+      "file": "safe/reports/safe-core__docs__Safe_Audit_Report_1_3_0_Nethermind.pdf",
       "pages": 16,
       "extractable_text_characters": 40974
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Safe_Audit_Report_1_4_0.pdf",
+      "file": "safe/reports/safe-core__docs__Safe_Audit_Report_1_4_0.pdf",
       "pages": 46,
       "extractable_text_characters": 36955
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Safe_Audit_Report_1_5_0_Ackee.pdf",
+      "file": "safe/reports/safe-core__docs__Safe_Audit_Report_1_5_0_Ackee.pdf",
       "pages": 55,
       "extractable_text_characters": 54452
     },
     {
-      "file": "gnosis/reports/safe-core__docs__Safe_Library_Contracts_Audit_Report_1_4_1.pdf",
+      "file": "safe/reports/safe-core__docs__Safe_Library_Contracts_Audit_Report_1_4_1.pdf",
       "pages": 31,
       "extractable_text_characters": 25469
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__4337__docs__v0.1.0__audit-report-v1.1.pdf",
+      "file": "safe/reports/safe-modules__modules__4337__docs__v0.1.0__audit-report-v1.1.pdf",
       "pages": 28,
       "extractable_text_characters": 22883
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__4337__docs__v0.2.0__audit-report-ackee-v2.0.pdf",
+      "file": "safe/reports/safe-modules__modules__4337__docs__v0.2.0__audit-report-ackee-v2.0.pdf",
       "pages": 38,
       "extractable_text_characters": 30952
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__4337__docs__v0.2.0__audit-report-openzeppelin.pdf",
+      "file": "safe/reports/safe-modules__modules__4337__docs__v0.2.0__audit-report-openzeppelin.pdf",
       "pages": 13,
       "extractable_text_characters": 17547
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__4337__docs__v0.3.0__audit-report-ackee-v3.0.pdf",
+      "file": "safe/reports/safe-modules__modules__4337__docs__v0.3.0__audit-report-ackee-v3.0.pdf",
       "pages": 40,
       "extractable_text_characters": 32228
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__4337__docs__v0.3.0__audit-report-certora-v3.0.pdf",
+      "file": "safe/reports/safe-modules__modules__4337__docs__v0.3.0__audit-report-certora-v3.0.pdf",
       "pages": 25,
       "extractable_text_characters": 41725
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__4337__docs__v0.3.0__audit-report-nethermind-v3.0.pdf",
+      "file": "safe/reports/safe-modules__modules__4337__docs__v0.3.0__audit-report-nethermind-v3.0.pdf",
       "pages": 13,
       "extractable_text_characters": 29808
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__allowances__docs__v0.1.1__audit-report-ackee.pdf",
+      "file": "safe/reports/safe-modules__modules__allowances__docs__v0.1.1__audit-report-ackee.pdf",
       "pages": 15,
       "extractable_text_characters": 11330
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__allowances__docs__v1.0.0__audit-report-certora.pdf",
+      "file": "safe/reports/safe-modules__modules__allowances__docs__v1.0.0__audit-report-certora.pdf",
       "pages": 13,
       "extractable_text_characters": 12905
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__allowances__docs__v1.0.0__audit-report-nethermind.pdf",
+      "file": "safe/reports/safe-modules__modules__allowances__docs__v1.0.0__audit-report-nethermind.pdf",
       "pages": 12,
       "extractable_text_characters": 25607
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__passkey__docs__v0.2.0__audit-report-certora.pdf",
+      "file": "safe/reports/safe-modules__modules__passkey__docs__v0.2.0__audit-report-certora.pdf",
       "pages": 27,
       "extractable_text_characters": 20701
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__passkey__docs__v0.2.1__audit-report-certora.pdf",
+      "file": "safe/reports/safe-modules__modules__passkey__docs__v0.2.1__audit-report-certora.pdf",
       "pages": 27,
       "extractable_text_characters": 19508
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__passkey__docs__v0.2.1__audit-report-nethermind.pdf",
+      "file": "safe/reports/safe-modules__modules__passkey__docs__v0.2.1__audit-report-nethermind.pdf",
       "pages": 13,
       "extractable_text_characters": 28960
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__recovery__docs__v0.1.0__audit-report-ackee.pdf",
+      "file": "safe/reports/safe-modules__modules__recovery__docs__v0.1.0__audit-report-ackee.pdf",
       "pages": 20,
       "extractable_text_characters": 15661
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__recovery__docs__v0.1.0__audit-report-certora.pdf",
+      "file": "safe/reports/safe-modules__modules__recovery__docs__v0.1.0__audit-report-certora.pdf",
       "pages": 42,
       "extractable_text_characters": 57919
     },
     {
-      "file": "gnosis/reports/safe-modules__modules__recovery__docs__v0.1.0__audit-report-nethermind.pdf",
+      "file": "safe/reports/safe-modules__modules__recovery__docs__v0.1.0__audit-report-nethermind.pdf",
       "pages": 13,
       "extractable_text_characters": 25885
     },
     {
-      "file": "gnosis/reports/safe-verification__docs__Gnosis_Safe_Formal_Verification_Report_1_0_0.pdf",
+      "file": "safe/reports/safe-verification__docs__Gnosis_Safe_Formal_Verification_Report_1_0_0.pdf",
       "pages": 57,
       "extractable_text_characters": 76006
     },
     {
-      "file": "gnosis/reports/safe-verification__docs__Gnosis_Safe_Symbolic_Execution.pdf",
+      "file": "safe/reports/safe-verification__docs__Gnosis_Safe_Symbolic_Execution.pdf",
       "pages": 8,
       "extractable_text_characters": 743373
     },
     {
-      "file": "gnosis/reports/safe-verification__docs__Safe_Audit_Report_1_5_0_Certora.pdf",
+      "file": "safe/reports/safe-verification__docs__Safe_Audit_Report_1_5_0_Certora.pdf",
       "pages": 39,
       "extractable_text_characters": 40871
     },
     {
-      "file": "gnosis/reports/zodiac-delay__audits__ZodiacDelayModuleSep2021.pdf",
+      "file": "safe/reports/zodiac-delay__audits__ZodiacDelayModuleSep2021.pdf",
       "pages": 5,
       "extractable_text_characters": 2779
     },
     {
-      "file": "gnosis/reports/zodiac-roles__packages__evm__docs__Audit01_RolesV2_Apr2023_G0Group.pdf",
+      "file": "safe/reports/zodiac-roles__packages__evm__docs__Audit01_RolesV2_Apr2023_G0Group.pdf",
       "pages": 4,
       "extractable_text_characters": 3919
     },
     {
-      "file": "gnosis/reports/zodiac-roles__packages__evm__docs__Audit02_RolesV2_May2023_Omniscia.pdf",
+      "file": "safe/reports/zodiac-roles__packages__evm__docs__Audit02_RolesV2_May2023_Omniscia.pdf",
       "pages": 63,
       "extractable_text_characters": 59536
     },
     {
-      "file": "gnosis/reports/zodiac-roles__packages__evm__docs__Audit03_RolesV2_1_Nov2023_Ominiscia.pdf",
+      "file": "safe/reports/zodiac-roles__packages__evm__docs__Audit03_RolesV2_1_Nov2023_Ominiscia.pdf",
       "pages": 45,
       "extractable_text_characters": 34874
     },
     {
-      "file": "gnosis/reports/zodiac-roles__packages__evm__docs__Audit04_Roles-V2_1_Nov2023_G0Group.pdf",
+      "file": "safe/reports/zodiac-roles__packages__evm__docs__Audit04_Roles-V2_1_Nov2023_G0Group.pdf",
       "pages": 1,
       "extractable_text_characters": 823
     },
     {
-      "file": "gnosis/reports/zodiac__audits__GnosisZodiac2021Sep.pdf",
+      "file": "safe/reports/zodiac__audits__GnosisZodiac2021Sep.pdf",
       "pages": 3,
       "extractable_text_characters": 1307
     },
     {
-      "file": "gnosis/reports/zodiac__audits__ZodiacJune2026.pdf",
+      "file": "safe/reports/zodiac__audits__ZodiacJune2026.pdf",
       "pages": 5,
       "extractable_text_characters": 5972
     },
     {
-      "file": "gnosis/reports/zodiac__audits__ZodiacModifierUpdateFeb2023.pdf",
+      "file": "safe/reports/zodiac__audits__ZodiacModifierUpdateFeb2023.pdf",
       "pages": 2,
       "extractable_text_characters": 353
     },
@@ -441,7 +441,7 @@
       "title": "EIP-4337 - Ethereum Account Abstraction Audit - OpenZeppelin blog"
     },
     {
-      "file": "gnosis/reports/openzeppelin-2018-03-06-legacy-multisig.html",
+      "file": "safe/reports/openzeppelin-2018-03-06-legacy-multisig.html",
       "title": "Gnosis Multisig Wallet\u00a0Audit - OpenZeppelin blog"
     },
     {

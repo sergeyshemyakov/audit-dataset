@@ -62,7 +62,7 @@ Commit dates use Git committer timestamps (UTC).
 - Date: 2020-09-01
 - Description: First ABDK audit of the Tornado Cash anonymity mining (Farm) smart contract and its Reward circuit, delivered as private files with Farm.sol published as a gist. A critical circuit issue permitting a reward-value underflow was found, together with moderate and minor contract issues.
 
-### Repository: <a href="https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"><code>AleksandraZv/farm-sol-gist</code></a>
+### Repository: <a href="https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"><code>gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

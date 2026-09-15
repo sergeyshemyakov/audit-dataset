@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "eth-infinitism",
   "reports": [
     {
@@ -64,6 +64,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H02",
+                    "H03"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -155,6 +159,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C01"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -186,6 +193,10 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H01",
+                    "H05"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -217,6 +228,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review; all files in contracts/ except contracts/test and SimpleWalletForTokens.sol were in scope.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H04"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -528,6 +542,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Full file review of the explicitly scoped contract.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {

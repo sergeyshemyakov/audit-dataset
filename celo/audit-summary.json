@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.4.0",
   "project": "celo",
   "reports": [
     {
@@ -2591,6 +2591,9 @@
                   "review_phase": "audit competition",
                   "coverage": "competition target named only as the location of Critical report #37251 (slashing does not update delegated votes); full in-scope asset list is not given in the report",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "37251"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -2611,6 +2614,9 @@
                   "review_phase": "audit competition",
                   "coverage": "competition target named only as the location of High report #37010 (epoch process status rollback); full in-scope asset list is not given in the report",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "37010"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -2651,6 +2657,9 @@
                   "review_phase": "initial_audit",
                   "coverage": "Review limited to the smart contract changes introduced by the audited pull requests, not the full file.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "CLST-5"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -2828,6 +2837,9 @@
                   "review_phase": "initial_audit",
                   "coverage": "New contract introduced by PR #10907, reviewed as part of the Release 11 diff.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-CELO-5"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -2842,6 +2854,9 @@
                   "coverage": "Fix review of PR #10933 adding storage gaps (TOB-CELO-9 partially resolved); High finding TOB-CELO-5 still unfixed at this point.",
                   "follows": "71796dad0d99465c7061e761c704cf0ab1c46927",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-CELO-5"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -2856,6 +2871,9 @@
                   "coverage": "Fix review of PR #10930 adding a zero-debit check (TOB-CELO-6); High finding TOB-CELO-5 still unfixed at this point.",
                   "follows": "97b13243e2aa520afb72781c3e5b0a526d574e6d",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-CELO-5"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -2870,6 +2888,9 @@
                   "coverage": "Fix review of PR #10943 adding NatSpec on expected decimals (TOB-CELO-8); High finding TOB-CELO-5 still unfixed at this point.",
                   "follows": "b8ba85bd6f88032e9219892d575e167efa5afb4f",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-CELO-5"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3116,6 +3137,9 @@
                   "review_phase": "initial audit",
                   "coverage": "changes from PR #10268 (upvote/dequeue) only; one High finding",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "CLAB-30"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3130,6 +3154,9 @@
                   "coverage": "changes from PR #10324 (dequeueProposalIfReady expiry fix) only; the report attributes the High dequeueProposalIfReady finding to the function introduced by PRs #10268 and #10324",
                   "follows": "37b7e4450523b054a8d4bef3feee3db69eefa395",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "CLAB-30"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -3144,6 +3171,10 @@
                   "coverage": "changes from PR #10325 (vote delegation) only; one Critical and one High finding",
                   "follows": "3fcb1658be86afcb342b2c9e2c0413218ea45527",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "CLAB-8",
+                    "CLAB-19"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -3175,6 +3206,12 @@
                   "review_phase": "initial audit",
                   "coverage": "changes from PR #10325 (vote delegation) only; four Critical findings",
                   "major_findings": 4,
+                  "finding_ids": [
+                    "CLAB-6",
+                    "CLAB-9",
+                    "CLAB-21",
+                    "CLAB-23"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 }
               ]
@@ -3244,6 +3281,11 @@
                   "review_phase": "initial audit",
                   "coverage": "changes from PR #10227 (Ultra Green Celo) only; three Critical findings",
                   "major_findings": 3,
+                  "finding_ids": [
+                    "CLAB-25",
+                    "CLAB-26",
+                    "CLAB-29"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -5913,6 +5955,9 @@
                   "review_phase": "initial review (2022-07-12)",
                   "coverage": "Full file review.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "Users can withdraw payments after expiry"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -6388,6 +6433,9 @@
                   "coverage": "Full review of the contracts directory on the unmerged rebasing-wrapper-token branch (StakedCelo.sol, Manager.sol, Managed.sol, Account.sol, RebasedCelo.sol); one High finding (unchecked transfer in RebasedCelo.sol), later marked resolved.",
                   "follows": "m-chrzan/voting-limit",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "RC-01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -6974,6 +7022,9 @@
                   "review_phase": "initial_audit",
                   "coverage": "Diff audit: the new GrandaMento contract as introduced in PR #8129 (head commit) was reviewed; one High severity finding (H01).",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7375,6 +7426,9 @@
                   "review_phase": "initial audit",
                   "coverage": "Only changes in the diff from celo-core-contracts-v4.post-audit (04c63970135f4df165eb2e56d89e898bcf53d46d) to this commit were reviewed.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7743,6 +7797,13 @@
                   "review_phase": "Phase 1 (mainnet audit, Jan 2020)",
                   "coverage": "Full review of all smart contracts in the contracts folder; VM/node software and oracles out of scope.",
                   "major_findings": 5,
+                  "finding_ids": [
+                    "C01",
+                    "C02",
+                    "H01",
+                    "H02",
+                    "H03"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -7757,6 +7818,9 @@
                   "coverage": "Diff review of all changes to the contracts folder between 7be2260 and db2e561; unchanged code out of scope.",
                   "follows": "7be22605e172ca536c028e408b147aab83202e4a",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 }
               ]
@@ -7775,6 +7839,9 @@
                   "review_phase": "Phase 1 (mainnet audit, Jan 2020)",
                   "coverage": "Full review as part of the contracts folder.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C01"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -7834,6 +7901,9 @@
                   "review_phase": "Phase 1 (mainnet audit, Jan 2020)",
                   "coverage": "Full review as part of the contracts folder.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "C02"
+                  ],
                   "highest_reported_finding_severity": "Critical"
                 },
                 {
@@ -7904,6 +7974,9 @@
                   "review_phase": "Phase 1 (mainnet audit, Jan 2020)",
                   "coverage": "Full review as part of the contracts folder.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -7988,6 +8061,10 @@
                   "review_phase": "Phase 1 (mainnet audit, Jan 2020)",
                   "coverage": "Full review as part of the contracts folder.",
                   "major_findings": 2,
+                  "finding_ids": [
+                    "H02",
+                    "H03"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -8002,6 +8079,9 @@
                   "coverage": "Review of the fix in PR #2913 (head commit) for the Critical/High finding; other changes disregarded.",
                   "follows": "7be22605e172ca536c028e408b147aab83202e4a",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H03"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -8086,6 +8166,9 @@
                   "review_phase": "Phase 1 (mainnet audit, Jan 2020)",
                   "coverage": "Full review as part of the contracts folder.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H03"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {
@@ -8143,6 +8226,9 @@
                   "review_phase": "Phase 2 (mainnet audit, Mar 2020)",
                   "coverage": "Diff review of changes since 7be2260.",
                   "major_findings": 1,
+                  "finding_ids": [
+                    "H01"
+                  ],
                   "highest_reported_finding_severity": "High"
                 },
                 {

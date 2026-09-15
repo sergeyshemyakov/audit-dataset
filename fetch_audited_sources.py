@@ -23,6 +23,9 @@ FULL_COMMIT_RE = re.compile(r"(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})\Z")
 SUPPORTED_PATH_KINDS = {"file", "directory_recursive"}
 
 
+from normalize import NormalizeError, canonical_repository_id
+
+
 class FetchError(RuntimeError):
     """An audit-summary entry could not be fetched safely or exactly."""
 
@@ -131,6 +134,15 @@ def repository_urls(summary: dict[str, Any]) -> dict[str, str]:
             url = repository.get("url")
             if not isinstance(url, str) or not url or url.startswith("-"):
                 raise FetchError(f"invalid URL for repository {repository_id!r}")
+            try:
+                canonical = canonical_repository_id(url)
+            except NormalizeError as error:
+                raise FetchError(str(error)) from error
+            if canonical != repository_id:
+                raise FetchError(
+                    f"repository id {repository_id!r} must be the canonical "
+                    f"{canonical!r}; run normalize.py --migrate"
+                )
             previous = result.setdefault(repository_id, url)
             if previous != url:
                 raise FetchError(
