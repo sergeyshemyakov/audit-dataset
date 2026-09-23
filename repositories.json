@@ -181,6 +181,21 @@
       "url": "https://github.com/axiom-crypto/snark-verifier",
       "fork_of": "privacy-ethereum/snark-verifier"
     },
+    "base/FCL-ecdsa-verify-audit": {
+      "url": "https://github.com/base/FCL-ecdsa-verify-audit"
+    },
+    "base/base": {
+      "url": "https://github.com/base/base"
+    },
+    "base/contracts": {
+      "url": "https://github.com/base/contracts"
+    },
+    "base/nitro-validator": {
+      "url": "https://github.com/base/nitro-validator"
+    },
+    "base/op-enclave": {
+      "url": "https://github.com/base/op-enclave"
+    },
     "ben-chain/contracts-v2": {
       "url": "https://github.com/ben-chain/contracts-v2",
       "fork_of": "ethereum-optimism/contracts"
