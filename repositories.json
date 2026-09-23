@@ -26,6 +26,9 @@
       "url": "https://github.com/5afe/CandideWalletContracts",
       "fork_of": "candidelabs/candide-contracts"
     },
+    "ArbitrumFoundation/governance": {
+      "url": "https://github.com/ArbitrumFoundation/governance"
+    },
     "AztecProtocol/AZTEC": {
       "url": "https://github.com/AztecProtocol/AZTEC"
     },
@@ -57,14 +60,88 @@
       "url": "https://github.com/Certora/openzeppelin-contracts",
       "fork_of": "OpenZeppelin/openzeppelin-contracts"
     },
+    "OffchainLabs/arbitrum-chain-actions": {
+      "url": "https://github.com/OffchainLabs/arbitrum-chain-actions"
+    },
+    "OffchainLabs/arbitrum-classic": {
+      "url": "https://github.com/OffchainLabs/arbitrum-classic"
+    },
+    "OffchainLabs/block-hash-pusher": {
+      "url": "https://github.com/OffchainLabs/block-hash-pusher"
+    },
+    "OffchainLabs/bold": {
+      "url": "https://github.com/OffchainLabs/bold"
+    },
+    "OffchainLabs/cargo-stylus": {
+      "url": "https://github.com/OffchainLabs/cargo-stylus"
+    },
+    "OffchainLabs/feed-ticket-contracts": {
+      "url": "https://github.com/OffchainLabs/feed-ticket-contracts"
+    },
+    "OffchainLabs/fund-distribution-contracts": {
+      "url": "https://github.com/OffchainLabs/fund-distribution-contracts"
+    },
+    "OffchainLabs/fund-distribution-contracts-private": {
+      "url": "https://github.com/OffchainLabs/fund-distribution-contracts-private"
+    },
+    "OffchainLabs/genesis-file-generator": {
+      "url": "https://github.com/OffchainLabs/genesis-file-generator"
+    },
+    "OffchainLabs/go-ethereum": {
+      "url": "https://github.com/OffchainLabs/go-ethereum"
+    },
+    "OffchainLabs/governance-private": {
+      "url": "https://github.com/OffchainLabs/governance-private"
+    },
+    "OffchainLabs/l1-l3-teleport-contracts": {
+      "url": "https://github.com/OffchainLabs/l1-l3-teleport-contracts"
+    },
+    "OffchainLabs/nitro": {
+      "url": "https://github.com/OffchainLabs/nitro"
+    },
+    "OffchainLabs/nitro-contracts": {
+      "url": "https://github.com/OffchainLabs/nitro-contracts"
+    },
+    "OffchainLabs/nitro-private": {
+      "url": "https://github.com/OffchainLabs/nitro-private"
+    },
+    "OffchainLabs/stylus-sdk-rs": {
+      "url": "https://github.com/OffchainLabs/stylus-sdk-rs"
+    },
+    "OffchainLabs/sys-asm": {
+      "url": "https://github.com/OffchainLabs/sys-asm",
+      "fork_of": "ethereum/sys-asm"
+    },
+    "OffchainLabs/timeboost-design": {
+      "url": "https://github.com/OffchainLabs/timeboost-design"
+    },
+    "OffchainLabs/token-bridge-contracts": {
+      "url": "https://github.com/OffchainLabs/token-bridge-contracts"
+    },
+    "OffchainLabs/token-bridge-contracts-private": {
+      "url": "https://github.com/OffchainLabs/token-bridge-contracts-private"
+    },
+    "OffchainLabs/upgrade-executor": {
+      "url": "https://github.com/OffchainLabs/upgrade-executor"
+    },
+    "OffchainLabs/wasmer": {
+      "url": "https://github.com/OffchainLabs/wasmer"
+    },
     "OpenZeppelin/openzeppelin-contracts": {
       "url": "https://github.com/OpenZeppelin/openzeppelin-contracts"
+    },
+    "OpenZeppelin/rust-contracts-stylus": {
+      "url": "https://github.com/OpenZeppelin/rust-contracts-stylus"
     },
     "ProofOfInnocence/privacy-pools-v1": {
       "url": "https://github.com/ProofOfInnocence/privacy-pools-v1"
     },
     "Rari-Capital/solmate": {
       "url": "https://github.com/Rari-Capital/solmate.git"
+    },
+    "ScopeLift/arbitrum-governance": {
+      "url": "https://github.com/ScopeLift/arbitrum-governance",
+      "fork_of": "ArbitrumFoundation/governance"
     },
     "ScopeLift/ens-resolvers": {
       "url": "https://github.com/ScopeLift/ens-resolvers",
@@ -159,6 +236,9 @@
     "code-423n4/2023-05-base": {
       "url": "https://github.com/code-423n4/2023-05-base"
     },
+    "code-423n4/2024-05-arbitrum-foundation": {
+      "url": "https://github.com/code-423n4/2024-05-arbitrum-foundation"
+    },
     "code-423n4/2024-07-optimism": {
       "url": "https://github.com/code-423n4/2024-07-optimism"
     },
@@ -216,6 +296,9 @@
     },
     "ethereum/go-ethereum": {
       "url": "https://github.com/ethereum/go-ethereum"
+    },
+    "ethereum/sys-asm": {
+      "url": "https://github.com/ethereum/sys-asm"
     },
     "flashbots/flashtestations": {
       "url": "https://github.com/flashbots/flashtestations"
@@ -355,6 +438,9 @@
     },
     "tornadocash/tornado-pool": {
       "url": "https://github.com/tornadocash/tornado-pool"
+    },
+    "trailofbits/audit-arbitrum-nitro": {
+      "url": "https://github.com/trailofbits/audit-arbitrum-nitro"
     },
     "voteagora/optimism-gov": {
       "url": "https://github.com/voteagora/optimism-gov"

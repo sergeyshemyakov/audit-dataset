@@ -1,0 +1,1722 @@
+{
+  "schema_version": "1.4.0",
+  "project": "arbitrum",
+  "reports": [
+    {
+      "id": "trailofbits-custom-fee-erc20-bridge-upgrade-eip7702-2025-03",
+      "report_file": "2025-03-offchain-custom-fee-erc20-bridge-securityreview.md",
+      "title": "Offchain Labs Custom Fee ERC-20 Bridge Upgrade and EIP-7702 Fixes Summary Report (Trail of Bits, March 2025)",
+      "description": "One-week Trail of Bits review of the patched ERC20Bridge decimals fix for custom fee token chains, the Orbit chain-actions contracts upgrading ERC20Bridge to 2.1.2 and 2.1.3, and the pre-BoLD EIP-7702 fixes in nitro-contracts. One Informational finding about an invalid downgrade path was reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-03-31",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        },
+        {
+          "id": "OffchainLabs/arbitrum-chain-actions",
+          "url": "https://github.com/OffchainLabs/arbitrum-chain-actions"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/bridge/ERC20Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "275ba6cc4af028e67beea29b77df32807f5aefa2",
+                    "timestamp": "2025-01-15T20:49:07Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/275ba6cc4af028e67beea29b77df32807f5aefa2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the patched ERC20Bridge with the decimals-fix function (diff v2.1.1...275ba6cc) was reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "961a498b3ae3e218535a2a9fd28c306aaa04f3ee",
+                    "timestamp": "2025-01-25T16:43:16Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/961a498b3ae3e218535a2a9fd28c306aaa04f3ee"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the pre-BoLD EIP-7702 fixes applied in commit 961a498 to the non-BoLD Nitro contracts branch were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/arbitrum-chain-actions",
+          "paths": {
+            "contracts/parent-chain/contract-upgrades/NitroContracts2Point1Point2UpgradeAction.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d7a8f01c3fddd0c684d38a0df8eb3db4dd02ef3e",
+                    "timestamp": "2025-01-17T16:27:14Z",
+                    "url": "https://github.com/OffchainLabs/arbitrum-chain-actions/commit/d7a8f01c3fddd0c684d38a0df8eb3db4dd02ef3e"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the Orbit action upgrading ERC20Bridge to 2.1.2 for invalid upgrade paths.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/parent-chain/contract-upgrades/NitroContracts2Point1Point3UpgradeAction.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f4f878e101e54170080532ad3ba6e70dab56a2b9",
+                    "timestamp": "2025-01-28T17:08:52Z",
+                    "url": "https://github.com/OffchainLabs/arbitrum-chain-actions/commit/f4f878e101e54170080532ad3ba6e70dab56a2b9"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the 2.1.3 EIP-7702 upgrade action as of PR #38 commit f4f878e; Informational TOB-ARBFIX-1 (invalid downgrade from 3.x.x) targets this file.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-custom-fee-token-exchange-rate-2025-03",
+      "report_file": "2025-03-offchain-custom-fee-token-exchange-rate-securityreview.md",
+      "title": "Offchain Labs Custom Fee Token Exchange Rate Summary Report (Trail of Bits, March 2025)",
+      "description": "Five engineer-day Trail of Bits review of the nitro-contracts changes adding an exchange rate for custom fee token chains so that batch posters are reimbursed correctly (PR #252 at c4ee8b8, PR #281 at 13f2cac), excluding testing and example pricer code. No findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-03-12",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/bridge/ISequencerInbox.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/bridge/SequencerInbox.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/libraries/Error.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/rollup/BridgeCreator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/rollup/ERC20RollupEventInbox.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/rollup/RollupAdminLogic.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/rollup/RollupCreator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/stylus/StylusDeployer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b",
+                    "timestamp": "2025-02-11T12:28:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/c4ee8b8b0bb4ffe1b93069988f29f836a1ea1f0b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #252 infrastructure changes (fee token exchange rate for batch poster reimbursement) as of commit c4ee8b8 were reviewed; the PR #281 fee-token pricer examples and tests were excluded.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-security-council-rotation-2025-03",
+      "report_file": "2025-03-offchain-security-council-rotation-securityreview.md",
+      "title": "Offchain Labs Security Council Rotation Summary Report (Trail of Bits, March 2025)",
+      "description": "Eight engineer-day Trail of Bits review of the governance changes allowing Security Council members to rotate their own keys without a proposal (PR #322 at 57f495c), including rotation of upcoming members at cohort replacement. One Low finding about removal of an upcoming member was reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-03-12",
+      "repositories": [
+        {
+          "id": "ArbitrumFoundation/governance",
+          "url": "https://github.com/ArbitrumFoundation/governance"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ArbitrumFoundation/governance",
+          "paths": {
+            "src/security-council-mgmt/SecurityCouncilManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f495c1e8546675f7596ae28431961fd0f84c95",
+                    "timestamp": "2025-02-13T14:34:25Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/57f495c1e8546675f7596ae28431961fd0f84c95"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #322 production contract changes (member key rotation without a proposal) as of commit 57f495c were reviewed; Low TOB-SC-ROT-1 targets SecurityCouncilManager.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/security-council-mgmt/governors/modules/SecurityCouncilNomineeElectionGovernorCountingUpgradeable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f495c1e8546675f7596ae28431961fd0f84c95",
+                    "timestamp": "2025-02-13T14:34:25Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/57f495c1e8546675f7596ae28431961fd0f84c95"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #322 production contract changes (member key rotation without a proposal) as of commit 57f495c were reviewed; Low TOB-SC-ROT-1 targets SecurityCouncilManager.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/security-council-mgmt/interfaces/ISecurityCouncilManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f495c1e8546675f7596ae28431961fd0f84c95",
+                    "timestamp": "2025-02-13T14:34:25Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/57f495c1e8546675f7596ae28431961fd0f84c95"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #322 production contract changes (member key rotation without a proposal) as of commit 57f495c were reviewed; Low TOB-SC-ROT-1 targets SecurityCouncilManager.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/security-council-mgmt/interfaces/ISecurityCouncilNomineeElectionGovernor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f495c1e8546675f7596ae28431961fd0f84c95",
+                    "timestamp": "2025-02-13T14:34:25Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/57f495c1e8546675f7596ae28431961fd0f84c95"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #322 production contract changes (member key rotation without a proposal) as of commit 57f495c were reviewed; Low TOB-SC-ROT-1 targets SecurityCouncilManager.sol.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-reward-distributor-fixes-2025-04",
+      "report_file": "2025-04-offchainlabs-reward-distributor-fixes-securityreview.md",
+      "title": "Offchain Labs Reward Distributor Fixes Summary Report (Trail of Bits, April 2025)",
+      "description": "Four engineer-day Trail of Bits review of the reward distributor changes supporting an ERC-20 token specified at deployment for reimbursing data availability committee members (fund-distribution PR #44 at fafc251). No findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-04-18",
+      "repositories": [
+        {
+          "id": "OffchainLabs/fund-distribution-contracts",
+          "url": "https://github.com/OffchainLabs/fund-distribution-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/fund-distribution-contracts",
+          "paths": {
+            "src/RewardDistributor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fafc2512f2754221a789fa9e22120c2f37b91575",
+                    "timestamp": "2025-03-21T21:03:41Z",
+                    "url": "https://github.com/OffchainLabs/fund-distribution-contracts/commit/fafc2512f2754221a789fa9e22120c2f37b91575"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #44 changes adding ERC-20 token support to the reward distributor (commit fafc251) were reviewed; the distribution formula was unchanged and deployment code was excluded.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-block-hash-pusher-2025-06",
+      "report_file": "2025-06-offchain-arbitrum-block-hash-pusher-securityreview.md",
+      "title": "Arbitrum Block Hash Pusher Security Assessment Summary Report (Trail of Bits, June 2025)",
+      "description": "Nine engineer-day Trail of Bits review of the Block Hash Pusher contracts (parent chain Pusher and child chain ring-buffer Buffer) at two commits. No findings were reported, only code quality recommendations.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-06-02",
+      "repositories": [
+        {
+          "id": "OffchainLabs/block-hash-pusher",
+          "url": "https://github.com/OffchainLabs/block-hash-pusher"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/block-hash-pusher",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f7c2973a59b513729f54b03b42e3a9029085b61f",
+                    "timestamp": "2025-05-06T14:07:40Z",
+                    "url": "https://github.com/OffchainLabs/block-hash-pusher/commit/f7c2973a59b513729f54b03b42e3a9029085b61f"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Static and dynamic review of the Pusher and Buffer contracts bridging parent chain block hashes to child chains.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "697ace304f720f90fb4730891635c49cd8327827",
+                    "timestamp": "2025-05-13T13:55:12Z",
+                    "url": "https://github.com/OffchainLabs/block-hash-pusher/commit/697ace304f720f90fb4730891635c49cd8327827"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Static and dynamic review of the Pusher and Buffer contracts bridging parent chain block hashes to child chains.",
+                  "follows": "f7c2973a59b513729f54b03b42e3a9029085b61f",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-mint-burn-precompile-2025-06",
+      "report_file": "2025-06-offchain-arbitrum-mint-burn-precompile-securityreview.md",
+      "title": "Arbitrum Mint/Burn Precompile and ERC20MigrationOutbox Security Assessment Summary Report (Trail of Bits, June 2025)",
+      "description": "Nine engineer-day Trail of Bits review of the native token mint/burn feature (nitro PR #3186, go-ethereum PR #447, nitro-contracts PR #335) and the ERC20MigrationOutbox (nitro-contracts PR #339), plus blockscout and nitro-testnode tooling changes, with a fix review of three follow-up nitro PRs. One Low and two Informational findings were reported and left unresolved as intended behavior.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-06-02",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro",
+          "url": "https://github.com/OffchainLabs/nitro"
+        },
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        },
+        {
+          "id": "OffchainLabs/go-ethereum",
+          "url": "https://github.com/OffchainLabs/go-ethereum"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro",
+          "paths": {
+            "arbos/arbosState/arbosstate.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e7a442ff33f52812c59795d69e4518c1da9ce919",
+                    "timestamp": "2025-05-15T12:38:32Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/e7a442ff33f52812c59795d69e4518c1da9ce919"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #3186 changes adding the ArbNativeTokenManager precompile and native token enablement were reviewed; Low TOB-MINTBURN-1 targets precompiles/ArbOwner.go. The three findings were left unresolved as intended behavior.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "af31c44c0169497a54aeed276deb6cd8c05dea78",
+                    "timestamp": "2025-05-23T18:58:34Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/af31c44c0169497a54aeed276deb6cd8c05dea78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #3264 head reviewed in the fix review (enablement rename, UX improvement).",
+                  "major_findings": 0,
+                  "follows": "e7a442ff33f52812c59795d69e4518c1da9ce919"
+                }
+              ]
+            },
+            "arbos/arbosState/initialize.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e7a442ff33f52812c59795d69e4518c1da9ce919",
+                    "timestamp": "2025-05-15T12:38:32Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/e7a442ff33f52812c59795d69e4518c1da9ce919"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #3186 changes adding the ArbNativeTokenManager precompile and native token enablement were reviewed; Low TOB-MINTBURN-1 targets precompiles/ArbOwner.go. The three findings were left unresolved as intended behavior.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "precompiles/ArbNativeTokenManager.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e7a442ff33f52812c59795d69e4518c1da9ce919",
+                    "timestamp": "2025-05-15T12:38:32Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/e7a442ff33f52812c59795d69e4518c1da9ce919"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #3186 changes adding the ArbNativeTokenManager precompile and native token enablement were reviewed; Low TOB-MINTBURN-1 targets precompiles/ArbOwner.go. The three findings were left unresolved as intended behavior.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d11020b86061b1597f0967f02623e307ce34c2fa",
+                    "timestamp": "2025-05-23T13:25:11Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/d11020b86061b1597f0967f02623e307ce34c2fa"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #3260 head reviewed in the fix review (events and public methods, UX improvement).",
+                  "major_findings": 0,
+                  "follows": "e7a442ff33f52812c59795d69e4518c1da9ce919"
+                }
+              ]
+            },
+            "precompiles/ArbOwner.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e7a442ff33f52812c59795d69e4518c1da9ce919",
+                    "timestamp": "2025-05-15T12:38:32Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/e7a442ff33f52812c59795d69e4518c1da9ce919"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #3186 changes adding the ArbNativeTokenManager precompile and native token enablement were reviewed; Low TOB-MINTBURN-1 targets precompiles/ArbOwner.go. The three findings were left unresolved as intended behavior.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "af31c44c0169497a54aeed276deb6cd8c05dea78",
+                    "timestamp": "2025-05-23T18:58:34Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/af31c44c0169497a54aeed276deb6cd8c05dea78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #3264 head reviewed in the fix review (enablement rename, UX improvement).",
+                  "major_findings": 0,
+                  "follows": "e7a442ff33f52812c59795d69e4518c1da9ce919"
+                }
+              ]
+            },
+            "precompiles/precompile.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e7a442ff33f52812c59795d69e4518c1da9ce919",
+                    "timestamp": "2025-05-15T12:38:32Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/e7a442ff33f52812c59795d69e4518c1da9ce919"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #3186 changes adding the ArbNativeTokenManager precompile and native token enablement were reviewed; Low TOB-MINTBURN-1 targets precompiles/ArbOwner.go. The three findings were left unresolved as intended behavior.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "af31c44c0169497a54aeed276deb6cd8c05dea78",
+                    "timestamp": "2025-05-23T18:58:34Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/af31c44c0169497a54aeed276deb6cd8c05dea78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #3264 head reviewed in the fix review (enablement rename, UX improvement).",
+                  "major_findings": 0,
+                  "follows": "e7a442ff33f52812c59795d69e4518c1da9ce919"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d11020b86061b1597f0967f02623e307ce34c2fa",
+                    "timestamp": "2025-05-23T13:25:11Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/d11020b86061b1597f0967f02623e307ce34c2fa"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #3260 head reviewed in the fix review (events and public methods, UX improvement).",
+                  "major_findings": 0,
+                  "follows": "af31c44c0169497a54aeed276deb6cd8c05dea78"
+                }
+              ]
+            },
+            "precompiles/ArbSys.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa3a7b282c48391b8231ba76307e26eb70c720e2",
+                    "timestamp": "2025-05-22T10:44:41Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/fa3a7b282c48391b8231ba76307e26eb70c720e2"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #3255 head reviewed in the fix review: disables L2-to-L1 messages while native token owners exist.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "precompiles/ArbOwnerPublic.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d11020b86061b1597f0967f02623e307ce34c2fa",
+                    "timestamp": "2025-05-23T13:25:11Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/d11020b86061b1597f0967f02623e307ce34c2fa"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #3260 head reviewed in the fix review (events and public methods, UX improvement).",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/precompiles/ArbNativeTokenManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "95b6300650267bb283884c7f6d075cc698cd3402",
+                    "timestamp": "2025-05-13T09:47:44Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/95b6300650267bb283884c7f6d075cc698cd3402"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the Solidity precompile interfaces for the mint/burn feature (PR #335).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/precompiles/ArbOwner.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "95b6300650267bb283884c7f6d075cc698cd3402",
+                    "timestamp": "2025-05-13T09:47:44Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/95b6300650267bb283884c7f6d075cc698cd3402"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the Solidity precompile interfaces for the mint/burn feature (PR #335).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/bridge/extra/ERC20MigrationOutbox.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fb7e526fff17f9499a791013ff50aefa0b03c90d",
+                    "timestamp": "2025-06-13T18:25:03Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/fb7e526fff17f9499a791013ff50aefa0b03c90d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the ERC20MigrationOutbox for migrating native tokens from the native bridge to an external bridge (PR #339).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/bridge/extra/IERC20MigrationOutbox.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fb7e526fff17f9499a791013ff50aefa0b03c90d",
+                    "timestamp": "2025-06-13T18:25:03Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/fb7e526fff17f9499a791013ff50aefa0b03c90d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the ERC20MigrationOutbox for migrating native tokens from the native bridge to an external bridge (PR #339).",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/go-ethereum",
+          "paths": {
+            "core/genesis.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/state/statedb.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/state/statedb_hooked.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/tracing/gen_balance_change_reason_stringer.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/tracing/hooks.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/arbitrum_signer.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/vm/interface.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "params/config.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "params/config_arbitrum.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c517c5ecfb37a822cc56c736ae93b2d75cdc4d80",
+                    "timestamp": "2025-05-14T12:50:46Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c517c5ecfb37a822cc56c736ae93b2d75cdc4d80"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #447 go-ethereum fork changes supporting native token mint and burn were reviewed.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-upgrade-executor-2025-07",
+      "report_file": "2025-07-offchain-upgrade-executor-securityreview.md",
+      "title": "Offchain Labs Upgrade Executor Summary Report (Trail of Bits, July 2025)",
+      "description": "One engineer-day Trail of Bits review of the Upgrade Executor commit adding an executeCall function for direct calls, checking correctness against the DAO proposal and side effects. No security findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-07-30",
+      "repositories": [
+        {
+          "id": "OffchainLabs/upgrade-executor",
+          "url": "https://github.com/OffchainLabs/upgrade-executor"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/upgrade-executor",
+          "paths": {
+            "src/UpgradeExecutor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eaa9d607464abb8683a3fe526acbf6d877f924e0",
+                    "timestamp": "2024-10-17T12:10:55Z",
+                    "url": "https://github.com/OffchainLabs/upgrade-executor/commit/eaa9d607464abb8683a3fe526acbf6d877f924e0"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the new executeCall function introduced by commit eaa9d60 was reviewed against the DAO proposal; the rest of the contract was not re-audited.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-arbos-50-and-51-2025-12",
+      "report_file": "2025-12-offchain-arbos50-and-51-securityreview.md",
+      "title": "Arbitrum ArbOS 50 and 51 Security Assessment Summary Report (Trail of Bits, 2025)",
+      "description": "Ten-week Trail of Bits review of the ArbOS 50 upgrade diffs of Nitro and its go-ethereum fork (Fusaka support, constraint-based pricing foundation, native token minting), the ArbOS 50 action contract and payload, the ResourceConstraintManager contract, and the ArbOS 51 retryable gas fixes. One Medium, one Low and four Informational findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-12-01",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro",
+          "url": "https://github.com/OffchainLabs/nitro"
+        },
+        {
+          "id": "OffchainLabs/go-ethereum",
+          "url": "https://github.com/OffchainLabs/go-ethereum"
+        },
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        },
+        {
+          "id": "ArbitrumFoundation/governance",
+          "url": "https://github.com/ArbitrumFoundation/governance"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro",
+          "paths": {
+            "arbos": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb86fcaa6972ce2a9680762721ca489bcd8068c5",
+                    "timestamp": "2025-09-05T10:05:41Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/cb86fcaa6972ce2a9680762721ca489bcd8068c5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits (the last being the ArbOS 51 retryable gas fix PR #4068) for Fusaka EIP divergences, consensus-breaking changes and Arbitrum-specific bugs; Medium TOB-ARBOS50-3 and Informational TOB-ARBOS50-4 target arbos/tx_processor.go and Low TOB-ARBOS50-1 targets arbos/block_processor.go.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "22f4bff08ad916355b7e71c87b7f5102551a8399",
+                    "timestamp": "2025-09-15T13:26:24Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/22f4bff08ad916355b7e71c87b7f5102551a8399"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits (the last being the ArbOS 51 retryable gas fix PR #4068) for Fusaka EIP divergences, consensus-breaking changes and Arbitrum-specific bugs; Medium TOB-ARBOS50-3 and Informational TOB-ARBOS50-4 target arbos/tx_processor.go and Low TOB-ARBOS50-1 targets arbos/block_processor.go.",
+                  "follows": "cb86fcaa6972ce2a9680762721ca489bcd8068c5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "475b033d9f57cac5653979d62c5e981df68e7f91",
+                    "timestamp": "2025-10-24T22:09:48Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/475b033d9f57cac5653979d62c5e981df68e7f91"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits (the last being the ArbOS 51 retryable gas fix PR #4068) for Fusaka EIP divergences, consensus-breaking changes and Arbitrum-specific bugs; Medium TOB-ARBOS50-3 and Informational TOB-ARBOS50-4 target arbos/tx_processor.go and Low TOB-ARBOS50-1 targets arbos/block_processor.go.",
+                  "follows": "22f4bff08ad916355b7e71c87b7f5102551a8399",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b4585ba4f015565ba6696dd641b16fdd7f6b15",
+                    "timestamp": "2025-11-25T11:34:53Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/81b4585ba4f015565ba6696dd641b16fdd7f6b15"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits (the last being the ArbOS 51 retryable gas fix PR #4068) for Fusaka EIP divergences, consensus-breaking changes and Arbitrum-specific bugs; Medium TOB-ARBOS50-3 and Informational TOB-ARBOS50-4 target arbos/tx_processor.go and Low TOB-ARBOS50-1 targets arbos/block_processor.go.",
+                  "follows": "475b033d9f57cac5653979d62c5e981df68e7f91",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "precompiles": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb86fcaa6972ce2a9680762721ca489bcd8068c5",
+                    "timestamp": "2025-09-05T10:05:41Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/cb86fcaa6972ce2a9680762721ca489bcd8068c5"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits; Informational TOB-ARBOS50-2 targets precompiles/ArbOwner.go.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "22f4bff08ad916355b7e71c87b7f5102551a8399",
+                    "timestamp": "2025-09-15T13:26:24Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/22f4bff08ad916355b7e71c87b7f5102551a8399"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits; Informational TOB-ARBOS50-2 targets precompiles/ArbOwner.go.",
+                  "follows": "cb86fcaa6972ce2a9680762721ca489bcd8068c5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "475b033d9f57cac5653979d62c5e981df68e7f91",
+                    "timestamp": "2025-10-24T22:09:48Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/475b033d9f57cac5653979d62c5e981df68e7f91"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits; Informational TOB-ARBOS50-2 targets precompiles/ArbOwner.go.",
+                  "follows": "22f4bff08ad916355b7e71c87b7f5102551a8399",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81b4585ba4f015565ba6696dd641b16fdd7f6b15",
+                    "timestamp": "2025-11-25T11:34:53Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/81b4585ba4f015565ba6696dd641b16fdd7f6b15"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided ArbOS 50 diff was reviewed at the four listed commits; Informational TOB-ARBOS50-2 targets precompiles/ArbOwner.go.",
+                  "follows": "475b033d9f57cac5653979d62c5e981df68e7f91",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/go-ethereum",
+          "paths": {
+            "core": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "860bd9d17daa3f1fdd9ce691fce3f7cddf4ed460",
+                    "timestamp": "2025-09-04T05:54:05Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/860bd9d17daa3f1fdd9ce691fce3f7cddf4ed460"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the client-provided go-ethereum fork diff for ArbOS 50 (Fusaka changes compared against upstream go-ethereum) was reviewed at the four listed commits, the last being the ArbOS 51 PR #586; Informational TOB-ARBOS50-5 targets core/headerchain.go.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ba8d8fa2d7366b2725224f82693caa3072fbd558",
+                    "timestamp": "2025-09-12T13:03:21Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/ba8d8fa2d7366b2725224f82693caa3072fbd558"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided go-ethereum fork diff for ArbOS 50 (Fusaka changes compared against upstream go-ethereum) was reviewed at the four listed commits, the last being the ArbOS 51 PR #586; Informational TOB-ARBOS50-5 targets core/headerchain.go.",
+                  "follows": "860bd9d17daa3f1fdd9ce691fce3f7cddf4ed460",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57fe4b732d4e640e696da40773f2dacba97e722b",
+                    "timestamp": "2025-10-22T13:54:05Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/57fe4b732d4e640e696da40773f2dacba97e722b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided go-ethereum fork diff for ArbOS 50 (Fusaka changes compared against upstream go-ethereum) was reviewed at the four listed commits, the last being the ArbOS 51 PR #586; Informational TOB-ARBOS50-5 targets core/headerchain.go.",
+                  "follows": "ba8d8fa2d7366b2725224f82693caa3072fbd558",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4e7047ef0da0e03874ba2afd58f0a1cd84e2d13c",
+                    "timestamp": "2025-11-25T03:17:55Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/4e7047ef0da0e03874ba2afd58f0a1cd84e2d13c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the client-provided go-ethereum fork diff for ArbOS 50 (Fusaka changes compared against upstream go-ethereum) was reviewed at the four listed commits, the last being the ArbOS 51 PR #586; Informational TOB-ARBOS50-5 targets core/headerchain.go.",
+                  "follows": "57fe4b732d4e640e696da40773f2dacba97e722b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "params": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "860bd9d17daa3f1fdd9ce691fce3f7cddf4ed460",
+                    "timestamp": "2025-09-04T05:54:05Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/860bd9d17daa3f1fdd9ce691fce3f7cddf4ed460"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the ArbOS 50/51 chain configuration changes in the client-provided diff were reviewed.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ba8d8fa2d7366b2725224f82693caa3072fbd558",
+                    "timestamp": "2025-09-12T13:03:21Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/ba8d8fa2d7366b2725224f82693caa3072fbd558"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 50/51 chain configuration changes in the client-provided diff were reviewed.",
+                  "follows": "860bd9d17daa3f1fdd9ce691fce3f7cddf4ed460",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57fe4b732d4e640e696da40773f2dacba97e722b",
+                    "timestamp": "2025-10-22T13:54:05Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/57fe4b732d4e640e696da40773f2dacba97e722b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 50/51 chain configuration changes in the client-provided diff were reviewed.",
+                  "follows": "ba8d8fa2d7366b2725224f82693caa3072fbd558",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4e7047ef0da0e03874ba2afd58f0a1cd84e2d13c",
+                    "timestamp": "2025-11-25T03:17:55Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/4e7047ef0da0e03874ba2afd58f0a1cd84e2d13c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 50/51 chain configuration changes in the client-provided diff were reviewed.",
+                  "follows": "57fe4b732d4e640e696da40773f2dacba97e722b",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/chain/ResourceConstraintManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5882897088883eb22afbab02e0c79c9f0437e1c5",
+                    "timestamp": "2025-11-11T17:25:15Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/5882897088883eb22afbab02e0c79c9f0437e1c5"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the ResourceConstraintManager contract on November 14, 2025; Informational TOB-ARBOS50-6 targets this file.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "ArbitrumFoundation/governance",
+          "paths": {
+            "src/gov-action-contracts/AIPs/ArbOS50/ArbOS50SettingsAction.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "32adeba02be1a85975ee410ac783e2bfdafcdcb5",
+                    "timestamp": "2025-11-12T21:45:57Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/32adeba02be1a85975ee410ac783e2bfdafcdcb5"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the ArbOS 50 action contract and upgrade activation payload.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f05a6cd6b5b1795a3701d49a966e1213961010b",
+                    "timestamp": "2025-11-13T12:12:02Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/4f05a6cd6b5b1795a3701d49a966e1213961010b"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Review of the ArbOS 50 action contract and upgrade activation payload.",
+                  "follows": "32adeba02be1a85975ee410ac783e2bfdafcdcb5",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-security-council-update-2025-09",
+      "report_file": "2025_09_15_trail_of_bits_security_council_update_code_review_summary_report_with_fix_review.md",
+      "title": "Offchain Labs Security Council Update Code Review Summary Report with Fix Review (Trail of Bits, September 2025)",
+      "description": "One engineer-week Trail of Bits review of the Security Council contract changes implementing the election process improvements proposal (longer cohort durations, adjusted thresholds, nominee rotation) at governance commit d89b171, with a fix review. One Medium (duplicate nominees can make cohort replacement fail) and one Informational finding were reported and resolved in PR #361.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-09-15",
+      "repositories": [
+        {
+          "id": "ArbitrumFoundation/governance",
+          "url": "https://github.com/ArbitrumFoundation/governance"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ArbitrumFoundation/governance",
+          "paths": {
+            "src/security-council-mgmt": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d89b171429e3c4e6c1b7e5ef559a93aef5d35d8a",
+                    "timestamp": "2025-08-14T09:25:26Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/d89b171429e3c4e6c1b7e5ef559a93aef5d35d8a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Review of the Security Council election process changes (longer cohort durations, adjusted thresholds, nominee rotation); Medium TOB-SC-2 targets SecurityCouncilManager.sol and the nominee election governor, Informational TOB-SC-1 targets SecurityCouncilNomineeElectionGovernor.sol.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e4b387dba94f6f3c7d6ae8b30f631fe0e5f3c4f",
+                    "timestamp": "2026-07-21T09:07:14Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/3e4b387dba94f6f3c7d6ae8b30f631fe0e5f3c4f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #361 (final head) verified to resolve TOB-SC-1 and TOB-SC-2; note the PR head was pushed after the September 2025 fix review.",
+                  "follows": "d89b171429e3c4e6c1b7e5ef559a93aef5d35d8a",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "offbeat-governor-cancel-upgrade-2025-10",
+      "report_file": "2025_10_19_offbeat_security_governor_cancel_upgrade_review.md",
+      "title": "Arbitrum Governor Cancel Upgrade Review (Offbeat Security, October 2025)",
+      "description": "Offbeat Security review of the ScopeLift arbitrum-governance upgrade adding proposal cancellation to the Core and Treasury governors: the L2ArbitrumGovernorV2 implementation, the MultiProxyUpgradeAction and the forge deployment and proposal scripts at commit df184f2, including calldata formation and address validation. One Informational finding was reported.",
+      "isRelevant": true,
+      "auditor": "Offbeat Security",
+      "report_date": "2025-10-19",
+      "repositories": [
+        {
+          "id": "ScopeLift/arbitrum-governance",
+          "url": "https://github.com/ScopeLift/arbitrum-governance"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ScopeLift/arbitrum-governance",
+          "paths": {
+            "src/L2ArbitrumGovernorV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df184f2cfb903cf2c3b72a12ce36e2b949cb3489",
+                    "timestamp": "2025-10-10T21:32:29Z",
+                    "url": "https://github.com/ScopeLift/arbitrum-governance/commit/df184f2cfb903cf2c3b72a12ce36e2b949cb3489"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the seven files in scope; review of the governor cancel upgrade implementation, proposal calldata formation and address validation. Informational I-01 targets the deployment scripts.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/gov-action-contracts/gov-upgrade-contracts/upgrade-proxy/MultiProxyUpgradeAction.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df184f2cfb903cf2c3b72a12ce36e2b949cb3489",
+                    "timestamp": "2025-10-10T21:32:29Z",
+                    "url": "https://github.com/ScopeLift/arbitrum-governance/commit/df184f2cfb903cf2c3b72a12ce36e2b949cb3489"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the seven files in scope; review of the governor cancel upgrade implementation, proposal calldata formation and address validation. Informational I-01 targets the deployment scripts.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "scripts/forge-scripts/DeployConstants.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df184f2cfb903cf2c3b72a12ce36e2b949cb3489",
+                    "timestamp": "2025-10-10T21:32:29Z",
+                    "url": "https://github.com/ScopeLift/arbitrum-governance/commit/df184f2cfb903cf2c3b72a12ce36e2b949cb3489"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the seven files in scope; review of the governor cancel upgrade implementation, proposal calldata formation and address validation. Informational I-01 targets the deployment scripts.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "scripts/forge-scripts/DeployImplementation.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df184f2cfb903cf2c3b72a12ce36e2b949cb3489",
+                    "timestamp": "2025-10-10T21:32:29Z",
+                    "url": "https://github.com/ScopeLift/arbitrum-governance/commit/df184f2cfb903cf2c3b72a12ce36e2b949cb3489"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the seven files in scope; review of the governor cancel upgrade implementation, proposal calldata formation and address validation. Informational I-01 targets the deployment scripts.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "scripts/forge-scripts/DeployMultiProxyUpgradeAction.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df184f2cfb903cf2c3b72a12ce36e2b949cb3489",
+                    "timestamp": "2025-10-10T21:32:29Z",
+                    "url": "https://github.com/ScopeLift/arbitrum-governance/commit/df184f2cfb903cf2c3b72a12ce36e2b949cb3489"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the seven files in scope; review of the governor cancel upgrade implementation, proposal calldata formation and address validation. Informational I-01 targets the deployment scripts.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "scripts/forge-scripts/SubmitUpgradeProposalScript.s.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df184f2cfb903cf2c3b72a12ce36e2b949cb3489",
+                    "timestamp": "2025-10-10T21:32:29Z",
+                    "url": "https://github.com/ScopeLift/arbitrum-governance/commit/df184f2cfb903cf2c3b72a12ce36e2b949cb3489"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the seven files in scope; review of the governor cancel upgrade implementation, proposal calldata formation and address validation. Informational I-01 targets the deployment scripts.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "scripts/forge-scripts/utils/EncodeL2ArbSysProposal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df184f2cfb903cf2c3b72a12ce36e2b949cb3489",
+                    "timestamp": "2025-10-10T21:32:29Z",
+                    "url": "https://github.com/ScopeLift/arbitrum-governance/commit/df184f2cfb903cf2c3b72a12ce36e2b949cb3489"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "One of the seven files in scope; review of the governor cancel upgrade implementation, proposal calldata formation and address validation. Informational I-01 targets the deployment scripts.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-stylus-contracts-library-v0-2-0-2025-06",
+      "report_file": "irrelevant/2025_06_17_openzeppelin_stylus_contracts_library_v0.2.0_audit.md",
+      "title": "Stylus Contracts Library v0.2.0 Audit (OpenZeppelin, June 2025)",
+      "description": "OpenZeppelin audit of its rust-contracts-stylus library (crypto library at a67ab70 and 2350766, contracts library at 5ed33dd). Classified irrelevant because it is an external Stylus contract library rather than Arbitrum protocol logic; one High, two Medium and nine Low findings were reported.",
+      "isRelevant": false,
+      "auditor": "OpenZeppelin",
+      "report_date": "2025-06-17",
+      "repositories": [
+        {
+          "id": "OpenZeppelin/rust-contracts-stylus",
+          "url": "https://github.com/OpenZeppelin/rust-contracts-stylus"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-stylus-contracts-library-v0-3-0-2025-09",
+      "report_file": "irrelevant/2025_09_08_openzeppelin_stylus_contracts_library_v0.3.0_audit.md",
+      "title": "Stylus Contracts Library v0.3.0 Audit (OpenZeppelin, September 2025)",
+      "description": "OpenZeppelin audit of the rust-contracts-stylus library changes at commit 231d4f1 (v0.3.0). Classified irrelevant because it is an external Stylus contract library rather than Arbitrum protocol logic; one High, four Medium and five Low findings were reported and resolved.",
+      "isRelevant": false,
+      "auditor": "OpenZeppelin",
+      "report_date": "2025-09-08",
+      "repositories": [
+        {
+          "id": "OpenZeppelin/rust-contracts-stylus",
+          "url": "https://github.com/OpenZeppelin/rust-contracts-stylus"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-stylus-sdk-v0-10-2025-12",
+      "report_file": "irrelevant/2025_12_10_open_zeppelin_stylus_sdk_v0_10_audit.md",
+      "title": "Stylus SDK v0.10 Audit (OpenZeppelin, December 2025)",
+      "description": "OpenZeppelin audit of the OffchainLabs/stylus-sdk-rs library at commit 4003c3f (v0.10-rc.1), covering the SDK, cargo-stylus tooling, verification and reproducible builds. Classified irrelevant because the SDK is a developer library compiled into user programs; one Critical, three High, nineteen Medium and seventeen Low findings were reported.",
+      "isRelevant": false,
+      "auditor": "OpenZeppelin",
+      "report_date": "2025-12-10",
+      "repositories": [
+        {
+          "id": "OffchainLabs/stylus-sdk-rs",
+          "url": "https://github.com/OffchainLabs/stylus-sdk-rs"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-stylus-sdk-pr-370-2025-12",
+      "report_file": "irrelevant/2025_12_19_open_zeppelin_stylus_sdk_pull_request_370_audit.md",
+      "title": "Arbitrum Stylus SDK Pull Request #370 Audit (OpenZeppelin, December 2025)",
+      "description": "OpenZeppelin audit of the changes in stylus-sdk-rs pull request #370 at commit 8e2202c. Classified irrelevant because the SDK is a developer library compiled into user programs; one High and one Low finding were reported.",
+      "isRelevant": false,
+      "auditor": "OpenZeppelin",
+      "report_date": "2025-12-19",
+      "repositories": [
+        {
+          "id": "OffchainLabs/stylus-sdk-rs",
+          "url": "https://github.com/OffchainLabs/stylus-sdk-rs"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "trailofbits-disable-gateway-action-2025-03",
+      "report_file": "irrelevant/2025-03-offchain-disablegateway-action-securityreview.md",
+      "title": "Offchain Labs Disable Gateway Action Summary Report (Trail of Bits, March 2025)",
+      "description": "Two engineer-day Trail of Bits review of the governance action disabling the USDT standard gateway for deposits in preparation for USDT0 (governance PR #334 at 873c0e9). Irrelevant one-time governance action code; no findings were reported.",
+      "isRelevant": false,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-03-12",
+      "repositories": [
+        {
+          "id": "ArbitrumFoundation/governance",
+          "url": "https://github.com/ArbitrumFoundation/governance"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "trailofbits-geth-14-4-2025-03",
+      "report_file": "irrelevant/2025-03-offchain-geth-14.4-securityreview.md",
+      "title": "Offchain Labs Geth 14.4 Summary Report (Trail of Bits, March 2025)",
+      "description": "Four engineer-day Trail of Bits review of the consensus-related changes adding Geth 1.14.4 support to the ArbOS go-ethereum fork (nitro 53f5c56, go-ethereum b6f989a), bounded by client-provided diffs of changes impacting the replay executable. No findings were reported; the report names no file paths, so no coverage can be pinned.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-03-12",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro",
+          "url": "https://github.com/OffchainLabs/nitro"
+        },
+        {
+          "id": "OffchainLabs/go-ethereum",
+          "url": "https://github.com/OffchainLabs/go-ethereum"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "trailofbits-sequencer-liveness-2025-03",
+      "report_file": "irrelevant/2025-03-offchain-sequencer-liveness-securityreview.md",
+      "title": "Offchain Labs Sequencer Liveness Summary Report (Trail of Bits, March 2025)",
+      "description": "Three engineer-week Trail of Bits review of the core Arbitrum Sequencer code (transaction validation and feeding loop) at commit fcb4018 of a private audit repository, focused on correctness and liveness. Irrelevant off-chain node software; one Low denial-of-service finding was reported.",
+      "isRelevant": false,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-03-31",
+      "repositories": [
+        {
+          "id": "trailofbits/audit-arbitrum-nitro",
+          "url": "https://github.com/trailofbits/audit-arbitrum-nitro"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "trailofbits-arbos-40-2025-05",
+      "report_file": "irrelevant/2025-05-offchainlabs-arbos40nitro-securityreview.md",
+      "title": "Offchain Labs ArbOS 40 Nitro Security Assessment Summary Report (Trail of Bits, May 2025)",
+      "description": "Eleven engineer-week Trail of Bits review of ArbOS 40 (Pectra hard fork support and go-ethereum merges) at two nitro and two go-ethereum fork commits plus PRs #444, #3129, #3132 and sys-asm PR #6, focused on EIP implementations, precompiles and the state transition function. One High finding (EIP-2935 block hash history update not called) and five Informational findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-05-06",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro",
+          "url": "https://github.com/OffchainLabs/nitro"
+        },
+        {
+          "id": "OffchainLabs/go-ethereum",
+          "url": "https://github.com/OffchainLabs/go-ethereum"
+        },
+        {
+          "id": "OffchainLabs/sys-asm",
+          "url": "https://github.com/OffchainLabs/sys-asm"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro",
+          "paths": {
+            "arbos": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df1fe5636bb0ec4ddae6b8a0eddf8e84a91c3491",
+                    "timestamp": "2025-04-05T13:29:14Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/df1fe5636bb0ec4ddae6b8a0eddf8e84a91c3491"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the ArbOS 40 (Pectra) changes at the two listed commits plus PRs #3129 and #3132 were reviewed, focusing on EIP implementations, precompiles and the state transition function; Informational TOB-ARBOS40-2/3/5 target arbos files.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b3dd9797a306636ee106797e16b60310d6d3ccb3",
+                    "timestamp": "2025-04-16T12:40:52Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/b3dd9797a306636ee106797e16b60310d6d3ccb3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 40 (Pectra) changes at the two listed commits plus PRs #3129 and #3132 were reviewed, focusing on EIP implementations, precompiles and the state transition function; Informational TOB-ARBOS40-2/3/5 target arbos files.",
+                  "follows": "df1fe5636bb0ec4ddae6b8a0eddf8e84a91c3491",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "precompiles": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "df1fe5636bb0ec4ddae6b8a0eddf8e84a91c3491",
+                    "timestamp": "2025-04-05T13:29:14Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/df1fe5636bb0ec4ddae6b8a0eddf8e84a91c3491"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the ArbOS 40 changes at the two listed commits were reviewed; Informational TOB-ARBOS40-1 concerns precompile code handling under EIP-7702.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b3dd9797a306636ee106797e16b60310d6d3ccb3",
+                    "timestamp": "2025-04-16T12:40:52Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/b3dd9797a306636ee106797e16b60310d6d3ccb3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 40 changes at the two listed commits were reviewed; Informational TOB-ARBOS40-1 concerns precompile code handling under EIP-7702.",
+                  "follows": "df1fe5636bb0ec4ddae6b8a0eddf8e84a91c3491",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/go-ethereum",
+          "paths": {
+            "core": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "084f63827520569955a905596878d90d42b734a7",
+                    "timestamp": "2025-04-03T10:28:33Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/084f63827520569955a905596878d90d42b734a7"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the ArbOS 40 go-ethereum fork changes (Pectra merge, PR #444) were reviewed; High TOB-ARBOS40-6 (EIP-2935 block hash history update never called) is printed with target arbos/state_processor.go, which corresponds to core/state_processor.go in the fork, and is recorded on both reviewed commits because the report does not state a fix.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS40-6"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2a0b8b6f146f62e609fc240b99a9f65df8f2eace",
+                    "timestamp": "2025-04-15T16:24:52Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/2a0b8b6f146f62e609fc240b99a9f65df8f2eace"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 40 go-ethereum fork changes (Pectra merge, PR #444) were reviewed; High TOB-ARBOS40-6 (EIP-2935 block hash history update never called) is printed with target arbos/state_processor.go, which corresponds to core/state_processor.go in the fork, and is recorded on both reviewed commits because the report does not state a fix.",
+                  "follows": "084f63827520569955a905596878d90d42b734a7",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS40-6"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-set-core-governor-quorum-action-2025-06",
+      "report_file": "irrelevant/2025-06-offchain-setcoregovernorquorumaction-securityreview.md",
+      "title": "Offchain Labs SetCoreGovernorQuorumAction Summary Report (Trail of Bits, June 2025)",
+      "description": "Six engineer-day Trail of Bits manual review of the SetCoreGovernorQuorumAction and SetConstitutionHashAction governance proposals (governance PRs #341 and #346). Irrelevant one-time governance action code; no findings were reported.",
+      "isRelevant": false,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-06-16",
+      "repositories": [
+        {
+          "id": "ArbitrumFoundation/governance",
+          "url": "https://github.com/ArbitrumFoundation/governance"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "trailofbits-genesis-file-generator-2025-12",
+      "report_file": "irrelevant/2025-12-offchain-arbitrum-chains-genesis-generator-securityreview.md",
+      "title": "Arbitrum Chains Genesis File Generator Summary Report (Trail of Bits, December 2025)",
+      "description": "Eight engineer-day Trail of Bits review of the genesis file generator tool that lets Arbitrum chains start with a predefined state (commit 59f69a9). Irrelevant off-chain tooling; one Undetermined finding was reported.",
+      "isRelevant": false,
+      "auditor": "Trail of Bits",
+      "report_date": "2025-12-01",
+      "repositories": [
+        {
+          "id": "OffchainLabs/genesis-file-generator",
+          "url": "https://github.com/OffchainLabs/genesis-file-generator"
+        }
+      ],
+      "scopes": []
+    }
+  ]
+}

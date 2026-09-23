@@ -1,0 +1,468 @@
+use eyre::{Context, Result};
+use fnv::{FnvHashMap as HashMap, FnvHashSet as HashSet};
+use prover::machine::{InboxIdentifier, MachineStatus};
+use prover::parse_binary;
+use prover::{machine::GlobalState, utils::Bytes32};
+use prover::{machine::Machine, wavm::Opcode};
+use serde::Serialize;
+use sha3::{Digest, Keccak256};
+use std::io::BufWriter;
+use std::{
+    fs::File,
+    io::{BufReader, ErrorKind, Read, Write},
+    path::{Path, PathBuf},
+};
+use structopt::StructOpt;
+
+#[derive(StructOpt)]
+#[structopt(name = "arbitrator-prover")]
+struct Opts {
+    binary: PathBuf,
+    #[structopt(short, long)]
+    libraries: Vec<PathBuf>,
+    #[structopt(short, long)]
+    output: Option<PathBuf>,
+    #[structopt(short = "b", long)]
+    proving_backoff: bool,
+    #[structopt(long)]
+    allow_hostapi: bool,
+    #[structopt(long)]
+    inbox_add_stub_headers: bool,
+    #[structopt(long)]
+    always_merkleize: bool,
+    /// profile output instead of generting proofs
+    #[structopt(short = "p", long)]
+    profile_run: bool,
+    /// simple summary of hot opcodes
+    #[structopt(long)]
+    profile_sum_opcodes: bool,
+    /// simple summary of hot functions
+    #[structopt(long)]
+    profile_sum_funcs: bool,
+    /// profile written in "folded" format (use as input for e.g. inferno-flamegraph)
+    #[structopt(long)]
+    profile_output: Option<PathBuf>,
+    #[structopt(short = "i", long, default_value = "1")]
+    proving_interval: u64,
+    #[structopt(long, default_value = "0")]
+    delayed_inbox_position: u64,
+    #[structopt(long, default_value = "0")]
+    inbox_position: u64,
+    #[structopt(long, default_value = "0")]
+    position_within_message: u64,
+    #[structopt(
+        long,
+        default_value = "0000000000000000000000000000000000000000000000000000000000000000"
+    )]
+    last_block_hash: String,
+    #[structopt(long)]
+    inbox: Vec<PathBuf>,
+    #[structopt(long)]
+    delayed_inbox: Vec<PathBuf>,
+    #[structopt(long)]
+    preimages: Option<PathBuf>,
+    /// Require that the machine end in the Finished state
+    #[structopt(long)]
+    require_success: bool,
+}
+
+#[derive(Serialize)]
+struct ProofInfo {
+    before: String,
+    proof: String,
+    after: String,
+}
+
+fn parse_size_delim(path: &Path) -> Result<Vec<Vec<u8>>> {
+    let mut file = BufReader::new(File::open(path)?);
+    let mut contents = Vec::new();
+    loop {
+        let mut size_buf = [0u8; 8];
+        match file.read_exact(&mut size_buf) {
+            Ok(()) => {}
+            Err(e) if e.kind() == ErrorKind::UnexpectedEof => break,
+            Err(e) => return Err(e.into()),
+        }
+        let size = u64::from_le_bytes(size_buf) as usize;
+        let mut buf = vec![0u8; size];
+        file.read_exact(&mut buf)?;
+        contents.push(buf);
+    }
+    Ok(contents)
+}
+
+fn file_with_stub_header(path: &Path, headerlength: usize) -> Result<Vec<u8>> {
+    let mut msg = vec![0u8; headerlength];
+    File::open(path).unwrap().read_to_end(&mut msg)?;
+    Ok(msg)
+}
+
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
+struct SimpleProfile {
+    count: u64,
+    total_cycles: u64,
+    local_cycles: u64,
+}
+
+fn main() -> Result<()> {
+    let opts = Opts::from_args();
+
+    let mut libraries = Vec::new();
+    for lib in &opts.libraries {
+        libraries.push(parse_binary(lib)?);
+    }
+    let main_mod = parse_binary(&opts.binary)?;
+
+    let mut inbox_contents = HashMap::default();
+    let mut inbox_position = opts.inbox_position;
+    let mut delayed_position = opts.delayed_inbox_position;
+    let inbox_header_len;
+    let delayed_header_len;
+    if opts.inbox_add_stub_headers {
+        inbox_header_len = 40;
+        delayed_header_len = 161;
+    } else {
+        inbox_header_len = 0;
+        delayed_header_len = 0;
+    }
+
+    for path in opts.inbox {
+        inbox_contents.insert(
+            (InboxIdentifier::Sequencer, inbox_position),
+            file_with_stub_header(&path, inbox_header_len)?,
+        );
+        println!("read file {:?} to seq. inbox {}", &path, inbox_position);
+        inbox_position += 1;
+    }
+    for path in opts.delayed_inbox {
+        inbox_contents.insert(
+            (InboxIdentifier::Delayed, delayed_position),
+            file_with_stub_header(&path, delayed_header_len)?,
+        );
+        delayed_position += 1;
+    }
+
+    let mut preimages = HashMap::default();
+    if let Some(path) = opts.preimages {
+        preimages = parse_size_delim(&path)?
+            .into_iter()
+            .map(|b| {
+                let mut hasher = Keccak256::new();
+                hasher.update(&b);
+                (hasher.finalize().into(), b)
+            })
+            .collect();
+    }
+
+    let mut last_block_hash_string = opts.last_block_hash.as_str();
+    if last_block_hash_string.starts_with("0x") {
+        last_block_hash_string = &last_block_hash_string[2..];
+    }
+    let mut last_block_hash = Bytes32::default();
+    hex::decode_to_slice(last_block_hash_string, &mut last_block_hash.0)
+        .wrap_err("failed to parse --last-block-hash contents")?;
+
+    let global_state = GlobalState {
+        u64_vals: [opts.inbox_position, opts.position_within_message],
+        bytes32_vals: [last_block_hash],
+    };
+
+    let mut mach = Machine::from_binary(
+        libraries.clone(),
+        main_mod.clone(),
+        opts.always_merkleize,
+        opts.allow_hostapi,
+        global_state,
+        inbox_contents,
+        preimages,
+    );
+    println!("Starting machine hash: {}", mach.hash());
+
+    let mut proofs: Vec<ProofInfo> = Vec::new();
+    let mut seen_states = HashSet::default();
+    let mut opcode_counts: HashMap<Opcode, usize> = HashMap::default();
+    let mut opcode_profile: HashMap<Opcode, SimpleProfile> = HashMap::default();
+    let mut func_profile: HashMap<(usize, usize), SimpleProfile> = HashMap::default();
+    let mut func_stack: Vec<(usize, usize, SimpleProfile)> = Vec::default();
+    let mut backtrace_stack: Vec<(usize, usize)> = Vec::default();
+    let mut cycles_measured_total: u64 = 0;
+    let mut profile_backtrace_counts: HashMap<Vec<(usize, usize)>, u64> = HashMap::default();
+    let cycles_bigloop_start: u64;
+    let cycles_bigloop_end: u64;
+    #[cfg(target_arch = "x86_64")]
+    unsafe {
+        cycles_bigloop_start = core::arch::x86_64::_rdtsc();
+    }
+    while !mach.is_halted() {
+        let next_inst = mach.get_next_instruction().unwrap();
+        let next_opcode = next_inst.opcode;
+        if opts.proving_backoff {
+            let count_entry = opcode_counts.entry(next_opcode).or_insert(0);
+            *count_entry += 1;
+            let count = *count_entry;
+            // Apply an exponential backoff to how often to prove an instruction;
+            let prove =
+                count < 5 || (count < 25 && count % 5 == 0) || (count < 125 && count % 25 == 0);
+            if !prove {
+                mach.step();
+                continue;
+            }
+        }
+        if opts.profile_run {
+            let start: u64;
+            let end: u64;
+            let pc = mach.get_pc().unwrap();
+            #[cfg(target_arch = "x86_64")]
+            unsafe {
+                start = core::arch::x86_64::_rdtsc();
+            }
+            mach.step();
+            #[cfg(target_arch = "x86_64")]
+            unsafe {
+                end = core::arch::x86_64::_rdtsc();
+            }
+            #[cfg(not(target_arch = "x86_64"))]
+            {
+                start = 0;
+                end = 1;
+            }
+            let profile_time = end - start;
+
+            cycles_measured_total += profile_time;
+
+            if opts.profile_sum_opcodes {
+                let opprofile = opcode_profile.entry(next_opcode).or_default();
+                opprofile.count += 1;
+                opprofile.total_cycles += profile_time;
+            }
+
+            if pc.inst == 0 {
+                func_stack.push((pc.module, pc.func, SimpleProfile::default()));
+                backtrace_stack.push((pc.module, pc.func));
+            }
+            let this_func_profile = &mut func_stack.last_mut().unwrap().2;
+            this_func_profile.count += 1;
+            this_func_profile.total_cycles += profile_time;
+            this_func_profile.local_cycles += profile_time;
+            if next_opcode == Opcode::Return {
+                let (module, func, profile) = func_stack.pop().unwrap();
+
+                if opts.profile_sum_funcs {
+                    if let Some(parent_func) = &mut func_stack.last_mut() {
+                        parent_func.2.count += profile.count;
+                        parent_func.2.total_cycles += profile.total_cycles;
+                    }
+                    let func_profile_entry = func_profile.entry((module, func)).or_default();
+                    func_profile_entry.count += profile.count;
+                    func_profile_entry.total_cycles += profile.total_cycles;
+                    func_profile_entry.local_cycles += profile.local_cycles;
+                }
+
+                if opts.profile_output.is_some() {
+                    *profile_backtrace_counts
+                        .entry(backtrace_stack.clone())
+                        .or_default() += profile.local_cycles;
+                }
+                backtrace_stack.pop();
+            }
+        } else {
+            println!("Machine stack: {:?}", mach.get_data_stack());
+            print!(
+                "Generating proof \x1b[36m#{}\x1b[0m (inst \x1b[36m#{}\x1b[0m) of opcode \x1b[32m{:?}\x1b[0m with data 0x{:x}",
+                proofs.len(),
+                mach.get_steps(),
+                next_opcode,
+                next_inst.argument_data,
+            );
+            std::io::stdout().flush().unwrap();
+            let before = mach.hash();
+            if !seen_states.insert(before) {
+                break;
+            }
+            let proof = mach.serialize_proof();
+            mach.step();
+            let after = mach.hash();
+            println!(" - done");
+            proofs.push(ProofInfo {
+                before: before.to_string(),
+                proof: hex::encode(proof),
+                after: after.to_string(),
+            });
+            mach.step_n(opts.proving_interval.saturating_sub(1));
+        }
+    }
+    #[cfg(target_arch = "x86_64")]
+    unsafe {
+        cycles_bigloop_end = core::arch::x86_64::_rdtsc();
+    }
+    #[cfg(not(target_arch = "x86_64"))]
+    {
+        cycles_bigloop_start = 0;
+        cycles_bigloop_end = 0;
+    }
+
+    let cycles_bigloop = cycles_bigloop_end - cycles_bigloop_start;
+
+    if proofs.len() > 0 && mach.is_halted() {
+        let hash = mach.hash();
+        proofs.push(ProofInfo {
+            before: hash.to_string(),
+            proof: hex::encode(mach.serialize_proof()),
+            after: hash.to_string(),
+        });
+    }
+
+    println!("End machine status: {:?}", mach.get_status());
+    println!("End machine hash: {}", mach.hash());
+    println!("End machine stack: {:?}", mach.get_data_stack());
+    println!("End machine backtrace:");
+    for (module, func, pc) in mach.get_backtrace() {
+        let func = rustc_demangle::demangle(&func);
+        println!(
+            "  {} \x1b[32m{}\x1b[0m @ \x1b[36m{}\x1b[0m",
+            module, func, pc
+        );
+    }
+    let output = mach.get_stdio_output();
+    println!("End machine output:");
+    let stdout = std::io::stdout();
+    let mut stdout = stdout.lock();
+    stdout
+        .write_all(output)
+        .expect("Failed to write machine output to stdout");
+
+    if let Some(out) = opts.output {
+        let out = File::create(out)?;
+        serde_json::to_writer_pretty(out, &proofs)?;
+    }
+
+    if opts.profile_run {
+        let mut sum = SimpleProfile::default();
+        while let Some((module, func, profile)) = func_stack.pop() {
+            sum.total_cycles += profile.total_cycles;
+            sum.count += profile.count;
+            let entry = func_profile
+                .entry((module, func))
+                .or_insert(SimpleProfile::default());
+            entry.count += sum.count;
+            entry.total_cycles += sum.total_cycles;
+            entry.local_cycles += profile.local_cycles;
+        }
+
+        println!(
+            "Total cycles measured {} out of {} in loop ({}%)",
+            cycles_measured_total,
+            cycles_bigloop,
+            (cycles_measured_total as f64) * 100.0 / (cycles_bigloop as f64)
+        );
+
+        if opts.profile_sum_opcodes {
+            println!("\n===Operations:");
+            let mut ops_vector: Vec<_> = opcode_profile.iter().collect();
+            ops_vector.sort_by(|a, b| b.1.total_cycles.cmp(&a.1.total_cycles));
+            let mut printed = 0;
+            for (opcode, profile) in ops_vector {
+                println!(
+                    "Opcode {:?}: steps: {} cycles: {} ({}%)",
+                    opcode,
+                    profile.count,
+                    profile.total_cycles,
+                    (profile.total_cycles as f64) * 100.0 / (cycles_measured_total as f64),
+                );
+                printed += 1;
+                if printed > 20 {
+                    break;
+                }
+            }
+        }
+
+        let opts_binary = opts.binary;
+        let opts_libraries = opts.libraries;
+        let format_pc = |module_num: usize, func_num: usize| -> (String, String) {
+            let names = match mach.get_module_names(module_num) {
+                Some(n) => n,
+                None => {
+                    return (
+                        format!("[unknown {}]", module_num),
+                        format!("[unknown {}]", func_num),
+                    );
+                }
+            };
+            let module_name: String;
+            let mut name: String;
+            if module_num == 0 {
+                module_name = names.module.clone();
+            } else if module_num == &libraries.len() + 1 {
+                module_name = opts_binary
+                    .file_name()
+                    .unwrap()
+                    .to_str()
+                    .unwrap()
+                    .to_string();
+            } else {
+                module_name = opts_libraries[module_num - 1]
+                    .file_name()
+                    .unwrap()
+                    .to_str()
+                    .unwrap()
+                    .to_string();
+            }
+            let func_idx = func_num as u32;
+            name = names
+                .functions
+                .get(&func_idx)
+                .cloned()
+                .unwrap_or_else(|| format!("[unknown {}]", func_idx));
+            name = rustc_demangle::demangle(&name).to_string();
+            (module_name, name)
+        };
+
+        if opts.profile_sum_funcs {
+            println!("\n===Functions:");
+            let mut func_vector: Vec<_> = func_profile.iter().collect();
+            func_vector.sort_by(|a, b| b.1.total_cycles.cmp(&a.1.total_cycles));
+            let mut printed = 0;
+            for (&(module_num, func), profile) in func_vector {
+                let (name, module_name) = format_pc(module_num, func);
+                let percent =
+                    (profile.total_cycles as f64) * 100.0 / (cycles_measured_total as f64);
+                println!(
+                    "module {}: function: {} {} steps: {} cycles: {} ({}%)",
+                    module_name, func, name, profile.count, profile.total_cycles, percent,
+                );
+                printed += 1;
+                if printed > 20 && percent < 3.0 {
+                    break;
+                }
+            }
+        }
+
+        if let Some(out) = opts.profile_output {
+            let mut out = BufWriter::new(File::create(out)?);
+            for (backtrace, count) in profile_backtrace_counts {
+                let mut path = String::new();
+                let mut last_module = None;
+                for (module, func) in backtrace {
+                    let (module_name, func_name) = format_pc(module, func);
+                    if last_module != Some(module) {
+                        path += "[module] ";
+                        path += &module_name;
+                        path += ";";
+                        last_module = Some(module);
+                    }
+                    path += &func_name;
+                    path += ";";
+                }
+                path.pop(); // remove trailing ';'
+                write!(out, "{} {}\n", path, count)?;
+            }
+            out.flush()?;
+        }
+    }
+
+    if opts.require_success && mach.get_status() != MachineStatus::Finished {
+        std::process::exit(1);
+    }
+
+    Ok(())
+}

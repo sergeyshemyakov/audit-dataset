@@ -1,0 +1,519 @@
+// Copyright 2014 The go-ethereum Authors
+// This file is part of the go-ethereum library.
+//
+// The go-ethereum library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// The go-ethereum library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+
+// Package state provides a caching layer atop the Ethereum state trie.
+package state
+
+import (
+	"bytes"
+	"encoding/binary"
+	"errors"
+	"fmt"
+	"maps"
+	"math/big"
+	"runtime"
+	"slices"
+
+	"github.com/ethereum/go-ethereum/arbitrum/filter"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/lru"
+	"github.com/ethereum/go-ethereum/core/rawdb"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/log"
+	"github.com/ethereum/go-ethereum/params"
+	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/ethereum/go-ethereum/trie"
+)
+
+var (
+	// Defines prefix bytes for Stylus WASM program bytecode
+	// when deployed on-chain via a user-initiated transaction.
+	// These byte prefixes are meant to conflict with the L1 contract EOF
+	// validation rules so they can be sufficiently differentiated from EVM bytecode.
+	// This allows us to store WASM programs as code in the stateDB side-by-side
+	// with EVM contracts, but match against these prefix bytes when loading code
+	// to execute the WASMs through Stylus rather than the EVM.
+	stylusEOFMagic       = byte(0xEF)
+	stylusEOFMagicSuffix = byte(0xF0)
+	stylusEOFVersion     = byte(0x00)
+	// 4th byte specifies the Stylus dictionary used during compression
+
+	StylusDiscriminant = []byte{stylusEOFMagic, stylusEOFMagicSuffix, stylusEOFVersion}
+
+	// This version byte indicates this compress wasm is a subsection of a larger stylus program
+	stylusEOFVersionV1Fragments = byte(0x01)
+	StylusFragmentsDiscriminant = []byte{stylusEOFMagic, stylusEOFMagicSuffix, stylusEOFVersionV1Fragments}
+
+	// This version byte indicates that this is a list of pointers to wasm fragments
+	stylusEOFVersionV1Root = byte(0x02)
+	StylusRootDiscriminant = []byte{stylusEOFMagic, stylusEOFMagicSuffix, stylusEOFVersionV1Root}
+)
+
+type ActivatedWasm map[rawdb.WasmTarget][]byte
+
+// IsStylusComponentPrefix reports whether the bytecode starts with a Stylus
+// component prefix (classic program, or root/fragment when supported).
+func IsStylusComponentPrefix(b []byte, arbosVersion uint64) bool {
+	if arbosVersion < params.ArbosVersion_StylusContractLimit {
+		return IsStylusDeployableProgramPrefix(b, arbosVersion)
+	}
+	return IsStylusDeployableProgramPrefix(b, arbosVersion) || IsStylusFragmentPrefix(b)
+}
+
+// IsStylusDeployableProgramPrefix reports whether the bytecode starts with a
+// deployable Stylus program prefix (classic program, or root program when supported).
+func IsStylusDeployableProgramPrefix(b []byte, arbosVersion uint64) bool {
+	if arbosVersion < params.ArbosVersion_Stylus {
+		return false
+	}
+	if arbosVersion < params.ArbosVersion_StylusContractLimit {
+		return IsStylusClassicProgramPrefix(b)
+	}
+	return IsStylusClassicProgramPrefix(b) || IsStylusRootProgramPrefix(b)
+}
+
+// IsStylusClassicProgramPrefix reports whether the bytecode starts with a
+// classic Stylus program prefix.
+func IsStylusClassicProgramPrefix(b []byte) bool {
+	return len(b) > len(StylusDiscriminant) && bytes.HasPrefix(b, StylusDiscriminant)
+}
+
+// IsStylusFragmentPrefix reports whether the bytecode starts with a
+// Stylus fragment prefix.
+func IsStylusFragmentPrefix(b []byte) bool {
+	return len(b) > len(StylusFragmentsDiscriminant) && bytes.HasPrefix(b, StylusFragmentsDiscriminant)
+}
+
+// IsStylusRootProgramPrefix reports whether the bytecode starts with a
+// Stylus root program prefix.
+func IsStylusRootProgramPrefix(b []byte) bool {
+	return len(b) > len(StylusRootDiscriminant) && bytes.HasPrefix(b, StylusRootDiscriminant)
+}
+
+// strips the Stylus header from a contract, returning the dictionary used
+func StripStylusPrefix(b []byte) ([]byte, byte, error) {
+	if !IsStylusClassicProgramPrefix(b) {
+		return nil, 0, errors.New("specified bytecode is not a Stylus program")
+	}
+	return b[4:], b[3], nil
+}
+
+func StripStylusFragmentPrefix(b []byte) ([]byte, error) {
+	if !IsStylusFragmentPrefix(b) {
+		return nil, errors.New("specified bytecode is not a Stylus program fragment")
+	}
+	return b[3:], nil
+}
+
+type StylusRoot struct {
+	DictionaryType     byte
+	DecompressedLength uint32
+	Addresses          []common.Address
+}
+
+func NewStylusRoot(b []byte) (*StylusRoot, error) {
+	if !IsStylusRootProgramPrefix(b) {
+		return nil, errors.New("specified bytecode is not a Stylus program root")
+	}
+
+	if len(b) < 8 {
+		return nil, fmt.Errorf("stylus program root too short: need at least 8 bytes, got %d", len(b))
+	}
+
+	addressData := b[8:]
+	if len(addressData)%common.AddressLength != 0 {
+		return nil, fmt.Errorf("stylus program root address data has invalid length: %d (must be multiple of %d)", len(addressData), common.AddressLength)
+	}
+
+	count := len(addressData) / common.AddressLength
+	addresses := make([]common.Address, 0, count)
+
+	for i := 0; i < len(addressData); i += common.AddressLength {
+		addresses = append(addresses, common.BytesToAddress(addressData[i:i+common.AddressLength]))
+	}
+
+	return &StylusRoot{
+		DictionaryType:     b[3],
+		DecompressedLength: binary.BigEndian.Uint32(b[4:8]),
+		Addresses:          addresses,
+	}, nil
+}
+
+// creates a new Stylus prefix from the given dictionary byte
+func NewStylusPrefix(dictionary byte) []byte {
+	prefix := bytes.Clone(StylusDiscriminant)
+	return append(prefix, dictionary)
+}
+
+// creates a new Fragment Stylus prefix
+func NewStylusFragmentPrefix() []byte {
+	return bytes.Clone(StylusFragmentsDiscriminant)
+}
+
+// Returns a new Stylus Root prefix with the given dictionary byte
+func NewStylusRootPrefix(dictionary byte) []byte {
+	prefix := bytes.Clone(StylusRootDiscriminant)
+	return append(prefix, dictionary)
+}
+
+// hasAsmForTarget checks whether asmMap contains an entry for the given target,
+// treating a cranelift target key as equivalent to its base target (e.g.,
+// TargetArm64Cranelift satisfies TargetArm64 and vice versa). This is needed
+// because activateProgramInternal stores cranelift-fallback ASM under the
+// cranelift key when singlepass compilation fails.
+// Both directions are required: base→cranelift for when the caller requests a
+// base target but the map has the cranelift key, and cranelift→base for when
+// ActivateWasm's consistency check iterates a previouslyActivated map that
+// used cranelift fallback against a new asmMap where singlepass succeeded.
+func hasAsmForTarget(asmMap map[rawdb.WasmTarget][]byte, target rawdb.WasmTarget) bool {
+	if _, ok := asmMap[target]; ok {
+		return true
+	}
+	// base → cranelift (e.g., target is TargetArm64, map has TargetArm64Cranelift)
+	if craneliftTarget, err := rawdb.CraneliftTarget(target); err == nil {
+		if _, ok := asmMap[craneliftTarget]; ok {
+			return true
+		}
+	}
+	// cranelift → base (e.g., target is TargetArm64Cranelift, map has TargetArm64)
+	if baseTarget, err := rawdb.BaseTarget(target); err == nil {
+		if _, ok := asmMap[baseTarget]; ok {
+			return true
+		}
+	}
+	return false
+}
+
+// ActivateWasm adds asmMap to newly activated wasms map under moduleHash key, but only if the key doesn't already exist in the map.
+// If the asmMap is added to the newly activated wasms, then wasmActivation is added to the journal so the operation can be reverted and the new entry removed in StateDB.RevertToSnapshot.
+// note: all ActivateWasm calls in given StateDB cycle (cycle reset by statedb commit) requires that the asmMap contain entries for the same targets as the first asmMap passed to ActivateWasm in the cycle. This is assumed in other parts of the code.
+func (s *StateDB) ActivateWasm(moduleHash common.Hash, asmMap map[rawdb.WasmTarget][]byte) error {
+	// check consistency of targets with any previous activation
+	// that should be impossible if the ActivateWasm is used correctly, but check for early bug detection
+	for _, previouslyActivated := range s.arbExtraData.activatedWasms {
+		inconsistent := len(asmMap) != len(previouslyActivated)
+		if !inconsistent {
+			for target := range previouslyActivated {
+				if !hasAsmForTarget(asmMap, target) {
+					inconsistent = true
+					break
+				}
+			}
+		}
+		if inconsistent {
+			previousTargets := slices.Collect(maps.Keys(previouslyActivated))
+			newTargets := slices.Collect(maps.Keys(asmMap))
+			log.Error("Inconsistent stylus compile targets used with StateDB, previously activated module with different target list", "moduleHash", moduleHash, "previousTargets", previousTargets, "newTargets", newTargets)
+			return errors.New("inconsistent stylus compile targets")
+		}
+		// we need to check consistency only with one previous entry
+		break
+	}
+	_, exists := s.arbExtraData.activatedWasms[moduleHash]
+	if exists {
+		return nil
+	}
+	s.arbExtraData.activatedWasms[moduleHash] = asmMap
+	s.journal.append(wasmActivation{
+		moduleHash: moduleHash,
+	})
+	return nil
+}
+
+func (s *StateDB) ActivatedAsm(target rawdb.WasmTarget, moduleHash common.Hash) []byte {
+	asmMap, exists := s.arbExtraData.activatedWasms[moduleHash]
+	if exists {
+		if asm, exists := asmMap[target]; exists {
+			return asm
+		}
+	}
+	return s.db.ActivatedAsm(target, moduleHash)
+}
+
+// ActivatedAsmMap tries to read asm map (map from target to assembly binary) from newly activated wasms (StateDB.activatedWasm) first, then if not found tries to read the asm map from wasmdb.
+// Returns:
+//   - the asm map of activated assembly binaries found
+//   - list of missing targets (not found, but requested)
+//   - error (nil also when some targets are not found)
+//
+// In case of an inconsistent activatedWasms (when newly activated asmMap is found for the module hash, but it doesn't contain asms for all targets)
+// nil asm map, all targets as missing and an error is returned.
+//
+// Similarly, in case of a database error other then "not found" nil asm map, all targets as missing and an error is returned.
+func (s *StateDB) ActivatedAsmMap(targets []rawdb.WasmTarget, moduleHash common.Hash) (map[rawdb.WasmTarget][]byte, []rawdb.WasmTarget, error) {
+	asmMap := s.arbExtraData.activatedWasms[moduleHash]
+	if asmMap != nil {
+		for _, target := range targets {
+			if !hasAsmForTarget(asmMap, target) {
+				return nil, targets, fmt.Errorf("newly activated wasms for module %v exist, but they don't contain asm for target %v", moduleHash, target)
+			}
+		}
+		return asmMap, nil, nil
+	}
+	asmMap = make(map[rawdb.WasmTarget][]byte, len(targets))
+	var missingTargets []rawdb.WasmTarget
+	for _, target := range targets {
+		if asm := s.db.ActivatedAsm(target, moduleHash); len(asm) > 0 {
+			asmMap[target] = asm
+		} else {
+			missingTargets = append(missingTargets, target)
+		}
+	}
+	return asmMap, missingTargets, nil
+}
+
+func (s *StateDB) GetStylusPages() (uint16, uint16) {
+	return s.arbExtraData.openWasmPages, s.arbExtraData.everWasmPages
+}
+
+func (s *StateDB) GetStylusPagesOpen() uint16 {
+	return s.arbExtraData.openWasmPages
+}
+
+func (s *StateDB) SetStylusPages(open, ever uint16) {
+	s.arbExtraData.openWasmPages = open
+	s.arbExtraData.everWasmPages = ever
+}
+
+func (s *StateDB) SetStylusPagesOpen(open uint16) {
+	s.arbExtraData.openWasmPages = open
+}
+
+// Tracks that `new` additional pages have been opened, returning the previous counts
+func (s *StateDB) AddStylusPages(new uint16) (uint16, uint16) {
+	open, ever := s.GetStylusPages()
+	s.arbExtraData.openWasmPages = common.SaturatingUAdd(open, new)
+	s.arbExtraData.everWasmPages = common.MaxInt(ever, s.arbExtraData.openWasmPages)
+	return open, ever
+}
+
+func (s *StateDB) AddStylusPagesEver(new uint16) {
+	s.arbExtraData.everWasmPages = common.SaturatingUAdd(s.arbExtraData.everWasmPages, new)
+}
+
+// Arbitrum: preserve empty account behavior from old geth and ArbOS versions.
+func (s *StateDB) CreateZombieIfDeleted(addr common.Address) {
+	if s.getStateObject(addr) == nil {
+		if _, destructed := s.stateObjectsDestruct[addr]; destructed {
+			s.createZombie(addr)
+		}
+	}
+}
+
+func NewDeterministic(root common.Hash, db Database) (*StateDB, error) {
+	sdb, err := New(root, db)
+	if err != nil {
+		return nil, err
+	}
+	sdb.deterministic = true
+	return sdb, nil
+}
+
+func NewRecording(root common.Hash, db Database) (*StateDB, error) {
+	sdb, err := New(root, db)
+	if err != nil {
+		return nil, err
+	}
+	sdb.deterministic = true
+	sdb.recording = true
+	return sdb, nil
+}
+
+func (s *StateDB) Deterministic() bool {
+	return s.deterministic
+}
+
+func (s *StateDB) Recording() bool {
+	return s.recording
+}
+
+var ErrArbTxFilter error = errors.New("internal error")
+
+// AddressCheckerState tracks address filtering for a single transaction.
+// Implementations manage their own synchronization (sync, WaitGroup, channels, etc).
+type AddressCheckerState interface {
+	// TouchAddress records an address access and checks if it should be filtered.
+	TouchAddress(record *filter.FilteredAddressRecord)
+
+	// IsFiltered returns whether any touched address was filtered and the
+	// list of filtered address records collected during the transaction.
+	// Blocks until all pending checks complete (implementation-specific).
+	IsFiltered() (bool, []filter.FilteredAddressRecord)
+}
+
+// AddressChecker creates per-tx state instances for address filtering.
+// The checker itself is stateless and can be shared across StateDBs.
+type AddressChecker interface {
+	// NewTxState creates fresh state for a new transaction.
+	NewTxState() AddressCheckerState
+}
+
+type ArbitrumExtraData struct {
+	unexpectedBalanceDelta *big.Int                      // total balance change across all accounts
+	userWasms              UserWasms                     // user wasms encountered during execution
+	openWasmPages          uint16                        // number of pages currently open
+	everWasmPages          uint16                        // largest number of pages ever allocated during this tx's execution
+	activatedWasms         map[common.Hash]ActivatedWasm // newly activated WASMs
+	recentWasms            RecentWasms
+	arbTxFilter            bool
+
+	addressChecker      AddressChecker      // shared, stateless checker factory
+	addressCheckerState AddressCheckerState // per-tx state, created in SetTxContext
+}
+
+func (s *StateDB) SetArbFinalizer(f func(*ArbitrumExtraData)) {
+	runtime.SetFinalizer(s.arbExtraData, f)
+}
+
+func (s *StateDB) GetCurrentTxLogs() []*types.Log {
+	return s.logs[s.thash]
+}
+
+// GetUnexpectedBalanceDelta returns the total unexpected change in balances since the last commit to the database.
+func (s *StateDB) GetUnexpectedBalanceDelta() *big.Int {
+	return new(big.Int).Set(s.arbExtraData.unexpectedBalanceDelta)
+}
+
+func (s *StateDB) GetSelfDestructs() []common.Address {
+	selfDestructs := []common.Address{}
+	for addr := range s.journal.dirties {
+		obj, exist := s.stateObjects[addr]
+		if !exist {
+			continue
+		}
+		if obj.selfDestructed {
+			selfDestructs = append(selfDestructs, addr)
+		}
+	}
+	return selfDestructs
+}
+
+// making the function public to be used by external tests
+func ForEachStorage(s *StateDB, addr common.Address, cb func(key, value common.Hash) bool) error {
+	return forEachStorage(s, addr, cb)
+}
+
+// moved here from statedb_test.go
+func forEachStorage(s *StateDB, addr common.Address, cb func(key, value common.Hash) bool) error {
+	so := s.getStateObject(addr)
+	if so == nil {
+		return nil
+	}
+	tr, err := so.getTrie()
+	if err != nil {
+		return err
+	}
+	trieIt, err := tr.NodeIterator(nil)
+	if err != nil {
+		return err
+	}
+	it := trie.NewIterator(trieIt)
+
+	for it.Next() {
+		key := common.BytesToHash(tr.GetKey(it.Key))
+		if value, dirty := so.dirtyStorage[key]; dirty {
+			if !cb(key, value) {
+				return nil
+			}
+			continue
+		}
+
+		if len(it.Value) > 0 {
+			_, content, _, err := rlp.Split(it.Value)
+			if err != nil {
+				return err
+			}
+			if !cb(key, common.BytesToHash(content)) {
+				return nil
+			}
+		}
+	}
+	return nil
+}
+
+// maps moduleHash to activation info
+type UserWasms map[common.Hash]ActivatedWasm
+
+func (s *StateDB) StartRecording() {
+	s.arbExtraData.userWasms = make(UserWasms)
+}
+
+func (s *StateDB) RecordProgram(targets []rawdb.WasmTarget, moduleHash common.Hash) error {
+	if len(targets) == 0 {
+		// nothing to record
+		return nil
+	}
+	asmMap, missingTargets, err := s.ActivatedAsmMap(targets, moduleHash)
+	if err != nil || len(missingTargets) > 0 {
+		return fmt.Errorf("can't find activated wasm, missing targets: %v, err: %w", missingTargets, err)
+	}
+	if s.arbExtraData.userWasms != nil {
+		s.arbExtraData.userWasms[moduleHash] = asmMap
+	}
+	return nil
+}
+
+func (s *StateDB) UserWasms() UserWasms {
+	return s.arbExtraData.userWasms
+}
+
+func (s *StateDB) RecordCacheWasm(wasm CacheWasm) {
+	s.journal.entries = append(s.journal.entries, wasm)
+}
+
+func (s *StateDB) RecordEvictWasm(wasm EvictWasm) {
+	s.journal.entries = append(s.journal.entries, wasm)
+}
+
+func (s *StateDB) GetRecentWasms() *RecentWasms {
+	return &s.arbExtraData.recentWasms
+}
+
+// Type for managing recent program access.
+// The cache contained is discarded at the end of each block.
+type RecentWasms struct {
+	cache *lru.BasicLRU[common.Hash, struct{}]
+}
+
+// Creates an un uninitialized cache
+func NewRecentWasms() RecentWasms {
+	return RecentWasms{cache: nil}
+}
+
+// Inserts a new item, returning true if already present.
+func (p *RecentWasms) Insert(item common.Hash, retain uint16) bool {
+	if p.cache == nil {
+		cache := lru.NewBasicLRU[common.Hash, struct{}](int(retain))
+		p.cache = &cache
+	}
+	if _, hit := p.cache.Get(item); hit {
+		return hit
+	}
+	p.cache.Add(item, struct{}{})
+	return false
+}
+
+// Copies all entries into a new LRU.
+func (p RecentWasms) Copy() RecentWasms {
+	if p.cache == nil {
+		return NewRecentWasms()
+	}
+	cache := lru.NewBasicLRU[common.Hash, struct{}](p.cache.Capacity())
+	for _, item := range p.cache.Keys() {
+		cache.Add(item, struct{}{})
+	}
+	return RecentWasms{cache: &cache}
+}

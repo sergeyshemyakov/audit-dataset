@@ -1,0 +1,2554 @@
+{
+  "schema_version": "1.4.0",
+  "project": "arbitrum",
+  "reports": [
+    {
+      "id": "trailofbits-nitro-external-da-2026-01",
+      "report_file": "2026-01-offchain-nitro-external-da-securityreview.md",
+      "title": "Offchain Labs Nitro External DA Security Assessment Summary Report (Trail of Bits, December 2025)",
+      "description": "Four engineer-week Trail of Bits review of the Nitro external Data Availability extension in the node prover, inbox parsing and DA provider reader plus the one-step prover contract, with a January 2026 fix review. One Undetermined (prover/contract divergence), two Low and one Informational finding were reported and all were resolved.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-01-12",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro",
+          "url": "https://github.com/OffchainLabs/nitro"
+        },
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro",
+          "paths": {
+            "arbitrator/prover": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3f226a0ecf91ceed3688a2fc41969fae1f32d03d",
+                    "timestamp": "2025-12-12T23:50:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/3f226a0ecf91ceed3688a2fc41969fae1f32d03d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Undetermined TOB-EXTDA-1 (divergence in ValidateCertificate validation) targets arbitrator/prover/src/machine.rs.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/prover/src/machine.rs": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "decedd984d387b9afd6ad1b268e5f49e3cd4e2d8",
+                    "timestamp": "2026-01-14T02:32:42Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/decedd984d387b9afd6ad1b268e5f49e3cd4e2d8"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "PR #4187 head (prover moved to crates/prover) verified for the TOB-EXTDA-1 proof serialization change.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "arbstate": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3f226a0ecf91ceed3688a2fc41969fae1f32d03d",
+                    "timestamp": "2025-12-12T23:50:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/3f226a0ecf91ceed3688a2fc41969fae1f32d03d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Low TOB-EXTDA-4 targets arbstate/inbox.go.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2fa24850b9d8dfc2b3e671b87959313e32d7d42c",
+                    "timestamp": "2025-12-16T15:25:49Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/2fa24850b9d8dfc2b3e671b87959313e32d7d42c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #4149)",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Low TOB-EXTDA-4 targets arbstate/inbox.go.",
+                  "follows": "3f226a0ecf91ceed3688a2fc41969fae1f32d03d",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "594bd587c3e7c8dc6c667c19f30cbffbb3ce6ce4",
+                    "timestamp": "2025-12-30T11:58:45Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/594bd587c3e7c8dc6c667c19f30cbffbb3ce6ce4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #4182)",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Low TOB-EXTDA-4 targets arbstate/inbox.go.",
+                  "follows": "2fa24850b9d8dfc2b3e671b87959313e32d7d42c",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "daprovider": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3f226a0ecf91ceed3688a2fc41969fae1f32d03d",
+                    "timestamp": "2025-12-12T23:50:43Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/3f226a0ecf91ceed3688a2fc41969fae1f32d03d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Low TOB-EXTDA-2 and Informational TOB-EXTDA-3 target daprovider/reader.go and daprovider/server/provider_server.go.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "594bd587c3e7c8dc6c667c19f30cbffbb3ce6ce4",
+                    "timestamp": "2025-12-30T11:58:45Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/594bd587c3e7c8dc6c667c19f30cbffbb3ce6ce4"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #4182)",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Low TOB-EXTDA-2 and Informational TOB-EXTDA-3 target daprovider/reader.go and daprovider/server/provider_server.go.",
+                  "follows": "3f226a0ecf91ceed3688a2fc41969fae1f32d03d",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "de26c5f2599064924c03de38e87657ea5ab33120",
+                    "timestamp": "2026-01-09T10:10:41Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/de26c5f2599064924c03de38e87657ea5ab33120"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #4214)",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Low TOB-EXTDA-2 and Informational TOB-EXTDA-3 target daprovider/reader.go and daprovider/server/provider_server.go.",
+                  "follows": "594bd587c3e7c8dc6c667c19f30cbffbb3ce6ce4",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/osp": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "940373b68d0e9cffa006eb9e6d0b4376138d531c",
+                    "timestamp": "2025-12-05T10:26:13Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/940373b68d0e9cffa006eb9e6d0b4376138d531c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Undetermined TOB-EXTDA-1 targets src/osp/OneStepProverHostIo.sol and was resolved in PR #398.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ae9b093a3fd7e8864dd14c60a5ff49e3ecfa84b6",
+                    "timestamp": "2026-01-07T16:38:21Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/ae9b093a3fd7e8864dd14c60a5ff49e3ecfa84b6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #398)",
+                  "coverage": "Only the external Data Availability extension changes were reviewed, looking for missing checks and divergences between Nitro and the challenge contracts. Undetermined TOB-EXTDA-1 targets src/osp/OneStepProverHostIo.sol and was resolved in PR #398.",
+                  "follows": "940373b68d0e9cffa006eb9e6d0b4376138d531c",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-arbitrum-quorum-changes-2026-02",
+      "report_file": "2026-02-offchain-arbitrum-quorum-changes-securityreview.md",
+      "title": "Offchain Labs Arbitrum Quorum Changes Security Assessment Summary Report (Trail of Bits, February 2026)",
+      "description": "Trail of Bits review of the governance proposal changing the Arbitrum DAO quorum to a delegated-voting-power basis (PR #364), the L2 governor cancellation and quorum checkpointing follow-ups (PRs #365 and #371), and the corresponding action contract deployments and payload. Two Informational findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-02-18",
+      "repositories": [
+        {
+          "id": "ArbitrumFoundation/governance",
+          "url": "https://github.com/ArbitrumFoundation/governance"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "ArbitrumFoundation/governance",
+          "paths": {
+            "src/L2ArbitrumGovernor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74e32d4c2baf07918b3367eecb70c1f8786bb79a",
+                    "timestamp": "2025-10-17T15:24:20Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/74e32d4c2baf07918b3367eecb70c1f8786bb79a"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (PR #364)",
+                  "coverage": "Review of the delegated-voting-power quorum calculation (PR #364), proposal cancellation and front-running protection (PR #365) and quorum settings checkpointing (PR #371); Informational TOB-QUO-2 targets this file.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f690adb9df17f89a810273d3d83a798daca9fb",
+                    "timestamp": "2025-11-27T04:54:39Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/a2f690adb9df17f89a810273d3d83a798daca9fb"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of PR #365 changes",
+                  "coverage": "Review of the delegated-voting-power quorum calculation (PR #364), proposal cancellation and front-running protection (PR #365) and quorum settings checkpointing (PR #371); Informational TOB-QUO-2 targets this file.",
+                  "follows": "74e32d4c2baf07918b3367eecb70c1f8786bb79a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f",
+                    "timestamp": "2026-01-26T19:14:01Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of PR #371 changes",
+                  "coverage": "Review of the delegated-voting-power quorum calculation (PR #364), proposal cancellation and front-running protection (PR #365) and quorum settings checkpointing (PR #371); Informational TOB-QUO-2 targets this file.",
+                  "follows": "a2f690adb9df17f89a810273d3d83a798daca9fb",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "69cd418c1f34f955abbc1cec3c5a01dde220d7f5",
+                    "timestamp": "2026-02-17T16:52:42Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/69cd418c1f34f955abbc1cec3c5a01dde220d7f5"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of deployments and proposal payload",
+                  "coverage": "Review of the delegated-voting-power quorum calculation (PR #364), proposal cancellation and front-running protection (PR #365) and quorum settings checkpointing (PR #371); Informational TOB-QUO-2 targets this file.",
+                  "follows": "1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/L2ArbitrumToken.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74e32d4c2baf07918b3367eecb70c1f8786bb79a",
+                    "timestamp": "2025-10-17T15:24:20Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/74e32d4c2baf07918b3367eecb70c1f8786bb79a"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (PR #364)",
+                  "coverage": "Review of the total delegation tracking added for the new quorum calculation; Informational TOB-QUO-1 targets this file.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f690adb9df17f89a810273d3d83a798daca9fb",
+                    "timestamp": "2025-11-27T04:54:39Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/a2f690adb9df17f89a810273d3d83a798daca9fb"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of PR #365 changes",
+                  "coverage": "Review of the total delegation tracking added for the new quorum calculation; Informational TOB-QUO-1 targets this file.",
+                  "follows": "74e32d4c2baf07918b3367eecb70c1f8786bb79a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f",
+                    "timestamp": "2026-01-26T19:14:01Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of PR #371 changes",
+                  "coverage": "Review of the total delegation tracking added for the new quorum calculation; Informational TOB-QUO-1 targets this file.",
+                  "follows": "a2f690adb9df17f89a810273d3d83a798daca9fb",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "69cd418c1f34f955abbc1cec3c5a01dde220d7f5",
+                    "timestamp": "2026-02-17T16:52:42Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/69cd418c1f34f955abbc1cec3c5a01dde220d7f5"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of deployments and proposal payload",
+                  "coverage": "Review of the total delegation tracking added for the new quorum calculation; Informational TOB-QUO-1 targets this file.",
+                  "follows": "1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/gov-action-contracts/AIPs/ActivateDvpQuorumAction.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74e32d4c2baf07918b3367eecb70c1f8786bb79a",
+                    "timestamp": "2025-10-17T15:24:20Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/74e32d4c2baf07918b3367eecb70c1f8786bb79a"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (PR #364)",
+                  "coverage": "Review of the governance action activating the delegated-voting-power quorum, including the deployed action contracts and proposal payload on February 18, 2026.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a2f690adb9df17f89a810273d3d83a798daca9fb",
+                    "timestamp": "2025-11-27T04:54:39Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/a2f690adb9df17f89a810273d3d83a798daca9fb"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of PR #365 changes",
+                  "coverage": "Review of the governance action activating the delegated-voting-power quorum, including the deployed action contracts and proposal payload on February 18, 2026.",
+                  "follows": "74e32d4c2baf07918b3367eecb70c1f8786bb79a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f",
+                    "timestamp": "2026-01-26T19:14:01Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of PR #371 changes",
+                  "coverage": "Review of the governance action activating the delegated-voting-power quorum, including the deployed action contracts and proposal payload on February 18, 2026.",
+                  "follows": "a2f690adb9df17f89a810273d3d83a798daca9fb",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "69cd418c1f34f955abbc1cec3c5a01dde220d7f5",
+                    "timestamp": "2026-02-17T16:52:42Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/69cd418c1f34f955abbc1cec3c5a01dde220d7f5"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of deployments and proposal payload",
+                  "coverage": "Review of the governance action activating the delegated-voting-power quorum, including the deployed action contracts and proposal payload on February 18, 2026.",
+                  "follows": "1ee03ed990a1b3c06e6b4e91503c4d245bb42a8f",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-stylus-sdk-cargo-stylus-2026-04",
+      "report_file": "2026-04-offchain-stylus-sdk-securityreview.md",
+      "title": "Offchain Labs Stylus SDK Security Assessment (Trail of Bits, 2025)",
+      "description": "Nine engineer-week Trail of Bits review of the stylus-sdk-rs library, the cargo-stylus deployment and verification tool, and the StylusDeployer and CacheManager contracts in nitro-contracts. The one High and three Medium findings are in cargo-stylus verification and deployment tooling; only Low and Informational findings touch the contracts, which are the only relevant scope recorded here.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-04-08",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        },
+        {
+          "id": "OffchainLabs/stylus-sdk-rs",
+          "url": "https://github.com/OffchainLabs/stylus-sdk-rs"
+        },
+        {
+          "id": "OffchainLabs/cargo-stylus",
+          "url": "https://github.com/OffchainLabs/cargo-stylus"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/stylus/StylusDeployer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b8c04e8f5f66fe6678a4f53aa15f23da417260e",
+                    "timestamp": "2025-06-17T20:08:52Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/0b8c04e8f5f66fe6678a4f53aa15f23da417260e"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review and Slither analysis of the StylusDeployer and CacheManager contracts; Low TOB-STYLUSSDK-19 (create2 salt omits msg.sender and initValue) targets src/stylus/StylusDeployer.sol.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/chain/CacheManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b8c04e8f5f66fe6678a4f53aa15f23da417260e",
+                    "timestamp": "2025-06-17T20:08:52Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/0b8c04e8f5f66fe6678a4f53aa15f23da417260e"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Manual review and Slither analysis of the StylusDeployer and CacheManager contracts; Low TOB-STYLUSSDK-19 (create2 salt omits msg.sender and initValue) targets src/stylus/StylusDeployer.sol.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-arbos-60-and-61-2026-07",
+      "report_file": "2026-07-offchainlabs-arbitrumarbos6061-securityreview.md",
+      "title": "Arbitrum ArbOS 60 and 61 Security Assessment (Trail of Bits, 2026)",
+      "description": "Twenty-four engineer-week Trail of Bits review of the ArbOS 60 and 61 upgrades in Nitro and its go-ethereum fork (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes), the ResourceConstraintManager v2 and BaseFeeManager contracts, and the ArbOS 61 action contract and payload. One High finding (non-deterministic Go map iteration in the multi-gas precompiles) and eight Informational findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-07-10",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro",
+          "url": "https://github.com/OffchainLabs/nitro"
+        },
+        {
+          "id": "OffchainLabs/go-ethereum",
+          "url": "https://github.com/OffchainLabs/go-ethereum"
+        },
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        },
+        {
+          "id": "ArbitrumFoundation/governance",
+          "url": "https://github.com/ArbitrumFoundation/governance"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro",
+          "paths": {
+            "arbos": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "746bda2febea6b160f56267f0727cf0bc21e9eb7",
+                    "timestamp": "2026-02-11T20:00:18Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/746bda2febea6b160f56267f0727cf0bc21e9eb7"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-2 to 9 target arbos/programs, arbos/block_processor.go, arbos/extra_transaction_checks.go and arbos/l2pricing.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "26d4dc21f9597fcc345c5ff1eb3355eb7444cae4",
+                    "timestamp": "2026-02-22T18:45:52Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/26d4dc21f9597fcc345c5ff1eb3355eb7444cae4"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-2 to 9 target arbos/programs, arbos/block_processor.go, arbos/extra_transaction_checks.go and arbos/l2pricing.",
+                  "follows": "746bda2febea6b160f56267f0727cf0bc21e9eb7",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fd2a5b01b24c18c21c6d6f3748f7fd887859bc44",
+                    "timestamp": "2026-03-27T13:34:20Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/fd2a5b01b24c18c21c6d6f3748f7fd887859bc44"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-2 to 9 target arbos/programs, arbos/block_processor.go, arbos/extra_transaction_checks.go and arbos/l2pricing.",
+                  "follows": "26d4dc21f9597fcc345c5ff1eb3355eb7444cae4",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ec997e665e5851a0e0976eb1e169b39fae532fff",
+                    "timestamp": "2026-04-30T16:04:14Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/ec997e665e5851a0e0976eb1e169b39fae532fff"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-2 to 9 target arbos/programs, arbos/block_processor.go, arbos/extra_transaction_checks.go and arbos/l2pricing.",
+                  "follows": "fd2a5b01b24c18c21c6d6f3748f7fd887859bc44",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3569036ece4dc0a95f3f1926165cdf33ca3456dc",
+                    "timestamp": "2026-05-06T02:24:55Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/3569036ece4dc0a95f3f1926165cdf33ca3456dc"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-2 to 9 target arbos/programs, arbos/block_processor.go, arbos/extra_transaction_checks.go and arbos/l2pricing.",
+                  "follows": "ec997e665e5851a0e0976eb1e169b39fae532fff",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d162cc12e8c30db9248b41e55e40450d2b4da9b8",
+                    "timestamp": "2026-06-02T23:00:51Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/d162cc12e8c30db9248b41e55e40450d2b4da9b8"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-2 to 9 target arbos/programs, arbos/block_processor.go, arbos/extra_transaction_checks.go and arbos/l2pricing.",
+                  "follows": "3569036ece4dc0a95f3f1926165cdf33ca3456dc",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c9fbd05597ad51258612039dca9348ab7d03d4ee",
+                    "timestamp": "2026-06-05T20:56:40Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/c9fbd05597ad51258612039dca9348ab7d03d4ee"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-2 to 9 target arbos/programs, arbos/block_processor.go, arbos/extra_transaction_checks.go and arbos/l2pricing.",
+                  "follows": "d162cc12e8c30db9248b41e55e40450d2b4da9b8",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "precompiles": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "746bda2febea6b160f56267f0727cf0bc21e9eb7",
+                    "timestamp": "2026-02-11T20:00:18Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/746bda2febea6b160f56267f0727cf0bc21e9eb7"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-6 also targets precompiles/ArbOwner.go.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "26d4dc21f9597fcc345c5ff1eb3355eb7444cae4",
+                    "timestamp": "2026-02-22T18:45:52Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/26d4dc21f9597fcc345c5ff1eb3355eb7444cae4"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-6 also targets precompiles/ArbOwner.go.",
+                  "follows": "746bda2febea6b160f56267f0727cf0bc21e9eb7",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fd2a5b01b24c18c21c6d6f3748f7fd887859bc44",
+                    "timestamp": "2026-03-27T13:34:20Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/fd2a5b01b24c18c21c6d6f3748f7fd887859bc44"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-6 also targets precompiles/ArbOwner.go.",
+                  "follows": "26d4dc21f9597fcc345c5ff1eb3355eb7444cae4",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ec997e665e5851a0e0976eb1e169b39fae532fff",
+                    "timestamp": "2026-04-30T16:04:14Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/ec997e665e5851a0e0976eb1e169b39fae532fff"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-6 also targets precompiles/ArbOwner.go.",
+                  "follows": "fd2a5b01b24c18c21c6d6f3748f7fd887859bc44",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3569036ece4dc0a95f3f1926165cdf33ca3456dc",
+                    "timestamp": "2026-05-06T02:24:55Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/3569036ece4dc0a95f3f1926165cdf33ca3456dc"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-6 also targets precompiles/ArbOwner.go.",
+                  "follows": "ec997e665e5851a0e0976eb1e169b39fae532fff",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d162cc12e8c30db9248b41e55e40450d2b4da9b8",
+                    "timestamp": "2026-06-02T23:00:51Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/d162cc12e8c30db9248b41e55e40450d2b4da9b8"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-6 also targets precompiles/ArbOwner.go.",
+                  "follows": "3569036ece4dc0a95f3f1926165cdf33ca3456dc",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c9fbd05597ad51258612039dca9348ab7d03d4ee",
+                    "timestamp": "2026-06-05T20:56:40Z",
+                    "url": "https://github.com/OffchainLabs/nitro/commit/c9fbd05597ad51258612039dca9348ab7d03d4ee"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the ArbOS 60 and 61 changes (Stylus program fragments, multi-dimensional constraint gas pricing, bug fixes) were reviewed across the seven listed commits for consensus-breaking and logical issues. High TOB-ARBOS60-1 (non-deterministic map iteration) targets precompiles/ArbGasInfo.go and arbos/l2pricing/multi_gas_constraint.go and is recorded on every listed commit because the report contains no fix review. Informational TOB-ARBOS60-6 also targets precompiles/ArbOwner.go.",
+                  "follows": "d162cc12e8c30db9248b41e55e40450d2b4da9b8",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBOS60-1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/go-ethereum",
+          "paths": {
+            "core": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c59dcce8b117bcee69a792f278fd9412f0586048",
+                    "timestamp": "2026-02-10T08:36:33Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c59dcce8b117bcee69a792f278fd9412f0586048"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa29c9c651a28a8f91d698a9b45e7da86ec585c9",
+                    "timestamp": "2026-03-26T17:07:25Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/fa29c9c651a28a8f91d698a9b45e7da86ec585c9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "follows": "c59dcce8b117bcee69a792f278fd9412f0586048",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9c369aa02836740d2844d037721e2fba6d573328",
+                    "timestamp": "2026-05-06T01:16:32Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/9c369aa02836740d2844d037721e2fba6d573328"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "follows": "fa29c9c651a28a8f91d698a9b45e7da86ec585c9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f1c5f02b29e7c499232ecbd17bc0e32801f8181c",
+                    "timestamp": "2026-06-02T18:03:31Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/f1c5f02b29e7c499232ecbd17bc0e32801f8181c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "follows": "9c369aa02836740d2844d037721e2fba6d573328",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "params": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c59dcce8b117bcee69a792f278fd9412f0586048",
+                    "timestamp": "2026-02-10T08:36:33Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/c59dcce8b117bcee69a792f278fd9412f0586048"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fa29c9c651a28a8f91d698a9b45e7da86ec585c9",
+                    "timestamp": "2026-03-26T17:07:25Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/fa29c9c651a28a8f91d698a9b45e7da86ec585c9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "follows": "c59dcce8b117bcee69a792f278fd9412f0586048",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9c369aa02836740d2844d037721e2fba6d573328",
+                    "timestamp": "2026-05-06T01:16:32Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/9c369aa02836740d2844d037721e2fba6d573328"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "follows": "fa29c9c651a28a8f91d698a9b45e7da86ec585c9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f1c5f02b29e7c499232ecbd17bc0e32801f8181c",
+                    "timestamp": "2026-06-02T18:03:31Z",
+                    "url": "https://github.com/OffchainLabs/go-ethereum/commit/f1c5f02b29e7c499232ecbd17bc0e32801f8181c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Only the go-ethereum fork changes for ArbOS 60 and 61 (multi-gas support and refunds) were reviewed across the four listed commits.",
+                  "follows": "9c369aa02836740d2844d037721e2fba6d573328",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/chain/ResourceConstraintManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e266f6fd3d942bf09f0a63bd8f739ee8459aef56",
+                    "timestamp": "2026-03-20T09:48:40Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/e266f6fd3d942bf09f0a63bd8f739ee8459aef56"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (PR #415)",
+                  "coverage": "Review of the ResourceConstraintManager v2 changes across nitro-contracts PRs #415, #421, #423, #428 and #429 (heads).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3284dbd3ccf7b9fe3938e09d3490aeea78452322",
+                    "timestamp": "2026-03-26T10:42:42Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/3284dbd3ccf7b9fe3938e09d3490aeea78452322"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Review of the ResourceConstraintManager v2 changes across nitro-contracts PRs #415, #421, #423, #428 and #429 (heads).",
+                  "follows": "e266f6fd3d942bf09f0a63bd8f739ee8459aef56",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2fe5abe17dbfad31a81efc25d405b50466182aa4",
+                    "timestamp": "2026-04-01T10:40:17Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/2fe5abe17dbfad31a81efc25d405b50466182aa4"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Review of the ResourceConstraintManager v2 changes across nitro-contracts PRs #415, #421, #423, #428 and #429 (heads).",
+                  "follows": "3284dbd3ccf7b9fe3938e09d3490aeea78452322",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18728ceabb9040bfbdba8a2680ac9f35d90660df",
+                    "timestamp": "2026-04-22T15:42:57Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/18728ceabb9040bfbdba8a2680ac9f35d90660df"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Review of the ResourceConstraintManager v2 changes across nitro-contracts PRs #415, #421, #423, #428 and #429 (heads).",
+                  "follows": "2fe5abe17dbfad31a81efc25d405b50466182aa4",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "53635bdd519387b5de604ad2e45ae89eda2980a7",
+                    "timestamp": "2026-04-23T20:00:42Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/53635bdd519387b5de604ad2e45ae89eda2980a7"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "review of updated code",
+                  "coverage": "Review of the ResourceConstraintManager v2 changes across nitro-contracts PRs #415, #421, #423, #428 and #429 (heads).",
+                  "follows": "18728ceabb9040bfbdba8a2680ac9f35d90660df",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/chain/BaseFeeManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57e5b37a6cb704ed80150e6aa6938d5375a0d7dc",
+                    "timestamp": "2026-03-19T09:20:11Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/57e5b37a6cb704ed80150e6aa6938d5375a0d7dc"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the new BaseFeeManager contract (PR #416 head).",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "ArbitrumFoundation/governance",
+          "paths": {
+            "src/gov-action-contracts/AIPs/ArbOS61/ArbOS61SettingsAction.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "730faa2ecd0c551f21b5f9d522f360247a2589f4",
+                    "timestamp": "2026-07-07T11:09:41Z",
+                    "url": "https://github.com/ArbitrumFoundation/governance/commit/730faa2ecd0c551f21b5f9d522f360247a2589f4"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the ArbOS 61 settings action contract and upgrade payload (PR #374 head) on July 9, 2026.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-sequencer-feed-ticketing-2026-07",
+      "report_file": "2026-07-offchainlabs-sequencerfeedticketing-securityreview.md",
+      "title": "Offchain Labs Sequencer Feed Ticketing Summary Report (Trail of Bits, July 2026)",
+      "description": "Nine engineer-day Trail of Bits review of the sequencer feed ticketing contracts that let users buy tickets for a premium sequencer feed. No security findings were reported, only code quality items.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-07-31",
+      "repositories": [
+        {
+          "id": "OffchainLabs/feed-ticket-contracts",
+          "url": "https://github.com/OffchainLabs/feed-ticket-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/feed-ticket-contracts",
+          "paths": {
+            "src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9d04eb0be29733b9f302a56976a0f3148f10866e",
+                    "timestamp": "2026-06-17T19:09:04Z",
+                    "url": "https://github.com/OffchainLabs/feed-ticket-contracts/commit/9d04eb0be29733b9f302a56976a0f3148f10866e"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Static and dynamic review of the Tickets contract managing accounting and purchase of premium sequencer feed tickets.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-yield-bearing-bridge-2026-08",
+      "report_file": "2026-08-offchain-yield-bearing-bridge-securityreview.md",
+      "title": "Offchain Labs Yield-Bearing Bridge Security Assessment Summary Report (Trail of Bits, 2026)",
+      "description": "Four engineer-week Trail of Bits review of the yield-bearing bridge feature of the token bridge (ERC-4626 master vault and yield-bearing ERC-20 and custom gateways) at an initial and a fix-review commit. One High finding (Orbit yield-bearing gateway breaking previous assumptions) and four Informational findings were reported; all but one accepted risk were resolved.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-08-07",
+      "repositories": [
+        {
+          "id": "OffchainLabs/token-bridge-contracts",
+          "url": "https://github.com/OffchainLabs/token-bridge-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/token-bridge-contracts",
+          "paths": {
+            "contracts/tokenbridge/ethereum/gateway/AbsYbbERC20Gateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/AbsYbbGateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/IYbbGateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/L1OrbitYbbCustomGateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/L1OrbitYbbERC20Gateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/L1YbbCustomGateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/L1YbbERC20Gateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/libraries/vault/IMasterVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/libraries/vault/IMasterVaultFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/libraries/vault/MasterVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/libraries/vault/MasterVaultFactory.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/libraries/vault/MasterVaultRoles.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/L1OrbitYbbCustomGateway.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/L1OrbitYbbERC20Gateway.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/L1YbbERC20Gateway.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/YbbDoubleInit.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/MasterVaultAttack.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/MasterVaultCore.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/MasterVaultDepositRedeem.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/MasterVaultFactory.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/MasterVaultFirstDeposit.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/invariant/MasterVaultHandler.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/invariant/MasterVaultInvariant.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultAccessControl.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultDefaultSubVault.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultFees.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultInit.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultPause.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultRebalance.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultRebalanceCooldown.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultRedeem.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultRoles.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultSetSubVault.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/mutation/MasterVaultSetters.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario01.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario02.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario03.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario04.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario05.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario06.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario07.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario08.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario09.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario10.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenario11.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "test-foundry/libraries/vault/scenarios/MasterVaultScenarioCore.t.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Review of the yield-bearing bridge feature (ERC-4626 master vault and Ybb gateways) for logical and Arbitrum-specific issues; the second commit is the fix-review revision.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/L1ArbitrumGateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the yield-bearing bridge changes to the gateway were reviewed; Informational TOB-ARBYIELD-1 and TOB-ARBYIELD-4 target this file.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Only the yield-bearing bridge changes to the gateway were reviewed; Informational TOB-ARBYIELD-1 and TOB-ARBYIELD-4 target this file.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenbridge/ethereum/gateway/L1OrbitERC20Gateway.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                    "timestamp": "2026-04-28T13:59:56Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/cdbd23820e0d746e1b505cc8a4463d282a5f36d3"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Only the yield-bearing bridge changes to the Orbit gateway were reviewed.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "TOB-ARBYIELD-3"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6813a97a66c54c16a3d1a5692b45569ffae5fa22",
+                    "timestamp": "2026-06-26T15:18:17Z",
+                    "url": "https://github.com/OffchainLabs/token-bridge-contracts/commit/6813a97a66c54c16a3d1a5692b45569ffae5fa22"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Only the yield-bearing bridge changes to the Orbit gateway were reviewed. TOB-ARBYIELD-3 resolved: _outboundTransferCustomRefund now rejects ETH and the native fee token.",
+                  "follows": "cdbd23820e0d746e1b505cc8a4463d282a5f36d3",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-tip-collection-toggler-2026-08",
+      "report_file": "2026-08-offchainlabs-tipcollectiontoggler-securityreview.md",
+      "title": "Offchain Labs TipCollectionToggler Summary Report (Trail of Bits, August 2026)",
+      "description": "Two engineer-day Trail of Bits review of the TipCollectionToggler contract (nitro-contracts PR #439), which lets a trusted party toggle priority fee collection through the ArbOwner precompile for a limited duration. No findings were reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-08-14",
+      "repositories": [
+        {
+          "id": "OffchainLabs/nitro-contracts",
+          "url": "https://github.com/OffchainLabs/nitro-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/nitro-contracts",
+          "paths": {
+            "src/chain/TipCollectionToggler.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "87a9c8d55c6737f711396289cedec674671f523d",
+                    "timestamp": "2026-07-15T14:55:48Z",
+                    "url": "https://github.com/OffchainLabs/nitro-contracts/commit/87a9c8d55c6737f711396289cedec674671f523d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Static and dynamic review of the TipCollectionToggler (PR #439 head): access controls, time-bounded chain ownership and toggling of tip collection.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-reward-distributor-fixes-extended-2026-06",
+      "report_file": "2026.06-offchainlabs-rewarddistributorfixes-securityreview.md",
+      "title": "Offchain Labs Reward Distributor Fixes Extended Summary Report (Trail of Bits, June 2026)",
+      "description": "Extension of the April 2025 Trail of Bits review of the ERC-20 reward distributor changes (fund-distribution PR #44 at fafc251), adding a June 2026 review of PR #1 in the private fund-distribution repository that resets allowances before distributions to the Arbitrum and Optimism gateways. One Informational finding about tokens rejecting zero approvals was reported.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-06-16",
+      "repositories": [
+        {
+          "id": "OffchainLabs/fund-distribution-contracts",
+          "url": "https://github.com/OffchainLabs/fund-distribution-contracts"
+        },
+        {
+          "id": "OffchainLabs/fund-distribution-contracts-private",
+          "url": "https://github.com/OffchainLabs/fund-distribution-contracts-private"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "OffchainLabs/fund-distribution-contracts",
+          "paths": {
+            "src/RewardDistributor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fafc2512f2754221a789fa9e22120c2f37b91575",
+                    "timestamp": "2025-03-21T21:03:41Z",
+                    "url": "https://github.com/OffchainLabs/fund-distribution-contracts/commit/fafc2512f2754221a789fa9e22120c2f37b91575"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "review of changes",
+                  "coverage": "Only the PR #44 changes adding ERC-20 support (commit fafc251) were reviewed in April 2025; the June 2026 extension covered PR #1 of the private fund-distribution repository, which cannot be scoped.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-nitro-contracts-3-2-0-upgrade-action-2026-07",
+      "report_file": "irrelevant/2026-07-offchainlabs-3.2.0-upgradeactioncontract-securityreview.md",
+      "title": "Offchain Labs 3.2.0 Upgrade Action Contract Summary Report (Trail of Bits, July 2026)",
+      "description": "Four engineer-day Trail of Bits review of the arbitrum-chain-actions contract upgrading a rollup from nitro-contracts v3.1.0 to v3.2.0 (commit fdab5b8), checking correct proxy upgrades and expected addresses. Irrelevant one-time upgrade action code; no findings were reported.",
+      "isRelevant": false,
+      "auditor": "Trail of Bits",
+      "report_date": "2026-07-31",
+      "repositories": [
+        {
+          "id": "OffchainLabs/arbitrum-chain-actions",
+          "url": "https://github.com/OffchainLabs/arbitrum-chain-actions"
+        }
+      ],
+      "scopes": []
+    }
+  ]
+}
