@@ -1,0 +1,2162 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>SSO Account OIDC Recovery Solidity Audit</title>
+    
+    <link rel="shortcut icon" href="https://www.openzeppelin.com/hubfs/openzeppelin-favicon-2.png">   
+    <meta name="description" content="OpenZeppelin audited the matter-labs/zksync-sso-clave-contracts repository at commit ed21d09. | Smart Contracts Audit">
+    
+    
+    
+    
+    <script src="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/179008243005/1788287202325/template_jquery.min.js"></script>
+    
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','GTM-W9X5Q6F');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:description" content="OpenZeppelin audited the matter-labs/zksync-sso-clave-contracts repository at commit ed21d09.">
+    <meta property="og:title" content="SSO Account OIDC Recovery Solidity Audit">
+    <meta name="twitter:description" content="OpenZeppelin audited the matter-labs/zksync-sso-clave-contracts repository at commit ed21d09.">
+    <meta name="twitter:title" content="SSO Account OIDC Recovery Solidity Audit">
+
+    
+
+    
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67472537945/1788287198868/template_main.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67472687930/1788287197592/template_theme-overrides.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/191486630025/1789648897909/module_Announcement_Banner.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175205469193/1788958259824/module_Navbar_-_Live.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/195607353687/1764794536989/module_NEWS_Content_Subnavbar.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194758992989/1764795450184/module_NEWS_Blog_Post_Title.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194756946478/1758641063467/module_NEWS_Blog_Post_Content.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175628308257/1788958455803/module_Footer_-_Live.min.css">
+    <script type="application/ld+json">
+{
+  "mainEntityOfPage" : {
+    "@type" : "WebPage",
+    "@id" : "https://www.openzeppelin.com/news/sso-account-oidc-recovery-solidity-audit"
+  },
+  "author" : {
+    "name" : "OpenZeppelin Security",
+    "url" : "https://www.openzeppelin.com/news/author/openzeppelin-security",
+    "@type" : "Person"
+  },
+  "headline" : "SSO Account OIDC Recovery Solidity Audit",
+  "datePublished" : "2025-05-15T17:17:35.000Z",
+  "dateModified" : "2025-09-11T17:33:08.368Z",
+  "publisher" : {
+    "name" : "OpenZeppelin",
+    "logo" : {
+      "url" : "https://www.openzeppelin.com/hubfs/OZ_logo_color-1.png",
+      "@type" : "ImageObject"
+    },
+    "@type" : "Organization"
+  },
+  "@context" : "https://schema.org",
+  "@type" : "BlogPosting",
+  "image" : [ "https://www.openzeppelin.com/hubfs/matterlabs-Sep-10-2025-01-56-45-0357-PM.png" ]
+}
+</script>
+
+
+    
+<!--  Added by GoogleAnalytics4 integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+if (!window._hsGoogleConsentRunOnce) {
+  window._hsGoogleConsentRunOnce = true;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': waitForUpdateMillis
+  });
+
+  if (useGoogleConsentModeV2) {
+    _hsp.push(['useGoogleConsentModeV2'])
+  } else {
+    _hsp.push(['addPrivacyConsentListener', function(consent){
+      var hasAnalyticsConsent = consent && (consent.allowed || (consent.categories && consent.categories.analytics));
+      var hasAdsConsent = consent && (consent.allowed || (consent.categories && consent.categories.advertisement));
+
+      gtag('consent', 'update', {
+        'ad_storage': hasAdsConsent ? 'granted' : 'denied',
+        'analytics_storage': hasAnalyticsConsent ? 'granted' : 'denied',
+        'ad_user_data': hasAdsConsent ? 'granted' : 'denied',
+        'ad_personalization': hasAdsConsent ? 'granted' : 'denied'
+      });
+    }]);
+  }
+}
+
+gtag('js', new Date());
+gtag('set', 'developer_id.dZTQ1Zm', true);
+gtag('config', 'G-1LER5JVNB5');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LER5JVNB5"></script>
+
+<!-- /Added by GoogleAnalytics4 integration -->
+
+
+
+
+<meta property="og:image" content="https://www.openzeppelin.com/hubfs/matterlabs-Sep-10-2025-01-56-45-0357-PM.png">
+<meta property="og:image:width" content="680">
+<meta property="og:image:height" content="381">
+
+<meta name="twitter:image" content="https://www.openzeppelin.com/hubfs/matterlabs-Sep-10-2025-01-56-45-0357-PM.png">
+
+
+<meta property="og:url" content="https://www.openzeppelin.com/news/sso-account-oidc-recovery-solidity-audit">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://www.openzeppelin.com/news/sso-account-oidc-recovery-solidity-audit">
+<meta property="twitter:card" content="summary_large_image">
+
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://www.openzeppelin.com/news/rss.xml">
+<meta name="twitter:domain" content="www.openzeppelin.com">
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en">
+
+
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LER5JVNB5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1LER5JVNB5');
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/132129336476/1788287194541/template_slick.min.css">
+
+
+    
+    <script>
+      window._hsp = window._hsp || [];
+
+      function loadHotjar() {
+        if (window.__hotjarLoaded) return;
+        window.__hotjarLoaded = true;
+
+        (function(h, o, t, j, a, r) {
+          h.hj = h.hj || function() { (h.hj.q = h.hj.q || []).push(arguments); };
+          h._hjSettings = { hjid: 3863160, hjsv: 6 };
+          a = o.getElementsByTagName('head')[0];
+          r = o.createElement('script');
+          r.async = 1;
+          r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+      }
+
+      _hsp.push(['addPrivacyConsentListener', function(consent) {
+        if (consent.categories && consent.categories.analytics) {
+          loadHotjar();
+        }
+      }]);
+
+      _hsp.push(['getPrivacyConsent', function(consent) {
+              if (consent.categories && consent.categories.analytics) {
+          loadHotjar();
+        }
+      }]);
+    </script>
+    
+  <meta name="generator" content="HubSpot"></head>
+  <body class="revamp">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9X5Q6F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="body-wrapper   hs-content-id-189851791507 hs-blog-post hs-blog-id-102321071715 sso-account-oidc-recovery-solidity-audit">
+      
+      <div data-global-resource-path="oz_2022/templates/partials/header-EA-live.html"><header class="header">
+
+  
+
+
+  
+
+  <div class="container-fluid content-wrapper announcement debug">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+  
+ <div id="hs_cos_wrapper_module_17817100903157" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<div class="header__wrapper notification">
+  <div class="header__container mw-1390 content-wrapper notification-wrapper">
+    <div class="flex-col"><span>S&amp;P Global Enters Agreement to Acquire OpenZeppelin<span class="separator hidden-575">|</span> <span class="register"><a class="notif-link" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">Read the announcement </a></span></span></div>
+  </div>
+</div>
+</div> 
+  
+  
+  <div class="header__wrapper">
+    <div class="header__container mw-1390 content-wrapper">
+
+      
+
+      <div class="header__logo header__logo--main">
+         <a class="light-nav-brand main-brand" href="https://openzeppelin.com"><svg width="161" height="24" viewbox="0 0 161 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path class="text" d="M150.623 19.2842V8.67576H153.205V9.96652H153.351C153.789 9.17996 154.872 8.41357 156.433 8.41357C158.891 8.41357 160.39 10.0875 160.39 12.3464V19.2842H157.683V13.0321C157.683 11.7413 156.829 10.8741 155.58 10.8741C154.268 10.8741 153.33 11.8825 153.33 13.2136V19.2842H150.623Z" fill="#0a0a0a" /> <path class="text" d="M147.871 7.73191C146.892 7.73191 146.205 7.14703 146.205 6.19913C146.205 5.29157 146.892 4.68652 147.871 4.68652C148.85 4.68652 149.537 5.29157 149.537 6.19913C149.537 7.14703 148.85 7.73191 147.871 7.73191ZM146.517 19.2841V8.67569H149.225V19.2841H146.517Z" fill="#0a0a0a" /> <path class="text" d="M135.697 19.5464C132.469 19.5464 130.178 17.2069 130.178 14.0405C130.178 10.6926 132.489 8.41357 135.697 8.41357C139.216 8.41357 141.132 10.9346 141.132 13.9195V14.7464H132.802C132.885 16.3598 134.031 17.4489 135.78 17.4489C137.113 17.4489 138.133 16.8438 138.508 15.9766H141.028C140.487 18.1346 138.529 19.5464 135.697 19.5464ZM132.843 12.8909H138.55C138.425 11.459 137.279 10.5111 135.697 10.5111C134.176 10.5111 133.01 11.5598 132.843 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M117.535 23.2377V8.67576H120.201V10.027H120.347C120.638 9.58332 121.638 8.41357 123.637 8.41357C126.699 8.41357 128.802 10.6321 128.802 13.9396C128.802 17.2472 126.719 19.5464 123.72 19.5464C121.784 19.5464 120.742 18.4976 120.388 17.9128H120.243V23.2377H117.535ZM123.116 17.1665C124.866 17.1665 126.053 15.8556 126.053 13.98C126.053 12.0438 124.866 10.7934 123.096 10.7934C121.305 10.7934 120.18 12.185 120.18 13.98C120.18 15.9564 121.43 17.1665 123.116 17.1665Z" fill="#0a0a0a" /> <path class="text" d="M98.0735 19.5464C94.8455 19.5464 92.5547 17.2069 92.5547 14.0405C92.5547 10.6926 94.8664 8.41357 98.0735 8.41357C101.593 8.41357 103.509 10.9346 103.509 13.9195V14.7464H95.1787C95.2621 16.3598 96.4075 17.4489 98.1568 17.4489C99.4897 17.4489 100.51 16.8438 100.885 15.9766H103.405C102.863 18.1346 100.906 19.5464 98.0735 19.5464ZM95.2204 12.8909H100.927C100.802 11.459 99.6563 10.5111 98.0735 10.5111C96.5533 10.5111 95.387 11.5598 95.2204 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M80.1016 19.2841V16.8025L87.6822 7.23067V7.08469H80.3723V4.68652H91.1393V7.14725L83.5587 16.7191V16.8859H91.1809V19.2841H80.1016Z" fill="#0a0a0a" /> <path class="text" d="M68.9531 19.2842V8.67576H71.5355V9.96652H71.6813C72.1187 9.17996 73.2016 8.41357 74.7635 8.41357C77.221 8.41357 78.7205 10.0875 78.7205 12.3464V19.2842H76.0131V13.0321C76.0131 11.7413 75.1592 10.8741 73.9097 10.8741C72.5977 10.8741 71.6605 11.8825 71.6605 13.2136V19.2842H68.9531Z" fill="#0a0a0a" /> <path class="text" d="M62.1399 19.5464C58.9119 19.5464 56.6211 17.2069 56.6211 14.0405C56.6211 10.6926 58.9328 8.41357 62.1399 8.41357C65.6595 8.41357 67.5755 10.9346 67.5755 13.9195V14.7464H59.2452C59.3285 16.3598 60.4739 17.4489 62.2233 17.4489C63.5561 17.4489 64.5766 16.8438 64.9514 15.9766H67.4714C66.9299 18.1346 64.9723 19.5464 62.1399 19.5464ZM59.2868 12.8909H64.9931C64.8681 11.459 63.7227 10.5111 62.1399 10.5111C60.6197 10.5111 59.4534 11.5598 59.2868 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M43.9805 23.2226V8.63871H46.6462V10.027H46.792C47.0835 9.58332 48.0832 8.41357 50.0824 8.41357C53.1439 8.41357 55.2473 10.6321 55.2473 13.9396C55.2473 17.2472 53.1647 19.5464 50.1658 19.5464C48.2289 19.5464 47.1877 18.4976 46.8336 17.9128H46.6878V23.2226H43.9805ZM49.5618 17.1665C51.3112 17.1665 52.4983 15.8556 52.4983 13.98C52.4983 12.0438 51.3112 10.7934 49.541 10.7934C47.75 10.7934 46.6254 12.185 46.6254 13.98C46.6254 15.9564 47.8749 17.1665 49.5618 17.1665Z" fill="#0a0a0a" /> <path class="text" d="M34.6217 19.5464C30.0464 19.5464 26.6797 16.3069 26.6797 11.9597C26.6797 7.65434 30.068 4.37305 34.6433 4.37305C39.2186 4.37305 42.6069 7.69614 42.6069 11.9597C42.6069 16.2651 39.197 19.5464 34.6217 19.5464ZM34.6433 16.8921C37.5352 16.8921 39.6071 14.8021 39.6071 11.9597C39.6071 9.15914 37.5352 7.02734 34.6433 7.02734C31.7298 7.02734 29.6579 9.15914 29.6579 11.9597C29.6579 14.8021 31.7298 16.8921 34.6433 16.8921Z" fill="#0a0a0a" /> <rect class="text" x="142.51" y="4.625" width="2.62657" height="14.6594" fill="#0a0a0a" /> <path class="text" d="M104.887 23.2377V8.67576H107.552V10.027H107.698C107.99 9.58332 108.989 8.41357 110.989 8.41357C114.05 8.41357 116.154 10.6321 116.154 13.9396C116.154 17.2472 114.071 19.5464 111.072 19.5464C109.135 19.5464 108.094 18.4976 107.74 17.9128H107.594V23.2377H104.887ZM110.468 17.1665C112.217 17.1665 113.405 15.8556 113.405 13.98C113.405 12.0438 112.217 10.7934 110.447 10.7934C108.656 10.7934 107.532 12.185 107.532 13.98C107.532 15.9564 108.781 17.1665 110.468 17.1665Z" fill="#0a0a0a" /> <path d="M0 23.2589C2.58163 18.9332 4.77534 15.3658 7.56356 10.4764C8.54845 8.82648 10.2503 7.80127 12.3512 7.80127H15.6523L6.43351 23.2589H0Z" fill="#2E99FF" /> <path d="M0.03125 0.740234H19.8394L16.4549 6.45503H0.03125V0.740234Z" fill="#4F56FA" /> <path d="M9.95129 19.6998C10.6962 18.4245 11.8935 17.6323 13.5706 17.6323L19.8413 17.6157V23.2593H7.82617C8.57842 22.0099 9.23162 20.9318 9.95129 19.6998Z" fill="#09C2FF" /> </svg></a>
+         <a class="light-nav-brand is-mobile" href="https://openzeppelin.com"><img src="https://www.openzeppelin.com/hubfs/oz-nav-mobile.svg" alt="OpenZeppelin" loading="eager" width="17" height="19"></a>
+        
+      </div>
+
+      
+
+      <div class="header__column">
+        <div id="hs_cos_wrapper_module_175139067533613" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+
+
+<nav class="menu menu-desktop">
+  <div class="box-menu">
+    <ul class="box-menu-list">
+
+      <li class="item services has-child">
+        <a class="services" href="#">Services</a>
+        <div class="sub-nav services">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list">
+              <div class="nav-col-title">Overview</div>
+
+              <a id="security_audits-navbar" href="https://www.openzeppelin.com/security-audits" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/security-audit-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Security Audits</span>
+                </div>
+              </a>
+              <a id="continuous_security_program-navbar" href="https://www.openzeppelin.com/continuous-security-program" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/csm-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Continuous Security Program</span>
+                </div>
+              </a>
+              <a id="security_services-navbar" href="https://www.openzeppelin.com/security-services" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/all-services-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">All Services</span>
+                </div>
+              </a>
+              <div class="nav-col-title second">Security Lifecycle</div>
+              <div class="regular-links">
+                <a href="/security-services#architect">Architect</a>
+                <a href="/security-services#build">Build</a>
+                <a href="/security-services#secure">Secure</a>
+                <a href="/security-services#support">Support</a>
+              </div>
+            </div>
+            <div class="sub-nav-list related-content is-border-left">
+              <a href="www.openzeppelin.com/research#security-audits" class="nav-col-title">Featured Announcement</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/introducing-continuous-security-program">
+                <div class="featured-image-wrapper">
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png" alt="Featured Announcement" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=221&amp;height=124&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=663&amp;height=371&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=884&amp;height=494&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1105&amp;height=618&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1326&amp;height=741&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+
+                </div>
+
+                <div class="post-title">Introducing the OpenZeppelin Continuous Security Program </div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+
+            </div>
+          </div>
+        </div> 
+      </li>
+      <li class="item has-child solutions">
+        <a class="" href="#">Solutions</a>
+        <div class="sub-nav is-solutions">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Financial Institutions</div>
+              <a id="banks-navbar" href="https://www.openzeppelin.com/solutions/banks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/banks-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Banks</span>
+                </div>
+              </a>
+              <a id="asset_managers-navbar" href="https://www.openzeppelin.com/solutions/asset-managers" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/asset-managers-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Asset Managers</span>
+                </div>
+              </a>
+              <a id="payment_networks-navbar" href="https://www.openzeppelin.com/solutions/payment-networks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/payment-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Payment Networks</span>
+                </div>
+              </a>
+              <a id="tokenization_platforms-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/tokenization-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Tokenization Platforms</span>
+                </div>
+              </a>
+              <a id="capital_markets_infrastructure-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/cm-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Capital Markets Infrastructure</span>
+                </div>
+              </a>
+              <a id="fintechs_and_networks-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/fn-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Fintechs &amp; Neobanks</span>
+                </div>
+              </a>
+            </div>
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Networks &amp; Protocols</div>
+              <a id="blockchain-networks-navbar" href="https://www.openzeppelin.com/solutions/blockchain-networks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/bn-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Blockchain Networks</span>
+                </div>
+              </a>
+              <a id="defi_protocols-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/defi-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">DeFi Protocols</span>
+                </div>
+              </a>
+
+            </div>
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Public Sector &amp; Regulators</div>
+              <a id="central_banks-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/cb-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Central Banks</span>
+                </div>
+              </a>
+              <a id="regulators_and_standard_bodies-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/rs-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Regulators &amp; Standards Bodies</span>
+                </div>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </li>
+      <li class="item has-child developers">
+        <a class="products" href="#">Developers</a>
+        <div class="sub-nav developers">
+          <div class="dev-tab-bar">
+            <button class="dev-tab active" data-tab="products">Products</button>
+            <button class="dev-tab" data-tab="blockchains">Networks</button>
+          </div>
+          <div class="panel-track">
+            <div class="panel-slider">
+              <div class="panel-slot">
+                <div class="nav-flex-wrapper is-products">
+                  <div class="sub-nav-list">
+                    <div class="nav-col-title">Smart Contracts</div>
+                    <a id="contracts_library-navbar" href="https://www.openzeppelin.com/solidity-contracts" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contracts%20libraries-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Contracts Libraries</span>
+                        <p>The standard for smart contracts development</p>
+                      </div>
+                    </a>
+                    <a id="contracts_wizard-navbar" href="https://wizard.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contracts%20wizard-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Contracts Wizard</span>
+                        <p>Generate smart contracts interactively</p>
+                      </div>
+                    </a>
+                    <a id="contracts_mcp-navbar" href="https://mcp.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/mcp-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">Contracts MCP</span></div>
+                        <p>Build secure smart contracts with AI</p>
+                      </div>
+                    </a>
+                    <a id="contracts_skills-navbar" href="https://github.com/OpenZeppelin/openzeppelin-skills" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contract-skills-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">Contracts Skills</span><span class="new-tag">New</span></div>
+                        <p>Equip AI agents with secure development skills</p>
+                      </div>
+                    </a>
+                    <a id="upgrades_plugin-navbar" href="https://docs.openzeppelin.com/upgrades-plugins/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/upgrade%20plugins-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Upgrades Plugins</span>
+                        <p>Deploy upgradeable contracts</p>
+                      </div>
+                    </a> 
+                  </div>
+                  <div class="sub-nav-list">
+                    <div class="nav-col-title">Open Source Tools</div>
+                    <a id="relayers-navbar" href="https://www.openzeppelin.com/open-source-stack#operate" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/relayer-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Relayer</span>
+                        <p>Send onchain transactions</p>
+                      </div>
+                    </a>
+                    <a id="monitor-navbar" href="https://www.openzeppelin.com/open-source-stack#operate" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/monitor-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Monitor</span>
+                        <p>Observe smart contract activity </p>
+                      </div>
+                    </a>
+                    <a id="contracts_ui-navbar" href="https://builder.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/ui%20builder-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">UI Builder</span></div>
+                        <p>Spin up a UI for your contracts</p>
+                      </div>
+                    </a>
+                    <a id="safe_utils-navbar" href="https://safeutils.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/safe%20utils-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Safe Utils</span>
+                        <p>Verify Safe transactions before signing</p>
+                      </div>
+                    </a>
+                    <a id="role_manager-navbar" href="https://rolemanager.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/access%20control-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Role Manager</span>
+                        <p>Manage contract roles &amp; permissions</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="sub-nav-list is-border-left pr-32 small-icons">
+                    <div class="top-col">
+                      <div class="nav-col-title">Resources</div>
+                      <a id="documentation-navbar" href="https://docs.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/docs-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Documentation</span>
+                        </div>
+                      </a>
+                      <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Research</span>
+                        </div>
+                      </a>
+
+                      <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/ethernaut-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethernaut CTF</span>
+                        </div>
+                      </a>  
+                      <a id="forum-navbar" href="https://forum.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/forum-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Forum</span>
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                  <div class="bottom-row">
+                    <div class="sub-nav-list large">
+                      <a id="open_source_stack-navbar" href="https://www.openzeppelin.com/open-source-stack" class="sub-nav-item oss-icon">
+                        <div class="nav-icon-wrapper">
+                          <img src="https://www.openzeppelin.com/hubfs/oss-nav-icon-1.svg" role="presentation" loading="eager" width="36" height="36">
+                        </div>
+                        <span class="sub-nav-item-title">Explore the Open Source Stack <span class="hidden-arrow">→</span></span>
+                      </a>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              <div class="panel-slot">
+                <div class="nav-flex-wrapper is-blockchains">
+                  <div class="sub-nav-list is-blockchains">
+                    <div class="nav-col-title">Blockchain Networks</div>
+                    <div class="blockchain-col">
+                      <a id="network_arbitrum-navbar" href="https://www.openzeppelin.com/networks/arbitrum" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/arbitrum-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Arbitrum</span>
+                        </div>
+                      </a>
+                      <a id="network_base-navbar" href="https://www.openzeppelin.com/networks/base" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/base-navv3.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Base</span>
+                        </div>
+                      </a>
+                      <a id="network_canton-navbar" href="https://www.openzeppelin.com/networks/canton" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/canton-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Canton</span>
+                        </div>
+                      </a>
+
+                    </div>
+                    <div class="blockchain-col">
+                      <a id="network_ethereum-navbar" href="https://www.openzeppelin.com/networks/ethereum" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/eth-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethereum</span>
+                        </div>
+                      </a>
+                      <a id="network_linea-navbar" href="https://www.openzeppelin.com/networks/linea" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/linea-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Linea</span>
+                        </div>
+                      </a>
+                      <a id="midnight-navbar" href="https://www.openzeppelin.com/networks/midnight" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/midnight-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Midnight</span>
+                        </div>
+                      </a>
+
+                    </div>
+                    <div class="blockchain-col">
+                      
+                      <a id="network_op_mainnet-navbar" href="https://www.openzeppelin.com/networks/op-mainnet" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/op-mainnet-nav-3.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">OP Mainnet</span>
+                        </div>
+                      </a>
+                      <a id="starknet-navbar" href="https://www.openzeppelin.com/networks/starknet" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/starknet-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Starknet</span>
+                        </div>
+                      </a>
+                      <a id="midnight-navbar" href="https://www.openzeppelin.com/networks/stellar" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/stellar-nav-1.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Stellar</span>
+                        </div>
+                      </a>
+
+
+                    </div>
+                    <div class="blockchain-col">
+                      <a id="midnight-navbar" href="/networks/sui" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/sui-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Sui</span>
+                        </div>
+                      </a>
+                      <a id="zama-navbar" href="https://www.openzeppelin.com/networks/zama" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/zama-nav-1.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Zama</span>
+                        </div>
+                      </a>
+                      <a id="network_zksync-navbar" href="https://www.openzeppelin.com/networks/zksync" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/zksync-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">ZKsync</span>
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                  <div class="sub-nav-list is-border-left pr-32 small-icons">
+                    <div class="top-col">
+                      <div class="nav-col-title">Resources</div>
+                      <a id="documentation-navbar" href="https://docs.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/docs-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Documentation</span>
+                        </div>
+                      </a>
+                      <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Research</span>
+                        </div>
+                      </a>
+
+                      <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/ethernaut-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethernaut CTF</span>
+                        </div>
+                      </a>  
+                      <a id="forum-navbar" href="https://forum.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/forum-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Forum</span>
+                        </div>
+                      </a></div>
+
+                  </div>
+                  <div class="bottom-row">
+                    <div class="sub-nav-list large">
+                      <a id="networks-navbar" href="https://www.openzeppelin.com/networks" class="sub-nav-item networks-icon">
+                        <div class="nav-icon-wrapper">
+                          <img src="https://www.openzeppelin.com/hubfs/networks-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                        </div>
+                        <span class="sub-nav-item-title">Explore all Networks <span class="hidden-arrow">→</span></span>
+                      </a>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </li>
+      
+      
+       
+
+
+      <li class="item has-child research-resources">
+        <a class="research-resources" href="#">Research</a>
+        <div class="sub-nav research-resources">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Insights &amp; Education</div>
+              <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Research</span>
+                </div>
+              </a>
+              <a id="security_audits_research-navbar" href="https://www.openzeppelin.com/research#security-audits" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/sa-nav-research.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Security Audits</span>
+                </div>
+              </a>
+              <a id="customer_stories-navbar" href="https://www.openzeppelin.com/customer-stories" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/customer%20stories-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Customer Stories</span>
+                </div>
+              </a>
+              <a id="newsletter-navbar" href="/newsletter" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/newsletter-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">The Onchain Brief</span>
+                </div>
+              </a>
+              <a id="stats-navbar" href="https://www.openzeppelin.com/stats" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/stats-small.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Stats</span>
+                </div>
+              </a>
+              <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Why OpenZeppelin</span>
+                </div>
+              </a>
+            </div>
+            <div class="sub-nav-list is-border-left">
+              
+              <a href="https://www.openzeppelin.com/news/privacy-in-onchain-finance" class="nav-col-title">Featured Research</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/privacy-in-onchain-finance">
+                <div class="featured-image-wrapper">
+                  
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png" alt="Privacy in Onchain Finance: Balancing Transparency and Confidentiality" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=221&amp;height=124&amp;name=Privacy%20in%20Onchain%20Finance-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=663&amp;height=371&amp;name=Privacy%20in%20Onchain%20Finance-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=884&amp;height=494&amp;name=Privacy%20in%20Onchain%20Finance-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1105&amp;height=618&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1326&amp;height=741&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+                  
+
+                </div>
+
+                <div class="post-title">Privacy in Onchain Finance: Balancing Transparency and Confidentiality</div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+              
+            </div>
+
+
+          </div>
+        </div>
+      </li>
+      <li class="item has-child company">
+        <a class="research-resources" href="#">Company</a>
+        <div class="sub-nav research-resources">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons no-pl">
+              <div class="top-col"><div class="nav-col-title">Resources</div>
+                <a id="about-navbar" href="https://www.openzeppelin.com/about-us" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/about-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">About Us</span>
+                  </div>
+                </a>  
+                <a id="news-navbar" href="https://www.openzeppelin.com/news" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/news-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">News</span>
+                  </div>
+                </a>
+                <a id="careers-navbar" href="https://www.openzeppelin.com/careers" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/careers-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">Careers</span>
+                  </div>
+                </a>
+                <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">Why OpenZeppelin</span>
+                  </div>
+                </a>
+                <a id="faqs-navbar" href="https://www.openzeppelin.com/faqs" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/faqs-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">FAQs</span>
+                  </div>
+                </a>
+              </div>
+               
+
+            </div>
+            <div class="sub-nav-list is-border-left ml-0 is-news">
+
+              
+              <a href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin" class="nav-col-title">Featured News</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">
+                <div class="featured-image-wrapper">
+                  
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png" alt="S&amp;P Global Enters Agreement to Acquire OpenZeppelin" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=221&amp;height=124&amp;name=S%26P_OZ_News-Image-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=663&amp;height=371&amp;name=S%26P_OZ_News-Image-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=884&amp;height=494&amp;name=S%26P_OZ_News-Image-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1105&amp;height=618&amp;name=S%26P_OZ_News-Image-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1326&amp;height=741&amp;name=S%26P_OZ_News-Image-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+                  
+
+                </div>
+
+                <div class="post-title">S&amp;P Global Enters Agreement to Acquire OpenZeppelin</div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+              
+            </div>
+
+
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-buttons">
+    
+    <a id="talk_to_an_expert-navbar" class="button-new" href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar">Talk to an Expert</a>
+    
+  </div>
+</nav>
+
+
+
+<nav id="menu-mobile" class="menu menu-mobile">
+  <div class="h-icon">
+    <div class="h-icon-cont">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <ul class="p-main-nav-mobile-list">
+    <div class="submenus-wrapper">
+      <div class="p-main-submenu developers">
+        <div>
+          <div class="back-button">Developers</div>
+          <div class="dev-tab-bar is-mobile">
+            <button class="dev-tab active" data-tab="products">Products</button>
+            <button class="dev-tab" data-tab="blockchains">Blockchains</button>
+          </div>
+          <div class="panel-mobile is-products is-active">
+            <li class="p-main-submenu-item subtitle first">Overview</li>
+            <li class="p-main-submenu-item ">
+              <a id="open_source_stack-navbar" href="https://www.openzeppelin.com/open-source-stack">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/oss-mobile-icon.svg" role="presentation" loading="eager" width="33" height="33">
+                </div>Explore the Open Source Stack</a>
+            </li>
+            <li class="p-main-submenu-item subtitle">Smart Contracts</li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_library-navbar" href="https://www.openzeppelin.com/solidity-contracts">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/Contracts%20Library-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Libraries</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_wizard-navbar" href="https://wizard.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-wizard-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Wizard</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_mcp-navbar" href="https://mcp.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-mcp-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts MCP</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_mcp-navbar" href="https://github.com/OpenZeppelin/openzeppelin-skills/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contract-skills-nav-icon-mob.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Skills<span class="new-tag">New</span></a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="upgrades_plugin-navbar" href="https://docs.openzeppelin.com/upgrades-plugins/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-upgrades-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Upgrades Plugins</a>
+            </li>
+
+            <li class="p-main-submenu-item subtitle">Open Source Tools</li>
+            <li class="p-main-submenu-item ">
+              <a id="relayers-navbar" href="https://www.openzeppelin.com/open-source-stack#operate">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/relayers-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Relayer</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="monitor-navbar" href="https://www.openzeppelin.com/open-source-stack#operate">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/monitor-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Monitor</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_ui-navbar" href="https://builder.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/transaction-proposal-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>UI Builder</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="safe_utils-navbar" href="https://safeutils.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/safe%20utils-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Safe Utils</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="role_manager-navbar" href="https://rolemanager.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/access-control-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Role Manager</a>
+            </li>
+            <li class="p-main-submenu-item subtitle p-10">Resources</li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="documentation-navbar" href="https://docs.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/docs-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Documentation</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="research-navbar" href="https://www.openzeppelin.com/research">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Research</a>
+            </li>
+
+            <li class="p-main-submenu-item gap-8">
+              <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/etherenaut-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Ethernaut CTF</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="forum-navbar" href="https://forum.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/forum-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Forum</a>
+            </li>
+            
+          </div>
+          <div class="panel-mobile is-blockchains">
+            <li class="p-main-submenu-item subtitle first">Overview</li>
+            <li class="p-main-submenu-item ">
+              <a id="networks-navbar-mobile" href="https://www.openzeppelin.com/networks">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/networks-mobile-icon.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Explore all Networks</a>
+            </li>
+            <li class="p-main-submenu-item subtitle">Networks</li>
+
+            <div class="blockchains-wrapper">
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_arbitrum-navbar" href="https://www.openzeppelin.com/networks/arbitrum">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Arbitrum-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Arbitrum</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_base-navbar" href="https://www.openzeppelin.com/networks/base">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Base-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Base</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_canton-navbar" href="/networks/canton">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/canton-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Canton</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_ethereum-navbar" href="https://www.openzeppelin.com/networks/ethereum">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Ethernaut-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Ethereum</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_linea-navbar" href="https://www.openzeppelin.com/networks/linea">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Linea-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Linea</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_midnight-navbar" href="https://www.openzeppelin.com/networks/midnight">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/midnight-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Midnight</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_op-mainnet-navbar" href="https://www.openzeppelin.com/networks/op-mainnet">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Op%20Mainnet-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>OP Mainnet</a>
+              </li>
+              
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_starknet-navbar" href="https://www.openzeppelin.com/networks/starknet">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/starknet-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Starknet</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_stellar-navbar" href="https://www.openzeppelin.com/networks/stellar">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/stellar-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Stellar</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_sui-navbar" href="/networks/sui">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/sui-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Sui</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_zama-navbar" href="https://www.openzeppelin.com/networks/zama">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/zama-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Zama</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_zksync-navbar" href="https://www.openzeppelin.com/networks/zksync">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/ZKsync-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>ZKsync</a>
+              </li>
+            </div>
+            <li class="p-main-submenu-item subtitle p-10">Resources</li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="documentation-navbar" href="https://docs.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/docs-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Documentation</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="research-navbar" href="https://www.openzeppelin.com/research">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Research</a>
+            </li>
+
+            <li class="p-main-submenu-item gap-8">
+              <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/etherenaut-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Ethernaut CTF</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="forum-navbar" href="https://forum.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/forum-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Forum</a>
+            </li>
+            
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="p-main-submenu services">
+        <div>
+          <div class="back-button">Services</div>
+          <li class="p-main-submenu-item subtitle first">Overview</li>
+          <li class="p-main-submenu-item ">
+            <a id="security_audits-navbar" href="https://www.openzeppelin.com/security-audits">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/security-audits-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Security Audits</a>
+
+          </li>
+          <li class="p-main-submenu-item ">
+            <a id="continuous_security_program-navbar" href="https://www.openzeppelin.com/continuous-security-program">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/csm-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Continuous Security Program</a>
+
+          </li>
+          <li class="p-main-submenu-item ">
+            <a id="security_services-navbar" href="https://www.openzeppelin.com/security-services">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/all-services-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>All Services</a>
+
+          </li>
+          <li class="p-main-submenu-item subtitle">Security Lifecycle</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#architect">
+              Architect</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#build">
+              Build</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#secure">
+              Secure</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#support">
+              Support</a>
+          </li>
+
+
+          <li class="p-main-submenu-item subtitle">Featured Announcement</li>
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/introducing-continuous-security-program">
+            <div class="featured-image-wrapper">
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png" alt="Introducing the OpenZeppelin Continuous Security Program" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=221&amp;height=124&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=663&amp;height=371&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=884&amp;height=494&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1105&amp;height=618&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1326&amp;height=741&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+            </div>
+            <div class="post-title">Introducing the OpenZeppelin Continuous Security Program  <br>→</div>
+
+          </a>
+        </div>
+
+      </div>
+      
+      
+      <div class="p-main-submenu solutions">
+        <div>
+          <div class="back-button">Solutions</div>
+          <li class="p-main-submenu-item subtitle first p-10">Financial Institutions</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="banks-navbar" href="https://www.openzeppelin.com/solutions/banks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/banks-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Banks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="asset_managers-navbar" href="https://www.openzeppelin.com/solutions/asset-managers">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/asset-managers-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Asset Managers</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="payment_networks-navbar" href="https://www.openzeppelin.com/solutions/payment-networks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/payment-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Payment Networks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="tokenization_platforms-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/tokenization-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Tokenization Platforms</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="capital_markets_infrastructure-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/cm-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Capital Markets Infrastructure</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="fintechs_and_neobanks-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/fn-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Fintechs &amp; Neobanks</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Networks &amp; Protocols</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="blockchain_networks-navbar" href="https://www.openzeppelin.com/solutions/blockchain-networks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/bn-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Blockchain Networks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="defi_protocols-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/defi-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>DeFi Protocols</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Public Sector &amp; Regulators</li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="central_banks-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/cb-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Central Banks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="regulators_and_standards_bodies-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/rs-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Regulators &amp; Standards Bodies</a>
+          </li>
+        </div>
+      </div>
+      <div class="p-main-submenu research">
+        <div>
+          <div class="back-button">Research</div>
+          <li class="p-main-submenu-item subtitle first p-10">Insights &amp; Education</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="https://www.openzeppelin.com/research">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Research</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research_security_audits-navbar" href="https://www.openzeppelin.com/research#security-audits">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/sa-nav-research-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Security Audits</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="customer_stories-navbar" href="https://www.openzeppelin.com/customer-stories">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/customer-stories-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Customer Stories</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="newsletter-navbar" href="/newsletter">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/newsletter-nav-icon-mobile-2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>The Onchain Brief</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8">
+            <a id="stats-navbar" href="https://www.openzeppelin.com/stats">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/stats-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Stats</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8">
+            <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Why OpenZeppelin</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Featured Research</li>
+          
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/privacy-in-onchain-finance">
+            <div class="featured-image-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png" alt="Privacy in Onchain Finance: Balancing Transparency and Confidentiality" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=221&amp;height=124&amp;name=Privacy%20in%20Onchain%20Finance-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=663&amp;height=371&amp;name=Privacy%20in%20Onchain%20Finance-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=884&amp;height=494&amp;name=Privacy%20in%20Onchain%20Finance-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1105&amp;height=618&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1326&amp;height=741&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+              
+
+            </div>
+
+            <div class="post-title">Privacy in Onchain Finance: Balancing Transparency and Confidentiality <br>→</div>
+
+          </a>
+          
+        </div>
+      </div>
+      <div class="p-main-submenu company">
+        <div>
+          <div class="back-button">Company</div>
+          <li class="p-main-submenu-item subtitle first p-10">Resources</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="about-navbar" href="https://www.openzeppelin.com/about-us">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/about-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>About Us</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="news-navbar" href="https://www.openzeppelin.com/news">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/news-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>News</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="careers-navbar" href="https://www.openzeppelin.com/careers">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/careers-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Careers</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Why OpenZeppelin</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="faqs-navbar" href="https://www.openzeppelin.com/faqs">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/faqs-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>FAQs</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Featured News</li>
+          
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">
+            <div class="featured-image-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png" alt="S&amp;P Global Enters Agreement to Acquire OpenZeppelin" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=221&amp;height=124&amp;name=S%26P_OZ_News-Image-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=663&amp;height=371&amp;name=S%26P_OZ_News-Image-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=884&amp;height=494&amp;name=S%26P_OZ_News-Image-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1105&amp;height=618&amp;name=S%26P_OZ_News-Image-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1326&amp;height=741&amp;name=S%26P_OZ_News-Image-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+              
+
+            </div>
+
+            <div class="post-title">S&amp;P Global Enters Agreement to Acquire OpenZeppelin <br>→</div>
+
+          </a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="main-menu-wrapper">
+      <div class="main-items">
+        <li class="p-main-nav-item services">
+          <a href="#">Services</a>
+
+        </li>
+        <li class="p-main-nav-item solutions">
+          <a href="#">Solutions</a>
+
+        </li>
+
+        <li class="p-main-nav-item developers">
+          <a href="#">Developers</a>
+
+        </li>
+        
+
+        <li class="p-main-nav-item research">
+          <a href="#">Research</a>
+
+        </li>
+        <li class="p-main-nav-item company">
+          <a href="#">Company</a>
+
+        </li>
+      </div>
+
+      <div class="flex is-ac is-buttons">
+        <a id="talk_to_an_expert-navbar" class="button-new" href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar">Talk to an Expert</a>
+        
+      </div>
+    </div>
+  </ul>
+</nav></div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="container-fluid content-wrapper">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+</header></div>
+      
+
+      
+
+      <main id="main-content" class="body-container-wrapper">
+        
+
+
+<div class="blog-post-EA">
+  
+  <section id="sub-navigation">
+  <div class="container-nav">
+    <div class="sub-nav">
+      <div class="sub-links">
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+        <a href="https://www.openzeppelin.com/research">Research</a> /
+        <a href="https://www.openzeppelin.com/research#security-audits" class="category-link">Security Audits</a>
+        
+        
+
+        <span class="hidden-991">/</span>
+        <div class="is-active hidden-991 blog-post-title">SSO Account OIDC Recovery Solidity Audit</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <section id="article-title">
+  <div class="announcement-spacer"></div>
+  <div class="container-920">
+    <div class="post-meta">
+      <span class="category">
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        <a href="https://www.openzeppelin.com/research#security-audits">Security Audits</a>
+        
+      </span>
+
+      
+    </div>
+    <h1 class="article-name all-h1"><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">SSO Account OIDC Recovery Solidity Audit</span></h1>
+  </div>
+</section>
+
+  <section id="article">
+  <div class="container-1430">
+    <div class="article-flex">
+      <div class="col-left">
+        
+        <div class="index-list">
+          <p class="title">Table of Content</p>
+        </div>
+        
+
+      </div>
+      <div class="col-middle article-body">
+        <div class="article-meta">
+          <p class="date"><span class="visible-767">- </span>May 15, 2025 
+          </p>
+          <div class="author-wrapper">
+            <div class="avatar-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=22&amp;height=22&amp;name=oz-profile-1.png" alt="OpenZeppelin Security" loading="eager" width="22" height="22" srcset="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=11&amp;height=11&amp;name=oz-profile-1.png 11w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=22&amp;height=22&amp;name=oz-profile-1.png 22w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=33&amp;height=33&amp;name=oz-profile-1.png 33w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=44&amp;height=44&amp;name=oz-profile-1.png 44w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=55&amp;height=55&amp;name=oz-profile-1.png 55w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=66&amp;height=66&amp;name=oz-profile-1.png 66w" sizes="(max-width: 22px) 100vw, 22px">
+              
+              <p class="author-name">OpenZeppelin Security</p>
+            </div>
+            <div class="avatar-meta">
+              <div class="avatar-hidden">
+                
+                <img src="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=40&amp;height=40&amp;name=oz-profile-1.png" alt="OpenZeppelin Security" loading="lazy" width="40" height="40" srcset="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=20&amp;height=20&amp;name=oz-profile-1.png 20w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=40&amp;height=40&amp;name=oz-profile-1.png 40w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=60&amp;height=60&amp;name=oz-profile-1.png 60w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=80&amp;height=80&amp;name=oz-profile-1.png 80w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=100&amp;height=100&amp;name=oz-profile-1.png 100w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=120&amp;height=120&amp;name=oz-profile-1.png 120w" sizes="(max-width: 40px) 100vw, 40px">
+                
+              </div>
+              <div class="author-info">
+                <p class="author-name">OpenZeppelin Security</p>
+                
+                <p class="author-role">Security Audits</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-content">
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><div class="toc"><span style="color: #0a0f39; font-size: 24px; font-weight: bold; background-color: transparent;">Summary</span></div>
+<!-- @!note Nothing should be updated here except for the timeline dates below -->
+<!--more--><dl>
+<dt>
+<h2 id="scope">Summary</h2>
+<p data-start="106" data-end="137"><strong data-start="106" data-end="115">Type:</strong> Account Abstraction<br><strong style="background-color: transparent;" data-start="140" data-end="153">Timeline:</strong><span style="background-color: transparent;"> April 3, 2025 → April 11, 2025<br></span><strong style="background-color: transparent;" data-start="189" data-end="203">Languages:</strong><span style="background-color: transparent;"> Solidity</span></p>
+<br>
+<p data-start="216" data-end="230"><strong data-start="216" data-end="228">Findings<br></strong><span style="background-color: transparent;">Total issues: 33 (31 resolved)<br></span><span style="background-color: transparent;">Critical: 0 (0 resolved) · High: 1 (1 resolved) · Medium: 3 (3 resolved) · Low: 12 (11 resolved)</span></p>
+<br>
+<p data-start="368" data-end="404"><strong data-start="368" data-end="402">Notes &amp; Additional Information<br></strong><span style="background-color: transparent;">17 notes raised (16 resolved)</span></p>
+</dt>
+</dl>
+<dl>
+<dd></dd>
+</dl>
+<h2 id="scope">Scope</h2>
+<p>OpenZeppelin audited the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts">matter-labs/zksync-sso-clave-contracts</a> repository at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/tree/ed21d09add8da99d9c82d0f7c30659625c6636e6">ed21d09</a>.</p>
+<p>In scope were the following files:</p>
+<div class="codehilite">
+<pre><span>&nbsp;</span><code>src
+├── OidcKeyRegistry.sol
+├── validators
+│   └── OidcRecoveryValidator.sol
+└── handlers
+    └── ERC1271Handler.sol (diff audit for changes made in 2c20eb0)
+</code></pre>
+</div>
+<h2 id="system-overview">System Overview</h2>
+<p>The code under review introduces a new type of account recovery with OpenID Connect (OIDC) to the <code>SsoAccount</code>, using OIDC along with zero-knowledge proofs to recover account control that has been lost, in addition to the existing recovery validators. Also under review was the <code>ERC1271Handler</code> contract against the <code>2c20eb0</code> commit, where the ERC-712 logic was removed to simplify the protocol. For an overview of <code>SSOAccount</code> and other validators, please refer to the previous audit reports.</p>
+<p>The new OIDC recovery is useful because it allows users to recover lost account access through external OpenID Providers (OPs), such as Google. For that purpose, two new contracts were introduced: <code>OidcKeyRegistry</code> and <code>OidcRecoveryValidator</code>.</p>
+<h3 id="oidckeyregistry"><code>OidcKeyRegistry</code></h3>
+<p>The <code>OidcKeyRegistry</code> stores OIDC keys of OPs, which can be added and deleted only by the contract owner. A circular buffer of eight keys is used for each issuer identifier (<code>issHash</code>). When a ninth key is added, it overrides the first key, maintaining the circular structure. Any key in the buffer can be removed by the owner. After removal, the remaining keys are compacted to occupy consecutive storage slots.</p>
+<h3 id="oidcrecoveryvalidator"><code>OidcRecoveryValidator</code></h3>
+<p>The <code>OidcRecoveryValidator</code> is the main contract used for this OIDC-based recovery flow. To use this contract for recovering access, a user must enable it beforehand on their <code>SSOAccount</code> and ensure that <code>WebAuthValidator</code> is also installed as a validator. While the user still has access to their account, they should call the <code>addOidcAccount</code> function. This function requires the hash of OIDC data (constructed by hashing the subject identifier, the audience for the ID Token, the issuer identifier, and a user-specific salt) along with the OIDC issuer as a second argument. The data from this call is stored and later used during the recovery.</p>
+<p>Using the OIDC data stored in the contract, along with other parameters required by the zero-knowledge circuit, the user can generate a proof to demonstrate control of the specified account. They can use another account to call the <code>startRecovery</code> function, submitting the proof and other parameters, including the address to be recovered. If the data is valid, the account is set to a “ready to recover” status, and a pending passkey hash is recorded. Note that the proof includes a time limit, after which it can no longer be used for verification.</p>
+<p>Once the recovery process begins, anyone can initiate a call from the account being recovered, triggering the <code>validateTransaction</code> function. Successful execution requires providing the valid preimage of the passkey hash. The only allowed contract call at this point is to <code>WebAuthValidator</code> via the <code>addValidationKey</code> function, which sets the validation key for the account and completes the recovery.</p>
+<h3 id="erc1271handler"><code>ERC1271Handler</code></h3>
+<p>The <code>ERC1271Handler</code> contract has been updated in commit <code>2c20eb0</code>, removing the ERC-712 logic to simplify the flow. OpenZeppelin has been asked to validate the new version of this contract.</p>
+<h2 id="security-model-trust-assumptions-and-privileged-roles">Security Model, Trust Assumptions, and Privileged Roles</h2>
+<p>During the audit, the following trust assumptions regarding the security model and privileged roles were made:</p>
+<ul>
+<li>The owner of the <code>OidcKeyRegistry</code> is responsible for providing valid and up-to-date OIDC keys. Otherwise, users will be unable to recover access to their accounts.</li>
+<li>The owner of the <code>SSOAccount</code> must not remove the <code>WebAuthValidator</code> from its validators. Otherwise, the <code>OidcRecoveryValidator</code> cannot be used to recover the account.</li>
+</ul>
+<h2 id="design-choices-limitations-and-integration-issues">Design Choices, Limitations, and Integration Issues</h2>
+<p>During the assessment, potential concerns related to cross-account and multchain replay scenarios were discussed. While no immediate multichain risks were identified, the project's future roadmap includes building an ecosystem where additional chains may be deployed on top of the current infrastructure.</p>
+<p>In this context, including the wallet address being recovered in the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L213"><code>senderHash</code> function</a> and the unique nonce may serve as a preventative measure to avoid possible replay attacks across accounts that share auxiliary addresses. It is also worth noting that the current salt derivation process may be considered weak and should be strengthened accordingly. Lastly, the codebase could benefit from expanding the current test suite to cover more edge cases, including zk-proof verification flow.</p>
+<div style="page-break-after: always;">&nbsp;</div>
+<h2 id="high-severity">High Severity</h2>
+<h3 id="potential-signature-replay-attack-in-erc1271handler">Potential Signature Replay Attack in <code>ERC1271Handler</code></h3>
+<p>The <code>isValidSignature</code> function is commonly used to verify signatures in scenarios where an external account is not required to initiate a call. It ensures that the contract allows the execution of some logic based on the check of provided inputs.</p>
+<p>In the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/handlers/ERC1271Handler.sol#L25"><code>isValidSignature</code> function</a> of the <code>ERC1271Handler</code> contract, insufficient checks may allow nearly any action if the contract calling <code>isValidSignature</code> does not fully validate the provided data or hash. For <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/handlers/ERC1271Handler.sol#L26-L30">EOA signatures</a> (65-byte signatures), there are no restrictions on how the hash is constructed, and the function only confirms the signature’s validity and its association with a <code>k1owner</code>. An attacker could reuse a historical transaction hash and signature and execute actions on behalf of the account. Additionally, EIP712 logic <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/391/files#diff-0ccc238950d01904211315cbce3cbf00b0c0f9638eed008de404ad766def9a2dL41">was removed</a> in the alternative validation method, permitting cross-chain attacks and the reuse of signatures across different accounts. Previously, <a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/21c8312b022f495ebe3621d5daeed20552b43ff9/contracts/utils/cryptography/EIP712.sol#L109"><code>_hashTypedDataV4</code></a> included the chain ID and the verifier contract in the hash, safeguarding against such misuse.</p>
+<p>Consider implementing the approach described in <a href="https://eips.ethereum.org/EIPS/eip-7739">ERC7739</a>, which proposes a defensive rehashing scheme specifically designed to address ERC1271 signature replay vulnerabilities—particularly across multiple smart accounts managed by the same EOA. This approach employs nested EIP-712 typed structures to maintain readability while effectively preventing signature replays. Additionally, consider protecting alternative validation methods, such as those using a validator, from signature replay attacks.</p>
+<!-- e09ada69-7041-4787-8368-bad3a56df716 -->
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/439">pull request #439</a> and commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/439/commits/19747f1c8d3ad65c7c5bb6bcd4e295246b3c57ee">19747f1c</a>. The fix leverages the <a href="https://github.com/Vectorized/solady/commits/4c895b961d45c53a49ed500cfc76868b7ee1328b/src/accounts/ERC1271.sol">ERC1271.sol</a> contract from the Solady library. Our team did not conduct an independent security review of this dependency and instead relied on the <a href="https://github.com/Vectorized/solady/blob/main/audits/cantina-spearbit-coinbase-solady-report.pdf">audit report</a> provided in the GitHub repository. However, the integration of the contract was thoroughly reviewed. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>We implemented ERC7739 to prevent signature replay attacks as well as ensure that the signed contents are fully visible to the user upon signing.</em></p>
+</blockquote>
+<!-- e09ada69-7041-4787-8368-bad3a56df716 -->
+<h2 id="medium-severity">Medium Severity</h2>
+<h3 id="incorrect-key-ordering-in-_compactkeys-function-leads-to-potential-overwriting-of-new-keys">Incorrect Key Ordering in <code>_compactKeys</code> Function Leads to Potential Overwriting of New Keys</h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L158"><code>_compactKeys</code> function</a> of the <code>OidcKeyRegistry</code> contract manages a list of keys in a ring-like structure, rearranging elements after one is removed to maintain compactness and continuity. However, it handles the ordering process by starting from the current index pointer instead of resetting to zero, leading to unintentional key rearrangements and potential data integrity concerns.</p>
+<p>For example, if the key array is <code>[0, key1, key2, key3, key4, 0, 0, 0]</code> with the current <code>keyIndexes</code> pointer at <code>key4</code>, and <code>key3</code> is removed, the function reorders the keys from that pointer onward, producing <code>[key4, key1, key2, 0, 0, 0, 0, 0]</code>. After this operation, the insertion pointer incorrectly moves to index 2 (<code>key2</code>), causing the next new key to be inserted at index 3. This misalignment risks overwriting <code>key4</code> first in future operations, contradicting the FIFO principle which dictates that <code>key1</code> (the oldest key) should be replaced first. Consequently, newer keys could be overwritten prematurely, leading to potential data loss and unintended replacements.</p>
+<p>Consider revising the <code>_compactKeys</code> function to preserve the original ordering after each compaction, regardless of the current insertion pointer’s position, ensuring that the FIFO sequence is maintained and preventing the overwriting of newer keys.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/429">pull request #429</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/429/commits/1829cf8d51f2211913d14f26281254e50b7633e1">1829cf8</a> and in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/435">pull request #435</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/435/commits/8071a0ece4be78397c78e0f8d07df387bffac406">8071a0ec</a>.</em></p>
+<!-- 958a6dc3-aafd-4106-bf99-cae3350dbd97 -->
+<h3 id="insufficient-validation-of-rsa-moduli-and-exponent-in-_validatekeybatch">Insufficient Validation of RSA Moduli and Exponent in <code>_validateKeyBatch</code></h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L207"><code>_validateKeyBatch</code> function</a> of the <code>OidcKeyRegistry</code> contract uses <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L236"><code>_hasNonZeroExponent</code></a> and <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L251"><code>_validateModulus</code></a> to validate the exponent and modulus, respectively. The <code>_validateModulus</code> function is responsible for verifying RSA moduli in cryptographic operations, ensuring they meet basic structural requirements for secure usage.</p>
+<p>The <code>_validateModulus</code> function checks each chunk for size and non-zero values but does not enforce a minimum bit length to prevent factoring attacks. It also does not ensure that the modulus is odd, which is typically required because RSA moduli are the product of two odd primes. In addition, the exponent is only checked against zero, leaving the possibility of smaller exponents that may be vulnerable to known attacks.</p>
+<p>Consider implementing a check to ensure the modulus meets a secure minimum bit length (for example, 2048 bits), verifying that it is odd, and enforcing a minimum exponent threshold of at least 65537. These measures will help strengthen the cryptographic properties of the system and mitigate multiple potential attack vectors.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/430">pull request #430</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/430/commits/19994218756b2d8e0cc3678185fdd8ed8b4bf533">1999421</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>Regarding the recommendations:</em> - <em>The <strong>modulus is always interpreted as a 2048-bit number</strong>. The contract receives an array of 17 chunks of 121 bits each. All of them together are later interpreted by the circuit as a 2048-bit modulus.</em> - <em>The <strong>recommendation to verify that the modulus is odd has been addressed.</strong> We have implemented validation that takes into account the specific Circom formatting used for big numbers, where the modulus is encoded as 17 chunks and the least significant chunk it’s at the left (same order as little-endian for bytes). Our implementation ensures that the first chunk is not 0 mod 2, effectively validating that the modulus is odd as required for RSA security.</em> - <em>Regarding the exponent threshold (65537), <strong>the contract no longer handles variable exponents</strong> - this value is hardcoded in the circuit, eliminating the need for runtime validation.</em></p>
+</blockquote>
+<!-- b3ba6cd3-041f-4648-b539-af5772bc734b -->
+<h3 id="unauthorized-control-via-manipulated-pendingpasskeyhash-in-startrecovery-process">Unauthorized Control via Manipulated <code>pendingPasskeyHash</code> in <code>startRecovery</code> Process</h3>
+<p>When both the <code>OidcRecoveryValidator</code> and <code>WebAuthValidator</code> contract are active for an account, and the account owner loses access, a recovery process can be initiated using a zero-knowledge (ZK) proof. This proof demonstrates ownership of the associated OIDC identity, as registered in the <code>OidcRecoveryValidator</code> contract. Once the proof and associated data are verified, any party can call the <code>startRecovery</code> function to begin account recovery.</p>
+<p>Although most parameters in the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L201"><code>startRecovery</code> function</a> are validated by both the ZK circuit and the contract, there is no verification of the <code>data.pendingPasskeyHash</code> before <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L239C58-L239C76">it is written to the account’s storage</a>. This enables a scenario where the party initiating recovery (who has access to the valid ZK proof) could submit a malicious <code>pendingPasskeyHash</code> (one for which they possess the corresponding private key). As a result, they can complete the recovery through the <code>WebAuthValidator</code> contract, effectively taking control of the account, even if they were not the intended recipient of the recovery request.</p>
+<p>Consider adding a public signal to the ZK proof to bind the <code>pendingPasskeyHash</code> parameter to the proof itself, and store this hash only after the proof has been verified.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/431">pull request #431</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/431/commits/ba4967ac13586e6b859393a135ee0fb5b7372b28">ba4967a</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>In order to address this issue we included the <code>pendingPasskeyHash</code> inside the content of the JWT nonce. The nonce content was previously calculated as:</em></p>
+</blockquote>
+<div class="codehilite">
+<pre><span>&nbsp;</span><code><span class="nb">keccak256</span><span class="p">(</span>abi<span class="p">.</span>encode<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span>oidcData<span class="p">.</span>recoverNonce<span class="p">,</span><span class="w"> </span>data<span class="p">.</span>timeLimit<span class="p">));</span>
+</code></pre>
+</div>
+<blockquote>
+<p><em>Now it’s calculated as:</em> <code>solidity
+keccak256(abi.encode(msg.sender, targetAccount, data.pendingPasskeyHash, oidcData.recoverNonce, data.timeLimit));</code> <em>This ensures that the user actually wanted to use the given passkey, and also makes the pendingKeyHash part of the data being checked by the circuit.</em></p>
+</blockquote>
+<!-- 225337a0-7d7d-4e05-8013-0d6c079cbdfc -->
+<h2 id="low-severity">Low Severity</h2>
+<h3 id="duplicate-kid-values-in-oidckeyregistry-allow-for-partial-key-deletion-and-retrieval">Duplicate <code>kid</code> Values in <code>OidcKeyRegistry</code> Allow for Partial Key Deletion and Retrieval</h3>
+<p>In the <code>OidcKeyRegistry</code> contract, the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L100"><code>addKeys</code> function</a> enables the addition of multiple keys simultaneously. Although this function performs several validations, it lacks a crucial check to prevent the insertion of multiple keys with identical <code>kid</code> values. This oversight may result in inconsistent states within the key registry, particularly when the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L191-L193"><code>deleteKey</code></a> function is used. The <code>deleteKey</code> function is designed to remove a key based on its <code>kid</code> value. However, it only removes the first occurrence of a matching <code>kid</code>, leaving any additional duplicates intact.</p>
+<p>For example, if an entity inadvertently adds multiple keys with the same <code>kid</code> and later attempts to revoke a compromised key by its <code>kid</code>, only a single instance—the first match—will be removed. The remaining duplicate keys with the same <code>kid</code> will persist in the registry, potentially leaving the system vulnerable. Furthermore, this issue impacts the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L118"><code>getKey</code> function</a> which is intended for retrieving a key by its <code>kid</code>. Similar to the <code>deleteKey</code> function, the <code>getKey</code> function will only return the first key that matches the provided <code>kid</code>, ignoring any additional keys with the same <code>kid</code> that may have been erroneously added.</p>
+<p>To mitigate this issue and preserve the integrity of the key management process, consider implementing a validation mechanism in both the <code>addKeys</code> and <code>addKey</code> functions to enforce the uniqueness of each <code>kid</code> value.</p>
+<!-- b19639ba-f07a-4e02-83a2-4886455fa9a4 -->
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/432">pull request #432</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/432/commits/bc71d5eda89f1e8c3b027255b30b2c321bca4862">bc71d5e</a>.</em></p>
+<!-- b19639ba-f07a-4e02-83a2-4886455fa9a4 -->
+<h3 id="front-running-in-addoidcaccount-account-registration">Front-Running in <code>addOidcAccount</code> Account Registration</h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L21"><code>OidcRecoveryValidator</code></a> contract uses a <code>digestIndex</code> mapping to associate unique identifiers (<code>oidcDigest</code>) with user accounts. This mechanism ensures that each identifier is distinct within the system. However, the current implementation allows for a scenario in which a malicious user can perform a front-running attack.</p>
+<p>Specifically, an attacker can monitor the pending registration transactions in the mempool. Upon detecting a legitimate user's attempt to register an <code>oidcDigest</code>, the attacker can submit their own transaction using the same <code>oidcDigest</code>, thereby claiming it first. As a result, when the legitimate transaction eventually reaches the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L163-L179"><code>addOidcAccount</code> function</a>, the verification step fails due to the <code>oidcDigest</code> already being registered, causing the transaction to revert and preventing the legitimate user from associating their validator with their account.</p>
+<p><em>Note that given that no elastic chain operators have public mem-pools or shared sequencers, this is a possible future issue.</em></p>
+<p>Consider implementing additional verification steps or securing transaction commitment mechanisms that bind the registration request directly to the originating account. This approach would effectively prevent attackers from preemptively claiming <code>oidcDigest</code> identifiers.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>Given that <strong>no elastic chain operators have public mem-pools or shared sequencers, this is at best a possible future issue</strong>. The design rationale lies in avoiding the requirement for users to input their address during account recovery. In the future, we might consider removing the one-to-one OIDC-to-Google account restriction, which would significantly complicate the UX but would prevent this kind of front-running.</em></p>
+</blockquote>
+<!-- 48e72bc8-349e-4f93-b063-16c4022d4f9f -->
+<h3 id="builtin-getter-for-oidckeys-does-not-return-n">Builtin Getter for <code>OIDCKeys</code> Does Not Return <code>n</code></h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L77"><code>OIDCKeys</code> variable</a> is declared with a <code>public</code> visibility modifier, causing the Solidity compiler to automatically generate a <code>public</code> getter function. However, this getter will only return the struct’s simple members (<code>issHash</code>, <code>kid</code>, and <code>e</code>), and it will omit complex data structures such as <code>n</code>. This happens because automatically generated getters for <code>public</code> state variables do not return array or mapping members within structs, even when nested. For more information, see the <a href="https://docs.soliditylang.org/en/latest/contracts.html#getter-functions">Solidity documentation</a>.</p>
+<p>Since the contract already implements the <code>getKeys</code> getter, consider removing the automatic getter (that does not retrieve all the data) by reducing the variable's visibility.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/433">pull request #433</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/433/commits/cd57ff75e430a332bf2462cebc9f823cfcf5540a">cd57ff7</a>.</em></p>
+<!-- 57b175ed-4ea3-4537-9733-3cda382d1224 -->
+<h3 id="potential-loss-of-ownership-during-transfer">Potential Loss of Ownership During Transfer</h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L11"><code>OidcKeyRegistry</code> contract</a> implements a single-step ownership transfer process which may lead to unintended loss of ownership if the new owner address is incorrect or inaccessible. This pattern does not provide a safeguard to recover from such scenarios, and any mistake in the transfer can result in permanent loss of administrative control.</p>
+<p>The issue lies in the absence of a confirmation step during the ownership transfer. In the current implementation, ownership is immediately reassigned once the transfer function is called, without requiring the new owner to accept the role. This increases the risk of errors during execution, particularly if an incorrect or unprepared address is specified.</p>
+<p>Consider using the <a href="https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/7c8e90046cdf3447971c201c1940d489fa2064bb/contracts/access/Ownable2StepUpgradeable.sol#L26"><code>Ownable2StepUpgradeable</code></a> contract from the OpenZeppelin library, which introduces a two-step transfer pattern. This approach requires the new owner to explicitly accept ownership, reducing the chance of accidental loss of control and improving operational safety.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/422">pull request #422</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/422/commits/77036be9bff968bf49046ba4c525f4c8f791ac23">77036be</a>.</em></p>
+<!-- c02812d2-2179-44c3-84cc-189b7c01596e -->
+<h3 id="inflexible-recovery-process-termination-in-oidcrecoveryvalidator">Inflexible Recovery Process Termination in <code>OidcRecoveryValidator</code></h3>
+<p>The&nbsp;<code>OidcRecoveryValidator</code>&nbsp;contract, as currently implemented, lacks a method to halt an initiated recovery process without complete termination of the account's linkage to its issuer. Once the recovery process is&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L239-L241">initiated</a>, if the subsequent transaction that triggers the&nbsp;<code>validateTransaction</code>&nbsp;function is not executed, the only way to&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L283">abort the recovery process</a>&nbsp;is by invoking the&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L182"><code>deleteOidcAccount</code>&nbsp;function</a>.</p>
+<p>However, the <code>deleteOidcAccount</code>&nbsp;function is designed to sever the connection between an account and its issuer entirely. Utilizing it to discontinue an ongoing recovery process consequently eliminates the possibility of future recoveries unless the&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L163"><code>addOidcAccount</code>&nbsp;function</a>&nbsp;is called again to reestablish the linkage. This binary choice compels users to decide between retaining a potentially vulnerable recovery option or completely losing their account's recovery functionality, a decision that is less than ideal for user security and convenience.</p>
+<p>To address this limitation, consider introducing a feature that permits users to selectively revoke or invalidate an ongoing recovery process without the need to eliminate the entire account and issuer connection. This enhancement would significantly improve the flexibility and security of the recovery process, offering users better control over their recovery options.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/441">pull request #441</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/441/commits/d52ddf9337f8fabfcc7bf6525b255b1a187ebbc5">d52ddf9</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>We added a new method <code>cancelRecovery</code> that allows a user to cancel a recovery for their own account. This can be used for the case where an OIDC based recovery was started but not finished, and then the user was able to recover their account in a different way (for example, using guardians).</em></p>
+<p><em>We also added a time validation as part of <code>L-06</code>, which also works a way to cancel an ongoing recovery.</em></p>
+</blockquote>
+<!-- ad15bd4b-95b8-4585-b81b-ffd9c19075f1 -->
+<h3 id="delayed-recovery-validation-may-compromise-account-security">Delayed Recovery Validation May Compromise Account Security</h3>
+<p>In the <code>OidcRecoveryValidator</code> contract, the account recovery process flow is divided into two separate function calls, with the <code>startRecovery</code> and <code>validateTransaction</code> functions, due to the high gas consumption associated with verifying zero-knowledge proofs. This design choice introduces a potential security vulnerability related to the timing of these operations.</p>
+<p>The initial <code>startRecovery</code> function <a href="[link](https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L202-L203)">includes a check</a> to ensure that the recovery process is not initiated after the expiration of the proof. However, this verification does not account for the time elapsed between the execution of the <code>startRecovery</code> call and the <code>validateTransaction</code> call. Consequently, there exists a significant time window in which the recovery process can be completed long after the execution of the <code>startRecovery</code> contract. This delayed validation poses a risk, especially if account control is regained through alternative means, but the recovery process remains pending execution via <code>validateTransaction</code> through the validation on the <code>OidcRecoveryValidator</code> contract.</p>
+<p>To mitigate this risk and enhance the security of the recovery process, consider implementing an additional check within the <code>validateTransaction</code> function to verify the timeliness of the recovery action, successfully validating the transaction if it is still within the time window. This check should ensure that the recovery is still valid at the time of the <code>validateTransaction</code> function execution, thereby eliminating the possibility of having an undesired time window in the recovery flow. Moreover, it is worth noting that a user might initiate recovery of the account through a different mechanism (such as with a Guardian) even if they are still in the time window for the OIDC recovery process.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/423">pull request #423</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/423/commits/21d16e5e6635a88e7ca3d636680b5fb50ef2c9c5">21d16e5</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>We have implemented a time validation window of 10 minutes between the initiation and execution of the recovery process. This duration is considered sufficient since the most time-intensive operation - proof generation - occurs before the <code>startRecovery</code> function is called. By enforcing this time constraint, we ensure that delayed recoveries cannot be executed beyond the intended window.</em></p>
+</blockquote>
+<!-- bd4fb6b7-3331-467c-9c2a-ac362cc66831 -->
+<h3 id="old-digestindex-not-released-on-oidc-account-update">Old <code>digestIndex</code> Not Released on OIDC Account Update</h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L21"><code>OidcRecoveryValidator</code> contract</a> uses <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L108">a <code>digestIndex</code></a> to ensure the uniqueness of OIDC (OpenID Connect) digests associated with user accounts. Each time a user adds or updates their OIDC account via the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L163"><code>addOidcAccount</code> function</a>, a digest representing the OIDC data is stored to <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L175">prevent reuse</a>. This mechanism ensures that no two accounts can register the same OIDC identity, maintaining integrity across the recovery process.</p>
+<p>However, when a user updates their OIDC account, the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L175">previously assigned <code>digestIndex</code> value</a> is not cleared. As a result, the old OIDC digest remains reserved under the user's account even though it is no longer in use. If the user later attempts to restore a previously valid OIDC digest, for example, to revert to an earlier identity, they will be blocked by the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L164">uniqueness check</a>, which still considers the old digest as taken, despite it originally belonging to the same user.</p>
+<p>Consider explicitly clearing the user's old <code>digestIndex</code> value before assigning the new one during an account update. This would allow legitimate reuse of previously held digests and ensure consistency in digest management.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/424">pull request #424</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/424/commits/d7a71caed03e2163afe3ff98c9144e529fb530b3">d7a71ca</a>.</em></p>
+<!-- bf457742-fa0e-4e58-87a8-841f8930ee21 -->
+<h3 id="the-addoidcaccount-function-always-returns-false">The <code>addOidcAccount</code> Function Always returns <code>false</code></h3>
+<p>In the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L163"><code>addOidcAccount</code> function</a>, the returned boolean indicates whether an account has been newly added or merely updated. The function <a href="hhttps://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L167">checks</a> the current state by inspecting the length of the <code>oidcDigest</code> field within the stored account data, which is then emitted via the <code>OidcAccountUpdated</code> event and returned by the function. According to the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L162">documentation</a>, the function should return <code>true</code> if a new key is added and <code>false</code> if an existing key is updated.</p>
+<p>However, the logic currently implemented misunderstands how length is calculated for the <code>bytes32</code> type. The length of a <code>bytes32</code> value is always 32 bytes, regardless of the content, meaning the <code>accountData[msg.sender].oidcDigest.length == 0</code> condition will consistently evaluate to <code>false</code>. Consequently, the returned value and the emitted event will incorrectly indicate that an account is always updated rather than newly created, potentially causing confusion or misinterpretation of account status. It is worth mentioning that the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L319">correct check</a> is being performed in the <code>oidcDataForAddress</code> function.</p>
+<p>In favor of being able to detect when a new key is added and improving code consistency, consider whether comparing the value of <code>oidcDigest</code> to zero (e.g., <code>oidcDigest == bytes32(0)</code>) might more accurately reflect whether the account is new, rather than relying on its length.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/424">pull request #424</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/424/commits/d7a71caed03e2163afe3ff98c9144e529fb530b3">d7a71ca</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>This issue has no PR for itself because it was resolved as part of <code>L-07</code>.</em></p>
+</blockquote>
+<!-- eebc2ba9-2253-4c06-97e3-96c5b361716e -->
+<h3 id="inconsistencies-in-account-recovery-data-during-recovery-process">Inconsistencies in Account Recovery Data During Recovery Process</h3>
+<p>When an OpenID Connect (OIDC) identifier is linked to an account, the&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L163"><code>addOidcAccount</code>&nbsp;function</a>&nbsp;only updates three specific parameters in the&nbsp;<code>accountData</code>&nbsp;mapping and one in the&nbsp;<code>digestIndex</code>&nbsp;mapping for the concerned account. This selective update process neglects the&nbsp;<code>readyToRecover</code>,&nbsp;<code>pendingPasskeyHash</code>, and&nbsp;<code>recoverNonce</code>&nbsp;fields, leaving them at their default values or preserving their previous states. Such behavior creates a risk of inconsistencies, as outdated data could potentially lead to misleading behaviors or the misuse of obsolete recovery states.</p>
+<p>The core issue arises when the&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L201">recovery process is initiated</a>&nbsp;and a specific&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L172-L174">set of parameters</a>&nbsp;is verified. However, before the&nbsp;<code>validateTransaction</code>&nbsp;call occurs, these parameters might get overwritten by a subsequent invocation of the&nbsp;<code>addOidcAccount</code>&nbsp;function by the account. This action updates the aforementioned parameters without fully resetting the&nbsp;<code>OidcData</code>&nbsp;variables, inadvertently leaving the&nbsp;<code>readyToRecover</code>&nbsp;flag active and the <code>pendingPasskeyHash</code> variable set from a prior session. This scenario becomes problematic when an account initiates a recovery using a specific&nbsp;<code>publicKey</code> and, after gaining access through another recovery method, the user decides to update the&nbsp;<code>accountData</code>&nbsp;by calling the&nbsp;<code>addOidcAccount</code>&nbsp;function, not realizing that the original&nbsp;<code>publicKey</code>&nbsp;can still be set when using the&nbsp;<code>OidcRecoveryValidator</code>&nbsp;contract as the validator.</p>
+<p>Realizing such a scenario requires the functions to be executed from the account itself, indicating that access was previously granted through another method and that the user needs to proactively participate in order for this to happen. Nonetheless, to minimize the risk associated with unexpected recovery flows and to enhance the integrity of the recovery process, particularly not mixing data from 2 different recovery processes, consider implementing mechanisms that reset or suitably update all pertinent fields within the&nbsp;<code>accountData</code>&nbsp;mapping whenever an OIDC identifier is added or the recovery process is initiated.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/425">pull request #425</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/425/commits/aa7803581e3f4edf848846a06184c5c6fc38dfcb">aa78035</a>.</em></p>
+<!-- 377d077f-a37d-4580-8045-aad178ac121a -->
+<h3 id="insufficient-validation-in-recovery-process-may-lead-to-wasted-recovery-attempts">Insufficient Validation in Recovery Process May Lead to Wasted Recovery Attempts</h3>
+<p>The&nbsp;<code>OidcRecoveryValidator</code>&nbsp;contract introduces a mechanism for account recovery, culminating in the addition of a new&nbsp;<code>publicKey</code>&nbsp;to the&nbsp;<code>WebAuthValidator</code>&nbsp;contract. Initially, an account is&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L163">linked to an&nbsp;<code>oidcDigest</code></a>, and upon the need for recovery, a&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L201">submission process is initiated</a>&nbsp;that verifies proofs against the&nbsp;<code>oidcDigest</code>. If verification is successful, any participant can execute a transaction to incorporate the new&nbsp;<code>publicKey</code>&nbsp;into the&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/WebAuthValidator.sol#L94"><code>WebAuthValidator</code></a>.</p>
+<p>However, a problem arises when the <code>credentialId</code> and <code>originDomain</code> parameters do not meet some of the requirements in the <code>WebAuthValidator</code> contract, in which the call <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/WebAuthValidator.sol#L100-L111">will not revert but will instead return a <code>false</code> output</a>. In such a scenario, the call will be considered successful without reversion, regardless of the non-inclusion of the <code>publicKey</code>. As a result, the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L282-L283">recovery attempt will be consumed</a> and a new recovery will be needed.</p>
+<p>This flaw not only risks the unnecessary consumption of recovery attempts due to parameter mismatches but also exposes the problem of users who, knowledgeable of the user's&nbsp;<code>publicKey</code>, could deliberately consume the recovery attempt by submitting transactions with arbitrary, incorrect parameters alongside the <code>publicKey</code>, that will not pass the <code>WebAuthValidator</code> contract requirements.</p>
+<p>To mitigate the risk of wasted recovery attempts and protect against potential misuse, consider binding the <code>credentialId</code> and <code>originDomain</code> arguments within the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L235">zkProof</a> and storing this binding in the contract for subsequent validation in the <code>validateTransaction</code> function. This change ensures that these parameters remain immutable during the <code>validateTransaction</code> call, preventing unauthorized or unintended consumption of recovery attempts.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/426">pull request #426</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/426/commits/35ff79ced9f7ae5e90232913dc17c9213e7b2bb5">35ff79c</a>.</em></p>
+<!-- 84011cb6-de0b-4243-8985-67436bdedfba -->
+<h3 id="insufficient-validation-of-iss-argument-length-in-addoidcaccount">Insufficient Validation of <code>iss</code> Argument Length in <code>addOidcAccount</code></h3>
+<p>The <code>addOidcAccount</code> function includes a check to ensure that the <code>iss</code> (issuer) argument is <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L165">not empty</a>. This value is later used within a zero-knowledge circuit, where its length is expected to be less than 32 characters, based on the <a href="https://github.com/Moonsong-Labs/zksync-social-login-circuit/blob/27cda6e74492fbad4aa3ca37ff5084ed391b534b/jwt-tx-validation.circom#L43">template argument definition</a> and the <a href="https://github.com/Moonsong-Labs/zksync-social-login-circuit/blob/27cda6e74492fbad4aa3ca37ff5084ed391b534b/jwt-tx-validation.circom#L138">constant value</a> provided. While the lower bound is enforced by the existing validation, the upper bound (critical for zero-knowledge proof verification) is not.</p>
+<p>As a result, values longer than the expected maximum can be stored, even though they would not be valid for proof generation or verification in the zero-knowledge circuit. This creates a discrepancy between what can be stored on-chain and what can be successfully proven off-chain.</p>
+<p>Consider enforcing an upper bound on the <code>iss</code> argument length to ensure that it is strictly less than 32 characters, in addition to the existing non-zero length check.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/427">pull request #427</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/427/commits/22d3b4fe8212f46a33c5f87fb444951217b59aa5">22d3b4f</a>.</em></p>
+<!-- d65d7425-3e18-4aa5-8456-54c83a193c81 -->
+<h3 id="oidcrecoveryvalidator-does-not-follow-the-erc-1271-flow"><code>OidcRecoveryValidator</code> Does Not Follow the ERC-1271 Flow</h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L289"><code>validateSignature</code> function</a> of the <code>OidcRecoveryValidator</code> contract reverts when being called. This happens because the validator is only supposed to provide a recovery mechanism to the account instead of validating any other kind of transaction. However, its current implementation deviates from the expected <a href="https://eips.ethereum.org/EIPS/eip-1271">ERC-1271 flow</a> by reverting on calls instead of returning a boolean value. This behavior contrasts with the intended flow, where the&nbsp;<code>validateSignature</code>&nbsp;function should signal a negative outcome by returning&nbsp;<code>false</code> to let the <code>ERC1271Handler</code> contract not return the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/handlers/ERC1271Handler.sol#L37">magic value</a>.</p>
+<p>Given that analogous validator contracts within the system <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/GuardianRecoveryValidator.sol#L296">return&nbsp;<code>false</code></a> under similar conditions, aligning the&nbsp;<code>OidcRecoveryValidator</code>&nbsp;contract's behavior with this pattern would enhance consistency and predictability in the signature validation process. Therefore, consider modifying the&nbsp;<code>validateSignature</code>&nbsp;function to return&nbsp;<code>false</code>&nbsp;instead of reverting, ensuring that it adheres to the established ERC-1271 flow.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/428">pull request #428</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/428/commits/5141a07c5d84a6e3bba4330989a0bc55079218fc">5141a07</a>.</em></p>
+<!-- 0a94623f-7aa7-4d3d-94d4-8fbcc75ae594 -->
+<h2 id="notes-additional-information">Notes &amp; Additional Information</h2>
+<h3 id="using-uint8-for-constants-is-more-expensive-than-uint256">Using <code>uint8</code> for Constants Is More Expensive Than <code>uint256</code></h3>
+<p>In both <code>OidcKeyRegistry</code> and <code>OidcRecoveryValidator</code>, <code>uint8</code> is being used for constants (e.g., for the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L13"><code>MAX_KEYS</code> constant</a>). However, this introduces unnecessary overhead during deployment, as additional range checks are required, making the deployment more expensive. For instance, using <code>uint8</code> in the <code>OidcKeyRegistry</code> costs around <code>28,267,888</code> gas, whereas <code>uint256</code> costs about <code>28,175,109</code>, saving approximately <code>92,779</code> gas.</p>
+<p>Since these values are constants and manually verified to be within the expected range, there is no added risk in switching to <code>uint256</code>. Consider updating <code>uintN</code> constants to <code>uint256</code> to optimize deployment costs.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/399">pull request #399</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/399/commits/d0c788e251052b8fac8da60c295ad3726618a317">d0c788e</a>.</em></p>
+<!-- 456ac019-11b6-4b13-8144-eb91cde5c551 -->
+<h3 id="inconsistent-license-in-oidckeyregistrysol">Inconsistent License in <code>OidcKeyRegistry.sol</code></h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L1"><code>OidcKeyRegistry.sol</code> file</a> uses the <code>UNLICENSED</code> license, while the rest of the codebase is either licensed under GPL-3.0 or MIT. This inconsistency may create uncertainty around usage and distribution.</p>
+<p>Consider updating the license in <code>OidcKeyRegistry.sol</code> to align with the rest of the codebase, such as GPL-3.0 or MIT.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/400">pull request #400</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/400/commits/894321c0da30db3ef8c00330b16bfb37b979acb9">894321c</a>.</em></p>
+<!-- e92d833c-39a6-403f-9bbc-bcf46bb9fab8 -->
+<h3 id="redundant-local-variable-in-_validatemodulus">Redundant Local Variable in <code>_validateModulus</code></h3>
+<p>In the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L251"><code>_validateModulus</code> function</a>, the <code>uint256 limit</code> variable is calculated as <code>(1 &lt;&lt; 121) - 1</code>. Currently, the <code>limit</code> is computed within the function on every invocation and, as this value remains unchanged throughout the function execution, recalculating it repeatedly consumes unnecessary gas.</p>
+<p>Consider defining <code>limit</code> as a constant outside the <code>_validateModulus</code> function to avoid unnecessary recalculations and reduce gas usage.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/401">pull request #401</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/401/commits/7e36375021f0778f7c9149c63d688e2ccf14743c">7e36375</a>.</em></p>
+<!-- 0ec7f728-43ad-4eef-860b-16fb7d717ee5 -->
+<h3 id="use-of-uint-instead-of-uint256">Use of <code>uint</code> Instead of <code>uint256</code></h3>
+<p>While <code>uint</code> is an alias for <code>uint256</code>, for clarity and consistency, it is recommended to use <code>uint256</code> explicitly.</p>
+<p>Within <code>OidcRecoveryValidator.sol</code>, multiple instances of <code>uint</code> being used instead of <code>uint256</code> were found:</p>
+<ul>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L86"><code>uint</code></a> in line 86</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L87"><code>uint</code></a> in line 87</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L88"><code>uint</code></a> in line 88</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L217"><code>uint</code></a> in line 217</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L221"><code>uint</code></a> in line 221</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L226"><code>uint</code></a> in line 226</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L334"><code>uint</code></a> in line 334</li>
+</ul>
+<p>In favor of explicitness, consider replacing all instances of <code>uint</code> with <code>uint256</code>.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/402">pull request #402</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/402/commits/13312f822673cbd8a2bd4126f6611c0f93f2a4b7">13312f8</a>.</em></p>
+<!-- 1691aaef-0076-4a5e-bbbb-bf18954a29a9 -->
+<h3 id="magic-numbers-in-the-code">Magic Numbers in the Code</h3>
+<p>Throughout the codebase, multiple instances of literal values with unexplained meanings were identified.</p>
+<ul>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L231"><code>8</code>s</a> literal in <code>OidcRecoveryValidator.sol</code></li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L233"><code>248</code>s</a> literal in <code>OidcRecoveryValidator.sol</code></li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L334"><code>32</code></a> literal in <code>OidcRecoveryValidator.sol</code></li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L335"><code>32</code></a> literal in <code>OidcRecoveryValidator.sol</code></li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L335"><code>8</code></a> literal in <code>OidcRecoveryValidator.sol</code></li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L336"><code>8</code></a> literal in <code>OidcRecoveryValidator.sol</code></li>
+</ul>
+<p>Consider defining and using <code>constant</code> variables instead of using literals or properly documenting the literals values to improve the readability and maintainability of the codebase.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/403">pull request #403</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/403/commits/acd7822c86719453b297fc4c6afbac8fcede540e">acd7822</a>.</em></p>
+<!-- 689122de-2a94-46a6-9778-0b387daafa54 -->
+<h3 id="use-custom-errors">Use Custom Errors</h3>
+<p>Since Solidity version 0.8.4, custom errors provide a cleaner and more cost-efficient way to explain to users why an operation failed.</p>
+<p>In <code>OidcRecoveryValidator.sol</code>, multiple instances of <code>require</code> messages were identified:</p>
+<ul>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L128"><code>require(_keyRegistry != address(0), "_keyRegistry cannot be zero address")</code></a> statement</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L129"><code>require(_verifier != address(0), "_verifier cannot be zero address")</code></a> statement</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L130"><code>require(_webAuthValidator != address(0), "_webAuthValidator cannot be zero address")</code></a> statement</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L164"><code>require(oidcDigest != bytes32(0), "oidcDigest cannot be empty")</code></a> statement</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L165"><code>require(bytes(iss).length &gt; 0, "oidcDigest cannot be empty")</code></a> statement</li>
+</ul>
+<p>For conciseness, gas savings, and consistency with the rest of the codebase that makes use of <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/WebAuthValidator.sol#L64">custom errors</a>, consider replacing <code>require</code> and <code>revert</code> messages with custom errors.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/404">pull request #404</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/404/commits/2e27794fc8fd7cde80f5e38fe439eca5487ff72f">2e27794</a>.</em></p>
+<!-- 8b6aa33d-4bc2-4488-a391-04c00a073a56 -->
+<h3 id="missing-event-emission-in-startrecovery">Missing Event Emission in <code>startRecovery</code></h3>
+<p>When the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L201-L242"><code>startRecovery</code> function</a> of the <code>OidcRecoveryValidator</code> contract is invoked, it does not trigger any event.</p>
+<p>Consider emitting an event to reflect that a recovery has started, which would improve the clarity of the codebase and ease off-chain monitoring.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/405">pull request #405</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/405/commits/a375b7acd151e11276ec36463b5ac3b9abc291e4">a375b7a</a>.</em></p>
+<!-- 03a06a18-93d4-424f-a1bc-2302ec3e0a11 -->
+<h3 id="state-variable-visibility-not-explicitly-declared">State Variable Visibility Not Explicitly Declared</h3>
+<p>Within <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol"><code>OidcRecoveryValidator.sol</code></a>, multiple instances of state variables lacking an explicitly declared visibility were identified:</p>
+<ul>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L23"><code>PUB_SIGNALS_LENGTH</code> state variable</a></li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L105"><code>accountData</code> state variable</a></li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L108"><code>digestIndex</code> state variable</a></li>
+</ul>
+<p>For improved code clarity, consider always explicitly declaring the visibility of state variables, even when the default visibility matches the intended visibility.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/434">pull request #434</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/434/commits/41e77cb18b19194e5f4c303d6837783d1bcaa998">41e77cb</a>.</em></p>
+<!-- 976edbbd-7d4d-4dd7-b2d0-8d274cb10a28 -->
+<h3 id="circular-buffer-initialization-causes-counterintuitive-key-indexing">Circular Buffer Initialization Causes Counterintuitive Key Indexing</h3>
+<p>In the implementation of the <code>OidcKeyRegistry</code> contract, keys are added to a circular buffer with an initial offset. This design choice results in non-intuitive behavior during the buffer's initial population cycle. Specifically, when fully initializing the ring with a series of keys, the last key provided in the sequence is assigned to the zero index of the buffer. This occurs due to the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L148">offset applied</a> during the key addition process, which effectively shifts the position of the initially added keys.</p>
+<p>For example, when populating a ring buffer intended to hold eight keys with five specific keys, one might expect the keys to sequentially occupy indices from zero to four. However, the actual placement after the first addition cycle ranges from indices one to five (<code>| 0 | k1 | k2 | k3 | k4 | k5 | 0 | 0 |</code>). Similarly, when adding a full cycle of eight keys, the last key (<code>k8</code>) occupies the zero index (<code>| k8 | k1 | k2 | k3 | k4 | k5 | k6 | k7 |</code>). This disrupts the expected sequential ordering established during the initialization.</p>
+<p>Consider adjusting the key addition logic to ensure that the first key added occupies the zero index of the buffer, maintaining consistent and intuitive indexing throughout the buffer's lifecycle.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/435">pull request #435</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/435/commits/8071a0ece4be78397c78e0f8d07df387bffac406">8071a0e</a>.</em></p>
+<!-- 31a0e5ce-c4ab-494b-addf-07536a6e9314 -->
+<h3 id="missing-interface-for-oidcrecoveryvalidator-contract">Missing Interface for <code>OidcRecoveryValidator</code> Contract</h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L21"><code>OidcRecoveryValidator</code> contract</a> lacks an interface that corresponds to its available implementation functions, such as <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L163"><code>addOidcAccount</code></a> and <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L182"><code>deleteOidcAccount</code></a>. In addition, definitions such as <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L25-L102">events, errors, and structs</a> can be included within this interface to improve developer experience and protocol interoperability. This change would streamline the contract's structure and enhance usability across different development contexts. Moving these definitions into the interface would also simplify interactions, event decoding, error handling, and passing structs as input or output parameters in other contracts.</p>
+<p>Consider creating an interface that directly includes the above-mentioned definitions. This approach aligns with best practices in smart contract design and enhances developer experience by providing a clearer, more intuitive way to interact with the contract’s functionalities.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/408">pull request #408</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/408/commits/02e0df0ffd4f2936bb0edb4b8d7816a6d68996b0">02e0df0</a>.</em></p>
+<!-- c61612cf-072b-431a-91db-2a4683aa4c55 -->
+<h3 id="refactor-and-improvement-opportunities">Refactor and Improvement Opportunities</h3>
+<p>Throughout the codebase, multiple opportunities for code improvement were identified:</p>
+<ul>
+<li>In the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L11"><code>OidcRecoveryValidator</code> contract</a>, two contract addresses (<code>keyRegistry</code> and <code>verifier</code>) are stored as raw <code>address</code> types and then cast to their respective contract types only when accessed. These casting operations are performed only once throughout the contract. Instead of casting the <code>address</code> to a contract at the point of use, consider updating the constructor to include the casting operation and adjust the type of the storage variable accordingly. This approach would not only streamline the contract code by eliminating the need for casting at the point of use but also potentially reduce gas costs associated with the casting operation.</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L169"><code>OidcDigestAlreadyRegisteredInAnotherAccount</code> custom error</a> reverts with the <code>oidcDigest</code> argument when the digest has already been registered. However, the <code>oidcDigest</code> is provided by the caller and is therefore already known, making its inclusion potentially redundant. It would be more useful if the error included the address of the account that has registered the digest. Consider replacing such a parameter.</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L220"><code>for</code> loop</a> in the <code>startRecovery</code> function iterates <code>key.n.length</code> times and the auxiliary variable <code>index</code> is incremented on each iteration. However, after the loop completes, <code>index</code> will be equal to the number of elements in <code>key.n</code>. Consider not incrementing the <code>index</code> variable inside the loop. Instead, assign the length of <code>key.n</code> directly to <code>index</code>.</li>
+<li>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L221">casting of each <code>Key.n</code></a> in the <code>for</code> loop is unnecessary, as each <code>n</code> element in the array is already a <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L27"><code>uint256</code> variable</a>. Consider removing such casting.</li>
+<li>The current implementation of the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L201"><code>startRecovery</code> function</a> splits <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L231"><code>senderHash</code></a> into two values using multiple bitwise shift operations. This can be optimized by applying a single bitwise mask after calling the <code>_reverse</code> function, setting the most significant byte (in little-endian format) to zero. The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L233">last element</a> of the <code>publicInputs</code> can be simplified by truncating <code>senderHash</code> to <code>uint8</code> and then casting it back to <code>uint256</code>. This approach reduces stack operations, decreases the number of constants pushed onto the stack, and achieves better gas efficiency compared to multiple shifts.</li>
+<li>The current implementation of the <code>_reverse</code> function reverses bytes by using additional intermediate variables and multiple arithmetic operations per iteration, consuming approximately 29k gas per call. This can be optimized by replacing it with a bitwise accumulation approach, where the result is built by repeatedly shifting the output left by one byte and combining it with the least significant byte of the input. The optimized version reduces gas usage to approximately 3.9k per call.</li>
+</ul>
+<p>To improve the readability and gas efficiency of the codebase, consider applying the aforementioned recommendations.</p>
+<!-- b0719fb4-2446-47d3-9c68-c7623a4f3f35 -->
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/410">pull request #410</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/410/commits/26529e122749907d319bac5000390a85d92ff479">26529e1</a>.</em></p>
+<!-- b0719fb4-2446-47d3-9c68-c7623a4f3f35 -->
+<h3 id="unnecessary-override-keyword-in-oninstall-and-onuninstall">Unnecessary <code>override</code> Keyword in&nbsp;<code>onInstall</code>&nbsp;and&nbsp;<code>onUninstall</code></h3>
+<p>In the&nbsp;<code>OidcRecoveryValidator</code>&nbsp;contract, the <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L139"><code>onInstall</code></a>&nbsp;and&nbsp;<a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L155"><code>onUninstall</code></a> functions&nbsp;are marked with the&nbsp;<code>override</code>&nbsp;keyword. This usage suggests that these functions are intended to override implementations from a parent contract. However, these functions implement abstract function declarations from an interface instead of overriding concrete implementations from an ancestor contract. In Solidity, the&nbsp;<code>override</code>&nbsp;keyword is used to indicate that a function is overriding a function from a base contract. When a function is merely implementing an interface's method, the use of&nbsp;<code>override</code>&nbsp;is not necessary. In this case, the use of the&nbsp;<code>override</code>&nbsp;keyword could potentially lead to confusion regarding the inheritance structure of these functions, as it points to an inheritance relationship that does not exist.</p>
+<p>To enhance code clarity and accurately reflect the inheritance and implementation structure, consider removing the&nbsp;<code>override</code>&nbsp;keyword from the&nbsp;<code>onInstall</code>&nbsp;and&nbsp;<code>onUninstall</code>&nbsp;function declarations in all places where it is not needed.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/411">pull request #411</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/411/commits/5b48556198f73abfeff53943204d40d9332ded26">5b48556</a>.</em></p>
+<!-- b3033fc6-ba57-49c8-ad70-61951090542e -->
+<h3 id="redundant-external-call-to-hashissuer-in-oidcrecoveryvalidator">Redundant External Call to <code>hashIssuer</code> in <code>OidcRecoveryValidator</code></h3>
+<p>The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L210"><code>hashIssuer</code> function</a> of the <code>OidcKeyRegistry</code> contract is invoked in the <code>startRecovery</code> function of the <code>OidcRecoveryValidator</code> contract. This function performs a simple hashing operation on a single input argument. Since the logic is minimal and does not rely on any internal state of the <code>OidcKeyRegistry</code> contract, calling it externally introduces unnecessary complexity and potential gas overhead.</p>
+<p>Consider moving the <code>hashIssuer</code> function directly into the <code>OidcRecoveryValidator</code> contract or duplicating its logic within the contract to avoid the external call.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>The method <code>hashIssuer</code> inside <code>OidcKeyRegistry</code> ensures consistent hash generation for issuers. While duplicating this logic would yield minimal gas savings, it would create redundant code that might need synchronization if changes occur in the future.</em></p>
+<p><em>Considering the low gas costs in the elastic chain ecosystem, we consider that maintaining the external method call is preferable to duplicating the logic.</em></p>
+</blockquote>
+<!-- 567b9fde-6b8e-41ae-bd15-6c565209854a -->
+<h3 id="endianness-mismatch-in-senderhash-representation-between-contract-and-circuit">Endianness Mismatch in <code>senderHash</code> Representation Between Contract and Circuit</h3>
+<p>The <code>startRecovery</code> function <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L231-L233">splits</a> the 32‑byte <code>senderHash</code> into two 31‑byte fields to fit the circuit’s input size. The <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L231">first part</a> is produced by right‑shifting the hash, which moves the zero inserted by the shift to the least‑significant end, and then discarding that zero, yielding a <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L230">little‑endian</a> sequence <code>B1 … B31</code> (with <code>B0</code> already extracted). The second part is obtained by isolating the least‑significant byte (<code>B0</code>) without reversal, leaving it unchanged in the least‑significant byte of the word. As a result, the same logical value is encoded partly in little‑endian and partly in its original order before being supplied to the circuit.</p>
+<p>Because the circuit appears to expect a uniform byte order for the entire 32‑byte value, this mixed representation can cause the circuit to reconstruct an incorrect <code>senderHash</code>, leading to failed proofs or other unexpected verification results.</p>
+<p>Consider encoding both parts in the single endianness expected by the circuit—for example, reverse the full 32‑byte hash before splitting or omit reversal for both parts—so that the contract and circuit consume an identical byte order and the hash can be reconstructed unambiguously.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/436">pull request #436</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/436/commits/d0cf4204e31fd291e0ea88456ea9ee0d3679329d">d0cf420</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>We changed the the serialization of the txHash to simply take the first 31 bytes in the first element (without any kind of reverse) and the last byte in a second element (also without any revert).</em></p>
+<p><em>We also made the changes in the circuit input generation code to be coherent with this. Those changes were also considered in the documentation of the circuit.</em></p>
+<p><em>This also allowed us to remove the <code>_reverse</code> internal function that was only being used here.</em></p>
+</blockquote>
+<!-- 89578857-4acb-4f25-baae-9a83fb0b56e0 -->
+<h3 id="misleading-comment-regarding-oidc-provider-public-key-format">Misleading Comment Regarding OIDC Provider Public Key Format</h3>
+<p>In the <code>OidcRecoveryValidator</code> contract, the <code>startRecovery</code> function <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L219">includes a comment</a> intended to describe the structure of the <code>publicInputs</code> array. Specifically, the comment currently states: “First <code>CIRCOM_BIGINT_CHUNKS</code> elements are the OIDC provider public key.” This can be misleading to readers who assume the RSA public key includes both the modulus and the exponent, as per standard cryptographic definitions.</p>
+<p>The implementation, however, only <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/OidcKeyRegistry.sol#L22">includes the modulus</a> in these elements. The exponent is not part of this structure, contrary to what might be inferred from the current comment. This inconsistency can cause confusion for developers or auditors reviewing the code, particularly those relying on the comment to understand the data layout without inspecting the logic in detail.</p>
+<p>Consider updating the comment to accurately reflect the content of the input, such as: “First <code>CIRCOM_BIGINT_CHUNKS</code> elements are the OIDC provider modulus.” This will improve code readability and help ensure correct assumptions about the key structure.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/442">pull request #442</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/442/commits/5d8d55700a755789214d609382369811bac29f34">5d8d557</a>.</em></p>
+<!-- c0144347-cc1e-4b5d-883c-b03ef5f7f3d7 -->
+<h3 id="redundant-inheritance-from-verifiercaller-in-oidcrecoveryvalidator">Redundant Inheritance from <code>VerifierCaller</code> in <code>OidcRecoveryValidator</code></h3>
+<p>The <code>OidcRecoveryValidator</code> contract inherits from the <code>VerifierCaller</code> contract. However, in the current implementation of the <code>OidcRecoveryValidator</code> contract, none of the functions or features provided by the <code>VerifierCaller</code> contract are utilized.</p>
+<p>This results in unnecessary inheritance, which can increase the contract size and complicate the codebase without providing any functional benefit.</p>
+<p>Consider removing the inheritance of the <code>VerifierCaller</code> contract in the <code>OidcRecoveryValidator</code> contract to simplify the contract and reduce potential maintenance overhead.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/408/files#diff-51ffac239beb4bdcc415db8bf9e007723a57df383e1ee6dfbf5ce11a5813ea53R21">pull request #408</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/408/commits/02e0df0ffd4f2936bb0edb4b8d7816a6d68996b0">02e0df0f</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>This issue was solved as part of <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/408/files#diff-51ffac239beb4bdcc415db8bf9e007723a57df383e1ee6dfbf5ce11a5813ea53R21"><code>N-10</code> fix</a>.</em></p>
+</blockquote>
+<!-- b2821337-f21c-43c5-9aa3-0eb446c70839 -->
+<h3 id="inconsistent-handling-of-addoidcaccount-return-value-in-oidcrecoveryvalidator">Inconsistent Handling of <code>addOidcAccount</code> Return Value in <code>OidcRecoveryValidator</code></h3>
+<p>The current <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/blob/ed21d09add8da99d9c82d0f7c30659625c6636e6/src/validators/OidcRecoveryValidator.sol#L149"><code>onInstall</code> implementation</a> ignores the return value of the <code>addOidcAccount</code> function. This might be confusing for readers, as it’s not immediately clear whether the return value is intentionally disregarded or if it’s an oversight.</p>
+<p>Consider documenting the reasoning behind ignoring the return value of the <code>addOidcAccount</code> function.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/440">pull request #440</a> at commit <a href="https://github.com/matter-labs/zksync-sso-clave-contracts/pull/440/commits/0e6415e0d3b64813ddc06384ad3137700e65f310">0e6415e</a>. The Matter Labs team stated:</em></p>
+<blockquote>
+<p><em>The <strong>return value was removed</strong> because it was not being utilized anywhere in the codebase.</em></p>
+</blockquote>
+<!-- e3c86e74-fea5-4eb8-91f3-fa8cd81f2942 -->
+<div style="page-break-after: always;">&nbsp;</div>
+<div id="issue-section-end">&nbsp;</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>The reviewed code introduces an OIDC-based account recovery mechanism to enhance the existing <code>SsoAccount</code> setup, as well as updates to the <code>ERC1271Handler</code> to streamline the protocol. This integration leverages zero-knowledge proofs for secure and flexible recovery procedures.</p>
+<p>Overall, the addition of OpenID Connect recovery presents a clear path for users to restore access through familiar external identity providers. The creation of <code>OidcKeyRegistry</code> for managing OP keys and the <code>OidcRecoveryValidator</code> for facilitating zero-knowledge-based proof-of-control effectively extends the account’s resilience. Integrating these components with the existing <code>WebAuthValidator</code> ensures a consistent process for validation and eventual recovery.</p>
+<p>The Matter Labs team is greatly appreciated for being responsive and cooperative throughout the audit process.</p>
+<div style="page-break-after: always;">&nbsp;</div></span>
+        </div>
+      </div>
+      <div class="col-right">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+
+
+      </main>
+
+      
+      <div data-global-resource-path="oz_2022/templates/partials/footer-EA-live.html"><div id="hs_cos_wrapper_module_172357946680564" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><footer id="footer-navigation">
+  <div class="container-1200">
+    <div class="footer-content">
+      <div class="footer-column smart-contracts">
+         <div class="footer-subcolumn">
+          <p class="footer-column-title">Services</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/security-audits">Smart Contract Security Audit</a></li>
+            <li><a href="https://www.openzeppelin.com/continuous-security-program">Continuous Security Program</a></li>
+            <li><a href="https://www.openzeppelin.com/blockchain-infrastructure">Blockchain Infrastructure Audit</a></li>
+            <li><a href="https://www.openzeppelin.com/zkp">ZKP Audit</a></li>
+          </ul>
+        </div>
+            <div class="footer-subcolumn">
+          
+          <p class="footer-column-title">Developers</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/contracts">Contracts Libraries</a></li>
+            <li><a href="https://wizard.openzeppelin.com/" target="_blank">Contracts Wizard</a></li>
+            <li><a href="https://mcp.openzeppelin.com/" target="_blank">Contracts MCP</a></li>
+            <li><a href="https://docs.openzeppelin.com/upgrades-plugins/" target="_blank">Upgrades Plugin</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack#operate">Relayer</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack#operate">Monitor</a></li>
+            <li><a href="https://builder.openzeppelin.com/" target="_blank">UI Builder</a></li>
+            <li><a href="https://safeutils.openzeppelin.com/" target="_blank">Safe Utils</a></li>
+            <li><a href="https://rolemanager.openzeppelin.com/" target="_blank">Role Manager</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack">The Open Source Stack</a></li>
+          </ul>
+        </div>
+
+       
+      </div>
+
+      <div class="footer-column services">
+         <div class="footer-subcolumn">
+          <p class="footer-column-title">Solutions</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/solutions/banks">Banks</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/asset-managers">Asset Managers</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/payment-networks">Payment Networks</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/blockchain-networks">Blockchain Networks</a></li>
+          </ul>
+        </div>
+     
+      
+       <div class="footer-subcolumn">
+          <p class="footer-column-title">Blockchains</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/networks/arbitrum">Arbitrum</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/base">Base</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/canton">Canton</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/ethereum">Ethereum</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/linea">Linea</a></li>
+            <li><a href="/networks/midnight">Midnight</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/op-mainnet">OP Mainnet</a></li>
+            <li><a href="/networks/starknet">Starknet</a></li>
+            <li><a href="/networks/stellar">Stellar</a></li>
+            <li><a href="/networks/sui">Sui</a></li>
+            <li><a href="/networks/zama">Zama</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/zksync">ZKsync</a></li>
+          </ul>
+        </div>
+
+        
+      </div>
+
+      <div class="footer-column resources">
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Resources</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/research">Research</a></li>
+            <li><a href="https://www.openzeppelin.com/customer-stories">Customer Stories</a></li>
+            <li><a href="https://www.openzeppelin.com/newsletter">Newsletter</a></li>
+            <li><a href="https://docs.openzeppelin.com/" target="_blank">Documentation</a></li>
+            <li><a href="https://www.openzeppelin.com/stats">Stats</a></li>
+            <li><a href="https://forum.openzeppelin.com/" target="_blank">Forum</a></li>
+            <li><a href="https://ethernaut.openzeppelin.com/" target="_blank">Ethernaut CTF</a></li>
+          </ul>
+        </div>
+         
+      </div>
+
+      <div class="footer-column company">
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Company</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/about">About Us</a></li>
+            
+            <li><a href="https://www.openzeppelin.com/news">News</a></li>
+            <li><a href="https://www.openzeppelin.com/careers">Careers</a></li>
+            <li><a href="https://www.openzeppelin.com/why-openzeppelin">Why OpenZeppelin</a></li>
+            <li><a href="https://www.openzeppelin.com/faqs">FAQs</a></li>
+            <li><a href="https://www.openzeppelin.com/brand-kit">Brand Kit</a></li>
+            <li><a href="https://trust.openzeppelin.com/" target="_blank">Trust</a></li>
+             
+          </ul>
+        </div>
+
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Terms &amp; Policies</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/tos">Terms of Service</a></li>
+            <li><a href="https://www.openzeppelin.com/privacy">Privacy Policy</a></li>
+            <li><a href="https://www.openzeppelin.com/trademark-guidelines">Trademark Guidelines</a></li>
+            <li><a href="https://www.openzeppelin.com/agpl-license">AGPL License</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-links">
+        <a href="https://github.com/openzeppelin" aria-label="GitHub">
+          <img src="https://www.openzeppelin.com/hubfs/github-icon-footer.svg" alt="GitHub">
+        </a>
+        <a href="https://twitter.com/OpenZeppelin" aria-label="X (Twitter)">
+          <img src="https://www.openzeppelin.com/hubfs/x-icon-footer.svg" alt="X">
+        </a>
+        <a href="https://www.linkedin.com/company/openzeppelin/" aria-label="LinkedIn">
+          <img src="https://www.openzeppelin.com/hubfs/linkedin-icon-footer.svg" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="copyright">
+        © 2026 Zeppelin Group Ltd
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+      
+    </div>
+
+    
+    
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js"></script>
+<script>
+var hsVars = hsVars || {}; hsVars['language'] = 'en';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67469578632/1788287200396/template_main.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/191486630025/1789648897909/module_Announcement_Banner.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175205469193/1788958259824/module_Navbar_-_Live.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/195607353687/1764794536989/module_NEWS_Content_Subnavbar.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194756946478/1758641063467/module_NEWS_Blog_Post_Content.min.js"></script>
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/www.openzeppelin.com\/news\/sso-account-oidc-recovery-solidity-audit"]);
+_hsq.push(["setPageId", "189851791507"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 189851791507,
+    "legacyPageId": "189851791507",
+    "contentFolderId": null,
+    "contentGroupId": 102321071715,
+    "abTestId": null,
+    "languageVariantId": 189851791507,
+    "languageCode": "en",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/7795250.js"></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript">
+var hsVars = {
+    render_id: "bb50290d-518b-4657-9e37-0e13cf028661",
+    ticks: 1789649046811,
+    page_id: 189851791507,
+    
+    content_group_id: 102321071715,
+    portal_id: 7795250,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    
+    analytics_page_id: "189851791507",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js"></script>
+
+<style>
+  /* Cookie consent Banner
+  */
+  div#hs-modal-header {
+    height: 0!important;
+  }
+  span.hs-always-active-label {
+    font-family: 'Inter'!important;
+  }
+  #hs-modal-content .hs-category-row:has(> .hs-category-row-header > #hs-category-advertisement) {
+    /*display: none;*/
+  }
+  #hs-eu-cookie-settings-button {
+    box-shadow: none!important;
+  }
+
+  #hs-eu-cookie-confirmation {
+    overflow: auto!important;
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #4E5DE48B, #5D628500) border-box!important;
+    border: 1px solid transparent!important;
+  }
+
+  div#hs-eu-cookie-confirmation-inner {
+    padding: 16px!important;
+  }
+
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner p {
+    font-family: 'Inter', sans-serif!important;
+    font-size: 12px!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    line-height: 144%!important;
+    max-width: 624px!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+    font-family: 'Inter', sans-serif!important;
+    font-size: 13px!important;
+    line-height: 144%!important;
+    color: #4F5EE5!important;
+    font-weight: 400!important;
+    text-shadow: none!important;
+    letter-spacing: -0.01em!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button, div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button, 
+  #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-accept-all, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings  {
+    padding: 5px 24px !important;
+    text-transform: none !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    border-radius: 80px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    line-height: 20px !important;
+    color: white !important;
+    text-shadow: none !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+    background: #4F56FA;
+    border: 1px solid transparent !important;
+    min-width: 100px;
+    height: auto!important;
+    margin: 0 5px !important;
+    flex: auto!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button:hover, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-accept-all:hover {
+    background: #4349D4 !important;
+  }
+  div#hs-eu-cookie-confirmation-buttons-area {
+    margin: 0!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings {
+    border: 1px solid #EFEFEF!important;
+    background: #FAFAFA!important;
+    color: #0A0F39!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button:hover, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings:hover {
+    background: #ededed !important;
+  }
+  #hs-eu-cookie-confirmation #hs-eu-opt-in-buttons {
+    flex-grow: 1;
+    align-items: center!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner div#hs-eu-policy-wording {
+    margin-right: 0!important;
+  }
+
+
+
+  #hs-modal #hs-modal-content #hs-modal-header #hs-modal-header-container button#hs-modal-close-button {
+    box-shadow: none!important;
+  }
+  #hs-modal #hs-modal-content #hs-modal-body #hs-modal-body-container #hs-modal-introduction {
+    font-family: 'Inter', sans-serif!important;
+  }
+  #hs-modal #hs-modal-content #hs-modal-body #hs-modal-body-container #hs-categories-container .hs-category-row .hs-category-row-header .hs-category-label {
+    font-family: 'Inter',sans-serif!important;
+  }
+  #hs-modal #hs-modal-content a, #hs-modal #hs-modal-content p {
+    font-family: 'Inter', sans-serif!important;
+  }
+
+
+  @media (min-width: 751px){
+    #hs-eu-cookie-confirmation {
+      max-width: 656px!important;
+    }
+
+  }
+  @media (max-width: 750px){
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+      font-size: 12px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button {
+      font-size: 12px!important;
+      padding: 6px 14px!important;
+      flex-basis: 33%;
+    }
+
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button {
+      font-size: 12px!important;
+      padding: 6px 22px!important;
+      flex-basis: 33%;
+
+    }
+    #hs-eu-cookie-confirmation {
+      max-width: 100%!important;
+      width: calc(100% - 30px)!important;
+      margin-bottom: 10px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner {
+      padding-bottom: 16px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+      padding-bottom: 8px!important;
+      border-bottom: none!important;
+    }
+    div#hs-eu-cookie-confirmation-buttons-area {
+      gap: 8px!important;
+      border-bottom: none!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner p {
+      font-size: 12px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button {
+      margin: 0!important;
+    }
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js" integrity="sha512-qF6akR/fsZAB4Co1QDDnUXWnaQseLGXoniuSuSlPQK6+aWhlMZcHzkasCSlnWoe+TJuudlka1/IQ01Dnhgq95g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- GSAP [ScrollTrigger] CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js" integrity="sha512-IHDCHrefnBT3vOCsvdkMvJF/MCPz/nBauQLzJkupa4Gn4tYg5a6VGyzIrjo6QAUy3We5HFOZUlkUpP0dkgE60A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+  
+</body></html>

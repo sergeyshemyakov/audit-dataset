@@ -1,0 +1,26 @@
+[package]
+name = "circuit_encodings"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+keywords.workspace = true
+categories.workspace = true
+description = "ZKsync Era circuits encodings"
+
+[dependencies]
+# "Owned" dependencies
+zkevm_circuits.workspace = true
+zk_evm.workspace = true
+
+# "External" dependencies
+derivative = "2.2"
+serde = {version = "1", features = ["derive"]}
+
+
+[features]
+default = []
+log_tracing = ["zkevm_circuits/log_tracing"]
+verbose_circuits = ["zkevm_circuits/verbose_circuits"]

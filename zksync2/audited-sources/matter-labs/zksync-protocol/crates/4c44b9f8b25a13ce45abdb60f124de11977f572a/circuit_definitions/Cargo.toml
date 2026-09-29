@@ -1,0 +1,27 @@
+[package]
+name = "circuit_definitions"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+keywords.workspace = true
+categories.workspace = true
+description = "ZKsync Era circuits definitions"
+
+[dependencies]
+# "Owned" dependencies
+circuit_encodings.workspace = true
+snark_wrapper.workspace = true
+
+# "External" dependencies
+derivative = "2.2"
+serde = {version = "1", features = ["derive"]}
+crossbeam = "0.8"
+seq-macro = "0.3.5"
+
+[features]
+default = []
+log_tracing = ["circuit_encodings/log_tracing"]
+verbose_circuits = ["circuit_encodings/verbose_circuits"]

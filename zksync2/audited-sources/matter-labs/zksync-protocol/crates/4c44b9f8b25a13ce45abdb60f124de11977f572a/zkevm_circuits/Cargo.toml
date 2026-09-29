@@ -1,0 +1,39 @@
+[package]
+name = "zkevm_circuits"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+keywords.workspace = true
+categories.workspace = true
+description = "ZKsync Era circuits for EraVM"
+
+[dependencies]
+# "Owned" dependencies
+zkevm_opcode_defs.workspace = true
+cs_derive.workspace = true
+boojum.workspace = true
+
+# "External" dependencies
+derivative = "2"
+serde = { version = "1", features = ["derive"] }
+rand = "0.4"
+smallvec = { version = "1.13", features = [
+    "const_generics",
+    "const_new",
+    "serde",
+] }
+arrayvec = "0.7"
+itertools = "0.10"
+rand_new = { package = "rand", version = "0.8" }
+hex = "0.4"
+seq-macro = "0.3"
+lazy_static = "1.5.0"
+serde_json = "1.0.127"
+
+[features]
+default = []
+log_tracing = ["boojum/log_tracing"]
+verbose_circuits = []

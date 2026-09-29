@@ -1,0 +1,661 @@
+<!DOCTYPE html><!-- Last Published: Wed Sep 23 2026 09:54:50 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="www.nethermind.io" data-wf-page="666c0bb5fe3d6f549841fb3b" data-wf-site="63bcd69729ab7f3ec1ad210a" lang="en" data-wf-collection="666c0bb5fe3d6f549841fb18" data-wf-item-slug="formal-verification-of-the-zksync-verifier"><head><meta charset="utf-8"/><link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/><title>Formal Verification of the ZKSync Verifier: A First for Production zk Systems | Nethermind</title><meta content="Nethermind and Matter Labs formally verify ZKsync’s on-chain zk-verifier honesty in EasyCrypt, showing formal methods can harden zk rollup security. Formal Verification of the ZKSync Verifier: A First for Production zk Systems — Technical insights from Nethermind on Ethereum, cryptography, and decentralized systems." name="description"/><meta content="Formal Verification of the ZKSync Verifier: A First for Production zk Systems" property="og:title"/><meta content="Nethermind and Matter Labs formally verify ZKsync’s on-chain zk-verifier honesty in EasyCrypt, showing formal methods can harden zk rollup security." property="og:description"/><meta content="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/68b6712f651a2cbc1a1958ea_Nethermind_Security_Formal%20Verification%20of%20%20the%20ZKSync%20Verifier.png" property="og:image"/><meta content="Formal Verification of the ZKSync Verifier: A First for Production zk Systems" name="twitter:title"/><meta content="Nethermind and Matter Labs formally verify ZKsync’s on-chain zk-verifier honesty in EasyCrypt, showing formal methods can harden zk rollup security." name="twitter:description"/><meta content="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/68b6712f651a2cbc1a1958ea_Nethermind_Security_Formal%20Verification%20of%20%20the%20ZKSync%20Verifier.png" name="twitter:image"/><meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="RASIyJPC8cRYMNcX5zfIaULi-dOYZanxt_9ZaGpIwVI" name="google-site-verification"/><link href="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/css/nethermind2023.webflow.shared.1170c2b04.min.css" rel="stylesheet" type="text/css" integrity="sha384-EXDCsEord1TX4FjqOkpNlXnPIbxJEwFkAdM5v34ykev+s8Jpsgk1sh4fTU33trOw" crossorigin="anonymous"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script><script type="text/javascript">WebFont.load({  google: {    families: ["Exo:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]  }});</script><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69d35070883713902f10da19_NM_Icon.png" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)"/><link href="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69d35070883713902f10da19_NM_Icon.png" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)"/><link href="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69d3505e1d590c93311556e5_Nethermind.png" rel="apple-touch-icon"/><style>
+  .w-mod-js .page_wrap { opacity: 0; }
+  .nav-mega_top-tabs.is-submenu-aligned { --submenu-x: 0px; }
+  .nav-mega_top-tabs.is-submenu-aligned .nav-mega_top-content {
+    left: var(--submenu-x);
+    right: auto;
+    width: max-content;
+  }
+</style>
+<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+    <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="lEzWnhFWdawk8Y" async></script>
+
+<!-- Matomo Tag Manager -->
+<script src="https://cdn.matomo.cloud/nethermind.matomo.cloud/container_sHOaTDeI.js"></script>
+<!-- End Matomo Tag Manager --><!-- Canonical URL -->
+<link rel="canonical" href="" />
+
+<!-- MathJax config -->
+<script>
+  window.MathJax = {
+    tex: {
+      // Solo \( ... \) para math inline. Se quitó ['$','$'] para que
+      // los precios ($2,000, $0.90) ya no se rendericen como fórmulas.
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    },
+    options: {
+      ignoreHtmlClass: 'no-mathjax' // Ignora el contenido con esta clase
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Formal Verification of the ZKSync Verifier: A First for Production zk Systems",
+  "image": "https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/68b6712f651a2cbc1a1958ea_Nethermind_Security_Formal%20Verification%20of%20%20the%20ZKSync%20Verifier.png",
+  "datePublished": "Feb 07, 2025",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Nethermind Security - Formal Verification Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nethermind"
+  }
+}
+</script></head><body class="page_bod"><div data-animation="default" data-collapse="none" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav_mega_bar_desktop w-nav"><div class="nav-mega_bar"><div class="nav-mega_left"><a href="/" class="nav_logo w-nav-brand"><img loading="lazy" src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cc738b1be5067a6f403995_NM_Logo_Horizontal_Light.svg" alt="" class="nav_logo-image"/></a></div><div data-current="" data-easing="ease" data-duration-in="100" data-duration-out="0" class="nav-mega_top-tabs w-tabs"><div class="nav-mega_top-menu w-tab-menu"><a data-w-tab="Services" class="nav-mega_top-tab w-inline-block w-tab-link"><div class="body-dmsans-light is-white is-centre">Services</div></a><a data-w-tab="Blockchain" class="nav-mega_top-tab w-inline-block w-tab-link"><div class="body-dmsans-light is-white is-centre">Blockchain Expertise</div></a><a data-w-tab="Security" class="nav-mega_top-tab w-inline-block w-tab-link"><div class="body-dmsans-light is-white is-centre">Nethermind Security</div></a><a data-w-tab="Institutional" class="nav-mega_top-tab w-inline-block w-tab-link"><div class="body-dmsans-light is-white is-centre">Institutional</div></a><a data-w-tab="Company" class="nav-mega_top-tab w-inline-block w-tab-link"><div class="body-dmsans-light is-white is-centre">Company</div></a></div><div class="nav-mega_top-content w-tab-content"><div data-w-tab="Services" class="w-tab-pane"><div class="nav-mega_wrap"><div data-current="dir-protocol" data-easing="ease" data-duration-in="300" data-duration-out="100" class="nav-mega_tabs w-tabs"><div class="nav-mega_menu w-tab-menu"><a data-w-tab="dir-protocol" class="nav-mega_tab w-inline-block w-tab-link w--current"><div class="body-small-dmsans-regular">Protocol Engineering &amp; Research</div></a><a data-w-tab="dir-network" class="nav-mega_tab w-inline-block w-tab-link"><div class="body-small-dmsans-regular">Network Infrastructure &amp; Access</div></a><a data-w-tab="dir-scaling" class="nav-mega_tab w-inline-block w-tab-link"><div class="body-small-dmsans-regular">Scaling &amp; Interoperability</div></a><a data-w-tab="dir-compliance" class="nav-mega_tab w-inline-block w-tab-link"><div class="body-small-dmsans-regular">Compliance &amp; Identity</div></a><a data-w-tab="dir-asset" class="nav-mega_tab w-inline-block w-tab-link"><div class="body-small-dmsans-regular">Asset &amp; Treasury</div></a></div><div class="tabs-content w-tab-content"><div data-w-tab="dir-protocol" class="w-tab-pane w--tab-active"><div class="nav-mega_panel"><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Protocol Development</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Core protocol development</div><div class="body-small-dmsans-regular">Execution Node engineering</div><div class="body-small-dmsans-regular">EVM research and optimization</div><div class="body-small-dmsans-regular">Consensus mechanism design</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Cryptography</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Applied cryptography</div><div class="body-small-dmsans-regular">ZK systems engineering</div><div class="body-small-dmsans-regular">Formal methods</div><div class="body-small-dmsans-regular">Post-quantum cryptography</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Security Research</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Protocol security research</div></div></div></div></div><div data-w-tab="dir-network" class="w-tab-pane"><div class="nav-mega_panel"><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Connectivity &amp; Access</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Execution client deployment</div><div class="body-small-dmsans-regular">Sovereign node setup</div><div class="body-small-dmsans-regular">Enterprise RPC services</div><div class="body-small-dmsans-regular">Full node deployment tooling</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Operations &amp; Resilience</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Node operations and management</div><div class="body-small-dmsans-regular">Validator infrastructure</div><div class="body-small-dmsans-regular">DevOps and monitoring</div><div class="body-small-dmsans-regular">Infrastructure resilience design</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Deployment Environments</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Cloud and hybrid infrastructure</div></div></div></div></div><div data-w-tab="dir-scaling" class="w-tab-pane"><div class="nav-mega_panel"><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Scaling &amp; Performance</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Layer 2 deployment and engineering</div><div class="body-small-dmsans-regular">Custom rollup design &amp; throughput optimisation</div><div class="body-small-dmsans-regular">OP Stack customisation</div><div class="body-small-dmsans-regular">Dedicated blockspace for enterprise</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Interoperability &amp; Cross-chain</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Cross-chain messaging infrastructure</div><div class="body-small-dmsans-regular">Bridge engineering</div><div class="body-small-dmsans-regular">ZK circuit design for cross-chain</div><div class="body-small-dmsans-regular">Protocol-level transitions</div></div></div></div></div><div data-w-tab="dir-compliance" class="w-tab-pane"><div class="nav-mega_panel"><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">KYC &amp; AML</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">On-chain KYC/AML</div><div class="body-small-dmsans-regular">Biometric identity systems</div><div class="body-small-dmsans-regular">Verifiable credentials</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Monitoring &amp; Reporting</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Transaction monitoring</div><div class="body-small-dmsans-regular">Sanctions screening</div><div class="body-small-dmsans-regular">Regulatory reporting and analytics</div><div class="body-small-dmsans-regular">Regulatory gap analysis</div></div></div></div></div><div data-w-tab="dir-asset" class="w-tab-pane"><div class="nav-mega_panel"><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Tokenization</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Tokenization platforms &amp; engines</div><div class="body-small-dmsans-regular">RWA &amp; Fund tokenization</div><div class="body-small-dmsans-regular">Secondary market integrations and extensions</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Vaults Infrastructure</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Liquid staking vaults</div><div class="body-small-dmsans-regular">Staking infrastructure</div><div class="body-small-dmsans-regular">Liquidity pool design</div></div></div><div class="nav-mega_group"><div class="nav-mega_label-box"><div class="nav-mega_label">Treasury &amp; Portfolio</div></div><div class="nav-mega_list_item"><div class="body-small-dmsans-regular">Treasury management</div><div class="body-small-dmsans-regular">Portfolio management</div></div></div></div></div></div></div><div class="nav-mega_footer"><div class="body-dmsans-light">Talk to one of our experts today</div><a id="cta-nav-services-contact" href="/contact-us" class="nav-mega_footer_cta w-inline-block"><div class="body-dmsans-light">Contact us</div><div class="form_link-arrow w-embed"><svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <path d="M0.5 6.75H13M6.75 13L13 6.75L6.75 0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div></a></div></div></div><div data-w-tab="Blockchain" class="w-tab-pane"><div class="nav-mega_split"><div class="nav-mega_flex-col"><a href="/blockchain-core-engineering" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Engineering</div><div class="body-small-dmsans-regular">Protocol engineering across Ethereum and diverse network architectures.<br/></div></a><a href="/infrastructure-management" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Infrastructure</div><div class="body-small-dmsans-regular">Enterprise-grade node deployment and operations at institutional scale.</div></a></div><div class="nav-mega_flex-col"><a href="/nethermind-research" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Research</div><div class="body-small-dmsans-regular">Cryptography, zero-knowledge systems, and protocol design.<br/></div></a><a href="/nethermind-security" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Security</div><div class="body-small-dmsans-regular">Audits and formal verification backed by AI-powered tooling.</div></a></div></div></div><div data-w-tab="Security" class="w-tab-pane"><div class="nav-mega_split"><div class="nav-mega_flex-col"><a href="/smart-contract-audits" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Smart Contract Audits</div><div class="body-small-dmsans-regular">400+ security audits across smart contracts, protocols, and infrastructure.<br/></div></a><a href="/formal-verification" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Formal Verification</div><div class="body-small-dmsans-regular">Mathematical proofs that code and protocols behave exactly as intended.</div></a></div><div class="div-block-38"><a href="/smart-contract-audit-reports" class="nav-mega_block is-short w-inline-block"><div class="body-dmsans-light is-white">Audit Reports</div></a><a href="/audit-subsidy-programs" class="nav-mega_block is-short w-inline-block"><div class="body-dmsans-light is-white">Audit Subsidy Program</div></a><a href="https://auditagent.nethermind.io/" target="_blank" class="nav-mega_block is-short w-inline-block"><div class="body-dmsans-light is-white">AuditAgent</div></a><a href="https://agentarena.nethermind.io/" target="_blank" class="nav-mega_block is-short w-inline-block"><div class="body-dmsans-light is-white">AgentArena</div></a><a href="/zk-audits-and-zero-knowledge-security" class="nav-mega_block is-short w-inline-block"><div class="body-dmsans-light is-white">ZK Audit</div></a></div></div></div><div data-w-tab="Institutional" class="w-tab-pane"><div class="nav-mega_split is-short"><div class="nav-mega_flex-col"><a href="/institutional-node-infrastructure" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Bedrock - Nethermind&#x27;s first institutional software</div><div class="body-small-dmsans-regular">Bedrock is infrastructure for institutions to operate safely on public networks.<br/></div></a></div></div></div><div data-w-tab="Company" class="w-tab-pane"><div class="nav-mega_split is-short is-vertical"><div class="nav-mega_flex-col"><a href="/about-us" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">About us</div></a><a href="/open-roles" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Open roles</div></a></div><div class="nav-mega_flex-col"><a href="/blog" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Insights</div></a><a href="/events" class="nav-mega_block w-inline-block"><div class="body-dmsans-light is-white">Events</div></a></div></div></div></div></div><div class="nav_right"><div class="nav_right-icons"><a href="https://www.linkedin.com/company/nethermind/" target="_blank" class="nav_icon-link w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cdd3677b4f0412597ec61f_Icon%3Dlinkedin.svg" alt="" class="team-card_social-icon is-large"/></a></div><div class="nav_right-button"><a data-w-id="aa239169-4447-c47e-a9e2-bab9af3caaf5" href="/contact-us" class="btn_secondary w-inline-block"><div class="bbox"><p class="cta_swap-gray_text">Contact us</p><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/66b0ff1885a2fcca23be781b_arrow_right_gray.svg" loading="lazy" alt="" class="sec-cta-arrow-1"/><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/66b0ff77a97d784a95a1b09c_arrow_right_orange.svg" loading="lazy" alt="" class="sec-cta-arrow-2"/></div></a></div></div></div><div class="w-condition-invisible w-embed w-script"><style>
+/* ---------- Mega menu panel ---------- */
+/* Closed by default. visibility + pointer-events instead of display:none
+   so Webflow's native fade still works and it isn't clickable while invisible. */
+.nav-mega_top-content{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .15s ease, visibility .15s ease;
+}
+
+/* Opens on hover over the tabs block. The panel sits INSIDE nav-mega_top-tabs,
+   so moving from tab to panel leaves no gap where hover would be lost.
+   focus-within keeps it open for keyboard navigation. */
+.nav-mega_top-tabs:hover .nav-mega_top-content,
+.nav-mega_top-tabs:focus-within .nav-mega_top-content{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ---------- Dark overlay ---------- */
+/* Applied on page_wrap, not on the nav: nav_mega_bar_desktop is fixed with z-index 999
+   and creates its own stacking context, so a negative z-index inside it would paint
+   behind the bar.
+   998 sits directly below that bar and above every page element. The previous value
+   of 50 was too low — the homepage tab row (tab_item) carries z-index 95 and painted
+   straight through the overlay.
+   pointer-events none is required or it blocks clicks across the whole page. */
+.page_wrap::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 25, 40, .5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease, visibility .2s ease;
+  z-index: 998;
+}
+
+/* :has() looks up from body because the nav sits outside page_wrap */
+body:has(.nav-mega_top-tabs:hover) .page_wrap::after,
+body:has(.nav-mega_top-tabs:focus-within) .page_wrap::after{
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---------- Footer hover ---------- */
+/* The whole footer row is the hover target, not just the link, so the CTA has a
+   large hit area. Descendant selectors are required: Webflow's Style Panel can only
+   set hover on the element itself, not on its children.
+   Transition sits on the base rule so the colour eases out as well as in. */
+.nav-mega_footer .body-dmsans-light,
+.nav-mega_footer .button_text-arrow,
+.nav-mega_footer .button_text-arrow .body-dmsans-light,
+.nav-mega_footer .form_link-arrow,
+.nav-mega_footer .form_link-arrow svg,
+.nav-mega_footer .form_link-arrow path{
+  transition: color .15s ease, stroke .15s ease;
+}
+
+/* !important is required: body-dmsans-light inherits colour from combo classes inside
+   the button_text-arrow symbol, and those outrank a plain descendant selector.
+   The three-class selector is what beats the symbol's own descendant rule on the
+   "Contact us" label specifically. */
+.nav-mega_footer:hover .body-dmsans-light,
+.nav-mega_footer:hover .button_text-arrow,
+.nav-mega_footer:hover .button_text-arrow .body-dmsans-light,
+.nav-mega_footer:hover .form_link-arrow,
+.nav-mega_footer:hover .form_link-arrow svg{
+  color: #FF9900 !important;
+}
+
+/* The arrow path uses stroke="currentColor", so stroke is set explicitly:
+   currentColor inheritance into an embedded SVG is unreliable across browsers. */
+.nav-mega_footer:hover .form_link-arrow path{
+  stroke: #FF9900 !important;
+}
+</style>
+
+<script>
+/* Hover-switch between tabs. Webflow.push() is required: without it the script runs
+   before Webflow initialises the Tabs component and click() finds no handler. */
+window.Webflow = window.Webflow || [];
+window.Webflow.push(function () {
+  document.querySelectorAll('.nav-mega_top-tab').forEach(function (tab) {
+    tab.addEventListener('mouseenter', function () {
+      // Desktop only: on touch devices hover fires on first tap
+      if (window.matchMedia('(min-width: 992px)').matches && !tab.classList.contains('w--current')) {
+        tab.click(); // reuses the native handler so w--current and ARIA stay correct
+      }
+    });
+  });
+});
+</script></div></div><div data-collapse="medium" data-animation="default" data-duration="400" fs-scrolldisable-element="smart-nav" data-easing="ease" data-easing2="ease" role="banner" class="nav_bar_mobile w-nav"><div class="nav-mobile_bar"><div class="nav-mobile_bar-block"><a href="/" class="brand w-nav-brand"><img loading="lazy" src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cc738b1be5067a6f403995_NM_Logo_Horizontal_Light.svg" alt="" class="nav_logo-image"/></a><div class="nav-mobile_burger w-nav-button"><div class="nav-mobile_burger-icon w-icon-nav-menu"></div></div><nav role="navigation" class="nav-mobile_menu-wrap w-nav-menu"><div class="divider_shine"></div><div class="nav-mobile_list"><div data-delay="0" data-hover="false" data-w-id="ca97fc77-eb76-466f-9b08-b01e88bcdd70" class="nav-mobile_sublist w-dropdown"><div class="nav-mobile_toggle w-dropdown-toggle"><div class="nav-mobile_toggle-arrow w-icon-dropdown-toggle"></div><div class="h5-dmsans-regular">Services</div></div><nav class="nav-mobile_dropdown w-dropdown-list"><div class="nav-mobile_group"><div class="nav-mega_label is-mobile">Protocol Engineering &amp; Research</div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Protocol Development</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Cryptography &amp; Formal Methods</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Security Research</div></div></div><div class="nav-mobile_group"><div class="nav-mega_label is-mobile">Network Infrastructure &amp; Access</div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Connectivity &amp; Access</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Operations &amp; Resilience</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Deployment Environments</div></div></div><div class="nav-mobile_group"><div class="nav-mega_label is-mobile">Scaling &amp; Interoperability</div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Scaling &amp; Performance</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Interoperability &amp; Cross-chain</div></div></div><div class="nav-mobile_group"><div class="nav-mega_label is-mobile">Compliance &amp; Identity</div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">KYC &amp; AML</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Monitoring &amp; Reporting</div></div></div><div class="nav-mobile_group"><div class="nav-mega_label is-mobile">Asset &amp; Treasury</div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Tokenization</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Vaults Infrastructure</div></div><div class="bullet_item is-nested"><div class="bullet_square is-gray"></div><div class="body-dmsans-light">Treasury &amp; Portfolio</div></div></div></nav></div><div data-delay="0" data-hover="false" data-w-id="ca97fc77-eb76-466f-9b08-b01e88bcddb9" class="nav-mobile_sublist w-dropdown"><div class="nav-mobile_toggle w-dropdown-toggle"><div class="nav-mobile_toggle-arrow w-icon-dropdown-toggle"></div><div class="h5-dmsans-regular">Blockchain Expertise</div></div><nav class="nav-mobile_dropdown w-dropdown-list"><div class="nav_dropdown-item-content centre"><a href="/blockchain-core-engineering" class="nav_dropdown-link is-top w-inline-block"><div class="h6-dmsans-regular">Engineering</div></a></div><div class="nav_dropdown-item-content centre"><a href="/infrastructure-management" class="nav_dropdown-link is-top w-inline-block"><div class="h6-dmsans-regular">Infrastructure</div></a></div><div class="nav_dropdown-item-content centre"><a href="/nethermind-research" class="nav_dropdown-link is-top w-inline-block"><div class="h6-dmsans-regular">Research</div></a></div><div class="nav_dropdown-item-content centre"><a href="/nethermind-security" class="nav_dropdown-link is-top w-inline-block"><div class="h6-dmsans-regular">Security</div></a></div></nav></div><div data-delay="0" data-hover="false" class="nav-mobile_sublist w-dropdown"><div class="nav-mobile_toggle w-dropdown-toggle"><div class="nav-mobile_toggle-arrow w-icon-dropdown-toggle"></div><div class="h5-dmsans-regular">Nethermind Security</div></div><nav class="nav-mobile_dropdown w-dropdown-list"><div class="nav_dropdown-item-content"><div class="nav_dropdown-text"><a href="/smart-contract-audits" class="nav_dropdown-link is-top w-inline-block"><div class="h6-dmsans-regular">Smart Contract Audits</div></a><a href="/smart-contract-audit-reports" class="nav_dropdown-link is-subitem w-inline-block"><div class="h6-dmsans-regular is-gray">Audit Reports</div></a><a href="/audit-subsidy-programs" class="nav_dropdown-link is-subitem w-inline-block"><div class="h6-dmsans-regular is-gray">Audit Subsidy Program</div></a><a href="https://auditagent.nethermind.io/" target="_blank" class="nav_dropdown-link is-subitem w-inline-block"><div class="h6-dmsans-regular is-gray">AuditAgent</div></a><a href="https://agentarena.nethermind.io/" target="_blank" class="nav_dropdown-link is-subitem w-inline-block"><div class="h6-dmsans-regular is-gray">AgentArena</div></a><a href="/zk-audits-and-zero-knowledge-security" class="nav_dropdown-link is-subitem w-inline-block"><div class="h6-dmsans-regular is-gray">ZK Audit</div></a></div></div><div class="nav_dropdown-item-content is-centre"><a href="/formal-verification" class="nav_dropdown-link w-inline-block"><div class="h6-dmsans-regular">Formal Verification</div></a></div></nav></div><div data-delay="0" data-hover="false" data-w-id="ca97fc77-eb76-466f-9b08-b01e88bcddef" class="nav-mobile_sublist w-dropdown"><div class="nav-mobile_toggle w-dropdown-toggle"><div class="nav-mobile_toggle-arrow w-icon-dropdown-toggle"></div><div class="h5-dmsans-regular">Institutional</div></div><nav class="nav-mobile_dropdown w-dropdown-list"><div class="nav_dropdown-item-content centre"><div class="nav_dropdown-text"><a href="/institutional-node-infrastructure" class="nav_dropdown-link is-top w-inline-block"><div class="h6-dmsans-regular">Bedrock</div></a></div></div></nav></div><div data-delay="0" data-hover="false" class="nav-mobile_sublist w-dropdown"><div class="nav-mobile_toggle w-dropdown-toggle"><div class="nav-mobile_toggle-arrow w-icon-dropdown-toggle"></div><div class="h5-dmsans-regular">Company</div></div><nav class="nav-mobile_dropdown w-dropdown-list"><div class="nav_dropdown-item-content is-centre"><a href="/about-us" class="nav_dropdown-link w-inline-block"><div class="h6-dmsans-regular">About Us</div></a></div><div class="nav_dropdown-item-content is-centre"><a href="/blog" class="nav_dropdown-link w-inline-block"><div class="h6-dmsans-regular">Insights</div></a></div><div class="nav_dropdown-item-content is-centre"><a href="/open-roles" class="nav_dropdown-link w-inline-block"><div class="h6-dmsans-regular">Open Roles</div></a></div><div class="nav_dropdown-item-content is-centre"><a href="/events" class="nav_dropdown-link w-inline-block"><div class="h6-dmsans-regular">Events</div></a></div></nav></div><div class="nav-mobile_cta"><a data-w-id="aa239169-4447-c47e-a9e2-bab9af3caaf5" href="/contact-us" class="btn_secondary w-inline-block"><div class="bbox"><p class="cta_swap-gray_text">Contact us</p><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/66b0ff1885a2fcca23be781b_arrow_right_gray.svg" loading="lazy" alt="" class="sec-cta-arrow-1"/><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/66b0ff77a97d784a95a1b09c_arrow_right_orange.svg" loading="lazy" alt="" class="sec-cta-arrow-2"/></div></a></div></div></nav></div><div class="w-condition-invisible w-embed"><!-- Mobile nav scroll fix. Code Embed inside nav_mobile, sibling of nav-mobile_bar.
+     Requires Settings → Advanced → "Keep in HTML when hidden". -->
+<style>
+@media (max-width: 991px){
+
+  /* 100vh on mobile resolves to the LARGE viewport — the height the screen would
+     have with the URL bar hidden. The panel ends up ~100px taller than what is
+     actually visible, so its bottom sits under the browser chrome and, because
+     scrollHeight equals clientHeight, there is no scroll left to reach it.
+     dvh tracks the real visible height as the URL bar shows and hides.
+     The plain vh line is the fallback for browsers without dvh support. */
+  .nav-mobile_menu-wrap{
+    height: calc(100vh - 4rem) !important;
+    height: calc(100dvh - 4rem) !important;
+    bottom: auto !important;        /* stop a bottom offset from driving the height instead */
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;   /* no pull-to-refresh, no scroll chaining to the page */
+  }
+
+  /* Clears the iOS home indicator so the CTA is never half-covered. */
+  .nav-mobile_cta{
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  }
+}
+</style></div></div></div><div class="page_wrap is-hero white"><div class="hero_article-wrap"><div class="hero_article-section"><div class="layout_dual-box is-left is-blog"><div class="hero_article-headline"><a href="/blog" class="hero_article-back w-inline-block"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/667c13920eafb7d8092bf305_Arrow-orange_left.svg" loading="lazy" alt="" class="hero_article-back-icon is-left"/></a><div class="blog_headline-wrap"><div class="hero_article-info"><h4 class="tag_category">Security</h4><div class="hero_dot is-article">‧</div><div class="blog-card_date">Feb 7, 2025</div></div><h1 class="h1-exo-regular is-small">Formal Verification of the ZKSync Verifier: A First for Production zk Systems</h1></div></div></div><div id="w-node-_065e3fe9-751a-1a96-6591-b0f83b2e42eb-9841fb3b" class="layout_dual-box is-right is-blog"><div class="blog-article_wrap"><div class="divider_shine short"></div><a href="/authors/nethermind-security-formal-verification" class="author_wrap w-inline-block"><div class="author_container"><div class="author_name-wrap"><img src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6948a4e44a6fe6c34b38f700_NM_Security.png" loading="lazy" alt="" class="author_image is-small"/><div class="author_info"><h4 class="tag_category is-gray">author</h4><div class="author_name">Nethermind Security - Formal Verification Team</div></div></div><div class="author_bio">The Nethermind Formal Verification team focuses on mathematically proving correctness and security properties of zk-circuits, protocols, and cryptographic systems.</div></div></a><div class="divider_shine short"></div><div class="divider_shine short w-condition-invisible"></div><div class="author_wrap w-condition-invisible"><h4 class="tag_category is-gray">co-author</h4><div class="w-dyn-list"></div></div><div class="divider_shine short w-condition-invisible"></div><div class="divider_shine short w-condition-invisible"></div><div class="author_wrap bottom w-condition-invisible"><h4 class="tag_category is-gray">credits</h4><div class="author_credits w-condition-invisible"><div class="author_name w-dyn-bind-empty"></div></div></div><div class="divider_shine short w-condition-invisible"></div></div></div></div></div><div class="divider_shine"></div><div class="blog-article_content-wrap"><div class="blog-article_content"><a data-asset-download="auto" href="#" class="blog-article_download w-inline-block w-condition-invisible"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/681330ac4a532c853d8b5b77_download_arrow.svg" loading="lazy" alt="" class="arrow_download orange"/><div class="body-dmsans-light is-navy w-dyn-bind-empty"></div></a><div class="rich-text-block_navy w-richtext"><h2>TL; DR</h2><p>‍</p><p>The Formal Verification team at Nethermind joined forces with Matter Labs to formally verify the honesty of ZKsync&#x27;s on-chain zk-verifier using EasyCrypt. This is a first-of-its-kind effort that showcases the applicability of formal verification in the broader zk ecosystem, with Nethermind leading the charge.</p><p>‍</p><p>Read on for a full account. Or just get in touch right now to see what we can do about verifying <em>your</em> zk verifier.</p><p>‍</p><p>‍</p><p>‍</p><h2>Introduction</h2><p>‍</p><p>In recent years, zero-knowledge (zk) proofs have emerged as a transformative technology in bringing Ethereum closer to its goal of achieving scalability and privacy. The key to their usefulness lies in their ability to allow one party (the prover) to demonstrate succinctly to another party (the verifier) that a given statement holds. In addition, there exists a fundamental asymmetry between the work required of the prover and the verifier: while the prover requires significant computational power to generate a proof, the verifier can quickly and efficiently check whether or not a proof is correct.</p><p>‍</p><p>In the context of Ethereum, zk rollups leverage this ability and asymmetry by having:<br/>‍</p><ul role="list"><li>an <em>off-chain zk prover</em>, which is able to process a multitude of transactions and then generate a succinct proof that all these transactions were processed correctly according to some pre-defined rules; and</li><li>an <em>on-chain zk verifier</em>, which verifies the proofs provided by the zk prover, acting as a trustless arbiter of truth and ensuring validity of all rolled-up transactions;<br/>‍</li></ul><p>where the semantics of transactions is commonly encoded as a set of arithmetic constraints over a finite field and is referred to as a <em>zk circuit.</em> In this way, zk rollups not only increase overall Ethereum scalability by reducing their on-chain storage and compute, but also, <strong>in an ideal world</strong>, do not allow for invalid state updates. However, there are three main issues that could make our world less than ideal: incorrect zk circuits; malicious provers; and malicious verifiers.<br/>‍</p><p>While recognising the importance of having correct zk circuits as well as the continuous and growing effort from the community that is going into their verification, we focus here on understanding the potential impact of the remaining two issues, as well as what it would mean to ensure correctness and security of the associated proof infrastructure components. <br/>‍</p><p>Before doing so, however, we define what it means for a zk verifier/prover implementation to be <em>honest</em>, as this notion underpins a number of relevant security properties below. In essence, a verifier implementation is honest if it:<br/>‍</p><ul role="list"><li>executes the verification algorithm exactly as specified; and</li><li>uses true randomness (if in an interactive setting) or a Fiat-Shamir heuristic equivalent (if in a non-interactive setting) where required.<br/>‍</li></ul><p>and a prover implementation is honest if it:<br/>‍</p><ul role="list"><li>executes the proving algorithm exactly as specified; and</li><li>uses a Fiat-Shamir heuristic equivalent where required in the non-interactive setting.<br/>‍</li></ul><p>The reader would be correct to note that honesty, by this definition, corresponds to the more generally used notion of <em>functional correctness</em>.<br/><br/>‍<strong>Impact of incorrectness of the prover or the verifier.</strong> On the one hand, if the verifier is honest but the prover is malicious, the worst-case scenario would involve liveness failures, but not safety failures. In particular, a malicious prover would not be able to generate a valid proof for an invalid computation, as the underlying cryptographic assumptions make this computationally infeasible. While liveness issues would admittedly be disruptive to the rollup operations, they could not, for example, result in funds being stolen or transactions being forged.<br/><br/>On the other hand, a malicious verifier could accept invalid proofs (for example, those generated by a malicious prover) as valid, potentially leading to catastrophic security breaches of the rollup.<br/><br/>‍<strong>Costs and benefits of formally establishing correctness.</strong> Provers are required to perform complex mathematical operations, use a variety of performance optimisations, and apply protocol-specific logic. This impacts the size of their codebase, which can easily reach tens if not hundreds of thousands of lines of code, making formal correctness assessments highly challenging. Moreover, there appears to be a shift in the Ethereum ecosystem towards decentralised provers, which cannot be trusted in principle as they could run on potentially untrusted custom hardware with potentially modified versions of the prover protocol/software.<br/><br/>In contrast, zk verifiers:<br/>‍</p><ul role="list"><li>are substantially smaller than provers in codebase size and computational complexity;</li><li>are centralised, meaning that there is only one verifier to target per ecosystem;</li><li>are normally public and deployed on-chain, meaning that their bytecode can be audited by the general public; and</li><li>as per the above, if proven correct, substantially mitigate the consequences of malicious provers.</li></ul><p><br/>We believe that these combined facts make zk verifiers the appropriate <em>first target</em> for formal verification, a point previously recognised and advocated for by Firsov and Livshits [4].</p><p>‍</p><p>‍</p><p>‍</p><h4>What are the most important properties to consider?</h4><p>‍</p><p>When it comes to the prover and the verifier, and assuming circuit correctness, the essential properties that need to hold are the following:</p><p>‍</p><ol role="list"><li><strong>Honesty (prover/verifier)</strong>, as defined above.</li><li><strong><em>S</em>oundness (verifier)<em>:</em></strong> there exists only a negligible probability that a malicious prover can convince the honest verifer of a statement that does not hold;</li><li><strong>Completeness (prover-verifier)</strong>: a proof generated by an honest prover is accepted by an honest verifier. This property can be <em>perfect</em> (with no caveats) or <em>statistical</em> (up to a negligible probability);</li><li><strong>Zero-knowledge (prover)</strong>: in the presence of an honest prover, there exists only a negligible probability that a malicious verifier can extract any information about the witness from the provided proof;</li><li><strong>Knowledge soundness (verifier)</strong>: if a prover is able to convince an honest verifier, then it also must be able to construct the appropriate witness with overwhelming probability.<br/>‍</li></ol><p>In the work of Bellare and Goldreich [1], it is shown that soundness (1) can be derived from knowledge soundness (4), a result recently mechanised by Firsov and Unruh [2]. Further, Attema, Fehr, and Kloss [3] have shown that (4) can itself be derived from an additional property, termed s<em>pecial soundness</em>. The work done in [2] has demonstrated how proofs of special soundness can be mechanised for some interactive versions of simple protocols, such as the Fiat-Shamir, Schnorr, and Blum protocols.</p><p>‍</p><p>‍</p><p>‍</p><h4>Which tools did we use?</h4><p>‍</p><p>In considering which tools to use for this effort and stopping short of building our own, we were guided by the two must-have capabilities:<br/>‍</p><ol role="list"><li>specialised reasoning about cryptographic properties, and</li><li>robust general reasoning about programs (in this case, about Yul programs), ideally using an established formalism, such as Hoare or Separation Logic,<br/>‍</li></ol><p>which left us with only one choice: the <a href="https://www.easycrypt.info/">EasyCrypt</a> interactive framework for proving security properties of cryptographic constructions and protocols. The key advantage of EasyCrypt over other available tools are its built-in specialised logics for reasoning about probabilistic programs and program equivalence, which are essential for proving the complex cryptographic properties that underpin the zk paradigm. In more technical terms, EasyCrypt comes with a primitive formalisation of probabilistic Relational Hoare Logic (pRHL), which is a dedicated cryptography-oriented program logic, together with an advanced tactic language for associated reasoning and integration with state-of-the-art SMT solvers.</p><p>‍</p><p>The only aspect that EasyCrypt did not readily provide was the ability to reason about Yul programs. To that end, we extended it with a model of the subset of Yul required to execute the verifier by implementing the required Yul instructions, guided by our Yul formalisation in Lean, which underpins our Clear framework. In this way, we have created a reusable infrastructure for verification of zk verifiers written in Yul, while also giving a more general pathway for what it would mean to use EasyCrypt to prove zk verifiers written in other languages.</p><p>‍</p><p>‍</p><p>‍</p><h4>Which properties have we proven?</h4><p>‍</p><p>We have proven that the actual on-chain implementation of the ZKsync zk verifier in Yul is <em>honest</em>. We have achieved this by showing that this implementation behaves in the same way an honest verifier would. In more technical terms, we have established a bi-simulation between the implementation and an abstract model of an honest verifier. This abstract model is written in pseudo code manipulating field and group elements and has eyeball equivalence with the honest verifier definitions from the PLONK/plookup papers [5, 6].</p><p>‍</p><p>This effort took us roughly 2.5 months to execute, including the learning curve of EasyCrypt and the creation of the Yul model.</p><p>‍</p><p>‍</p><p>‍</p><h4>What about the remaining properties?</h4><p>‍</p><p>This project was time-scoped with the sole goal of proving verifier honesty. Given our experience, we have high confidence that we would able to prove most of the remaining properties and look forward to putting this to a practical test—for the moment, let us explain what would need to be done for each.</p><p>‍</p><p>When it comes to special soundness (from which knowledge soundness and soundness follow), there already exists a pen-and-paper proof for a slightly less complex version of the ZKsync verifier (for more details, see [2, 3]). In addition, special soundness proofs have already been done in EasyCrypt for less complex verifiers and there already exists a comprehensive library of supporting lemmas and theorems [2], including a derivation of knowledge soundness and soundness from special soundness.</p><p>‍</p><p>When it comes to completeness, we would need to additionally create a abstract model of the honest prover in EasyCrypt and then use it together with the abstract model of the honest verifier in the proof.</p><p>‍</p><p>Finally, we believe that proving prover honesty is out of reach at the moment because the prover is substantially larger than the 1710 lines of Yul of the verifier, and is also written in Rust, C++, and Cuda, the semantics of each of which is much more complex than that of Yul and would require a considerable EasyCrypt encoding effort.</p><p>‍</p><p>‍</p><p>‍</p><h4>What does the future hold?</h4><p>‍</p><p>We have many exciting plans in store and services to offer to interested clients! For example, with support by the creators of EasyCrypt, we will soon be submitting a grant to the Ethereum Foundation to embed pRHL in Lean, with the ultimate goal of creating a dedicated, fully foundational EasyCrypt-like tool for zk reasoning.</p><p>‍</p><p>We are very much looking forward to pushing the boundaries of the field by formally verifying as many security properties for as many real-world zk verifiers as possible. We firmly believe that sooner rather than later, and with the right approach and support from the community, verified zk verifiers will be a matter of course rather than outcomes of isolated efforts. Please do get in touch with us if you would like to strengthen your zk frameworks with the strongest correctness guarantees available on the market!</p><p>‍</p><p>In the remainder of the blog, and for the interested specialist reader, we delve deeper into the most salient technical details of our project.</p><p>‍</p><p>‍</p><p>‍</p><h2>To the Verification!</h2><p>‍</p><p>Having established the importance of formally verifying zk verifiers and our choice of EasyCrypt as the verification framework, we now give more detail on the specifics of our approach. In particular, we focus on:<br/>‍</p><ul role="list"><li>our model of the required subset of Yul in EasyCrypt, highlighting our encoding of Yul’s memory model, control flow, and primitive operations, and why we believe that our model is true to the real-world Yul semantics; and</li><li>a concrete example that showcases the verification process through the proof of honesty for a simple procedure from the ZKsync verifier.</li></ul><p>‍</p><p>‍</p><h4>EasyCrypt Yul Model</h4><p>‍</p><p>A key requirement for analysing correctness of ZKsync’s on-chain verifier was to extend EasyCrypt with a formal model of the appropriate subset of Yul primitive operations (primops). Specifically, the verifier only uses the following primops, which significantly simplified our modelling effort:</p><p>‍</p><ul role="list"><li>memory: <code>mload</code>, <code>mstore</code>, <code>mstore8</code>;</li><li>control flow: <code>revert</code>;</li><li>computation and bitwise: <code>add</code>, <code>sub</code>, <code>mulmod</code>, <code>addmod</code>, <code>eq</code>, <code>gt</code>, <code>shl</code>, <code>shr</code>, <code>iszero</code>, <code>and</code>;</li><li>call-related: <code>callvalue</code>, <code>staticcall</code>;</li><li>call data access: <code>calldataload</code>, <code>calldatasize</code>;</li><li>other: <code>gas</code>, <code>pop</code>.<br/>‍</li></ul><p>In addition to these, we needed to model the four precompiled contracts that the verifier uses—modular exponentiation (<code>modexp</code> 0x05) and three elliptic-curve operations: addition (<code>ecAdd</code> 0x06), multiplication (<code>ecMul</code> 0x07) and pairing (<code>ecPairing</code> 0x08).</p><p>‍</p><p>In this blog, we cover the most important aspects of the modelling; the full development is available <a href="https://github.com/NethermindEth/zksync-verification">here</a>. In particular, we focus on the memory and <code>revert</code> operations:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-coq" style="white-space:pre-wrap"><span><span>module Primops = {
+</span></span><span>  var memory : mem
+</span><span>  var reverted : bool
+</span><span>  ...
+</span><span>
+</span><span>  proc mload(idx : uint256) : uint256 = {
+</span><span><span>    </span><span style="color:#dcc6e0">return</span><span> (PurePrimops.mload memory idx);
+</span></span><span>  }
+</span><span>
+</span><span>  proc mstore(idx : uint256, val : uint256): unit = {
+</span><span>    memory &lt;- PurePrimops.mstore memory idx val;
+</span><span>  }
+</span><span>  
+</span><span>  proc mstore8(idx : uint256, val : uint256) : unit = {
+</span><span>    memory &lt;- PurePrimops.mstore8 memory idx val;
+</span><span>  }
+</span><span>  
+</span><span><span>  proc </span><span style="color:#f5ab35">revert</span><span>(x : uint256, y : uint256) : unit = {
+</span></span><span>    reverted &lt;- true;
+</span><span>  }
+</span><span>  
+</span><span>  ...
+</span><span>}</span></code></pre><p>‍</p><p>EasyCrypt structures imperative programs using <em>modules</em>, which appear similar to those in typical imperative programming languages, but serve a different purpose: to encapsulate state and enable reasoning about programs with global variables. We represent the EVM state that we are interested as global variables within a module called <code>Primops</code>. Here, we highlight: the <code>memory</code>, which is of the type <code>(uint256, uint8) map</code>, denoted by <code>mem</code> (meaning that it is a map from 256-bit words to bytes); and <code>reverted</code>, which is a Boolean indicator of whether or not a revert has happened.</p><p>‍</p><p>‍</p><h5><strong>Memory Management</strong></h5><p>‍</p><p>The Ethereum Virtual Machine (EVM) employs a memory architecture indexed by 256-bit words, but storing data as bytes—we model this precisely by using the above-mentioned <code>mem</code> type. This type, under the hood, uses the <code>SmtMap</code> built-in EasyCrypt data structure, which is the primary tool for reasoning about key-value relationships in EasyCrypt. While this structure cannot be executed directly (as the model is non-constructive), it provides a robust framework for reasoning about memory updates, access patterns, and behaviours through the rich set of provided lemmas.</p><p>‍</p><p>Observe that the three memory operations in <code>Primops</code> amount to calling their <em>pure</em> counterparts from the <code>PurePrimops/MemoryMap</code> <em>theories</em> (we elide <code>store</code> as it is <a href="https://github.com/NethermindEth/zksync-verification/blob/main/src/Memory.ec#L13-L48">too verbose</a>):</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-plaintext" style="white-space:pre-wrap"><span><span>theory PurePrimops.
+</span></span><span>
+</span><span>import MemoryMap.
+</span><span>
+</span><span>...
+</span><span>
+</span><span>  abbrev mload = load.
+</span><span>  abbrev mstore = store.
+</span><span>  abbrev mstore8 = store8.
+</span><span>
+</span><span>...
+</span><span>
+</span><span>end PurePrimops.
+</span><span>
+</span><span>theory MemoryMap.
+</span><span>   
+</span><span>  op load (memory: mem) (idx: uint256): uint256 =
+</span><span>    W32u8.pack32_t (W32u8.Pack.init 
+</span><span>      (fun (i: int) =&gt; memory.[idx + W256.of_int (31 - i)]))
+</span><span>    
+</span><span>  op store8 (memory: mem) (idx val: uint256): mem = 
+</span><span>    memory.[idx&lt;-W8.of_int (W256.to_uint val)]
+</span><span>
+</span><span>...
+</span><span>
+</span><span>end MemoryMap.</span></code></pre><p>‍</p><p>and then updating the state accordingly. EasyCrypt theories can be seen as libraries of related axioms, operations, and results. We create this separation of functionality (that is, the actual lookup or memory update) and side effect (that is, the global state update) in order to be able to reason cleanly and straightforwardly about the former without having to consider the latter.</p><p>‍</p><p>‍</p><h5><strong>Reverting</strong></h5><p>‍</p><p>The verifier rejects proofs by reverting, and for this reason we need to model the <code>revert</code> semantics, which is done straightforwardly as shown above, by updating the <code>reverted</code> global variable (initially set to <code>false</code>) to <code>true</code>. Importantly, only the <code>revert</code> primop can modify the <code>reverted</code> flag.</p><p>‍</p><p>‍</p><h5><strong>Function Calls</strong></h5><p>‍</p><p>The only function calls performed by the verifier are static calls to the above-mentioned precompiled functions. For this reason, we model these directly inside the <code>staticcall</code> <a href="https://github.com/NethermindEth/zksync-verification/blob/main/src/YulPrimops.ec#L61-L205">method</a>.</p><p>‍</p><p>‍</p><h5><strong>Gas</strong></h5><p>‍</p><p>We do not model gas reasoning in this project, and work under the assumption that there exists sufficient gas for the verifier to operate. This is sound as we only consider partial correctness, that is, executions that either terminate successfully or that revert due to the proof being incorrect.</p><p>‍</p><p>‍</p><h5><strong>From Solidity to EasyCrypt</strong></h5><p>‍</p><p>Finally, it is important to note that we have used a Solidity to YUL transpiler, based on ZKsync Solidity compiler frontend, developed by Igor Zhirkov from Matter Labs, which directly creates EasyCrypt modules that are based on our Yul model instead of producing standard Yul code.</p><p>‍</p><p>‍</p><h5><strong>Validating the Model Semantics</strong></h5><p>‍</p><p>A natural question to ask is how we should convince ourselves that our EasyCrypt Yul model accurately reflects the Yul semantics. A direct comparison would be challenging, as EasyCrypt has no formal semantics. We also cannot run tests from the Ethereum official conformance test suite (which acts as the de facto standard for ensuring correctness of EVM implementations), as we do not cover all of the primops but also, more importantly, because our EasyCrypt model is non-executable.</p><p>‍</p><p>What we can do, however, as all of the primops have a (relatively) simple semantics, is to perform a basic eyeball sanity check, relating the model primop implementation to its natural-language semantics. For example, the description of the <code>mulmod</code> operator in the Ethereum yellow paper is, in essence, as follows:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-plaintext" style="white-space:pre-wrap"><span><span>mulmod takes 3 parameters:
+</span></span><span>
+</span><span>  1. a : first value to multiply (256-bit unsigned integer)
+</span><span>  2. b : second value to multiply (256-bit unsigned integer)
+</span><span>  3. n : denominator (256-bit unsigned integer)
+</span><span>
+</span><span>and returns: 
+</span><span>
+</span><span>  1. (a * b) % n: The (256-bit unsigned integer) result of the multiplication 
+</span><span>                  followed by a modulo. If the denominator is 0, the result 
+</span><span>                  will be 0.
+</span><span>  
+</span><span>Note: All intermediate calculations are not subject to the 2^256 modulo.</span></code></pre><p>‍</p><p>whereas our <code>mulmod </code>implementation in EasyCrypt is as follows</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-plaintext" style="white-space:pre-wrap"><span><span>op mulmod(a b n : uint256) : uint256 =
+</span></span><span>  let a_int = W256.to_uint a in
+</span><span>  let b_int = W256.to_uint b in
+</span><span>  let n_int = W256.to_uint n in
+</span><span>  W256.of_int ((a_int * b_int) %% n_int)</span></code></pre><p>‍</p><p>where <code>W256.to_uint</code> and <code>W256.of_int</code>, respectively, convert an EasyCrypt 256-bit word to an EasyCrypt integer and vice versa, with the latter working modulo 2<sup>256</sup>. The correspondence between the two is immediate, observing further that the casting from <code>W256</code> to <code>uint</code> (which is an arbitrary-precision integer) ensures that the natural language note is respected.</p><p>‍</p><p>In addition to this, we state and prove fundamental properties about the primops that we modelled. For example, we use the following test and lemma to prove that an <code>mload</code> correctly recovers a previously <code>mstore</code>d value:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span class="hljs-function" style="color:#dcc6e0">function</span><span class="hljs-function"> </span><span class="hljs-function" style="color:#00e0e0">writeReadTest</span><span class="hljs-function">(</span><span class="hljs-function" style="color:#f5ab35">addr, value</span><span class="hljs-function">) -&gt; </span><span class="hljs-function" style="color:#00e0e0">r</span><span class="hljs-function"> </span><span>{
+</span></span><span>  mstore(addr, value)
+</span><span><span>  </span><span style="color:#dcc6e0">let</span><span> _1 := mload(addr)
+</span></span><span><span>  </span><span class="hljs-attr">r</span><span> := _1
+</span></span><span>}
+</span><span>
+</span><span>lemma writeReadTest_correctness: 
+</span><span>  forall (address value: uint256),
+</span><span><span>  phoare [YulTest.writeReadTest : arg = (address, value) ==&gt; res = value] = </span><span style="color:#f5ab35">1</span><span>%r.
+</span></span><span>proof. (* ... *) qed.</span></code></pre><p>‍</p><p>Specifically, the <code>writeReadTest</code> function first stores a given value at a given address in memory and then and returns the result of reading the same address. The <code>writeReadTest_correctness</code> lemma then states, using Probabilistic Hoare Logic (in which specifications have the form <code>phoare [P:Q] = x%r</code>, which have the standard partial correctness meaning of Hoare Logic, except that the post-condition <code>Q</code> is reached with probability <code>x</code> (where <code>%r</code> denotes that <code>x</code> is a real number)) that the returned value equals the originally passed-in value with probability 1 (that is, always). The full proof is available in the <a href="https://github.com/NethermindEth/zksync-verification/blob/main/src/YulTests.ec#L29-L46">repository</a>.</p><p>‍</p><p>Another example comes in the form of the <code>modTest</code> function and the <code>modTest_correctness</code> lemma, which aim at verifying the interaction between <code>sub</code>, <code>mulmod</code> and <code>addmod</code>.</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span class="hljs-function" style="color:#dcc6e0">function</span><span class="hljs-function"> </span><span class="hljs-function" style="color:#00e0e0">modTest</span><span class="hljs-function">(</span><span class="hljs-function" style="color:#f5ab35">m</span><span class="hljs-function">) -&gt; </span><span class="hljs-function" style="color:#00e0e0">r</span><span class="hljs-function"> </span><span>{
+</span></span><span><span>  </span><span style="color:#dcc6e0">let</span><span> mv := sub(m, </span><span style="color:#f5ab35">1</span><span>)
+</span></span><span><span>  </span><span style="color:#dcc6e0">let</span><span> o := mulmod(mv, mv, m)
+</span></span><span><span>  </span><span style="color:#dcc6e0">let</span><span> z := addmod(o, mv, m)
+</span></span><span><span>  </span><span class="hljs-attr">r</span><span> := z
+</span></span><span>}
+</span><span>
+</span><span>lemma modTest_correctness: 
+</span><span>  forall (m : uint256)
+</span><span><span>  phoare [YulTest.mod_test : arg = m /\ W256.one &lt; m ==&gt; res = W256.zero] = </span><span style="color:#f5ab35">1</span><span>%r.
+</span></span><span>proof. (* ... *) qed.</span></code></pre><p>‍</p><p>This lemma states that, for all inputs $m &gt; 1$, the <code>modTest</code> function returns zero with probability 1. The proof, elided above but <a href="https://github.com/NethermindEth/zksync-verification/blob/main/src/YulTests.ec#L115-L130">present in the repository</a>, progresses as follows:</p><p>‍</p><p>1. Simplifying the expression for <code>o</code>, we obtain that:</p><p>‍</p><div class="w-embed"><p>
+  \[
+  o = ((m - 1) \cdot (m - 1)) ~mod~ m = (m \cdot (m - 2) + 1) ~mod~ m
+  \]
+</p></div><p>‍</p><p>2. Using the lemma <a href="https://github.com/NethermindEth/zksync-verification/blob/5cfe29f1804f9e4e4b8a5e41efe163606c760084/src/Utils.ec#L54">mul_add_mod_eq</a>, which states that:</p><p>‍</p><div class="w-embed"><p>
+  \[
+  \forall m, a, b.~0 < m \Rightarrow ((m \cdot a) + b) ~mod~ m = b ~mod~ m
+  \]
+</p></div><p>‍</p><p>and the fact that m &gt; 1, we obtain that:</p><p>‍</p><div class="w-embed"><p>
+  \[
+  o = (m \cdot (m - 2) + 1) ~mod~ m = 1 ~mod~ m = 1
+  \]
+</p></div><p>‍</p><p>3. Finally, simplifying the expression for z, we trivially obtain:</p><p>‍</p><div class="w-embed"><p>
+  \[
+  z = ((m - 1) + 1) ~mod~ m = m ~mod~ m = 0
+  \]
+</p></div><p>‍</p><p>By doing the basic eyeball sanity checks and proving various properties about the implemented primops and their relationships, we gain sufficient confidence to claim that our partial Yul model in EasyCrypt is correct. We believe that further confidence could be gained by connecting this work with existing and future efforts (including our research) to formalise the Yul semantics.</p><p>‍</p><p>‍</p><p>‍</p><h4>Verification methodology</h4><p>‍</p><p>When it comes to establishing honesty of the verifier implementation, we follow a structured, multi-phase strategy. In particular, we verify equivalence between progressively abstracted specifications of the verifier, starting from the Yul code generated by the modified Solidity compiler. These abstractions, written as EasyCrypt procedures themselves, allow us to reason about the verifier properties at different levels—from low-level operations (for example, EVM memory, reverts and 256-bit words) to high-level cryptographic specifications that involve finite fields and groups on elliptic curves. Each phase verifies that the corresponding specification still accurately reflects the behaviour of the program/specification from the previous level, creating a chain of equivalence from the extracted code to the high-level cryptographic reasoning. Every function in the verifier goes through a three-phase verification: low-, middle-, and high-level.<br/>‍</p><ol role="list"><li><strong>Extracted to Low-Level (Machine Abstraction):</strong>  This phase bridges the gap between compiler-generated code and a low-level abstraction that operates at the opcode level with 256-bit machine words. The <strong>extracted version</strong>, produced directly by the modified compiler, often contains unnecessary temporary and auxiliary variables. We refine this noisy extracted code into a simpler, more consistent low-level version, while proving that we preserve the original semantics.<br/>‍</li><li><strong>Low-Level to Middle-Level (Integer Abstraction):</strong> At this stage, we abstract away machine-specific elements, like the memory and the revert flag. The memory model is replaced by straightforwardly using procedure arguments and return values, and revert flags are modelled as optional return values: a successful execution returns a <code>Some</code> value, while a revert returns <code>None</code>. Furthermore, the focus shifts to arithmetic correctness, and at the middle-level all numbers are modelled as integers and the equivalence proof shows that all the <code>uint256</code> representations from the low-level do not overflow. This mid-level abstraction leaves behind the low-level complexities of memory, state management, and machine words. This representation allows for direct reasoning about the logical correctness of the arithmetic, making it easier to verify critical properties like overflow safety and expected behaviour under valid or invalid inputs.<br/>‍</li><li><strong>Middle-Level to High-Level (Cryptographic Abstraction):</strong> We transition to a high-level view of the verifier, the most abstract version of its specification, to ensure that it behaves correctly regarding its cryptographic specifications. The focus in this step is entirely on translating and verifying the verifier’s behaviour from modular arithmetic to the level of finite fields and groups on elliptic curves.<br/>‍</li></ol><p>Let us next examine each phase in detail, using a function from the verifier that is representative of the key challenges and outcomes.</p><p>‍</p><p>‍</p><p>‍</p><h4>Example: Lagrange Poly Out of Domain Evaluation</h4><p>‍</p><p>Our running example is the <code>evaluateLagrangePolyOutOfDomain</code> function, which computes the $i^{th}$ term of a Lagrange polynomial:</p><p>‍</p><div class="w-embed"><p>
+  \[
+  L_i(z) = \frac{\omega^i (z^N - 1)}{N(z - \omega^i)}
+  \]
+</p></div><p>‍</p><p>and which is implemented in the <a href="https://github.com/code-423n4/2023-10-zksync/blob/main/code/contracts/ethereum/contracts/zksync/Verifier.sol">ZKsync verifier</a> as follows:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span class="hljs-function" style="color:#dcc6e0">function</span><span class="hljs-function"> </span><span class="hljs-function" style="color:#00e0e0">evaluateLagrangePolyOutOfDomain</span><span class="hljs-function">(</span><span class="hljs-function" style="color:#f5ab35">polyNum, at</span><span class="hljs-function">) -&gt; </span><span class="hljs-function" style="color:#00e0e0">res</span><span class="hljs-function"> </span><span>{
+</span></span><span><span>    </span><span style="color:#dcc6e0">let</span><span> omegaPower := </span><span style="color:#f5ab35">1</span><span>
+</span></span><span><span>    </span><span style="color:#dcc6e0">if</span><span> polyNum {
+</span></span><span><span>        </span><span class="hljs-attr">omegaPower</span><span> := modexp(OMEGA, polyNum)
+</span></span><span>    }
+</span><span>    
+</span><span><span>    </span><span class="hljs-attr">res</span><span> := addmod(modexp(at, DOMAIN_SIZE), sub(R_MOD, </span><span style="color:#f5ab35">1</span><span>), R_MOD)
+</span></span><span>    
+</span><span><span>    </span><span style="color:#d4d0ab">// Vanishing polynomial can not be zero at point `at`</span><span>
+</span></span><span><span>    </span><span style="color:#dcc6e0">if</span><span> </span><span class="hljs-function" style="color:#00e0e0">iszero</span><span class="hljs-function">(</span><span class="hljs-function" style="color:#f5ab35">res</span><span class="hljs-function">)</span><span> {
+</span></span><span><span>        revertWithMessage(</span><span style="color:#f5ab35">28</span><span>, </span><span style="color:#abe338">&quot;invalid vanishing polynomial&quot;</span><span>)
+</span></span><span>    }
+</span><span>    
+</span><span><span>    </span><span class="hljs-attr">res</span><span> := mulmod(res, omegaPower, R_MOD)
+</span></span><span><span>    </span><span style="color:#dcc6e0">let</span><span> denominator := addmod(at, sub(R_MOD, omegaPower), R_MOD)
+</span></span><span><span>    </span><span class="hljs-attr">denominator</span><span> := mulmod(denominator, DOMAIN_SIZE, R_MOD)
+</span></span><span><span>    </span><span class="hljs-attr">denominator</span><span> := modexp(denominator, sub(R_MOD, </span><span style="color:#f5ab35">2</span><span>))
+</span></span><span><span>    </span><span class="hljs-attr">res</span><span> := mulmod(res, denominator, R_MOD)
+</span></span><span>}</span></code></pre><p>‍</p><p>The relationship between the implementation and the above formula is as follows:<br/>‍</p><ul role="list"><li>the index $i$ corresponds to <code>polyNum</code>;</li><li>the evaluation point $z$ corresponds to <code>at</code>;</li><li>the parameter $\omega$ corresponds to <code>OMEGA</code>;</li><li>the parameter $N$ corresponds to <code>DOMAIN_SIZE</code>;</li><li>all computation in the implementation is done modulo <code>R_MOD</code>, which is the size of the field, also denoted by $R$ (hence the use of the <code>addmod</code>, <code>mulmod</code>, and <code>modexp</code> functions, the last of which performs <code>% R_MOD</code> implicitly after the exponentiation, rather than having it passed in as a parameter); and</li><li>the implementation does not allow the polynomial to vanish at the evaluation point - this is required by the PLONK protocol, as the term in question will be used to divide another term.</li></ul><p>‍</p><p>‍</p><h5>Step 0: Extracted code</h5><p>‍</p><p>The not-particularly-readable code below is the extracted version of <code>evaluateLagrangePolyOutOfDomain</code> into EasyCrypt using our modified solidity compiler.</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span>proc usr_evaluateLagrangePolyOutOfDomain(usr_polyNum : uint256, </span><span class="hljs-attr">usr_at</span><span> : uint256): uint256 = {
+</span></span><span><span>    </span><span style="color:#dcc6e0">var</span><span> usr_res, usr_omegaPower, _1, tmp266, _2, _3, _4, _5, _6, tmp267, _7, _8, _9, tmp268, _10, usr_denominator, _11, _12, tmp269;
+</span></span><span><span>    usr_omegaPower &lt;- (W256.of_int </span><span style="color:#f5ab35">1</span><span>);
+</span></span><span><span>    </span><span style="color:#dcc6e0">if</span><span> ((bool_of_uint256 usr_polyNum))
+</span></span><span>      {
+</span><span><span>      _1 &lt;- (W256.of_int </span><span style="color:#f5ab35">13446667982376394161563610564587413125564757801019538732601045199901075958935</span><span>);
+</span></span><span>      tmp266 &lt;@ usr_modexp(_1, usr_polyNum);
+</span><span>      usr_omegaPower &lt;- tmp266;
+</span><span>      }
+</span><span>    
+</span><span><span>    _2 &lt;- (W256.of_int </span><span style="color:#f5ab35">21888242871839275222246405745257275088548364400416034343698204186575808495617</span><span>);
+</span></span><span><span>    _3 &lt;- (W256.of_int </span><span style="color:#f5ab35">1</span><span>);
+</span></span><span>    _4 &lt;- (_2 - _3);
+</span><span><span>    _5 &lt;- (W256.of_int </span><span style="color:#f5ab35">67108864</span><span>);
+</span></span><span>    tmp267 &lt;@ usr_modexp(usr_at, _5);
+</span><span>    _6 &lt;- tmp267;
+</span><span>    usr_res &lt;- (PurePrimops.addmod _6 _4 _2);
+</span><span>    _7 &lt;- (PurePrimops.iszero usr_res);
+</span><span><span>    </span><span style="color:#dcc6e0">if</span><span> ((bool_of_uint256 _7))
+</span></span><span>      {
+</span><span>      _8 &lt;- (W256.of_int STRING (*invalid vanishing polynomial*));
+</span><span><span>      _9 &lt;- (W256.of_int </span><span style="color:#f5ab35">28</span><span>);
+</span></span><span>      tmp268 &lt;@ usr_revertWithMessage(_9, _8);
+</span><span>      }
+</span><span>    
+</span><span>    usr_res &lt;- (PurePrimops.mulmod usr_res usr_omegaPower _2);
+</span><span>    _10 &lt;- (_2 - usr_omegaPower);
+</span><span>    usr_denominator &lt;- (PurePrimops.addmod usr_at _10 _2);
+</span><span>    usr_denominator &lt;- (PurePrimops.mulmod usr_denominator _5 _2);
+</span><span><span>    _11 &lt;- (W256.of_int </span><span style="color:#f5ab35">2</span><span>);
+</span></span><span>    _12 &lt;- (_2 - _11);
+</span><span>    tmp269 &lt;@ usr_modexp(usr_denominator, _12);
+</span><span>    usr_denominator &lt;- tmp269;
+</span><span>    usr_res &lt;- (PurePrimops.mulmod usr_res usr_denominator _2);
+</span><span><span>    </span><span style="color:#dcc6e0">return</span><span> usr_res;
+</span></span><span>}</span></code></pre><p>‍</p><p>Before comparing the extracted and original code, let us clarify for the reader some of the details of the EasyCrypt syntax and semantics, even though they have close resemblance to other imperative languages:<br/>‍</p><ul role="list"><li>all local variables must be declared at the beginning of the procedure using the <code>var</code> keyword;</li><li>EasyCrypt has two assignments: one for its pure functional core (<code>&lt;-</code>) and another for its imperative (impure) subset (<code>&lt;@</code>);</li><li>as Yul does not have booleans, we use the procedure <code>bool_of_uint256</code> to cast an <code>uint256</code> into an EasyCrypt boolean;</li><li>all operations prefixed by <code>PurePrimops</code> come from our Yul EasyCrypt model;</li><li>all operations prefixed by <code>usr_</code> either come from the verifier or the precompiled contracts (such as <code>modexp</code>), which are compiled separately into EasyCrypt.<br/>‍</li></ul><p>With this in mind, we turn to the extracted code, but only to see that the Solidity compiler does not do the best job in preserving the original Yul as it has optimisations that cannot be turned off, such as the introduction of temporary variables and the unfolding of constants. From this code, we observe that, for example:<br/><br/></p><ul role="list"><li><code>OMEGA = 13446667982376394161563610564587413125564757801019538732601045199901075958935</code>;</li><li><code>RMOD = 21888242871839275222246405745257275088548364400416034343698204186575808495617</code>; and</li><li><code>DOMAIN_SIZE = 67108864</code>.</li></ul><p>‍</p><p>‍</p><h5>Step 1: Low-level specification</h5><p>‍</p><p>To somewhat recover the original program structure, we introduce the first, low-level, specification:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span>proc low(polyNum: uint256, </span><span class="hljs-attr">at</span><span>: uint256): uint256 = {
+</span></span><span><span>  </span><span style="color:#dcc6e0">var</span><span> ret, omegaPower, tmp267, _10, denominator;
+</span></span><span><span>  omegaPower &lt;- (W256.of_int </span><span style="color:#f5ab35">1</span><span>);
+</span></span><span><span>  </span><span style="color:#dcc6e0">if</span><span> ((bool_of_uint256 polyNum))
+</span></span><span>  {
+</span><span>    omegaPower &lt;@ Modexp.low(OMEGA, polyNum);
+</span><span>  }
+</span><span>    
+</span><span>  tmp267 &lt;@ Modexp.low(at, DOMAIN_SIZE);
+</span><span>  ret &lt;- (PurePrimops.addmod tmp267 (R_MOD - W256.one) R_MOD);
+</span><span>  
+</span><span><span>  </span><span style="color:#dcc6e0">if</span><span> ((bool_of_uint256 (PurePrimops.iszero ret)))
+</span></span><span>  {
+</span><span><span>    RevertWithMessage.low(W256.of_int </span><span style="color:#f5ab35">28</span><span>, W256.of_int STRING);
+</span></span><span>  }
+</span><span>    
+</span><span>  ret &lt;- (PurePrimops.mulmod ret omegaPower R_MOD);
+</span><span>  _10 &lt;- (R_MOD - omegaPower);
+</span><span>  denominator &lt;- (PurePrimops.addmod at _10 R_MOD);
+</span><span>  denominator &lt;- (PurePrimops.mulmod denominator DOMAIN_SIZE R_MOD);
+</span><span><span>  denominator &lt;@ Modexp.low(denominator, (R_MOD - (W256.of_int </span><span style="color:#f5ab35">2</span><span>)));
+</span></span><span>  ret &lt;- (PurePrimops.mulmod ret denominator R_MOD);
+</span><span><span>  </span><span style="color:#dcc6e0">return</span><span> ret;
+</span></span><span>}</span></code></pre><p>‍</p><p>This transformation is a simple: we reintroduce constants, eliminate unnecessary temporary variables and use low specifications of dependent procedures (in this case <code>Modexp.low</code>) With this specification in place, we can prove our first program equivalence between <code>usr_evaluateLagrangePolyOutOfDomain </code>and <code>low</code>:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span>lemma evaluateLagrangePolyOutOfDomain_extracted_equiv_low:
+</span></span><span>  equiv [
+</span><span>    usr_evaluateLagrangePolyOutOfDomain ~ EvaluateLagrangePolyOutOfDomain.low :
+</span><span>      ={arg, glob EvaluateLagrangePolyOutOfDomain} ==&gt; 
+</span><span>      ={res, glob EvaluateLagrangePolyOutOfDomain}
+</span><span>  ].</span></code></pre><p>‍</p><p>Let us unpack this statement in detail. First of all, we are introducing a new lemma called <code>evaluateLagrangePolyOutOfDomain_extracted_equiv_low</code> that we can use later in other proofs. In EasyCrypt, one can prove various properties about cryptographic programs, one of which is <em>program equivalence.</em> This is expressed by the syntax<code> equiv [p1 ~ p2 : S ==&gt; R]</code>, where:<br/>‍</p><ul role="list"><li><code>p1</code> and <code>p2</code> are the procedures to be checked for equivalence;</li><li><code>S</code> is the pre-condition;</li><li><code>R</code> is the post-condition; and</li><li><code>arg</code>, <code>res</code> and <code>glob</code> are special EasyCrypt variables that hold, respectively, the procedure arguments, the procedure return value, and the global variables of a given module.<br/>‍</li></ul><p>Also, note that writing <code>={a}</code> is syntactic sugar for <code>a{1} = a{2}</code>, where the <code>{1/2}</code> indexing denotes to which program a variable belongs. With this in mind, and going back to our lemma, what we prove is that the extracted Lagrange function and its low-level specification are equivalent, that is, that if given the same arguments (<code>={arg}</code>) and starting from the same initial global state (<code>={glob EvaluateLagrangePolyOutOfDomain</code>}), they return the same result (<code>={res}</code>) and have the same final global state.</p><p>‍</p><p>‍</p><h5>Step 2: Mid-level specification</h5><p>‍</p><p>The next step is to lift the specification to the mid-level, where, as discussed above, we abstract away any machine representation (memory and reverts), focusing on integer arithmetic correctness and, more importantly, checking for the absence of over and underflow. For our running example of the Lagrange function, the mid-level specification is as follows:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span>proc mid(polyNum: int, </span><span class="hljs-attr">at</span><span>: int): int option = {
+</span></span><span><span>  </span><span style="color:#dcc6e0">var</span><span> r, omegaPolyNum, atDomainSize, zd1, num, den, inv;
+</span></span><span>
+</span><span>  omegaPolyNum &lt;- (Constants.OMEGA ^ polyNum) %% Constants.R;
+</span><span>  atDomainSize &lt;- (at ^ Constants.DOMAIN_SIZE) %% Constants.R; 
+</span><span>
+</span><span><span>  zd1 &lt;- (atDomainSize - </span><span style="color:#f5ab35">1</span><span>) %% Constants.R;
+</span></span><span><span>  </span><span style="color:#dcc6e0">if</span><span> (zd1 = </span><span style="color:#f5ab35">0</span><span>) {
+</span></span><span>    r &lt;- None;
+</span><span><span>  } </span><span style="color:#dcc6e0">else</span><span> {
+</span></span><span>    num &lt;- (omegaPolyNum * zd1) %% Constants.R;
+</span><span>    den &lt;- (Constants.DOMAIN_SIZE * (at - omegaPolyNum)) %% Constants.R;
+</span><span><span>    inv &lt;- (den ^ (Constants.R - </span><span style="color:#f5ab35">2</span><span>)) %% Constants.R;
+</span></span><span>    r &lt;- Some ((num * inv) %% Constants.R);
+</span><span>  }  
+</span><span>
+</span><span><span>  </span><span style="color:#dcc6e0">return</span><span> r;
+</span></span><span>}</span></code></pre><p>‍</p><p>and we can see how it makes the reasoning more abstract in the following ways:<br/>‍</p><ul role="list"><li>the variable names are more informative;</li><li>subtractions are now proper subtractions rather than additions-modulo (for example,  <code>addmod tmp267 (R_MOD - W256.one) R_MOD</code> has become <code>(atDomainSize - 1) % R</code> (doing the same for division requires some further finite-field properties, which come into play at the high level);</li><li>the impure assignments using <code>Modexp.low(a, b)</code>are replaced with pure assignments using its return value, $a^{b} \mod R$; and</li><li>the reverting is replaced with returning an optional value (<code>None</code> if a revert has occurred).<br/>‍</li></ul><p>The lemma that states the equivalence between the low-level and mid-level specifications is as follows:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span>lemma evaluateLagrangePolyOutOfDomain_low_equiv_mid 
+</span></span><span>      (poly256 at256: uint256) (memory: mem):
+</span><span>equiv [
+</span><span>  EvaluateLagrangePolyOutOfDomain.low ~ EvaluateLagrangePolyOutOfDomain.mid :
+</span><span><span>    arg{</span><span style="color:#f5ab35">1</span><span>} = (poly256, at256) /\
+</span></span><span><span>    arg{</span><span style="color:#f5ab35">2</span><span>} = (to_uint poly256, to_uint at256) /\
+</span></span><span><span>    !Primops.reverted{</span><span style="color:#f5ab35">1</span><span>} /\ Primops.memory{</span><span style="color:#f5ab35">1</span><span>} = memory
+</span></span><span>      ==&gt;
+</span><span><span>    ( ((to_uint at256) ^ Constants.DOMAIN_SIZE - </span><span style="color:#f5ab35">1</span><span>) %% Constants.R &lt;&gt; </span><span style="color:#f5ab35">0</span><span> /\ 
+</span></span><span><span>      !Primops.reverted{</span><span style="color:#f5ab35">1</span><span>} /\           
+</span></span><span><span>      res{</span><span style="color:#f5ab35">2</span><span>} = Some (to_uint res{</span><span style="color:#f5ab35">1</span><span>}) ) /\
+</span></span><span><span>      </span><span style="color:#f5ab35">0</span><span> &lt;= to_uint res{</span><span style="color:#f5ab35">1</span><span>} &lt; Constants.R /\ 
+</span></span><span>      ( exists (v1 v2 v3: uint256), 
+</span><span><span>          Primops.memory{</span><span style="color:#f5ab35">1</span><span>} = lagrange_memory_footprint memory v1 v2 v3 )
+</span></span><span>    \/
+</span><span><span>    ( ((to_uint at256) ^ Constants.DOMAIN_SIZE - </span><span style="color:#f5ab35">1</span><span>) %% Constants.R = </span><span style="color:#f5ab35">0</span><span> /\ 
+</span></span><span><span>      Primops.reverted{</span><span style="color:#f5ab35">1</span><span>} /\
+</span></span><span><span>      res{</span><span style="color:#f5ab35">2</span><span>} = None) )
+</span></span><span>].</span></code></pre><p>‍</p><p>and is substantially more interesting than its extraction-level-to-low-level predecessor. On the syntactic level, we observe that this lemma has three parameters—<code>poly256</code>, <code>at256</code>, and <code>memory</code>—and this is because:<br/>‍</p><ul role="list"><li>the arguments to the calls of the two procedures should no longer be syntactically equal, but rather pointwise-type-convertible (from <code>uint256 </code>to <code>int</code>): this we specify by destructing the low-level arguments (<code>arg{1} = (poly256, at256)</code>) and then connecting them to the mid-level arguments (<code>arg{2} = (W256.to_uint poly256, W256.to_uint at256)</code>);</li><li>the low-level post-condition needs to describe how the memory from the pre-condition is modified by the execution, and so the initial memory is stored in the <code>memory</code> variable;<br/>‍</li></ul><p>Semantically, the pre-condition, in addition to the above observations, tells us that we are not in a revert state. The post-condition then tells us that either:<br/>‍</p><ul role="list"><li>$z ^ N \not\equiv 1 ~ {mod} ~ R$, in which case:<ul role="list"><li>both functions do not revert (<code>!Primops.reverted{1}</code> for the low-level and <code>res{2} = Some (...)</code> for the mid-level);</li><li>their return values are the same up to type conversion (<code>res{2} = Some (to_uint res{1})</code>) and belong to the appropriate field (<code>0 &lt;= to_uint res{1} &lt; Constants.R</code>), noting that <code>R_MOD = Constants.R</code>);</li><li>the first 192 bytes of the memory have been affected by the execution of the low-level procedure (<code>exists (v1 v2 v3: uint256), Primops.memory{1} = lagrange_memory_footprint memory v1 v2 v3)</code>); or</li></ul></li><li>$z ^ N \not\equiv 1 ~ {mod} ~ R$, in which case both procedures revert.<br/>‍</li></ul><blockquote><strong>Note</strong>: To keep the proving process, which EasyCrypt performs line-by-line, as simple as possible we prove the equivalence between the low- and mid-level specifications using an in-between specification, <code>mid&#x27;</code>, available <a href="https://github.com/NethermindEth/zksync-verification/blob/main/src/specs/EvaluateLagrangePolyOutOfDomain.ec#L44">here</a>, in which the impure calls to <code>Modexp.low</code> from the low-level spec still persist as calls to <code>Modexp.mid</code>, but as <code>Modexp.mid</code> literally only returns $a^{b} \mod R$, the equivalence proof between <code>mid&#x27;</code> and <code>mid</code> is obtained trivially.</blockquote><p>‍</p><p>‍</p><h5>Step 3: High-level specification</h5><p>‍</p><p>Below we have the high-level, and final, specification for the Lagrange function. Its structure is very similar to the mid-level one: the only difference comes from the transition from modular integer arithmetic to high-level cryptographic primitives, such as finite fields and groups on elliptic curves.</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span>proc high(polyNum: int, </span><span class="hljs-attr">at</span><span>: FieldR.F): FieldR.F option = {
+</span></span><span><span>    </span><span style="color:#dcc6e0">var</span><span> r, omegaPolyNum, atDomainSize, zd1;
+</span></span><span>
+</span><span>    omegaPolyNum &lt;- Constants.OMEGAFr ^ polyNum;
+</span><span>    atDomainSize &lt;- at ^ Constants.DOMAIN_SIZE;
+</span><span>
+</span><span><span>    zd1 &lt;- atDomainSize - (FieldR.inF </span><span style="color:#f5ab35">1</span><span>);
+</span></span><span>
+</span><span><span>    </span><span style="color:#dcc6e0">if</span><span> (zd1 = FieldR.zero) {
+</span></span><span>      r &lt;- None;
+</span><span><span>    } </span><span style="color:#dcc6e0">else</span><span> {
+</span></span><span><span>      r &lt;- Some ((omegaPolyNum * zd1) * ((Constants.DOMAIN_SIZEFr * (at - omegaPolyNum)) ^ (-</span><span style="color:#f5ab35">1</span><span>)));
+</span></span><span>    }
+</span><span>    
+</span><span><span>    </span><span style="color:#dcc6e0">return</span><span> r;    
+</span></span><span>}</span></code></pre><p>‍</p><p>Observe that the mid-level constants are now represented as field elements through <code>Constants.OMEGAFr</code> and <code>Constants.DOMAIN_SIZEFr</code>, and also that all arithmetic operations—addition, subtraction, multiplication, and exponentiation—are defined over <code>FieldR</code>. The most evident improvement is in the handling of division: what was previously expressed as <code>den ^ (Constants.R - 2) %% Constants.R</code> is now written much more elegantly as <code>den ^ (-1)</code>. The equivalence between these two representations was formally proven using finite-field properties from the EasyCrypt field library.</p><p>‍</p><p>The lemma below states the equivalence between middle and high-level specifications:</p><p>‍</p><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre-wrap"><span><span>lemma evaluateLagrangePolyOutOfDomain_mid_equiv_high 
+</span></span><span>      (polyInt: int) (atF: FieldR.F):
+</span><span>equiv [
+</span><span>  EvaluateLagrangePolyOutOfDomain.mid ~ EvaluateLagrangePolyOutOfDomain.high :
+</span><span><span>    arg{</span><span style="color:#f5ab35">1</span><span>} = (polyInt, FieldR.asint atF) /\
+</span></span><span><span>    arg{</span><span style="color:#f5ab35">2</span><span>} = (polyInt, atF) /\   
+</span></span><span><span>    </span><span style="color:#f5ab35">0</span><span> &lt;= polyInt
+</span></span><span>      ==&gt;
+</span><span><span>    omap FieldR.inF res{</span><span style="color:#f5ab35">1</span><span>} = res{</span><span style="color:#f5ab35">2</span><span>} /\
+</span></span><span><span>    omap FieldR.asint res{</span><span style="color:#f5ab35">2</span><span>} = res{</span><span style="color:#f5ab35">1</span><span>} /\
+</span></span><span><span>    (res{</span><span style="color:#f5ab35">2</span><span>} &lt;&gt; None &lt;=&gt; atF ^ Constants.DOMAIN_SIZE - FieldR.one &lt;&gt; FieldR.zero) 
+</span></span><span>].</span></code></pre><p>‍</p><p>and can be summarised as: if both programs receives the same input, they return the same result, and that result is <code>None</code> if and only if $z^N \equiv 1 ~mod~R$.</p><p>‍</p><p>With all of these lemmas in place, we can prove by transitivity that the extracted code from the function <code>evaluateLagrangePolyOutOfDomain</code> conforms with the high-level specification.</p><p>‍</p><p>‍</p><p>‍</p><h2>The Main Result</h2><p>‍</p><p>The <a href="https://github.com/NethermindEth/zksync-verification/blob/5cfe29f1804f9e4e4b8a5e41efe163606c760084/src/specs/VerifyTotalSpec.ec#L103">main outcome</a> of the project is a theorem stating that the main entry point of the verifier smart-contract—the <code>verify()</code> method—conforms to a <a href="https://github.com/NethermindEth/zksync-verification/blob/5cfe29f1804f9e4e4b8a5e41efe163606c760084/src/specs/Verify.ec#L376">specification</a> that precisely matches the PLONK [5] and plookup [6] papers.  We have written the spec so that the correspondence between the two is evident, and invite the reader to confirm that the expressions landing into the final pairing invocation are precisely those outlined in the aforementioned protocols.</p></div><div class="blog-article_about-authors"><div class="h5-dmsans-regular">Author</div><a href="/authors/nethermind-security-formal-verification" class="about_author_box w-inline-block"><img src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6948a4e44a6fe6c34b38f700_NM_Security.png" loading="lazy" alt="" class="author_image medium"/><div class="about_author_info"><div class="body-dmsans-light white">Nethermind Security - Formal Verification Team</div><div class="small-body-regular-16x gray">The Nethermind Formal Verification team focuses on mathematically proving correctness and security properties of zk-circuits, protocols, and cryptographic systems.</div></div></a></div><div class="blog-article_disclaimer w-condition-invisible"><div class="divider_shine is-internal"></div><div class="w-condition-invisible w-dyn-bind-empty w-richtext"></div></div><div class="blog-article_references"><div class="divider_shine is-internal"></div><div class="reference_rich_block w-richtext"><h5><sup>References:</sup></h5><p>‍</p><p><a href="https://link.springer.com/chapter/10.1007/3-540-48071-4_28"><sup>[1] Mihir Bellare, Oded Goldreich. On Defining Proofs of Knowledge</sup></a></p><p><a href="https://eprint.iacr.org/2022/926"><sup>[2] Denis Firsov, Dominique Unruh. </sup><em><sup>Zero-knowledge in EasyCrypt</sup></em><sup>.</sup></a></p><p><a href="https://eprint.iacr.org/2021/307"><sup>[3] Thomas Attema, Ronald Cramer, and Lisa Kohl. A Compressed $\Sigma$-Protocol Theory for Lattices</sup></a></p><p><a href="https://eprint.iacr.org/2024/768"><sup>[4] Denis Firsov, Benjamin Livshits. </sup><em><sup>The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation</sup></em></a></p><p><a href="https://eprint.iacr.org/2019/953"><sup>[5] Ariel Gabizon, Zachary J. Williamson, Oana Ciobotaru. </sup><em><sup>PLONK: Permutations over Lagrange-bases for Oecumenical Noninteractive arguments of Knowledge</sup></em></a></p><p><a href="https://eprint.iacr.org/2020/315"><sup>[6] Ariel Gabizon, Zachary J. Williamson. </sup><em><sup>plookup: A simplified polynomial protocol for lookup tables</sup></em></a></p></div></div><div class="divider_shine is-internal hidden"></div><a data-asset-download="auto" href="#" class="blog-article_download w-inline-block w-condition-invisible"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/681330ac4a532c853d8b5b77_download_arrow.svg" loading="lazy" alt="" class="arrow_download orange"/><div class="body-dmsans-light is-navy w-dyn-bind-empty"></div></a></div></div><div class="section_contact-banner-security"><div class="divider_shine is-bleed"></div><div class="contact-banner_wrap"><div class="contact-banner_box"><div class="contact-banner_container"><div class="contact-banner_content"><h5 class="eyebrow">get in touch</h5><h2 class="h2-medium-exo-49px">Work with Nethermind Security</h2><div class="body-dmsans-light">Nethermind Security audits the protocols securing billions on-chain. If you are shipping something that needs to hold up, let&#x27;s talk.</div><a id="contact-banner-security" href="/contact-us" class="btn_cta-hero is-security-banner w-inline-block"><p class="btn_text">Book an expert call</p></a></div></div><a id="follow-security-x" href="https://x.com/NethermindSec" class="button_text-arrow w-inline-block"><h6 class="body-dmsans-light is-bold">Follow Nethermind Security on X</h6><div class="arrow_link-external w-embed"><svg width="1em" height="1em" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
+  <path d="M0.5 13L13 0.5M0.5 0.5H13V13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div></a></div></div></div><div class="divider_shine"></div><div class="section_blog-suggested"><div data-delay="4000" data-animation="outin" class="blog_slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="true" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="0" data-infinite="true"><div class="blog_slider-bar margin"><div class="blog_slider-arrow-left mar"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cc8edc9812da8a08d9d783_Arrow_Slider_Left.png" loading="lazy" alt="" class="arrow_icon"/></div><div class="blog_slider-arrow-right mar"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cc8edc4ef6293513032615_Arrow_Slider_Right.png" loading="lazy" alt="" class="slide-button-right"/></div><h2 class="h2-exo-regular is-large">Latest articles</h2></div><div class="blog_slider-mask w-slider-mask"><div class="blog_slide w-slide"><div class="blog-grid-cms-1row w-dyn-list"><div role="list" class="blog_grid-cms-inner _1row w-dyn-items"><div role="listitem" class="w-dyn-item"><a data-wf--blog-card_wrap--variant="base" href="/blog/nethermind-appoints-alvin-su-as-chief-executive-officer" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">General</div><h5 class="h6-dmsans-regular is-medium">Nethermind appoints Alvin Su as Chief Executive Officer</h5></div><div class="blog-card_date spacing">September 14, 2026</div></div></a></div><div role="listitem" class="w-dyn-item"><a data-wf--blog-card_wrap--variant="base" href="/blog/trust-but-verify-pair-programming-with-ai-for-secure-smart-contracts" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Security</div><h5 class="h6-dmsans-regular is-medium">Trust, but Verify: Pair Programming with AI for Secure Smart Contracts</h5></div><div class="blog-card_date spacing">August 28, 2026</div></div></a></div><div role="listitem" class="w-dyn-item"><a data-wf--blog-card_wrap--variant="base" href="/blog/assessing-ethereums-operational-resilience" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience..png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience.-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience.-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience..png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Institutional</div><h5 class="h6-dmsans-regular is-medium">Assessing Ethereum&#x27;s Operational Resilience</h5></div><div class="blog-card_date spacing">September 18, 2026</div></div></a></div></div></div></div><div class="blog_slide w-slide"><div class="blog-grid-cms-1row w-dyn-list"><div role="list" class="blog_grid-cms-inner _1row w-dyn-items"><div role="listitem" class="w-dyn-item"><a data-wf--blog-card_wrap--variant="base" href="/blog/assessing-ethereums-operational-resilience" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience..png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience.-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience.-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience..png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Institutional</div><h5 class="h6-dmsans-regular is-medium">Assessing Ethereum&#x27;s Operational Resilience</h5></div><div class="blog-card_date spacing">September 18, 2026</div></div></a></div><div role="listitem" class="w-dyn-item"><a data-wf--blog-card_wrap--variant="base" href="/blog/auditing-holonyms-aztec-bridge" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Security</div><h5 class="h6-dmsans-regular is-medium">Auditing Holonym&#x27;s Aztec Bridge</h5></div><div class="blog-card_date spacing">August 28, 2026</div></div></a></div><div role="listitem" class="w-dyn-item"><a data-wf--blog-card_wrap--variant="base" href="/blog/piloting-continuous-ai-augmented-security-on-lido-core" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Security</div><h5 class="h6-dmsans-regular is-medium">Piloting Continuous AI-Augmented Security on Lido Core</h5></div><div class="blog-card_date spacing">September 15, 2026</div></div></a></div></div></div></div></div><div class="blog_slider-arrow-left w-slider-arrow-left"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69ccb7236135560539b2613b_Arrow__Hover_Slider_Left.svg" loading="lazy" alt="" class="arrow_icon"/></div><div class="blog_slider-arrow-right w-slider-arrow-right"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69ccb7232bdf0cddcfb1d330_Arrow_Hover_Slider_Right.svg" loading="lazy" alt="" class="slide-button-right"/></div><div class="blog_slider-nav w-slider-nav w-round"></div></div></div><div class="section_blog-carousel-mobile"><div class="section_info-left is-gap wide"><h2 class="h2-exo-regular mobile34 large">Latest articles</h2></div><div class="horizontal-scroll_page-padding"><div class="horizontal-scroll"><div class="blog-grid-cms-1row w-dyn-list"><div role="list" class="blog_grid-cms-inner _1row w-dyn-items"><div role="listitem" class="_1row w-dyn-item"><a href="/blog/nethermind-appoints-alvin-su-as-chief-executive-officer" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6aa7b4166bccac03cad2b9f9_Nethermind_Alvin%20Su%20Appointed%20as%20CEO%20of%20Nethermind_Blog.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">General</div><h5 class="h5-dmsans-regular _22mobile">Nethermind appoints Alvin Su as Chief Executive Officer</h5></div><div class="blog-card_date spacing">September 14, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/trust-but-verify-pair-programming-with-ai-for-secure-smart-contracts" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a9143c67bfc3d891483ab02_Nethermind_Trust%2C%20but%20Verify%20Your%20AI%20Pair%20Programmer.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Security</div><h5 class="h5-dmsans-regular _22mobile">Trust, but Verify: Pair Programming with AI for Secure Smart Contracts</h5></div><div class="blog-card_date spacing">August 27, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/assessing-ethereums-operational-resilience" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience..png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience.-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience.-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8be710d05998341795ed7a_Nethermind_Assessing%20Ethereum%27s%20Operational%20Resilience..png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Institutional</div><h5 class="h5-dmsans-regular _22mobile">Assessing Ethereum&#x27;s Operational Resilience</h5></div><div class="blog-card_date spacing">August 26, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/auditing-holonyms-aztec-bridge" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa42f0803d40169ebefc3_Nethermind_Auditing%20Hyperbeat%E2%80%99s%20Liquid%20Banking%20Architecture.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Security</div><h5 class="h5-dmsans-regular _22mobile">Auditing Holonym&#x27;s Aztec Bridge</h5></div><div class="blog-card_date spacing">August 25, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/piloting-continuous-ai-augmented-security-on-lido-core" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa6fdd405cabea83a27cf_Nethermind_AI-Augmented%20Security%20for%20Lido%20Core.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Security</div><h5 class="h5-dmsans-regular _22mobile">Piloting Continuous AI-Augmented Security on Lido Core</h5></div><div class="blog-card_date spacing">August 20, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/nethermind-joins-chainlink-node-operator-network" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cffa094d65343aec51e6c_Nethermind_Chainlink.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cffa094d65343aec51e6c_Nethermind_Chainlink-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cffa094d65343aec51e6c_Nethermind_Chainlink-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cffa094d65343aec51e6c_Nethermind_Chainlink.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Institutional</div><h5 class="h5-dmsans-regular _22mobile">Nethermind Joins Chainlink Node Operator Network to Secure the Next Era of Capital Markets, Migrating its DVN Operations</h5></div><div class="blog-card_date spacing">August 19, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/formal-verification-and-the-economics-of-correctness" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa71e2587bf5859a4777e_Nethermind_When%20Proof%20Is%20Cheaper%20Than%20Uncertainty.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa71e2587bf5859a4777e_Nethermind_When%20Proof%20Is%20Cheaper%20Than%20Uncertainty-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa71e2587bf5859a4777e_Nethermind_When%20Proof%20Is%20Cheaper%20Than%20Uncertainty-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8fa71e2587bf5859a4777e_Nethermind_When%20Proof%20Is%20Cheaper%20Than%20Uncertainty.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Security</div><h5 class="h5-dmsans-regular _22mobile">Formal Verification and the Economics of Correctness</h5></div><div class="blog-card_date spacing">August 18, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/making-noir-verification-cheaper-on-stellar" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cfb8a08479ce19962be96_Nethermind_Making%20Noir%20Verification%20Cheaper%20on%20Stellar.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cfb8a08479ce19962be96_Nethermind_Making%20Noir%20Verification%20Cheaper%20on%20Stellar-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cfb8a08479ce19962be96_Nethermind_Making%20Noir%20Verification%20Cheaper%20on%20Stellar-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8cfb8a08479ce19962be96_Nethermind_Making%20Noir%20Verification%20Cheaper%20on%20Stellar.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">Institutional</div><h5 class="h5-dmsans-regular _22mobile">Making Noir Verification Cheaper on Stellar</h5></div><div class="blog-card_date spacing">August 4, 2026</div></div></a></div><div role="listitem" class="_1row w-dyn-item"><a href="/blog/iris-update-on-ownership-and-infrastructure" class="blog-card_wrap w-inline-block"><img loading="lazy" src="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8e342b4592a09e5b82a049_Nethermind_Sunsetting%20I.R.I.S.png" alt="" sizes="100vw" srcset="https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8e342b4592a09e5b82a049_Nethermind_Sunsetting%20I.R.I.S-p-500.png 500w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8e342b4592a09e5b82a049_Nethermind_Sunsetting%20I.R.I.S-p-800.png 800w, https://cdn.prod.website-files.com/640eda1ad034306552b7d32a/6a8e342b4592a09e5b82a049_Nethermind_Sunsetting%20I.R.I.S.png 960w" class="blog-card_image"/><div class="blog-card_info-wrap"><div class="blog-card_content"><div class="tag-is-gradient">General</div><h5 class="h5-dmsans-regular _22mobile">I.R.I.S - Update on ownership and infrastructure</h5></div><div class="blog-card_date spacing">July 17, 2026</div></div></a></div></div></div><div class="w-embed"><style>
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.horizontal-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* To style the scroll bar instead, change the display property above to "block" and use the below CSS properties */
+
+/* Scrollbar height */
+.horizontal-scroll::-webkit-scrollbar {
+  height: 5px;
+}
+
+/* Track */
+.horizontal-scroll::-webkit-scrollbar-track {
+	background: rgba(70, 73, 109, 0.15);
+  margin: 1.25rem;
+  border-radius: 5px;
+}
+
+/* Handle */
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 5px;
+}
+</style></div></div></div></div></div><div class="footer_container"><div class="footer_wrap"><div class="footer_brand"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cc738b1be5067a6f403995_NM_Logo_Horizontal_Light.svg" loading="lazy" alt="" class="footer_logo"/><p class="h6-dmsans-regular">The Leading Engineers of Blockchain Infrastructure</p></div><div class="divider_shine is-internal is-dark"></div><div class="footer_nav"><div class="footer_nav-col is-frame"><div class="eyebrow is-small is-gray">Services</div><div class="footer_nav-list"><div class="body-small-dmsans-regular is-muted">Protocol Engineering &amp; Research</div><div class="body-small-dmsans-regular is-muted">Network Infrastructure &amp; Access</div><div class="body-small-dmsans-regular is-muted"> Scaling &amp; Interoperability</div><div class="body-small-dmsans-regular is-muted">Compliance &amp; Identity</div><div class="body-small-dmsans-regular is-muted">Asset &amp; Treasury</div></div><div class="divider_shine is-vertical is-full"></div></div><div class="footer_nav-col"><div class="eyebrow is-small is-gray">blockchain expertise</div><div class="footer_nav-list"><a href="/blockchain-core-engineering" class="body-small-dmsans-regular is-link">Engineering</a><a href="/infrastructure-management" class="body-small-dmsans-regular is-link">Infrastructure</a><a href="/nethermind-security" class="body-small-dmsans-regular is-link">Security</a><a href="/nethermind-research" class="body-small-dmsans-regular is-link">Research</a></div></div><div class="footer_nav-col"><div class="eyebrow is-small is-gray">Nethermind SECURITY</div><div class="footer_nav-list"><a href="/smart-contract-audits" class="body-small-dmsans-regular is-link">Smart Contract Audits</a><a href="/formal-verification" class="body-small-dmsans-regular is-link">Formal Verification</a><a href="/smart-contract-audit-reports" class="body-small-dmsans-regular is-link">Audit Reports</a><a href="/audit-subsidy-programs" class="body-small-dmsans-regular is-link">Audit Subsidy Program</a><a href="https://auditagent.nethermind.io/" target="_blank" class="body-small-dmsans-regular is-link">AuditAgent</a><a href="https://agentarena.nethermind.io/" target="_blank" class="body-small-dmsans-regular is-link">AgentArena</a><a href="/zk-audits-and-zero-knowledge-security" class="body-small-dmsans-regular is-link">ZK Audits</a></div></div><div class="footer_nav-col"><div class="eyebrow is-small is-gray">institutional</div><div class="footer_nav-list"><a href="/institutional-node-infrastructure" class="body-small-dmsans-regular is-link">Bedrock</a></div></div><div class="footer_nav-col"><div class="eyebrow is-small is-gray">Company</div><div class="footer_nav-list"><a href="/about-us" class="body-small-dmsans-regular is-link">About Us</a><a href="/open-roles" class="body-small-dmsans-regular is-link">Open Roles</a><a href="/blog" class="body-small-dmsans-regular is-link">Insights</a><a href="/events" class="body-small-dmsans-regular is-link">Events</a><a href="https://drive.google.com/drive/folders/1pGJw5TAjo8M1RdGVbqPrEjmvkpwalIfL" target="_blank" class="body-small-dmsans-regular is-link">Nethermind Media Kit</a><a href="/legal" class="body-small-dmsans-regular is-link">Legal</a><a href="/contact-us" class="body-small-dmsans-regular is-link">Contact Us</a></div></div></div><div class="divider_shine is-internal is-dark"></div><div class="footer_bottom"><p class="body-small-dmsans-regular">Nethermind © 2026</p><div class="footer_social"><a href="https://www.linkedin.com/company/nethermind/" target="_blank" class="footer_social-link w-inline-block"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cdd3677b4f0412597ec61f_Icon%3Dlinkedin.svg" loading="lazy" alt=""/></a><a href="https://x.com/Nethermind" target="_blank" class="footer_social-link w-inline-block"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cdd369efd68ab0829282f2_Icon%3Dx.svg" loading="lazy" alt=""/></a><a href="https://github.com/NethermindEth/nethermind" target="_blank" class="footer_social-link w-inline-block"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cdd366efd68ab08292828e_Icon%3Dgithub.svg" loading="lazy" alt=""/></a><a href="https://www.youtube.com/@nethermindeth" target="_blank" class="footer_social-link w-inline-block"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cdd36951631590de97bbfa_Icon%3DYoutube.svg" loading="lazy" alt=""/></a><a href="https://discord.com/invite/PaCMRFdvWT" target="_blank" class="footer_social-link w-inline-block"><img src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/69cdd366c11374bf3cf943b1_Icon%3Ddiscord.svg" loading="lazy" alt=""/></a></div></div></div></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63bcd69729ab7f3ec1ad210a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/js/webflow.schunk.36b8fb49256177c8.js" type="text/javascript" integrity="sha384-4abIlA5/v7XaW1HMXKBgnUuhnjBYJ/Z9C1OSg4OhmVw9O3QeHJ/qJqFBERCDPv7G" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/js/webflow.schunk.fd120f27801ff019.js" type="text/javascript" integrity="sha384-O3HMd0yfoQMPUrZWqwaB3pG4AZVY6/IYq0zo1SmvHFNcIqLysGZ2gpQho8dLjIQT" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/js/webflow.schunk.bdf58efcee47c042.js" type="text/javascript" integrity="sha384-FoTOZ1artRQ01VebRzls7er2OghKKwHoIL613ODIUHjRJjMe2F+qjXEFsmVHiWgt" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/63bcd69729ab7f3ec1ad210a/js/webflow.14900f7e.4132420a21b7fe5d.js" type="text/javascript" integrity="sha384-ttCKVSY4E+kG0EvZVALE88aCk8k5NF6g1jbkwECz6LQjBTCvA5T8sfbCF9R0xcDh" crossorigin="anonymous"></script><script>
+  window.Webflow = window.Webflow || [];
+
+  // Reveal .page_wrap on templates without a page-load interaction
+  window.Webflow.push(function () {
+    requestAnimationFrame(function () {
+      document.querySelectorAll('.page_wrap').forEach(function (el) {
+        if (!el.style.opacity) el.style.opacity = '1';
+      });
+    });
+  });
+
+  // Mega menu: hover open/close, re-open, Company panel alignment
+  window.Webflow.push(function () {
+    if (window.__navMegaInit) return;
+    window.__navMegaInit = true;
+
+    var ALIGN_TAB = 'Company';
+    var CLOSE_DELAY = 200;
+    var desktop = window.matchMedia('(min-width: 992px)');
+    var closers = [];
+
+    document.querySelectorAll('.nav-mega_top-tabs').forEach(function (root) {
+      try {
+        var menu = root.querySelector(':scope > .nav-mega_top-menu');
+        var content = root.querySelector(':scope > .nav-mega_top-content');
+        var bar = root.closest('.nav-mega_bar');
+        if (!menu || !content) return;
+
+        var links = [].slice.call(menu.querySelectorAll(':scope > .w-tab-link'));
+        var panes = [].slice.call(content.querySelectorAll(':scope > .w-tab-pane'));
+        var timer, alignFrame;
+
+        function align() {
+          var tab = menu.querySelector(':scope > .w--current');
+          if (!tab || tab.getAttribute('data-w-tab') !== ALIGN_TAB || !bar) {
+            root.classList.remove('is-submenu-aligned');
+            return;
+          }
+          var pane = content.querySelector(':scope > .w-tab-pane.w--tab-active');
+          if (!pane) return;
+          root.classList.add('is-submenu-aligned');
+
+          var paneW = pane.scrollWidth;
+          if (!paneW) return;
+
+          var menuL = menu.getBoundingClientRect().left;
+          var tabBox = tab.getBoundingClientRect();
+          var barBox = bar.getBoundingClientRect();
+          var bcs = getComputedStyle(bar);
+
+          var minX = barBox.left + parseFloat(bcs.paddingLeft) - menuL;
+          var maxX = barBox.right - parseFloat(bcs.paddingRight) - menuL - paneW;
+          var x = tabBox.left - menuL + tabBox.width / 2 - paneW / 2;
+          x = Math.min(Math.max(x, minX), Math.max(minX, maxX));
+
+          root.style.setProperty('--submenu-x', x + 'px');
+        }
+
+        // Managed manually: Webflow caches the current tab and ignores re-clicks after close
+        function setActive(link) {
+          var name = link ? link.getAttribute('data-w-tab') : null;
+          links.forEach(function (l) {
+            var on = l === link;
+            l.classList.toggle('w--current', on);
+            l.setAttribute('aria-selected', on ? 'true' : 'false');
+            l.setAttribute('tabindex', on ? '0' : '-1');
+          });
+          panes.forEach(function (p) {
+            p.classList.toggle('w--tab-active', !!name && p.getAttribute('data-w-tab') === name);
+            p.style.opacity = '';
+            p.style.transition = '';
+          });
+          align();
+        }
+
+        function isOpen() {
+          return !!menu.querySelector(':scope > .w--current');
+        }
+
+        function close() {
+          clearTimeout(timer);
+          // Blur clears the body:has(:focus-within) page dim
+          if (root.contains(document.activeElement)) document.activeElement.blur();
+          if (isOpen()) setActive(null);
+        }
+        closers.push({ root: root, close: close });
+
+        links.forEach(function (link) {
+          link.addEventListener(
+            'click',
+            function (e) {
+              if (!desktop.matches) return;
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              setActive(link);
+            },
+            true,
+          );
+        });
+
+        root.addEventListener('mouseover', function (e) {
+          if (!desktop.matches) return;
+          clearTimeout(timer);
+          var link = e.target.closest && e.target.closest('.nav-mega_top-tab');
+          if (link && menu.contains(link) && !link.classList.contains('w--current')) setActive(link);
+        });
+
+        root.addEventListener('mouseleave', function () {
+          if (!desktop.matches) return;
+          clearTimeout(timer);
+          timer = setTimeout(close, CLOSE_DELAY);
+        });
+
+        window.addEventListener('resize', function () {
+          if (alignFrame) return;
+          alignFrame = requestAnimationFrame(function () {
+            alignFrame = 0;
+            align();
+          });
+        });
+
+        close();
+      } catch (err) {
+        if (window.console) console.warn('[nav-mega] init failed', err);
+      }
+    });
+
+    if (!closers.length) return;
+
+    function closeAll() {
+      closers.forEach(function (c) {
+        c.close();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll();
+    });
+
+    // Outside tap closes (touch devices >= 992px may never fire mouseleave)
+    document.addEventListener(
+      'pointerdown',
+      function (e) {
+        closers.forEach(function (c) {
+          if (!c.root.contains(e.target)) c.close();
+        });
+      },
+      { passive: true },
+    );
+
+    if (desktop.addEventListener) desktop.addEventListener('change', closeAll);
+    else if (desktop.addListener) desktop.addListener(closeAll);
+  });
+</script><script>
+(function () {
+  'use strict';
+
+  var SELECTOR  = '[data-asset-download]';
+  var ID_PREFIX = /^[a-f0-9]{24}_/i;   // hash que antepone Webflow al subir
+
+  // "auto" o vacío = derivar el nombre del asset quitando el hash
+  function resolveName(link, href) {
+    var attr = (link.getAttribute('data-asset-download') || '').trim();
+    if (attr && attr.toLowerCase() !== 'auto') return attr;
+
+    var file = decodeURIComponent(href.split('/').pop().split('?')[0]);
+    return file.replace(ID_PREFIX, '');
+  }
+
+  // Descarga el binario y lo re-emite como blob local con el nombre correcto
+  function grab(href, name) {
+    return fetch(href, { credentials: 'omit' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.blob();
+      })
+      .then(function (blob) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = name;        // blob: es same-origin → el nombre SÍ se respeta
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      });
+  }
+
+  document.querySelectorAll(SELECTOR).forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var href = link.getAttribute('href');
+      if (!href) return;                       // sin PDF Link, no hacemos nada
+
+      e.preventDefault();
+      link.setAttribute('aria-busy', 'true');  // estado de carga accesible
+
+      grab(href, resolveName(link, href))
+        .catch(function () {
+          window.open(href, '_blank', 'noopener');  // fallback al link original
+        })
+        .then(function () {
+          link.removeAttribute('aria-busy');
+        });
+    });
+  });
+})();
+</script></body></html>

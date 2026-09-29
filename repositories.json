@@ -60,6 +60,12 @@
       "url": "https://github.com/Certora/openzeppelin-contracts",
       "fork_of": "OpenZeppelin/openzeppelin-contracts"
     },
+    "Cyfrin/2024-10-zksync": {
+      "url": "https://github.com/Cyfrin/2024-10-zksync"
+    },
+    "Moonsong-Labs/zksync-social-login-circuit": {
+      "url": "https://github.com/Moonsong-Labs/zksync-social-login-circuit"
+    },
     "OffchainLabs/arbitrum-chain-actions": {
       "url": "https://github.com/OffchainLabs/arbitrum-chain-actions"
     },
@@ -248,8 +254,20 @@
     "celo-org/staked-celo": {
       "url": "https://github.com/celo-org/staked-celo"
     },
+    "code-423n4/2022-10-zksync": {
+      "url": "https://github.com/code-423n4/2022-10-zksync"
+    },
+    "code-423n4/2023-03-zksync": {
+      "url": "https://github.com/code-423n4/2023-03-zksync"
+    },
     "code-423n4/2023-05-base": {
       "url": "https://github.com/code-423n4/2023-05-base"
+    },
+    "code-423n4/2023-10-zksync": {
+      "url": "https://github.com/code-423n4/2023-10-zksync"
+    },
+    "code-423n4/2024-03-zksync": {
+      "url": "https://github.com/code-423n4/2024-03-zksync"
     },
     "code-423n4/2024-05-arbitrum-foundation": {
       "url": "https://github.com/code-423n4/2024-05-arbitrum-foundation"
@@ -344,6 +362,63 @@
       "url": "https://github.com/lidofinance/governance-crosschain-bridges",
       "fork_of": "aave/governance-crosschain-bridges"
     },
+    "matter-labs/era-boojum": {
+      "url": "https://github.com/matter-labs/era-boojum"
+    },
+    "matter-labs/era-contracts": {
+      "url": "https://github.com/matter-labs/era-contracts"
+    },
+    "matter-labs/era-system-contracts": {
+      "url": "https://github.com/matter-labs/era-system-contracts"
+    },
+    "matter-labs/era-zk_evm": {
+      "url": "https://github.com/matter-labs/era-zk_evm"
+    },
+    "matter-labs/fflonk-verifier": {
+      "url": "https://github.com/matter-labs/fflonk-verifier"
+    },
+    "matter-labs/rescue-poseidon": {
+      "url": "https://github.com/matter-labs/rescue-poseidon"
+    },
+    "matter-labs/snark-wrapper": {
+      "url": "https://github.com/matter-labs/snark-wrapper"
+    },
+    "matter-labs/sync_vm": {
+      "url": "https://github.com/matter-labs/sync_vm"
+    },
+    "matter-labs/system-contracts": {
+      "url": "https://github.com/matter-labs/system-contracts"
+    },
+    "matter-labs/usdc-bridge": {
+      "url": "https://github.com/matter-labs/usdc-bridge"
+    },
+    "matter-labs/zksync-2-contracts": {
+      "url": "https://github.com/matter-labs/zksync-2-contracts"
+    },
+    "matter-labs/zksync-2-dev": {
+      "url": "https://github.com/matter-labs/zksync-2-dev"
+    },
+    "matter-labs/zksync-airbender": {
+      "url": "https://github.com/matter-labs/zksync-airbender"
+    },
+    "matter-labs/zksync-crypto": {
+      "url": "https://github.com/matter-labs/zksync-crypto"
+    },
+    "matter-labs/zksync-era": {
+      "url": "https://github.com/matter-labs/zksync-era"
+    },
+    "matter-labs/zksync-os": {
+      "url": "https://github.com/matter-labs/zksync-os"
+    },
+    "matter-labs/zksync-protocol": {
+      "url": "https://github.com/matter-labs/zksync-protocol"
+    },
+    "matter-labs/zksync-sso-clave-contracts": {
+      "url": "https://github.com/matter-labs/zksync-sso-clave-contracts"
+    },
+    "matter-labs/zksync-sso-contracts": {
+      "url": "https://github.com/matter-labs/zksync-sso-contracts"
+    },
     "op-rs/kona": {
       "url": "https://github.com/op-rs/kona"
     },
@@ -361,6 +436,10 @@
     },
     "privacy-ethereum/zkevm-circuits": {
       "url": "https://github.com/privacy-ethereum/zkevm-circuits"
+    },
+    "protofire/safe-contracts": {
+      "url": "https://github.com/protofire/safe-contracts",
+      "fork_of": "safe-fndn/safe-smart-account"
     },
     "ronin-chain/bridge-contract": {
       "url": "https://github.com/ronin-chain/bridge-contract"
@@ -462,6 +541,9 @@
     },
     "voteagora/optimism-governor": {
       "url": "https://github.com/voteagora/optimism-governor"
+    },
+    "zksync-association/zk-governance": {
+      "url": "https://github.com/zksync-association/zk-governance"
     }
   }
 }
