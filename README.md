@@ -29,3 +29,69 @@ Comparing it with the code deployed onchain happens in the l2beat monorepo (`pac
    - `python3 update_repositories.py`: rebuilds `repositories.json` from every collection, asking GitHub for fork lineage (requires the authenticated `gh` CLI; `--no-lookup` keeps previously known lineage).
 
 `python3 normalize.py <url>` prints the canonical id for a repository URL. `python3 normalize.py --migrate <collection>` or `--all` rewrites ids in existing summaries and manifests and moves fetched sources to the canonical directories; `--check` reports non-canonical ids without changing anything.
+
+## Audit export
+
+`audit-index.json` and `audit-objects.json.zst` at the repository root are the dataset's public interface. Everything else (summaries, manifests, `audited-sources/`, scripts) is internal and may change as long as the export keeps its shape. L2BEAT reads both files pinned to a dataset commit:
+
+```
+https://raw.githubusercontent.com/<owner>/audit-dataset/<commit>/audit-index.json
+https://raw.githubusercontent.com/<owner>/audit-dataset/<commit>/audit-objects.json.zst
+```
+
+and uses them to find, for every contract, library, interface and free function a project deployed, the closest audited code and the reports that audited it. The export only says where audited code lives, who audited it, which major findings were open there, and what the audited code was; L2BEAT parses and compares the Solidity itself, so formatting does not matter to it.
+
+### `audit-index.json`
+
+```ts
+type AuditIndex = {
+  schema_version: '1.0.0'
+  reports: Record<ReportId, Report>
+  repositories: Record<RepositoryId, Record<Commit, Snapshot>>
+}
+
+type Report = {
+  collections: string[] // collection directories the report belongs to, sorted, e.g. ["ethscriptions", "facet"] or ["_libs/safe"]
+  title: string
+  auditor: string
+  date: string | null   // YYYY-MM-DD
+}
+
+// One repository at one commit, as pinned by the audits.
+type Snapshot = {
+  timestamp: number                                     // committer date, unix seconds
+  files: Record<Path, ObjectId>                         // every audited file at this commit -> its contents in the bundle
+  audits: Record<ReportId, Record<Path, FindingId[]>>   // report -> scoped path (a file or a directory) -> major findings open there
+}
+
+type ReportId = string     // the summary's report id, unique across the dataset
+type RepositoryId = string // canonical id from normalize.py: "owner/repo", or "gist/owner/id"
+type Commit = string       // full lowercase hex commit id (40, or 64 for SHA-256 repositories)
+type ObjectId = string     // first 12 lowercase hex characters of the git blob id of the contents
+type Path = string         // POSIX, relative to the repository root, no leading or trailing "/"
+type FindingId = string    // as in the version's finding_ids
+```
+
+A file is audited by a report when one of the report's scoped paths is the file itself or a directory above it: `src` covers `src/Vault.sol`, `src/Vault` does not. A directory audit is written once under its directory path, never copied onto every file below it.
+
+`audits[report][path]` is the summary version's `finding_ids`: the Major/Critical findings that report left open in that path at that commit, in report order, or `[]` when it has none. Identifiers are copied verbatim, without titles, severities or statuses.
+
+### `audit-objects.json.zst`
+
+One zstd frame (level 19, `--long=27`: long-distance matching with a 128 MiB window, content checksum) holding a compact JSON object with sorted keys, from object id to the file's contents: `{"0acd2cf2ad54":"// SPDX-License-Identifier: ...","b8e8febf8534":"..."}`. Every file of every snapshot is stored once under its object id, however many repositories, commits or collections contain it.
+
+### Rules
+
+1. **Stored bytes.** Contents are the file as stored in `audited-sources/`: the git blob at the audited commit, formatted by `format_sources.py` with the config in `foundry.toml`, decoded as UTF-8. Object ids are therefore not upstream blob ids for files `forge fmt` changed (`git_object` in the manifest keeps the upstream provenance), and files that differ upstream only in style share one object. A symlink is stored as its resolved target. A file that does not match its manifest `sha256` or is not valid UTF-8 fails the export.
+2. **Content addressed.** `sha1("blob " + byteLength + "\0" + bytes)` of the contents (sha256 for a SHA-256 repository) starts with the object id. Two different contents sharing an object id fail the export.
+3. **Solidity only.** Only files ending in `.sol`. A scoped path with no Solidity files is left out.
+4. **Only what was audited.** Only relevant reports; only versions pinned to a full commit (branches, tags and pull requests without a resolved commit, and commit ranges, are left out); only files the manifest fetched (commits that could not be fetched and symlinks with missing targets are left out); no `not_audited` versions. Every file in a snapshot is covered by at least one of its audits, every audit covers at least one file, every report is used by at least one audit, and every object is used by at least one file. Two versions of one report scoping the same path at the same commit fail the export.
+5. **Ids and paths.** A report in several collections is exported once, with all of them in `collections`; one id naming two different report documents (original PDF/HTML bytes) or two different titles, auditors or dates fails the export. Paths never end with `/`.
+6. **Timestamps.** Every exported commit has a timestamp: the summary's ISO 8601 UTC committer date in unix seconds. A missing timestamp, one that is not a whole second, or two versions disagreeing on one commit's timestamp fail the export.
+7. **Deterministic.** Keys are sorted, except that the commits of a repository are ordered by timestamp, then commit id. The index is written with 2-space indentation and a trailing newline. The same dataset produces byte-identical files.
+
+### Regenerating and checking
+
+`python3 export_audit_index.py` (Python 3.14, standard library only) reads every collection with an `audit-summary.json`, validates each summary with the same checks as `generate_audit_summary.py`, verifies every stored source against its manifest `sha256`, builds the export in memory, checks it against every rule above and only then writes both files. `pipeline.py` runs it as its last step, so the export is regenerated whenever a collection changes; commit both files together with that change.
+
+`python3 export_audit_index.py --check` writes nothing. It rebuilds the export, checks the committed files against every rule (including the zstd frame having exactly one frame and a content checksum), and fails if they differ from the rebuilt export by a single byte.
