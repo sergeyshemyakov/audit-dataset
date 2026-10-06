@@ -1,0 +1,3454 @@
+{
+  "schema_version": "1.4.0",
+  "project": "linea",
+  "reports": [
+    {
+      "id": "consensys-diligence-linea-canonical-token-bridge-2023-06",
+      "report_file": "2023_06-consensys-diligence-linea-canonical-token-bridge.md",
+      "title": "Linea Canonical Token Bridge",
+      "description": "Consensys Diligence review of Linea's canonical ERC-20 TokenBridge and BridgedToken contracts in the private Consensys/linea-token-bridge repository at commit db5553a, with per-issue fix PRs. A second round reviewed the token address collision fix in the public Consensys/linea-contracts-fix PR #3.",
+      "isRelevant": true,
+      "auditor": "Consensys Diligence",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "Consensys/linea-token-bridge",
+          "url": "https://github.com/Consensys/linea-token-bridge"
+        },
+        {
+          "id": "Consensys/zkevm-monorepo",
+          "url": "https://github.com/Consensys/zkevm-monorepo"
+        },
+        {
+          "id": "Consensys/linea-contracts-fix",
+          "url": "https://github.com/Consensys/linea-contracts-fix"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Consensys/linea-token-bridge",
+          "paths": {
+            "contracts/BridgedToken.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/db5553a5f3166fd17a72806d79f28906e4e375ba/contracts/BridgedToken.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit (first round).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/TokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/db5553a5f3166fd17a72806d79f28906e4e375ba/contracts/TokenBridge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit (first round); 4.2 (Won't Fix) and the other Critical/Major issues located in TokenBridge.",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.4",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "27c2e53c8da206d1d2e06abbdadee1e728219763",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/27c2e53c8da206d1d2e06abbdadee1e728219763/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #65; review limited to the fix. Fix for 4.3 (bridging reverts for a native token whose address is native on the other layer). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 5,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.4",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8f8ee32cf3ad24ec669b62910d3d6eb1da9cc78e",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/8f8ee32cf3ad24ec669b62910d3d6eb1da9cc78e/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #66; review limited to the fix. Fix for 4.1 (DEPLOYED_STATUS native tokens are transferred in completeBridging). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 5,
+                  "finding_ids": [
+                    "4.2",
+                    "4.3",
+                    "4.4",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e096523ec3fc34996a30fd517d6e97cfef3bcf8d",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/e096523ec3fc34996a30fd517d6e97cfef3bcf8d/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #67; review limited to the fix. Fix for 4.5 and 4.6 (owner restrictions on setCustomContract/status updates). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 4,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7a3764b461b70f3b06aa77b859349be7a918ac1d",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/7a3764b461b70f3b06aa77b859349be7a918ac1d/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #68; review limited to the fix. Fix for 4.4 (initializer parameter checks). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 5,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1fdd5cfc51c421ad9aaf8b2fd2b3e2ed86ffa898",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/1fdd5cfc51c421ad9aaf8b2fd2b3e2ed86ffa898/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #69; review limited to the fix. Fix for Medium 4.8 (event on message service update). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.4",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a014c29ddc12d5eb13a86827ac25a90e5239277b",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/a014c29ddc12d5eb13a86827ac25a90e5239277b/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #70; review limited to the fix. Fix for Minor 4.10 (upgradeability concerns). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.4",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ebfd011675ea318b7067af52637192aa1126acd",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/8ebfd011675ea318b7067af52637192aa1126acd/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #71; review limited to the fix. Fix for Minor 4.11 (two-step ownership transfer). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.4",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0f9c5bb5e9ec261bff8e688ddd224896d298963c",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/0f9c5bb5e9ec261bff8e688ddd224896d298963c/contracts/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #72; review limited to the fix. Fix for 4.12 (code corrections). Private repository: PR base and ordering not verifiable; the PR is assumed to branch from the audit commit, so the other open Major/Critical findings are treated as still present.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.4",
+                    "4.5",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "contracts/interfaces/IMessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/db5553a5f3166fd17a72806d79f28906e4e375ba/contracts/interfaces/IMessageService.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit (first round).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/interfaces/ITokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/db5553a5f3166fd17a72806d79f28906e4e375ba/contracts/interfaces/ITokenBridge.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit (first round).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0f9c5bb5e9ec261bff8e688ddd224896d298963c",
+                    "timestamp": null,
+                    "url": "https://github.com/Consensys/linea-token-bridge/blob/0f9c5bb5e9ec261bff8e688ddd224896d298963c/contracts/interfaces/ITokenBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of PR #72 (4.12 code corrections, also referencing ITokenBridge); review limited to the fix. Private repository; PR contents not verifiable.",
+                  "follows": "db5553a5f3166fd17a72806d79f28906e4e375ba",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "Consensys/linea-contracts-fix",
+          "paths": {
+            "contracts/tokenBridge/BridgedToken.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e02533e95adec3d4d86de2ad916d4520f2362033",
+                    "timestamp": "2023-07-27T15:07:19Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/e02533e95adec3d4d86de2ad916d4520f2362033/contracts/tokenBridge/BridgedToken.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (second round)",
+                  "coverage": "Head of linea-contracts-fix PR #3 (chainId added as a mapping key and to the bridged-token salt), reviewed in the second round as the fix of Medium 4.7; review limited to the fix. An earlier attempt (zkevm-monorepo PR #1041, commit a875e67, private) was reviewed and found insufficient.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenBridge/TokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e02533e95adec3d4d86de2ad916d4520f2362033",
+                    "timestamp": "2023-07-27T15:07:19Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/e02533e95adec3d4d86de2ad916d4520f2362033/contracts/tokenBridge/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (second round)",
+                  "coverage": "Head of linea-contracts-fix PR #3 (chainId added as a mapping key and to the bridged-token salt), reviewed in the second round as the fix of Medium 4.7; review limited to the fix. An earlier attempt (zkevm-monorepo PR #1041, commit a875e67, private) was reviewed and found insufficient. Major 4.2 (Won't Fix) remains.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "4.2"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/tokenBridge/interfaces/ITokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e02533e95adec3d4d86de2ad916d4520f2362033",
+                    "timestamp": "2023-07-27T15:07:19Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/e02533e95adec3d4d86de2ad916d4520f2362033/contracts/tokenBridge/interfaces/ITokenBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (second round)",
+                  "coverage": "Head of linea-contracts-fix PR #3 (chainId added as a mapping key and to the bridged-token salt), reviewed in the second round as the fix of Medium 4.7; review limited to the fix. An earlier attempt (zkevm-monorepo PR #1041, commit a875e67, private) was reviewed and found insufficient.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-diligence-linea-message-service-2023-06",
+      "report_file": "2023_06-consensys-diligence-linea-message-service.md",
+      "title": "Linea Message Service",
+      "description": "Consensys Diligence review of Linea's L1/L2 message service, rate limiter, pause manager, RLP/transaction decoding libraries and the ZkEvmV2 rollup contract at zkevm-monorepo commit 8ccf247 (served by the public linea monorepo). No fix review is included in the report.",
+      "isRelevant": true,
+      "auditor": "Consensys Diligence",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "LFDT-Lineth/lineth-monorepo",
+          "url": "https://github.com/LFDT-Lineth/lineth-monorepo"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "LFDT-Lineth/lineth-monorepo",
+          "paths": {
+            "contracts/contracts/messageService/interfaces/IGenericErrors.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/interfaces/IGenericErrors.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/interfaces/IL1MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/interfaces/IL1MessageManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/interfaces/IL2MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/interfaces/IL2MessageManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/interfaces/IMessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/interfaces/IMessageService.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/interfaces/IPauseManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/interfaces/IPauseManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/interfaces/IPlonkVerifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/interfaces/IPlonkVerifier.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/interfaces/IRateLimiter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/interfaces/IRateLimiter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/l1/L1MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/l1/L1MessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "4.2",
+                    "4.3",
+                    "4.5"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/l2/L2MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "4.5"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/l2/L2MessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "4.2",
+                    "4.3"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/lib/Codec.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/lib/Codec.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/lib/PauseManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/lib/PauseManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/lib/RateLimiter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/lib/RateLimiter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/lib/Rlp.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/lib/Rlp.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/lib/TimeLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/lib/TimeLock.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/messageService/lib/TransactionDecoder.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/lib/TransactionDecoder.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/contracts/messageService/MessageServiceBase.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/messageService/MessageServiceBase.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/contracts/IZkEvmV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/IZkEvmV2.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/contracts/ZkEvmV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "4.1",
+                    "4.4",
+                    "4.6"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/contracts/ZkEvmV202.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ccf24731c3cd288c27696771c45e4c1a01fa8cc",
+                    "timestamp": "2023-06-01T16:57:30Z",
+                    "url": "https://github.com/LFDT-Lineth/lineth-monorepo/blob/8ccf24731c3cd288c27696771c45e4c1a01fa8cc/contracts/contracts/ZkEvmV202.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-diligence-linea-plonk-verifier-2023-06",
+      "report_file": "2023_06-consensys-diligence-linea-plonk-verifier.md",
+      "title": "Linea Plonk Verifier",
+      "description": "Consensys Diligence best-effort review, with partial Dafny formal verification, of the gnark-generated PLONK verifier with the BSB22 commitment custom gate (Verifier.sol and Utils.sol) in Consensys/plonk-solidity-audit at commit b3533f2. Several Critical and Major soundness and validation issues were reported; no fix commits are given.",
+      "isRelevant": true,
+      "auditor": "Consensys Diligence",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "Consensys/plonk-solidity-audit",
+          "url": "https://github.com/Consensys/plonk-solidity-audit"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Consensys/plonk-solidity-audit",
+          "paths": {
+            "contracts/Utils.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b3533f22f2a67a2c4c3e42bbf70f1c5c0af42336",
+                    "timestamp": "2023-05-09T15:18:33Z",
+                    "url": "https://github.com/Consensys/plonk-solidity-audit/blob/b3533f22f2a67a2c4c3e42bbf70f1c5c0af42336/contracts/Utils.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit; only a code-improvement recommendation (4.25).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/Verifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b3533f22f2a67a2c4c3e42bbf70f1c5c0af42336",
+                    "timestamp": "2023-05-09T15:18:33Z",
+                    "url": "https://github.com/Consensys/plonk-solidity-audit/blob/b3533f22f2a67a2c4c3e42bbf70f1c5c0af42336/contracts/Verifier.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Best-effort review against the PLONK paper and gnark prover, plus Dafny formal verification of selected properties (memory safety, batch_invert). 4.6 is exemplified in tmpl/template_verifier.go from which Verifier.sol is generated; Major 4.7 (missing edge-case tests) concerns the test suite and is not counted.",
+                  "major_findings": 10,
+                  "finding_ids": [
+                    "4.1",
+                    "4.2",
+                    "4.3",
+                    "4.4",
+                    "4.5",
+                    "4.6",
+                    "4.8",
+                    "4.9",
+                    "4.10",
+                    "4.11"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-linea-bridge-2023-08",
+      "report_file": "2023_08-openzeppelin-linea-bridge-audit.md",
+      "title": "Linea Bridge Audit",
+      "description": "OpenZeppelin audit of the Linea V1 ZkEvmV2 rollup, L1/L2 message services with rate limiter and pause manager, and the canonical TokenBridge in Consensys/linea-contracts at commit f08c190, with fixes reviewed in Consensys/linea-contracts-fix. One Critical (token bridge reentrancy) and three High issues were reported, of which the Critical and one High were resolved.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2023-11-03",
+      "repositories": [
+        {
+          "id": "Consensys/linea-contracts",
+          "url": "https://github.com/Consensys/linea-contracts"
+        },
+        {
+          "id": "Consensys/linea-contracts-fix",
+          "url": "https://github.com/Consensys/linea-contracts-fix"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Consensys/linea-contracts",
+          "paths": {
+            "contracts/interfaces/IGenericErrors.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/interfaces/IGenericErrors.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/interfaces/IL1MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/interfaces/IL1MessageManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/interfaces/IL2MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/interfaces/IL2MessageManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/interfaces/IMessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/interfaces/IMessageService.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/interfaces/IPauseManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/interfaces/IPauseManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/interfaces/IRateLimiter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/interfaces/IRateLimiter.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/interfaces/IZkEvmV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/messageService/l1/L1MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "contracts/messageService/l1/L1MessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/messageService/l2/L2MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "contracts/messageService/l2/L2MessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/messageService/lib/Codec.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/lib/Codec.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/messageService/lib/PauseManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/lib/PauseManager.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/messageService/lib/RateLimiter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/lib/RateLimiter.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/messageService/lib/Rlp.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/lib/Rlp.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "contracts/messageService/lib/TimeLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/lib/TimeLock.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/lib/TransactionDecoder.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/lib/TransactionDecoder.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/messageService/MessageServiceBase.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/messageService/MessageServiceBase.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/tokenBridge/BridgedToken.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/tokenBridge/BridgedToken.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "contracts/tokenBridge/interfaces/ITokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/tokenBridge/interfaces/ITokenBridge.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/tokenBridge/TokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/tokenBridge/TokenBridge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "Token Bridge Reentrancy Can Corrupt Token Accounting",
+                    "Tokens Sharing an Address on L1 and L2 Can Be Set Up to Steal User Funds",
+                    "ERC-721 Tokens Can Be Locked on the Token Bridge"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "contracts/ZkEvmV2Init.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/ZkEvmV2Init.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Note"
+                }
+              ]
+            },
+            "contracts/ZkEvmV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                    "timestamp": "2023-07-10T12:19:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/f08c1906855198e2dc0413a47dcb38291b7087e5/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "Consensys/linea-contracts-fix",
+          "paths": {
+            "contracts/interfaces/IGenericErrors.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/interfaces/IGenericErrors.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/interfaces/IGenericErrors.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IL1MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/interfaces/IL1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/interfaces/IL1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                    "timestamp": "2023-11-17T12:11:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c7633b325542b442f98b9255b415cbe1c2354aa6/contracts/interfaces/IL1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #12 (incorrect or misleading documentation); review limited to the fix.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/interfaces/IL1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IL2MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/interfaces/IL2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/interfaces/IL2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                    "timestamp": "2023-11-17T12:11:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c7633b325542b442f98b9255b415cbe1c2354aa6/contracts/interfaces/IL2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #12 (incorrect or misleading documentation); review limited to the fix.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/interfaces/IL2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IMessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/interfaces/IMessageService.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/interfaces/IMessageService.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                    "timestamp": "2023-11-17T12:11:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c7633b325542b442f98b9255b415cbe1c2354aa6/contracts/interfaces/IMessageService.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #12 (incorrect or misleading documentation); review limited to the fix.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IPauseManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/interfaces/IPauseManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/interfaces/IPauseManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b5eb9870a8ec3805f522fafa3d43650ed019c42",
+                    "timestamp": "2023-11-17T12:12:30Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0b5eb9870a8ec3805f522fafa3d43650ed019c42/contracts/interfaces/IPauseManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #15 (indexed and additional event parameters); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IRateLimiter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/interfaces/IRateLimiter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/interfaces/IRateLimiter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                    "timestamp": "2023-11-17T12:11:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c7633b325542b442f98b9255b415cbe1c2354aa6/contracts/interfaces/IRateLimiter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #12 (incorrect or misleading documentation); review limited to the fix.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IZkEvmV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dc62eb9a6e7f0c14bfaa989ade47b53e953e3ec9",
+                    "timestamp": "2023-11-17T12:07:05Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/dc62eb9a6e7f0c14bfaa989ade47b53e953e3ec9/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #10 (BlockData struct documentation); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                    "timestamp": "2023-11-17T12:11:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c7633b325542b442f98b9255b415cbe1c2354aa6/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #12 (incorrect or misleading documentation); review limited to the fix.",
+                  "follows": "dc62eb9a6e7f0c14bfaa989ade47b53e953e3ec9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b5eb9870a8ec3805f522fafa3d43650ed019c42",
+                    "timestamp": "2023-11-17T12:12:30Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0b5eb9870a8ec3805f522fafa3d43650ed019c42/contracts/interfaces/IZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #15 (indexed and additional event parameters); review limited to the fixes.",
+                  "follows": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/l1/L1MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/messageService/l1/L1MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/l1/L1MessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c14ffa9798eba14c5fdb4a50f8e63d77abaf76ce",
+                    "timestamp": "2023-11-17T12:12:05Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c14ffa9798eba14c5fdb4a50f8e63d77abaf76ce/contracts/messageService/l1/L1MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #14 (hardcoded values replaced); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/messageService/l2/L2MessageManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                    "timestamp": "2023-11-17T12:11:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c7633b325542b442f98b9255b415cbe1c2354aa6/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #12 (incorrect or misleading documentation); review limited to the fix.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/messageService/l2/L2MessageManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/l2/L2MessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c14ffa9798eba14c5fdb4a50f8e63d77abaf76ce",
+                    "timestamp": "2023-11-17T12:12:05Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c14ffa9798eba14c5fdb4a50f8e63d77abaf76ce/contracts/messageService/l2/L2MessageService.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #14 (hardcoded values replaced); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/messageService/lib/Codec.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/lib/Codec.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/lib/Codec.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/lib/Codec.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/lib/Codec.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/lib/PauseManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/lib/PauseManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/lib/PauseManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/lib/PauseManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/lib/PauseManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/lib/RateLimiter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/lib/RateLimiter.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/lib/RateLimiter.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/lib/RateLimiter.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/lib/RateLimiter.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix. Rate Limiters Can Lead to a Denial-of-Service Attack (acknowledged) remains.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Rate Limiters Can Lead to a Denial-of-Service Attack"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/messageService/lib/Rlp.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/lib/Rlp.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/lib/Rlp.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/lib/Rlp.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/lib/Rlp.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/lib/TimeLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/lib/TimeLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/lib/TimeLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/lib/TimeLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/lib/TimeLock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/lib/TransactionDecoder.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/lib/TransactionDecoder.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/lib/TransactionDecoder.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/lib/TransactionDecoder.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/lib/TransactionDecoder.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/messageService/lib/TransactionDecoder.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/messageService/MessageServiceBase.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/messageService/MessageServiceBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/messageService/MessageServiceBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/messageService/MessageServiceBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/messageService/MessageServiceBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/messageService/MessageServiceBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenBridge/BridgedToken.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/tokenBridge/BridgedToken.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/tokenBridge/BridgedToken.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/tokenBridge/BridgedToken.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenBridge/interfaces/ITokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/tokenBridge/interfaces/ITokenBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dee21ef90436edbdc46b94c82255ec3876355c07",
+                    "timestamp": "2023-11-17T12:01:48Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/dee21ef90436edbdc46b94c82255ec3876355c07/contracts/tokenBridge/interfaces/ITokenBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #8 (reserve-status handling in completeBridging, bridgeTokenWithPermit documentation); review limited to the fixes.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/tokenBridge/interfaces/ITokenBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "dee21ef90436edbdc46b94c82255ec3876355c07",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/tokenBridge/TokenBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/tokenBridge/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes. ERC-721 Tokens Can Be Locked on the Token Bridge (acknowledged) remains.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "ERC-721 Tokens Can Be Locked on the Token Bridge"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dee21ef90436edbdc46b94c82255ec3876355c07",
+                    "timestamp": "2023-11-17T12:01:48Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/dee21ef90436edbdc46b94c82255ec3876355c07/contracts/tokenBridge/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #8 (reserve-status handling in completeBridging, bridgeTokenWithPermit documentation); review limited to the fixes. ERC-721 Tokens Can Be Locked on the Token Bridge (acknowledged) remains.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "ERC-721 Tokens Can Be Locked on the Token Bridge"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/tokenBridge/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it. ERC-721 Tokens Can Be Locked on the Token Bridge (acknowledged) remains.",
+                  "follows": "dee21ef90436edbdc46b94c82255ec3876355c07",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "ERC-721 Tokens Can Be Locked on the Token Bridge"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/tokenBridge/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix. ERC-721 Tokens Can Be Locked on the Token Bridge (acknowledged) remains.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "ERC-721 Tokens Can Be Locked on the Token Bridge"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c14ffa9798eba14c5fdb4a50f8e63d77abaf76ce",
+                    "timestamp": "2023-11-17T12:12:05Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c14ffa9798eba14c5fdb4a50f8e63d77abaf76ce/contracts/tokenBridge/TokenBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #14 (hardcoded values replaced); review limited to the fix. ERC-721 Tokens Can Be Locked on the Token Bridge (acknowledged) remains.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "ERC-721 Tokens Can Be Locked on the Token Bridge"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/ZkEvmV2Init.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/ZkEvmV2Init.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/ZkEvmV2Init.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/ZkEvmV2Init.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/ZkEvmV2Init.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/ZkEvmV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb3691b67101e5cc9839b781af861defa81a2986",
+                    "timestamp": "2023-07-30T13:35:49Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/bb3691b67101e5cc9839b781af861defa81a2986/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit bb3691b resolving the Critical reentrancy, the High shared-address issue, the Medium bridging-DoS issue and several Low/Note issues (BridgedToken initializer, pragma, completeBridging pausability, locked funds, documentation, indexed events); review limited to the fixes.",
+                  "follows": "f08c1906855198e2dc0413a47dcb38291b7087e5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                    "timestamp": "2023-11-17T12:00:55Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/f3fdf32bdd3183d9bfb24e958043821f75144070/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #6 (pragma pinned to 0.8.19); review limited to the fix.",
+                  "follows": "bb3691b67101e5cc9839b781af861defa81a2986",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                    "timestamp": "2023-11-17T12:02:22Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0949c4096664e613f73ed3ce51c32f97fc56cdef/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final fix review",
+                  "coverage": "Commit stated by the report as the final version fully reviewed and containing all resolutions (squash merge of PR #8); note that the later PR #9-#15 fixes are not contained in it.",
+                  "follows": "f3fdf32bdd3183d9bfb24e958043821f75144070",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                    "timestamp": "2023-11-17T12:02:43Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/4f6dc3663c4825c7a51d5ef3c59ffe455ed13285/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #9 (gap variables, NatSpec, typos, unused import, Codec memory safety, variable naming); review limited to the fixes.",
+                  "follows": "0949c4096664e613f73ed3ce51c32f97fc56cdef",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                    "timestamp": "2023-11-17T12:09:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8b887f7304d96b6c7ac994115287576f3bd59d04/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #11 (security contact NatSpec); review limited to the fix.",
+                  "follows": "4f6dc3663c4825c7a51d5ef3c59ffe455ed13285",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                    "timestamp": "2023-11-17T12:11:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/c7633b325542b442f98b9255b415cbe1c2354aa6/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #12 (incorrect or misleading documentation); review limited to the fix.",
+                  "follows": "8b887f7304d96b6c7ac994115287576f3bd59d04",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                    "timestamp": "2023-11-17T12:11:42Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/813eaeacc87edddc7b25c7728cf57bce390dd48d/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #13 (custom error redefinition and recommendations); review limited to the fixes.",
+                  "follows": "c7633b325542b442f98b9255b415cbe1c2354aa6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0b5eb9870a8ec3805f522fafa3d43650ed019c42",
+                    "timestamp": "2023-11-17T12:12:30Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/0b5eb9870a8ec3805f522fafa3d43650ed019c42/contracts/ZkEvmV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #15 (indexed and additional event parameters); review limited to the fixes.",
+                  "follows": "813eaeacc87edddc7b25c7728cf57bce390dd48d",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-linea-verifier-2023-08",
+      "report_file": "2023_08-openzeppelin-linea-verifier-audit.md",
+      "title": "Linea Verifier Audit",
+      "description": "OpenZeppelin audit of the gnark-generated PLONK verifier contracts PlonkVerifierFull and PlonkVerifierFullLarge in Consensys/linea-contracts-fix at commit 04d6677, with fixes reviewed in per-issue pull requests. A Critical proof-forgery issue (challenge u not bound to the opening proofs) was found and resolved in PR #30.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2023-11-03",
+      "repositories": [
+        {
+          "id": "Consensys/linea-contracts-fix",
+          "url": "https://github.com/Consensys/linea-contracts-fix"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Consensys/linea-contracts-fix",
+          "paths": {
+            "contracts/verifiers/PlonkVerifierFull.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "04d6677474421239c1f215c5a676223d09266ba4",
+                    "timestamp": "2023-08-10T13:23:53Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the generated verifier logic; SRS, verifying key and the circuit are out of scope and assumed correct.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Incorrect Randomness Computation Allows Proof Forgery"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b",
+                    "timestamp": "2023-09-10T20:02:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix-review snapshot (early fix/N_03 branch commit) whose code the report cites for the Critical, which was spun off from the so-far-digest issue during the fix review. Review limited to the fix.",
+                  "follows": "04d6677474421239c1f215c5a676223d09266ba4",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Incorrect Randomness Computation Allows Proof Forgery"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "540ada80d8ff8b886b37d6f6ee7a9ef0812d38d5",
+                    "timestamp": "2023-11-17T12:14:31Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/540ada80d8ff8b886b37d6f6ee7a9ef0812d38d5/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #16 (misleading documentation); does not yet contain the PR #30 fix. Review limited to the fix.",
+                  "follows": "dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Incorrect Randomness Computation Allows Proof Forgery"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7e4b174b9147ac8d9055637e050daf0e9f206087",
+                    "timestamp": "2023-11-17T16:00:44Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/7e4b174b9147ac8d9055637e050daf0e9f206087/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #30 (challenge u derived from the full transcript, so-far-digest deviations partially resolved) resolving the Critical. Review limited to the fix.",
+                  "follows": "540ada80d8ff8b886b37d6f6ee7a9ef0812d38d5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4e38e2df4b7d9029a680b7d03923a8e664a07a5",
+                    "timestamp": "2023-11-17T16:39:39Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/e4e38e2df4b7d9029a680b7d03923a8e664a07a5/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #29 (complicated bit manipulations). Review limited to the fix.",
+                  "follows": "7e4b174b9147ac8d9055637e050daf0e9f206087",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "25a5fcb60f409a3adbaade6d0bff4c44d788265f",
+                    "timestamp": "2023-11-17T18:05:56Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/25a5fcb60f409a3adbaade6d0bff4c44d788265f/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #28 (early revert for potentially unnecessary computation; partial). Review limited to the fix.",
+                  "follows": "e4e38e2df4b7d9029a680b7d03923a8e664a07a5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8c42de96238c6cafa1aa698923202e3defbe6725",
+                    "timestamp": "2023-11-20T10:30:37Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8c42de96238c6cafa1aa698923202e3defbe6725/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #27 (custom gate support specialization). Review limited to the fix.",
+                  "follows": "25a5fcb60f409a3adbaade6d0bff4c44d788265f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b359561c7397bd62b8f76c220299416620f54e86",
+                    "timestamp": "2023-11-20T16:56:25Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/b359561c7397bd62b8f76c220299416620f54e86/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #20 (memory management consistency, cached value reuse). Review limited to the fix.",
+                  "follows": "8c42de96238c6cafa1aa698923202e3defbe6725",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "608c0fbcc87eacf8c862c587c9c39161bbaa7ec3",
+                    "timestamp": "2023-11-21T13:44:37Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/608c0fbcc87eacf8c862c587c9c39161bbaa7ec3/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #23 (magic numbers; partial). Review limited to the fix.",
+                  "follows": "b359561c7397bd62b8f76c220299416620f54e86",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7f223378784bc78a432a943c57bf10394d3cc5d1",
+                    "timestamp": "2023-11-21T13:57:39Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/7f223378784bc78a432a943c57bf10394d3cc5d1/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #26 (public input count check; elliptic curve checks not added). Review limited to the fix.",
+                  "follows": "608c0fbcc87eacf8c862c587c9c39161bbaa7ec3",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "652b19b9879dc54ccf1f80b00b54b071e7885856",
+                    "timestamp": "2023-11-21T14:08:05Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/652b19b9879dc54ccf1f80b00b54b071e7885856/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #22 (naming suggestions). Review limited to the fix.",
+                  "follows": "7f223378784bc78a432a943c57bf10394d3cc5d1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d494b21c9108a35a9f5d060c99f97d9da7893ad0",
+                    "timestamp": "2023-11-21T15:34:08Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/d494b21c9108a35a9f5d060c99f97d9da7893ad0/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #21 (typographical errors). Review limited to the fix.",
+                  "follows": "652b19b9879dc54ccf1f80b00b54b071e7885856",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1cda44b91d95c53b4902c174a65279ebc8a07e8d",
+                    "timestamp": "2023-11-21T17:34:30Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/1cda44b91d95c53b4902c174a65279ebc8a07e8d/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #17 (error handling; partial). Review limited to the fix.",
+                  "follows": "d494b21c9108a35a9f5d060c99f97d9da7893ad0",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cbcf5b79ff5b0d8d43585f8797388991d8d0afb6",
+                    "timestamp": "2023-11-21T17:44:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/cbcf5b79ff5b0d8d43585f8797388991d8d0afb6/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #18 (missing docstrings). Review limited to the fix.",
+                  "follows": "1cda44b91d95c53b4902c174a65279ebc8a07e8d",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "292d695526d183ab9a987f910f1d2facaedce331",
+                    "timestamp": "2023-11-21T18:18:54Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/292d695526d183ab9a987f910f1d2facaedce331/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #25 (custom gate selector commitments included in challenge derivation). Review limited to the fix.",
+                  "follows": "cbcf5b79ff5b0d8d43585f8797388991d8d0afb6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ad419f76a1b4a9530bf42e444daaa408457a3e3c",
+                    "timestamp": "2023-11-21T18:28:31Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/ad419f76a1b4a9530bf42e444daaa408457a3e3c/contracts/verifiers/PlonkVerifierFull.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #24 (constants in UPPER_CASE). Review limited to the fix.",
+                  "follows": "292d695526d183ab9a987f910f1d2facaedce331",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/verifiers/PlonkVerifierFullLarge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "04d6677474421239c1f215c5a676223d09266ba4",
+                    "timestamp": "2023-08-10T13:23:53Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the generated verifier logic; SRS, verifying key and the circuit are out of scope and assumed correct. The Critical is shown on PlonkVerifierFull, whose code is identical to this contract apart from verifying-key constants.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Incorrect Randomness Computation Allows Proof Forgery"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b",
+                    "timestamp": "2023-09-10T20:02:26Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix-review snapshot (early fix/N_03 branch commit) whose code the report cites for the Critical, which was spun off from the so-far-digest issue during the fix review. Review limited to the fix.",
+                  "follows": "04d6677474421239c1f215c5a676223d09266ba4",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Incorrect Randomness Computation Allows Proof Forgery"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "540ada80d8ff8b886b37d6f6ee7a9ef0812d38d5",
+                    "timestamp": "2023-11-17T12:14:31Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/540ada80d8ff8b886b37d6f6ee7a9ef0812d38d5/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #16 (misleading documentation); does not yet contain the PR #30 fix. Review limited to the fix.",
+                  "follows": "dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "Incorrect Randomness Computation Allows Proof Forgery"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7e4b174b9147ac8d9055637e050daf0e9f206087",
+                    "timestamp": "2023-11-17T16:00:44Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/7e4b174b9147ac8d9055637e050daf0e9f206087/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #30 (challenge u derived from the full transcript, so-far-digest deviations partially resolved) resolving the Critical. Review limited to the fix.",
+                  "follows": "540ada80d8ff8b886b37d6f6ee7a9ef0812d38d5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4e38e2df4b7d9029a680b7d03923a8e664a07a5",
+                    "timestamp": "2023-11-17T16:39:39Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/e4e38e2df4b7d9029a680b7d03923a8e664a07a5/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #29 (complicated bit manipulations). Review limited to the fix.",
+                  "follows": "7e4b174b9147ac8d9055637e050daf0e9f206087",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "25a5fcb60f409a3adbaade6d0bff4c44d788265f",
+                    "timestamp": "2023-11-17T18:05:56Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/25a5fcb60f409a3adbaade6d0bff4c44d788265f/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #28 (early revert for potentially unnecessary computation; partial). Review limited to the fix.",
+                  "follows": "e4e38e2df4b7d9029a680b7d03923a8e664a07a5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8c42de96238c6cafa1aa698923202e3defbe6725",
+                    "timestamp": "2023-11-20T10:30:37Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/8c42de96238c6cafa1aa698923202e3defbe6725/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #27 (custom gate support specialization). Review limited to the fix.",
+                  "follows": "25a5fcb60f409a3adbaade6d0bff4c44d788265f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b359561c7397bd62b8f76c220299416620f54e86",
+                    "timestamp": "2023-11-20T16:56:25Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/b359561c7397bd62b8f76c220299416620f54e86/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #20 (memory management consistency, cached value reuse). Review limited to the fix.",
+                  "follows": "8c42de96238c6cafa1aa698923202e3defbe6725",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "608c0fbcc87eacf8c862c587c9c39161bbaa7ec3",
+                    "timestamp": "2023-11-21T13:44:37Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/608c0fbcc87eacf8c862c587c9c39161bbaa7ec3/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #23 (magic numbers; partial). Review limited to the fix.",
+                  "follows": "b359561c7397bd62b8f76c220299416620f54e86",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7f223378784bc78a432a943c57bf10394d3cc5d1",
+                    "timestamp": "2023-11-21T13:57:39Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/7f223378784bc78a432a943c57bf10394d3cc5d1/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #26 (public input count check; elliptic curve checks not added). Review limited to the fix.",
+                  "follows": "608c0fbcc87eacf8c862c587c9c39161bbaa7ec3",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "652b19b9879dc54ccf1f80b00b54b071e7885856",
+                    "timestamp": "2023-11-21T14:08:05Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/652b19b9879dc54ccf1f80b00b54b071e7885856/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #22 (naming suggestions). Review limited to the fix.",
+                  "follows": "7f223378784bc78a432a943c57bf10394d3cc5d1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d494b21c9108a35a9f5d060c99f97d9da7893ad0",
+                    "timestamp": "2023-11-21T15:34:08Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/d494b21c9108a35a9f5d060c99f97d9da7893ad0/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #21 (typographical errors). Review limited to the fix.",
+                  "follows": "652b19b9879dc54ccf1f80b00b54b071e7885856",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1cda44b91d95c53b4902c174a65279ebc8a07e8d",
+                    "timestamp": "2023-11-21T17:34:30Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/1cda44b91d95c53b4902c174a65279ebc8a07e8d/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #17 (error handling; partial). Review limited to the fix.",
+                  "follows": "d494b21c9108a35a9f5d060c99f97d9da7893ad0",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cbcf5b79ff5b0d8d43585f8797388991d8d0afb6",
+                    "timestamp": "2023-11-21T17:44:17Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/cbcf5b79ff5b0d8d43585f8797388991d8d0afb6/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #18 (missing docstrings). Review limited to the fix.",
+                  "follows": "1cda44b91d95c53b4902c174a65279ebc8a07e8d",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "292d695526d183ab9a987f910f1d2facaedce331",
+                    "timestamp": "2023-11-21T18:18:54Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/292d695526d183ab9a987f910f1d2facaedce331/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #25 (custom gate selector commitments included in challenge derivation). Review limited to the fix.",
+                  "follows": "cbcf5b79ff5b0d8d43585f8797388991d8d0afb6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ad419f76a1b4a9530bf42e444daaa408457a3e3c",
+                    "timestamp": "2023-11-21T18:28:31Z",
+                    "url": "https://github.com/Consensys/linea-contracts-fix/blob/ad419f76a1b4a9530bf42e444daaa408457a3e3c/contracts/verifiers/PlonkVerifierFullLarge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #24 (constants in UPPER_CASE). Review limited to the fix.",
+                  "follows": "292d695526d183ab9a987f910f1d2facaedce331",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-diligence-linea-cross-chain-governance-executor-2023-10",
+      "report_file": "2023_10-consensys-diligence-linea-cross-chain-governance-executor.md",
+      "title": "Linea Cross-Chain Governance Executor",
+      "description": "Consensys Diligence review of the LineaBridgeExecutor contract (built on Aave's cross-chain governance bridge executors, intended for Lido governance of wstETH on Linea) and its IMessageService interface in Consensys/governance-crosschain-bridges at commit 7d4fd35. Only a NatSpec recommendation was reported and remediated in commit 315308a.",
+      "isRelevant": true,
+      "auditor": "Consensys Diligence",
+      "report_date": "2023-10-11",
+      "repositories": [
+        {
+          "id": "Consensys/governance-crosschain-bridges",
+          "url": "https://github.com/Consensys/governance-crosschain-bridges"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Consensys/governance-crosschain-bridges",
+          "paths": {
+            "contracts/bridges/LineaBridgeExecutor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7d4fd35e92688d7aa56ae2f94872f851bacae50c",
+                    "timestamp": "2023-09-28T09:30:04Z",
+                    "url": "https://github.com/Consensys/governance-crosschain-bridges/blob/7d4fd35e92688d7aa56ae2f94872f851bacae50c/contracts/bridges/LineaBridgeExecutor.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit; only a NatSpec author recommendation (4.1).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "315308a2640c696937185732159b130417f29997",
+                    "timestamp": "2023-10-16T11:22:16Z",
+                    "url": "https://github.com/Consensys/governance-crosschain-bridges/blob/315308a2640c696937185732159b130417f29997/contracts/bridges/LineaBridgeExecutor.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Remediation commit for recommendation 4.1 (NatSpec author), with updated file hash listed in report v1.1.",
+                  "follows": "7d4fd35e92688d7aa56ae2f94872f851bacae50c",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/dependencies/linea/interfaces/IMessageService.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7d4fd35e92688d7aa56ae2f94872f851bacae50c",
+                    "timestamp": "2023-09-28T09:30:04Z",
+                    "url": "https://github.com/Consensys/governance-crosschain-bridges/blob/7d4fd35e92688d7aa56ae2f94872f851bacae50c/contracts/dependencies/linea/interfaces/IMessageService.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-diligence-linea-custom-bridged-token-2023-12",
+      "report_file": "2023_12-consensys-diligence-linea-custom-bridged-token.md",
+      "title": "Linea Custom Bridged Token",
+      "description": "Consensys Diligence one-day review of the CustomBridgedToken contract, a BridgedToken variant whose ownership can be handed to the token issuer (such as Lido's wstETH handed to LineaBridgeExecutor), in Consensys/linea-contracts at commit 3cf8552. No issues were found.",
+      "isRelevant": true,
+      "auditor": "Consensys Diligence",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "Consensys/linea-contracts",
+          "url": "https://github.com/Consensys/linea-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Consensys/linea-contracts",
+          "paths": {
+            "contracts/tokenBridge/CustomBridgedToken.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3cf85529fd4539eb06ba998030c37e47f98c528a",
+                    "timestamp": "2023-10-18T07:58:12Z",
+                    "url": "https://github.com/Consensys/linea-contracts/blob/3cf85529fd4539eb06ba998030c37e47f98c528a/contracts/tokenBridge/CustomBridgedToken.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at audit commit, focused on correct initialization; no issues found.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-diligence-linea-contracts-update-2024-01",
+      "report_file": "irrelevant/2024_01-consensys-diligence-linea-contracts-update.md",
+      "title": "Linea Contracts Update",
+      "description": "Consensys Diligence review of the Linea V2 contract update (compressed data submission and finalization in LineaRollup, L1/L2 rolling hashes, sparse Merkle tree L2 to L1 messaging) and of fixes to OpenZeppelin's V2 findings. The entire scope (commits 0154676, a4fb9a4, bb6eb72 and 075b26e) is in the private Consensys/linea-contracts-audit repository and is not served by any public repository.",
+      "isRelevant": false,
+      "auditor": "Consensys Diligence",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "Consensys/linea-contracts-audit",
+          "url": "https://github.com/Consensys/linea-contracts-audit"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-linea-v2-2024-01",
+      "report_file": "irrelevant/2024_01-openzeppelin-linea-v2-audit.md",
+      "title": "Linea V2 Audit",
+      "description": "OpenZeppelin audit of the Linea V2 rollup and message service contracts (LineaRollup compressed data submission and finalization, rolling hashes, sparse Merkle tree messaging) at commit bb6eb72 with fixes at 99039eb. Both commits are only in the private Consensys/linea-contracts-audit repository and are not served by any public repository.",
+      "isRelevant": false,
+      "auditor": "OpenZeppelin",
+      "report_date": "2024-02-14",
+      "repositories": [
+        {
+          "id": "Consensys/linea-contracts-audit",
+          "url": "https://github.com/Consensys/linea-contracts-audit"
+        }
+      ],
+      "scopes": []
+    }
+  ]
+}

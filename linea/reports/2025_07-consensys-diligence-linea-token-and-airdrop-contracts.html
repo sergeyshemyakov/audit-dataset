@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linea Token and Airdrop Contracts | Consensys Diligence</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+      <meta name="description" content="This report presents the results of our engagement with the Linea Team to review the Linea Token and Airdrop contracts. The review was conducted in the …">
+    <link rel="preload" href="/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Medium-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Semibold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Bold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp" type="image/webp" fetchpriority="high">
+    <script>
+(function(){
+  var stored = null;
+  try { stored = localStorage.getItem('cookie_consent'); } catch (e) {}
+  if (stored === 'granted' || stored === 'denied') return;
+  try {
+    
+    
+    
+    
+    
+    
+    window.__ccTrace = fetch('/cdn-cgi/trace')
+      .then(function(r){ return r.text(); })
+      .catch(function(){ return ''; });
+  } catch (e) {}
+})();
+</script><script src="/js/consent.js?v=d268f9f4" defer></script>
+
+    <link href="/css/tachyons.min.css?v=75808e0f" rel="stylesheet"><link href="/style.css?v=fe61105e" rel="stylesheet">
+    <link href="/css/highlight.css?v=be488ecd" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://diligence.security/audits/2025/07/linea-token-and-airdrop-contracts/">
+    <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.png">
+    <link rel="nokia-touch-icon" href="/images/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/icon/favicon.png" sizes="1x1">
+    
+<script type="text/javascript" id="interactive-report-tools" defer>
+const getStructuredFinding = (elem, options) => {
+  const is = elem.closest(".issue");
+  const heading = is.querySelector("h3");
+  const title = Array.from(heading.childNodes)
+          .map(node => node.nodeName === "SPAN" ? "" : node.textContent.trim())
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .trim()
+
+  function formatText(elem){
+      return Array.from(elem.childNodes)
+          .map(node => {
+              switch(node.nodeName){
+                  case "CODE":
+                      return `\`${node.textContent.trim()}\``;
+                  case "H4":
+                      return  `#### ${node.textContent.trim()}`;
+              }
+              return node.textContent.trim();
+          })
+          .join("\n")
+          
+          .trim()
+  }
+
+  const finding = {
+      id: title.substring(0, title.indexOf(' ')),
+      title: title.substring(title.indexOf(' ') + 1),
+      severity: heading.querySelector(".severity")?.textContent.trim().toLowerCase() || undefined,
+      state: heading.querySelector(".state")?.textContent.trim().toLowerCase() || undefined,
+      url: document.location.href.split("#",1)[0] + "#" + heading.id,
+  }
+  if(options?.withBody){
+      finding.body = formatText(is.querySelector("h4").closest("div"));
+  }
+  return finding;
+}
+const getAllFindings = (options) => Array.from(document.querySelectorAll(".issue")).map(iss => getStructuredFinding(iss, options));
+function exportCsv(fileName) {
+  const data = getAllFindings()
+  const keys = Object.keys(data[0]);
+  const csvRows = [];
+  csvRows.push(keys.join(','));
+  data.forEach(row => {
+      const values = keys.map(key => {
+          const value = row[key];
+          if(value === undefined) return "";
+          return `"${value}"`;
+      });
+      csvRows.push(values.join(','));
+  });
+  const csvData = csvRows.join('\n');
+  const blob = new Blob([csvData], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function exportJson(fileName) {
+  const blob = new Blob([JSON.stringify(getAllFindings())], { type: 'text/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function getOrSetGithubRepo(force) {
+  function parseGitHubRepo(input) {
+      if(!input) return;
+      const urlMatch = input.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/?$/);
+      if (urlMatch) return `${urlMatch[1]}/${urlMatch[2]}`;
+      
+      const directMatch = input.match(/^([^\/]+)\/([^\/]+)$/);
+      return directMatch ? input : null;
+  }
+  function isValidGitHubRepo(input) {
+      if(!input) return false;
+      
+      
+      
+      
+      
+      const githubNameRegex = /^(?![-.])(?!.*[_.-]{2})[a-zA-Z0-9.-]{1,100}(?<![-.])$/;
+      if (typeof input !== 'string') return false;
+      const parts = input.split('/');
+      
+      if (parts.length !== 2) return false;
+      const [org, repo] = parts;
+      return githubNameRegex.test(org) && githubNameRegex.test(repo);
+  }
+  closeAllMenus();
+  let repo = sessionStorage.getItem("user_gh_repo");
+  if (force || !isValidGitHubRepo(repo)) {
+      repo = parseGitHubRepo(prompt("Enter the GitHub repository name (owner/repo):", "https://github.com/organisation/repo"));
+
+      if (repo) {
+          if(!isValidGitHubRepo(repo)){
+              alert(`Error: '${repo}' is not a valid GitHub repo.`);
+          } else {
+              sessionStorage.setItem("user_gh_repo", repo);
+          }
+      }
+  }
+  return repo;
+}
+
+function exportToGitHub(elem) {
+  closeAllMenus();
+  const repo = getOrSetGithubRepo();
+  if(!repo) return;
+  const baseUrl = `https:\/\/github.com/${repo}/issues/new`;
+  const is = getStructuredFinding(elem);
+  const labels = undefined;
+
+  const params = new URLSearchParams({
+      title: `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}`,
+      body: `[<img width="200" alt="get in touch with Consensys Diligence" src="https:\/\/user-images.githubusercontent.com/2865694/56826101-91dcf380-685b-11e9-937c-af49c2510aa0.png">](https:\/\/diligence.security)
+<sub>[[ 🌐 ](https:\/\/diligence.security) [ 📩 ](mailto:diligence@diligence.security) [ 🔥 ](https:\/\/consensysdiligence.github.io/diligence/)]</sub>
+_______
+
+**Severity**: ${capitalizeFirstLetter(is.severity)}
+**Finding**: 👉 [${is.id} - ${is.title}](${is.url})
+
+`,
+      labels: labels && labels.join(',') || "bug,security,audit",
+      milestone: "diligence-audit",
+      assignee: ""
+  });
+
+  const issueUrl = `${baseUrl}?${params.toString()}`;
+  window.open(issueUrl, "_blank");
+}
+function exportToClipboard(elem, options){
+  closeAllMenus();
+  const is = getStructuredFinding(elem, {withBody:true});
+  let data = "";
+  switch (options?.format){
+      case "text":
+          data = `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}
+
+**Reference**: ${is.url}
+
+${is.body}
+`
+          break;
+      default:
+          data = JSON.stringify(is);
+  }
+  navigator.clipboard.writeText(data)
+}
+function capitalizeFirstLetter(string) {
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "None";
+}
+function closeAllMenus() {
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.style.display = "none";
+  });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  
+  document.querySelectorAll(".menu-toggle").forEach(button => {
+      button.addEventListener("click", function (event) {
+          const menu = this.nextElementSibling;
+          menu.style.display = menu.style.display === "block" ? "none" : "block";
+          event.stopPropagation(); 
+      });
+  });
+
+  
+  document.addEventListener("click", function () {
+      document.querySelectorAll(".menu-box").forEach(menu => {
+          menu.style.display = "none";
+      });
+  });
+
+  
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.addEventListener("click", function (event) {
+          event.stopPropagation();
+      });
+  });
+});
+</script>
+<link rel="alternate" type="application/rss+xml" href="https://diligence.security/index.xml" title="Consensys Diligence" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://diligence.security/#organization","@type":"Organization","description":"Smart Contract Audits for Ethereum protocols and institutions. Supercharged by AI agents, guided by veteran experts.","foundingDate":"2017","logo":{"@type":"ImageObject","url":"https://diligence.security/images/icon/favicon.png"},"name":"Consensys Diligence","sameAs":["https://x.com/ConsensysAudits","https://www.linkedin.com/company/consensys-diligence","https://github.com/ConsenSysDiligence","https://medium.com/consensys-diligence","https://www.youtube.com/@ConsensysDiligence"],"url":"https://diligence.security/"},{"@id":"https://diligence.security/#website","@type":"WebSite","name":"Consensys Diligence","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/"},{"@id":"https://diligence.security/audits/2025/07/linea-token-and-airdrop-contracts/#article","@type":"TechArticle","author":[{"@type":"Person","name":"George Kobakhidze, Heiko Fisch"}],"dateModified":"2025-07-21T09:07:02+02:00","datePublished":"2025-07-21T09:07:02+02:00","description":"This report presents the results of our engagement with the Linea Team to review the Linea Token and Airdrop contracts. The review was conducted in the …","headline":"Linea Token and Airdrop Contracts","image":["https://diligence.security/images/og-share.png","https://diligence.security/images/audit_report/feature-hero.png"],"inLanguage":"en","isPartOf":{"@id":"https://diligence.security/#website"},"mainEntityOfPage":{"@id":"https://diligence.security/audits/2025/07/linea-token-and-airdrop-contracts/","@type":"WebPage"},"name":"Linea Token and Airdrop Contracts","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/audits/2025/07/linea-token-and-airdrop-contracts/","wordCount":5187},{"@id":"https://diligence.security/audits/2025/07/linea-token-and-airdrop-contracts/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://diligence.security/","name":"Home","position":1},{"@type":"ListItem","item":"https://diligence.security/audit-reports/","name":"Public Smart Contract Audits and Security Reviews","position":2},{"@type":"ListItem","item":"https://diligence.security/audits/2025/07/linea-token-and-airdrop-contracts/","name":"Linea Token and Airdrop Contracts","position":3}]}]}</script>
+    <meta property="og:title" content="Linea Token and Airdrop Contracts | Consensys Diligence" />
+    <meta property="og:description" content="This report presents the results of our engagement with the Linea Team to review the Linea Token and Airdrop contracts. The review was conducted in the …" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://diligence.security/audits/2025/07/linea-token-and-airdrop-contracts/" /><meta property="og:image" content="https://diligence.security/images/og-share.png" />
+    <meta property="og:image:alt" content="Linea Token and Airdrop Contracts - Consensys Diligence" /><meta property="article:published_time" content="2025-07-21T09:07:02+02:00" />
+<meta property="article:modified_time" content="2025-07-21T09:07:02+02:00" /><meta property="og:site_name" content="Consensys Diligence" />
+    <meta property="article:publisher" content="https://www.twitter.com/ConsensysAudits" />
+    
+    <meta property="article:section" content="audits" />
+<meta name="twitter:title" content="Linea Token and Airdrop Contracts | Consensys Diligence"/>
+<meta name="twitter:description" content="This report presents the results of our engagement with the Linea Team to review the Linea Token and Airdrop contracts. The review was conducted in the …"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://diligence.security/images/og-share.png"/>
+                <meta name="twitter:image:alt" content="Linea Token and Airdrop Contracts - Consensys Diligence"/>
+<meta name="twitter:site" content="@ConsensysAudits"/>
+    <meta name="twitter:creator" content="@ConsensysAudits"/>
+
+      
+      <script type="text/javascript" id="reload-pathfix">
+        let lastSegment = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1); 
+        if(lastSegment && lastSegment.length !==0 && lastSegment.indexOf(".") === -1){
+          
+          window.location.pathname += "/";  
+        }
+      </script>
+      <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-H4M4ES1MZM');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4M4ES1MZM"></script>
+    
+  </head>
+  <body style="margin: 0; padding: 0;">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    
+<header class="audit-header">
+  <div class="audit-header__inner">
+    
+    <div class="audit-header__row1">
+      <a href="/" class="audit-header__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </a>
+
+      <a href="/request-audit/" class="audit-header__cta">
+        <div class="audit-header__cta-icon">
+          <svg fill="none" viewBox="0 0 14.8226 10.1497">
+            <line stroke="white" stroke-width="1.3" x2="13.7793" y1="4.8803" y2="4.8803" />
+            <path d="M9.28809 0.459619L13.9033 5.07487L9.28809 9.69013" stroke="white" stroke-width="1.3" fill="none" />
+          </svg>
+        </div>
+        <span class="audit-header__cta-text">Request Audit</span>
+      </a>
+    </div>
+
+    
+    <div class="audit-header__row2">
+      <p class="audit-header__tagline">Securing Ethereum Smart Contracts since 2017</p>
+      <nav class="audit-header__nav">
+        <a href="/about/" class="audit-header__nav-link">About</a>
+        <a href="/blog/" class="audit-header__nav-link">Blog</a>
+        <a href="/audits/" class="audit-header__nav-link">Public Audits</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <main id="main" tabindex="-1" role="main">
+      <div class="dili-navigator-page">
+    <div class="dili-blog-hero"><div class="dili-hero-bg-mixin" style="background-image: url('/images/audit_report/feature-hero.png'); background-image: image-set(url('/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp') type('image/webp'), url('/images/audit_report/feature-hero.png') type('image/png'));" ></div>
+        <div class="dili-container">
+            <div class="dili-blog-hero-inner">
+                <div class="item-eyebrow"></div>
+                <h1 class="item-title">Linea Token and Airdrop Contracts</h1>
+            </div>
+        </div>
+    </div>
+    <article class="">
+
+
+    <div class="dili-navigator-wrapper">
+            <div class="dili-navigator-sidebar">
+
+                <ul class="dili-navigator-sidebar-inner">
+                <li>
+                    <a href="#executive-summary">1 Executive Summary</a>
+                </li>
+                <li>
+                    <a href="#scope">2 Scope</a>
+                </li>
+                <li>
+                    <a href="#system-overview">3 System Overview</a>
+                    <ul>
+                    <li>
+                        <a href="#lineatoken">3.1 <code>LineaToken</code></a>
+                    </li>
+                    <li>
+                        <a href="#l2lineatoken">3.2 <code>L2LineaToken</code></a>
+                    </li>
+                    <li>
+                        <a href="#messageservicebase">3.3 <code>MessageServiceBase</code></a>
+                    </li>
+                    <li>
+                        <a href="#tokenairdrop">3.4 <code>TokenAirdrop</code></a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#security-specification">4 Security Specification</a>
+                    <ul>
+                    <li>
+                        <a href="#actors">4.1 Actors</a>
+                    </li>
+                    <li>
+                        <a href="#trust-model">4.2 Trust Model</a>
+                    </li>
+                    <li>
+                        <a href="#additional-notes">4.3 Additional Notes</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#findings">5 Findings</a>
+                    <ul>
+                    <li>
+                        <a href="#burning-on-l2-is-not-reflected-in-the-total-supply">5.1 Burning on L2 Is Not Reflected in the Total Supply <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#l2lineatoken-_msgsender-should-be-replaced-with-msgsender">5.2 <code>L2LineaToken</code>: <code>_msgSender()</code> Should Be Replaced With <code>msg.sender</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#can-claim-for-other-users-without-their-consent">5.3 Can Claim for Other Users Without Their Consent <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#frontrunning-l1-lineatoken-supply-syncs">5.4 Frontrunning L1 <code>LineaToken</code> Supply Syncs <span class="severity minor">Minor</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#lineatoken-and-l2lineatoken-missing-sanity-checks-during-initialization">5.5 <code>LineaToken</code> and <code>L2LineaToken</code>: Missing Sanity Checks During Initialization <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#tokenairdrop-questionable-use-of-selfdestruct">5.6 <code>TokenAirdrop</code>: Questionable Use of <code>selfdestruct</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#lineatoken-l2lineatoken-and-tokenairdrop-consider-emitting-events-during-initialization">5.7 <code>LineaToken</code>, <code>L2LineaToken</code>, and <code>TokenAirdrop</code>: Consider Emitting Events During Initialization <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#lineatoken-l2lineatoken-and-messageservicebase-consider-using-namespaced-storage">5.8 <code>LineaToken</code>, <code>L2LineaToken</code>, and <code>MessageServiceBase</code>: Consider Using Namespaced Storage <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#tokenairdrop-minor-code-simplification-opportunity">5.9 <code>TokenAirdrop</code>: Minor Code Simplification Opportunity <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#appendix---files-in-scope">Appendix 1 - Files in Scope</a>
+                </li>
+                <li>
+                    <a href="#appendix---disclosure">Appendix 2 - Disclosure</a>
+                    <ul>
+                    <li>
+                        <a href="#purpose-of-reports">A.2.1 Purpose of Reports</a>
+                    </li>
+                    <li>
+                        <a href="#links-to-other-web-sites-from-this-web-site">A.2.2 Links to Other Web Sites from This Web Site</a>
+                    </li>
+                    <li>
+                        <a href="#timeliness-of-content">A.2.3 Timeliness of Content</a>
+                    </li>
+                </li>
+                </ul>
+            </div>
+            <div class="dili-navigator-content richtext">
+                <aside class="summary summary-cta-side">
+                    
+                    
+                    <table>
+                        <tr>
+                            <th align="left">Date</th>
+                            <td align="left">July 2025</td>
+                        </tr>
+                        
+                        <tr>
+                            <th align="left">Auditors</th>
+                            <td align="left" class="mw5">George Kobakhidze, Heiko Fisch
+                        </tr>
+                        
+                        <tr class="noprint">
+                            <th align="left">Download</th>
+                            <td align="left">
+                                <a onclick="exportJson()" title="↓ JSON" class="pointer"><i class="far fa-file-code"></i> JSON</a><br/>
+                                <a onclick="exportCsv()" title="↓ CSV" class="pointer"><i class="far fa-file-excel"></i> CSV</a><br/><a href="/audits/2025/07/linea-token-and-airdrop-contracts/linea-token-audit-2025-07.pdf" title="↓ PDF"><i class="far fa-file-pdf"></i> PDF</a>
+                            </td>
+                        </tr>
+                    </table>
+                </aside>
+<h2 id="executive-summary">1 Executive Summary</h2>
+<p>This report presents the results of our engagement with the <strong>Linea Team</strong> to review the <strong>Linea Token and Airdrop contracts</strong>.</p>
+<p>The review was conducted in the week of <strong>July 21–25, 2025</strong> by <strong>Heiko Fisch</strong> and <strong>George Kobakhidze</strong>.</p>
+<p>The audit was conducted over a system of contracts that will facilitate the Linea Token mint, claim, airdrop, and other token functionality. In particular, there were three contracts involved - the token contract on the Ethereum mainnet (L1), the token contract on the Linea rollup (L2), and the airdrop contract that will help distribute the tokens to the eligible recipients on the Linea rollup.</p>
+<p>Although the tokens originally get minted on the L1, the primary governance activity using those tokens will happen on the L2. As a result, the L1 token has more functionality relating to its supply and mint mechanics, such as actually being minted by authorized entities as well as having the ability to &ldquo;sync&rdquo; its true total supply numbers over to the L2 contract. On the other hand, the L2 token contract has additional governance functionality built in via the <code>ERC20VotesUpgradeable</code> inherited contract. Consequently, the communication between the layers is crucial for correct intended governance functionality of the token, and therefore, other offchain systems – such as the Linea Messaging Service – play a critical role in this setup.</p>
+<p>No major issues were identified throughout the audit that would threaten the intended logic of the contracts. Due to the nature of airdrops, additional considerations were analyzed, such as simplicity, clarity of the contracts, and potential burden of unwarranted receipt of an airdrop.</p>
+<p>After the review of PRs containing fixes for the issues reported in this audit as well as in audits that were ran in parallel by other teams, the final reviewed commit was <a href="https://github.com/Consensys/linea-tokens/tree/91036daf2331610841796772f8fbb2fcc4a9233f"><code>91036daf2331610841796772f8fbb2fcc4a9233f</code></a>.</p>
+<p>The build artifacts provided in the repository&rsquo;s folder <code>exported-artifacts</code> from the final commit also match the artifacts produced by our build runs with the following configurations:</p>
+<ul>
+<li>Compiler: <code>0.8.30</code></li>
+<li>Optimizer runs: <code>10_000_000</code></li>
+<li>L1 contract EVM Version: <code>Prague</code></li>
+<li>L2 contracts EVM Version: <code>London</code></li>
+</ul>
+<p>Moreover, on both Ethereum and Linea, the deployed bytecode at address <code>0xe03f157de67ac4b2a9a949d64d2a3c64ffa1bc55</code> matches the <code>deployedBytecode</code> in the corresponding artifact file in <code>exported-artifacts</code> at the final revision <a href="https://github.com/Consensys/linea-tokens/tree/91036daf2331610841796772f8fbb2fcc4a9233f"><code>91036daf2331610841796772f8fbb2fcc4a9233f</code></a>.</p>
+<p>Later, the Linea team has also made the contract code publicly accessible in their monorepo.
+Specifically, if we denote
+the private github repository <a href="https://github.com/Consensys/linea-tokens/tree/91036daf2331610841796772f8fbb2fcc4a9233f">Consensys/linea-tokens at revision <code>91036daf2331610841796772f8fbb2fcc4a9233f</code></a> (tagged as <code>contract-audit-2025-07-30</code>) as checkpoint 1 and
+the public github repository <a href="https://github.com/Consensys/linea-monorepo/tree/a9a43aafe9004c043b61063373264e2c9217a978">Consensys/linea-monorepo at revision <code>a9a43aafe9004c043b61063373264e2c9217a978</code></a> (also tagged as <code>contract-audit-2025-07-30</code>) as checkpoint 2,
+then we confirm</p>
+<ul>
+<li>that the content of directory <code>src</code> at checkpoint 1 is the same as the content of <code>contracts-tge/src</code> at checkpoint 2 and</li>
+<li>that the content of directory <code>exported-artifacts</code> at checkpoint 1 is the same as the content of <code>contracts-tge/exported-artifacts</code> at checkpoint 2.</li>
+</ul>
+<p>Less formally, this means that the final code we reviewed and the artifacts we checked are now also available
+in <a href="https://github.com/Consensys/linea-monorepo/tree/a9a43aafe9004c043b61063373264e2c9217a978/contracts-tge">directory <code>contracts-tge</code> of the repository Consensys/linea-monorepo at revision <code>a9a43aafe9004c043b61063373264e2c9217a978</code></a>.</p>
+<h2 id="scope">2 Scope</h2>
+<p>This review focused on the repository
+<a href="https://github.com/Consensys/linea-tokens">Consensys/linea-tokens</a>,
+code revision <a href="https://github.com/Consensys/linea-tokens//tree/44640f0965a5c7465b99769a5d241a9a1cb3a2ef"><code>44640f0965a5c7465b99769a5d241a9a1cb3a2ef</code></a>.</p>
+
+<p>The detailed list of files in scope can be found in the <a href="#appendix---files-in-scope">Appendix</a>.</p>
+
+
+
+<h2 id="system-overview">3 System Overview</h2>
+<p>In the following, we briefly describe the main contracts.</p>
+<h3 id="lineatoken">3.1 <code>LineaToken</code></h3>
+<ul>
+<li>This is the main token contract, an ERC-20 with mint and burn functionality.</li>
+<li>Minting by the <code>MINTER_ROLE</code>, which is managed by the <code>DEFAULT_ADMIN</code>.
+Both roles will be assigned to the security council, according to the Linea team.</li>
+<li>Will be deployed on L1 (Ethereum).</li>
+<li>Tokens can be bridged to L2 (Linea) and also bridged back.</li>
+<li>Upgradeable contract; proxy admin owner will be the same timelock contract as
+for other upgradeable Linea contracts, according to the Linea team.</li>
+</ul>
+<h3 id="l2lineatoken">3.2 <code>L2LineaToken</code></h3>
+<ul>
+<li>The corresponding token contract on L2.</li>
+<li>Minting directly on L2 is not possible.</li>
+<li>Burning directly on L2 is currently possible but should be removed. (See <a href="#burning-on-l2-is-not-reflected-in-the-total-supply">here</a>.)</li>
+<li>Contract has a <code>DEFAULT_ADMIN</code>, which currently has no functionality other than
+managing the role itself, but will likely be utilized at a later point, after an
+upgrade. The <code>DEFAULT_ADMIN</code> role will be assigned to the security council,
+according to the Linea team.</li>
+<li>Upgradeable contract; proxy admin owner will be the same timelock contract as
+for other upgradeable Linea contracts, according to the Linea team.</li>
+<li>Inherits voting functionality from <code>ERC20VotesUpgradeable</code>.</li>
+</ul>
+<h3 id="messageservicebase">3.3 <code>MessageServiceBase</code></h3>
+<ul>
+<li><code>L2LineaToken</code> inherits from this contract.</li>
+<li>Taken from a different Linea codebase, with minimal changes only, to avoid
+code duplication.</li>
+</ul>
+<h3 id="tokenairdrop">3.4 <code>TokenAirdrop</code></h3>
+<ul>
+<li>Non-upgradeable airdrop contract.</li>
+<li>Will be deployed on L2.</li>
+<li>Funds for the airdrop have to be bridged to L2 and then transferred to this contract.</li>
+<li>Has a claim window that is set in the constructor.</li>
+<li>After that, the owner can withdraw all remaining funds.</li>
+<li>Allocation amounts are calculated based on (up to) three SBT ERC-20 contracts,
+whose balances have to be set accordingly.</li>
+</ul>
+
+<h2 id="security-specification">4 Security Specification</h2>
+<p>This section describes, <strong>from a security perspective</strong>, the expected behavior of the system under review. It is not a substitute for documentation. The purpose of this section is to identify specific security properties that were validated by the review team.</p>
+<h3 id="actors">4.1 Actors</h3>
+<p>The relevant actors are listed below with their respective abilities:</p>
+<ul>
+<li>
+<p>Proxy Admin Owner. The token contracts on both L1 and L2 are upgradeable. The Proxy Admin Owner is the address that can perform such an upgrade. According to the Linea team, it will be set to the same timelock contract that is also the Proxy Admin Owner of other upgradeable Linea contracts.</p>
+</li>
+<li>
+<p>Default Admin. There is a Default Admin assigned to both L1 and L2 contracts of the Linea token. This admin manages all roles in the system, including the Default Admin role itself. According to the Linea team, this role will be assigned to the security council.</p>
+</li>
+<li>
+<p>Minter Role. The Minter is explicitly assigned on the L1 token contract of the Linea token, and they are able to arbitrarily mint tokens to any recipient. It is important to note that they are not able to burn tokens from anyone, only mint. According to the Linea team, this role will also be assigned to the security council.</p>
+</li>
+<li>
+<p>Linea Message Service. Though not an entity that is explicitly assigned any roles in the contracts, the Linea Message Service plays a critical role in the system, which facilitates messages between L1 and L2. Specifically, the two main mechanics are bridging between the layers and coordinating the total token supply from L1 to L2.</p>
+</li>
+<li>
+<p>Owner of the Airdrop Contract. The Owner can withdraw all unclaimed tokens when the airdrop window has closed. They can also transfer the Owner role to someone else.</p>
+</li>
+<li>
+<p>Deployers. The deployers of the contracts control the initial (and sometimes unchangeable) values for many system parameters.</p>
+</li>
+<li>
+<p>Users. Regular users of the system can do well-known token operations such as transfers, approvals, and burning of their own tokens. They can also bridge tokens between L1 and L2, and they can vote on L2.</p>
+</li>
+</ul>
+<h3 id="trust-model">4.2 Trust Model</h3>
+<p>In any system, it&rsquo;s important to identify what trust is expected/required between various actors. For this review, we established the following trust model:</p>
+<ul>
+<li>
+<p>Proxy Admin Owner. The ability to upgrade the token contract gives the Proxy Admin Owner complete control over the code as well as the data stored in the contract. If the Proxy Admin Owner is itself a contract (such as a timelock), the restrictions of this contract can limit the power (e.g., upgrade is only executed after a certain time has passed).</p>
+</li>
+<li>
+<p>Default Admin. As addresses with the Default Admin role can manage all roles, they can grant and revoke the Default Admin and the Minter role to/from other addresses (including themself). They are trusted to manage these roles responsibly.</p>
+</li>
+<li>
+<p>Minter Role. Though the Minter can not modify any logic explicitly, they are able to create Linea tokens. Therefore, they can financially impact the Linea token by inflating the supply and selling the tokens on the open market if the Minter address is compromised. Similarly, an inflated token supply can be used to sway any ongoing governance votes on the L2, thereby granting some governance power to the Minter indirectly. As such, the Minter is trusted not to abuse such supply mechanics.</p>
+</li>
+<li>
+<p>Linea Message Service. The entity responsible for controlling the Linea Message Service is not able to modify or influence the messages being sent. However, they are able to stop any messages from coming if they choose not to execute them, effectively censoring them. In our case, such messages would be bridging the tokens between the layers and communicating the supply numbers – both critical events for effective governance of the Linea token system. Therefore, the Message Service is trusted not to censor any message.</p>
+</li>
+<li>
+<p>Owner of the Airdrop Contract. Technically, no special trust is required in the Owner, but there is the assumption that the Owner or someone else will fund the airdrop contract sufficiently for all allocations to be claimable.</p>
+</li>
+<li>
+<p>Deployers. No trust is required for the deployers, as the deployment parameters can be verified on-chain.</p>
+</li>
+<li>
+<p>Users. Users are only in control of their own balances.</p>
+</li>
+</ul>
+<h3 id="additional-notes">4.3 Additional Notes</h3>
+<ul>
+<li>Dependencies. The Linea Token contracts make extensive use of open source libraries, specifically OpenZeppelin contracts and their upgradeable counterparts. In order to effectively secure the system and assess its risks, it is critical that versions of such dependencies are locked and recorded. Due to its specific setup, this wasn&rsquo;t explicitly mentioned in the repository of the system. However, by the end of the audit, the OpenZeppelin contracts&rsquo; version has been fixed at 5.4.0.</li>
+</ul>
+
+<h2 id="findings">5 Findings</h2>
+   
+    <p>Each issue has an assigned severity:</p>
+
+    <ul>
+        <li><span class="severity critical">Critical</span> issues are directly exploitable security vulnerabilities that need to be fixed.</li>
+        <li><span class="severity major">Major</span> issues are security vulnerabilities that may not be directly exploitable or may require certain conditions in order to be exploited. All major issues should be addressed.</li>
+        <li><span class="severity medium">Medium</span> issues are objective in nature but are not security vulnerabilities. These should be addressed unless there is a clear reason not to.</li>
+        <li><span class="severity minor">Minor</span> issues are subjective in nature. They are typically suggestions around best practices or readability. Code maintainers should use their own judgment as to whether to address such issues.</li>
+        <li>Issues without a severity are general recommendations or optional improvements. They are not related to security or correctness and may be addressed at the discretion of the maintainer.</li>
+    </ul><div class="issue">
+            <a class="anchor" href="#burning-on-l2-is-not-reflected-in-the-total-supply" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/2">
+                <h3 id="burning-on-l2-is-not-reflected-in-the-total-supply">5.1 Burning on L2 Is Not Reflected in the Total Supply <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        This has been fixed in <a href="https://github.com/Consensys/linea-tokens/pull/11">PR 11</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/b9aad5421a6fe8bd52602209bd38472911e19d77">b9aad54</a>).
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>Minting tokens is only possible on the L1, not on the L2 (except <em>technically</em>, as L2 counterpart for the tokens locked in the L1 bridge, but not semantically). Hence, the <code>totalSupply</code> on the L1 token reflects (or is <em>supposed</em> to reflect) the entire supply across L1 and L2, while <code>totalSupply</code> on the L2 token only reflects the supply on L2.</p>
+<p>However, as <code>L2LineaToken</code> inherits from <code>ERC20BurnableUpgradeable</code>, burning (as opposed to minting) <em>is</em> possible on L2, but this will not be reflected in the <code>totalSupply</code> of the L1 token. Instead, <code>totalSupply</code> on L1 will overestimate the real total supply by the amount of tokens that have been burnt on L2. These could also never be re-minted as their L1 counterparts are stuck on the L1 bridge.</p>
+<p>Hence, in order for <code>totalSupply</code> on L1 to accurately reflect the total supply across L1 and L2, the possibility to burn on the L2 should be removed (except, of course, the <em>technical</em> burning of tokens that are bridged back to the L1).</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>We recommend removing the inheritance from <code>ERC20BurnableUpgradeable</code> in <code>L2LineaToken</code>. Burning directly on L2 won&rsquo;t be possible then; instead, tokens that are currently on L2 and should be burned have to be bridged back to L1 first and can then be burned there.</p>
+<h4 id="remark">Remark</h4>
+<p>This was brought up by thedarkjester from the Linea team in a call with the client at the beginning of the engagement.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#l2lineatoken-_msgsender-should-be-replaced-with-msgsender" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/11">
+                <h3 id="l2lineatoken-_msgsender-should-be-replaced-with-msgsender">5.2 <code>L2LineaToken</code>: <code>_msgSender()</code> Should Be Replaced With <code>msg.sender</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        This has been fixed in <a href="https://github.com/Consensys/linea-tokens/pull/15">PR 15</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/469fe87e1d9d6456f0c0affdd157642ccfecef96">469fe87</a>).
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>There are three occurrences of <code>_msgSender()</code> in <code>L2LineaToken</code>, all in the <code>mint</code> and <code>burn</code> function:</p>
+<p><strong>src/L2/L2LineaToken.sol:L70-L94</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Mints the Linea token.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @dev NB: Only the L2 token bridge can call this function.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _account Account being minted for.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _amount The amount being minted for the account.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">mint</span><span class="p">(</span><span class="kt">address</span> <span class="n">_account</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_amount</span><span class="p">)</span> <span class="k">external</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_msgSender</span><span class="p">()</span> <span class="o">==</span> <span class="n">lineaCanonicalTokenBridge</span><span class="p">,</span> <span class="n">CallerIsNotTokenBridge</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">_mint</span><span class="p">(</span><span class="n">_account</span><span class="p">,</span> <span class="n">_amount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Burns the Linea token.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @dev NB: Only the L2 token bridge can call this function.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @dev Approval for the burn amount must be provided before this is invoked.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _account Account being burned for.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _value The amount being burned for the account.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">burn</span><span class="p">(</span><span class="kt">address</span> <span class="n">_account</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="k">external</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_msgSender</span><span class="p">()</span> <span class="o">==</span> <span class="n">lineaCanonicalTokenBridge</span><span class="p">,</span> <span class="n">CallerIsNotTokenBridge</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">_spendAllowance</span><span class="p">(</span><span class="n">_account</span><span class="p">,</span> <span class="n">_msgSender</span><span class="p">(),</span> <span class="n">_value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">_burn</span><span class="p">(</span><span class="n">_account</span><span class="p">,</span> <span class="n">_value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>While in the current state of the codebase, <code>_msgSender()</code> returns <code>msg.sender</code> – which means there is no functional difference between the two – the function <em>could</em> be overridden to return a different value. In <code>mint</code> and <code>burn</code>, however, it seems certain that we&rsquo;d always want to know if the call really comes from the canonical token bridge, even if some meta transaction functionality should ever be introduced.</p>
+<p>Moreover, <code>L2LineaToken</code> inherits from <code>MessageServiceBase</code> and uses its <code>onlyMessagingService</code> modifier, which has related functionality: checking whether the call comes from the message service. And this modifier uses <code>msg.sender</code>:</p>
+<p><strong>src/MessageServiceBase.sol:L48-L53</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">modifier</span> <span class="nf">onlyMessagingService</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="n">messageService</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">CallerIsNotMessageService</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>We recommend replacing <code>_msgSender()</code> with <code>msg.sender</code> in <code>L2LineaToken.mint</code> and <code>L2LineaToken.burn</code>.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#can-claim-for-other-users-without-their-consent" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/9">
+                <h3 id="can-claim-for-other-users-without-their-consent">5.3 Can Claim for Other Users Without Their Consent <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        This has been fixed in <a href="https://github.com/Consensys/linea-tokens/pull/14">PR 14</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/40f5d753aa35a5e53098564f22314ec46d3ad16f">40f5d75</a>).
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>TokenAirdrop</code> contract allows users to claim tokens based on their available calculation. This is done by executing the claim function with an address to claim for:</p>
+<p><strong>src/airdrops/TokenAirdrop.sol:L120-L138</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Claims tokens for an account while the claiming is active.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @dev Claiming sets claim status pre-transferring avoiding reentry, and all multiplier tokens are soulbound avoiding
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * transfer manipulation.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _account Account being claimed for.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">claim</span><span class="p">(</span><span class="kt">address</span> <span class="n">_account</span><span class="p">)</span> <span class="k">external</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="nb">block</span><span class="p">.</span><span class="nb">timestamp</span> <span class="o">&lt;</span> <span class="n">CLAIM_END</span><span class="p">,</span> <span class="n">ClaimFinished</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="o">!</span><span class="n">hasClaimed</span><span class="p">[</span><span class="n">_account</span><span class="p">],</span> <span class="n">AlreadyClaimed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">tokenAmount</span> <span class="o">=</span> <span class="n">calculateAllocation</span><span class="p">(</span><span class="n">_account</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">tokenAmount</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ClaimAmountIsZero</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">hasClaimed</span><span class="p">[</span><span class="n">_account</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">Claimed</span><span class="p">(</span><span class="n">_account</span><span class="p">,</span> <span class="n">tokenAmount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">TOKEN</span><span class="p">.</span><span class="n">safeTransfer</span><span class="p">(</span><span class="n">_account</span><span class="p">,</span> <span class="n">tokenAmount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>As it can be seen above, anyone can initiate the claim for any <code>account</code>, and the tokens will indeed be transferred to the appropriate recipient. However, this is done without any explicit consent of the account. This may have two impacts.</p>
+<p>First, this has personal implications for the <code>account</code> owner, such as tax implications. In many jurisdictions a person is taxed upon receipt of a valuable asset, whether they wanted it or not. While anyone indeed can send anything to anyone, such as stablecoins to a known ENS, in this case the user who initiated the <code>claim()</code> call does not actually spend any of their own funds. They simply claim the airdrop for the <code>account</code> and trigger a potential taxable event, which the recipient potentially wanted to delay until the next tax year, for example.</p>
+<p>Second, not all eligible accounts may be owned by their owners securely. For example, the private keys could have been lost. In that case, claiming and sending tokens to that account could either effectively burn these tokens. Instead, these tokens could have been used by the foundation or for other needs after <code>CLAIM_END</code>.</p>
+<p>To sum it up, the explicit consent of the owners of eligible <code>account</code> addresses would go a long way in such an airdrop contract. This is something that has also been considered in other large airdrops in the cryptocurrency industry.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Consider requiring explicit consent of the <code>account</code> address owners, such as providing a signed message from the <code>account</code> or initiating the claim transaction from the <code>account</code> address and claiming on <code>msg.sender</code>.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#frontrunning-l1-lineatoken-supply-syncs" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/8">
+                <h3 id="frontrunning-l1-lineatoken-supply-syncs">5.4 Frontrunning L1 <code>LineaToken</code> Supply Syncs <span class="severity minor">Minor</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The Linea team acknowledged this as low risk due to how they expect their operations to run. In particular, any token mints on the L1 are not intended to be followed by a supply sync call immediately after in the same transaction or block, removing the frontrunning risk.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>LineaToken</code> contract consists of two parts - one on the L1 and one on the L2. The true token lives on the L1, and, therefore, its true total supply is governed by its L1 <code>totalSupply()</code> function. Similarly, all mints and burns that actually affect the true number of tokens in circulation also happen on the L1 contract.</p>
+<p>However, the L2 token is what will primarily help with governance use cases, such as voting, as can be seen by the choice to make it inherit from the <code>ERC20VotesUpgradeable</code> contract, whereas the L1 token does not. As a result, the L2 token requires knowing the true total supply of the token, i.e. the one from L1, to make meaningful governance proposals and execute upon them as that would require quorum from all possible tokens.</p>
+<p>In order to do that, the L1 token contract has a function that initiates the sync:</p>
+<p><strong>src/L1/LineaToken.sol:L72-L86</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl">  <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * @notice Synchronizes the total supply of the L1 token to the L2 token.
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * @dev This function sends a message to the L2 token contract to sync the total supply.
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * @dev NB: This function is permissionless on purpose, allowing anyone to trigger the sync.
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * @dev This function can only be called after the L2 token address has been set.
+</span></span></span><span class="line"><span class="cl"><span class="cm">   */</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nf">syncTotalSupplyToL2</span><span class="p">()</span> <span class="k">external</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint256</span> <span class="n">totalSupply</span> <span class="o">=</span> <span class="n">totalSupply</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">/// @dev Fee is set to 0 and should be automatically claimed on Linea.
+</span></span></span><span class="line"><span class="cl">    <span class="n">IMessageService</span><span class="p">(</span><span class="n">l1MessageService</span><span class="p">).</span><span class="n">sendMessage</span><span class="p">(</span><span class="n">l2TokenAddress</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">abi</span><span class="p">.</span><span class="n">encodeCall</span><span class="p">(</span><span class="n">IL2LineaToken</span><span class="p">.</span><span class="n">syncTotalSupplyFromL1</span><span class="p">,</span> <span class="p">(</span><span class="nb">block</span><span class="p">.</span><span class="nb">timestamp</span><span class="p">,</span> <span class="n">totalSupply</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">emit</span> <span class="n">L1TotalSupplySyncStarted</span><span class="p">(</span><span class="nb">block</span><span class="p">.</span><span class="nb">timestamp</span><span class="p">,</span> <span class="n">totalSupply</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>This simply collects the current token supply, <code>block.timestamp</code> and calls the Linea <code>l1MessageService</code> contract responsible for transferring messages. On the L2 side, the token contract expects its the message service contract to transfer this message and only accepts it if the original caller is the L1 token contract:</p>
+<p><strong>src/L2/L2LineaToken.sol:L96-L111</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Synchronizes the total supply of the L1 Linea token from L1 Ethereum.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @dev NB: This function can only be called by the Linea Message Service.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @dev NB: This function must have originated from the Linea token on L1 Ethereum.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _l1LineaTokenTotalSupplySyncTime The L1 block.timestamp when the Linea token on L1 total supply was
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * computed.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _l1LineaTokenSupply The total supply of the L1 Linea token.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">syncTotalSupplyFromL1</span><span class="p">(</span><span class="kt">uint256</span> <span class="n">_l1LineaTokenTotalSupplySyncTime</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_l1LineaTokenSupply</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyMessagingService</span> <span class="n">onlyAuthorizedRemoteSender</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">l1LineaTokenTotalSupplySyncTime</span> <span class="o">&lt;</span> <span class="n">_l1LineaTokenTotalSupplySyncTime</span><span class="p">,</span> <span class="n">LastSyncMoreRecent</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">l1LineaTokenSupply</span> <span class="o">=</span> <span class="n">_l1LineaTokenSupply</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l1LineaTokenTotalSupplySyncTime</span> <span class="o">=</span> <span class="n">_l1LineaTokenTotalSupplySyncTime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">L1LineaTokenTotalSupplySynced</span><span class="p">(</span><span class="n">_l1LineaTokenTotalSupplySyncTime</span><span class="p">,</span> <span class="n">_l1LineaTokenSupply</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The interesting part is the check <code>require(l1LineaTokenTotalSupplySyncTime &lt; _l1LineaTokenTotalSupplySyncTime, LastSyncMoreRecent());</code>. While it does achieve its primary objective of not allowing older supply syncs to overwrite its state, it also prevents several updates from the same block.</p>
+<p>In very specific circumstances, this could open up an attack vector. For example, if Linea L1 token mints would happen in the same block as the supply syncs, for example to make sure the L2 side has current total supply numbers, an attacker could listen to these transactions in the mempool, frontrun the mint transaction with their own sync call, and send the old supply numbers over to the L2. Since the updated supply sync call would be in the same block, both of those transactions would have the same <code>block.timestamp</code>. As a result, once they reach the L2, the first sync with old numbers would successfully execute, whereas the second one would not as it wouldn&rsquo;t pass the <code>require()</code> statement.</p>
+<p>The impact would simply be that another sync would have to be initiated from the L1 in the next block or later. Thankfully, the <code>syncTotalSupplyToL2()</code> function is externally accessible with no special permissions, so anyone could call it again. However, this would still make a brief window appear where the L1 token supply and its corresponding <code>l1LineaTokenSupply</code> value are not synchronized. Depending on the case, such as if anyone even notices this discrepancy, it could impact governance votes and proposals for longer than preferable.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Consider token supply and syncs operations carefully, such as ensuring the syncs happen correctly after any supply changes on the L1 side.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#lineatoken-and-l2lineatoken-missing-sanity-checks-during-initialization" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/6">
+                <h3 id="lineatoken-and-l2lineatoken-missing-sanity-checks-during-initialization">5.5 <code>LineaToken</code> and <code>L2LineaToken</code>: Missing Sanity Checks During Initialization <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        This has been fixed in <a href="https://github.com/Consensys/linea-tokens/pull/10">PR 10</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/86605a938a033e93f3a63a7a263628c583840e4d">86605a9</a>).
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>initialize</code> functions in <code>LineaToken</code> and <code>L2LineaToken</code> both take several <code>address</code> arguments as well as the name and symbol of the token. While, throughout the codebase, every address argument given in an <code>initialize</code> function or a constructor is diligently verified to be non-zero, the token name and symbol are not verified to be non-empty strings – although that would just as well constitute a deployment mistake and justify reverting.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>For completeness and consistency, we recommend checking in both <code>LineaToken.initialize</code> and in <code>L2LineaToken.initialize</code> that the string arguments <code>_tokenName</code> and <code>_tokenSymbol</code> are non-empty.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#tokenairdrop-questionable-use-of-selfdestruct" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/1">
+                <h3 id="tokenairdrop-questionable-use-of-selfdestruct">5.6 <code>TokenAirdrop</code>: Questionable Use of <code>selfdestruct</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        This has been fixed in <a href="https://github.com/Consensys/linea-tokens/pull/12">PR 12</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/4e0391d83e869fd51a4d14814b966634cbe2130d">4e0391d</a>).
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>When the claim window for an airdrop has closed, the owner of the contract can withdraw all unclaimed tokens. At the end of the <code>withdraw</code> function, <code>selfdestruct</code> is called:</p>
+<p><strong>src/airdrops/TokenAirdrop.sol:L140-L153</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Owner withdraws unclaimed tokens from the contract post claim end and self destructs.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @dev The selfdestruct only applies for pre EIP-6780 forks.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">withdraw</span><span class="p">()</span> <span class="k">external</span> <span class="n">onlyOwner</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">CLAIM_END</span> <span class="o">&lt;=</span> <span class="nb">block</span><span class="p">.</span><span class="nb">timestamp</span><span class="p">,</span> <span class="n">ClaimNotFinished</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="nb">balance</span> <span class="o">=</span> <span class="n">TOKEN</span><span class="p">.</span><span class="n">balanceOf</span><span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="nb">this</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">TokenBalanceWithdrawn</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">,</span> <span class="nb">balance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">TOKEN</span><span class="p">.</span><span class="n">safeTransfer</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">,</span> <span class="nb">balance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nb">selfdestruct</span><span class="p">(</span><span class="k">payable</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Since the contract has no payable function, this is not about collecting ETH stored in the contract. Instead, Linea runs on the London EVM, so <code>selfdestruct</code> actually removes the code, which is not true for chains that have included <a href="https://eips.ethereum.org/EIPS/eip-6780">EIP-6780</a>.</p>
+<p>While this would have once counted as exemplary smart contract programming, these days using <code>selfdestruct</code> is strongly discouraged. The Solidity documentation is very explicit in this regard:</p>
+<blockquote>
+<p>Also, note that the selfdestruct opcode has been deprecated in Solidity version 0.8.18, as recommended by <a href="https://eips.ethereum.org/EIPS/eip-6049">EIP-6049</a>. The deprecation is still in effect and the compiler will still emit warnings on its use. Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.</p>
+</blockquote>
+<p>Even though the point of using <code>selfdestruct</code> in this situation on Linea (or a pre <a href="https://eips.ethereum.org/EIPS/eip-6780">EIP-6780</a> chain in general) can be seen, <code>selfdestruct</code> is widely regarded as anti-pattern these days and even frowned upon, so that we side with the Solidity documentation and recommend not using it anymore in newly deployed contracts.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Consider removing the <code>selfdestruct(payable(msg.sender));</code>.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#lineatoken-l2lineatoken-and-tokenairdrop-consider-emitting-events-during-initialization" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/5">
+                <h3 id="lineatoken-l2lineatoken-and-tokenairdrop-consider-emitting-events-during-initialization">5.7 <code>LineaToken</code>, <code>L2LineaToken</code>, and <code>TokenAirdrop</code>: Consider Emitting Events During Initialization <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        <p>The following events have been added in <a href="https://github.com/Consensys/linea-tokens/pull/10">PR 10</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/86605a938a033e93f3a63a7a263628c583840e4d">86605a9</a>):</p>
+<ul>
+<li><code>L2TokenAddressSet</code> is emitted in <code>LineaToken.initialize</code></li>
+<li><code>L1TokenAddressSet</code> is emitted in <code>L2LineaToken.initialize</code></li>
+</ul>
+<p>Additionally, new events were introduced in <a href="https://github.com/Consensys/linea-tokens/pull/16">PR 16</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/3a9695ada953ccc91abf08f0ef1e8f75f822ca89">3a9695a</a>):</p>
+<ul>
+<li><code>TokenMetadataSet</code> in <code>LineaToken.initialize</code> and <code>L2LineaToken.initialize</code></li>
+<li><code>L1MessageServiceSet</code> in <code>LineaToken.initialize</code></li>
+<li><code>L2MessageServiceSet</code> and <code>LineaCanonicalTokenBridgeSet</code> in <code>L2LineaToken.initialize</code></li>
+<li><code>AirdropConfigured</code> in <code>TokenAirdrop.constructor</code></li>
+</ul>
+
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>initialize</code> functions in <code>LineaToken</code> and <code>L2LineaToken</code> as well as the constructor in <code>TokenAirdrop</code> each set a bunch of (unchangeable) state variables to the values given as arguments. With a few exceptions, no events are emitted with the values these state variables were set to. While they are all <code>public</code> – which means a getter function to query their value is automatically generated – it might still be nice and consistent to make some or all of these values discoverable via events.</p>
+<p>This affects:</p>
+<ul>
+<li>The token name and symbol as well as <code>l1MessageService</code> and <code>l2TokenAddress</code> in <code>LineaToken</code>. (Note that <code>_grantRole</code> already emits an event.)</li>
+<li>The token name and symbol as well as <code>messageService</code> and <code>lineaCanonicalTokenBridge</code> in <code>L2LineaToken</code>. (Note that <code>_grantRole</code> and <code>_setRemoteSender</code> already emit events.)</li>
+<li><code>TOKEN</code>, <code>PRIMARY_FACTOR_ADDRESS</code>, <code>PRIMARY_CONDITIONAL_MULTIPLIER_ADDRESS</code>, <code>SECONDARY_FACTOR_ADDRESS</code>, and <code>CLAIM_END</code> in <code>TokenAirdrop</code>.</li>
+</ul>
+<h4 id="recommendation">Recommendation</h4>
+<p>Consider adding events as indicated above. Note that the event <code>L2TokenAddressSet</code> is defined in <code>ILineaToken</code> but never emitted. It could be used in this context; if it&rsquo;s not, it should be removed.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#lineatoken-l2lineatoken-and-messageservicebase-consider-using-namespaced-storage" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/4">
+                <h3 id="lineatoken-l2lineatoken-and-messageservicebase-consider-using-namespaced-storage">5.8 <code>LineaToken</code>, <code>L2LineaToken</code>, and <code>MessageServiceBase</code>: Consider Using Namespaced Storage <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The L1 and L2 token contracts are upgradeable and use <a href="https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/">openzeppelin-contracts-upgradeable</a> in v5, which utilizes <a href="https://eips.ethereum.org/EIPS/eip-7201">namespaced storage</a>. The token contracts themselves, however, use regular state variables.</p>
+<p>While namespaced storage is a bit more verbose and harder to read, it significantly reduces the risk of storage-layout-related bugs in contract upgrades, so OZ generally recommends using it in self-implemented child contracts too, especially if these contracts are (or might become) base contracts for other contracts.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Consider using namespaced storage in <code>LineaToken</code>, <code>L2LineaToken</code>, and <code>MessageServiceBase</code>, as this would bring the advantages discussed above. On the other hand, currently there are no contracts which inherit from <code>LineaToken</code> and <code>L2LineaToken</code> (which might or might not change in the future), and – while <code>L2LineaToken</code> itself inherits from <code>MessageServiceBase</code> – it was an explicit intention to make as few changes as possible in the latter contract, as it has already been audited before. In summary, while we think that namespaced storage would be preferable in principle, we believe in this particular case, using a traditional storage layout is a defendable design choice too.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#tokenairdrop-minor-code-simplification-opportunity" data-issue-url="https://github.com/ConsenSysDiligence/linea-token-audit-2025-07/issues/3">
+                <h3 id="tokenairdrop-minor-code-simplification-opportunity">5.9 <code>TokenAirdrop</code>: Minor Code Simplification Opportunity <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        This has been fixed in <a href="https://github.com/Consensys/linea-tokens/pull/10">PR 10</a> (last commit on the branch: <a href="https://github.com/Consensys/linea-tokens/tree/86605a938a033e93f3a63a7a263628c583840e4d">86605a9</a>).
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>TokenAirdrop</code> contract has (among others) the immutable state variables <code>PRIMARY_FACTOR_ADDRESS</code> and <code>PRIMARY_CONDITIONAL_MULTIPLIER_ADDRESS</code>. Each of these stores either an address of an ERC-20 contract or the zero address, and – if not zero – the balances in these contracts contribute to the calculation of the airdrop amounts:</p>
+<p><strong>src/airdrops/TokenAirdrop.sol:L110-L113</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">calculateAllocation</span><span class="p">(</span><span class="kt">address</span> <span class="n">_account</span><span class="p">)</span> <span class="k">public</span> <span class="k">view</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">tokenAllocation</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="n">PRIMARY_FACTOR_ADDRESS</span><span class="p">)</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="kt">address</span><span class="p">(</span><span class="n">PRIMARY_CONDITIONAL_MULTIPLIER_ADDRESS</span><span class="p">)</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tokenAllocation</span> <span class="o">=</span> <span class="p">(</span><span class="n">PRIMARY_FACTOR_ADDRESS</span><span class="p">.</span><span class="n">balanceOf</span><span class="p">(</span><span class="n">_account</span><span class="p">)</span> <span class="o">*</span> <span class="n">PRIMARY_CONDITIONAL_MULTIPLIER_ADDRESS</span><span class="p">.</span><span class="n">balanceOf</span><span class="p">(</span><span class="n">_account</span><span class="p">))</span> <span class="o">/</span> <span class="n">DENOMINATOR</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div><p>However, the contract&rsquo;s constructor makes sure that either both addresses are zero or none of them:</p>
+<p><strong>src/airdrops/TokenAirdrop.sol:L92-L94</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="nb">require</span><span class="p">(</span><span class="n">_primaryFactorAddress</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="n">_primaryConditionalMultiplierAddress</span> <span class="o">==</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">require</span><span class="p">(</span><span class="n">_primaryFactorAddress</span> <span class="o">==</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="n">_primaryConditionalMultiplierAddress</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span></code></pre></div><p>Hence, the condition</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">address</span><span class="p">(</span><span class="n">PRIMARY_FACTOR_ADDRESS</span><span class="p">)</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="kt">address</span><span class="p">(</span><span class="n">PRIMARY_CONDITIONAL_MULTIPLIER_ADDRESS</span><span class="p">)</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></div><p>in the first code excerpt above can actually be simplified to:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">address</span><span class="p">(</span><span class="n">PRIMARY_FACTOR_ADDRESS</span><span class="p">)</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Consider simplifying the condition in the <code>if</code> as indicated above. Maybe add a comment that the constructor checks guarantee that either both state variables are zero or none of them.</p>
+</div>
+        </div>
+
+<p><h2 id="appendix---files-in-scope">Appendix 1 - Files in Scope</h2>
+
+<p>This review covered the following files.</p>
+<p>Initial version at revision <a href="https://github.com/Consensys/linea-tokens//tree/44640f0965a5c7465b99769a5d241a9a1cb3a2ef"><code>44640f0965a5c7465b99769a5d241a9a1cb3a2ef</code></a>:</p>
+<table>
+	<thead>
+			<tr>
+					<th>File</th>
+					<th>SHA-1 hash</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>src/L1/LineaToken.sol</td>
+					<td><code>1e65975280fc6c7b354b95f2cd8afa28622df43a</code></td>
+			</tr>
+			<tr>
+					<td>src/L1/interfaces/ILineaToken.sol</td>
+					<td><code>ebd435b63696df7088d80844892e428077c975dd</code></td>
+			</tr>
+			<tr>
+					<td>src/L2/L2LineaToken.sol</td>
+					<td><code>77359f138e309486d7b867dd89815a783c280199</code></td>
+			</tr>
+			<tr>
+					<td>src/L2/interfaces/IL2LineaToken.sol</td>
+					<td><code>9ffff46fc5d5ad69a1c957ce6601b5f8ea5517b6</code></td>
+			</tr>
+			<tr>
+					<td>src/MessageServiceBase.sol</td>
+					<td><code>ef9f57d3f7ee879b70ceed8f7b72f7528fa41106</code></td>
+			</tr>
+			<tr>
+					<td>src/airdrops/TokenAirdrop.sol</td>
+					<td><code>1a86a21606f6e0a6a6da5cb6d82e473d1658ee5f</code></td>
+			</tr>
+			<tr>
+					<td>src/interfaces/IGenericErrors.sol</td>
+					<td><code>6677ac4576d10fd500b487d2f19613ea373cb79c</code></td>
+			</tr>
+			<tr>
+					<td>src/interfaces/IMessageService.sol</td>
+					<td><code>7bb358e04f57317bba68d0c60451a91e3bdbbb05</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>Final version at revision <a href="https://github.com/Consensys/linea-tokens/tree/91036daf2331610841796772f8fbb2fcc4a9233f"><code>91036daf2331610841796772f8fbb2fcc4a9233f</code></a>:</p>
+<table>
+	<thead>
+			<tr>
+					<th>File Name</th>
+					<th>SHA-1 Hash</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>src/L1/LineaToken.sol</td>
+					<td><code>d8a7b3cb47faef6ab4646271a0a4dd1a5817c35d</code></td>
+			</tr>
+			<tr>
+					<td>src/L1/interfaces/ILineaToken.sol</td>
+					<td><code>96546c3b426f57496db6850fdf73fea10a7933f7</code></td>
+			</tr>
+			<tr>
+					<td>src/L2/L2LineaToken.sol</td>
+					<td><code>ce2599b6d8200d914eb466c73d2795ae0cf438fb</code></td>
+			</tr>
+			<tr>
+					<td>src/L2/interfaces/IL2LineaToken.sol</td>
+					<td><code>67a16b0362153d9ededcc70a0225341adf0bc569</code></td>
+			</tr>
+			<tr>
+					<td>src/MessageServiceBase.sol</td>
+					<td><code>ef9f57d3f7ee879b70ceed8f7b72f7528fa41106</code></td>
+			</tr>
+			<tr>
+					<td>src/airdrops/TokenAirdrop.sol</td>
+					<td><code>c2cf4a691ad6eb1d6e83803069e5939769653bf1</code></td>
+			</tr>
+			<tr>
+					<td>src/interfaces/IGenericErrors.sol</td>
+					<td><code>6677ac4576d10fd500b487d2f19613ea373cb79c</code></td>
+			</tr>
+			<tr>
+					<td>src/interfaces/IMessageService.sol</td>
+					<td><code>7bb358e04f57317bba68d0c60451a91e3bdbbb05</code></td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 id="appendix---disclosure">Appendix 2 - Disclosure</h2>
+<p>Consensys Diligence (&ldquo;CD&rdquo;) typically receives compensation from one or more clients (the &ldquo;Clients&rdquo;) for performing the analysis contained in these reports (the &ldquo;Reports&rdquo;). The Reports may be distributed through other means, including via Consensys publications and other distributions.</p>
+<p>The Reports are not an endorsement or indictment of any particular project or team, and the Reports do not guarantee the security of any particular project. This Report does not consider, and should not be interpreted as considering or having any bearing on, the potential economics of a token, token sale or any other product, service or other asset. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. No Report provides any warranty or representation to any third party in any respect, including regarding the bug-free nature of code, the business model or proprietors of any such business model, and the legal compliance of any such business. No third party should rely on the Reports in any way, including for the purpose of making any decisions to buy or sell any token, product, service or other asset. Specifically, for the avoidance of doubt, this Report does not constitute investment advice, is not intended to be relied upon as investment advice, is not an endorsement of this project or team, and it is not a guarantee as to the absolute security of the project. CD owes no duty to any third party by virtue of publishing these Reports.</p>
+<h3 id="purpose-of-reports">A.2.1 Purpose of Reports</h3>
+<p>The Reports and the analysis described therein are created solely for Clients and published with their consent. The scope of our review is limited to a review of code and only the code we note as being within the scope of our review within this report. Any Solidity code itself presents unique and unquantifiable risks as the Solidity language itself remains under development and is subject to unknown risks and flaws. The review does not extend to the compiler layer, or any other areas beyond specified code that could present security risks. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. In some instances, we may perform penetration testing or infrastructure assessments depending on the scope of the particular engagement.</p>
+<p>CD makes the Reports available to parties other than the Clients (i.e., &ldquo;third parties&rdquo;) on its website. CD hopes that by making these analyses publicly available, it can help the blockchain ecosystem develop technical best practices in this rapidly evolving area of innovation.</p>
+<h3 id="links-to-other-web-sites-from-this-web-site">A.2.2 Links to Other Web Sites from This Web Site</h3>
+<p>You may, through hypertext or other computer links, gain access to web sites operated by persons other than Consensys and CD. Such hyperlinks are provided for your reference and convenience only, and are the exclusive responsibility of such web sites&rsquo; owners. You agree that Consensys and CD are not responsible for the content or operation of such Web sites, and that Consensys and CD shall have no liability to you or any other person or entity for the use of third party Web sites. Except as described below, a hyperlink from this web Site to another web site does not imply or mean that Consensys and CD endorses the content on that Web site or the operator or operations of that site. You are solely responsible for determining the extent to which you may use any content at any other web sites to which you link from the Reports. Consensys and CD assumes no responsibility for the use of third-party software on the Web Site and shall have no liability whatsoever to any person or entity for the accuracy or completeness of any outcome generated by such software.</p>
+<h3 id="timeliness-of-content">A.2.3 Timeliness of Content</h3>
+<p>The content contained in the Reports is current as of the date appearing on the Report and is subject to change without notice unless indicated otherwise, by Consensys and CD.</p>
+</p>
+</div>
+        </div>
+    </article>
+</div>
+
+    </main>
+    
+<footer class="audit-footer">
+  <div class="audit-footer__inner">
+    <div class="audit-footer__wrap">
+      
+      <div class="audit-footer__divider"></div>
+
+      
+      <div class="audit-footer__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </div>
+
+      
+      <div class="audit-footer__content">
+        
+        <div class="audit-footer__copyright">
+          <p>Securing Ethereum Smart Contracts since 2017</p>
+          <p>2026 All rights reserved</p>
+        </div>
+
+        
+        <div class="audit-footer__columns">
+          
+          <div class="audit-footer__col audit-footer__col--company">
+            <p class="audit-footer__col-title">Company</p>
+            <a href="/about/" class="audit-footer__link">About</a>
+            <a href="/blog/" class="audit-footer__link">Blog</a>
+            <a href="/privacy-policy/" class="audit-footer__link">Privacy Policy</a>
+            <a href="#" onclick="openCookieSettings();return false;" class="audit-footer__link">Cookie settings</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--audit">
+            <p class="audit-footer__col-title">Audit</p>
+            <a href="/audits/" class="audit-footer__link">Audit list</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--research">
+            <p class="audit-footer__col-title">Research</p>
+            <a href="/#academic-research" class="audit-footer__link">Academic publications</a>
+            <a href="/#tools" class="audit-footer__link">Tools</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--social">
+            <p class="audit-footer__col-title">Social</p>
+            <a href="https://x.com/ConsensysAudits" target="_blank" rel="noopener noreferrer" class="audit-footer__link">X</a>
+            <a href="https://www.linkedin.com/company/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">LinkedIn</a>
+            <a href="https://github.com/ConsenSysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">GitHub</a>
+            <a href="https://medium.com/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">Medium</a>
+            <a href="https://www.youtube.com/@ConsensysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/audit-report.js?v=e8012d8d" defer></script>
+<div id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent"
+     style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#131313;border-top:1px solid #303033;padding:16px 24px;box-shadow:0 -10px 15px -3px rgba(0,0,0,.2)">
+  <div style="max-width:1386px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+    <p style="margin:0;flex:1 1 320px;min-width:0;color:#b2b3b3;font-family:Graphik,sans-serif;font-weight:400;font-size:14px;line-height:20px">
+      We use analytics cookies to understand how visitors use our site. You can accept or decline.<a href="/privacy-policy/" style="color:#a7b9f1;text-decoration:underline">Learn more<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">&#32;in our privacy policy</span></a>
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;flex-shrink:0">
+      <button type="button" id="cookie-decline"
+              style="cursor:pointer;background:transparent;border:1px solid #303033;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:border-color .15s"
+              onmouseenter="this.style.borderColor='#6e8be8'" onmouseleave="this.style.borderColor='#303033'">Decline</button>
+      <button type="button" id="cookie-accept"
+              style="cursor:pointer;background:#2c56dd;border:1px solid #2c56dd;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:background .15s"
+              onmouseenter="this.style.background='#2345c4'" onmouseleave="this.style.background='#2c56dd'">Accept</button>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

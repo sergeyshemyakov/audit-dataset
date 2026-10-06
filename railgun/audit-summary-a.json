@@ -1,0 +1,1294 @@
+{
+  "schema_version": "1.4.0",
+  "project": "railgun",
+  "reports": [
+    {
+      "id": "abdk-railgun-circom-solidity-2021-07",
+      "report_file": "2021_07-abdk-railgun-circom-and-solidity-audit.md",
+      "title": "Smart Contract Audit Railgun: Circom and Solidity",
+      "description": "ABDK audit of the RAILGUN V1 logic contracts (Commitments, RailgunLogic, Snark, TokenWhitelist, Types, Verifier) and the JoinSplit circom circuits for fund safety and privacy. Version 2.0 of the report includes the client comments and the fix status for release v0.0.1.",
+      "isRelevant": true,
+      "auditor": "ABDK Consulting",
+      "report_date": "2021-07-02",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        },
+        {
+          "id": "Railgun-Privacy/circuits",
+          "url": "https://github.com/Railgun-Privacy/circuits"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/logic/Commitments.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                    "timestamp": "2021-05-26T02:07:17Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "CVF-41"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "CVF-41"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                }
+              ]
+            },
+            "contracts/logic/Poseidon.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                    "timestamp": "2021-05-26T02:07:17Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "initial audit",
+                  "coverage": "not reviewed (CVF-28): compiler stubs for the circomlib-generated Poseidon library",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/RailgunLogic.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                    "timestamp": "2021-05-26T02:07:17Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "CVF-9"
+                  ],
+                  "highest_reported_finding_severity": "Major"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/logic/Snark.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                    "timestamp": "2021-05-26T02:07:17Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "CVF-58",
+                    "CVF-60"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "contracts/logic/TokenWhitelist.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                    "timestamp": "2021-05-26T02:07:17Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/logic/Types.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                    "timestamp": "2021-05-26T02:07:17Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "contracts/logic/Verifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                    "timestamp": "2021-05-26T02:07:17Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "CVF-20",
+                    "CVF-21"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "Railgun-Privacy/circuits",
+          "paths": {
+            "circuits/base/HashInputs.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuits/base/MerkleTree.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuits/JoinSplit.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuits/Large.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "circuits/Small.circom": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "tag",
+                    "tag": "v0.0.1",
+                    "commit": null,
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
+                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hacken-railgun-contracts-2021-11",
+      "report_file": "2021_11-hacken-railgun-smart-contracts-audit.md",
+      "title": "Smart Contract Code Review and Security Analysis Report for Right to Privacy",
+      "description": "Hacken code review of the RAILGUN governance, logic, proxy, token, treasury and test stub contracts at a single commit. It is an initial audit only and reports two medium (failing test, low test coverage) and two low findings.",
+      "isRelevant": true,
+      "auditor": "Hacken",
+      "report_date": "2021-11-02",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/governance/Delegator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/governance/Deployer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/governance/Staking.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/governance/Voting.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Commitments.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/logic/Globals.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Poseidon.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/RailgunLogic.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/logic/Snark.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/logic/TokenWhitelist.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/logic/Verifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/proxy/Proxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/ProxyAdmin.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/teststubs/governance/Getter.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/teststubs/governance/GovernanceTarget.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/teststubs/governance/StakingStub.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/teststubs/logic/CommitmentsStub.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/teststubs/logic/TokenWhitelistStub.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/teststubs/proxy/ProxyTarget.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/teststubs/TokenStubs.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/token/Distributor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "contracts/token/Multisend.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            },
+            "contracts/token/VestLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/treasury/Treasury.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zokyo-railgun-contracts-2021-11",
+      "report_file": "2021_11-zokyo-railgun-contracts-audit.md",
+      "title": "RAILGUN Smart Contract Audit",
+      "description": "Zokyo audit of the RAILGUN V1 governance, logic, proxy, token and treasury contracts at a single commit, with additional test coverage written by the auditors. Only one low and three informational issues were found, all left unresolved because the contracts were already deployed.",
+      "isRelevant": true,
+      "auditor": "Zokyo",
+      "report_date": "2021-11-03",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/governance/Delegator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/governance/Deployer.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/governance/Staking.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/governance/Voting.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Commitments.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Globals.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Poseidon.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/RailgunLogic.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Snark.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/TokenWhitelist.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "contracts/logic/Verifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/Proxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/proxy/ProxyAdmin.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/token/Distributor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/token/Multisend.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/token/VestLock.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "contracts/treasury/Treasury.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d2c63577ddd8310c87dced0d549cf9505b372111",
+                    "timestamp": "2021-08-10T13:04:05Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zokyo-railgun-logic-commitments-2021-11",
+      "report_file": "2021_11-zokyo-railgun-logic-commitments-audit.md",
+      "title": "RAILGUN Smart Contract Audit",
+      "description": "Zokyo audit of the RAILGUN Commitments, Globals and RailgunLogic contracts after the batch transaction upgrade, with a re-audit of the fixes at the last commit. The one low and one informational issue were resolved.",
+      "isRelevant": true,
+      "auditor": "Zokyo",
+      "report_date": "2021-11-23",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/logic/Commitments.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
+                    "timestamp": "2021-10-10T11:42:08Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/0418a0f1bf0e58e5b3bab8870112b7648ff20aca"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "97af307fa1d737d4526323acc3d0ef372c703417",
+                    "timestamp": "2021-11-20T15:05:09Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/97af307fa1d737d4526323acc3d0ef372c703417"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "full file (re-audit at last commit)",
+                  "follows": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Globals.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
+                    "timestamp": "2021-10-10T11:42:08Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/0418a0f1bf0e58e5b3bab8870112b7648ff20aca"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "97af307fa1d737d4526323acc3d0ef372c703417",
+                    "timestamp": "2021-11-20T15:05:09Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/97af307fa1d737d4526323acc3d0ef372c703417"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "full file (re-audit at last commit)",
+                  "follows": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/RailgunLogic.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
+                    "timestamp": "2021-10-10T11:42:08Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/0418a0f1bf0e58e5b3bab8870112b7648ff20aca"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "full file",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "97af307fa1d737d4526323acc3d0ef372c703417",
+                    "timestamp": "2021-11-20T15:05:09Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/97af307fa1d737d4526323acc3d0ef372c703417"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "full file (re-audit at last commit)",
+                  "follows": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zokyo-rail-token-2022-04",
+      "report_file": "2022_04-zokyo-rail-token-audit.md",
+      "title": "RAIL Token Smart Contract Audit",
+      "description": "Zokyo audit of the RAIL governance token contract (Rail.sol), with the source taken from the verified Etherscan code of the deployed token rather than from a git repository. It checks the anti-bot transfer lock and the governance-only minting up to the cap, and found one informational issue.",
+      "isRelevant": true,
+      "auditor": "Zokyo",
+      "report_date": "2022-04-21",
+      "repositories": [
+        {
+          "id": "etherscan.io/address/0xe76c6c83af64e4c60245d8c7de953df673a7a33d",
+          "url": "https://etherscan.io/address/0xe76c6c83af64e4c60245d8c7de953df673a7a33d#code"
+        }
+      ],
+      "scopes": []
+    }
+  ]
+}

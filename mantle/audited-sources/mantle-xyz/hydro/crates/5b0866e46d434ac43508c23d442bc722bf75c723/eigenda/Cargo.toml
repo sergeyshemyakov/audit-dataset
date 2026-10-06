@@ -1,0 +1,24 @@
+[package]
+name = "hydro-eigenda"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Workspace
+kona-derive.workspace = true
+kona-protocol.workspace = true
+
+alloy-primitives.workspace = true
+alloy-consensus.workspace = true
+alloy-eips.workspace = true
+thiserror.workspace = true
+alloy-rlp.workspace = true
+
+bytes.workspace = true
+prost.workspace = true
+rlp.workspace = true
+
+tracing.workspace = true
+rust-kzg-bn254-primitives.workspace = true
+
+async-trait.workspace = true

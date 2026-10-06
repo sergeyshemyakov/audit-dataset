@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linea - Burn Mechanism | Consensys Diligence</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+      <meta name="description" content="This report presents the results of our engagement with Linea to review the new Linea Revenue Profit Burn Mechanism. The review was conducted from October …">
+    <link rel="preload" href="/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Medium-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Semibold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Bold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp" type="image/webp" fetchpriority="high">
+    <script>
+(function(){
+  var stored = null;
+  try { stored = localStorage.getItem('cookie_consent'); } catch (e) {}
+  if (stored === 'granted' || stored === 'denied') return;
+  try {
+    
+    
+    
+    
+    
+    
+    window.__ccTrace = fetch('/cdn-cgi/trace')
+      .then(function(r){ return r.text(); })
+      .catch(function(){ return ''; });
+  } catch (e) {}
+})();
+</script><script src="/js/consent.js?v=d268f9f4" defer></script>
+
+    <link href="/css/tachyons.min.css?v=75808e0f" rel="stylesheet"><link href="/style.css?v=fe61105e" rel="stylesheet">
+    <link href="/css/highlight.css?v=be488ecd" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://diligence.security/audits/2025/10/linea-burn-mechanism/">
+    <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.png">
+    <link rel="nokia-touch-icon" href="/images/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/icon/favicon.png" sizes="1x1">
+    
+<script type="text/javascript" id="interactive-report-tools" defer>
+const getStructuredFinding = (elem, options) => {
+  const is = elem.closest(".issue");
+  const heading = is.querySelector("h3");
+  const title = Array.from(heading.childNodes)
+          .map(node => node.nodeName === "SPAN" ? "" : node.textContent.trim())
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .trim()
+
+  function formatText(elem){
+      return Array.from(elem.childNodes)
+          .map(node => {
+              switch(node.nodeName){
+                  case "CODE":
+                      return `\`${node.textContent.trim()}\``;
+                  case "H4":
+                      return  `#### ${node.textContent.trim()}`;
+              }
+              return node.textContent.trim();
+          })
+          .join("\n")
+          
+          .trim()
+  }
+
+  const finding = {
+      id: title.substring(0, title.indexOf(' ')),
+      title: title.substring(title.indexOf(' ') + 1),
+      severity: heading.querySelector(".severity")?.textContent.trim().toLowerCase() || undefined,
+      state: heading.querySelector(".state")?.textContent.trim().toLowerCase() || undefined,
+      url: document.location.href.split("#",1)[0] + "#" + heading.id,
+  }
+  if(options?.withBody){
+      finding.body = formatText(is.querySelector("h4").closest("div"));
+  }
+  return finding;
+}
+const getAllFindings = (options) => Array.from(document.querySelectorAll(".issue")).map(iss => getStructuredFinding(iss, options));
+function exportCsv(fileName) {
+  const data = getAllFindings()
+  const keys = Object.keys(data[0]);
+  const csvRows = [];
+  csvRows.push(keys.join(','));
+  data.forEach(row => {
+      const values = keys.map(key => {
+          const value = row[key];
+          if(value === undefined) return "";
+          return `"${value}"`;
+      });
+      csvRows.push(values.join(','));
+  });
+  const csvData = csvRows.join('\n');
+  const blob = new Blob([csvData], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function exportJson(fileName) {
+  const blob = new Blob([JSON.stringify(getAllFindings())], { type: 'text/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function getOrSetGithubRepo(force) {
+  function parseGitHubRepo(input) {
+      if(!input) return;
+      const urlMatch = input.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/?$/);
+      if (urlMatch) return `${urlMatch[1]}/${urlMatch[2]}`;
+      
+      const directMatch = input.match(/^([^\/]+)\/([^\/]+)$/);
+      return directMatch ? input : null;
+  }
+  function isValidGitHubRepo(input) {
+      if(!input) return false;
+      
+      
+      
+      
+      
+      const githubNameRegex = /^(?![-.])(?!.*[_.-]{2})[a-zA-Z0-9.-]{1,100}(?<![-.])$/;
+      if (typeof input !== 'string') return false;
+      const parts = input.split('/');
+      
+      if (parts.length !== 2) return false;
+      const [org, repo] = parts;
+      return githubNameRegex.test(org) && githubNameRegex.test(repo);
+  }
+  closeAllMenus();
+  let repo = sessionStorage.getItem("user_gh_repo");
+  if (force || !isValidGitHubRepo(repo)) {
+      repo = parseGitHubRepo(prompt("Enter the GitHub repository name (owner/repo):", "https://github.com/organisation/repo"));
+
+      if (repo) {
+          if(!isValidGitHubRepo(repo)){
+              alert(`Error: '${repo}' is not a valid GitHub repo.`);
+          } else {
+              sessionStorage.setItem("user_gh_repo", repo);
+          }
+      }
+  }
+  return repo;
+}
+
+function exportToGitHub(elem) {
+  closeAllMenus();
+  const repo = getOrSetGithubRepo();
+  if(!repo) return;
+  const baseUrl = `https:\/\/github.com/${repo}/issues/new`;
+  const is = getStructuredFinding(elem);
+  const labels = undefined;
+
+  const params = new URLSearchParams({
+      title: `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}`,
+      body: `[<img width="200" alt="get in touch with Consensys Diligence" src="https:\/\/user-images.githubusercontent.com/2865694/56826101-91dcf380-685b-11e9-937c-af49c2510aa0.png">](https:\/\/diligence.security)
+<sub>[[ 🌐 ](https:\/\/diligence.security) [ 📩 ](mailto:diligence@diligence.security) [ 🔥 ](https:\/\/consensysdiligence.github.io/diligence/)]</sub>
+_______
+
+**Severity**: ${capitalizeFirstLetter(is.severity)}
+**Finding**: 👉 [${is.id} - ${is.title}](${is.url})
+
+`,
+      labels: labels && labels.join(',') || "bug,security,audit",
+      milestone: "diligence-audit",
+      assignee: ""
+  });
+
+  const issueUrl = `${baseUrl}?${params.toString()}`;
+  window.open(issueUrl, "_blank");
+}
+function exportToClipboard(elem, options){
+  closeAllMenus();
+  const is = getStructuredFinding(elem, {withBody:true});
+  let data = "";
+  switch (options?.format){
+      case "text":
+          data = `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}
+
+**Reference**: ${is.url}
+
+${is.body}
+`
+          break;
+      default:
+          data = JSON.stringify(is);
+  }
+  navigator.clipboard.writeText(data)
+}
+function capitalizeFirstLetter(string) {
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "None";
+}
+function closeAllMenus() {
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.style.display = "none";
+  });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  
+  document.querySelectorAll(".menu-toggle").forEach(button => {
+      button.addEventListener("click", function (event) {
+          const menu = this.nextElementSibling;
+          menu.style.display = menu.style.display === "block" ? "none" : "block";
+          event.stopPropagation(); 
+      });
+  });
+
+  
+  document.addEventListener("click", function () {
+      document.querySelectorAll(".menu-box").forEach(menu => {
+          menu.style.display = "none";
+      });
+  });
+
+  
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.addEventListener("click", function (event) {
+          event.stopPropagation();
+      });
+  });
+});
+</script>
+<link rel="alternate" type="application/rss+xml" href="https://diligence.security/index.xml" title="Consensys Diligence" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://diligence.security/#organization","@type":"Organization","description":"Smart Contract Audits for Ethereum protocols and institutions. Supercharged by AI agents, guided by veteran experts.","foundingDate":"2017","logo":{"@type":"ImageObject","url":"https://diligence.security/images/icon/favicon.png"},"name":"Consensys Diligence","sameAs":["https://x.com/ConsensysAudits","https://www.linkedin.com/company/consensys-diligence","https://github.com/ConsenSysDiligence","https://medium.com/consensys-diligence","https://www.youtube.com/@ConsensysDiligence"],"url":"https://diligence.security/"},{"@id":"https://diligence.security/#website","@type":"WebSite","name":"Consensys Diligence","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/"},{"@id":"https://diligence.security/audits/2025/10/linea-burn-mechanism/#article","@type":"TechArticle","author":[{"@type":"Person","name":"Arturo Roura"},{"@type":"Person","name":"Martin Ortner"}],"dateModified":"2025-10-13T11:02:58+02:00","datePublished":"2025-10-13T11:02:58+02:00","description":"This report presents the results of our engagement with Linea to review the new Linea Revenue Profit Burn Mechanism. The review was conducted from October …","headline":"Linea - Burn Mechanism","image":["https://diligence.security/images/og-share.png","https://diligence.security/images/audit_report/feature-hero.png"],"inLanguage":"en","isPartOf":{"@id":"https://diligence.security/#website"},"mainEntityOfPage":{"@id":"https://diligence.security/audits/2025/10/linea-burn-mechanism/","@type":"WebPage"},"name":"Linea - Burn Mechanism","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/audits/2025/10/linea-burn-mechanism/","wordCount":4497},{"@id":"https://diligence.security/audits/2025/10/linea-burn-mechanism/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://diligence.security/","name":"Home","position":1},{"@type":"ListItem","item":"https://diligence.security/audit-reports/","name":"Public Smart Contract Audits and Security Reviews","position":2},{"@type":"ListItem","item":"https://diligence.security/audits/2025/10/linea-burn-mechanism/","name":"Linea - Burn Mechanism","position":3}]}]}</script>
+    <meta property="og:title" content="Linea - Burn Mechanism | Consensys Diligence" />
+    <meta property="og:description" content="This report presents the results of our engagement with Linea to review the new Linea Revenue Profit Burn Mechanism. The review was conducted from October …" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://diligence.security/audits/2025/10/linea-burn-mechanism/" /><meta property="og:image" content="https://diligence.security/images/og-share.png" />
+    <meta property="og:image:alt" content="Linea - Burn Mechanism - Consensys Diligence" /><meta property="article:published_time" content="2025-10-13T11:02:58+02:00" />
+<meta property="article:modified_time" content="2025-10-13T11:02:58+02:00" /><meta property="og:site_name" content="Consensys Diligence" />
+    <meta property="article:publisher" content="https://www.twitter.com/ConsensysAudits" />
+    
+    <meta property="article:section" content="audits" />
+<meta name="twitter:title" content="Linea - Burn Mechanism | Consensys Diligence"/>
+<meta name="twitter:description" content="This report presents the results of our engagement with Linea to review the new Linea Revenue Profit Burn Mechanism. The review was conducted from October …"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://diligence.security/images/og-share.png"/>
+                <meta name="twitter:image:alt" content="Linea - Burn Mechanism - Consensys Diligence"/>
+<meta name="twitter:site" content="@ConsensysAudits"/>
+    <meta name="twitter:creator" content="@ConsensysAudits"/>
+
+      
+      <script type="text/javascript" id="reload-pathfix">
+        let lastSegment = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1); 
+        if(lastSegment && lastSegment.length !==0 && lastSegment.indexOf(".") === -1){
+          
+          window.location.pathname += "/";  
+        }
+      </script>
+      <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-H4M4ES1MZM');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4M4ES1MZM"></script>
+    
+  </head>
+  <body style="margin: 0; padding: 0;">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    
+<header class="audit-header">
+  <div class="audit-header__inner">
+    
+    <div class="audit-header__row1">
+      <a href="/" class="audit-header__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </a>
+
+      <a href="/request-audit/" class="audit-header__cta">
+        <div class="audit-header__cta-icon">
+          <svg fill="none" viewBox="0 0 14.8226 10.1497">
+            <line stroke="white" stroke-width="1.3" x2="13.7793" y1="4.8803" y2="4.8803" />
+            <path d="M9.28809 0.459619L13.9033 5.07487L9.28809 9.69013" stroke="white" stroke-width="1.3" fill="none" />
+          </svg>
+        </div>
+        <span class="audit-header__cta-text">Request Audit</span>
+      </a>
+    </div>
+
+    
+    <div class="audit-header__row2">
+      <p class="audit-header__tagline">Securing Ethereum Smart Contracts since 2017</p>
+      <nav class="audit-header__nav">
+        <a href="/about/" class="audit-header__nav-link">About</a>
+        <a href="/blog/" class="audit-header__nav-link">Blog</a>
+        <a href="/audits/" class="audit-header__nav-link">Public Audits</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <main id="main" tabindex="-1" role="main">
+      <div class="dili-navigator-page">
+    <div class="dili-blog-hero"><div class="dili-hero-bg-mixin" style="background-image: url('/images/audit_report/feature-hero.png'); background-image: image-set(url('/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp') type('image/webp'), url('/images/audit_report/feature-hero.png') type('image/png'));" ></div>
+        <div class="dili-container">
+            <div class="dili-blog-hero-inner">
+                <div class="item-eyebrow"></div>
+                <h1 class="item-title">Linea - Burn Mechanism</h1>
+            </div>
+        </div>
+    </div>
+    <article class="">
+
+
+    <div class="dili-navigator-wrapper">
+            <div class="dili-navigator-sidebar">
+
+                <ul class="dili-navigator-sidebar-inner">
+                <li>
+                    <a href="#executive-summary">1 Executive Summary</a>
+                    <ul>
+                    <li>
+                        <a href="#update--october-24--30-2025">1.1 <strong>Update – October 24 + 30, 2025</strong></a>
+                    </li>
+                    <li>
+                        <a href="#update--november-2-2025">1.2 <strong>Update – November 2, 2025</strong></a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#scope">2 Scope</a>
+                    <ul>
+                    <li>
+                        <a href="#objectives">2.1 Objectives</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#system-overview">3 System Overview</a>
+                    <ul>
+                    <li>
+                        <a href="#rollup-revenue-vault-upgradable">3.1 Rollup Revenue Vault (Upgradable)</a>
+                    </li>
+                    <li>
+                        <a href="#l1-linea-token-burner-non-upgradable">3.2 L1 Linea Token Burner (Non-Upgradable)</a>
+                    </li>
+                    <li>
+                        <a href="#v3-dex-swap-l2-non-upgradable">3.3 V3 Dex Swap (L2, Non-Upgradable)</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#findings">4 Findings</a>
+                    <ul>
+                    <li>
+                        <a href="#18_deploy_rolluprevenuevaultts--deployment-script-leaves-contract-uninitialized-fallback-does-not-enforce-msgvalue--0">4.1 18_deploy_RollupRevenueVault.ts – Deployment Script Leaves Contract Uninitialized; <code>fallback</code> Does Not Enforce <code>msg.value &gt; 0</code> <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#rolluprevenuevault---deployment-and-initialization-flow">4.2 RollupRevenueVault - Deployment and Initialization Flow <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#rolluprevenuevault---missing-validation-for-future-lastinvoicedate">4.3 RollupRevenueVault - Missing Validation for Future <code>lastInvoiceDate</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#rolluprevenuevault---consider-enforcement-of-minimum-swap-outputs">4.4 RollupRevenueVault - Consider Enforcement of Minimum Swap Outputs <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#document-change-log">5 Document Change Log</a>
+                </li>
+                <li>
+                    <a href="#appendix---files-in-scope">Appendix 1 - Files in Scope</a>
+                </li>
+                <li>
+                    <a href="#appendix---disclosure">Appendix 2 - Disclosure</a>
+                    <ul>
+                    <li>
+                        <a href="#purpose-of-reports">A.2.1 Purpose of Reports</a>
+                    </li>
+                    <li>
+                        <a href="#links-to-other-web-sites-from-this-web-site">A.2.2 Links to Other Web Sites from This Web Site</a>
+                    </li>
+                    <li>
+                        <a href="#timeliness-of-content">A.2.3 Timeliness of Content</a>
+                    </li>
+                </li>
+                </ul>
+            </div>
+            <div class="dili-navigator-content richtext">
+                <aside class="summary summary-cta-side">
+                    
+                    
+                    <table>
+                        <tr>
+                            <th align="left">Date</th>
+                            <td align="left">October 2025</td>
+                        </tr>
+                        
+                        <tr>
+                            <th align="left">Auditors</th>
+                            <td align="left" class="mw5">Arturo Roura, Martin Ortner
+                        </tr>
+                        
+                        <tr class="noprint">
+                            <th align="left">Download</th>
+                            <td align="left">
+                                <a onclick="exportJson()" title="↓ JSON" class="pointer"><i class="far fa-file-code"></i> JSON</a><br/>
+                                <a onclick="exportCsv()" title="↓ CSV" class="pointer"><i class="far fa-file-excel"></i> CSV</a><br/><a href="/audits/2025/10/linea-burn-mechanism/lineaburnmechanism-audit-2025-10.pdf" title="↓ PDF"><i class="far fa-file-pdf"></i> PDF</a>
+                            </td>
+                        </tr>
+                    </table>
+                </aside><h2 id="executive-summary">1 Executive Summary</h2>
+<p>This report presents the results of our engagement with <strong>Linea</strong> to review the new <strong>Linea Revenue Profit Burn Mechanism</strong>.</p>
+<p>The review was conducted from <strong>October 13, 2025</strong> to <strong>October 20, 2025</strong>, with a total effort of <strong>2 x 5</strong> person-days.</p>
+<p>The Linea Burn Mechanism consists of a three-contract system designed to facilitate the systematic burning of <code>LINEA</code> tokens as part of Linea&rsquo;s rollup revenue management strategy. This operational infrastructure enables the collection of rollup revenues, conversion to <code>LINEA</code> tokens, and their subsequent destruction to reduce token supply.</p>
+<p>The burn mechanism operates through a coordinated cross-chain workflow:</p>
+<ul>
+<li>Revenue Collection through <code>RollupRevenueVault</code> which receives <code>ETH</code> from Linea rollup operations and processes invoices for operational expenses</li>
+<li>A Token Conversion where during burn operations, 20% of available <code>ETH</code> is permanently destroyed while the remaining 80% is swapped for <code>LINEA</code> tokens via the <code>V3DexSwap</code> contract</li>
+<li>Acquired <code>LINEA</code> tokens are bridged from L2 to L1 using Linea&rsquo;s canonical token bridge to the <code>L1LineaTokenBurner</code> contract</li>
+<li>The L1 burner contract processes cross-chain messages and permanently burns all received <code>LINEA</code> tokens, synchronizing the reduced supply back to L2</li>
+</ul>
+<p><strong>Remarks on Validated Design Decissions:</strong></p>
+<p>In <code>RollupRevenueVault</code> there is only one active receiver at a time. The system does not support multiple simultaneous receivers, as the debt system enforces a single counterparty. Operationally, this receiver is separate from the invoice submitter, who remains a trusted role.</p>
+<p><code>RollupRevenueVault</code> can receive <code>ETH</code> through <code>fallback()</code> and <code>receive()</code> without requiring invoice submission. This <code>ETH</code> becomes immediately available for burning if there are no outstanding arrears, which could bypass standard revenue accounting and invoice workflows. These functions are primarily intended to accept <code>ETH</code> from contributors wishing to fund the burn. Off-chain procedures and timing routines are carefully managed to ensure that invoices are settled first, allowing any excess <code>ETH</code> to be safely burned.</p>
+<p>Neither <code>RollupRevenueVault</code> nor <code>V3DexSwap</code> enforce slippage control by themselve, placing critical responsibility on the caller to correctly parameterize <code>burnAndBridge(bytes calldata _swapData)</code> with appropriate slippage settings. The contracts trust the configured DEX router to return at least the caller provided <code>amountOutMinimum</code>, there is no explicit verification. This may be valid, however, the caller should consider implementing additional verification mechanisms to ensure swap outputs meet expected thresholds, as incorrect parameterization could result in excessive slippage or MEV exploitation.</p>
+<p>The <code>RollupRevenueVault</code> admin, overseen by a distributed security council including non-Linea and non-CSI members, can adjust arrears via <code>updateInvoiceArrears</code> to correct reporting inaccuracies; this capability is tightly controlled and expected to be used only in rare cases of major reporting errors.</p>
+<hr>
+<h3 id="update--october-24--30-2025">1.1 <strong>Update – October 24 + 30, 2025</strong></h3>
+<p>All issues identified in this report have been resolved. The final audited codebase is represented by commit <a href="https://github.com/Consensys/linea-monorepo/commit/efe83ff992b38eda5fd5a58220acb6952c519f75">efe83ff992b38eda5fd5a58220acb6952c519f75</a> (tag: <code>contract-audit-2025-10-30</code>), which contains the verified deployment artifacts.</p>
+<h3 id="update--november-2-2025">1.2 <strong>Update – November 2, 2025</strong></h3>
+<p>At the request of the Linea team, the deployed contracts have been added and verified as follows.</p>
+<p><strong>Deployment Commit:</strong>
+<a href="https://github.com/Consensys/linea-monorepo/tree/efe83ff992b38eda5fd5a58220acb6952c519f75/contracts">linea-monorepo@<code>contract-audit-2025-10-30</code> (<code>efe83ff992b38eda5fd5a58220acb6952c519f75</code>)</a></p>
+<p>The listed source files were recompiled from scratch, and the resulting bytecode was compared against the deployed contracts. In cases where an exact match was not observed, the differences were confirmed to correspond to the expected constructor parameters. The findings are as follows:</p>
+<ul>
+<li>
+<p><a href="https://lineascan.build/address/0x84a5ba2c12a15071660b0682b59e665dc2faaedb#code">RollupRevenueVault@<code>0x84a5ba2c12a15071660b0682b59e665dc2faaedb</code></a>:
+Verified on <code>lineascan.build</code> (Nov 2, 2025, 15:45 CET). The deployed bytecode is an exact match to the re-compiled code of <code>contract-audit-2025-10-30@efe83ff</code> and the bytecode artifacts recorded under <code>linea-monorepo:contracts/deployments/bytecode/2025-10-27</code>.</p>
+</li>
+<li>
+<p><a href="https://lineascan.build/address/0x30a20a3a9991c939290f4329cb52daac8e97f353#code">V3DexSwapAdapter@<code>0x30a20a3a9991c939290f4329cb52daac8e97f353</code></a>:
+Verified on <code>lineascan.build</code> (Nov 2, 2025, 15:45 CET). The deployed bytecode matches, with expected constructor argument substitutions. The re-compiled bytecode matches the bytecode artifacts recorded under <code>linea-monorepo:contracts/deployments/bytecode/2025-10-27</code>.</p>
+</li>
+<li>
+<p><a href="https://etherscan.io/address/0x5Ad9369254F29b724d98F6ce98Cb7bAD729969F3#code">L1LineaTokenBurner@<code>0x5Ad9369254F29b724d98F6ce98Cb7bAD729969F3</code></a>:
+Verified on <code>lineascan.build</code> (Nov 2, 2025, 15:45 CET). The deployed bytecode matches, with expected constructor argument substitutions. The re-compiled bytecode matches the bytecode artifacts recorded under <code>linea-monorepo:contracts/deployments/bytecode/2025-10-27</code>.</p>
+</li>
+</ul>
+<p>The re-compiled bytecode for <code>V3DexSwapWethDepositAdapter</code>  matches the bytecode artifacts recorded under <code>linea-monorepo:contracts/deployments/bytecode/2025-10-27</code>.</p>
+<h2 id="scope">2 Scope</h2>
+<p>This review focused on the following repository and code revision:</p>
+<ul>
+<li><a href="https://github.com/Consensys/linea-monorepo/tree/8285efababe0689aec5f0a21a28212d9d22df22e">Consensys/linea-monorepo</a> @ <a href="https://github.com/Consensys/linea-monorepo/tree/8285efababe0689aec5f0a21a28212d9d22df22e">contract-freeze-2025-10-12</a></li>
+</ul>
+<p>The following files are in scope:</p>
+<pre tabindex="0"><code>contracts/src/operational/
+├── RollupRevenueVault.sol
+├── V3DexSwap.sol
+├── L1LineaTokenBurner.sol
+└── interfaces/
+    ├── IV3DexSwap.sol
+    ├── IRollupRevenueVault.sol
+    ├── ISwapRouterV3.sol
+    ├── IL1LineaToken.sol
+    ├── IL1LineaTokenBurner.sol
+    └── IWETH9.sol
+</code></pre><p>The detailed list of files in scope can be found in the <a href="#appendix---files-in-scope">Appendix</a>.</p>
+<h3 id="objectives">2.1 Objectives</h3>
+<p>Together with the Linea Team, we identified the following priorities for this review:</p>
+<ol>
+<li>Correctness of the implementation, consistent with the intended functionality and without unintended edge cases.</li>
+<li>Identify known vulnerabilities particular to smart contract systems, as outlined in our <a href="https://consensys.github.io/smart-contract-best-practices/">Smart Contract Best Practices</a>, and the <a href="https://swcregistry.io/">Smart Contract Weakness Classification Registry</a>.</li>
+<li>Proper Handling of Funds, fee collection, profit burning, and token swaps.</li>
+<li>Swaps comply with industry standards via the defined Dex interface.</li>
+<li>Documentation and Transparency, operations are clearly documented and understandable by stakeholders.</li>
+</ol>
+
+<h2 id="system-overview">3 System Overview</h2>
+<p><strong>Burn Mechanism</strong></p>
+<figure><a href="./img/linea-token-burn-mechanism.png"><img src="./img/linea-token-burn-mechanism.png"
+			alt="Burn Mechanism" width="800"></a>
+</figure>
+
+<p>(This image was provided by the Linea Team)</p>
+<p><strong>Contract Overview</strong></p>
+<figure><a href="./img/tm_linea_burn.svg"><img src="./img/tm_linea_burn.svg"
+			alt="Contract Overview" width="800"></a>
+</figure>
+
+<h3 id="rollup-revenue-vault-upgradable">3.1 Rollup Revenue Vault (Upgradable)</h3>
+<ul>
+<li>Handles Sequencer and L2 DDoS fee collection, invoice management, and profit burning.</li>
+<li>Burns 20% as ETH and swaps 80% to Linea tokens, which are bridged to the L1 Token Burner.</li>
+<li>Supports configuration changes (Dex swap address, invoice recipient, L1 Token Burner).</li>
+</ul>
+<p><strong>Technical Details:</strong></p>
+<ul>
+<li><strong>Upgradeable Contract</strong>: Uses OpenZeppelin&rsquo;s <code>AccessControlUpgradeable</code> with reinitializer support (version 2)</li>
+<li><strong>Role-Based Access Control</strong>:
+<ul>
+<li><code>DEFAULT_ADMIN_ROLE</code>: Can update system parameters (dex, invoice receiver, L1 burner, invoice arrears)</li>
+<li><code>INVOICE_SUBMITTER_ROLE</code>: Can submit and process invoices for operational expenses</li>
+<li><code>BURNER_ROLE</code>: Can execute the burn-and-bridge operations</li>
+</ul>
+</li>
+</ul>
+<p><strong>Revenue Collection &amp; Invoice Management:</strong></p>
+<ul>
+<li><strong>Revenue Reception</strong>: Accepts ETH through <code>receive()</code> and <code>fallback()</code> functions, emitting <code>EthReceived</code> events</li>
+<li><strong>Invoice Processing</strong>: Strict sequential invoice system requiring <code>_startTimestamp == lastInvoiceDate + 1</code></li>
+<li><strong>Arrears Handling</strong>: Automatically calculates and tracks unpaid amounts when contract balance is insufficient</li>
+<li><strong>Payment Priority</strong>: Invoice payments are processed before any burn operations (<code>invoiceArrears == 0</code> requirement)</li>
+</ul>
+<p><strong>Burn-and-Bridge Mechanism:</strong></p>
+<ul>
+<li><strong>Fixed Burn Ratio</strong>: Exactly 20% of available ETH (after message fees) is permanently destroyed via <code>address(0).call{value: ethToBurn}(&quot;&quot;)</code></li>
+<li><strong>DEX Integration</strong>: Remaining 80% is sent to the DEX contract via low-level call with encoded swap data</li>
+<li><strong>Token Bridging</strong>: Acquired LINEA tokens are approved and bridged to L1 using the canonical <code>TokenBridge.bridgeToken()</code> function</li>
+<li><strong>Balance Management</strong>: Reserves L2MessageService minimum fees before calculating burn amounts</li>
+</ul>
+<p><strong>Configuration Management:</strong></p>
+<ul>
+<li><strong>Updateable Components</strong>: DEX address, invoice payment receiver, L1 token burner address, and invoice arrears</li>
+<li><strong>Validation</strong>: All updates include zero-address checks and existing-address-same prevention</li>
+</ul>
+<h3 id="l1-linea-token-burner-non-upgradable">3.2 L1 Linea Token Burner (Non-Upgradable)</h3>
+<ul>
+<li>Accepts token bridging messages and burns tokens in a single permissionless transaction.</li>
+<li>Includes safeguards against front-running, duplicate claims, and zero-balance burns.</li>
+</ul>
+<p><strong>Technical Details:</strong></p>
+<ul>
+<li><strong>Immutable Design</strong>: All addresses (<code>LINEA_TOKEN</code>, <code>MESSAGE_SERVICE</code>) are immutable, preventing configuration changes post-deployment</li>
+<li><strong>Permissionless Operation</strong>: Anyone can call <code>claimMessageWithProof()</code> to trigger token burning</li>
+</ul>
+<p><strong>Message Claiming &amp; Burning Process:</strong></p>
+<ul>
+<li><strong>Idempotent Message Claiming</strong>: Checks <code>IL1MessageManager.isMessageClaimed()</code> before attempting to claim, preventing revert on duplicate claims</li>
+<li><strong>Automatic Token Destruction</strong>: Burns entire contract balance in a single transaction using <code>IL1LineaToken.burn(balance)</code></li>
+<li><strong>Supply Synchronization</strong>: Calls <code>IL1LineaToken.syncTotalSupplyToL2()</code> to update L2 total supply after burning</li>
+<li><strong>Zero-Balance Protection</strong>: Requires <code>balance &gt; 0</code> before executing burn operations</li>
+</ul>
+<p><strong>Front-Running &amp; Duplicate Claim Safeguards:</strong></p>
+<ul>
+<li><strong>Message Status Check</strong>: Prevents claiming already-processed messages</li>
+<li><strong>Balance Validation</strong>: Ensures tokens exist before burning</li>
+<li><strong>Atomic Operation</strong>: Combines message claiming and token burning in single transaction</li>
+</ul>
+<h3 id="v3-dex-swap-l2-non-upgradable">3.3 V3 Dex Swap (L2, Non-Upgradable)</h3>
+<ul>
+<li>Executes exact-input token swaps, ensuring no residual ETH remains.</li>
+<li>Token receiver is always the caller funding the swap.</li>
+</ul>
+<p><strong>Technical Details:</strong></p>
+<ul>
+<li><strong>Immutable Configuration</strong>: Router, WETH, LINEA token addresses, and pool tick spacing are set at deployment</li>
+<li><strong>Uniswap V3 Integration</strong>: Uses <code>ISwapRouterV3.exactInputSingle()</code> for precise ETH-to-LINEA swaps</li>
+</ul>
+<p><strong>Swap Execution Details:</strong></p>
+<ul>
+<li><strong>ETH Handling</strong>: Converts incoming ETH to WETH via <code>IWETH9.deposit{value: msg.value}()</code></li>
+<li><strong>Exact Input Swaps</strong>: Guarantees all input ETH is consumed, leaving zero residual balance</li>
+<li><strong>Direct Token Delivery</strong>: LINEA tokens are sent directly to <code>msg.sender</code> (the caller), never held by the contract</li>
+<li><strong>Slippage Protection</strong>: Enforces minimum output amounts via <code>amountOutMinimum</code> parameter</li>
+<li><strong>Deadline Protection</strong>: Prevents transaction execution after specified timestamp</li>
+</ul>
+<p><strong>Parameter Validation:</strong></p>
+<ul>
+<li><strong>Input Validation</strong>: Requires <code>msg.value &gt; 0</code>, <code>_deadline &gt; block.timestamp</code>, and <code>_minLineaOut &gt; 0</code></li>
+<li><strong>Price Limit Control</strong>: Accepts <code>_sqrtPriceLimitX96</code> for additional price protection</li>
+<li><strong>Return Value</strong>: Returns actual LINEA tokens received from the swap</li>
+</ul>
+
+<p>
+<h2 id="findings">4 Findings</h2>
+   
+    <p>Each issue has an assigned severity:</p>
+
+    <ul>
+        <li><span class="severity critical">Critical</span> issues are directly exploitable security vulnerabilities that need to be fixed.</li>
+        <li><span class="severity major">Major</span> issues are security vulnerabilities that may not be directly exploitable or may require certain conditions in order to be exploited. All major issues should be addressed.</li>
+        <li><span class="severity medium">Medium</span> issues are objective in nature but are not security vulnerabilities. These should be addressed unless there is a clear reason not to.</li>
+        <li><span class="severity minor">Minor</span> issues are subjective in nature. They are typically suggestions around best practices or readability. Code maintainers should use their own judgment as to whether to address such issues.</li>
+        <li>Issues without a severity are general recommendations or optional improvements. They are not related to security or correctness and may be addressed at the discretion of the maintainer.</li>
+    </ul><div class="issue">
+            <a class="anchor" href="#18_deploy_rolluprevenuevaultts--deployment-script-leaves-contract-uninitialized-fallback-does-not-enforce-msgvalue--0" data-issue-url="https://github.com/ConsenSysDiligence/lineaburnmechanism-audit-2025-10/issues/1">
+                <h3 id="18_deploy_rolluprevenuevaultts--deployment-script-leaves-contract-uninitialized-fallback-does-not-enforce-msgvalue--0">4.1 18_deploy_RollupRevenueVault.ts – Deployment Script Leaves Contract Uninitialized; <code>fallback</code> Does Not Enforce <code>msg.value &gt; 0</code> <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        Fixed in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1599/commits/831c529479faebb380df1478e17f03bf0a3b9b80">831c529479faebb380df1478e17f03bf0a3b9b80</a>. The Linea team modified the deployment script to call the initialize function with the proper signature and function arguments, and added <code>require(msg.value &gt; 0, NoEthSent())</code> in the fallback.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The deployment script for <code>RollupRevenueVault</code> incorrectly attempts to call a non-existent <code>initialize()</code> function with no parameters, leaving the contract uninitialized and non-functional.</p>
+<p>The script specifies <code>EMPTY_INITIALIZE_SIGNATURE = &quot;initialize()&quot;</code>, but the <code>RollupRevenueVault</code> contract only defines an <code>initialize(addr, ...)</code> function that requires 10 parameters. When <code>deployProxy</code> (from OpenZeppelin) executes this empty initializer, the call is routed to the contract’s fallback function instead of performing initialization.</p>
+<p>As a result, the contract stays uninitialized allowing anyone to claim it.</p>
+<h4 id="examples">Examples</h4>
+<ul>
+<li>Deployment Script calls empty <code>initialize()</code></li>
+</ul>
+<p><strong>contracts/deploy/18_deploy_RollupRevenueVault.ts:L15-L17</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">const</span> <span class="n">contractName</span> <span class="o">=</span> <span class="s">&#34;RollupRevenueVault&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">const</span> <span class="n">existingContractAddress</span> <span class="o">=</span> <span class="n">await</span> <span class="n">getDeployedContractAddress</span><span class="p">(</span><span class="n">contractName</span><span class="p">,</span> <span class="n">deployments</span><span class="p">);</span>
+</span></span></code></pre></div><p><strong>contracts/deploy/18_deploy_RollupRevenueVault.ts:L25-L28</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">const</span> <span class="kd">contract</span> <span class="o">=</span> <span class="n">await</span> <span class="n">deployUpgradableFromFactory</span><span class="p">(</span><span class="n">contractName</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">initializer</span><span class="o">:</span> <span class="n">EMPTY_INITIALIZE_SIGNATURE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">unsafeAllow</span><span class="o">:</span> <span class="p">[</span><span class="s">&#34;constructor&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><ul>
+<li>Contract only defines <code>initialize(uint256,address,address,address,address,address,address,address,address,address)</code></li>
+</ul>
+<p>Since no zero-argument <code>initialize()</code> exists, calls to <code>initialize()</code> without parameters trigger the fallback, contributing to hiding this issue. Deployment returns success.</p>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L58-L74</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">initialize</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_burner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoicePaymentReceiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_tokenBridge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_l1LineaTokenBurner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_lineaToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_dex</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">initializer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__AccessControl_init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__RollupRevenueVault_init</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span></code></pre></div><p><strong>contracts/src/operational/RollupRevenueVault.sol:L282-L288</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Fallback function - Receives Funds.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="n">fallback</span><span class="p">()</span> <span class="k">external</span> <span class="k">payable</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">EthReceived</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<ul>
+<li>Remove the fallback function or require <code>msg.value &gt; 0</code>.</li>
+<li>Update the deployment script to call the correct <code>initialize(addr, ...)</code> function and supply all required parameters.</li>
+<li>Bundle with a call to the <code>reinitialize</code> function to avoid another front-running window.</li>
+</ul>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#rolluprevenuevault---deployment-and-initialization-flow" data-issue-url="https://github.com/ConsenSysDiligence/lineaburnmechanism-audit-2025-10/issues/2">
+                <h3 id="rolluprevenuevault---deployment-and-initialization-flow">4.2 RollupRevenueVault - Deployment and Initialization Flow <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        Fixed in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1599/commits/831c529479faebb380df1478e17f03bf0a3b9b80">831c529479faebb380df1478e17f03bf0a3b9b80</a>. A new execution flow has been created for upgrading the proxy where <code>upgradeAndCall</code> calls directly the <code>initializeRolesAndStorageVariables</code> function. This function has the <code>reinitializer(2)</code> modifier, which after reinitialization would prevent any call to the initialize function.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The contract implements <strong>two</strong> initialization functions:</p>
+<ul>
+<li><code>initialize(addr, ...) initializer</code> – for initial setup after proxy deployment.</li>
+<li><code>initializeRolesAndStorageVariables(addr, ...) reinitializer(2)</code> – available immediately after <code>initialize</code> has been called (Version 2 of the contract).</li>
+</ul>
+<hr>
+<p><strong>Observations and Concerns</strong></p>
+<p><strong>1) Deployment and Initialization Flow</strong></p>
+<p>When <code>initialize</code> functions are not permissioned, they must be called within the same transaction that deploys the proxy. Otherwise, this creates a window of opportunity for an attacker to front-run initialization and gain control of the contract. With certain proxy patterns (e.g., UUPS), this can even allow an attacker to upgrade the proxy immediately after initialization, enabling arbitrary future initialization or upgrades.
+See a live <a href="https://x.com/pcaversaccio/status/1944115044154753161">example of such an attack</a>.</p>
+<p>In this case, the proxy pattern appears to be a minimal transparent proxy (not UUPS) with <code>upgradeTo() onlyAdmin</code> and <code>delegateCall(impl)</code> branching. It is assumed proxies are deployed and initialized in the same transaction.</p>
+<p>The <code>RollupRevenueVault</code> contract defines a <code>reinitializer(2)</code> function that becomes available immediately after the first initialization. For a typical upgrade path of <code>[deploy][initialize]-[reinitialize]</code> this means, that after deployment or an upgrade, anyone could potentially reinitialize the contract unless the upgrade transaction includes an atomic <code>upgradeToAndCall(reinitializer_function)</code> call.
+Each upgrade therefore <strong>must</strong> include the <code>reinitializer</code> call in the same transaction to avoid leaving a reinitialization window open.</p>
+<p>Originally, our concern was that the assumed deployment process (<code>deploy → initialize → reinitialize</code>) introduced gaps between calls. However, the client has clarified that their deployment <strong>directly invokes <code>reinitialize</code></strong> rather than performing a chained initialization. This mitigates the initial frontrunning concern but does not eliminate it entirely - especially if future upgrades expose the <code>reinitializer(2)</code> function in isolation or if initialization logic changes.</p>
+<p>In the test suite, <code>reinitialize</code> is still observed being called in a separate transaction:</p>
+<p><strong>contracts/test/hardhat/operational/RollupRevenueVault.ts:L317-L330</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">it</span><span class="p">(</span><span class="s">&#34;Should revert when reinitializing twice&#34;</span><span class="p">,</span> <span class="n">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">const</span> <span class="n">txPromise</span> <span class="o">=</span> <span class="n">rollupRevenueVault</span><span class="p">.</span><span class="n">initializeRolesAndStorageVariables</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">await</span> <span class="n">time</span><span class="p">.</span><span class="n">latest</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">admin</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">invoiceSubmitter</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">burner</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">invoicePaymentReceiver</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">await</span> <span class="n">tokenBridge</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">await</span> <span class="n">messageService</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">l1LineaTokenBurner</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">await</span> <span class="n">l2LineaToken</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">await</span> <span class="n">dex</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span></code></pre></div><p>If this pattern is replicated during upgrade execution, it reintroduces a short window of opportunity for attackers to front-run the reinitialization and potentially claim ownership or modify key state.</p>
+<p>Scenarios to consider:</p>
+<ul>
+<li><strong>(a)</strong> <code>[deploy proxy] ----window of opportunity--- [initialize/reinitializer]</code> → mitigated by <code>deployAndInit</code></li>
+<li><strong>(b)</strong> <code>[initialized contract] ----window of opportunity--- [reinitializer(2)]</code> → must be mitigated by <code>upgradeAndReInit</code> (or <code>deployAndInit + upgradeAndReInit</code> atomically for new deployments)</li>
+</ul>
+<hr>
+<p><strong>2) Cumulative Initialization for upgrades</strong></p>
+<p>Several issues arise from having both <code>initializer</code> and <code>reinitializer(2)</code> functions that perform overlapping logic when upgrading the contract (instead of deploying from scratch and calling <code>reinitializer</code>). The following discussion points address the upgrade path:</p>
+<ul>
+<li><strong>(a)</strong> Both functions initialize the same storage variables. For the upgrade scenario, this might lead to inconsistencies or unnecessary state resets as crucial storage variables that should not be tampered with, could be reset.</li>
+</ul>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L69-L71</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">initializer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__AccessControl_init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__RollupRevenueVault_init</span><span class="p">(</span>
+</span></span></code></pre></div><p><strong>contracts/src/operational/RollupRevenueVault.sol:L109-L111</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">reinitializer</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__AccessControl_init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__RollupRevenueVault_init</span><span class="p">(</span>
+</span></span></code></pre></div><p>For example, calling <code>__RollupRevenueVault_init</code> again allows resetting critical state variables such as <code>lastInvoiceDate</code> or the <code>LINEA</code> token address. These values are intended to remain managed by the contract only. Allowing an upgrade to change them can create inconsistencies or break accounting logic, especially when an upgrade accidentally wraps invoicer calls due to unfortunate timing.
+A reinitialization routine should only adjust non-critical system parameters or perform narrowly scoped updates. Any regular configuration changes should occur through explicit setter functions with 2-step governance (e.g., time delays, multisig approvals, or controlled modules).</p>
+<ul>
+<li>
+<p><strong>(b)</strong> Calling <code>__AccessControl_init</code> again is redundant. While this is effectively a <a href="https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/master/contracts/access/AccessControlUpgradeable.sol#L83-L87">no-op</a>, it still creates confusion and weakens clarity of upgrade semantics.</p>
+</li>
+<li>
+<p><strong>(c)</strong> Reinvoking <code>__RollupRevenueVault_init</code> with new role assignments <strong>adds</strong> new administrators via <code>grant_role</code> but does <strong>not revoke</strong> existing ones. This can lead to privilege accumulation. If the intention is to rotate or replace admins, the logic should explicitly revoke outdated roles before granting new ones.</p>
+</li>
+</ul>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L148-L150</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">_grantRole</span><span class="p">(</span><span class="n">DEFAULT_ADMIN_ROLE</span><span class="p">,</span> <span class="n">_defaultAdmin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">_grantRole</span><span class="p">(</span><span class="n">INVOICE_SUBMITTER_ROLE</span><span class="p">,</span> <span class="n">_invoiceSubmitter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">_grantRole</span><span class="p">(</span><span class="n">BURNER_ROLE</span><span class="p">,</span> <span class="n">_burner</span><span class="p">);</span>
+</span></span></code></pre></div><p>Using the same initialization logic for fresh deployment and upgrades causes state reset, increasing potential for inconsistencies or misparameterization of a running system, potential for overlooking that permission grants are additive for upgrades and generally gives weaker guarantees.  Ideally, the two scenarios should not reuse the same internal function - they serve different purposes and should preserve vs. reset state accordingly.</p>
+<h4 id="examples">Examples</h4>
+<ul>
+<li>Deployment as seen in the test cases performing an OZ <code>deployAndInitialize</code> correctly calling <code>initialize()</code> bundled to the deployment call:</li>
+</ul>
+<p><strong>contracts/test/hardhat/operational/RollupRevenueVault.ts:L68-L87</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">describe</span><span class="p">(</span><span class="s">&#34;Initialization&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">it</span><span class="p">(</span><span class="s">&#34;should revert if lastInvoiceDate is zero&#34;</span><span class="p">,</span> <span class="n">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">const</span> <span class="n">deployCall</span> <span class="o">=</span> <span class="n">deployUpgradableFromFactory</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;RollupRevenueVault&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">0</span><span class="n">n</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">admin</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">invoiceSubmitter</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">burner</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">invoicePaymentReceiver</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">await</span> <span class="n">tokenBridge</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">await</span> <span class="n">messageService</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">l1LineaTokenBurner</span><span class="p">.</span><span class="kt">address</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">await</span> <span class="n">l2LineaToken</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">await</span> <span class="n">dex</span><span class="p">.</span><span class="n">getAddress</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">initializer</span><span class="o">:</span> <span class="n">ROLLUP_REVENUE_VAULT_INITIALIZE_SIGNATURE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unsafeAllow</span><span class="o">:</span> <span class="p">[</span><span class="s">&#34;constructor&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span></code></pre></div><ul>
+<li><code>initializer</code></li>
+</ul>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L45-L83</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Initializes the contract state.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _lastInvoiceDate Timestamp of the last invoice.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _defaultAdmin Address to be granted the default admin role.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _invoiceSubmitter Address to be granted the invoice submitter role.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _burner Address to be granted the burner role.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _invoicePaymentReceiver Address to receive invoice payments.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _tokenBridge Address of the token bridge contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _messageService Address of the L2 message service contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _l1LineaTokenBurner Address of the L1 LINEA token burner contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _lineaToken Address of the LINEA token contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _dex Address of the DEX contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">initialize</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_burner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoicePaymentReceiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_tokenBridge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_l1LineaTokenBurner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_lineaToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_dex</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">initializer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__AccessControl_init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__RollupRevenueVault_init</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_burner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_invoicePaymentReceiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_tokenBridge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_l1LineaTokenBurner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lineaToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_dex</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ul>
+<li><code>reinitializer(2)</code></li>
+</ul>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L85-L123</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Reinitializes the contract state for upgrade.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _lastInvoiceDate Timestamp of the last invoice.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _defaultAdmin Address to be granted the default admin role.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _invoiceSubmitter Address to be granted the invoice submitter role.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _burner Address to be granted the burner role.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _invoicePaymentReceiver Address to receive invoice payments.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _tokenBridge Address of the token bridge contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _messageService Address of the L2 message service contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _l1LineaTokenBurner Address of the L1 LINEA token burner contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _lineaToken Address of the LINEA token contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _dex Address of the DEX contract.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">initializeRolesAndStorageVariables</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_burner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoicePaymentReceiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_tokenBridge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_l1LineaTokenBurner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_lineaToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_dex</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">reinitializer</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__AccessControl_init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__RollupRevenueVault_init</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_burner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_invoicePaymentReceiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_tokenBridge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_l1LineaTokenBurner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lineaToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_dex</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/src/operational/RollupRevenueVault.sol:L125-L160</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">__RollupRevenueVault_init</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_burner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoicePaymentReceiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_tokenBridge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_l1LineaTokenBurner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_lineaToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_dex</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">internal</span> <span class="n">onlyInitializing</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_lastInvoiceDate</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ZeroTimestampNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_defaultAdmin</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_invoiceSubmitter</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_burner</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_invoicePaymentReceiver</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_tokenBridge</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_messageService</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_l1LineaTokenBurner</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_lineaToken</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_dex</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">_grantRole</span><span class="p">(</span><span class="n">DEFAULT_ADMIN_ROLE</span><span class="p">,</span> <span class="n">_defaultAdmin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">_grantRole</span><span class="p">(</span><span class="n">INVOICE_SUBMITTER_ROLE</span><span class="p">,</span> <span class="n">_invoiceSubmitter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">_grantRole</span><span class="p">(</span><span class="n">BURNER_ROLE</span><span class="p">,</span> <span class="n">_burner</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">lastInvoiceDate</span> <span class="o">=</span> <span class="n">_lastInvoiceDate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">invoicePaymentReceiver</span> <span class="o">=</span> <span class="n">_invoicePaymentReceiver</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tokenBridge</span> <span class="o">=</span> <span class="n">TokenBridge</span><span class="p">(</span><span class="n">_tokenBridge</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">messageService</span> <span class="o">=</span> <span class="n">L2MessageService</span><span class="p">(</span><span class="n">_messageService</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l1LineaTokenBurner</span> <span class="o">=</span> <span class="n">_l1LineaTokenBurner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lineaToken</span> <span class="o">=</span> <span class="n">_lineaToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dex</span> <span class="o">=</span> <span class="n">_dex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<ul>
+<li>Consider <strong>removing the <code>initialize()</code> function</strong> from future contract versions to reduce confusion and prevent misuse.</li>
+<li>Maintain clear, versioned contracts (<code>RollupRevenueVaultV1</code>, <code>RollupRevenueVaultV2</code>, etc.) to isolate initialization logic per version and allow incremental upgrade initializations.</li>
+<li>Ensure all future deployments and upgrades atomically execute <code>upgradeToAndCall(reinitializer_function)</code> to avoid reinitialization race windows.</li>
+<li>Restrict reinitialization logic for upgrades to <strong>non-critical variables</strong> only. Critical configuration values should be immutable or changeable only through explicitly controlled governance mechanisms.</li>
+<li>When role or permission updates are necessary, explicitly revoke outdated roles before granting new ones to avoid unintended privilege escalation.</li>
+<li>see <a href="#18_deploy_rolluprevenuevaultts--deployment-script-leaves-contract-uninitialized-fallback-does-not-enforce-msgvalue--0">issue 4.1</a> , fix the <code>initialize</code> call and remove the fallback function or require <code>msg.value &gt; 0</code></li>
+<li>Consider renaming the <code>reinitializer</code> function as an <code>initializeVx...</code> to make it obvious, that this is an initialization funciton.</li>
+</ul>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#rolluprevenuevault---missing-validation-for-future-lastinvoicedate" data-issue-url="https://github.com/ConsenSysDiligence/lineaburnmechanism-audit-2025-10/issues/4">
+                <h3 id="rolluprevenuevault---missing-validation-for-future-lastinvoicedate">4.3 RollupRevenueVault - Missing Validation for Future <code>lastInvoiceDate</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        Fixed in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1600/commits/bd2f0b28f59601d40d4ab63243632ccc16d9cf8a">bd2f0b28f59601d40d4ab63243632ccc16d9cf8a</a>. The Linea team added <code>require(_lastInvoiceDate &lt; block.timestamp, TimestampInTheFutureNotAllowed());</code> on reinitialization, invoice submission and when updating invoice arrears.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The contract does not enforce validation to prevent <code>lastInvoiceDate</code> from being set to a future timestamp. This can permanently block invoice submissions, affecting normal invoice operations, potentially resulting in a denial of service until manual intervention occurs.</p>
+<h4 id="examples">Examples</h4>
+<p>Several functions allow <code>lastInvoiceDate</code> to be set to future values without proper checks:</p>
+<p>Invoice Submissions:</p>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L162-L184</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Submit invoice to pay to the designated receiver.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _startTimestamp Start of the period the invoice is covering.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _endTimestamp End of the period the invoice is covering.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _invoiceAmount New invoice amount.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">submitInvoice</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_startTimestamp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_endTimestamp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_invoiceAmount</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="k">payable</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">INVOICE_SUBMITTER_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_startTimestamp</span> <span class="o">==</span> <span class="n">lastInvoiceDate</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">TimestampsNotInSequence</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_endTimestamp</span> <span class="o">&gt;</span> <span class="n">_startTimestamp</span><span class="p">,</span> <span class="n">EndTimestampMustBeGreaterThanStartTimestamp</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_invoiceAmount</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ZeroInvoiceAmount</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="k">payable</span> <span class="n">receiver</span> <span class="o">=</span> <span class="k">payable</span><span class="p">(</span><span class="n">invoicePaymentReceiver</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">balanceAvailable</span> <span class="o">=</span> <span class="kt">address</span><span class="p">(</span><span class="nb">this</span><span class="p">).</span><span class="nb">balance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">totalAmountOwing</span> <span class="o">=</span> <span class="n">invoiceArrears</span> <span class="o">+</span> <span class="n">_invoiceAmount</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">amountToPay</span> <span class="o">=</span> <span class="p">(</span><span class="n">balanceAvailable</span> <span class="o">&lt;</span> <span class="n">totalAmountOwing</span><span class="p">)</span> <span class="o">?</span> <span class="n">balanceAvailable</span> <span class="o">:</span> <span class="n">totalAmountOwing</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">invoiceArrears</span> <span class="o">=</span> <span class="n">totalAmountOwing</span> <span class="o">-</span> <span class="n">amountToPay</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lastInvoiceDate</span> <span class="o">=</span> <span class="n">_endTimestamp</span><span class="p">;</span>
+</span></span></code></pre></div><p>If <code>lastInvoiceDate</code> is set to a future timestamp (e.g., year 2030), subsequent invoice submissions must have <code>_startTimestamp = lastInvoiceDate + 1</code>, effectively soft-locking the system until that future date is reached or forcing submissions to shift in the future. Setting this to <code>uint_MAX</code> will permanently prevent submissions until an admin resolves it.</p>
+<p>Initialization:</p>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L125-L152</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">__RollupRevenueVault_init</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_lastInvoiceDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_defaultAdmin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoiceSubmitter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_burner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_invoicePaymentReceiver</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_tokenBridge</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_l1LineaTokenBurner</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_lineaToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_dex</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">internal</span> <span class="n">onlyInitializing</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_lastInvoiceDate</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ZeroTimestampNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_defaultAdmin</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_invoiceSubmitter</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_burner</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_invoicePaymentReceiver</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_tokenBridge</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_messageService</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_l1LineaTokenBurner</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_lineaToken</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_dex</span> <span class="o">!=</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">_grantRole</span><span class="p">(</span><span class="n">DEFAULT_ADMIN_ROLE</span><span class="p">,</span> <span class="n">_defaultAdmin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">_grantRole</span><span class="p">(</span><span class="n">INVOICE_SUBMITTER_ROLE</span><span class="p">,</span> <span class="n">_invoiceSubmitter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">_grantRole</span><span class="p">(</span><span class="n">BURNER_ROLE</span><span class="p">,</span> <span class="n">_burner</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">lastInvoiceDate</span> <span class="o">=</span> <span class="n">_lastInvoiceDate</span><span class="p">;</span>
+</span></span></code></pre></div><p>Admin Updates:</p>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L238-L252</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Update the invoice arrears.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _newInvoiceArrears New invoice arrears value.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _lastInvoiceDate Timestamp of the last invoice.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">updateInvoiceArrears</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_newInvoiceArrears</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_lastInvoiceDate</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">DEFAULT_ADMIN_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_lastInvoiceDate</span> <span class="o">&gt;=</span> <span class="n">lastInvoiceDate</span><span class="p">,</span> <span class="n">InvoiceDateTooOld</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">invoiceArrears</span> <span class="o">=</span> <span class="n">_newInvoiceArrears</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lastInvoiceDate</span> <span class="o">=</span> <span class="n">_lastInvoiceDate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">InvoiceArrearsUpdated</span><span class="p">(</span><span class="n">_newInvoiceArrears</span><span class="p">,</span> <span class="n">_lastInvoiceDate</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Setter: Note - This allows the admin to skip settling existing debt.</p>
+<p><strong>contracts/src/operational/RollupRevenueVault.sol:L238-L252</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @notice Update the invoice arrears.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _newInvoiceArrears New invoice arrears value.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param _lastInvoiceDate Timestamp of the last invoice.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">updateInvoiceArrears</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_newInvoiceArrears</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_lastInvoiceDate</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">DEFAULT_ADMIN_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">require</span><span class="p">(</span><span class="n">_lastInvoiceDate</span> <span class="o">&gt;=</span> <span class="n">lastInvoiceDate</span><span class="p">,</span> <span class="n">InvoiceDateTooOld</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">invoiceArrears</span> <span class="o">=</span> <span class="n">_newInvoiceArrears</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lastInvoiceDate</span> <span class="o">=</span> <span class="n">_lastInvoiceDate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">InvoiceArrearsUpdated</span><span class="p">(</span><span class="n">_newInvoiceArrears</span><span class="p">,</span> <span class="n">_lastInvoiceDate</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Implement timestamp validation in all relevant functions to prevent future dates.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#rolluprevenuevault---consider-enforcement-of-minimum-swap-outputs" data-issue-url="https://github.com/ConsenSysDiligence/lineaburnmechanism-audit-2025-10/issues/3">
+                <h3 id="rolluprevenuevault---consider-enforcement-of-minimum-swap-outputs">4.4 RollupRevenueVault - Consider Enforcement of Minimum Swap Outputs <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        Fixed in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1601/commits/ac30ec35287763697acb94f72fa3c630bee0b46a">ac30ec35287763697acb94f72fa3c630bee0b46a</a>. Differential balance check added post swap in RollupRevenueVault.sol
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>burnAndBridge</code> function performs token swaps via a low-level call rather than through a dedicated adapter interface such as <code>IV3DexSwap</code>. This design choice is intentional, allowing flexibility to switch or upgrade adapters (e.g., to a future V4 adapter) without tightly coupling the logic to a specific implementation.</p>
+<p>While this is not a direct security issue, it places the responsibility for enforcing correct parameterization, such as slippage limits and output validation, entirely on the caller or the external job that initiates the <code>burnAndBridge</code> operation.</p>
+<p>For example, the current <code>V3DexSwap</code> adapter trusts the configured router to correctly enforce the <code>minLineaOut</code> parameter, as it primarily acts as a passthrough. The <code>burnAndBridge</code> function then uses whatever token amount is returned from the swap, without performing any sanity checks on the received amount.</p>
+<p>This design means that correctness and safety depend heavily on external configuration and on the adapter implementation, rather than being verified within <code>burnAndBridge</code> itself. While the configured router may currently be immutable and trustworthy, future adapters or router changes could increase operational risk if output validation or slippage enforcement are not consistently implemented.</p>
+<h4 id="recommendation">Recommendation</h4>
+<ul>
+<li>Confirm that the intended design is to retain the low-level swap call for adapter flexibility (as acknowledged by the client).</li>
+<li>If the swap adapter or router configuration is expected to remain under full project control, the current approach is acceptable. Make sure to review the dex adapter and the swapping code for sllippage control.</li>
+<li>To further reduce operational risk and dependency on adapter correctness, consider implementing a sanity check on minimum tokens out within <code>burnAndBridge</code> or within the controlled adapter (e.g., <code>V3DexSwap</code>). This would provide a secondary safeguard and reduce the likelihood of misconfiguration or inconsistent slippage handling in future adapter versions.</li>
+</ul>
+</div>
+        </div></p>
+<p><h2 id="document-change-log">5 Document Change Log</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Version</th>
+					<th>Date</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1.0</td>
+					<td>2025-10-20</td>
+					<td>Initial report</td>
+			</tr>
+			<tr>
+					<td>1.1</td>
+					<td>2025-10-24</td>
+					<td>Update: Fix Review</td>
+			</tr>
+			<tr>
+					<td>1.2</td>
+					<td>2025-11-02</td>
+					<td>Update: Added Deployment Addresses</td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 id="appendix---files-in-scope">Appendix 1 - Files in Scope</h2>
+<p>This review covered the following files:</p>
+<table>
+	<thead>
+			<tr>
+					<th>File</th>
+					<th>SHA-1 hash</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/L1LineaTokenBurner.sol</td>
+					<td><code>13ba3c7a17b3dd165ddc44c5ea0518b585a4b9a9</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/RollupRevenueVault.sol</td>
+					<td><code>73d186a487f0ed4e89102dac999a185c5f427297</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/V3DexSwap.sol</td>
+					<td><code>64a492bdfba3398d83c0210ad420d7c2019b035b</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/interfaces/IL1LineaToken.sol</td>
+					<td><code>7a6a9498462ca2089f5eb108696bc479db0a5200</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/interfaces/IL1LineaTokenBurner.sol</td>
+					<td><code>82ac876952128efa5eecc780672b60306103a9aa</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/interfaces/ILineaSequencerUptimeFeed.sol</td>
+					<td><code>d8080409e50b10b069babf68c9e6badd1de259df</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/interfaces/IRollupRevenueVault.sol</td>
+					<td><code>b22ab1656d3fa0967ef653f2ca902227e476f6ae</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/interfaces/ISwapRouterV3.sol</td>
+					<td><code>ffe6128110c7e64173ff4a03d97bb004a614a823</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/interfaces/IV3DexSwap.sol</td>
+					<td><code>e606937635ddc5875fb121acd9018e147e134a39</code></td>
+			</tr>
+			<tr>
+					<td>contracts/src/operational/interfaces/IWETH9.sol</td>
+					<td><code>866101d0f2d977bf909c1b6e35ab51e92bbe184a</code></td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 id="appendix---disclosure">Appendix 2 - Disclosure</h2>
+<p>Consensys Diligence (&ldquo;CD&rdquo;) typically receives compensation from one or more clients (the &ldquo;Clients&rdquo;) for performing the analysis contained in these reports (the &ldquo;Reports&rdquo;). The Reports may be distributed through other means, including via Consensys publications and other distributions.</p>
+<p>The Reports are not an endorsement or indictment of any particular project or team, and the Reports do not guarantee the security of any particular project. This Report does not consider, and should not be interpreted as considering or having any bearing on, the potential economics of a token, token sale or any other product, service or other asset. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. No Report provides any warranty or representation to any third party in any respect, including regarding the bug-free nature of code, the business model or proprietors of any such business model, and the legal compliance of any such business. No third party should rely on the Reports in any way, including for the purpose of making any decisions to buy or sell any token, product, service or other asset. Specifically, for the avoidance of doubt, this Report does not constitute investment advice, is not intended to be relied upon as investment advice, is not an endorsement of this project or team, and it is not a guarantee as to the absolute security of the project. CD owes no duty to any third party by virtue of publishing these Reports.</p>
+<h3 id="purpose-of-reports">A.2.1 Purpose of Reports</h3>
+<p>The Reports and the analysis described therein are created solely for Clients and published with their consent. The scope of our review is limited to a review of code and only the code we note as being within the scope of our review within this report. Any Solidity code itself presents unique and unquantifiable risks as the Solidity language itself remains under development and is subject to unknown risks and flaws. The review does not extend to the compiler layer, or any other areas beyond specified code that could present security risks. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. In some instances, we may perform penetration testing or infrastructure assessments depending on the scope of the particular engagement.</p>
+<p>CD makes the Reports available to parties other than the Clients (i.e., &ldquo;third parties&rdquo;) on its website. CD hopes that by making these analyses publicly available, it can help the blockchain ecosystem develop technical best practices in this rapidly evolving area of innovation.</p>
+<h3 id="links-to-other-web-sites-from-this-web-site">A.2.2 Links to Other Web Sites from This Web Site</h3>
+<p>You may, through hypertext or other computer links, gain access to web sites operated by persons other than Consensys and CD. Such hyperlinks are provided for your reference and convenience only, and are the exclusive responsibility of such web sites&rsquo; owners. You agree that Consensys and CD are not responsible for the content or operation of such Web sites, and that Consensys and CD shall have no liability to you or any other person or entity for the use of third party Web sites. Except as described below, a hyperlink from this web Site to another web site does not imply or mean that Consensys and CD endorses the content on that Web site or the operator or operations of that site. You are solely responsible for determining the extent to which you may use any content at any other web sites to which you link from the Reports. Consensys and CD assumes no responsibility for the use of third-party software on the Web Site and shall have no liability whatsoever to any person or entity for the accuracy or completeness of any outcome generated by such software.</p>
+<h3 id="timeliness-of-content">A.2.3 Timeliness of Content</h3>
+<p>The content contained in the Reports is current as of the date appearing on the Report and is subject to change without notice unless indicated otherwise, by Consensys and CD.</p>
+</p>
+</div>
+        </div>
+    </article>
+</div>
+
+    </main>
+    
+<footer class="audit-footer">
+  <div class="audit-footer__inner">
+    <div class="audit-footer__wrap">
+      
+      <div class="audit-footer__divider"></div>
+
+      
+      <div class="audit-footer__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </div>
+
+      
+      <div class="audit-footer__content">
+        
+        <div class="audit-footer__copyright">
+          <p>Securing Ethereum Smart Contracts since 2017</p>
+          <p>2026 All rights reserved</p>
+        </div>
+
+        
+        <div class="audit-footer__columns">
+          
+          <div class="audit-footer__col audit-footer__col--company">
+            <p class="audit-footer__col-title">Company</p>
+            <a href="/about/" class="audit-footer__link">About</a>
+            <a href="/blog/" class="audit-footer__link">Blog</a>
+            <a href="/privacy-policy/" class="audit-footer__link">Privacy Policy</a>
+            <a href="#" onclick="openCookieSettings();return false;" class="audit-footer__link">Cookie settings</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--audit">
+            <p class="audit-footer__col-title">Audit</p>
+            <a href="/audits/" class="audit-footer__link">Audit list</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--research">
+            <p class="audit-footer__col-title">Research</p>
+            <a href="/#academic-research" class="audit-footer__link">Academic publications</a>
+            <a href="/#tools" class="audit-footer__link">Tools</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--social">
+            <p class="audit-footer__col-title">Social</p>
+            <a href="https://x.com/ConsensysAudits" target="_blank" rel="noopener noreferrer" class="audit-footer__link">X</a>
+            <a href="https://www.linkedin.com/company/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">LinkedIn</a>
+            <a href="https://github.com/ConsenSysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">GitHub</a>
+            <a href="https://medium.com/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">Medium</a>
+            <a href="https://www.youtube.com/@ConsensysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/audit-report.js?v=e8012d8d" defer></script>
+<div id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent"
+     style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#131313;border-top:1px solid #303033;padding:16px 24px;box-shadow:0 -10px 15px -3px rgba(0,0,0,.2)">
+  <div style="max-width:1386px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+    <p style="margin:0;flex:1 1 320px;min-width:0;color:#b2b3b3;font-family:Graphik,sans-serif;font-weight:400;font-size:14px;line-height:20px">
+      We use analytics cookies to understand how visitors use our site. You can accept or decline.<a href="/privacy-policy/" style="color:#a7b9f1;text-decoration:underline">Learn more<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">&#32;in our privacy policy</span></a>
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;flex-shrink:0">
+      <button type="button" id="cookie-decline"
+              style="cursor:pointer;background:transparent;border:1px solid #303033;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:border-color .15s"
+              onmouseenter="this.style.borderColor='#6e8be8'" onmouseleave="this.style.borderColor='#303033'">Decline</button>
+      <button type="button" id="cookie-accept"
+              style="cursor:pointer;background:#2c56dd;border:1px solid #2c56dd;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:background .15s"
+              onmouseenter="this.style.background='#2345c4'" onmouseleave="this.style.background='#2c56dd'">Accept</button>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,2282 @@
+{
+  "schema_version": "1.4.0",
+  "project": "mantle",
+  "reports": [
+    {
+      "id": "openzeppelin-mantle-node-batcher-proposer-tooling-2024-03",
+      "report_file": "irrelevant/2024_03-openzeppelin-mantle-node-batcher-proposer-tooling-incremental-audit.md",
+      "title": "Mantle Node, Batcher, Proposer, and Tooling Incremental Audit",
+      "description": "OpenZeppelin incremental audit of the Go changes in mantle-v2 pull requests #72, #89 and #98 to op-node, op-batcher, op-proposer, op-chain-ops and op-service, mainly the Mantle DA integration, base fee and MNT native-token support. The scope is limited to offchain node, batcher, proposer and chain tooling software.",
+      "isRelevant": false,
+      "auditor": "OpenZeppelin",
+      "report_date": "2024-03-15",
+      "repositories": [
+        {
+          "id": "mantle-xyz/mantle-v2",
+          "url": "https://github.com/mantle-xyz/mantle-v2"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-mantle-op-geth-2024-03",
+      "report_file": "irrelevant/2024_03-openzeppelin-mantle-op-geth-audit.md",
+      "title": "Mantle OP-Geth Audit",
+      "description": "OpenZeppelin diff audit of Mantle's op-geth execution client fork (base 0a77db9 to head 4d05b2c), focusing on MNT as the native gas token, native meta-transaction sponsorship and the fee strategy (tokenRatio, BVM_ETH handling). The scope is limited to offchain execution-client software.",
+      "isRelevant": false,
+      "auditor": "OpenZeppelin",
+      "report_date": "2024-03-15",
+      "repositories": [
+        {
+          "id": "mantle-xyz/op-geth",
+          "url": "https://github.com/mantle-xyz/op-geth"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "openzeppelin-mantle-v2-solidity-contracts-2024-03",
+      "report_file": "2024_03-openzeppelin-mantle-v2-solidity-contracts-audit.md",
+      "title": "Mantle V2 Solidity Contracts Audit",
+      "description": "OpenZeppelin audit of the Mantle V2 (OP Stack Bedrock fork with MNT as native token) L1 and L2 contracts in packages/contracts-bedrock at commit e29d360: bridges, messengers, OptimismPortal, L2OutputOracle, SystemConfig, BVM_ETH, GasPriceOracle and fee vaults, with a limited review of universal dependencies and a diff-only review of deployment, legacy and library files. Fixes are recorded per finding in pull requests #105 to #138.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2024-03-15",
+      "repositories": [
+        {
+          "id": "mantle-xyz/mantle-v2",
+          "url": "https://github.com/mantle-xyz/mantle-v2"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "mantle-xyz/mantle-v2",
+          "paths": {
+            "packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit. C-01 (MNT/BVM_ETH held by the messengers can be stolen via relayMessage) is located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "C-01"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "75e7984f6e0ab99473ae7ae117cc1397a6c159b9",
+                    "timestamp": "2024-03-06T07:08:50Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/75e7984f6e0ab99473ae7ae117cc1397a6c159b9"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #132) addressing N-08. This branch does not contain the C-01 fix, which remains open here.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "C-01"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8571274c3b7e251c1b4108932eaa3a36885f230d",
+                    "timestamp": "2024-03-06T09:59:48Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/8571274c3b7e251c1b4108932eaa3a36885f230d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #123) addressing C-01.",
+                  "follows": "75e7984f6e0ab99473ae7ae117cc1397a6c159b9",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L1ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                    "timestamp": "2024-03-06T06:16:18Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d8efd33f8c6f063a23875910e722385ed877f16b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #128) addressing N-01.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2002a90d86d7ec299223709d4db5dcbb28a8be2f",
+                    "timestamp": "2024-03-06T07:54:20Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/2002a90d86d7ec299223709d4db5dcbb28a8be2f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #136) addressing N-17.",
+                  "follows": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "af0d029ae5222e39b3aae4f9d07569708c2cbdf9",
+                    "timestamp": "2024-03-06T07:47:50Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/af0d029ae5222e39b3aae4f9d07569708c2cbdf9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #138) addressing M-03.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/OptimismPortal.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6022c060b1baaa1f1c2e60df1136083917d92bb3",
+                    "timestamp": "2024-02-21T07:38:34Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/6022c060b1baaa1f1c2e60df1136083917d92bb3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #105) addressing M-02.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                    "timestamp": "2024-03-06T06:16:18Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d8efd33f8c6f063a23875910e722385ed877f16b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #128) addressing N-01.",
+                  "follows": "6022c060b1baaa1f1c2e60df1136083917d92bb3",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "53fe7ce8b20e55f66f45e99cfb377cd042f98895",
+                    "timestamp": "2024-03-06T06:56:38Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/53fe7ce8b20e55f66f45e99cfb377cd042f98895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #131) addressing N-06.",
+                  "follows": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/ResourceMetering.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L1/SystemConfig.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/BaseFeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/BVM_ETH.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/CrossDomainOwnable.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/CrossDomainOwnable2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/CrossDomainOwnable3.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/GasPriceOracle.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c6f2d81c0c55c783a1472316f891fedf2bb23c60",
+                    "timestamp": "2024-03-06T06:45:22Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/c6f2d81c0c55c783a1472316f891fedf2bb23c60"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #130) addressing N-04.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "572600a4f163e10ae6049a9826855dd86f4e93e7",
+                    "timestamp": "2024-03-06T08:34:22Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/572600a4f163e10ae6049a9826855dd86f4e93e7"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #138) addressing L-03.",
+                  "follows": "c6f2d81c0c55c783a1472316f891fedf2bb23c60",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L1Block.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L1FeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit. C-01 (MNT/BVM_ETH held by the messengers can be stolen via relayMessage) is located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "C-01"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                    "timestamp": "2024-03-06T06:16:18Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d8efd33f8c6f063a23875910e722385ed877f16b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #128) addressing N-01. This branch does not contain the C-01 fix, which remains open here.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "C-01"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8571274c3b7e251c1b4108932eaa3a36885f230d",
+                    "timestamp": "2024-03-06T09:59:48Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/8571274c3b7e251c1b4108932eaa3a36885f230d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #123) addressing C-01.",
+                  "follows": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2/SequencerFeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the file at the audit commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/ERC721Bridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Limited review as a dependency of the in-scope contracts; not fully audited.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Limited review as a dependency of the in-scope contracts; not fully audited.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Limited review as a dependency of the in-scope contracts; not fully audited.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "67f0904af76580e05b630714411b0e6dadfd5e83",
+                    "timestamp": "2024-02-29T09:24:24Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/67f0904af76580e05b630714411b0e6dadfd5e83"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #114) addressing M-01.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "92ebaf96622e8126ce5322bdf3ea730640c7a548",
+                    "timestamp": "2024-03-12T03:58:23Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/92ebaf96622e8126ce5322bdf3ea730640c7a548"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of the second commit addressing M-01 (gas reserve constants updated), cited alongside pull request #114.",
+                  "follows": "67f0904af76580e05b630714411b0e6dadfd5e83",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/OptimismMintableERC20.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Limited review as a dependency of the in-scope contracts; not fully audited.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/Semver.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Limited review as a dependency of the in-scope contracts; not fully audited.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/FeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Limited review as a dependency of the in-scope contracts; not fully audited.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/deployment/PortalSender.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c6f2d81c0c55c783a1472316f891fedf2bb23c60",
+                    "timestamp": "2024-03-06T06:45:22Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/c6f2d81c0c55c783a1472316f891fedf2bb23c60"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #130) addressing N-04.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/deployment/SystemDictator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4ed93352bdaf3cd51544e3f0f2c43290d8fd7c0a",
+                    "timestamp": "2024-03-06T07:45:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/4ed93352bdaf3cd51544e3f0f2c43290d8fd7c0a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #135) addressing N-15.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/legacy/LegacyERC20MNT.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fd4fc03d0986022b3ed0d0bcdf950478dd166da1",
+                    "timestamp": "2024-03-06T06:29:27Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/fd4fc03d0986022b3ed0d0bcdf950478dd166da1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #129) addressing N-02 (reported as partially resolved).",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9032ff2d1b114b92605bfd9e8e43af328ab4b66f",
+                    "timestamp": "2024-03-06T07:25:48Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/9032ff2d1b114b92605bfd9e8e43af328ab4b66f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #133) addressing N-12.",
+                  "follows": "fd4fc03d0986022b3ed0d0bcdf950478dd166da1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Burn.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fd4fc03d0986022b3ed0d0bcdf950478dd166da1",
+                    "timestamp": "2024-03-06T06:29:27Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/fd4fc03d0986022b3ed0d0bcdf950478dd166da1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #129) addressing N-02 (reported as partially resolved).",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Encoding.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Hashing.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Predeploys.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Types.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "start_timestamp": "2024-01-23T07:19:09Z",
+                    "end_commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "end_timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/compare/bb0ff7002520ee936101c4c263ac02a66e7e3c96...e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Audited exclusively in terms of the differences with base commit bb0ff70, at audit commit e29d360.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fd4fc03d0986022b3ed0d0bcdf950478dd166da1",
+                    "timestamp": "2024-03-06T06:29:27Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/fd4fc03d0986022b3ed0d0bcdf950478dd166da1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review limited to the changes in this commit (pull request #129) addressing N-02 (reported as partially resolved).",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sigmaprime-mantle-l2-rollup-v2-2024-04",
+      "report_file": "2024_04-sigmaprime-mantle-l2-rollup-v2-security-assessment.md",
+      "title": "Mantle L2 Rollup V2 Security Assessment Report",
+      "description": "Sigma Prime time-boxed review of Mantle V2: the contracts-bedrock L1 and L2 contract directories at commit 9d2f150, the op-node/op-batcher/op-proposer changes of mantle-v2 pull request #72 and the op-geth changes of pull request #20. The scope was extended to mantle-v2 pull requests #89, #95 and #98 (reviewed at e29d360) and op-geth pull requests #31 and #37 (reviewed at 4d05b2c).",
+      "isRelevant": true,
+      "auditor": "Sigma Prime",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "mantle-xyz/mantle-v2",
+          "url": "https://github.com/mantle-xyz/mantle-v2"
+        },
+        {
+          "id": "mantle-xyz/op-geth",
+          "url": "https://github.com/mantle-xyz/op-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "mantle-xyz/mantle-v2",
+          "paths": {
+            "packages/contracts-bedrock/contracts/L1": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9d2f150c151f919f8224e980bd09f6eb78c5ad56",
+                    "timestamp": "2024-01-16T07:05:12Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/9d2f150c151f919f8224e980bd09f6eb78c5ad56"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Smart-contract scope strictly limited to the files in the L1 directory. MNTV2-03 (L1CrossDomainMessenger.sol) and MNTV2-04 (OptimismPortal.sol) are located here.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNTV2-03",
+                    "MNTV2-04"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the changes of mantle-v2 pull requests #89, #95 and #98 (L1CrossDomainMessenger.sol, OptimismPortal.sol); pull request #98 resolves MNTV2-03 and MNTV2-04 by forbidding calls to L1_MNT_ADDRESS.",
+                  "follows": "9d2f150c151f919f8224e980bd09f6eb78c5ad56",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "9d2f150c151f919f8224e980bd09f6eb78c5ad56",
+                    "timestamp": "2024-01-16T07:05:12Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/9d2f150c151f919f8224e980bd09f6eb78c5ad56"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Smart-contract scope strictly limited to the files in the L2 directory.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the changes of mantle-v2 pull requests #89, #95 and #98 (L2ToL1MessagePasser.sol, changed by pull request #98).",
+                  "follows": "9d2f150c151f919f8224e980bd09f6eb78c5ad56",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Encoding.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the changes of pull request #89.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Types.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the changes of pull request #89.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-chain-ops/genesis/config.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the changes of pull request #98.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-chain-ops/immutables/immutables.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the changes of pull request #98.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-node": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "timestamp": "2024-01-23T07:19:09Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/bb0ff7002520ee936101c4c263ac02a66e7e3c96"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in pull request #72 (Mantle v1 to v2, Mantle DA integration), resolved to its head commit. MNTV2-02 (rollup/derive/calldata_source.go) and MNTV2-05 (Dockerfile Go version) are located here.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNTV2-02",
+                    "MNTV2-05"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the pull request #89 changes (rollup/derive/deposit_log.go, l1_block_info.go); MNTV2-02 was closed without a fix.",
+                  "follows": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNTV2-02",
+                    "MNTV2-05"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6",
+                    "timestamp": "2024-03-14T09:10:31Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of pull request #148 (Go 1.21 upgrade of the Dockerfiles and go.mod, not merged) cited as resolving MNTV2-05. MNTV2-02 remains open.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-02"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "op-batcher": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "timestamp": "2024-01-23T07:19:09Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/bb0ff7002520ee936101c4c263ac02a66e7e3c96"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in pull request #72 (Mantle v1 to v2, Mantle DA integration), resolved to its head commit. MNTV2-05 (Dockerfile Go version) and MNTV2-08 (batcher/driver_da.go) are located here.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNTV2-05",
+                    "MNTV2-08"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6",
+                    "timestamp": "2024-03-14T09:10:31Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of pull request #148 (Go 1.21 upgrade of the Dockerfiles and go.mod, not merged) cited as resolving MNTV2-05. MNTV2-08 is reported as resolved in pull request #52, which predates the audited head commit, and isRetry() still always returns true at this commit, so it is kept open.",
+                  "follows": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-08"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "op-proposer": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "timestamp": "2024-01-23T07:19:09Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/bb0ff7002520ee936101c4c263ac02a66e7e3c96"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in pull request #72 (Mantle v1 to v2, Mantle DA integration), resolved to its head commit. MNTV2-05 (Dockerfile Go version) is located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-05"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6",
+                    "timestamp": "2024-03-14T09:10:31Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of pull request #148 (Go 1.21 upgrade of the Dockerfiles and go.mod, not merged) cited as resolving MNTV2-05.",
+                  "follows": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "go.mod": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                    "timestamp": "2024-01-23T07:19:09Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/bb0ff7002520ee936101c4c263ac02a66e7e3c96"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Changed by pull request #72; named as the asset of MNTV2-05 (outdated Go version) and MNTV2-07 (dependencies with known vulnerabilities).",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNTV2-05",
+                    "MNTV2-07"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e29d360904db5e5ec81888885f7b7250f8255895",
+                    "timestamp": "2024-02-06T12:48:19Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/e29d360904db5e5ec81888885f7b7250f8255895"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit e29d360 limited to the pull request #89 changes.",
+                  "follows": "bb0ff7002520ee936101c4c263ac02a66e7e3c96",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNTV2-05",
+                    "MNTV2-07"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6",
+                    "timestamp": "2024-03-14T09:10:31Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/5aa0cadb0faa8b82a47dee102d3f6fe439efeaa6"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of pull request #148 (Go 1.21 upgrade of the Dockerfiles and go.mod, not merged) cited as resolving MNTV2-05. MNTV2-07 was closed without a fix.",
+                  "follows": "e29d360904db5e5ec81888885f7b7250f8255895",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-07"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "mantle-xyz/op-geth",
+          "paths": {
+            "Dockerfile": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit. MNTV2-05 (outdated Go version) is located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-05"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ba3db3cf18d02c782f25f6d8f7b07b7b00c39393",
+                    "timestamp": "2024-03-14T04:10:20Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/ba3db3cf18d02c782f25f6d8f7b07b7b00c39393"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of pull request #71 (Go 1.21 upgrade, not merged) cited as resolving MNTV2-05.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "accounts/abi/bind/backends/simulated.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "beacon/engine/gen_blockparams.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "beacon/engine/types.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "cmd/utils/flags.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "consensus/misc/eip1559.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/blockchain.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/genesis.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31, #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/mantle_upgrade.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31, #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/rawdb/accessors_chain.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/state_processor.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/state_transition.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31, #37. MNTV2-01 (missing balance check in transferBVMETH) is located here.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-01"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0cf00ba8bc26c27f433c1fa61bdf7d2750933544",
+                    "timestamp": "2024-02-25T11:11:57Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/0cf00ba8bc26c27f433c1fa61bdf7d2750933544"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of pull request #42 (balance check for the BVM_ETH transfer) resolving MNTV2-01.",
+                  "follows": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/txpool/txpool.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/deposit_tx.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/gen_receipt_json.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/meta_transaction.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/receipt.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/rollup_l1_cost.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/transaction.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/transaction_marshalling.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/vm/interpreter.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/vm/jump_table.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/vm/runtime/runtime.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "entrypoint.sh": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/api_backend.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/backend.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/catalyst/api.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/ethconfig/config.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/tracers/api.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "graphql/graphql.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "internal/ethapi/api.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "internal/ethapi/transaction_args.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "light/txpool.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "miner/miner.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "miner/payload_building.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "miner/worker.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "params/config.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #31, #37.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "rpc/http.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Scope limited to the changes made in op-geth pull request #20 (Mantle v1 to v2), resolved to its head commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "cmd/evm/internal/t8ntool/execution.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/state_prefetcher.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/state_accessor.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "les/state_accessor.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4d05b2cd9a2b8096680eb9b2e87e473a44a43922",
+                    "timestamp": "2024-02-06T05:53:44Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/4d05b2cd9a2b8096680eb9b2e87e473a44a43922"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "extended scope review",
+                  "coverage": "Extended-scope review at commit 4d05b2c limited to the changes of op-geth pull request(s) #37.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "go.mod": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Not changed by pull request #20; named as the asset of MNTV2-05 (outdated Go version).",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-05"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ba3db3cf18d02c782f25f6d8f7b07b7b00c39393",
+                    "timestamp": "2024-03-14T04:10:20Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/ba3db3cf18d02c782f25f6d8f7b07b7b00c39393"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix review of pull request #71 (Go 1.21 upgrade, not merged) cited as resolving MNTV2-05.",
+                  "follows": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "p2p/peer.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f76ba4b5b71514eae0b558baff738465ce7fbc78",
+                    "timestamp": "2024-01-23T07:37:46Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f76ba4b5b71514eae0b558baff738465ce7fbc78"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Not changed by pull request #20; named as the asset of MNTV2-06 (upstream DoS fix go-ethereum#27887 not applied), which was closed without a fix.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNTV2-06"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "etherauthority-mantle-token-2024-05",
+      "report_file": "2024_05-etherauthority-mantle-token-mnt-audit.md",
+      "title": "Code Review and Security Analysis Report for Mantle (MNT) Token Smart Contract",
+      "description": "Unsolicited EtherAuthority community audit, largely based on automated tools (Slither, Solhint, Remix), of the L1MantleToken.sol implementation taken from the verified Etherscan code at 0xcd368c1d80120b0dd92447c87eb570154f8e685c rather than from a git repository. It reports one very low severity issue and no repository revision, so no source coverage can be pinned.",
+      "isRelevant": true,
+      "auditor": "EtherAuthority",
+      "report_date": "2024-05-14",
+      "repositories": [
+        {
+          "id": "etherscan.io/address/0xcd368c1d80120b0dd92447c87eb570154f8e685c",
+          "url": "https://etherscan.io/address/0xcd368c1d80120b0dd92447c87eb570154f8e685c#code"
+        }
+      ],
+      "scopes": []
+    }
+  ]
+}

@@ -1,0 +1,2761 @@
+{
+  "schema_version": "1.4.0",
+  "project": "mantle",
+  "reports": [
+    {
+      "id": "secure3-mantle-v2-tectonic-2024-03",
+      "report_file": "2024_03-secure3-mantle-v2-tectonic-competitive-security-assessment.md",
+      "title": "Mantle V2 Competitive Security Assessment (Secure3, March 2024)",
+      "description": "Secure3 private audit contest on Mantle V2 (Tectonic) covering the Mantle v1->v2 changes of mantle-v2 PR #72 (contracts-bedrock L1 and L2 directories plus the other changed contracts and offchain components) and of op-geth PR #20, at audit commits 00ce7b0 and be91998 with final commits 7040d02 and 64996df. It reports eight Critical findings, seven in the L1/L2 messengers, portal and ERC721 bridge (MNT-6 only acknowledged) and MNT-8 in op-geth core/state_transition.go.",
+      "isRelevant": true,
+      "auditor": "Secure3",
+      "report_date": "2024-03-04",
+      "repositories": [
+        {
+          "id": "mantle-xyz/mantle-v2",
+          "url": "https://github.com/mantle-xyz/mantle-v2"
+        },
+        {
+          "id": "mantle-xyz/op-geth",
+          "url": "https://github.com/mantle-xyz/op-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "mantle-xyz/mantle-v2",
+          "paths": {
+            "packages/contracts-bedrock/contracts/L1": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Directory explicitly in scope of the private Secure3 contest (together with the Mantle v1->v2 changes of PR #72) at the audit commit. Critical MNT-1, MNT-3, MNT-4, MNT-5, MNT-6, MNT-7 are located in L1CrossDomainMessenger, L1ERC721Bridge and OptimismPortal, and Critical MNT-2 names OptimismPortal and the L1 messenger reinitialization.",
+                  "major_findings": 7,
+                  "finding_ids": [
+                    "MNT-1",
+                    "MNT-2",
+                    "MNT-3",
+                    "MNT-4",
+                    "MNT-5",
+                    "MNT-6",
+                    "MNT-7"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fcea7febc1e30510d4f4783f0b088d487c5597c4",
+                    "timestamp": "2024-01-29T09:24:51Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/fcea7febc1e30510d4f4783f0b088d487c5597c4"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #95)",
+                  "coverage": "Fix PR #95 named in the client response for Critical MNT-7 (OptimismPortal revert check); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1, MNT-2, MNT-3, MNT-4, MNT-5, MNT-6.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 6,
+                  "finding_ids": [
+                    "MNT-1",
+                    "MNT-2",
+                    "MNT-3",
+                    "MNT-4",
+                    "MNT-5",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "365f02ae77246e61524182a156861048d1b0bcb6",
+                    "timestamp": "2024-01-31T07:49:21Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/365f02ae77246e61524182a156861048d1b0bcb6"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #98)",
+                  "coverage": "Fix PR #98 named in the client responses for Critical MNT-5 and Medium MNT-32 (portal/messenger MNT handling); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1, MNT-2, MNT-3, MNT-4, MNT-6.",
+                  "follows": "fcea7febc1e30510d4f4783f0b088d487c5597c4",
+                  "major_findings": 5,
+                  "finding_ids": [
+                    "MNT-1",
+                    "MNT-2",
+                    "MNT-3",
+                    "MNT-4",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6022c060b1baaa1f1c2e60df1136083917d92bb3",
+                    "timestamp": "2024-02-21T07:38:34Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/6022c060b1baaa1f1c2e60df1136083917d92bb3"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #105)",
+                  "coverage": "Fix PR #105 named in the client response for Medium MNT-35 (OptimismPortal l1mntSuccess default); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1, MNT-2, MNT-3, MNT-4, MNT-6.",
+                  "follows": "365f02ae77246e61524182a156861048d1b0bcb6",
+                  "major_findings": 5,
+                  "finding_ids": [
+                    "MNT-1",
+                    "MNT-2",
+                    "MNT-3",
+                    "MNT-4",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                    "timestamp": "2024-02-27T07:23:11Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/38e73183396bbf2201c4a092fb92a4a4bddbe68c"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #109)",
+                  "coverage": "Fix PR #109 named in the client response for Critical MNT-2 (relayMessage reentrancy on reinitialization); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1, MNT-3, MNT-4, MNT-6.",
+                  "follows": "6022c060b1baaa1f1c2e60df1136083917d92bb3",
+                  "major_findings": 4,
+                  "finding_ids": [
+                    "MNT-1",
+                    "MNT-3",
+                    "MNT-4",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2ffd3fce281209b844dd634d062352b03b43ace9",
+                    "timestamp": "2024-02-27T09:00:12Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/2ffd3fce281209b844dd634d062352b03b43ace9"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #111)",
+                  "coverage": "Fix PR #111 named in the client response for Medium MNT-18 (ResourceMetering reinitialization); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1, MNT-2, MNT-3, MNT-4, MNT-6.",
+                  "follows": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                  "major_findings": 5,
+                  "finding_ids": [
+                    "MNT-1",
+                    "MNT-2",
+                    "MNT-3",
+                    "MNT-4",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7f339a26424c499e7338045da5bab603762727a1",
+                    "timestamp": "2024-02-29T08:03:07Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7f339a26424c499e7338045da5bab603762727a1"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #103)",
+                  "coverage": "Fix PR #103 named in the client responses for Critical MNT-3 and Medium MNT-12 (L1ERC721Bridge); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1, MNT-2, MNT-4, MNT-6.",
+                  "follows": "2ffd3fce281209b844dd634d062352b03b43ace9",
+                  "major_findings": 4,
+                  "finding_ids": [
+                    "MNT-1",
+                    "MNT-2",
+                    "MNT-4",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d548f297d4f1aaf55e6a21b42e73e0a1c1415f41",
+                    "timestamp": "2024-03-03T13:29:09Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d548f297d4f1aaf55e6a21b42e73e0a1c1415f41"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #110)",
+                  "coverage": "Fix PR #110 named in the client responses for Critical MNT-1 and Medium MNT-33 (messenger value handling); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-4, MNT-6.",
+                  "follows": "7f339a26424c499e7338045da5bab603762727a1",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNT-4",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed. MNT-4 is reported Fixed without a PR link and is treated as fixed here; MNT-6 was acknowledged only. Still open in this revision: MNT-6.",
+                  "follows": "d548f297d4f1aaf55e6a21b42e73e0a1c1415f41",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/L2": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Directory explicitly in scope of the private Secure3 contest (together with the Mantle v1->v2 changes of PR #72) at the audit commit. Critical MNT-1 describes the BVM_ETH approval in L2CrossDomainMessenger.relayMessage.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "365f02ae77246e61524182a156861048d1b0bcb6",
+                    "timestamp": "2024-01-31T07:49:21Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/365f02ae77246e61524182a156861048d1b0bcb6"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #98)",
+                  "coverage": "Fix PR #98 named in the client responses for Critical MNT-5 and Medium MNT-32 (portal/messenger MNT handling); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74c11f69d6f0a224fd8ec6300f7c84e3e8ee6a99",
+                    "timestamp": "2024-02-22T02:50:35Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/74c11f69d6f0a224fd8ec6300f7c84e3e8ee6a99"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #106)",
+                  "coverage": "Fix PR #106 named in the client responses for Medium MNT-36 and Low MNT-47 (L2StandardBridge.bridgeMNT onlyEOA); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1.",
+                  "follows": "365f02ae77246e61524182a156861048d1b0bcb6",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                    "timestamp": "2024-02-27T07:23:11Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/38e73183396bbf2201c4a092fb92a4a4bddbe68c"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #109)",
+                  "coverage": "Fix PR #109 named in the client response for Critical MNT-2 (relayMessage reentrancy on reinitialization); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-1.",
+                  "follows": "74c11f69d6f0a224fd8ec6300f7c84e3e8ee6a99",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d548f297d4f1aaf55e6a21b42e73e0a1c1415f41",
+                    "timestamp": "2024-03-03T13:29:09Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d548f297d4f1aaf55e6a21b42e73e0a1c1415f41"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #110)",
+                  "coverage": "Fix PR #110 named in the client responses for Critical MNT-1 and Medium MNT-33 (messenger value handling); only the fix was reviewed.",
+                  "follows": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "d548f297d4f1aaf55e6a21b42e73e0a1c1415f41",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit. Critical MNT-2 (relayMessage reentrancy) and MNT-6 (baseGas calldata overhead) are located in this file.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNT-2",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                    "timestamp": "2024-02-27T07:23:11Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/38e73183396bbf2201c4a092fb92a4a4bddbe68c"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #109)",
+                  "coverage": "Fix PR #109 named in the client response for Critical MNT-2 (relayMessage reentrancy on reinitialization); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-6.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "67f0904af76580e05b630714411b0e6dadfd5e83",
+                    "timestamp": "2024-02-29T09:24:24Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/67f0904af76580e05b630714411b0e6dadfd5e83"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #114)",
+                  "coverage": "Fix PR #114 named in the client response for Low MNT-42 (RELAY_RESERVED_GAS); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-2, MNT-6.",
+                  "follows": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNT-2",
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed. Still open in this revision: MNT-6.",
+                  "follows": "67f0904af76580e05b630714411b0e6dadfd5e83",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/FeeVault.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/universal/StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Burn.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Encoding.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Hashing.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Predeploys.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/libraries/Types.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/legacy/LegacyERC20MNT.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/deployment/PortalSender.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts-bedrock/contracts/deployment/SystemDictator.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Outside the explicitly listed L1/L2 directories; only the Mantle v1->v2 changes that PR #72 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "bss-core": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "gas-oracle": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "93c8edc0fbe25624e30b335c46e78f8d617a471d",
+                    "timestamp": "2024-02-29T06:24:06Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/93c8edc0fbe25624e30b335c46e78f8d617a471d"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #113)",
+                  "coverage": "Fix PR #113 named in the client responses for Medium MNT-28 and Low MNT-54 (gas-oracle token ratio); the PR was not merged itself but its head is contained in the final commit; only the fix was reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "93c8edc0fbe25624e30b335c46e78f8d617a471d",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-batcher": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-bindings": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "365f02ae77246e61524182a156861048d1b0bcb6",
+                    "timestamp": "2024-01-31T07:49:21Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/365f02ae77246e61524182a156861048d1b0bcb6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #98)",
+                  "coverage": "Fix PR #98 named in the client responses for Critical MNT-5 and Medium MNT-32 (portal/messenger MNT handling); only the fix was reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "74c11f69d6f0a224fd8ec6300f7c84e3e8ee6a99",
+                    "timestamp": "2024-02-22T02:50:35Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/74c11f69d6f0a224fd8ec6300f7c84e3e8ee6a99"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #106)",
+                  "coverage": "Fix PR #106 named in the client responses for Medium MNT-36 and Low MNT-47 (L2StandardBridge.bridgeMNT onlyEOA); only the fix was reviewed.",
+                  "follows": "365f02ae77246e61524182a156861048d1b0bcb6",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                    "timestamp": "2024-02-27T07:23:11Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/38e73183396bbf2201c4a092fb92a4a4bddbe68c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #109)",
+                  "coverage": "Fix PR #109 named in the client response for Critical MNT-2 (relayMessage reentrancy on reinitialization); only the fix was reviewed.",
+                  "follows": "74c11f69d6f0a224fd8ec6300f7c84e3e8ee6a99",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7f339a26424c499e7338045da5bab603762727a1",
+                    "timestamp": "2024-02-29T08:03:07Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7f339a26424c499e7338045da5bab603762727a1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #103)",
+                  "coverage": "Fix PR #103 named in the client responses for Critical MNT-3 and Medium MNT-12 (L1ERC721Bridge); only the fix was reviewed.",
+                  "follows": "38e73183396bbf2201c4a092fb92a4a4bddbe68c",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "7f339a26424c499e7338045da5bab603762727a1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-chain-ops": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "365f02ae77246e61524182a156861048d1b0bcb6",
+                    "timestamp": "2024-01-31T07:49:21Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/365f02ae77246e61524182a156861048d1b0bcb6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #98)",
+                  "coverage": "Fix PR #98 named in the client responses for Critical MNT-5 and Medium MNT-32 (portal/messenger MNT handling); only the fix was reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "365f02ae77246e61524182a156861048d1b0bcb6",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-node": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-program": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "op-service": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/sdk": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                    "timestamp": "2024-01-08T05:31:08Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/00ce7b04bef0b4866200b9fcf98633d475290792"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain component; only the Mantle v1->v2 changes that PR #72 makes under this directory were in scope, at the audit commit. No Critical finding is located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "00ce7b04bef0b4866200b9fcf98633d475290792",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "mantle-xyz/op-geth",
+          "paths": {
+            "accounts/abi/bind/backends/simulated.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "beacon/engine/gen_blockparams.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "beacon/engine/types.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "cmd/utils/flags.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "consensus/misc/eip1559.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/blockchain.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/genesis.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/mantle_upgrade.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/rawdb/accessors_chain.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/state_processor.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/state_transition.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit. Critical MNT-8 (ETH minted to the recipient before the snapshot) is located in this file.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-8"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fb7f0b4247c51b2ee05b376519ab626643bbc0d5",
+                    "timestamp": "2024-01-19T07:41:34Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/fb7f0b4247c51b2ee05b376519ab626643bbc0d5"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #32)",
+                  "coverage": "Fix PR #32 named in the client responses for Medium MNT-9, MNT-24 and Low MNT-46 (nil msg.To handling); only the fix was reviewed. Critical findings not fixed at this PR head: MNT-8.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-8"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "fb7f0b4247c51b2ee05b376519ab626643bbc0d5",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/txpool/txpool.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "261937606f7d5d13afdac18675769257e4493c5e",
+                    "timestamp": "2024-02-26T10:16:28Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/261937606f7d5d13afdac18675769257e4493c5e"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #43)",
+                  "coverage": "Fix PR #43 named in the client responses for Medium MNT-15 and Low MNT-49 (txpool sponsor cost); its merge is not contained in the final commit; only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f636735dcb6bd3a0970ab1267d9cc565a812d6e9",
+                    "timestamp": "2024-02-27T09:21:40Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/f636735dcb6bd3a0970ab1267d9cc565a812d6e9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #45)",
+                  "coverage": "Fix PR #45 named in the client response for Medium MNT-34 (txpool user balance); only the fix was reviewed.",
+                  "follows": "261937606f7d5d13afdac18675769257e4493c5e",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "f636735dcb6bd3a0970ab1267d9cc565a812d6e9",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/deposit_tx.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/gen_receipt_json.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/meta_transaction.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b5ea92bbe01608a1b22da7872327e6ccbf9aecfa",
+                    "timestamp": "2024-02-29T07:48:21Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/b5ea92bbe01608a1b22da7872327e6ccbf9aecfa"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #46)",
+                  "coverage": "Fix PR #46 named in the client response for Low MNT-45 (CalculateSponsorPercentAmount); the final commit is its merge; only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "b5ea92bbe01608a1b22da7872327e6ccbf9aecfa",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/receipt.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/rollup_l1_cost.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/transaction.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/types/transaction_marshalling.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/vm/interpreter.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/vm/jump_table.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "core/vm/runtime/runtime.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/api_backend.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/backend.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/catalyst/api.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/ethconfig/config.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "eth/tracers/api.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "graphql/graphql.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "internal/ethapi/api.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "72e4779447f514ced27e3720c84dd37f23fa232b",
+                    "timestamp": "2024-02-27T06:42:23Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/72e4779447f514ced27e3720c84dd37f23fa232b"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #44)",
+                  "coverage": "Fix PR #44 named in the client response for Low MNT-50 (available balance check); only the fix was reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "72e4779447f514ced27e3720c84dd37f23fa232b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "internal/ethapi/transaction_args.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "light/txpool.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "miner/miner.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "miner/payload_building.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "miner/worker.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "params/config.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "303d56386d1362ca00078f6f054f579dbde66645",
+                    "timestamp": "2024-02-05T05:48:55Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/303d56386d1362ca00078f6f054f579dbde66645"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #31)",
+                  "coverage": "Fix PR #31 named in the client response for Critical MNT-8 (BVM_ETH minted to the recipient before the snapshot); only the fix was reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "303d56386d1362ca00078f6f054f579dbde66645",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "rpc/http.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                    "timestamp": "2024-01-04T08:27:52Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/be91998dbc17f392fb4c5960fcf5b497227cc31a"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Offchain execution client; only the Mantle v1->v2 changes that op-geth PR #20 makes to this file were in scope, at the audit commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final commit",
+                  "coverage": "Final op-geth commit of the contest after the client's remediation PRs; only the fixes were reviewed.",
+                  "follows": "be91998dbc17f392fb4c5960fcf5b497227cc31a",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "secure3-mantle-v2-public-contest-2024-04",
+      "report_file": "2024_04-secure3-mantle-v2-public-audit-contest.md",
+      "title": "Mantle_V2_Public Competitive Security Assessment (Secure3, April 2024 edition)",
+      "description": "Earlier (April 18, 2024) edition of the Secure3 public audit contest on Mantle V2, scoping the whole mantle-v2 and op-geth repositories at audit versions 7040d02 and 64996df with final versions d8efd33 and 641584e. It reports five Critical findings, MNT-2, MNT-4 and MNT-5 in the contracts-bedrock messengers and ERC721 bridge and MNT-1 and MNT-3 in op-geth core/state_transition.go and core/vm/evm.go.",
+      "isRelevant": true,
+      "auditor": "Secure3",
+      "report_date": "2024-04-18",
+      "repositories": [
+        {
+          "id": "mantle-xyz/mantle-v2",
+          "url": "https://github.com/mantle-xyz/mantle-v2"
+        },
+        {
+          "id": "mantle-xyz/op-geth",
+          "url": "https://github.com/mantle-xyz/op-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "mantle-xyz/mantle-v2",
+          "paths": {
+            "packages/contracts-bedrock/contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "The whole mantle-v2 and op-geth repositories were in scope of the public contest at the audit version; the contracts-bedrock Solidity tree is recorded as a whole, other paths only where the report locates Critical findings. Critical MNT-2 (L1/L2CrossDomainMessenger), MNT-4 (L1CrossDomainMessenger, acknowledged) and MNT-5 (L1ERC721Bridge) are located here.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "MNT-2",
+                    "MNT-4",
+                    "MNT-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b786cf6b43ff892f684950d27823737af8e66c63",
+                    "timestamp": "2024-03-04T05:56:37Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/b786cf6b43ff892f684950d27823737af8e66c63"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #120)",
+                  "coverage": "Fix PR #120 named in the client responses for Medium MNT-16 and MNT-21 (baseGas hashing cost), based on the audit version; only the fix was reviewed. Critical findings not fixed at this PR head: MNT-2, MNT-4, MNT-5.",
+                  "follows": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "MNT-2",
+                    "MNT-4",
+                    "MNT-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                    "timestamp": "2024-03-06T06:16:18Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d8efd33f8c6f063a23875910e722385ed877f16b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final version (PR #128 head)",
+                  "coverage": "Report's final version: the head of PR #128, one commit on top of the audit version (MNT-18 / N-01 boolean fix); it does not contain fix PRs #120, #123 and #127. Still open in this revision: MNT-2, MNT-4, MNT-5.",
+                  "follows": "b786cf6b43ff892f684950d27823737af8e66c63",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "MNT-2",
+                    "MNT-4",
+                    "MNT-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3391f0e3bb41f4bdaa997b06bc8a326f342c8f9c",
+                    "timestamp": "2024-03-06T06:41:38Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/3391f0e3bb41f4bdaa997b06bc8a326f342c8f9c"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #127)",
+                  "coverage": "Fix PR #127 named in the client response for Critical MNT-5 (L1ERC721Bridge cannot receive ERC721), based on the audit version; only the fix was reviewed. Critical findings not fixed at this PR head: MNT-2, MNT-4.",
+                  "follows": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNT-2",
+                    "MNT-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8571274c3b7e251c1b4108932eaa3a36885f230d",
+                    "timestamp": "2024-03-06T09:59:48Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/8571274c3b7e251c1b4108932eaa3a36885f230d"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #123)",
+                  "coverage": "Fix PR #123 named in the client response for Critical MNT-2 (messengers calling MNT/BVM_ETH), based on the audit version; only the fix was reviewed. Critical findings not fixed at this PR head: MNT-4, MNT-5.",
+                  "follows": "3391f0e3bb41f4bdaa997b06bc8a326f342c8f9c",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MNT-4",
+                    "MNT-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "840fdcb42fe257f1765fa1027480bc3c57ee07c3",
+                    "timestamp": "2024-03-12T04:01:57Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/840fdcb42fe257f1765fa1027480bc3c57ee07c3"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #146)",
+                  "coverage": "Fix PR #146 on release/v1.0.0 named in the client response for Medium MNT-14 (relay reserved gas); it also contains PRs #120, #123, #127 and #128; only the fix was reviewed. Critical findings not fixed at this PR head: MNT-4.",
+                  "follows": "8571274c3b7e251c1b4108932eaa3a36885f230d",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "mantle-xyz/op-geth",
+          "paths": {
+            "core/state_transition.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "The whole op-geth repository was in scope of the public contest at the audit version; this offchain file is recorded because the report locates acknowledged Critical MNT-1 (gasUsed called before gasRemaining is scaled) in it.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "641584e4fa3f67cc8f0aef5b0658846cd2d18dbb",
+                    "timestamp": "2024-03-13T10:14:18Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/641584e4fa3f67cc8f0aef5b0658846cd2d18dbb"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final version (PR #67 head)",
+                  "coverage": "Report's final op-geth version (head of fix PR #67, which also contains PRs #43 and #62). Still open in this revision: MNT-1.",
+                  "follows": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "core/vm/evm.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "The whole op-geth repository was in scope of the public contest at the audit version; this offchain file is recorded because the report locates acknowledged Critical MNT-3 (call depth attack with a large block gas limit) in it.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "641584e4fa3f67cc8f0aef5b0658846cd2d18dbb",
+                    "timestamp": "2024-03-13T10:14:18Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/641584e4fa3f67cc8f0aef5b0658846cd2d18dbb"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final version (PR #67 head)",
+                  "coverage": "Report's final op-geth version (head of fix PR #67, which also contains PRs #43 and #62). Still open in this revision: MNT-3.",
+                  "follows": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "secure3-mantle-v2-public-contest-final-2024-05",
+      "report_file": "2024_05-secure3-mantle-v2-public-audit-contest-final.md",
+      "title": "Mantle_V2_Public Competitive Security Assessment (Secure3, May 2024 final edition)",
+      "description": "Final (May 10, 2024) edition of the Secure3 public audit contest on Mantle V2, scoping the whole mantle-v2 and op-geth repositories at audit versions 7040d02 and 64996df with final versions d8efd33 and 641584e, now listing declined submissions and several downgraded severities. It reports four Critical findings, MNT-4 in L1ERC721Bridge, the declined MNT-1 in the legacy v1 L1CrossDomainMessenger, the declined MNT-3 in op-chain-ops migration code and MNT-2 in op-geth core/state_transition.go.",
+      "isRelevant": true,
+      "auditor": "Secure3",
+      "report_date": "2024-05-10",
+      "repositories": [
+        {
+          "id": "mantle-xyz/mantle-v2",
+          "url": "https://github.com/mantle-xyz/mantle-v2"
+        },
+        {
+          "id": "mantle-xyz/op-geth",
+          "url": "https://github.com/mantle-xyz/op-geth"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "mantle-xyz/mantle-v2",
+          "paths": {
+            "packages/contracts-bedrock/contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "The whole mantle-v2 and op-geth repositories were in scope of the public contest at the audit version; the contracts-bedrock Solidity tree is recorded as a whole, other paths only where the report locates Critical findings. Critical MNT-4 (L1ERC721Bridge) is located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b786cf6b43ff892f684950d27823737af8e66c63",
+                    "timestamp": "2024-03-04T05:56:37Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/b786cf6b43ff892f684950d27823737af8e66c63"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (PR #120)",
+                  "coverage": "Fix PR #120 named in the client responses for Medium MNT-25 and MNT-31 (baseGas hashing cost), based on the audit version; only the fix was reviewed. Critical findings not fixed at this PR head: MNT-4.",
+                  "follows": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                    "timestamp": "2024-03-06T06:16:18Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d8efd33f8c6f063a23875910e722385ed877f16b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final version (PR #128 head)",
+                  "coverage": "Report's final version: the head of PR #128, one commit on top of the audit version (MNT-18 / N-01 boolean fix); it does not contain fix PRs #120, #123 and #127. Still open in this revision: MNT-4.",
+                  "follows": "b786cf6b43ff892f684950d27823737af8e66c63",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3391f0e3bb41f4bdaa997b06bc8a326f342c8f9c",
+                    "timestamp": "2024-03-06T06:41:38Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/3391f0e3bb41f4bdaa997b06bc8a326f342c8f9c"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #127)",
+                  "coverage": "Fix PR #127 named in the client response for Critical MNT-4 (L1ERC721Bridge cannot receive ERC721), based on the audit version; only the fix was reviewed.",
+                  "follows": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "840fdcb42fe257f1765fa1027480bc3c57ee07c3",
+                    "timestamp": "2024-03-12T04:01:57Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/840fdcb42fe257f1765fa1027480bc3c57ee07c3"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (PR #146)",
+                  "coverage": "Fix PR #146 on release/v1.0.0 named in the client response for Medium MNT-22 (relay reserved gas); it also contains PRs #120, #127 and #128; only the fix was reviewed.",
+                  "follows": "3391f0e3bb41f4bdaa997b06bc8a326f342c8f9c",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/L1/messaging/L1CrossDomainMessenger.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "Legacy Mantle v1 messenger; the whole repository was in scope, and this file is recorded because the report locates Critical MNT-1 (no unpause function) in it. The client declined the finding, stating that packages/contracts is unused.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                    "timestamp": "2024-03-06T06:16:18Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d8efd33f8c6f063a23875910e722385ed877f16b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final version (PR #128 head)",
+                  "coverage": "Report's final version; the declined finding was not fixed. Still open in this revision: MNT-1.",
+                  "follows": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "op-chain-ops/genesis/db_migration.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "One-time offchain migration code; the whole repository was in scope, and this file is recorded because the report locates Critical MNT-3 (legacy withdrawals relayable twice) in it. The client declined the finding.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d8efd33f8c6f063a23875910e722385ed877f16b",
+                    "timestamp": "2024-03-06T06:16:18Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/d8efd33f8c6f063a23875910e722385ed877f16b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "final version (PR #128 head)",
+                  "coverage": "Report's final version; the declined finding was not fixed. Still open in this revision: MNT-3.",
+                  "follows": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts-periphery/contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7040d029eefc7a2d5a33e03bc15d6815e4a25fd6",
+                    "timestamp": "2024-03-03T14:20:32Z",
+                    "url": "https://github.com/mantle-xyz/mantle-v2/commit/7040d029eefc7a2d5a33e03bc15d6815e4a25fd6"
+                  },
+                  "status": "not_audited",
+                  "review_phase": "contest audit",
+                  "coverage": "The client responses to MNT-8 and MNT-12 state that contracts-periphery is out of the audit scope; the submissions there were declined.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "mantle-xyz/op-geth",
+          "paths": {
+            "core/state_transition.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                    "timestamp": "2024-03-03T12:24:15Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "contest audit",
+                  "coverage": "The whole op-geth repository was in scope of the public contest at the audit version; this offchain file is recorded because the report locates Critical MNT-2 (sponsor logical flaw, fixed per the client response in PRs #62 and #43) in it.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MNT-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "641584e4fa3f67cc8f0aef5b0658846cd2d18dbb",
+                    "timestamp": "2024-03-13T10:14:18Z",
+                    "url": "https://github.com/mantle-xyz/op-geth/commit/641584e4fa3f67cc8f0aef5b0658846cd2d18dbb"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "final version (PR #67 head)",
+                  "coverage": "Report's final op-geth version (head of fix PR #67, which also contains PRs #43 and #62).",
+                  "follows": "64996df634fbd58d9eea82cd4cf7bf3a782c2e03",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

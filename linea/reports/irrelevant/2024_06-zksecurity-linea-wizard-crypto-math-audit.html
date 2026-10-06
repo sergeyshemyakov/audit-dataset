@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit of Linea Wizard's crypto/ & math/</title>
+    <meta name="description" content="Security audit report: Audit of Linea Wizard's crypto/ & math/ - zkSecurity">
+    <link rel="canonical" href="https://reports.zksecurity.xyz/reports/consensys-wizard-crypto-math/" />
+    <meta property="og:title" content="Audit of Linea Wizard's crypto/ & math/ - zkSecurity Audit Report">
+    <meta property="og:description" content="Security audit report: Audit of Linea Wizard's crypto/ & math/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://reports.zksecurity.xyz/reports/consensys-wizard-crypto-math/">
+    <meta property="og:site_name" content="zkSecurity">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Audit of Linea Wizard's crypto/ & math/ - zkSecurity Audit Report">
+    <meta name="twitter:description" content="Security audit report: Audit of Linea Wizard's crypto/ & math/">
+
+    <!-- LLM-friendly markdown version of this report -->
+    <link rel="alternate" type="text/markdown" href="/reports/consensys-wizard-crypto-math.md" />
+
+    <!-- Atkinson Hyperlegible Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@800;900&display=swap" rel="stylesheet">
+
+    <!-- Prism theme -->
+    <link href="/static/prism-one-light.css" rel="stylesheet" />
+
+    <!-- Prism JS (Autoloader plugin) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Custom language: Circom (registered before the autoloader so it won't try to fetch it) -->
+    <script src="/static/prism-circom.js"></script>
+    <script src="https://unpkg.com/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- For better math render -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>
+
+    <!-- Custom CSS for the report -->
+    <link rel="stylesheet" href="/static/print.css" media="print" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/cover.css" />
+</head>
+
+<body>
+    <!-- Mobile hamburger menu button -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="main-layout">
+        <!-- Table of Contents -->
+        
+        <aside class="sidebar-toc no-print">
+            <nav>
+                <a class="toc-back" href="/">← Back to Index</a>
+                <h2>Table of Contents</h2>
+                <ul class="toc-tree">
+                    
+            
+            <li>
+                <a href="#introduction">Introduction</a>
+                
+                <ul>
+            
+            <li>
+                <a href="#scope">Scope</a>
+                
+            </li>
+            
+        </ul>
+                
+            </li>
+            
+            <li>
+                <a href="#the-math-accumulator-and-sparse-merkle-tree">The math/ Accumulator and Sparse Merkle Tree</a>
+                
+            </li>
+            
+            <li>
+                <a href="#the-vortex-polynomial-commitment-scheme">The Vortex polynomial commitment scheme</a>
+                
+            </li>
+            
+            <li>
+                <a href="#a-note-on-ringsis-modulo-xn1">A note on Ringsis modulo Xn&#x02212;1</a>
+                
+            </li>
+            
+            <li>
+                <a href="#using-smartvectors-for-optimizing-mathematical-operations">Using SmartVectors for Optimizing Mathematical Operations</a>
+                
+                <ul>
+            
+            <li>
+                <a href="#usage-and-benefits">Usage and Benefits</a>
+                
+            </li>
+            
+            <li>
+                <a href="#precautions-and-testing">Precautions and Testing</a>
+                
+            </li>
+            
+        </ul>
+                
+            </li>
+            
+        
+                    
+                    <li class="toc-findings">
+                        <a href="#findings">Findings</a>
+                        <ul>
+                            
+                            
+                            <li><a href="#finding-is-power-of-two">Incorrect Check For Power Of Two</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-next-power-of-two">`NextPowerOfTwo` Does Not Work With All Values</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-smartvectors-offset-integer-overflow">Missing Check and Integer Overflow In Rotated Smartvectors Offset Handling</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-tree-check">Sparse Merkle Tree Check Is Too Loose</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-tree-padding">Incorrect Padding For Sparse Merkle Tree Internal Nodes</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-unconstrained-next-free-node">Unconstrained `NextFreeNode` Values In Accumulator Traces</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-smartvectors-rotated-right-issues">Rotated Smartvector's API is confusing</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-windowed-smartvector-edge-case-in-subvector">Loose Bound Checks In Subvector For Windowed Smartvectors</a></li>
+                            
+                            
+                            
+                            <li><a href="#finding-zero-length-smartvectors">Zero and Negative Length Smartvectors</a></li>
+                            
+                            
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="content-wrapper">
+            <!-- COVER PAGE -->
+
+            <div class="cover-page new-cover">
+                <div class="cover-inner">
+                    <div class="cover-header-section">
+                        <a href="/" class="cover-logo">
+                            <span style="font-weight: 900; letter-spacing: 0.05em;">ZKSEC</span><span class="logo-outline" style="font-weight: 900; letter-spacing: 0.05em;">URITY</span>
+                        </a>
+                    </div>
+                    <div class="cover-title-section">
+                        <h1 class="cover-title-text">Audit of Linea Wizard's crypto/ & math/</h1>
+                        <div class="cover-metadata">
+                            
+                            <span class="cover-date">Linea</span>
+                            <span class="separator">•</span>
+                            
+                            <span class="cover-date">June 17th, 2024</span>
+                            <span class="separator">•</span>
+                            <span class="cover-date">Technical Report</span>
+                        </div>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="canvas" width="800" height="800"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Force the rest of the report to start on the next page -->
+            <div style="page-break-after: always;"></div>
+
+            <!-- BEGIN REPORT CONTENT -->
+            <div class="container">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <h2 id="introduction">Introduction</h2>
+<p>On June 17th, 2024, Linea requested an audit of the wizard crypto and math libraries, as part of their zkEVM project. The audit was conducted by two zkSecurity engineers over a period of three weeks. The audit focused on the correctness and security of parts of the libraries, as well as the safety of their interface.</p>
+<p>We found the code to be well documented and organized.</p>
+<h3 id="scope">Scope</h3>
+<p>The scope of the audit included two inner components of the zkEVM repository.</p>
+<p>The <strong><code>math/</code></strong> component, which consisted of:</p>
+<ul>
+<li>Definition of the scalar field of the BLS12-377 curve.</li>
+<li>An implementation of FFT functions and related polynomial utility functions.</li>
+<li>An implementation of Smartvectors, an abstraction over field element vectors.</li>
+</ul>
+<p>The <strong><code>crypto/</code></strong> component, which consisted of:</p>
+<ul>
+<li>Three cryptographic hash implementations: Keccak, MiMC, and RingSIS.</li>
+<li>A sparse merkle tree implementation, and an abstraction for a key-value store built as a wrapper around the sparse merkle tree.</li>
+<li>A code-based polynomial commitment scheme: Vortex.</li>
+</ul>
+<p>Below, we provide an overview of some of the subcomponents, before diving into findings and recommendations.</p>
+<div style="page-break-after: always;"></div>
+
+<h2 id="the-math-accumulator-and-sparse-merkle-tree">The math/ Accumulator and Sparse Merkle Tree</h2>
+<p>In order to enable verifiable accesses to the state of the world (in Linea), the zkEVM repository implements a key-value store on top of a sparse merkle tree implementation. In this section we describe exactly how.</p>
+<p><strong>A doubly-linked list for a key-value store</strong>. A continuous array is used to emulate a contiguous region of memory that can be written to in order from left to right, in a write-once fashion.</p>
+<p><img alt="contiguous-memory" src="/img/reports/consensys/wizard-math-crypto/contiguous-memory.png" /></p>
+<p>This array of memory is used to store a doubly-linked list. To do that, the first two entries are initialized with the head and the tail of the doubly-linked list. An element of the doubly-linked list is a tuple <code>(hash(key), hash(value))</code> and the doubly-linked list is ordered by the hashed key of its elements.</p>
+<p><strong>Update to the key-value store</strong>. The doubly-linked list serves as a nice way to provide verifiable updates to the key-value store. For example, <em>insertions</em> can prove that they are inserting a key in the right place in the doubly-linked list, by proving that:</p>
+<ul>
+<li>the previous element in the list has a smaller hashed key</li>
+<li>the next element in the list has a bigger hashed key</li>
+<li>these &ldquo;sandwiching elements&rdquo; points at each other, and can be updated to point at the newly inserted element instead</li>
+</ul>
+<p>In addition, the key-value store can make its entries unique by enforcing strict comparisons between the hashed keys.</p>
+<p><strong>Merkelizing the memory region</strong>. In order to record the state of the world between proved state transitions, and verifiably access and update the doubly-linked-list, the memory containing the elements of the list is merkelized.</p>
+<p>This way, its root can be passed in between state transitions, and its state can be deconstructed to verifiably access entries of the heap and update them. We provide an example of such a merkelized memory region (containing a simple doubly-linked list) below.</p>
+<p><img alt="tree-data" src="/img/reports/consensys/wizard-math-crypto/tree-data.png" /></p>
+<p><strong>Implementation details</strong>. Note that the implementation accesses and updates the merkle tree in multiple transitions instead of a single atomic update. We illustrate this in the following diagram.</p>
+<p><img alt="accumulator insertion" src="/img/reports/consensys/wizard-math-crypto/acc_insert.png" /></p>
+<div style="page-break-after: always;"></div>
+
+<h2 id="the-vortex-polynomial-commitment-scheme">The Vortex polynomial commitment scheme</h2>
+<p>In this section we briefly explain how the Vortex PCS works.</p>
+<p>First, Vortex is based on codes. So let&rsquo;s briefly mention how encoding using Reed-Solomon works. Imagine that you want to encode a message <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>m</mi><mo>&#x0003D;</mo><mo stretchy="false">[</mo><msub><mi>m</mi><mn>0</mn></msub><mo>&#x0002C;</mo><msub><mi>m</mi><mn>1</mn></msub><mo>&#x0002C;</mo><msub><mi>m</mi><mn>2</mn></msub><mo>&#x0002C;</mo><msub><mi>m</mi><mn>3</mn></msub><mo stretchy="false">]</mo></mrow></math> into a larger codeword. The idea is that an invalid message is easier to observe if it is stretched into a larger array of values (which would amplify its anomalies).</p>
+<p>The Reed-Solomon code does that by looking at the message as if it contains the coefficients or the evaluations of a polynomial, and then evaluate that polynomial at <em>more</em> points. For example:</p>
+<p><img alt="encoding" src="/img/reports/consensys/wizard-math-crypto/encoding.png" /></p>
+<p>In the previous example we choose to see the message like it is a polynomial in Lagrange form (we have its evaluations over some domain). Since the domain evaluated on is an extension that preserves the points of the original domain, we obtain a <em>systematic</em> code: the original message is embedded in the codeword.</p>
+<p>In ZK, we deal with arithmetic circuits and so we are interested in a domain that&rsquo;s a multiplicative subgroup in a field (specifically a subgroup of order a power of two, because this plays nice with FFTs, and FFTs allow us to quickly evaluate a polynomial on a domain, while iFFT allows us to quickly interpolate a polynomial from its evaluations).</p>
+<p>In our previous example, the original &ldquo;message domain&rdquo; was <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>D</mi></mrow></math> of size <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mrow><mtext>something</mtext></mrow></msup></mrow></math>. So what happens if we change the domain? The original elements of the message are still embedded in the codeword but at different positions: this is still a systematic code.</p>
+<p><img alt="systematic2" src="/img/reports/consensys/wizard-math-crypto/systematic2.png" /></p>
+<p>This is because of how we find embedded subgroups of order powers of two in our field:</p>
+<p><img alt="systematic_solution" src="/img/reports/consensys/wizard-math-crypto/systematic_solution.png" /></p>
+<p>Back to what Vortex provides: it allows you to get the evaluations of a number of polynomials at the same point.</p>
+<p>So we start with a number of polynomials in lagrange form (their evaluations over some points <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>w</mi><mn>0</mn></msub><mo>&#x0002C;</mo><msub><mi>w</mi><mn>1</mn></msub><mo>&#x0002C;</mo><msub><mi>w</mi><mn>2</mn></msub><mo>&#x0002C;</mo><mo>&#x022EF;</mo></mrow></math>) which you can see as a matrix <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mtext mathvariant="bold">W</mtext></mrow></math>:</p>
+<p><img alt="vortex_matrix" src="/img/reports/consensys/wizard-math-crypto/vortex_matrix.png" /></p>
+<p>In Vortex, the prover encodes all the rows of the matrix, getting a larger matrix. The greater the &ldquo;blowup factor&rdquo; of the Vortex parameters, the more columns we get. And since we have a systematic code, it preserves the original messages on each row:</p>
+<p><img alt="blowup" src="/img/reports/consensys/wizard-math-crypto/blowup.png" /></p>
+<p>From there, the verifier samples a random challenge <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi></mrow></math>, which the prover uses to take a linear combination of all the encoded rows:</p>
+<p><img alt="beta" src="/img/reports/consensys/wizard-math-crypto/beta.png" /></p>
+<p>In the paper the non-encoded <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mtext mathvariant="bold">u</mtext></mrow></math> is sent instead, and the verifier encodes it. This is equivalent to interpolating <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mtext mathvariant="bold">u</mtext><mi>&#x02032;</mi></msup></mrow></math> and checking that it&rsquo;s a polynomial of degree at most <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>d</mi><mo>&#x0003D;</mo><mi>m</mi><mo>&#x02212;</mo><mn>1</mn></mrow></math> (which is what the implementation does):</p>
+<p><img alt="beta2" src="/img/reports/consensys/wizard-math-crypto/beta2.png" /></p>
+<p>We know that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mtext mathvariant="bold">u</mtext><mi>&#x02032;</mi></msup></mrow></math> interpolates to <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>I</mi><mi>n</mi><msub><mi>t</mi><mi>u</mi></msub><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math> the linear combination of all polynomials. i.e. <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>I</mi><mi>n</mi><msub><mi>t</mi><mi>u</mi></msub><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mi>&#x003B2;</mi><mo>&#x000B7;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msup><mi>&#x003B2;</mi><mn>2</mn></msup><mo>&#x000B7;</mo><mi>h</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msup><mi>&#x003B2;</mi><mn>3</mn></msup><mo>&#x000B7;</mo><mi>i</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msup><mi>&#x003B2;</mi><mn>4</mn></msup><mo>&#x000B7;</mo><mi>j</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math>.</p>
+<p>As such, if we want to check that for some <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi></mrow></math> we have </p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>y</mi><mi>f</mi></msub><mo>&#x0002C;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>y</mi><mi>g</mi></msub><mo>&#x0002C;</mo><mi>h</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>y</mi><mi>h</mi></msub><mo>&#x0002C;</mo><mi>i</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>y</mi><mi>i</mi></msub><mo>&#x0002C;</mo><mi>j</mi><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>y</mi><mi>j</mi></msub></mrow></math>
+
+<p>we can check that </p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>I</mi><mi>n</mi><msub><mi>t</mi><mi>u</mi></msub><mo stretchy="false">&#x00028;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mi>y</mi><mi>f</mi></msub><mo>&#x0002B;</mo><mi>&#x003B2;</mi><mo>&#x000B7;</mo><msub><mi>y</mi><mi>g</mi></msub><mo>&#x0002B;</mo><mi>g</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msup><mi>&#x003B2;</mi><mn>2</mn></msup><mo>&#x000B7;</mo><msub><mi>y</mi><mi>h</mi></msub><mo>&#x0002B;</mo><mi>h</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msup><mi>&#x003B2;</mi><mn>3</mn></msup><mo>&#x000B7;</mo><msub><mi>y</mi><mi>i</mi></msub><mo>&#x0002B;</mo><mi>i</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><msup><mi>&#x003B2;</mi><mn>4</mn></msup><mo>&#x000B7;</mo><msub><mi>y</mi><mi>j</mi></msub></mrow></math>
+
+<p>The verifier can then query random columns, and check that the linear combination is correctly formed for the matching entry</p>
+<p><img alt="queries" src="/img/reports/consensys/wizard-math-crypto/queries.png" /></p>
+<blockquote>
+<p>Implementation note: as the verifier needs to dynamically index into the linear combination vector <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mtext mathvariant="bold">u</mtext><mi>&#x02032;</mi></msup></mrow></math>, it places the vector values in an indexed lookup table and retrieves its entries by performing table lookups.</p>
+</blockquote>
+<p>The verifier obviously wants to verifiably query the encoded matrix <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mtext mathvariant="bold">W</mtext><mi>&#x02032;</mi></msup></mrow></math> in an efficient way (without having to know the whole matrix). To do that, the RS-encoded matrix is committed to (using a Merkle tree), and only the columns that are queried are sent to the verifier (accompanied by merkle proofs):</p>
+<p><img alt="merklecommit" src="/img/reports/consensys/wizard-math-crypto/merklecommit.png" /></p>
+<div style="page-break-after: always;"></div>
+
+<h2 id="a-note-on-ringsis-modulo-xn1">A note on Ringsis modulo <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>X</mi><mi>n</mi></msup><mo>&#x02212;</mo><mn>1</mn></mrow></math></h2>
+<p>The RingSIS implementation is mostly a wrapper over a core implementation. Although it does contain a few more helper functions, including a function to compute the result of the hash modulo the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>X</mi><mi>n</mi></msup><mo>&#x02212;</mo><mn>1</mn></mrow></math> polynomial.</p>
+<p>The function&rsquo;s goal is to get the result of the multiplication <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>a</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x000B7;</mo><mi>b</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><msup><mspace width="1em" /><mi>mod</mi><mspace width="0.333em" /><mi>x</mi><mi>n</mi></msup><mo>&#x02212;</mo><mn>1</mn></mrow></math>, which is the same as:</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>a</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x000B7;</mo><mi>b</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mo stretchy="false">&#x00028;</mo><msup><mi>x</mi><mi>n</mi></msup><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x000B7;</mo><mi>t</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math>
+
+<p>for some quotient polynomial <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math></p>
+<p>notice that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>x</mi><mi>n</mi></msup><mo>&#x02212;</mo><mn>1</mn></mrow></math> is the vanishing polynomial for the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math>-th roots of unity, so for any <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math>-th root of unity <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C9;</mi></mrow></math> we have:</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>a</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003C9;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x000B7;</mo><mi>b</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003C9;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003C9;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mo stretchy="false">&#x00028;</mo><msup><mi>&#x003C9;</mi><mi>n</mi></msup><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x000B7;</mo><mi>t</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003C9;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003C9;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mn>0</mn><mo>&#x000B7;</mo><mi>t</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003C9;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003C9;</mi><mo stretchy="false">&#x00029;</mo></mrow></math>
+
+<p>so we can get <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math> evaluations of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math> by evaluating the left-hand side on all <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math> <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math>-th roots of unity, then interpolate (since <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi></mrow></math> is of degree <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi><mo>&#x02212;</mo><mn>1</mn></mrow></math>, we just need <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math> evaluations).</p>
+<div style="page-break-after: always;"></div>
+
+<h2 id="using-smartvectors-for-optimizing-mathematical-operations">Using SmartVectors for Optimizing Mathematical Operations</h2>
+<p>We further provide some background on smartvectors, an important abstraction used from optimizing math operations in Linea&rsquo;s implementation.</p>
+<p>The Linea prover defines a specialized abstraction over vectors to optimize both memory consumption and performance when working with vectors of field elements. This abstraction is smartvectors, which are implemented by four different types designed to handle specific common vector types. The types of smartvectors are <code>Regular</code>, <code>Constant</code>, <code>Rotated</code>, and <code>PaddedCircularWindow</code>.</p>
+<p>Each smartvector type implements specific functions such as retrieving its length, accessing a specific element, producing a subvector, and rotating the vector.</p>
+<p><strong>Regular</strong> represents a normal vector (i.e., slice) of field elements. This is the default type, and every other smartvector implements a function to convert and create a regular smartvector.</p>
+<pre><code class="language-go">type Regular []field.Element
+</code></pre>
+<p><strong>Constant</strong> is a smartvector obtained by repeating the same value for the specified length. This implementation provides maximum memory optimization and speeds up some operations.</p>
+<pre><code class="language-go">type Constant struct {
+    val    field.Element
+    length int
+}
+</code></pre>
+<p><strong>Rotated</strong> works by abstractly storing an offset and only applying the rotation when the vector is written, sub-vectored, or evaluated for specific operations. This makes rotations essentially free.</p>
+<pre><code class="language-go">type Rotated struct {
+    v      Regular
+    offset int
+}
+</code></pre>
+<p><strong>PaddedCircularWindow</strong> represents a vector padded up to a certain length and possibly rotated. It combines optimizations from all previous smartvectors and implements extensive optimizations when performing arithmetic operations (c.f., <code>processWindowedOnly</code> in <code>windowed.go</code>).</p>
+<pre><code class="language-go">type PaddedCircularWindow struct {
+    window     []field.Element
+    paddingVal field.Element
+    totLen, offset int
+}
+</code></pre>
+<p>The following figure visualizes the different types of smartvectors.</p>
+<p><img alt="encoding" src="/img/reports/consensys/wizard-math-crypto/smartvectors.png" /></p>
+<h3 id="usage-and-benefits">Usage and Benefits</h3>
+<p>Smartvectors are used for memory and performance optimizations. They play a crucial role in performing FFTs on the Linea prover, representing polynomials, and performing optimized operations such as batch interpolation by reducing computations through pre-processing constant vectors in advance.</p>
+<p>The main operations involving smartvectors are defined in <code>arithmetic_basic.go</code>, <code>arithmetic_gen.go</code>, <code>arithmetic_op.go</code>, <code>fft.go</code>, and <code>polynomial.go</code>. A critical function is <code>processOperator</code> in <code>arithmetic_gen.go</code>, which handles various operations and performs optimizations based on the type of input smartvectors.</p>
+<h3 id="precautions-and-testing">Precautions and Testing</h3>
+<p>While smartvectors are designed for optimization purposes, they should be used with care. The API is designed to prevent mutating smartvectors directly; instead, users should produce new instances. During our audit, we looked for potential issues arising from API misuse, identifying corner cases that could cause unexpected behavior, and ensured that the API was clear and not prone to misuse. We also ran multiple test cases and tweaked the existing test suite to validate that smartvectors work as expected.</p>
+<p>In summary, despite the complexity of some optimizations, the code is well-documented and thoroughly tested. During our audit, we identified the following issues:</p>
+<ul>
+<li><a href="#finding-smartvectors-offset-integer-overflow">&ldquo;Missing Check and Integer Overflow In Rotated Smartvectors Offset Handling&rdquo;</a></li>
+<li><a href="#finding-windowed-smartvector-edge-case-in-subvector">&ldquo;Loose Bound Checks In Subvector For Windowed Smartvectors&rdquo;</a></li>
+<li><a href="#finding-zero-length-smartvectors">&ldquo;Zero and Negative Length Smartvectors&rdquo;</a></li>
+<li><a href="#finding-smartvectors-rotated-right-issues">&ldquo;Rotated Smartvector&rsquo;s API is confusing&rdquo;</a></li>
+</ul>
+                </div>
+
+                <!-- Findings Section -->
+                
+                <h2 id="findings"><a href="#findings">Findings</a></h2>
+
+                <p>Below are listed the findings found during the engagement. High severity findings can be seen as
+                    so-called
+                    "priority 0" issues that need fixing (potentially urgently). Medium severity findings are most often
+                    serious
+                    findings that have less impact (or are harder to exploit) than high-severity findings. Low severity
+                    findings
+                    are most often exploitable in contrived scenarios, if at all, but still warrant reflection. Findings
+                    marked
+                    as informational are general comments that did not fit any of the other criteria.</p>
+
+                <!-- Findings Overview — grouped by severity -->
+                <div class="findings-overview">
+                    
+                    
+                    
+                    <header class="findings-group-header severity-1">
+                        <span class="findings-group-label">Low</span>
+                    </header>
+                    
+                    <a class="finding-row severity-1" href="#finding-is-power-of-two">
+                        <span class="finding-row-id">#00</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Incorrect Check For Power Of Two</span>
+                            <span class="finding-row-location">utils</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <a class="finding-row severity-1" href="#finding-next-power-of-two">
+                        <span class="finding-row-id">#01</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">`NextPowerOfTwo` Does Not Work With All Values</span>
+                            <span class="finding-row-location">utils</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <a class="finding-row severity-1" href="#finding-smartvectors-offset-integer-overflow">
+                        <span class="finding-row-id">#02</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Missing Check and Integer Overflow In Rotated Smartvectors Offset Handling</span>
+                            <span class="finding-row-location">maths/common/smartvectors</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <a class="finding-row severity-1" href="#finding-tree-check">
+                        <span class="finding-row-id">#03</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Sparse Merkle Tree Check Is Too Loose</span>
+                            <span class="finding-row-location">crypto/state-management/smt</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <a class="finding-row severity-1" href="#finding-tree-padding">
+                        <span class="finding-row-id">#04</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Incorrect Padding For Sparse Merkle Tree Internal Nodes</span>
+                            <span class="finding-row-location">crypto/state-management/smt</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <a class="finding-row severity-1" href="#finding-unconstrained-next-free-node">
+                        <span class="finding-row-id">#05</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Unconstrained `NextFreeNode` Values In Accumulator Traces</span>
+                            <span class="finding-row-location">crypto/state-management/accumulator</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <header class="findings-group-header severity-0">
+                        <span class="findings-group-label">Informational</span>
+                    </header>
+                    
+                    <a class="finding-row severity-0" href="#finding-smartvectors-rotated-right-issues">
+                        <span class="finding-row-id">#06</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Rotated Smartvector's API is confusing</span>
+                            <span class="finding-row-location">maths/common/smartvectors</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <a class="finding-row severity-0" href="#finding-windowed-smartvector-edge-case-in-subvector">
+                        <span class="finding-row-id">#07</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Loose Bound Checks In Subvector For Windowed Smartvectors</span>
+                            <span class="finding-row-location">maths/common/smartvectors</span>
+                            
+                        </span>
+                    </a>
+                    
+                    
+                    <a class="finding-row severity-0" href="#finding-zero-length-smartvectors">
+                        <span class="finding-row-id">#08</span>
+                        <span class="finding-row-body">
+                            <span class="finding-row-title">Zero and Negative Length Smartvectors</span>
+                            <span class="finding-row-location">maths/common/smartvectors</span>
+                            
+                        </span>
+                    </a>
+                    
+                </div>
+
+
+                <!-- Detailed Findings Section -->
+                
+                
+                <article class="finding severity-1">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Low</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#00</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-is-power-of-two">
+                            <a href="#finding-is-power-of-two">Incorrect Check For Power Of Two</a>
+                        </h3>
+                        <div class="finding-byline">utils</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. In the codebase there are many calls to the function <code>IsPowerOfTwo</code>, which returns true if the input provided is a power of two.
+This check is accomplished by doing a bitwise manipulation of the input: a power of two can be represented in binary as having only one <code>1</code> in its representation.
+We can therefore check if a number is a power of two by computing the bitwise and between the input and its predecessor, excluding zero. </p>
+<pre><code class="language-go">// Return true if n is a power of two
+func IsPowerOfTwo[T ~int](n T) bool {
+    return n&amp;(n-1) == 0 &amp;&amp; n != 0
+}
+</code></pre>
+<p>Unfortunately, this check is correct only for <em>unsigned</em> integers, and for signed integers it allows one more negative value, which is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><msup><mn>2</mn><mrow><mn>63</mn></mrow></msup></mrow></math> (assuming 64-bit signed integers).
+The signed binary representation of this value is indeed <code>1</code> in the most significant bit, and all <code>0</code> in the other places.</p>
+<p>The input was actually found using the z3 SMT solver, imposing the constraints that the test passes and the value to be negative.
+Interestingly, this is also the <em>only</em> negative value for which this function returns <code>true</code>.
+Below is a z3 Python script that finds such value.</p>
+<pre><code class="language-python">import z3
+
+x = z3.BitVec('x', 64)
+s = z3.Solver()
+
+# add the contraints to pass the check
+s.add(x &amp; (x-1) == 0)
+s.add(x != 0)
+
+# find a negative value that satisfies the constraints
+s.add(x &lt; 0)
+s.check()
+neg_solution = s.model()[x]
+assert neg_solution == -9223372036854775808
+
+# this is the only negative value that passes the checks
+s.add(x != -9223372036854775808)
+assert s.check() == z3.unsat
+</code></pre>
+<p>Indeed, if we try to pass this value to the function in the go implementation, the return value is <code>true</code>.</p>
+<pre><code class="language-go">func TestIsPowerOfTwo(* testing.T) {
+    fmt.Println(IsPowerOfTwo(-9223372036854775808)) // true
+}
+</code></pre>
+<p><strong>Recommendation</strong>. Modify the check so that the input is strictly positive.</p>
+<pre><code class="language-diff">-return n&amp;(n-1) == 0 &amp;&amp; n != 0
++return n&amp;(n-1) == 0 &amp;&amp; n &gt; 0
+</code></pre>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-1">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Low</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#01</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-next-power-of-two">
+                            <a href="#finding-next-power-of-two">`NextPowerOfTwo` Does Not Work With All Values</a>
+                        </h3>
+                        <div class="finding-byline">utils</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. The <code>NextPowerOfTwo</code> function computes <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x02308;</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">&#x00028;</mo><mi>v</mi><mo stretchy="false">&#x00029;</mo><mi>&#x02309;</mi></mrow></math> for a given integer <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math>. It does so by creating a mask of bits all set to <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn></mrow></math> and of the same bit-length of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math>. Then it increments the mask by one to return the next power of two:</p>
+<pre><code class="language-go">func NextPowerOfTwo[T ~int](in T) T {
+    v := in
+    v--
+    v |= v &gt;&gt; (1 &lt;&lt; 0)
+    v |= v &gt;&gt; (1 &lt;&lt; 1)
+    v |= v &gt;&gt; (1 &lt;&lt; 2)
+    v |= v &gt;&gt; (1 &lt;&lt; 3)
+    v |= v &gt;&gt; (1 &lt;&lt; 4)
+    v |= v &gt;&gt; (1 &lt;&lt; 5)
+    v++
+    return v
+}
+</code></pre>
+<p>However, it does not work well with all values. As the function is written to be generic for types <code>int</code> and generally all types whose underlying type is <code>int</code>, and as <code>int</code> is signed by default, some results might not be as expected. For example, when we try to compute the next power of two for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mrow><mn>62</mn></mrow></msup><mo>&#x0002B;</mo><mn>1</mn></mrow></math>, the function returns a negative result:</p>
+<pre><code class="language-go">func TestNextPowerOfTwo(t *testing.T) {
+    // prints `4611686018427387905 -9223372036854775808`
+    fmt.Println((1&lt;&lt;62)+1, utils.NextPowerOfTwo((1&lt;&lt;62)+1))
+}
+</code></pre>
+<p><strong>Recommendation</strong>. Either assert that the argument passed is not too large, or constrain the type parameter to be the set of all unsigned integers (<code>~uint</code>). Alternatively, as the function is most likely not meant to be used on such large values, document the assumptions made by the function.</p>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-1">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Low</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#02</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-smartvectors-offset-integer-overflow">
+                            <a href="#finding-smartvectors-offset-integer-overflow">Missing Check and Integer Overflow In Rotated Smartvectors Offset Handling</a>
+                        </h3>
+                        <div class="finding-byline">maths/common/smartvectors</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. The Rotated Smartvector represents a vector to which is applied a &ldquo;lazy&rdquo; rotation.
+This is accomplished by storing an <code>offset</code> variable to represent the rotation offset applied.</p>
+<p>The <code>NewRotated</code> function aims to enforce some checks, i.e., checking that the vector is not empty and the offset is not larger than the length of the vector.</p>
+<pre><code class="language-go">func NewRotated(reg Regular, offset int) *Rotated {
+
+    // empty vector
+    if len(reg) == 0 {
+        utils.Panic(&quot;got an empty vector&quot;)
+    }
+
+    // offset larger than the vector itself
+    if offset &gt; len(reg) {
+        utils.Panic(&quot;len %v, offset %v&quot;, len(reg), offset)
+    }
+
+    return &amp;Rotated{
+        v: reg, offset: offset,
+    }
+}
+</code></pre>
+<p>The second <code>if</code> statement that checks if the offset is larger than the vector is not complete, as the offset could be a negative value, but its absolute value can still be larger than the length.</p>
+<p>Additionally, in the <code>RotateRight</code> function, the new <code>offset</code> is just added to the stored one without any check, so the resulting offset could be larger than the length.</p>
+<pre><code class="language-go">// Rotates the vector into a new one
+func (r *Rotated) RotateRight(offset int) SmartVector {
+    return &amp;Rotated{
+        v:      vector.DeepCopy(r.v),
+        offset: r.offset + offset,
+    }
+}
+</code></pre>
+<p>Further, the offset is implemented using the <code>int</code> type, which is susceptible to integer overflow.
+Since the wrap around of <code>int</code> on 64 bit systems is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mrow><mn>64</mn></mrow></msup></mrow></math>, this could lead to an incorrect operation being applied.
+Indeed, when we perform the <code>RotateRight</code> operation, the offsets are first wrapped by the machine arithmetic, but the rotation should be performed conceptually over the integers modulo the length.</p>
+<p>In the example below, we are rotating by a fixed amount, which is zero modulo the length, so the effect of applying the rotation should be none.
+However, due to the integer wrap around, after five rotations the resulting vector ends up rotated by 4.</p>
+<pre><code class="language-go">func TestRotatedOverflow(_ *testing.T) {
+    v := []field.Element{field.NewFromString(&quot;1&quot;),
+        field.NewFromString(&quot;2&quot;),
+        field.NewFromString(&quot;3&quot;),
+        field.NewFromString(&quot;4&quot;),
+        field.NewFromString(&quot;5&quot;)};
+    r := NewRotated(*NewRegular(v), 0);
+
+    // this should have no effect on the rotated vector, since m % len == 0
+    m := 2305843009213693950;
+    assertHasLength(m % 5, 0); 
+
+    for i := 0; i &lt; 5; i++ {
+        r = r.RotateRight(m).(*Rotated);
+        fmt.Println(rotatedAsRegular(r).Pretty());
+    }
+
+    // Regular[[1, 2, 3, 4, 5]]
+    // Regular[[1, 2, 3, 4, 5]]
+    // Regular[[1, 2, 3, 4, 5]]
+    // Regular[[1, 2, 3, 4, 5]]
+    // Regular[[5, 1, 2, 3, 4]] &lt;--- vector rotated by 4
+}
+</code></pre>
+<p>A similar issue is also present in the Windowed Smartvectors when handling the rotation offset.</p>
+<p><strong>Recommendation</strong>. Firstly, the check for the length should always be applied and should be updated to check the absolute value of the resulting offset against the length of the smartvector.
+Additionally, it is recommended to check explicitly for integer overflow every time an operation over machine arithmetics occurs.</p>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-1">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Low</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#03</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-tree-check">
+                            <a href="#finding-tree-check">Sparse Merkle Tree Check Is Too Loose</a>
+                        </h3>
+                        <div class="finding-byline">crypto/state-management/smt</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. In the sparse merkle tree logic, the <code>reserveLevel</code> function is a helper to extend the nodes (potentially leaves) at a certain depth of the tree. The function is meant to be called during new insertions in the tree, if empty nodes (or empty leaves) are impacted in the tree.</p>
+<p>The function logic checks that the extension of a level is valid according to the configured-size of the tree:</p>
+<pre><code class="language-go">func (t *Tree) reserveLevel(level, newSize int) {
+
+    // Edge-case, level out of bound
+    if level &gt; t.Config.Depth {
+        utils.Panic(&quot;level out of bound %v&quot;, level)
+    }
+
+    // Edge : case root level
+    if level == t.Config.Depth {
+        utils.Panic(&quot;tried extending the root level %v&quot;, newSize)
+    }
+
+    // Will work for both the leaves and the intermediate nodes
+    if newSize &gt; 1&lt;&lt;t.Config.Depth-level {
+        utils.Panic(&quot;overextending the tree %v, %v&quot;, level, newSize)
+    }
+</code></pre>
+<p>In the previous code, the last check is ill-formed, due to the operator precedence of Golang that privileges <code>&lt;&lt;</code> above <code>-</code>. As such, it is possible to extend a level above its intended shape, potentially allowing undefined behavior.</p>
+<p>Note that we could not find any issues in which this would arise, we still recommend fixing the issue.</p>
+<p><strong>Recommendation</strong>. Fix the previous check by adding parentheses to enforce the order of operations:</p>
+<pre><code class="language-diff">-   if newSize &gt; 1&lt;&lt;t.Config.Depth-level {
++   if newSize &gt; 1&lt;&lt;(t.Config.Depth-level) {    
+</code></pre>
+<p>In general, always use parentheses in chained operations to avoid relying on remembering the correct order of operator precedence in Golang (and potentially getting it wrong).</p>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-1">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Low</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#04</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-tree-padding">
+                            <a href="#finding-tree-padding">Incorrect Padding For Sparse Merkle Tree Internal Nodes</a>
+                        </h3>
+                        <div class="finding-byline">crypto/state-management/smt</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. In the sparse merkle tree logic, the <code>reserveLevel</code> helper function can be called during insertions to extend the tree&rsquo;s nodes at specified depths. For new leaves, empty leaves are added as <code>EmptyLeaf()</code> as the zero vector. Interestingly, for new nodes, an empty leaf is also used:</p>
+<pre><code class="language-go">func (t *Tree) reserveLevel(level, newSize int) {
+    // TRUNCATED...
+
+    if newSize &lt;= len(t.OccupiedNodes[level-1]) {
+        // already big enough
+        return
+    }
+    // else, we add extra &quot;empty leaves&quot; at the end of the slice
+    padding := make([]types.Bytes32, newSize-len(t.OccupiedNodes[level-1]))
+    for i := range padding {
+        padding[i] = EmptyLeaf()
+    }
+    t.OccupiedNodes[level-1] = append(t.OccupiedNodes[level-1], padding...)
+</code></pre>
+<p>The code essentially assumes that this is benign, because it will always be called in insertions that incrementally go from the most-left side of the tree to the most-right side. In which case, new nodes at any level are always added in order, one at a time, and immediately get updated.</p>
+<p>As far as we could tell, this is how the current logic uses the sparse merkle tree, which leads to no issue. But a sparse-merkle tree does not necessarily have to be used this way, for example it could decide to insert leaves at positions &ldquo;in the future&rdquo;, leaving gaps in the leaves, in which case the previous code would break the sparse merkle tree. We illustrate this example in the following diagram:</p>
+<p><img alt="padding" src="/img/reports/consensys/wizard-math-crypto/padding.png" /></p>
+<p><strong>Recommendation</strong>. Fix the code above to use the already-available precomputed empty nodes of the right level instead of empty leaves:</p>
+<pre><code class="language-diff">        padding := make([]types.Bytes32, newSize-len(t.OccupiedLeaves))
+        for i := range padding {
+-           padding[i] = EmptyLeaf()
++           padding[i] = t.EmptyNode[level-1]
+        }
+</code></pre>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-1">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Low</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#05</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-unconstrained-next-free-node">
+                            <a href="#finding-unconstrained-next-free-node">Unconstrained `NextFreeNode` Values In Accumulator Traces</a>
+                        </h3>
+                        <div class="finding-byline">crypto/state-management/accumulator</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. In the accumulator implementation, the prover emits a <strong>trace</strong> object for every operation that is performed.
+The verifier then can then check the validity of such traces, and consequently the validity of the operation.
+The traces contain all the information that is needed to the verifier to audit the correctness of the operation, such as leaf openings, their respective Merkle proofs, Merkle tree roots and so on.</p>
+<p>Different operations have different traces fields, but every one contains the value of the <code>NextFreeNode</code> of the accumulator.
+This field is called <code>NextFreeNode</code> in read zero and read non-zero operations, and <code>NewNextFreeNode</code> in insertion, deletion and update operations.
+Those values in the traces are never read by the verifier functions, so they remain completely unconstrained.
+This entails that it is possible to change those values freely, and the verifier will still accept the trace as valid.
+We note that this behaviour is present in all the operations.</p>
+<p>Below is a test case showing that changing the <code>NewNextFreeNode</code> in an insertion trace still passes the verification checks.</p>
+<pre><code class="language-go">func TestNextFreeNode(t *testing.T) {
+    acc := newTestAccumulatorKeccak()
+    ver := acc.VerifierState()
+
+    // Insert a value
+    trace := acc.InsertAndProve(dumkey(0), dumval(0))
+
+    // Change the NewNextFreeNode in the trace
+    // to an arbitrary value 
+    trace.NewNextFreeNode = -42
+
+    // The verification still passes
+    err := ver.VerifyInsertion(trace)
+    require.NoErrorf(t, err, &quot;verification&quot;)
+}
+</code></pre>
+<p>Note that the verifier state keeps its own <code>NextFreeNode</code> value internally, so those values in the traces are fundamentally not needed.
+Even if somehow we could tamper the verifier state, e.g., by making it change its <code>NextFreeNode</code> internal value to an arbitrary value, we could not find any issues undermining the consistency of the underlying key-value mapping.
+Indeed, the inner Sparse Merkle Tree would still retain its own consistency thanks to the Merkle proofs verifications currently in place.
+What could happen in this scenario, however, is that valid operations may end up being rejected.
+For example the insertion operation expects the position of the new node to be equal to <code>NextFreeNode</code>, and that the overwritten node was initially empty.</p>
+<p><strong>Recommendation</strong>.
+Implement checks in all the trace verification functions for consistency of the <code>NextFreeNode</code> and <code>NewNextFreeNode</code> values between the traces and the one kept by the verifier state.
+Even if we could not find any accumulator consistency issues, we still recommend to apply this remediation to ensure the internal consistency of the traces, and for avoiding potential issues coming from future uses of the trace fields.</p>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-0">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Informational</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#06</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-smartvectors-rotated-right-issues">
+                            <a href="#finding-smartvectors-rotated-right-issues">Rotated Smartvector's API is confusing</a>
+                        </h3>
+                        <div class="finding-byline">maths/common/smartvectors</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. The Rotated Smartvector is used to optimize rotated vectors of field elements by applying lazy rotations.
+To accomplish that, the vector is stored in a variable, and the other variable takes track of the offset.</p>
+<p>The <code>RotateRight</code> is a function that should rotate the vector by a given <code>offset</code>.</p>
+<pre><code class="language-go">func (r *Rotated) RotateRight(offset int) SmartVector {
+    return &amp;Rotated{
+        v:      vector.DeepCopy(r.v),
+        offset: r.offset + offset,
+    }
+}
+</code></pre>
+<p>Despite its name suggesting that the vector will be rotating to the right, the vector is rotated to the left.
+For example, if we have the following vector:</p>
+<pre><code class="language-go">[0 1 2 3 4]
+</code></pre>
+<p>And we rotate it right two positions, we would expect the result to be:</p>
+<pre><code class="language-go">[3 4 0 1 2]
+</code></pre>
+<p>But it is</p>
+<pre><code class="language-go">[2 3 4 0 1]
+</code></pre>
+<p>Although this API is functionally correct (if the expected behavior is to rotate left), it can be confusing and introduce subtle errors.
+<code>NewRotated</code> also rotates to the left and should be clarified in the documentation if that is the expected behavior.</p>
+<p><strong>Recommendation</strong>. It is recommended to either change the logic of the <code>RotateRight</code> function or to clarify the expected behavior in the documentation of the function.</p>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-0">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Informational</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#07</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-windowed-smartvector-edge-case-in-subvector">
+                            <a href="#finding-windowed-smartvector-edge-case-in-subvector">Loose Bound Checks In Subvector For Windowed Smartvectors</a>
+                        </h3>
+                        <div class="finding-byline">maths/common/smartvectors</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. In the windowed smartvector code, the <code>SubVector</code> function is intended to be used to extract a sub-vector with given start and stop indices.
+The function performs bound checks for the input parameters <code>start</code> and <code>stop</code>, however those checks do not account for the possibility of <code>start</code> to be negative.</p>
+<pre><code class="language-go">func (p *PaddedCircularWindow) SubVector(start, stop int) SmartVector {
+    // Sanity checks for all subvectors
+    assertCorrectBound(start, p.totLen)
+    // The +1 is because we accept if &quot;stop = length&quot;
+    assertCorrectBound(stop, p.totLen+1)
+
+    if start &gt; stop {
+        panic(&quot;rollover are forbidden&quot;)
+    }
+</code></pre>
+<p>Later in the function, the length of the target sub-vector <code>b</code> is computed as <code>stop - start</code>.</p>
+<pre><code class="language-go">    b := stop - start
+    c := normalize(p.interval().start(), start, n)
+    d := normalize(p.interval().stop(), start, n)
+</code></pre>
+<p>In the example below we are constructing a windowed smartvector and taking the sub-vector of bounds <code>-200</code> and <code>5</code>.
+The resulting sub-vector length <code>b</code> will be computed as <code>stop - start</code>, and it will result in the value <code>205</code>, thus it will be larger than the original one (notice the <code>totlen</code> fields in the outputs).</p>
+<pre><code class="language-go">func TestWindowed(_ *testing.T) {
+    v := []field.Element{field.NewFromString(&quot;1&quot;),
+        field.NewFromString(&quot;2&quot;),
+        field.NewFromString(&quot;3&quot;),
+        field.NewFromString(&quot;4&quot;),
+        field.NewFromString(&quot;5&quot;)};
+    r := NewPaddedCircularWindow(v, field.Zero(), 1, 16);
+
+    fmt.Println(r.Pretty());
+    // Windowed[totlen=16 offset=1, paddingVal=0, window=[1, 2, 3, 4, 5]]
+
+    w := r.SubVector(-200, 5);
+    fmt.Println(w.Pretty());
+    // Windowed[totlen=205 offset=9, paddingVal=0, window=[1, 2, 3, 4, 5]]
+}
+</code></pre>
+<p><strong>Recommendation</strong>. Do not allow negative <code>start</code> values by panicking if <code>start &lt; 0</code>.</p>
+                    </div>
+                </article>
+                
+                
+                
+                <article class="finding severity-0">
+                    <header class="finding-header">
+                        <div class="finding-eyebrow">
+                            <span class="finding-eyebrow-severity">Informational</span>
+                            <span class="finding-eyebrow-sep">·</span>
+                            <span class="finding-eyebrow-id">#08</span>
+                        </div>
+                        <h3 class="finding-title" id="finding-zero-length-smartvectors">
+                            <a href="#finding-zero-length-smartvectors">Zero and Negative Length Smartvectors</a>
+                        </h3>
+                        <div class="finding-byline">maths/common/smartvectors</div>
+                    </header>
+
+                    <div class="finding-body">
+                        <p><strong>Description</strong>. Constructing zero- or negative-length smartvectors should be illegal, but we can construct them using only API functions.
+Note that for negative-length smartvectors, when you try to convert them to gnark frontend variables, the code will panic.
+It will create an empty slice of field elements for zero length, which might lead to other more subtle vulnerabilities.</p>
+<pre><code class="language-go">func TestZero(_ *testing.T) {
+    a := NewPaddedCircularWindow(
+        vector.Rand(5),
+        field.Zero(),
+        0,
+        16,
+    ).SubVector(0, 0);
+    b := NewRegular([]field.Element{field.Zero()}).SubVector(0, 0);
+    c := NewConstant(field.Zero(), 0);
+    d := NewConstant(field.Zero(), -1);
+    e := NewConstant(field.Zero(), 10).SubVector(3, 1);
+
+    assertHasLength(a.Len(), 0);
+    assertHasLength(b.Len(), 0);
+    assertHasLength(c.Len(), 0);
+    assertHasLength(d.Len(), -1);
+    assertHasLength(e.Len(), -2)
+}
+</code></pre>
+<p>A similar issue might arise when constructing a new <code>circularInterval</code>, where there is an implicit assumption that empty intervals should never be constructed. Although the <code>ivalWithStartLen</code> function includes a check to prevent empty intervals, the <code>ivalWithFullLen</code> function does not perform any such validation. This inconsistency could potentially lead to unexpected behavior or errors if empty intervals are inadvertently created using <code>ivalWithFullLen</code>. It is crucial to ensure that all interval construction functions enforce the same validation rules to maintain consistency and prevent potential issues.</p>
+<p><strong>Recommendation</strong>.
+To solve the issue, the functions should panic whenever we try to construct an ill-formed smartvector.</p>
+                    </div>
+                </article>
+                
+                
+                
+
+                <!-- Back to Index Link -->
+                <a href="/index.html" class="back-link">&larr; Back to Index</a>
+            </div>
+        </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-labelledby="modalImage">
+        <div class="image-modal-content-wrapper" id="imageWrapper">
+            <span class="image-modal-close" aria-label="Close image modal">&times;</span>
+            <img class="image-modal-content" id="modalImage" alt="">
+        </div>
+    </div>
+
+    <!-- JavaScript for mobile hamburger menu -->
+    <script src="/static/menu.js"></script>
+
+    <!-- Canvas Animation Script -->
+    <script src="/static/canvas-animation.js"></script>
+
+    <!-- Image Modal Script -->
+    <script src="/static/image-modal.js"></script>
+</body>
+
+</html>

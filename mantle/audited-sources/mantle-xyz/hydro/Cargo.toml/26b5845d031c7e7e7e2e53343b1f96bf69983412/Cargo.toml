@@ -1,0 +1,72 @@
+[workspace]
+resolver = "2"
+members = ["bin/*", "crates/*"]
+
+[workspace.package]
+version = "2.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+# Hydro
+hydro-client = { path = "bin/client", default-features = false }
+hydro-eigenda = { path = "crates/eigenda", default-features = false }
+hydro-oracle = { path = "crates/oracle", default-features = false }
+hydro-proofs = { path = "crates/proofs", default-features = false }
+
+# Kona
+kona-derive = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-driver = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-executor = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-proof = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-std-fpvm = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-preimage = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-std-fpvm-proc = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-providers-alloy = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-protocol = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-genesis = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-client = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0", default-features = false }
+kona-host = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0" }
+kona-cli = { git = "https://github.com/mantle-xyz/kona", tag = "v2.1.0" }
+
+# Alloy
+alloy-rlp = { version = "0.3.11", default-features = false }
+alloy-eips = { version = "1.0.42", default-features = false }
+alloy-provider = { version = "1.0.42", default-features = false }
+alloy-consensus = { version = "1.0.42", default-features = false }
+alloy-primitives = { version = "1.3.1", default-features = false }
+
+# OP Alloy
+op-alloy-network = { git = "https://github.com/mantle-xyz/op-alloy", tag = "v2.1.0", default-features = false }
+
+# General
+clap = "4.5.24"
+tokio = "1.44.2"
+cfg-if = "1.0.0"
+reqwest = "0.12.12"
+async-trait = "0.1.85"
+bytes = "1.9.0"
+anyhow = { version = "1.0.95", default-features = false }
+thiserror = { version = "2.0.9", default-features = false }
+
+# Tracing
+tracing = { version = "0.1.41", default-features = false }
+
+# Serialization
+serde = { version = "1.0.217", default-features = false }
+serde_json = { version = "1.0.135", default-features = false }
+
+# proto
+prost = { version = "0.13.3", default-features = false, features = ["derive"] }
+rlp = { version = "0.6.1", default-features = false }
+
+#eigenlayer
+rust-kzg-bn254-primitives = { git = "https://github.com/Layr-Labs/rust-kzg-bn254", rev = "b3e532e9aad533009849755d5ad7b9578a16bfb2", default-features = false }
+rust-kzg-bn254-prover = { git = "https://github.com/Layr-Labs/rust-kzg-bn254", rev = "b3e532e9aad533009849755d5ad7b9578a16bfb2", default-features = false }
+num = "0.4"
+
+[profile.dev]
+opt-level = 3
+
+[profile.release]
+debug = 1
+lto = true

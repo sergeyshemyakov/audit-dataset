@@ -1,0 +1,1929 @@
+{
+  "schema_version": "1.4.0",
+  "project": "starknet",
+  "reports": [
+    {
+      "id": "kudelski-micro-starknet-2023-09",
+      "report_file": "irrelevant/2023_09-kudelski-micro-starknet-audit.md",
+      "title": "Audit of Micro-Starknet",
+      "description": "Kudelski Security code audit, for StarkWare, of the Micro-Starknet TypeScript library (Stark curve keys and signatures, Pedersen and Poseidon hashing) at commit 07b25e9, with focus on hashing, randomness and constant-time behaviour. The library is an offchain JavaScript cryptographic dependency (used by starknet.js), not onchain protocol logic.",
+      "isRelevant": false,
+      "auditor": "Kudelski Security",
+      "report_date": "2023-09-04",
+      "repositories": [
+        {
+          "id": "paulmillr/scure-starknet",
+          "url": "https://github.com/paulmillr/scure-starknet"
+        }
+      ],
+      "scopes": []
+    },
+    {
+      "id": "nethermind-starknet-token-distributor-2024-02",
+      "report_file": "2024_02-nethermind-starknet-token-distributor-security-review.md",
+      "title": "NM-0194 Starknet Token Distributor Security Review",
+      "description": "Nethermind security review (NM-0194) for the Starknet Foundation of the Cairo Merkle-tree Distributor contract in the defispring repository, which lets users claim STRK against owner-published Merkle roots. Six Info and Best Practices findings were reported, with fixes reviewed up to commit be3ca1f.",
+      "isRelevant": true,
+      "auditor": "Nethermind",
+      "report_date": "2024-02-22",
+      "repositories": [
+        {
+          "id": "starknetfndn/defispring",
+          "url": "https://github.com/starknetfndn/defispring"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "starknetfndn/defispring",
+          "paths": {
+            "contract/src/contract.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5ca2536c6cfccb7527dd633796d46a0d2f74febd",
+                    "timestamp": "2024-02-14T23:47:15Z",
+                    "url": "https://github.com/starknetfndn/defispring/commit/5ca2536c6cfccb7527dd633796d46a0d2f74febd"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the distributor contract at the initial commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Info"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a20d0be7dc4ab5441770c3cd9a190a9444f1bb3f",
+                    "timestamp": "2024-02-20T05:47:50Z",
+                    "url": "https://github.com/starknetfndn/defispring/commit/a20d0be7dc4ab5441770c3cd9a190a9444f1bb3f"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 7.5 (Best Practices, unchecked token transfer return value); review limited to that fix.",
+                  "follows": "5ca2536c6cfccb7527dd633796d46a0d2f74febd",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c91d05feb3b5b7ca06bce3593144021bac2ebad9",
+                    "timestamp": "2024-02-20T05:59:11Z",
+                    "url": "https://github.com/starknetfndn/defispring/commit/c91d05feb3b5b7ca06bce3593144021bac2ebad9"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 7.4 (Best Practices, import grouping); review limited to that fix.",
+                  "follows": "a20d0be7dc4ab5441770c3cd9a190a9444f1bb3f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5f06c147b42daf3685d3cb9a5f58c67edc757998",
+                    "timestamp": "2024-02-20T07:22:38Z",
+                    "url": "https://github.com/starknetfndn/defispring/commit/5f06c147b42daf3685d3cb9a5f58c67edc757998"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for findings 7.3 (Info, leaf/node hash collision) and 7.6 (Best Practices, Poseidon hashing); Nethermind noted leaves were still hashed with Pedersen and test data was not updated.",
+                  "follows": "c91d05feb3b5b7ca06bce3593144021bac2ebad9",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "be3ca1f2b55e1de94399c29da854adb30184bebc",
+                    "timestamp": "2024-02-21T15:55:47Z",
+                    "url": "https://github.com/starknetfndn/defispring/commit/be3ca1f2b55e1de94399c29da854adb30184bebc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit of the review: follow-up fix for findings 7.3 and 7.6 (Poseidon-hashed leaves, Pedersen tree nodes); review limited to the fixes.",
+                  "follows": "5f06c147b42daf3685d3cb9a5f58c67edc757998",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contract/src/lib.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5ca2536c6cfccb7527dd633796d46a0d2f74febd",
+                    "timestamp": "2024-02-14T23:47:15Z",
+                    "url": "https://github.com/starknetfndn/defispring/commit/5ca2536c6cfccb7527dd633796d46a0d2f74febd"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file (module declarations) at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zksecurity-herodotus-integrity-2024-09",
+      "report_file": "2024_09-zksecurity-herodotus-integrity-cairo-verifier-audit.md",
+      "title": "Audit of Herodotus' Integrity - A Cairo Verifier compatible with Starknet written in Cairo 1",
+      "description": "Four-week zkSecurity audit for Herodotus of Integrity, a Cairo 1 STARK/FRI verifier for Cairo programs deployed on Starknet, checking soundness and divergences from StarkWare's Cairo 0 verifier (cairo-lang v0.13.2, used only as reference) including split contracts, split proofs, Cairo 1 programs and Stone v6 proofs. One High (lack of specification), three Medium and one Low findings were reported without a fix review.",
+      "isRelevant": true,
+      "auditor": "zkSecurity",
+      "report_date": "2024-09-23",
+      "repositories": [
+        {
+          "id": "HerodotusDev/integrity",
+          "url": "https://github.com/HerodotusDev/integrity"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "HerodotusDev/integrity",
+          "paths": {
+            "src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "aa28d4dd0eafe7b0a4109c8a5c81c2dd27d3d6cc",
+                    "timestamp": "2024-09-24T13:40:32Z",
+                    "url": "https://github.com/HerodotusDev/integrity/commit/aa28d4dd0eafe7b0a4109c8a5c81c2dd27d3d6cc"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "All *.cairo files under src, focused on STARK/FRI soundness and divergences from the cairo-lang Cairo 0 verifier. Finding 00 (High, lack of specification) is located project-wide; the Medium findings concern air/public_input, air/layouts/recursive/public_input.cairo and air/layouts, the Low one fri. Severities are given in the zkSecurity web version of the report.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "00"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "abdk-starknet-os-cryptography-2024-11",
+      "report_file": "2024_11-abdk-starknet-os-cryptography-audit.md",
+      "title": "StarkWare Cryptography Audit OS",
+      "description": "ABDK review for StarkWare of the update to the Cairo library and the Starknet OS between cairo-lang v0.10.1 and v0.12.1, covering keccak, Poseidon, secp, Patricia and hash-state library code plus OS contract-class hashing, transaction and syscall execution, state and output. No Critical or Major issues were found; 19 Moderate and 16 Minor recommendations were reported.",
+      "isRelevant": true,
+      "auditor": "ABDK Consulting",
+      "report_date": "2024-11-21",
+      "repositories": [
+        {
+          "id": "starkware-libs/cairo-lang",
+          "url": "https://github.com/starkware-libs/cairo-lang"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "starkware-libs/cairo-lang",
+          "paths": {
+            "src/starkware/cairo/common/builtin_keccak/keccak.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/cairo/common/builtin_poseidon/poseidon.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/cairo_keccak/keccak.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/cairo_secp/constants.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/cairo_secp/ec.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/cairo_secp/signature.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/cairo/common/cairo_secp/field.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/cairo_secp/bigint.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/keccak_utils/keccak_utils.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/cairo_builtins.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/hash_chain.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/hash_state_poseidon.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/cairo/common/hash_state.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/patricia_utils.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/patricia_with_poseidon.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1; ABDK states it did not review the patricia_update_using_update_constants function it re-exports (CVF-34).",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "src/starkware/cairo/common/patricia.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "src/starkware/cairo/common/poseidon_state.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/cairo/common/sponge_as_hash.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/cairo/common/uint256.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/contract_class/compiled_class.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/contract_class/contract_class.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/execution/deprecated_execute_syscalls.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/execution/execute_entry_point.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/execution/execute_syscalls.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/execution/execute_transactions.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/block_context.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/builtins.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/constants.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added between v0.10.1 and v0.12.1, so the whole file was part of the reviewed update.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/contracts.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File listed in scope but deleted between v0.10.1 and v0.12.1 (its logic moved to contract_class/ and execution/); only its removal was part of the reviewed diff and it does not exist at v0.12.1.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/os.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/output.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Minor"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/state.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Review of the file's changes between v0.10.1 and v0.12.1 only.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Moderate"
+                }
+              ]
+            },
+            "src/starkware/starknet/core/os/transactions.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "0ba3ff59c1c86f2a30adc8fd144eaacb22c48ce9",
+                    "start_timestamp": "2022-10-17T19:08:38Z",
+                    "end_commit": "0614f265421735bbb567d9b5897791a51b3705de",
+                    "end_timestamp": "2023-08-07T08:30:26Z",
+                    "url": "https://github.com/starkware-libs/cairo-lang/compare/v0.10.1...v0.12.1"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File listed in scope but deleted between v0.10.1 and v0.12.1 (its logic moved to contract_class/ and execution/); only its removal was part of the reviewed diff and it does not exist at v0.12.1.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zellic-starknet-staking-v1-2024-11",
+      "report_file": "2024_11-zellic-starknet-staking-v1-audit.md",
+      "title": "Starknet Staking Cairo Application Security Audit",
+      "description": "Zellic assessment for StarkWare of the Starknet Staking v1 contracts (staking, pool, reward supplier, minting curve, shared roles/replaceability components and the L1 MintManager/RewardSupplier Solidity contracts) in two review periods, at 1fb6d43 (September 2024) and e4f75ea (November 2024). It reported one Critical, three High, four Medium, four Low and three Informational findings (by impact rating), most fixed in listed commits.",
+      "isRelevant": true,
+      "auditor": "Zellic",
+      "report_date": "2024-11-22",
+      "repositories": [
+        {
+          "id": "starkware-libs/starknet-staking",
+          "url": "https://github.com/starkware-libs/starknet-staking"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "starkware-libs/starknet-staking",
+          "paths": {
+            "workspace/apps/staking/contracts/src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1fb6d430593ac64fbdc886cb165dc2e73353a289",
+                    "timestamp": "2024-09-04T15:51:32Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/1fb6d430593ac64fbdc886cb165dc2e73353a289"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (first review period)",
+                  "coverage": "All *.cairo files under the staking contracts package (report glob apps/staking/contracts/**/*.cairo). Findings 3.2 (High, tx-initiator authentication) in the Staking contract and 3.3 (High) in reward_supplier.cairo; 3.4, 3.5 and 3.6 (Medium impact; 3.6 carries a High severity label with Low likelihood, acknowledged only) in staking.cairo. Ratings follow Zellic's impact rating.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "3.2",
+                    "3.3"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "695e2cad098fc072b6e13fed6cb6ae749c95c846",
+                    "timestamp": "2024-09-09T15:35:07Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/695e2cad098fc072b6e13fed6cb6ae749c95c846"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 3.3 (on_receive sender check in reward_supplier.cairo); review limited to that fix.",
+                  "follows": "1fb6d430593ac64fbdc886cb165dc2e73353a289",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "3.2"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fb6c3a88252b67d3733bb9f71c06091ae0256156",
+                    "timestamp": "2024-09-25T13:12:38Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/fb6c3a88252b67d3733bb9f71c06091ae0256156"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 3.4 (Medium, operational address overwrite in staking.cairo); review limited to that fix.",
+                  "follows": "695e2cad098fc072b6e13fed6cb6ae749c95c846",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "3.2"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c81b5f09200fb47df792a230be5563717710b12",
+                    "timestamp": "2024-10-27T15:48:20Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/2c81b5f09200fb47df792a230be5563717710b12"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 3.2 (removes the Operator contract and tx-initiator authentication in staking.cairo); review limited to that fix.",
+                  "follows": "fb6c3a88252b67d3733bb9f71c06091ae0256156",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "005d8b686b402ae9a2ae03f7a969eabad4a339cf",
+                    "timestamp": "2024-11-06T14:10:50Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/005d8b686b402ae9a2ae03f7a969eabad4a339cf"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 3.7 (Low, governance admin self-revocation), which also touches the staking, pool, reward supplier and minting curve contracts; review limited to that fix.",
+                  "follows": "2c81b5f09200fb47df792a230be5563717710b12",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4f75ea411d1a46abdb5127d0abcc5b3891e9300",
+                    "timestamp": "2024-11-10T18:32:41Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/e4f75ea411d1a46abdb5127d0abcc5b3891e9300"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "second audit (second review period)",
+                  "coverage": "All *.cairo files under apps/staking/contracts/src. Finding 4.1 (High, incorrect reward transfers when switching to an exiting pool) in staking.cairo; 4.2 (Medium) and several Low/Informational findings in staking.cairo, pool.cairo and minting_curve.cairo.",
+                  "follows": "005d8b686b402ae9a2ae03f7a969eabad4a339cf",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "4.1"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c70d5a908827ad155221aa6e880cc87fd3267f86",
+                    "timestamp": "2024-11-12T12:39:56Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/c70d5a908827ad155221aa6e880cc87fd3267f86"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 4.3 (Low, switching delegation to the same pool); review limited to that fix.",
+                  "follows": "e4f75ea411d1a46abdb5127d0abcc5b3891e9300",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "4.1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7a3e786de7a1063c106dfeced24cab8e14f1ae3f",
+                    "timestamp": "2024-11-13T08:43:29Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/7a3e786de7a1063c106dfeced24cab8e14f1ae3f"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 4.5 (Informational, exit window limit); review limited to that fix.",
+                  "follows": "c70d5a908827ad155221aa6e880cc87fd3267f86",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "4.1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eeba818e6445ad10c4c132b6f7d72566d68a7da8",
+                    "timestamp": "2024-11-13T16:28:40Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/eeba818e6445ad10c4c132b6f7d72566d68a7da8"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for findings 4.1 (High) and 4.4 (Low, stale total supply in minting_curve.cairo); review limited to those fixes.",
+                  "follows": "7a3e786de7a1063c106dfeced24cab8e14f1ae3f",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "workspace/packages/contracts/src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1fb6d430593ac64fbdc886cb165dc2e73353a289",
+                    "timestamp": "2024-09-04T15:51:32Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/1fb6d430593ac64fbdc886cb165dc2e73353a289"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (first review period)",
+                  "coverage": "All *.cairo files under the shared contracts package (report glob packages/contracts/**/*.cairo); finding 3.7 (Low) in components/roles/roles.cairo.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "005d8b686b402ae9a2ae03f7a969eabad4a339cf",
+                    "timestamp": "2024-11-06T14:10:50Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/005d8b686b402ae9a2ae03f7a969eabad4a339cf"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 3.7 (roles.cairo, replaceability mock); review limited to that fix.",
+                  "follows": "1fb6d430593ac64fbdc886cb165dc2e73353a289",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "workspace/packages/contracts/src/components/roles": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4f75ea411d1a46abdb5127d0abcc5b3891e9300",
+                    "timestamp": "2024-11-10T18:32:41Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/e4f75ea411d1a46abdb5127d0abcc5b3891e9300"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "second audit (second review period)",
+                  "coverage": "All *.cairo files in components/roles.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "workspace/packages/contracts/src/components/replaceability": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4f75ea411d1a46abdb5127d0abcc5b3891e9300",
+                    "timestamp": "2024-11-10T18:32:41Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/e4f75ea411d1a46abdb5127d0abcc5b3891e9300"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "second audit (second review period)",
+                  "coverage": "All *.cairo files in components/replaceability.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "workspace/packages/contracts/src/types/time.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4f75ea411d1a46abdb5127d0abcc5b3891e9300",
+                    "timestamp": "2024-11-10T18:32:41Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/e4f75ea411d1a46abdb5127d0abcc5b3891e9300"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "second audit (second review period)",
+                  "coverage": "Full review of the file.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eeba818e6445ad10c4c132b6f7d72566d68a7da8",
+                    "timestamp": "2024-11-13T16:28:40Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/eeba818e6445ad10c4c132b6f7d72566d68a7da8"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "The fix commit for findings 4.1 and 4.4 also modifies this file; review limited to that fix.",
+                  "follows": "e4f75ea411d1a46abdb5127d0abcc5b3891e9300",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "workspace/apps/staking/solidity/MintManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1fb6d430593ac64fbdc886cb165dc2e73353a289",
+                    "timestamp": "2024-09-04T15:51:32Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/1fb6d430593ac64fbdc886cb165dc2e73353a289"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "initial audit (first review period)",
+                  "coverage": "Not in the listed first-period scope globs, but the report's finding 3.1 (Critical, no-op onlyAllowanceGovernor/onlyStopGovernor modifiers) targets this L1 MintManager contract.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "3.1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "workspace/apps/staking/solidity/stake/MintManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e8e2ab58720baa646642764cb101e0e8e16623fc",
+                    "timestamp": "2024-10-08T11:47:34Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/e8e2ab58720baa646642764cb101e0e8e16623fc"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Fix commit for finding 3.1 (MintManager moved to solidity/stake/ and given role-based access control); review limited to that fix.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "workspace/apps/staking/L1/starkware/solidity/stake": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e4f75ea411d1a46abdb5127d0abcc5b3891e9300",
+                    "timestamp": "2024-11-10T18:32:41Z",
+                    "url": "https://github.com/starkware-libs/starknet-staking/commit/e4f75ea411d1a46abdb5127d0abcc5b3891e9300"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "second audit (second review period)",
+                  "coverage": "All *.sol files in the L1 stake directory (MintManager, PeriodMintLimit, RewardSupplier and related); finding 4.8 (Informational) in PeriodMintLimit.sol.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cairosecurityclan-starknet-utils-v1-2025-05",
+      "report_file": "2025_05-cairosecurityclan-starkware-starknet-utils-v1-audit.md",
+      "title": "Starkware Utils Security Review",
+      "description": "Cairo Security Clan security review of the starkware-starknet-utils shared Cairo library (deposit, nonce, pausable and request-approvals components, math, trace, iterable map, message hash and time types) at 43451ba, with fixes at 142ba4f. Two Informational and one Best Practices finding were reported, all in the Deposit component.",
+      "isRelevant": true,
+      "auditor": "Cairo Security Clan",
+      "report_date": "2025-05-05",
+      "repositories": [
+        {
+          "id": "starkware-libs/starkware-starknet-utils",
+          "url": "https://github.com/starkware-libs/starkware-starknet-utils"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "starkware-libs/starkware-starknet-utils",
+          "paths": {
+            "packages/utils/src/components.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/constants.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/erc20_mocks.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/errors.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/interfaces.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/iterable_map.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/lib.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/math.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/message_hash.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/tests.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/trace.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/types.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/utils.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/deposit/deposit.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "142ba4fd8525368690969f623c682e33230ce866",
+                    "timestamp": "2025-04-28T10:27:35Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/142ba4fd8525368690969f623c682e33230ce866"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit with the fixes for findings 6.1.2 (Informational, unchecked ERC20 transfer return values) and 6.2.1 (Best Practices, missing register_token event); review limited to those fixes.",
+                  "follows": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/deposit/errors.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "142ba4fd8525368690969f623c682e33230ce866",
+                    "timestamp": "2025-04-28T10:27:35Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/142ba4fd8525368690969f623c682e33230ce866"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit with the fixes for findings 6.1.2 (Informational, unchecked ERC20 transfer return values) and 6.2.1 (Best Practices, missing register_token event); review limited to those fixes.",
+                  "follows": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/deposit/events.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "142ba4fd8525368690969f623c682e33230ce866",
+                    "timestamp": "2025-04-28T10:27:35Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/142ba4fd8525368690969f623c682e33230ce866"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Final commit with the fixes for findings 6.1.2 (Informational, unchecked ERC20 transfer return values) and 6.2.1 (Best Practices, missing register_token event); review limited to those fixes.",
+                  "follows": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/deposit/interface.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/nonce/interface.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/nonce/mock_contract.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/nonce/nonce.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/nonce/test.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/pausable/interface.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/pausable/pausable.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/request_approvals/errors.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/request_approvals/interface.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/request_approvals/request_approvals.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/deposit.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/nonce.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/pausable.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/components/request_approvals.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/interfaces/identity.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/interfaces/mintable_token.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/math/abs.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/math/fraction.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/math/utils.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/trace/errors.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/trace/mock.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/trace/test.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/trace/trace.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/types/time.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/types/time/errors.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/utils/src/types/time/time.cairo": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1",
+                    "timestamp": "2025-03-27T07:56:33Z",
+                    "url": "https://github.com/starkware-libs/starkware-starknet-utils/commit/43451ba97e2bbcffa34c1cf984b75cf1c92f6fa1"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "security review",
+                  "coverage": "Full review of the file at the initial commit.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

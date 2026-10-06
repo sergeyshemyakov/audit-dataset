@@ -1,0 +1,410 @@
+{
+  "schema_version": "1.4.0",
+  "project": "railgun",
+  "reports": [
+    {
+      "id": "zokyo-railgun-logic-2022-04",
+      "report_file": "2022_04-zokyo-railgun-logic-audit.md",
+      "title": "Railgun Smart Contract Audit",
+      "description": "Zokyo review of the RAILGUN privacy pool logic contracts (Globals, Snark, Commitments, Verifier, Poseidon, TokenBlacklist, RailgunLogic) at a single commit. Only two informational findings were reported, both left unresolved.",
+      "isRelevant": true,
+      "auditor": "Zokyo",
+      "report_date": "2022-04-20",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/logic/Globals.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62401e1a64b9af968d85b8f5347f1a72cc56862c",
+                    "timestamp": "2022-04-18T10:11:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the audited commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            },
+            "contracts/logic/Snark.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62401e1a64b9af968d85b8f5347f1a72cc56862c",
+                    "timestamp": "2022-04-18T10:11:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the audited commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Commitments.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62401e1a64b9af968d85b8f5347f1a72cc56862c",
+                    "timestamp": "2022-04-18T10:11:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the audited commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Verifier.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62401e1a64b9af968d85b8f5347f1a72cc56862c",
+                    "timestamp": "2022-04-18T10:11:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the audited commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/Poseidon.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62401e1a64b9af968d85b8f5347f1a72cc56862c",
+                    "timestamp": "2022-04-18T10:11:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the audited commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/TokenBlacklist.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62401e1a64b9af968d85b8f5347f1a72cc56862c",
+                    "timestamp": "2022-04-18T10:11:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the audited commit; the report lists the file as 'RokenBlacklist.sol' (typo).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/RailgunLogic.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "62401e1a64b9af968d85b8f5347f1a72cc56862c",
+                    "timestamp": "2022-04-18T10:11:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the audited commit.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Informational"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hashcloak-railgun-v2-circuits-governance-2022-08",
+      "report_file": "2022_08-hashcloak-railgun-v2-circuits-and-governance-review.md",
+      "title": "Railgun v2 Circuits and Governance Review",
+      "description": "HashCloak review of the RAILGUN v2 circom circuits (March 2022) and of the GovernorRewards and Voting Solidity contracts (August 2022). It reports 3 High, 1 Low and 3 Informational findings, all stated as resolved without a fix commit.",
+      "isRelevant": true,
+      "auditor": "HashCloak",
+      "report_date": "2022-08-29",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/circuits-v2",
+          "url": "https://github.com/Railgun-Privacy/circuits-v2"
+        },
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/circuits-v2",
+          "paths": {
+            "src": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43",
+                    "timestamp": "2022-03-18T09:00:45Z",
+                    "url": "https://github.com/Railgun-Privacy/circuits-v2/commit/67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Review of the v2 joinsplit circuits and libraries under src (March 22-29, 2022); findings concern joinsplit.circom and public-input-hash.circom and none of them is attributed High.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/governance/Voting.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b74eeb69ca2614212c8060a3460fd05c28bb17e3",
+                    "timestamp": "2022-08-22T03:27:09Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/b74eeb69ca2614212c8060a3460fd05c28bb17e3"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (August 22-29, 2022); three High access-control findings (setVotingKey, callVote, executeProposal callable by anyone) plus a vote front-running finding, all stated as resolved without a fix revision.",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "SetVotingKey in Voting.sol can be set by anyone",
+                    "CallVote in Voting.sol can be called by anyone",
+                    "ExecuteProposal in Voting.sol can be called by anyone"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "contracts/treasury/GovernorRewards.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b74eeb69ca2614212c8060a3460fd05c28bb17e3",
+                    "timestamp": "2022-08-22T03:27:09Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/b74eeb69ca2614212c8060a3460fd05c28bb17e3"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review (August 22-29, 2022); no findings are located in this file. The executive summary calls the treasury scope 'Treasury.sol' but the scope list names GovernorRewards.sol.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zokyo-railgun-voting-2022-09",
+      "report_file": "2022_09-zokyo-railgun-voting-audit.md",
+      "title": "RAILGUN Smart Contract Audit (Voting)",
+      "description": "Zokyo review of the RAILGUN governance Voting contract. Only low and informational findings were reported, which were resolved or acknowledged after a fix review.",
+      "isRelevant": true,
+      "auditor": "Zokyo",
+      "report_date": "2022-09-14",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/governance/Voting.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d73c1da62c624fe083417342ce3e64748572bde9",
+                    "timestamp": null,
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/d73c1da62c624fe083417342ce3e64748572bde9"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the stated last commit; low and informational findings were resolved or acknowledged after a fix review whose revision is not stated.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Low"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zokyo-railgun-smart-wallet-2022-12",
+      "report_file": "2022_12-zokyo-railgun-smart-wallet-audit.md",
+      "title": "Railgun Smart Contract Audit (RailgunSmartWallet)",
+      "description": "Zokyo review of the RAILGUN V2 logic upgrade: Commitments, RailgunLogic and the new RailgunSmartWallet contract. Medium and informational findings were reported, with the Medium ones resolved.",
+      "isRelevant": true,
+      "auditor": "Zokyo",
+      "report_date": "2022-12-21",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/logic/Commitments.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4385ec73bf7d0da283123e8a3ac3900216cfc3f0",
+                    "timestamp": "2022-11-12T23:05:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/4385ec73bf7d0da283123e8a3ac3900216cfc3f0"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the stated last commit.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/logic/RailgunLogic.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4385ec73bf7d0da283123e8a3ac3900216cfc3f0",
+                    "timestamp": "2022-11-12T23:05:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/4385ec73bf7d0da283123e8a3ac3900216cfc3f0"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the stated last commit; one Medium finding (unshield preimage validation) resolved and informational storage-layout findings, without a stated fix revision.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/logic/RailgunSmartWallet.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4385ec73bf7d0da283123e8a3ac3900216cfc3f0",
+                    "timestamp": "2022-11-12T23:05:11Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/4385ec73bf7d0da283123e8a3ac3900216cfc3f0"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the stated last commit; one Medium finding (re-entrancy in transact) resolved without a stated fix revision.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zokyo-railgun-arbitrum-governance-2023-02",
+      "report_file": "2023_02-zokyo-railgun-arbitrum-l1-l2-governance-audit.md",
+      "title": "Railgun Smart Contract Audit (Arbitrum L1-L2 Governance)",
+      "description": "Zokyo review of the Sender (Ethereum) and Executor (Arbitrum) contracts that relay RAILGUN governance tasks from L1 to L2. Medium, low and informational findings were reported and mostly resolved.",
+      "isRelevant": true,
+      "auditor": "Zokyo",
+      "report_date": "2023-02-03",
+      "repositories": [
+        {
+          "id": "Railgun-Privacy/contract",
+          "url": "https://github.com/Railgun-Privacy/contract"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Railgun-Privacy/contract",
+          "paths": {
+            "contracts/governance/arbitrum/Sender.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a49a82d1589426ece9f6b463c51635002f542e65",
+                    "timestamp": "2023-01-24T01:04:27Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/a49a82d1589426ece9f6b463c51635002f542e65"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the stated last commit; Medium centralization-risk finding resolved by planned governance ownership, other fixes reviewed without a stated fix revision.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            },
+            "contracts/governance/arbitrum/Executor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a49a82d1589426ece9f6b463c51635002f542e65",
+                    "timestamp": "2023-01-24T01:04:27Z",
+                    "url": "https://github.com/Railgun-Privacy/contract/commit/a49a82d1589426ece9f6b463c51635002f542e65"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full file review at the stated last commit; Medium canExecute ambiguity finding resolved, other fixes reviewed without a stated fix revision.",
+                  "major_findings": 0,
+                  "highest_reported_finding_severity": "Medium"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

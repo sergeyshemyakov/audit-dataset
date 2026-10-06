@@ -1,0 +1,2152 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Linea Verifier Audit</title>
+    
+    <link rel="shortcut icon" href="https://www.openzeppelin.com/hubfs/openzeppelin-favicon-2.png">   
+    <meta name="description" content="The Linea blockchain (L2) is a ZK-rollup on top of the Ethereum mainnet (L1). The L1 periodically receives the latest L2 state, along with a succinct proof that the state transition is the result of the execution of a known list of transactions. This is achieved using a variant of the PLONK algorithm, and the code under review implements the verifier deployed to L1. | Smart Contracts Audit">
+    
+    
+    
+    
+    <script src="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/179008243005/1788287202325/template_jquery.min.js"></script>
+    
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','GTM-W9X5Q6F');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:description" content="The Linea blockchain (L2) is a ZK-rollup on top of the Ethereum mainnet (L1). The L1 periodically receives the latest L2 state, along with a succinct proof that the state transition is the result of the execution of a known list of transactions. This is achieved using a variant of the PLONK algorithm, and the code under review implements the verifier deployed to L1.">
+    <meta property="og:title" content="Linea Verifier Audit">
+    <meta name="twitter:description" content="The Linea blockchain (L2) is a ZK-rollup on top of the Ethereum mainnet (L1). The L1 periodically receives the latest L2 state, along with a succinct proof that the state transition is the result of the execution of a known list of transactions. This is achieved using a variant of the PLONK algorithm, and the code under review implements the verifier deployed to L1.">
+    <meta name="twitter:title" content="Linea Verifier Audit">
+
+    
+
+    
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67472537945/1788287198868/template_main.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67472687930/1788287197592/template_theme-overrides.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/191486630025/1789648897909/module_Announcement_Banner.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175205469193/1788958259824/module_Navbar_-_Live.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/195607353687/1764794536989/module_NEWS_Content_Subnavbar.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194758992989/1764795450184/module_NEWS_Blog_Post_Title.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194756946478/1758641063467/module_NEWS_Blog_Post_Content.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175628308257/1788958455803/module_Footer_-_Live.min.css">
+    <script type="application/ld+json">
+{
+  "mainEntityOfPage" : {
+    "@type" : "WebPage",
+    "@id" : "https://www.openzeppelin.com/news/linea-verifier-audit-1"
+  },
+  "author" : {
+    "name" : "OpenZeppelin Security",
+    "url" : "https://www.openzeppelin.com/news/author/openzeppelin-security",
+    "@type" : "Person"
+  },
+  "headline" : "Linea Verifier Audit",
+  "datePublished" : "2023-11-03T15:11:05.000Z",
+  "dateModified" : "2025-08-26T02:08:13.269Z",
+  "publisher" : {
+    "name" : "OpenZeppelin",
+    "logo" : {
+      "url" : "https://www.openzeppelin.com/hubfs/OZ_logo_color-1.png",
+      "@type" : "ImageObject"
+    },
+    "@type" : "Organization"
+  },
+  "@context" : "https://schema.org",
+  "@type" : "BlogPosting",
+  "image" : [ "https://www.openzeppelin.com/hubfs/Verifier%20Audit.png" ]
+}
+</script>
+
+
+    
+<!--  Added by GoogleAnalytics4 integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+if (!window._hsGoogleConsentRunOnce) {
+  window._hsGoogleConsentRunOnce = true;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': waitForUpdateMillis
+  });
+
+  if (useGoogleConsentModeV2) {
+    _hsp.push(['useGoogleConsentModeV2'])
+  } else {
+    _hsp.push(['addPrivacyConsentListener', function(consent){
+      var hasAnalyticsConsent = consent && (consent.allowed || (consent.categories && consent.categories.analytics));
+      var hasAdsConsent = consent && (consent.allowed || (consent.categories && consent.categories.advertisement));
+
+      gtag('consent', 'update', {
+        'ad_storage': hasAdsConsent ? 'granted' : 'denied',
+        'analytics_storage': hasAnalyticsConsent ? 'granted' : 'denied',
+        'ad_user_data': hasAdsConsent ? 'granted' : 'denied',
+        'ad_personalization': hasAdsConsent ? 'granted' : 'denied'
+      });
+    }]);
+  }
+}
+
+gtag('js', new Date());
+gtag('set', 'developer_id.dZTQ1Zm', true);
+gtag('config', 'G-1LER5JVNB5');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LER5JVNB5"></script>
+
+<!-- /Added by GoogleAnalytics4 integration -->
+
+
+
+
+<meta property="og:image" content="https://www.openzeppelin.com/hubfs/Verifier%20Audit.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+
+<meta name="twitter:image" content="https://www.openzeppelin.com/hubfs/Verifier%20Audit.png">
+
+
+<meta property="og:url" content="https://www.openzeppelin.com/news/linea-verifier-audit-1">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://www.openzeppelin.com/news/linea-verifier-audit-1">
+<meta property="twitter:card" content="summary_large_image">
+
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://www.openzeppelin.com/news/rss.xml">
+<meta name="twitter:domain" content="www.openzeppelin.com">
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en">
+
+
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LER5JVNB5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1LER5JVNB5');
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/132129336476/1788287194541/template_slick.min.css">
+
+
+    
+    <script>
+      window._hsp = window._hsp || [];
+
+      function loadHotjar() {
+        if (window.__hotjarLoaded) return;
+        window.__hotjarLoaded = true;
+
+        (function(h, o, t, j, a, r) {
+          h.hj = h.hj || function() { (h.hj.q = h.hj.q || []).push(arguments); };
+          h._hjSettings = { hjid: 3863160, hjsv: 6 };
+          a = o.getElementsByTagName('head')[0];
+          r = o.createElement('script');
+          r.async = 1;
+          r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+      }
+
+      _hsp.push(['addPrivacyConsentListener', function(consent) {
+        if (consent.categories && consent.categories.analytics) {
+          loadHotjar();
+        }
+      }]);
+
+      _hsp.push(['getPrivacyConsent', function(consent) {
+              if (consent.categories && consent.categories.analytics) {
+          loadHotjar();
+        }
+      }]);
+    </script>
+    
+  <meta name="generator" content="HubSpot"></head>
+  <body class="revamp">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9X5Q6F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="body-wrapper   hs-content-id-142207619238 hs-blog-post hs-blog-id-102321071715 linea-verifier-audit-1">
+      
+      <div data-global-resource-path="oz_2022/templates/partials/header-EA-live.html"><header class="header">
+
+  
+
+
+  
+
+  <div class="container-fluid content-wrapper announcement debug">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+  
+ <div id="hs_cos_wrapper_module_17817100903157" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<div class="header__wrapper notification">
+  <div class="header__container mw-1390 content-wrapper notification-wrapper">
+    <div class="flex-col"><span>S&amp;P Global Enters Agreement to Acquire OpenZeppelin<span class="separator hidden-575">|</span> <span class="register"><a class="notif-link" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">Read the announcement </a></span></span></div>
+  </div>
+</div>
+</div> 
+  
+  
+  <div class="header__wrapper">
+    <div class="header__container mw-1390 content-wrapper">
+
+      
+
+      <div class="header__logo header__logo--main">
+         <a class="light-nav-brand main-brand" href="https://openzeppelin.com"><svg width="161" height="24" viewbox="0 0 161 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path class="text" d="M150.623 19.2842V8.67576H153.205V9.96652H153.351C153.789 9.17996 154.872 8.41357 156.433 8.41357C158.891 8.41357 160.39 10.0875 160.39 12.3464V19.2842H157.683V13.0321C157.683 11.7413 156.829 10.8741 155.58 10.8741C154.268 10.8741 153.33 11.8825 153.33 13.2136V19.2842H150.623Z" fill="#0a0a0a" /> <path class="text" d="M147.871 7.73191C146.892 7.73191 146.205 7.14703 146.205 6.19913C146.205 5.29157 146.892 4.68652 147.871 4.68652C148.85 4.68652 149.537 5.29157 149.537 6.19913C149.537 7.14703 148.85 7.73191 147.871 7.73191ZM146.517 19.2841V8.67569H149.225V19.2841H146.517Z" fill="#0a0a0a" /> <path class="text" d="M135.697 19.5464C132.469 19.5464 130.178 17.2069 130.178 14.0405C130.178 10.6926 132.489 8.41357 135.697 8.41357C139.216 8.41357 141.132 10.9346 141.132 13.9195V14.7464H132.802C132.885 16.3598 134.031 17.4489 135.78 17.4489C137.113 17.4489 138.133 16.8438 138.508 15.9766H141.028C140.487 18.1346 138.529 19.5464 135.697 19.5464ZM132.843 12.8909H138.55C138.425 11.459 137.279 10.5111 135.697 10.5111C134.176 10.5111 133.01 11.5598 132.843 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M117.535 23.2377V8.67576H120.201V10.027H120.347C120.638 9.58332 121.638 8.41357 123.637 8.41357C126.699 8.41357 128.802 10.6321 128.802 13.9396C128.802 17.2472 126.719 19.5464 123.72 19.5464C121.784 19.5464 120.742 18.4976 120.388 17.9128H120.243V23.2377H117.535ZM123.116 17.1665C124.866 17.1665 126.053 15.8556 126.053 13.98C126.053 12.0438 124.866 10.7934 123.096 10.7934C121.305 10.7934 120.18 12.185 120.18 13.98C120.18 15.9564 121.43 17.1665 123.116 17.1665Z" fill="#0a0a0a" /> <path class="text" d="M98.0735 19.5464C94.8455 19.5464 92.5547 17.2069 92.5547 14.0405C92.5547 10.6926 94.8664 8.41357 98.0735 8.41357C101.593 8.41357 103.509 10.9346 103.509 13.9195V14.7464H95.1787C95.2621 16.3598 96.4075 17.4489 98.1568 17.4489C99.4897 17.4489 100.51 16.8438 100.885 15.9766H103.405C102.863 18.1346 100.906 19.5464 98.0735 19.5464ZM95.2204 12.8909H100.927C100.802 11.459 99.6563 10.5111 98.0735 10.5111C96.5533 10.5111 95.387 11.5598 95.2204 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M80.1016 19.2841V16.8025L87.6822 7.23067V7.08469H80.3723V4.68652H91.1393V7.14725L83.5587 16.7191V16.8859H91.1809V19.2841H80.1016Z" fill="#0a0a0a" /> <path class="text" d="M68.9531 19.2842V8.67576H71.5355V9.96652H71.6813C72.1187 9.17996 73.2016 8.41357 74.7635 8.41357C77.221 8.41357 78.7205 10.0875 78.7205 12.3464V19.2842H76.0131V13.0321C76.0131 11.7413 75.1592 10.8741 73.9097 10.8741C72.5977 10.8741 71.6605 11.8825 71.6605 13.2136V19.2842H68.9531Z" fill="#0a0a0a" /> <path class="text" d="M62.1399 19.5464C58.9119 19.5464 56.6211 17.2069 56.6211 14.0405C56.6211 10.6926 58.9328 8.41357 62.1399 8.41357C65.6595 8.41357 67.5755 10.9346 67.5755 13.9195V14.7464H59.2452C59.3285 16.3598 60.4739 17.4489 62.2233 17.4489C63.5561 17.4489 64.5766 16.8438 64.9514 15.9766H67.4714C66.9299 18.1346 64.9723 19.5464 62.1399 19.5464ZM59.2868 12.8909H64.9931C64.8681 11.459 63.7227 10.5111 62.1399 10.5111C60.6197 10.5111 59.4534 11.5598 59.2868 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M43.9805 23.2226V8.63871H46.6462V10.027H46.792C47.0835 9.58332 48.0832 8.41357 50.0824 8.41357C53.1439 8.41357 55.2473 10.6321 55.2473 13.9396C55.2473 17.2472 53.1647 19.5464 50.1658 19.5464C48.2289 19.5464 47.1877 18.4976 46.8336 17.9128H46.6878V23.2226H43.9805ZM49.5618 17.1665C51.3112 17.1665 52.4983 15.8556 52.4983 13.98C52.4983 12.0438 51.3112 10.7934 49.541 10.7934C47.75 10.7934 46.6254 12.185 46.6254 13.98C46.6254 15.9564 47.8749 17.1665 49.5618 17.1665Z" fill="#0a0a0a" /> <path class="text" d="M34.6217 19.5464C30.0464 19.5464 26.6797 16.3069 26.6797 11.9597C26.6797 7.65434 30.068 4.37305 34.6433 4.37305C39.2186 4.37305 42.6069 7.69614 42.6069 11.9597C42.6069 16.2651 39.197 19.5464 34.6217 19.5464ZM34.6433 16.8921C37.5352 16.8921 39.6071 14.8021 39.6071 11.9597C39.6071 9.15914 37.5352 7.02734 34.6433 7.02734C31.7298 7.02734 29.6579 9.15914 29.6579 11.9597C29.6579 14.8021 31.7298 16.8921 34.6433 16.8921Z" fill="#0a0a0a" /> <rect class="text" x="142.51" y="4.625" width="2.62657" height="14.6594" fill="#0a0a0a" /> <path class="text" d="M104.887 23.2377V8.67576H107.552V10.027H107.698C107.99 9.58332 108.989 8.41357 110.989 8.41357C114.05 8.41357 116.154 10.6321 116.154 13.9396C116.154 17.2472 114.071 19.5464 111.072 19.5464C109.135 19.5464 108.094 18.4976 107.74 17.9128H107.594V23.2377H104.887ZM110.468 17.1665C112.217 17.1665 113.405 15.8556 113.405 13.98C113.405 12.0438 112.217 10.7934 110.447 10.7934C108.656 10.7934 107.532 12.185 107.532 13.98C107.532 15.9564 108.781 17.1665 110.468 17.1665Z" fill="#0a0a0a" /> <path d="M0 23.2589C2.58163 18.9332 4.77534 15.3658 7.56356 10.4764C8.54845 8.82648 10.2503 7.80127 12.3512 7.80127H15.6523L6.43351 23.2589H0Z" fill="#2E99FF" /> <path d="M0.03125 0.740234H19.8394L16.4549 6.45503H0.03125V0.740234Z" fill="#4F56FA" /> <path d="M9.95129 19.6998C10.6962 18.4245 11.8935 17.6323 13.5706 17.6323L19.8413 17.6157V23.2593H7.82617C8.57842 22.0099 9.23162 20.9318 9.95129 19.6998Z" fill="#09C2FF" /> </svg></a>
+         <a class="light-nav-brand is-mobile" href="https://openzeppelin.com"><img src="https://www.openzeppelin.com/hubfs/oz-nav-mobile.svg" alt="OpenZeppelin" loading="eager" width="17" height="19"></a>
+        
+      </div>
+
+      
+
+      <div class="header__column">
+        <div id="hs_cos_wrapper_module_175139067533613" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+
+
+<nav class="menu menu-desktop">
+  <div class="box-menu">
+    <ul class="box-menu-list">
+
+      <li class="item services has-child">
+        <a class="services" href="#">Services</a>
+        <div class="sub-nav services">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list">
+              <div class="nav-col-title">Overview</div>
+
+              <a id="security_audits-navbar" href="https://www.openzeppelin.com/security-audits" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/security-audit-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Security Audits</span>
+                </div>
+              </a>
+              <a id="continuous_security_program-navbar" href="https://www.openzeppelin.com/continuous-security-program" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/csm-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Continuous Security Program</span>
+                </div>
+              </a>
+              <a id="security_services-navbar" href="https://www.openzeppelin.com/security-services" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/all-services-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">All Services</span>
+                </div>
+              </a>
+              <div class="nav-col-title second">Security Lifecycle</div>
+              <div class="regular-links">
+                <a href="/security-services#architect">Architect</a>
+                <a href="/security-services#build">Build</a>
+                <a href="/security-services#secure">Secure</a>
+                <a href="/security-services#support">Support</a>
+              </div>
+            </div>
+            <div class="sub-nav-list related-content is-border-left">
+              <a href="www.openzeppelin.com/research#security-audits" class="nav-col-title">Featured Announcement</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/introducing-continuous-security-program">
+                <div class="featured-image-wrapper">
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png" alt="Featured Announcement" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=221&amp;height=124&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=663&amp;height=371&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=884&amp;height=494&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1105&amp;height=618&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1326&amp;height=741&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+
+                </div>
+
+                <div class="post-title">Introducing the OpenZeppelin Continuous Security Program </div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+
+            </div>
+          </div>
+        </div> 
+      </li>
+      <li class="item has-child solutions">
+        <a class="" href="#">Solutions</a>
+        <div class="sub-nav is-solutions">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Financial Institutions</div>
+              <a id="banks-navbar" href="https://www.openzeppelin.com/solutions/banks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/banks-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Banks</span>
+                </div>
+              </a>
+              <a id="asset_managers-navbar" href="https://www.openzeppelin.com/solutions/asset-managers" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/asset-managers-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Asset Managers</span>
+                </div>
+              </a>
+              <a id="payment_networks-navbar" href="https://www.openzeppelin.com/solutions/payment-networks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/payment-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Payment Networks</span>
+                </div>
+              </a>
+              <a id="tokenization_platforms-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/tokenization-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Tokenization Platforms</span>
+                </div>
+              </a>
+              <a id="capital_markets_infrastructure-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/cm-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Capital Markets Infrastructure</span>
+                </div>
+              </a>
+              <a id="fintechs_and_networks-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/fn-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Fintechs &amp; Neobanks</span>
+                </div>
+              </a>
+            </div>
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Networks &amp; Protocols</div>
+              <a id="blockchain-networks-navbar" href="https://www.openzeppelin.com/solutions/blockchain-networks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/bn-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Blockchain Networks</span>
+                </div>
+              </a>
+              <a id="defi_protocols-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/defi-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">DeFi Protocols</span>
+                </div>
+              </a>
+
+            </div>
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Public Sector &amp; Regulators</div>
+              <a id="central_banks-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/cb-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Central Banks</span>
+                </div>
+              </a>
+              <a id="regulators_and_standard_bodies-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/rs-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Regulators &amp; Standards Bodies</span>
+                </div>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </li>
+      <li class="item has-child developers">
+        <a class="products" href="#">Developers</a>
+        <div class="sub-nav developers">
+          <div class="dev-tab-bar">
+            <button class="dev-tab active" data-tab="products">Products</button>
+            <button class="dev-tab" data-tab="blockchains">Networks</button>
+          </div>
+          <div class="panel-track">
+            <div class="panel-slider">
+              <div class="panel-slot">
+                <div class="nav-flex-wrapper is-products">
+                  <div class="sub-nav-list">
+                    <div class="nav-col-title">Smart Contracts</div>
+                    <a id="contracts_library-navbar" href="https://www.openzeppelin.com/solidity-contracts" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contracts%20libraries-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Contracts Libraries</span>
+                        <p>The standard for smart contracts development</p>
+                      </div>
+                    </a>
+                    <a id="contracts_wizard-navbar" href="https://wizard.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contracts%20wizard-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Contracts Wizard</span>
+                        <p>Generate smart contracts interactively</p>
+                      </div>
+                    </a>
+                    <a id="contracts_mcp-navbar" href="https://mcp.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/mcp-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">Contracts MCP</span></div>
+                        <p>Build secure smart contracts with AI</p>
+                      </div>
+                    </a>
+                    <a id="contracts_skills-navbar" href="https://github.com/OpenZeppelin/openzeppelin-skills" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contract-skills-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">Contracts Skills</span><span class="new-tag">New</span></div>
+                        <p>Equip AI agents with secure development skills</p>
+                      </div>
+                    </a>
+                    <a id="upgrades_plugin-navbar" href="https://docs.openzeppelin.com/upgrades-plugins/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/upgrade%20plugins-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Upgrades Plugins</span>
+                        <p>Deploy upgradeable contracts</p>
+                      </div>
+                    </a> 
+                  </div>
+                  <div class="sub-nav-list">
+                    <div class="nav-col-title">Open Source Tools</div>
+                    <a id="relayers-navbar" href="https://www.openzeppelin.com/open-source-stack#operate" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/relayer-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Relayer</span>
+                        <p>Send onchain transactions</p>
+                      </div>
+                    </a>
+                    <a id="monitor-navbar" href="https://www.openzeppelin.com/open-source-stack#operate" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/monitor-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Monitor</span>
+                        <p>Observe smart contract activity </p>
+                      </div>
+                    </a>
+                    <a id="contracts_ui-navbar" href="https://builder.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/ui%20builder-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">UI Builder</span></div>
+                        <p>Spin up a UI for your contracts</p>
+                      </div>
+                    </a>
+                    <a id="safe_utils-navbar" href="https://safeutils.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/safe%20utils-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Safe Utils</span>
+                        <p>Verify Safe transactions before signing</p>
+                      </div>
+                    </a>
+                    <a id="role_manager-navbar" href="https://rolemanager.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/access%20control-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Role Manager</span>
+                        <p>Manage contract roles &amp; permissions</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="sub-nav-list is-border-left pr-32 small-icons">
+                    <div class="top-col">
+                      <div class="nav-col-title">Resources</div>
+                      <a id="documentation-navbar" href="https://docs.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/docs-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Documentation</span>
+                        </div>
+                      </a>
+                      <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Research</span>
+                        </div>
+                      </a>
+
+                      <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/ethernaut-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethernaut CTF</span>
+                        </div>
+                      </a>  
+                      <a id="forum-navbar" href="https://forum.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/forum-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Forum</span>
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                  <div class="bottom-row">
+                    <div class="sub-nav-list large">
+                      <a id="open_source_stack-navbar" href="https://www.openzeppelin.com/open-source-stack" class="sub-nav-item oss-icon">
+                        <div class="nav-icon-wrapper">
+                          <img src="https://www.openzeppelin.com/hubfs/oss-nav-icon-1.svg" role="presentation" loading="eager" width="36" height="36">
+                        </div>
+                        <span class="sub-nav-item-title">Explore the Open Source Stack <span class="hidden-arrow">→</span></span>
+                      </a>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              <div class="panel-slot">
+                <div class="nav-flex-wrapper is-blockchains">
+                  <div class="sub-nav-list is-blockchains">
+                    <div class="nav-col-title">Blockchain Networks</div>
+                    <div class="blockchain-col">
+                      <a id="network_arbitrum-navbar" href="https://www.openzeppelin.com/networks/arbitrum" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/arbitrum-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Arbitrum</span>
+                        </div>
+                      </a>
+                      <a id="network_base-navbar" href="https://www.openzeppelin.com/networks/base" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/base-navv3.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Base</span>
+                        </div>
+                      </a>
+                      <a id="network_canton-navbar" href="https://www.openzeppelin.com/networks/canton" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/canton-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Canton</span>
+                        </div>
+                      </a>
+
+                    </div>
+                    <div class="blockchain-col">
+                      <a id="network_ethereum-navbar" href="https://www.openzeppelin.com/networks/ethereum" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/eth-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethereum</span>
+                        </div>
+                      </a>
+                      <a id="network_linea-navbar" href="https://www.openzeppelin.com/networks/linea" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/linea-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Linea</span>
+                        </div>
+                      </a>
+                      <a id="midnight-navbar" href="https://www.openzeppelin.com/networks/midnight" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/midnight-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Midnight</span>
+                        </div>
+                      </a>
+
+                    </div>
+                    <div class="blockchain-col">
+                      
+                      <a id="network_op_mainnet-navbar" href="https://www.openzeppelin.com/networks/op-mainnet" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/op-mainnet-nav-3.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">OP Mainnet</span>
+                        </div>
+                      </a>
+                      <a id="starknet-navbar" href="https://www.openzeppelin.com/networks/starknet" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/starknet-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Starknet</span>
+                        </div>
+                      </a>
+                      <a id="midnight-navbar" href="https://www.openzeppelin.com/networks/stellar" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/stellar-nav-1.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Stellar</span>
+                        </div>
+                      </a>
+
+
+                    </div>
+                    <div class="blockchain-col">
+                      <a id="midnight-navbar" href="/networks/sui" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/sui-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Sui</span>
+                        </div>
+                      </a>
+                      <a id="zama-navbar" href="https://www.openzeppelin.com/networks/zama" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/zama-nav-1.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Zama</span>
+                        </div>
+                      </a>
+                      <a id="network_zksync-navbar" href="https://www.openzeppelin.com/networks/zksync" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/zksync-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">ZKsync</span>
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                  <div class="sub-nav-list is-border-left pr-32 small-icons">
+                    <div class="top-col">
+                      <div class="nav-col-title">Resources</div>
+                      <a id="documentation-navbar" href="https://docs.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/docs-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Documentation</span>
+                        </div>
+                      </a>
+                      <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Research</span>
+                        </div>
+                      </a>
+
+                      <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/ethernaut-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethernaut CTF</span>
+                        </div>
+                      </a>  
+                      <a id="forum-navbar" href="https://forum.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/forum-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Forum</span>
+                        </div>
+                      </a></div>
+
+                  </div>
+                  <div class="bottom-row">
+                    <div class="sub-nav-list large">
+                      <a id="networks-navbar" href="https://www.openzeppelin.com/networks" class="sub-nav-item networks-icon">
+                        <div class="nav-icon-wrapper">
+                          <img src="https://www.openzeppelin.com/hubfs/networks-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                        </div>
+                        <span class="sub-nav-item-title">Explore all Networks <span class="hidden-arrow">→</span></span>
+                      </a>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </li>
+      
+      
+       
+
+
+      <li class="item has-child research-resources">
+        <a class="research-resources" href="#">Research</a>
+        <div class="sub-nav research-resources">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Insights &amp; Education</div>
+              <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Research</span>
+                </div>
+              </a>
+              <a id="security_audits_research-navbar" href="https://www.openzeppelin.com/research#security-audits" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/sa-nav-research.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Security Audits</span>
+                </div>
+              </a>
+              <a id="customer_stories-navbar" href="https://www.openzeppelin.com/customer-stories" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/customer%20stories-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Customer Stories</span>
+                </div>
+              </a>
+              <a id="newsletter-navbar" href="/newsletter" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/newsletter-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">The Onchain Brief</span>
+                </div>
+              </a>
+              <a id="stats-navbar" href="https://www.openzeppelin.com/stats" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/stats-small.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Stats</span>
+                </div>
+              </a>
+              <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Why OpenZeppelin</span>
+                </div>
+              </a>
+            </div>
+            <div class="sub-nav-list is-border-left">
+              
+              <a href="https://www.openzeppelin.com/news/privacy-in-onchain-finance" class="nav-col-title">Featured Research</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/privacy-in-onchain-finance">
+                <div class="featured-image-wrapper">
+                  
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png" alt="Privacy in Onchain Finance: Balancing Transparency and Confidentiality" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=221&amp;height=124&amp;name=Privacy%20in%20Onchain%20Finance-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=663&amp;height=371&amp;name=Privacy%20in%20Onchain%20Finance-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=884&amp;height=494&amp;name=Privacy%20in%20Onchain%20Finance-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1105&amp;height=618&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1326&amp;height=741&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+                  
+
+                </div>
+
+                <div class="post-title">Privacy in Onchain Finance: Balancing Transparency and Confidentiality</div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+              
+            </div>
+
+
+          </div>
+        </div>
+      </li>
+      <li class="item has-child company">
+        <a class="research-resources" href="#">Company</a>
+        <div class="sub-nav research-resources">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons no-pl">
+              <div class="top-col"><div class="nav-col-title">Resources</div>
+                <a id="about-navbar" href="https://www.openzeppelin.com/about-us" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/about-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">About Us</span>
+                  </div>
+                </a>  
+                <a id="news-navbar" href="https://www.openzeppelin.com/news" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/news-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">News</span>
+                  </div>
+                </a>
+                <a id="careers-navbar" href="https://www.openzeppelin.com/careers" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/careers-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">Careers</span>
+                  </div>
+                </a>
+                <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">Why OpenZeppelin</span>
+                  </div>
+                </a>
+                <a id="faqs-navbar" href="https://www.openzeppelin.com/faqs" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/faqs-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">FAQs</span>
+                  </div>
+                </a>
+              </div>
+               
+
+            </div>
+            <div class="sub-nav-list is-border-left ml-0 is-news">
+
+              
+              <a href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin" class="nav-col-title">Featured News</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">
+                <div class="featured-image-wrapper">
+                  
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png" alt="S&amp;P Global Enters Agreement to Acquire OpenZeppelin" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=221&amp;height=124&amp;name=S%26P_OZ_News-Image-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=663&amp;height=371&amp;name=S%26P_OZ_News-Image-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=884&amp;height=494&amp;name=S%26P_OZ_News-Image-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1105&amp;height=618&amp;name=S%26P_OZ_News-Image-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1326&amp;height=741&amp;name=S%26P_OZ_News-Image-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+                  
+
+                </div>
+
+                <div class="post-title">S&amp;P Global Enters Agreement to Acquire OpenZeppelin</div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+              
+            </div>
+
+
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-buttons">
+    
+    <a id="talk_to_an_expert-navbar" class="button-new" href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar">Talk to an Expert</a>
+    
+  </div>
+</nav>
+
+
+
+<nav id="menu-mobile" class="menu menu-mobile">
+  <div class="h-icon">
+    <div class="h-icon-cont">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <ul class="p-main-nav-mobile-list">
+    <div class="submenus-wrapper">
+      <div class="p-main-submenu developers">
+        <div>
+          <div class="back-button">Developers</div>
+          <div class="dev-tab-bar is-mobile">
+            <button class="dev-tab active" data-tab="products">Products</button>
+            <button class="dev-tab" data-tab="blockchains">Blockchains</button>
+          </div>
+          <div class="panel-mobile is-products is-active">
+            <li class="p-main-submenu-item subtitle first">Overview</li>
+            <li class="p-main-submenu-item ">
+              <a id="open_source_stack-navbar" href="https://www.openzeppelin.com/open-source-stack">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/oss-mobile-icon.svg" role="presentation" loading="eager" width="33" height="33">
+                </div>Explore the Open Source Stack</a>
+            </li>
+            <li class="p-main-submenu-item subtitle">Smart Contracts</li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_library-navbar" href="https://www.openzeppelin.com/solidity-contracts">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/Contracts%20Library-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Libraries</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_wizard-navbar" href="https://wizard.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-wizard-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Wizard</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_mcp-navbar" href="https://mcp.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-mcp-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts MCP</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_mcp-navbar" href="https://github.com/OpenZeppelin/openzeppelin-skills/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contract-skills-nav-icon-mob.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Skills<span class="new-tag">New</span></a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="upgrades_plugin-navbar" href="https://docs.openzeppelin.com/upgrades-plugins/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-upgrades-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Upgrades Plugins</a>
+            </li>
+
+            <li class="p-main-submenu-item subtitle">Open Source Tools</li>
+            <li class="p-main-submenu-item ">
+              <a id="relayers-navbar" href="https://www.openzeppelin.com/open-source-stack#operate">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/relayers-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Relayer</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="monitor-navbar" href="https://www.openzeppelin.com/open-source-stack#operate">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/monitor-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Monitor</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_ui-navbar" href="https://builder.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/transaction-proposal-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>UI Builder</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="safe_utils-navbar" href="https://safeutils.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/safe%20utils-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Safe Utils</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="role_manager-navbar" href="https://rolemanager.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/access-control-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Role Manager</a>
+            </li>
+            <li class="p-main-submenu-item subtitle p-10">Resources</li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="documentation-navbar" href="https://docs.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/docs-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Documentation</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="research-navbar" href="https://www.openzeppelin.com/research">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Research</a>
+            </li>
+
+            <li class="p-main-submenu-item gap-8">
+              <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/etherenaut-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Ethernaut CTF</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="forum-navbar" href="https://forum.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/forum-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Forum</a>
+            </li>
+            
+          </div>
+          <div class="panel-mobile is-blockchains">
+            <li class="p-main-submenu-item subtitle first">Overview</li>
+            <li class="p-main-submenu-item ">
+              <a id="networks-navbar-mobile" href="https://www.openzeppelin.com/networks">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/networks-mobile-icon.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Explore all Networks</a>
+            </li>
+            <li class="p-main-submenu-item subtitle">Networks</li>
+
+            <div class="blockchains-wrapper">
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_arbitrum-navbar" href="https://www.openzeppelin.com/networks/arbitrum">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Arbitrum-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Arbitrum</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_base-navbar" href="https://www.openzeppelin.com/networks/base">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Base-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Base</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_canton-navbar" href="/networks/canton">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/canton-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Canton</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_ethereum-navbar" href="https://www.openzeppelin.com/networks/ethereum">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Ethernaut-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Ethereum</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_linea-navbar" href="https://www.openzeppelin.com/networks/linea">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Linea-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Linea</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_midnight-navbar" href="https://www.openzeppelin.com/networks/midnight">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/midnight-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Midnight</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_op-mainnet-navbar" href="https://www.openzeppelin.com/networks/op-mainnet">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Op%20Mainnet-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>OP Mainnet</a>
+              </li>
+              
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_starknet-navbar" href="https://www.openzeppelin.com/networks/starknet">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/starknet-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Starknet</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_stellar-navbar" href="https://www.openzeppelin.com/networks/stellar">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/stellar-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Stellar</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_sui-navbar" href="/networks/sui">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/sui-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Sui</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_zama-navbar" href="https://www.openzeppelin.com/networks/zama">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/zama-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Zama</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_zksync-navbar" href="https://www.openzeppelin.com/networks/zksync">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/ZKsync-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>ZKsync</a>
+              </li>
+            </div>
+            <li class="p-main-submenu-item subtitle p-10">Resources</li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="documentation-navbar" href="https://docs.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/docs-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Documentation</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="research-navbar" href="https://www.openzeppelin.com/research">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Research</a>
+            </li>
+
+            <li class="p-main-submenu-item gap-8">
+              <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/etherenaut-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Ethernaut CTF</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="forum-navbar" href="https://forum.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/forum-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Forum</a>
+            </li>
+            
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="p-main-submenu services">
+        <div>
+          <div class="back-button">Services</div>
+          <li class="p-main-submenu-item subtitle first">Overview</li>
+          <li class="p-main-submenu-item ">
+            <a id="security_audits-navbar" href="https://www.openzeppelin.com/security-audits">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/security-audits-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Security Audits</a>
+
+          </li>
+          <li class="p-main-submenu-item ">
+            <a id="continuous_security_program-navbar" href="https://www.openzeppelin.com/continuous-security-program">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/csm-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Continuous Security Program</a>
+
+          </li>
+          <li class="p-main-submenu-item ">
+            <a id="security_services-navbar" href="https://www.openzeppelin.com/security-services">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/all-services-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>All Services</a>
+
+          </li>
+          <li class="p-main-submenu-item subtitle">Security Lifecycle</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#architect">
+              Architect</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#build">
+              Build</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#secure">
+              Secure</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#support">
+              Support</a>
+          </li>
+
+
+          <li class="p-main-submenu-item subtitle">Featured Announcement</li>
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/introducing-continuous-security-program">
+            <div class="featured-image-wrapper">
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png" alt="Introducing the OpenZeppelin Continuous Security Program" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=221&amp;height=124&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=663&amp;height=371&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=884&amp;height=494&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1105&amp;height=618&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1326&amp;height=741&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+            </div>
+            <div class="post-title">Introducing the OpenZeppelin Continuous Security Program  <br>→</div>
+
+          </a>
+        </div>
+
+      </div>
+      
+      
+      <div class="p-main-submenu solutions">
+        <div>
+          <div class="back-button">Solutions</div>
+          <li class="p-main-submenu-item subtitle first p-10">Financial Institutions</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="banks-navbar" href="https://www.openzeppelin.com/solutions/banks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/banks-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Banks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="asset_managers-navbar" href="https://www.openzeppelin.com/solutions/asset-managers">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/asset-managers-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Asset Managers</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="payment_networks-navbar" href="https://www.openzeppelin.com/solutions/payment-networks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/payment-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Payment Networks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="tokenization_platforms-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/tokenization-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Tokenization Platforms</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="capital_markets_infrastructure-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/cm-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Capital Markets Infrastructure</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="fintechs_and_neobanks-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/fn-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Fintechs &amp; Neobanks</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Networks &amp; Protocols</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="blockchain_networks-navbar" href="https://www.openzeppelin.com/solutions/blockchain-networks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/bn-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Blockchain Networks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="defi_protocols-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/defi-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>DeFi Protocols</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Public Sector &amp; Regulators</li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="central_banks-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/cb-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Central Banks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="regulators_and_standards_bodies-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/rs-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Regulators &amp; Standards Bodies</a>
+          </li>
+        </div>
+      </div>
+      <div class="p-main-submenu research">
+        <div>
+          <div class="back-button">Research</div>
+          <li class="p-main-submenu-item subtitle first p-10">Insights &amp; Education</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="https://www.openzeppelin.com/research">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Research</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research_security_audits-navbar" href="https://www.openzeppelin.com/research#security-audits">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/sa-nav-research-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Security Audits</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="customer_stories-navbar" href="https://www.openzeppelin.com/customer-stories">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/customer-stories-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Customer Stories</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="newsletter-navbar" href="/newsletter">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/newsletter-nav-icon-mobile-2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>The Onchain Brief</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8">
+            <a id="stats-navbar" href="https://www.openzeppelin.com/stats">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/stats-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Stats</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8">
+            <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Why OpenZeppelin</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Featured Research</li>
+          
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/privacy-in-onchain-finance">
+            <div class="featured-image-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png" alt="Privacy in Onchain Finance: Balancing Transparency and Confidentiality" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=221&amp;height=124&amp;name=Privacy%20in%20Onchain%20Finance-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=663&amp;height=371&amp;name=Privacy%20in%20Onchain%20Finance-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=884&amp;height=494&amp;name=Privacy%20in%20Onchain%20Finance-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1105&amp;height=618&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1326&amp;height=741&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+              
+
+            </div>
+
+            <div class="post-title">Privacy in Onchain Finance: Balancing Transparency and Confidentiality <br>→</div>
+
+          </a>
+          
+        </div>
+      </div>
+      <div class="p-main-submenu company">
+        <div>
+          <div class="back-button">Company</div>
+          <li class="p-main-submenu-item subtitle first p-10">Resources</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="about-navbar" href="https://www.openzeppelin.com/about-us">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/about-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>About Us</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="news-navbar" href="https://www.openzeppelin.com/news">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/news-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>News</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="careers-navbar" href="https://www.openzeppelin.com/careers">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/careers-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Careers</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Why OpenZeppelin</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="faqs-navbar" href="https://www.openzeppelin.com/faqs">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/faqs-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>FAQs</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Featured News</li>
+          
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">
+            <div class="featured-image-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png" alt="S&amp;P Global Enters Agreement to Acquire OpenZeppelin" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=221&amp;height=124&amp;name=S%26P_OZ_News-Image-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=663&amp;height=371&amp;name=S%26P_OZ_News-Image-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=884&amp;height=494&amp;name=S%26P_OZ_News-Image-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1105&amp;height=618&amp;name=S%26P_OZ_News-Image-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1326&amp;height=741&amp;name=S%26P_OZ_News-Image-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+              
+
+            </div>
+
+            <div class="post-title">S&amp;P Global Enters Agreement to Acquire OpenZeppelin <br>→</div>
+
+          </a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="main-menu-wrapper">
+      <div class="main-items">
+        <li class="p-main-nav-item services">
+          <a href="#">Services</a>
+
+        </li>
+        <li class="p-main-nav-item solutions">
+          <a href="#">Solutions</a>
+
+        </li>
+
+        <li class="p-main-nav-item developers">
+          <a href="#">Developers</a>
+
+        </li>
+        
+
+        <li class="p-main-nav-item research">
+          <a href="#">Research</a>
+
+        </li>
+        <li class="p-main-nav-item company">
+          <a href="#">Company</a>
+
+        </li>
+      </div>
+
+      <div class="flex is-ac is-buttons">
+        <a id="talk_to_an_expert-navbar" class="button-new" href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar">Talk to an Expert</a>
+        
+      </div>
+    </div>
+  </ul>
+</nav></div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="container-fluid content-wrapper">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+</header></div>
+      
+
+      
+
+      <main id="main-content" class="body-container-wrapper">
+        
+
+
+<div class="blog-post-EA">
+  
+  <section id="sub-navigation">
+  <div class="container-nav">
+    <div class="sub-nav">
+      <div class="sub-links">
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+        <a href="https://www.openzeppelin.com/research">Research</a> /
+        <a href="https://www.openzeppelin.com/research#Security-Audits" class="category-link">Security Audits</a>
+        
+        
+
+        <span class="hidden-991">/</span>
+        <div class="is-active hidden-991 blog-post-title">Linea Verifier Audit</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <section id="article-title">
+  <div class="announcement-spacer"></div>
+  <div class="container-920">
+    <div class="post-meta">
+      <span class="category">
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+
+        
+        <a href="https://www.openzeppelin.com/research#Security-Audits">Security Audits</a>
+        
+      </span>
+
+      
+    </div>
+    <h1 class="article-name all-h1"><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">Linea Verifier Audit</span></h1>
+  </div>
+</section>
+
+  <section id="article">
+  <div class="container-1430">
+    <div class="article-flex">
+      <div class="col-left">
+        
+        <div class="index-list">
+          <p class="title">Table of Content</p>
+        </div>
+        
+
+      </div>
+      <div class="col-middle article-body">
+        <div class="article-meta">
+          <p class="date"><span class="visible-767">- </span>November 3, 2023 
+          </p>
+          <div class="author-wrapper">
+            <div class="avatar-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=22&amp;height=22&amp;name=oz-profile-1.png" alt="OpenZeppelin Security" loading="eager" width="22" height="22" srcset="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=11&amp;height=11&amp;name=oz-profile-1.png 11w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=22&amp;height=22&amp;name=oz-profile-1.png 22w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=33&amp;height=33&amp;name=oz-profile-1.png 33w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=44&amp;height=44&amp;name=oz-profile-1.png 44w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=55&amp;height=55&amp;name=oz-profile-1.png 55w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=66&amp;height=66&amp;name=oz-profile-1.png 66w" sizes="(max-width: 22px) 100vw, 22px">
+              
+              <p class="author-name">OpenZeppelin Security</p>
+            </div>
+            <div class="avatar-meta">
+              <div class="avatar-hidden">
+                
+                <img src="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=40&amp;height=40&amp;name=oz-profile-1.png" alt="OpenZeppelin Security" loading="lazy" width="40" height="40" srcset="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=20&amp;height=20&amp;name=oz-profile-1.png 20w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=40&amp;height=40&amp;name=oz-profile-1.png 40w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=60&amp;height=60&amp;name=oz-profile-1.png 60w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=80&amp;height=80&amp;name=oz-profile-1.png 80w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=100&amp;height=100&amp;name=oz-profile-1.png 100w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=120&amp;height=120&amp;name=oz-profile-1.png 120w" sizes="(max-width: 40px) 100vw, 40px">
+                
+              </div>
+              <div class="author-info">
+                <p class="author-name">OpenZeppelin Security</p>
+                
+                <p class="author-role">Security Audits</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-content">
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p>&nbsp;</p>
+<!--more-->
+<h2 id="table-of-contents">Table of Contents</h2>
+<div class="toc">
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#scope">Scope</a></li>
+<li><a href="#system-overview">System Overview</a>
+<ul>
+<li><a href="#transpilation">Transpilation</a></li>
+<li><a href="#plonk-modification">PLONK Modification</a></li>
+</ul>
+</li>
+<li><a href="#security-model-and-trust-assumptions">Security Model and Trust Assumptions</a></li>
+<li><a href="#critical-severity">Critical Severity</a>
+<ul>
+<li><a href="#incorrect-randomness-computation-allows-proof-forgery">Incorrect Randomness Computation Allows Proof Forgery</a></li>
+</ul>
+</li>
+<li><a href="#medium-severity">Medium Severity</a>
+<ul>
+<li><a href="#missing-commitment-in-challenge-computation">Missing Commitment in Challenge Computation</a></li>
+<li><a href="#deviations-from-so-far-digest-model">Deviations From So-Far-Digest Model</a></li>
+<li><a href="#missing-validations">Missing Validations</a></li>
+</ul>
+</li>
+<li><a href="#low-severity">Low Severity</a>
+<ul>
+<li><a href="#incomplete-specialization-of-custom-gate-support">Incomplete Specialization of Custom Gate Support</a></li>
+<li><a href="#inconsistent-error-handling">Inconsistent Error Handling</a></li>
+<li><a href="#inconsistent-memory-management">Inconsistent Memory Management</a></li>
+<li><a href="#misleading-documentation">Misleading Documentation</a></li>
+<li><a href="#missing-docstrings">Missing Docstrings</a></li>
+<li><a href="#implementation-deviates-from-paper">Implementation Deviates From Paper</a></li>
+</ul>
+</li>
+<li><a href="#notes-additional-information">Notes &amp; Additional Information</a>
+<ul>
+<li><a href="#complicated-bit-manipulations">Complicated Bit Manipulations</a></li>
+<li><a href="#constants-not-using-upper_case-format">Constants Not Using UPPER_CASE Format</a></li>
+<li><a href="#magic-numbers">Magic Numbers</a></li>
+<li><a href="#naming-suggestions">Naming Suggestions</a></li>
+<li><a href="#outdated-specification">Outdated Specification</a></li>
+<li><a href="#potentially-unnecessary-computation">Potentially Unnecessary Computation</a></li>
+<li><a href="#reuse-cached-value">Reuse Cached Value</a></li>
+<li><a href="#typographical-errors">Typographical Errors</a></li>
+</ul>
+</li>
+<li><a href="#Recommendations" rel="noopener">Recommendations</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+<h2 id="summary">Summary</h2>
+<!-- @!note Nothing should be updated here except for the timeline dates below -->
+<dl>
+<dt>Type</dt>
+<dd>ZK Rollup</dd>
+<dt>Timeline</dt>
+<dd>From 2023-08-03</dd>
+<dd>To 2023-08-18</dd>
+<dt>Languages</dt>
+<dd>Solidity</dd>
+</dl>
+<!-- split -->
+<dl>
+<dt>Total Issues</dt>
+<dd>18 (11 resolved, 5 partially resolved)</dd>
+<dt>Critical Severity Issues</dt>
+<dd>1 (1 resolved)</dd>
+<dt>High Severity Issues</dt>
+<dd>0 (0 resolved)</dd>
+<dt>Medium Severity Issues</dt>
+<dd>3 (1 resolved, 2 partially resolved)</dd>
+<dt>Low Severity Issues</dt>
+<dd>6 (4 resolved, 1 partially resolved)</dd>
+<dt>Notes &amp; Additional Information</dt>
+<dd>8 (5 resolved, 2 partially resolved)</dd>
+</dl>
+<h2 id="scope">Scope</h2>
+<p>We audited the <a href="https://github.com/Consensys/linea-contracts-fix/tree/04d6677474421239c1f215c5a676223d09266ba4/">Consensys/linea-contracts-fix</a> repository at the <a href="https://github.com/Consensys/linea-contracts-fix/tree/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers">04d6677</a> commit.</p>
+<div class="codehilite">
+<pre><span>&nbsp;</span><code>contracts
+└── verifiers
+    ├── PlonkVerifierFull.sol
+    └── PlonkVerifierFullLarge.sol
+</code></pre>
+</div>
+<h2 id="system-overview">System Overview</h2>
+<p>The <a href="https://docs.linea.build/overview">Linea</a> blockchain (L2) is a ZK-rollup on top of the Ethereum mainnet (L1). The L1 periodically receives the latest L2 state, along with a succinct proof that the state transition is the result of the execution of a known list of transactions. This is achieved using a variant of the <a href="https://eprint.iacr.org/2019/953.pdf">PLONK</a> algorithm, and the code under review implements the verifier deployed to L1.</p>
+<h3 id="transpilation">Transpilation</h3>
+<p>The Solidity code is automatically generated from <a href="https://github.com/ConsenSys/gnark/blob/develop/backend/plonk/bn254/verify.go#L43">gnark</a>, a zk-SNARK Go library used to create circuits. This means that our recommended changes should actually be implemented in the source file or the transpiler. Nevertheless, for simplicity, this report describes the suggested effect on the outputted code.</p>
+<p>One related architectural consideration is that the code makes extensive use of assembly for both low-level memory manipulation and high-level logic. Since the use of assembly discards many safety features provided by Solidity, it should usually be limited to small well-defined code blocks. This would make the code more robust, readable and extensible. However, this may not be practical without significantly modifying the transpiler. Instead, we recommend significantly increasing the test suite to ensure consistency with the specification and validate all expected behaviors.</p>
+<h3 id="plonk-modification">PLONK Modification</h3>
+<p>The verifier code includes a <a href="https://github.com/Consensys/plonk-solidity-audit#custom-gate">custom gate</a>, which is not part of the original PLONK specification. This is an optimization that allows the verifier to independently construct a hash using a subset of the circuit wires, and validate that these match a public input provided by the prover. Thus the circuit itself does not need to include a hash function, which is a costly operation. The Linea team has indicated that the underlying circuit implements the <a href="https://eprint.iacr.org/2022/1633.pdf">Vortex protocol</a> and this hash is used as part of the Fiat-Shamir step.</p>
+<h2 id="security-model-and-trust-assumptions">Security Model and Trust Assumptions</h2>
+<p>The verifier contracts are standalone systems with no inherent trust requirements. Anyone can use them to confirm that the supplied proof is valid for the configured circuit conditions. In practice, the particular verifiers under review should be configured to match a circuit encoding the Linea state transition function. They can then be used by the Linea L1 contracts to validate whether a proposed state root should be accepted.</p>
+<p>However, the configuration is out of scope for the purposes of this audit. Each verifier contract contains a subset of the Structured Reference String, as well as cryptographic parameters and a verifying key that encodes the circuit. These are assumed to be specified safely and correctly. The circuit itself is also out of the scope of this audit and is assumed to function as specified.</p>
+<div style="page-break-after: always;">&nbsp;</div>
+<h2 id="critical-severity">Critical Severity</h2>
+<h3 id="incorrect-randomness-computation-allows-proof-forgery">Incorrect Randomness Computation Allows Proof Forgery</h3>
+<p>The <code>PlonkVerifier</code> contract is called by the rollup to verify the validity proofs associated with blocks of transactions. The <a href="https://github.com/Consensys/linea-contracts-fix/blob/dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b/contracts/verifiers/PlonkVerifierFull.sol#L174"><code>Verify</code></a> function can be called with the proof and the public inputs, and outputs a boolean indicating that the proof is valid for the received public inputs. To do so, the verifier notably <a href="https://github.com/Consensys/linea-contracts-fix/blob/dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b/contracts/verifiers/PlonkVerifierFull.sol#L714">samples a random value</a> <code>u</code> and does a batch evaluation to verify that all the openings match their respective commitments.</p>
+<p>However, <code>u</code> is not sampled randomly (or in practice as the hash of the full transcript), resulting in the possibility of forged proofs passing the verification. More specifically, <code>u</code> does not depend on <code>[W<sub>ζ</sub>]<sub>1</sub></code> and <code>[W<sub>ζω</sub>]<sub>1</sub></code>, meaning that it is possible for a malicious prover to change <code>[W<sub>ζ</sub>]<sub>1</sub></code> and <code>[W<sub>ζω</sub>]<sub>1</sub></code> after seeing the value of <code>u</code>. Here is an example of an attack based on this observation:</p>
+<ol>
+<li>The malicious prover <code>P</code> extracts <code>A = [W<sub>ζ</sub>]<sub>1</sub> + u*[W<sub>ζω</sub>]<sub>1</sub></code> and <code>B = z*[W<sub>ζ</sub>]<sub>1</sub> + uζω*[W<sub>ζω</sub>]<sub>1</sub> + [F]<sub>1</sub> - [E]<sub>1</sub></code> obtained when any valid proof is submitted. <code>A</code> and <code>B</code> are by construction points on the elliptic curve for which <code>e(-A, [x]<sub>2</sub>) * e(B, [1]<sub>2</sub>) == 1</code>.</li>
+<li><code>P</code> sets the public input (or any proof commitment) to an arbitrary value. Any value beside <code>t(ζ)</code>, <code>[W<sub>ζ</sub>]<sub>1</sub></code> and <code>[W<sub>ζω</sub>]<sub>1</sub></code> can be changed.</li>
+<li><code>P</code> computes <code>T = [ r(ζ) + PI(ζ) − ((a(ζ) + βs<sub>σ1</sub>(ζ) + γ)(b(ζ) + βs<sub>σ2</sub>(ζ) + γ)(c(ζ) + γ)z<sub>ω</sub>(ζ))α − L1(ζ)α^2 ] / Z<sub>H</sub>(ζ)</code> following step 8 of the <a href="https://eprint.iacr.org/archive/2019/953/1623868682.pdf">PLONK verifier algorithm</a>. The prover sets <code>t(ζ) = T</code> in the forged proof. This step is required to pass this <a href="https://github.com/Consensys/linea-contracts-fix/blob/dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b/contracts/verifiers/PlonkVerifierFull.sol#L1087">check</a> in the code.</li>
+<li><code>P</code> computes <code>u</code>, <code>ζ</code> and <code>ω</code> as done by the code.</li>
+<li><code>P</code> solves the equations <code>X + u*Y = A</code> and <code>ζ*X + ζωu*Y = C + B</code> obtained by denoting <code>X = [W<sub>ζ</sub>]<sub>1</sub></code> and <code>Y = [W<sub>ζω</sub>]<sub>1</sub></code> taken from step 12 of the verifier algorithm. This system has for solutions <code>[W<sub>ζ</sub>]<sub>1</sub> = X = (-u)*Y + A</code> and <code>[W<sub>ζω</sub>]<sub>1</sub> = Y = 1/(ζu(ω - 1)) * (C + B -ζA)</code>.</li>
+<li><code>P</code> submits the proof to the verifier, replacing <code>t(ζ)</code> by <code>T</code>, and <code>[W<sub>ζ</sub>]<sub>1</sub></code>, <code>[W<sub>ζω</sub>]<sub>1</sub></code> by the values computed in step 5.</li>
+<li>The verifier computes <code>e(-A, [x]<sub>2</sub>) * e(B, [1]<sub>2</sub>) == 1</code> and accepts the proof.</li>
+</ol>
+<p>The core of the attack is the ability of the prover to change <code>[W<sub>ζ</sub>]<sub>1</sub></code> and <code>[W<sub>ζω</sub>]<sub>1</sub></code> after <code>u</code> has been sampled. This attack allows the prover to arbitrarily change the public inputs or any polynomial commitments and still submit a valid proof. In the case of Linea, this could be used by the prover to <a href="https://github.com/Consensys/linea-contracts-fix/blob/dd24dc8acd7f9b58a56caaef68b8b5f4e247c59b/contracts/ZkEvmV2.sol#L239">modify the state root</a> and steal all the assets on the rollup.</p>
+<p>Consider computing <code>u</code> as the hash of the transcript following the PLONK paper.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/30">pull request #30</a>.</em></p>
+<h2 id="medium-severity">Medium Severity</h2>
+<h3 id="missing-commitment-in-challenge-computation">Missing Commitment in Challenge Computation</h3>
+<p>When following the non-interactive version of <a href="https://eprint.iacr.org/2019/953.pdf">PLONK</a> using Fiat-Shamir, the challenges are assumed to be derived from the transcript, defined as "the concatenation of the common preprocessed input, and public input, and the proof elements written by the prover up to a certain point in time". In the code, the following parameters are used to <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L345">compute</a> the <code>γ</code> and <code>β</code> challenges:</p>
+<ul>
+<li>The public inputs</li>
+<li>The commitments to the wire polynomials (<code>[a]<sub>1</sub></code>, <code>[b]<sub>1</sub></code>, <code>[c]<sub>1</sub></code>, <code>[P<sub>i</sub>]<sub>1</sub></code>)</li>
+<li>The commitments to the selector polynomials (<code>[Sσ<sub>1</sub>]<sub>1</sub></code>, <code>[Sσ<sub>2</sub>]<sub>1</sub></code>, <code>[Sσ<sub>3</sub>]<sub>1</sub></code>, <code>[Ql]<sub>1</sub></code>, <code>[Qr]<sub>1</sub></code>, <code>[Qm]<sub>1</sub></code>, <code>[Qo]<sub>1</sub></code>, <code>[Qk]<sub>1</sub></code>)</li>
+</ul>
+<p>However, the commitments to the selector polynomials corresponding to the custom gate <code>[Qci]<sub>1</sub></code> are missing when deriving these challenges. While they are eventually <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L884C9-L885C85">included</a> in the derivation of the <code>v</code> challenge, other challenges (namely <code>γ</code>, <code>β</code>, <code>α</code>, <code>ζ</code> and <code>u</code>) do not depend on them.</p>
+<p>Since they <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L62-L65">are hardcoded</a> anyway, they cannot be used as a free parameter in <a href="https://blog.trailofbits.com/2022/04/13/part-1-coordinated-disclosure-of-vulnerabilities-affecting-girault-bulletproofs-and-plonk/">frozen-heart</a>-style attacks. Nevertheless, this means the system is out of compliance with the security analysis, which undermines the security guarantees.</p>
+<p>Consider including all relevant parameters when deriving these challenges. In particular, consider adding the <code>[Qc<sub>i</sub>]<sub>1</sub></code> commitments, the group parameters (generators, at least <code>[1]<sub>1</sub></code>, <code>[x]<sub>1</sub></code> and <code>[1]<sub>2</sub></code>, modulus and domain size), as well as the number of public inputs and the circuit size. Similarly, the Fiat-Shamir done inside of the circuit should also include all relevant parameters.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/25">pull request #25</a>. The Linea team stated:</em></p>
+<blockquote>
+<p><em>The modifications are that now gamma depends on the Qcp (instead of the commitments to the wires associated with it). Beta is unchanged, and alpha depends on the commitments to the wires associated with the custom gate (it is at this point that the verifier should have sent alpha if the protocol were interactive).</em></p>
+</blockquote>
+<h3 id="deviations-from-so-far-digest-model">Deviations From So-Far-Digest Model</h3>
+<p>We are aware of only two provably secure transformations of a constant round argument of knowledge from its interactive to its non-interactive version. Those transformations are, in the terms used in <a href="https://eprint.iacr.org/2022/1072.pdf">this article</a>, the so-far-transcript (i.e., the Fiat-Shamir transformation in its classical form) and the so-far-digest transformations.</p>
+<p>The PLONK specification chooses pseudorandom challenges using the so-far-transcript method, where each challenge is generated from the content of the entire transcript so far. The Linea verifier uses the newly introduced so-far-digest method, where each challenge is generated only from the previous challenge and subsequent messages. However, there are several deviations:</p>
+<ul>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L867"><code>compute_gamma_kzg</code></a>, corresponding to <code>v</code> in the PLONK specification, should strictly follow the so-far-digest transformation. In particular, it should depend on <code>ζ</code> and all the PLONK prover messages that are output in round 4 (i.e., the respective opening evaluations). Currently, it has several redundant dependencies but does not depend on <code>z(ζω)</code>.</li>
+<li>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L714"><code>random</code> variable used in the KZG opening</a>, corresponding to <code>u</code> in the PLONK specification, should also be computed as any challenge defined by the so-far-digest model. In particular, it should depend on challenge <code>v</code> (not <code>α</code>) and on the two KZG commitments that are output by the PLONK prover in round 5. Moreover, the use of <code>keccak256</code> for computing this challenge should be substituted by the same hash-to-field function as in the rest of the so-far-digest model.</li>
+</ul>
+<p>Note that the definition of a challenge in the so-far-transcript and so-far-digest models is that of randomness computed by a non-interactive prover/verifier in lieu of the public coin randomness computed by an interactive verifier, so <code>u</code> in the PLONK specification is also a challenge.</p>
+<ul>
+<li><code>ζ</code> <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L183">depends</a> on the non-reduced version of <code>α</code>, but in accordance with the so-far-digest transformation we recommend making the dependency directly on <code>α</code>. The same holds for almost all other challenges.</li>
+</ul>
+<p>In summary, in order to fall under the security guarantees of one of the two existing interactive to non-interactive secure transformations for argument systems, once started, it is strongly recommended to strictly follow the so-far-digest transformation without interleaving it with any other possible transformation. Avoiding compliance may lead to transformations without currently explored security proofs and may put the codebase at risk of attacks on the system's soundness.</p>
+<p>Finally, note that we are in contact with the authors of <a href="https://eprint.iacr.org/2022/1072.pdf">this paper</a> with comments and feedback regarding the security proof of the so-far-digest transformation.</p>
+<p><em><strong>Update:</strong> Partially resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/30">pull request #30</a>, except for <code>ζ</code> which still depends on the non-reduced version of <code>α</code>. The issue regarding the computation of <code>random</code> in the second point was spun off as a separate issue during the fix review as the vulnerability was found to be more serious than initially thought.</em></p>
+<h3 id="missing-validations">Missing Validations</h3>
+<p>The <code>Verify</code> function <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L174-L176">performs sanity checks</a> on the inputs, but there are still some validations missing. In particular, it does not confirm the number of public inputs, or whether the commitments correspond to valid elliptic curve points.</p>
+<p>In the interest of reducing the attack surface, consider including these validations. Note that checking that the commitments are valid elliptic curve points is a requirement of the PLONK specification in order to inherit the security proof.</p>
+<p><em><strong>Update:</strong> Partially resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/26">pull request #26</a>. A check to explicitly restrict the number of public inputs was added. Regarding the elliptic curve checks, the Linea team stated:</em></p>
+<blockquote>
+<p><em>It is implicitly tested when the EC precompiles are called - if a point is not on the curve, the precompile will revert. This avoids doing checks each time we verify a proof (there are a lot of points to verify), and the proofs that are received are likely to be correctly formatted so we believe the trade-off is better as it is now.</em></p>
+</blockquote>
+<h2 id="low-severity">Low Severity</h2>
+<h3 id="incomplete-specialization-of-custom-gate-support">Incomplete Specialization of Custom Gate Support</h3>
+<p>The codebase is designed to support an <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L115-L116">arbitrary number of selector gates</a> that are nevertheless <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L69">fixed at compile time</a>.</p>
+<p>However, the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L542"><code>sum_pi_commit</code> function</a> is specialized for the current configuration of one selector gate, which is inconsistent with the rest of the codebase. Moreover, the specialization is incomplete. In particular:</p>
+<ul>
+<li>It <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L552">only hashes the first commitment</a> and ignores any subsequent commitments.</li>
+<li>It unnecessarily <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L554">adds the result to an unspecified value</a>.</li>
+<li>It unnecessarily <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L555">increases a pointer</a> that is never reused.</li>
+<li>It is still named <code>sum</code> even though it does not return a summation.</li>
+</ul>
+<p>Similarly, the <code>compute_gamma_kzg</code> function <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L884-L885">assumes there is only one</a> custom gate, but then <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L898-L906">allows for multiple</a> corresponding openings.</p>
+<p>Consider generalizing the functions to support multiple selector gates. Alternatively, consider explicitly enforcing the single gate requirement and simplifying the functions accordingly.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/27">pull request #27</a>.</em></p>
+<h3 id="inconsistent-error-handling">Inconsistent Error Handling</h3>
+<p>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1216"><code>pow</code></a>, <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L919"><code>compute_gamma_kzg</code></a> and <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L737">batch_verify_multi_points</a> functions all use the <code>eq</code> instruction to check the error flag. To be consistent with the rest of the codebase, consider using the <code>iszero</code> instruction instead.</p>
+<p>In addition, the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L788">final KZG check</a> combines protocol logic and error handling. In particular, it validates the previously saved (quotient polynomial evaluation) status, the success of the precompile call, and the result of the pairing. To be consistent with the rest of the codebase, consider checking the precompile success flag independently and immediately after the call is made.</p>
+<p><em><strong>Update:</strong> Partially resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/17">pull request #17</a>. The <code>check_pairing_kzg</code> function still checks the precompile call success flag in the returned boolean instead of raising an error.</em></p>
+<h3 id="inconsistent-memory-management">Inconsistent Memory Management</h3>
+<p>The codebase adopts a convention where <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L170">the memory at the free memory pointer</a> is reserved for a <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L121-L152">shared state</a>, and the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L171">subsequent block of memory</a> is considered free. When a function wants to reserve additional memory, it explicitly passes a new free memory pointer (e.g., <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L720">here</a>) to the called function.</p>
+<p>However, this violates Solidity's memory model, where reserved memory is "allocated" by updating the free memory pointer. Moreover, the <code>fold_state</code> function <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L806">directly uses</a> a buffer that was constructed in the <code>compute_gamma_kzg</code> function, even though it appears to be in "free" memory under both conventions.</p>
+<p>To improve readability and limit potential inconsistencies, consider allocating memory whenever it is reserved. Additionally, consider explicitly documenting that the code is not <a href="https://docs.soliditylang.org/en/v0.8.19/assembly.html#memory-safety">memory-safe</a>.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/20">pull request #20</a>.</em></p>
+<h3 id="misleading-documentation">Misleading Documentation</h3>
+<p>There are several instances where the codebase's documentation could be improved:</p>
+<ul>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1070">This comment</a> references the Lagrange polynomial at index 1 instead of index 0.</li>
+<li>The explanation for the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L406">"beta"</a> and <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L423">"alpha"</a> string offsets incorrectly references "gamma". Note that the "beta" comment also has the wrong offset.</li>
+<li>The polynomial openings are <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L89">described</a> as "wire values at zeta". It would be more accurate to describe them as "evaluations of wire polynomials at zeta".</li>
+<li>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L615">b0</a> and <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L638">b0 ^ b1</a> comments incorrectly describe them as occupying 64 bytes.</li>
+<li>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1054">comment</a> describing the <code>fold_h</code> function uses <code>m</code> instead of <code>n</code> as the group size.</li>
+<li>The <code>verify_quotient_poly_eval_at_zeta</code> function contains a <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1086">commented-out instruction</a> that does not match the rest of the code.</li>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L665">This comment</a> uses "mPtr[32:]" instead of "mPtr[:32]".</li>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L663">This comment</a> is unclear and incorrectly suggests that "b2" is 16 bytes.</li>
+<li>Some comments could use additional context. For example, <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1067C3-L1071C20">this comment</a> could indicate which step in the paper it corresponds to (step 8) and what it is computing (the <code>t(z)</code> expression).</li>
+</ul>
+<p>Consider updating these comments to improve the clarity of the codebase.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/16">pull request #16</a>.</em></p>
+<h3 id="missing-docstrings">Missing Docstrings</h3>
+<p>The <a href="https://github.com/Consensys/linea-contracts-fix/tree/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers">code under review</a> contains several functions with minimal or missing docstrings, which limits readability. This is compounded by the fact that many functions intermingle protocol logic with low-level memory manipulation in assembly.</p>
+<p>Consider thoroughly documenting all functions (and their parameters). When writing docstrings, consider following the <a href="https://docs.soliditylang.org/en/develop/natspec-format.html">Ethereum Natural Specification Format</a> (NatSpec).</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/18">pull request #18</a>.</em></p>
+<h3 id="implementation-deviates-from-paper">Implementation Deviates From Paper</h3>
+<p>Some operations are done differently in the code compared to what is described in the <a href="https://eprint.iacr.org/archive/2019/953/1585767119.pdf">paper</a>:</p>
+<ul>
+<li>The permutation polynomial is <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1045">defined using the Lagrange polynomial at index 0</a>, which means the interpolation starts at the previous position when compared to the specification.</li>
+<li>Some signs have been inverted, for example when <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1105C35-L1105C66">evaluating the quotient polynomial</a>.</li>
+<li>Some computations are done differently, such as when <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1008">computing the partial opening commitment</a> <code>[D]<sub>1</sub></code>, where the multiplication by <code>v</code> and the addition of <code>u[z]<sub>1</sub></code> are done later.</li>
+<li>The components of the quotient polynomial <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1056">are scaled by <code>ζ^{n+2}</code></a> instead of <code>ζ^{n}</code>.</li>
+</ul>
+<p>Consider closely following the paper's implementation to reduce the likelihood of mistakes and improve the clarity of the codebase. When this is not feasible, consider clearly documenting the differences between the paper and the codebase.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. The first point was found to stem from the code implementing an older version of PLONK than the audit team was looking at, which in itself is not a security concern. The Linea team expressed that the other points were not resolved as, while the code differs from the specifications, it is consistent.</em></p>
+<h2 id="notes-additional-information">Notes &amp; Additional Information</h2>
+<h3 id="complicated-bit-manipulations">Complicated Bit Manipulations</h3>
+<p>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L667-L677">penultimate step</a> of the <code>hash_fr</code> function is to retrieve the most significant 16 bytes of the 32-byte word <code>b2</code>. This is achieved by zeroing out the previous 16 bytes one at a time, and then reading 32 bytes across the natural word boundary. Instead, the same effect can be achieved directly through right-shifting <code>b2</code> by 128-bit positions. Consider implementing this simplification.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/29">pull request #29</a>.</em></p>
+<h3 id="constants-not-using-upper_case-format">Constants Not Using UPPER_CASE Format</h3>
+<p>Throughout the codebase, <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L22C3-L166C34">constants</a> are not using the <code>UPPER_CASE</code> format. Consider following this convention as recommended by the <a href="https://docs.soliditylang.org/en/latest/style-guide.html#constants">Solidity Style Guide</a>.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/24">pull request #24</a>.</em></p>
+<h3 id="magic-numbers">Magic Numbers</h3>
+<p>The <code>batch_verify_multi_points</code> function <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L730-L734">hardcodes the group 1 generator</a> with no explanation. To improve readability, consider introducing named constants to describe this value.</p>
+<p>Similarly, consider replacing the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L272">hardcoded proof size offset</a> with the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L114">positional constant</a> that it represents.</p>
+<p>Lastly, the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L785">size of the <code>ecPairing</code> buffer</a> is assumed to be <code>0x180</code>, which is not apparent through contextual analysis, because the buffer is constructed in the calling function. Consider passing the length to the <code>check_pairing_kzg</code> function.</p>
+<p><em><strong>Update:</strong> Partially resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/23">pull request #23</a>. Constants for the group 1 generator were introduced, but the proof size offset and the size of the elliptic curve pairing buffer are still hardcoded.</em></p>
+<h3 id="naming-suggestions">Naming Suggestions</h3>
+<p>The following variables and constants could benefit from more descriptive names:</p>
+<ul>
+<li>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L481"><code>n</code> parameter</a> of the <code>batch_compute_lagranges_at_z</code> function is the number of public inputs, which <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L477C15-L477C15">conflicts</a> with the domain size.</li>
+<li>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L82-L87"><code>h</code> commitments</a> should include <code>com</code> or <code>commitment</code> in their name to be consistent with the other constants.</li>
+<li>There are several variables that could remove the "api" decorator, which is a reference to how they were constructed rather than what they represent.</li>
+</ul>
+<p>Consider renaming these values accordingly.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/22">pull request #22</a>.</em></p>
+<h3 id="outdated-specification">Outdated Specification</h3>
+<p>The verifier implements an <a href="https://eprint.iacr.org/archive/2019/953/1585767119.pdf">outdated version</a> of the PLONK specification. If possible, consider implementing the <a href="https://eprint.iacr.org/2019/953.pdf">latest version</a>, which requires a smaller proof.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. The Linea team stated:</em></p>
+<blockquote>
+<p><em>There is a release of Linea coming soon, we will potentially update our PLONK prover and verifier afterwards.</em></p>
+</blockquote>
+<h3 id="potentially-unnecessary-computation">Potentially Unnecessary Computation</h3>
+<p>There are multiple places where the verifier continues processing once the outcome is known:</p>
+<ul>
+<li>Several functions <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L198-L202">are called</a> after the <code>verify_quotient_poly_eval_at_zeta</code> function <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L1119">saves its result</a>, regardless of the outcome, even though <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L787">a failure will always eventually revert</a>.</li>
+<li>The <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L263"><code>check_inputs_size</code></a> and <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L278"><code>check_proof_openings_size</code></a> functions construct a combined error flag for each input, even though any failure ultimately results in a revert.</li>
+</ul>
+<p>In the interest of code simplicity and limiting unnecessary computation, consider reverting as soon as a failure is detected.</p>
+<p><em><strong>Update:</strong> Partially resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/28">pull request #28</a>. An early revert was added when validating the inputs and opening. The Linea team stated:</em></p>
+<blockquote>
+<p><em>For <code>verify_quotient_poly_eval_at_zeta</code>, we left the old version so that the verifier executes fully and returns either true or false according to the success.</em></p>
+</blockquote>
+<h3 id="reuse-cached-value">Reuse Cached Value</h3>
+<p>Several functions in the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L796"><code>fold_state</code></a> function recompute the pointer to free memory, such as <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L822C88-L822C105">here</a>. Consider reusing the <a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L804"><code>mPtrOffset</code> variable</a>.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/20">pull request #20</a>.</em></p>
+<h3 id="typographical-errors">Typographical Errors</h3>
+<p>The following typographical errors were identified in the codebase:</p>
+<ul>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L451">"comming"</a> should be "coming".</li>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L663C68-L663C74">"32byes"</a> should be "32 bytes".</li>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L663C82-L663C84">"in"</a> should be "is".</li>
+<li><a href="https://github.com/Consensys/linea-contracts-fix/blob/04d6677474421239c1f215c5a676223d09266ba4/contracts/verifiers/PlonkVerifierFull.sol#L778C60-L778C63">"too"</a> should be "to".</li>
+</ul>
+<p>Consider resolving these typographical errors, as well as running an automated spelling/grammar checker on the codebase and correcting any identified errors.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-contracts-fix/pull/21">pull request #21</a>.</em></p>
+<div style="page-break-after: always;"><a id="Recommendations" data-hs-anchor="true"></a>
+<h2 id="conclusion"><span style="font-family: Helvetica, Arial, sans-serif;">Recommendations</span></h2>
+<span style="font-weight: bold; font-size: 20px; font-family: Helvetica, Arial, sans-serif;">Supplementary Materials</span></div>
+<div style="page-break-after: always;"><span style="font-weight: bold; font-size: 20px; font-family: Helvetica, Arial, sans-serif;">&nbsp;</span></div>
+<div style="page-break-after: always;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">We recommend reading the following supplementary materials related to some theoretical</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">security considerations in PLONK.</span></div>
+<div style="page-break-after: always;"><br><span style="font-weight: bold; font-family: Helvetica, Arial, sans-serif; font-size: 18px;">SRS and Transcript in Practice</span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">As part of the Fiat-Shamir (FS) transformation from the interactive to the non-interactive version</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">of a protocol, the full transcript should include all public parameters. In a S(N)ARK, the set of</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">public parameters includes the structured reference string (i.e., the SRS).</span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">In the following, we explain why it is necessary and sufficient to include just a small part of the</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">SRS in the full transcript for the FS transformation.</span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Let O(n) be the size of the SNARK witness.</span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">On the one hand, it is not feasible to include the full SRS as part of the full transcript to be later</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">hashed as this would constitute a computational cost of up to O(n) for both the non-interactive</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">prover as well as the non-interactive verifier. Indeed, O(n) largely outweighs the upper bound of</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">O(log n) as the desired computational cost for a non-interactive SNARK verifier.</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">On the other hand, one certainly needs to add at least some SRS points as part of the full</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">transcript. We recommend adding [1]<sub>1</sub>, [x]<sub>1</sub> and [1]<sub>2</sub>. Given these three elements, there exists a</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">deterministic procedure that verifies the well-formedness of any other SRS element due to the</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">bilinearity of the pairing. Moreover, this verification is valid only if the SRS elements match [1]<sub>1</sub>, [x]<sub>1</sub></span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">and [1]<sub>2</sub>. For short, the SRS elements are uniquely determined by fixing only 3 elements: [1]<sub>1</sub>, [x]<sub>1</sub> and [1]<sub>2</sub>. The mathematical motivation is included below.</span><br><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><span style="font-weight: bold;">Step 1: </span>Given [1]<sub>1</sub>, [x]<sub>1</sub>, [1]<sub>2</sub>, one can check that a value y is indeed equal to [x]<sub>2 </sub>by checking the pairing equality e([x]<sub>1</sub>, [1]<sub>2</sub>) = e([1]<sub>1</sub>, y). This equality holds if and only if y = [x]<sub>2</sub>.</span><br><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><span style="font-weight: bold;">Step 2 and onwards: </span>given [1]<sub>2</sub>, [x]<sub>2</sub> and a previously verified [x<sup>i-1</sup>]<sub>1</sub>, we want to check that a value y is indeed equal to [x<sup>i</sup>]<sub>1</sub> for i&gt;1. This can be done by checking the pairing equality e(y, [1]<sub>2</sub>) = e([x<sup>i-1</sup>]<sub>1</sub>, [x]<sub>2</sub>) which (due to the non-degeneracy of the pairing) holds if and only if y =[x<sup>i</sup>]<sub>1</sub>.</span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><strong>Observation 1:</strong> In order to prove that e([x]<sub>1</sub>, [1]<sub>2</sub>) = e([1]<sub>1</sub>, y) holds if and only if y = [x]<sub>2</sub>, the harder part is the direction e([x]<sub>1</sub>, [1]<sub>2</sub>) = e([1]<sub>1</sub>, y) (*) implies y = [x]<sub>2</sub>. Assuming (*), we also know that e([x]<sub>1</sub>, [1]<sub>2</sub>) =e([1]<sub>1</sub>, [x]<sub>2</sub>) (**) holds. Dividing the two equations (*) and (**), we obtain: e([1]<sub>1</sub>, y- [x]<sub>2</sub>) = 1. In turn, by the definition of a pairing (the non-degeneracy condition, see <a href="https://en.wikipedia.org/wiki/Pairing-based_cryptography" rel="noopener">Pairing-Based Cryptography</a>), this holds if and only if y= [x]<sub>2</sub>.</span><br><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><span style="font-weight: bold;">Observation 2: </span>Analogously to <span style="font-weight: bold;">Observation 1</span>, one can use the non-degeneracy of the pairing</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">to motivate the reasoning in <span style="font-weight: bold;">Step 2 and onwards.</span></span></div>
+<div style="page-break-after: always;">&nbsp;</div>
+<div style="page-break-after: always;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><strong>Observation 3:</strong> Analogously to <strong>Step 2 and onwards</strong>, we have Step 2' and onwards: given [1]<sub>1</sub>, [x]<sub>1 </sub>and a previously verified [x<sup>i-1</sup>]2, we now want to check that a value y is indeed equal to [x<sup>i</sup>]<sub>2 </sub>for i&gt;1. This can be done by checking the pairing equality e([1]<sub>1</sub>, y) = e([x]<sub>1</sub>,[x<sup>i-1</sup>]<sub>2</sub>) which, with analogous reasoning as described in previous observations, holds if and only if y = [x<sup>i</sup>]<sub>2</sub>.</span><br><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">In conclusion, using only [1]<sub>1</sub>, [x]<sub>1</sub> and [1]<sub>2</sub>, one can check if any other element of a PLONK SRS is well-formatted. Hence, we have explained why including only [1]<sub>1</sub>, [x]<sub>1</sub> and [1]<sub>2</sub> in the full transcript is both necessary and sufficient.</span></div>
+<div style="break-after: page; font-size: 18px;"><br><span style="font-family: Helvetica, Arial, sans-serif;"><strong>Batching KZG Proofs for Two Evaluation Points</strong></span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">These sections address the missing security proof on page 13 of the PLONK paper, and how to</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">implement the required randomness in practice.</span></div>
+<div style="page-break-after: always;">&nbsp;</div>
+<div style="page-break-after: always;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><strong>Section 1: Security Proof</strong></span></div>
+<div style="page-break-after: always;">&nbsp;</div>
+<div style="page-break-after: always;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><em><strong>Lemma 1:</strong></em> Let a, a', b, b' ∈ F be some given, fixed scalars, where F⊂ O(2<sup>λ</sup>) is a finite field and</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">λ is the security parameter. Let r' ∈ F be a scalar chosen uniformly at random in F and, thus,</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">independently chosen from a, a', b, b'.</span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Then, it holds that a = a' and b= b' if and only if, up to a negligible probability in λ, a+ r'·b = a'+</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">r'·b'.</span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><em>Proof:</em></span></div>
+<div style="page-break-after: always;"><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">• "=&gt;": The implication from left to right holds trivially and with a probability of 1.</span></div>
+<div style="page-break-after: always;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">•"&lt;=": For the implication from right to left, assume a+ r'·b = a'+ r'·b' holds. Then,</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">equivalently, (a - a')+ r'·(b' - b) = 0. For a, a', b, b' ∈ F fixed and r' chosen uniformly at</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">random in F, by applying the <a href="https://en.wikipedia.org/wiki/Schwartz%E2%80%93Zippel_lemma" rel="noopener">Schwartz-Zippel Lemma</a>, this implies, with overwhelming</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">probability in λ that a = a' and b = b'. This concludes the proof.</span></div>
+<div style="page-break-after: always;">&nbsp;</div>
+<div style="page-break-after: always;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><em><strong>Instantiation 1: </strong></em>Next, we apply <span style="font-weight: bold; font-style: italic;">Lemma 1 </span>for the special case of the scheme describing</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">batching KZG proofs for two evaluation points (page 13 in <a href="https://eprint.iacr.org/2019/953.pdf" rel="noopener">PLONK</a>). In order to do that, we</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">instantiate:</span></div>
+<div style="page-break-after: always;">&nbsp;</div>
+<ul>
+<li style="break-after: page;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">a = e(F + zW, [1]<sub>1</sub>), where F = ∑<sub>i=1</sub><sup>t<sub>1</sub></sup> γ<sup>i-1</sup>·cm<sub>i </sub>- [ ∑<sub>i=1</sub><sup>t<sub>1</sub></sup> γ<sup>i-1</sup>·s<sub>i</sub>]<sub>1</sub> and using the <a href="https://eprint.iacr.org/2019/953.pdf" rel="noopener">PLONK paper</a> (pages 11-13) notation for γ, cmi, si, t1.</span></li>
+<li style="break-after: page;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">b = e(W, [x]<sub>2</sub>).</span></li>
+<li style="break-after: page;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">a' = e(F' + z'W', [1]<sub>1</sub>), where F' = ∑<sub>i=1</sub><sup>t<sub>2</sub></sup> γ'i-1· cmi' - [ ∑<sub>i=1</sub><sup>t<sub>2</sub></sup> γ'<sup>i-1</sup>· s'<sub>i</sub>]<sub>1</sub>.</span></li>
+<li style="break-after: page;"><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">b' = e(W', [x]<sub>2</sub>).</span></li>
+</ul>
+<p><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Hence, we can conclude that given the security proof for the KZG scheme for one evaluation</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">point (i.e., the KZG scheme described in Section 3.1, pages 11-12 of <a href="https://eprint.iacr.org/2019/953.pdf" rel="noopener">PLONK</a>), and using</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><span style="font-weight: bold; font-style: italic;">Instantiation 1</span>, the security of the KZG scheme described on page 13 of PLONK holds.</span><br><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Note that in order to conclude the above security proof, we made explicit use of the<a href="https://en.wikipedia.org/wiki/Schwartz%E2%80%93Zippel_lemma" rel="noopener"> Schwartz-</a></span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;"><a href="https://en.wikipedia.org/wiki/Schwartz%E2%80%93Zippel_lemma" rel="noopener">Zippel Lemma</a> used in the proof of <span style="font-weight: bold; font-style: italic;">Lemma 1</span>. If not all pre-conditions are met, such as if either the degree of the polynomial considered is not negligible over the size of the field F, or if any of</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">the coefficients of the polynomial for which we apply the <a href="https://en.wikipedia.org/wiki/Schwartz%E2%80%93Zippel_lemma" rel="noopener">Schwartz-Zippel Lemma</a> are chosen</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">after r' is chosen, then the security proof may no longer hold.</span></p>
+<p><span style="font-weight: bold; font-size: 16px; font-family: Helvetica, Arial, sans-serif;">Section 2: Concrete Implementation Details</span></p>
+<p><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">To protect itself from a malicious KZG prover, a KZG verifier has two options.</span></p>
+<ul>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">In an ideal world, the verifier would choose r' uniformly at random from F. However, that</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">is not efficient to implement in practice.</span></li>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">In practice and in support of an efficient implementation, the KZG verifier simply needs</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">to compute the value r' as the hash of the entire transcript and all the public values used</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">in the KZG scheme up to that point. This is equivalent to the Fiat-Shamir transformation</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">for a multi-round protocol, with the last round in this case being the computation by the</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">verifier of some publicly used randomness and the final KZG paring check. From a</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">theoretical perspective, this is secure in the random oracle model.</span></li>
+</ul>
+<p><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Note that when extrapolated to PLONK, for example, everything we have seen above points to</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">the fact that a PLONK verifier, in step 12 of the protocol, should compute the challenge u as the hash of the entire transcript of the interaction so far. Only then does one fall under the coverage of a known security proof.</span><br><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 18px;"><strong>Open Questions and Remarks Regarding the Security Proof of the So-Far Digest</strong></span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 18px;"><strong>Model</strong></span><br><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Non-interactivity is a desirable and sometimes necessary property of blockchain protocols. In a</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">non-interactive protocol, each party completes its part only via local computation and the</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">outcome of that computation is eventually made public. Thus, there is only one round of</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">communication from each party towards all the others. Certain secure and interactive</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">cryptographic protocols (e.g., public-coin protocols with a constant number of communication</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">rounds) can be converted into non-interactive protocols while preserving their security</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">properties via the Fiat-Shamir transformation. Essentially, the public coin (i.e., challenges) in the</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">non-interactive version can be computed by any party as the hash of the entire transcript of the</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">communication up to that point. The transcript includes all the public inputs and public</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">parameters necessary during the interaction, as mentioned before.</span></p>
+<p><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">We noticed that the Linea verifiers' implementations do not use the standard Fiat-Shamir</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">transformation. We have traced the actual transformation used to <a href="https://eprint.iacr.org/archive/2022/1072/1669800347.pdf" rel="noopener" id="__hsNewLink">this recent article</a>, where it is</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">detailed in the 9-th section of the appendix i.e., Appendix I. The article introduces a more</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">efficient alternative for computing the Fiat-Shamir challenges. The authors call it the so-far</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">digest model. We have revised the proposed security proof (i.e., proof of <span style="font-style: italic;">Theorem 4,</span> Appendix</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">I) in detail for this model and have some comments, suggestions and questions about it. We</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">have previously attempted to ask the authors directly and have not received an answer, but we</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">believe it would be valuable to have them addressed.</span></p>
+<ol>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">With respect to attacker B, how is the starting value h<sub>0 </sub>defined and how are the values h<sub>1</sub>, h<sub>2</sub>, ..., defined?</span></li>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Do you implicitly assume/restrict the attacker B to only submit values in the set {(m<sub>1</sub></span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">, h<sub>0</sub>),(m<sub>2</sub>, h<sub>1</sub>), (m<sub>3</sub>, h<sub>2</sub>), ...} as RO-queries to their respective oracles? If yes, does your security proof work without this assumption?</span></li>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">If we think about the classical Fiat-Shamir transformation and how the first challenge is</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">obtained, namely as the hash of all the public inputs (without including any message</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">from the prover or any challenge so far as there is none yet), how is this modelled for B?</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Can the security proof of <em>Theorem 4 </em>work in all its generality without taking this point into</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">account?</span></li>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Regarding the sentence "<strong>Bad Event</strong>. is when B sends a RO-query on (m, h) to H<sub>FS</sub>, for</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">m that has not been the response for any round [...]", do you actually mean "any round</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">so far", since you also write "later during the i-th round it sends m<sub>i</sub>= m as its message"?</span></li>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Is it implicitly true that every h used by B (including but not limited to h<sub>0</sub>, h<sub>1</sub>, h<sub>2</sub>, ...) is the</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">output of a RO-query, and hence is uniformly distributed? Is this why h=h<sub>i</sub> for some round i holds with negligible probability for the right definition of RO using the security parameter?</span></li>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Is it possible that you are missing some steps or some description, either in the definition</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">of B or in the use of B by A? Otherwise, why would it be conflicting with the simulation</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">that the pair (m,h) is sent twice to the RO-query?</span></li>
+<li><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">The output of B doesn't seem to be explicitly defined. Is it an alleged proof? When does</span><br><span style="font-family: Helvetica, Arial, sans-serif; font-size: 16px;">B win (is it when the output proof is an accepted proof)? Does the same hold for A?</span></li>
+</ol>
+<h2 id="conclusion"><span style="font-family: Helvetica, Arial, sans-serif;">Conclusion</span></h2>
+<span style="font-family: Helvetica, Arial, sans-serif;"><!-- Conclusion
+
+The severity issues that matter the most (up to the auditor)
+
+"Several fixes were suggested to improve the readability (or clarity) of the codebase and facilitate future audits, integrations and development."
+
+Anything you want to say in general about the codebase. Could be something like:
+
+
+“The codebase was well-written and thoroughly documented.”
+
+“The codebase could benefit from more descriptive docstrings, especially when it comes to XYZ functionality.”
+
+Statement of gratitude towards the client (e.g., "The [client] team was very responsive and provided us with extensive documentation about the project.")
+
+Any remarks about future use of the protocol or implementation.. 
+
+Below we provide our recommendations for monitoring important activities in order to detect and prevent potential bugs. 
+--></span>
+<p><span style="font-family: Helvetica, Arial, sans-serif;">Three medium-severity issues were discovered among various lower-severity issues. While reviewing the fixes for these, one of the issues previously identified as a medium was found to be exploitable in practice by allowing proof forgery and was updated to a critical severity. Since the verifier is a complex but critical part of the rollup architecture, it was also recommended to add more extensive documentation to the codebase, notably with regard to the differences between the implementation and the original PLONK specification. We wish to extend our gratitude to the Linea team for their quick and helpful answers to our questions.</span></p></span>
+        </div>
+      </div>
+      <div class="col-right">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+
+
+      </main>
+
+      
+      <div data-global-resource-path="oz_2022/templates/partials/footer-EA-live.html"><div id="hs_cos_wrapper_module_172357946680564" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><footer id="footer-navigation">
+  <div class="container-1200">
+    <div class="footer-content">
+      <div class="footer-column smart-contracts">
+         <div class="footer-subcolumn">
+          <p class="footer-column-title">Services</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/security-audits">Smart Contract Security Audit</a></li>
+            <li><a href="https://www.openzeppelin.com/continuous-security-program">Continuous Security Program</a></li>
+            <li><a href="https://www.openzeppelin.com/blockchain-infrastructure">Blockchain Infrastructure Audit</a></li>
+            <li><a href="https://www.openzeppelin.com/zkp">ZKP Audit</a></li>
+          </ul>
+        </div>
+            <div class="footer-subcolumn">
+          
+          <p class="footer-column-title">Developers</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/contracts">Contracts Libraries</a></li>
+            <li><a href="https://wizard.openzeppelin.com/" target="_blank">Contracts Wizard</a></li>
+            <li><a href="https://mcp.openzeppelin.com/" target="_blank">Contracts MCP</a></li>
+            <li><a href="https://docs.openzeppelin.com/upgrades-plugins/" target="_blank">Upgrades Plugin</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack#operate">Relayer</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack#operate">Monitor</a></li>
+            <li><a href="https://builder.openzeppelin.com/" target="_blank">UI Builder</a></li>
+            <li><a href="https://safeutils.openzeppelin.com/" target="_blank">Safe Utils</a></li>
+            <li><a href="https://rolemanager.openzeppelin.com/" target="_blank">Role Manager</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack">The Open Source Stack</a></li>
+          </ul>
+        </div>
+
+       
+      </div>
+
+      <div class="footer-column services">
+         <div class="footer-subcolumn">
+          <p class="footer-column-title">Solutions</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/solutions/banks">Banks</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/asset-managers">Asset Managers</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/payment-networks">Payment Networks</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/blockchain-networks">Blockchain Networks</a></li>
+          </ul>
+        </div>
+     
+      
+       <div class="footer-subcolumn">
+          <p class="footer-column-title">Blockchains</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/networks/arbitrum">Arbitrum</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/base">Base</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/canton">Canton</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/ethereum">Ethereum</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/linea">Linea</a></li>
+            <li><a href="/networks/midnight">Midnight</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/op-mainnet">OP Mainnet</a></li>
+            <li><a href="/networks/starknet">Starknet</a></li>
+            <li><a href="/networks/stellar">Stellar</a></li>
+            <li><a href="/networks/sui">Sui</a></li>
+            <li><a href="/networks/zama">Zama</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/zksync">ZKsync</a></li>
+          </ul>
+        </div>
+
+        
+      </div>
+
+      <div class="footer-column resources">
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Resources</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/research">Research</a></li>
+            <li><a href="https://www.openzeppelin.com/customer-stories">Customer Stories</a></li>
+            <li><a href="https://www.openzeppelin.com/newsletter">Newsletter</a></li>
+            <li><a href="https://docs.openzeppelin.com/" target="_blank">Documentation</a></li>
+            <li><a href="https://www.openzeppelin.com/stats">Stats</a></li>
+            <li><a href="https://forum.openzeppelin.com/" target="_blank">Forum</a></li>
+            <li><a href="https://ethernaut.openzeppelin.com/" target="_blank">Ethernaut CTF</a></li>
+          </ul>
+        </div>
+         
+      </div>
+
+      <div class="footer-column company">
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Company</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/about">About Us</a></li>
+            
+            <li><a href="https://www.openzeppelin.com/news">News</a></li>
+            <li><a href="https://www.openzeppelin.com/careers">Careers</a></li>
+            <li><a href="https://www.openzeppelin.com/why-openzeppelin">Why OpenZeppelin</a></li>
+            <li><a href="https://www.openzeppelin.com/faqs">FAQs</a></li>
+            <li><a href="https://www.openzeppelin.com/brand-kit">Brand Kit</a></li>
+            <li><a href="https://trust.openzeppelin.com/" target="_blank">Trust</a></li>
+             
+          </ul>
+        </div>
+
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Terms &amp; Policies</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/tos">Terms of Service</a></li>
+            <li><a href="https://www.openzeppelin.com/privacy">Privacy Policy</a></li>
+            <li><a href="https://www.openzeppelin.com/trademark-guidelines">Trademark Guidelines</a></li>
+            <li><a href="https://www.openzeppelin.com/agpl-license">AGPL License</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-links">
+        <a href="https://github.com/openzeppelin" aria-label="GitHub">
+          <img src="https://www.openzeppelin.com/hubfs/github-icon-footer.svg" alt="GitHub">
+        </a>
+        <a href="https://twitter.com/OpenZeppelin" aria-label="X (Twitter)">
+          <img src="https://www.openzeppelin.com/hubfs/x-icon-footer.svg" alt="X">
+        </a>
+        <a href="https://www.linkedin.com/company/openzeppelin/" aria-label="LinkedIn">
+          <img src="https://www.openzeppelin.com/hubfs/linkedin-icon-footer.svg" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="copyright">
+        © 2026 Zeppelin Group Ltd
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+      
+    </div>
+
+    
+    
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js"></script>
+<script>
+var hsVars = hsVars || {}; hsVars['language'] = 'en';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67469578632/1788287200396/template_main.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/191486630025/1789648897909/module_Announcement_Banner.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175205469193/1788958259824/module_Navbar_-_Live.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/195607353687/1764794536989/module_NEWS_Content_Subnavbar.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194756946478/1758641063467/module_NEWS_Blog_Post_Content.min.js"></script>
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/www.openzeppelin.com\/news\/linea-verifier-audit-1"]);
+_hsq.push(["setPageId", "142207619238"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 142207619238,
+    "legacyPageId": "142207619238",
+    "contentFolderId": null,
+    "contentGroupId": 102321071715,
+    "abTestId": null,
+    "languageVariantId": 142207619238,
+    "languageCode": "en",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/7795250.js"></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript">
+var hsVars = {
+    render_id: "4768142c-49a2-44c7-baea-6900fef85bc4",
+    ticks: 1789649026757,
+    page_id: 142207619238,
+    
+    content_group_id: 102321071715,
+    portal_id: 7795250,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    
+    analytics_page_id: "142207619238",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js"></script>
+
+<style>
+  /* Cookie consent Banner
+  */
+  div#hs-modal-header {
+    height: 0!important;
+  }
+  span.hs-always-active-label {
+    font-family: 'Inter'!important;
+  }
+  #hs-modal-content .hs-category-row:has(> .hs-category-row-header > #hs-category-advertisement) {
+    /*display: none;*/
+  }
+  #hs-eu-cookie-settings-button {
+    box-shadow: none!important;
+  }
+
+  #hs-eu-cookie-confirmation {
+    overflow: auto!important;
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #4E5DE48B, #5D628500) border-box!important;
+    border: 1px solid transparent!important;
+  }
+
+  div#hs-eu-cookie-confirmation-inner {
+    padding: 16px!important;
+  }
+
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner p {
+    font-family: 'Inter', sans-serif!important;
+    font-size: 12px!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    line-height: 144%!important;
+    max-width: 624px!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+    font-family: 'Inter', sans-serif!important;
+    font-size: 13px!important;
+    line-height: 144%!important;
+    color: #4F5EE5!important;
+    font-weight: 400!important;
+    text-shadow: none!important;
+    letter-spacing: -0.01em!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button, div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button, 
+  #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-accept-all, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings  {
+    padding: 5px 24px !important;
+    text-transform: none !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    border-radius: 80px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    line-height: 20px !important;
+    color: white !important;
+    text-shadow: none !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+    background: #4F56FA;
+    border: 1px solid transparent !important;
+    min-width: 100px;
+    height: auto!important;
+    margin: 0 5px !important;
+    flex: auto!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button:hover, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-accept-all:hover {
+    background: #4349D4 !important;
+  }
+  div#hs-eu-cookie-confirmation-buttons-area {
+    margin: 0!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings {
+    border: 1px solid #EFEFEF!important;
+    background: #FAFAFA!important;
+    color: #0A0F39!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button:hover, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings:hover {
+    background: #ededed !important;
+  }
+  #hs-eu-cookie-confirmation #hs-eu-opt-in-buttons {
+    flex-grow: 1;
+    align-items: center!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner div#hs-eu-policy-wording {
+    margin-right: 0!important;
+  }
+
+
+
+  #hs-modal #hs-modal-content #hs-modal-header #hs-modal-header-container button#hs-modal-close-button {
+    box-shadow: none!important;
+  }
+  #hs-modal #hs-modal-content #hs-modal-body #hs-modal-body-container #hs-modal-introduction {
+    font-family: 'Inter', sans-serif!important;
+  }
+  #hs-modal #hs-modal-content #hs-modal-body #hs-modal-body-container #hs-categories-container .hs-category-row .hs-category-row-header .hs-category-label {
+    font-family: 'Inter',sans-serif!important;
+  }
+  #hs-modal #hs-modal-content a, #hs-modal #hs-modal-content p {
+    font-family: 'Inter', sans-serif!important;
+  }
+
+
+  @media (min-width: 751px){
+    #hs-eu-cookie-confirmation {
+      max-width: 656px!important;
+    }
+
+  }
+  @media (max-width: 750px){
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+      font-size: 12px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button {
+      font-size: 12px!important;
+      padding: 6px 14px!important;
+      flex-basis: 33%;
+    }
+
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button {
+      font-size: 12px!important;
+      padding: 6px 22px!important;
+      flex-basis: 33%;
+
+    }
+    #hs-eu-cookie-confirmation {
+      max-width: 100%!important;
+      width: calc(100% - 30px)!important;
+      margin-bottom: 10px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner {
+      padding-bottom: 16px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+      padding-bottom: 8px!important;
+      border-bottom: none!important;
+    }
+    div#hs-eu-cookie-confirmation-buttons-area {
+      gap: 8px!important;
+      border-bottom: none!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner p {
+      font-size: 12px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button {
+      margin: 0!important;
+    }
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js" integrity="sha512-qF6akR/fsZAB4Co1QDDnUXWnaQseLGXoniuSuSlPQK6+aWhlMZcHzkasCSlnWoe+TJuudlka1/IQ01Dnhgq95g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- GSAP [ScrollTrigger] CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js" integrity="sha512-IHDCHrefnBT3vOCsvdkMvJF/MCPz/nBauQLzJkupa4Gn4tYg5a6VGyzIrjo6QAUy3We5HFOZUlkUpP0dkgE60A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+  
+</body></html>

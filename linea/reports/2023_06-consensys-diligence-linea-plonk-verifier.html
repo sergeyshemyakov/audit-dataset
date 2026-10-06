@@ -1,0 +1,1833 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linea Plonk Verifier | Consensys Diligence</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+      <meta name="description" content="This report presents the results of our engagement with Linea to review Linea Plonk Verifier. The review was conducted over two weeks, from May 8 2023 to …">
+    <link rel="preload" href="/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Medium-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Semibold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Bold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp" type="image/webp" fetchpriority="high">
+    <script>
+(function(){
+  var stored = null;
+  try { stored = localStorage.getItem('cookie_consent'); } catch (e) {}
+  if (stored === 'granted' || stored === 'denied') return;
+  try {
+    
+    
+    
+    
+    
+    
+    window.__ccTrace = fetch('/cdn-cgi/trace')
+      .then(function(r){ return r.text(); })
+      .catch(function(){ return ''; });
+  } catch (e) {}
+})();
+</script><script src="/js/consent.js?v=d268f9f4" defer></script>
+
+    <link href="/css/tachyons.min.css?v=75808e0f" rel="stylesheet"><link href="/style.css?v=fe61105e" rel="stylesheet">
+    <link href="/css/highlight.css?v=be488ecd" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://diligence.security/audits/2023/06/linea-plonk-verifier/">
+    <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.png">
+    <link rel="nokia-touch-icon" href="/images/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/icon/favicon.png" sizes="1x1">
+    
+<script type="text/javascript" id="interactive-report-tools" defer>
+const getStructuredFinding = (elem, options) => {
+  const is = elem.closest(".issue");
+  const heading = is.querySelector("h3");
+  const title = Array.from(heading.childNodes)
+          .map(node => node.nodeName === "SPAN" ? "" : node.textContent.trim())
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .trim()
+
+  function formatText(elem){
+      return Array.from(elem.childNodes)
+          .map(node => {
+              switch(node.nodeName){
+                  case "CODE":
+                      return `\`${node.textContent.trim()}\``;
+                  case "H4":
+                      return  `#### ${node.textContent.trim()}`;
+              }
+              return node.textContent.trim();
+          })
+          .join("\n")
+          
+          .trim()
+  }
+
+  const finding = {
+      id: title.substring(0, title.indexOf(' ')),
+      title: title.substring(title.indexOf(' ') + 1),
+      severity: heading.querySelector(".severity")?.textContent.trim().toLowerCase() || undefined,
+      state: heading.querySelector(".state")?.textContent.trim().toLowerCase() || undefined,
+      url: document.location.href.split("#",1)[0] + "#" + heading.id,
+  }
+  if(options?.withBody){
+      finding.body = formatText(is.querySelector("h4").closest("div"));
+  }
+  return finding;
+}
+const getAllFindings = (options) => Array.from(document.querySelectorAll(".issue")).map(iss => getStructuredFinding(iss, options));
+function exportCsv(fileName) {
+  const data = getAllFindings()
+  const keys = Object.keys(data[0]);
+  const csvRows = [];
+  csvRows.push(keys.join(','));
+  data.forEach(row => {
+      const values = keys.map(key => {
+          const value = row[key];
+          if(value === undefined) return "";
+          return `"${value}"`;
+      });
+      csvRows.push(values.join(','));
+  });
+  const csvData = csvRows.join('\n');
+  const blob = new Blob([csvData], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function exportJson(fileName) {
+  const blob = new Blob([JSON.stringify(getAllFindings())], { type: 'text/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function getOrSetGithubRepo(force) {
+  function parseGitHubRepo(input) {
+      if(!input) return;
+      const urlMatch = input.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/?$/);
+      if (urlMatch) return `${urlMatch[1]}/${urlMatch[2]}`;
+      
+      const directMatch = input.match(/^([^\/]+)\/([^\/]+)$/);
+      return directMatch ? input : null;
+  }
+  function isValidGitHubRepo(input) {
+      if(!input) return false;
+      
+      
+      
+      
+      
+      const githubNameRegex = /^(?![-.])(?!.*[_.-]{2})[a-zA-Z0-9.-]{1,100}(?<![-.])$/;
+      if (typeof input !== 'string') return false;
+      const parts = input.split('/');
+      
+      if (parts.length !== 2) return false;
+      const [org, repo] = parts;
+      return githubNameRegex.test(org) && githubNameRegex.test(repo);
+  }
+  closeAllMenus();
+  let repo = sessionStorage.getItem("user_gh_repo");
+  if (force || !isValidGitHubRepo(repo)) {
+      repo = parseGitHubRepo(prompt("Enter the GitHub repository name (owner/repo):", "https://github.com/organisation/repo"));
+
+      if (repo) {
+          if(!isValidGitHubRepo(repo)){
+              alert(`Error: '${repo}' is not a valid GitHub repo.`);
+          } else {
+              sessionStorage.setItem("user_gh_repo", repo);
+          }
+      }
+  }
+  return repo;
+}
+
+function exportToGitHub(elem) {
+  closeAllMenus();
+  const repo = getOrSetGithubRepo();
+  if(!repo) return;
+  const baseUrl = `https:\/\/github.com/${repo}/issues/new`;
+  const is = getStructuredFinding(elem);
+  const labels = undefined;
+
+  const params = new URLSearchParams({
+      title: `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}`,
+      body: `[<img width="200" alt="get in touch with Consensys Diligence" src="https:\/\/user-images.githubusercontent.com/2865694/56826101-91dcf380-685b-11e9-937c-af49c2510aa0.png">](https:\/\/diligence.security)
+<sub>[[ 🌐 ](https:\/\/diligence.security) [ 📩 ](mailto:diligence@diligence.security) [ 🔥 ](https:\/\/consensysdiligence.github.io/diligence/)]</sub>
+_______
+
+**Severity**: ${capitalizeFirstLetter(is.severity)}
+**Finding**: 👉 [${is.id} - ${is.title}](${is.url})
+
+`,
+      labels: labels && labels.join(',') || "bug,security,audit",
+      milestone: "diligence-audit",
+      assignee: ""
+  });
+
+  const issueUrl = `${baseUrl}?${params.toString()}`;
+  window.open(issueUrl, "_blank");
+}
+function exportToClipboard(elem, options){
+  closeAllMenus();
+  const is = getStructuredFinding(elem, {withBody:true});
+  let data = "";
+  switch (options?.format){
+      case "text":
+          data = `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}
+
+**Reference**: ${is.url}
+
+${is.body}
+`
+          break;
+      default:
+          data = JSON.stringify(is);
+  }
+  navigator.clipboard.writeText(data)
+}
+function capitalizeFirstLetter(string) {
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "None";
+}
+function closeAllMenus() {
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.style.display = "none";
+  });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  
+  document.querySelectorAll(".menu-toggle").forEach(button => {
+      button.addEventListener("click", function (event) {
+          const menu = this.nextElementSibling;
+          menu.style.display = menu.style.display === "block" ? "none" : "block";
+          event.stopPropagation(); 
+      });
+  });
+
+  
+  document.addEventListener("click", function () {
+      document.querySelectorAll(".menu-box").forEach(menu => {
+          menu.style.display = "none";
+      });
+  });
+
+  
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.addEventListener("click", function (event) {
+          event.stopPropagation();
+      });
+  });
+});
+</script>
+<link rel="alternate" type="application/rss+xml" href="https://diligence.security/index.xml" title="Consensys Diligence" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://diligence.security/#organization","@type":"Organization","description":"Smart Contract Audits for Ethereum protocols and institutions. Supercharged by AI agents, guided by veteran experts.","foundingDate":"2017","logo":{"@type":"ImageObject","url":"https://diligence.security/images/icon/favicon.png"},"name":"Consensys Diligence","sameAs":["https://x.com/ConsensysAudits","https://www.linkedin.com/company/consensys-diligence","https://github.com/ConsenSysDiligence","https://medium.com/consensys-diligence","https://www.youtube.com/@ConsensysDiligence"],"url":"https://diligence.security/"},{"@id":"https://diligence.security/#website","@type":"WebSite","name":"Consensys Diligence","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/"},{"@id":"https://diligence.security/audits/2023/06/linea-plonk-verifier/#article","@type":"TechArticle","author":[{"@type":"Person","name":"Rai Yang"},{"@type":"Person","name":"Tejaswa Rastogi and David Pearce"}],"dateModified":"2023-06-22T11:33:53+07:00","datePublished":"2023-06-22T11:33:53+07:00","description":"This report presents the results of our engagement with Linea to review Linea Plonk Verifier. The review was conducted over two weeks, from May 8 2023 to …","headline":"Linea Plonk Verifier","image":["https://diligence.security/images/og-share.png","https://diligence.security/images/audit_report/feature-hero.png"],"inLanguage":"en","isPartOf":{"@id":"https://diligence.security/#website"},"mainEntityOfPage":{"@id":"https://diligence.security/audits/2023/06/linea-plonk-verifier/","@type":"WebPage"},"name":"Linea Plonk Verifier","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/audits/2023/06/linea-plonk-verifier/","wordCount":6490},{"@id":"https://diligence.security/audits/2023/06/linea-plonk-verifier/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://diligence.security/","name":"Home","position":1},{"@type":"ListItem","item":"https://diligence.security/audit-reports/","name":"Public Smart Contract Audits and Security Reviews","position":2},{"@type":"ListItem","item":"https://diligence.security/audits/2023/06/linea-plonk-verifier/","name":"Linea Plonk Verifier","position":3}]}]}</script>
+    <meta property="og:title" content="Linea Plonk Verifier | Consensys Diligence" />
+    <meta property="og:description" content="This report presents the results of our engagement with Linea to review Linea Plonk Verifier. The review was conducted over two weeks, from May 8 2023 to …" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://diligence.security/audits/2023/06/linea-plonk-verifier/" /><meta property="og:image" content="https://diligence.security/images/og-share.png" />
+    <meta property="og:image:alt" content="Linea Plonk Verifier - Consensys Diligence" /><meta property="article:published_time" content="2023-06-22T11:33:53+07:00" />
+<meta property="article:modified_time" content="2023-06-22T11:33:53+07:00" /><meta property="og:site_name" content="Consensys Diligence" />
+    <meta property="article:publisher" content="https://www.twitter.com/ConsensysAudits" />
+    
+    <meta property="article:section" content="audits" />
+<meta name="twitter:title" content="Linea Plonk Verifier | Consensys Diligence"/>
+<meta name="twitter:description" content="This report presents the results of our engagement with Linea to review Linea Plonk Verifier. The review was conducted over two weeks, from May 8 2023 to …"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://diligence.security/images/og-share.png"/>
+                <meta name="twitter:image:alt" content="Linea Plonk Verifier - Consensys Diligence"/>
+<meta name="twitter:site" content="@ConsensysAudits"/>
+    <meta name="twitter:creator" content="@ConsensysAudits"/>
+
+      
+      <script type="text/javascript" id="reload-pathfix">
+        let lastSegment = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1); 
+        if(lastSegment && lastSegment.length !==0 && lastSegment.indexOf(".") === -1){
+          
+          window.location.pathname += "/";  
+        }
+      </script>
+      <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-H4M4ES1MZM');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4M4ES1MZM"></script>
+    
+  </head>
+  <body style="margin: 0; padding: 0;">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    
+<header class="audit-header">
+  <div class="audit-header__inner">
+    
+    <div class="audit-header__row1">
+      <a href="/" class="audit-header__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </a>
+
+      <a href="/request-audit/" class="audit-header__cta">
+        <div class="audit-header__cta-icon">
+          <svg fill="none" viewBox="0 0 14.8226 10.1497">
+            <line stroke="white" stroke-width="1.3" x2="13.7793" y1="4.8803" y2="4.8803" />
+            <path d="M9.28809 0.459619L13.9033 5.07487L9.28809 9.69013" stroke="white" stroke-width="1.3" fill="none" />
+          </svg>
+        </div>
+        <span class="audit-header__cta-text">Request Audit</span>
+      </a>
+    </div>
+
+    
+    <div class="audit-header__row2">
+      <p class="audit-header__tagline">Securing Ethereum Smart Contracts since 2017</p>
+      <nav class="audit-header__nav">
+        <a href="/about/" class="audit-header__nav-link">About</a>
+        <a href="/blog/" class="audit-header__nav-link">Blog</a>
+        <a href="/audits/" class="audit-header__nav-link">Public Audits</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <main id="main" tabindex="-1" role="main">
+      <div class="dili-navigator-page">
+    <div class="dili-blog-hero"><div class="dili-hero-bg-mixin" style="background-image: url('/images/audit_report/feature-hero.png'); background-image: image-set(url('/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp') type('image/webp'), url('/images/audit_report/feature-hero.png') type('image/png'));" ></div>
+        <div class="dili-container">
+            <div class="dili-blog-hero-inner">
+                <div class="item-eyebrow"></div>
+                <h1 class="item-title">Linea Plonk Verifier</h1>
+            </div>
+        </div>
+    </div>
+    <article class="">
+
+
+    <div class="dili-navigator-wrapper">
+            <div class="dili-navigator-sidebar">
+
+                <ul class="dili-navigator-sidebar-inner">
+                <li>
+                    <a href="#executive-summary">1 Executive Summary</a>
+                </li>
+                <li>
+                    <a href="#scope">2 Scope</a>
+                    <ul>
+                    <li>
+                        <a href="#objectives">2.1 Objectives</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#security-specification">3 Security Specification</a>
+                    <ul>
+                    <li>
+                        <a href="#actors">3.1 Actors</a>
+                    </li>
+                    <li>
+                        <a href="#trust-model">3.2 Trust Model</a>
+                    </li>
+                    <li>
+                        <a href="#security-properties">3.3 Security Properties</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#findings">4 Findings</a>
+                    <ul>
+                    <li>
+                        <a href="#no-proper-trusted-setup">4.1 No Proper Trusted Setup <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#broken-lagrange-polynomial-evaluation-at-zeta">4.2 Broken Lagrange Polynomial Evaluation at Zeta <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#broken-logic-for-modular-multiplicative-inverse">4.3 Broken Logic for Modular Multiplicative Inverse <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#missing-verifying-paring-check-result">4.4 Missing Verifying Paring Check Result <span class="severity critical">Critical</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#gas-greifing-and-missing-return-status-check-for-staticcalls-may-lead-to-unexpected-outcomes">4.5 Gas Greifing and Missing Return Status Check for <code>staticcall</code>(s), May Lead to Unexpected Outcomes <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Partially Addressed</span></a>
+                    </li>
+                    <li>
+                        <a href="#verifier-doesnt-support-zero-or-multiple-bsb22-commitments">4.6 Verifier Doesn&rsquo;t Support Zero or Multiple BSB22 Commitments <span class="severity major">Major</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#missing-tests-for-edge-cases">4.7 Missing Tests for Edge Cases <span class="severity major">Major</span></a>
+                    </li>
+                    <li>
+                        <a href="#missing-scalar-field-range-check-in-scalar-multiplication">4.8 Missing Scalar Field Range Check in Scalar Multiplication <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#missing-public-inputs-range-check">4.9 Missing Public Inputs Range Check <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#missing-field-element-check-and-on-curve-point-check-for-proof-elements">4.10 Missing Field Element Check and on Curve Point Check for Proof Elements <span class="severity major">Major</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#missing-length-check-for-proof">4.11 Missing Length Check for <code>proof</code> <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#allowing-program-execution-even-after-a-failed-step-may-lead-to-unnecessary-wastage-of-gas">4.12 Allowing Program Execution Even After a Failed Step May Lead to Unnecessary Wastage of Gas <span class="severity medium">Medium</span></a>
+                    </li>
+                    <li>
+                        <a href="#loading-arbitrary-data-as-wire-commitments">4.13 Loading Arbitrary Data as Wire Commitments <span class="severity medium">Medium</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#broken-logic-for-batch-inverting-field-elements">4.14 Broken Logic for Batch Inverting Field Elements <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#unused-state-fields">4.15 Unused State Fields <span class="severity minor">Minor</span> <span class="state no-check">&nbsp;Acknowledged</span></a>
+                    </li>
+                    <li>
+                        <a href="#overwritten-assignment-to-state_success">4.16 Overwritten Assignment to <code>state_success</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#plonkverifierabi-is-out-of-sync">4.17 PlonkVerifier.abi Is Out of Sync <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#makefile-target-order">4.18 Makefile: Target Order <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#floating-pragma">4.19 Floating Pragma</a>
+                    </li>
+                    <li>
+                        <a href="#deviation-in-implementation-from-the-intended-approachplonk-paper--other-general-observations">4.20 Deviation in Implementation From the Intended Approach/Plonk Paper &amp; Other General Observations</a>
+                    </li>
+                    <li>
+                        <a href="#proof-size-can-be-reduced-by-removing-linearization-polynomial-evaluation-at-zeta">4.21 Proof Size Can Be Reduced by Removing Linearization Polynomial Evaluation at Zeta</a>
+                    </li>
+                    <li>
+                        <a href="#unnecessary-memory-readwrite-operations">4.22 Unnecessary Memory Read/Write Operations</a>
+                    </li>
+                    <li>
+                        <a href="#unused-evaluation-of-zx-1-at-zeta">4.23 Unused Evaluation of Z(x)-1 at Zeta <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#spurious-debugging-code">4.24 Spurious Debugging Code</a>
+                    </li>
+                    <li>
+                        <a href="#utils---possible-code-improvements">4.25 Utils - Possible Code Improvements</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#appendix--formal-verification">Appendix 1 &mdash; Formal Verification</a>
+                    <ul>
+                    <li>
+                        <a href="#methodology">A.1.1 Methodology</a>
+                    </li>
+                    <li>
+                        <a href="#outcomes">A.1.2 Outcomes</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#appendix---files-in-scope">Appendix 2 - Files in Scope</a>
+                </li>
+                <li>
+                    <a href="#appendix---disclosure">Appendix 3 - Disclosure</a>
+                </li>
+                </ul>
+            </div>
+            <div class="dili-navigator-content richtext">
+                <aside class="summary summary-cta-side">
+                    
+                    
+                    <table>
+                        <tr>
+                            <th align="left">Date</th>
+                            <td align="left">June 2023</td>
+                        </tr>
+                        
+                        <tr>
+                            <th align="left">Auditors</th>
+                            <td align="left" class="mw5">Rai Yang, Tejaswa Rastogi and David Pearce
+                        </tr>
+                        
+                        <tr class="noprint">
+                            <th align="left">Download</th>
+                            <td align="left">
+                                <a onclick="exportJson()" title="↓ JSON" class="pointer"><i class="far fa-file-code"></i> JSON</a><br/>
+                                <a onclick="exportCsv()" title="↓ CSV" class="pointer"><i class="far fa-file-excel"></i> CSV</a>
+                            </td>
+                        </tr>
+                    </table>
+                </aside>
+<h2 id="executive-summary">1 Executive Summary</h2>
+<p>This report presents the results of our engagement with <strong>Linea</strong> to review <strong>Linea Plonk Verifier</strong>.</p>
+<p>The review was conducted over two weeks, from <strong>May 8 2023</strong> to <strong>June 23 2023</strong>, by
+<strong>Rai Yang</strong>,<strong>Tejaswa Rastogi</strong> and <strong>David Pearce</strong>, <strong>Joanne Fuller</strong> and <strong>Horacio Mijail</strong> from formal verification team. A total of 120 (30x3+?) person-days were spent.</p>
+<p>The assessment team made a best effort review of the verifier due to lack of professional crytographic background of the team. We reviewed the verifier implementation in comparison to Plonk paper and Gnark prover implementation, in particular we reviewed the BSB22 commitment custom gate added to the original Plonk gate and discovered a substantial number of issues including some critical and high severity ones.
+We strongly recommend a through test of the verifier with other components of Linea (e.g. sequencer, prover etc.) on testnet after fixing the issues, before launching on the mainnet.</p>
+<p>Given the lack of professional cryptographic review of the code and limited time, it is probable that the codebase contains additional high or critical-severity issues not identified in this review.
+Consequently, as the system evolves, a thorough and continuous assessment of the code for potential vulnerabilities is recommended.</p>
+<h2 id="scope">2 Scope</h2>
+<p>Our review focused on the commit hash <code>b3533f22f2a67a2c4c3e42bbf70f1c5c0af42336</code>. The list of files in scope can be found in the <a href="#appendix---files-in-scope">Appendix</a>.</p>
+<h3 id="objectives">2.1 Objectives</h3>
+<p>Together with the <strong>Linea</strong> team, we identified the following priorities for our review:</p>
+<ol>
+<li>Correctness of the Verifier&rsquo;s implementation, consistent with Plonk paper and Gnark prover and without unintended edge cases.</li>
+<li>The BSB22 commitment custom gate</li>
+<li>Proof soundness and completeness</li>
+<li>Identify known vulnerabilities particular to smart contract systems, as outlined in our <a href="https://consensys.github.io/smart-contract-best-practices/">Smart Contract Best Practices</a>, and the <a href="https://swcregistry.io/">Smart Contract Weakness Classification Registry</a>.</li>
+</ol>
+
+
+<h2 id="security-specification">3 Security Specification</h2>
+<p>This section describes, <strong>from a security perspective</strong>, the expected behavior of the system under audit. It is not a substitute for documentation. The purpose of this section is to identify specific security properties that were validated by the audit team.</p>
+<h3 id="actors">3.1 Actors</h3>
+<p>The relevant actors are listed below with their respective abilities:</p>
+<ul>
+<li>Prover: Prove the correctness of the L2 block data(transactions) and state submitted by the sequencer</li>
+<li>Verfier: Verify the proof and corresponding public inputs (L2 state and BSB22 commitment) are valid</li>
+</ul>
+<h3 id="trust-model">3.2 Trust Model</h3>
+<p>Below is a non-exhaustive list of trust assumptions that we formulated while reviewing the system:</p>
+<ul>
+<li>The CRS generated by a proper Plonk trusted setup, in this case it&rsquo;s a toy CRS created by a single party and will be replaced by the CRS generated by Aztec ignition trusted setup for mainnet launch</li>
+<li>The zkEVM circuit is correct</li>
+<li>L1 ( Ethereum ) is secure</li>
+</ul>
+<h3 id="security-properties">3.3 Security Properties</h3>
+<p>The following is a non-exhaustive list of security properties that were verified in this audit:</p>
+<ul>
+<li>Proof is sound and complete e.g. invalid proof won&rsquo;t pass the verification and valid proof would pass.</li>
+</ul>
+
+<h2 id="findings">4 Findings</h2>
+   
+    <p>Each issue has an assigned severity:</p>
+
+    <ul>
+        <li><span class="severity critical">Critical</span> issues are directly exploitable security vulnerabilities that need to be fixed.</li>
+        <li><span class="severity major">Major</span> issues are security vulnerabilities that may not be directly exploitable or may require certain conditions in order to be exploited. All major issues should be addressed.</li>
+        <li><span class="severity medium">Medium</span> issues are objective in nature but are not security vulnerabilities. These should be addressed unless there is a clear reason not to.</li>
+        <li><span class="severity minor">Minor</span> issues are subjective in nature. They are typically suggestions around best practices or readability. Code maintainers should use their own judgment as to whether to address such issues.</li>
+        <li>Issues without a severity are general recommendations or optional improvements. They are not related to security or correctness and may be addressed at the discretion of the maintainer.</li>
+    </ul><div class="issue">
+            <a class="anchor" href="#no-proper-trusted-setup" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/30">
+                <h3 id="no-proper-trusted-setup">4.1 No Proper Trusted Setup <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>Linea uses Plonk proof system, which needs a preprocessed CRS (Common Reference String) for proving and verification, the Plonk system security is based on the existence of a trusted setup ceremony to compute the CRS, the current verifier uses a CRS created by one single party, which requires fully trust of the party to delete the toxic waste (trapdoor) which can be used to generate forged proof, undermining the security of the entire system</p>
+<p><strong>contracts/Verifier.sol:L29-L37</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_0_x_0</span> <span class="o">=</span> <span class="mi">11559732032986387107991004021392285783925812861821192530917403151452391805634</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_0_x_1</span> <span class="o">=</span> <span class="mi">10857046999023057135944570762232829481370756359578518086990519993285655852781</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_0_y_0</span> <span class="o">=</span> <span class="mi">4082367875863433681332203403145435568316851327593401208105741076214120093531</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_0_y_1</span> <span class="o">=</span> <span class="mi">8495653923123431417604973247489272438418190587263600148770280649306958101930</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_1_x_0</span> <span class="o">=</span> <span class="mi">18469474764091300207969441002824674761417641526767908873143851616926597782709</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_1_x_1</span> <span class="o">=</span> <span class="mi">17691709543839494245591259280773972507311536864513996659348773884770927133474</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_1_y_0</span> <span class="o">=</span> <span class="mi">2799122126101651639961126614695310298819570600001757598712033559848160757380</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">g2_srs_1_y_1</span> <span class="o">=</span> <span class="mi">3054480525781015242495808388429905877188466478626784485318957932446534030175</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Conduct a proper MPC to generate CRS like the Powers of Tau MPC or use a trustworthy CRS generated by an exisiting audited trusted setup like<a href="https://github.com/AztecProtocol/ignition-verification"> Aztec&rsquo;s ignition</a></p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#broken-lagrange-polynomial-evaluation-at-zeta" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/22">
+                <h3 id="broken-lagrange-polynomial-evaluation-at-zeta">4.2 Broken Lagrange Polynomial Evaluation at Zeta <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The Verifier calculates the Lagrange Polynomial at ζ with an efficient scheme as:
+L<sub>j</sub>(ζ) = ω<sup>i</sup>/n * (ζ<sup>n</sup>-1)/(ζ-ω<sup>i</sup>)</p>
+<p>which has also been pointed out in the <a href="https://eprint.iacr.org/2019/953.pdf">plonk paper</a>. However, the computation ignores the fact that ζ can also be a root of unity, which means ζ<sup>n</sup> - 1 will be 0 for any ζ that is a root of unity.</p>
+<p>Thus, the formula will yield the Lagrange polynomial evaluation as 0, which is <strong>incorrect</strong>.
+Because the property of the Lagrange polynomial is:
+L<sub>j</sub>(ζ) = 1,  if i=j and 0 otherwise, where ζ belongs to domain H = ω<sup>i</sup>, ∀ 0&lt;=i&lt; n(n being the domain size)</p>
+<p>Another way of calculating the Lagrange polynomial at zeta is:
+L<sub>j</sub>(ζ) = y<sub>j</sub> * ∏ <sub>0&lt;= m &lt;= k, m != j</sub> (ζ - x<sub>m</sub>)/(x<sub>j</sub>-x<sub>m</sub>); (k being the degree of polynomial)</p>
+<p>If we consider the same evaluation for ζ at the root of unity in the second formula, it will correctly satisfy the property of the Lagrange polynomial stated above.</p>
+<p>Hence, there is a need to fix the computation considering the case highlighted.</p>
+<p>The problematic instances can be found in functions:</p>
+<ul>
+<li><strong>compute_ith_lagrange_at_z</strong></li>
+<li><strong>batch_compute_lagranges_at_z</strong></li>
+<li><strong>compute_alpha_square_lagrange_0</strong></li>
+</ul>
+<h4 id="recommendation">Recommendation</h4>
+<p>Consider adopting a strategy to use the second formula for the computation of Lagrange Polynomial evaluation at ζ if ζ is a root of unity.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#broken-logic-for-modular-multiplicative-inverse" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/20">
+                <h3 id="broken-logic-for-modular-multiplicative-inverse">4.3 Broken Logic for Modular Multiplicative Inverse <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The multiplicate inverse of an element α in a finite field Fp<sup>n</sup> can be calculated as α<sup>p<sup>n</sup> - 2</sup>. α can be any field element except 0 or the point at infinity.</p>
+<p>This totally makes sense as there exists no field element <code>x</code> such that
+<strong>0 * x = 1 mod p</strong></p>
+<p>However, it is allowed here and it is calculated like any other field element.
+It doesn&rsquo;t revert, because 0 raised to any power modulo p will yield 0.</p>
+<p>Thus the calculation points to a broken logic that defines the modular multiplicative inverse of 0 as 0.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>The point at infinity can bring many mathematical flaws to the system. Hence require the utmost attention to be fixed.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#missing-verifying-paring-check-result" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/13">
+                <h3 id="missing-verifying-paring-check-result">4.4 Missing Verifying Paring Check Result <span class="severity critical">Critical</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>In function <code>batch_verify_multi_points</code>, the SNARK paring check is done by calling paring pre-compile
+<code>let l_success := staticcall(sub(gas(), 2000),8,mPtr,0x180,0x00,0x20) </code>
+and the only the execution status is stored in the final success state (<code>state_success</code>), but the the paring check result which is stored in 0x00 is not stored and checked, which means if the paring check result is 0 (pairing check failed), the proof would still pass verification, e.g. invalid proof with incorrect proof element <code>proof_openings_selector_commit_api_at_zeta</code> would pass the paring check. As a result it breaks the SNARK paring verification.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/Verifier.sol:L586-L588</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">l_success</span> <span class="o">:=</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">8</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x180</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// l_success := true
+</span></span></span><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">),</span> <span class="n">and</span><span class="p">(</span><span class="n">l_success</span><span class="p">,</span><span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">))))</span>
+</span></span></code></pre></div><p>Another example is, if either of the following is sent as a point at infinity or (0,0) as (x,y) co-ordinate:</p>
+<ul>
+<li>commitment to the opening proof polynomial  W<sub>z</sub></li>
+<li>commitment to the opening proof polynomial  W<sub>zw</sub></li>
+</ul>
+<p>The proof will still work, since the pairing result is not being checked.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Verify paring check result and store it in the final success state after calling the paring pre-compile</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#gas-greifing-and-missing-return-status-check-for-staticcalls-may-lead-to-unexpected-outcomes" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/11">
+                <h3 id="gas-greifing-and-missing-return-status-check-for-staticcalls-may-lead-to-unexpected-outcomes">4.5 Gas Greifing and Missing Return Status Check for <code>staticcall</code>(s), May Lead to Unexpected Outcomes <span class="severity critical">Critical</span> <span class="state no-check">&nbsp;Partially Addressed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The gas supplied to the <code>staticcall</code>(s), is calculated by subtracting <code>2000</code> from the remaining gas at this point in time. However, if not provided enough gas, the <code>staticcall</code>(s) may fail and there will be no return data, and the execution will continue with the stale data that was previously there at the memory location specified by the return offset with the <code>staticcall</code>(s).</p>
+<p><strong>1- Predictable Derivation of Challenges</strong></p>
+<p>The function <code>derive_gamma_beta_alpha_zeta</code> is used to derive the challenge values <code>gamma</code>, <code>beta</code>, <code>alpha</code>, <code>zeta</code>. These values are derived from the prover&rsquo;s transcript by hashing defined parameters and are supposed to be unpredictable by either the prover or the verifier. The hash is collected with the help of <strong>SHA2-256</strong> precompile.
+The values are considered unpredictable, due to the assumption that SHA2-256 acts as a random oracle and it would be computationally infeasible for an attacker to find the pre-image of <code>gamma</code>. However, the assumption might be wrong.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/Verifier.sol:L261</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span> <span class="mh">0x2</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x1b</span><span class="p">),</span> <span class="n">size</span><span class="p">,</span> <span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">))</span> <span class="c1">//0x1b -&gt; 000..&#34;gamma&#34;
+</span></span></span></code></pre></div><p><strong>contracts/Verifier.sol:L269</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span> <span class="mh">0x2</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x1c</span><span class="p">),</span> <span class="mh">0x24</span><span class="p">,</span> <span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">))</span> <span class="c1">//0x1b -&gt; 000..&#34;gamma&#34;
+</span></span></span></code></pre></div><p><strong>contracts/Verifier.sol:L279</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span> <span class="mh">0x2</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x1b</span><span class="p">),</span> <span class="mh">0x65</span><span class="p">,</span> <span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">))</span> <span class="c1">//0x1b -&gt; 000..&#34;gamma&#34;
+</span></span></span></code></pre></div><p><strong>contracts/Verifier.sol:L293</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span> <span class="mh">0x2</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x1c</span><span class="p">),</span> <span class="mh">0xe4</span><span class="p">,</span> <span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">))</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L694</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span> <span class="mh">0x2</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="n">start_input</span><span class="p">),</span> <span class="n">size_input</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_gamma_kzg</span><span class="p">),</span> <span class="mh">0x20</span><span class="p">))</span>
+</span></span></code></pre></div><p>If the <code>staticcall</code>(s) fails, it will make the challenge values to be predictable and may help the prover in forging proofs and launching other adversarial attacks.</p>
+<p><strong>2- Incorrect Exponentiation</strong></p>
+<p>Functions <code>compute_ith_lagrange_at_z</code>, <code>compute_pi</code>, and <code>verify</code> compute modular exponentiation by making a <code>staticcall</code> to the precompile <code>modexp</code> as:</p>
+<p><strong>contracts/Verifier.sol:L335</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mh">0x05</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0xc0</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x20</span><span class="p">))</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L441</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mh">0x05</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0xc0</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x20</span><span class="p">))</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L889</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mh">0x05</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0xc0</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x20</span><span class="p">))</span>
+</span></span></code></pre></div><p>However, if not supplied enough gas, the <code>staticcall</code>(s) will fail, thus returning no result and the execution will continue with the stale data.</p>
+<p><strong>3. Incorrect Point Addition and Scalar Multiplication</strong></p>
+<p><strong>contracts/Verifier.sol:L555</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">pop</span><span class="p">(</span><span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">7</span><span class="p">,</span><span class="n">folded_evals_commit</span><span class="p">,</span><span class="mh">0x60</span><span class="p">,</span><span class="n">folded_evals_commit</span><span class="p">,</span><span class="mh">0x40</span><span class="p">))</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L847</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">l_success</span> <span class="o">:=</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">6</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x80</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L858</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">l_success</span> <span class="o">:=</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">7</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x60</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L868</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">l_success</span> <span class="o">:=</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">7</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x60</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L871</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">l_success</span> <span class="o">:=</span> <span class="n">and</span><span class="p">(</span><span class="n">l_success</span><span class="p">,</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">6</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x80</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">))</span>
+</span></span></code></pre></div><p>For the same reason, <code>point_add</code>, <code>point_mul</code>, and <code>point_acc_mul</code> will return incorrect results. Matter of fact, <code>point_acc_mul</code> will not revert even if the scalar multiplication fails in the first step. Because, the memory location specified for the return offset, will still be containing the old (x,y) coordinates of <code>src</code>, which are points on the curve. Hence, it will proceed by incorrectly adding (x,y) coordinates of <code>dst</code> with it.</p>
+<p>However, it will not be practically possible to conduct a gas griefing attack for <code>staticcall</code>(s) at the start of the top-level transaction. As it will require an attacker to pass a very low amount of gas to make the <code>staticcall</code> fail, but at the same time, that would not be enough to make the top-level transaction execute entirely and not run out of gas. But, this can still be conducted for the <code>staticcall</code>(s) that are executed at the near end of the top-level transaction.</p>
+<h4 id="recommendation">Recommendation</h4>
+<ol>
+<li>Check the returned status of the <strong>staticcall</strong> and revert if any of the staticcall&rsquo;s return status has been 0.</li>
+<li>Also fix the comments mentioned for every staticcall, for instance:
+the function <code>derive_beta</code> says <code>0x1b -&gt; 000..&quot;gamma&quot;</code> while the memory pointer holds the ASCII value of string <code>beta</code></li>
+</ol>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#verifier-doesnt-support-zero-or-multiple-bsb22-commitments" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/15">
+                <h3 id="verifier-doesnt-support-zero-or-multiple-bsb22-commitments">4.6 Verifier Doesn&rsquo;t Support Zero or Multiple BSB22 Commitments <span class="severity major">Major</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The verifier currently supports single BSB22 commitment as Gnark only supports single <code>Commit</code>(..) call. If there is no or multiple BSB22 commitments/<code>Commit</code> calls, the verifier would fail in proof verification.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>tmpl/template_verifier.go:L57-L58</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">vk_selector_commitments_commit_api_0_x</span> <span class="o">=</span> <span class="p">{{</span> <span class="p">(</span><span class="n">fpptr</span> <span class="p">.</span><span class="n">Qcp</span><span class="p">.</span><span class="n">X</span><span class="p">).</span><span class="n">String</span> <span class="p">}};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">vk_selector_commitments_commit_api_0_y</span> <span class="o">=</span> <span class="p">{{</span> <span class="p">(</span><span class="n">fpptr</span> <span class="p">.</span><span class="n">Qcp</span><span class="p">.</span><span class="n">Y</span><span class="p">).</span><span class="n">String</span> <span class="p">}};</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add support for  zero or multiple BSB22 commitments</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#missing-tests-for-edge-cases" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/10">
+                <h3 id="missing-tests-for-edge-cases">4.7 Missing Tests for Edge Cases <span class="severity major">Major</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>There are no test cases for invalid proof and public input such as proof elements not on curve, proof element is points of infinity, all proof elements are zero, wrong proof element, proof scalar element bigger than scalar field modulus, proof scalar element wrapping around scalar field modulus, public input greater than scalar field modulus etc. and no or multiple BSB22 commitments. There is only test for valid proof and one BSB22 commitment. Tests for all edge cases are crucial to check proof soundness in SNARK, missing it may result in missing some critical bugs, e.g. issue <a href="#missing-verifying-paring-check-result">issue 4.4</a> issue <a href="#verifier-doesnt-support-zero-or-multiple-bsb22-commitments">issue 4.6</a></p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Add missing test cases</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#missing-scalar-field-range-check-in-scalar-multiplication" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/9">
+                <h3 id="missing-scalar-field-range-check-in-scalar-multiplication">4.8 Missing Scalar Field Range Check in Scalar Multiplication <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>There is no field element range check on scalar field proof elements e.g. <code>proof_l_at_zeta, proof_r_at_zeta, proof_o_at_zeta, proof_s1_at_zeta,proof_s2_at_zeta, proof_grand_product_at_zeta_omega</code> as mentioned in the step 2 of the verifier&rsquo;s algorithm in the <a href="https://eprint.iacr.org/2019/953.pdf">Plonk paper</a>.
+The scalar multiplication functions <code>point_mul</code> and <code>point_acc_mul</code> call precompile ECMUL, according to EIP-169 , which would verify the point P is on curve and P.x and P.y is less than the base field modulus, however it doesn&rsquo;t check the scalar <code>s</code> is less than scalar field modulus, if <code>s</code> is greater than scalar field modulus <code>r_mod</code>, it would cause unintended behavior of the contract, specifically if the scalar field proof element <code>e</code> are replaced by <code>e + r_mod</code>, the proof would still pass verification. Although in Plonk&rsquo;s case, there is few attacker vectors could exists be based on this kind of proof malleability.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/Verifier.sol:L852-L873</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">point_mul</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span><span class="n">src</span><span class="p">,</span><span class="n">s</span><span class="p">,</span> <span class="n">mPtr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// let mPtr := add(mload(0x40), state_last_mem)
+</span></span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">state</span> <span class="o">:=</span> <span class="n">mload</span><span class="p">(</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="n">mload</span><span class="p">(</span><span class="n">src</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x20</span><span class="p">),</span><span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="mh">0x20</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x40</span><span class="p">),</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">l_success</span> <span class="o">:=</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">7</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x60</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">),</span> <span class="n">and</span><span class="p">(</span><span class="n">l_success</span><span class="p">,</span><span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// dst &lt;- dst + [s]src (Elliptic curve)
+</span></span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">point_acc_mul</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span><span class="n">src</span><span class="p">,</span><span class="n">s</span><span class="p">,</span> <span class="n">mPtr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">state</span> <span class="o">:=</span> <span class="n">mload</span><span class="p">(</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="n">mload</span><span class="p">(</span><span class="n">src</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x20</span><span class="p">),</span><span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="mh">0x20</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x40</span><span class="p">),</span><span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">l_success</span> <span class="o">:=</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">7</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x60</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x40</span><span class="p">),</span><span class="n">mload</span><span class="p">(</span><span class="n">dst</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x60</span><span class="p">),</span><span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span><span class="mh">0x20</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l_success</span> <span class="o">:=</span> <span class="n">and</span><span class="p">(</span><span class="n">l_success</span><span class="p">,</span> <span class="n">staticcall</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="nb">gas</span><span class="p">(),</span> <span class="mi">2000</span><span class="p">),</span><span class="mi">6</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x80</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">),</span> <span class="n">and</span><span class="p">(</span><span class="n">l_success</span><span class="p">,</span><span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add scalar field range check on scalar multiplication functions <code>point_mul</code> and <code>point_acc_mul</code> or the scalar field proof elements.</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#missing-public-inputs-range-check" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/8">
+                <h3 id="missing-public-inputs-range-check">4.9 Missing Public Inputs Range Check <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The public input is an array of <code>uint256</code> numbers, there is no check if each public input is less than SNARK scalar field  modulus <code>r_mod</code>, as mentioned in the step 3 of the verifier&rsquo;s algorithm in the <a href="https://eprint.iacr.org/2019/953.pdf">Plonk paper</a>. Since public inputs are involved computation of <code>Pi</code> in the plonk gate which is in the SNARK scalar field, without the check, it might cause scalar field overflow and the verification contract would fail and revert. To prevent overflow and other unintended behavior there should be a range check for the public inputs.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/Verifier.sol:L470</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">Verify</span><span class="p">(</span><span class="kt">bytes</span> <span class="k">memory</span> <span class="n">proof</span><span class="p">,</span> <span class="kt">uint256</span><span class="p">[]</span> <span class="k">memory</span> <span class="n">public_inputs</span><span class="p">)</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L367-L383</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">sum_pi_wo_api_commit</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">public_inputs</span><span class="p">,</span><span class="mh">0x20</span><span class="p">),</span> <span class="n">mload</span><span class="p">(</span><span class="n">public_inputs</span><span class="p">),</span> <span class="n">zeta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pi</span> <span class="o">:=</span> <span class="n">mload</span><span class="p">(</span><span class="n">mload</span><span class="p">(</span><span class="mh">0x40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">sum_pi_wo_api_commit</span><span class="p">(</span><span class="n">ins</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">li</span> <span class="o">:=</span> <span class="n">mload</span><span class="p">(</span><span class="mh">0x40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">batch_compute_lagranges_at_z</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">li</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">res</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">tmp</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">{</span><span class="kr">let</span> <span class="n">i</span><span class="o">:=</span><span class="mi">0</span><span class="p">}</span> <span class="n">lt</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span><span class="n">i</span><span class="o">:=</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">:=</span> <span class="nb">mulmod</span><span class="p">(</span><span class="n">mload</span><span class="p">(</span><span class="n">li</span><span class="p">),</span> <span class="n">mload</span><span class="p">(</span><span class="n">ins</span><span class="p">),</span> <span class="n">r_mod</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">res</span> <span class="o">:=</span> <span class="nb">addmod</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">r_mod</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">li</span> <span class="o">:=</span> <span class="n">add</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ins</span> <span class="o">:=</span> <span class="n">add</span><span class="p">(</span><span class="n">ins</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">mload</span><span class="p">(</span><span class="mh">0x40</span><span class="p">),</span> <span class="n">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add range check for the public inputs
+<code>require(input[i] &lt; r_mod, &quot;public inputs greater than snark scalar field&quot;);</code></p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#missing-field-element-check-and-on-curve-point-check-for-proof-elements" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/7">
+                <h3 id="missing-field-element-check-and-on-curve-point-check-for-proof-elements">4.10 Missing Field Element Check and on Curve Point Check for Proof Elements <span class="severity major">Major</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>There is no prime field element check and on curve point for proof <code>elements proof_l_com_x, proof_l_com_y,proof_r_com_x,proof_r_com_y, proof_o_com_x, proof_o_com_y, proof_h_0_x, proof_h_0_y,proof_h_1_x, proof_h_1_y,proof_h_2_x, proof_h_2_y, proof_batch_opening_at_zeta, proof_opening_at_zeta_omega, proof_selector_commit_api_commitment</code>, as mentioned in</p>
+<blockquote>
+<p>step 1 Validate ([a]1, [b]1, [c]1, [z]1, [tlo]1, [tmid]1, [thi]1, [Wz]1, [Wzω]1) ∈ G9</p>
+</blockquote>
+<p>of the verifier&rsquo;s algorithm in the <a href="https://eprint.iacr.org/2019/953.pdf">Plonk paper</a>. Although there is field element check and curve point check in ECCADD, ECCMUL and ECCParing precompiles on those elements, in which the precompile would revert on failed check but it would consume gas on revert and there is no error information. It&rsquo;s better to check explicitly and revert on fail to prevent unintended behavior of the verification contract.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Add field element, group element and curve point check for proof elements and revert if the check fails.<br>
+`<!-- Supply advice on how to best fix the problem. --></p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#missing-length-check-for-proof" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/5">
+                <h3 id="missing-length-check-for-proof">4.11 Missing Length Check for <code>proof</code> <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>Verify</code> function has the following signature:</p>
+<pre tabindex="0"><code>function Verify(bytes memory proof, uint256[] memory public_inputs)
+</code></pre><p>Here, <code>proof</code> is a dynamically sized array of bytes (padded upto the nearest word).  The function <code>derive_gamma(aproof, pub_inputs)</code> uses this array and makes some assumptions about its length.  Specifically, that it is <code>(vk_nb_commitments_commit_api * 3 * 0x20) + 0x360</code> bytes long (when including the initial length field of the <code>bytes</code> array).  However, there is no check that the <code>proof</code> supplied in the <code>calldata</code> (which originates within <code>ZkEvmV2</code> where it is loaded into <code>memory</code>) has the correct length.  This could result in the <code>proof</code> and <code>pub_inputs</code> overlapping in memory, leading to unintended consequences.</p>
+<p>Also, if mistakenly appended extra bits to the proof, it will not affect the proof verification as the Verifier doesn&rsquo;t account for any extra bits after the y coordinate of the last commitment. But it will surely make the verification expensive, as it will still be copied down into memory.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Add an appropriate length check at some point in the pipeline to ensure this doesn&rsquo;t cause any unintended problems.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#allowing-program-execution-even-after-a-failed-step-may-lead-to-unnecessary-wastage-of-gas" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/25">
+                <h3 id="allowing-program-execution-even-after-a-failed-step-may-lead-to-unnecessary-wastage-of-gas">4.12 Allowing Program Execution Even After a Failed Step May Lead to Unnecessary Wastage of Gas <span class="severity medium">Medium</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The Verifier stores the result of computations obtained in different steps of Verifier algorithm. The result is stored at a designated memory location <code>state_success</code> by doing bitwise <strong>&amp;</strong> with the previous result, and if the final result at the end of all the steps comes out to be <strong>1</strong> or <strong>true</strong>, it verifies the proof.</p>
+<p>However, it makes no sense to continue with the rest of the operations, if any step results into a failure, as the proof verification will be failing anyways. But, it will result into wastage of more gas for the zkEVM Operator.</p>
+<p>The functions which update the <code>state_success</code> state are:</p>
+<ul>
+<li><strong>point_mul</strong></li>
+<li><strong>point_add</strong></li>
+<li><strong>point_acc_mul</strong></li>
+<li><strong>verify_quotient_poly_eval_at_zeta</strong></li>
+<li><strong>batch_verify_multi_points</strong></li>
+</ul>
+<h4 id="recommendation">Recommendation</h4>
+<p>It would be best to revert, the moment any step fails.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#loading-arbitrary-data-as-wire-commitments" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/17">
+                <h3 id="loading-arbitrary-data-as-wire-commitments">4.13 Loading Arbitrary Data as Wire Commitments <span class="severity medium">Medium</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>Function <code>load_wire_commitments_commit_api</code> as the name suggests, loads wire commitments from the proof into the memory array <code>wire_commitments</code>. The array is made to hold 2 values per commitment or the size of the array is 2 * <code>vk_nb_commitments_commit_api</code>, which makes sense as these 2 values are the <strong>x</strong> &amp; <strong>y</strong> co-ordinates of the commitments.</p>
+<p><strong>contracts/Verifier.sol:L453-L454</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span><span class="p">[]</span> <span class="k">memory</span> <span class="n">wire_committed_commitments</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">uint256</span><span class="p">[](</span><span class="mi">2</span><span class="o">*</span><span class="n">vk_nb_commitments_commit_api</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">load_wire_commitments_commit_api</span><span class="p">(</span><span class="n">wire_committed_commitments</span><span class="p">,</span> <span class="n">proof</span><span class="p">);</span>
+</span></span></code></pre></div><p>Coming back to the function<code>load_wire_commitments_commit_api</code>, it extracts both the <strong>x</strong> &amp; <strong>y</strong> coordinates of a commitment in a single iteration. However, the loop runs <code>2 * vk_nb_commitments_commit_api</code>, or in other words, twice as many of the required iterations. For instance, if there is 1 commitment, it will run two times. The first iteration will pick up the actual coordinates and the second one can pick any arbitrary data from the proof(if passed) and load it into memory. Although, this data which has been loaded in an extra iteration seems harmless but still adds an overhead for the processing.</p>
+<p><strong>contracts/Verifier.sol:L307</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">{</span><span class="kr">let</span> <span class="n">i</span><span class="o">:=</span><span class="mi">0</span><span class="p">}</span> <span class="n">lt</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">mul</span><span class="p">(</span><span class="n">vk_nb_commitments_commit_api</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="p">{</span><span class="n">i</span><span class="o">:=</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>The number of iterations should be equal to the size of commitments, i.e., <code>vk_nb_commitments_commit_api</code>.
+So consider switching from:</p>
+<pre tabindex="0"><code>for {let i:=0} lt(i, mul(vk_nb_commitments_commit_api,2)) {i:=add(i,1)}
+</code></pre><p>to:</p>
+<pre tabindex="0"><code>for {let i:=0} lt(i, vk_nb_commitments_commit_api) {i:=add(i,1)}
+</code></pre></div>
+        </div><div class="issue">
+            <a class="anchor" href="#broken-logic-for-batch-inverting-field-elements" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/21">
+                <h3 id="broken-logic-for-batch-inverting-field-elements">4.14 Broken Logic for Batch Inverting Field Elements <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The function <code>compute_pi</code> calculates public input polynomial evaluation at 𝜁 without <code>api commit</code> as:
+<i>PI(𝜁) = ∑<sub>i∈[ℓ]</sub> ω<sub>i</sub>L<sub>i</sub>(𝜁)</i></p>
+<p>The function first calculates:
+n<sup>-1</sup> * (𝜁<sup>n</sup>-1)</p>
+<p>and then calls a function <code>batch_invert</code> to find modular multiplicate inverses of:
+𝜁 - ω<sup>i</sup> where 0 &lt; i &lt; n ; n is the number of public inputs and 𝜁<sup>0</sup> = 1.</p>
+<p>The explanation of which is provided by the author as:</p>
+<pre tabindex="0"><code>Ex: if ins = [a₀, a₁, a₂] it returns [a₀^{-1},a₁^{-1}, a₂^{-1}] (the aᵢ are on 32 bytes)
+mPtr is the free memory to use.
+
+It uses the following method (example with 3 elements):
+* first compute [1, a₀, a₀a₁, a₀a₁a₂]
+* compute u := (a₀a₁a₂)^{-1}
+* compute a₂^{-1} = u*a₀a₁, replace u by a₂*u=(a₀a₁)^{-1}
+* compute a₁^{-1} = u*a₀, replace u by a₁*u = a₀^{-1}
+* a₀^{-1} = u
+</code></pre><p>However, it doesn&rsquo;t account for the fact that elements passed to the function can be 0 as well. The reason is, 𝜁 can be a root of unity. Since the function first calculates an aggregated inverse, thus even if a single element is 0, the aggregated inverse will be 0, and thus all the individual inverses will be 0, which is contrary to the desired logic of finding individual inverses.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Consider fixing the computation as per the recommendations in <a href="#broken-lagrange-polynomial-evaluation-at-zeta">issue 4.2</a></p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#unused-state-fields" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/16">
+                <h3 id="unused-state-fields">4.15 Unused State Fields <span class="severity minor">Minor</span> <span class="state no-check">&nbsp;Acknowledged</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>There are three <code>state</code> fields which exist but are neither defined nor used in the computation:</p>
+<ul>
+<li><code>state_su</code> and <code>state_sv</code></li>
+<li><code>state_alpha_square_lagrange_one</code></li>
+</ul>
+<p>It is unclear whether or not these were intended to play a part or not.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/Verifier.sol:L138-L140</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="c1">// challenges related to KZG
+</span></span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">state_sv</span> <span class="o">=</span> <span class="mh">0x80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">state_su</span> <span class="o">=</span> <span class="mh">0xa0</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L166</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="k">constant</span> <span class="n">state_alpha_square_lagrange_one</span> <span class="o">=</span> <span class="mh">0x200</span><span class="p">;</span>
+</span></span></code></pre></div><!--
+Code URLs get formatted nicely, i.e. https://github.com/ConsenSysDiligence/client-audit-internal-2019-01/blob/master/code/contracts/Vulnerable.sol#L27-L33
+-->
+<h4 id="recommendation">Recommendation</h4>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#overwritten-assignment-to-state_success" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/6">
+                <h3 id="overwritten-assignment-to-state_success">4.16 Overwritten Assignment to <code>state_success</code> <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>In the function <code>verify_quotient_poly_eval_at_zeta(aproof)</code> we have the following two lines at the end:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Solidity" data-lang="Solidity"><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">),</span> <span class="n">mload</span><span class="p">(</span><span class="n">computed_quotient</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_success</span><span class="p">),</span><span class="n">eq</span><span class="p">(</span><span class="n">mload</span><span class="p">(</span><span class="n">computed_quotient</span><span class="p">),</span> <span class="n">mload</span><span class="p">(</span><span class="n">s2</span><span class="p">)))</span>
+</span></span></code></pre></div><p>In essence, this is writing to the <code>state_success</code> variable twice and, hence, the first assignment is lost.  Its unclear to me what exactly was intended here, but I&rsquo;m assuming the first assignment can be removed.</p>
+<h4 id="examples">Examples</h4>
+<!--
+Code URLs get formatted nicely, i.e. https://github.com/ConsenSysDiligence/client-audit-internal-2019-01/blob/master/code/contracts/Vulnerable.sol#L27-L33
+-->
+<h4 id="recommendation">Recommendation</h4>
+<p>Determine the correct course of action: either removing the first assignment, or using an <code>and()</code> to combine the two values together.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#plonkverifierabi-is-out-of-sync" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/3">
+                <h3 id="plonkverifierabi-is-out-of-sync">4.17 PlonkVerifier.abi Is Out of Sync <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>Running <code>make solc</code> creates a PlonkVerifier.abi file that is empty (<code>[]</code>). This seems correct for the existing Verifier.sol file.
+In contrast, the committed PlonkVerifier.abi refers to a function <code>PrintUint256</code> that is not in the current Verifier.sol.</p>
+<p>This probably means that the committed PlonkVerifier.abi was generated from a different Verifier.sol file. It would be good to make sure that the committed files are correct.</p>
+<p>Possibly related: the .bin files generated (using <code>0.8.19+commit.7dd6d404.Darwin.appleclang</code>) are different from the committed ones, so they probably are also out of sync. Else, the exact compiler used should be documented.</p>
+<h4 id="examples">Examples</h4>
+<!--
+Code URLs get formatted nicely, i.e. https://github.com/ConsenSysDiligence/client-audit-internal-2019-01/blob/master/code/contracts/Vulnerable.sol#L27-L33
+-->
+<h4 id="recommendation">Recommendation</h4>
+<p>Document the compiler used.
+Ensure that the committed files are consistent.
+Ensure that there is a single source of truth (1 solidity file + compiler is better than 1 solidity file + 1 bin file that can get out of sync).</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#makefile-target-order" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/1">
+                <h3 id="makefile-target-order">4.18 Makefile: Target Order <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The target <code>all</code> in the Makefile ostensibly wants to run the targets <code>clean</code> and <code>solc</code> in that order.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Makefile" data-lang="Makefile"><span class="line"><span class="cl"><span class="nf">all</span><span class="o">:</span> <span class="n">clean</span> <span class="n">solc</span>
+</span></span></code></pre></div><p>However prerequisites in GNU Make are not ordered, and they might even run in parallel. In this case, this could cause spurious behavior like overwrite errors or files being deleted just after being created.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>The Make way to ensure that targets run one after the other is</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Makefile" data-lang="Makefile"><span class="line"><span class="cl"><span class="nf">all</span><span class="o">:</span> <span class="n">clean</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>MAKE<span class="k">)</span> solc
+</span></span></code></pre></div><p>Also <code>all</code> should be listed in the PHONY targets.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#floating-pragma" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/28">
+                <h3 id="floating-pragma">4.19 Floating Pragma</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The Verifier can be compiled with any minor version of compiler <code>0.8</code>. It may lead to inconsistent behavior or produce unintended results, due to the bugs that have been identified in specific compiler versions. For instance, <a href="https://blog.soliditylang.org/2022/06/15/inline-assembly-memory-side-effects-bug/">an optimizer bug</a> that was discovered in 0.8.13, which effects unused memory/storage writes in an inline assembly block, which is similar to the pattern being followed by the Verifier. Although, we have not observed a negative effect of the said bug, but we still recommend working with a fixed compiler version, to avoid potential compiler-specific issues.</p>
+<p><strong>contracts/Verifier.sol:L17</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>The contract should be tested and compiled with a fixed compiler version</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#deviation-in-implementation-from-the-intended-approachplonk-paper--other-general-observations" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/27">
+                <h3 id="deviation-in-implementation-from-the-intended-approachplonk-paper--other-general-observations">4.20 Deviation in Implementation From the Intended Approach/Plonk Paper &amp; Other General Observations</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>We have observed some deviations in the implementation in some computations w.r.t the intended approach described by the author and also with the <a href="https://eprint.iacr.org/archive/2019/953/1624533038.pdf">Plonk Paper</a>. We have also observed some computations which require a thorough lookup</p>
+<p>1- Function <code>compute_gamma_kzg</code> defines the process to derive an unpredictable value gamma with the following inputs mentioned by the authors</p>
+<pre tabindex="0"><code>The process for deriving γ is the same as in derive_gamma but this time the inputs are
+in this order (the [] means it&#39;s a commitment):
+* ζ
+* [H] ( = H₁ + ζᵐ⁺²*H₂ + ζ²⁽ᵐ⁺²⁾*H₃ )
+* [Linearised polynomial]
+* [L], [R], [O]
+* [S₁] [S₂]
+* [Pi_{i}] (wires associated with custom gates)
+Then there are the purported evaluations of the previously committed polynomials:
+* H(ζ)
+* Linearised_polynomial(ζ)
+* L(ζ), R(ζ), O(ζ), S₁(ζ), S₂(ζ)
+* Pi_{i}(ζ)
+</code></pre><p>However, instead of using [Pi<sub>i</sub>] and Pi<sub>i</sub>(ζ), i.e., commitments to the custom gates&rsquo; wire values and their evaluations at ζ, the function uses [Qc<sub>i</sub>] and Qc<sub>i</sub>(ζ), which are the commitments to the custom gates&rsquo; selectors and their evaluations at ζ</p>
+<p><strong>contracts/Verifier.sol:L669-L671</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="n">offset</span><span class="p">),</span> <span class="n">vk_selector_commitments_commit_api_0_x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="n">add</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">)),</span> <span class="n">vk_selector_commitments_commit_api_0_y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">offset</span> <span class="o">:=</span> <span class="n">add</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">)</span>
+</span></span></code></pre></div><p>2- Approach to compute linearized polynomial</p>
+<pre tabindex="0"><code>Compute the commitment to the linearized polynomial equal to
+L(ζ)[Qₗ]+r(ζ)[Qᵣ]+R(ζ)L(ζ)[Qₘ]+O(ζ)[Qₒ]+[Qₖ]+Σᵢqc&#39;ᵢ(ζ)[BsbCommitmentᵢ] +
+α*( Z(μζ)(L(ζ)+β*S₁(ζ)+γ)*(R(ζ)+β*S₂(ζ)+γ)[S₃]-[Z](L(ζ)+β*id_{1}(ζ)+γ)*(R(ζ)+β*id_{2(ζ)+γ)*(O(ζ)+β*id_{3}(ζ)+γ) ) +
+α²*L₁(ζ)[Z]
+</code></pre><p>Unlike the other assignment polynomials, where the input polynomial evaluation at ζ is multiplied by its respective selector commitment,
+For instance:
+L(ζ)[Q<sub>l</sub>]</p>
+<p>In the case of custom gates, it is being computed in reverse as:
+Qc<sub>i</sub>(ζ)[Pi<sub>i</sub>]</p>
+<p><strong>contracts/Verifier.sol:L726-L735</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">commits_api_at_zeta</span> <span class="o">:=</span> <span class="n">add</span><span class="p">(</span><span class="n">aproof</span><span class="p">,</span> <span class="n">proof_openings_selector_commit_api_at_zeta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">commits_api</span> <span class="o">:=</span> <span class="n">add</span><span class="p">(</span><span class="n">aproof</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">proof_openings_selector_commit_api_at_zeta</span><span class="p">,</span> <span class="n">mul</span><span class="p">(</span><span class="n">vk_nb_commitments_commit_api</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">{</span><span class="kr">let</span> <span class="n">i</span><span class="o">:=</span><span class="mi">0</span><span class="p">}</span> <span class="n">lt</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">vk_nb_commitments_commit_api</span><span class="p">)</span> <span class="p">{</span><span class="n">i</span><span class="o">:=</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span> <span class="n">mload</span><span class="p">(</span><span class="n">commits_api</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">),</span> <span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">commits_api</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">point_acc_mul</span><span class="p">(</span><span class="n">l_state_linearised_polynomial</span><span class="p">,</span><span class="n">mPtr</span><span class="p">,</span><span class="n">mload</span><span class="p">(</span><span class="n">commits_api_at_zeta</span><span class="p">),</span><span class="n">add</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span><span class="mh">0x40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">commits_api_at_zeta</span> <span class="o">:=</span> <span class="n">add</span><span class="p">(</span><span class="n">commits_api_at_zeta</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">commits_api</span> <span class="o">:=</span> <span class="n">add</span><span class="p">(</span><span class="n">commits_api</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>3- Approach to compute linearized polynomial and quotient polynomial evaluation at zeta</p>
+<p>The signs for the parts of the expressions to compute r̄ are reversed, if compared with the plonk paper</p>
+<pre tabindex="0"><code>* s₁ = α*Z(μζ)(l(ζ)+β*s₁(ζ)+γ)*(r(ζ)+β*s₂(ζ)+γ)*β
+* s₂ = -α*(l(ζ)+β*ζ+γ)*(r(ζ)+β*u*ζ+γ)*(o(ζ)+β*u²*ζ+γ) + α²*L₁(ζ)
+</code></pre><p>And the sign for the term in t¯ computation has been reversed as well:
+αz¯w(l¯+βs¯σ1+γ)(r¯+βs¯σ2+γ)(o¯+γ)</p>
+<p><strong>contracts/Verifier.sol:L832</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">computed_quotient</span><span class="p">,</span> <span class="nb">addmod</span><span class="p">(</span><span class="n">mload</span><span class="p">(</span><span class="n">computed_quotient</span><span class="p">),</span> <span class="n">mload</span><span class="p">(</span><span class="n">s1</span><span class="p">),</span> <span class="n">r_mod</span><span class="p">))</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L782</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">s2</span> <span class="o">:=</span> <span class="n">sub</span><span class="p">(</span><span class="n">r_mod</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>There is a need to thoroughly review the highlighted code sections</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#proof-size-can-be-reduced-by-removing-linearization-polynomial-evaluation-at-zeta" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/26">
+                <h3 id="proof-size-can-be-reduced-by-removing-linearization-polynomial-evaluation-at-zeta">4.21 Proof Size Can Be Reduced by Removing Linearization Polynomial Evaluation at Zeta</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The Linearization Polynomial evaluation at zeta (r¯) can be removed from the proof as the verifier computes the Linearization Polynomial anyways. The Verifier&rsquo;s algorithm in the latest release of the <a href="https://eprint.iacr.org/2019/953.pdf">plonk paper</a> has also been updated, considering the same.
+However, it might require changing/adjusting a lot of code sections, hence it is not recommended for the current version of the verifier but definitely can be considered for future updates.</p></div>
+        </div><div class="issue">
+            <a class="anchor" href="#unnecessary-memory-readwrite-operations" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/24">
+                <h3 id="unnecessary-memory-readwrite-operations">4.22 Unnecessary Memory Read/Write Operations</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>Function <a href="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/blob/20a84dcf215d75409cdc85a090e186a127867a86/code/contracts/Verifier.sol#L801-L838"><code>verify_quotient_poly_eval_at_zeta</code></a> tries to find whether
+m¯+PI(ζ)+αz¯w(l¯+βs¯σ1+γ)(r¯+βs¯σ2+γ)(o¯+γ)−L1(ζ)α2 is equal to t¯ZH(ζ) or not, where x¯=x(ζ) and m¯ is the linearization polynomial evaluation at ζ</p>
+<p>However, instead of directly working with local assembly variables, the function uses memory operations <code>mload</code> and <code>mstore</code> which is unnecessary and adds gas overhead for the calculations.</p>
+<p>For instance,</p>
+<pre tabindex="0"><code># With memory
+
+let s1 := add(mload(0x40), state_last_mem)
+mstore(s1, mulmod(mload(add(aproof,proof_s1_at_zeta)),mload(add(state, state_beta)), r_mod))
+mstore(s1, addmod(mload(s1), mload(add(state, state_gamma)), r_mod))
+mstore(s1, addmod(mload(s1), mload(add(aproof, proof_l_at_zeta)), r_mod))
+
+# Without memory
+
+let s1 := mulmod(mload(add(aproof,proof_s1_at_zeta)),mload(add(state, state_beta)), r_mod)
+s1:= addmod(s1, mload(add(state, state_gamma)), r_mod)
+s1:= addmod(s1, mload(add(aproof, proof_l_at_zeta)), r_mod)
+</code></pre><p>Also, the function stores the computed quotient at the memory location of <code>state_success</code> as:</p>
+<pre tabindex="0"><code>mstore(add(state, state_success), mload(computed_quotient))
+</code></pre><p>It is unnecessary as it is logically reserved for the calculation results, and also because of the next line which is actually storing the desired comparison result.</p>
+<pre tabindex="0"><code>mstore(add(state, state_success),eq(mload(computed_quotient), mload(s2)))
+</code></pre><h4 id="recommendation">Recommendation</h4>
+<p>The same calculations can be achieved by simply using the local assembly variables. Also, the unnecessary memory written to <code>state_success</code> for <code>computed_quotient</code> mentioned above can be removed.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#unused-evaluation-of-zx-1-at-zeta" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/23">
+                <h3 id="unused-evaluation-of-zx-1-at-zeta">4.23 Unused Evaluation of Z(x)-1 at Zeta <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The solidity variable <code>zeta_power_n_minus_one</code> is defined at Line 361, and calculated at Lines 445 and 446.  However, this variable does not appear to be actually used anywhere.   Instead, there are several places where the value is recalculated from scratch.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/Verifier.sol:L361</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="n">zeta_power_n_minus_one</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/Verifier.sol:L445-L446</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">zeta_power_n_minus_one</span> <span class="o">:=</span> <span class="n">pow</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span> <span class="n">vk_domain_size</span><span class="p">,</span> <span class="n">mload</span><span class="p">(</span><span class="mh">0x40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">zeta_power_n_minus_one</span> <span class="o">:=</span> <span class="nb">addmod</span><span class="p">(</span><span class="n">zeta_power_n_minus_one</span><span class="p">,</span> <span class="n">sub</span><span class="p">(</span><span class="n">r_mod</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">r_mod</span><span class="p">)</span>
+</span></span></code></pre></div><!--
+Code URLs get formatted nicely, i.e. https://github.com/ConsenSysDiligence/client-audit-internal-2019-01/blob/master/code/contracts/Vulnerable.sol#L27-L33
+-->
+<h4 id="recommendation">Recommendation</h4>
+<p>Presumably, this variable can be removed without any consequences.</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#spurious-debugging-code" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/12">
+                <h3 id="spurious-debugging-code">4.24 Spurious Debugging Code</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>There are two examples of debugging code left within the code base.</p>
+<h4 id="examples">Examples</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Solidity" data-lang="Solidity"><span class="line"><span class="cl"><span class="n">check</span> <span class="o">:=</span> <span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">mem</span><span class="p">,</span> <span class="n">state_check_var</span><span class="p">))</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Solidity" data-lang="Solidity"><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_check_var</span><span class="p">),</span> <span class="n">acc_gamma</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Solidity" data-lang="Solidity"><span class="line"><span class="cl"><span class="n">mstore</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">state_check_var</span><span class="p">),</span> <span class="n">mload</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">folded_quotients</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">)))</span>
+</span></span></code></pre></div><!--
+Code URLs get formatted nicely, i.e. https://github.com/ConsenSysDiligence/client-audit-internal-2019-01/blob/master/code/contracts/Vulnerable.sol#L27-L33
+-->
+<h4 id="recommendation">Recommendation</h4>
+<p>Remove debugging code prior to deployment.</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#utils---possible-code-improvements" data-issue-url="https://github.com/ConsenSysDiligence/linea-plonk-audit-2023-05/issues/4">
+                <h3 id="utils---possible-code-improvements">4.25 Utils - Possible Code Improvements</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="descriptions-and-recommendations">Descriptions and Recommendations</h4>
+<p>The contract defines function <code>hash_fr</code> to calculate field elements over finite field F from message hash, expanded with <code>expand_msg</code>. However, we found opportunities for a couple of code improvements that may enhance code readability.</p>
+<p>A. The following code excerpt prepends a byte string of 64 zeroes for the padding <code>Z_pad</code></p>
+<p><strong>contracts/Utils.sol:L39-L41</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">64</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">=</span> <span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">zero</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>However, as it is a static value and need not be calculated dynamically, it can be simplified by predefining it as an initial value for <code>tmp</code> as:</p>
+<p><code>bytes memory tmp = hex'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';</code></p>
+<p>B. The following code excerpt performs a <strong>xor</strong> operation with <strong>b0</strong> and <strong>b1</strong> bytes32 hash strings in a for a loop.</p>
+<p><strong>contracts/Utils.sol:L51-L56</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">tmp</span> <span class="o">=</span> <span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="kt">uint8</span><span class="p">(</span><span class="n">b0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">^</span> <span class="kt">uint8</span><span class="p">(</span><span class="n">b1</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kt">uint</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">32</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">=</span> <span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="kt">uint8</span><span class="p">(</span><span class="n">b0</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^</span> <span class="kt">uint8</span><span class="p">(</span><span class="n">b1</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">tmp</span> <span class="o">=</span> <span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="kt">uint8</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">dst</span><span class="p">,</span> <span class="n">sizeDomain</span><span class="p">);</span>
+</span></span></code></pre></div><p>Instead of performing <strong>xor</strong> operation byte-by-byte, solidity provides the capability to <strong>xor</strong> the whole fixed byte string at once, hence it can be simplified as:</p>
+<pre tabindex="0"><code>bytes32 xorTmp = b0 ^ b1;
+tmp = abi.encodePacked(xorTmp, uint8(2), dst, sizeDomain);
+</code></pre></div>
+        </div>
+<h2 id="appendix--formal-verification">Appendix 1 &mdash; Formal Verification</h2>
+<p>As part of the internal audit conducted by Diligence for Linea, key
+aspects of the PLONK verifier were formally verified by the ConsenSys
+Trustworthy Smart Contracts (TSC) team.  This appendix outline the
+scope of the formal verification proof, and the methodology taken in
+developing it.</p>
+<p><strong>DISCLAIMER.</strong> Whilst this proof makes specific correctness claims
+about key properties of the contract-under-audit (see below), it
+should not be misconstrued as indicating the contract as a whole is
+correct.  This proof does not constitute a total proof of correctness
+for the PLONK verifier contract.</p>
+<h3 id="methodology">A.1.1 Methodology</h3>
+<p>The proof in this repository was developed using the <a href="http://dafny.org/">Dafny
+programming language</a>.  This system was chosen
+because of its familiarity to the TSC team.  Dafny has seen reasonably
+wide use within various Universities and industrial organisations,
+such as Amazon Web Services and Microsoft.  Dafny has also been used
+previously within ConsenSys to verify <a href="https://github.com/ConsenSys/eth2.0-dafny">the Eth 2.0
+Specification</a>.</p>
+<ul>
+<li><a href="https://github.com/dafny-lang/dafny/releases/tag/v3.13.0">Dafny
+v3.13.0</a>
+was primarily used for this proof, along with the command-line
+option <code>--disable-nonlinear-arithmetic</code>.</li>
+<li><a href="https://github.com/Z3Prover/z3/releases/tag/Z3-4.8.5">Z3 v4.8.5</a>
+was selected as the automated theorem prover for this project.
+Note that this is not the default for Dafny v3.13.0.</li>
+</ul>
+<h4 id="solidity-translation">Solidity Translation</h4>
+<p>An initial translation of the contract code written in Solidity into
+Dafny was done using the custom-built <a href="https://github.com/ConsenSys/Dolidity">Dolidity
+tool</a>.  This translation was
+relatively straightforward, given the relatively limited subset of
+Solidity used in the contract.  However, some aspects of the
+translation needed to be completed by hand.  In particular, explicit
+memory allocation at the Solidity level (e.g. <code>new uint256[](...)</code>)
+required manual translation.</p>
+<h4 id="dafny-model">Dafny Model</h4>
+<p>A significantly simplified model of the EVM was used for this proof
+which, for example, ignores gas costs and contract storage
+(e.g. because the latter is not used).  The model of memory was <em>word
+oriented</em> rather than <em>byte oriented</em> to reduce the amount of
+non-linear arithmetic.  This suited the given contract well, as in the
+majority of cases it only uses word-aligned memory.</p>
+<h3 id="outcomes">A.1.2 Outcomes</h3>
+<p>The primary outcomes from the formal verification of the PLONK
+verifier are:</p>
+<ul>
+<li>
+<p><strong>Termination.</strong>  Execution of the <code>Verify()</code> has been shown to
+terminate as expected (subject to Gas availability).  There are
+no unexpected infinite loops.</p>
+</li>
+<li>
+<p><strong>Overflow / Underflow.</strong>  Checks against integer
+overflow / underflow have been performed against all arithmetic
+operations.  In all-but-one case, the absence of overflow /
+underflow was shown.  In fact, an integer underflow can occur
+within <code>batch_invert()</code>, but it is consistent with correct
+operation.</p>
+</li>
+<li>
+<p><strong>Immutable Inputs.</strong> It has been shown that execution of
+<code>Verify()</code> cannot (accidentally) modify the two input arrays
+(<code>public_inputs</code> and <code>proof</code>) in any way.  <strong>NOTE:</strong> this is
+subject to an assumption that the size of these two arrays are
+passed correctly to the <code>Verify()</code> function (e.g. they are
+correctly sized, do not overlap, etc).</p>
+</li>
+<li>
+<p><strong>State Modification.</strong>  The <code>state</code> structure is held in memory
+above the free memory pointer.  All functions which can modify
+this structure have been identified, along with the fields which
+they can modify.  No accidental or invalid modifications to this
+structure have been detected.</p>
+</li>
+<li>
+<p><strong>State Reset.</strong>  The <code>state_success</code> field of the <code>state</code>
+structure is considered a high-value data field.  In particular,
+verification succeeds when this field holds a non-zero value at
+the end of <code>Verify()</code>.  A key property for this field is that,
+having been assigned <code>0</code> (i.e. <code>false</code>), it should not be
+possible for any further execution to reset this field back to
+<code>1</code> (i.e. <code>true</code>).  No violations of this property were detected.</p>
+</li>
+<li>
+<p><strong>Scratch Memory.</strong>  Scratch memory is used in several places for
+different reasons: (1) it is used to setup input values for calls
+to precompiled contracts (e.g. in <code>point_add()</code>, etc); (2) it is
+used for holding temporary return values (e.g. <code>derive_gamma()</code>);
+(3) it is used to store chunks of temporary data (e.g. in
+<code>batch_invert()</code> and across <code>compute_kzg()</code> / <code>fold_state()</code>).
+Incorrect use of scratch memory could result in high-value data
+being accidentally overwritten.  No invalid usages of scratch
+memory have been detected.</p>
+</li>
+</ul>
+<p>In addition, the <code>batch_invert()</code> function has been shown (through a
+mixture of verification and testing) to correctly implement
+&ldquo;Montgomery&rsquo;s Trick&rdquo; for inverting an array of field elements.</p>
+
+<p><h2 id="appendix---files-in-scope">Appendix 2 - Files in Scope</h2>
+
+<p>This audit covered the following files:</p>
+<table>
+	<thead>
+			<tr>
+					<th>File</th>
+					<th>SHA-1 hash</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>contracts/Utils.sol</td>
+					<td><code>6cd2a21ae3d2efe161bd0a672674d9e068ac1843</code></td>
+			</tr>
+			<tr>
+					<td>contracts/Verifier.sol</td>
+					<td><code>6f287c947e14fa90cfbf8330ff6b5e145531a271</code></td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 id="appendix---disclosure">Appendix 3 - Disclosure</h2>
+<p>ConsenSys Diligence (&ldquo;CD&rdquo;) typically receives compensation from one or more clients (the &ldquo;Clients&rdquo;) for performing the analysis contained in these reports (the &ldquo;Reports&rdquo;). The Reports may be distributed through other means, including via ConsenSys publications and other distributions.</p>
+<p>The Reports are not an endorsement or indictment of any particular project or team, and the Reports do not guarantee the security of any particular project. This Report does not consider, and should not be interpreted as considering or having any bearing on, the potential economics of a token, token sale or any other product, service or other asset. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. No Report provides any warranty or representation to any Third-Party in any respect, including regarding the bugfree nature of code, the business model or proprietors of any such business model, and the legal compliance of any such business. No third party should rely on the Reports in any way, including for the purpose of making any decisions to buy or sell any token, product, service or other asset. Specifically, for the avoidance of doubt, this Report does not constitute investment advice, is not intended to be relied upon as investment advice, is not an endorsement of this project or team, and it is not a guarantee as to the absolute security of the project. CD owes no duty to any Third-Party by virtue of publishing these Reports.</p>
+<p>PURPOSE OF REPORTS The Reports and the analysis described therein are created solely for Clients and published with their consent. The scope of our review is limited to a review of code and only the code we note as being within the scope of our review within this report. Any Solidity code itself presents unique and unquantifiable risks as the Solidity language itself remains under development and is subject to unknown risks and flaws. The review does not extend to the compiler layer, or any other areas beyond specified code that could present security risks. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. In some instances, we may perform penetration testing or infrastructure assessments depending on the scope of the particular engagement.</p>
+<p>CD makes the Reports available to parties other than the Clients (i.e., &ldquo;third parties&rdquo;) &ndash; on its website. CD hopes that by making these analyses publicly available, it can help the blockchain ecosystem develop technical best practices in this rapidly evolving area of innovation.</p>
+<p>LINKS TO OTHER WEB SITES FROM THIS WEB SITE You may, through hypertext or other computer links, gain access to web sites operated by persons other than ConsenSys and CD. Such hyperlinks are provided for your reference and convenience only, and are the exclusive responsibility of such web sites&rsquo; owners. You agree that ConsenSys and CD are not responsible for the content or operation of such Web sites, and that ConsenSys and CD shall have no liability to you or any other person or entity for the use of third party Web sites. Except as described below, a hyperlink from this web Site to another web site does not imply or mean that ConsenSys and CD endorses the content on that Web site or the operator or operations of that site. You are solely responsible for determining the extent to which you may use any content at any other web sites to which you link from the Reports. ConsenSys and CD assumes no responsibility for the use of third party software on the Web Site and shall have no liability whatsoever to any person or entity for the accuracy or completeness of any outcome generated by such software.</p>
+<p>TIMELINESS OF CONTENT The content contained in the Reports is current as of the date appearing on the Report and is subject to change without notice. Unless indicated otherwise, by ConsenSys and CD.</p>
+</p>
+</div>
+        </div>
+    </article>
+</div>
+
+    </main>
+    
+<footer class="audit-footer">
+  <div class="audit-footer__inner">
+    <div class="audit-footer__wrap">
+      
+      <div class="audit-footer__divider"></div>
+
+      
+      <div class="audit-footer__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </div>
+
+      
+      <div class="audit-footer__content">
+        
+        <div class="audit-footer__copyright">
+          <p>Securing Ethereum Smart Contracts since 2017</p>
+          <p>2026 All rights reserved</p>
+        </div>
+
+        
+        <div class="audit-footer__columns">
+          
+          <div class="audit-footer__col audit-footer__col--company">
+            <p class="audit-footer__col-title">Company</p>
+            <a href="/about/" class="audit-footer__link">About</a>
+            <a href="/blog/" class="audit-footer__link">Blog</a>
+            <a href="/privacy-policy/" class="audit-footer__link">Privacy Policy</a>
+            <a href="#" onclick="openCookieSettings();return false;" class="audit-footer__link">Cookie settings</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--audit">
+            <p class="audit-footer__col-title">Audit</p>
+            <a href="/audits/" class="audit-footer__link">Audit list</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--research">
+            <p class="audit-footer__col-title">Research</p>
+            <a href="/#academic-research" class="audit-footer__link">Academic publications</a>
+            <a href="/#tools" class="audit-footer__link">Tools</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--social">
+            <p class="audit-footer__col-title">Social</p>
+            <a href="https://x.com/ConsensysAudits" target="_blank" rel="noopener noreferrer" class="audit-footer__link">X</a>
+            <a href="https://www.linkedin.com/company/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">LinkedIn</a>
+            <a href="https://github.com/ConsenSysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">GitHub</a>
+            <a href="https://medium.com/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">Medium</a>
+            <a href="https://www.youtube.com/@ConsensysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/audit-report.js?v=e8012d8d" defer></script>
+<div id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent"
+     style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#131313;border-top:1px solid #303033;padding:16px 24px;box-shadow:0 -10px 15px -3px rgba(0,0,0,.2)">
+  <div style="max-width:1386px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+    <p style="margin:0;flex:1 1 320px;min-width:0;color:#b2b3b3;font-family:Graphik,sans-serif;font-weight:400;font-size:14px;line-height:20px">
+      We use analytics cookies to understand how visitors use our site. You can accept or decline.<a href="/privacy-policy/" style="color:#a7b9f1;text-decoration:underline">Learn more<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">&#32;in our privacy policy</span></a>
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;flex-shrink:0">
+      <button type="button" id="cookie-decline"
+              style="cursor:pointer;background:transparent;border:1px solid #303033;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:border-color .15s"
+              onmouseenter="this.style.borderColor='#6e8be8'" onmouseleave="this.style.borderColor='#303033'">Decline</button>
+      <button type="button" id="cookie-accept"
+              style="cursor:pointer;background:#2c56dd;border:1px solid #2c56dd;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:background .15s"
+              onmouseenter="this.style.background='#2345c4'" onmouseleave="this.style.background='#2c56dd'">Accept</button>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

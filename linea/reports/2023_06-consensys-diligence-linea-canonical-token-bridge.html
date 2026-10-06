@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linea Canonical Token Bridge | Consensys Diligence</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+      <meta name="description" content="This report presents the results of our engagement with Linea to review Canonical Token bridge. The review was conducted over two weeks, from June 26th to …">
+    <link rel="preload" href="/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Medium-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Semibold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Bold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp" type="image/webp" fetchpriority="high">
+    <script>
+(function(){
+  var stored = null;
+  try { stored = localStorage.getItem('cookie_consent'); } catch (e) {}
+  if (stored === 'granted' || stored === 'denied') return;
+  try {
+    
+    
+    
+    
+    
+    
+    window.__ccTrace = fetch('/cdn-cgi/trace')
+      .then(function(r){ return r.text(); })
+      .catch(function(){ return ''; });
+  } catch (e) {}
+})();
+</script><script src="/js/consent.js?v=d268f9f4" defer></script>
+
+    <link href="/css/tachyons.min.css?v=75808e0f" rel="stylesheet"><link href="/style.css?v=fe61105e" rel="stylesheet">
+    <link href="/css/highlight.css?v=be488ecd" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://diligence.security/audits/2023/06/linea-canonical-token-bridge/">
+    <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.png">
+    <link rel="nokia-touch-icon" href="/images/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/icon/favicon.png" sizes="1x1">
+    
+<script type="text/javascript" id="interactive-report-tools" defer>
+const getStructuredFinding = (elem, options) => {
+  const is = elem.closest(".issue");
+  const heading = is.querySelector("h3");
+  const title = Array.from(heading.childNodes)
+          .map(node => node.nodeName === "SPAN" ? "" : node.textContent.trim())
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .trim()
+
+  function formatText(elem){
+      return Array.from(elem.childNodes)
+          .map(node => {
+              switch(node.nodeName){
+                  case "CODE":
+                      return `\`${node.textContent.trim()}\``;
+                  case "H4":
+                      return  `#### ${node.textContent.trim()}`;
+              }
+              return node.textContent.trim();
+          })
+          .join("\n")
+          
+          .trim()
+  }
+
+  const finding = {
+      id: title.substring(0, title.indexOf(' ')),
+      title: title.substring(title.indexOf(' ') + 1),
+      severity: heading.querySelector(".severity")?.textContent.trim().toLowerCase() || undefined,
+      state: heading.querySelector(".state")?.textContent.trim().toLowerCase() || undefined,
+      url: document.location.href.split("#",1)[0] + "#" + heading.id,
+  }
+  if(options?.withBody){
+      finding.body = formatText(is.querySelector("h4").closest("div"));
+  }
+  return finding;
+}
+const getAllFindings = (options) => Array.from(document.querySelectorAll(".issue")).map(iss => getStructuredFinding(iss, options));
+function exportCsv(fileName) {
+  const data = getAllFindings()
+  const keys = Object.keys(data[0]);
+  const csvRows = [];
+  csvRows.push(keys.join(','));
+  data.forEach(row => {
+      const values = keys.map(key => {
+          const value = row[key];
+          if(value === undefined) return "";
+          return `"${value}"`;
+      });
+      csvRows.push(values.join(','));
+  });
+  const csvData = csvRows.join('\n');
+  const blob = new Blob([csvData], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function exportJson(fileName) {
+  const blob = new Blob([JSON.stringify(getAllFindings())], { type: 'text/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function getOrSetGithubRepo(force) {
+  function parseGitHubRepo(input) {
+      if(!input) return;
+      const urlMatch = input.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/?$/);
+      if (urlMatch) return `${urlMatch[1]}/${urlMatch[2]}`;
+      
+      const directMatch = input.match(/^([^\/]+)\/([^\/]+)$/);
+      return directMatch ? input : null;
+  }
+  function isValidGitHubRepo(input) {
+      if(!input) return false;
+      
+      
+      
+      
+      
+      const githubNameRegex = /^(?![-.])(?!.*[_.-]{2})[a-zA-Z0-9.-]{1,100}(?<![-.])$/;
+      if (typeof input !== 'string') return false;
+      const parts = input.split('/');
+      
+      if (parts.length !== 2) return false;
+      const [org, repo] = parts;
+      return githubNameRegex.test(org) && githubNameRegex.test(repo);
+  }
+  closeAllMenus();
+  let repo = sessionStorage.getItem("user_gh_repo");
+  if (force || !isValidGitHubRepo(repo)) {
+      repo = parseGitHubRepo(prompt("Enter the GitHub repository name (owner/repo):", "https://github.com/organisation/repo"));
+
+      if (repo) {
+          if(!isValidGitHubRepo(repo)){
+              alert(`Error: '${repo}' is not a valid GitHub repo.`);
+          } else {
+              sessionStorage.setItem("user_gh_repo", repo);
+          }
+      }
+  }
+  return repo;
+}
+
+function exportToGitHub(elem) {
+  closeAllMenus();
+  const repo = getOrSetGithubRepo();
+  if(!repo) return;
+  const baseUrl = `https:\/\/github.com/${repo}/issues/new`;
+  const is = getStructuredFinding(elem);
+  const labels = undefined;
+
+  const params = new URLSearchParams({
+      title: `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}`,
+      body: `[<img width="200" alt="get in touch with Consensys Diligence" src="https:\/\/user-images.githubusercontent.com/2865694/56826101-91dcf380-685b-11e9-937c-af49c2510aa0.png">](https:\/\/diligence.security)
+<sub>[[ 🌐 ](https:\/\/diligence.security) [ 📩 ](mailto:diligence@diligence.security) [ 🔥 ](https:\/\/consensysdiligence.github.io/diligence/)]</sub>
+_______
+
+**Severity**: ${capitalizeFirstLetter(is.severity)}
+**Finding**: 👉 [${is.id} - ${is.title}](${is.url})
+
+`,
+      labels: labels && labels.join(',') || "bug,security,audit",
+      milestone: "diligence-audit",
+      assignee: ""
+  });
+
+  const issueUrl = `${baseUrl}?${params.toString()}`;
+  window.open(issueUrl, "_blank");
+}
+function exportToClipboard(elem, options){
+  closeAllMenus();
+  const is = getStructuredFinding(elem, {withBody:true});
+  let data = "";
+  switch (options?.format){
+      case "text":
+          data = `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}
+
+**Reference**: ${is.url}
+
+${is.body}
+`
+          break;
+      default:
+          data = JSON.stringify(is);
+  }
+  navigator.clipboard.writeText(data)
+}
+function capitalizeFirstLetter(string) {
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "None";
+}
+function closeAllMenus() {
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.style.display = "none";
+  });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  
+  document.querySelectorAll(".menu-toggle").forEach(button => {
+      button.addEventListener("click", function (event) {
+          const menu = this.nextElementSibling;
+          menu.style.display = menu.style.display === "block" ? "none" : "block";
+          event.stopPropagation(); 
+      });
+  });
+
+  
+  document.addEventListener("click", function () {
+      document.querySelectorAll(".menu-box").forEach(menu => {
+          menu.style.display = "none";
+      });
+  });
+
+  
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.addEventListener("click", function (event) {
+          event.stopPropagation();
+      });
+  });
+});
+</script>
+<link rel="alternate" type="application/rss+xml" href="https://diligence.security/index.xml" title="Consensys Diligence" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://diligence.security/#organization","@type":"Organization","description":"Smart Contract Audits for Ethereum protocols and institutions. Supercharged by AI agents, guided by veteran experts.","foundingDate":"2017","logo":{"@type":"ImageObject","url":"https://diligence.security/images/icon/favicon.png"},"name":"Consensys Diligence","sameAs":["https://x.com/ConsensysAudits","https://www.linkedin.com/company/consensys-diligence","https://github.com/ConsenSysDiligence","https://medium.com/consensys-diligence","https://www.youtube.com/@ConsensysDiligence"],"url":"https://diligence.security/"},{"@id":"https://diligence.security/#website","@type":"WebSite","name":"Consensys Diligence","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/"},{"@id":"https://diligence.security/audits/2023/06/linea-canonical-token-bridge/#article","@type":"TechArticle","author":[{"@type":"Person","name":"Rai Yang"},{"@type":"Person","name":"Tejaswa Rastogi"}],"dateModified":"2023-06-26T10:19:03+05:30","datePublished":"2023-06-26T10:19:03+05:30","description":"This report presents the results of our engagement with Linea to review Canonical Token bridge. The review was conducted over two weeks, from June 26th to …","headline":"Linea Canonical Token Bridge","image":["https://diligence.security/images/og-share.png","https://diligence.security/images/audit_report/feature-hero.png"],"inLanguage":"en","isPartOf":{"@id":"https://diligence.security/#website"},"mainEntityOfPage":{"@id":"https://diligence.security/audits/2023/06/linea-canonical-token-bridge/","@type":"WebPage"},"name":"Linea Canonical Token Bridge","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/audits/2023/06/linea-canonical-token-bridge/","wordCount":4562},{"@id":"https://diligence.security/audits/2023/06/linea-canonical-token-bridge/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://diligence.security/","name":"Home","position":1},{"@type":"ListItem","item":"https://diligence.security/audit-reports/","name":"Public Smart Contract Audits and Security Reviews","position":2},{"@type":"ListItem","item":"https://diligence.security/audits/2023/06/linea-canonical-token-bridge/","name":"Linea Canonical Token Bridge","position":3}]}]}</script>
+    <meta property="og:title" content="Linea Canonical Token Bridge | Consensys Diligence" />
+    <meta property="og:description" content="This report presents the results of our engagement with Linea to review Canonical Token bridge. The review was conducted over two weeks, from June 26th to …" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://diligence.security/audits/2023/06/linea-canonical-token-bridge/" /><meta property="og:image" content="https://diligence.security/images/og-share.png" />
+    <meta property="og:image:alt" content="Linea Canonical Token Bridge - Consensys Diligence" /><meta property="article:published_time" content="2023-06-26T10:19:03+05:30" />
+<meta property="article:modified_time" content="2023-06-26T10:19:03+05:30" /><meta property="og:site_name" content="Consensys Diligence" />
+    <meta property="article:publisher" content="https://www.twitter.com/ConsensysAudits" />
+    
+    <meta property="article:section" content="audits" />
+<meta name="twitter:title" content="Linea Canonical Token Bridge | Consensys Diligence"/>
+<meta name="twitter:description" content="This report presents the results of our engagement with Linea to review Canonical Token bridge. The review was conducted over two weeks, from June 26th to …"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://diligence.security/images/og-share.png"/>
+                <meta name="twitter:image:alt" content="Linea Canonical Token Bridge - Consensys Diligence"/>
+<meta name="twitter:site" content="@ConsensysAudits"/>
+    <meta name="twitter:creator" content="@ConsensysAudits"/>
+
+      
+      <script type="text/javascript" id="reload-pathfix">
+        let lastSegment = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1); 
+        if(lastSegment && lastSegment.length !==0 && lastSegment.indexOf(".") === -1){
+          
+          window.location.pathname += "/";  
+        }
+      </script>
+      <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-H4M4ES1MZM');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4M4ES1MZM"></script>
+    
+  </head>
+  <body style="margin: 0; padding: 0;">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    
+<header class="audit-header">
+  <div class="audit-header__inner">
+    
+    <div class="audit-header__row1">
+      <a href="/" class="audit-header__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </a>
+
+      <a href="/request-audit/" class="audit-header__cta">
+        <div class="audit-header__cta-icon">
+          <svg fill="none" viewBox="0 0 14.8226 10.1497">
+            <line stroke="white" stroke-width="1.3" x2="13.7793" y1="4.8803" y2="4.8803" />
+            <path d="M9.28809 0.459619L13.9033 5.07487L9.28809 9.69013" stroke="white" stroke-width="1.3" fill="none" />
+          </svg>
+        </div>
+        <span class="audit-header__cta-text">Request Audit</span>
+      </a>
+    </div>
+
+    
+    <div class="audit-header__row2">
+      <p class="audit-header__tagline">Securing Ethereum Smart Contracts since 2017</p>
+      <nav class="audit-header__nav">
+        <a href="/about/" class="audit-header__nav-link">About</a>
+        <a href="/blog/" class="audit-header__nav-link">Blog</a>
+        <a href="/audits/" class="audit-header__nav-link">Public Audits</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <main id="main" tabindex="-1" role="main">
+      <div class="dili-navigator-page">
+    <div class="dili-blog-hero"><div class="dili-hero-bg-mixin" style="background-image: url('/images/audit_report/feature-hero.png'); background-image: image-set(url('/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp') type('image/webp'), url('/images/audit_report/feature-hero.png') type('image/png'));" ></div>
+        <div class="dili-container">
+            <div class="dili-blog-hero-inner">
+                <div class="item-eyebrow"></div>
+                <h1 class="item-title">Linea Canonical Token Bridge</h1>
+            </div>
+        </div>
+    </div>
+    <article class="">
+
+
+    <div class="dili-navigator-wrapper">
+            <div class="dili-navigator-sidebar">
+
+                <ul class="dili-navigator-sidebar-inner">
+                <li>
+                    <a href="#executive-summary">1 Executive Summary</a>
+                </li>
+                <li>
+                    <a href="#scope">2 Scope</a>
+                    <ul>
+                    <li>
+                        <a href="#objectives">2.1 Objectives</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#security-specification">3 Security Specification</a>
+                    <ul>
+                    <li>
+                        <a href="#actors">3.1 Actors</a>
+                    </li>
+                    <li>
+                        <a href="#trust-model">3.2 Trust Model</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#findings">4 Findings</a>
+                    <ul>
+                    <li>
+                        <a href="#bridge-token-would-be-locked-and-cannot-bridge-to-native-token">4.1 Bridge Token Would Be Locked and Cannot Bridge to Native Token <span class="severity critical">Critical</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#user-cannot-withdraw-funds-if-bridging-failed-or-delayed">4.2 User Cannot Withdraw Funds if Bridging Failed or Delayed <span class="severity major">Major</span> <span class="state no-check">&nbsp;Won&#39;t Fix</span></a>
+                    </li>
+                    <li>
+                        <a href="#bridges-dont-support-multiple-native-tokens-which-may-lead-to-incorrect-bridging">4.3 Bridges Don&rsquo;t Support Multiple Native Tokens, Which May Lead to Incorrect Bridging <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#no-check-for-initializing-parameters-of-tokenbridge">4.4 No Check for Initializing Parameters of TokenBridge <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#owner-can-update-arbitrary-status-for-new-native-token-without-confirmation">4.5 Owner Can Update Arbitrary Status for New Native Token Without Confirmation <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#owner-may-exploit-bridged-tokens">4.6 Owner May Exploit Bridged Tokens <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#incorrect-bridging-due-to-address-collision--inconsistent-state-of-native-tokens">4.7 Incorrect Bridging Due to Address Collision &amp; Inconsistent State of Native Tokens <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#updating-message-service-does-not-emit-event">4.8 Updating Message Service Does Not Emit Event <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#lock-solidity-version-in-pragma">4.9 Lock Solidity Version in <code>pragma</code> <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#upgradeability-concerns">4.10 Upgradeability Concerns <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#tokenbridge-does-not-follow-a-2-step-approach-for-ownership-transfers">4.11 TokenBridge Does Not Follow a 2-Step Approach for Ownership Transfers <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#code-corrections">4.12 Code Corrections <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#findings-from-other-sources">5 Findings from Other Sources</a>
+                </li>
+                <li>
+                    <a href="#appendix---files-in-scope">Appendix 1 - Files in Scope</a>
+                </li>
+                <li>
+                    <a href="#appendix---disclosure">Appendix 2 - Disclosure</a>
+                </li>
+                </ul>
+            </div>
+            <div class="dili-navigator-content richtext">
+                <aside class="summary summary-cta-side">
+                    
+                    
+                    <table>
+                        <tr>
+                            <th align="left">Date</th>
+                            <td align="left">June 2023</td>
+                        </tr>
+                        
+                        <tr>
+                            <th align="left">Auditors</th>
+                            <td align="left" class="mw5">Rai Yang, Tejaswa Rastogi
+                        </tr>
+                        
+                        <tr class="noprint">
+                            <th align="left">Download</th>
+                            <td align="left">
+                                <a onclick="exportJson()" title="↓ JSON" class="pointer"><i class="far fa-file-code"></i> JSON</a><br/>
+                                <a onclick="exportCsv()" title="↓ CSV" class="pointer"><i class="far fa-file-excel"></i> CSV</a>
+                            </td>
+                        </tr>
+                    </table>
+                </aside>
+<h2 id="executive-summary">1 Executive Summary</h2>
+<p>This report presents the results of our engagement with <strong>Linea</strong> to review <strong>Canonical Token bridge</strong>.</p>
+<p>The review was conducted over two weeks, from <strong>June 26th</strong> to <strong>July 4th</strong>, by
+<strong>Rai Yang</strong> and <strong>Tejaswa Rastogi</strong>. A total of 2x7 person-days were spent.</p>
+<h2 id="scope">2 Scope</h2>
+<p>Our review focused on the commit hash <code>db5553a5f3166fd17a72806d79f28906e4e375ba</code>. The list of files in scope can be found in the <a href="#appendix---files-in-scope">Appendix</a>.</p>
+<h3 id="objectives">2.1 Objectives</h3>
+<p>Together with the <strong>Linea</strong> team, we identified the following priorities for our review:</p>
+<ol>
+<li>Correctness of the implementation, consistent with the intended functionality and without unintended edge cases.</li>
+<li>Identify known vulnerabilities particular to smart contract systems, as outlined in our <a href="https://consensys.github.io/smart-contract-best-practices/">Smart Contract Best Practices</a>, and the <a href="https://swcregistry.io/">Smart Contract Weakness Classification Registry</a>.</li>
+<li>Exploiting the bridge to
+<ul>
+<li>mint tokens without depositing</li>
+<li>withdraw without burning on the other chain</li>
+<li>steal user funds on Bridged ERC20</li>
+<li>bridge to an unintended address</li>
+<li>or any other</li>
+</ul>
+</li>
+<li>Exploiting a bug making it impossible for users to withdraw their token or use the contracts</li>
+<li>Bypassing protection set by Linea (reserved tokens, pause status)</li>
+<li>The user&rsquo;s funds are stuck in the contract due to bridging issues</li>
+</ol>
+
+
+
+<h2 id="security-specification">3 Security Specification</h2>
+<p>This section describes, <strong>from a security perspective</strong>, the expected behavior of the system under audit. It is not a substitute for documentation. The purpose of this section is to identify specific security properties that were validated by the audit team.</p>
+<h3 id="actors">3.1 Actors</h3>
+<p>The relevant actors are listed below with their respective abilities:</p>
+<ul>
+<li>User: The User uses the token bridge to transfer ERC20 tokens between L1 and L2</li>
+<li>Bridge: The bridge also acts an administrator that deploys new Bridge Tokens and mints new tokens on them.</li>
+<li>Security Council: A Linea/ConsenSys-controlled multi-sig wallet that deploys contracts and performs upgrades or contract functions such as setting custom bridge token contracts</li>
+<li>Postman: Linea’s off-chain message delivery service or third-party service delivering the messages to claim the delivery fee. Each postman is not dependent on the other to function. There is the possibility of third-party postmen being unavailable.</li>
+</ul>
+<h3 id="trust-model">3.2 Trust Model</h3>
+<p>In any system, it&rsquo;s important to identify what trust is expected/required between various actors. For this audit, we established the following trust model:</p>
+<ul>
+<li>The single coordinator relays L1 messages to L2 correctly and timely and does not censor L1 messages</li>
+<li>The single sequencer sequences the L2 transaction correctly, does not censor L2 messages and submits the blocks and proof to L1 timely</li>
+<li>Postman delivers the messages to the destination layer correctly and rationally based on the fee and gas cost of delivering the message</li>
+<li>Security Council performs the service management properly and upgrades the contracts correctly and securely</li>
+</ul>
+
+
+<p><h2 id="findings">4 Findings</h2>
+   
+    <p>Each issue has an assigned severity:</p>
+
+    <ul>
+        <li><span class="severity critical">Critical</span> issues are directly exploitable security vulnerabilities that need to be fixed.</li>
+        <li><span class="severity major">Major</span> issues are security vulnerabilities that may not be directly exploitable or may require certain conditions in order to be exploited. All major issues should be addressed.</li>
+        <li><span class="severity medium">Medium</span> issues are objective in nature but are not security vulnerabilities. These should be addressed unless there is a clear reason not to.</li>
+        <li><span class="severity minor">Minor</span> issues are subjective in nature. They are typically suggestions around best practices or readability. Code maintainers should use their own judgment as to whether to address such issues.</li>
+        <li>Issues without a severity are general recommendations or optional improvements. They are not related to security or correctness and may be addressed at the discretion of the maintainer.</li>
+    </ul><div class="issue">
+            <a class="anchor" href="#bridge-token-would-be-locked-and-cannot-bridge-to-native-token" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/3">
+                <h3 id="bridge-token-would-be-locked-and-cannot-bridge-to-native-token">4.1 Bridge Token Would Be Locked and Cannot Bridge to Native Token <span class="severity critical">Critical</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/66">66</a> with the final commit hash as <code>8f8ee32cf3ad24ec669b62910d3d6eb1da9cc78e</code>
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>If the bridge token B of a native token A is already deployed and <code>confirmDeployment</code> is called on the other layer and <code>setDeployed</code> sets  A&rsquo;s <code>nativeToBridgedToken</code>  value to <code>DEPLOYED_STATUS</code>. The bridge token B cannot bridge to native token A in <code>completeBridging</code> function, because A&rsquo;s <code>nativeToBridgedToken</code>  value is not <code>NATIVE_STATUS</code>, as a result the native token won&rsquo;t be transferred to the receiver. User&rsquo;s bridge token will be locked in the original layer</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L217-L229</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">nativeMappingValue</span> <span class="o">==</span> <span class="n">NATIVE_STATUS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Token is native on the local chain
+</span></span></span><span class="line"><span class="cl">  <span class="n">IERC20</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">).</span><span class="n">safeTransfer</span><span class="p">(</span><span class="n">_recipient</span><span class="p">,</span> <span class="n">_amount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bridgedToken</span> <span class="o">=</span> <span class="n">nativeMappingValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">nativeMappingValue</span> <span class="o">==</span> <span class="n">EMPTY</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// New token
+</span></span></span><span class="line"><span class="cl">    <span class="n">bridgedToken</span> <span class="o">=</span> <span class="n">deployBridgedToken</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">,</span> <span class="n">_tokenMetadata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bridgedToNativeToken</span><span class="p">[</span><span class="n">bridgedToken</span><span class="p">]</span> <span class="o">=</span> <span class="n">_nativeToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nativeToBridgedToken</span><span class="p">[</span><span class="n">_nativeToken</span><span class="p">]</span> <span class="o">=</span> <span class="n">bridgedToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BridgedToken</span><span class="p">(</span><span class="n">bridgedToken</span><span class="p">).</span><span class="n">mint</span><span class="p">(</span><span class="n">_recipient</span><span class="p">,</span> <span class="n">_amount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/TokenBridge.sol:L272-L279</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">setDeployed</span><span class="p">(</span><span class="kt">address</span><span class="p">[]</span> <span class="k">memory</span> <span class="n">_nativeTokens</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyMessagingService</span> <span class="n">fromRemoteTokenBridge</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">nativeToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_nativeTokens</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nativeToken</span> <span class="o">=</span> <span class="n">_nativeTokens</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nativeToBridgedToken</span><span class="p">[</span><span class="n">_nativeTokens</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">DEPLOYED_STATUS</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">emit</span> <span class="n">TokenDeployed</span><span class="p">(</span><span class="n">_nativeTokens</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add an condition <code>nativeMappingValue</code> = <code>DEPLOYED_STATUS</code> for native token transfer in <code>confirmDeployment</code></p>
+<pre tabindex="0"><code>if (nativeMappingValue == NATIVE_STATUS || nativeMappingValue == DEPLOYED_STATUS) {
+   IERC20(_nativeToken).safeTransfer(_recipient, _amount);
+</code></pre><!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#user-cannot-withdraw-funds-if-bridging-failed-or-delayed" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/8">
+                <h3 id="user-cannot-withdraw-funds-if-bridging-failed-or-delayed">4.2 User Cannot Withdraw Funds if Bridging Failed or Delayed <span class="severity major">Major</span> <span class="state no-check">&nbsp;Won&#39;t Fix</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>If the bridging failed due to the single coordinator is down, censoring the message, or bridge token contract is set to a bad or wrong contract address by <code>setCustomContract</code>, user&rsquo;s funds will stuck in the <code>TokenBridge</code> contract until coordinator is online or stop censoring, there is no way to withdraw the deposited funds</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L341-L348</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">setCustomContract</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_nativeToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_targetContract</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">onlyOwner</span> <span class="n">isNewToken</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nativeToBridgedToken</span><span class="p">[</span><span class="n">_nativeToken</span><span class="p">]</span> <span class="o">=</span> <span class="n">_targetContract</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bridgedToNativeToken</span><span class="p">[</span><span class="n">_targetContract</span><span class="p">]</span> <span class="o">=</span> <span class="n">_nativeToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">CustomContractSet</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">,</span> <span class="n">_targetContract</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add withdraw functionality to let user withdraw the funds under above circumstances or at least add withdraw functionality for Admin (admin can send the funds to the user manually), ultimately decentralize coordinator and sequencer to reduce bridging failure risk.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#bridges-dont-support-multiple-native-tokens-which-may-lead-to-incorrect-bridging" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/7">
+                <h3 id="bridges-dont-support-multiple-native-tokens-which-may-lead-to-incorrect-bridging">4.3 Bridges Don&rsquo;t Support Multiple Native Tokens, Which May Lead to Incorrect Bridging <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        <p>The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/65">65</a> with the final commit hash as <code>27c2e53c8da206d1d2e06abbdadee1e728219763</code>.
+The Bridges now support only one native token and revert, if attempted to bridge a native token with the same address on the other layer. The team mentions the reason for choosing this design is to support their specific use case, and for the cases where the users want to have same native tokens on both the layers, third-party liquidity bridges would be a better option.</p>
+<p><strong>Note</strong>:- Although, the introduced check adds a scenario, where if the <strong>owner</strong> adds a bridge for a native token on the source layer via <code>setCustomContract </code>, the protocol will disallow any bridging from it. However, after having a discussion, the team concluded that the function <code>setCustomContract </code> is intended to be called on the destination layer and the team will take the necessary precautions while dealing with it.</p>
+<p><strong>Update</strong>: A related <a href="#incorrect-bridging-due-to-address-collision--inconsistent-state-of-native-tokens">issue 4.7</a> with a similar root cause has also been identified and addressed with a fix that also correct this issue.</p>
+
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>Currently, the system design does not support the scenarios where native tokens with the same addresses (which is possible with the same deployer and nonce) on different layers can be bridged.</p>
+<p>For instance,
+Let&rsquo;s consider, there is a native token <code>A</code> on <code>L1</code> which has already been bridged on <code>L2</code>. If anyone tries to bridge native token <code>B</code> on <code>L2</code> with the same address as token <code>A</code> , instead of creating a new bridge on <code>L1</code> and minting new tokens, the token bridge will transfer native token <code>A</code> on <code>L1</code> to the <code>_recipient</code> which is incorrect.</p>
+<p>The reason is the mappings don&rsquo;t differentiate between the native tokens on two different Layers.</p>
+<pre tabindex="0"><code>  mapping(address =&gt; address) public nativeToBridgedToken;
+  mapping(address =&gt; address) public bridgedToNativeToken;
+</code></pre><h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L208-L220</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">completeBridging</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_nativeToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_amount</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_recipient</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bytes</span> <span class="n">calldata</span> <span class="n">_tokenMetadata</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">onlyMessagingService</span> <span class="n">fromRemoteTokenBridge</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">nativeMappingValue</span> <span class="o">=</span> <span class="n">nativeToBridgedToken</span><span class="p">[</span><span class="n">_nativeToken</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">bridgedToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">nativeMappingValue</span> <span class="o">==</span> <span class="n">NATIVE_STATUS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Token is native on the local chain
+</span></span></span><span class="line"><span class="cl">    <span class="n">IERC20</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">).</span><span class="n">safeTransfer</span><span class="p">(</span><span class="n">_recipient</span><span class="p">,</span> <span class="n">_amount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Redesign the approach to handle the same native tokens on different layers. One possible approach could be to define the set of mappings for each layer.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#no-check-for-initializing-parameters-of-tokenbridge" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/6">
+                <h3 id="no-check-for-initializing-parameters-of-tokenbridge">4.4 No Check for Initializing Parameters of TokenBridge <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/68">68</a> with the final commit hash as <code>7a3764b461b70f3b06aa77b859349be7a918ac1d</code>
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>In <code>TokenBridge</code> contract&rsquo;s <code>initialize</code> function, there is no check for initializing parameters including <code>_securityCouncil</code>, <code>_messageService</code>, <code>_tokenBeacon</code> and <code>_reservedTokens</code>. If any of these address is set to 0 or other invalid value, TokenBridge would not work, user may lose funds.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L97-L111</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">initialize</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_securityCouncil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_messageService</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_tokenBeacon</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span><span class="p">[]</span> <span class="n">calldata</span> <span class="n">_reservedTokens</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">initializer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__Pausable_init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__Ownable_init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">setMessageService</span><span class="p">(</span><span class="n">_messageService</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tokenBeacon</span> <span class="o">=</span> <span class="n">_tokenBeacon</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_reservedTokens</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">setReserved</span><span class="p">(</span><span class="n">_reservedTokens</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">_transferOwnership</span><span class="p">(</span><span class="n">_securityCouncil</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add non-zero address check for <code>_securityCouncil</code>, <code>_messageService</code>, <code>_tokenBeacon</code> and <code>_reservedTokens</code></p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#owner-can-update-arbitrary-status-for-new-native-token-without-confirmation" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/4">
+                <h3 id="owner-can-update-arbitrary-status-for-new-native-token-without-confirmation">4.5 Owner Can Update Arbitrary Status for New Native Token Without Confirmation <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/67">67</a> with the final commit hash as <code>e096523ec3fc34996a30fd517d6e97cfef3bcf8d</code>.
+The function now reverts, if the <code>_targetContract </code> supplied is any of the reserved status codes.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The function <code>setCustomContract</code> allows the owner to update arbitrary status for new native tokens without confirmation, bypassing the bridge protocol.</p>
+<ul>
+<li>It can set <code>DEPLOYED_STATUS</code> for a new native token, even if there exists no bridged token for it.</li>
+<li>It can set <code>NATIVE_STATUS</code> for a new native token even if it&rsquo;s not.</li>
+<li>It can set <code>RESERVED_STATUS</code> disallowing any new native token to be bridged.</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L341-L348</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">setCustomContract</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_nativeToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_targetContract</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">onlyOwner</span> <span class="n">isNewToken</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nativeToBridgedToken</span><span class="p">[</span><span class="n">_nativeToken</span><span class="p">]</span> <span class="o">=</span> <span class="n">_targetContract</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bridgedToNativeToken</span><span class="p">[</span><span class="n">_targetContract</span><span class="p">]</span> <span class="o">=</span> <span class="n">_nativeToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">CustomContractSet</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">,</span> <span class="n">_targetContract</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>The function should not allow <code>_targetContract</code> to be any state code</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#owner-may-exploit-bridged-tokens" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/2">
+                <h3 id="owner-may-exploit-bridged-tokens">4.6 Owner May Exploit Bridged Tokens <span class="severity major">Major</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/67">67</a> with the final commit hash as <code>e096523ec3fc34996a30fd517d6e97cfef3bcf8d</code>.
+The function now reverts, if the <code>_targetContract </code> supplied has already been defined as a bridge to a native token.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The function <code>setCustomContract</code> allows the owner, to define a custom ERC20 contract for the native token. However, it doesn&rsquo;t check whether the target contract has already been defined as a bridge to a native token or not. As a result, the owner
+may take advantage of the design flaw and bridge another new native token that has not been bridged yet, to an already existing target(already a bridge for another native token).
+Now, if a user tries to bridge this native token, the token bridge on the source chain will take the user&rsquo;s tokens, and instead of deploying a new bridge on the destination chain, tokens will be minted to the <code>_recipient</code> on an existing bridge defined by the owner, or it can be any random EOA address to create a DoS.</p>
+<p>The owner can also try to front-run calls to <code>completeBridging</code> for new Native Tokens on the destination chain, by setting a different bridge via <code>setCustomContract</code>. Although, the team states that the role will be controlled by a multi-sig which makes frontrunning less likely to happen.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L341-L348</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">setCustomContract</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_nativeToken</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">_targetContract</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="k">external</span> <span class="n">onlyOwner</span> <span class="n">isNewToken</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">nativeToBridgedToken</span><span class="p">[</span><span class="n">_nativeToken</span><span class="p">]</span> <span class="o">=</span> <span class="n">_targetContract</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bridgedToNativeToken</span><span class="p">[</span><span class="n">_targetContract</span><span class="p">]</span> <span class="o">=</span> <span class="n">_nativeToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">CustomContractSet</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">,</span> <span class="n">_targetContract</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/TokenBridge.sol:L220-L229</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">bridgedToken</span> <span class="o">=</span> <span class="n">nativeMappingValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">nativeMappingValue</span> <span class="o">==</span> <span class="n">EMPTY</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// New token
+</span></span></span><span class="line"><span class="cl">    <span class="n">bridgedToken</span> <span class="o">=</span> <span class="n">deployBridgedToken</span><span class="p">(</span><span class="n">_nativeToken</span><span class="p">,</span> <span class="n">_tokenMetadata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bridgedToNativeToken</span><span class="p">[</span><span class="n">bridgedToken</span><span class="p">]</span> <span class="o">=</span> <span class="n">_nativeToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nativeToBridgedToken</span><span class="p">[</span><span class="n">_nativeToken</span><span class="p">]</span> <span class="o">=</span> <span class="n">bridgedToken</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BridgedToken</span><span class="p">(</span><span class="n">bridgedToken</span><span class="p">).</span><span class="n">mint</span><span class="p">(</span><span class="n">_recipient</span><span class="p">,</span> <span class="n">_amount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Make sure, a native token should bridge to a single target contract. A possible approach could be to check whether the <code>bridgedToNativeToken</code> for a target is <code>EMPTY</code> or not. If it&rsquo;s not EMPTY, it means it&rsquo;s already a bridge for a native token and the function should revert. The same can be achieved by adding the modifier <code>isNewToken(_targetContract)</code>.</p>
+<p><strong>Note</strong>:- However, it doesn&rsquo;t resolve the issue of frontrunning, even if the likelihood is less.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#incorrect-bridging-due-to-address-collision--inconsistent-state-of-native-tokens" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/12">
+                <h3 id="incorrect-bridging-due-to-address-collision--inconsistent-state-of-native-tokens">4.7 Incorrect Bridging Due to Address Collision &amp; Inconsistent State of Native Tokens <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The Linea team has proposed another <a href="https://github.com/Consensys/linea-contracts-fix/pull/3">PR</a> to fix the issues associated with token address collision during bridging. Namely, the chain ID associated with the token&rsquo;s native chain is now introduced as a key to the token address mapping, and the chain ID is added to the salt when deploying bridged token contracts, ensuring uniqueness. Consequently, this PR addresses the raised concerns though introduction of a more complex state to the bridge contract may raise the difficulty of upgrading the contract, thus redeployments are recommended in future for any changes.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p><strong>In the second round of the audit</strong>, we discovered an edge case that may exist because of an address collision of native tokens. In the first round, we found <a href="#bridges-dont-support-multiple-native-tokens-which-may-lead-to-incorrect-bridging">issue 4.3</a> explaining how the bridges only support a single native token on both layers and may cause incorrect bridging. In response to that, the Linea team implemented a change that reverts whenever there is an attempt to bridge a native token with the same address on the other layer.</p>
+<p>However, the issue still exists because of the inconsistent state of native tokens while bridging. The reason is, there could be an attempt to bridge a token with the same address on both layers at the same time, which could be done deliberately by an attacker by monitoring the bridging call at source layer and frontrunning them on the destination layer. As a consequence, both the tokens will get the <code>NATIVE_STATUS</code> on both layers, as the bridges can&rsquo;t check the state of a token on the other layer while bridging. Now, the bridging that was initiated for a native token on the source layer will be completed with the native token on the destination layer, as the bridging was initiated at the same time.</p>
+<pre tabindex="0"><code>    if (nativeMappingValue == NATIVE_STATUS || nativeMappingValue == DEPLOYED_STATUS) {
+      // Token is native on the local chain
+      IERC20Upgradeable(_nativeToken).safeTransfer(_recipient, _amount);
+</code></pre><p>For the issue, the Linea team came back with the solution in the PR <a href="https://github.com/Consensys/zkevm-monorepo/pull/1041">1041</a> with the final commit <code>a875e67e0681ce387825127a08f1f924991a274c</code>. The solution implemented adds a flag <code>_isNativeLayer</code> while sending the message to Message Service on source layer</p>
+<pre tabindex="0"><code>    messageService.sendMessage{ value: msg.value }(
+      remoteSender,
+      msg.value, // fees
+      abi.encodeCall(ITokenBridge.completeBridging, (nativeToken, _amount, _recipient, _isNativeLayer, tokenMetadata))
+    );
+</code></pre><p>and is used to verify the state of native token on destination layer while calling <code>completeBridging</code>.</p>
+<pre tabindex="0"><code>...
+    if (_isNativeLayer == false &amp;&amp; (nativeMappingValue == NATIVE_STATUS || nativeMappingValue == DEPLOYED_STATUS)) {
+      // Token is native on the local chain
+      IERC20Upgradeable(_nativeToken).safeTransfer(_recipient, _amount);
+    }
+    else{
+    ...
+          if (
+        nativeMappingValue == EMPTY ||
+        (_isNativeLayer &amp;&amp; (nativeMappingValue == NATIVE_STATUS || nativeMappingValue == DEPLOYED_STATUS))
+      ) {
+              // New token
+        bridgedToken = deployBridgedToken(_nativeToken, _tokenMetadata);
+        bridgedToNativeToken[bridgedToken] = _nativeToken;
+        nativeToBridgedToken[_nativeToken] = bridgedToken;
+      }
+      BridgedToken(bridgedToken).mint(_recipient, _amount);
+      ...
+    }
+   
+</code></pre><p>The logic adds two conditional checks:
+1- If <code>_isNativeLayer </code> is false, it means the token is not native on the source layer, and if for the same address the status is either Native or Deployed, then the native token of the destination layer should be bridged.
+2- If the flag is true, it means the token is native on the source layer, and if there exists a collision of the Native or Deployed status, then a new bridge token should be created.</p>
+<p><strong>Minting Bad Tokens</strong>
+We reviewed the PR and new integrations and found that it is still problematic. The reason is the bridging of a token with the same address, will create a <code>bridgedToken</code> on each layer. Now the <code>nativeToBridgedToken</code> status is no more Native or Deployed, but a bridge address.
+Let&rsquo;s call the native token <code>A</code> and bridgedToken be <code>B</code> and <code>C</code> on each layer respectively. Now if the bridgeToken <code>B</code> is tried to be bridged back to native token <code>A</code>, it&rsquo;ll be not possible, as while doing <code>completeBridging</code> both of the conditional checks will be unsatisfied. However, in any case, the bridge on the destination layer will still mint the <code>bridgedTokens</code></p>
+<pre tabindex="0"><code>      BridgedToken(bridgedToken).mint(_recipient, _amount);
+</code></pre><p>As an example, the <code>B</code> tokens can be bridged to mint <code>C</code> bridgedTokens and vice-versa as and when needed. So, now it is mandatory to call <code>confirmDeployment</code> in order to allow condition 1 to be satisfied for this bridging and avoid this kind of bad minting.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#updating-message-service-does-not-emit-event" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/5">
+                <h3 id="updating-message-service-does-not-emit-event">4.8 Updating Message Service Does Not Emit Event <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/69">69</a> with the final commit hash as <code>1fdd5cfc51c421ad9aaf8b2fd2b3e2ed86ffa898</code>
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The function <code>setMessageService</code> allows the owner to update the message service address. However, it does not emit any event reflecting the change. As a result, in case the owner gets compromised, it can silently add a malicious message service, exploiting users&rsquo; funds. Since, there was no event emitted, off-chain monitoring tools wouldn&rsquo;t be able to trigger alarms and users would continue using rogue message service until and unless tracked manually.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L237-L240</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">setMessageService</span><span class="p">(</span><span class="kt">address</span> <span class="n">_messageService</span><span class="p">)</span> <span class="k">public</span> <span class="n">onlyOwner</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">messageService</span> <span class="o">=</span> <span class="n">IMessageService</span><span class="p">(</span><span class="n">_messageService</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Consider emitting an event reflecting the update from the old message service to the new one.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#lock-solidity-version-in-pragma" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/11">
+                <h3 id="lock-solidity-version-in-pragma">4.9 Lock Solidity Version in <code>pragma</code> <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>Contracts should be deployed with the same compiler version they have been tested with.  Locking the pragma helps ensure that contracts do not accidentally get deployed using, for example, the latest compiler which may have higher risks of undiscovered bugs. Contracts may also be deployed by others and the pragma indicates the compiler version intended by the original authors.</p>
+<p>See <a href="https://consensys.github.io/smart-contract-best-practices/development-recommendations/solidity-specific/locking-pragmas/">Locking Pragmas</a> in <a href="https://consensys.github.io/smart-contract-best-practices/">Ethereum Smart Contract Best Practices</a>.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/interfaces/IMessageService.sol:L2</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">19</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/BridgedToken.sol:L2</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">19</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/TokenBridge.sol:L2</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">19</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/interfaces/ITokenBridge.sol:L2</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">19</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Lock the Solidity version to the latest version before deploying the contracts to production.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Solidity" data-lang="Solidity"><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">19</span><span class="p">;</span>
+</span></span></code></pre></div></div>
+        </div><div class="issue">
+            <a class="anchor" href="#upgradeability-concerns" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/9">
+                <h3 id="upgradeability-concerns">4.10 Upgradeability Concerns <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/70">70</a> with the final commit hash as <code>a014c29ddc12d5eb13a86827ac25a90e5239277b</code>
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p><strong>1- Using Standard Interfaces and Libraries instead of Upgradeable ones.</strong></p>
+<p><strong>contracts/TokenBridge.sol:L5-L10</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">IERC20Permit</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">IERC20Metadata</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">IERC20</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;@openzeppelin/contracts/token/ERC20/IERC20.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">OwnableUpgradeable</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">PausableUpgradeable</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">SafeERC20</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><p>We recommend using upgradeable interfaces and libraries to avoid any unexpected issues while contract upgrades, also increasing code readability.</p>
+<p><strong>2- Using Deprecated Files</strong>
+The contract imports file <code>draft-IERC20Permit</code> from the npm module <code>openzeppelin/contracts</code>.</p>
+<p><strong>contracts/TokenBridge.sol:L5</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">IERC20Permit</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><p>However, the file has been deprecated now, as the EIP2612 has been finalized. We recommend using the correct file which is <code>extensions/IERC20Permit.sol</code> or the corresponding upgradeable one.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#tokenbridge-does-not-follow-a-2-step-approach-for-ownership-transfers" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/1">
+                <h3 id="tokenbridge-does-not-follow-a-2-step-approach-for-ownership-transfers">4.11 TokenBridge Does Not Follow a 2-Step Approach for Ownership Transfers <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/71">71</a> with the final commit hash as <code>8ebfd011675ea318b7067af52637192aa1126acd</code>
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p><code>TokenBridge</code> defines a privileged role <strong>Owner</strong>, however, it uses a single-step approach, which immediately transfers the ownership to the new address. If accidentally passed an incorrect address, the current owner will immediately lose control over the system as there is no fail-safe mechanism.</p>
+<p>A safer approach would be to first propose the ownership to the new owner, and let the new owner accept the proposal to be the new owner. It will add a fail-safe mechanism for the current owner as in case it proposes ownership to an incorrect address, it will not immediately lose control, and may still propose again to a correct address.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/TokenBridge.sol:L22</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">TokenBridge</span> <span class="k">is</span> <span class="n">ITokenBridge</span><span class="p">,</span> <span class="n">PausableUpgradeable</span><span class="p">,</span> <span class="n">OwnableUpgradeable</span> <span class="p">{</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Consider moving to a 2-step approach for the ownership transfers as recommended above.
+<strong>Note</strong>:-  Openzeppelin provides another helper utility as <a href="https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/master/contracts/access/Ownable2StepUpgradeable.sol">Ownable2StepUpgradeable</a> which follows the recommended approach</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#code-corrections" data-issue-url="https://github.com/ConsenSysDiligence/linea-canonical-token-bridge-audit-2023-06/issues/10">
+                <h3 id="code-corrections">4.12 Code Corrections <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        The recommendations are implemented by the Linea team in the pull request <a href="https://github.com/Consensys/linea-token-bridge/pull/72">72</a> with the final commit hash as <code>0f9c5bb5e9ec261bff8e688ddd224896d298963c</code>
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p><strong>1- Importing <code>ITokenBridge</code> twice</strong>
+The contract defines the import of interface <code>ITokenBridge</code> twice, out of which one can be removed.</p>
+<p><strong>contracts/TokenBridge.sol:L4</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">ITokenBridge</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;./interfaces/ITokenBridge.sol&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/TokenBridge.sol:L14</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span> <span class="n">ITokenBridge</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;./interfaces/ITokenBridge.sol&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>2- Using bytes32 for a bytes4 selector</strong>
+The contract stores a 4-byte selector of <code>_PERMIT_SELECTOR</code> in a bytes32 type.</p>
+<p><strong>contracts/TokenBridge.sol:L24-L25</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">bytes32</span> <span class="k">private</span> <span class="k">constant</span> <span class="n">_PERMIT_SELECTOR</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bytes4</span><span class="p">(</span><span class="nb">keccak256</span><span class="p">(</span><span class="kt">bytes</span><span class="p">(</span><span class="s">&#34;permit(address,address,uint256,uint256,uint8,bytes32,bytes32)&#34;</span><span class="p">)));</span>
+</span></span></code></pre></div><p>The selector is then compared with the first 4 bytes of <code>_permitData</code> to make sure, the calldata is indeed a calldata of <code>permit</code> function.</p>
+<p><strong>contracts/TokenBridge.sol:L435-L436</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="kt">bytes4</span><span class="p">(</span><span class="n">_permitData</span><span class="p">[</span><span class="o">:</span><span class="mi">4</span><span class="p">])</span> <span class="o">!=</span> <span class="n">_PERMIT_SELECTOR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">revert</span> <span class="n">InvalidPermitData</span><span class="p">(</span><span class="kt">bytes4</span><span class="p">(</span><span class="n">_permitData</span><span class="p">[</span><span class="o">:</span><span class="mi">4</span><span class="p">]),</span> <span class="n">_PERMIT_SELECTOR</span><span class="p">);</span>
+</span></span></code></pre></div><p>The check will work as intended, however, if it fails, the error will revert with info containing 32 bytes of _PERMIT_SELECTOR as <code>0xd505accf00000000000000000000000000000000000000000000000000000000</code>, which may create unnecessary confusion for end users.
+As a recommendation, consider using a bytes4 type for <code>_PERMIT_SELECTOR</code> and also for the custom error <code>InvalidPermitData</code>.</p>
+<p><strong>contracts/interfaces/ITokenBridge.sol:L20</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">error</span> <span class="n">InvalidPermitData</span><span class="p">(</span><span class="kt">bytes4</span> <span class="n">permitData</span><span class="p">,</span> <span class="kt">bytes32</span> <span class="n">permitSelector</span><span class="p">);</span>
+</span></span></code></pre></div></div>
+        </div>
+<h2 id="findings-from-other-sources">5 Findings from Other Sources</h2>
+<p>This section includes Issues that are reported externally by the Whitehats apart from this audit, either via bug bounty platforms or with other means of responsible disclosure. The details are included as is as shared by the Whitehats.</p>
+<p><strong>ERC-777 tokens can re-enter TokenBridge’s deposit function and bridge an unlimited amount of tokens</strong></p>
+<p>The TokenBridge contract implements a L1 &lt;-&gt; L2 token bridge that is open to be used with any token. Tokens supporting the ERC-777 standard provide before and after token transfer hooks. The before transfer hook is invoked on the sender, while the after transfer hook is invoked on the recipient.
+An attacker can abuse this behaviour by re-entering the deposit function over and over, artificially inflating the amount of bridged tokens. Thi is due to the TokenBridge caching the token balance before transfer:</p>
+<pre tabindex="0"><code>// TokenBridge @ function bridgeToken
+uint256 balanceBefore = IERC20Upgradeable(_token).balanceOf(
+    address(this)
+);
+
+IERC20Upgradeable(_token).safeTransferFrom(
+    msg.sender,
+    address(this),
+    _amount
+);
+
+_amount =
+    IERC20Upgradeable(_token).balanceOf(address(this)) -
+    balanceBefore;
+</code></pre><p>By re-entering the function multiple times with a minimal amount, for example 1 wei, and sending a larger amount during the final re-entrancy, all invokations of the function will calculate _amount as the final larger amount. This results in the actually deposited amount being multiplied by the number of re-entrancies.
+This mints more tokens to the attacker than should be, that could then be bridged-back to withdraw the excess funds of other previous legitimate depositors, or kept on the remote chain and sold there.</p>
+<p><strong>Recommendation</strong>:
+Mark the deposit function as nonReentrant, for example by using OZ’s ReentrancyGuard.</p>
+<p><strong>Our Review</strong>:
+Following the recommendation, the team added the Reentrancy Guard, which the auditing team has reviewed. But adding the Reentrancy Guard in the inheritance hierarchy may mess up the storage layout while making the upgrade, as Openzeppelin&rsquo;s ReentrancyGuardUpgradeable pushes more buffer space and may collide with the existing storage slot, so we recommend either going for a fresh deployment or making necessary changes in the files to make sure there is no collision and a consistent storage layout.</p>
+<p><strong>Update from Linea Team</strong>:
+The recommendation was taken into consideration and a fresh version was deployed on the Mainnet, which is also the first version deployed on the Mainnet covering the fixes.</p>
+</p>
+
+<p><h2 id="appendix---files-in-scope">Appendix 1 - Files in Scope</h2>
+
+<p>This audit covered the following files:</p>
+<table>
+	<thead>
+			<tr>
+					<th>File</th>
+					<th>SHA-1 hash</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>contracts/interfaces/IMessageService.sol</td>
+					<td><code>5dca9238ae13515eebd6a8c24274529f0dce8aab</code></td>
+			</tr>
+			<tr>
+					<td>contracts/interfaces/ITokenBridge.sol</td>
+					<td><code>1ea6ed6495137080d2f903a254f8745a61734425</code></td>
+			</tr>
+			<tr>
+					<td>contracts/BridgedToken.sol</td>
+					<td><code>247732ab4e95d7628189095f4e8b996c690ceae8</code></td>
+			</tr>
+			<tr>
+					<td>contracts/TokenBridge.sol</td>
+					<td><code>2c9c1743bfd76798ca7600b447ca741051528aad</code></td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 id="appendix---disclosure">Appendix 2 - Disclosure</h2>
+<p>ConsenSys Diligence (&ldquo;CD&rdquo;) typically receives compensation from one or more clients (the &ldquo;Clients&rdquo;) for performing the analysis contained in these reports (the &ldquo;Reports&rdquo;). The Reports may be distributed through other means, including via ConsenSys publications and other distributions.</p>
+<p>The Reports are not an endorsement or indictment of any particular project or team, and the Reports do not guarantee the security of any particular project. This Report does not consider, and should not be interpreted as considering or having any bearing on, the potential economics of a token, token sale or any other product, service or other asset. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. No Report provides any warranty or representation to any Third-Party in any respect, including regarding the bugfree nature of code, the business model or proprietors of any such business model, and the legal compliance of any such business. No third party should rely on the Reports in any way, including for the purpose of making any decisions to buy or sell any token, product, service or other asset. Specifically, for the avoidance of doubt, this Report does not constitute investment advice, is not intended to be relied upon as investment advice, is not an endorsement of this project or team, and it is not a guarantee as to the absolute security of the project. CD owes no duty to any Third-Party by virtue of publishing these Reports.</p>
+<p>PURPOSE OF REPORTS The Reports and the analysis described therein are created solely for Clients and published with their consent. The scope of our review is limited to a review of code and only the code we note as being within the scope of our review within this report. Any Solidity code itself presents unique and unquantifiable risks as the Solidity language itself remains under development and is subject to unknown risks and flaws. The review does not extend to the compiler layer, or any other areas beyond specified code that could present security risks. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. In some instances, we may perform penetration testing or infrastructure assessments depending on the scope of the particular engagement.</p>
+<p>CD makes the Reports available to parties other than the Clients (i.e., &ldquo;third parties&rdquo;) &ndash; on its website. CD hopes that by making these analyses publicly available, it can help the blockchain ecosystem develop technical best practices in this rapidly evolving area of innovation.</p>
+<p>LINKS TO OTHER WEB SITES FROM THIS WEB SITE You may, through hypertext or other computer links, gain access to web sites operated by persons other than ConsenSys and CD. Such hyperlinks are provided for your reference and convenience only, and are the exclusive responsibility of such web sites&rsquo; owners. You agree that ConsenSys and CD are not responsible for the content or operation of such Web sites, and that ConsenSys and CD shall have no liability to you or any other person or entity for the use of third party Web sites. Except as described below, a hyperlink from this web Site to another web site does not imply or mean that ConsenSys and CD endorses the content on that Web site or the operator or operations of that site. You are solely responsible for determining the extent to which you may use any content at any other web sites to which you link from the Reports. ConsenSys and CD assumes no responsibility for the use of third party software on the Web Site and shall have no liability whatsoever to any person or entity for the accuracy or completeness of any outcome generated by such software.</p>
+<p>TIMELINESS OF CONTENT The content contained in the Reports is current as of the date appearing on the Report and is subject to change without notice. Unless indicated otherwise, by ConsenSys and CD.</p>
+</p>
+</div>
+        </div>
+    </article>
+</div>
+
+    </main>
+    
+<footer class="audit-footer">
+  <div class="audit-footer__inner">
+    <div class="audit-footer__wrap">
+      
+      <div class="audit-footer__divider"></div>
+
+      
+      <div class="audit-footer__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </div>
+
+      
+      <div class="audit-footer__content">
+        
+        <div class="audit-footer__copyright">
+          <p>Securing Ethereum Smart Contracts since 2017</p>
+          <p>2026 All rights reserved</p>
+        </div>
+
+        
+        <div class="audit-footer__columns">
+          
+          <div class="audit-footer__col audit-footer__col--company">
+            <p class="audit-footer__col-title">Company</p>
+            <a href="/about/" class="audit-footer__link">About</a>
+            <a href="/blog/" class="audit-footer__link">Blog</a>
+            <a href="/privacy-policy/" class="audit-footer__link">Privacy Policy</a>
+            <a href="#" onclick="openCookieSettings();return false;" class="audit-footer__link">Cookie settings</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--audit">
+            <p class="audit-footer__col-title">Audit</p>
+            <a href="/audits/" class="audit-footer__link">Audit list</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--research">
+            <p class="audit-footer__col-title">Research</p>
+            <a href="/#academic-research" class="audit-footer__link">Academic publications</a>
+            <a href="/#tools" class="audit-footer__link">Tools</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--social">
+            <p class="audit-footer__col-title">Social</p>
+            <a href="https://x.com/ConsensysAudits" target="_blank" rel="noopener noreferrer" class="audit-footer__link">X</a>
+            <a href="https://www.linkedin.com/company/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">LinkedIn</a>
+            <a href="https://github.com/ConsenSysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">GitHub</a>
+            <a href="https://medium.com/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">Medium</a>
+            <a href="https://www.youtube.com/@ConsensysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/audit-report.js?v=e8012d8d" defer></script>
+<div id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent"
+     style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#131313;border-top:1px solid #303033;padding:16px 24px;box-shadow:0 -10px 15px -3px rgba(0,0,0,.2)">
+  <div style="max-width:1386px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+    <p style="margin:0;flex:1 1 320px;min-width:0;color:#b2b3b3;font-family:Graphik,sans-serif;font-weight:400;font-size:14px;line-height:20px">
+      We use analytics cookies to understand how visitors use our site. You can accept or decline.<a href="/privacy-policy/" style="color:#a7b9f1;text-decoration:underline">Learn more<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">&#32;in our privacy policy</span></a>
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;flex-shrink:0">
+      <button type="button" id="cookie-decline"
+              style="cursor:pointer;background:transparent;border:1px solid #303033;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:border-color .15s"
+              onmouseenter="this.style.borderColor='#6e8be8'" onmouseleave="this.style.borderColor='#303033'">Decline</button>
+      <button type="button" id="cookie-accept"
+              style="cursor:pointer;background:#2c56dd;border:1px solid #2c56dd;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:background .15s"
+              onmouseenter="this.style.background='#2345c4'" onmouseleave="this.style.background='#2c56dd'">Accept</button>
+    </div>
+  </div>
+</div>
+
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42a6adb38f55315',t:'MTc5MDY3ODkyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

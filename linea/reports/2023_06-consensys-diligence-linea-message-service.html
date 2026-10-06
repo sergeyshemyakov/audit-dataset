@@ -1,0 +1,1633 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linea Message Service | Consensys Diligence</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+      <meta name="description" content="This report presents the results of our engagement with Linea to review Linea Message Service. The review was conducted over 3 weeks, from June 5 2023 to …">
+    <link rel="preload" href="/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Medium-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Semibold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Bold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp" type="image/webp" fetchpriority="high">
+    <script>
+(function(){
+  var stored = null;
+  try { stored = localStorage.getItem('cookie_consent'); } catch (e) {}
+  if (stored === 'granted' || stored === 'denied') return;
+  try {
+    
+    
+    
+    
+    
+    
+    window.__ccTrace = fetch('/cdn-cgi/trace')
+      .then(function(r){ return r.text(); })
+      .catch(function(){ return ''; });
+  } catch (e) {}
+})();
+</script><script src="/js/consent.js?v=d268f9f4" defer></script>
+
+    <link href="/css/tachyons.min.css?v=75808e0f" rel="stylesheet"><link href="/style.css?v=fe61105e" rel="stylesheet">
+    <link href="/css/highlight.css?v=be488ecd" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://diligence.security/audits/2023/06/linea-message-service/">
+    <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.png">
+    <link rel="nokia-touch-icon" href="/images/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/icon/favicon.png" sizes="1x1">
+    
+<script type="text/javascript" id="interactive-report-tools" defer>
+const getStructuredFinding = (elem, options) => {
+  const is = elem.closest(".issue");
+  const heading = is.querySelector("h3");
+  const title = Array.from(heading.childNodes)
+          .map(node => node.nodeName === "SPAN" ? "" : node.textContent.trim())
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .trim()
+
+  function formatText(elem){
+      return Array.from(elem.childNodes)
+          .map(node => {
+              switch(node.nodeName){
+                  case "CODE":
+                      return `\`${node.textContent.trim()}\``;
+                  case "H4":
+                      return  `#### ${node.textContent.trim()}`;
+              }
+              return node.textContent.trim();
+          })
+          .join("\n")
+          
+          .trim()
+  }
+
+  const finding = {
+      id: title.substring(0, title.indexOf(' ')),
+      title: title.substring(title.indexOf(' ') + 1),
+      severity: heading.querySelector(".severity")?.textContent.trim().toLowerCase() || undefined,
+      state: heading.querySelector(".state")?.textContent.trim().toLowerCase() || undefined,
+      url: document.location.href.split("#",1)[0] + "#" + heading.id,
+  }
+  if(options?.withBody){
+      finding.body = formatText(is.querySelector("h4").closest("div"));
+  }
+  return finding;
+}
+const getAllFindings = (options) => Array.from(document.querySelectorAll(".issue")).map(iss => getStructuredFinding(iss, options));
+function exportCsv(fileName) {
+  const data = getAllFindings()
+  const keys = Object.keys(data[0]);
+  const csvRows = [];
+  csvRows.push(keys.join(','));
+  data.forEach(row => {
+      const values = keys.map(key => {
+          const value = row[key];
+          if(value === undefined) return "";
+          return `"${value}"`;
+      });
+      csvRows.push(values.join(','));
+  });
+  const csvData = csvRows.join('\n');
+  const blob = new Blob([csvData], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function exportJson(fileName) {
+  const blob = new Blob([JSON.stringify(getAllFindings())], { type: 'text/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function getOrSetGithubRepo(force) {
+  function parseGitHubRepo(input) {
+      if(!input) return;
+      const urlMatch = input.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/?$/);
+      if (urlMatch) return `${urlMatch[1]}/${urlMatch[2]}`;
+      
+      const directMatch = input.match(/^([^\/]+)\/([^\/]+)$/);
+      return directMatch ? input : null;
+  }
+  function isValidGitHubRepo(input) {
+      if(!input) return false;
+      
+      
+      
+      
+      
+      const githubNameRegex = /^(?![-.])(?!.*[_.-]{2})[a-zA-Z0-9.-]{1,100}(?<![-.])$/;
+      if (typeof input !== 'string') return false;
+      const parts = input.split('/');
+      
+      if (parts.length !== 2) return false;
+      const [org, repo] = parts;
+      return githubNameRegex.test(org) && githubNameRegex.test(repo);
+  }
+  closeAllMenus();
+  let repo = sessionStorage.getItem("user_gh_repo");
+  if (force || !isValidGitHubRepo(repo)) {
+      repo = parseGitHubRepo(prompt("Enter the GitHub repository name (owner/repo):", "https://github.com/organisation/repo"));
+
+      if (repo) {
+          if(!isValidGitHubRepo(repo)){
+              alert(`Error: '${repo}' is not a valid GitHub repo.`);
+          } else {
+              sessionStorage.setItem("user_gh_repo", repo);
+          }
+      }
+  }
+  return repo;
+}
+
+function exportToGitHub(elem) {
+  closeAllMenus();
+  const repo = getOrSetGithubRepo();
+  if(!repo) return;
+  const baseUrl = `https:\/\/github.com/${repo}/issues/new`;
+  const is = getStructuredFinding(elem);
+  const labels = undefined;
+
+  const params = new URLSearchParams({
+      title: `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}`,
+      body: `[<img width="200" alt="get in touch with Consensys Diligence" src="https:\/\/user-images.githubusercontent.com/2865694/56826101-91dcf380-685b-11e9-937c-af49c2510aa0.png">](https:\/\/diligence.security)
+<sub>[[ 🌐 ](https:\/\/diligence.security) [ 📩 ](mailto:diligence@diligence.security) [ 🔥 ](https:\/\/consensysdiligence.github.io/diligence/)]</sub>
+_______
+
+**Severity**: ${capitalizeFirstLetter(is.severity)}
+**Finding**: 👉 [${is.id} - ${is.title}](${is.url})
+
+`,
+      labels: labels && labels.join(',') || "bug,security,audit",
+      milestone: "diligence-audit",
+      assignee: ""
+  });
+
+  const issueUrl = `${baseUrl}?${params.toString()}`;
+  window.open(issueUrl, "_blank");
+}
+function exportToClipboard(elem, options){
+  closeAllMenus();
+  const is = getStructuredFinding(elem, {withBody:true});
+  let data = "";
+  switch (options?.format){
+      case "text":
+          data = `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}
+
+**Reference**: ${is.url}
+
+${is.body}
+`
+          break;
+      default:
+          data = JSON.stringify(is);
+  }
+  navigator.clipboard.writeText(data)
+}
+function capitalizeFirstLetter(string) {
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "None";
+}
+function closeAllMenus() {
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.style.display = "none";
+  });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  
+  document.querySelectorAll(".menu-toggle").forEach(button => {
+      button.addEventListener("click", function (event) {
+          const menu = this.nextElementSibling;
+          menu.style.display = menu.style.display === "block" ? "none" : "block";
+          event.stopPropagation(); 
+      });
+  });
+
+  
+  document.addEventListener("click", function () {
+      document.querySelectorAll(".menu-box").forEach(menu => {
+          menu.style.display = "none";
+      });
+  });
+
+  
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.addEventListener("click", function (event) {
+          event.stopPropagation();
+      });
+  });
+});
+</script>
+<link rel="alternate" type="application/rss+xml" href="https://diligence.security/index.xml" title="Consensys Diligence" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://diligence.security/#organization","@type":"Organization","description":"Smart Contract Audits for Ethereum protocols and institutions. Supercharged by AI agents, guided by veteran experts.","foundingDate":"2017","logo":{"@type":"ImageObject","url":"https://diligence.security/images/icon/favicon.png"},"name":"Consensys Diligence","sameAs":["https://x.com/ConsensysAudits","https://www.linkedin.com/company/consensys-diligence","https://github.com/ConsenSysDiligence","https://medium.com/consensys-diligence","https://www.youtube.com/@ConsensysDiligence"],"url":"https://diligence.security/"},{"@id":"https://diligence.security/#website","@type":"WebSite","name":"Consensys Diligence","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/"},{"@id":"https://diligence.security/audits/2023/06/linea-message-service/#article","@type":"TechArticle","author":[{"@type":"Person","name":"Rai Yang"},{"@type":"Person","name":"Tejaswa Rastogi"}],"dateModified":"2023-06-22T20:53:48+07:00","datePublished":"2023-06-22T20:53:48+07:00","description":"This report presents the results of our engagement with Linea to review Linea Message Service. The review was conducted over 3 weeks, from June 5 2023 to …","headline":"Linea Message Service","image":["https://diligence.security/images/og-share.png","https://diligence.security/images/audit_report/feature-hero.png"],"inLanguage":"en","isPartOf":{"@id":"https://diligence.security/#website"},"mainEntityOfPage":{"@id":"https://diligence.security/audits/2023/06/linea-message-service/","@type":"WebPage"},"name":"Linea Message Service","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/audits/2023/06/linea-message-service/","wordCount":5076},{"@id":"https://diligence.security/audits/2023/06/linea-message-service/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://diligence.security/","name":"Home","position":1},{"@type":"ListItem","item":"https://diligence.security/audit-reports/","name":"Public Smart Contract Audits and Security Reviews","position":2},{"@type":"ListItem","item":"https://diligence.security/audits/2023/06/linea-message-service/","name":"Linea Message Service","position":3}]}]}</script>
+    <meta property="og:title" content="Linea Message Service | Consensys Diligence" />
+    <meta property="og:description" content="This report presents the results of our engagement with Linea to review Linea Message Service. The review was conducted over 3 weeks, from June 5 2023 to …" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://diligence.security/audits/2023/06/linea-message-service/" /><meta property="og:image" content="https://diligence.security/images/og-share.png" />
+    <meta property="og:image:alt" content="Linea Message Service - Consensys Diligence" /><meta property="article:published_time" content="2023-06-22T20:53:48+07:00" />
+<meta property="article:modified_time" content="2023-06-22T20:53:48+07:00" /><meta property="og:site_name" content="Consensys Diligence" />
+    <meta property="article:publisher" content="https://www.twitter.com/ConsensysAudits" />
+    
+    <meta property="article:section" content="audits" />
+<meta name="twitter:title" content="Linea Message Service | Consensys Diligence"/>
+<meta name="twitter:description" content="This report presents the results of our engagement with Linea to review Linea Message Service. The review was conducted over 3 weeks, from June 5 2023 to …"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://diligence.security/images/og-share.png"/>
+                <meta name="twitter:image:alt" content="Linea Message Service - Consensys Diligence"/>
+<meta name="twitter:site" content="@ConsensysAudits"/>
+    <meta name="twitter:creator" content="@ConsensysAudits"/>
+
+      
+      <script type="text/javascript" id="reload-pathfix">
+        let lastSegment = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1); 
+        if(lastSegment && lastSegment.length !==0 && lastSegment.indexOf(".") === -1){
+          
+          window.location.pathname += "/";  
+        }
+      </script>
+      <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-H4M4ES1MZM');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4M4ES1MZM"></script>
+    
+  </head>
+  <body style="margin: 0; padding: 0;">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    
+<header class="audit-header">
+  <div class="audit-header__inner">
+    
+    <div class="audit-header__row1">
+      <a href="/" class="audit-header__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </a>
+
+      <a href="/request-audit/" class="audit-header__cta">
+        <div class="audit-header__cta-icon">
+          <svg fill="none" viewBox="0 0 14.8226 10.1497">
+            <line stroke="white" stroke-width="1.3" x2="13.7793" y1="4.8803" y2="4.8803" />
+            <path d="M9.28809 0.459619L13.9033 5.07487L9.28809 9.69013" stroke="white" stroke-width="1.3" fill="none" />
+          </svg>
+        </div>
+        <span class="audit-header__cta-text">Request Audit</span>
+      </a>
+    </div>
+
+    
+    <div class="audit-header__row2">
+      <p class="audit-header__tagline">Securing Ethereum Smart Contracts since 2017</p>
+      <nav class="audit-header__nav">
+        <a href="/about/" class="audit-header__nav-link">About</a>
+        <a href="/blog/" class="audit-header__nav-link">Blog</a>
+        <a href="/audits/" class="audit-header__nav-link">Public Audits</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <main id="main" tabindex="-1" role="main">
+      <div class="dili-navigator-page">
+    <div class="dili-blog-hero"><div class="dili-hero-bg-mixin" style="background-image: url('/images/audit_report/feature-hero.png'); background-image: image-set(url('/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp') type('image/webp'), url('/images/audit_report/feature-hero.png') type('image/png'));" ></div>
+        <div class="dili-container">
+            <div class="dili-blog-hero-inner">
+                <div class="item-eyebrow"></div>
+                <h1 class="item-title">Linea Message Service</h1>
+            </div>
+        </div>
+    </div>
+    <article class="">
+
+
+    <div class="dili-navigator-wrapper">
+            <div class="dili-navigator-sidebar">
+
+                <ul class="dili-navigator-sidebar-inner">
+                <li>
+                    <a href="#executive-summary">1 Executive Summary</a>
+                </li>
+                <li>
+                    <a href="#scope">2 Scope</a>
+                    <ul>
+                    <li>
+                        <a href="#objectives">2.1 Objectives</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#security-specification">3 Security Specification</a>
+                    <ul>
+                    <li>
+                        <a href="#actors">3.1 Actors</a>
+                    </li>
+                    <li>
+                        <a href="#trust-model">3.2 Trust Model</a>
+                    </li>
+                    <li>
+                        <a href="#security-properties">3.3 Security Properties</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#findings">4 Findings</a>
+                    <ul>
+                    <li>
+                        <a href="#heavy-blocks-may-affect-block-finalization-if-the-gas-requirement-exceeds-block-gas-limit">4.1 Heavy Blocks May Affect Block Finalization, if the Gas Requirement Exceeds Block Gas Limit <span class="severity major">Major</span></a>
+                    </li>
+                    <li>
+                        <a href="#postman-can-incorrectly-deliver-a-message-while-still-collecting-the-fees">4.2 Postman Can Incorrectly Deliver a Message While Still Collecting the Fees <span class="severity major">Major</span></a>
+                    </li>
+                    <li>
+                        <a href="#users-funds-would-stuck-if-the-message-claim-failed-on-the-destination-layer">4.3 User&rsquo;s Funds Would Stuck if the Message Claim Failed on the Destination Layer <span class="severity major">Major</span></a>
+                    </li>
+                    <li>
+                        <a href="#front-running-finalizeblocks-when-sequencers-are-decentralized">4.4 Front Running finalizeBlocks When Sequencers Are Decentralized <span class="severity major">Major</span></a>
+                    </li>
+                    <li>
+                        <a href="#user-funds-would-stuck-if-the-single-coordinator-is-offline-or-censoring-messages">4.5 User Funds Would Stuck if the Single Coordinator Is Offline or Censoring Messages <span class="severity major">Major</span></a>
+                    </li>
+                    <li>
+                        <a href="#changing-verifier-address-doesnt-emit-event">4.6 Changing Verifier Address Doesn&rsquo;t Emit Event <span class="severity major">Major</span></a>
+                    </li>
+                    <li>
+                        <a href="#l2-blocks-with-incorrect-timestamp-could-be-finalized">4.7 L2 Blocks With Incorrect Timestamp Could Be Finalized <span class="severity medium">Medium</span></a>
+                    </li>
+                    <li>
+                        <a href="#rate-limiting-affecting-the-usability-and-users-funds-safety">4.8 Rate Limiting Affecting the Usability and User&rsquo;s Funds Safety <span class="severity medium">Medium</span></a>
+                    </li>
+                    <li>
+                        <a href="#front-running-claimmessage-on-l1-and-l2">4.9 Front Running claimMessage on L1 and L2 <span class="severity medium">Medium</span></a>
+                    </li>
+                    <li>
+                        <a href="#contracts-not-well-designed-for-upgrades">4.10 Contracts Not Well Designed for Upgrades <span class="severity medium">Medium</span></a>
+                    </li>
+                    <li>
+                        <a href="#potential-code-corrections">4.11 Potential Code Corrections <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#transactiondecoder-does-not-account-for-the-missing-elements-while-decoding-a-transaction">4.12 TransactionDecoder Does Not Account for the Missing Elements While Decoding a Transaction <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#incomplete-message-state-check-when-claiming-messages-on-l1-and-l2">4.13 Incomplete Message State Check When Claiming Messages on L1 and L2 <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#events-which-may-trigger-false-alarms">4.14 Events Which May Trigger False Alarms <span class="severity minor">Minor</span></a>
+                    </li>
+                    <li>
+                        <a href="#pausemanager---unnecessary-explicit-initialization-of-values">4.15 PauseManager - Unnecessary Explicit Initialization of Values</a>
+                    </li>
+                    <li>
+                        <a href="#codecv2---code-optimization">4.16 CodecV2 - Code Optimization</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#appendix---files-in-scope">Appendix 1 - Files in Scope</a>
+                </li>
+                <li>
+                    <a href="#appendix---disclosure">Appendix 2 - Disclosure</a>
+                </li>
+                </ul>
+            </div>
+            <div class="dili-navigator-content richtext">
+                <aside class="summary summary-cta-side">
+                    
+                    
+                    <table>
+                        <tr>
+                            <th align="left">Date</th>
+                            <td align="left">June 2023</td>
+                        </tr>
+                        
+                        <tr>
+                            <th align="left">Auditors</th>
+                            <td align="left" class="mw5">Rai Yang, Tejaswa Rastogi
+                        </tr>
+                        
+                        <tr class="noprint">
+                            <th align="left">Download</th>
+                            <td align="left">
+                                <a onclick="exportJson()" title="↓ JSON" class="pointer"><i class="far fa-file-code"></i> JSON</a><br/>
+                                <a onclick="exportCsv()" title="↓ CSV" class="pointer"><i class="far fa-file-excel"></i> CSV</a>
+                            </td>
+                        </tr>
+                    </table>
+                </aside>
+<h2 id="executive-summary">1 Executive Summary</h2>
+<p>This report presents the results of our engagement with <strong>Linea</strong> to review <strong>Linea Message Service</strong>.</p>
+<p>The review was conducted over 3 weeks, from <strong>June 5 2023</strong> to <strong>June 23 2023</strong>, by
+<strong>Rai Yang</strong> and <strong>Tejaswa Rastogi</strong>. A total of 2x15 person-days were spent.</p>
+<h2 id="scope">2 Scope</h2>
+<p>Our review focused on the commit hash <a href="https://github.com/ConsenSys/zkevm-monorepo/commit/8ccf24731c3cd288c27696771c45e4c1a01fa8cc">8ccf24731c3cd288c27696771c45e4c1a01fa8cc</a>. The list of files in scope can be found in the <a href="#appendix---files-in-scope">Appendix</a>.</p>
+<h3 id="objectives">2.1 Objectives</h3>
+<p>Together with the <strong>Linea</strong> team, we identified the following priorities for our review:</p>
+<ol>
+<li>Correctness of the implementation, consistent with the <a href="https://docs.google.com/document/d/17pG8daAU00b2zZdoXXnG1jrRwCg8Py6dXJZDMYki3-M/edit#heading=h.xqwxf7c9akj7">intended functionality</a> and without unintended edge cases.</li>
+<li>Identify known vulnerabilities particular to smart contract systems, as outlined in our <a href="https://consensys.github.io/smart-contract-best-practices/">Smart Contract Best Practices</a>, and the <a href="https://swcregistry.io/">Smart Contract Weakness Classification Registry</a>.</li>
+</ol>
+
+
+
+<h2 id="security-specification">3 Security Specification</h2>
+<p>This section describes, <strong>from a security perspective</strong>, the expected behavior of the system under audit. It is not a substitute for documentation. The purpose of this section is to identify specific security properties that were validated by the audit team.</p>
+<h3 id="actors">3.1 Actors</h3>
+<p>The relevant actors are listed below with their respective abilities:</p>
+<ul>
+<li>Coordinator: Relaying L1 messages to L2</li>
+<li>Sequencer: Sequencing L2 transactions, creating L2 blocks and proofs and submiting them to L1</li>
+<li>User: Dapps using the message service on L1 and L2</li>
+<li>Prover: Prove the correctness of the L2 block data(transactions) and state submitted by the sequencer</li>
+<li>Postman: Linea’s off-chain message delivery service or third-party service delivering the messages to claim the delivery fee. Each postman is not dependent on each other to function. There is the possibility of third-party postmen being unavailable.</li>
+<li>Service Admin: A Linea/ConsenSys controlled multisig wallet that initiates contract upgrades or performs contract functions such as pausing or setting withdrawal limits.</li>
+</ul>
+<h3 id="trust-model">3.2 Trust Model</h3>
+<p>In any system, it&rsquo;s important to identify what trust is expected/required between various actors. For this audit, we established the following trust model:</p>
+<ul>
+<li>The single coordinator relays L1 messages to L2 correctly and timely and does not censor L1 messages</li>
+<li>The single sequencer sequences the L2 transaction correctly, does not censor L2 messages and submits the blocks and proof to L1 timely</li>
+<li>The Postman delivers the messages to the destination layer correctly and rationaly based on the fee and gas cost of delivering the message</li>
+<li>Service Admin performes the service management properly and upgrades the contracts correctly and securely</li>
+<li>The verifier verifies the proof correctly</li>
+</ul>
+<h3 id="security-properties">3.3 Security Properties</h3>
+<p>The following is a non-exhaustive list of security properties that were verified in this audit:</p>
+<ul>
+<li>A message is uniquely identified preventing it being executed twice</li>
+<li>A smart-contract mechanism on the receiving layer provides a way to prove which account was the origin sender of the call on the origin layer.</li>
+<li>To avoid issues with chain reorganisations, the cross-chain message validity reference updates on the destination layer takes place once the message is final on the origin layer. This prevents delivery by any entity early as the verification will fail, and will make sure the message is valid for delivery.cross-chain message validity reference updates</li>
+<li>Minimum service protection fee when sending on the L2 Linea message service to avoid a denial of service scenario due to its lower gas cost.</li>
+<li>A service admin sets the service protection fee on L2 Linea</li>
+<li>Any signing keys (e.g. the Sequencer and postman) needs to be secured properly.</li>
+<li>Reentrancy on message delivery is not supported to prevent double delivery. However a dispatch message request can be triggered as part of a delivery message action.</li>
+<li>A service admin can set a cap on L2-&gt;L1 daily withdrawal amount.</li>
+<li>An emergency mechanism exists to block message service transactions (sending on one layer and receiving on the other).</li>
+</ul>
+
+<h2 id="findings">4 Findings</h2>
+   
+    <p>Each issue has an assigned severity:</p>
+
+    <ul>
+        <li><span class="severity critical">Critical</span> issues are directly exploitable security vulnerabilities that need to be fixed.</li>
+        <li><span class="severity major">Major</span> issues are security vulnerabilities that may not be directly exploitable or may require certain conditions in order to be exploited. All major issues should be addressed.</li>
+        <li><span class="severity medium">Medium</span> issues are objective in nature but are not security vulnerabilities. These should be addressed unless there is a clear reason not to.</li>
+        <li><span class="severity minor">Minor</span> issues are subjective in nature. They are typically suggestions around best practices or readability. Code maintainers should use their own judgment as to whether to address such issues.</li>
+        <li>Issues without a severity are general recommendations or optional improvements. They are not related to security or correctness and may be addressed at the discretion of the maintainer.</li>
+    </ul><div class="issue">
+            <a class="anchor" href="#heavy-blocks-may-affect-block-finalization-if-the-gas-requirement-exceeds-block-gas-limit" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/16">
+                <h3 id="heavy-blocks-may-affect-block-finalization-if-the-gas-requirement-exceeds-block-gas-limit">4.1 Heavy Blocks May Affect Block Finalization, if the Gas Requirement Exceeds Block Gas Limit <span class="severity major">Major</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>sequencer</code> takes care of finalizing blocks by submitting proof, blocks&rsquo; data, proof type, and parent state root hash. The team mentions that the blocks are finalized every 12s, and under general scenarios, the system will work fine. However, in cases where there are blocks containing lots of transactions and event logs, the function may require gas more than the block gas limit. As a consequence, it may affect block finalization or lead to a potential DoS.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/ZkEvmV2.sol:L110-L115</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">finalizeBlocks</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BlockData</span><span class="p">[]</span> <span class="n">calldata</span> <span class="n">_blocksData</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bytes</span> <span class="n">calldata</span> <span class="n">_proof</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_proofType</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bytes32</span> <span class="n">_parentStateRootHash</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>We advise the team to benchmark the cost associated per block for the finalization and how many blocks can be finalized in one rollup and add the limits accordingly for the prover/sequencer.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#postman-can-incorrectly-deliver-a-message-while-still-collecting-the-fees" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/13">
+                <h3 id="postman-can-incorrectly-deliver-a-message-while-still-collecting-the-fees">4.2 Postman Can Incorrectly Deliver a Message While Still Collecting the Fees <span class="severity major">Major</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The message service allows cross chain message delivery, where the user can define the parameters of the message as:</p>
+<p><strong>from</strong>: Sender of the message
+<strong>_to</strong>: Receiver of the message
+<strong>_fee</strong>: The fees, the sender wants to pay to the postman to deliver the message
+<strong>valueSent</strong>: The value in the native currency of the chain to be sent with the message
+<strong>messageNumber</strong>: Nonce value which increments for every message
+<strong>_calldata</strong>: Calldata for the message to be executed on the destination chain</p>
+<p>The postman estimates the gas before claiming/delivering the message on the destination chain, thus avoiding scenarios where the fees sent are less than the cost of claiming the message.</p>
+<p>However, there is nothing that restricts the postman from sending the gas equal to the fees paid by the user. Although it contributes to the MEV, where the postman can select the messages with higher fees first and deliver them prior to others, it also opens up an opportunity where the postman can deliver a message incorrectly while still claiming the fees.</p>
+<p>One such scenario is, where the low-level call to target <code>_to</code> makes another sub-call to another address, let&rsquo;s say <code>x</code>. Let&rsquo;s assume, the <code>_to</code> address doesn&rsquo;t check, whether the call to address <code>x</code> was successful or not. Now, if the postman supplies a gas, which makes the top-level call succeed, but the low-level call to <code>x</code> fails silently, the postman will still be retrieving the fees of claiming the message, even though the message was not correctly delivered.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/messageService/l1/L1MessageService.sol:L125-L135</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="p">(</span><span class="kt">bool</span> <span class="n">success</span><span class="p">,</span> <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">returnData</span><span class="p">)</span> <span class="o">=</span> <span class="n">_to</span><span class="p">.</span><span class="nb">call</span><span class="p">{</span> <span class="nb">value</span><span class="o">:</span> <span class="n">_value</span> <span class="p">}(</span><span class="n">_calldata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">returnData</span><span class="p">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assembly</span> {
+</span></span><span class="line"><span class="cl">      <span class="ow">let</span> <span class="nv">data_size</span> <span class="o">:=</span> <span class="nf">mload</span><span class="p">(</span><span class="n">returnData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">revert</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">returnData</span><span class="p">),</span> <span class="n">data_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">MessageSendingFailed</span><span class="p">(</span><span class="n">_to</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l2/L2MessageService.sol:L150-L160</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="p">(</span><span class="kt">bool</span> <span class="n">success</span><span class="p">,</span> <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">returnData</span><span class="p">)</span> <span class="o">=</span> <span class="n">_to</span><span class="p">.</span><span class="nb">call</span><span class="p">{</span> <span class="nb">value</span><span class="o">:</span> <span class="n">_value</span> <span class="p">}(</span><span class="n">_calldata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">returnData</span><span class="p">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assembly</span> {
+</span></span><span class="line"><span class="cl">      <span class="ow">let</span> <span class="nv">data_size</span> <span class="o">:=</span> <span class="nf">mload</span><span class="p">(</span><span class="n">returnData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">revert</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">returnData</span><span class="p">),</span> <span class="n">data_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">MessageSendingFailed</span><span class="p">(</span><span class="n">_to</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Another parameter can be added to the message construct giving the user the option to define the amount of gas required to complete a transaction entirely. Also, a check can be added while claiming the message, to make sure the gas supplied by the postman is sufficient enough compared to the gas defined/demanded by the user. The cases, where the user can demand a huge amount of gas, can be simply avoided by doing the gas estimation, and if the demanded gas is more than the supplied fees, the postman will simply opt not to deliver the message</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#users-funds-would-stuck-if-the-message-claim-failed-on-the-destination-layer" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/12">
+                <h3 id="users-funds-would-stuck-if-the-message-claim-failed-on-the-destination-layer">4.3 User&rsquo;s Funds Would Stuck if the Message Claim Failed on the Destination Layer <span class="severity major">Major</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>When claiming the message on the destination layer, if the message failed to execute with various reasons (e.g. wrong target contract address, wrong contract logic, out of gas, malicious contract), the Ether sent with <code>sendMessage</code> on the original layer will be stuck, although the message can be retried later by the Postman or the user (could fail again)</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/messageService/l1/L1MessageService.sol:L81-L84</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="n">messageNumber</span> <span class="o">=</span> <span class="n">nextMessageNumber</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="n">valueSent</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">value</span> <span class="o">-</span> <span class="n">_fee</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bytes32</span> <span class="n">messageHash</span> <span class="o">=</span> <span class="nb">keccak256</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encode</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">,</span> <span class="n">_to</span><span class="p">,</span> <span class="n">_fee</span><span class="p">,</span> <span class="n">valueSent</span><span class="p">,</span> <span class="n">messageNumber</span><span class="p">,</span> <span class="n">_calldata</span><span class="p">));</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l2/L2MessageService.sol:L150-L160</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="p">(</span><span class="kt">bool</span> <span class="n">success</span><span class="p">,</span> <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">returnData</span><span class="p">)</span> <span class="o">=</span> <span class="n">_to</span><span class="p">.</span><span class="nb">call</span><span class="p">{</span> <span class="nb">value</span><span class="o">:</span> <span class="n">_value</span> <span class="p">}(</span><span class="n">_calldata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">returnData</span><span class="p">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assembly</span> {
+</span></span><span class="line"><span class="cl">      <span class="ow">let</span> <span class="nv">data_size</span> <span class="o">:=</span> <span class="nf">mload</span><span class="p">(</span><span class="n">returnData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">revert</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">returnData</span><span class="p">),</span> <span class="n">data_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">MessageSendingFailed</span><span class="p">(</span><span class="n">_to</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l1/L1MessageService.sol:L125-L135</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="p">(</span><span class="kt">bool</span> <span class="n">success</span><span class="p">,</span> <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">returnData</span><span class="p">)</span> <span class="o">=</span> <span class="n">_to</span><span class="p">.</span><span class="nb">call</span><span class="p">{</span> <span class="nb">value</span><span class="o">:</span> <span class="n">_value</span> <span class="p">}(</span><span class="n">_calldata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">returnData</span><span class="p">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assembly</span> {
+</span></span><span class="line"><span class="cl">      <span class="ow">let</span> <span class="nv">data_size</span> <span class="o">:=</span> <span class="nf">mload</span><span class="p">(</span><span class="n">returnData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">revert</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">returnData</span><span class="p">),</span> <span class="n">data_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">MessageSendingFailed</span><span class="p">(</span><span class="n">_to</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add refund mechanism to refund users funds if the message failed to deliver on the destination layer</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#front-running-finalizeblocks-when-sequencers-are-decentralized" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/11">
+                <h3 id="front-running-finalizeblocks-when-sequencers-are-decentralized">4.4 Front Running finalizeBlocks When Sequencers Are Decentralized <span class="severity major">Major</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>When sequencer is decentralized in the future, one sequencer could front run another sequencer&rsquo;s <code>finalizeBlocks</code> transaction, without doing the actual proving and sequencing, and steal the reward for sequencing if there is one. Once the frontrunner&rsquo;s finalizeBlocks is executed, the original sequencer&rsquo;s transaction would fail as <code>currentL2BlockNumber</code> would increment by one and state root hash won&rsquo;t match, as a result the original sequencer&rsquo;s sequencing and proving work will be wasted.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/ZkEvmV2.sol:L110-L126</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">finalizeBlocks</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">BlockData</span><span class="p">[]</span> <span class="n">calldata</span> <span class="n">_blocksData</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bytes</span> <span class="n">calldata</span> <span class="n">_proof</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">_proofType</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bytes32</span> <span class="n">_parentStateRootHash</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">external</span>
+</span></span><span class="line"><span class="cl">  <span class="n">whenTypeNotPaused</span><span class="p">(</span><span class="n">PROVING_SYSTEM_PAUSE_TYPE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">whenTypeNotPaused</span><span class="p">(</span><span class="n">GENERAL_PAUSE_TYPE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">onlyRole</span><span class="p">(</span><span class="n">OPERATOR_ROLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">stateRootHashes</span><span class="p">[</span><span class="n">currentL2BlockNumber</span><span class="p">]</span> <span class="o">!=</span> <span class="n">_parentStateRootHash</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">StartingRootHashDoesNotMatch</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">_finalizeBlocks</span><span class="p">(</span><span class="n">_blocksData</span><span class="p">,</span> <span class="n">_proof</span><span class="p">,</span> <span class="n">_proofType</span><span class="p">,</span> <span class="n">_parentStateRootHash</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add the sequencer&rsquo;s address as one parameters in <code>_finalizeBlocks</code> function, and include the sequencer&rsquo;s address in the public input hash of the proof in verification function <code>_verifyProof</code>.</p>
+<pre tabindex="0"><code>function _finalizeBlocks(
+   BlockData[] calldata _blocksData,
+   bytes memory _proof,
+   uint256 _proofType,
+   bytes32 _parentStateRootHash,
+   bool _shouldProve,
+   address _sequencer
+ )
+</code></pre><pre tabindex="0"><code>_verifyProof(
+        uint256(
+          keccak256(
+            abi.encode(
+              keccak256(abi.encodePacked(blockHashes)),
+              firstBlockNumber,
+              keccak256(abi.encodePacked(timestampHashes)),
+              keccak256(abi.encodePacked(hashOfRootHashes)),
+              keccak256(abi.encodePacked(_sequencer)
+            )
+          )
+        ) % MODULO_R,
+        _proofType,
+        _proof,
+        _parentStateRootHash
+      );
+</code></pre><!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#user-funds-would-stuck-if-the-single-coordinator-is-offline-or-censoring-messages" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/9">
+                <h3 id="user-funds-would-stuck-if-the-single-coordinator-is-offline-or-censoring-messages">4.5 User Funds Would Stuck if the Single Coordinator Is Offline or Censoring Messages <span class="severity major">Major</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>When user sends message from L1 to L2, the coordinator needs to post the messages to L2, this happens in the anchoring message(<code>addL1L2MessageHashes</code>) on L2, then the user or Postman can claim the message on L2.
+since there is only a single coordinator, if the coordinator is down or censoring messages sent from L1 to L2, users funds can stuck in L1, until the coordinator come back online or stops censoring the message, as there is no message cancel feature or message expire feature. Although the operator can pause message sending on L1 once the coordinator is down, but if the message is sent and not posted to L2 before the pause it will still stuck.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/messageService/l1/L1MessageService.sol:L81-L84</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="n">messageNumber</span> <span class="o">=</span> <span class="n">nextMessageNumber</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint256</span> <span class="n">valueSent</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">value</span> <span class="o">-</span> <span class="n">_fee</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bytes32</span> <span class="n">messageHash</span> <span class="o">=</span> <span class="nb">keccak256</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encode</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">,</span> <span class="n">_to</span><span class="p">,</span> <span class="n">_fee</span><span class="p">,</span> <span class="n">valueSent</span><span class="p">,</span> <span class="n">messageNumber</span><span class="p">,</span> <span class="n">_calldata</span><span class="p">));</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l2/L2MessageManager.sol:L42-L60</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">addL1L2MessageHashes</span><span class="p">(</span><span class="kt">bytes32</span><span class="p">[]</span> <span class="n">calldata</span> <span class="n">_messageHashes</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">L1_L2_MESSAGE_SETTER_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">messageHashesLength</span> <span class="o">=</span> <span class="n">_messageHashes</span><span class="p">.</span><span class="n">length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">messageHashesLength</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">MessageHashesListLengthHigherThanOneHundred</span><span class="p">(</span><span class="n">messageHashesLength</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">messageHashesLength</span><span class="p">;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bytes32</span> <span class="n">messageHash</span> <span class="o">=</span> <span class="n">_messageHashes</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">inboxL1L2MessageStatus</span><span class="p">[</span><span class="n">messageHash</span><span class="p">]</span> <span class="o">==</span> <span class="n">INBOX_STATUS_UNKNOWN</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">inboxL1L2MessageStatus</span><span class="p">[</span><span class="n">messageHash</span><span class="p">]</span> <span class="o">=</span> <span class="n">INBOX_STATUS_RECEIVED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">unchecked</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">L1L2MessageHashesAddedToInbox</span><span class="p">(</span><span class="n">_messageHashes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><!--
+Code URLs get formatted nicely, i.e. https://github.com/ConsenSysDiligence/client-audit-internal-2019-01/blob/master/code/contracts/Vulnerable.sol#L27-L33
+-->
+<h4 id="recommendation">Recommendation</h4>
+<p>Decentralize coordinator and sequencer or enable user cancel or drop the message if message deadline has expired.</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#changing-verifier-address-doesnt-emit-event" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/7">
+                <h3 id="changing-verifier-address-doesnt-emit-event">4.6 Changing Verifier Address Doesn&rsquo;t Emit Event <span class="severity major">Major</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>In function <code>setVerifierAddress</code>, after the verifier address is changed, there is no event emitted, which means if the operator (security council) changes the verifier to a buggy verifier, or if the security council is compromised, the attacker can change the verifier to a malicious one, the unsuspecting user would still use the service, potentially lose funds due to the fraud transactions would be verified.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/ZkEvmV2.sol:L83-L88</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">setVerifierAddress</span><span class="p">(</span><span class="kt">address</span> <span class="n">_newVerifierAddress</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_proofType</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">DEFAULT_ADMIN_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">_newVerifierAddress</span> <span class="o">==</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">ZeroAddressNotAllowed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">verifiers</span><span class="p">[</span><span class="n">_proofType</span><span class="p">]</span> <span class="o">=</span> <span class="n">_newVerifierAddress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><!--
+Code URLs get formatted nicely, i.e. https://github.com/ConsenSysDiligence/client-audit-internal-2019-01/blob/master/code/contracts/Vulnerable.sol#L27-L33
+-->
+<h4 id="recommendation">Recommendation</h4>
+<p>Emits event after changing verifier address including old verifier address, new verifier address and the caller account</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#l2-blocks-with-incorrect-timestamp-could-be-finalized" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/10">
+                <h3 id="l2-blocks-with-incorrect-timestamp-could-be-finalized">4.7 L2 Blocks With Incorrect Timestamp Could Be Finalized <span class="severity medium">Medium</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>In <code>_finalizeBlocks</code> of <code>ZkEvmV2</code>, the current block timestamp <code>blockInfo.l2BlockTimestamp</code> should be greater or equal than the last L2 block timestamp and less or equal than the L1 block timestamp when <code>_finalizeBlocks</code> is executed. However the first check is missing, blocks with incorrect timestamp could be finalized, causing unintended system behavior</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/ZkEvmV2.sol:L158-L160</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">blockInfo</span><span class="p">.</span><span class="n">l2BlockTimestamp</span> <span class="o">&gt;=</span> <span class="nb">block</span><span class="p">.</span><span class="nb">timestamp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">revert</span> <span class="n">BlockTimestampError</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add the missing timestamp check</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#rate-limiting-affecting-the-usability-and-users-funds-safety" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/8">
+                <h3 id="rate-limiting-affecting-the-usability-and-users-funds-safety">4.8 Rate Limiting Affecting the Usability and User&rsquo;s Funds Safety <span class="severity medium">Medium</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>In <code>claimMessage</code> of <code>L1MessageService</code> and <code>sendMessage</code> function  of <code>L1MessageService</code> contract, function <code>_addUsedAmount</code> is used to rate limit the Ether amount (1000 Eth) sent from L2 to L1 in a time period (24 hours), this is problematic, usually user sends the funds to L1 when they need to exit from L2 to L1 especially when some security issues happened affecting their funds safety on L2, if there is a limit, the limit can be reached quickly by some whale sending large amount of Ether to L1, while other users cannot withdraw their funds to L1, putting their funds at risk. In addition, the limit can only be set and changed by the security council and security council can also pause message service at any time, blocking user withdraw funds from L2, this makes the L2-&gt;L1 message service more centralized.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/messageService/l1/L1MessageService.sol:L121</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">_addUsedAmount</span><span class="p">(</span><span class="n">_fee</span> <span class="o">+</span> <span class="n">_value</span><span class="p">);</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l2/L2MessageService.sol:L108</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">_addUsedAmount</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">value</span><span class="p">);</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/lib/RateLimiter.sol:L53-L69</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">_addUsedAmount</span><span class="p">(</span><span class="kt">uint256</span> <span class="n">_usedAmount</span><span class="p">)</span> <span class="k">internal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">currentPeriodAmountTemp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">currentPeriodEnd</span> <span class="o">&lt;</span> <span class="nb">block</span><span class="p">.</span><span class="nb">timestamp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Update period before proceeding
+</span></span></span><span class="line"><span class="cl">    <span class="n">currentPeriodEnd</span> <span class="o">=</span> <span class="nb">block</span><span class="p">.</span><span class="nb">timestamp</span> <span class="o">+</span> <span class="n">periodInSeconds</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentPeriodAmountTemp</span> <span class="o">=</span> <span class="n">_usedAmount</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentPeriodAmountTemp</span> <span class="o">=</span> <span class="n">currentPeriodAmountInWei</span> <span class="o">+</span> <span class="n">_usedAmount</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">currentPeriodAmountTemp</span> <span class="o">&gt;</span> <span class="n">limitInWei</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">RateLimitExceeded</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">currentPeriodAmountInWei</span> <span class="o">=</span> <span class="n">currentPeriodAmountTemp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Remove rate limiting for L2-&gt;L1 message service</p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#front-running-claimmessage-on-l1-and-l2" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/5">
+                <h3 id="front-running-claimmessage-on-l1-and-l2">4.9 Front Running claimMessage on L1 and L2 <span class="severity medium">Medium</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The front-runner on L1 or L2 can front run the <code>claimMessage</code> transaction, as long as the <code>fee</code> is greater than the gas cost of the claiming the message and <code>feeRecipient</code> is not set, consequently the fee will be transferred to the <code>message.sender</code>(the front runner) once the message is claimed. As a result, postman would lose the incentive to deliver(claim) the message on the destination layer.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/messageService/l1/L1MessageService.sol:L137-L142</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">_fee</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">feeReceiver</span> <span class="o">=</span> <span class="n">_feeRecipient</span> <span class="o">==</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">:</span> <span class="n">_feeRecipient</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="kt">bool</span> <span class="n">feePaymentSuccess</span><span class="p">,</span> <span class="p">)</span> <span class="o">=</span> <span class="n">feeReceiver</span><span class="p">.</span><span class="nb">call</span><span class="p">{</span> <span class="nb">value</span><span class="o">:</span> <span class="n">_fee</span> <span class="p">}(</span><span class="s">&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">feePaymentSuccess</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">FeePaymentFailed</span><span class="p">(</span><span class="n">feeReceiver</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l2/L2MessageService.sol:L162-L168</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">_fee</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">feeReceiver</span> <span class="o">=</span> <span class="n">_feeRecipient</span> <span class="o">==</span> <span class="kt">address</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span> <span class="o">:</span> <span class="n">_feeRecipient</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="kt">bool</span> <span class="n">feePaymentSuccess</span><span class="p">,</span> <span class="p">)</span> <span class="o">=</span> <span class="n">feeReceiver</span><span class="p">.</span><span class="nb">call</span><span class="p">{</span> <span class="nb">value</span><span class="o">:</span> <span class="n">_fee</span> <span class="p">}(</span><span class="s">&#34;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">feePaymentSuccess</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">FeePaymentFailed</span><span class="p">(</span><span class="n">feeReceiver</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>There are a few protections against front running including flashbots service. Another option to mitigate front running is to avoid using msg.sender and have user use the signed <code>claimMessage</code> transaction by the Postman to claim the message on the destination layer</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#contracts-not-well-designed-for-upgrades" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/4">
+                <h3 id="contracts-not-well-designed-for-upgrades">4.10 Contracts Not Well Designed for Upgrades <span class="severity medium">Medium</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<ol>
+<li><strong>Inconsistent Storage Layout</strong></li>
+</ol>
+<p>The Contracts introduce some buffer space in the storage layout to cope with the scenarios where new storage variables can be added if a need exists to upgrade the contracts to a newer version. This helps in reducing the chances of potential storage collisions.
+However, the storage layout concerning the buffer space is inconsistent, and multiple variations have been observed.</p>
+<ul>
+<li><code>PauseManager</code>, <code>RateLimitter</code>, and <code>MessageServiceBase</code> adds a buffer space of 10, contrary to other contracts which define the space as 50.</li>
+</ul>
+<p><strong>contracts/contracts/messageService/lib/PauseManager.sol:L22</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="k">private</span> <span class="n">_gap</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/lib/RateLimiter.sol:L26</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="k">private</span> <span class="n">_gap</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/MessageServiceBase.sol:L14</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="k">private</span> <span class="n">__base_gap</span><span class="p">;</span>
+</span></span></code></pre></div><ul>
+<li><code>L2MessageService</code> defines the buffer space prior to its existing storage variables.</li>
+</ul>
+<p><strong>contracts/contracts/messageService/l2/L2MessageService.sol:L16</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">uint256</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span> <span class="k">private</span> <span class="n">__gap_L2MessageService</span><span class="p">;</span>
+</span></span></code></pre></div><p>If there exists a need to inherit from this contract in the future, the derived contract has to define the buffer space first, similar to <code>L2MessageService</code>. If it doesn&rsquo;t, <code>L2MessageService</code> can&rsquo;t have more storage variables. If it adds them, it will collide with the derived contract&rsquo;s storage slots.</p>
+<p><strong>2. <code>RateLimiter</code> and <code>MessageServiceBase</code> initializes values without the modifier <code>onlyInitializing</code></strong></p>
+<p><strong>contracts/contracts/messageService/lib/RateLimiter.sol:L33</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">__RateLimiter_init</span><span class="p">(</span><span class="kt">uint256</span> <span class="n">_periodInSeconds</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_limitInWei</span><span class="p">)</span> <span class="k">internal</span> <span class="p">{</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/MessageServiceBase.sol:L65</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">_init_MessageServiceBase</span><span class="p">(</span><span class="kt">address</span> <span class="n">_messageService</span><span class="p">,</span> <span class="kt">address</span> <span class="n">_remoteSender</span><span class="p">)</span> <span class="k">internal</span> <span class="p">{</span>
+</span></span></code></pre></div><p>The modifier <code>onlyInitializing</code> makes sure that the function should only be invoked by a function marked as <code>initializer</code>. However, it is absent here, which means these are normal internal functions that can be utilized in any other function, thus opening opportunities for errors.</p>
+<h4 id="recommendation">Recommendation</h4>
+<ol>
+<li>
+<p>Define a consistent storage layout. Consider a positive number <code>n</code> for the number of buffer space slots, such that, it is equal to any arbitrary number <code>d - No. of occupied storage slots</code>. For instance, if the arbitrary number is 50, and the contract has 20 occupied storage slots, the buffer space can be 50-20 = 30. It will maintain a consistent storage layout throughout the inheritance hierarchy.</p>
+</li>
+<li>
+<p>Follow a consistent approach to defining buffer space. Currently, all the contracts, define the buffer space after their occupied storage slots, so it should be maintained in the <code>L2MessageService</code> as well.</p>
+</li>
+<li>
+<p>Define functions <code>__RateLimiter_init</code> and <code>_init_MessageServiceBase</code> as <code>onlyInitializing</code>.</p>
+</li>
+</ol>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#potential-code-corrections" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/15">
+                <h3 id="potential-code-corrections">4.11 Potential Code Corrections <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<ol>
+<li>Function <code>_updateL1L2MessageStatusToReceived</code> and <code>addL1L2MessageHashes</code> allows status update for already received/sent/claimed messages.</li>
+</ol>
+<p><strong>contracts/contracts/messageService/l1/L1MessageManager.sol:L76-L97</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">_updateL1L2MessageStatusToReceived</span><span class="p">(</span><span class="kt">bytes32</span><span class="p">[]</span> <span class="k">memory</span> <span class="n">_messageHashes</span><span class="p">)</span> <span class="k">internal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">messageHashArrayLength</span> <span class="o">=</span> <span class="n">_messageHashes</span><span class="p">.</span><span class="n">length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">messageHashArrayLength</span><span class="p">;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bytes32</span> <span class="n">messageHash</span> <span class="o">=</span> <span class="n">_messageHashes</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint256</span> <span class="n">existingStatus</span> <span class="o">=</span> <span class="n">outboxL1L2MessageStatus</span><span class="p">[</span><span class="n">messageHash</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">existingStatus</span> <span class="o">==</span> <span class="n">INBOX_STATUS_UNKNOWN</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">revert</span> <span class="n">L1L2MessageNotSent</span><span class="p">(</span><span class="n">messageHash</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">existingStatus</span> <span class="o">!=</span> <span class="n">OUTBOX_STATUS_RECEIVED</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">outboxL1L2MessageStatus</span><span class="p">[</span><span class="n">messageHash</span><span class="p">]</span> <span class="o">=</span> <span class="n">OUTBOX_STATUS_RECEIVED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">unchecked</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">L1L2MessagesReceivedOnL2</span><span class="p">(</span><span class="n">_messageHashes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l2/L2MessageManager.sol:L42-L59</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">addL1L2MessageHashes</span><span class="p">(</span><span class="kt">bytes32</span><span class="p">[]</span> <span class="n">calldata</span> <span class="n">_messageHashes</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">L1_L2_MESSAGE_SETTER_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">messageHashesLength</span> <span class="o">=</span> <span class="n">_messageHashes</span><span class="p">.</span><span class="n">length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">messageHashesLength</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">MessageHashesListLengthHigherThanOneHundred</span><span class="p">(</span><span class="n">messageHashesLength</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">messageHashesLength</span><span class="p">;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bytes32</span> <span class="n">messageHash</span> <span class="o">=</span> <span class="n">_messageHashes</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">inboxL1L2MessageStatus</span><span class="p">[</span><span class="n">messageHash</span><span class="p">]</span> <span class="o">==</span> <span class="n">INBOX_STATUS_UNKNOWN</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">inboxL1L2MessageStatus</span><span class="p">[</span><span class="n">messageHash</span><span class="p">]</span> <span class="o">=</span> <span class="n">INBOX_STATUS_RECEIVED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">unchecked</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">L1L2MessageHashesAddedToInbox</span><span class="p">(</span><span class="n">_messageHashes</span><span class="p">);</span>
+</span></span></code></pre></div><p>It may trigger false alarms, as they will still be a part of <code>L1L2MessagesReceivedOnL2</code> and <code>L1L2MessageHashesAddedToInbox</code>.</p>
+<ol start="2">
+<li><code>_updateL1L2MessageStatusToReceived</code> checks the status of L1-&gt;L2 messages as:</li>
+</ol>
+<p><strong>contracts/contracts/messageService/l1/L1MessageManager.sol:L83-L85</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">existingStatus</span> <span class="o">==</span> <span class="n">INBOX_STATUS_UNKNOWN</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">revert</span> <span class="n">L1L2MessageNotSent</span><span class="p">(</span><span class="n">messageHash</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>However, the status is need to be checked with <code>OUTBOX_STATUS_UNKNOWN</code> instead of <code>INBOX_STATUS_UNKNOWN</code> as it is an outbox message. This creates a hindrance in the code readability and should be fixed.</p>
+<ol start="3">
+<li>Array <code>timestampHashes</code> stores <code>l2BlockTimestamp</code> as integers, contrary to the hashes that the variable name states.</li>
+</ol>
+<p><strong>contracts/contracts/ZkEvmV2.sol:L172</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">timestampHashes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">blockInfo</span><span class="p">.</span><span class="n">l2BlockTimestamp</span><span class="p">;</span>
+</span></span></code></pre></div><ol start="4">
+<li>Unused error declaration</li>
+</ol>
+<p><strong>contracts/contracts/messageService/lib/TransactionDecoder.sol:L21-L24</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">dev</span> <span class="n">Thrown</span> <span class="n">when</span> <span class="n">the</span> <span class="n">decoding</span> <span class="n">action</span> <span class="k">is</span> <span class="n">invalid</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">error</span> <span class="n">InvalidAction</span><span class="p">();</span>
+</span></span></code></pre></div><p>TransactionDecoder defines an error as <code>InvalidAction</code> which is supposed to be thrown when the decoding action is invalid, as stated in NATSPEC comment. However, it is currently unutilized.</p>
+<h4 id="recommendation">Recommendation</h4>
+<ol>
+<li>Only update the status for sent messages in <code>_updateL1L2MessageStatusToReceived</code>, and unknown messages in <code>addL1L2MessageHashes</code> and revert otherwise, to avoid off-chain accounting errors.</li>
+<li>Check the status of L1-&gt;L2 sent message with <code>OUTBOX_STATUS_UNKNOWN</code> to increase code readability.</li>
+<li>Either store timestamp hashes in the variable <code>timestampHashes</code> or update the variable name likewise.</li>
+<li>Remove the error declaration if it is not serving any purpose.</li>
+</ol>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#transactiondecoder-does-not-account-for-the-missing-elements-while-decoding-a-transaction" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/14">
+                <h3 id="transactiondecoder-does-not-account-for-the-missing-elements-while-decoding-a-transaction">4.12 TransactionDecoder Does Not Account for the Missing Elements While Decoding a Transaction <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The library tries to decode calldata from different transaction types, by jumping to the position of calldata element in the rlp encoding. These positions are:</p>
+<ul>
+<li>EIP1559: 8</li>
+<li>EIP2930: 7</li>
+<li>Legacy: 6</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/messageService/lib/TransactionDecoder.sol:L69</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="nb">data</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">_skipTo</span><span class="p">(</span><span class="mi">8</span><span class="p">).</span><span class="n">_toBytes</span><span class="p">();</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/lib/TransactionDecoder.sol:L83</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="nb">data</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">_skipTo</span><span class="p">(</span><span class="mi">7</span><span class="p">).</span><span class="n">_toBytes</span><span class="p">();</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/lib/TransactionDecoder.sol:L97</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="nb">data</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">_skipTo</span><span class="p">(</span><span class="mi">6</span><span class="p">).</span><span class="n">_toBytes</span><span class="p">();</span>
+</span></span></code></pre></div><p>However, the decoder doesn&rsquo;t check whether the required element is there or not in the encoding provided.</p>
+<p>The decoder uses the library RLPReader to skip to the desired element in encoding. However, it doesn&rsquo;t revert in case there are not enough elements to skip to, and will simply return byte <code>0x00</code>, while still completing unnecessary iterations.</p>
+<p><strong>contracts/contracts/messageService/lib/Rlp.sol:L54-L71</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">_skipTo</span><span class="p">(</span><span class="n">Iterator</span> <span class="k">memory</span> <span class="n">_self</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_skipToNum</span><span class="p">)</span> <span class="k">internal</span> <span class="k">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="n">RLPItem</span> <span class="k">memory</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">ptr</span> <span class="o">=</span> <span class="n">_self</span><span class="p">.</span><span class="n">nextPtr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">uint256</span> <span class="n">itemLength</span> <span class="o">=</span> <span class="n">_itemLength</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">_self</span><span class="p">.</span><span class="n">nextPtr</span> <span class="o">=</span> <span class="n">ptr</span> <span class="o">+</span> <span class="n">itemLength</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_skipToNum</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ptr</span> <span class="o">=</span> <span class="n">_self</span><span class="p">.</span><span class="n">nextPtr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">itemLength</span> <span class="o">=</span> <span class="n">_itemLength</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_self</span><span class="p">.</span><span class="n">nextPtr</span> <span class="o">=</span> <span class="n">ptr</span> <span class="o">+</span> <span class="n">itemLength</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">unchecked</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">item</span><span class="p">.</span><span class="n">len</span> <span class="o">=</span> <span class="n">itemLength</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">item</span><span class="p">.</span><span class="n">memPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Although it doesn&rsquo;t impose any security issue, as  <code>ZkEvmV2</code> tries to decode an array of bytes32 hashes from the rlp encoded transaction. However, it may still lead to errors in other use cases if not handled correctly.</p>
+<p><strong>contracts/contracts/ZkEvmV2.sol:L222</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">CodecV2</span><span class="p">.</span><span class="n">_extractXDomainAddHashes</span><span class="p">(</span><span class="n">TransactionDecoder</span><span class="p">.</span><span class="n">decodeTransaction</span><span class="p">(</span><span class="n">_transactions</span><span class="p">[</span><span class="n">_batchReceptionIndices</span><span class="p">[</span><span class="n">i</span><span class="p">]]))</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>rlp library should revert if there are not enough elements to skip to in the encoding.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#incomplete-message-state-check-when-claiming-messages-on-l1-and-l2" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/6">
+                <h3 id="incomplete-message-state-check-when-claiming-messages-on-l1-and-l2">4.13 Incomplete Message State Check When Claiming Messages on L1 and L2 <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>When claiming message on L1 orL2, <code>_updateL2L1MessageStatusToClaimed</code> and <code>_updateL1L2MessageStatusToClaimed</code>  are called to update the message status, however the message state check only checks status <code>INBOX_STATUS_RECEIVED</code> and is missing status  <code>INBOX_STATUS_UNKNOWN</code>, which means the message is not picked up by the coordinator or the message is not sent on L1 or L2 and should be reverted. As a result, the claiming message could be reverted with a incorrect reason.</p>
+<h4 id="examples">Examples</h4>
+<p><strong>contracts/contracts/messageService/l1/L1MessageManager.sol:L52-L60</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">_updateL2L1MessageStatusToClaimed</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">_messageHash</span><span class="p">)</span> <span class="k">internal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">inboxL2L1MessageStatus</span><span class="p">[</span><span class="n">_messageHash</span><span class="p">]</span> <span class="o">!=</span> <span class="n">INBOX_STATUS_RECEIVED</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">revert</span> <span class="n">MessageAlreadyClaimed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">delete</span> <span class="n">inboxL2L1MessageStatus</span><span class="p">[</span><span class="n">_messageHash</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">L2L1MessageClaimed</span><span class="p">(</span><span class="n">_messageHash</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/l2/L2MessageManager.sol:L66-L75</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nf">_updateL1L2MessageStatusToClaimed</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">_messageHash</span><span class="p">)</span> <span class="k">internal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">inboxL1L2MessageStatus</span><span class="p">[</span><span class="n">_messageHash</span><span class="p">]</span> <span class="o">!=</span> <span class="n">INBOX_STATUS_RECEIVED</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">revert</span> <span class="n">MessageAlreadyClaimed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">inboxL1L2MessageStatus</span><span class="p">[</span><span class="n">_messageHash</span><span class="p">]</span> <span class="o">=</span> <span class="n">INBOX_STATUS_CLAIMED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">emit</span> <span class="n">L1L2MessageClaimed</span><span class="p">(</span><span class="n">_messageHash</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Add the missing status check and relevant revert reason for status <code>INBOX_STATUS_UNKNOWN</code></p>
+<!-- Supply advice on how to best fix the problem. -->
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#events-which-may-trigger-false-alarms" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/2">
+                <h3 id="events-which-may-trigger-false-alarms">4.14 Events Which May Trigger False Alarms <span class="severity minor">Minor</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p><strong>1- <code>PauseManager</code> allows <code>PAUSE_MANAGER_ROLE</code> to pause/unpause a type as:</strong></p>
+<p><strong>contracts/contracts/bridge/lib/PauseManager.sol:L60-L63</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">pauseByType</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">_pauseType</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">PAUSE_MANAGER_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pauseTypeStatuses</span><span class="p">[</span><span class="n">_pauseType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">Paused</span><span class="p">(</span><span class="n">_msgSender</span><span class="p">(),</span> <span class="n">_pauseType</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/bridge/lib/PauseManager.sol:L70-L73</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">unPauseByType</span><span class="p">(</span><span class="kt">bytes32</span> <span class="n">_pauseType</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">PAUSE_MANAGER_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pauseTypeStatuses</span><span class="p">[</span><span class="n">_pauseType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">UnPaused</span><span class="p">(</span><span class="n">_msgSender</span><span class="p">(),</span> <span class="n">_pauseType</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>However, the functions don&rsquo;t check whether the given <code>_pauseType</code> has already been paused/unpaused or not and emits an event every time called. This may trigger false alarms for off-chain monitoring tools and may cause unnecessary panic.</p>
+<p><strong>2 - <code>RateLimitter</code> allows resetting the limit and used amount as:</strong></p>
+<p><strong>contracts/contracts/messageService/lib/RateLimiter.sol:L78-L89</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">resetRateLimitAmount</span><span class="p">(</span><span class="kt">uint256</span> <span class="n">_amount</span><span class="p">)</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">RATE_LIMIT_SETTER_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bool</span> <span class="n">amountUsedLoweredToLimit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">_amount</span> <span class="o">&lt;</span> <span class="n">currentPeriodAmountInWei</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentPeriodAmountInWei</span> <span class="o">=</span> <span class="n">_amount</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">amountUsedLoweredToLimit</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">limitInWei</span> <span class="o">=</span> <span class="n">_amount</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">LimitAmountChange</span><span class="p">(</span><span class="n">_msgSender</span><span class="p">(),</span> <span class="n">_amount</span><span class="p">,</span> <span class="n">amountUsedLoweredToLimit</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>contracts/contracts/messageService/lib/RateLimiter.sol:L96-L100</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">resetAmountUsedInPeriod</span><span class="p">()</span> <span class="k">external</span> <span class="n">onlyRole</span><span class="p">(</span><span class="n">RATE_LIMIT_SETTER_ROLE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">currentPeriodAmountInWei</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">emit</span> <span class="n">AmountUsedInPeriodReset</span><span class="p">(</span><span class="n">_msgSender</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>However, it doesn&rsquo;t account for the scenarios where the function can be called after the current period ends and before a new period gets started. As the <code>currentPeriodAmountInWei</code> will still be holding the used amount of the last period, if the <code>RATE_LIMIT_SETTER_ROLE</code> tries to reset the limit with the lower value than the used amount, the function will emit the same event <code>LimitAmountChange</code> with the flag <code>amountUsedLoweredToLimit</code>.</p>
+<p>Adding to it, the function will make <code>currentPeriodAmountInWei</code> = <code>limitInWei</code>, which means no more amount can be added as the used amount until the used amount is manually reset to 0, which points out to the fact that the used amount should be automatically reset, once the current period ends. Although it is handled automatically in function <code>_addUsedAmount</code>, however, if the new period has not yet started, it is supposed to be done in a 2-step approach i.e., first, reset the used amount and then the limit. It can be simplified by checking for the current period in the <code>resetRateLimitAmount</code> function itself.</p>
+<p>The same goes for the scenario where the used amount is reset after the current period ends. It will emit the same event as <code>AmountUsedInPeriodReset</code></p>
+<p>These can create unnecessary confusion, as the events emitted don&rsquo;t consider the abovementioned scenarios.</p>
+<h4 id="recommendation">Recommendation</h4>
+<ol>
+<li>Consider adding checks to make sure already paused/unpaused types don&rsquo;t emit respective events.</li>
+<li>Consider emitting different events, or adding a flag in the events, that makes it easy to differentiate whether the limit and used amount are reset in the current period or after it has ended.</li>
+<li>Reset <code>currentPeriodAmountInWei</code> in function <code>resetRateLimitAmount</code> itself if the current period has ended.</li>
+</ol>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#pausemanager---unnecessary-explicit-initialization-of-values" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/3">
+                <h3 id="pausemanager---unnecessary-explicit-initialization-of-values">4.15 PauseManager - Unnecessary Explicit Initialization of Values</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p><code>__PauseManager_init</code> explicitly initializes, defined types with the default boolean value <code>false</code>, which is unnecessary and can be removed.</p>
+<p><strong>contracts/contracts/bridge/lib/PauseManager.sol:L49-L53</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">__PauseManager_init</span><span class="p">()</span> <span class="k">internal</span> <span class="n">onlyInitializing</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pauseTypeStatuses</span><span class="p">[</span><span class="n">L1_L2_PAUSE_TYPE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pauseTypeStatuses</span><span class="p">[</span><span class="n">L2_L1_PAUSE_TYPE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pauseTypeStatuses</span><span class="p">[</span><span class="n">PROVING_SYSTEM_PAUSE_TYPE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></div>
+        </div><div class="issue">
+            <a class="anchor" href="#codecv2---code-optimization" data-issue-url="https://github.com/ConsenSysDiligence/linea-message-service-audit-2023-06/issues/1">
+                <h3 id="codecv2---code-optimization">4.16 CodecV2 - Code Optimization</h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The library provides a simple utility function to decode an array of bytes32 hashes from calldata of a transaction as:</p>
+<p><strong>contracts/contracts/messageService/lib/Codec.sol:L17-L19</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">_extractXDomainAddHashes</span><span class="p">(</span><span class="kt">bytes</span> <span class="k">memory</span> <span class="n">_calldataWithSelector</span><span class="p">)</span> <span class="k">internal</span> <span class="k">pure</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">bytes32</span><span class="p">[]</span> <span class="k">memory</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nb">abi</span><span class="p">.</span><span class="nb">decode</span><span class="p">(</span><span class="n">_slice</span><span class="p">(</span><span class="n">_calldataWithSelector</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">_calldataWithSelector</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="kt">bytes32</span><span class="p">[]));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>which involves slicing down the memory array to get the desired length. However, the process can be simplified by switching <code>_calldataWithSelector</code> from <strong>memory</strong> to <strong>calldata</strong>, as solidity provides the index range access feature for calldata arrays.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>The code can be simplified to increase code readability and decrease gas cost as:</p>
+<pre tabindex="0"><code>  function _extractXDomainAddHashes(bytes calldata _calldataWithSelector) internal pure returns (bytes32[] memory) {
+    return abi.decode(_calldataWithSelector[4:],(bytes32[]));
+  }
+</code></pre><p><strong>Update</strong>:
+Since switching from <code>memory</code> to <code>calldata</code> may require making the library external and also <code>ZkEvmV2</code> to make an external call to the library. The optimization will increase the gas cost instead of reducing it.</p>
+<p><strong>contracts/contracts/ZkEvmV2.sol:L221-L223</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">_updateL1L2MessageStatusToReceived</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">CodecV2</span><span class="p">.</span><span class="n">_extractXDomainAddHashes</span><span class="p">(</span><span class="n">TransactionDecoder</span><span class="p">.</span><span class="n">decodeTransaction</span><span class="p">(</span><span class="n">_transactions</span><span class="p">[</span><span class="n">_batchReceptionIndices</span><span class="p">[</span><span class="n">i</span><span class="p">]]))</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span></code></pre></div><p>A better approach could be to recraft the memory array skipping the 4 bytes selector as:</p>
+<pre tabindex="0"><code>function _extractXDomainAddHashes(bytes memory _calldataWithSelector) internal pure returns (bytes32[] memory) {
+    assembly{
+      let len:=sub(mload(_calldataWithSelector),4)
+      _calldataWithSelector:=add(_calldataWithSelector,0x4)
+      mstore(_calldataWithSelector, len)
+    }
+    
+    return abi.decode(_calldataWithSelector, (bytes32[]));
+</code></pre></div>
+        </div>
+<p>
+<h2 id="appendix---files-in-scope">Appendix 1 - Files in Scope</h2>
+
+<p>This audit covered the following files:</p>
+<table>
+	<thead>
+			<tr>
+					<th>File</th>
+					<th>SHA-1 hash</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/interfaces/IGenericErrors.sol</td>
+					<td><code>cfeb7443de6a640484d9b5a630ddc0a4d7ae7e1c</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/interfaces/IL1MessageManager.sol</td>
+					<td><code>c114d8066d491714d48060a53b6de99e6f41f522</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/interfaces/IL2MessageManager.sol</td>
+					<td><code>31792d19357a1f5bf768d692b68d21c7fd39e743</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/interfaces/IMessageService.sol</td>
+					<td><code>9c992a5921ba6df8092a3fa58db5a244d87e50fa</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/interfaces/IPauseManager.sol</td>
+					<td><code>ddbf64704f1747711aa6c09c8e5d6c391f80fbc3</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/interfaces/IPlonkVerifier.sol</td>
+					<td><code>83d863eccc5bae64d5a9b96a5a34e875b5b8da9f</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/interfaces/IRateLimiter.sol</td>
+					<td><code>6fc294bae9422a8ecc05fc8b6a04bdce3eed2bef</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/l1/L1MessageManager.sol</td>
+					<td><code>18dc4478c71fffd7a897a5903b583f5bc16892d8</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/l1/L1MessageService.sol</td>
+					<td><code>ed299266790f20e41defdbfb26eed977371bf3fa</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/l2/L2MessageManager.sol</td>
+					<td><code>4eb1bb6bb3440f87d2658bcce7eba05dabafe683</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/l2/L2MessageService.sol</td>
+					<td><code>9e0b837d8c648e7bed67da5e97864c83a52e4ed1</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/lib/Codec.sol</td>
+					<td><code>bd03d636aa0312d2d76657ac737d69324532d35f</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/lib/PauseManager.sol</td>
+					<td><code>1df5d668b441d604fe6bc304f0aaf2e476b7ebfa</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/lib/RateLimiter.sol</td>
+					<td><code>efd6b6f0ed97a7511832ca5d64585c0525be49a2</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/lib/Rlp.sol</td>
+					<td><code>f51f7adeb8a55f6e51b3bfd06c67e6d324247fba</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/lib/TimeLock.sol</td>
+					<td><code>bbbef8a649a0db8a5bf34f8e6c37c8cdeef0ade1</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/lib/TransactionDecoder.sol</td>
+					<td><code>0c9d0706d26aae5f5e9d01516493fddfeac9fef0</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/messageService/MessageServiceBase.sol</td>
+					<td><code>860159508dfd123a8833529e06f172e27f7104cb</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/IZkEvmV2.sol</td>
+					<td><code>4ab8de980ee93782cfce709b2d8bd5d15d287313</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/ZkEvmV2.sol</td>
+					<td><code>318b61de3f4d412a1c8c65f96cef0c64416cbde4</code></td>
+			</tr>
+			<tr>
+					<td>contracts/contracts/ZkEvmV202.sol</td>
+					<td><code>c294d9f6e89eabbf96c0e003eedf882d21a61906</code></td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 id="appendix---disclosure">Appendix 2 - Disclosure</h2>
+<p>ConsenSys Diligence (&ldquo;CD&rdquo;) typically receives compensation from one or more clients (the &ldquo;Clients&rdquo;) for performing the analysis contained in these reports (the &ldquo;Reports&rdquo;). The Reports may be distributed through other means, including via ConsenSys publications and other distributions.</p>
+<p>The Reports are not an endorsement or indictment of any particular project or team, and the Reports do not guarantee the security of any particular project. This Report does not consider, and should not be interpreted as considering or having any bearing on, the potential economics of a token, token sale or any other product, service or other asset. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. No Report provides any warranty or representation to any Third-Party in any respect, including regarding the bugfree nature of code, the business model or proprietors of any such business model, and the legal compliance of any such business. No third party should rely on the Reports in any way, including for the purpose of making any decisions to buy or sell any token, product, service or other asset. Specifically, for the avoidance of doubt, this Report does not constitute investment advice, is not intended to be relied upon as investment advice, is not an endorsement of this project or team, and it is not a guarantee as to the absolute security of the project. CD owes no duty to any Third-Party by virtue of publishing these Reports.</p>
+<p>PURPOSE OF REPORTS The Reports and the analysis described therein are created solely for Clients and published with their consent. The scope of our review is limited to a review of code and only the code we note as being within the scope of our review within this report. Any Solidity code itself presents unique and unquantifiable risks as the Solidity language itself remains under development and is subject to unknown risks and flaws. The review does not extend to the compiler layer, or any other areas beyond specified code that could present security risks. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. In some instances, we may perform penetration testing or infrastructure assessments depending on the scope of the particular engagement.</p>
+<p>CD makes the Reports available to parties other than the Clients (i.e., &ldquo;third parties&rdquo;) &ndash; on its website. CD hopes that by making these analyses publicly available, it can help the blockchain ecosystem develop technical best practices in this rapidly evolving area of innovation.</p>
+<p>LINKS TO OTHER WEB SITES FROM THIS WEB SITE You may, through hypertext or other computer links, gain access to web sites operated by persons other than ConsenSys and CD. Such hyperlinks are provided for your reference and convenience only, and are the exclusive responsibility of such web sites&rsquo; owners. You agree that ConsenSys and CD are not responsible for the content or operation of such Web sites, and that ConsenSys and CD shall have no liability to you or any other person or entity for the use of third party Web sites. Except as described below, a hyperlink from this web Site to another web site does not imply or mean that ConsenSys and CD endorses the content on that Web site or the operator or operations of that site. You are solely responsible for determining the extent to which you may use any content at any other web sites to which you link from the Reports. ConsenSys and CD assumes no responsibility for the use of third party software on the Web Site and shall have no liability whatsoever to any person or entity for the accuracy or completeness of any outcome generated by such software.</p>
+<p>TIMELINESS OF CONTENT The content contained in the Reports is current as of the date appearing on the Report and is subject to change without notice. Unless indicated otherwise, by ConsenSys and CD.</p>
+</p>
+</div>
+        </div>
+    </article>
+</div>
+
+    </main>
+    
+<footer class="audit-footer">
+  <div class="audit-footer__inner">
+    <div class="audit-footer__wrap">
+      
+      <div class="audit-footer__divider"></div>
+
+      
+      <div class="audit-footer__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </div>
+
+      
+      <div class="audit-footer__content">
+        
+        <div class="audit-footer__copyright">
+          <p>Securing Ethereum Smart Contracts since 2017</p>
+          <p>2026 All rights reserved</p>
+        </div>
+
+        
+        <div class="audit-footer__columns">
+          
+          <div class="audit-footer__col audit-footer__col--company">
+            <p class="audit-footer__col-title">Company</p>
+            <a href="/about/" class="audit-footer__link">About</a>
+            <a href="/blog/" class="audit-footer__link">Blog</a>
+            <a href="/privacy-policy/" class="audit-footer__link">Privacy Policy</a>
+            <a href="#" onclick="openCookieSettings();return false;" class="audit-footer__link">Cookie settings</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--audit">
+            <p class="audit-footer__col-title">Audit</p>
+            <a href="/audits/" class="audit-footer__link">Audit list</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--research">
+            <p class="audit-footer__col-title">Research</p>
+            <a href="/#academic-research" class="audit-footer__link">Academic publications</a>
+            <a href="/#tools" class="audit-footer__link">Tools</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--social">
+            <p class="audit-footer__col-title">Social</p>
+            <a href="https://x.com/ConsensysAudits" target="_blank" rel="noopener noreferrer" class="audit-footer__link">X</a>
+            <a href="https://www.linkedin.com/company/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">LinkedIn</a>
+            <a href="https://github.com/ConsenSysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">GitHub</a>
+            <a href="https://medium.com/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">Medium</a>
+            <a href="https://www.youtube.com/@ConsensysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/audit-report.js?v=e8012d8d" defer></script>
+<div id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent"
+     style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#131313;border-top:1px solid #303033;padding:16px 24px;box-shadow:0 -10px 15px -3px rgba(0,0,0,.2)">
+  <div style="max-width:1386px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+    <p style="margin:0;flex:1 1 320px;min-width:0;color:#b2b3b3;font-family:Graphik,sans-serif;font-weight:400;font-size:14px;line-height:20px">
+      We use analytics cookies to understand how visitors use our site. You can accept or decline.<a href="/privacy-policy/" style="color:#a7b9f1;text-decoration:underline">Learn more<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">&#32;in our privacy policy</span></a>
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;flex-shrink:0">
+      <button type="button" id="cookie-decline"
+              style="cursor:pointer;background:transparent;border:1px solid #303033;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:border-color .15s"
+              onmouseenter="this.style.borderColor='#6e8be8'" onmouseleave="this.style.borderColor='#303033'">Decline</button>
+      <button type="button" id="cookie-accept"
+              style="cursor:pointer;background:#2c56dd;border:1px solid #2c56dd;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:background .15s"
+              onmouseenter="this.style.background='#2345c4'" onmouseleave="this.style.background='#2c56dd'">Accept</button>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

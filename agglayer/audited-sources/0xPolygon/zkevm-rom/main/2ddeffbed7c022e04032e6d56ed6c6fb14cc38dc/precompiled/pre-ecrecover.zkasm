@@ -1,0 +1,27 @@
+funcECRECOVER:
+    ; Move balances if value > 0 just before executing the contract CALL
+    $ => B                          :MLOAD(txValue)
+    0 => A
+    zkPC+2 => RR
+    $                               :LT, JMPC(moveBalances)
+
+    GAS - %ECRECOVER_GAS => GAS                   :JMPN(outOfGas) ; gas static = 3000
+    ; read data stored in SP + %CALLDATA_OFFSET
+    ; hash [32 bytes], v [32 bytes], r [32 bytes], s [32 bytes]
+    %CALLDATA_OFFSET => SP
+    $ => A                              :MLOAD(SP++) ; hash
+    $ => D                              :MLOAD(SP++) ; v
+    $ => B                              :MLOAD(SP++) ; r
+    $ => C                              :MLOAD(SP) ,CALL(ecrecover_precompiled) ; in: [A: hash, B: r, C: s, D: v], out: [A: result_ecrecover] ; s
+    B                                   :JMPNZ(endECRECOVER)
+    ; prepare return data
+    $ => E                              :MLOAD(retCallOffset)
+    $ => C                              :MLOAD(originCTX), JMPZ(handleGas)
+    C => CTX
+    A                                   :MSTORE(bytesToStore), CALL(MSTORE32); in: [bytesToStore, E: offset] out: [E: new offset]
+                                        :JMP(preEnd)
+
+endECRECOVER:
+    $ => A                              :MLOAD(originCTX), JMPZ(handleGas)
+    A => CTX
+                                        :JMP(preEnd)

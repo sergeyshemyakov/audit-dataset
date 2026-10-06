@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linea Poseidon2 | Consensys Diligence</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+      <meta name="description" content="This report presents the results of our engagement with Linea to review the integration of the Poseidon2 hashing algorithm into Linea&amp;amp;rsquo;s cryptographic …">
+    <link rel="preload" href="/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Medium-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Semibold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Bold-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp" type="image/webp" fetchpriority="high">
+    <script>
+(function(){
+  var stored = null;
+  try { stored = localStorage.getItem('cookie_consent'); } catch (e) {}
+  if (stored === 'granted' || stored === 'denied') return;
+  try {
+    
+    
+    
+    
+    
+    
+    window.__ccTrace = fetch('/cdn-cgi/trace')
+      .then(function(r){ return r.text(); })
+      .catch(function(){ return ''; });
+  } catch (e) {}
+})();
+</script><script src="/js/consent.js?v=d268f9f4" defer></script>
+
+    <link href="/css/tachyons.min.css?v=75808e0f" rel="stylesheet"><link href="/style.css?v=fe61105e" rel="stylesheet">
+    <link href="/css/highlight.css?v=be488ecd" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://diligence.security/audits/2026/01/linea-poseidon2/">
+    <link rel="shortcut icon" type="image/png" href="/images/icon/favicon.png">
+    <link rel="nokia-touch-icon" href="/images/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/icon/favicon.png" sizes="1x1">
+    
+<script type="text/javascript" id="interactive-report-tools" defer>
+const getStructuredFinding = (elem, options) => {
+  const is = elem.closest(".issue");
+  const heading = is.querySelector("h3");
+  const title = Array.from(heading.childNodes)
+          .map(node => node.nodeName === "SPAN" ? "" : node.textContent.trim())
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .trim()
+
+  function formatText(elem){
+      return Array.from(elem.childNodes)
+          .map(node => {
+              switch(node.nodeName){
+                  case "CODE":
+                      return `\`${node.textContent.trim()}\``;
+                  case "H4":
+                      return  `#### ${node.textContent.trim()}`;
+              }
+              return node.textContent.trim();
+          })
+          .join("\n")
+          
+          .trim()
+  }
+
+  const finding = {
+      id: title.substring(0, title.indexOf(' ')),
+      title: title.substring(title.indexOf(' ') + 1),
+      severity: heading.querySelector(".severity")?.textContent.trim().toLowerCase() || undefined,
+      state: heading.querySelector(".state")?.textContent.trim().toLowerCase() || undefined,
+      url: document.location.href.split("#",1)[0] + "#" + heading.id,
+  }
+  if(options?.withBody){
+      finding.body = formatText(is.querySelector("h4").closest("div"));
+  }
+  return finding;
+}
+const getAllFindings = (options) => Array.from(document.querySelectorAll(".issue")).map(iss => getStructuredFinding(iss, options));
+function exportCsv(fileName) {
+  const data = getAllFindings()
+  const keys = Object.keys(data[0]);
+  const csvRows = [];
+  csvRows.push(keys.join(','));
+  data.forEach(row => {
+      const values = keys.map(key => {
+          const value = row[key];
+          if(value === undefined) return "";
+          return `"${value}"`;
+      });
+      csvRows.push(values.join(','));
+  });
+  const csvData = csvRows.join('\n');
+  const blob = new Blob([csvData], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function exportJson(fileName) {
+  const blob = new Blob([JSON.stringify(getAllFindings())], { type: 'text/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName || `${document.location.pathname.split("/").filter((e) => e).pop()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function getOrSetGithubRepo(force) {
+  function parseGitHubRepo(input) {
+      if(!input) return;
+      const urlMatch = input.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/?$/);
+      if (urlMatch) return `${urlMatch[1]}/${urlMatch[2]}`;
+      
+      const directMatch = input.match(/^([^\/]+)\/([^\/]+)$/);
+      return directMatch ? input : null;
+  }
+  function isValidGitHubRepo(input) {
+      if(!input) return false;
+      
+      
+      
+      
+      
+      const githubNameRegex = /^(?![-.])(?!.*[_.-]{2})[a-zA-Z0-9.-]{1,100}(?<![-.])$/;
+      if (typeof input !== 'string') return false;
+      const parts = input.split('/');
+      
+      if (parts.length !== 2) return false;
+      const [org, repo] = parts;
+      return githubNameRegex.test(org) && githubNameRegex.test(repo);
+  }
+  closeAllMenus();
+  let repo = sessionStorage.getItem("user_gh_repo");
+  if (force || !isValidGitHubRepo(repo)) {
+      repo = parseGitHubRepo(prompt("Enter the GitHub repository name (owner/repo):", "https://github.com/organisation/repo"));
+
+      if (repo) {
+          if(!isValidGitHubRepo(repo)){
+              alert(`Error: '${repo}' is not a valid GitHub repo.`);
+          } else {
+              sessionStorage.setItem("user_gh_repo", repo);
+          }
+      }
+  }
+  return repo;
+}
+
+function exportToGitHub(elem) {
+  closeAllMenus();
+  const repo = getOrSetGithubRepo();
+  if(!repo) return;
+  const baseUrl = `https:\/\/github.com/${repo}/issues/new`;
+  const is = getStructuredFinding(elem);
+  const labels = undefined;
+
+  const params = new URLSearchParams({
+      title: `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}`,
+      body: `[<img width="200" alt="get in touch with Consensys Diligence" src="https:\/\/user-images.githubusercontent.com/2865694/56826101-91dcf380-685b-11e9-937c-af49c2510aa0.png">](https:\/\/diligence.security)
+<sub>[[ 🌐 ](https:\/\/diligence.security) [ 📩 ](mailto:diligence@diligence.security) [ 🔥 ](https:\/\/consensysdiligence.github.io/diligence/)]</sub>
+_______
+
+**Severity**: ${capitalizeFirstLetter(is.severity)}
+**Finding**: 👉 [${is.id} - ${is.title}](${is.url})
+
+`,
+      labels: labels && labels.join(',') || "bug,security,audit",
+      milestone: "diligence-audit",
+      assignee: ""
+  });
+
+  const issueUrl = `${baseUrl}?${params.toString()}`;
+  window.open(issueUrl, "_blank");
+}
+function exportToClipboard(elem, options){
+  closeAllMenus();
+  const is = getStructuredFinding(elem, {withBody:true});
+  let data = "";
+  switch (options?.format){
+      case "text":
+          data = `[${capitalizeFirstLetter(is.severity)}] [${is.id}] ${is.title}
+
+**Reference**: ${is.url}
+
+${is.body}
+`
+          break;
+      default:
+          data = JSON.stringify(is);
+  }
+  navigator.clipboard.writeText(data)
+}
+function capitalizeFirstLetter(string) {
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : "None";
+}
+function closeAllMenus() {
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.style.display = "none";
+  });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  
+  document.querySelectorAll(".menu-toggle").forEach(button => {
+      button.addEventListener("click", function (event) {
+          const menu = this.nextElementSibling;
+          menu.style.display = menu.style.display === "block" ? "none" : "block";
+          event.stopPropagation(); 
+      });
+  });
+
+  
+  document.addEventListener("click", function () {
+      document.querySelectorAll(".menu-box").forEach(menu => {
+          menu.style.display = "none";
+      });
+  });
+
+  
+  document.querySelectorAll(".menu-box").forEach(menu => {
+      menu.addEventListener("click", function (event) {
+          event.stopPropagation();
+      });
+  });
+});
+</script>
+<link rel="alternate" type="application/rss+xml" href="https://diligence.security/index.xml" title="Consensys Diligence" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://diligence.security/#organization","@type":"Organization","description":"Smart Contract Audits for Ethereum protocols and institutions. Supercharged by AI agents, guided by veteran experts.","foundingDate":"2017","logo":{"@type":"ImageObject","url":"https://diligence.security/images/icon/favicon.png"},"name":"Consensys Diligence","sameAs":["https://x.com/ConsensysAudits","https://www.linkedin.com/company/consensys-diligence","https://github.com/ConsenSysDiligence","https://medium.com/consensys-diligence","https://www.youtube.com/@ConsensysDiligence"],"url":"https://diligence.security/"},{"@id":"https://diligence.security/#website","@type":"WebSite","name":"Consensys Diligence","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/"},{"@id":"https://diligence.security/audits/2026/01/linea-poseidon2/#article","@type":"TechArticle","author":[{"@type":"Person","name":"George Kobakhidze, François Legué"}],"dateModified":"2026-01-29T14:21:36+01:00","datePublished":"2026-01-29T14:21:36+01:00","description":"This report presents the results of our engagement with Linea to review the integration of the Poseidon2 hashing algorithm into Linea\u0026amp;rsquo;s cryptographic …","headline":"Linea Poseidon2","image":["https://diligence.security/images/og-share.png","https://diligence.security/images/audit_report/feature-hero.png"],"inLanguage":"en","isPartOf":{"@id":"https://diligence.security/#website"},"mainEntityOfPage":{"@id":"https://diligence.security/audits/2026/01/linea-poseidon2/","@type":"WebPage"},"name":"Linea Poseidon2","publisher":{"@id":"https://diligence.security/#organization"},"url":"https://diligence.security/audits/2026/01/linea-poseidon2/","wordCount":2614},{"@id":"https://diligence.security/audits/2026/01/linea-poseidon2/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://diligence.security/","name":"Home","position":1},{"@type":"ListItem","item":"https://diligence.security/audit-reports/","name":"Public Smart Contract Audits and Security Reviews","position":2},{"@type":"ListItem","item":"https://diligence.security/audits/2026/01/linea-poseidon2/","name":"Linea Poseidon2","position":3}]}]}</script>
+    <meta property="og:title" content="Linea Poseidon2 | Consensys Diligence" />
+    <meta property="og:description" content="This report presents the results of our engagement with Linea to review the integration of the Poseidon2 hashing algorithm into Linea&amp;amp;rsquo;s cryptographic …" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://diligence.security/audits/2026/01/linea-poseidon2/" /><meta property="og:image" content="https://diligence.security/images/og-share.png" />
+    <meta property="og:image:alt" content="Linea Poseidon2 - Consensys Diligence" /><meta property="article:published_time" content="2026-01-29T14:21:36+01:00" />
+<meta property="article:modified_time" content="2026-01-29T14:21:36+01:00" /><meta property="og:site_name" content="Consensys Diligence" />
+    <meta property="article:publisher" content="https://www.twitter.com/ConsensysAudits" />
+    
+    <meta property="article:section" content="audits" />
+<meta name="twitter:title" content="Linea Poseidon2 | Consensys Diligence"/>
+<meta name="twitter:description" content="This report presents the results of our engagement with Linea to review the integration of the Poseidon2 hashing algorithm into Linea&amp;amp;rsquo;s cryptographic …"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://diligence.security/images/og-share.png"/>
+                <meta name="twitter:image:alt" content="Linea Poseidon2 - Consensys Diligence"/>
+<meta name="twitter:site" content="@ConsensysAudits"/>
+    <meta name="twitter:creator" content="@ConsensysAudits"/>
+
+      
+      <script type="text/javascript" id="reload-pathfix">
+        let lastSegment = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1); 
+        if(lastSegment && lastSegment.length !==0 && lastSegment.indexOf(".") === -1){
+          
+          window.location.pathname += "/";  
+        }
+      </script>
+      <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-H4M4ES1MZM');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4M4ES1MZM"></script>
+    
+  </head>
+  <body style="margin: 0; padding: 0;">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    
+<header class="audit-header">
+  <div class="audit-header__inner">
+    
+    <div class="audit-header__row1">
+      <a href="/" class="audit-header__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </a>
+
+      <a href="/request-audit/" class="audit-header__cta">
+        <div class="audit-header__cta-icon">
+          <svg fill="none" viewBox="0 0 14.8226 10.1497">
+            <line stroke="white" stroke-width="1.3" x2="13.7793" y1="4.8803" y2="4.8803" />
+            <path d="M9.28809 0.459619L13.9033 5.07487L9.28809 9.69013" stroke="white" stroke-width="1.3" fill="none" />
+          </svg>
+        </div>
+        <span class="audit-header__cta-text">Request Audit</span>
+      </a>
+    </div>
+
+    
+    <div class="audit-header__row2">
+      <p class="audit-header__tagline">Securing Ethereum Smart Contracts since 2017</p>
+      <nav class="audit-header__nav">
+        <a href="/about/" class="audit-header__nav-link">About</a>
+        <a href="/blog/" class="audit-header__nav-link">Blog</a>
+        <a href="/audits/" class="audit-header__nav-link">Public Audits</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <main id="main" tabindex="-1" role="main">
+      <div class="dili-navigator-page">
+    <div class="dili-blog-hero"><div class="dili-hero-bg-mixin" style="background-image: url('/images/audit_report/feature-hero.png'); background-image: image-set(url('/images/audit_report/feature-hero_hu_1fb978531bca32e8.webp') type('image/webp'), url('/images/audit_report/feature-hero.png') type('image/png'));" ></div>
+        <div class="dili-container">
+            <div class="dili-blog-hero-inner">
+                <div class="item-eyebrow"></div>
+                <h1 class="item-title">Linea Poseidon2</h1>
+            </div>
+        </div>
+    </div>
+    <article class="">
+
+
+    <div class="dili-navigator-wrapper">
+            <div class="dili-navigator-sidebar">
+
+                <ul class="dili-navigator-sidebar-inner">
+                <li>
+                    <a href="#executive-summary">1 Executive Summary</a>
+                </li>
+                <li>
+                    <a href="#scope">2 Scope</a>
+                    <ul>
+                    <li>
+                        <a href="#objectives">2.1 Objectives</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#system-overview">3 System Overview</a>
+                </li>
+                <li>
+                    <a href="#security-specification">4 Security Specification</a>
+                    <ul>
+                    <li>
+                        <a href="#actors">4.1 Actors</a>
+                    </li>
+                    <li>
+                        <a href="#trust-model">4.2 Trust Model</a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#findings">5 Findings</a>
+                    <ul>
+                    <li>
+                        <a href="#unvalidatedsubsmtrootin-sparse-merkle-proof-leads-to-proof-malleability">5.1 Unvalidated <code>subSMTRoot</code> in Sparse Merkle Proof Leads to Proof Malleability <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#hash-of-a-0-length-calldata-returns-a-32-byte-0x0-hash">5.2 <code>hash()</code> of a <code>0</code> Length Calldata Returns a 32 Byte <code>0x0</code> Hash <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    <li>
+                        <a href="#update-comments-and-tests">5.3 Update Comments and Tests <span class="state">&#10003;&nbsp;Fixed</span></a>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#appendix---files-in-scope">Appendix 1 - Files in Scope</a>
+                </li>
+                <li>
+                    <a href="#appendix---disclosure">Appendix 2 - Disclosure</a>
+                    <ul>
+                    <li>
+                        <a href="#purpose-of-reports">A.2.1 Purpose of Reports</a>
+                    </li>
+                    <li>
+                        <a href="#links-to-other-web-sites-from-this-web-site">A.2.2 Links to Other Web Sites from This Web Site</a>
+                    </li>
+                    <li>
+                        <a href="#timeliness-of-content">A.2.3 Timeliness of Content</a>
+                    </li>
+                </li>
+                </ul>
+            </div>
+            <div class="dili-navigator-content richtext">
+                <aside class="summary summary-cta-side">
+                    
+                    
+                    <table>
+                        <tr>
+                            <th align="left">Date</th>
+                            <td align="left">January 2026</td>
+                        </tr>
+                        
+                        <tr>
+                            <th align="left">Auditors</th>
+                            <td align="left" class="mw5">George Kobakhidze, François Legué
+                        </tr>
+                        
+                        <tr class="noprint">
+                            <th align="left">Download</th>
+                            <td align="left">
+                                <a onclick="exportJson()" title="↓ JSON" class="pointer"><i class="far fa-file-code"></i> JSON</a><br/>
+                                <a onclick="exportCsv()" title="↓ CSV" class="pointer"><i class="far fa-file-excel"></i> CSV</a>
+                            </td>
+                        </tr>
+                    </table>
+                </aside>
+<h2 id="executive-summary">1 Executive Summary</h2>
+<p>This report presents the results of our engagement with <strong>Linea</strong> to review the integration of the <strong>Poseidon2</strong> hashing algorithm into Linea&rsquo;s cryptographic verification layer. This layer enables trustless cross-chain ENS resolution and general L2 state queries from Ethereum L1 by verifying sparse Merkle proofs against finalized state roots.</p>
+<p>The review was conducted from <strong>January 19, 2026</strong> to <strong>January 30, 2026</strong> with a total effort of <strong>2 x 10</strong> person-days.</p>
+<p>Overall, the implementation demonstrates a high level of quality. The code performs complex mathematical operations and has been heavily gas-optimized through data packing and assembly usage, yet it adheres to the Poseidon2 algorithm specification and follows best practices.</p>
+<p>The review identified one medium-severity issue related to proof malleability in the sparse Merkle proof verification, where unused bytes in the proof structure are not validated—potentially affecting downstream systems that rely on proof uniqueness. Additionally, one minor issue was found regarding the handling of zero-length input in the <code>hash()</code> function, along with documentation inconsistencies referencing the deprecated MiMC algorithm.</p>
+<p><strong>Update February 6th 2026</strong>: Upon the completion of the audit, we have verified that the commit <a href="https://github.com/Consensys/linea-apps-monorepo/commit/1b0cba233c4aa03fb1f6479abc1c838f40315ab6"><code>1b0cba233c4aa03fb1f6479abc1c838f40315ab6</code></a> contains the necessary fixes for issues found during the audit. This commit also contains the deployment artifacts in <code>linea-apps-monorepo/packages/ens-resolver/deployments/bytecode/2026-02-05/*</code> the bytecode within which matches the bytecode in the deployment artifacts we built locally. Specifically, we have built and verified matches of the bytecode of the following files:</p>
+<ul>
+<li>LineaSparseProofVerifier.sol</li>
+<li>Poseidon2.sol</li>
+<li>SparseMerkleProof.sol</li>
+<li>L1Resolver.sol</li>
+</ul>
+<p><strong>Update February 17th 2026</strong>: We have verified that the commit <a href="https://github.com/Consensys/linea-apps-monorepo/commit/a87d7185e5529ac354c815b6f68a9c12f32d8a42"><code>a87d7185e5529ac354c815b6f68a9c12f32d8a42</code></a> adds a leaf length check in the sparse Merkle proof contract, ensuring that the leaf data provided to the proof verification has a valid/expected length. This commit also contains the deployment artifacts in <code>linea-apps-monorepo/packages/ens-resolver/deployments/bytecode/2026-02-27/*</code> the bytecode within which matches the bytecode in the deployment artifacts we built locally. Specifically, we have built and verified matches of the bytecode of the following files:</p>
+<ul>
+<li>LineaSparseProofVerifier.sol</li>
+<li>Poseidon2.sol</li>
+<li>SparseMerkleProof.sol</li>
+<li>L1Resolver.sol</li>
+</ul>
+<p><strong>Update March 3rd 2026</strong>: We have verified that the commit <a href="https://github.com/Consensys/linea-apps-monorepo/commit/909b320c613488ae81355d1564933c45f9d4b5f9"><code>909b320c613488ae81355d1564933c45f9d4b5f9</code></a> updates the computation of <code>targetHash</code> to ensure consistency with the implementation in the gnark-crypto codebase. This commit also contains the deployment artifacts in <code>linea-apps-monorepo/packages/ens-resolver/deployments/bytecode/2026-03-02/*</code> the bytecode within which matches the bytecode in the deployment artifacts we built locally. Specifically, we have built and verified matches of the bytecode of the following files:</p>
+<ul>
+<li>LineaSparseProofVerifier.sol</li>
+<li>Poseidon2.sol</li>
+<li>SparseMerkleProof.sol</li>
+<li>L1Resolver.sol</li>
+</ul>
+<p>Moreover, we confirm that the bytecodes of the contracts deployed at the following addresses match the bytecodes in directory <code>linea-apps-monorepo/packages/ens-resolver/deployments/bytecode/2026-03-02/*</code> at commit <a href="https://github.com/Consensys/linea-apps-monorepo/commit/909b320c613488ae81355d1564933c45f9d4b5f9"><code>909b320c613488ae81355d1564933c45f9d4b5f9</code></a>.</p>
+<ul>
+<li>Ethereum:
+<ul>
+<li>ENS Linea Sparse Proof Verifier <a href="https://etherscan.io/address/0x9a4b070A5A6C09C2d0f00309aC1613109A3F6b41"><code>0x9a4b070A5A6C09C2d0f00309aC1613109A3F6b41</code></a>:</li>
+<li>ENS Sparse Merkle Proof <a href="https://etherscan.io/address/0x3dB97Ff4c9D1A2485B1DBe9c9e843359462A1661"><code>0x3dB97Ff4c9D1A2485B1DBe9c9e843359462A1661</code></a></li>
+<li>Poseidon2 <a href="https://etherscan.io/address/0x8f65FC8C9103e35967D5E8CEb0829E4df96D2c5D"><code>0x8f65FC8C9103e35967D5E8CEb0829E4df96D2c5D</code></a></li>
+<li>ENS L1 Resolver <a href="https://etherscan.io/address/0x1507cE9421232FDBd302f5EbE4590F8D77FeBBFF"><code>0x1507cE9421232FDBd302f5EbE4590F8D77FeBBFF</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="scope">2 Scope</h2>
+<p>This review focused on the following repository and code revision:</p>
+<ul>
+<li><a href="https://github.com/Consensys/linea-apps-monorepo/commit/dab0c2fa947bb7d4b5fb5aafc6c2cc7aabacbe3d">Consensys/linea-apps-monorepo@<code>dab0c2f</code></a></li>
+</ul>
+
+<p>The detailed list of files in scope can be found in the <a href="#appendix---files-in-scope">Appendix</a>.</p>
+<h3 id="objectives">2.1 Objectives</h3>
+<p>Together with <strong>Linea</strong>, we identified the following priorities for this review:</p>
+<ol>
+<li>Correctness of the implementation, consistent with the intended functionality and without unintended edge cases.</li>
+<li>Identify known vulnerabilities particular to smart contract systems, as outlined in our <a href="https://consensysdiligence.github.io/smart-contract-best-practices/">Smart Contract Best Practices</a>, and the <a href="https://swcregistry.io/">Smart Contract Weakness Classification Registry</a>.</li>
+<li>Implementation correctness of the Poseidon2 hashing algorithm.</li>
+<li>Integration of the hashing algorithm with the currently deployed smart contracts.</li>
+</ol>
+
+
+
+<h2 id="system-overview">3 System Overview</h2>
+<p>This audit focuses on the cryptographic verification layer that enables <strong>cross-chain ENS (Ethereum Name Service) resolution</strong> and general L2 state queries from Layer 1.</p>
+<p>When an ENS resolution is initiated on Ethereum L1 for a name whose records are stored on the Linea L2 blockchain, the request is routed through a <strong>CCIP (Cross-Chain Interoperability Protocol) gateway</strong>. This off-chain gateway service generates a cryptographic proof of the requested state (e.g., an address record, text record, or content hash) from Linea&rsquo;s current state. The gateway then returns this proof to L1, where the <strong>LineaSparseProofVerifier</strong> contract verifies it on-chain.</p>
+<p>The <strong>Poseidon2 hash function</strong> is the cryptographic foundation of this entire verification system. Linea&rsquo;s L2 state is organized as a <strong>sparse Merkle tree</strong> where every account and storage slot is hashed using Poseidon2. The state root (a single 32-byte hash computed via Poseidon2) represents the entire L2 state at a specific block and is periodically committed to the L1 rollup contract. The Poseidon2 implementation uses a feed-forward compression algorithm instead of the traditional sponge construction, operating on fixed-size inputs. When verifying a proof:</p>
+<ol>
+<li><strong>Leaf Hashing</strong>: Account data (nonce, balance, storage root, code hashes, code size) is hashed using Poseidon2 with a specific padding scheme</li>
+<li><strong>Storage Hashing</strong>: Individual storage values are hashed using Poseidon2</li>
+<li><strong>Merkle Path Verification</strong>: Each level of the 40-deep sparse Merkle tree uses Poseidon2 to hash parent nodes from their children</li>
+<li><strong>Root Computation</strong>: The final verification computes a state root via Poseidon2 and compares it against the trusted root stored in the rollup contract</li>
+</ol>
+<p>This architecture enables <strong>trustless cross-chain queries</strong>: L1 smart contracts (including ENS resolvers) can verify that specific data exists in Linea&rsquo;s L2 state without trusting the gateway operator, relying instead on cryptographic proofs verified against the rollup&rsquo;s finalized state roots. Poseidon2 is particularly well-suited for this use case because Linea&rsquo;s state tree must be provable in zero-knowledge circuits while remaining gas-efficient for L1 verification. The reviewed implementation features aggressive gas optimizations, including lazy modular reduction techniques that minimize expensive modular arithmetic operations.</p>
+
+<h2 id="security-specification">4 Security Specification</h2>
+<p>This section describes, <strong>from a security perspective</strong>, the expected behavior of the system under review. It is not a substitute for documentation. The purpose of this section is to identify specific security properties that were validated by the review team.</p>
+<h3 id="actors">4.1 Actors</h3>
+<p>The relevant actors are listed below with their respective abilities:</p>
+<ul>
+<li>
+<p><strong>Gateway Operators</strong>: Operate the off-chain CCIP-Read (EIP-3668) infrastructure that generates Merkle proofs for L2 state. They have access to the full L2 state database and serve proofs via HTTP endpoints. Gateway operators cannot forge proofs that verify against incorrect state roots, cannot force the verifier to accept invalid proofs, and cannot manipulate on-chain state roots.</p>
+</li>
+<li>
+<p><strong>Linea Rollup Operators</strong>: Operate the Linea L2 rollup and submit finalized state roots to the L1 rollup contract. They maintain L2 state and update the current L2 block number on L1.</p>
+</li>
+<li>
+<p><strong>Contract Deployer</strong>: Deploys and configures <code>LineaSparseProofVerifier</code> on L1 Ethereum, setting the gateway URLs and rollup contract address at deployment. Post-deployment, the deployer has no special privileges—configuration is immutable.</p>
+</li>
+</ul>
+<h3 id="trust-model">4.2 Trust Model</h3>
+<p>In any system, it&rsquo;s important to identify what trust assumptions are required for security properties to hold. For this review, we established the following trust model:</p>
+<ul>
+<li>
+<p><strong>Poseidon2 Cryptographic Primitives</strong>: The system assumes the Poseidon2 hash function provides adequate collision resistance, pre-image resistance, and second pre-image resistance for the given parameters (31-bit prime field, feed-forward compression algorithm). Additionally, the security of the implementation depends on the correctness of the Poseidon2 round constants and MDS matrix parameters used in the setup, as the entire cryptographic scheme relies on these constants being generated correctly.</p>
+</li>
+<li>
+<p><strong>Contract Deployer</strong>: The deployer must correctly configure the rollup contract address and gateway URLs. Misconfiguration at deployment could point to a malicious rollup or unavailable gateway. Post-deployment, no trust is required as configuration is immutable.</p>
+</li>
+</ul>
+
+<h2 id="findings">5 Findings</h2>
+   
+    <p>Each issue has an assigned severity:</p>
+
+    <ul>
+        <li><span class="severity critical">Critical</span> issues are directly exploitable security vulnerabilities that need to be fixed.</li>
+        <li><span class="severity major">Major</span> issues are security vulnerabilities that may not be directly exploitable or may require certain conditions in order to be exploited. All major issues should be addressed.</li>
+        <li><span class="severity medium">Medium</span> issues are objective in nature but are not security vulnerabilities. These should be addressed unless there is a clear reason not to.</li>
+        <li><span class="severity minor">Minor</span> issues are subjective in nature. They are typically suggestions around best practices or readability. Code maintainers should use their own judgment as to whether to address such issues.</li>
+        <li>Issues without a severity are general recommendations or optional improvements. They are not related to security or correctness and may be addressed at the discretion of the maintainer.</li>
+    </ul><div class="issue">
+            <a class="anchor" href="#unvalidatedsubsmtrootin-sparse-merkle-proof-leads-to-proof-malleability" data-issue-url="https://github.com/ConsenSysDiligence/linea-poseidon2-audit-2026-01/issues/1">
+                <h3 id="unvalidatedsubsmtrootin-sparse-merkle-proof-leads-to-proof-malleability">5.1 Unvalidated <code>subSMTRoot</code> in Sparse Merkle Proof Leads to Proof Malleability <span class="severity medium">Medium</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        Fixed in <a href="https://github.com/Consensys/linea-apps-monorepo/pull/39">PR 39</a>.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>SparseMerkleProof._formatProof</code> function expects <code>_rawProof[0]</code> to be 96 bytes but only uses the first 64 bytes as <code>nextFreeNode</code>. The remaining 32 bytes (which appear to represent a <code>subSMTRoot</code>) are never validated against the computed hash during verification, allowing multiple distinct proof byte sequences to pass verification for the same storage values.</p>
+<p><strong>packages/state-verifier/contracts/lib/SparseMerkleProof.sol:L179</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kt">bytes32</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">memory</span> <span class="n">nextFreeNode</span> <span class="o">=</span> <span class="nb">abi</span><span class="p">.</span><span class="nb">decode</span><span class="p">(</span><span class="n">_rawProof</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">:</span><span class="mi">64</span><span class="p">],</span> <span class="p">(</span><span class="kt">bytes32</span><span class="p">[</span><span class="mi">2</span><span class="p">]));</span>
+</span></span></code></pre></div><p>In the SparseMerkleProof contract, the <code>_verify</code> function computes a hash by traversing from the leaf up through the tree:</p>
+<p><strong>packages/state-verifier/contracts/lib/SparseMerkleProof.sol:L251-L257</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kt">uint256</span> <span class="n">height</span><span class="p">;</span> <span class="n">height</span> <span class="o">&lt;</span> <span class="n">TREE_DEPTH</span><span class="p">;</span> <span class="o">++</span><span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">((</span><span class="n">currentIndex</span> <span class="o">&gt;&gt;</span> <span class="n">height</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">computedHash</span> <span class="o">=</span> <span class="n">Poseidon2</span><span class="p">.</span><span class="n">hash</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">_proof</span><span class="p">[</span><span class="n">height</span><span class="p">],</span> <span class="n">computedHash</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span> <span class="n">computedHash</span> <span class="o">=</span> <span class="n">Poseidon2</span><span class="p">.</span><span class="n">hash</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">computedHash</span><span class="p">,</span> <span class="n">_proof</span><span class="p">[</span><span class="n">height</span><span class="p">]));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="n">Poseidon2</span><span class="p">.</span><span class="n">hash</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">_nextFreeNode</span><span class="p">,</span> <span class="n">computedHash</span><span class="p">))</span> <span class="o">==</span> <span class="n">_root</span><span class="p">;</span>
+</span></span></code></pre></div><p>The <code>computedHash</code> after the loop represents the computed <code>subSMTRoot</code>, but this value is never compared against the 32 bytes provided in <code>rawProof[0][64:96]</code>. An attacker can provide arbitrary bytes in this unused portion without affecting verification outcome.</p>
+<p>As a result, multiple distinct <code>proof</code> byte sequences can pass verification for the exact same storage values. This could cause issues for any downstream systems that rely on proof uniqueness or perform deduplication.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Update the proof verification flow by extracting <code>subSMTRoot</code> from <code>rawProof[0][64:96]</code> in <code>_formatProof</code>, passing it into <code>_verify</code>, and adding a post-loop check to ensure <code>computedHash == subSMTRoot</code> before hashing with <code>nextFreeNode</code>.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#hash-of-a-0-length-calldata-returns-a-32-byte-0x0-hash" data-issue-url="https://github.com/ConsenSysDiligence/linea-poseidon2-audit-2026-01/issues/3">
+                <h3 id="hash-of-a-0-length-calldata-returns-a-32-byte-0x0-hash">5.2 <code>hash()</code> of a <code>0</code> Length Calldata Returns a 32 Byte <code>0x0</code> Hash <span class="severity minor">Minor</span> <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        Fixed in <a href="https://github.com/Consensys/linea-apps-monorepo/pull/41">PR 41</a>.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The <code>hash()</code> function accepts zero-length <code>_msg</code> calldata input because <code>_msg.length % 32 == 0</code> passes the below check:</p>
+<p><strong>packages/state-verifier/contracts/lib/Poseidon2.sol:L65-L68</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">len</span> <span class="o">:=</span> <span class="n">_msg</span><span class="p">.</span><span class="n">length</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">and</span><span class="p">(</span><span class="n">len</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">error_size_data</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Then, for <code>len == 0</code> the function skips feed-forward compression and permutation loop:</p>
+<p><strong>packages/state-verifier/contracts/lib/Poseidon2.sol:L70-L75</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">q</span> <span class="o">:=</span> <span class="n">shr</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">len</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">let</span> <span class="n">ptrMsg</span> <span class="o">:=</span> <span class="n">_msg</span><span class="p">.</span><span class="n">offset</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">let</span> <span class="n">i</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">lt</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+</span></span></code></pre></div><p>As a result, it returns an uninitialized <code>bytes32 poseidon2Hash</code> which is simply <code>0x0000000000000000000000000000000000000000000000000000000000000000</code>.</p>
+<p>Typically, hashing protocols either define a special case for 0 input, or explicitly error out on 0 as undefined length errors, such as in our case with lengths not divisible into 32 bytes. This makes the digest of empty input equal to the zero value, which can introduce ambiguity or unintended behavior for callers that treat empty input as invalid or expect a defined nontrivial digest.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Handle the 0 length case.</p>
+</div>
+        </div><div class="issue">
+            <a class="anchor" href="#update-comments-and-tests" data-issue-url="https://github.com/ConsenSysDiligence/linea-poseidon2-audit-2026-01/issues/2">
+                <h3 id="update-comments-and-tests">5.3 Update Comments and Tests <span class="state">&#10003;&nbsp;Fixed</span></h3>
+            </a>
+           
+            <div class="menu-container noprint">
+                <button class="menu-toggle">...</button>
+                <div class="menu-box">
+                    <button class="github-export" onclick="exportToGitHub(this)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Export to GitHub ...
+                    </button>
+                    <button class="github-reset" onclick="getOrSetGithubRepo(true)">
+                        <i class="fab fa-github" style="margin-right:10px"></i>Set external GitHub Repo ...
+                    </button>
+                    <button class="json-export" onclick="exportToClipboard(this)">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (json)
+                    </button>
+                    <button class="text-export" onclick="exportToClipboard(this, {format:'text'})">
+                        <i class="far fa-clipboard" style="margin-right:12px"></i>Export to Clipboard (text)
+                    </button>
+                </div>
+            </div>
+           
+                <div class="resolution">
+                    <h4>Resolution</h4>
+                    <div>
+                        Fixed in <a href="https://github.com/Consensys/linea-apps-monorepo/pull/42">PR 42</a>.
+                    </div>
+                </div>
+           
+
+            <div><h4 id="description">Description</h4>
+<p>The codebase has migrated from MiMC to Poseidon2 as the hashing algorithm, but multiple references to the old &ldquo;MiMC&rdquo; algorithm remain in documentation comments and in test files. This creates confusion about which hashing algorithm is actually being used and may lead to misunderstandings during code maintenance, or integration.</p>
+<p><strong>packages/state-verifier/contracts/lib/SparseMerkleProof.sol:L99</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="o">*</span> <span class="err">@</span><span class="n">param</span> <span class="n">_encodedAccountValue</span> <span class="n">Encoded</span> <span class="n">account</span> <span class="nb">value</span> <span class="kt">bytes</span> <span class="p">(</span><span class="n">nonce</span><span class="p">,</span> <span class="nb">balance</span><span class="p">,</span> <span class="n">storageRoot</span><span class="p">,</span> <span class="n">mimcCodeHash</span><span class="p">,</span> <span class="n">keccakCodeHash</span><span class="p">,</span> <span class="n">codeSize</span><span class="p">).</span>
+</span></span></code></pre></div><p><strong>packages/state-verifier/contracts/lib/SparseMerkleProof.sol:L108</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="o">*</span> <span class="err">@</span><span class="n">param</span> <span class="n">_value</span> <span class="n">Encoded</span> <span class="n">account</span> <span class="nb">value</span> <span class="kt">bytes</span> <span class="p">(</span><span class="n">nonce</span><span class="p">,</span> <span class="nb">balance</span><span class="p">,</span> <span class="n">storageRoot</span><span class="p">,</span> <span class="n">mimcCodeHash</span><span class="p">,</span> <span class="n">keccakCodeHash</span><span class="p">,</span> <span class="n">codeSize</span><span class="p">).</span>
+</span></span></code></pre></div><p><strong>packages/state-verifier/contracts/lib/SparseMerkleProof.sol:L150</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="o">*</span> <span class="err">@</span><span class="n">param</span> <span class="n">_value</span> <span class="n">Encoded</span> <span class="n">account</span> <span class="nb">value</span> <span class="kt">bytes</span> <span class="p">(</span><span class="n">nonce</span><span class="p">,</span> <span class="nb">balance</span><span class="p">,</span> <span class="n">storageRoot</span><span class="p">,</span> <span class="n">mimcCodeHash</span><span class="p">,</span> <span class="n">keccakCodeHash</span><span class="p">,</span> <span class="n">codeSize</span><span class="p">).</span>
+</span></span></code></pre></div><p>In addition, a comment specifies a Poseidon parameter <code>t = 2</code>, while the actual implementation uses <code>t = 16</code>, where <code>t</code> denotes the width of the Poseidon state. Specifically, the permutation is performed over a 16-element state that is packed into two <code>uint256</code> values. This inconsistency misrepresents the actual cryptographic parameters and may result in misunderstandings about the security properties and internal behavior of the hash function.</p>
+<p><strong>packages/state-verifier/contracts/lib/Poseidon2.sol:L87</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="o">*</span> <span class="err">@</span><span class="n">dev</span> <span class="n">Poseidon2</span> <span class="n">permutation</span> <span class="n">over</span> <span class="n">a</span> <span class="mi">2</span><span class="o">-</span><span class="n">element</span> <span class="n">state</span> <span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">rb</span><span class="p">).</span>
+</span></span></code></pre></div><p><strong>packages/state-verifier/contracts/lib/Poseidon2.sol:L95</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="o">*</span> <span class="n">Each</span> <span class="n">round</span> <span class="n">follows</span> <span class="n">the</span> <span class="n">Poseidon2</span> <span class="n">specification</span> <span class="k">for</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">2</span><span class="p">.</span>
+</span></span></code></pre></div><h4 id="recommendation">Recommendation</h4>
+<p>Update all comments and tests files to reflect the usage of Poseidon2 with its correct parameters.</p>
+</div>
+        </div>
+
+<p><h2 id="appendix---files-in-scope">Appendix 1 - Files in Scope</h2>
+
+<p>This review covered the following files. Please note that the review of <code>LineaProofHelper</code> only concerned 1 line that performed the new call for the <code>SparseMerkleProof.poseidon2Hash()</code> function:</p>
+<table>
+	<thead>
+			<tr>
+					<th>File</th>
+					<th>SHA-1 hash</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>./contracts/lib/Poseidon2.sol</td>
+					<td>be02c6ae44b5bc383a2d492201de822d8cd1d510</td>
+			</tr>
+			<tr>
+					<td>./contracts/lib/SparseMerkleProof.sol</td>
+					<td>839cf4fc5514f473698cf3190636a306c3cccdfe</td>
+			</tr>
+			<tr>
+					<td>./contracts/LineaProofHelper.sol</td>
+					<td>6e79c23e3d5a636e4d7df055ab5fe5b1a66aa1f7</td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 id="appendix---disclosure">Appendix 2 - Disclosure</h2>
+<p>Consensys Diligence (&ldquo;CD&rdquo;) typically receives compensation from one or more clients (the &ldquo;Clients&rdquo;) for performing the analysis contained in these reports (the &ldquo;Reports&rdquo;). The Reports may be distributed through other means, including via Consensys publications and other distributions.</p>
+<p>The Reports are not an endorsement or indictment of any particular project or team, and the Reports do not guarantee the security of any particular project. This Report does not consider, and should not be interpreted as considering or having any bearing on, the potential economics of a token, token sale or any other product, service or other asset. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. No Report provides any warranty or representation to any third party in any respect, including regarding the bug-free nature of code, the business model or proprietors of any such business model, and the legal compliance of any such business. No third party should rely on the Reports in any way, including for the purpose of making any decisions to buy or sell any token, product, service or other asset. Specifically, for the avoidance of doubt, this Report does not constitute investment advice, is not intended to be relied upon as investment advice, is not an endorsement of this project or team, and it is not a guarantee as to the absolute security of the project. CD owes no duty to any third party by virtue of publishing these Reports.</p>
+<h3 id="purpose-of-reports">A.2.1 Purpose of Reports</h3>
+<p>The Reports and the analysis described therein are created solely for Clients and published with their consent. The scope of our review is limited to a review of code and only the code we note as being within the scope of our review within this report. Any Solidity code itself presents unique and unquantifiable risks as the Solidity language itself remains under development and is subject to unknown risks and flaws. The review does not extend to the compiler layer, or any other areas beyond specified code that could present security risks. Cryptographic tokens are emergent technologies and carry with them high levels of technical risk and uncertainty. In some instances, we may perform penetration testing or infrastructure assessments depending on the scope of the particular engagement.</p>
+<p>CD makes the Reports available to parties other than the Clients (i.e., &ldquo;third parties&rdquo;) on its website. CD hopes that by making these analyses publicly available, it can help the blockchain ecosystem develop technical best practices in this rapidly evolving area of innovation.</p>
+<h3 id="links-to-other-web-sites-from-this-web-site">A.2.2 Links to Other Web Sites from This Web Site</h3>
+<p>You may, through hypertext or other computer links, gain access to web sites operated by persons other than Consensys and CD. Such hyperlinks are provided for your reference and convenience only, and are the exclusive responsibility of such web sites&rsquo; owners. You agree that Consensys and CD are not responsible for the content or operation of such Web sites, and that Consensys and CD shall have no liability to you or any other person or entity for the use of third party Web sites. Except as described below, a hyperlink from this web Site to another web site does not imply or mean that Consensys and CD endorses the content on that Web site or the operator or operations of that site. You are solely responsible for determining the extent to which you may use any content at any other web sites to which you link from the Reports. Consensys and CD assumes no responsibility for the use of third-party software on the Web Site and shall have no liability whatsoever to any person or entity for the accuracy or completeness of any outcome generated by such software.</p>
+<h3 id="timeliness-of-content">A.2.3 Timeliness of Content</h3>
+<p>The content contained in the Reports is current as of the date appearing on the Report and is subject to change without notice unless indicated otherwise, by Consensys and CD.</p>
+</p>
+</div>
+        </div>
+    </article>
+</div>
+
+    </main>
+    
+<footer class="audit-footer">
+  <div class="audit-footer__inner">
+    <div class="audit-footer__wrap">
+      
+      <div class="audit-footer__divider"></div>
+
+      
+      <div class="audit-footer__logo">
+        <svg class="block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 179 46">
+  <g>
+    <path d="M50.6563 10.1534V10.0896C50.6563 8.36901 51.8581 7.1582 53.4676 7.1582C54.7981 7.1582 55.8282 7.81671 55.957 9.16559H54.8625C54.7445 8.40087 54.3153 8.00789 53.4783 8.00789C52.459 8.00789 51.7937 8.79385 51.7937 10.079V10.1427C51.7937 11.4385 52.416 12.1926 53.4891 12.1926C54.2938 12.1926 54.8625 11.789 54.9698 10.9818H56.0214C55.8497 12.3625 54.8625 13.0635 53.4891 13.0635C51.6757 13.0635 50.6563 11.9165 50.6563 10.1534Z" fill="#FEFEFE" />
+    <path d="M57.1094 10.1535V10.0897C57.1094 8.41161 58.3219 7.16895 60.0388 7.16895C61.7556 7.16895 62.9573 8.37975 62.9573 10.0579V10.1216C62.9573 11.7997 61.7985 13.053 60.0388 13.053C58.2683 13.0637 57.1094 11.8104 57.1094 10.1535ZM61.8414 10.1429V10.0791C61.8414 8.90019 61.1761 8.02925 60.0388 8.02925C58.9014 8.02925 58.2361 8.8577 58.2361 10.0897V10.1535C58.2361 11.4068 59.0087 12.214 60.0602 12.214C61.1547 12.2033 61.8414 11.3855 61.8414 10.1429Z" fill="#FEFEFE" />
+    <path d="M64.2735 7.25488H65.5611L67.9968 11.3971V7.25488H68.9733V12.9903H67.8574L65.2499 8.59314V12.9903H64.2735V7.25488Z" fill="#FEFEFE" />
+    <path d="M70.3594 11.2051H71.4003C71.4754 11.7786 71.7114 12.2672 72.6879 12.2672C73.3317 12.2672 73.7823 11.9167 73.7823 11.3856C73.7823 10.8546 73.5141 10.6528 72.5806 10.5041C71.1964 10.3235 70.5418 9.89869 70.5418 8.82596C70.5418 7.8913 71.3466 7.17969 72.5591 7.17969C73.8038 7.17969 74.5549 7.74261 74.6622 8.83658H73.675C73.5677 8.23118 73.2244 7.97627 72.5591 7.97627C71.8938 7.97627 71.5612 8.28428 71.5612 8.73037C71.5612 9.1977 71.7543 9.43136 72.763 9.56944C74.1257 9.74999 74.8339 10.143 74.8339 11.2901C74.8339 12.2884 73.9862 13.0638 72.6986 13.0638C71.0998 13.0638 70.4345 12.2884 70.3594 11.2051Z" fill="#FEFEFE" />
+    <path d="M76.2188 7.25488H79.8456V8.09395H77.3026V9.66587H79.3413V10.4731H77.3026V12.1512H79.9851V12.9903H76.2295L76.2188 7.25488Z" fill="#FEFEFE" />
+    <path d="M81.3594 7.25488H82.647L85.0828 11.3971V7.25488H86.0592V12.9903H84.9433L82.3359 8.59314V12.9903H81.3594V7.25488Z" fill="#FEFEFE" />
+    <path d="M87.4376 11.2051H88.4784C88.5535 11.7786 88.7895 12.2672 89.766 12.2672C90.4098 12.2672 90.8605 11.9167 90.8605 11.3856C90.8605 10.8546 90.5922 10.6528 89.6587 10.5041C88.2745 10.3235 87.62 9.89869 87.62 8.82596C87.62 7.8913 88.4247 7.17969 89.6372 7.17969C90.8819 7.17969 91.633 7.74261 91.7403 8.83658H90.7532C90.6459 8.23118 90.3025 7.97627 89.6372 7.97627C88.972 7.97627 88.6393 8.28428 88.6393 8.73037C88.6393 9.1977 88.8325 9.43136 89.8411 9.56944C91.2038 9.74999 91.9013 10.143 91.9013 11.2901C91.9013 12.2884 91.0536 13.0638 89.7767 13.0638C88.1779 13.0638 87.5127 12.2884 87.4376 11.2051Z" fill="#FEFEFE" />
+    <path d="M94.4129 10.5049L92.4922 7.25488H93.6833L94.9924 9.62339L96.2585 7.25488H97.3101L95.4967 10.5049V12.9797H94.4129V10.5049Z" fill="#FEFEFE" />
+    <path d="M97.9141 11.2051H98.9549C99.0301 11.7786 99.2661 12.2672 100.243 12.2672C100.886 12.2672 101.337 11.9167 101.337 11.3856C101.337 10.8546 101.069 10.6528 100.135 10.5041C98.7511 10.3235 98.0965 9.89869 98.0965 8.82596C98.0965 7.8913 98.9013 7.17969 100.114 7.17969C101.358 7.17969 102.11 7.74261 102.217 8.83658H101.23C101.122 8.23118 100.779 7.97627 100.114 7.97627C99.4485 7.97627 99.1159 8.28428 99.1159 8.73037C99.1159 9.1977 99.309 9.43136 100.318 9.56944C101.68 9.74999 102.389 10.143 102.389 11.2901C102.389 12.2884 101.541 13.0638 100.253 13.0638C98.6652 13.0638 98 12.2884 97.9141 11.2051Z" fill="#FEFEFE" />
+    <path d="M51.0938 17.6632C51.0938 17.4827 51.244 17.334 51.4264 17.334H58.2937C66.0194 17.334 69.8286 21.4762 69.8286 27.987V28.2312C69.8286 34.7526 65.9872 39.1072 58.2615 39.1072H51.4264C51.244 39.1072 51.0938 38.9586 51.0938 38.778V17.6632ZM58.1113 35.2624C62.5428 35.2624 64.6352 32.7983 64.6352 28.295V28.0507C64.6352 23.5792 62.6931 21.1682 58.0577 21.1682H56.0833V35.2624H58.1113Z" fill="#FEFEFE" />
+    <path d="M71.3751 18.6084C71.3751 17.2383 72.4803 16.208 73.8966 16.208C75.3452 16.208 76.4504 17.2489 76.4504 18.6084C76.4504 19.9679 75.3452 21.0087 73.8966 21.0087C72.4803 21.0194 71.3751 19.9785 71.3751 18.6084ZM72.0403 23.1754H75.8066C75.989 23.1754 76.1392 23.3241 76.1392 23.5047V38.7778C76.1392 38.9584 75.989 39.1071 75.8066 39.1071H72.0403C71.8579 39.1071 71.7077 38.9584 71.7077 38.7778V23.5047C71.7077 23.3241 71.8579 23.1754 72.0403 23.1754Z" fill="#FEFEFE" />
+    <path d="M79.6063 15.964H83.3726C83.555 15.964 83.7052 16.1126 83.7052 16.2932V38.7781C83.7052 38.9586 83.555 39.1073 83.3726 39.1073H79.6063C79.4239 39.1073 79.2736 38.9586 79.2736 38.7781V16.2932C79.2736 16.1126 79.4239 15.964 79.6063 15.964Z" fill="#FEFEFE" />
+    <path d="M86.4766 18.6084C86.4766 17.2383 87.5818 16.208 88.9982 16.208C90.4468 16.208 91.552 17.2489 91.552 18.6084C91.552 19.9679 90.4468 21.0087 88.9982 21.0087C87.5818 21.0194 86.4766 19.9785 86.4766 18.6084ZM87.1419 23.1754H90.9082C91.0906 23.1754 91.2408 23.3241 91.2408 23.5047V38.7778C91.2408 38.9584 91.0906 39.1071 90.9082 39.1071H87.1419C86.9595 39.1071 86.8092 38.9584 86.8092 38.7778V23.5047C86.82 23.3241 86.9595 23.1754 87.1419 23.1754Z" fill="#FEFEFE" />
+    <path d="M93.8774 39.4365H97.6544C97.8046 39.4365 97.9334 39.5321 97.9763 39.6808C98.3197 40.9447 99.3498 41.7519 101.485 41.7519C104.189 41.7519 105.541 40.3499 105.541 37.8539V35.4536C104.468 37.2698 102.504 38.3956 100.369 38.4062C96.4634 38.4062 93.3516 35.5173 93.3516 30.7909V30.5785C93.3516 26.0114 96.4312 22.8145 100.423 22.8145C103.041 22.8145 104.608 23.9403 105.53 25.5547V23.5048C105.53 23.3243 105.681 23.1756 105.863 23.1756H109.629C109.812 23.1756 109.962 23.3243 109.962 23.5048V37.8539C109.93 42.5697 106.764 44.9807 101.474 44.9807C96.4848 44.9807 94.1027 42.899 93.534 39.8295C93.5018 39.6489 93.6199 39.479 93.8023 39.4471C93.8345 39.4365 93.8559 39.4365 93.8774 39.4365ZM105.67 30.7272V30.5148C105.67 27.8064 104.221 26.1601 101.796 26.1601C99.3068 26.1601 97.9226 27.9232 97.9226 30.5466V30.7909C97.9226 33.4356 99.4893 35.0818 101.71 35.0818C104.039 35.0818 105.67 33.4356 105.67 30.7272Z" fill="#FEFEFE" />
+    <path d="M111.555 31.3432V31.0989C111.555 26.0751 115.149 22.8145 119.828 22.8145C123.98 22.8145 127.671 25.2148 127.671 30.9184V31.8105C127.671 31.9911 127.521 32.1398 127.339 32.1398H116.072C116.201 34.7844 117.639 36.3139 120.074 36.3139C122.006 36.3139 123.025 35.5385 123.369 34.3277C123.412 34.1897 123.54 34.0941 123.68 34.0941H127.242C127.425 34.0941 127.575 34.2428 127.575 34.4233C127.575 34.4446 127.575 34.4658 127.564 34.487C126.899 37.6734 124.173 39.4471 119.946 39.4471C115.085 39.4365 111.555 36.4201 111.555 31.3432ZM123.326 29.4208C123.175 27.0204 121.942 25.8627 119.817 25.8627C117.821 25.8627 116.469 27.1691 116.126 29.4208H123.326Z" fill="#FEFEFE" />
+    <path d="M129.622 23.1756H133.42C133.603 23.1756 133.753 23.3243 133.753 23.5048V25.7034C134.547 24.1208 136.307 22.8145 138.978 22.8145C142.144 22.8145 144.397 24.705 144.397 28.9641V38.778C144.397 38.9585 144.247 39.1072 144.064 39.1072H140.266C140.084 39.1072 139.933 38.9585 139.933 38.778V29.612C139.933 27.4453 139.075 26.415 137.101 26.415C135.191 26.415 133.753 27.5727 133.753 29.92V38.7886C133.753 38.9692 133.603 39.1178 133.42 39.1178H129.622C129.439 39.1178 129.289 38.9692 129.289 38.7886V23.5048C129.289 23.3243 129.439 23.1756 129.622 23.1756Z" fill="#FEFEFE" />
+    <path d="M145.813 31.3432V31.0989C145.813 25.9583 149.536 22.8145 154.118 22.8145C157.734 22.8145 161.092 24.3439 161.65 28.6242C161.672 28.8048 161.543 28.9747 161.361 28.9959C161.35 28.9959 161.328 28.9959 161.318 28.9959H157.744C157.594 28.9959 157.455 28.8897 157.423 28.741C157.058 27.0629 155.942 26.2876 154.214 26.2876C151.907 26.2876 150.373 27.9976 150.373 31.0352V31.2795C150.373 34.4764 151.821 36.1227 154.311 36.1227C156.017 36.1227 157.412 35.1774 157.723 33.3187C157.744 33.1594 157.884 33.0532 158.045 33.0532H161.425C161.607 33.0532 161.758 33.2019 161.758 33.3824C161.758 33.3931 161.758 33.4037 161.758 33.4143C161.361 36.9936 158.624 39.4471 154.096 39.4471C149.386 39.4365 145.813 36.5475 145.813 31.3432Z" fill="#FEFEFE" />
+    <path d="M162.883 31.3434V31.0991C162.883 26.0753 166.478 22.8146 171.156 22.8146C175.308 22.8146 179 25.215 179 30.9185V31.8107C179 31.9912 178.849 32.1399 178.667 32.1399H167.4C167.529 34.7846 168.967 36.314 171.403 36.314C173.334 36.314 174.353 35.5387 174.697 34.3279C174.74 34.1898 174.869 34.0836 175.019 34.0942H178.581C178.764 34.0942 178.914 34.2429 178.914 34.4235C178.914 34.4447 178.914 34.466 178.903 34.4872C178.238 37.6735 175.512 39.4473 171.285 39.4473C166.424 39.4366 162.883 36.4202 162.883 31.3434ZM174.665 29.4209C174.514 27.0206 173.28 25.8629 171.156 25.8629C169.16 25.8629 167.808 27.1693 167.465 29.4209H174.665Z" fill="#FEFEFE" />
+    <path d="M23.2307 1.39108e-06C10.4082 1.39108e-06 0 10.3025 0 22.9947C0 35.6869 10.4082 46 23.2307 46C36.0532 46 46.4722 35.6975 46.4722 22.9947C46.4722 10.2919 36.064 1.39108e-06 23.2307 1.39108e-06ZM17.1897 35.5913C17.1897 35.7082 17.0931 35.8037 16.9751 35.8037H12.4469C12.3289 35.8037 12.2323 35.7082 12.2323 35.5913V18.2046C12.2323 18.0877 12.3289 17.9922 12.4469 17.9922H16.9751C17.0931 17.9922 17.1897 18.0877 17.1897 18.2046V35.5913ZM14.7003 15.5705C13.1229 15.5705 11.8783 14.4128 11.8783 12.8834C11.8783 11.354 13.1229 10.1963 14.7003 10.1963C16.3205 10.1963 17.5545 11.354 17.5545 12.8834C17.5545 14.4128 16.3205 15.5705 14.7003 15.5705ZM25.7738 35.5807C25.7738 35.6975 25.6772 35.7931 25.5592 35.7931H21.0311C20.913 35.7931 20.8164 35.6975 20.8164 35.5807V10.4087C20.8164 10.2919 20.913 10.1963 21.0311 10.1963H25.5592C25.6772 10.1963 25.7738 10.2919 25.7738 10.4087V35.5807ZM34.3471 35.5913C34.3471 35.7082 34.2506 35.8037 34.1325 35.8037H29.6152C29.4971 35.8037 29.4006 35.7082 29.4006 35.5913V18.2046C29.4006 18.0877 29.4971 17.9922 29.6152 17.9922H34.1433C34.2613 17.9922 34.3579 18.0877 34.3579 18.2046V35.5913H34.3471ZM34.5939 15.3687C34.5939 15.4856 34.4974 15.5812 34.3793 15.5812H29.3791C29.2611 15.5812 29.1645 15.4856 29.1645 15.3687V10.4087C29.1645 10.2919 29.2611 10.1963 29.3791 10.1963H34.3793C34.4974 10.1963 34.5939 10.2919 34.5939 10.4087V15.3687Z" fill="#FEFEFE" />
+  </g>
+</svg>
+
+      </div>
+
+      
+      <div class="audit-footer__content">
+        
+        <div class="audit-footer__copyright">
+          <p>Securing Ethereum Smart Contracts since 2017</p>
+          <p>2026 All rights reserved</p>
+        </div>
+
+        
+        <div class="audit-footer__columns">
+          
+          <div class="audit-footer__col audit-footer__col--company">
+            <p class="audit-footer__col-title">Company</p>
+            <a href="/about/" class="audit-footer__link">About</a>
+            <a href="/blog/" class="audit-footer__link">Blog</a>
+            <a href="/privacy-policy/" class="audit-footer__link">Privacy Policy</a>
+            <a href="#" onclick="openCookieSettings();return false;" class="audit-footer__link">Cookie settings</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--audit">
+            <p class="audit-footer__col-title">Audit</p>
+            <a href="/audits/" class="audit-footer__link">Audit list</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--research">
+            <p class="audit-footer__col-title">Research</p>
+            <a href="/#academic-research" class="audit-footer__link">Academic publications</a>
+            <a href="/#tools" class="audit-footer__link">Tools</a>
+          </div>
+
+          
+          <div class="audit-footer__col audit-footer__col--social">
+            <p class="audit-footer__col-title">Social</p>
+            <a href="https://x.com/ConsensysAudits" target="_blank" rel="noopener noreferrer" class="audit-footer__link">X</a>
+            <a href="https://www.linkedin.com/company/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">LinkedIn</a>
+            <a href="https://github.com/ConsenSysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">GitHub</a>
+            <a href="https://medium.com/consensys-diligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">Medium</a>
+            <a href="https://www.youtube.com/@ConsensysDiligence" target="_blank" rel="noopener noreferrer" class="audit-footer__link">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/audit-report.js?v=e8012d8d" defer></script>
+<div id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent"
+     style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#131313;border-top:1px solid #303033;padding:16px 24px;box-shadow:0 -10px 15px -3px rgba(0,0,0,.2)">
+  <div style="max-width:1386px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+    <p style="margin:0;flex:1 1 320px;min-width:0;color:#b2b3b3;font-family:Graphik,sans-serif;font-weight:400;font-size:14px;line-height:20px">
+      We use analytics cookies to understand how visitors use our site. You can accept or decline.<a href="/privacy-policy/" style="color:#a7b9f1;text-decoration:underline">Learn more<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">&#32;in our privacy policy</span></a>
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;flex-shrink:0">
+      <button type="button" id="cookie-decline"
+              style="cursor:pointer;background:transparent;border:1px solid #303033;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:border-color .15s"
+              onmouseenter="this.style.borderColor='#6e8be8'" onmouseleave="this.style.borderColor='#303033'">Decline</button>
+      <button type="button" id="cookie-accept"
+              style="cursor:pointer;background:#2c56dd;border:1px solid #2c56dd;color:#fefefe;font-family:Graphik,sans-serif;font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:-0.14px;padding:12px 24px;border-radius:0;transition:background .15s"
+              onmouseenter="this.style.background='#2345c4'" onmouseleave="this.style.background='#2c56dd'">Accept</button>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

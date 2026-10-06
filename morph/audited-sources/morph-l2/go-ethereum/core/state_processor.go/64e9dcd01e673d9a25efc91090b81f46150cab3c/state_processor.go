@@ -1,0 +1,219 @@
+// Copyright 2015 The go-ethereum Authors
+// This file is part of the go-ethereum library.
+//
+// The go-ethereum library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// The go-ethereum library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+
+package core
+
+import (
+	"fmt"
+	"math/big"
+	"time"
+
+	"github.com/morph-l2/go-ethereum/common"
+	"github.com/morph-l2/go-ethereum/consensus"
+	"github.com/morph-l2/go-ethereum/consensus/misc"
+	"github.com/morph-l2/go-ethereum/core/state"
+	"github.com/morph-l2/go-ethereum/core/types"
+	"github.com/morph-l2/go-ethereum/core/vm"
+	"github.com/morph-l2/go-ethereum/crypto"
+	"github.com/morph-l2/go-ethereum/metrics"
+	"github.com/morph-l2/go-ethereum/params"
+	"github.com/morph-l2/go-ethereum/rollup/fees"
+)
+
+var (
+	processorBlockTransactionGauge = metrics.NewRegisteredGauge("processor/block/transactions", nil)
+	processBlockTimer              = metrics.NewRegisteredTimer("processor/block/process", nil)
+	finalizeBlockTimer             = metrics.NewRegisteredTimer("processor/block/finalize", nil)
+	applyTransactionTimer          = metrics.NewRegisteredTimer("processor/tx/apply", nil)
+	applyMessageTimer              = metrics.NewRegisteredTimer("processor/tx/msg/apply", nil)
+	updateStatedbTimer             = metrics.NewRegisteredTimer("processor/tx/statedb/update", nil)
+)
+
+// StateProcessor is a basic Processor, which takes care of transitioning
+// state from one point to another.
+//
+// StateProcessor implements Processor.
+type StateProcessor struct {
+	config *params.ChainConfig // Chain configuration options
+	bc     *BlockChain         // Canonical block chain
+	engine consensus.Engine    // Consensus engine used for block rewards
+}
+
+// NewStateProcessor initialises a new StateProcessor.
+func NewStateProcessor(config *params.ChainConfig, bc *BlockChain, engine consensus.Engine) *StateProcessor {
+	return &StateProcessor{
+		config: config,
+		bc:     bc,
+		engine: engine,
+	}
+}
+
+// Process processes the state changes according to the Ethereum rules by running
+// the transaction messages using the statedb and applying any rewards to both
+// the processor (coinbase) and any included uncles.
+//
+// Process returns the receipts and logs accumulated during the process and
+// returns the amount of gas that was used in the process. If any of the
+// transactions failed to execute due to insufficient gas it will return an error.
+func (p *StateProcessor) Process(block *types.Block, statedb *state.StateDB, cfg vm.Config) (types.Receipts, []*types.Log, uint64, error) {
+	defer func(t0 time.Time) {
+		processBlockTimer.Update(time.Since(t0))
+	}(time.Now())
+
+	var (
+		receipts    types.Receipts
+		usedGas     = new(uint64)
+		header      = block.Header()
+		blockHash   = block.Hash()
+		blockNumber = block.Number()
+		allLogs     []*types.Log
+		gp          = new(GasPool).AddGas(block.GasLimit())
+	)
+	// Mutate the block and state according to any hard-fork specs
+	if p.config.DAOForkSupport && p.config.DAOForkBlock != nil && p.config.DAOForkBlock.Cmp(block.Number()) == 0 {
+		misc.ApplyDAOHardFork(statedb)
+	}
+	if p.config.CurieBlock != nil && p.config.CurieBlock.Cmp(block.Number()) == 0 {
+		misc.ApplyCurieHardFork(statedb)
+	}
+
+	// Apply pre-execution system calls.
+	var tracingStateDB = vm.StateDB(statedb)
+	if hooks := cfg.Tracer; hooks != nil {
+		tracingStateDB = state.NewHookedState(statedb, hooks)
+	}
+	blockContext := NewEVMBlockContext(header, p.bc, p.config, nil)
+	vmenv := vm.NewEVM(blockContext, vm.TxContext{}, tracingStateDB, p.config, cfg)
+	processorBlockTransactionGauge.Update(int64(block.Transactions().Len()))
+	// Iterate over and process the individual transactions
+	for i, tx := range block.Transactions() {
+		msg, err := tx.AsMessage(types.MakeSigner(p.config, header.Number, header.Time), header.BaseFee)
+		if err != nil {
+			return nil, nil, 0, fmt.Errorf("could not apply tx %d [%v]: %w", i, tx.Hash().Hex(), err)
+		}
+		statedb.SetTxContext(tx.Hash(), i)
+		receipt, err := ApplyTransactionWithEVM(msg, p.config, gp, statedb, blockNumber, blockHash, tx, usedGas, vmenv)
+		if err != nil {
+			return nil, nil, 0, fmt.Errorf("could not apply tx %d [%v]: %w", i, tx.Hash().Hex(), err)
+		}
+		receipts = append(receipts, receipt)
+		allLogs = append(allLogs, receipt.Logs...)
+	}
+	// Finalize the block, applying any consensus engine specific extras (e.g. block rewards)
+	finalizeBlockStartTime := time.Now()
+	p.engine.Finalize(p.bc, header, statedb, block.Transactions(), block.Uncles())
+	finalizeBlockTimer.Update(time.Since(finalizeBlockStartTime))
+
+	return receipts, allLogs, *usedGas, nil
+}
+
+// ApplyTransactionWithEVM attempts to apply a transaction to the given state database
+// and uses the input parameters for its environment similar to ApplyTransaction. However,
+// this method takes an already created EVM instance as input.
+func ApplyTransactionWithEVM(msg Message, config *params.ChainConfig, gp *GasPool, statedb *state.StateDB, blockNumber *big.Int, blockHash common.Hash, tx *types.Transaction, usedGas *uint64, evm *vm.EVM) (receipt *types.Receipt, err error) {
+	// Create a new context to be used in the EVM environment.
+	txContext := NewEVMTxContext(msg)
+	evm.TxContext = txContext
+
+	if hooks := evm.Config.Tracer; hooks != nil {
+		if hooks.OnTxStart != nil {
+			hooks.OnTxStart(evm.GetVMContext(), tx, msg.From())
+		}
+		if hooks.OnTxEnd != nil {
+			defer func() { hooks.OnTxEnd(receipt, err) }()
+		}
+	}
+	defer func(t0 time.Time) {
+		applyTransactionTimer.Update(time.Since(t0))
+	}(time.Now())
+
+	l1DataFee, err := fees.CalculateL1DataFee(tx, statedb, config, blockNumber)
+	if err != nil {
+		return nil, err
+	}
+
+	// Apply the transaction to the current state (included in the env).
+	applyMessageStartTime := time.Now()
+	result, err := ApplyMessage(evm, msg, gp, l1DataFee)
+	applyMessageTimer.Update(time.Since(applyMessageStartTime))
+	if err != nil {
+		return nil, err
+	}
+
+	// Update the state with pending changes.
+	var root []byte
+	updateStatedbStartTime := time.Now()
+	if config.IsByzantium(blockNumber) {
+		statedb.Finalise(true)
+	} else {
+		root = statedb.IntermediateRoot(config.IsEIP158(blockNumber)).Bytes()
+	}
+	updateStatedbTimer.Update(time.Since(updateStatedbStartTime))
+	*usedGas += result.UsedGas
+
+	// If the result contains a revert reason, return it.
+	returnVal := result.Return()
+	if len(result.Revert()) > 0 {
+		returnVal = result.Revert()
+	}
+	// Create a new receipt for the transaction, storing the intermediate root and gas used
+	// by the tx.
+	receipt = &types.Receipt{Type: tx.Type(), PostState: root, CumulativeGasUsed: *usedGas, ReturnValue: returnVal}
+	if result.Failed() {
+		receipt.Status = types.ReceiptStatusFailed
+	} else {
+		receipt.Status = types.ReceiptStatusSuccessful
+	}
+	receipt.TxHash = tx.Hash()
+	receipt.GasUsed = result.UsedGas
+
+	// If the transaction created a contract, store the creation address in the receipt.
+	if msg.To() == nil {
+		receipt.ContractAddress = crypto.CreateAddress(evm.TxContext.Origin, tx.Nonce())
+	}
+
+	// Set the receipt logs and create the bloom filter.
+	receipt.Logs = statedb.GetLogs(tx.Hash(), blockHash)
+	receipt.Bloom = types.CreateBloom(types.Receipts{receipt})
+	receipt.BlockHash = blockHash
+	receipt.BlockNumber = blockNumber
+	receipt.TransactionIndex = uint(statedb.TxIndex())
+	receipt.L1Fee = result.L1DataFee
+	if tx.IsAltFeeTx() {
+		tokenID := tx.FeeTokenID()
+		receipt.FeeTokenID = &tokenID
+		receipt.FeeLimit = tx.FeeLimit()
+		receipt.FeeRate = result.FeeRate
+		receipt.TokenScale = result.TokenScale
+	}
+
+	return receipt, err
+}
+
+// ApplyTransaction attempts to apply a transaction to the given state database
+// and uses the input parameters for its environment. It returns the receipt
+// for the transaction, gas used and an error if the transaction failed,
+// indicating the block was invalid.
+func ApplyTransaction(config *params.ChainConfig, bc ChainContext, author *common.Address, gp *GasPool, statedb *state.StateDB, header *types.Header, tx *types.Transaction, usedGas *uint64, cfg vm.Config) (*types.Receipt, error) {
+	msg, err := tx.AsMessage(types.MakeSigner(config, header.Number, header.Time), header.BaseFee)
+	if err != nil {
+		return nil, err
+	}
+	// Create a new context to be used in the EVM environment
+	blockContext := NewEVMBlockContext(header, bc, config, author)
+	vmenv := vm.NewEVM(blockContext, vm.TxContext{}, statedb, config, cfg)
+	return ApplyTransactionWithEVM(msg, config, gp, statedb, header.Number, header.Hash(), tx, usedGas, vmenv)
+}

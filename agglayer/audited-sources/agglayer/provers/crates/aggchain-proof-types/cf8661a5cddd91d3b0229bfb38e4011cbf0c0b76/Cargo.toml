@@ -1,0 +1,18 @@
+[package]
+name = "aggchain-proof-types"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+alloy-primitives.workspace = true
+serde.workspace = true
+sp1-core-executor.workspace = true
+thiserror.workspace = true
+
+aggchain-proof-core.workspace = true
+agglayer-interop.workspace = true
+agglayer-primitives.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,865 @@
+{
+  "schema_version": "1.4.0",
+  "project": "mantle",
+  "reports": [
+    {
+      "id": "secure3-mantle-v1-contest-2023-07",
+      "report_file": "2023_07-secure3-mantle-v1-competitive-security-assessment.md",
+      "title": "Mantle Competitive Security Assessment",
+      "description": "Secure3 audit contest of the Mantle v1 monorepo mantlenetworkio/mantle at commit 3e2b6dbc (final commit c4a8fd85), covering the batch-submitter, bss-core, gas-oracle, l2geth, mt-batcher, mt-challenger, packages (L1/L2 contracts including bridges, StateCommitmentChain, TSS, fraud-proof Rollup and EigenDA/DataLayr contracts) and tss directories. It reported 14 Critical, 34 Medium, 35 Low and 57 Informational issues, of which 5 Critical were fixed.",
+      "isRelevant": true,
+      "auditor": "Secure3",
+      "report_date": "2023-07-17",
+      "repositories": [
+        {
+          "id": "mantlenetworkio/mantle",
+          "url": "https://github.com/mantlenetworkio/mantle"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "mantlenetworkio/mantle",
+          "paths": {
+            "batch-submitter": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/batch-submitter"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). Critical MTL-3 located here (drivers/sequencer/encoding.go).",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/batch-submitter"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. Critical MTL-3 not fixed at this commit (acknowledged, declined or mitigated).",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "bss-core": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/bss-core"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). No Critical finding located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/bss-core"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. No Critical finding left open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "gas-oracle": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/gas-oracle"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). No Critical finding located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/gas-oracle"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. No Critical finding left open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "l2geth": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/l2geth"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). Critical MTL-5 located here (core/vm/runtime/env.go, runtime.go).",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/l2geth"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. Critical MTL-5 not fixed at this commit (acknowledged, declined or mitigated).",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "mt-batcher": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/mt-batcher"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). Critical MTC-1, MTC-2 located here (mt_batcher.go, services/common/crypto.go).",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MTC-1",
+                    "MTC-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/mt-batcher"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. Critical MTC-1, MTC-2 not fixed at this commit (acknowledged, declined or mitigated).",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MTC-1",
+                    "MTC-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "mt-challenger": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/mt-challenger"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). No Critical finding located here.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/mt-challenger"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. No Critical finding left open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/packages"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). Critical MTC-4, MTC-6, MTC-7, MTC-9, MTL-1, MTL-2, MTL-4 located here (contracts L1/L2StandardBridge.sol, StateCommitmentChain.sol, TssRewardContract.sol, fraud-proof/Rollup.sol, eigenda governance/Governor.sol).",
+                  "major_findings": 7,
+                  "finding_ids": [
+                    "MTC-4",
+                    "MTC-6",
+                    "MTC-7",
+                    "MTC-9",
+                    "MTL-1",
+                    "MTL-2",
+                    "MTL-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/packages"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. Critical MTC-4, MTC-6, MTL-2 not fixed at this commit (acknowledged, declined or mitigated).",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "MTC-4",
+                    "MTC-6",
+                    "MTL-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "tss": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/3e2b6dbcac7df08353d81d53ee41405211305432/tss"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Whole directory in the contest scope at the audit commit (line-by-line review of the codebase). Critical MTC-3, MTC-5, MTC-8 located here (node/tsslib/conversion/conversion.go, node/store/slash.go, node/server/http.go).",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "MTC-3",
+                    "MTC-5",
+                    "MTC-8"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/tss"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report after the team's responses; only the fixes were considered. Critical MTC-3, MTC-5, MTC-8 not fixed at this commit (acknowledged, declined or mitigated; the MTC-8 JWT fix of PR #854 was merged only after this commit).",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 3,
+                  "finding_ids": [
+                    "MTC-3",
+                    "MTC-5",
+                    "MTC-8"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "mt-batcher/mt_batcher.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/mt-batcher/mt_batcher.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-1 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/mt-batcher/mt_batcher.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTC-1 was declined by the team, so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-1"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "mt-batcher/services/common/crypto.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/mt-batcher/services/common/crypto.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-2 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/mt-batcher/services/common/crypto.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTC-2 was acknowledged, not fixed, so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "tss/node/tsslib/conversion/conversion.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/tss/node/tsslib/conversion/conversion.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-3 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/tss/node/tsslib/conversion/conversion.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTC-3 was declined by the team (file unchanged), so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts/contracts/L2/messaging/L2StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/packages/contracts/contracts/L2/messaging/L2StandardBridge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-4 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/packages/contracts/contracts/L2/messaging/L2StandardBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTC-4 was acknowledged (risk mitigated by manual token registration), so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts/contracts/L1/messaging/L1StandardBridge.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/packages/contracts/contracts/L1/messaging/L1StandardBridge.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-4 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/packages/contracts/contracts/L1/messaging/L1StandardBridge.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTC-4 was acknowledged (risk mitigated by manual token registration), so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "tss/node/store/slash.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/tss/node/store/slash.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-5 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/tss/node/store/slash.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTC-5 was declined by the team (file unchanged), so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts/contracts/L1/rollup/StateCommitmentChain.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/packages/contracts/contracts/L1/rollup/StateCommitmentChain.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-6 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/packages/contracts/contracts/L1/rollup/StateCommitmentChain.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTC-6 was declined by the team, so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-6"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts/contracts/L2/predeploys/TssRewardContract.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/packages/contracts/contracts/L2/predeploys/TssRewardContract.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-7, MTC-9 located here.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MTC-7",
+                    "MTC-9"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/packages/contracts/contracts/L2/predeploys/TssRewardContract.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; the direct transfer() reward distribution of Critical MTC-7 and MTC-9 was replaced by a request/claim flow with nonReentrant, both marked fixed.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "tss/node/server/http.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/tss/node/server/http.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTC-8 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-8"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/tss/node/server/http.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; the file is unchanged since the audit commit, so Critical MTC-8 (no authentication on the TSS signature server) is still open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTC-8"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "136f5c5c12235ec9e8c9d5319be70bf3c0f868f5",
+                    "timestamp": "2023-06-16T03:51:05Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/136f5c5c12235ec9e8c9d5319be70bf3c0f868f5/tss/node/server/http.go"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix PR",
+                  "coverage": "Head of PR #854 (JWT verification for the TSS node RPC) cited by the team as the MTC-8 fix; only this fix was considered.",
+                  "follows": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "packages/contracts/contracts/L1/fraud-proof/Rollup.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/packages/contracts/contracts/L1/fraud-proof/Rollup.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTL-1, MTL-2 located here.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "MTL-1",
+                    "MTL-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "31be6fc17409ae4c3e6e1d32f2fde0baf804be02",
+                    "timestamp": "2023-05-09T09:00:13Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/31be6fc17409ae4c3e6e1d32f2fde0baf804be02/packages/contracts/contracts/L1/fraud-proof/Rollup.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix PR",
+                  "coverage": "Head of PR #858 cited by the team as the MTL-1 fix (removeStake caches the stake and is restricted); only this fix was considered. Critical MTL-2 (commented-out all-stakers check) remains open.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/packages/contracts/contracts/L1/fraud-proof/Rollup.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; MTL-1 fixed, while Critical MTL-2 is only mitigated (the all-stakers check in confirmFirstUnresolvedAssertion is still commented out).",
+                  "follows": "31be6fc17409ae4c3e6e1d32f2fde0baf804be02",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-2"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "batch-submitter/drivers/sequencer/encoding.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/batch-submitter/drivers/sequencer/encoding.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTL-3 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/batch-submitter/drivers/sequencer/encoding.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTL-3 was acknowledged (file unchanged), so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "packages/contracts/contracts/libraries/eigenda/lib/contracts/governance/Governor.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/packages/contracts/contracts/libraries/eigenda/lib/contracts/governance/Governor.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTL-4 located here. Marked fixed as deprecated code; the file no longer exists at the final commit.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-4"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "l2geth/core/vm/runtime/env.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/l2geth/core/vm/runtime/env.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTL-5 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/l2geth/core/vm/runtime/env.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTL-5 was acknowledged (file unchanged), so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            },
+            "l2geth/core/vm/runtime/runtime.go": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                    "timestamp": "2023-04-18T11:24:39Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/3e2b6dbcac7df08353d81d53ee41405211305432/l2geth/core/vm/runtime/runtime.go"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit (audit contest)",
+                  "coverage": "Contest-scope file reviewed at the audit commit; Critical MTL-5 located here.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b",
+                    "timestamp": "2023-06-08T01:28:00Z",
+                    "url": "https://github.com/mantlenetworkio/mantle/blob/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/l2geth/core/vm/runtime/runtime.go"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review (final commit)",
+                  "coverage": "Final commit stated by the report; Critical MTL-5 was acknowledged (file unchanged), so it remains open here.",
+                  "follows": "3e2b6dbcac7df08353d81d53ee41405211305432",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "MTL-5"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

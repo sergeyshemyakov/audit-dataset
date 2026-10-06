@@ -1,0 +1,2321 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Linea Yield Manager Audit</title>
+    
+    <link rel="shortcut icon" href="https://www.openzeppelin.com/hubfs/openzeppelin-favicon-2.png">   
+    <meta name="description" content="OpenZeppelin audited the Consensys/linea-monorepo repository at commit 4360e31f. | Smart Contracts Audit">
+    
+    
+    
+    
+    <script src="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/179008243005/1788287202325/template_jquery.min.js"></script>
+    
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','GTM-W9X5Q6F');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:description" content="OpenZeppelin audited the Consensys/linea-monorepo repository at commit 4360e31f.">
+    <meta property="og:title" content="Linea Yield Manager Audit">
+    <meta name="twitter:description" content="OpenZeppelin audited the Consensys/linea-monorepo repository at commit 4360e31f.">
+    <meta name="twitter:title" content="Linea Yield Manager Audit">
+
+    
+
+    
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67472537945/1788287198868/template_main.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67472687930/1788287197592/template_theme-overrides.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/191486630025/1789648897909/module_Announcement_Banner.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175205469193/1788958259824/module_Navbar_-_Live.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/195607353687/1764794536989/module_NEWS_Content_Subnavbar.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194758992989/1764795450184/module_NEWS_Blog_Post_Title.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194756946478/1758641063467/module_NEWS_Blog_Post_Content.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/193676192610/1756320578492/module_BP_CTA_Banner.min.css">
+<link rel="stylesheet" href="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175628308257/1788958455803/module_Footer_-_Live.min.css">
+    <script type="application/ld+json">
+{
+  "mainEntityOfPage" : {
+    "@type" : "WebPage",
+    "@id" : "https://www.openzeppelin.com/news/linea-yield-manager-audit"
+  },
+  "author" : {
+    "name" : "OpenZeppelin Security",
+    "url" : "https://www.openzeppelin.com/news/author/openzeppelin-security",
+    "@type" : "Person"
+  },
+  "headline" : "Linea Yield Manager Audit",
+  "datePublished" : "2026-02-18T13:43:33.000Z",
+  "dateModified" : "2026-02-26T13:32:51.491Z",
+  "publisher" : {
+    "name" : "OpenZeppelin",
+    "logo" : {
+      "url" : "https://www.openzeppelin.com/hubfs/OZ_logo_color-1.png",
+      "@type" : "ImageObject"
+    },
+    "@type" : "Organization"
+  },
+  "@context" : "https://schema.org",
+  "@type" : "BlogPosting",
+  "image" : [ "https://www.openzeppelin.com/hubfs/linear-1.png" ]
+}
+</script>
+
+
+    
+<!--  Added by GoogleAnalytics4 integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+if (!window._hsGoogleConsentRunOnce) {
+  window._hsGoogleConsentRunOnce = true;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': waitForUpdateMillis
+  });
+
+  if (useGoogleConsentModeV2) {
+    _hsp.push(['useGoogleConsentModeV2'])
+  } else {
+    _hsp.push(['addPrivacyConsentListener', function(consent){
+      var hasAnalyticsConsent = consent && (consent.allowed || (consent.categories && consent.categories.analytics));
+      var hasAdsConsent = consent && (consent.allowed || (consent.categories && consent.categories.advertisement));
+
+      gtag('consent', 'update', {
+        'ad_storage': hasAdsConsent ? 'granted' : 'denied',
+        'analytics_storage': hasAnalyticsConsent ? 'granted' : 'denied',
+        'ad_user_data': hasAdsConsent ? 'granted' : 'denied',
+        'ad_personalization': hasAdsConsent ? 'granted' : 'denied'
+      });
+    }]);
+  }
+}
+
+gtag('js', new Date());
+gtag('set', 'developer_id.dZTQ1Zm', true);
+gtag('config', 'G-1LER5JVNB5');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1LER5JVNB5"></script>
+
+<!-- /Added by GoogleAnalytics4 integration -->
+
+
+
+
+<meta property="og:image" content="https://www.openzeppelin.com/hubfs/linear-1.png">
+<meta property="og:image:width" content="680">
+<meta property="og:image:height" content="381">
+
+<meta name="twitter:image" content="https://www.openzeppelin.com/hubfs/linear-1.png">
+
+
+<meta property="og:url" content="https://www.openzeppelin.com/news/linea-yield-manager-audit">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://www.openzeppelin.com/news/linea-yield-manager-audit">
+<meta property="twitter:card" content="summary_large_image">
+
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://www.openzeppelin.com/news/rss.xml">
+<meta name="twitter:domain" content="www.openzeppelin.com">
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en">
+
+
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LER5JVNB5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1LER5JVNB5');
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/132129336476/1788287194541/template_slick.min.css">
+
+
+    
+    <script>
+      window._hsp = window._hsp || [];
+
+      function loadHotjar() {
+        if (window.__hotjarLoaded) return;
+        window.__hotjarLoaded = true;
+
+        (function(h, o, t, j, a, r) {
+          h.hj = h.hj || function() { (h.hj.q = h.hj.q || []).push(arguments); };
+          h._hjSettings = { hjid: 3863160, hjsv: 6 };
+          a = o.getElementsByTagName('head')[0];
+          r = o.createElement('script');
+          r.async = 1;
+          r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+      }
+
+      _hsp.push(['addPrivacyConsentListener', function(consent) {
+        if (consent.categories && consent.categories.analytics) {
+          loadHotjar();
+        }
+      }]);
+
+      _hsp.push(['getPrivacyConsent', function(consent) {
+              if (consent.categories && consent.categories.analytics) {
+          loadHotjar();
+        }
+      }]);
+    </script>
+    
+  <meta name="generator" content="HubSpot"></head>
+  <body class="revamp">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9X5Q6F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="body-wrapper   hs-content-id-207813393506 hs-blog-post hs-blog-id-102321071715 linea-yield-manager-audit">
+      
+      <div data-global-resource-path="oz_2022/templates/partials/header-EA-live.html"><header class="header">
+
+  
+
+
+  
+
+  <div class="container-fluid content-wrapper announcement debug">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+  
+ <div id="hs_cos_wrapper_module_17817100903157" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<div class="header__wrapper notification">
+  <div class="header__container mw-1390 content-wrapper notification-wrapper">
+    <div class="flex-col"><span>S&amp;P Global Enters Agreement to Acquire OpenZeppelin<span class="separator hidden-575">|</span> <span class="register"><a class="notif-link" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">Read the announcement </a></span></span></div>
+  </div>
+</div>
+</div> 
+  
+  
+  <div class="header__wrapper">
+    <div class="header__container mw-1390 content-wrapper">
+
+      
+
+      <div class="header__logo header__logo--main">
+         <a class="light-nav-brand main-brand" href="https://openzeppelin.com"><svg width="161" height="24" viewbox="0 0 161 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path class="text" d="M150.623 19.2842V8.67576H153.205V9.96652H153.351C153.789 9.17996 154.872 8.41357 156.433 8.41357C158.891 8.41357 160.39 10.0875 160.39 12.3464V19.2842H157.683V13.0321C157.683 11.7413 156.829 10.8741 155.58 10.8741C154.268 10.8741 153.33 11.8825 153.33 13.2136V19.2842H150.623Z" fill="#0a0a0a" /> <path class="text" d="M147.871 7.73191C146.892 7.73191 146.205 7.14703 146.205 6.19913C146.205 5.29157 146.892 4.68652 147.871 4.68652C148.85 4.68652 149.537 5.29157 149.537 6.19913C149.537 7.14703 148.85 7.73191 147.871 7.73191ZM146.517 19.2841V8.67569H149.225V19.2841H146.517Z" fill="#0a0a0a" /> <path class="text" d="M135.697 19.5464C132.469 19.5464 130.178 17.2069 130.178 14.0405C130.178 10.6926 132.489 8.41357 135.697 8.41357C139.216 8.41357 141.132 10.9346 141.132 13.9195V14.7464H132.802C132.885 16.3598 134.031 17.4489 135.78 17.4489C137.113 17.4489 138.133 16.8438 138.508 15.9766H141.028C140.487 18.1346 138.529 19.5464 135.697 19.5464ZM132.843 12.8909H138.55C138.425 11.459 137.279 10.5111 135.697 10.5111C134.176 10.5111 133.01 11.5598 132.843 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M117.535 23.2377V8.67576H120.201V10.027H120.347C120.638 9.58332 121.638 8.41357 123.637 8.41357C126.699 8.41357 128.802 10.6321 128.802 13.9396C128.802 17.2472 126.719 19.5464 123.72 19.5464C121.784 19.5464 120.742 18.4976 120.388 17.9128H120.243V23.2377H117.535ZM123.116 17.1665C124.866 17.1665 126.053 15.8556 126.053 13.98C126.053 12.0438 124.866 10.7934 123.096 10.7934C121.305 10.7934 120.18 12.185 120.18 13.98C120.18 15.9564 121.43 17.1665 123.116 17.1665Z" fill="#0a0a0a" /> <path class="text" d="M98.0735 19.5464C94.8455 19.5464 92.5547 17.2069 92.5547 14.0405C92.5547 10.6926 94.8664 8.41357 98.0735 8.41357C101.593 8.41357 103.509 10.9346 103.509 13.9195V14.7464H95.1787C95.2621 16.3598 96.4075 17.4489 98.1568 17.4489C99.4897 17.4489 100.51 16.8438 100.885 15.9766H103.405C102.863 18.1346 100.906 19.5464 98.0735 19.5464ZM95.2204 12.8909H100.927C100.802 11.459 99.6563 10.5111 98.0735 10.5111C96.5533 10.5111 95.387 11.5598 95.2204 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M80.1016 19.2841V16.8025L87.6822 7.23067V7.08469H80.3723V4.68652H91.1393V7.14725L83.5587 16.7191V16.8859H91.1809V19.2841H80.1016Z" fill="#0a0a0a" /> <path class="text" d="M68.9531 19.2842V8.67576H71.5355V9.96652H71.6813C72.1187 9.17996 73.2016 8.41357 74.7635 8.41357C77.221 8.41357 78.7205 10.0875 78.7205 12.3464V19.2842H76.0131V13.0321C76.0131 11.7413 75.1592 10.8741 73.9097 10.8741C72.5977 10.8741 71.6605 11.8825 71.6605 13.2136V19.2842H68.9531Z" fill="#0a0a0a" /> <path class="text" d="M62.1399 19.5464C58.9119 19.5464 56.6211 17.2069 56.6211 14.0405C56.6211 10.6926 58.9328 8.41357 62.1399 8.41357C65.6595 8.41357 67.5755 10.9346 67.5755 13.9195V14.7464H59.2452C59.3285 16.3598 60.4739 17.4489 62.2233 17.4489C63.5561 17.4489 64.5766 16.8438 64.9514 15.9766H67.4714C66.9299 18.1346 64.9723 19.5464 62.1399 19.5464ZM59.2868 12.8909H64.9931C64.8681 11.459 63.7227 10.5111 62.1399 10.5111C60.6197 10.5111 59.4534 11.5598 59.2868 12.8909Z" fill="#0a0a0a" /> <path class="text" d="M43.9805 23.2226V8.63871H46.6462V10.027H46.792C47.0835 9.58332 48.0832 8.41357 50.0824 8.41357C53.1439 8.41357 55.2473 10.6321 55.2473 13.9396C55.2473 17.2472 53.1647 19.5464 50.1658 19.5464C48.2289 19.5464 47.1877 18.4976 46.8336 17.9128H46.6878V23.2226H43.9805ZM49.5618 17.1665C51.3112 17.1665 52.4983 15.8556 52.4983 13.98C52.4983 12.0438 51.3112 10.7934 49.541 10.7934C47.75 10.7934 46.6254 12.185 46.6254 13.98C46.6254 15.9564 47.8749 17.1665 49.5618 17.1665Z" fill="#0a0a0a" /> <path class="text" d="M34.6217 19.5464C30.0464 19.5464 26.6797 16.3069 26.6797 11.9597C26.6797 7.65434 30.068 4.37305 34.6433 4.37305C39.2186 4.37305 42.6069 7.69614 42.6069 11.9597C42.6069 16.2651 39.197 19.5464 34.6217 19.5464ZM34.6433 16.8921C37.5352 16.8921 39.6071 14.8021 39.6071 11.9597C39.6071 9.15914 37.5352 7.02734 34.6433 7.02734C31.7298 7.02734 29.6579 9.15914 29.6579 11.9597C29.6579 14.8021 31.7298 16.8921 34.6433 16.8921Z" fill="#0a0a0a" /> <rect class="text" x="142.51" y="4.625" width="2.62657" height="14.6594" fill="#0a0a0a" /> <path class="text" d="M104.887 23.2377V8.67576H107.552V10.027H107.698C107.99 9.58332 108.989 8.41357 110.989 8.41357C114.05 8.41357 116.154 10.6321 116.154 13.9396C116.154 17.2472 114.071 19.5464 111.072 19.5464C109.135 19.5464 108.094 18.4976 107.74 17.9128H107.594V23.2377H104.887ZM110.468 17.1665C112.217 17.1665 113.405 15.8556 113.405 13.98C113.405 12.0438 112.217 10.7934 110.447 10.7934C108.656 10.7934 107.532 12.185 107.532 13.98C107.532 15.9564 108.781 17.1665 110.468 17.1665Z" fill="#0a0a0a" /> <path d="M0 23.2589C2.58163 18.9332 4.77534 15.3658 7.56356 10.4764C8.54845 8.82648 10.2503 7.80127 12.3512 7.80127H15.6523L6.43351 23.2589H0Z" fill="#2E99FF" /> <path d="M0.03125 0.740234H19.8394L16.4549 6.45503H0.03125V0.740234Z" fill="#4F56FA" /> <path d="M9.95129 19.6998C10.6962 18.4245 11.8935 17.6323 13.5706 17.6323L19.8413 17.6157V23.2593H7.82617C8.57842 22.0099 9.23162 20.9318 9.95129 19.6998Z" fill="#09C2FF" /> </svg></a>
+         <a class="light-nav-brand is-mobile" href="https://openzeppelin.com"><img src="https://www.openzeppelin.com/hubfs/oz-nav-mobile.svg" alt="OpenZeppelin" loading="eager" width="17" height="19"></a>
+        
+      </div>
+
+      
+
+      <div class="header__column">
+        <div id="hs_cos_wrapper_module_175139067533613" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+
+
+<nav class="menu menu-desktop">
+  <div class="box-menu">
+    <ul class="box-menu-list">
+
+      <li class="item services has-child">
+        <a class="services" href="#">Services</a>
+        <div class="sub-nav services">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list">
+              <div class="nav-col-title">Overview</div>
+
+              <a id="security_audits-navbar" href="https://www.openzeppelin.com/security-audits" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/security-audit-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Security Audits</span>
+                </div>
+              </a>
+              <a id="continuous_security_program-navbar" href="https://www.openzeppelin.com/continuous-security-program" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/csm-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Continuous Security Program</span>
+                </div>
+              </a>
+              <a id="security_services-navbar" href="https://www.openzeppelin.com/security-services" class="sub-nav-item bg-icon">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/all-services-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                </div>
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">All Services</span>
+                </div>
+              </a>
+              <div class="nav-col-title second">Security Lifecycle</div>
+              <div class="regular-links">
+                <a href="/security-services#architect">Architect</a>
+                <a href="/security-services#build">Build</a>
+                <a href="/security-services#secure">Secure</a>
+                <a href="/security-services#support">Support</a>
+              </div>
+            </div>
+            <div class="sub-nav-list related-content is-border-left">
+              <a href="www.openzeppelin.com/research#security-audits" class="nav-col-title">Featured Announcement</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/introducing-continuous-security-program">
+                <div class="featured-image-wrapper">
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png" alt="Featured Announcement" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=221&amp;height=124&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=663&amp;height=371&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=884&amp;height=494&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1105&amp;height=618&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1326&amp;height=741&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+
+                </div>
+
+                <div class="post-title">Introducing the OpenZeppelin Continuous Security Program </div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+
+            </div>
+          </div>
+        </div> 
+      </li>
+      <li class="item has-child solutions">
+        <a class="" href="#">Solutions</a>
+        <div class="sub-nav is-solutions">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Financial Institutions</div>
+              <a id="banks-navbar" href="https://www.openzeppelin.com/solutions/banks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/banks-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Banks</span>
+                </div>
+              </a>
+              <a id="asset_managers-navbar" href="https://www.openzeppelin.com/solutions/asset-managers" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/asset-managers-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Asset Managers</span>
+                </div>
+              </a>
+              <a id="payment_networks-navbar" href="https://www.openzeppelin.com/solutions/payment-networks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/payment-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Payment Networks</span>
+                </div>
+              </a>
+              <a id="tokenization_platforms-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/tokenization-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Tokenization Platforms</span>
+                </div>
+              </a>
+              <a id="capital_markets_infrastructure-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/cm-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Capital Markets Infrastructure</span>
+                </div>
+              </a>
+              <a id="fintechs_and_networks-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/fn-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Fintechs &amp; Neobanks</span>
+                </div>
+              </a>
+            </div>
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Networks &amp; Protocols</div>
+              <a id="blockchain-networks-navbar" href="https://www.openzeppelin.com/solutions/blockchain-networks" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/bn-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Blockchain Networks</span>
+                </div>
+              </a>
+              <a id="defi_protocols-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/defi-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">DeFi Protocols</span>
+                </div>
+              </a>
+
+            </div>
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Public Sector &amp; Regulators</div>
+              <a id="central_banks-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/cb-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Central Banks</span>
+                </div>
+              </a>
+              <a id="regulators_and_standard_bodies-navbar" href="#" class="sub-nav-item is-disabled">
+                <img src="https://www.openzeppelin.com/hubfs/rs-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Regulators &amp; Standards Bodies</span>
+                </div>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </li>
+      <li class="item has-child developers">
+        <a class="products" href="#">Developers</a>
+        <div class="sub-nav developers">
+          <div class="dev-tab-bar">
+            <button class="dev-tab active" data-tab="products">Products</button>
+            <button class="dev-tab" data-tab="blockchains">Networks</button>
+          </div>
+          <div class="panel-track">
+            <div class="panel-slider">
+              <div class="panel-slot">
+                <div class="nav-flex-wrapper is-products">
+                  <div class="sub-nav-list">
+                    <div class="nav-col-title">Smart Contracts</div>
+                    <a id="contracts_library-navbar" href="https://www.openzeppelin.com/solidity-contracts" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contracts%20libraries-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Contracts Libraries</span>
+                        <p>The standard for smart contracts development</p>
+                      </div>
+                    </a>
+                    <a id="contracts_wizard-navbar" href="https://wizard.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contracts%20wizard-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Contracts Wizard</span>
+                        <p>Generate smart contracts interactively</p>
+                      </div>
+                    </a>
+                    <a id="contracts_mcp-navbar" href="https://mcp.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/mcp-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">Contracts MCP</span></div>
+                        <p>Build secure smart contracts with AI</p>
+                      </div>
+                    </a>
+                    <a id="contracts_skills-navbar" href="https://github.com/OpenZeppelin/openzeppelin-skills" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/contract-skills-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">Contracts Skills</span><span class="new-tag">New</span></div>
+                        <p>Equip AI agents with secure development skills</p>
+                      </div>
+                    </a>
+                    <a id="upgrades_plugin-navbar" href="https://docs.openzeppelin.com/upgrades-plugins/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/upgrade%20plugins-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Upgrades Plugins</span>
+                        <p>Deploy upgradeable contracts</p>
+                      </div>
+                    </a> 
+                  </div>
+                  <div class="sub-nav-list">
+                    <div class="nav-col-title">Open Source Tools</div>
+                    <a id="relayers-navbar" href="https://www.openzeppelin.com/open-source-stack#operate" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/relayer-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Relayer</span>
+                        <p>Send onchain transactions</p>
+                      </div>
+                    </a>
+                    <a id="monitor-navbar" href="https://www.openzeppelin.com/open-source-stack#operate" class="sub-nav-item bg-icon">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/monitor-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Monitor</span>
+                        <p>Observe smart contract activity </p>
+                      </div>
+                    </a>
+                    <a id="contracts_ui-navbar" href="https://builder.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/ui%20builder-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <div class="flex-h"><span class="sub-nav-item-title">UI Builder</span></div>
+                        <p>Spin up a UI for your contracts</p>
+                      </div>
+                    </a>
+                    <a id="safe_utils-navbar" href="https://safeutils.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/safe%20utils-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Safe Utils</span>
+                        <p>Verify Safe transactions before signing</p>
+                      </div>
+                    </a>
+                    <a id="role_manager-navbar" href="https://rolemanager.openzeppelin.com/" class="sub-nav-item bg-icon" target="_blank">
+                      <div class="nav-icon-wrapper">
+                        <img src="https://www.openzeppelin.com/hubfs/access%20control-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                      </div>
+                      <div class="sub-nav-item-content">
+                        <span class="sub-nav-item-title">Role Manager</span>
+                        <p>Manage contract roles &amp; permissions</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="sub-nav-list is-border-left pr-32 small-icons">
+                    <div class="top-col">
+                      <div class="nav-col-title">Resources</div>
+                      <a id="documentation-navbar" href="https://docs.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/docs-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Documentation</span>
+                        </div>
+                      </a>
+                      <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Research</span>
+                        </div>
+                      </a>
+
+                      <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/ethernaut-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethernaut CTF</span>
+                        </div>
+                      </a>  
+                      <a id="forum-navbar" href="https://forum.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/forum-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Forum</span>
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                  <div class="bottom-row">
+                    <div class="sub-nav-list large">
+                      <a id="open_source_stack-navbar" href="https://www.openzeppelin.com/open-source-stack" class="sub-nav-item oss-icon">
+                        <div class="nav-icon-wrapper">
+                          <img src="https://www.openzeppelin.com/hubfs/oss-nav-icon-1.svg" role="presentation" loading="eager" width="36" height="36">
+                        </div>
+                        <span class="sub-nav-item-title">Explore the Open Source Stack <span class="hidden-arrow">→</span></span>
+                      </a>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              <div class="panel-slot">
+                <div class="nav-flex-wrapper is-blockchains">
+                  <div class="sub-nav-list is-blockchains">
+                    <div class="nav-col-title">Blockchain Networks</div>
+                    <div class="blockchain-col">
+                      <a id="network_arbitrum-navbar" href="https://www.openzeppelin.com/networks/arbitrum" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/arbitrum-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Arbitrum</span>
+                        </div>
+                      </a>
+                      <a id="network_base-navbar" href="https://www.openzeppelin.com/networks/base" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/base-navv3.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Base</span>
+                        </div>
+                      </a>
+                      <a id="network_canton-navbar" href="https://www.openzeppelin.com/networks/canton" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/canton-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Canton</span>
+                        </div>
+                      </a>
+
+                    </div>
+                    <div class="blockchain-col">
+                      <a id="network_ethereum-navbar" href="https://www.openzeppelin.com/networks/ethereum" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/eth-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethereum</span>
+                        </div>
+                      </a>
+                      <a id="network_linea-navbar" href="https://www.openzeppelin.com/networks/linea" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/linea-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Linea</span>
+                        </div>
+                      </a>
+                      <a id="midnight-navbar" href="https://www.openzeppelin.com/networks/midnight" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/midnight-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Midnight</span>
+                        </div>
+                      </a>
+
+                    </div>
+                    <div class="blockchain-col">
+                      
+                      <a id="network_op_mainnet-navbar" href="https://www.openzeppelin.com/networks/op-mainnet" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/op-mainnet-nav-3.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">OP Mainnet</span>
+                        </div>
+                      </a>
+                      <a id="starknet-navbar" href="https://www.openzeppelin.com/networks/starknet" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/starknet-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Starknet</span>
+                        </div>
+                      </a>
+                      <a id="midnight-navbar" href="https://www.openzeppelin.com/networks/stellar" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/stellar-nav-1.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Stellar</span>
+                        </div>
+                      </a>
+
+
+                    </div>
+                    <div class="blockchain-col">
+                      <a id="midnight-navbar" href="/networks/sui" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/sui-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Sui</span>
+                        </div>
+                      </a>
+                      <a id="zama-navbar" href="https://www.openzeppelin.com/networks/zama" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/zama-nav-1.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Zama</span>
+                        </div>
+                      </a>
+                      <a id="network_zksync-navbar" href="https://www.openzeppelin.com/networks/zksync" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/zksync-nav.svg" alt="" role="presentation" loading="eager" width="24" height="24">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">ZKsync</span>
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                  <div class="sub-nav-list is-border-left pr-32 small-icons">
+                    <div class="top-col">
+                      <div class="nav-col-title">Resources</div>
+                      <a id="documentation-navbar" href="https://docs.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/docs-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Documentation</span>
+                        </div>
+                      </a>
+                      <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                        <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Research</span>
+                        </div>
+                      </a>
+
+                      <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/ethernaut-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Ethernaut CTF</span>
+                        </div>
+                      </a>  
+                      <a id="forum-navbar" href="https://forum.openzeppelin.com/" class="sub-nav-item" target="_blank">
+                        <img src="https://www.openzeppelin.com/hubfs/forum-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                        <div class="sub-nav-item-content">
+                          <span class="sub-nav-item-title">Forum</span>
+                        </div>
+                      </a></div>
+
+                  </div>
+                  <div class="bottom-row">
+                    <div class="sub-nav-list large">
+                      <a id="networks-navbar" href="https://www.openzeppelin.com/networks" class="sub-nav-item networks-icon">
+                        <div class="nav-icon-wrapper">
+                          <img src="https://www.openzeppelin.com/hubfs/networks-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                        </div>
+                        <span class="sub-nav-item-title">Explore all Networks <span class="hidden-arrow">→</span></span>
+                      </a>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </li>
+      
+      
+       
+
+
+      <li class="item has-child research-resources">
+        <a class="research-resources" href="#">Research</a>
+        <div class="sub-nav research-resources">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons">
+              <div class="nav-col-title">Insights &amp; Education</div>
+              <a id="research-navbar" href="https://www.openzeppelin.com/research" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/research-nav-light.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Research</span>
+                </div>
+              </a>
+              <a id="security_audits_research-navbar" href="https://www.openzeppelin.com/research#security-audits" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/sa-nav-research.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Security Audits</span>
+                </div>
+              </a>
+              <a id="customer_stories-navbar" href="https://www.openzeppelin.com/customer-stories" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/customer%20stories-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Customer Stories</span>
+                </div>
+              </a>
+              <a id="newsletter-navbar" href="/newsletter" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/newsletter-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">The Onchain Brief</span>
+                </div>
+              </a>
+              <a id="stats-navbar" href="https://www.openzeppelin.com/stats" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/stats-small.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Stats</span>
+                </div>
+              </a>
+              <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin" class="sub-nav-item">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                <div class="sub-nav-item-content">
+                  <span class="sub-nav-item-title">Why OpenZeppelin</span>
+                </div>
+              </a>
+            </div>
+            <div class="sub-nav-list is-border-left">
+              
+              <a href="https://www.openzeppelin.com/news/privacy-in-onchain-finance" class="nav-col-title">Featured Research</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/privacy-in-onchain-finance">
+                <div class="featured-image-wrapper">
+                  
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png" alt="Privacy in Onchain Finance: Balancing Transparency and Confidentiality" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=221&amp;height=124&amp;name=Privacy%20in%20Onchain%20Finance-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=663&amp;height=371&amp;name=Privacy%20in%20Onchain%20Finance-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=884&amp;height=494&amp;name=Privacy%20in%20Onchain%20Finance-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1105&amp;height=618&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1326&amp;height=741&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+                  
+
+                </div>
+
+                <div class="post-title">Privacy in Onchain Finance: Balancing Transparency and Confidentiality</div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+              
+            </div>
+
+
+          </div>
+        </div>
+      </li>
+      <li class="item has-child company">
+        <a class="research-resources" href="#">Company</a>
+        <div class="sub-nav research-resources">
+          <div class="nav-flex-wrapper">
+            <div class="sub-nav-list small-icons no-pl">
+              <div class="top-col"><div class="nav-col-title">Resources</div>
+                <a id="about-navbar" href="https://www.openzeppelin.com/about-us" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/about-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">About Us</span>
+                  </div>
+                </a>  
+                <a id="news-navbar" href="https://www.openzeppelin.com/news" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/news-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">News</span>
+                  </div>
+                </a>
+                <a id="careers-navbar" href="https://www.openzeppelin.com/careers" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/careers-nav-light.svg" alt="" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">Careers</span>
+                  </div>
+                </a>
+                <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon.svg" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">Why OpenZeppelin</span>
+                  </div>
+                </a>
+                <a id="faqs-navbar" href="https://www.openzeppelin.com/faqs" class="sub-nav-item">
+                  <img src="https://www.openzeppelin.com/hubfs/faqs-nav.svg" role="presentation" loading="eager" width="36" height="36">
+                  <div class="sub-nav-item-content">
+                    <span class="sub-nav-item-title">FAQs</span>
+                  </div>
+                </a>
+              </div>
+               
+
+            </div>
+            <div class="sub-nav-list is-border-left ml-0 is-news">
+
+              
+              <a href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin" class="nav-col-title">Featured News</a>
+
+              <a class="related-content-wrapper" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">
+                <div class="featured-image-wrapper">
+                  
+                  <img src="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png" alt="S&amp;P Global Enters Agreement to Acquire OpenZeppelin" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=221&amp;height=124&amp;name=S%26P_OZ_News-Image-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=663&amp;height=371&amp;name=S%26P_OZ_News-Image-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=884&amp;height=494&amp;name=S%26P_OZ_News-Image-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1105&amp;height=618&amp;name=S%26P_OZ_News-Image-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1326&amp;height=741&amp;name=S%26P_OZ_News-Image-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+                  
+
+                </div>
+
+                <div class="post-title">S&amp;P Global Enters Agreement to Acquire OpenZeppelin</div>
+                <div class="post-title arrow">→</div>
+
+              </a>
+              
+            </div>
+
+
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-buttons">
+    
+    <a id="talk_to_an_expert-navbar" class="button-new" href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar">Talk to an Expert</a>
+    
+  </div>
+</nav>
+
+
+
+<nav id="menu-mobile" class="menu menu-mobile">
+  <div class="h-icon">
+    <div class="h-icon-cont">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <ul class="p-main-nav-mobile-list">
+    <div class="submenus-wrapper">
+      <div class="p-main-submenu developers">
+        <div>
+          <div class="back-button">Developers</div>
+          <div class="dev-tab-bar is-mobile">
+            <button class="dev-tab active" data-tab="products">Products</button>
+            <button class="dev-tab" data-tab="blockchains">Blockchains</button>
+          </div>
+          <div class="panel-mobile is-products is-active">
+            <li class="p-main-submenu-item subtitle first">Overview</li>
+            <li class="p-main-submenu-item ">
+              <a id="open_source_stack-navbar" href="https://www.openzeppelin.com/open-source-stack">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/oss-mobile-icon.svg" role="presentation" loading="eager" width="33" height="33">
+                </div>Explore the Open Source Stack</a>
+            </li>
+            <li class="p-main-submenu-item subtitle">Smart Contracts</li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_library-navbar" href="https://www.openzeppelin.com/solidity-contracts">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/Contracts%20Library-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Libraries</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_wizard-navbar" href="https://wizard.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-wizard-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Wizard</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_mcp-navbar" href="https://mcp.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-mcp-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts MCP</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_mcp-navbar" href="https://github.com/OpenZeppelin/openzeppelin-skills/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contract-skills-nav-icon-mob.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Contracts Skills<span class="new-tag">New</span></a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="upgrades_plugin-navbar" href="https://docs.openzeppelin.com/upgrades-plugins/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/contracts-upgrades-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Upgrades Plugins</a>
+            </li>
+
+            <li class="p-main-submenu-item subtitle">Open Source Tools</li>
+            <li class="p-main-submenu-item ">
+              <a id="relayers-navbar" href="https://www.openzeppelin.com/open-source-stack#operate">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/relayers-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Relayer</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="monitor-navbar" href="https://www.openzeppelin.com/open-source-stack#operate">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/monitor-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Monitor</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="contracts_ui-navbar" href="https://builder.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/transaction-proposal-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>UI Builder</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="safe_utils-navbar" href="https://safeutils.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/safe%20utils-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Safe Utils</a>
+            </li>
+            <li class="p-main-submenu-item ">
+              <a id="role_manager-navbar" href="https://rolemanager.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper">
+                  <img src="https://www.openzeppelin.com/hubfs/access-control-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Role Manager</a>
+            </li>
+            <li class="p-main-submenu-item subtitle p-10">Resources</li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="documentation-navbar" href="https://docs.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/docs-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Documentation</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="research-navbar" href="https://www.openzeppelin.com/research">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Research</a>
+            </li>
+
+            <li class="p-main-submenu-item gap-8">
+              <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/etherenaut-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Ethernaut CTF</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="forum-navbar" href="https://forum.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/forum-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Forum</a>
+            </li>
+            
+          </div>
+          <div class="panel-mobile is-blockchains">
+            <li class="p-main-submenu-item subtitle first">Overview</li>
+            <li class="p-main-submenu-item ">
+              <a id="networks-navbar-mobile" href="https://www.openzeppelin.com/networks">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/networks-mobile-icon.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Explore all Networks</a>
+            </li>
+            <li class="p-main-submenu-item subtitle">Networks</li>
+
+            <div class="blockchains-wrapper">
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_arbitrum-navbar" href="https://www.openzeppelin.com/networks/arbitrum">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Arbitrum-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Arbitrum</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_base-navbar" href="https://www.openzeppelin.com/networks/base">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Base-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Base</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_canton-navbar" href="/networks/canton">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/canton-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Canton</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_ethereum-navbar" href="https://www.openzeppelin.com/networks/ethereum">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Ethernaut-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Ethereum</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_linea-navbar" href="https://www.openzeppelin.com/networks/linea">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Linea-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Linea</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_midnight-navbar" href="https://www.openzeppelin.com/networks/midnight">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/midnight-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Midnight</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_op-mainnet-navbar" href="https://www.openzeppelin.com/networks/op-mainnet">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/Op%20Mainnet-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>OP Mainnet</a>
+              </li>
+              
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_starknet-navbar" href="https://www.openzeppelin.com/networks/starknet">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/starknet-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Starknet</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_stellar-navbar" href="https://www.openzeppelin.com/networks/stellar">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/stellar-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Stellar</a>
+              </li>
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_sui-navbar" href="/networks/sui">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/sui-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Sui</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_zama-navbar" href="https://www.openzeppelin.com/networks/zama">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/zama-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>Zama</a>
+              </li>
+
+              <li class="p-main-submenu-item is-blockchain">
+                <a id="network_zksync-navbar" href="https://www.openzeppelin.com/networks/zksync">
+                  <div class="nav-icon-wrapper no-bg">
+                    <img src="https://www.openzeppelin.com/hubfs/ZKsync-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+                  </div>ZKsync</a>
+              </li>
+            </div>
+            <li class="p-main-submenu-item subtitle p-10">Resources</li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="documentation-navbar" href="https://docs.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/docs-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Documentation</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="research-navbar" href="https://www.openzeppelin.com/research">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Research</a>
+            </li>
+
+            <li class="p-main-submenu-item gap-8">
+              <a id="ethernaut-navbar" href="https://ethernaut.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/etherenaut-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Ethernaut CTF</a>
+            </li>
+            <li class="p-main-submenu-item gap-8">
+              <a id="forum-navbar" href="https://forum.openzeppelin.com/" target="_blank">
+                <div class="nav-icon-wrapper no-bg">
+                  <img src="https://www.openzeppelin.com/hubfs/forum-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+                </div>Forum</a>
+            </li>
+            
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="p-main-submenu services">
+        <div>
+          <div class="back-button">Services</div>
+          <li class="p-main-submenu-item subtitle first">Overview</li>
+          <li class="p-main-submenu-item ">
+            <a id="security_audits-navbar" href="https://www.openzeppelin.com/security-audits">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/security-audits-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Security Audits</a>
+
+          </li>
+          <li class="p-main-submenu-item ">
+            <a id="continuous_security_program-navbar" href="https://www.openzeppelin.com/continuous-security-program">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/csm-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Continuous Security Program</a>
+
+          </li>
+          <li class="p-main-submenu-item ">
+            <a id="security_services-navbar" href="https://www.openzeppelin.com/security-services">
+              <div class="nav-icon-wrapper">
+                <img src="https://www.openzeppelin.com/hubfs/all-services-nav-icon-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>All Services</a>
+
+          </li>
+          <li class="p-main-submenu-item subtitle">Security Lifecycle</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#architect">
+              Architect</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#build">
+              Build</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#secure">
+              Secure</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="/security-services#support">
+              Support</a>
+          </li>
+
+
+          <li class="p-main-submenu-item subtitle">Featured Announcement</li>
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/introducing-continuous-security-program">
+            <div class="featured-image-wrapper">
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png" alt="Introducing the OpenZeppelin Continuous Security Program" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=221&amp;height=124&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=442&amp;height=247&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=663&amp;height=371&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=884&amp;height=494&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1105&amp;height=618&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/OpenZeppelin%20Continuous%20Security%20Program.png?width=1326&amp;height=741&amp;name=OpenZeppelin%20Continuous%20Security%20Program.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+            </div>
+            <div class="post-title">Introducing the OpenZeppelin Continuous Security Program  <br>→</div>
+
+          </a>
+        </div>
+
+      </div>
+      
+      
+      <div class="p-main-submenu solutions">
+        <div>
+          <div class="back-button">Solutions</div>
+          <li class="p-main-submenu-item subtitle first p-10">Financial Institutions</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="banks-navbar" href="https://www.openzeppelin.com/solutions/banks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/banks-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Banks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="asset_managers-navbar" href="https://www.openzeppelin.com/solutions/asset-managers">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/asset-managers-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Asset Managers</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="payment_networks-navbar" href="https://www.openzeppelin.com/solutions/payment-networks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/payment-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Payment Networks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="tokenization_platforms-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/tokenization-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Tokenization Platforms</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="capital_markets_infrastructure-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/cm-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Capital Markets Infrastructure</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="fintechs_and_neobanks-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/fn-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Fintechs &amp; Neobanks</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Networks &amp; Protocols</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="blockchain_networks-navbar" href="https://www.openzeppelin.com/solutions/blockchain-networks">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/bn-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Blockchain Networks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="defi_protocols-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/defi-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>DeFi Protocols</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Public Sector &amp; Regulators</li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="central_banks-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/cb-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Central Banks</a>
+          </li>
+          <li class="p-main-submenu-item gap-8 is-disabled">
+            <a id="regulators_and_standards_bodies-navbar" href="#">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/rs-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Regulators &amp; Standards Bodies</a>
+          </li>
+        </div>
+      </div>
+      <div class="p-main-submenu research">
+        <div>
+          <div class="back-button">Research</div>
+          <li class="p-main-submenu-item subtitle first p-10">Insights &amp; Education</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research-navbar" href="https://www.openzeppelin.com/research">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/research-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Research</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="research_security_audits-navbar" href="https://www.openzeppelin.com/research#security-audits">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/sa-nav-research-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Security Audits</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="customer_stories-navbar" href="https://www.openzeppelin.com/customer-stories">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/customer-stories-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Customer Stories</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="newsletter-navbar" href="/newsletter">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/newsletter-nav-icon-mobile-2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>The Onchain Brief</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8">
+            <a id="stats-navbar" href="https://www.openzeppelin.com/stats">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/stats-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Stats</a>
+          </li> 
+          <li class="p-main-submenu-item gap-8">
+            <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Why OpenZeppelin</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Featured Research</li>
+          
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/privacy-in-onchain-finance">
+            <div class="featured-image-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png" alt="Privacy in Onchain Finance: Balancing Transparency and Confidentiality" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=221&amp;height=124&amp;name=Privacy%20in%20Onchain%20Finance-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=442&amp;height=247&amp;name=Privacy%20in%20Onchain%20Finance-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=663&amp;height=371&amp;name=Privacy%20in%20Onchain%20Finance-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=884&amp;height=494&amp;name=Privacy%20in%20Onchain%20Finance-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1105&amp;height=618&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/Privacy%20in%20Onchain%20Finance-1.png?width=1326&amp;height=741&amp;name=Privacy%20in%20Onchain%20Finance-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+              
+
+            </div>
+
+            <div class="post-title">Privacy in Onchain Finance: Balancing Transparency and Confidentiality <br>→</div>
+
+          </a>
+          
+        </div>
+      </div>
+      <div class="p-main-submenu company">
+        <div>
+          <div class="back-button">Company</div>
+          <li class="p-main-submenu-item subtitle first p-10">Resources</li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="about-navbar" href="https://www.openzeppelin.com/about-us">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/about-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>About Us</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="news-navbar" href="https://www.openzeppelin.com/news">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/news-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>News</a>
+          </li>
+
+          <li class="p-main-submenu-item gap-8">
+            <a id="careers-navbar" href="https://www.openzeppelin.com/careers">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/careers-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Careers</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="why_openzeppelin-navbar" href="https://www.openzeppelin.com/why-openzeppelin">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/why-oz-nav-icon-mobile2.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>Why OpenZeppelin</a>
+          </li>
+          <li class="p-main-submenu-item gap-8">
+            <a id="faqs-navbar" href="https://www.openzeppelin.com/faqs">
+              <div class="nav-icon-wrapper no-bg">
+                <img src="https://www.openzeppelin.com/hubfs/faqs-nav-mobile.svg" role="presentation" loading="eager" width="32" height="32">
+              </div>FAQs</a>
+          </li>
+          <li class="p-main-submenu-item subtitle">Featured News</li>
+          
+          <a class="related-content-wrapper mobile" href="https://www.openzeppelin.com/news/spglobal-enters-agreement-to-acquire-openzeppelin">
+            <div class="featured-image-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png" alt="S&amp;P Global Enters Agreement to Acquire OpenZeppelin" loading="lazy" width="442" height="247" srcset="https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=221&amp;height=124&amp;name=S%26P_OZ_News-Image-1.png 221w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=442&amp;height=247&amp;name=S%26P_OZ_News-Image-1.png 442w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=663&amp;height=371&amp;name=S%26P_OZ_News-Image-1.png 663w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=884&amp;height=494&amp;name=S%26P_OZ_News-Image-1.png 884w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1105&amp;height=618&amp;name=S%26P_OZ_News-Image-1.png 1105w, https://www.openzeppelin.com/hs-fs/hubfs/S%26P_OZ_News-Image-1.png?width=1326&amp;height=741&amp;name=S%26P_OZ_News-Image-1.png 1326w" sizes="(max-width: 442px) 100vw, 442px">
+              
+
+            </div>
+
+            <div class="post-title">S&amp;P Global Enters Agreement to Acquire OpenZeppelin <br>→</div>
+
+          </a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="main-menu-wrapper">
+      <div class="main-items">
+        <li class="p-main-nav-item services">
+          <a href="#">Services</a>
+
+        </li>
+        <li class="p-main-nav-item solutions">
+          <a href="#">Solutions</a>
+
+        </li>
+
+        <li class="p-main-nav-item developers">
+          <a href="#">Developers</a>
+
+        </li>
+        
+
+        <li class="p-main-nav-item research">
+          <a href="#">Research</a>
+
+        </li>
+        <li class="p-main-nav-item company">
+          <a href="#">Company</a>
+
+        </li>
+      </div>
+
+      <div class="flex is-ac is-buttons">
+        <a id="talk_to_an_expert-navbar" class="button-new" href="https://www.openzeppelin.com/request?id=talk_to_an_expert-navbar">Talk to an Expert</a>
+        
+      </div>
+    </div>
+  </ul>
+</nav></div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="container-fluid content-wrapper">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+
+</header></div>
+      
+
+      
+
+      <main id="main-content" class="body-container-wrapper">
+        
+
+
+<div class="blog-post-EA">
+  
+  <section id="sub-navigation">
+  <div class="container-nav">
+    <div class="sub-nav">
+      <div class="sub-links">
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+        <a href="https://www.openzeppelin.com/research">Research</a> /
+        <a href="https://www.openzeppelin.com/research#security-audits" class="category-link">Security Audits</a>
+        
+        
+
+        <span class="hidden-991">/</span>
+        <div class="is-active hidden-991 blog-post-title">Linea Yield Manager Audit</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <section id="article-title">
+  <div class="announcement-spacer"></div>
+  <div class="container-920">
+    <div class="post-meta">
+      <span class="category">
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        <a href="https://www.openzeppelin.com/research#security-audits">Security Audits</a>
+        
+      </span>
+
+      
+    </div>
+    <h1 class="article-name all-h1"><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">Linea Yield Manager Audit</span></h1>
+  </div>
+</section>
+
+  <section id="article">
+  <div class="container-1430">
+    <div class="article-flex">
+      <div class="col-left">
+        
+        <div class="index-list">
+          <p class="title">Table of Content</p>
+        </div>
+        
+
+      </div>
+      <div class="col-middle article-body">
+        <div class="article-meta">
+          <p class="date"><span class="visible-767">- </span>February 18, 2026 
+          </p>
+          <div class="author-wrapper">
+            <div class="avatar-wrapper">
+              
+              <img src="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=22&amp;height=22&amp;name=oz-profile-1.png" alt="OpenZeppelin Security" loading="eager" width="22" height="22" srcset="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=11&amp;height=11&amp;name=oz-profile-1.png 11w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=22&amp;height=22&amp;name=oz-profile-1.png 22w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=33&amp;height=33&amp;name=oz-profile-1.png 33w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=44&amp;height=44&amp;name=oz-profile-1.png 44w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=55&amp;height=55&amp;name=oz-profile-1.png 55w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=66&amp;height=66&amp;name=oz-profile-1.png 66w" sizes="(max-width: 22px) 100vw, 22px">
+              
+              <p class="author-name">OpenZeppelin Security</p>
+            </div>
+            <div class="avatar-meta">
+              <div class="avatar-hidden">
+                
+                <img src="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=40&amp;height=40&amp;name=oz-profile-1.png" alt="OpenZeppelin Security" loading="lazy" width="40" height="40" srcset="https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=20&amp;height=20&amp;name=oz-profile-1.png 20w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=40&amp;height=40&amp;name=oz-profile-1.png 40w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=60&amp;height=60&amp;name=oz-profile-1.png 60w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=80&amp;height=80&amp;name=oz-profile-1.png 80w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=100&amp;height=100&amp;name=oz-profile-1.png 100w, https://www.openzeppelin.com/hs-fs/hubfs/oz-profile-1.png?width=120&amp;height=120&amp;name=oz-profile-1.png 120w" sizes="(max-width: 40px) 100vw, 40px">
+                
+              </div>
+              <div class="author-info">
+                <p class="author-name">OpenZeppelin Security</p>
+                
+                <p class="author-role">Security Audits</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-content">
+          <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p><strong>Summary</strong></p>
+<!--more-->
+<article>
+<article>
+<h2>Summary</h2>
+<ul>
+<li><strong>Type:</strong> DeFi</li>
+<li><strong>Timeline:</strong> From 2025-11-03 → To 2025-12-05</li>
+<li><strong>Languages:</strong> Solidity</li>
+</ul>
+<p><strong>Findings</strong></p>
+<ul>
+<li>Total issues: 44 (33 resolved, 11 unresolved)</li>
+<li>Critical: 0 (0 resolved)</li>
+<li>High: 1 (1 resolved)</li>
+<li>Medium: 7 (7 resolved)</li>
+<li>Low: 22 (14 resolved)</li>
+</ul>
+<p><strong>Notes &amp; Additional Information</strong></p>
+<ul>
+<li>10 notes raised (7 resolved / 3 unresolved)</li>
+<li>Client reported issues: 4 (4 resolved)</li>
+</ul>
+</article>
+</article>
+<p>&nbsp;</p>
+<h2 id="scope">Scope</h2>
+<p>OpenZeppelin audited the <a href="https://github.com/Consensys/linea-monorepo">Consensys/linea-monorepo</a> repository at commit <a href="https://github.com/Consensys/linea-monorepo/tree/4360e31fa8c8259f6b6cbccdd45bb94032a792c6">4360e31f</a>.</p>
+<p>The audit included a <a href="https://github.com/Consensys/linea-monorepo/compare/contract-audit-2025-01-06...4360e31fa8c8259f6b6cbccdd45bb94032a792c6">diff review</a> of the rollup contract upgrades from the <a href="https://github.com/Consensys/linea-monorepo/tree/contract-audit-2025-01-06"><code>contract-audit-2025-01-06</code></a> branch and a full audit of the new yield management system.</p>
+<p>In scope were the following files:</p>
+<div class="codehilite">
+<pre><span>&nbsp;</span><code>contracts/contracts
+├── LineaRollup.sol (diff audit)
+├── LineaRollupBase.sol (diff audit)
+├── LineaRollupYieldExtension.sol
+├── lib
+│   ├── ErrorUtils.sol
+│   ├── Math256.sol
+│   └── YieldManagerPauseManager.sol
+└── yield
+    ├── LidoStVaultYieldProvider.sol
+    ├── LidoStVaultYieldProviderFactory.sol
+    ├── YieldManager.sol
+    ├── YieldManagerStorageLayout.sol
+    ├── YieldProviderBase.sol
+    └── libs
+        └── ValidatorContainerProofVerifier.sol
+</code></pre>
+</div>
+<p><em><strong>Update</strong>: We have reviewed all the submissions and have finalized the audit report, with commit <a href="https://github.com/Consensys/linea-monorepo/commit/9c16ce37d2dca6e6106cdc83202979c138ee0130">9c16ce3</a> being the final commit reviewed. Additionally, we have validated that the below Ethereum mainnet deployments of the contracts fully match the contracts in the last reviewed commit.</em></p>
+<ul>
+<li><em><code>YieldManager</code> implementation: <code>0x751236A1aFC11B7F1A7630fe87b0Bd96AC5203C4</code></em></li>
+<li><em><code>ValidatorContainerProofVerifier</code>: <code>0x2309C45d44105928b483f608dD6140Fb65f3EBde</code></em></li>
+<li><em><code>LidoStVaultYieldProviderFactory</code>: <code>0xE4FC9F1A8cB97fEAd3C2b37c11AD5B1C2eF73959</code></em></li>
+<li><em><code>LineaRollup</code> implementation: <code>0x04728BF704a716C26F9EF4085013b760AC88563</code></em></li>
+</ul>
+<h2 id="system-overview">System Overview</h2>
+<p>The Linea Yield Manager enables the Linea bridge to earn yield on deposited ETH by staking it through external yield providers while maintaining sufficient reserves for user withdrawals. The system integrates with Lido's StakingVault infrastructure to stake ETH and mint liquid staking tokens (LST), distributing generated yield back to L2 users.</p>
+<h3 id="withdrawal-liveness-guarantee">Withdrawal Liveness Guarantee</h3>
+<p>A core invariant is that user withdrawals must never be permanently blocked. To ensure liveness, the system provides multiple withdrawal pathways:</p>
+<ul>
+<li><strong>Normal ETH withdrawal</strong>: When sufficient ETH is available in the <code>L1MessageService</code> reserve, it can be withdrawn normally.</li>
+<li><strong>LST withdrawal</strong>: When the <code>L1MessageService</code> reserve is depleted, users can withdraw Lido LST instead of ETH through <code>withdrawLST</code>.</li>
+<li><strong>Permissionless unstaking</strong>: When the <code>L1MessageService</code> reserve falls below the minimum threshold, users can trigger beacon chain withdrawals.</li>
+</ul>
+<p>This ensures that at least one viable withdrawal mechanism remains available under all conditions.</p>
+<h3 id="architecture">Architecture</h3>
+<p>The <code>YieldManager</code> contract uses a delegatecall-based adaptor pattern where yield provider implementations are called via delegatecall from the YieldManager context. This allows provider-specific logic to access and modify <code>YieldManager</code> storage directly. The current implementation includes a <code>LidoStVaultYieldProvider</code> adaptor for integration with Lido's vault system.</p>
+<h4 id="key-components">Key Components</h4>
+<ul>
+<li><strong><code>YieldManager</code></strong>: The core contract managing yield operations, reserve thresholds, and provider coordination</li>
+<li><strong>Provider Adaptors</strong>: Implementation contracts called via delegatecall to handle provider-specific logic</li>
+<li><strong><code>LineaRollupYieldExtension</code></strong>: An extension of the rollup contract that enables <code>withdrawLST</code> to mint LST when insufficient ETH is available and facilitates yield distribution to L2</li>
+<li><strong><code>ValidatorContainerProofVerifier</code></strong>: Verifies beacon chain validator state using EIP-4788 for permissionless unstaking</li>
+</ul>
+<h3 id="reserve-management">Reserve Management</h3>
+<p>The system maintains two reserve thresholds in the <code>L1MessageService</code> (rollup) contract:</p>
+<ul>
+<li><strong>Minimum Reserve</strong>: Critical threshold below which permissionless unstaking is enabled</li>
+<li><strong>Target Reserve</strong>: Preferred level that the system attempts to maintain</li>
+</ul>
+<p>When reserves fall below the minimum threshold, users can permissionlessly initiate beacon chain withdrawals after providing proofs of validator state. Privileged operators can also unstake and manage reserves through role-based access controls.</p>
+<h3 id="lst-liability-tracking">LST Liability Tracking</h3>
+<p>When users withdraw during reserve deficits, they can receive Lido LST instead of ETH. The system tracks LST liabilities per provider, which are overcollateralized and lock funds in the Lido vault. LST liabilities are repaid when funds are available, with the locked amount preventing those funds from being withdrawn until repayment occurs.</p>
+<h2 id="security-model-and-trust-assumptions">Security Model and Trust Assumptions</h2>
+<p>This section outlines the trust assumptions identified during the audit.</p>
+<h3 id="delegatecall-trust-model">Delegatecall Trust Model</h3>
+<p>The delegatecall-based adaptor architecture means that provider implementations execute with full access to <code>YieldManager</code> storage. As such, malicious or buggy adaptors can corrupt accounting and bypass access controls.</p>
+<p>Provider adaptors are trusted system components that must be carefully audited before deployment. The <code>SET_YIELD_PROVIDER_ROLE</code> holder controls which adaptors are registered.</p>
+<h3 id="external-protocol-dependencies">External Protocol Dependencies</h3>
+<p>The system relies on several external protocols operating correctly:</p>
+<ul>
+<li><strong>Lido StakingVault</strong>: Handles ETH deposits, validator operations, and LST minting</li>
+<li><strong>Lido VaultHub</strong>: Manages vault connections, liability tracking, and withdrawable amounts</li>
+<li><strong>EIP-4788 Beacon Roots</strong>: Provides beacon chain state for permissionless unstaking proofs</li>
+<li><strong>Beacon Chain</strong>: Validator withdrawals must eventually settle for pending amounts to clear</li>
+</ul>
+<h3 id="other-design-features">Other Design Features</h3>
+<p><strong>Permissioned Unstaking Gas Optimization</strong>: The <code>unstake</code> function does not validate withdrawal requests or track pending amounts to save gas. Invalid requests only impact yield efficiency, not fund safety.</p>
+<p><strong>Pausable Permissionless Actions</strong>: Permissionless unstaking and reserve replenishment can be paused by the <code>PAUSE_NATIVE_YIELD_PERMISSIONLESS_ACTIONS_ROLE</code>. This allows privileged actors to halt permissionless operations during emergencies or system maintenance.</p>
+<p><strong>L2 Yield Distribution</strong>: Yield distribution to L2 users is managed by a separate contract on L2. The implementation details and distribution criteria are not part of the audit scope.</p>
+<h3 id="privileged-roles">Privileged Roles</h3>
+<p>The <code>YieldManager</code> contract employs the following privileged roles:</p>
+<ul>
+<li><strong><code>DEFAULT_ADMIN_ROLE</code></strong>: Manages all role assignments and controls system-wide access</li>
+<li><strong><code>YIELD_PROVIDER_STAKING_ROLE</code></strong>: Transfers ETH to yield providers when withdrawal reserve is above minimum threshold</li>
+<li><strong><code>YIELD_PROVIDER_UNSTAKER_ROLE</code></strong>: Initiates beacon chain withdrawals, withdraws ETH from providers, and manages reserve replenishment</li>
+<li><strong><code>YIELD_REPORTER_ROLE</code></strong>: Reports earned yield and distributes it to L2</li>
+<li><strong><code>STAKING_PAUSE_CONTROLLER_ROLE</code></strong>: Pauses and unpauses beacon chain staking per provider</li>
+<li><strong><code>OSSIFICATION_INITIATOR_ROLE</code></strong>: Initiates the irreversible ossification process to shut down a provider</li>
+<li><strong><code>OSSIFICATION_PROCESSOR_ROLE</code></strong>: Completes ossification and finalizes provider shutdown</li>
+<li><strong><code>WITHDRAWAL_RESERVE_SETTER_ROLE</code></strong>: Updates minimum and target reserve thresholds</li>
+<li><strong><code>SET_YIELD_PROVIDER_ROLE</code></strong>: Registers and removes yield provider adaptors`(critical trust boundary)</li>
+<li><strong><code>SET_L2_YIELD_RECIPIENT_ROLE</code></strong>: Manages an allowlist of L2 addresses that can receive yield</li>
+<li>The system implements granular pause management through separate role pairs for pausing and unpausing different operations:
+<ul>
+<li>staking (<code>PAUSE/UNPAUSE_NATIVE_YIELD_STAKING_ROLE</code>)</li>
+<li>unstaking (<code>PAUSE/UNPAUSE_NATIVE_YIELD_UNSTAKING_ROLE</code>)</li>
+<li>permissionless actions (<code>PAUSE/UNPAUSE_NATIVE_YIELD_PERMISSIONLESS_ACTIONS_ROLE</code>)</li>
+<li>donations (<code>PAUSE/UNPAUSE_NATIVE_YIELD_DONATION_ROLE</code>)</li>
+<li>yield reporting (<code>PAUSE/UNPAUSE_NATIVE_YIELD_REPORTING_ROLE</code>)</li>
+</ul>
+</li>
+</ul>
+<div style="page-break-after: always;">&nbsp;</div>
+<h2 id="high-severity">High Severity</h2>
+<h3 id="duplicate-validator-requests-dos-permissionless-unstaking">Duplicate Validator Requests DoS Permissionless Unstaking</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L568-601"><code>unstakePermissionless</code> function</a> does not track which validators have been used for unstaking requests. Thus, an attacker can submit multiple requests for the same validator using proofs from different slots or timestamps, each passing the validation. The global <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L599"><code>pendingPermissionlessUnstake</code></a> counter is incremented for each request, but when the actual withdrawal arrives, only the real amount is decremented. The remaining inflated amount permanently blocks future permissionless unstaking across all providers due to the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L595-596">global target deficit check</a>.</p>
+<p>For example, with a 200 ETH target deficit and 100 ETH withdrawable from a validator, an attacker submits two permissionless unstake requests for the same validator using proofs from different slots. Both proofs get verified successfully as the validator was active at both slots. The pending counter increases by 200 ETH, filling the deficit cap. When the actual withdrawal arrives, only 100 ETH is withdrawn and decremented, leaving 100 ETH permanently inflated in the pending counter. This blocks all future permissionless unstaking globally, requiring privileged intervention to fix. The attack is trivial to execute by back-running or copying legitimate permissionless unstake transactions without needing to generate proofs.</p>
+<p>Consider updating the validator verifier contract to also prove the total pending withdrawals for a validator to enforce correct limits. Alternatively, per-provider pending caps based on user funds could be explored.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1879">pull request 1879</a>. The review of the fix required an extended review due to comprehensive changes to the permissionless unstaking flow. The details of the extension can be found in the appendix.</em></p>
+<!-- cce64dbe-3318-46e7-b928-837bf3aad021 -->
+<h2 id="medium-severity">Medium Severity</h2>
+<h3 id="zero-amount-provider-withdrawal-blocks-partial-reserve-replenishment">Zero-Amount Provider Withdrawal Blocks Partial Reserve Replenishment</h3>
+<p>The permissionless <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L787-L826"><code>replenishWithdrawalReserve</code></a> function allows anyone to top up the L1 withdrawal reserve when it falls below the minimum threshold. When the YieldManager's own balance is insufficient to cover the full deficit, the function computes a withdrawal amount as the minimum of the provider's withdrawable balance and the remaining deficit. However, when the provider has zero withdrawable value but the YieldManager holds some ETH, the computed <code>withdrawAmount</code> is zero and the function still attempts to withdraw from the provider.</p>
+<p>The withdrawal call eventually reaches Lido's <a href="https://github.com/lidofinance/core/blob/f9a9f807fd716131f7ab99df8df0372c3c962363/contracts/0.8.25/vaults/StakingVault.sol#L246"><code>StakingVault.withdraw</code></a>, which reverts when the amount is zero. This prevents partial replenishment during low-liquidity states when the provider has exhausted its immediately withdrawable funds but the YieldManager still holds ETH that could be used.</p>
+<p>Consider skipping the provider withdrawal when <code>withdrawAmount</code> is zero and directly funding the reserve with the available YieldManager balance.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1853/commits/32110367e5643cdf71914b5e6a4b1759d8bbefc8">3211036</a> in <a href="https://github.com/Consensys/linea-monorepo/pull/1853">PR1853</a>.</em></p>
+<!-- 9f5ee6e9-8704-409b-91b2-47d605ad4333 -->
+<h3 id="incorrect-target-deficit-causes-unnecessary-staking-pause">Incorrect Target Deficit Causes Unnecessary Staking Pause</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L750-L778"><code>_addToWithdrawalReserve</code></a> function augments the withdrawal reserve by combining the YieldManager's balance with the funds withdrawn from a yield provider. The function <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L767">passes the full reserve deficit</a> to the internal withdrawal logic without accounting for the YieldManager's balance that will also contribute to covering the deficit.</p>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L652-L667"><code>_withdrawWithTargetDeficitPriorityAndLSTLiabilityPrincipalReduction</code></a> function compares the withdrawal amount against the target deficit and pauses staking when the withdrawal amount is insufficient to cover it. Since it receives an overstated deficit, it incorrectly concludes that the withdrawal is insufficient, skips the LST payment, and pauses staking even when the combined funds fully cover the actual deficit.</p>
+<p>For example, suppose the reserve deficit is 100 ETH, the YieldManager holds 60 ETH, and the function is called to add 100 ETH to the reserve. The contract needs to withdraw 40 ETH from the provider, which when combined with the YieldManager's 60 ETH exactly covers the 100 ETH deficit. However, the internal function compares the 40 ETH withdrawal against the full 100 ETH deficit, concludes that it is insufficient, and pauses staking unnecessarily.</p>
+<p>Consider subtracting the YieldManager balance from the target deficit before passing it to the internal function.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/7d3839c71caf12fcf8e6dc13cab24de97c8efc06#diff-5859d4fa4970e34f899c9068e747565347ba390a46e54ead17419d5c81df83b4">7d3839c</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a> by moving the staking pause logic at the beginning of the function.</em></p>
+<!-- 153a38ef-6be3-4b45-9b1e-ae0084c19595 -->
+<h3 id="forwarded-eth-inflates-system-balance-and-bypasses-reserve-deficit-gate">Forwarded ETH Inflates System Balance and Bypasses Reserve Deficit Gate</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L568-L601"><code>unstakePermissionless</code></a> function allows anyone to trigger validator withdrawals when the reserve is below the minimum threshold. While the function has been made <code>payable</code> to cover Lido's trigger fees, the forwarded ETH is credited to the YieldManager before the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L579">deficit gate check</a>.</p>
+<p>The gate check uses <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L147-L155"><code>_getTotalSystemBalance</code></a> which includes the YieldManager's balance, now inflated by the forwarded value. Since the minimum reserve threshold is calculated as a percentage of total system balance, the forwarded value increases both the total and the threshold proportionally. This can make a reserve that was above the minimum appear to be below it, bypassing the gate. After passing the gate, the forwarded value is sent to Lido and any excess is refunded, making the attack economically viable.</p>
+<p>Consider excluding the forwarded value from the system balance calculation when evaluating the minimum reserve for permissionless unstaking.</p>
+<p><em><strong>Update:</strong> Resolved in commits 3d27ce6, 2aaab97, 8a89343, and 674e4e1 in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1873">1873</a>.</em></p>
+<!-- a1b976ab-8467-4d11-858e-ebd8339ba6fb -->
+<h3 id="staking-paused-when-reserve-target-is-exactly-met">Staking Paused When Reserve Target Is Exactly Met</h3>
+<p>When <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L657-L665">withdrawing from a yield provider to restore the reserve target</a>, staking for that provider is paused if the withdrawn amount fails to meet the target. However, staking is also paused when the withdrawn amount exactly equals the target deficit, even though the reserve has been successfully restored to its target level.</p>
+<p>Consider only pausing staking when the withdrawn amount is strictly less than the target deficit, allowing normal operation to continue when the target is exactly met.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1717">PR 1717</a> at <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/7d3839c71caf12fcf8e6dc13cab24de97c8efc06#diff-5859d4fa4970e34f899c9068e747565347ba390a46e54ead17419d5c81df83b4">commit 7d3839c</a>. The team stated:</em></p>
+<blockquote>
+<p><code>_withdrawWithTargetDeficitPriorityAndLSTLiabilityPrincipalReduction</code> function is removed as of <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/5cbe6b5e71d9425f2c22f4ea9e33fc85c71936cd#diff-5859d4fa4970e34f899c9068e747565347ba390a46e54ead17419d5c81df83b4">5cbe6b5e</a></p>
+<p>As of <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/7d3839c71caf12fcf8e6dc13cab24de97c8efc06#diff-5859d4fa4970e34f899c9068e747565347ba390a46e54ead17419d5c81df83b4">7d3839c</a>, the permissioned withdrawal functions comply with the recommendation to “only pause staking when the withdrawn amount is strictly less than the target deficit”</p>
+</blockquote>
+<!-- f2301c19-7478-46d9-88eb-d21ea999fb1e -->
+<h3 id="lst-principal-repayment-during-withdrawals-does-not-decrement-user-funds">LST Principal Repayment During Withdrawals Does Not Decrement User Funds</h3>
+<p>When withdrawing from a yield provider, the <code>_withdrawWithTargetDeficitPriorityAndLSTLiabilityPrincipalReduction</code> function pays any outstanding LST principal liability and then <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L660-L661">reduces the withdrawal amount</a> by the LST principal paid. This reduced withdrawal amount is passed to <code>_delegatecallWithdrawFromYieldProvider</code>, which <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L685-L686">decrements the user funds by that amount</a>. However, the withdrawal amount no longer includes the LST principal that was already paid and deducted from it. Since the internal LST repayment functions do not adjust user funds, the user funds are decremented insufficiently, causing them to be overstated by the LST principal amount paid.</p>
+<p>This contrasts with the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L462-L470">funding flow</a>, where the full amount is first sent to the provider, LST principal is then paid from the provider's balance, and the user funds are incremented only by the remaining amount after LST repayment.</p>
+<p>Consider decrementing the user funds and system total by the LST principal amount paid when it occurs during withdrawals, matching the accounting logic used in the funding flow.</p>
+<p><em><strong>Update:</strong> Resolved at commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/5cbe6b5e71d9425f2c22f4ea9e33fc85c71936cd#diff-5859d4fa4970e34f899c9068e747565347ba390a46e54ead17419d5c81df83b4">5cbe6b5</a>.</em></p>
+<!-- abdc91cf-5a52-44e7-b48e-7570b074f188 -->
+<h3 id="user-funds-not-decremented-when-lst-is-withdrawn">User Funds Not Decremented When LST Is Withdrawn</h3>
+<p>When <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L909-L935">withdrawing LST</a>, the function checks that the total LST liability plus the new amount does not exceed the user funds on the provider, then calls the provider to mint the LST tokens. The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L519">provider increments the LST liability principal</a> to track the debt, but the user funds are never decremented. Since LST withdrawals are an advance on user funds already on the provider (as noted in the code comment), the actual provider balance decreases by the amount withdrawn while the tracked user funds remain unchanged, causing them to be overstated by the LST amount withdrawn.</p>
+<p>Consider decrementing the user funds and system total by the LST amount when withdrawing LST to accurately reflect that these funds have been used to mint LST tokens.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/5cbe6b5e71d9425f2c22f4ea9e33fc85c71936cd#diff-5859d4fa4970e34f899c9068e747565347ba390a46e54ead17419d5c81df83b4">5cbe6b5</a>. The fix also affected yield reporting so an additional change in the yield calculation was made at commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/0e46ee6efe6ed79526f2a2ed55c1ca82f7e0e663#diff-6a0d62d0b2d1bb60324ab21f850124bab86ca41b3d021eaf6086c47b252e9daa">0e46ee6</a>.</em></p>
+<!-- 712800c1-462c-4592-b4de-ca1cecc52d96 -->
+<h3 id="reentrancy-from-lido-vault-refund-address-callback">Reentrancy From Lido Vault Refund Address Callback</h3>
+<p>The Lido staking vault <a href="https://github.com/lidofinance/core/blob/f9a9f807fd716131f7ab99df8df0372c3c962363/contracts/0.8.25/vaults/StakingVault.sol#L405">calls the refund address</a> during withdrawals, giving execution control to an arbitrary external address. This occurs during the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L568-601"><code>unstakePermissionless</code></a> flow, creating a reentrancy vector. While no specific exploit vector was identified in the current implementation, similar risks may exist with other vendor contracts.</p>
+<p>Consider adding reentrancy guards to external <code>YieldManager</code> functions, excluding the <code>receive</code> function avoid blocking withdrawals from vaults.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1889">PR 1889</a> at commit <a href="https://github.com/Consensys/linea-monorepo/pull/1889/commits/ee9c6399d70797a7796e4f1f12a6bd0227fc971a">ee9c63</a>.</em></p>
+<!-- 4b766280-536f-43ce-b315-66bb457de18e -->
+<h2 id="low-severity">Low Severity</h2>
+<h3 id="pause-event-is-not-emitted-consistently">Pause Event Is Not Emitted Consistently</h3>
+<p>The <code>YieldProviderStakingPaused</code> event <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L840">is emitted</a> when the pause is directly triggered. However, it is not emitted when the pause is caused by the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L856"><code>_pauseStakingIfNotAlready</code> function</a>, which is triggered when unstaking fails to eliminate the target deficit.</p>
+<p>Consider emitting the <code>YieldProviderStakingPaused</code> event whenever staking is paused.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1750/commits/b9871bb5f7f0fce39bf0d15050150ac64e95ac14">b9871bb</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1750">1750</a>.</em></p>
+<!-- 7c575ca8-b817-44b0-8ef3-47509768c0ef -->
+<h3 id="provider-funding-event-is-emitted-with-incorrect-arguments">Provider Funding Event Is Emitted With Incorrect Arguments</h3>
+<p>The <code>YieldProviderFunded</code> event specifies the last two of its parameters as <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/interfaces/IYieldManager.sol#L81-L82"><code>userFundIncrement</code> and <code>lstPrincipalRepaid</code></a>. However, the event is emitted with its arguments passed in <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L471">the reverse order</a>.</p>
+<p>Consider swapping the order of the last two parameters either in the event declaration or emission.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/5cbe6b5e71d9425f2c22f4ea9e33fc85c71936cd">5cbe6b5</a>.</em></p>
+<!-- 164f0aa3-4368-4563-9da2-dead85de1804 -->
+<h3 id="floating-pragma">Floating Pragma</h3>
+<p>Pragma directives should be fixed to clearly identify the Solidity version with which the contracts will be compiled.</p>
+<p>Throughout the codebase, multiple instances of floating pragma directives were identified:</p>
+<ul>
+<li><code>LidoStVaultYieldProvider.sol</code> has the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/LidoStVaultYieldProvider.sol#L2"><code>solidity ^0.8.30</code></a> floating pragma directive.</li>
+<li><code>LidoStVaultYieldProviderFactory.sol</code> has the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/LidoStVaultYieldProviderFactory.sol#L2"><code>solidity ^0.8.30</code></a> floating pragma directive.</li>
+<li><code>YieldManager.sol</code> has the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldManager.sol#L2"><code>solidity ^0.8.30</code></a> floating pragma directive.</li>
+</ul>
+<p>Consider using fixed pragma directives.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/3fafb8075aef1f627dc11b028629a6bac6af62ca">3fafb80</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a>.</em></p>
+<!-- fd36693e-8165-4dcb-aba7-f13389c91723 -->
+<h3 id="incomplete-docstrings">Incomplete Docstrings</h3>
+<p>Throughout the codebase, multiple instances of incomplete docstrings were identified:</p>
+<ul>
+<li>In <code>LidoStVaultYieldProvider.sol</code>, the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/LidoStVaultYieldProvider.sol#L620-L628"><code>exitVendorContracts</code></a> function, the <code>_yieldProvider</code> parameter is not documented.</li>
+<li>In <code>YieldManager.sol</code>, for the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldManager.sol#L59-L61"><code>minimumWithdrawalReservePercentageBps</code></a>, <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldManager.sol#L64-L66"><code>minimumWithdrawalReserveAmount</code></a>, <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldManager.sol#L69-L71"><code>targetWithdrawalReservePercentageBps</code></a>, and <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldManager.sol#L74-L76"><code>targetWithdrawalReserveAmount</code></a> functions, not all return values are documented.</li>
+</ul>
+<p>Consider thoroughly documenting all functions/events (and their parameters or return values) that are part of a contract's public API. When writing docstrings, consider following the <a href="https://solidity.readthedocs.io/en/latest/natspec-format.html">Ethereum Natural Specification Format</a> (NatSpec).</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/83c88b1eb77f06ec0ad1eeab446802fec69f06ed">83c88b1</a> and <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/0e1c12185ef1a5ac0a9d80366a20cfebb3898d9f">0e1c121</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a>.</em></p>
+<!-- 5840eace-0b6d-4301-969e-f803ac19e702 -->
+<h3 id="missing-docstrings">Missing Docstrings</h3>
+<p>Throughout the codebase, multiple instances of missing docstrings were identified:</p>
+<ul>
+<li>In <code>Math256.sol</code>, the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/lib/Math256.sol#L10-L26"><code>Math256</code> library</a></li>
+<li>In <code>YieldProviderBase.sol</code>, the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldProviderBase.sol#L14"><code>YIELD_MANAGER</code> state variable</a></li>
+</ul>
+<p>Consider thoroughly documenting all functions (and their parameters) that are part of any contract's public API. Functions implementing sensitive functionality, even if not public, should be clearly documented as well. When writing docstrings, consider following the <a href="https://solidity.readthedocs.io/en/latest/natspec-format.html">Ethereum Natural Specification Format</a> (NatSpec).</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/34153687160c8fd19379143e9e85f6667b9dbdd7">3415368</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a>.</em></p>
+<!-- 6e23d6a0-ed0b-4273-b9ef-afd9488299b3 -->
+<h3 id="lst-withdrawal-can-be-stuck-when-single-provider-lacks-liquidity">LST Withdrawal Can Be Stuck When Single Provider Lacks Liquidity</h3>
+<p>When claiming a message and <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/LineaRollupYieldExtension.sol#L138-L153">withdrawing LST</a>, the user must specify a single yield provider to mint the full withdrawal amount. The withdrawal <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L926-L928">reverts if that provider's user funds are insufficient</a> to cover the amount plus the existing LST liability. For large withdrawals, a provider that had sufficient liquidity when the user submitted the withdrawal message may no longer have it when the message is claimed on-chain. Since the user cannot split the withdrawal amount across multiple providers after message submission, the withdrawal becomes stuck until that specific provider regains sufficient liquidity.</p>
+<p>Consider allowing users to supply an array of yield providers with corresponding amounts that add up to the total withdrawal value. Doing so will allow withdrawals to be fulfilled across multiple providers even when no single provider has sufficient liquidity.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. Linea team stated:</em></p>
+<blockquote>
+<p>Operational mitigations: - We only plan to use a single YieldProvider for the time being - We will run a backend automation service to regularly rebalance funds such that the <code>L1MessageService</code> doesn’t fall into a sustained deficit</p>
+<p>Concerns: - We’d prefer not to break the “single call, single YieldProvider” semantics. Bundling multiple YieldProvider (and hence different staking vendor contract systems) into a single call will increase the complexity significantly.</p>
+</blockquote>
+<!-- 4b844eaa-be38-4f96-9271-36d0c3c88610 -->
+<h3 id="reserve-funding-function-vulnerable-to-dos-if-called-with-zero-value">Reserve Funding Function Vulnerable to DoS if Called With Zero Value</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L391-L393"><code>_fundReserve</code></a> internal function calls the rollup contract's <code>fund()</code> function, which <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/LineaRollupYieldExtension.sol#L77">reverts if the sent value is zero</a>. While current call sites handle this appropriately, in future code iterations, calling this function without checking for a zero value first could introduce a DoS state where operations fail unexpectedly.</p>
+<p>Consider removing the zero-value check in the rollup contract's <code>fund()</code> function to allow zero-value calls to succeed harmlessly. Doing so will make the function safer to use without requiring all callers to perform explicit zero-value checks.</p>
+<p><em><strong>Update:</strong> Acknowledged, will resolve.</em></p>
+<!-- c578cae1-e509-44f4-b5ba-8256d297049f -->
+<h3 id="permissionless-unstake-cap-ignores-system-wide-liquidity">Permissionless Unstake Cap Ignores System-Wide Liquidity</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L548-L601"><code>unstakePermissionless</code></a> function is designed to cap permissionless unstake requests to the remaining target deficit that cannot be covered by other liquidity sources. However, when <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L592-L594">calculating available funds</a>, the implementation only considers the withdrawable value from the specified yield provider, not from all registered providers. This allows a caller to target a provider with low or zero withdrawable value and pass the cap check even when other providers have sufficient immediate liquidity to cover the entire deficit. The result is unnecessary validator exits that reduce yield efficiency, as funds are being unstaked from the beacon chain when they could have been withdrawn from other providers immediately.</p>
+<p>Consider whether the tradeoff between yield efficiency and implementation complexity is acceptable, or if system-wide liquidity should be accounted for through alternative mechanisms.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. The Linea team stated:</em></p>
+<blockquote>
+<p>The worst outcome here is that excess <code>unstakePermissionless</code> is permitted. This is acceptable as it prioritizes our core goal - censorship-resistant user withdrawals - over yield efficiency.</p>
+<p>Iterating across the <code>withdrawableValue()</code> call for each yieldProvider (an unbounded array) can be problematic and introduce a DOS vector.</p>
+<p>Here we are given the choice between being more lenient than required for unstakePermissionless, and being stricter than required - we prefer to be more lenient given it aligns with our core goal and enables simpler implementation.</p>
+</blockquote>
+<!-- 57f6b76d-99c9-4674-a33d-d1cff1783688 -->
+<h3 id="fallback-operator-cannot-renounce-any-role">Fallback Operator Cannot Renounce Any Role</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/interfaces/l1/ILineaRollup.sol#L284-L286">interface documentation</a> states that the <code>OnlyNonFallbackOperator</code> error is thrown when the fallback operator tries to renounce their operator role. However, the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/LineaRollupBase.sol#L147-L153"><code>renounceRole</code> implementation</a> reverts for any role when the caller is the fallback operator, not just the operator role. This prevents the fallback operator from voluntarily renouncing other roles they may hold such as verifier setter or admin roles, even though role admins can still revoke those roles.</p>
+<p>Consider restricting the check to only prevent renouncing the operator role specifically, allowing the fallback operator to renounce other roles as intended by the interface documentation.</p>
+<p><em><strong>Update:</strong> Acknowledged, will resolve. Linea team stated:</em></p>
+<blockquote>
+<p>Operationally we will only provide the single OPERATOR_ROLE role to the fallbackOperator address.</p>
+</blockquote>
+<!-- 050f2784-ac1d-42d7-b313-e3093f05e40e -->
+<h3 id="incorrect-argument-order-in-finalization-state-error">Incorrect Argument Order in Finalization State Error</h3>
+<p>The <code>FinalizationStateIncorrect</code> error is defined with the signature <code>error FinalizationStateIncorrect(bytes32 expected, bytes32 value)</code>, indicating that the expected value should come first. In <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/LineaRollupBase.sol#L183-L186"><code>setFallbackOperator</code></a>, the error is called with arguments reversed, passing the actual value first and the expected value second.</p>
+<p>Consider swapping the argument order to match the error signature and the correct usage in other locations.</p>
+<p><em><strong>Update:</strong> Acknowledged, will resolve.</em></p>
+<!-- 4efda322-06eb-4647-b3e0-5fdb9ce351bb -->
+<h3 id="funding-allowed-during-pending-ossification">Funding Allowed During Pending Ossification</h3>
+<p>During the ossification process, <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L515-L516"><code>withdrawLST</code></a> and <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L325-L327"><code>payLSTPrincipal</code></a> block operations when either ossification is initiated or completed. However, <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L162-L163"><code>fundYieldProvider</code></a> only checks if ossification is completed, not if it has been initiated. This allows privileged funding to continue during pending ossification, creating an inconsistency where LST operations are frozen but staking operations can still occur through the privileged role.</p>
+<p>Consider adding an <code>isOssificationInitiated</code> check to <code>fundYieldProvider</code>.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/5cbe6b5e71d9425f2c22f4ea9e33fc85c71936cd#diff-6a0d62d0b2d1bb60324ab21f850124bab86ca41b3d021eaf6086c47b252e9daa">5cbe6b5e</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a>.</em></p>
+<!-- 73e83b7e-a66a-4782-bc27-2f90e05fa505 -->
+<h3 id="node-operator-fees-not-disbursed-when-balance-exactly-equals-fee">Node Operator Fees Not Disbursed When Balance Exactly Equals Fee</h3>
+<p>When paying node operator fees, the function <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L301">checks if the available vault balance is strictly greater than the accrued fees</a> before disbursing. This prevents payment when the available balance exactly equals the fees, even though there are sufficient funds for a full payment. As a result, the fees remain unpaid and continue to accrue until the balance exceeds the fee amount.</p>
+<p>Consider changing the condition to use a greater-than-or-equal-to comparison to allow payment when the balance exactly matches the accrued fees.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/0e46ee6efe6ed79526f2a2ed55c1ca82f7e0e663#diff-6a0d62d0b2d1bb60324ab21f850124bab86ca41b3d021eaf6086c47b252e9daa">0e46ee6</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a> by unconditionally attempting node operator fee payment.</em></p>
+<!-- 625c0382-4ac4-4c47-b8f6-36293dc5e1d3 -->
+<h3 id="provider-events-do-not-include-yield-provider-address">Provider Events Do Not Include Yield Provider Address</h3>
+<p>When <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L531-L546">unstaking from yield providers</a>, provider adapters emit events via delegatecall, logging them from the yield manager's address. However, these <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L69-L75">provider-specific events</a> do not include the identifying yield provider address that was passed to the YieldManager function. When multiple yield providers are registered, this makes it ambiguous which provider emitted the event.</p>
+<p>Consider emitting standardized events at the YieldManager level. These events should include the yield provider address, with an optional bytes parameter for provider-specific data to maintain flexibility while providing a consistent interface for event consumers.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/b8e142f892d68129d30e4ac9a23dc12e6973e711">b8e142f</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a>.</em></p>
+<!-- abcaa94e-ef94-4f6b-826b-83961f7062a3 -->
+<h3 id="incorrect-check-when-unpausing-staking">Incorrect Check When Unpausing Staking</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L868"><code>unpauseStaking</code> documentation</a> states that the function will revert if ossification has been initiated or finalized. However, the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L885-L886">implementation only checks for pending ossification</a>, allowing the call to proceed when ossification is finalized.</p>
+<p>Consider correcting the ossification check to also revert when ossification is finalized.</p>
+<p><em><strong>Update:</strong> Resolved. Linea team stated:</em></p>
+<blockquote>
+<p>This check is on the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L501">LidoStVaultYieldProvider::unpauseStaking function</a>.</p>
+</blockquote>
+<!-- 34f1ea67-169e-491f-af3e-50c4f282c796 -->
+<h3 id="lst-withdrawal-allowed-when-balance-exactly-matches-withdrawal-amount">LST Withdrawal Allowed When Balance Exactly Matches Withdrawal Amount</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/LineaRollupYieldExtension.sol#L142-L143">LST withdrawal function</a> checks that a deficit exists before allowing LST withdrawal by reverting if the withdrawal value is less than the contract balance. However, when the balance exactly equals the withdrawal value, there is no deficit, but the check passes and LST withdrawal is allowed.</p>
+<p>Consider using a less-than-or-equal-to comparison.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/9722a2a048c9e0c0f0dd8bf959a37516e7590b8d">9722a2a</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a>.</em></p>
+<!-- 1e7ea8e6-4c2e-4363-a9cc-779fa529e114 -->
+<h3 id="reserve-funding-skips-lst-liability-payment-when-manager-has-sufficient-balance">Reserve Funding Skips LST Liability Payment When Manager Has Sufficient Balance</h3>
+<p>When <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L753-L756">adding to the withdrawal reserve</a>, if the YieldManager balance is sufficient to cover the amount, the function directly funds the reserve without paying any LST liability. However, when the manager balance is insufficient and funds must be <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L764-L768">withdrawn from the provider</a>, LST liability is paid from the withdrawn amount. This creates inconsistent behavior where LST liabilities may remain unpaid when the manager has available funds.</p>
+<p>Consider documenting this design choice in the code comments to clarify that LST liability payment is skipped for operational efficiency when using manager balance.</p>
+<p><em><strong>Update:</strong> Resolved in in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/0d00ee4da982d7c8e18ede1fd02216b38d70c3e0">0d00ee4</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a> by clarifying the rationale for the asymmetric behavior in the comments.</em></p>
+<!-- 910a846f-382d-470b-ac9d-e4b20a028fa4 -->
+<h3 id="permissionless-unstake-can-be-griefed-with-small-donation">Permissionless Unstake Can Be Griefed With Small Donation</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L595-L596"><code>unstakePermissionless</code> function</a> reverts if the available funds plus the unstake amount exceed the target deficit. A griefing attacker can cause a user's unstake transaction to revert by donating a small amount to the contract, forcing the user to recalculate and resubmit with a lower unstake amount.</p>
+<p>Consider clamping the unstake amount to the remaining deficit instead of reverting.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. Linea team stated:</em></p>
+<blockquote>
+<p>We acknowledge the identified griefing vector. The current architecture intentionally separates responsibilities between the <code>YieldManager</code> and individual <code>YieldProvider</code> implementations, and the recommendation would require breaking these design boundaries.</p>
+<ul>
+<li>The <strong>YieldManager</strong> does not parse or interpret the unstake amounts encoded within the provider-specific payload.</li>
+<li>The <strong>YieldProvider</strong> does not have insight into the withdrawal reserve state, which is solely managed by the YieldManager.</li>
+</ul>
+<p>[In the described attack scenario], the affected user can call <code>replenishWithdrawalReserve</code>, which effectively transfers the attacker's donation to the <code>L1MessageService</code>. This mechanism immediately increases available withdrawal liquidity and mitigates the impact of the griefing attempt.</p>
+</blockquote>
+<!-- 4d0cf243-08ef-47b2-8428-ec1bf1a87e9e -->
+<h3 id="permissionless-unstaking-operational-limitations">Permissionless Unstaking Operational Limitations</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L568-L601"><code>unstakePermissionless</code> function</a> has two operational limitations. First, it is only callable when the reserve is below the minimum threshold. A user can choose to unstake an amount that brings the reserve just above the minimum but far below the target, blocking further permissionless unstaking and requiring privileged roles to bridge the gap to the target reserve level.</p>
+<p>Second, users select which yield provider to unstake from. When multiple providers exist with different unstaking speeds, a user can initiate unstaking from a slower provider, blocking further permissionless unstaking from faster providers until the reserve reaches the minimum.</p>
+<p>Consider allowing permissionless unstaking until the target reserve is reached and implementing admin-configurable priority ordering for provider selection. However, these improvements should be weighed against the increased code complexity.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. Linea team stated that the behavior is intentional for the first case, and the fix violates their current design principals for the second case.</em></p>
+<!-- 184cccbb-9c29-47bd-8709-19e707496c5c -->
+<h3 id="emergency-removal-does-not-decrement-global-user-funds-total">Emergency Removal Does Not Decrement Global User Funds Total</h3>
+<p>When <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L1086">removing a yield provider</a>, the provider storage is deleted without first decrementing <code>userFundsInYieldProvidersTotal</code> by an amount equal to the provider's <code>userFunds</code>. This leaves the global total permanently overstated, inflating the system balance calculation used for reserve thresholds and gating decisions.</p>
+<p>Consider decrementing <code>userFundsInYieldProvidersTotal</code> by the provider's <code>userFunds</code> before deleting the provider storage.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1876">PR 1876</a>.</em></p>
+<!-- b912754e-64aa-4e00-9510-a60be9d42c58 -->
+<h3 id="validator-proof-verifier-parameters-are-immutable">Validator Proof Verifier Parameters Are Immutable</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/libs/ValidatorContainerProofVerifier.sol#L133-L137"><code>ValidatorContainerProofVerifier</code> uses immutable parameters</a> for fork-specific generalized indices and a <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/libs/ValidatorContainerProofVerifier.sol#L224-L226">single pivot slot</a> to select between pre-fork and post-fork beacon state tree structures. While this design accommodates one fork transition (if a future fork is known at contract deployment), future consensus layer forks that restructure the beacon state would require deploying a new verifier with updated parameters. Since the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L40">yield provider's verifier reference is also immutable</a>, this could cause a DoS for permissionless unstaking until the provider is upgraded or a new provider is deployed.</p>
+<p>Consider making the <code>ValidatorContainerProofVerifier</code> constructor parameters changeable through a governance-controlled function to accommodate future fork transitions seamlessly without requiring redeployment.</p>
+<p><em><strong>Update:</strong> Acknowledged, will resolve.</em></p>
+<!-- 19f7970f-5f88-4636-b860-358fbf553d33 -->
+<h3 id="zero-amount-withdrawal-allows-unauthorized-pausing">Zero Amount Withdrawal Allows Unauthorized Pausing</h3>
+<p>Calling <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L614-L628"><code>withdrawFromYieldProvider</code> with zero amount</a> when the reserve is at or above the target causes <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L663-L664">staking to be paused</a> because the available funds for LST liability payment are zero. This allows holders of <code>YIELD_PROVIDER_UNSTAKER_ROLE</code> to pause staking without holding the <code>STAKING_PAUSE_CONTROLLER_ROLE</code>. While the current Lido implementation reverts on zero withdrawals, other yield provider implementations may not, enabling this privilege escalation.</p>
+<p>Consider adding an early revert when the withdrawal amount is zero to prevent this unintended pausing behavior.</p>
+<p><em><strong>Update:</strong> Resolved at commit <a href="https://github.com/Consensys/linea-monorepo/commit/7d3839c71caf12fcf8e6dc13cab24de97c8efc06">7d3839</a>.</em></p>
+<!-- f4150be8-a248-44a9-af78-1bb7071c434d -->
+<h3 id="misleading-names-and-comments">Misleading Names And Comments</h3>
+<p>There are multiple misleading names and comments within the contracts.</p>
+<ul>
+<li>The <code>ErrorUtils</code> <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/lib/ErrorUtils.sol#L7">title comment</a> refers to the wrong library.</li>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManagerStorageLayout.sol#L71">"Slot 1" comment</a> appears to be referring to all subsequent variables, including variables in slot 2, 3, and 4.</li>
+<li><a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L371">This @param statement</a> should be a <code>@return</code> statement.</li>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L380"><code>unstake</code> comment</a> claims the refund address can be zero, but the <code>StakingVault</code> <a href="https://github.com/lidofinance/core/blob/f9a9f807fd716131f7ab99df8df0372c3c962363/contracts/0.8.25/vaults/StakingVault.sol#L390">would revert</a>.</li>
+<li><a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/interfaces/IYieldManager.sol#L379-L387">These errors</a> state the target must be above the minimum, but it can equal the minimum. The names would be more accurate if they were <code>TargetReservePercentageCannotBeBelowMinimum</code> and <code>TargetReserveAmountCannotBeBelowMinimum</code>.</li>
+<li>The Natspec comments in the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L380"><code>LidoStVaultYieldProvider</code></a> and the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/interfaces/vendor/lido/ICommonVaultOperations.sol#L37"><code>ICommonVaultOperations</code></a> state that the zero address is a sentinel value for the caller address. However, the actual behavior of the Staking Vault is to.<a href="https://github.com/lidofinance/core/blob/f9a9f807fd716131f7ab99df8df0372c3c962363/contracts/0.8.25/vaults/StakingVault.sol#L390">revert</a> on zero address refund recipient.</li>
+<li>The Natspec comment for the amount parameter <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/interfaces/vendor/lido/ICommonVaultOperations.sol#L34">states</a> that the amount is in <code>wei</code>, when in fact it is in <code>gwei</code>.</li>
+<li>The <code>safeAddToWithdrawalReserve</code> caps the rebalance amount to provider withdrawable plus YieldManager balance, but the comment states it only <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L718">caps to withdrawable value</a>.</li>
+<li><a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L590">Typo in the comment</a>: "validiate" instead of "validate".</li>
+</ul>
+<p>Consider updating the comments and names to be aligned with the code.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1890">PR 1890</a>.</em></p>
+<!-- 220aef80-a9f7-46fe-89d9-dcb47cd0f653 -->
+<h2 id="notes-additional-information">Notes &amp; Additional Information</h2>
+<h3 id="constant-not-using-upper_case-format">Constant Not Using <code>UPPER_CASE</code> Format</h3>
+<p>In <code>YieldManagerStorageLayout.sol</code>, the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldManagerStorageLayout.sol#L81-L82"><code>YieldManagerStorageLocation</code> constant</a> is not declared using <code>UPPER_CASE</code> format.</p>
+<p>According to the <a href="https://docs.soliditylang.org/en/latest/style-guide.html#constants">Solidity Style Guide</a>, constants should be named with all capital letters with underscores separating words. For better readability, consider following this convention.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved.</em></p>
+<!-- 18d3025a-d55a-454d-8c0c-ac7c513618a4 -->
+<h3 id="state-variables-are-initialized-by-a-function">State Variables Are Initialized by a Function</h3>
+<p>Special care must be taken when initializing state variables through an immediate function call so as not to incorrectly assume that the state is initialized. The same function can set different values for state variables because it would check a state variable that is not yet initialized.</p>
+<p>Within the <code>ValidatorContainerProofVerifier</code> contract, multiple instances of state variables being initialized by a function were identified:</p>
+<ul>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/libs/ValidatorContainerProofVerifier.sol#L56-L57"><code>GI_VALIDATOR_CONTAINER_ROOT</code> state variable</a></li>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/libs/ValidatorContainerProofVerifier.sol#L112"><code>GI_STATE_ROOT</code> state variable</a></li>
+</ul>
+<p>To improve the overall clarity, intentionality, and readability of the codebase, consider avoiding initializing a state variable via a function. If variables must be set upon contract deployment, perform the initialization in the constructor instead.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. Linea team stated:</em></p>
+<blockquote>
+<p>The state variable initialisation pattern originates from the original <a href="https://github.com/lidofinance/core/blob/5e51ea044b09e1e2606074e1fe4ff6b6a4eff172/contracts/0.8.25/vaults/predeposit_guarantee/CLProofVerifier.sol#L118">Lido <code>CLProofVerifier</code> implementation</a>. We’d prefer to retain this pattern for consistency with the original audited codebase.</p>
+</blockquote>
+<!-- 9358c1df-0ce7-4840-a373-f505be720783 -->
+<h3 id="unaddressed-todo-comments">Unaddressed TODO Comments</h3>
+<p>During development, having well described TODO/Fixme comments will make the process of tracking and solving them easier. However, these comments might age and important information for the security of the system might be forgotten by the time it is released to production. These comments should be tracked in the project's issue backlog and resolved before the system is deployed.</p>
+<p>Throughout the codebase, multiple instances of unaddressed TODO/<code>@dev</code> comments were identified:</p>
+<ul>
+<li>The TODO comment in <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/LineaRollup.sol#L38">line 38 of <code>LineaRollup.sol</code></a>.</li>
+<li>The <code>@dev</code> comment in <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/LineaRollupYieldExtension.sol#L26">line 26 of <code>LineaRollupYieldExtension</code></a></li>
+</ul>
+<p>Consider removing all instances of TODO/Fixme comments and instead tracking them in the issues backlog. Alternatively, consider linking each inline TODO/Fixme to the corresponding issues backlog entry.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/commit/d8f57d5d7f6abf043502a3e2e9c04b40b8a2df19">d8f57d5</a>.</em></p>
+<!-- 9a6b6a92-532a-4981-858e-9492e73c3d48 -->
+<h3 id="avoidable-using-literals">Avoidable Using Literals</h3>
+<p>Within the <code>ValidatorContainerProofVerifier</code> contract, a sentinel value for a block in the far future is assigned as <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/libs/ValidatorContainerProofVerifier.sol#L121"><code>18446744073709551615</code></a>. This value is equal to the maximum value of <code>uint64</code> type.</p>
+<p>To improve readability, consider updating the literal value with the built-in <code>type(uint64).max</code>.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/44c4d1442db3981b0a43857ce1ee49a18b4e6cd3">44c4d14</a>.</em></p>
+<!-- 9bb53a25-0a3a-42c5-ab9b-f3ae2b82b9a5 -->
+<h3 id="lack-of-indexed-event-parameters">Lack of Indexed Event Parameters</h3>
+<p>Throughout the codebase, multiple instances of events not having any indexed parameters were identified:</p>
+<ul>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/LidoStVaultYieldProvider.sol#L54-L61"><code>LidoStVaultYieldProviderDeployed</code> event</a> of <code>LidoStVaultYieldProvider.sol</code></li>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/LidoStVaultYieldProviderFactory.sol#L21-L28"><code>LidoStVaultYieldProviderFactoryDeployed</code> event</a> of <code>LidoStVaultYieldProviderFactory.sol</code></li>
+</ul>
+<p>To improve the ability of off-chain services to search and filter for specific events, consider <a href="https://solidity.readthedocs.io/en/latest/contracts.html#events">indexing event parameters</a>.</p>
+<p><em><strong>Update:</strong> Acknowledged, not resolved. Linea team stated:</em></p>
+<blockquote>
+<p>[The two identified events] are not intended to be consumed or filtered by off-chain services in normal operation.</p>
+</blockquote>
+<!-- a8290159-aa3b-40aa-839b-0f987fe4ab5a -->
+<h3 id="state-variable-visibility-not-explicitly-declared">State Variable Visibility Not Explicitly Declared</h3>
+<p>Within <code>YieldManager.sol</code>, the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/./contracts/contracts/yield/YieldManager.sol#L56"><code>MAX_BPS</code> state variable</a> lacks an explicitly declared visibility.</p>
+<p>For improved code clarity, consider always explicitly declaring the visibility of state variables, even when the default visibility matches the intended visibility.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1717/commits/86db244c715d72c5893ed41c9280b2c5b588adde">86db244</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1717">1717</a>.</em></p>
+<!-- e00b7833-fec5-4d40-ad8d-6ca0fa3069a0 -->
+<h3 id="missing-bounds-check-in-yield-provider-index-query">Missing Bounds Check in Yield Provider Index Query</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L275"><code>yieldProviderByIndex</code> function</a> directly accesses the array without bounds checking. When an out-of-range index is provided, this causes a generic panic instead of reverting with the custom <code>YieldProviderIndexOutOfBounds</code> error defined in the interface.</p>
+<p>Consider adding explicit bounds checking to revert with the custom error when the index is out of range.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1856/commits/8b289dacfaa0bb0db6652f3849903c40649b94b4">8b289da</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1856">1856</a>.</em></p>
+<!-- ca066af7-4934-4acc-a680-e1fb6b7dc65d -->
+<h3 id="pending-permissionless-unstake-not-decremented-on-donations">Pending Permissionless Unstake Not Decremented on Donations</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L560">documentation states</a> that <code>pendingPermissionlessUnstake</code> will be greedily reduced with donations or withdrawals from the yield provider. However, when <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L994">donations are received</a>, the counter is not decremented.</p>
+<p>Consider decrementing <code>pendingPermissionlessUnstake</code> in the <code>receive</code> function instead of in the <code>_delegatecallWithdrawFromYieldProvider</code> function. Alternatively, consider updating the documentation to reflect the current behavior.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1873/commits/50af7a91423872c2214f721472a543d86e1d9999">50af7a9</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1873">1873</a>.</em></p>
+<!-- 114fa3c5-1284-4248-9cd1-d15abd027833 -->
+<h3 id="uninitialized-proxy-can-be-frontrun">Uninitialized Proxy Can Be Frontrun</h3>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L91"><code>initialize</code> function</a> is external and can be called by anyone on an uninitialized proxy. The first caller to initialize an uninitialized proxy would gain control of the admin role and all privileged roles.</p>
+<p>Consider ensuring that the proxy is atomically initialized during deployment and performing proper checks before using the contract in production.</p>
+<p><em><strong>Update:</strong> Resolved. The deployment will use the recommended practices.</em></p>
+<!-- de4b0202-e3ba-4ced-8b1a-12030b54f461 -->
+<h3 id="code-quality-improvements">Code Quality Improvements</h3>
+<p>Throughout the codebase, multiple opportunities for code quality improvement were identified:</p>
+<ol>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L93">zero address check in <code>initialize</code></a> could use the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/lib/ErrorUtils.sol#L12">dedicated utility function</a> for improved consistency.</li>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L119">checks in <code>onlyKnownYieldProvider</code></a>, <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L254"><code>isYieldProviderKnown</code></a>, and <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L1006"><code>addYieldProvider</code></a> all verify the same condition. Consider extracting this logic into a shared internal function to reduce code duplication.</li>
+<li>The <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/YieldManager.sol#L694">zero-value check in <code>_decrementPendingPermissionlessUnstake</code></a> is unnecessary as the next line using <code>safeSub</code> will handle the zero-value case correctly.</li>
+</ol>
+<p>Consider applying the above-listed improvements to enhance code maintainability and reduce duplication.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/commit/b4b8ef57cbb870d9601a3a6e1d5b725be91de8c8">b4b8ef5</a> and in commits 094644c and 50a5da1 in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1888">1888</a>.</em></p>
+<!-- 90f49565-e8ea-47ed-a002-cdce2ae14393 -->
+<h2 id="client-reported">Client Reported</h2>
+<h3 id="lst-liabilities-lock-funds-and-reduce-withdrawable-value">LST Liabilities Lock Funds and Reduce Withdrawable Value</h3>
+<p>When LST is minted from a Lido StakingVault, the LST liability plus a reserve amount is <a href="https://github.com/lidofinance/core/blob/f9a9f807fd716131f7ab99df8df0372c3c962363/contracts/0.8.25/vaults/VaultHub.sol#L1288">marked as locked</a> in <code>VaultHub</code>. The vault's <a href="https://github.com/lidofinance/core/blob/f9a9f807fd716131f7ab99df8df0372c3c962363/contracts/0.8.25/vaults/VaultHub.sol#L1530">withdrawable value</a> is capped by the unlocked amount, making funds backing LST liabilities unavailable for withdrawal. This locked amount cannot be withdrawn until the LST liability is repaid, as attempting to withdraw locked funds will result in the vault returning less than the requested funds.</p>
+<p>Consider ensuring that withdrawal calculations and reserve deficit computations account for the fact that LST liabilities effectively reduce the withdrawable balance of the provider.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1849">pull request 1849</a>.</em></p>
+<!-- de88cb58-748d-4857-8d9d-a23628e57a2a -->
+<h3 id="cannot-complete-ossification-when-there-is-no-staged-eth">Cannot Complete Ossification When There Is No Staged ETH</h3>
+<p>The Lido StakingVault's <a href="https://github.com/lidofinance/core/blob/5e51ea044b09e1e2606074e1fe4ff6b6a4eff172/contracts/0.8.25/vaults/StakingVault.sol#L321"><code>unstage</code> function</a> reverts when called with an amount of zero. During the ossification process, the contract <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L568">calls <code>unstage</code></a> to withdraw any staged deposits. If there are no staged deposits, this call would revert and block the completion of the ossification process.</p>
+<p>Consider skipping the <code>unstage</code> call if the amount is zero.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1877">PR 1877</a> at <a href="https://github.com/Consensys/linea-monorepo/pull/1877/bc1523b931d2f30330900577f5c4b0d78e30b946">commit bc1523b</a>.</em></p>
+<!-- d8f0c064-b5a1-455a-a623-25e43e1a9d81 -->
+<h3 id="lido-stakingvault-reverts-on-zero-amount-when-unstaging">Lido StakingVault Reverts on Zero Amount When Unstaging</h3>
+<p>During <code>unstage</code>, Lido StakingVault checks if the input amount is zero and <a href="https://github.com/lidofinance/core/blob/5e51ea044b09e1e2606074e1fe4ff6b6a4eff172/contracts/0.8.25/vaults/StakingVault.sol#L321">reverts if that is the case</a>. Within Linea's <code>LidoStVaultYieldProvider</code>, the <code>unstage</code> function is <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L568">called during ossification</a>. This behaviour can prevent the progression of the ossification if the StakingVault has nothing to unstage.</p>
+<p>Consider skipping the <code>unstage</code> call if the StakingVault has no staged balance.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1877">pull request 1877</a>.</em></p>
+<!-- cac24aa7-b95e-492b-85cd-ef45a319ae82 -->
+<h3 id="lidostvaultyieldprovider-reports-inflated-yield-amount"><code>LidoStVaultYieldProvider</code> Reports Inflated Yield Amount</h3>
+<p>The Lido StakingVault requires a 1 ETH <a href="https://github.com/lidofinance/core/blob/5e51ea044b09e1e2606074e1fe4ff6b6a4eff172/contracts/0.8.25/vaults/VaultFactory.sol#L87"><code>CONNECT_DEPOSIT</code></a> upon creation. This value is <a href="https://github.com/lidofinance/core/blob/5e51ea044b09e1e2606074e1fe4ff6b6a4eff172/contracts/0.8.25/vaults/dashboard/Dashboard.sol#L330">added</a> to the vault and included in the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L187">vault's total value</a>. In the context of Linea's <code>LidoStVaultYieldProvider</code>, this value is not part of user yield, but a safety deposit owed to the Linea admin. Therefore, inclusion of this value within the <a href="https://github.com/Consensys/linea-monorepo/blob/4360e31fa8c8259f6b6cbccdd45bb94032a792c6/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L180"><code>reportYield</code></a> function incorrectly affects contract accounting.</p>
+<p>Consider excluding the <code>CONNECT_DEPOSIT</code> amount from the reported yield amount.</p>
+<p><em><strong>Update:</strong> Resolved in <a href="https://github.com/Consensys/linea-monorepo/pull/1961">pull request 1961</a>.</em></p>
+<!-- 115ccb11-f3c7-432b-85e0-aa8d86cc46a5 -->
+<div style="page-break-after: always;">&nbsp;</div>
+<div id="issue-section-end">&nbsp;</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>This audit examined the Linea Native Yield System and associated bridge contract modifications. The Linea Yield Manager enables the Linea bridge to earn yield on deposited ETH by staking it through external yield providers while supporting user withdrawals. The system integrates with Lido's <code>StakingVault</code> infrastructure to stake ETH and mint liquid staking tokens (LST), distributing generated yield back to L2 users. The Native Yield System introduces a yield management layer between Linea's L1 bridge and external yield-generating protocols.</p>
+<p>The <code>YieldManager</code> contract serves as the central coordinator, maintaining withdrawal reserve thresholds, tracking user funds deployed across yield providers, and orchestrating yield reporting to L2. It interacts with yield provider adaptors via delegatecall, allowing vendor-specific logic to execute within <code>YieldManager</code>'s storage context while preserving a unified accounting model. The <code>LidoStVaultYieldProvider</code> adaptor allows <code>YieldManager</code> to interact with Lido's V3 staking infrastructure, specifically the <code>Dashboard</code> and <code>StakingVault</code> contracts.</p>
+<p>The audit identified one high-severity issue related to duplicate validator requests that could DoS permissionless unstaking. Multiple medium-severity vulnerabilities were also reported, which included accounting bugs where LST withdrawals failed to decrement user funds and incorrect target deficit calculations, causing unnecessary staking pauses. Several low-severity findings addressed edge cases in reserve management and pause logic, while notes covered code-quality improvements. The audited scope changed significantly over the course of the engagement as the team iterated on the design.</p>
+<p>The Linea team responded quickly and thoroughly to all the findings and kept submitting fixes throughout the engagement. They supplied the audit team with detailed documentation and proactively shared their own issues and concerns during the audit.</p>
+<div style="page-break-after: always;">&nbsp;</div>
+<h2 id="appendix">Appendix</h2>
+<h3 id="appendix-fix-review-extension">Appendix - Fix Review Extension</h3>
+<p>The fix for H-01 involved considerable changes, which required additional review time. This review was performed from December 29, 2025, to January 5, 2026. The fix review was primarily focused on <a href="https://github.com/Consensys/linea-monorepo/pull/1879/files">pull request 1879</a>, which includes the fixes for H-01 and L-20. In this timeframe, we also reviewed the fixes for CR-03 and CR-04. Finally, we compared all the reviews done so far to <a href="https://github.com/Consensys/linea-monorepo/pull/1965/files">pull request 1965</a>, which included combined fixes from all the reviews. During the review extension, we did not find any major issues with the code; however, there were a few potential code improvements, which are listed below.</p>
+<h4 id="clz-opcode-can-be-used">CLZ Opcode Can be Used</h4>
+<p>The <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/lib/Math256.sol#L37"><code>bitLength</code> function</a> and <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/vendor/lido/GIndex.sol#L97"><code>fls</code> function</a> are two implementations of the same operation. Consider removing one of them for simplicity.</p>
+<p>Alternatively, if the codebase can be updated to Solidity 0.8.31, consider using the new <code>clz</code> opcode instead.</p>
+<p><em><strong>Update:</strong> Resolved in commits <a href="https://github.com/Consensys/linea-monorepo/pull/1965/commits/3e86dad261668dee8faf803df11ee013446e4469">3e86dad</a> and <a href="https://github.com/Consensys/linea-monorepo/pull/1965/commits/57732a9da963c38fd83018103ead7fc7ba4d279d">57732a9</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1965">1965</a>.</em></p>
+<h4 id="misleading-documentation">Misleading Documentation</h4>
+<p>We have identified the following instances of misleading documentation: - <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/vendor/lido/BeaconTypes.sol#L1">The comment</a> claiming the <code>BeaconTypes</code> were copied from a particular Lido commit is no longer accurate. - The <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L332"><code>_pubkeys</code> variable</a> now corresponds to exactly one pubkey.</p>
+<p>Consider updating these comments accordingly.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1965/commits/43df9a06e2b3097e3cfc326d52d4cbb96566534a">43df9a0</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1965">1965</a>.</em></p>
+<h4 id="unsafe-cast">Unsafe Cast</h4>
+<p>The unstaked amount is <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/LidoStVaultYieldProvider.sol#L319">reduced to 64 bits</a> with an unsafe cast. Although this will not be a problem in practice, consider including an explicit bounds check for robustness.</p>
+<p><em><strong>Update:</strong> Acknowledged. The team stated:</em></p>
+<p><em><code>unstakeAmountGwei</code> has a maximum value of 2016000000000 (2016 ETH worth of gwei) [per consensus specification]. Hence an additional bounds check for uint64 conversion should be redundant.</em></p>
+<h4 id="mark-assembly-as-memory-safe">Mark Assembly as Memory-Safe</h4>
+<p><a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/vendor/lido/SSZ.sol#L155">This assembly block</a> respects the memory model so it can be marked as memory-safe to facilitate compiler optimizations.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1965/commits/2a5cd1c89c101c4f050cb9108892f054e003dfb0">2a5cd1c</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1965">1965</a>.</em></p>
+<h4 id="use-tolittleendian64-where-possible">Use <code>toLittleEndian64</code> Where Possible</h4>
+<p>Since <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/vendor/lido/SSZ.sol#L319"><code>count</code> is at most 28 bits</a>, consider replacing the <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/vendor/lido/SSZ.sol#L343"><code>toLittleEndian</code> invocation</a> with the optimised <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/vendor/lido/SSZ.sol#L484"><code>toLittleEndian64</code> function</a> version.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1965/commits/8b98bc0dd11e44d3e90bfeaaf9e92cdf45ca820d">8b98bc0</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1965">1965</a>.</em></p>
+<h4 id="redundant-path-concatenation">Redundant Path Concatenation</h4>
+<p>The generalized index of the <code>Validator</code> container is the <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/ValidatorContainerProofVerifier.sol#L193-L196">concatenation</a> of</p>
+<ul>
+<li>the path from the beacon block root to the state root</li>
+<li>the path from the state root to the indexed validator node root</li>
+<li>the path from the validator root to the relevant validator field</li>
+</ul>
+<p>However, in the current version of the codebase, the target leaf <a href="https://github.com/Consensys/linea-monorepo/blob/9e171e9f902c5e2644be9fee3cc8cc74a8c51115/contracts/contracts/yield/libs/ValidatorContainerProofVerifier.sol#L189">represents the entire Validator object</a>, so the last step is redundant. Consider removing it.</p>
+<p><em><strong>Update:</strong> Resolved in commit <a href="https://github.com/Consensys/linea-monorepo/pull/1965/commits/62818e8db82a9f49b5477c5f587c7e4633ebab5e">62818e8</a> in pull request <a href="https://github.com/Consensys/linea-monorepo/pull/1965">1965</a>.</em></p>
+<p>&nbsp;</p>
+<div id="hs_cos_wrapper_widget_5f9a9d7c-2eff-4a82-86cb-4b07b2093613" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div id="cta-banner" class="flex is-sb is-ac">
+  <div class="left-content">
+    <div class="title-wrapper flex is-ac">
+      
+      <p class="banner-title">Ready to secure your code?</p>
+    </div>
+      
+  </div>
+  <div class="right-content">
+    <a href="https://www.openzeppelin.com/request?utm_campaign=Audit%20Reports%202024&amp;utm_source=mybloglog&amp;utm_medium=social&amp;utm_term=CTARequestAudit&amp;utm_content=AuditBlogPost" class="button-new white">
+      <span class="cta-content">Request an Audit</span> →
+    </a>
+  </div>
+</div></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p></span>
+        </div>
+      </div>
+      <div class="col-right">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+
+
+      </main>
+
+      
+      <div data-global-resource-path="oz_2022/templates/partials/footer-EA-live.html"><div id="hs_cos_wrapper_module_172357946680564" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><footer id="footer-navigation">
+  <div class="container-1200">
+    <div class="footer-content">
+      <div class="footer-column smart-contracts">
+         <div class="footer-subcolumn">
+          <p class="footer-column-title">Services</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/security-audits">Smart Contract Security Audit</a></li>
+            <li><a href="https://www.openzeppelin.com/continuous-security-program">Continuous Security Program</a></li>
+            <li><a href="https://www.openzeppelin.com/blockchain-infrastructure">Blockchain Infrastructure Audit</a></li>
+            <li><a href="https://www.openzeppelin.com/zkp">ZKP Audit</a></li>
+          </ul>
+        </div>
+            <div class="footer-subcolumn">
+          
+          <p class="footer-column-title">Developers</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/contracts">Contracts Libraries</a></li>
+            <li><a href="https://wizard.openzeppelin.com/" target="_blank">Contracts Wizard</a></li>
+            <li><a href="https://mcp.openzeppelin.com/" target="_blank">Contracts MCP</a></li>
+            <li><a href="https://docs.openzeppelin.com/upgrades-plugins/" target="_blank">Upgrades Plugin</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack#operate">Relayer</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack#operate">Monitor</a></li>
+            <li><a href="https://builder.openzeppelin.com/" target="_blank">UI Builder</a></li>
+            <li><a href="https://safeutils.openzeppelin.com/" target="_blank">Safe Utils</a></li>
+            <li><a href="https://rolemanager.openzeppelin.com/" target="_blank">Role Manager</a></li>
+            <li><a href="https://www.openzeppelin.com/open-source-stack">The Open Source Stack</a></li>
+          </ul>
+        </div>
+
+       
+      </div>
+
+      <div class="footer-column services">
+         <div class="footer-subcolumn">
+          <p class="footer-column-title">Solutions</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/solutions/banks">Banks</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/asset-managers">Asset Managers</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/payment-networks">Payment Networks</a></li>
+            <li><a href="https://www.openzeppelin.com/solutions/blockchain-networks">Blockchain Networks</a></li>
+          </ul>
+        </div>
+     
+      
+       <div class="footer-subcolumn">
+          <p class="footer-column-title">Blockchains</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/networks/arbitrum">Arbitrum</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/base">Base</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/canton">Canton</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/ethereum">Ethereum</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/linea">Linea</a></li>
+            <li><a href="/networks/midnight">Midnight</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/op-mainnet">OP Mainnet</a></li>
+            <li><a href="/networks/starknet">Starknet</a></li>
+            <li><a href="/networks/stellar">Stellar</a></li>
+            <li><a href="/networks/sui">Sui</a></li>
+            <li><a href="/networks/zama">Zama</a></li>
+            <li><a href="https://www.openzeppelin.com/networks/zksync">ZKsync</a></li>
+          </ul>
+        </div>
+
+        
+      </div>
+
+      <div class="footer-column resources">
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Resources</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/research">Research</a></li>
+            <li><a href="https://www.openzeppelin.com/customer-stories">Customer Stories</a></li>
+            <li><a href="https://www.openzeppelin.com/newsletter">Newsletter</a></li>
+            <li><a href="https://docs.openzeppelin.com/" target="_blank">Documentation</a></li>
+            <li><a href="https://www.openzeppelin.com/stats">Stats</a></li>
+            <li><a href="https://forum.openzeppelin.com/" target="_blank">Forum</a></li>
+            <li><a href="https://ethernaut.openzeppelin.com/" target="_blank">Ethernaut CTF</a></li>
+          </ul>
+        </div>
+         
+      </div>
+
+      <div class="footer-column company">
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Company</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/about">About Us</a></li>
+            
+            <li><a href="https://www.openzeppelin.com/news">News</a></li>
+            <li><a href="https://www.openzeppelin.com/careers">Careers</a></li>
+            <li><a href="https://www.openzeppelin.com/why-openzeppelin">Why OpenZeppelin</a></li>
+            <li><a href="https://www.openzeppelin.com/faqs">FAQs</a></li>
+            <li><a href="https://www.openzeppelin.com/brand-kit">Brand Kit</a></li>
+            <li><a href="https://trust.openzeppelin.com/" target="_blank">Trust</a></li>
+             
+          </ul>
+        </div>
+
+        <div class="footer-subcolumn">
+          <p class="footer-column-title">Terms &amp; Policies</p>
+          <ul>
+            <li><a href="https://www.openzeppelin.com/tos">Terms of Service</a></li>
+            <li><a href="https://www.openzeppelin.com/privacy">Privacy Policy</a></li>
+            <li><a href="https://www.openzeppelin.com/trademark-guidelines">Trademark Guidelines</a></li>
+            <li><a href="https://www.openzeppelin.com/agpl-license">AGPL License</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-links">
+        <a href="https://github.com/openzeppelin" aria-label="GitHub">
+          <img src="https://www.openzeppelin.com/hubfs/github-icon-footer.svg" alt="GitHub">
+        </a>
+        <a href="https://twitter.com/OpenZeppelin" aria-label="X (Twitter)">
+          <img src="https://www.openzeppelin.com/hubfs/x-icon-footer.svg" alt="X">
+        </a>
+        <a href="https://www.linkedin.com/company/openzeppelin/" aria-label="LinkedIn">
+          <img src="https://www.openzeppelin.com/hubfs/linkedin-icon-footer.svg" alt="LinkedIn">
+        </a>
+      </div>
+      <div class="copyright">
+        © 2026 Zeppelin Group Ltd
+      </div>
+    </div>
+  </div>
+</footer></div></div>
+      
+    </div>
+
+    
+    
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js"></script>
+<script>
+var hsVars = hsVars || {}; hsVars['language'] = 'en';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/template_assets/1/67469578632/1788287200396/template_main.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/191486630025/1789648897909/module_Announcement_Banner.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/175205469193/1788958259824/module_Navbar_-_Live.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/195607353687/1764794536989/module_NEWS_Content_Subnavbar.min.js"></script>
+<script src="https://www.openzeppelin.com/hubfs/hub_generated/module_assets/1/194756946478/1758641063467/module_NEWS_Blog_Post_Content.min.js"></script>
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/www.openzeppelin.com\/news\/linea-yield-manager-audit"]);
+_hsq.push(["setPageId", "207813393506"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 207813393506,
+    "legacyPageId": "207813393506",
+    "contentFolderId": null,
+    "contentGroupId": 102321071715,
+    "abTestId": null,
+    "languageVariantId": 207813393506,
+    "languageCode": "en",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/7795250.js"></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript">
+var hsVars = {
+    render_id: "681829f1-affd-41e4-9356-d68e71032e79",
+    ticks: 1789649046836,
+    page_id: 207813393506,
+    
+    content_group_id: 102321071715,
+    portal_id: 7795250,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    
+    analytics_page_id: "207813393506",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.640/js/index.js"></script>
+
+<style>
+  /* Cookie consent Banner
+  */
+  div#hs-modal-header {
+    height: 0!important;
+  }
+  span.hs-always-active-label {
+    font-family: 'Inter'!important;
+  }
+  #hs-modal-content .hs-category-row:has(> .hs-category-row-header > #hs-category-advertisement) {
+    /*display: none;*/
+  }
+  #hs-eu-cookie-settings-button {
+    box-shadow: none!important;
+  }
+
+  #hs-eu-cookie-confirmation {
+    overflow: auto!important;
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #4E5DE48B, #5D628500) border-box!important;
+    border: 1px solid transparent!important;
+  }
+
+  div#hs-eu-cookie-confirmation-inner {
+    padding: 16px!important;
+  }
+
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner p {
+    font-family: 'Inter', sans-serif!important;
+    font-size: 12px!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    line-height: 144%!important;
+    max-width: 624px!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+    font-family: 'Inter', sans-serif!important;
+    font-size: 13px!important;
+    line-height: 144%!important;
+    color: #4F5EE5!important;
+    font-weight: 400!important;
+    text-shadow: none!important;
+    letter-spacing: -0.01em!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button, div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button, 
+  #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-accept-all, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings  {
+    padding: 5px 24px !important;
+    text-transform: none !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    border-radius: 80px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    line-height: 20px !important;
+    color: white !important;
+    text-shadow: none !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+    background: #4F56FA;
+    border: 1px solid transparent !important;
+    min-width: 100px;
+    height: auto!important;
+    margin: 0 5px !important;
+    flex: auto!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button:hover, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-accept-all:hover {
+    background: #4349D4 !important;
+  }
+  div#hs-eu-cookie-confirmation-buttons-area {
+    margin: 0!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings {
+    border: 1px solid #EFEFEF!important;
+    background: #FAFAFA!important;
+    color: #0A0F39!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button:hover, #hs-modal #hs-modal-content #hs-modal-footer #hs-modal-footer-container button#hs-modal-save-settings:hover {
+    background: #ededed !important;
+  }
+  #hs-eu-cookie-confirmation #hs-eu-opt-in-buttons {
+    flex-grow: 1;
+    align-items: center!important;
+  }
+  div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner div#hs-eu-policy-wording {
+    margin-right: 0!important;
+  }
+
+
+
+  #hs-modal #hs-modal-content #hs-modal-header #hs-modal-header-container button#hs-modal-close-button {
+    box-shadow: none!important;
+  }
+  #hs-modal #hs-modal-content #hs-modal-body #hs-modal-body-container #hs-modal-introduction {
+    font-family: 'Inter', sans-serif!important;
+  }
+  #hs-modal #hs-modal-content #hs-modal-body #hs-modal-body-container #hs-categories-container .hs-category-row .hs-category-row-header .hs-category-label {
+    font-family: 'Inter',sans-serif!important;
+  }
+  #hs-modal #hs-modal-content a, #hs-modal #hs-modal-content p {
+    font-family: 'Inter', sans-serif!important;
+  }
+
+
+  @media (min-width: 751px){
+    #hs-eu-cookie-confirmation {
+      max-width: 656px!important;
+    }
+
+  }
+  @media (max-width: 750px){
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+      font-size: 12px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button {
+      font-size: 12px!important;
+      padding: 6px 14px!important;
+      flex-basis: 33%;
+    }
+
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-decline-button {
+      font-size: 12px!important;
+      padding: 6px 22px!important;
+      flex-basis: 33%;
+
+    }
+    #hs-eu-cookie-confirmation {
+      max-width: 100%!important;
+      width: calc(100% - 30px)!important;
+      margin-bottom: 10px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner {
+      padding-bottom: 16px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-cookie-settings-button {
+      padding-bottom: 8px!important;
+      border-bottom: none!important;
+    }
+    div#hs-eu-cookie-confirmation-buttons-area {
+      gap: 8px!important;
+      border-bottom: none!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner p {
+      font-size: 12px!important;
+    }
+    div#hs-eu-cookie-confirmation div#hs-eu-cookie-confirmation-inner button#hs-eu-confirmation-button {
+      margin: 0!important;
+    }
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js" integrity="sha512-qF6akR/fsZAB4Co1QDDnUXWnaQseLGXoniuSuSlPQK6+aWhlMZcHzkasCSlnWoe+TJuudlka1/IQ01Dnhgq95g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- GSAP [ScrollTrigger] CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js" integrity="sha512-IHDCHrefnBT3vOCsvdkMvJF/MCPz/nBauQLzJkupa4Gn4tYg5a6VGyzIrjo6QAUy3We5HFOZUlkUpP0dkgE60A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+  
+</body></html>

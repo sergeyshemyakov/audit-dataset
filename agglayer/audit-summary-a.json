@@ -1,0 +1,1656 @@
+{
+  "schema_version": "1.4.0",
+  "project": "agglayer",
+  "reports": [
+    {
+      "id": "hexens-polygon-zkevm-2023-02",
+      "report_file": "2023_02-hexens-polygon-zkevm-security-review.md",
+      "title": "Security Review Report for Polygon zkEVM",
+      "description": "Hexens security review (Dec 2022 to Feb 2023) of Polygon zkEVM covering the L1/L2 bridge and PoE smart contracts, the zkASM main ROM, the storage ROM and the PIL constraints of the prover. Four Critical and one High issue were found (ERC777 re-entrancy in the bridge, missing PIL constraints, zkASM context and memory bugs), all reported as fixed at the listed remediation commits.",
+      "isRelevant": true,
+      "auditor": "Hexens",
+      "report_date": "2023-02-27",
+      "repositories": [
+        {
+          "id": "agglayer/agglayer-contracts",
+          "url": "https://github.com/agglayer/agglayer-contracts"
+        },
+        {
+          "id": "0xPolygon/zkevm-proverjs",
+          "url": "https://github.com/0xPolygon/zkevm-proverjs"
+        },
+        {
+          "id": "0xPolygon/zkevm-rom",
+          "url": "https://github.com/0xPolygon/zkevm-rom"
+        },
+        {
+          "id": "0xPolygon/zkevm-storage-rom",
+          "url": "https://github.com/0xPolygon/zkevm-storage-rom"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/agglayer-contracts",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ec421a4499f07b65d2242f39bb039476ec1cf5e1",
+                    "timestamp": "2023-03-02T19:13:36Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/ec421a4499f07b65d2242f39bb039476ec1cf5e1/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "Solidity contracts of zkevm-contracts (bridge, PolygonZkEVM, global exit root, deposit tree). Remediation of 1 (Critical, ERC777 re-entrancy in PolygonZkEVMBridge.sol) and of informational items 10-12. The report scopes the whole repository without an audited commit and lists only this commit as containing the fixes of all reported issues (validated by Hexens); the initially audited revision is unknown.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "0xPolygon/zkevm-proverjs",
+          "paths": {
+            "pil": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ab3dbf24172b828e3ff4bbb0238f866199f0c834",
+                    "timestamp": "2023-03-09T10:13:02Z",
+                    "url": "https://github.com/0xPolygon/zkevm-proverjs/tree/ab3dbf24172b828e3ff4bbb0238f866199f0c834/pil"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "PIL constraint files of the prover (only the PIL part of zkevm-proverjs is referenced by the findings). Remediation of 2 (Critical, storage.pil missing binary constraint) and 4 (Critical, main.pil missing isNeg constraint). The report scopes the whole repository without an audited commit and lists only this commit as containing the fixes of all reported issues (validated by Hexens); the initially audited revision is unknown.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "0xPolygon/zkevm-rom",
+          "paths": {
+            "main": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2ddeffbed7c022e04032e6d56ed6c6fb14cc38dc",
+                    "timestamp": "2023-03-02T18:52:28Z",
+                    "url": "https://github.com/0xPolygon/zkevm-rom/tree/2ddeffbed7c022e04032e6d56ed6c6fb14cc38dc/main"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "zkASM main ROM. Remediation of 3 (Critical, CTX assignation in process-tx.zkasm/identity.zkasm), 4 (Critical, utils.zkasm part), 5 (High, maxmem handling in main.zkasm/create-terminate-context.zkasm) and lower-severity items 6-9, 15, 16; the findings cite the develop branch. The report scopes the whole repository without an audited commit and lists only this commit as containing the fixes of all reported issues (validated by Hexens); the initially audited revision is unknown.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "0xPolygon/zkevm-storage-rom",
+          "paths": {
+            "zkasm": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "97af71cd372ae6715e818795266d02a5a854cfa6",
+                    "timestamp": "2023-02-17T07:48:02Z",
+                    "url": "https://github.com/0xPolygon/zkevm-storage-rom/tree/97af71cd372ae6715e818795266d02a5a854cfa6/zkasm"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix commit",
+                  "coverage": "zkASM storage ROM; no finding is located here. The report scopes the whole repository without an audited commit and lists only this commit as containing the fixes of all reported issues (validated by Hexens); the initially audited revision is unknown.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spearbit-polygon-zkevm-contracts-2023-03",
+      "report_file": "2023_03-spearbit-polygon-zkevm-contracts-bridge.md",
+      "title": "Polygon zkEVM Contracts Security Review",
+      "description": "Spearbit review of the Polygon zkEVM L1/L2 contracts (PolygonZkEVM, PolygonZkEVMBridge, global exit root managers, timelock, deposit tree) at 5de59e1, followed by a fix period and a March 2023 deployment review at cddde28. No Critical or High issues were found.",
+      "isRelevant": true,
+      "auditor": "Spearbit",
+      "report_date": "2023-03-27",
+      "repositories": [
+        {
+          "id": "agglayer/agglayer-contracts",
+          "url": "https://github.com/agglayer/agglayer-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/agglayer-contracts",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5de59e18690e877a10e3f1ed679969166313f899",
+                    "timestamp": "2022-12-22T11:23:45Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/5de59e18690e877a10e3f1ed679969166313f899/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the zkevm-contracts contracts directory (Jan 9-25, 2023); no Critical or High findings (3 Medium, 16 Low).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1b3e6d97c222f080b4c38523dfac933b6744e0cf",
+                    "timestamp": "2023-01-24T10:44:17Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/1b3e6d97c222f080b4c38523dfac933b6744e0cf/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #82, referenced as the fix of reported findings during the two-week fix period; only the fixes were reviewed.",
+                  "follows": "5de59e18690e877a10e3f1ed679969166313f899",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f9e9dcdf612951ed4ef2eb8716fb99c81a3a9ad7",
+                    "timestamp": "2023-01-24T17:16:51Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/f9e9dcdf612951ed4ef2eb8716fb99c81a3a9ad7/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #85, referenced as the fix of reported findings during the two-week fix period; only the fixes were reviewed.",
+                  "follows": "1b3e6d97c222f080b4c38523dfac933b6744e0cf",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2448b6e5b9c12bdd150643d89abfc1f6fb1303df",
+                    "timestamp": "2023-01-25T14:52:20Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/2448b6e5b9c12bdd150643d89abfc1f6fb1303df/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #87, referenced as the fix of reported findings during the two-week fix period; only the fixes were reviewed.",
+                  "follows": "f9e9dcdf612951ed4ef2eb8716fb99c81a3a9ad7",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "53538406bcebf2b59066634fcaa47379b286787f",
+                    "timestamp": "2023-01-26T16:04:59Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/53538406bcebf2b59066634fcaa47379b286787f/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #89, referenced as the fix of reported findings during the two-week fix period; only the fixes were reviewed.",
+                  "follows": "2448b6e5b9c12bdd150643d89abfc1f6fb1303df",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5b185c4588fae1f1d85658beeb120e175bc5e2cf",
+                    "timestamp": "2023-01-27T11:45:39Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/5b185c4588fae1f1d85658beeb120e175bc5e2cf/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #88, referenced as the fix of reported findings during the two-week fix period; only the fixes were reviewed.",
+                  "follows": "53538406bcebf2b59066634fcaa47379b286787f",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f5bb381ccf07d68cf4a17a427d42beda5f71c527",
+                    "timestamp": "2023-02-03T14:05:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/f5bb381ccf07d68cf4a17a427d42beda5f71c527/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #90, referenced as the fix of reported findings during the two-week fix period; only the fixes were reviewed.",
+                  "follows": "5b185c4588fae1f1d85658beeb120e175bc5e2cf",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a243dc0d88a9ceb065892b1fcdbb9600a2c600c2",
+                    "timestamp": "2023-02-06T16:10:57Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/a243dc0d88a9ceb065892b1fcdbb9600a2c600c2/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #91, referenced as the fix of reported findings during the two-week fix period; only the fixes were reviewed.",
+                  "follows": "f5bb381ccf07d68cf4a17a427d42beda5f71c527",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cddde284bebd7421a72343090b0566c1342e3ffc",
+                    "timestamp": "2023-03-20T09:23:05Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/cddde284bebd7421a72343090b0566c1342e3ffc/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "deployment review",
+                  "coverage": "Review of the changes made after the first review (FflonkVerifier, delayed global exit root update, force-batch activation, fixes) for the mainnet deployment; no security issues found.",
+                  "follows": "a243dc0d88a9ceb065892b1fcdbb9600a2c600c2",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sigmaprime-polygon-lxly-bridge-2024-02",
+      "report_file": "2024_02-sigmaprime-polygon-lxly-bridge.md",
+      "title": "Polygon LXLY Bridge Smart Contract Security Assessment",
+      "description": "Sigma Prime review of the zkevm-contracts repository for the LxLy (v2) upgrade: PolygonZkEVMBridgeV2, PolygonRollupManager, global exit root V2, etrog rollup/validium consensus and data committee contracts. No Critical or High issues were found (7 Medium); fixes were retested at 7677b8c.",
+      "isRelevant": true,
+      "auditor": "Sigma Prime",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "agglayer/agglayer-contracts",
+          "url": "https://github.com/agglayer/agglayer-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/agglayer-contracts",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1403e2b2bb6b731844aa9048424262fb00c30e89",
+                    "timestamp": "2023-11-18T18:31:30Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/1403e2b2bb6b731844aa9048424262fb00c30e89/contracts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Files of the repository at the assessed commit; OpenZeppelin libraries and dependencies excluded. No Critical or High findings.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0f57a1098748a53776867d07a5346ecb58f38a1d",
+                    "timestamp": "2023-12-13T13:06:57Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/0f57a1098748a53776867d07a5346ecb58f38a1d/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit referenced as the fix of LXLY-04 (ifNotEmergencyState modifiers in PolygonZkEVMBridgeV2.sol).",
+                  "follows": "1403e2b2bb6b731844aa9048424262fb00c30e89",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7677b8ccf10abc13903d0aceb66daa9a8a5fb0b0",
+                    "timestamp": "2024-01-21T17:42:25Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/tree/7677b8ccf10abc13903d0aceb66daa9a8a5fb0b0/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings (includes the fixes later carried in PRs #164, #166, #167).",
+                  "follows": "0f57a1098748a53776867d07a5346ecb58f38a1d",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hexens-polygon-lxly-bridge-and-call-2024-05",
+      "report_file": "2024_05-hexens-polygon-lxly-bridge-and-call.md",
+      "title": "Security Review Report for Polygon (LxLy Bridge and Call)",
+      "description": "Hexens review of the lxly-bridge-and-call extension (BridgeExtension, JumpPoint) built on top of PolygonZkEVMBridgeV2. One Critical and one High issue (fund loss in bridgeAndCall, non-compliant ERC20 transfers in JumpPoint) were reported as fixed at fed2b23.",
+      "isRelevant": true,
+      "auditor": "Hexens",
+      "report_date": "2024-05-30",
+      "repositories": [
+        {
+          "id": "agglayer/lxly-bridge-and-call",
+          "url": "https://github.com/agglayer/lxly-bridge-and-call"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/lxly-bridge-and-call",
+          "paths": {
+            "src/BridgeExtension.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                    "timestamp": "2024-05-15T06:51:04Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/31593c5ec31b6669f9a015aa6f7edc8497420969/src/BridgeExtension.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the Bridge and Call extension; the audited commit is taken from the report's code links (the scope section names only the repository). PAGL-3 (Critical) is located here by its description and code links although its PATH field names WETHPlus.sol.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "PAGL-3"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fed2b23e557d2a5fca040993d10b18590351b608",
+                    "timestamp": "2024-06-04T10:47:11Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/fed2b23e557d2a5fca040993d10b18590351b608/src/BridgeExtension.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit stated by the report as containing the fixes of all reported issues; fixes validated by Hexens.",
+                  "follows": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/BridgeExtensionProxy.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                    "timestamp": "2024-05-15T06:51:04Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/31593c5ec31b6669f9a015aa6f7edc8497420969/src/BridgeExtensionProxy.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the Bridge and Call extension; the audited commit is taken from the report's code links (the scope section names only the repository).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fed2b23e557d2a5fca040993d10b18590351b608",
+                    "timestamp": "2024-06-04T10:47:11Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/fed2b23e557d2a5fca040993d10b18590351b608/src/BridgeExtensionProxy.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit stated by the report as containing the fixes of all reported issues; fixes validated by Hexens.",
+                  "follows": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/IBridgeAndCall.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                    "timestamp": "2024-05-15T06:51:04Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/31593c5ec31b6669f9a015aa6f7edc8497420969/src/IBridgeAndCall.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the Bridge and Call extension; the audited commit is taken from the report's code links (the scope section names only the repository).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fed2b23e557d2a5fca040993d10b18590351b608",
+                    "timestamp": "2024-06-04T10:47:11Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/fed2b23e557d2a5fca040993d10b18590351b608/src/IBridgeAndCall.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit stated by the report as containing the fixes of all reported issues; fixes validated by Hexens.",
+                  "follows": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "src/JumpPoint.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                    "timestamp": "2024-05-15T06:51:04Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/31593c5ec31b6669f9a015aa6f7edc8497420969/src/JumpPoint.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the Bridge and Call extension; the audited commit is taken from the report's code links (the scope section names only the repository).",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "PAGL-2"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "fed2b23e557d2a5fca040993d10b18590351b608",
+                    "timestamp": "2024-06-04T10:47:11Z",
+                    "url": "https://github.com/agglayer/lxly-bridge-and-call/blob/fed2b23e557d2a5fca040993d10b18590351b608/src/JumpPoint.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit stated by the report as containing the fixes of all reported issues; fixes validated by Hexens.",
+                  "follows": "31593c5ec31b6669f9a015aa6f7edc8497420969",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sigmaprime-polygon-lxly-banana-upgrade-2024-06",
+      "report_file": "2024_06-sigmaprime-polygon-lxly-bridge-banana-upgrade.md",
+      "title": "LX/LY Bridge - Banana Upgrade Security Assessment",
+      "description": "Sigma Prime time-boxed review of the Banana upgrade changes in zkevm-contracts (rollbackBatches and related PolygonRollupManager, etrog consensus and global exit root changes). One High issue (rollbackBatches ignoring pending state) was resolved by the retest commit 5184e5b.",
+      "isRelevant": true,
+      "auditor": "Sigma Prime",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "agglayer/agglayer-contracts",
+          "url": "https://github.com/agglayer/agglayer-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/agglayer-contracts",
+          "paths": {
+            "contracts/v2/PolygonRollupManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/PolygonRollupManager.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "ZKEVM04-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f3184b2d305994611ee0e64df76d6febee3b58",
+                    "timestamp": "2024-06-17T13:18:23Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/57f3184b2d305994611ee0e64df76d6febee3b58/contracts/v2/PolygonRollupManager.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit referenced for the fixes of ZKEVM04-01 (first part), ZKEVM04-04 and ZKEVM04-05. ZKEVM04-01 is completed only in 5184e5b.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "ZKEVM04-01"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/PolygonRollupManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings. ZKEVM04-01 resolved.",
+                  "follows": "57f3184b2d305994611ee0e64df76d6febee3b58",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/PolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/PolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/consensus/validium/PolygonValidiumEtrog.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/consensus/validium/PolygonValidiumEtrog.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/consensus/validium/PolygonValidiumEtrog.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/lib/PolygonRollupBaseEtrog.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/lib/PolygonRollupBaseEtrog.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f3184b2d305994611ee0e64df76d6febee3b58",
+                    "timestamp": "2024-06-17T13:18:23Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/57f3184b2d305994611ee0e64df76d6febee3b58/contracts/v2/lib/PolygonRollupBaseEtrog.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit referenced for the fixes of ZKEVM04-01 (first part), ZKEVM04-04 and ZKEVM04-05.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/lib/PolygonRollupBaseEtrog.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings.",
+                  "follows": "57f3184b2d305994611ee0e64df76d6febee3b58",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/interfaces/IPolygonRollupBase.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/interfaces/IPolygonRollupBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "57f3184b2d305994611ee0e64df76d6febee3b58",
+                    "timestamp": "2024-06-17T13:18:23Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/57f3184b2d305994611ee0e64df76d6febee3b58/contracts/v2/interfaces/IPolygonRollupBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit referenced for the fixes of ZKEVM04-01 (first part), ZKEVM04-04 and ZKEVM04-05.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/interfaces/IPolygonRollupBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings.",
+                  "follows": "57f3184b2d305994611ee0e64df76d6febee3b58",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/interfaces/IPolygonRollupManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/interfaces/IPolygonRollupManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/interfaces/IPolygonRollupManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/interfaces/IPolygonZkEVMGlobalExitRootV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/interfaces/IPolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/interfaces/IPolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/interfaces/IPolygonZkEVMVEtrogErrors.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                    "timestamp": "2024-06-10T03:09:43Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/0ab3f10a1d8bf753bdf33d9488a57345d28425f8/contracts/v2/interfaces/IPolygonZkEVMVEtrogErrors.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the Banana feature branch relative to develop up to 0ab3f10 (the report links the develop...c4eda49 comparison); third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5",
+                    "timestamp": "2024-06-18T12:13:28Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/5184e5b8f01b04d9a7fbb9f7bb7c2ced31389fc5/contracts/v2/interfaces/IPolygonZkEVMVEtrogErrors.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Retesting commit for the reported findings.",
+                  "follows": "0ab3f10a1d8bf753bdf33d9488a57345d28425f8",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-polygon-pessimistic-proofs-2024-08",
+      "report_file": "2024_08-trailofbits-polygon-pessimistic-proofs-summary-report.md",
+      "title": "Polygon Pessimistic Proofs Security Assessment (Summary Report)",
+      "description": "Trail of Bits one engineer-week review of the pessimistic-proof Rust crate (sparse/append-only Merkle trees, transfer and balance validation, signature and data commitments) proven in SP1. Only the summary report is public; it reports one Medium, two Low and several informational issues.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2024-08-26",
+      "repositories": [
+        {
+          "id": "agglayer/agglayer",
+          "url": "https://github.com/agglayer/agglayer"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/agglayer",
+          "paths": {
+            "crates/pessimistic-proof": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/pessimistic-proof"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Full review of the pessimistic-proof crate. Only the summary report is public (no finding list); ToB reported no High/Critical issue. A high-severity double-import bug found independently by the Polygon team during the review is mentioned but is not a report finding.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sigmaprime-polygon-aggregation-layer-2024-12",
+      "report_file": "2024_12-sigmaprime-polygon-aggregation-layer.md",
+      "title": "Polygon Aggregation Layer Security Assessment Report",
+      "description": "Sigma Prime review of the AggLayer v0.2 Rust code (agglayer node crates and the pessimistic-proof crate/program at d9d3388) and of the pessimistic-proof contract changes in zkevm-contracts (c4eda49..2de7a151: PolygonRollupManager, PolygonPessimisticConsensus, PolygonConsensusBase, global exit root). One Critical and three High issues were found, all in the Rust code.",
+      "isRelevant": true,
+      "auditor": "Sigma Prime",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "agglayer/agglayer",
+          "url": "https://github.com/agglayer/agglayer"
+        },
+        {
+          "id": "agglayer/agglayer-contracts",
+          "url": "https://github.com/agglayer/agglayer-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/agglayer",
+          "paths": {
+            "crates/agglayer": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-aggregator-notifier": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-aggregator-notifier"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full). AGG-01 (Critical, proofs not settled to L1) located in src/lib.rs.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "AGG-01"
+                  ],
+                  "highest_reported_finding_severity": "Critical"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7daca4bc1519d5dc091c19dc44fce68e17565d78",
+                    "timestamp": "2024-11-04T15:33:50Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/7daca4bc1519d5dc091c19dc44fce68e17565d78/crates/agglayer-aggregator-notifier"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #348, stated as the resolution of AGG-01.",
+                  "follows": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-certificate-orchestrator": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-certificate-orchestrator"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full). AGG-03 (High, packing error desync) located in src/lib.rs.",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "AGG-03"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bd70d4bb332edfea2ed5ee00e1d975cc0c495638",
+                    "timestamp": "2024-09-30T13:06:55Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/bd70d4bb332edfea2ed5ee00e1d975cc0c495638/crates/agglayer-certificate-orchestrator"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #267, stated as the resolution of AGG-24 (informational); AGG-03 still open.",
+                  "follows": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                  "major_findings": 1,
+                  "finding_ids": [
+                    "AGG-03"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6e17c8e583f7808fb45fd1321b59792940cdc723",
+                    "timestamp": "2024-11-14T14:36:55Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/6e17c8e583f7808fb45fd1321b59792940cdc723/crates/agglayer-certificate-orchestrator"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit 6e17c8e, stated as the resolution of AGG-03 (logic moved to NetworkTask).",
+                  "follows": "bd70d4bb332edfea2ed5ee00e1d975cc0c495638",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-clock": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-clock"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ce2cadb8b219cf71d2aa7e0c1707613b3dc18e48",
+                    "timestamp": "2024-11-18T09:56:41Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/ce2cadb8b219cf71d2aa7e0c1707613b3dc18e48/crates/agglayer-clock"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit ce2cadb, stated as part of the resolution of AGG-08 (unchecked unwrap panics).",
+                  "follows": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-config": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-config"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-gcp-kms": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-gcp-kms"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-node": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-node"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ce2cadb8b219cf71d2aa7e0c1707613b3dc18e48",
+                    "timestamp": "2024-11-18T09:56:41Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/ce2cadb8b219cf71d2aa7e0c1707613b3dc18e48/crates/agglayer-node"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit ce2cadb, stated as part of the resolution of AGG-08 (unchecked unwrap panics).",
+                  "follows": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-signer": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-signer"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/agglayer-telemetry": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/agglayer-telemetry"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/pessimistic-proof": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/pessimistic-proof"
+                  },
+                  "status": "audited_with_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full). AGG-02 (High, stale SMT nodes, src/utils/smt.rs) and AGG-04 (High, hash without unique nonce, src/bridge_exit.rs; closed by the team as a false positive) located here.",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "AGG-02",
+                    "AGG-04"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a8a968b0d80eb27f8d361b525a2aac52ca16d032",
+                    "timestamp": "2024-09-27T15:35:57Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/a8a968b0d80eb27f8d361b525a2aac52ca16d032/crates/pessimistic-proof"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #325, stated as part of the resolution of AGG-10 and AGG-16; AGG-02 and AGG-04 were closed without changes.",
+                  "follows": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "AGG-02",
+                    "AGG-04"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b32d2465943b5fe4c4884cc8b73294692153252f",
+                    "timestamp": "2024-10-28T09:49:06Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/b32d2465943b5fe4c4884cc8b73294692153252f/crates/pessimistic-proof"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #361, stated as part of the resolution of AGG-08, AGG-10 and AGG-16; AGG-02 and AGG-04 remain unaddressed.",
+                  "follows": "a8a968b0d80eb27f8d361b525a2aac52ca16d032",
+                  "major_findings": 2,
+                  "finding_ids": [
+                    "AGG-02",
+                    "AGG-04"
+                  ],
+                  "highest_reported_finding_severity": "High"
+                }
+              ]
+            },
+            "crates/pessimistic-proof-program": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/pessimistic-proof-program"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "crates/pessimistic-proof-test-suite": {
+              "path_kind": "directory_recursive",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d9d33885b6a396a69f57054d7b549edc6ca1ef51",
+                    "timestamp": "2024-08-16T13:51:08Z",
+                    "url": "https://github.com/agglayer/agglayer/tree/d9d33885b6a396a69f57054d7b549edc6ca1ef51/crates/pessimistic-proof-test-suite"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Offchain portion: files of the agglayer repository at d9d3388 (crate reviewed in full).",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "agglayer/agglayer-contracts",
+          "paths": {
+            "contracts/v2/PolygonRollupManager.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "c4eda494efe58727a8a3e04208b4d0f1921605dc",
+                    "start_timestamp": "2024-06-11T17:35:52Z",
+                    "end_commit": "2de7a151ba86bf60930b0ee1b6461fb87cb16e25",
+                    "end_timestamp": "2024-08-18T20:54:03Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/compare/c4eda494efe58727a8a3e04208b4d0f1921605dc...2de7a151ba86bf60930b0ee1b6461fb87cb16e25"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the c4eda49..2de7a151 pessimistic-proof diff to this contract; third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f0ba99b2987135830a75f1e24b3528432ad20f25",
+                    "timestamp": "2024-09-15T14:55:11Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f0ba99b2987135830a75f1e24b3528432ad20f25/contracts/v2/PolygonRollupManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit f0ba99b, cited as already implementing the AGG-11 remediation (VerifierType check in onSequenceBatches).",
+                  "follows": "2de7a151ba86bf60930b0ee1b6461fb87cb16e25",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d05367ea31d5cae4240785cef9497c94b67f2fa5",
+                    "timestamp": "2024-10-03T14:59:50Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/d05367ea31d5cae4240785cef9497c94b67f2fa5/contracts/v2/PolygonRollupManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit d05367e (head of PR #341), stated as the resolution of AGG-19 and of the AGG-25 general comments.",
+                  "follows": "f0ba99b2987135830a75f1e24b3528432ad20f25",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "c4eda494efe58727a8a3e04208b4d0f1921605dc",
+                    "start_timestamp": "2024-06-11T17:35:52Z",
+                    "end_commit": "2de7a151ba86bf60930b0ee1b6461fb87cb16e25",
+                    "end_timestamp": "2024-08-18T20:54:03Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/compare/c4eda494efe58727a8a3e04208b4d0f1921605dc...2de7a151ba86bf60930b0ee1b6461fb87cb16e25"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the c4eda49..2de7a151 pessimistic-proof diff to this contract; third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d05367ea31d5cae4240785cef9497c94b67f2fa5",
+                    "timestamp": "2024-10-03T14:59:50Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/d05367ea31d5cae4240785cef9497c94b67f2fa5/contracts/v2/PolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit d05367e (head of PR #341), stated as the resolution of AGG-19 and of the AGG-25 general comments.",
+                  "follows": "2de7a151ba86bf60930b0ee1b6461fb87cb16e25",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/consensus/pessimistic/PolygonPessimisticConsensus.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "c4eda494efe58727a8a3e04208b4d0f1921605dc",
+                    "start_timestamp": "2024-06-11T17:35:52Z",
+                    "end_commit": "2de7a151ba86bf60930b0ee1b6461fb87cb16e25",
+                    "end_timestamp": "2024-08-18T20:54:03Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/compare/c4eda494efe58727a8a3e04208b4d0f1921605dc...2de7a151ba86bf60930b0ee1b6461fb87cb16e25"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added in the c4eda49..2de7a151 pessimistic-proof diff, reviewed in full.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/lib/PolygonConsensusBase.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "c4eda494efe58727a8a3e04208b4d0f1921605dc",
+                    "start_timestamp": "2024-06-11T17:35:52Z",
+                    "end_commit": "2de7a151ba86bf60930b0ee1b6461fb87cb16e25",
+                    "end_timestamp": "2024-08-18T20:54:03Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/compare/c4eda494efe58727a8a3e04208b4d0f1921605dc...2de7a151ba86bf60930b0ee1b6461fb87cb16e25"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "File added in the c4eda49..2de7a151 pessimistic-proof diff, reviewed in full.",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/lib/PolygonRollupBaseEtrog.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit_range",
+                    "start_commit": "c4eda494efe58727a8a3e04208b4d0f1921605dc",
+                    "start_timestamp": "2024-06-11T17:35:52Z",
+                    "end_commit": "2de7a151ba86bf60930b0ee1b6461fb87cb16e25",
+                    "end_timestamp": "2024-08-18T20:54:03Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/compare/c4eda494efe58727a8a3e04208b4d0f1921605dc...2de7a151ba86bf60930b0ee1b6461fb87cb16e25"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "diff audit",
+                  "coverage": "Only the changes of the c4eda49..2de7a151 pessimistic-proof diff to this contract; third-party libraries excluded.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sigmaprime-polygon-lxly-sovereign-chains-2025-01",
+      "report_file": "2025_01-sigmaprime-polygon-lxly-bridge-sovereign-chains.md",
+      "title": "LX/LY Bridge - Sovereign Chains Security Assessment",
+      "description": "Sigma Prime review of zkevm-contracts PR #330 adding the sovereign-chain bridge (BridgeL2SovereignChain, GlobalExitRootManagerL2SovereignChain) and related bridge/global exit root changes, plus the updateVanillaGenesis.ts script. No Critical or High issues were found; fixes were assessed at f448f90.",
+      "isRelevant": true,
+      "auditor": "Sigma Prime",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "agglayer/agglayer-contracts",
+          "url": "https://github.com/agglayer/agglayer-contracts"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "agglayer/agglayer-contracts",
+          "paths": {
+            "contracts/v2/sovereignChains/BridgeL2SovereignChain.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                    "timestamp": "2024-11-05T10:07:54Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/ddfd159beeb13b871d901b14c95e9b7ae972a3b1/contracts/v2/sovereignChains/BridgeL2SovereignChain.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "PR audit",
+                  "coverage": "File added by PR #330 (head), reviewed in full.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                    "timestamp": "2024-12-24T00:58:07Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/8b4d221dc0ce47564506e5187f684affa5dccc75/contracts/v2/sovereignChains/BridgeL2SovereignChain.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #359, stated as addressing the reported issues.",
+                  "follows": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "817effc293fc33acd613052d1a508c1275a2857b",
+                    "timestamp": "2025-01-14T14:44:16Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/817effc293fc33acd613052d1a508c1275a2857b/contracts/v2/sovereignChains/BridgeL2SovereignChain.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #384 (comments added for ZKEVM05-01).",
+                  "follows": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f448f906de02986a520ce6fc7e52c1e9fbaac89a",
+                    "timestamp": "2025-01-14T14:45:32Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f448f906de02986a520ce6fc7e52c1e9fbaac89a/contracts/v2/sovereignChains/BridgeL2SovereignChain.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit at which the fixes of the identified issues were assessed.",
+                  "follows": "817effc293fc33acd613052d1a508c1275a2857b",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                    "timestamp": "2024-11-05T10:07:54Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/ddfd159beeb13b871d901b14c95e9b7ae972a3b1/contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "PR audit",
+                  "coverage": "File added by PR #330 (head), reviewed in full.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                    "timestamp": "2024-12-24T00:58:07Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/8b4d221dc0ce47564506e5187f684affa5dccc75/contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #359, stated as addressing the reported issues.",
+                  "follows": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f448f906de02986a520ce6fc7e52c1e9fbaac89a",
+                    "timestamp": "2025-01-14T14:45:32Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f448f906de02986a520ce6fc7e52c1e9fbaac89a/contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit at which the fixes of the identified issues were assessed.",
+                  "follows": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/interfaces/IBridgeL2SovereignChains.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                    "timestamp": "2024-11-05T10:07:54Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/ddfd159beeb13b871d901b14c95e9b7ae972a3b1/contracts/v2/interfaces/IBridgeL2SovereignChains.sol"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "PR audit",
+                  "coverage": "File added by PR #330 (head), reviewed in full.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                    "timestamp": "2024-12-24T00:58:07Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/8b4d221dc0ce47564506e5187f684affa5dccc75/contracts/v2/interfaces/IBridgeL2SovereignChains.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #359, stated as addressing the reported issues.",
+                  "follows": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f448f906de02986a520ce6fc7e52c1e9fbaac89a",
+                    "timestamp": "2025-01-14T14:45:32Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f448f906de02986a520ce6fc7e52c1e9fbaac89a/contracts/v2/interfaces/IBridgeL2SovereignChains.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit at which the fixes of the identified issues were assessed.",
+                  "follows": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/PolygonZkEVMBridgeV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                    "timestamp": "2024-11-05T10:07:54Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/ddfd159beeb13b871d901b14c95e9b7ae972a3b1/contracts/v2/PolygonZkEVMBridgeV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "PR audit",
+                  "coverage": "Only the changes of PR #330 (head) to this file; third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                    "timestamp": "2024-12-24T00:58:07Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/8b4d221dc0ce47564506e5187f684affa5dccc75/contracts/v2/PolygonZkEVMBridgeV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #359, stated as addressing the reported issues.",
+                  "follows": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f448f906de02986a520ce6fc7e52c1e9fbaac89a",
+                    "timestamp": "2025-01-14T14:45:32Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f448f906de02986a520ce6fc7e52c1e9fbaac89a/contracts/v2/PolygonZkEVMBridgeV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit at which the fixes of the identified issues were assessed.",
+                  "follows": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                    "timestamp": "2024-11-05T10:07:54Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/ddfd159beeb13b871d901b14c95e9b7ae972a3b1/contracts/v2/PolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "PR audit",
+                  "coverage": "Only the changes of PR #330 (head) to this file; third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                    "timestamp": "2024-12-24T00:58:07Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/8b4d221dc0ce47564506e5187f684affa5dccc75/contracts/v2/PolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #359, stated as addressing the reported issues.",
+                  "follows": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f448f906de02986a520ce6fc7e52c1e9fbaac89a",
+                    "timestamp": "2025-01-14T14:45:32Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f448f906de02986a520ce6fc7e52c1e9fbaac89a/contracts/v2/PolygonZkEVMGlobalExitRootV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit at which the fixes of the identified issues were assessed.",
+                  "follows": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/PolygonZkEVMGlobalExitRootL2.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                    "timestamp": "2024-11-05T10:07:54Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/ddfd159beeb13b871d901b14c95e9b7ae972a3b1/contracts/PolygonZkEVMGlobalExitRootL2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "PR audit",
+                  "coverage": "Only the changes of PR #330 (head) to this file; third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f448f906de02986a520ce6fc7e52c1e9fbaac89a",
+                    "timestamp": "2025-01-14T14:45:32Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f448f906de02986a520ce6fc7e52c1e9fbaac89a/contracts/PolygonZkEVMGlobalExitRootL2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit at which the fixes of the identified issues were assessed.",
+                  "follows": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "contracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                    "timestamp": "2024-11-05T10:07:54Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/ddfd159beeb13b871d901b14c95e9b7ae972a3b1/contracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "PR audit",
+                  "coverage": "Only the changes of PR #330 (head) to this file; third-party libraries excluded.",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                    "timestamp": "2024-12-24T00:58:07Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/8b4d221dc0ce47564506e5187f684affa5dccc75/contracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Head of PR #359, stated as addressing the reported issues.",
+                  "follows": "ddfd159beeb13b871d901b14c95e9b7ae972a3b1",
+                  "major_findings": 0
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f448f906de02986a520ce6fc7e52c1e9fbaac89a",
+                    "timestamp": "2025-01-14T14:45:32Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/f448f906de02986a520ce6fc7e52c1e9fbaac89a/contracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol"
+                  },
+                  "status": "partially_audited_without_major_findings",
+                  "review_phase": "fix review",
+                  "coverage": "Commit at which the fixes of the identified issues were assessed.",
+                  "follows": "8b4d221dc0ce47564506e5187f684affa5dccc75",
+                  "major_findings": 0
+                }
+              ]
+            },
+            "deployment/v2/utils/updateVanillaGenesis.ts": {
+              "path_kind": "file",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a4b0c9361f12d2a9a5c23e9951e998e98380ea27",
+                    "timestamp": "2024-11-18T08:13:45Z",
+                    "url": "https://github.com/agglayer/agglayer-contracts/blob/a4b0c9361f12d2a9a5c23e9951e998e98380ea27/deployment/v2/utils/updateVanillaGenesis.ts"
+                  },
+                  "status": "audited_with_no_major_findings",
+                  "review_phase": "initial audit",
+                  "coverage": "Genesis update script reviewed separately at a4b0c93.",
+                  "major_findings": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

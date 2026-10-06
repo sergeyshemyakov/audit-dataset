@@ -16,6 +16,15 @@
       "url": "https://github.com/0xFacet/zk-fault-proofs",
       "fork_of": "succinctlabs/op-succinct"
     },
+    "0xPolygon/zkevm-proverjs": {
+      "url": "https://github.com/0xPolygon/zkevm-proverjs"
+    },
+    "0xPolygon/zkevm-rom": {
+      "url": "https://github.com/0xPolygon/zkevm-rom"
+    },
+    "0xPolygon/zkevm-storage-rom": {
+      "url": "https://github.com/0xPolygon/zkevm-storage-rom"
+    },
     "0xbow-io/privacy-pools-core": {
       "url": "https://github.com/0xbow-io/privacy-pools-core"
     },
@@ -60,8 +69,51 @@
       "url": "https://github.com/Certora/openzeppelin-contracts",
       "fork_of": "OpenZeppelin/openzeppelin-contracts"
     },
+    "CodeHawks-Contests/2025-04-starknet-part-2": {
+      "url": "https://github.com/CodeHawks-Contests/2025-04-starknet-part-2"
+    },
+    "Consensys-Incorporated/compress": {
+      "url": "https://github.com/Consensys-Incorporated/compress"
+    },
+    "Consensys-Incorporated/gnark": {
+      "url": "https://github.com/Consensys-Incorporated/gnark"
+    },
+    "Consensys/governance-crosschain-bridges": {
+      "url": "https://github.com/Consensys/governance-crosschain-bridges",
+      "fork_of": "lidofinance/governance-crosschain-bridges"
+    },
+    "Consensys/linea-apps-monorepo": {
+      "url": "https://github.com/Consensys/linea-apps-monorepo"
+    },
+    "Consensys/linea-contracts": {
+      "url": "https://github.com/Consensys/linea-contracts"
+    },
+    "Consensys/linea-contracts-audit": {
+      "url": "https://github.com/Consensys/linea-contracts-audit"
+    },
+    "Consensys/linea-contracts-fix": {
+      "url": "https://github.com/Consensys/linea-contracts-fix"
+    },
+    "Consensys/linea-token-bridge": {
+      "url": "https://github.com/Consensys/linea-token-bridge"
+    },
+    "Consensys/linea-tokens": {
+      "url": "https://github.com/Consensys/linea-tokens"
+    },
+    "Consensys/plonk-solidity-audit": {
+      "url": "https://github.com/Consensys/plonk-solidity-audit"
+    },
+    "Consensys/zkevm-monorepo": {
+      "url": "https://github.com/Consensys/zkevm-monorepo"
+    },
     "Cyfrin/2024-10-zksync": {
       "url": "https://github.com/Cyfrin/2024-10-zksync"
+    },
+    "HerodotusDev/integrity": {
+      "url": "https://github.com/HerodotusDev/integrity"
+    },
+    "LFDT-Lineth/lineth-monorepo": {
+      "url": "https://github.com/LFDT-Lineth/lineth-monorepo"
     },
     "Moonsong-Labs/zksync-social-login-circuit": {
       "url": "https://github.com/Moonsong-Labs/zksync-social-login-circuit"
@@ -142,6 +194,15 @@
     "ProofOfInnocence/privacy-pools-v1": {
       "url": "https://github.com/ProofOfInnocence/privacy-pools-v1"
     },
+    "Railgun-Privacy/circuits": {
+      "url": "https://github.com/Railgun-Privacy/circuits"
+    },
+    "Railgun-Privacy/circuits-v2": {
+      "url": "https://github.com/Railgun-Privacy/circuits-v2"
+    },
+    "Railgun-Privacy/contract": {
+      "url": "https://github.com/Railgun-Privacy/contract"
+    },
     "Rari-Capital/solmate": {
       "url": "https://github.com/Rari-Capital/solmate.git"
     },
@@ -155,6 +216,9 @@
     },
     "ScopeLift/umbra-protocol": {
       "url": "https://github.com/ScopeLift/umbra-protocol"
+    },
+    "ThomasPiellard/gnark-oz": {
+      "url": "https://github.com/ThomasPiellard/gnark-oz"
     },
     "Uniswap/unichain-contracts": {
       "url": "https://github.com/Uniswap/unichain-contracts"
@@ -170,6 +234,36 @@
     },
     "aave/governance-crosschain-bridges": {
       "url": "https://github.com/aave/governance-crosschain-bridges"
+    },
+    "agglayer/agg-contracts-internal": {
+      "url": "https://github.com/agglayer/agg-contracts-internal"
+    },
+    "agglayer/aggkit": {
+      "url": "https://github.com/agglayer/aggkit"
+    },
+    "agglayer/agglayer": {
+      "url": "https://github.com/agglayer/agglayer"
+    },
+    "agglayer/agglayer-contracts": {
+      "url": "https://github.com/agglayer/agglayer-contracts"
+    },
+    "agglayer/interop": {
+      "url": "https://github.com/agglayer/interop"
+    },
+    "agglayer/lxly-bridge-and-call": {
+      "url": "https://github.com/agglayer/lxly-bridge-and-call"
+    },
+    "agglayer/provers": {
+      "url": "https://github.com/agglayer/provers"
+    },
+    "agglayer/vault-bridge": {
+      "url": "https://github.com/agglayer/vault-bridge"
+    },
+    "aragon/katana-governance": {
+      "url": "https://github.com/aragon/katana-governance"
+    },
+    "aragon/taiko-contracts": {
+      "url": "https://github.com/aragon/taiko-contracts"
     },
     "axieinfinity/ronin": {
       "url": "https://github.com/axieinfinity/ronin"
@@ -205,6 +299,9 @@
     "ben-chain/contracts-v2": {
       "url": "https://github.com/ben-chain/contracts-v2",
       "fork_of": "ethereum-optimism/contracts"
+    },
+    "bluealloy/revm": {
+      "url": "https://github.com/bluealloy/revm"
     },
     "bob-collective/bob-gateway": {
       "url": "https://github.com/bob-collective/bob-gateway"
@@ -265,6 +362,9 @@
     },
     "code-423n4/2023-10-zksync": {
       "url": "https://github.com/code-423n4/2023-10-zksync"
+    },
+    "code-423n4/2024-03-taiko": {
+      "url": "https://github.com/code-423n4/2024-03-taiko"
     },
     "code-423n4/2024-03-zksync": {
       "url": "https://github.com/code-423n4/2024-03-zksync"
@@ -333,6 +433,12 @@
     "ethereum/sys-asm": {
       "url": "https://github.com/ethereum/sys-asm"
     },
+    "etherscan.io/address/0xcd368c1d80120b0dd92447c87eb570154f8e685c": {
+      "url": "https://etherscan.io/address/0xcd368c1d80120b0dd92447c87eb570154f8e685c#code"
+    },
+    "etherscan.io/address/0xe76c6c83af64e4c60245d8c7de953df673a7a33d": {
+      "url": "https://etherscan.io/address/0xe76c6c83af64e4c60245d8c7de953df673a7a33d#code"
+    },
     "flashbots/flashtestations": {
       "url": "https://github.com/flashbots/flashtestations"
     },
@@ -358,9 +464,52 @@
     "iden3/circomlib": {
       "url": "https://github.com/iden3/circomlib"
     },
+    "katana-network/kat-token": {
+      "url": "https://github.com/katana-network/kat-token"
+    },
+    "katana-network/kat-vault-lz": {
+      "url": "https://github.com/katana-network/kat-vault-lz"
+    },
+    "katana-network/lz-kat-upgradeable": {
+      "url": "https://github.com/katana-network/lz-kat-upgradeable"
+    },
+    "katana-network/sushi-v3-lp-staking-offchainAccounting": {
+      "url": "https://github.com/katana-network/sushi-v3-lp-staking-offchainAccounting"
+    },
     "lidofinance/governance-crosschain-bridges": {
       "url": "https://github.com/lidofinance/governance-crosschain-bridges",
       "fork_of": "aave/governance-crosschain-bridges"
+    },
+    "mantle-xyz/hydro": {
+      "url": "https://github.com/mantle-xyz/hydro"
+    },
+    "mantle-xyz/kona": {
+      "url": "https://github.com/mantle-xyz/kona",
+      "fork_of": "op-rs/kona"
+    },
+    "mantle-xyz/mantle-v2": {
+      "url": "https://github.com/mantle-xyz/mantle-v2"
+    },
+    "mantle-xyz/op-geth": {
+      "url": "https://github.com/mantle-xyz/op-geth",
+      "fork_of": "ethereum-optimism/op-geth"
+    },
+    "mantle-xyz/op-succinct": {
+      "url": "https://github.com/mantle-xyz/op-succinct",
+      "fork_of": "succinctlabs/op-succinct"
+    },
+    "mantle-xyz/revm": {
+      "url": "https://github.com/mantle-xyz/revm",
+      "fork_of": "bluealloy/revm"
+    },
+    "mantlenetworkio/datalayr-mantle": {
+      "url": "https://github.com/mantlenetworkio/datalayr-mantle"
+    },
+    "mantlenetworkio/mantle": {
+      "url": "https://github.com/mantlenetworkio/mantle"
+    },
+    "mantlenetworkio/mantle-token-contracts": {
+      "url": "https://github.com/mantlenetworkio/mantle-token-contracts"
     },
     "matter-labs/era-boojum": {
       "url": "https://github.com/matter-labs/era-boojum"
@@ -419,6 +568,22 @@
     "matter-labs/zksync-sso-contracts": {
       "url": "https://github.com/matter-labs/zksync-sso-contracts"
     },
+    "morph-l2/LRT-Deposit": {
+      "url": "https://github.com/morph-l2/LRT-Deposit"
+    },
+    "morph-l2/go-ethereum": {
+      "url": "https://github.com/morph-l2/go-ethereum"
+    },
+    "morph-l2/morph": {
+      "url": "https://github.com/morph-l2/morph"
+    },
+    "morph-l2/morph-reth": {
+      "url": "https://github.com/morph-l2/morph-reth"
+    },
+    "morph-l2/tendermint": {
+      "url": "https://github.com/morph-l2/tendermint",
+      "fork_of": "tendermint/tendermint"
+    },
     "op-rs/kona": {
       "url": "https://github.com/op-rs/kona"
     },
@@ -427,6 +592,9 @@
     },
     "openintentsframework/oif-contracts": {
       "url": "https://github.com/openintentsframework/oif-contracts"
+    },
+    "paulmillr/scure-starknet": {
+      "url": "https://github.com/paulmillr/scure-starknet"
     },
     "peppersec/tornado-mixer": {
       "url": "https://github.com/peppersec/tornado-mixer"
@@ -512,6 +680,45 @@
     "sherlock-audit/2026-01-aztec-network-jan-14th": {
       "url": "https://github.com/sherlock-audit/2026-01-aztec-network-jan-14th"
     },
+    "sky-ecosystem/starknet-dai-bridge": {
+      "url": "https://github.com/sky-ecosystem/starknet-dai-bridge"
+    },
+    "starknet-io/starkgate-contracts": {
+      "url": "https://github.com/starknet-io/starkgate-contracts"
+    },
+    "starknetfndn/defispring": {
+      "url": "https://github.com/starknetfndn/defispring"
+    },
+    "starkware-industries/starkex": {
+      "url": "https://github.com/starkware-industries/starkex"
+    },
+    "starkware-libs/cairo-lang": {
+      "url": "https://github.com/starkware-libs/cairo-lang"
+    },
+    "starkware-libs/starkex-contracts": {
+      "url": "https://github.com/starkware-libs/starkex-contracts"
+    },
+    "starkware-libs/starkex2.0-contracts": {
+      "url": "https://github.com/starkware-libs/starkex2.0-contracts"
+    },
+    "starkware-libs/starkgate-contracts-internal": {
+      "url": "https://github.com/starkware-libs/starkgate-contracts-internal"
+    },
+    "starkware-libs/starknet-staking": {
+      "url": "https://github.com/starkware-libs/starknet-staking"
+    },
+    "starkware-libs/starkware-starknet-utils": {
+      "url": "https://github.com/starkware-libs/starkware-starknet-utils"
+    },
+    "starkware-libs/strkBTC": {
+      "url": "https://github.com/starkware-libs/strkBTC"
+    },
+    "starkware-libs/stwo-cairo": {
+      "url": "https://github.com/starkware-libs/stwo-cairo"
+    },
+    "starkware-libs/usdc-migration": {
+      "url": "https://github.com/starkware-libs/usdc-migration"
+    },
     "succinctlabs/op-succinct": {
       "url": "https://github.com/succinctlabs/op-succinct"
     },
@@ -523,6 +730,15 @@
     },
     "succinctlabs/sp1-tee": {
       "url": "https://github.com/succinctlabs/sp1-tee"
+    },
+    "taikoxyz/taiko-mono": {
+      "url": "https://github.com/taikoxyz/taiko-mono"
+    },
+    "taikoxyz/taiko-mono-oz-audit": {
+      "url": "https://github.com/taikoxyz/taiko-mono-oz-audit"
+    },
+    "tendermint/tendermint": {
+      "url": "https://github.com/tendermint/tendermint"
     },
     "tornadocash/tornado-anonymity-mining": {
       "url": "https://github.com/tornadocash/tornado-anonymity-mining"
