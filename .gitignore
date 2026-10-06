@@ -8,3 +8,7 @@ deployed-contracts/
 deployed.json
 
 # projects that are still not reviewed
+
+# temporary files of export_audit_index.py
+.audit-index.json.tmp
+.audit-objects.json.zst.tmp

@@ -47,13 +47,13 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/peppersec/tornado-mixer/tree/master/contracts"><code>master</code></a> (mutable branch) | — | <code>contracts/</code> (recursive directory)<br><code>cli.js</code> |
+| <a href="https://github.com/peppersec/tornado-mixer/tree/master/contracts"><code>master</code></a> (mutable branch) | — | <code>contracts</code> (recursive directory)<br><code>cli.js</code> |
 
 ### Repository: <a href="https://github.com/iden3/circomlib"><code>iden3/circomlib</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/iden3/circomlib/tree/master/circuits"><code>master</code></a> (mutable branch) | — | <code>circuits/</code> (recursive directory)<br><code>src/mimcsponge_gencontract.js</code> |
+| <a href="https://github.com/iden3/circomlib/tree/master/circuits"><code>master</code></a> (mutable branch) | — | <code>circuits</code> (recursive directory)<br><code>src/mimcsponge_gencontract.js</code> |
 
 ## Tornado Farm Smart Contracts and Circuits. Audit
 
@@ -99,7 +99,7 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/circuits"><code>820bd83254f3264cebaf255869641ebc33288dc3</code></a> | September 21, 2020 | <code>circuits/</code> (recursive directory)<br><code>circuits/MerkleTree.circom</code> (explicitly not audited)<br><code>circuits/MerkleTreeUpdater.circom</code><br><code>circuits/Withdraw.circom</code><br><code>contracts/</code> (recursive directory)<br><code>contracts/IVerifier.sol</code> (explicitly not audited)<br><code>contracts/RewardVerifier.sol</code> (explicitly not audited)<br><code>contracts/TreeUpdateVerifier.sol</code> (explicitly not audited)<br><code>contracts/WithdrawVerifier.sol</code> (explicitly not audited)<br><code>contracts/Miner.sol</code><br><code>contracts/RewardSwap.sol</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/circuits"><code>820bd83254f3264cebaf255869641ebc33288dc3</code></a> | September 21, 2020 | <code>circuits</code> (recursive directory)<br><code>circuits/MerkleTree.circom</code> (explicitly not audited)<br><code>circuits/MerkleTreeUpdater.circom</code><br><code>circuits/Withdraw.circom</code><br><code>contracts</code> (recursive directory)<br><code>contracts/IVerifier.sol</code> (explicitly not audited)<br><code>contracts/RewardVerifier.sol</code> (explicitly not audited)<br><code>contracts/TreeUpdateVerifier.sol</code> (explicitly not audited)<br><code>contracts/WithdrawVerifier.sol</code> (explicitly not audited)<br><code>contracts/Miner.sol</code><br><code>contracts/RewardSwap.sol</code> |
 | <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/7487ac8b09dcfc78ecc166cff5208435010cec8e/circuits/MerkleTreeUpdater.circom"><code>7487ac8b09dcfc78ecc166cff5208435010cec8e</code></a> | October 12, 2020 | <code>circuits/MerkleTreeUpdater.circom</code> |
 | <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/c8865315c50f3a0cabdd4110a6c45ceba4d4b809/contracts/Miner.sol"><code>c8865315c50f3a0cabdd4110a6c45ceba4d4b809</code></a> | October 12, 2020 | <code>contracts/Miner.sol</code> |
 | <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/e0008b3ed46dbf127b452d1d086235f0fe2dfcb8/contracts/Miner.sol"><code>e0008b3ed46dbf127b452d1d086235f0fe2dfcb8</code></a> | October 12, 2020 | <code>contracts/Miner.sol</code> |
@@ -123,7 +123,7 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Tornado pool audit
 
-- Report: [Zeropool-Tornado.pool-audit.md](<reports/Zeropool-Tornado.pool-audit.md>)
+- Report: [irrelevant/Zeropool-Tornado.pool-audit.md](<reports/irrelevant/Zeropool-Tornado.pool-audit.md>)
 - Auditor: Igor Gulamov (Zeropool)
 - Date: 2021-08-01
 - Description: Independent audit of the tornado-pool zkSNARK circuits (merkleTree.circom, transaction.circom) and Solidity contracts, including the pull request adding OVM support. No critical or major issues were found.

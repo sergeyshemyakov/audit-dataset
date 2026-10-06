@@ -13,8 +13,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/b1a80f23b99c4983229dbb678c9f77895c9d2b70"><code>b1a80f23b99c4983229dbb678c9f77895c9d2b70</code></a> | January 28, 2018 | <code>contracts/</code> (recursive directory)<br><code>contracts/libraries/MultiSendStruct.sol</code> (explicitly not audited) |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"><code>942968d66a4fa200fe9757d02b377dbfc3c88636</code></a> | June 14, 2018 | <code>contracts/</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/b1a80f23b99c4983229dbb678c9f77895c9d2b70"><code>b1a80f23b99c4983229dbb678c9f77895c9d2b70</code></a> | January 28, 2018 | <code>contracts</code> (recursive directory)<br><code>contracts/libraries/MultiSendStruct.sol</code> (explicitly not audited) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"><code>942968d66a4fa200fe9757d02b377dbfc3c88636</code></a> | June 14, 2018 | <code>contracts</code> (recursive directory) |
 
 ## Security Review of Gnosis Safe v1.1.0
 
@@ -70,8 +70,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/4bfc0c8519f1893015d7edfd2c2780fca163c364"><code>4bfc0c8519f1893015d7edfd2c2780fca163c364</code></a> | March 29, 2021 | <code>contracts/</code> (recursive directory) |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/9b305a0f80da7f1107d1181f52c844f089557d05"><code>9b305a0f80da7f1107d1181f52c844f089557d05</code></a> | April 12, 2021 | <code>contracts/</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/4bfc0c8519f1893015d7edfd2c2780fca163c364"><code>4bfc0c8519f1893015d7edfd2c2780fca163c364</code></a> | March 29, 2021 | <code>contracts</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/9b305a0f80da7f1107d1181f52c844f089557d05"><code>9b305a0f80da7f1107d1181f52c844f089557d05</code></a> | April 12, 2021 | <code>contracts</code> (recursive directory) |
 
 ## Security Review of Gnosis Safe 1.3.0 (Final)
 
@@ -84,7 +84,7 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9"><code>ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9</code></a> | May 3, 2021 | <code>contracts/</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9"><code>ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9</code></a> | May 3, 2021 | <code>contracts</code> (recursive directory) |
 
 ## Safe Smart Account v1.3.0 Security Assessment
 
@@ -139,8 +139,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/b115c4c5fe23dca6aefeeccc73d312ddd23322c2"><code>b115c4c5fe23dca6aefeeccc73d312ddd23322c2</code></a> | April 29, 2025 | <code>contracts/</code> (recursive directory)<br><code>contracts/examples/</code> (recursive directory) (explicitly not audited)<br><code>contracts/test/</code> (recursive directory) (explicitly not audited) |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/5d26505388e9ee014ad9ac497aa48e3a13426eb1"><code>5d26505388e9ee014ad9ac497aa48e3a13426eb1</code></a> | May 27, 2025 | <code>contracts/</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/b115c4c5fe23dca6aefeeccc73d312ddd23322c2"><code>b115c4c5fe23dca6aefeeccc73d312ddd23322c2</code></a> | April 29, 2025 | <code>contracts</code> (recursive directory)<br><code>contracts/examples</code> (recursive directory) (explicitly not audited)<br><code>contracts/test</code> (recursive directory) (explicitly not audited) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/5d26505388e9ee014ad9ac497aa48e3a13426eb1"><code>5d26505388e9ee014ad9ac497aa48e3a13426eb1</code></a> | May 27, 2025 | <code>contracts</code> (recursive directory) |
 
 ## Gnosis Safe Audit Results
 
@@ -152,7 +152,7 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"><code>942968d66a4fa200fe9757d02b377dbfc3c88636</code></a> | June 14, 2018 | <code>contracts/</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"><code>942968d66a4fa200fe9757d02b377dbfc3c88636</code></a> | June 14, 2018 | <code>contracts</code> (recursive directory) |
 | <a href="https://github.com/safe-fndn/safe-smart-account/commit/898cc8969736bc190db1b7c446e050f49177f898"><code>898cc8969736bc190db1b7c446e050f49177f898</code></a> | June 26, 2018 | <code>contracts/SecuredTokenTransfer.sol</code> |
 
 ## Formal Verification Report: GnosisSafe Contract
@@ -179,8 +179,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"><code>834e798aa51291cccaf0594921194928716e9892</code></a> | December 14, 2024 | <code>contracts/</code> (recursive directory) |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"><code>1c8b24a0a438e8c2cd089a9d830d1688a47a28d5</code></a> | January 23, 2025 | <code>contracts/</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"><code>834e798aa51291cccaf0594921194928716e9892</code></a> | December 14, 2024 | <code>contracts</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"><code>1c8b24a0a438e8c2cd089a9d830d1688a47a28d5</code></a> | January 23, 2025 | <code>contracts</code> (recursive directory) |
 
 ## Safe Library Contracts Security Assessment and Formal Verification
 
@@ -463,8 +463,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/5d218a4b6b6d01412abac07a2a7582d07dd35a65"><code>5d218a4b6b6d01412abac07a2a7582d07dd35a65</code></a> | March 22, 2023 | <code>packages/evm/contracts/</code> (recursive directory) |
-| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/c824d7b2b71f3dece080686640e51754bc57a654"><code>c824d7b2b71f3dece080686640e51754bc57a654</code></a> | April 20, 2023 | <code>packages/evm/contracts/</code> (recursive directory) |
+| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/5d218a4b6b6d01412abac07a2a7582d07dd35a65"><code>5d218a4b6b6d01412abac07a2a7582d07dd35a65</code></a> | March 22, 2023 | <code>packages/evm/contracts</code> (recursive directory) |
+| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/c824d7b2b71f3dece080686640e51754bc57a654"><code>c824d7b2b71f3dece080686640e51754bc57a654</code></a> | April 20, 2023 | <code>packages/evm/contracts</code> (recursive directory) |
 
 ## Zodiac Modifier Roles Security Audit
 
@@ -506,8 +506,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/d4b6539bdb742cf20d29425bbfdfd06acebda7d1"><code>d4b6539bdb742cf20d29425bbfdfd06acebda7d1</code></a> | November 6, 2023 | <code>packages/evm/contracts/</code> (recursive directory) |
-| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/a19c0ebda97f7d645335f2c386818546641f832b"><code>a19c0ebda97f7d645335f2c386818546641f832b</code></a> | November 29, 2023 | <code>packages/evm/contracts/</code> (recursive directory) |
+| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/d4b6539bdb742cf20d29425bbfdfd06acebda7d1"><code>d4b6539bdb742cf20d29425bbfdfd06acebda7d1</code></a> | November 6, 2023 | <code>packages/evm/contracts</code> (recursive directory) |
+| <a href="https://github.com/gnosis/zodiac-modifier-roles/commit/a19c0ebda97f7d645335f2c386818546641f832b"><code>a19c0ebda97f7d645335f2c386818546641f832b</code></a> | November 29, 2023 | <code>packages/evm/contracts</code> (recursive directory) |
 
 ## Zodiac Security Review
 
@@ -520,8 +520,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/gnosis/zodiac/commit/67a0956e2bce11b5945cc79f1aff4ee3a0a4ea2a"><code>67a0956e2bce11b5945cc79f1aff4ee3a0a4ea2a</code></a> | September 7, 2021 | <code>contracts/</code> (recursive directory) |
-| <a href="https://github.com/gnosis/zodiac/commit/c7aea1be89447584d7fb38911c9a8410d8b64acd"><code>c7aea1be89447584d7fb38911c9a8410d8b64acd</code></a> | September 13, 2021 | <code>contracts/</code> (recursive directory) |
+| <a href="https://github.com/gnosis/zodiac/commit/67a0956e2bce11b5945cc79f1aff4ee3a0a4ea2a"><code>67a0956e2bce11b5945cc79f1aff4ee3a0a4ea2a</code></a> | September 7, 2021 | <code>contracts</code> (recursive directory) |
+| <a href="https://github.com/gnosis/zodiac/commit/c7aea1be89447584d7fb38911c9a8410d8b64acd"><code>c7aea1be89447584d7fb38911c9a8410d8b64acd</code></a> | September 13, 2021 | <code>contracts</code> (recursive directory) |
 
 ## Zodiac Signature Patch Audit
 

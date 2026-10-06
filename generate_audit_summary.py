@@ -68,10 +68,134 @@ def read_summary(path: Path) -> dict[str, Any]:
             f"schema_version must be {SUMMARY_SCHEMA_VERSION!r}, "
             f"got {value.get('schema_version')!r}; run normalize.py --migrate"
         )
-    problems = validate_summary_ids(value)
+    problems = validate_summary_ids(value) + validate_summary_scopes(value)
+    problems += missing_report_files(value, path.parent / "reports")
     if problems:
         raise SummaryError("; ".join(problems))
     return value
+
+
+STATUSES = {
+    "audited_with_no_major_findings",
+    "audited_with_major_findings",
+    "not_audited",
+    "partially_audited_without_major_findings",
+    "partially_audited_with_major_findings",
+}
+STATUSES_WITH_MAJOR_FINDINGS = {
+    "audited_with_major_findings",
+    "partially_audited_with_major_findings",
+}
+PATH_KINDS = {"file", "directory_recursive"}
+
+
+def scope_path_problem(path: Any) -> str | None:
+    """Scope paths join manifest paths verbatim, so only one spelling is allowed."""
+    if not isinstance(path, str) or not path:
+        return "must be a non-empty string"
+    if "\\" in path:
+        return "must use '/' separators"
+    if path.startswith("/") or path.endswith("/"):
+        return "must not start or end with '/'"
+    if any(part in {"", ".", ".."} for part in path.split("/")):
+        return "must not contain empty, '.' or '..' segments"
+    return None
+
+
+def version_problems(version: Any) -> list[str]:
+    if not isinstance(version, dict) or not isinstance(version.get("revision"), dict):
+        return ["each version must contain a revision object"]
+    problems: list[str] = []
+    status = version.get("status")
+    major_findings = version.get("major_findings")
+    finding_ids = version.get("finding_ids")
+    if status not in STATUSES:
+        problems.append(f"unknown status {status!r}")
+    if type(major_findings) is not int or major_findings < 0:
+        return problems + [f"major_findings must be a non-negative integer, got {major_findings!r}"]
+    if major_findings == 0:
+        if finding_ids is not None:
+            problems.append("finding_ids must be absent when major_findings is 0")
+    elif (
+        not isinstance(finding_ids, list)
+        or len(finding_ids) != major_findings
+        or len(set(finding_ids)) != major_findings
+        or not all(isinstance(finding_id, str) and finding_id for finding_id in finding_ids)
+    ):
+        problems.append(
+            f"finding_ids must hold exactly {major_findings} unique non-empty strings"
+        )
+    if status == "not_audited" and major_findings != 0:
+        problems.append("a not_audited version must have major_findings 0")
+    if status in STATUSES_WITH_MAJOR_FINDINGS and major_findings == 0:
+        problems.append(f"status {status} requires major_findings > 0")
+    if status in STATUSES - STATUSES_WITH_MAJOR_FINDINGS and major_findings > 0:
+        problems.append(f"status {status} requires major_findings 0")
+    return problems
+
+
+def report_problems(report: dict[str, Any]) -> list[str]:
+    problems: list[str] = []
+    for key in ("title", "auditor"):
+        if not isinstance(report.get(key), str) or not report[key].strip():
+            problems.append(f"{key} must be a non-empty string")
+    report_date = report.get("report_date")
+    if report_date is not None:
+        try:
+            parsed = date.fromisoformat(report_date) if isinstance(report_date, str) else None
+        except ValueError:
+            parsed = None
+        if parsed is None or parsed.isoformat() != report_date:
+            problems.append(f"report_date must be null or YYYY-MM-DD, got {report_date!r}")
+    if not isinstance(report.get("isRelevant"), bool):
+        problems.append("isRelevant must be a boolean")
+    return problems
+
+
+def missing_report_files(summary: dict[str, Any], reports_dir: Path) -> list[str]:
+    problems: list[str] = []
+    for report in summary["reports"]:
+        report_file = report.get("report_file") if isinstance(report, dict) else None
+        if not isinstance(report_file, str) or not report_file:
+            problems.append(f"report {report.get('id')!r}: report_file must be a non-empty string")
+        elif not reports_dir.joinpath(*PurePosixPath(report_file).parts).is_file():
+            problems.append(f"report {report.get('id')!r}: report_file {report_file!r} does not exist")
+    return problems
+
+
+def validate_summary_scopes(summary: dict[str, Any]) -> list[str]:
+    """Return human readable problems with the scoped paths and their versions."""
+    problems: list[str] = []
+    report_ids: set[str] = set()
+    for report in summary["reports"]:
+        report_id = report.get("id") if isinstance(report, dict) else None
+        if not isinstance(report_id, str) or not report_id:
+            problems.append("every report needs a non-empty id")
+            continue
+        if report_id in report_ids:
+            problems.append(f"duplicate report id {report_id!r}")
+        report_ids.add(report_id)
+        problems.extend(f"report {report_id!r}: {problem}" for problem in report_problems(report))
+        for scope in report.get("scopes", []) or []:
+            paths = scope.get("paths") if isinstance(scope, dict) else None
+            if not isinstance(paths, dict):
+                problems.append(f"report {report_id!r}: scope paths must be an object")
+                continue
+            for path, path_data in paths.items():
+                where = f"report {report_id!r}: {scope.get('repository')}:{path}"
+                path_problem = scope_path_problem(path)
+                if path_problem is not None:
+                    problems.append(f"{where}: path {path_problem}")
+                if not isinstance(path_data, dict) or path_data.get("path_kind") not in PATH_KINDS:
+                    problems.append(f"{where}: path_kind must be one of {sorted(PATH_KINDS)}")
+                    continue
+                versions = path_data.get("versions")
+                if not isinstance(versions, list):
+                    problems.append(f"{where}: versions must be an array")
+                    continue
+                for version in versions:
+                    problems.extend(f"{where}: {problem}" for problem in version_problems(version))
+    return problems
 
 
 def warn(message: str) -> None:

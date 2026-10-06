@@ -20,7 +20,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -111,7 +111,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -141,7 +141,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -171,7 +171,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -201,7 +201,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -231,7 +231,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -261,7 +261,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -291,7 +291,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -321,7 +321,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -351,7 +351,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -381,7 +381,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -411,7 +411,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -441,7 +441,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -471,7 +471,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -501,7 +501,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -531,7 +531,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -561,7 +561,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -591,7 +591,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -621,7 +621,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -651,7 +651,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -681,7 +681,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -711,7 +711,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -741,7 +741,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -771,7 +771,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -801,7 +801,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -831,7 +831,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -861,7 +861,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -891,7 +891,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -921,7 +921,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -973,7 +973,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -986,7 +986,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1016,7 +1016,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1029,7 +1029,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1059,7 +1059,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1072,7 +1072,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1102,7 +1102,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1115,7 +1115,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1145,7 +1145,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1158,7 +1158,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1188,7 +1188,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1201,7 +1201,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1231,7 +1231,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1244,7 +1244,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1274,7 +1274,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1287,7 +1287,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1317,7 +1317,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1330,7 +1330,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1360,7 +1360,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1373,7 +1373,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1403,7 +1403,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1416,7 +1416,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1446,7 +1446,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1459,7 +1459,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1489,7 +1489,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1502,7 +1502,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1532,7 +1532,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1545,7 +1545,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1575,7 +1575,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1588,7 +1588,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1618,7 +1618,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1631,7 +1631,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1661,7 +1661,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1674,7 +1674,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1704,7 +1704,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1717,7 +1717,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1747,7 +1747,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1760,7 +1760,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1790,7 +1790,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1803,7 +1803,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1833,7 +1833,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1846,7 +1846,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1876,7 +1876,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1889,7 +1889,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1919,7 +1919,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1932,7 +1932,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -1962,7 +1962,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -1975,7 +1975,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -2005,7 +2005,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -2018,7 +2018,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -2048,7 +2048,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -2061,7 +2061,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -2091,7 +2091,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -2104,7 +2104,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -2134,7 +2134,7 @@
                     "timestamp": "2019-11-11T14:53:29Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/78494bcdbc61b3db52308a25f0556c42cf656ab1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review / v1.1.0",
                   "coverage": "Review of changes and fixes made after the initial assessment.",
                   "major_findings": 0,
@@ -2147,7 +2147,7 @@
                     "timestamp": "2019-12-09T21:54:52Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/2df0b2e0ad5d0f7ab5423e7f5baa72b2456d32ae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "v1.1.1 review",
                   "coverage": "Review of v1.1.1 changes and the report appendix issues.",
                   "major_findings": 0,
@@ -2199,7 +2199,7 @@
                     "timestamp": "2020-05-04T13:37:45Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/62d4bd39925db65083b035115d6987772b2d2dca"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review of the gas-validation correction.",
                   "major_findings": 0,
@@ -2229,7 +2229,7 @@
                     "timestamp": "2020-05-04T13:37:45Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/62d4bd39925db65083b035115d6987772b2d2dca"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review of the gas-validation correction.",
                   "major_findings": 0,
@@ -2259,7 +2259,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -2281,7 +2281,7 @@
                     "timestamp": "2021-04-12T17:22:02Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/9b305a0f80da7f1107d1181f52c844f089557d05"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Suggestion review",
                   "coverage": "Review limited to implementation of report notes 3 and 4.",
                   "major_findings": 0,
@@ -2311,7 +2311,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -2921,7 +2921,7 @@
                     "timestamp": "2026-06-05T07:02:07Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/77901a5a1ad835b74ad3b72f73a8412cfe491c57"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Finding fix review",
                   "coverage": "Review limited to the reported Safe contract finding's remediation.",
                   "major_findings": 0
@@ -3485,7 +3485,7 @@
                     "timestamp": "2023-03-28T12:49:12Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to changes addressing the reported findings.",
                   "major_findings": 0,
@@ -3515,7 +3515,7 @@
                     "timestamp": "2023-03-28T12:49:12Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to changes addressing the reported findings.",
                   "major_findings": 0,
@@ -3545,7 +3545,7 @@
                     "timestamp": "2023-03-28T12:49:12Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to changes addressing the reported findings.",
                   "major_findings": 0,
@@ -3575,7 +3575,7 @@
                     "timestamp": "2023-03-28T12:49:12Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to changes addressing the reported findings.",
                   "major_findings": 0,
@@ -3605,7 +3605,7 @@
                     "timestamp": "2023-03-28T12:49:12Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to changes addressing the reported findings.",
                   "major_findings": 0,
@@ -3635,7 +3635,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3657,7 +3657,7 @@
                     "timestamp": "2025-05-27T08:38:40Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/5d26505388e9ee014ad9ac497aa48e3a13426eb1"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the 17 implemented finding fixes.",
                   "major_findings": 0,
@@ -3665,7 +3665,7 @@
                 }
               ]
             },
-            "contracts/examples/": {
+            "contracts/examples": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3682,7 +3682,7 @@
                 }
               ]
             },
-            "contracts/test/": {
+            "contracts/test": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3721,7 +3721,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3748,7 +3748,7 @@
                     "timestamp": "2018-06-26T23:34:48Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/898cc8969736bc190db1b7c446e050f49177f898"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Symbolic-execution follow-up",
                   "coverage": "Symbolic execution of changes through this revision, specifically including SecuredTokenTransfer.",
                   "major_findings": 0,
@@ -3907,7 +3907,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3929,7 +3929,7 @@
                     "timestamp": "2025-01-23T10:52:17Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Formal verification and manual review of the latest revision including fixes.",
                   "major_findings": 0,
@@ -3981,7 +3981,7 @@
                     "timestamp": "2024-08-28T13:23:32Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/b541cd7e5d745b223644024b930b19a2a3836d1e"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review and verification of the latest revision including fixes.",
                   "major_findings": 0,
@@ -4011,7 +4011,7 @@
                     "timestamp": "2024-08-28T13:23:32Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/b541cd7e5d745b223644024b930b19a2a3836d1e"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review and verification of the latest revision including fixes.",
                   "major_findings": 0,
@@ -4041,7 +4041,7 @@
                     "timestamp": "2024-08-28T13:23:32Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/b541cd7e5d745b223644024b930b19a2a3836d1e"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review and verification of the latest revision including fixes.",
                   "major_findings": 0,
@@ -4110,7 +4110,7 @@
                     "timestamp": "2023-11-08T08:31:18Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/1981fbc63e3850d626074d81d22a198afe64ac03"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.1 fix review",
                   "coverage": "Review limited to changes made from the preceding revision.",
                   "major_findings": 0,
@@ -4128,7 +4128,7 @@
                     "timestamp": "2023-11-08T08:31:18Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/1981fbc63e3850d626074d81d22a198afe64ac03"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.1 fix review",
                   "coverage": "Review limited to changes made from the preceding revision.",
                   "major_findings": 0,
@@ -4197,7 +4197,7 @@
                     "timestamp": "2023-11-08T08:31:18Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/1981fbc63e3850d626074d81d22a198afe64ac03"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.1 fix review",
                   "coverage": "Review limited to changes made from the preceding revision.",
                   "major_findings": 0,
@@ -4210,7 +4210,7 @@
                     "timestamp": "2023-11-24T15:40:25Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/0371f5ac81da1a5275e5c5643fb95c1c4dda2121"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.2 fix review",
                   "coverage": "Review limited to client-discovered compatibility fixes.",
                   "major_findings": 0,
@@ -4223,7 +4223,7 @@
                     "timestamp": "2023-11-30T10:53:49Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c366d822c42c656df3988624897a5b88fa83b2d7"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0",
                   "coverage": "Review of the v0.2.0 UserOperation handling and signing changes.",
                   "major_findings": 0,
@@ -4236,7 +4236,7 @@
                     "timestamp": "2023-12-06T12:08:32Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/25779b5a5077e109a585993a02c4dad2209ab084"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0 fix review",
                   "coverage": "Review limited to the immediate report fix.",
                   "major_findings": 0,
@@ -4254,7 +4254,7 @@
                     "timestamp": "2023-11-08T08:31:18Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/1981fbc63e3850d626074d81d22a198afe64ac03"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.1 fix review",
                   "coverage": "Review limited to changes made from the preceding revision.",
                   "major_findings": 0,
@@ -4267,7 +4267,7 @@
                     "timestamp": "2023-11-24T15:40:25Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/0371f5ac81da1a5275e5c5643fb95c1c4dda2121"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.2 fix review",
                   "coverage": "Review limited to client-discovered compatibility fixes.",
                   "major_findings": 0,
@@ -4280,7 +4280,7 @@
                     "timestamp": "2023-11-30T10:53:49Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c366d822c42c656df3988624897a5b88fa83b2d7"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0",
                   "coverage": "Review of the v0.2.0 UserOperation handling and signing changes.",
                   "major_findings": 0,
@@ -4293,7 +4293,7 @@
                     "timestamp": "2023-12-06T12:08:32Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/25779b5a5077e109a585993a02c4dad2209ab084"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0 fix review",
                   "coverage": "Review limited to the immediate report fix.",
                   "major_findings": 0,
@@ -4418,7 +4418,7 @@
                     "timestamp": "2023-11-08T08:31:18Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/1981fbc63e3850d626074d81d22a198afe64ac03"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.1 fix review",
                   "coverage": "Review limited to changes made from the preceding revision.",
                   "major_findings": 0,
@@ -4431,7 +4431,7 @@
                     "timestamp": "2023-11-24T15:40:25Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/0371f5ac81da1a5275e5c5643fb95c1c4dda2121"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.2 fix review",
                   "coverage": "Review limited to client-discovered compatibility fixes.",
                   "major_findings": 0,
@@ -4444,7 +4444,7 @@
                     "timestamp": "2023-11-30T10:53:49Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c366d822c42c656df3988624897a5b88fa83b2d7"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0",
                   "coverage": "Review of the v0.2.0 UserOperation handling and signing changes.",
                   "major_findings": 0,
@@ -4457,7 +4457,7 @@
                     "timestamp": "2023-12-06T12:08:32Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/25779b5a5077e109a585993a02c4dad2209ab084"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0 fix review",
                   "coverage": "Review limited to the immediate report fix.",
                   "major_findings": 0,
@@ -4475,7 +4475,7 @@
                     "timestamp": "2023-11-08T08:31:18Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/1981fbc63e3850d626074d81d22a198afe64ac03"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.1 fix review",
                   "coverage": "Review limited to changes made from the preceding revision.",
                   "major_findings": 0,
@@ -4488,7 +4488,7 @@
                     "timestamp": "2023-11-24T15:40:25Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/0371f5ac81da1a5275e5c5643fb95c1c4dda2121"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 1.2 fix review",
                   "coverage": "Review limited to client-discovered compatibility fixes.",
                   "major_findings": 0,
@@ -4501,7 +4501,7 @@
                     "timestamp": "2023-11-30T10:53:49Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c366d822c42c656df3988624897a5b88fa83b2d7"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0",
                   "coverage": "Review of the v0.2.0 UserOperation handling and signing changes.",
                   "major_findings": 0,
@@ -4514,7 +4514,7 @@
                     "timestamp": "2023-12-06T12:08:32Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/25779b5a5077e109a585993a02c4dad2209ab084"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 2.0 fix review",
                   "coverage": "Review limited to the immediate report fix.",
                   "major_findings": 0,
@@ -4532,7 +4532,7 @@
                     "timestamp": "2024-03-12T14:43:28Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/7b3ea24cf06dca2bc88405fd1c991b2338f565f8"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Revision 3.0",
                   "coverage": "Incremental review of Safe4337Module changes since the prior revision.",
                   "major_findings": 0
@@ -4583,7 +4583,7 @@
                     "timestamp": "2026-08-13T14:00:28Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/f877239bedc1f5f244154a895ce7108464c372df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to remediation changes.",
                   "major_findings": 0,
@@ -4613,7 +4613,7 @@
                     "timestamp": "2026-08-13T14:00:28Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/f877239bedc1f5f244154a895ce7108464c372df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to remediation changes.",
                   "major_findings": 0,
@@ -4721,7 +4721,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4751,7 +4751,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4781,7 +4781,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4811,7 +4811,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4841,7 +4841,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4871,7 +4871,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4901,7 +4901,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4931,7 +4931,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4961,7 +4961,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -4991,7 +4991,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5021,7 +5021,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5051,7 +5051,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5081,7 +5081,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5111,7 +5111,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5141,7 +5141,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5171,7 +5171,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5201,7 +5201,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5231,7 +5231,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5261,7 +5261,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5291,7 +5291,7 @@
                     "timestamp": "2020-10-20T11:39:38Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/b531c8db9ded1fa72c8459078ebe4e88a2501bae"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the three reported fixes.",
                   "major_findings": 0,
@@ -5331,7 +5331,7 @@
                     "timestamp": "2024-08-30T10:33:25Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/bc76ffd27a8a0c15c255ffcb61707bf7a30085eb"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Incremental review",
                   "coverage": "Review limited to the changed ALLOWANCE_TRANSFER_TYPEHASH.",
                   "major_findings": 0
@@ -5343,7 +5343,7 @@
                     "timestamp": "2024-09-09T09:19:58Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/549ea1605538a4aa0571fa8e4d44e0e762e60720"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the preceding finding's fix.",
                   "major_findings": 0,
@@ -5395,7 +5395,7 @@
                     "timestamp": "2026-02-19T09:30:06Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/2d09764371b014c295d4d0202972e197e720d776"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to remediation changes.",
                   "major_findings": 0,
@@ -5425,7 +5425,7 @@
                     "timestamp": "2026-02-19T09:30:06Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/2d09764371b014c295d4d0202972e197e720d776"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to remediation changes.",
                   "major_findings": 0,
@@ -5455,7 +5455,7 @@
                     "timestamp": "2026-02-19T09:30:06Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/2d09764371b014c295d4d0202972e197e720d776"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to remediation changes.",
                   "major_findings": 0,
@@ -6015,7 +6015,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6045,7 +6045,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6075,7 +6075,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6105,7 +6105,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6135,7 +6135,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6165,7 +6165,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6195,7 +6195,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6225,7 +6225,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6255,7 +6255,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6285,7 +6285,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6303,7 +6303,7 @@
                     "timestamp": "2024-07-12T10:06:53Z",
                     "url": "https://github.com/safe-fndn/safe-modules/commit/c3a4d0671099c5e17fda7287b764b93f6b9801df"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Second formal verification and manual review",
                   "coverage": "Review of fixes and changes since the preceding audit revision.",
                   "major_findings": 0,
@@ -6530,7 +6530,7 @@
                     "timestamp": "2024-06-13T16:11:35Z",
                     "url": "https://github.com/5afe/CandideWalletContracts/commit/113d3c059e039e332637e8f686d9cbd505f1e738"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to fixes from the initial assessment.",
                   "major_findings": 0,
@@ -6560,7 +6560,7 @@
                     "timestamp": "2024-06-13T16:11:35Z",
                     "url": "https://github.com/5afe/CandideWalletContracts/commit/113d3c059e039e332637e8f686d9cbd505f1e738"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to fixes from the initial assessment.",
                   "major_findings": 0,
@@ -6626,7 +6626,7 @@
                     "timestamp": "2024-06-13T16:11:35Z",
                     "url": "https://github.com/5afe/CandideWalletContracts/commit/113d3c059e039e332637e8f686d9cbd505f1e738"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to fixes from the initial assessment.",
                   "major_findings": 0,
@@ -6644,7 +6644,7 @@
                     "timestamp": "2024-06-13T16:11:35Z",
                     "url": "https://github.com/5afe/CandideWalletContracts/commit/113d3c059e039e332637e8f686d9cbd505f1e738"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to fixes from the initial assessment.",
                   "major_findings": 0,
@@ -6684,7 +6684,7 @@
                     "timestamp": "2024-06-13T16:11:35Z",
                     "url": "https://github.com/5afe/CandideWalletContracts/commit/113d3c059e039e332637e8f686d9cbd505f1e738"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to fixes from the initial assessment.",
                   "major_findings": 0,
@@ -6702,7 +6702,7 @@
                     "timestamp": "2024-06-13T16:11:35Z",
                     "url": "https://github.com/5afe/CandideWalletContracts/commit/113d3c059e039e332637e8f686d9cbd505f1e738"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to fixes from the initial assessment.",
                   "major_findings": 0,
@@ -6720,7 +6720,7 @@
                     "timestamp": "2024-06-13T16:11:35Z",
                     "url": "https://github.com/5afe/CandideWalletContracts/commit/113d3c059e039e332637e8f686d9cbd505f1e738"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to fixes from the initial assessment.",
                   "major_findings": 0,
@@ -6778,7 +6778,7 @@
                     "timestamp": "2021-09-10T18:11:39Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-delay/commit/808dfda6fd0ea144bbbe83e419e14045a029ca5d"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to remediation of all reported issues.",
                   "major_findings": 0,
@@ -6808,7 +6808,7 @@
         {
           "repository": "gnosis/zodiac-modifier-roles",
           "paths": {
-            "packages/evm/contracts/": {
+            "packages/evm/contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -6830,7 +6830,7 @@
                     "timestamp": "2023-04-20T13:42:20Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/c824d7b2b71f3dece080686640e51754bc57a654"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to remediation of the reported issues.",
                   "major_findings": 0,
@@ -6882,7 +6882,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -6912,7 +6912,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -6942,7 +6942,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -6972,7 +6972,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7002,7 +7002,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7032,7 +7032,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7062,7 +7062,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7092,7 +7092,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7122,7 +7122,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7152,7 +7152,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7182,7 +7182,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7229,7 +7229,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7259,7 +7259,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7289,7 +7289,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7319,7 +7319,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7349,7 +7349,7 @@
                     "timestamp": "2023-05-08T09:34:14Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/23b782f781bbda750995934f6fdc01f242faadba"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Post-audit review",
                   "coverage": "Review of all finding alleviations in the revised commit.",
                   "major_findings": 0,
@@ -7389,7 +7389,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7401,7 +7401,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7414,7 +7414,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7432,7 +7432,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7444,7 +7444,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7457,7 +7457,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7475,7 +7475,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7487,7 +7487,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7500,7 +7500,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7518,7 +7518,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7530,7 +7530,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7543,7 +7543,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7561,7 +7561,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7573,7 +7573,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7586,7 +7586,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7604,7 +7604,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7616,7 +7616,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7629,7 +7629,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7647,7 +7647,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7659,7 +7659,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7672,7 +7672,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7690,7 +7690,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7702,7 +7702,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7715,7 +7715,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7733,7 +7733,7 @@
                     "timestamp": "2023-09-18T16:04:24Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/6a7fb909a1a5dc55d5cfbe759a624ce20c625f46"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "PR #206 review",
                   "coverage": "Review limited to PR #206 changes affecting contracts from the original audit.",
                   "major_findings": 0
@@ -7745,7 +7745,7 @@
                     "timestamp": "2023-10-11T13:08:41Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/e6d315f9170dcf4c622d504bd2fb6eafbdac9b75"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Remediation review",
                   "coverage": "Review of the first remediation revision.",
                   "major_findings": 0,
@@ -7758,7 +7758,7 @@
                     "timestamp": "2023-10-31T23:13:36Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/4d851d2a8425ee29a6f35b2561d775b52d7523ce"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Final remediation review",
                   "coverage": "Review of the final finding alleviations.",
                   "major_findings": 0,
@@ -7788,7 +7788,7 @@
         {
           "repository": "gnosis/zodiac-modifier-roles",
           "paths": {
-            "packages/evm/contracts/": {
+            "packages/evm/contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -7810,7 +7810,7 @@
                     "timestamp": "2023-11-29T12:08:56Z",
                     "url": "https://github.com/gnosis/zodiac-modifier-roles/commit/a19c0ebda97f7d645335f2c386818546641f832b"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to the reported issue's fix.",
                   "major_findings": 0,
@@ -7840,7 +7840,7 @@
         {
           "repository": "gnosis/zodiac",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -7862,7 +7862,7 @@
                     "timestamp": "2021-09-13T15:41:16Z",
                     "url": "https://github.com/gnosis/zodiac/commit/c7aea1be89447584d7fb38911c9a8410d8b64acd"
                   },
-                  "status": "partially_audited_with_no_major_findings",
+                  "status": "partially_audited_without_major_findings",
                   "review_phase": "Fix review",
                   "coverage": "Review limited to changes addressing the reported findings.",
                   "major_findings": 0,

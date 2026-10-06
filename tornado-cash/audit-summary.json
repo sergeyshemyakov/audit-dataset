@@ -333,7 +333,7 @@
         {
           "repository": "peppersec/tornado-mixer",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -376,7 +376,7 @@
         {
           "repository": "iden3/circomlib",
           "paths": {
-            "circuits/": {
+            "circuits": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -602,7 +602,7 @@
         {
           "repository": "tornadocash/tornado-anonymity-mining",
           "paths": {
-            "circuits/": {
+            "circuits": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -699,7 +699,7 @@
                 }
               ]
             },
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -1089,7 +1089,7 @@
     },
     {
       "id": "zeropool-tornado-pool-audit-2021-08-01",
-      "report_file": "Zeropool-Tornado.pool-audit.md",
+      "report_file": "irrelevant/Zeropool-Tornado.pool-audit.md",
       "title": "Tornado pool audit",
       "description": "Independent audit of the tornado-pool zkSNARK circuits (merkleTree.circom, transaction.circom) and Solidity contracts, including the pull request adding OVM support. No critical or major issues were found.",
       "isRelevant": false,
