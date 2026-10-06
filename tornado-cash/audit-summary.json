@@ -333,7 +333,7 @@
         {
           "repository": "peppersec/tornado-mixer",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -376,7 +376,7 @@
         {
           "repository": "iden3/circomlib",
           "paths": {
-            "circuits/": {
+            "circuits": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -602,7 +602,7 @@
         {
           "repository": "tornadocash/tornado-anonymity-mining",
           "paths": {
-            "circuits/": {
+            "circuits": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -699,7 +699,7 @@
                 }
               ]
             },
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {

@@ -20,7 +20,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -2259,7 +2259,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -2311,7 +2311,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3635,7 +3635,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3665,7 +3665,7 @@
                 }
               ]
             },
-            "contracts/examples/": {
+            "contracts/examples": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3682,7 +3682,7 @@
                 }
               ]
             },
-            "contracts/test/": {
+            "contracts/test": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3721,7 +3721,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -3907,7 +3907,7 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -6808,7 +6808,7 @@
         {
           "repository": "gnosis/zodiac-modifier-roles",
           "paths": {
-            "packages/evm/contracts/": {
+            "packages/evm/contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -7788,7 +7788,7 @@
         {
           "repository": "gnosis/zodiac-modifier-roles",
           "paths": {
-            "packages/evm/contracts/": {
+            "packages/evm/contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
@@ -7840,7 +7840,7 @@
         {
           "repository": "gnosis/zodiac",
           "paths": {
-            "contracts/": {
+            "contracts": {
               "path_kind": "directory_recursive",
               "versions": [
                 {
