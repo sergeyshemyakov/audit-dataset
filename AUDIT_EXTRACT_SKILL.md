@@ -143,3 +143,4 @@ Run `python3 pipeline.py <project>`. It executes, in order:
 3. `format_sources.py <project>`: formats the fetched Solidity files with the shared forge fmt config.
 4. `index_sources.py <project>`: records the declared unit names and post-format hashes of every fetched file in `manifest.json`.
 5. `update_repositories.py`: refreshes the root `repositories.json` registry (requires the authenticated GitHub CLI; pass `--no-lookup` to `pipeline.py` to skip the GitHub lineage lookups).
+6. `export_audit_index.py`: regenerates `audit-index.json` and `audit-objects.json.zst` from every collection. It fails on any summary that breaks the rules above (for example an unknown status or a scope path ending in `/`); fix the summary rather than the export. Commit both files together with the summary.

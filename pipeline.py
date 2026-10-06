@@ -3,8 +3,9 @@
 
 After ``audit-summary.json`` exists (see AUDIT_EXTRACT_SKILL.md) this runs, in
 order: ``generate_audit_summary.py`` (validation and the Markdown rendering),
-``fetch_audited_sources.py``, ``format_sources.py``, ``index_sources.py`` and
-``update_repositories.py``.
+``fetch_audited_sources.py``, ``format_sources.py``, ``index_sources.py``,
+``update_repositories.py`` and ``export_audit_index.py``, which regenerates the
+dataset-wide export from every collection.
 """
 
 from __future__ import annotations
@@ -45,6 +46,7 @@ def main() -> int:
         [python, str(root / "index_sources.py"), rel],
         [python, str(root / "update_repositories.py")]
         + (["--no-lookup"] if args.no_lookup else []),
+        [python, str(root / "export_audit_index.py")],
     ]
     for step in steps:
         code = run(step)
