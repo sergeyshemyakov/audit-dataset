@@ -1089,7 +1089,7 @@
     },
     {
       "id": "zeropool-tornado-pool-audit-2021-08-01",
-      "report_file": "Zeropool-Tornado.pool-audit.md",
+      "report_file": "irrelevant/Zeropool-Tornado.pool-audit.md",
       "title": "Tornado pool audit",
       "description": "Independent audit of the tornado-pool zkSNARK circuits (merkleTree.circom, transaction.circom) and Solidity contracts, including the pull request adding OVM support. No critical or major issues were found.",
       "isRelevant": false,

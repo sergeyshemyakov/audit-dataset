@@ -123,7 +123,7 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Tornado pool audit
 
-- Report: [Zeropool-Tornado.pool-audit.md](<reports/Zeropool-Tornado.pool-audit.md>)
+- Report: [irrelevant/Zeropool-Tornado.pool-audit.md](<reports/irrelevant/Zeropool-Tornado.pool-audit.md>)
 - Auditor: Igor Gulamov (Zeropool)
 - Date: 2021-08-01
 - Description: Independent audit of the tornado-pool zkSNARK circuits (merkleTree.circom, transaction.circom) and Solidity contracts, including the pull request adding OVM support. No critical or major issues were found.
